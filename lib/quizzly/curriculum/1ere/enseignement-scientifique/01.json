@@ -1,0 +1,2488 @@
+{
+  "id": "1ere-enseignement-scientifique-01",
+  "year": "1ere",
+  "subject": "enseignement-scientifique",
+  "title": "Une longue histoire de la matière",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Les éléments chimiques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'atome, grain de matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations correspondent au modèle atomique actuel ?",
+              "options": [
+                "Le noyau concentre presque toute la masse",
+                "Les électrons occupent un volume bien plus grand que le noyau",
+                "Les électrons sont dans le noyau avec les protons",
+                "Un atome neutre a toujours plus de neutrons que de protons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La masse est surtout dans le noyau et le nuage électronique est très étendu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle particule a une charge négative ?",
+              "options": [
+                "Proton",
+                "Neutron",
+                "Électron",
+                "Positron dans le noyau"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'électron porte la charge élémentaire négative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un atome électriquement neutre :",
+              "options": [
+                "Protons = neutrons",
+                "Protons = électrons",
+                "Électrons = neutrons",
+                "Neutrons = Z + N"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Neutre signifie autant de charges + que de charges −."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le numéro atomique Z vaut :",
+              "options": [
+                "Le nombre de neutrons",
+                "Le nombre de protons",
+                "Le nombre de nucléons",
+                "La masse en grammes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Z définit l'identité chimique de l'élément."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La masse d'un atome s'exprime souvent en :",
+              "options": [
+                "Litres",
+                "Unités de masse atomique (u)",
+                "Pascals",
+                "Volts"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'unité u compare les masses nucléaires relatives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les neutrons se trouvent :",
+              "options": [
+                "Dans le nuage",
+                "Dans le noyau",
+                "Uniquement dans les ions −",
+                "Entre les orbitales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Protons et neutrons forment le noyau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un cation possède :",
+              "options": [
+                "Trop d'électrons",
+                "Pas assez d'électrons",
+                "Aucun proton",
+                "Uniquement des neutrons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins d'électrons que de protons donne une charge positive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rutherford a montré que :",
+              "options": [
+                "La charge positive est diffuse",
+                "Un petit noyau dense existe",
+                "Il n'y a pas de vide",
+                "Les électrons sont massifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La diffusion α a révélé un noyau compact."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'ordre de grandeur du rayon atomique est :",
+              "options": ["1 m", "1 mm", "0,1 nm", "1 μm"],
+              "correctAnswers": [2],
+              "explanation": "Un atome mesure environ 10⁻¹⁰ m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le noyau contient surtout :",
+              "options": [
+                "Électrons et protons",
+                "Protons et neutrons",
+                "Photons",
+                "Molécules d'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les nucléons sont protons et neutrons."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Histoire et tableau périodique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements Lavoisier a-t-il imposés ?",
+              "options": [
+                "Peser réactifs et produits",
+                "Rejeter le phlogistique",
+                "Classer par numéro atomique moderne",
+                "Découvrir le neutron"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lavoisier fonde la chimie quantitative et l'oxygène dans la combustion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mendeleïev a ordonné les éléments selon :",
+              "options": [
+                "La couleur",
+                "Masse et propriétés répétées",
+                "Le pays",
+                "Le pH"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La périodicité des propriétés guide son tableau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une période est :",
+              "options": [
+                "Une colonne",
+                "Une ligne horizontale",
+                "Un isotope",
+                "Une liaison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les périodes sont les rangées du tableau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un groupe (famille) est :",
+              "options": ["Une ligne", "Une colonne", "Un atome", "Un cristal"],
+              "correctAnswers": [1],
+              "explanation": "Les groupes partagent souvent une valence voisine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les gaz nobles sont :",
+              "options": [
+                "Très réactifs",
+                "Peu réactifs",
+                "Toujours radioactifs",
+                "Des métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Leur couche externe est saturée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le tableau actuel est trié par :",
+              "options": [
+                "Date de découverte",
+                "Numéro atomique Z",
+                "Couleur",
+                "Densité seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Z croissant structure le tableau IUPAC."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les alcalins (groupe 1) sont :",
+              "options": [
+                "Gaz rares",
+                "Métaux réactifs",
+                "Halogènes",
+                "Métalloïdes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Na, K… sont des métaux mouillables réactifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les halogènes forment souvent :",
+              "options": [
+                "Cations +",
+                "Anions −",
+                "Neutrons libres",
+                "Métaux purs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils captent un électron (F⁻, Cl⁻…)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Des cases laissées vides par Mendeleïev ont permis :",
+              "options": [
+                "D'ignorer l'oxygène",
+                "De prédire de nouveaux éléments",
+                "D'interdire les métaux",
+                "De supprimer Z"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ga et Ge ont confirmé ses prévisions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La loi des octets concerne surtout :",
+              "options": [
+                "Les noyaux",
+                "La couche externe des atomes",
+                "La gravité",
+                "Les cristaux liquides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Beaucoup d'atomes visent 8 électrons de valence."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Symboles et identité des éléments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples symbole–élément sont corrects ?",
+              "options": ["Au – or", "Fe – fer", "Ag – argon", "Na – azote"],
+              "correctAnswers": [0, 1],
+              "explanation": "Au et Fe sont corrects ; Ag est argent et Na est sodium."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le symbole de l'oxygène est :",
+              "options": ["Ox", "O", "Og", "Oy"],
+              "correctAnswers": [1],
+              "explanation": "O désigne l'élément oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pb correspond à :",
+              "options": ["Plomb", "Platine", "Phosphore", "Polonium"],
+              "correctAnswers": [0],
+              "explanation": "Pb vient du latin plumbum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'élément de Z = 6 est :",
+              "options": ["Azote", "Carbone", "Bore", "Oxygène"],
+              "correctAnswers": [1],
+              "explanation": "Six protons identifient le carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "H représente :",
+              "options": ["Hélium", "Hydrogène", "Hafnium", "Holmium"],
+              "correctAnswers": [1],
+              "explanation": "H est l'hydrogène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cu est le symbole de :",
+              "options": ["Cobalt", "Cuivre", "Carbone", "Curium uniquement"],
+              "correctAnswers": [1],
+              "explanation": "Cu vient de cuprum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux atomes avec le même Z mais des neutrons différents sont :",
+              "options": [
+                "Isotopes",
+                "Isomères",
+                "Ions identiques",
+                "Allotropes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isotopes partagent Z mais pas forcément A."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau H₂O contient les éléments :",
+              "options": ["H et C", "H et O", "O et N", "C et O"],
+              "correctAnswers": [1],
+              "explanation": "Deux atomes d'hydrogène et un d'oxygène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le chlore a pour symbole :",
+              "options": ["Ch", "Cl", "Cr", "Ce"],
+              "correctAnswers": [1],
+              "explanation": "Cl est standard pour le chlore."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "K désigne :",
+              "options": [
+                "Krypton",
+                "Potassium",
+                "Kryptonite fictive",
+                "Carbone"
+              ],
+              "correctAnswers": [1],
+              "explanation": "K vient de kalium."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Isotopes et nucléides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant les isotopes d'un même élément, que peut-on affirmer ?",
+              "options": [
+                "Même nombre de protons",
+                "Même numéro atomique Z",
+                "Toujours même nombre de neutrons",
+                "Toujours même masse atomique exacte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ils partagent Z ; la masse peut différer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le carbone 12 et le carbone 14 diffèrent par :",
+              "options": [
+                "Z",
+                "Nombre de neutrons",
+                "Charge du noyau",
+                "Symbole chimique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même Z=6, masse différente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre de masse A vaut approximativement :",
+              "options": ["Z − N", "Z + N", "N seul", "2Z"],
+              "correctAnswers": [1],
+              "explanation": "A compte protons et neutrons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¹H, ²H, ³H sont des isotopes de :",
+              "options": ["Hélium", "Hydrogène", "Lithium", "Azote"],
+              "correctAnswers": [1],
+              "explanation": "Trois nucléides de Z=1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un isotope radioactif se désintègre car :",
+              "options": [
+                "Son noyau est instable",
+                "Il manque d'électrons",
+                "Il est toujours ionique",
+                "Il est liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'instabilité nucléaire libère des radiations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le carbone 14 sert surtout à :",
+              "options": [
+                "Datation",
+                "Refroidir les réacteurs",
+                "Colorer les cristaux",
+                "Mesurer le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa demi-vie permet la datation radiocarbone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'abondance naturelle des isotopes explique :",
+              "options": [
+                "La masse atomique relative non entière",
+                "L'absence de neutrons",
+                "Z variable",
+                "Couleur des métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une moyenne pondérée sur les isotopes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux isotopes ont les mêmes réactions chimiques car :",
+              "options": [
+                "Même configuration électronique",
+                "Même couleur",
+                "Même densité toujours",
+                "Aucun électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chimie est gouvernée par les électrons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Notation ³⁵₁₇Cl : Z vaut",
+              "options": ["35", "17", "52", "18"],
+              "correctAnswers": [1],
+              "explanation": "L'indice inférieur est Z."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Séparer des isotopes du même élément est difficile car :",
+              "options": [
+                "Propriétés chimiques quasi identiques",
+                "Z différent",
+                "Symboles différents",
+                "Pas de neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise des méthodes physiques (centrifugation…)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Électrons et organisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sur les électrons de valence sont vraies ?",
+              "options": [
+                "Ils participent aux liaisons",
+                "Ils sont sur la couche la plus externe occupée",
+                "Ils sont tous dans le noyau",
+                "Leur nombre est toujours 8"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La valence détermine la réactivité chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sodium Na (Z=11) a combien d'électrons ?",
+              "options": ["10", "11", "12", "23"],
+              "correctAnswers": [1],
+              "explanation": "Atome neutre : électrons = Z."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La règle du duet/octet aide à prévoir :",
+              "options": [
+                "Les liaisons formées",
+                "La radioactivité",
+                "La couleur des gaz",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les atomes tendent à stabiliser leur couche externe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ion Cl⁻ provient de l'atome chlore qui a :",
+              "options": [
+                "Perdu un électron",
+                "Gagné un électron",
+                "Perdu un proton",
+                "Fusionné avec Na"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cl passe de 17 à 18 électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le gaz noble le plus léger est :",
+              "options": ["Ne", "He", "Ar", "Kr"],
+              "correctAnswers": [1],
+              "explanation": "Hélium Z=2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Couche K peut contenir au maximum :",
+              "options": [
+                "2 électrons",
+                "8 électrons",
+                "18 électrons",
+                "32 électrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n=1 ⇒ 2n² = 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'énergie d'ionisation augmente généralement :",
+              "options": [
+                "En descendant un groupe",
+                "En traversant une période vers la droite",
+                "Si Z diminue",
+                "Si on ajoute des neutrons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les électrons externes sont plus fortement attirés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Électronegativité élevée caractérise surtout :",
+              "options": [
+                "Métaux alcalins",
+                "Halogènes",
+                "Gaz nobles",
+                "Alcalino-terreux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "F, Cl… attirent fortement les électrons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Spectroscopie atomique montre :",
+              "options": [
+                "Niveaux d'énergie quantifiés",
+                "Absence d'électrons",
+                "Masse du proton seule",
+                "Structure cristalline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des raies correspondent à des transitions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un atome excité émet un photon quand :",
+              "options": [
+                "Un électron descend de niveau",
+                "Un proton disparaît",
+                "Le noyau double",
+                "L'atome fond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ΔE = hν lors du retour au niveau bas."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Métaux, non-métaux, métalloïdes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés typiques associe-t-on aux métaux ?",
+              "options": [
+                "Conductivité électrique élevée",
+                "Éclat métallique",
+                "Isolation parfaite",
+                "Tous gaz à 20 °C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les métaux conduisent et réfléchissent la lumière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le silicium en est un :",
+              "options": ["Métal", "Non-métal", "Métalloïde", "Gaz noble"],
+              "correctAnswers": [2],
+              "explanation": "Si a des propriétés intermédiaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le soufre à 20 °C est :",
+              "options": [
+                "Métal liquide",
+                "Non-métal solide",
+                "Gaz noble",
+                "Métalloïde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "S est un solide jaune non métallique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les métaux forment souvent des :",
+              "options": [
+                "Anions",
+                "Cations",
+                "Molécules apolaires seules",
+                "Gaz nobles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils cèdent des électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le fer Fe est :",
+              "options": ["Non-métal", "Métal", "Halogène", "Gaz"],
+              "correctAnswers": [1],
+              "explanation": "Fe est un métal de transition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphite et diamant sont allotropes de :",
+              "options": ["Silicium", "Carbone", "Oxygène", "Fer"],
+              "correctAnswers": [1],
+              "explanation": "Même élément, structures différentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bore B est classé :",
+              "options": ["Métalloïde", "Gaz noble", "Alcalin", "Halogène"],
+              "correctAnswers": [0],
+              "explanation": "B se situe à la frontière métaux/non-métaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'oxygène est :",
+              "options": ["Métal", "Non-métal", "Métalloïde", "Métal alcalin"],
+              "correctAnswers": [1],
+              "explanation": "O est un non-métal réactif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conductivité du cuivre s'explique par :",
+              "options": [
+                "Électrons délocalisés",
+                "Absence d'électrons",
+                "Neutrons libres",
+                "Ions fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer de conduction dans le réseau métallique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À droite du tableau (sans gaz nobles) on trouve surtout :",
+              "options": [
+                "Métaux alcalins",
+                "Non-métaux",
+                "Uniquement lanthanides",
+                "Uniquement actinides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La partie droite accueille O, S, halogènes…"
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Corps purs et mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un corps pur simple peut être :",
+              "options": [
+                "Un élément chimique",
+                "Une substance ne contenant qu'un type d'atome",
+                "Un mélange homogène",
+                "Une solution salée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Corps pur simple = un seul élément."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau distillée (H₂O) est :",
+              "options": ["Mélange", "Corps pur composé", "Élément", "Alliage"],
+              "correctAnswers": [1],
+              "explanation": "Deux éléments liés chimiquement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'air atmosphérique est :",
+              "options": [
+                "Corps pur",
+                "Mélange de gaz",
+                "Élément",
+                "Composé ionique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "N₂, O₂, Ar… coexistent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lait et eau salée sont :",
+              "options": ["Corps purs", "Mélanges", "Éléments", "Isotopes"],
+              "correctAnswers": [1],
+              "explanation": "Plusieurs constituents sans formule unique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'acier est :",
+              "options": [
+                "Élément",
+                "Alliage (mélange)",
+                "Composé moléculaire pur",
+                "Isotope"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fe + d'autres éléments."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Distillation sépare par :",
+              "options": [
+                "Différence d'ébullition",
+                "Différence de solubilité seule",
+                "Filtration seule",
+                "Magnétisme seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque substance a une température d'ébullition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Décantation convient si :",
+              "options": [
+                "Phases de densités différentes",
+                "Tout est soluble",
+                "Gaz uniquement",
+                "Réaction chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phase la plus dense se dépose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Formule CH₄ indique :",
+              "options": ["Méthane, composé", "Mélange", "Métal", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Un carbone et quatre hydrogènes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Corps pur composé :",
+              "options": [
+                "Un seul type d'atome",
+                "Plusieurs éléments en proportions fixes",
+                "Proportions quelconques",
+                "Toujours métal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Loi de Proust : composition définie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtration retient :",
+              "options": [
+                "Le solide sur le filtre",
+                "Le gaz dissous",
+                "Les ions en solution",
+                "Les photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparation solide/liquide."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réactions et conservation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une réaction chimique fermée, que conserve-t-on ?",
+              "options": [
+                "La masse totale",
+                "Le nombre d'atomes de chaque élément",
+                "Le nombre de molécules identiques",
+                "La couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lavoisier : rien ne se perd, rien ne se crée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Équilibrer une équation sert à :",
+              "options": [
+                "Respecter conservation des atomes",
+                "Changer les éléments",
+                "Créer de la matière",
+                "Mesurer le volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficients ajustent les quantités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2H₂ + O₂ → 2H₂O est :",
+              "options": [
+                "Synthèse de l'eau",
+                "Décomposition",
+                "Substitution",
+                "Aucune réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation d'un composé à partir d'éléments."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combustion du méthane produit surtout :",
+              "options": ["CO₂ et H₂O", "NaCl", "Fe", "N₂ seul"],
+              "correctAnswers": [0],
+              "explanation": "Oxydation complète en présence d'O₂."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réactif limitant :",
+              "options": [
+                "S'épuise en premier",
+                "Est en excès",
+                "Ne réagit pas",
+                "Est catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fixe la quantité maximale de produit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une transformation chimique se distingue d'un mélange par :",
+              "options": [
+                "Nouvelles entités chimiques",
+                "Simple agitation",
+                "Changement de température seul",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liaisons sont rompues/formées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Oxydation du fer donne :",
+              "options": ["Rouille (oxyde)", "Or", "Hélium", "Méthane"],
+              "correctAnswers": [0],
+              "explanation": "Réaction avec l'oxygène de l'air."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Catalyseur :",
+              "options": [
+                "Accélère sans être consommé",
+                "Disparaît",
+                "Change Z",
+                "Crée des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il abaisse l'énergie d'activation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test à l'eau de chaux trouble indique :",
+              "options": ["CO₂", "O₂", "H₂", "N₂"],
+              "correctAnswers": [0],
+              "explanation": "Formation de carbonate de calcium."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan molaire nécessite :",
+              "options": [
+                "Équation équilibrée",
+                "Couleur",
+                "Pression nulle",
+                "Isotopes identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coefficients relient quantités de matière."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mole et quantité de matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La mole permet de :",
+              "options": [
+                "Relier masse et nombre d'entités",
+                "Compter des atomes via Avogadro",
+                "Mesurer directement un atome au kg sans conversion",
+                "Définir la couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 mol = 6,02×10²³ entités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nombre d'Avogadro vaut environ :",
+              "options": ["6,02×10²³ mol⁻¹", "3×10⁸ m/s", "9,81 m/s²", "1 u"],
+              "correctAnswers": [0],
+              "explanation": "Constante de comptage chimique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Masse molaire du carbone 12 vaut environ :",
+              "options": ["12 g·mol⁻¹", "1 g·mol⁻¹", "24 g·mol⁻¹", "6 g·mol⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Définition historique de la mole."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "n = m/M relie :",
+              "options": [
+                "Quantité, masse, masse molaire",
+                "Volume, pression",
+                "pH, concentration",
+                "Force, masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule fondamentale en chimie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "0,5 mol de CO₂ contient combien de mol de C ?",
+              "options": ["0,5", "1", "0,25", "2"],
+              "correctAnswers": [0],
+              "explanation": "Un carbone par molécule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Volume molaire d'un gaz parfait ~25 °C, 1 bar :",
+              "options": [
+                "24 L·mol⁻¹",
+                "1 L·mol⁻¹",
+                "22 mL·mol⁻¹",
+                "1000 L·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur courant en TP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Concentration molaire c =",
+              "options": ["n/V", "m/V", "n/m", "V/n"],
+              "correctAnswers": [0],
+              "explanation": "mol·L⁻¹ en solution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dilution conserve :",
+              "options": [
+                "Quantité de soluté",
+                "Volume total",
+                "Concentration",
+                "Température toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n avant = n après (sans réaction)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "18 g d'eau correspond à environ :",
+              "options": ["1 mol", "0,1 mol", "2 mol", "18 mol"],
+              "correctAnswers": [0],
+              "explanation": "M(H₂O) ≈ 18 g·mol⁻¹."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Formule C₆H₁₂O₆ (glucose) : 1 mol contient",
+              "options": [
+                "6 mol de C",
+                "12 mol de O seulement",
+                "0 mol de H",
+                "1 mol de Fe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Six atomes de carbone par molécule."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Éléments et société",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont essentiels au vivant à forte dose ?",
+              "options": ["Carbone", "Oxygène", "Or uniquement", "Hélium"],
+              "correctAnswers": [0, 1],
+              "explanation": "C, H, O, N… structurent biomolécules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fer Fe dans l'hémoglobine sert à :",
+              "options": [
+                "Transporter O₂",
+                "Stocker ADN",
+                "Catalyser photosynthèse seule",
+                "Isoler les cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexe hème–fer lié à l'oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Iode I est important pour :",
+              "options": [
+                "Thyroïde",
+                "Os seulement",
+                "Plantes sans animaux",
+                "Acier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hormones thyroïdiennes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Silicium Si est central en :",
+              "options": [
+                "Électronique",
+                "Explosifs azotés",
+                "Gaz noble",
+                "Amalgames"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semi-conducteur dans les puces."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lithium Li sert notamment aux :",
+              "options": [
+                "Batteries",
+                "Vitres sans métal",
+                "Gaz d'éclairage seul",
+                "Ciment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accumulateurs lithium-ion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chlore Cl désinfecte l'eau car :",
+              "options": [
+                "Il oxyde/desactive des micro-organismes",
+                "Il devient fer",
+                "Il est noble",
+                "Il est solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agent oxydant utilisé en traitement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Uranium U sert surtout à :",
+              "options": [
+                "Énergie nucléaire",
+                "Alimentation",
+                "Parfums",
+                "Béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fission contrôlée dans les réacteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phosphore P est crucial pour :",
+              "options": ["ADN/ATP", "Hélium", "Cuivre pur", "Xénon"],
+              "correctAnswers": [0],
+              "explanation": "Squelette des acides nucléiques et énergie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Azote N₂ atmosphérique est :",
+              "options": [
+                "Peu réactif à 20 °C",
+                "Très réactif",
+                "Métal",
+                "Halogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triple liaison N≡N très stable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Recyclage des métaux vise à :",
+              "options": [
+                "Économiser matière et énergie",
+                "Créer de nouveaux éléments",
+                "Augmenter Z",
+                "Supprimer isotopes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réutiliser plutôt qu'extraire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les cristaux et les cellules",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Solides et cristaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un cristal se distingue d'un solide amorphe par :",
+              "options": [
+                "Motif atomique ordonné sur de longues distances",
+                "Facettes et angles dièdres caractéristiques",
+                "Absence totale de symétrie",
+                "Structure liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ordre à longue portée produit des formes géométriques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le sel de cuisine NaCl cristallise en :",
+              "options": [
+                "Réseau cubique",
+                "Chaîne linéaire seule",
+                "Gaz",
+                "Amorphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure ionique cubique à faces centrées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un réseau cristallin est :",
+              "options": [
+                "Répétition d'une maille élémentaire",
+                "Nuage d'électrons seul",
+                "Mélange sans ordre",
+                "Liquide visqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maille se reproduit dans l'espace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La diffraction des rayons X par un cristal révèle :",
+              "options": [
+                "La périodicité atomique",
+                "La couleur seule",
+                "Le pH",
+                "La masse molaire en solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure de diffraction liée aux distances interatomiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quartz est surtout :",
+              "options": [
+                "Dioxyde de silicium",
+                "Chlorure de sodium",
+                "Fer pur",
+                "Méthane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SiO₂ cristallin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cristaux liquides ont :",
+              "options": [
+                "Ordre orientational partiel",
+                "Ordre parfait 3D comme diamant",
+                "État gazeux",
+                "Pas de molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fluidité avec alignement partiel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Défaut ponctuel dans un cristal :",
+              "options": [
+                "Atome hors site ou lacune",
+                "Surface externe seule",
+                "Couleur",
+                "Pression atmosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vacance ou impureté locale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cristaux de glace hexagonaux expliquent :",
+              "options": [
+                "Flocons à six branches",
+                "Couleur bleue du NaCl",
+                "Métal liquide",
+                "Graphite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie hexagonale de la glace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Solidification libère souvent :",
+              "options": [
+                "Chaleur",
+                "Uniquement lumière",
+                "Neutrons",
+                "Électrons libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage liquide→solide exothermique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Polycrystal :",
+              "options": [
+                "Grains orientés différemment",
+                "Un seul grain infini",
+                "Gaz",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jointures entre domaines cristallins."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Types de liaisons dans les solides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels solides sont liés par interactions ioniques ?",
+              "options": ["NaCl", "CsBr", "Cu métallique pur", "Diamant"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cations et anions en réseau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diamant est un solide :",
+              "options": ["Covalent réseau", "Métallique", "Ionique", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Chaque C est tétraédrique sp³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graphite conduit l'électricité sur les feuillets car :",
+              "options": [
+                "Électrons délocalisés",
+                "Ions Na⁺",
+                "Eau intercalée",
+                "Gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doublets π mobiles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Métal Fe est lié par :",
+              "options": [
+                "Métallique",
+                "Ionique pur",
+                "Moléculaire faible",
+                "Gaz noble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mer d'électrons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glace H₂O solide a des liaisons :",
+              "options": [
+                "Hydrogène entre molécules",
+                "Covalentes dans l'eau rompues",
+                "Métalliques",
+                "Ioniques NaCl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau tenu par H‑bonds."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point de fusion élevé pour réseau covalent car :",
+              "options": [
+                "Liaisons très fortes à rompre",
+                "Couleur",
+                "Masse faible",
+                "Gaz inclus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie pour casser le réseau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Iode solide I₂ :",
+              "options": [
+                "Solide moléculaire",
+                "Réseau ionique",
+                "Métal",
+                "Alliage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécules diatomiques en réseau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CaO est :",
+              "options": ["Ionique", "Moléculaire", "Métallique", "Noble"],
+              "correctAnswers": [0],
+              "explanation": "Ca²⁺ et O²⁻."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conductivité ionique dans un solide :",
+              "options": [
+                "Déplacement d'ions",
+                "Électrons seuls",
+                "Photons",
+                "Neutrons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. électrolytes solides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Alliage laiton (Cu-Zn) :",
+              "options": ["Métallique", "Ionique", "Moléculaire I₂", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "Réseau métallique mixte."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propriétés et symétrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La symétrie d'un cristal implique :",
+              "options": [
+                "Opérations qui laissent le réseau invariant",
+                "Groupes ponctuels ou spatiaux",
+                "Absence de maille",
+                "Toujours forme sphérique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rotations, miroirs, translations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Facette d'un cristal correspond à :",
+              "options": [
+                "Plan réticulaire",
+                "Axe de rotation seul",
+                "Défaut",
+                "Liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface liée à la structure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dureté du diamant vient de :",
+              "options": ["Réseau covalent 3D", "Couleur", "Ions", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Liaisons C–C très rigides."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Biréfringence observée dans :",
+              "options": ["Calcite", "Cu métal", "NaCl en poudre", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Double réfraction cristalline."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Paramètre de maille a désigne :",
+              "options": [
+                "Longueur d'arête",
+                "Masse molaire",
+                "pH",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension de la cellule unitaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cristal piezoélectrique :",
+              "options": [
+                "Développe une tension si déformé",
+                "Fond toujours",
+                "Devient gaz",
+                "Perd symétrie totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplage mécanique–électrique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Amorphe vs cristal : verre",
+              "options": [
+                "Amorphe",
+                "Cubique parfait",
+                "Ionique NaCl",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silice vitreuse sans long-range order."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Croissance cristalline depuis solution :",
+              "options": [
+                "Dépôt ordonné sur germe",
+                "Chaos total",
+                "Fusion",
+                "Sublimation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Germination puis extension."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inclusions dans un minéral :",
+              "options": [
+                "Impuretés piégées",
+                "Électrons libres",
+                "Photons",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre phase ou gaz inclus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Isomorphisme :",
+              "options": [
+                "Structures cristallines similaires",
+                "Même couleur",
+                "Même goût",
+                "Gaz identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substitution d'ions sans changer réseau."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La cellule, unité du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tous les organismes vivants actuels :",
+              "options": [
+                "Sont constitués d'une ou plusieurs cellules",
+                "Proviennt de cellules préexistantes",
+                "Sont toujours multicellulaires",
+                "N'ont pas de membrane"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Théorie cellulaire : unité et continuité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La théorie cellulaire associe :",
+              "options": [
+                "Schleiden et Schwann",
+                "Darwin seul",
+                "Newton",
+                "Mendeleïev"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XIXᵉ siècle : végétaux et animaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une cellule est délimitée par :",
+              "options": [
+                "Membrane plasmique",
+                "Paroi de béton",
+                "Coquille calcaire seule",
+                "Gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière sélective lipidique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cytoplasme contient :",
+              "options": [
+                "Cytosol et organites",
+                "Uniquement ADN nucléaire",
+                "Paroi",
+                "Chlorure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu interne actif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un globule rouge mature humain :",
+              "options": [
+                "Pas de noyau",
+                "Deux noyaux",
+                "Paroi",
+                "Chloroplastes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anucléé pour plus d'hémoglobine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Leucocyte :",
+              "options": [
+                "Cellule immunitaire",
+                "Cellule photosynthétique",
+                "Fibres de coton",
+                "Cristal NaCl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défense de l'organisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Taille typique cellule eucaryote :",
+              "options": ["10–30 μm", "1 m", "1 nm", "1 cm"],
+              "correctAnswers": [0],
+              "explanation": "Visible au microscope optique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Unicité du vivant :",
+              "options": [
+                "Métabolisme et reproduction",
+                "Cristaux parfaits",
+                "Métal pur",
+                "Isotopes seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échanges et transmission."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cellule musculaire se distingue par :",
+              "options": [
+                "Myofibrilles",
+                "Chlorophylle",
+                "Paroi peptidique",
+                "Coquille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Neurone spécialisé pour :",
+              "options": [
+                "Signal électrique",
+                "Photosynthèse",
+                "Minéralisation",
+                "Cristallisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conduction nerveuse."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Procaryotes et eucaryotes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une cellule procaryote se caractérise par :",
+              "options": [
+                "Absence de noyau membrane-bound",
+                "ADN libre dans le cytoplasme",
+                "Mitochondries",
+                "Noyau double enveloppe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bactéries et archées sans noyau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eucaryote possède :",
+              "options": [
+                "Noyau",
+                "Ribosomes 70S seuls",
+                "Pas de membrane",
+                "Pas d'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compartimentation membranaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bactérie typique :",
+              "options": ["Procaryote", "Eucaryote", "Virus", "Cristal"],
+              "correctAnswers": [0],
+              "explanation": "Organisme unicellulaire sans noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Paroi bactérienne contient souvent :",
+              "options": [
+                "Peptidoglycane",
+                "Cellulose seule",
+                "Chitine animale",
+                "Silice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rigidité chez la plupart."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Archées diffèrent des bactéries par :",
+              "options": [
+                "Biologie moléculaire distincte",
+                "Présence de noyau",
+                "Multicellularité obligatoire",
+                "Photosynthèse absente partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ribosomes et lipides de membrane."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Leucocyte humain est :",
+              "options": ["Eucaryote", "Procaryote", "Acellulaire", "Minéral"],
+              "correctAnswers": [0],
+              "explanation": "Cellule animale avec noyau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Levure :",
+              "options": [
+                "Eucaryote unicellulaire",
+                "Bactérie",
+                "Virus",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champignon unicellulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plante : cellule avec",
+              "options": [
+                "Paroi cellulose",
+                "Peptidoglycane",
+                "Pas de vacuole",
+                "Pas de chloroplaste jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paroi végétale rigide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ribosomes :",
+              "options": [
+                "Synthèse protéique",
+                "Photosynthèse lumière",
+                "Division noyau seule",
+                "Stock lipides seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction ARNm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Taille procaryote souvent :",
+              "options": ["1–5 μm", "1 mm", "1 m", "Visible à l'œil nu"],
+              "correctAnswers": [0],
+              "explanation": "Plus petit que eucaryote moyen."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Noyau et ADN",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le noyau eucaryote contient :",
+              "options": [
+                "ADN organisé en chromosomes",
+                "Nucléole site de ribosomes",
+                "Photosystème II",
+                "Paroi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Information génétique et ribogenèse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ADN forme avec protéines :",
+              "options": [
+                "Chromatine",
+                "Peptidoglycane",
+                "Amidon",
+                "Cristal NaCl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compactage dans le noyau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Gène code surtout pour :",
+              "options": [
+                "Polypeptide ou ARN fonctionnel",
+                "Glucose seul",
+                "Eau",
+                "O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité d'hérédité moléculaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réplication ADN avant division :",
+              "options": [
+                "Semi-conservative",
+                "Crée des atomes neufs",
+                "Détruit ARN",
+                "Forme cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fille a un brin parental."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ARNm quitte le noyau pour :",
+              "options": [
+                "Être traduit au cytosol",
+                "Photosynthétiser",
+                "Former paroi",
+                "Cristalliser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Message vers ribosomes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Enveloppe nucléaire a :",
+              "options": [
+                "Pores",
+                "Pas de lipides",
+                "Pas de protéines",
+                "Ouverture permanente totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle des échanges."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Haploïde humain n =",
+              "options": ["23 chromosomes", "46", "92", "1"],
+              "correctAnswers": [0],
+              "explanation": "Gamètes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diploïde somatique humain :",
+              "options": ["46 chromosomes", "23", "12", "100"],
+              "correctAnswers": [0],
+              "explanation": "Deux jeux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mutation peut :",
+              "options": [
+                "Modifier une séquence",
+                "Changer Z de l'atome",
+                "Créer élément",
+                "Fusionner noyaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation génétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Télomères protègent :",
+              "options": [
+                "Extrémités chromosomiques",
+                "Membrane seule",
+                "Paroi",
+                "Cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité lors réplications."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Membranes et échanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La membrane plasmique est :",
+              "options": [
+                "Bicouche lipidique",
+                "Semi-perméable",
+                "Paroi rigide chez animaux",
+                "Toujours imperméable à l'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fluid mosaic model."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diffusion passive :",
+              "options": [
+                "Sans apport d'énergie cellulaire",
+                "Contre gradient avec ATP",
+                "Uniquement active",
+                "Cristallisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens gradient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Osmose concerne :",
+              "options": [
+                "Eau à travers membrane",
+                "O₂ seul",
+                "ADN",
+                "Fer métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solvant water movement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transport actif nécessite :",
+              "options": [
+                "Énergie (ATP souvent)",
+                "Aucune protéine",
+                "Gradient favorable",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contre gradient."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cholestérol dans membrane mammifère :",
+              "options": [
+                "Module fluidité",
+                "Photosynthèse",
+                "Paroi",
+                "Cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rigidifie ou fluidifie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Endocytose :",
+              "options": [
+                "Entrée par vésicule",
+                "Sortie seule",
+                "Diffusion libre",
+                "Mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phagocytose/pinocytose."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Exocytose :",
+              "options": [
+                "Export par fusion vésicule",
+                "Import ADN",
+                "Cristallisation",
+                "Osmose inverse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécrétion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Protéine canal ionique :",
+              "options": [
+                "Pore sélectif",
+                "Paroi cellulose",
+                "Noyau",
+                "Ribosome seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perméabilité ionique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cellule en milieu hypotonique peut :",
+              "options": [
+                "Gonfler/lyser",
+                "Plasmolyser",
+                "Cristalliser",
+                "Devenir métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée nette d'eau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plasmolyse concerne surtout :",
+              "options": [
+                "Cellule végétale en hypertonique",
+                "Globule rouge seul",
+                "Bactérie sans paroi",
+                "Cristal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membrane se décolle de paroi."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Organites et énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mitochondrie :",
+              "options": [
+                "Production ATP aérobie",
+                "ADN propre",
+                "Photosynthèse lumière",
+                "Paroi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Centrale énergétique eucaryote."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chloroplaste trouvé chez :",
+              "options": [
+                "Plantes/algu es photosynthétiques",
+                "Animaux tous",
+                "Bactéries sans pigment",
+                "Cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capture lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Appareil de Golgi :",
+              "options": [
+                "Modification/expédition protéines",
+                "Respiration",
+                "Division",
+                "Cristallisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri et glycosylation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réticulum endoplasmique rugueux :",
+              "options": [
+                "Ribosomes surface",
+                "ATP seul",
+                "Paroi",
+                "Starch seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse protéines sécrétées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lysosome :",
+              "options": [
+                "Digestion intracellulaire",
+                "Photosynthèse",
+                "Cristaux",
+                "Noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enzymes hydrolytiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vacuole végétale stocke :",
+              "options": [
+                "Eau, ions, pigments",
+                "ADN seul",
+                "Peptidoglycane",
+                "Fer métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turgor et stockage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Respiration cellulaire oxydée produit :",
+              "options": ["ATP, CO₂, H₂O", "O₂ seul", "Glucose", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Oxydation du glucose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Photosynthèse produit surtout :",
+              "options": ["Glucose et O₂", "CO₂ seul", "Fer", "Méthane"],
+              "correctAnswers": [0],
+              "explanation": "À partir CO₂ et eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peroxysome dégrade :",
+              "options": [
+                "Peroxides/Acides gras",
+                "Chromosomes",
+                "Paroi",
+                "Cristaux NaCl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catalase présente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Endosymbiose explique origine :",
+              "options": [
+                "Mitochondries/chloroplastes",
+                "Noyau seul",
+                "Paroi",
+                "Ribosome seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ancêtres procaryotes internalisés."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Microscopie et observation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Microscope optique permet :",
+              "options": [
+                "Observer cellules vivantes colorées",
+                "Résolution ~200 nm ordre",
+                "Voir atomes isolés",
+                "Remplacer culture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Limite diffraction lumière visible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Microscope électronique a meilleure résolution car :",
+              "options": [
+                "Longueur d'onde plus courte",
+                "Utilise lumière rouge seule",
+                "Grossit sans limite",
+                "Colore ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faisceau d'électrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Coloration au bleu de méthylène visualise :",
+              "options": ["Noyaux/ADN", "Lipides seuls", "Eau", "Cristaux"],
+              "correctAnswers": [0],
+              "explanation": "Colorant basique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Préparation en frais :",
+              "options": [
+                "Specimen non fixé rapidement",
+                "Cristal fondu",
+                "Métal pur",
+                "Gel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observe mouvement/contraste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Grossissement total =",
+              "options": [
+                "Oculaire × objectif",
+                "Somme",
+                "Division",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit des lentilles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "MET montre surtout :",
+              "options": [
+                "Détails surface",
+                "Intérieur 3D vivant",
+                "Couleur réelle",
+                "Atomes seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scan surface."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "MEB transmet :",
+              "options": [
+                "Sections fines",
+                "Surface",
+                "Uniquement lumière",
+                "Cristaux X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échantillon mince."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fluorescence marque :",
+              "options": [
+                "Molécules spécifiques",
+                "Métal Fe seul",
+                "Glace",
+                "Air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Probes lumineuses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Culture cellulaire in vitro sert à :",
+              "options": [
+                "Étudier division sans animal entier",
+                "Cristalliser sel",
+                "Remplacer théorie",
+                "Mesurer Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle contrôlé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limite optique empêche de voir :",
+              "options": [
+                "Virus isolés petits",
+                "Globule rouge",
+                "Onion epiderme",
+                "Levure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop petit vs λ."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Vivant, matière et minéraux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Biominéralisation produit :",
+              "options": [
+                "Coquilles calcaires",
+                "Os contenant hydroxyapatite",
+                "NaCl de cuisine dans cellule",
+                "Graphite pur dans sang"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Organisme dépose cristaux/minéraux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hydroxyapatite contient :",
+              "options": [
+                "Calcium et phosphore",
+                "Fer seul",
+                "Hélium",
+                "Méthane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minéral osseux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cristaux d'urine pathologiques :",
+              "options": [
+                "Exemple précipitation in vivo",
+                "Photosynthèse",
+                "Mitose",
+                "Osmose seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sels mal solubles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cellule vs cristal NaCl :",
+              "options": [
+                "Cellule métabolise",
+                "Cristal a motif fixe ionique",
+                "Les deux respirent",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivant vs matière minérale ordonnée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carbonate coquille :",
+              "options": ["CaCO₃ cristallin", "Fe pur", "O₂ gaz", "ADN"],
+              "correctAnswers": [0],
+              "explanation": "Structure rigide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Silice phytoliths plantes :",
+              "options": ["SiO₂ amorphe/cristallin", "NaCl", "Cu", "H₂"],
+              "correctAnswers": [0],
+              "explanation": "Défense structure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Magnétite dans certains bactéries :",
+              "options": [
+                "Cristaux orientent champ",
+                "Photosynthèse",
+                "Paroi cellulose",
+                "Noyau double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magnétotaxis."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diffraction X sur protéine cristallisée donne :",
+              "options": ["Structure 3D", "Couleur cellule", "pH", "Z"],
+              "correctAnswers": [0],
+              "explanation": "Cristallographie macromoléculaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Matrice extracellulaire os :",
+              "options": [
+                "Collagène + minéral",
+                "Peptidoglycane",
+                "Lipide seul",
+                "Gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composite organique-minéral."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Frontière vivant/minéral en ES :",
+              "options": [
+                "Organisation et activité métabolique",
+                "Couleur",
+                "Masse atomique",
+                "Symbole chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vivant transforme matière et énergie."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

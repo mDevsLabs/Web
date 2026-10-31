@@ -1,0 +1,2398 @@
+{
+  "id": "5e-italien-02",
+  "year": "5e",
+  "subject": "italien",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment dit-on « la mère » et « le père » en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "la madre / il padre",
+                "la mamma / il papà uniquement familiers",
+                "la sorella / il fratello",
+                "la nonna / il nonno"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Madre et padre sont les termes standards ; mamma et papà sont aussi très courants."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « il fratello » ?",
+              "type": "single_choice",
+              "options": ["le frère", "la sœur", "le cousin", "l'oncle"],
+              "correctAnswers": [0],
+              "explanation": "Fratello désigne le frère masculin."
+            },
+            {
+              "id": "q3",
+              "question": "Comment se dit « la sœur » ?",
+              "type": "single_choice",
+              "options": ["la sorella", "il fratello", "la cugina", "la zia"],
+              "correctAnswers": [0],
+              "explanation": "Sorella est le mot pour la sœur."
+            },
+            {
+              "id": "q4",
+              "question": "« I miei genitori » signifie :",
+              "type": "single_choice",
+              "options": [
+                "mes parents",
+                "mes grands-parents",
+                "mes enfants",
+                "mes cousins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genitori correspond aux parents."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « les enfants » ?",
+              "type": "single_choice",
+              "options": [
+                "i bambini / i figli",
+                "i nonni",
+                "gli zii",
+                "i cugini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bambini ou figli selon le contexte familial."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire « la nonna » ?",
+              "type": "single_choice",
+              "options": ["la grand-mère", "la tante", "la mère", "la nièce"],
+              "correctAnswers": [0],
+              "explanation": "Nonna est la grand-mère."
+            },
+            {
+              "id": "q7",
+              "question": "« Il nonno » c'est :",
+              "type": "single_choice",
+              "options": [
+                "le grand-père",
+                "le neveu",
+                "le père",
+                "le beau-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nonno désigne le grand-père."
+            },
+            {
+              "id": "q8",
+              "question": "Comment se dit « l'oncle » ?",
+              "type": "single_choice",
+              "options": ["lo zio", "la zia", "il cugino", "il nipote"],
+              "correctAnswers": [0],
+              "explanation": "Zio est l'oncle."
+            },
+            {
+              "id": "q9",
+              "question": "« La zia » signifie :",
+              "type": "single_choice",
+              "options": ["la tante", "la sœur", "la cousine", "la belle-mère"],
+              "correctAnswers": [0],
+              "explanation": "Zia correspond à la tante."
+            },
+            {
+              "id": "q10",
+              "question": "« Ho due fratelli » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai deux frères",
+                "J'ai deux sœurs",
+                "J'ai deux cousins",
+                "J'ai deux oncles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho deux frères se traduit par ho due fratelli."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Famille élargie et possession",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des membres de la famille élargie ?",
+              "type": "multiple_choice",
+              "options": [
+                "il cugino / la cugina",
+                "il fratello / la sorella",
+                "lo zio / la zia",
+                "il gatto / il cane"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Cugino, cugina, zio et zia appartiennent à la famille élargie."
+            },
+            {
+              "id": "q2",
+              "question": "« Il cugino » signifie :",
+              "type": "single_choice",
+              "options": [
+                "le cousin (masculin)",
+                "le neveu",
+                "le fils",
+                "l'ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cugino est le cousin masculin."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « ma mère » ?",
+              "type": "single_choice",
+              "options": [
+                "mia madre",
+                "mio padre",
+                "mia sorella",
+                "mio fratello"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le possessif mia s'accorde avec madre (féminin)."
+            },
+            {
+              "id": "q4",
+              "question": "« Mio padre » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "mon père",
+                "mon frère",
+                "mon oncle",
+                "mon grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mio padre = mon père."
+            },
+            {
+              "id": "q5",
+              "question": "Pour « mes parents », on dit :",
+              "type": "single_choice",
+              "options": [
+                "i miei genitori",
+                "le mie sorelle",
+                "i miei zii",
+                "i miei nonni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I miei genitori exprime mes parents."
+            },
+            {
+              "id": "q6",
+              "question": "« La mia famiglia » signifie :",
+              "type": "single_choice",
+              "options": ["ma famille", "ma maison", "ma classe", "mon école"],
+              "correctAnswers": [0],
+              "explanation": "Famiglia = famille."
+            },
+            {
+              "id": "q7",
+              "question": "Comment se dit « le neveu » (enfant du frère/sœur) ?",
+              "type": "single_choice",
+              "options": ["il nipote", "il cugino", "il figlio", "il fratello"],
+              "correctAnswers": [0],
+              "explanation": "Nipote peut signifier neveu, nièce ou petit-enfant selon le contexte."
+            },
+            {
+              "id": "q8",
+              "question": "« Siamo in cinque in famiglia » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes cinq dans la famille",
+                "Nous avons cinq maisons",
+                "Nous sommes cinq à l'école",
+                "Nous avons cinq chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In cinque indique le nombre de personnes."
+            },
+            {
+              "id": "q9",
+              "question": "Le mot « famiglia » est :",
+              "type": "single_choice",
+              "options": [
+                "féminin singulier",
+                "masculin pluriel",
+                "masculin singulier",
+                "neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famiglia est un nom féminin au singulier."
+            },
+            {
+              "id": "q10",
+              "question": "« Ti amo, mamma! » s'adresse à :",
+              "type": "single_choice",
+              "options": ["ma maman", "mon papa", "ma sœur", "mon professeur"],
+              "correctAnswers": [0],
+              "explanation": "Mamma est le terme affectif pour maman."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école — lieux et personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont liés à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "la scuola",
+                "l'aula",
+                "la spiaggia",
+                "il professore / la professoressa"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Scuola et aula désignent l'établissement et la salle de classe."
+            },
+            {
+              "id": "q2",
+              "question": "« La scuola » signifie :",
+              "type": "single_choice",
+              "options": [
+                "l'école",
+                "la cour",
+                "la bibliothèque",
+                "le gymnase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scuola = école."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « la classe » (salle) ?",
+              "type": "single_choice",
+              "options": ["l'aula", "il cortile", "il bagno", "la mensa"],
+              "correctAnswers": [0],
+              "explanation": "Aula est la salle de cours."
+            },
+            {
+              "id": "q4",
+              "question": "« Il professore » c'est :",
+              "type": "single_choice",
+              "options": [
+                "le professeur (homme)",
+                "l'élève",
+                "le directeur uniquement",
+                "le bibliothécaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professore désigne un enseignant masculin."
+            },
+            {
+              "id": "q5",
+              "question": "« La professoressa » signifie :",
+              "type": "single_choice",
+              "options": [
+                "la professeure",
+                "la directrice toujours",
+                "l'amie",
+                "la mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professoressa est la forme féminine."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « l'élève » (garçon) ?",
+              "type": "single_choice",
+              "options": [
+                "lo studente / l'alunno",
+                "il direttore",
+                "il bidello",
+                "il compagno de classe uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studente ou alunno désigne l'élève."
+            },
+            {
+              "id": "q7",
+              "question": "« L'alunna » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "l'élève (fille)",
+                "la professeure",
+                "la sœur",
+                "la directrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alunna est l'élève au féminin."
+            },
+            {
+              "id": "q8",
+              "question": "« Il compagno di classe » signifie :",
+              "type": "single_choice",
+              "options": [
+                "le camarade de classe",
+                "le cousin",
+                "le frère",
+                "le professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compagno di classe = camarade."
+            },
+            {
+              "id": "q9",
+              "question": "« Vado a scuola » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je vais à l'école",
+                "Je rentre à la maison",
+                "Je fais du sport",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare a scuola = aller à l'école."
+            },
+            {
+              "id": "q10",
+              "question": "« La palestra » à l'école, c'est souvent :",
+              "type": "single_choice",
+              "options": [
+                "le gymnase",
+                "la cantine",
+                "le bureau",
+                "la cour uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palestra désigne la salle de sport."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Objets et matériel scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets trouve-t-on dans le cartable ?",
+              "type": "multiple_choice",
+              "options": [
+                "il quaderno",
+                "la penna",
+                "la frigorifero",
+                "il libro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quaderno et penna sont du matériel scolaire courant."
+            },
+            {
+              "id": "q2",
+              "question": "« Il quaderno » signifie :",
+              "type": "single_choice",
+              "options": ["le cahier", "le livre", "le stylo", "la gomme"],
+              "correctAnswers": [0],
+              "explanation": "Quaderno = cahier."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « le stylo » ?",
+              "type": "single_choice",
+              "options": ["la penna", "la matita", "il righello", "lo zaino"],
+              "correctAnswers": [0],
+              "explanation": "Penna = stylo (bille)."
+            },
+            {
+              "id": "q4",
+              "question": "« La matita » c'est :",
+              "type": "single_choice",
+              "options": ["le crayon", "la règle", "la gomme", "le sac"],
+              "correctAnswers": [0],
+              "explanation": "Matita = crayon à papier."
+            },
+            {
+              "id": "q5",
+              "question": "« Lo zaino » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le sac à dos",
+                "le cartable rigide uniquement",
+                "la trousse",
+                "le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zaino est le sac à dos."
+            },
+            {
+              "id": "q6",
+              "question": "Comment se dit « le livre » ?",
+              "type": "single_choice",
+              "options": ["il libro", "il quaderno", "il foglio", "il banco"],
+              "correctAnswers": [0],
+              "explanation": "Libro = livre."
+            },
+            {
+              "id": "q7",
+              "question": "« La gomma » signifie :",
+              "type": "single_choice",
+              "options": [
+                "la gomme (effacer)",
+                "la colle",
+                "la règle",
+                "la craie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gomma sert à effacer."
+            },
+            {
+              "id": "q8",
+              "question": "« Il banco » dans la classe, c'est :",
+              "type": "single_choice",
+              "options": [
+                "le bureau (élève)",
+                "le tableau",
+                "le plafond",
+                "le couloir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Banco = pupitre de l'élève."
+            },
+            {
+              "id": "q9",
+              "question": "« La lavagna » c'est :",
+              "type": "single_choice",
+              "options": ["le tableau", "la porte", "la fenêtre", "l'armoire"],
+              "correctAnswers": [0],
+              "explanation": "Lavagna = tableau noir/blanc."
+            },
+            {
+              "id": "q10",
+              "question": "« Ho dimenticato il libro » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai oublié le livre",
+                "J'ai perdu le stylo",
+                "J'aime l'école",
+                "Je lis un cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimenticare = oublier."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Matières et emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles matières existent au collège en Italie ?",
+              "type": "multiple_choice",
+              "options": [
+                "matematica",
+                "storia",
+                "cucina professionnelle avancée",
+                "geografia"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matematica, storia et geografia sont des matières courantes."
+            },
+            {
+              "id": "q2",
+              "question": "« La matematica » signifie :",
+              "type": "single_choice",
+              "options": [
+                "les mathématiques",
+                "l'histoire",
+                "l'italien",
+                "le sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matematica = maths."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « l'histoire » (matière) ?",
+              "type": "single_choice",
+              "options": ["la storia", "la geografia", "la scienze", "l'arte"],
+              "correctAnswers": [0],
+              "explanation": "Storia = histoire."
+            },
+            {
+              "id": "q4",
+              "question": "« La geografia » c'est :",
+              "type": "single_choice",
+              "options": [
+                "la géographie",
+                "la biologie",
+                "la musique",
+                "l'EPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geografia = géographie."
+            },
+            {
+              "id": "q5",
+              "question": "« Le scienze » (au pluriel courant) désigne :",
+              "type": "single_choice",
+              "options": [
+                "les sciences",
+                "le français",
+                "la religion",
+                "la philo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scienze regroupe souvent SVT/physique-chimie au collège."
+            },
+            {
+              "id": "q6",
+              "question": "« L'italiano » comme matière, c'est :",
+              "type": "single_choice",
+              "options": [
+                "l'italien (langue)",
+                "l'anglais",
+                "l'allemand",
+                "le latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiano = cours de langue italienne."
+            },
+            {
+              "id": "q7",
+              "question": "« L'inglese » signifie :",
+              "type": "single_choice",
+              "options": ["l'anglais", "l'espagnol", "le français", "le grec"],
+              "correctAnswers": [0],
+              "explanation": "Inglese = anglais."
+            },
+            {
+              "id": "q8",
+              "question": "« L'educazione fisica » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "l'éducation physique / EPS",
+                "l'éducation civique seule",
+                "la musique",
+                "l'informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Educazione fisica = sport à l'école."
+            },
+            {
+              "id": "q9",
+              "question": "« L'orario » à l'école, c'est :",
+              "type": "single_choice",
+              "options": [
+                "l'emploi du temps",
+                "la cloche",
+                "la récréation",
+                "le devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orario = horaire des cours."
+            },
+            {
+              "id": "q10",
+              "question": "« Ho lezione di matematica » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai cours de maths",
+                "Je n'aime pas les maths",
+                "Les maths sont finies",
+                "Je fais mes devoirs de geo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avere lezione di = avoir cours de."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loisirs — vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots expriment des loisirs ?",
+              "type": "multiple_choice",
+              "options": [
+                "giocare",
+                "leggere",
+                "dormire en cours",
+                "ascoltare musica"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Giocare et ascoltare musica décrivent des activités de temps libre."
+            },
+            {
+              "id": "q2",
+              "question": "« Giocare » signifie :",
+              "type": "single_choice",
+              "options": ["jouer", "lire", "manger", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "Giocare = jouer."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « lire » ?",
+              "type": "single_choice",
+              "options": ["leggere", "scrivere", "correre", "nuotare"],
+              "correctAnswers": [0],
+              "explanation": "Leggere = lire."
+            },
+            {
+              "id": "q4",
+              "question": "« Ascoltare la musica » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "écouter de la musique",
+                "jouer du piano",
+                "chanter seulement",
+                "danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ascoltare = écouter."
+            },
+            {
+              "id": "q5",
+              "question": "« Guardare la TV » signifie :",
+              "type": "single_choice",
+              "options": [
+                "regarder la télé",
+                "lire un journal",
+                "faire du vélo",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guardare = regarder."
+            },
+            {
+              "id": "q6",
+              "question": "« Andare al cinema » c'est :",
+              "type": "single_choice",
+              "options": [
+                "aller au cinéma",
+                "aller au stade",
+                "aller à la plage",
+                "rester chez soi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinema = cinéma."
+            },
+            {
+              "id": "q7",
+              "question": "Comment se dit « danser » ?",
+              "type": "single_choice",
+              "options": ["ballare", "cantare", "dipingere", "viaggiare"],
+              "correctAnswers": [0],
+              "explanation": "Ballare = danser."
+            },
+            {
+              "id": "q8",
+              "question": "« Cantare » veut dire :",
+              "type": "single_choice",
+              "options": ["chanter", "crier", "parler bas", "écouter"],
+              "correctAnswers": [0],
+              "explanation": "Cantare = chanter."
+            },
+            {
+              "id": "q9",
+              "question": "« Nel tempo libero » signifie :",
+              "type": "single_choice",
+              "options": [
+                "pendant le temps libre",
+                "pendant le cours",
+                "le matin à l'école",
+                "la nuit uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tempo libero = temps libre."
+            },
+            {
+              "id": "q10",
+              "question": "« Mi piace giocare ai videogiochi » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'aime jouer aux jeux vidéo",
+                "Je déteste le sport",
+                "Je lis un livre",
+                "Je fais mes devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Videogiochi = jeux vidéo."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sport et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes décrivent le sport ?",
+              "type": "multiple_choice",
+              "options": [
+                "giocare a calcio",
+                "nuotare",
+                "studiare la grammatica",
+                "correre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calcio et nuotare sont des activités sportives."
+            },
+            {
+              "id": "q2",
+              "question": "« Il calcio » signifie :",
+              "type": "single_choice",
+              "options": [
+                "le football",
+                "le basketball",
+                "le tennis",
+                "la natation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calcio = football en Italie."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « nager » ?",
+              "type": "single_choice",
+              "options": ["nuotare", "sciare", "pattinare", "ciclare"],
+              "correctAnswers": [0],
+              "explanation": "Nuotare = nager."
+            },
+            {
+              "id": "q4",
+              "question": "« Correre » veut dire :",
+              "type": "single_choice",
+              "options": ["courir", "marcher lentement", "sauter", "nager"],
+              "correctAnswers": [0],
+              "explanation": "Correre = courir."
+            },
+            {
+              "id": "q5",
+              "question": "« Andare in bicicletta » signifie :",
+              "type": "single_choice",
+              "options": [
+                "faire du vélo",
+                "faire du ski",
+                "jouer au volley",
+                "faire de la muscu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bicicletta = vélo."
+            },
+            {
+              "id": "q6",
+              "question": "« La palestra » pour le sport, c'est :",
+              "type": "single_choice",
+              "options": [
+                "la salle de sport",
+                "le stade extérieur",
+                "la piscine",
+                "le parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palestra = gym intérieure."
+            },
+            {
+              "id": "q7",
+              "question": "« Il nuoto » désigne :",
+              "type": "single_choice",
+              "options": ["la natation", "le cyclisme", "la course", "le judo"],
+              "correctAnswers": [0],
+              "explanation": "Nuoto = natation."
+            },
+            {
+              "id": "q8",
+              "question": "« Giocare a basket » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "jouer au basket",
+                "jouer au rugby",
+                "regarder la TV",
+                "faire du yoga"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basket = basketball."
+            },
+            {
+              "id": "q9",
+              "question": "« La squadra » signifie :",
+              "type": "single_choice",
+              "options": ["l'équipe", "le ballon", "l'arbitre", "le score"],
+              "correctAnswers": [0],
+              "explanation": "Squadra = équipe sportive."
+            },
+            {
+              "id": "q10",
+              "question": "« Faccio sport tre volte a settimana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais du sport trois fois par semaine",
+                "Je regarde le sport à la TV",
+                "Je n'aime pas le sport",
+                "Je joue une fois par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tre volte a settimana = trois fois par semaine."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La maison et les pièces",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels noms désignent des pièces de la maison ?",
+              "type": "multiple_choice",
+              "options": [
+                "la cucina",
+                "la camera da letto",
+                "il aula",
+                "il bagno"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cucina et camera da letto sont des pièces domestiques."
+            },
+            {
+              "id": "q2",
+              "question": "« La casa » signifie :",
+              "type": "single_choice",
+              "options": ["la maison", "l'école", "le magasin", "le parc"],
+              "correctAnswers": [0],
+              "explanation": "Casa = maison."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « la cuisine » ?",
+              "type": "single_choice",
+              "options": [
+                "la cucina",
+                "il soggiorno",
+                "il giardino",
+                "il garage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cucina = cuisine."
+            },
+            {
+              "id": "q4",
+              "question": "« La camera da letto » c'est :",
+              "type": "single_choice",
+              "options": [
+                "la chambre à coucher",
+                "le salon",
+                "la salle de bain",
+                "le couloir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Camera da letto = chambre."
+            },
+            {
+              "id": "q5",
+              "question": "« Il soggiorno » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le séjour / salon",
+                "le grenier",
+                "la cave",
+                "le bureau d'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soggiorno = pièce de vie."
+            },
+            {
+              "id": "q6",
+              "question": "« Il bagno » signifie :",
+              "type": "single_choice",
+              "options": [
+                "la salle de bain",
+                "la cuisine",
+                "le jardin",
+                "le garage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bagno = salle de bain."
+            },
+            {
+              "id": "q7",
+              "question": "Comment se dit « le jardin » ?",
+              "type": "single_choice",
+              "options": ["il giardino", "il balcone", "il tetto", "il piano"],
+              "correctAnswers": [0],
+              "explanation": "Giardino = jardin."
+            },
+            {
+              "id": "q8",
+              "question": "« La mia stanza » veut dire :",
+              "type": "single_choice",
+              "options": ["ma chambre", "ma classe", "ma ville", "mon sac"],
+              "correctAnswers": [0],
+              "explanation": "Stanza = pièce/chambre."
+            },
+            {
+              "id": "q9",
+              "question": "« Abito in un appartamento » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'habite dans un appartement",
+                "Je travaille dans un bureau",
+                "Je vais à l'école",
+                "Je loue une voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abitare = habiter."
+            },
+            {
+              "id": "q10",
+              "question": "« Torno a casa » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je rentre à la maison",
+                "Je pars en vacances",
+                "Je vais au cinéma",
+                "Je reste à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tornare a casa = rentrer chez soi."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Animaux et nature proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels animaux sont des animaux domestiques courants ?",
+              "type": "multiple_choice",
+              "options": [
+                "il cane",
+                "il gatto",
+                "il leone in salotto",
+                "il pesce rosso"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cane et gatto sont les pets les plus fréquents."
+            },
+            {
+              "id": "q2",
+              "question": "« Il cane » signifie :",
+              "type": "single_choice",
+              "options": ["le chien", "le chat", "l'oiseau", "le poisson"],
+              "correctAnswers": [0],
+              "explanation": "Cane = chien."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « le chat » ?",
+              "type": "single_choice",
+              "options": ["il gatto", "il coniglio", "il cavallo", "la mucca"],
+              "correctAnswers": [0],
+              "explanation": "Gatto = chat."
+            },
+            {
+              "id": "q4",
+              "question": "« L'uccello » c'est :",
+              "type": "single_choice",
+              "options": ["l'oiseau", "le lapin", "le hamster", "le serpent"],
+              "correctAnswers": [0],
+              "explanation": "Uccello = oiseau."
+            },
+            {
+              "id": "q5",
+              "question": "« Il coniglio » veut dire :",
+              "type": "single_choice",
+              "options": ["le lapin", "le chien", "le poisson", "le lion"],
+              "correctAnswers": [0],
+              "explanation": "Coniglio = lapin."
+            },
+            {
+              "id": "q6",
+              "question": "« Ho un cane e un gatto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai un chien et un chat",
+                "Je n'aime pas les animaux",
+                "Je vais au zoo",
+                "Je mange avec le chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho = j'ai."
+            },
+            {
+              "id": "q7",
+              "question": "« Il parco » près de chez soi, c'est :",
+              "type": "single_choice",
+              "options": ["le parc", "la plage", "la montagne", "l'aéroport"],
+              "correctAnswers": [0],
+              "explanation": "Parco = parc public."
+            },
+            {
+              "id": "q8",
+              "question": "« L'albero » signifie :",
+              "type": "single_choice",
+              "options": ["l'arbre", "la fleur", "la rivière", "le sable"],
+              "correctAnswers": [0],
+              "explanation": "Albero = arbre."
+            },
+            {
+              "id": "q9",
+              "question": "« Il fiore » c'est :",
+              "type": "single_choice",
+              "options": ["la fleur", "la feuille", "la branche", "la racine"],
+              "correctAnswers": [0],
+              "explanation": "Fiore = fleur."
+            },
+            {
+              "id": "q10",
+              "question": "« Mi piacciono gli animali » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'aime les animaux",
+                "Je crains les animaux",
+                "Je n'ai pas d'animal",
+                "Je mange végétarien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piacciono = plaisent (3e pers. pluriel)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — famille, école, loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases décrivent le quotidien d'un élève ?",
+              "type": "multiple_choice",
+              "options": [
+                "Vado a scuola la mattina",
+                "Gioco con i miei amici",
+                "Vivo sulla luna",
+                "Studio l'italiano"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "École le matin et jeux avec amis sont typiques."
+            },
+            {
+              "id": "q2",
+              "question": "« I miei amici » signifie :",
+              "type": "single_choice",
+              "options": ["mes amis", "mes parents", "mes profs", "mes frères"],
+              "correctAnswers": [0],
+              "explanation": "Amici = amis."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « le week-end » (familier) ?",
+              "type": "single_choice",
+              "options": [
+                "il fine settimana / il weekend",
+                "il lunedì",
+                "la lezione",
+                "l'orario"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fine settimana est l'expression standard."
+            },
+            {
+              "id": "q4",
+              "question": "« Dopo la scuola » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "après l'école",
+                "avant l'école",
+                "pendant le cours",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dopo = après."
+            },
+            {
+              "id": "q5",
+              "question": "« La mensa » à l'école, c'est :",
+              "type": "single_choice",
+              "options": ["la cantine", "la cour", "le CDI", "l'infirmerie"],
+              "correctAnswers": [0],
+              "explanation": "Mensa = cantine scolaire."
+            },
+            {
+              "id": "q6",
+              "question": "« Il ricreo » (récréation) signifie :",
+              "type": "single_choice",
+              "options": [
+                "la récréation",
+                "les vacances",
+                "le devoir",
+                "l'examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ricreo = pause entre les cours."
+            },
+            {
+              "id": "q7",
+              "question": "« Mi chiamo Marco » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Marco",
+                "Je suis italien",
+                "J'habite à Rome",
+                "J'ai douze ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiamarsi = s'appeler."
+            },
+            {
+              "id": "q8",
+              "question": "« Quanti anni hai? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Quel âge as-tu ?",
+                "Comment vas-tu ?",
+                "Où habites-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anni = ans (âge)."
+            },
+            {
+              "id": "q9",
+              "question": "« Sto bene » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais bien",
+                "Je suis malade",
+                "Je suis fatigué",
+                "Je suis en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stare bene = aller bien."
+            },
+            {
+              "id": "q10",
+              "question": "« A presto! » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "À bientôt !",
+                "Bonjour !",
+                "Au revoir pour toujours",
+                "Bonne nuit !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A presto = à bientôt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Adjectifs et couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne ou un objet ?",
+              "type": "multiple_choice",
+              "options": ["alto / alta", "rosso", "correre", "simpatico"],
+              "correctAnswers": [0, 3],
+              "explanation": "Alto et simpatico sont des adjectifs descriptifs."
+            },
+            {
+              "id": "q2",
+              "question": "« Grande » au masculin singulier, c'est :",
+              "type": "single_choice",
+              "options": [
+                "grande",
+                "grandi",
+                "granda",
+                "grandissimo seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande est invariable au masculin au singulier."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « petit » (masculin) ?",
+              "type": "single_choice",
+              "options": ["piccolo", "piccola", "piccoli", "piccole"],
+              "correctAnswers": [0],
+              "explanation": "Piccolo = petit (masc. sing.)."
+            },
+            {
+              "id": "q4",
+              "question": "« Rosso » signifie :",
+              "type": "single_choice",
+              "options": ["rouge", "bleu", "vert", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Rosso = rouge."
+            },
+            {
+              "id": "q5",
+              "question": "« Blu » c'est :",
+              "type": "single_choice",
+              "options": ["bleu", "jaune", "orange", "violet"],
+              "correctAnswers": [0],
+              "explanation": "Blu = bleu (souvent invariable)."
+            },
+            {
+              "id": "q6",
+              "question": "« Verde » veut dire :",
+              "type": "single_choice",
+              "options": ["vert", "gris", "marron", "blanc"],
+              "correctAnswers": [0],
+              "explanation": "Verde = vert."
+            },
+            {
+              "id": "q7",
+              "question": "« Giallo » signifie :",
+              "type": "single_choice",
+              "options": ["jaune", "rose", "noir", "argent"],
+              "correctAnswers": [0],
+              "explanation": "Giallo = jaune."
+            },
+            {
+              "id": "q8",
+              "question": "« Bianco / bianca » désigne :",
+              "type": "single_choice",
+              "options": ["blanc / blanche", "noir", "rouge", "bleu"],
+              "correctAnswers": [0],
+              "explanation": "Bianco s'accorde au genre."
+            },
+            {
+              "id": "q9",
+              "question": "« Nero / nera » veut dire :",
+              "type": "single_choice",
+              "options": ["noir / noire", "blanc", "gris", "beige"],
+              "correctAnswers": [0],
+              "explanation": "Nero = noir."
+            },
+            {
+              "id": "q10",
+              "question": "« Una maglietta rossa » signifie :",
+              "type": "single_choice",
+              "options": [
+                "un T-shirt rouge",
+                "un pantalon bleu",
+                "une robe verte",
+                "un manteau noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maglietta = T-shirt ; rossa s'accorde."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Présent en -are",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes sont du 1er groupe (-are) au présent ?",
+              "type": "multiple_choice",
+              "options": ["parlare", "abitare", "dormire", "cantare"],
+              "correctAnswers": [0, 1],
+              "explanation": "Parlare et abitare se conjuguent en -are."
+            },
+            {
+              "id": "q2",
+              "question": "« Io parlo » signifie :",
+              "type": "single_choice",
+              "options": ["Je parle", "Tu parles", "Il parle", "Nous parlons"],
+              "correctAnswers": [0],
+              "explanation": "Io parlo = je parle."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « tu habites » (abitare) ?",
+              "type": "single_choice",
+              "options": ["tu abiti", "io abito", "lui abita", "noi abitiamo"],
+              "correctAnswers": [0],
+              "explanation": "Tu abiti = 2e personne singulier."
+            },
+            {
+              "id": "q4",
+              "question": "« Lui studia » veut dire :",
+              "type": "single_choice",
+              "options": ["Il étudie", "Il dort", "Il mange", "Il court"],
+              "correctAnswers": [0],
+              "explanation": "Studiare : lui studia."
+            },
+            {
+              "id": "q5",
+              "question": "« Noi giochiamo » signifie :",
+              "type": "single_choice",
+              "options": ["Nous jouons", "Vous jouez", "Ils jouent", "Je joue"],
+              "correctAnswers": [0],
+              "explanation": "Noi = nous."
+            },
+            {
+              "id": "q6",
+              "question": "« Voi ascoltate » c'est :",
+              "type": "single_choice",
+              "options": [
+                "Vous écoutez",
+                "Tu écoutes",
+                "J'écoute",
+                "Elle écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voi = vous (pluriel)."
+            },
+            {
+              "id": "q7",
+              "question": "« Loro cantano » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Ils/elles chantent",
+                "Nous chantons",
+                "Je chante",
+                "Tu chantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loro = ils/elles."
+            },
+            {
+              "id": "q8",
+              "question": "La terminaison « -iamo » correspond à :",
+              "type": "single_choice",
+              "options": ["noi", "io", "tu", "loro"],
+              "correctAnswers": [0],
+              "explanation": "Ex. : mangiamo, parliamo."
+            },
+            {
+              "id": "q9",
+              "question": "« Io mangio la pizza » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je mange la pizza",
+                "Je cuisine la pizza",
+                "Je n'aime pas la pizza",
+                "J'achète la pizza"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mangiare = manger."
+            },
+            {
+              "id": "q10",
+              "question": "« Tu guardi il film » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Tu regardes le film",
+                "Tu lis le livre",
+                "Tu écris une lettre",
+                "Tu fermes la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guardare = regarder."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le temps et les saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du temps qu'il fait ?",
+              "type": "multiple_choice",
+              "options": ["il sole", "la pioggia", "il quaderno", "fa caldo"],
+              "correctAnswers": [0, 3],
+              "explanation": "Sole et fa caldo décrivent la météo."
+            },
+            {
+              "id": "q2",
+              "question": "« Fa bel tempo » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il fait beau",
+                "Il pleut",
+                "Il neige",
+                "Il fait nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bel tempo = beau temps."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « il pleut » ?",
+              "type": "single_choice",
+              "options": ["Piove", "Nevica", "C'è il sole", "Fa freddo"],
+              "correctAnswers": [0],
+              "explanation": "Piovere : piove."
+            },
+            {
+              "id": "q4",
+              "question": "« Fa freddo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Il fait froid",
+                "Il fait chaud",
+                "Il vente",
+                "Il grêle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freddo = froid."
+            },
+            {
+              "id": "q5",
+              "question": "« L'estate » c'est :",
+              "type": "single_choice",
+              "options": ["l'été", "l'hiver", "le printemps", "l'automne"],
+              "correctAnswers": [0],
+              "explanation": "Estate = été."
+            },
+            {
+              "id": "q6",
+              "question": "« L'inverno » signifie :",
+              "type": "single_choice",
+              "options": ["l'hiver", "l'été", "mars", "juillet"],
+              "correctAnswers": [0],
+              "explanation": "Inverno = hiver."
+            },
+            {
+              "id": "q7",
+              "question": "« La primavera » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le printemps",
+                "l'automne",
+                "la saison des pluies seule",
+                "la neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Primavera = printemps."
+            },
+            {
+              "id": "q8",
+              "question": "« L'autunno » c'est :",
+              "type": "single_choice",
+              "options": ["l'automne", "l'été", "le matin", "la nuit"],
+              "correctAnswers": [0],
+              "explanation": "Autunno = automne."
+            },
+            {
+              "id": "q9",
+              "question": "« Oggi c'è il sole » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui il y a du soleil",
+                "Demain il pleuvra",
+                "Hier il neigeait",
+                "Ce soir il fait nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oggi = aujourd'hui."
+            },
+            {
+              "id": "q10",
+              "question": "« In inverno fa freddo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "En hiver il fait froid",
+                "En été il fait chaud",
+                "Au printemps il pleut",
+                "En automne il neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + saison pour situer."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels traits décrivent l'apparence ou le caractère ?",
+              "type": "multiple_choice",
+              "options": [
+                "alto e magro",
+                "simpatico",
+                "il martedì",
+                "i capelli castani"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Alto/magro et capelli castani décrivent une personne."
+            },
+            {
+              "id": "q2",
+              "question": "« Lui è alto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il est grand (taille)",
+                "Il est petit",
+                "Il est jeune",
+                "Il est en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alto = grand/tall."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « les cheveux bruns » ?",
+              "type": "single_choice",
+              "options": [
+                "i capelli castani",
+                "gli occhi blu",
+                "la bocca grande",
+                "le mani piccole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capelli castani = cheveux châtains."
+            },
+            {
+              "id": "q4",
+              "question": "« Gli occhi azzurri » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "les yeux bleu clair",
+                "les yeux verts",
+                "les oreilles",
+                "le nez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occhi azzurri = yeux bleus."
+            },
+            {
+              "id": "q5",
+              "question": "« Lei è simpatica » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Elle est sympa",
+                "Elle est triste",
+                "Elle est en colère",
+                "Elle est absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simpatica = sympathique (f.)."
+            },
+            {
+              "id": "q6",
+              "question": "« Giovane » veut dire :",
+              "type": "single_choice",
+              "options": ["jeune", "vieux", "grand", "fatigué"],
+              "correctAnswers": [0],
+              "explanation": "Giovane = jeune."
+            },
+            {
+              "id": "q7",
+              "question": "« Porta gli occhiali » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle porte des lunettes",
+                "Il/elle porte un chapeau",
+                "Il/elle a mal aux yeux",
+                "Il/elle lit un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occhiali = lunettes."
+            },
+            {
+              "id": "q8",
+              "question": "« Ha i capelli lunghi » c'est :",
+              "type": "single_choice",
+              "options": [
+                "Il/elle a les cheveux longs",
+                "Il/elle a les cheveux courts",
+                "Il/elle est chauve",
+                "Il/elle se coupe les ongles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunghi = longs."
+            },
+            {
+              "id": "q9",
+              "question": "« Mio fratello è sportivo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Mon frère est sportif",
+                "Mon frère est paresseux",
+                "Mon frère est prof",
+                "Mon frère est bébé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sportivo = sportif."
+            },
+            {
+              "id": "q10",
+              "question": "« Com'è tuo padre? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Comment est ton père ?",
+                "Où est ton père ?",
+                "Quel âge a ton père ?",
+                "Comment s'appelle ton père ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Com'è = comment est-il."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent un lieu ?",
+              "type": "multiple_choice",
+              "options": ["grande", " tranquillo", "parlare", "luminoso"],
+              "correctAnswers": [0, 3],
+              "explanation": "Grande et luminoso qualifient un endroit."
+            },
+            {
+              "id": "q2",
+              "question": "« La mia città è bella » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ma ville est belle",
+                "Mon école est laide",
+                "Ma maison est petite",
+                "Mon pays est loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Città = ville."
+            },
+            {
+              "id": "q3",
+              "question": "« C'è un parco vicino » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Il y a un parc près d'ici",
+                "Il n'y a pas de parc",
+                "Le parc est fermé",
+                "Je déteste le parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'è = il y a ; vicino = près."
+            },
+            {
+              "id": "q4",
+              "question": "« La piazza è affollata » signifie :",
+              "type": "single_choice",
+              "options": [
+                "La place est bondée",
+                "La place est vide",
+                "La rue est calme",
+                "Le jardin est fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affollata = bondée (f.)."
+            },
+            {
+              "id": "q5",
+              "question": "« Il negozio » c'est :",
+              "type": "single_choice",
+              "options": ["le magasin", "l'hôpital", "la gare", "l'église"],
+              "correctAnswers": [0],
+              "explanation": "Negozio = commerce/magasin."
+            },
+            {
+              "id": "q6",
+              "question": "« La spiaggia » veut dire :",
+              "type": "single_choice",
+              "options": ["la plage", "la montagne", "le lac", "la forêt"],
+              "correctAnswers": [0],
+              "explanation": "Spiaggia = plage."
+            },
+            {
+              "id": "q7",
+              "question": "« In montagna » signifie :",
+              "type": "single_choice",
+              "options": ["à la montagne", "en ville", "à la mer", "à l'école"],
+              "correctAnswers": [0],
+              "explanation": "Montagna = montagne."
+            },
+            {
+              "id": "q8",
+              "question": "« La strada è lunga » c'est :",
+              "type": "single_choice",
+              "options": [
+                "La rue est longue",
+                "La rue est fermée",
+                "La maison est grande",
+                "Le pont est petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Strada = rue/route."
+            },
+            {
+              "id": "q9",
+              "question": "« Abito in periferia » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'habite en banlieue",
+                "J'habite au centre-ville",
+                "Je voyage souvent",
+                "Je vis à l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Periferia = banlieue/périphérie."
+            },
+            {
+              "id": "q10",
+              "question": "« Roma è una città antica » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Rome est une ville ancienne",
+                "Rome est une ville moderne",
+                "Paris est en Italie",
+                "Milan est petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antica = ancienne."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Chiffres, âge et dates simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres sont corrects en italien ?",
+              "type": "multiple_choice",
+              "options": ["dieci", "quindici", "onze", "venti"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dieci (10) et quindici (15) sont italiens ; onze se dit undici."
+            },
+            {
+              "id": "q2",
+              "question": "« Undici » signifie :",
+              "type": "single_choice",
+              "options": ["onze", "douze", "treize", "dix"],
+              "correctAnswers": [0],
+              "explanation": "Undici = 11."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « douze ans » (âge) ?",
+              "type": "single_choice",
+              "options": [
+                "dodici anni",
+                "dieci anni",
+                "venti anni",
+                "due anni"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anni = ans."
+            },
+            {
+              "id": "q4",
+              "question": "« Ho tredici anni » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai treize ans",
+                "J'ai trente ans",
+                "J'ai trois ans",
+                "J'ai dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho ... anni pour l'âge."
+            },
+            {
+              "id": "q5",
+              "question": "« Venti » c'est le nombre :",
+              "type": "single_choice",
+              "options": ["20", "12", "15", "100"],
+              "correctAnswers": [0],
+              "explanation": "Venti = vingt."
+            },
+            {
+              "id": "q6",
+              "question": "« Cento » signifie :",
+              "type": "single_choice",
+              "options": ["cent", "mille", "cinquante", "quarante"],
+              "correctAnswers": [0],
+              "explanation": "Cento = 100."
+            },
+            {
+              "id": "q7",
+              "question": "« Il primo maggio » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "le premier mai",
+                "le premier mars",
+                "le vingt mai",
+                "le lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Primo = premier ; maggio = mai."
+            },
+            {
+              "id": "q8",
+              "question": "« Lunedì » c'est :",
+              "type": "single_choice",
+              "options": ["lundi", "dimanche", "samedi", "mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Lunedì = lundi."
+            },
+            {
+              "id": "q9",
+              "question": "« Domani » signifie :",
+              "type": "single_choice",
+              "options": ["demain", "hier", "aujourd'hui", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Domani = demain."
+            },
+            {
+              "id": "q10",
+              "question": "« Ieri » veut dire :",
+              "type": "single_choice",
+              "options": ["hier", "demain", "bientôt", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "Ieri = hier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Passato prossimo — introduction",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels auxiliaires forment le passato prossimo ?",
+              "type": "multiple_choice",
+              "options": [
+                "avere",
+                "essere",
+                "parlare",
+                "essere pour certains verbes de mouvement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avere ou essere + participe passé."
+            },
+            {
+              "id": "q2",
+              "question": "« Ho mangiato » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai mangé",
+                "Je mange",
+                "Je mangerai",
+                "Je mangeais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passato prossimo avec avere."
+            },
+            {
+              "id": "q3",
+              "question": "« Ho giocato a calcio » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'ai joué au football",
+                "Je joue au football",
+                "Je vais jouer",
+                "Je n'aime pas le foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giocato = participe de giocare."
+            },
+            {
+              "id": "q4",
+              "question": "« Sono andato a scuola » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis allé à l'école",
+                "Je vais à l'école",
+                "Je reste à la maison",
+                "J'habite près de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare utilise essere."
+            },
+            {
+              "id": "q5",
+              "question": "« Ho visto un film » c'est :",
+              "type": "single_choice",
+              "options": [
+                "J'ai vu un film",
+                "Je regarde un film",
+                "Je lis un livre",
+                "J'écoute de la musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vedere : ho visto."
+            },
+            {
+              "id": "q6",
+              "question": "« Ieri ho studiato » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Hier j'ai étudié",
+                "Demain j'étudierai",
+                "Aujourd'hui j'étudie",
+                "Je n'étudie jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ieri + passé récent."
+            },
+            {
+              "id": "q7",
+              "question": "Le participe de « parlare » est :",
+              "type": "single_choice",
+              "options": [
+                "parlato",
+                "parlare",
+                "parla",
+                "parlato/a selon genre avec essere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parlato avec avere reste invariable."
+            },
+            {
+              "id": "q8",
+              "question": "« Non ho fatto i compiti » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas fait mes devoirs",
+                "J'ai fini mes devoirs",
+                "Je fais mes devoirs",
+                "Je n'ai pas de devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compiti = devoirs."
+            },
+            {
+              "id": "q9",
+              "question": "« Siamo andati al cinema » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes allés au cinéma",
+                "Nous allons au cinéma",
+                "Ils sont au cinéma",
+                "Nous restons à la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andati avec essere (noi)."
+            },
+            {
+              "id": "q10",
+              "question": "« Ho ascoltato musica » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai écouté de la musique",
+                "J'écoute de la musique",
+                "Je chante",
+                "Je joue du piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ascoltato = écouté."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent une journée type ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mi sveglio alle sette",
+                "Vado a scuola",
+                "Dormo tutto il giorno a scuola",
+                "La sera guardo la TV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réveil et trajet scolaire structurent la journée."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi sveglio presto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je me réveille tôt",
+                "Je me couche tard",
+                "Je fais la sieste",
+                "Je reste au lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Svegliarsi = se réveiller."
+            },
+            {
+              "id": "q3",
+              "question": "« Faccio colazione » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je prends le petit-déjeuner",
+                "Je déjeune",
+                "Je dîne",
+                "Je cuisine le dîner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colazione = petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "question": "« A pranzo mangio alla mensa » signifie :",
+              "type": "single_choice",
+              "options": [
+                "À midi je mange à la cantine",
+                "Le soir je mange à la maison",
+                "Je ne mange pas",
+                "Je mange au parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pranzo = déjeuner."
+            },
+            {
+              "id": "q5",
+              "question": "« Dopo le lezioni » c'est :",
+              "type": "single_choice",
+              "options": [
+                "après les cours",
+                "avant les cours",
+                "pendant le cours",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lezioni = cours."
+            },
+            {
+              "id": "q6",
+              "question": "« Torno a casa alle quattro » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je rentre à la maison à quatre heures",
+                "Je pars à huit heures",
+                "Je dors à quatre heures",
+                "Je mange à minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alle quattro = à quatre heures."
+            },
+            {
+              "id": "q7",
+              "question": "« Faccio i compiti » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais mes devoirs",
+                "Je lis un roman",
+                "Je joue dehors",
+                "Je regarde la télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compiti = devoirs scolaires."
+            },
+            {
+              "id": "q8",
+              "question": "« La sera ceno con la famiglia » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Le soir je dîne avec la famille",
+                "Le matin je déjeune seul",
+                "Je ne vois pas ma famille",
+                "Je mange à l'école le soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cenare = dîner."
+            },
+            {
+              "id": "q9",
+              "question": "« Vado a letto alle dieci » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais me coucher à dix heures",
+                "Je me lève à dix heures",
+                "Je fais du sport à dix heures",
+                "Je rentre de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare a letto = se coucher."
+            },
+            {
+              "id": "q10",
+              "question": "« Oggi è stata una bella giornata » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui a été une belle journée",
+                "Demain sera difficile",
+                "Hier il pleuvait",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giornata = journée (vécu)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prépositions et repères",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles prépositions indiquent un lieu ?",
+              "type": "multiple_choice",
+              "options": [
+                "in",
+                "a",
+                "sopra",
+                "di notte seulement comme expression"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "In et a introduisent ville, pays, lieux."
+            },
+            {
+              "id": "q2",
+              "question": "« Vivo a Parigi » (exemple de structure) — en italien pour Rome :",
+              "type": "single_choice",
+              "options": [
+                "Vivo a Roma",
+                "Vivo in Roma",
+                "Vivo di Roma",
+                "Vivo su Roma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les villes prennent souvent « a »."
+            },
+            {
+              "id": "q3",
+              "question": "« Abito in Francia » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "J'habite en France",
+                "Je vais en Italie",
+                "Je suis en vacances",
+                "Je parle français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pays féminins : in + pays."
+            },
+            {
+              "id": "q4",
+              "question": "« Sono in classe » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis en classe",
+                "Je suis à la maison",
+                "Je suis au parc",
+                "Je suis en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In classe = dans la salle de cours."
+            },
+            {
+              "id": "q5",
+              "question": "« Il libro è sul tavolo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Le livre est sur la table",
+                "Le livre est sous la table",
+                "Le livre est dans le sac",
+                "Le livre est perdu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Su/sul = sur."
+            },
+            {
+              "id": "q6",
+              "question": "« Sotto il letto » c'est :",
+              "type": "single_choice",
+              "options": [
+                "sous le lit",
+                "sur le lit",
+                "dans le lit",
+                "près de la fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sotto = sous."
+            },
+            {
+              "id": "q7",
+              "question": "« Accanto a » signifie :",
+              "type": "single_choice",
+              "options": ["à côté de", "loin de", "devant", "derrière"],
+              "correctAnswers": [0],
+              "explanation": "Accanto a = à côté de."
+            },
+            {
+              "id": "q8",
+              "question": "« Davanti a scuola » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "devant l'école",
+                "derrière l'école",
+                "dans l'école",
+                "loin de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Davanti a = devant."
+            },
+            {
+              "id": "q9",
+              "question": "« Di mattina » signifie :",
+              "type": "single_choice",
+              "options": ["le matin", "le soir", "la nuit", "l'après-midi"],
+              "correctAnswers": [0],
+              "explanation": "Di mattina = le matin."
+            },
+            {
+              "id": "q10",
+              "question": "« Alle otto » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "à huit heures",
+                "huit jours",
+                "le huit du mois",
+                "huit personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alle + heure = à ... heures."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments aident à raconter au passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "ieri",
+                "ho ... + participio",
+                "domani sempre",
+                "poi / dopo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ieri et passato prossimo situent le récit passé."
+            },
+            {
+              "id": "q2",
+              "question": "« Racconto la mia giornata » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je raconte ma journée",
+                "Je décris ma maison",
+                "Je compte jusqu'à dix",
+                "Je pose une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccontare = raconter."
+            },
+            {
+              "id": "q3",
+              "question": "« Descrivo la mia famiglia » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je décris ma famille",
+                "Je dessine ma famille",
+                "Je vis seul",
+                "Je téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descrivere = décrire."
+            },
+            {
+              "id": "q4",
+              "question": "« È una ragazza alta e gentile » signifie :",
+              "type": "single_choice",
+              "options": [
+                "C'est une fille grande et gentille",
+                "C'est un garçon petit",
+                "C'est un prof strict",
+                "C'est un chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ragazza = fille/jeune fille."
+            },
+            {
+              "id": "q5",
+              "question": "« Poi ho pranzato con gli amici » c'est :",
+              "type": "single_choice",
+              "options": [
+                "Ensuite j'ai déjeuné avec des amis",
+                "Avant je dormais",
+                "Demain je mangerai",
+                "Je n'ai pas faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poi = ensuite."
+            },
+            {
+              "id": "q6",
+              "question": "« Il tempo era bello » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Le temps était beau",
+                "Il pleut maintenant",
+                "Il fait nuit",
+                "Il neige demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imparfait era pour description passée."
+            },
+            {
+              "id": "q7",
+              "question": "« Mi piace raccontare storie » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'aime raconter des histoires",
+                "Je déteste lire",
+                "Je n'aime pas parler",
+                "Je dessine des bandes dessinées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Storie = histoires/récits."
+            },
+            {
+              "id": "q8",
+              "question": "« Che cosa fai nel tempo libero? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Que fais-tu pendant ton temps libre ?",
+                "Où habites-tu ?",
+                "Quelle heure est-il ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Che cosa fai = que fais-tu."
+            },
+            {
+              "id": "q9",
+              "question": "« Prima studio, poi gioco » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "D'abord j'étudie, ensuite je joue",
+                "Je joue sans étudier",
+                "Je ne joue jamais",
+                "Je dors toute la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prima ... poi = d'abord ... ensuite."
+            },
+            {
+              "id": "q10",
+              "question": "« Alla fine della giornata sono stanco » signifie :",
+              "type": "single_choice",
+              "options": [
+                "À la fin de la journée je suis fatigué",
+                "Le matin je suis en forme",
+                "Je ne dors jamais",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stanco = fatigué (masc.)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

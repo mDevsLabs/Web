@@ -1,0 +1,2549 @@
+{
+  "id": "4e-italien-03",
+  "year": "4e",
+  "subject": "italien",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Menu della trattoria",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Extrait : « Primo piatto: pasta al pomodoro 8 € · Secondo: pollo arrosto 12 € ». Quels éléments indiquent le prix et le plat principal ?",
+              "type": "multiple_choice",
+              "options": [
+                "8 € pour la pasta",
+                "12 € pour il pollo",
+                "Primo piatto = entrée",
+                "Secondo = dessert"
+              ],
+              "correctAnswers": ["8 € pour la pasta", "12 € pour il pollo"],
+              "explanation": "Les chiffres suivis de € donnent le prix ; primo/secondo structurent le repas italien."
+            },
+            {
+              "id": "q2",
+              "question": "Dans « Antipasto misto 6 € », que signifie « antipasto » ?",
+              "type": "single_choice",
+              "options": [
+                "Plat principal",
+                "Entrée / hors-d'œuvre",
+                "Dessert",
+                "Boisson"
+              ],
+              "correctAnswers": ["Entrée / hors-d'œuvre"],
+              "explanation": "Antipasto désigne ce que l'on mange avant le primo piatto."
+            },
+            {
+              "id": "q3",
+              "question": "« Acqua naturale o frizzante? » — frizzante veut dire :",
+              "type": "single_choice",
+              "options": ["Plate", "Gazeuse", "Chaude", "Au citron"],
+              "correctAnswers": ["Gazeuse"],
+              "explanation": "Frizzante = eau pétillante ; naturale = plate."
+            },
+            {
+              "id": "q4",
+              "question": "Sur le menu : « Contorno: insalata verde 4 € ». Un contorno est :",
+              "type": "single_choice",
+              "options": [
+                "Une boisson",
+                "Un accompagnement / légume",
+                "Un fromage",
+                "Le couvert"
+              ],
+              "correctAnswers": ["Un accompagnement / légume"],
+              "explanation": "Contorno = garniture, souvent salade ou légumes."
+            },
+            {
+              "id": "q5",
+              "question": "« Dolce: tiramisù 5 € » — le dolce correspond à :",
+              "type": "single_choice",
+              "options": ["Le café", "Le dessert", "La soupe", "L'addition"],
+              "correctAnswers": ["Le dessert"],
+              "explanation": "Dolce = douceur, donc dessert en restauration."
+            },
+            {
+              "id": "q6",
+              "question": "L'affiche indique « Coperto 2 € a persona ». Cela correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Pourboire obligatoire",
+                "Frais de couvert par personne",
+                "Prix du pain seul",
+                "Taxe de la ville"
+              ],
+              "correctAnswers": ["Frais de couvert par personne"],
+              "explanation": "Coperto = couvert (pain, couverts) facturé par personne en Italie."
+            },
+            {
+              "id": "q7",
+              "question": "« Menu del giorno — 15 € (primo + secondo + acqua) ». Que comprend l'offre ?",
+              "type": "single_choice",
+              "options": [
+                "Seulement la pasta",
+                "Premier et second plat + eau",
+                "Dessert illimité",
+                "Café compris"
+              ],
+              "correctAnswers": ["Premier et second plat + eau"],
+              "explanation": "Menu del giorno = formule du jour avec primo, secondo et eau."
+            },
+            {
+              "id": "q8",
+              "question": "« Senza glutine disponibile » sur une carte. Cela informe :",
+              "type": "single_choice",
+              "options": [
+                "Plat épicé",
+                "Option sans gluten",
+                "Réservation obligatoire",
+                "Fermé le lundi"
+              ],
+              "correctAnswers": ["Option sans gluten"],
+              "explanation": "Senza glutine = sans gluten, pour intolérances."
+            },
+            {
+              "id": "q9",
+              "question": "« Piatti vegetariani » — on propose :",
+              "type": "single_choice",
+              "options": [
+                "Viande uniquement",
+                "Plats végétariens",
+                "Poisson seulement",
+                "Menu enfant"
+              ],
+              "correctAnswers": ["Plats végétariens"],
+              "explanation": "Vegetariani = sans viande."
+            },
+            {
+              "id": "q10",
+              "question": "« Servizio non incluso » en bas de menu signifie :",
+              "type": "single_choice",
+              "options": [
+                "Service compris",
+                "Pourboire / service non inclus dans l'addition",
+                "Gratuit pour enfants",
+                "Carte bancaire refusée"
+              ],
+              "correctAnswers": [
+                "Pourboire / service non inclus dans l'addition"
+              ],
+              "explanation": "Le pourboire n'est pas toujours inclus ; servizio = service."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Orario dei treni",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Horaire : « Partenza Roma Termini 14:35 · Arrivo Firenze SMN 16:02 · Binario 12 ». Quelles infos sont un départ et une voie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Partenza 14:35",
+                "Arrivo 16:02",
+                "Binario 12",
+                "Firenze SMN"
+              ],
+              "correctAnswers": ["Partenza 14:35", "Binario 12"],
+              "explanation": "Partenza = heure de départ ; binario = quai/voie."
+            },
+            {
+              "id": "q2",
+              "question": "« Ritardo di 20 minuti » annonce :",
+              "type": "single_choice",
+              "options": [
+                "Avance de 20 min",
+                "Retard de 20 minutes",
+                "Train supprimé",
+                "Changement de voie"
+              ],
+              "correctAnswers": ["Retard de 20 minutes"],
+              "explanation": "Ritardo = retard."
+            },
+            {
+              "id": "q3",
+              "question": "« Corsa soppressa » signifie que le train est :",
+              "type": "single_choice",
+              "options": ["Complet", "Annulé", "En panne mineure", "À l'heure"],
+              "correctAnswers": ["Annulé"],
+              "explanation": "Soppressa = supprimée (course annulée)."
+            },
+            {
+              "id": "q4",
+              "question": "Dans « Freq. ogni 30 min », freq. indique :",
+              "type": "single_choice",
+              "options": [
+                "Fréquence / passage toutes les 30 min",
+                "Fermeture",
+                "Premier train",
+                "Dernier train"
+              ],
+              "correctAnswers": ["Fréquence / passage toutes les 30 min"],
+              "explanation": "Ogni 30 min = toutes les trente minutes."
+            },
+            {
+              "id": "q5",
+              "question": "« Validità biglietto: 4 ore » — le billet reste valable :",
+              "type": "single_choice",
+              "options": ["4 heures", "4 jours", "4 trajets", "4 euros"],
+              "correctAnswers": ["4 heures"],
+              "explanation": "Validità = durée de validité du titre de transport."
+            },
+            {
+              "id": "q6",
+              "question": "« Cambio a Bologna » pour un voyageur signifie :",
+              "type": "single_choice",
+              "options": [
+                "Arrêt sans descente",
+                "Correspondance à Bologna",
+                "Fin du voyage",
+                "Grève"
+              ],
+              "correctAnswers": ["Correspondance à Bologna"],
+              "explanation": "Cambio = changement de train."
+            },
+            {
+              "id": "q7",
+              "question": "« Posti prenotati — vagone 5, posti 21-22 » concerne :",
+              "type": "single_choice",
+              "options": [
+                "Places réservées wagon 5",
+                "Billet sans place",
+                "Bagages seuls",
+                "Quai 5"
+              ],
+              "correctAnswers": ["Places réservées wagon 5"],
+              "explanation": "Prenotati = réservés ; vagone = voiture."
+            },
+            {
+              "id": "q8",
+              "question": "« Ultima corsa ore 23:45 » indique :",
+              "type": "single_choice",
+              "options": [
+                "Premier départ",
+                "Dernier train à 23h45",
+                "Heure d'été",
+                "Prix réduit"
+              ],
+              "correctAnswers": ["Dernier train à 23h45"],
+              "explanation": "Ultima corsa = dernière course."
+            },
+            {
+              "id": "q9",
+              "question": "« Biglietto non valido su questo treno » — le billet :",
+              "type": "single_choice",
+              "options": [
+                "Est valable partout",
+                "Ne convient pas à ce train",
+                "Est gratuit",
+                "Est pour bus"
+              ],
+              "correctAnswers": ["Ne convient pas à ce train"],
+              "explanation": "Non valido = non valable sur cette liaison."
+            },
+            {
+              "id": "q10",
+              "question": "« Attenzione: binario provvisorio 3 » alerte sur :",
+              "type": "single_choice",
+              "options": [
+                "Prix du billet",
+                "Voie temporaire numéro 3",
+                "Retard météo",
+                "Fermeture gare"
+              ],
+              "correctAnswers": ["Voie temporaire numéro 3"],
+              "explanation": "Binario provvisorio = quai provisoire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Cartina del centro",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Plan : « Piazza Duomo — Duomo di Milano · Via Torino · Metropolitana M1 Duomo ». Quels repères sont lieu et transport ?",
+              "type": "multiple_choice",
+              "options": [
+                "Piazza Duomo",
+                "Duomo di Milano",
+                "Metropolitana M1",
+                "Via Torino"
+              ],
+              "correctAnswers": ["Piazza Duomo", "Metropolitana M1"],
+              "explanation": "Piazza = place ; M1 = ligne de métro."
+            },
+            {
+              "id": "q2",
+              "question": "Symbole « Museo » sur la carte. « Orari: mar-dom 9-18 » — ouvert :",
+              "type": "single_choice",
+              "options": [
+                "Tous les jours",
+                "Mardi au dimanche 9h-18h",
+                "Lundi seulement",
+                "Nuit"
+              ],
+              "correctAnswers": ["Mardi au dimanche 9h-18h"],
+              "explanation": "Mar-dom = mardi à dimanche ; chiuso souvent le lundi."
+            },
+            {
+              "id": "q3",
+              "question": "« Uscita » avec flèche vers la rue signifie :",
+              "type": "single_choice",
+              "options": ["Entrée", "Sortie", "Ascenseur", "Toilettes"],
+              "correctAnswers": ["Sortie"],
+              "explanation": "Uscita = sortie (métro, bâtiment)."
+            },
+            {
+              "id": "q4",
+              "question": "« Senso unico » sur un plan de rues indique :",
+              "type": "single_choice",
+              "options": ["Sens unique", "Zone piétonne", "Parking", "Pont"],
+              "correctAnswers": ["Sens unique"],
+              "explanation": "Senso unico = circulation dans un seul sens."
+            },
+            {
+              "id": "q5",
+              "question": "Légende : « Stazione FS a 500 m » — FS désigne le réseau :",
+              "type": "single_choice",
+              "options": [
+                "Ferrovia dello Stato / trains",
+                "Bus urbain",
+                "Taxi",
+                "Ferry"
+              ],
+              "correctAnswers": ["Ferrovia dello Stato / trains"],
+              "explanation": "FS = chemins de fer d'État, gare principale."
+            },
+            {
+              "id": "q6",
+              "question": "« Parcheggio a pagamento » sur la carte :",
+              "type": "single_choice",
+              "options": [
+                "Parking gratuit",
+                "Parking payant",
+                "Interdit aux voitures",
+                "Garage privé seulement"
+              ],
+              "correctAnswers": ["Parking payant"],
+              "explanation": "A pagamento = payant."
+            },
+            {
+              "id": "q7",
+              "question": "« Centro storico — ZTL » limite :",
+              "type": "single_choice",
+              "options": [
+                "Accès voitures réglementé",
+                "Musée fermé",
+                "Métro en travaux",
+                "Plage"
+              ],
+              "correctAnswers": ["Accès voitures réglementé"],
+              "explanation": "ZTL = zone à trafic limité en centre historique."
+            },
+            {
+              "id": "q8",
+              "question": "« Ponte Vecchio » sur plan de Florence est :",
+              "type": "single_choice",
+              "options": [
+                "Une place",
+                "Un pont historique",
+                "Une gare",
+                "Un aéroport"
+              ],
+              "correctAnswers": ["Un pont historique"],
+              "explanation": "Ponte = pont ; Vecchio = vieux."
+            },
+            {
+              "id": "q9",
+              "question": "Flèche « Nord » et « Scale » près d'un bâtiment indiquent :",
+              "type": "single_choice",
+              "options": [
+                "Escaliers",
+                "Nord et escalier",
+                "Restaurant",
+                "Pharmacie"
+              ],
+              "correctAnswers": ["Escaliers"],
+              "explanation": "Scale = escaliers en italien courant sur les plans."
+            },
+            {
+              "id": "q10",
+              "question": "« Info point — Lingue: IT, EN, FR » propose :",
+              "type": "single_choice",
+              "options": [
+                "Vente billets seule",
+                "Accueil avec plusieurs langues",
+                "Urgences médicales",
+                "Consigne 24h"
+              ],
+              "correctAnswers": ["Accueil avec plusieurs langues"],
+              "explanation": "Point d'information touristique multilingue."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Affiche evento",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Affiche : « SABATO 15 GIUGNO · Concerto in piazza · Ingresso libero · Ore 21:00 ». Quels détails sont date et entrée ?",
+              "type": "multiple_choice",
+              "options": [
+                "SABATO 15 GIUGNO",
+                "Ingresso libero",
+                "Ore 21:00",
+                "in piazza"
+              ],
+              "correctAnswers": ["SABATO 15 GIUGNO", "Ingresso libero"],
+              "explanation": "Date complète et entrée gratuite (libero)."
+            },
+            {
+              "id": "q2",
+              "question": "« Prenotazione obbligatoria » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Entrée libre",
+                "Réservation obligatoire",
+                "Annulé",
+                "Enfants interdits"
+              ],
+              "correctAnswers": ["Réservation obligatoire"],
+              "explanation": "Prenotazione = réservation ; obbligatoria = obligatoire."
+            },
+            {
+              "id": "q3",
+              "question": "« Mostra fotografica fino al 30 aprile » — l'expo se termine :",
+              "type": "single_choice",
+              "options": ["Le 30 avril", "Le 15 juin", "Demain", "Sans date"],
+              "correctAnswers": ["Le 30 avril"],
+              "explanation": "Fino al = jusqu'au."
+            },
+            {
+              "id": "q4",
+              "question": "« Vietato fumare » sur l'affiche :",
+              "type": "single_choice",
+              "options": [
+                "Fumer autorisé",
+                "Interdiction de fumer",
+                "Zone fumeurs",
+                "Vente tabac"
+              ],
+              "correctAnswers": ["Interdiction de fumer"],
+              "explanation": "Vietato fumare = défense de fumer."
+            },
+            {
+              "id": "q5",
+              "question": "« Biglietti disponibili online e in biglietteria » — achat :",
+              "type": "single_choice",
+              "options": [
+                "Uniquement sur place",
+                "En ligne et au guichet",
+                "Gratuit seulement",
+                "Par téléphone seulement"
+              ],
+              "correctAnswers": ["En ligne et au guichet"],
+              "explanation": "Online + biglietteria = deux canaux."
+            },
+            {
+              "id": "q6",
+              "question": "« Evento annullato per maltempo » — cause :",
+              "type": "single_choice",
+              "options": [
+                "Grève",
+                "Mauvais temps",
+                "Panne électrique",
+                "Succès"
+              ],
+              "correctAnswers": ["Mauvais temps"],
+              "explanation": "Maltempo = intempéries."
+            },
+            {
+              "id": "q7",
+              "question": "« Posti limitati — arrivare presto » conseille :",
+              "type": "single_choice",
+              "options": [
+                "Arriver tard",
+                "Places limitées, venir tôt",
+                "Réservation inutile",
+                "Durée illimitée"
+              ],
+              "correctAnswers": ["Places limitées, venir tôt"],
+              "explanation": "Posti limitati = capacité réduite."
+            },
+            {
+              "id": "q8",
+              "question": "« Spettacolo per famiglie — bambini under 12 gratis » :",
+              "type": "single_choice",
+              "options": [
+                "Adultes gratuits",
+                "Enfants moins de 12 ans gratuits",
+                "Interdit aux mineurs",
+                "Prix unique"
+              ],
+              "correctAnswers": ["Enfants moins de 12 ans gratuits"],
+              "explanation": "Under 12 gratis = gratuit pour les -12 ans."
+            },
+            {
+              "id": "q9",
+              "question": "« In caso di pioggia, location: Palazzetto dello Sport » — repli :",
+              "type": "single_choice",
+              "options": [
+                "Annulation",
+                "Lieu de repli couvert",
+                "Report au mois prochain",
+                "Extérieur seulement"
+              ],
+              "correctAnswers": ["Lieu de repli couvert"],
+              "explanation": "En cas de pluie, autre salle."
+            },
+            {
+              "id": "q10",
+              "question": "« Info: www.comune.it/eventi » renvoie vers :",
+              "type": "single_choice",
+              "options": [
+                "Site de la mairie / événements",
+                "Billeterie privée",
+                "Météo",
+                "Carte routière"
+              ],
+              "correctAnswers": ["Site de la mairie / événements"],
+              "explanation": "Comune = municipalité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Orario scolastico",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Lezioni: lun-ven 8:15-13:30 · Ricevimento genitori: mercoledì 15:00 ». Quels créneaux concernent cours et parents ?",
+              "type": "multiple_choice",
+              "options": [
+                "lun-ven 8:15-13:30",
+                "mercoledì 15:00",
+                "sabato",
+                "ferie"
+              ],
+              "correctAnswers": ["lun-ven 8:15-13:30", "mercoledì 15:00"],
+              "explanation": "Lezioni = cours ; ricevimento genitori = permanence parents."
+            },
+            {
+              "id": "q2",
+              "question": "« Scuola chiusa per festività il 2 novembre » — fermeture pour :",
+              "type": "single_choice",
+              "options": [
+                "Vacances d'été",
+                "Jour férié / commémoration",
+                "Grève",
+                "Travaux"
+              ],
+              "correctAnswers": ["Jour férié / commémoration"],
+              "explanation": "Festività = fête religieuse ou civile."
+            },
+            {
+              "id": "q3",
+              "question": "« Ritiro documenti in segreteria » — lieu :",
+              "type": "single_choice",
+              "options": [
+                "Cour de récréation",
+                "Secrétariat",
+                "Cantine",
+                "Gymnase"
+              ],
+              "correctAnswers": ["Secrétariat"],
+              "explanation": "Segreteria = bureau administratif."
+            },
+            {
+              "id": "q4",
+              "question": "« Uscita anticipata venerdì ore 12:00 » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Cours plus long",
+                "Sortie plus tôt à midi",
+                "Pas de cours vendredi",
+                "Examens"
+              ],
+              "correctAnswers": ["Sortie plus tôt à midi"],
+              "explanation": "Uscita anticipata = fin de journée avancée."
+            },
+            {
+              "id": "q5",
+              "question": "« Mensa: prenotazione entro le 10:00 » — cantine :",
+              "type": "single_choice",
+              "options": [
+                "Réservation avant 10h",
+                "Gratuit sans limite",
+                "Fermée",
+                "Réservée aux profs"
+              ],
+              "correctAnswers": ["Réservation avant 10h"],
+              "explanation": "Entro le 10:00 = au plus tard à dix heures."
+            },
+            {
+              "id": "q6",
+              "question": "« Gita scolastica — autorizzazione firmata entro giovedì » demande :",
+              "type": "single_choice",
+              "options": [
+                "Paiement cash",
+                "Autorisation parentale signée",
+                "Photo",
+                "Uniforme"
+              ],
+              "correctAnswers": ["Autorisation parentale signée"],
+              "explanation": "Gita = sortie ; autorizzazione firmata = autorisation signée."
+            },
+            {
+              "id": "q7",
+              "question": "« Compiti per le vacanze consegnati il primo giorno » — devoirs :",
+              "type": "single_choice",
+              "options": [
+                "Jamais rendus",
+                "Rendus le premier jour de reprise",
+                "En ligne seulement",
+                "Optionnels"
+              ],
+              "correctAnswers": ["Rendus le premier jour de reprise"],
+              "explanation": "Vacanze = vacances scolaires."
+            },
+            {
+              "id": "q8",
+              "question": "« Colloquio con docente su appuntamento » — entretien :",
+              "type": "single_choice",
+              "options": [
+                "Sans rendez-vous",
+                "Sur rendez-vous",
+                "Interdit",
+                "Par email seulement"
+              ],
+              "correctAnswers": ["Sur rendez-vous"],
+              "explanation": "Su appuntamento = sur RDV."
+            },
+            {
+              "id": "q9",
+              "question": "« Biblioteca aperta nella pausa pranzo » — bibliothèque :",
+              "type": "single_choice",
+              "options": [
+                "Fermée",
+                "Ouverte à la pause déjeuner",
+                "Nuit",
+                "Week-end"
+              ],
+              "correctAnswers": ["Ouverte à la pause déjeuner"],
+              "explanation": "Pausa pranzo = pause méridienne."
+            },
+            {
+              "id": "q10",
+              "question": "« Regolamento: divieto telefoni in classe » interdit :",
+              "type": "single_choice",
+              "options": ["Téléphones en classe", "Livres", "Repas", "Sport"],
+              "correctAnswers": ["Téléphones en classe"],
+              "explanation": "Divieto telefoni = interdiction des portables."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Menu bar",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Aperitivo 18:00-20:00 · Spritz 5 € · Stuzzichini inclusi ». Quels éléments décrivent l'offre apéro ?",
+              "type": "multiple_choice",
+              "options": [
+                "18:00-20:00",
+                "Spritz 5 €",
+                "Stuzzichini inclusi",
+                "Colazione"
+              ],
+              "correctAnswers": ["18:00-20:00", "Stuzzichini inclusi"],
+              "explanation": "Créneau et amuse-bouches inclus caractérisent l'aperitivo."
+            },
+            {
+              "id": "q2",
+              "question": "« Caffè espresso 1,20 € · Macchiato 1,50 € » — macchiato est :",
+              "type": "single_choice",
+              "options": ["Thé", "Expresso « taché » de lait", "Jus", "Bière"],
+              "correctAnswers": ["Expresso « taché » de lait"],
+              "explanation": "Macchiato = espresso avec un peu de lait."
+            },
+            {
+              "id": "q3",
+              "question": "« Birra alla spina — media 4 € » — bière :",
+              "type": "single_choice",
+              "options": [
+                "En bouteille",
+                "À la pression",
+                "Sans alcool",
+                "Chaude"
+              ],
+              "correctAnswers": ["À la pression"],
+              "explanation": "Alla spina = tirée au comptoir."
+            },
+            {
+              "id": "q4",
+              "question": "« Panino prosciutto e formaggio 6 € » contient :",
+              "type": "single_choice",
+              "options": [
+                "Poisson",
+                "Jambon cru et fromage",
+                "Salade seule",
+                "Confiture"
+              ],
+              "correctAnswers": ["Jambon cru et fromage"],
+              "explanation": "Prosciutto = jambon ; formaggio = fromage."
+            },
+            {
+              "id": "q5",
+              "question": "« Happy hour: -20% su cocktail » — réduction :",
+              "type": "single_choice",
+              "options": [
+                "Sur cafés",
+                "Sur cocktails",
+                "Sur eau",
+                "Sur repas complets"
+              ],
+              "correctAnswers": ["Sur cocktails"],
+              "explanation": "Promo ciblée sur les cocktail."
+            },
+            {
+              "id": "q6",
+              "question": "« Vietato servire alcolici ai minori di 18 anni » rappelle :",
+              "type": "single_choice",
+              "options": [
+                "Âge légal 18 ans",
+                "Interdit aux adultes",
+                "Gratuit mineurs",
+                "Carte étudiante"
+              ],
+              "correctAnswers": ["Âge légal 18 ans"],
+              "explanation": "Minori di 18 = mineurs."
+            },
+            {
+              "id": "q7",
+              "question": "« Contanti e carte accettati » — paiement :",
+              "type": "single_choice",
+              "options": [
+                "Espèces ou carte",
+                "Chèques seulement",
+                "Uniquement cash",
+                "Crypto"
+              ],
+              "correctAnswers": ["Espèces ou carte"],
+              "explanation": "Contanti = liquide ; carte = carte bancaire."
+            },
+            {
+              "id": "q8",
+              "question": "« Wi-Fi gratuito — password: ospiti2024 » fournit :",
+              "type": "single_choice",
+              "options": [
+                "Mot de passe Wi-Fi",
+                "Code toilettes",
+                "Numéro de table",
+                "Heure fermeture"
+              ],
+              "correctAnswers": ["Mot de passe Wi-Fi"],
+              "explanation": "Ospiti = invités/clients."
+            },
+            {
+              "id": "q9",
+              "question": "« Chiusura cucina ore 22:30 » — la cuisine ferme :",
+              "type": "single_choice",
+              "options": ["À 22h30", "À midi", "Jamais", "À l'aube"],
+              "correctAnswers": ["À 22h30"],
+              "explanation": "Chiusura cucina = fin service cuisine."
+            },
+            {
+              "id": "q10",
+              "question": "« Asporto disponibile » permet :",
+              "type": "single_choice",
+              "options": [
+                "Manger sur place seulement",
+                "Commande à emporter",
+                "Livraison gratuite",
+                "Réservation hôtel"
+              ],
+              "correctAnswers": ["Commande à emporter"],
+              "explanation": "Asporto = plat à emporter."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tabellone aeroporto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Volo AZ612 Roma FCO 10:45 Gate B12 · Stato: imbarco ». Quels champs sont heure locale et porte ?",
+              "type": "multiple_choice",
+              "options": ["10:45", "Gate B12", "Stato: imbarco", "FCO"],
+              "correctAnswers": ["10:45", "Gate B12"],
+              "explanation": "Heure de départ et gate = porte d'embarquement."
+            },
+            {
+              "id": "q2",
+              "question": "« Ritardo previsto 45 min » — prévision :",
+              "type": "single_choice",
+              "options": [
+                "Avance",
+                "Retard d'environ 45 min",
+                "Annulation",
+                "Embarquement immédiat"
+              ],
+              "correctAnswers": ["Retard d'environ 45 min"],
+              "explanation": "Previsto = prévu."
+            },
+            {
+              "id": "q3",
+              "question": "« Imbarco prioritario per famiglie con bambini » concerne :",
+              "type": "single_choice",
+              "options": [
+                "Personnel seul",
+                "Familles avec enfants",
+                "Retards",
+                "Bagages perdus"
+              ],
+              "correctAnswers": ["Familles avec enfants"],
+              "explanation": "Priorità = embarquement prioritaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Volo cancellato — contattare assistenza » :",
+              "type": "single_choice",
+              "options": [
+                "Vol maintenu",
+                "Vol annulé, contacter l'assistance",
+                "Gratuit",
+                "Départ anticipé"
+              ],
+              "correctAnswers": ["Vol annulé, contacter l'assistance"],
+              "explanation": "Cancellato = annulé."
+            },
+            {
+              "id": "q5",
+              "question": "« Documento d'identità obbligatorio » rappelle :",
+              "type": "single_choice",
+              "options": [
+                "Pièce d'identité requise",
+                "Passeport inutile",
+                "Ticket papier seul",
+                "Visa automatique"
+              ],
+              "correctAnswers": ["Pièce d'identité requise"],
+              "explanation": "Obbligatorio = obligatoire en vol."
+            },
+            {
+              "id": "q6",
+              "question": "« Bagaglio a mano max 8 kg » limite :",
+              "type": "single_choice",
+              "options": [
+                "Bagage soute",
+                "Cabine 8 kg max",
+                "Animaux",
+                "Instruments"
+              ],
+              "correctAnswers": ["Cabine 8 kg max"],
+              "explanation": "A mano = cabine."
+            },
+            {
+              "id": "q7",
+              "question": "« Gate chiuso — recarsi al gate C4 » indique :",
+              "type": "single_choice",
+              "options": [
+                "Porte B12 fermée, aller C4",
+                "Vol terminé",
+                "Enregistrement",
+                "Douane"
+              ],
+              "correctAnswers": ["Porte B12 fermée, aller C4"],
+              "explanation": "Changement de porte d'embarquement."
+            },
+            {
+              "id": "q8",
+              "question": "« Ultimo avviso imbarco volo XY123 » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Premier appel",
+                "Dernier appel embarquement",
+                "Annulation",
+                "Retard indéterminé"
+              ],
+              "correctAnswers": ["Dernier appel embarquement"],
+              "explanation": "Ultimo avviso = dernier appel."
+            },
+            {
+              "id": "q9",
+              "question": "« Arrivi internazionali — nastro 7 » pour les arrivées :",
+              "type": "single_choice",
+              "options": [
+                "Tapis bagages 7",
+                "Porte 7 sortie ville",
+                "Bus 7",
+                "Taxi fixe"
+              ],
+              "correctAnswers": ["Tapis bagages 7"],
+              "explanation": "Nastro = bande/tapis des bagages."
+            },
+            {
+              "id": "q10",
+              "question": "« Controllo passaporti — cittadini UE file rapido » — ressortissants UE :",
+              "type": "single_choice",
+              "options": [
+                "File prioritaire",
+                "Interdits",
+                "Sans contrôle",
+                "Paiement"
+              ],
+              "correctAnswers": ["File prioritaire"],
+              "explanation": "UE = Union européenne, contrôle allégé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Manifesto biblioteca",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Prestito: 3 libri per 21 giorni · Rinnovo online ». Quelles règles concernent durée et renouvellement ?",
+              "type": "multiple_choice",
+              "options": [
+                "3 libri",
+                "21 giorni",
+                "Rinnovo online",
+                "Ingresso vietato"
+              ],
+              "correctAnswers": ["3 libri", "Rinnovo online"],
+              "explanation": "Quota de livres et renouvellement via internet."
+            },
+            {
+              "id": "q2",
+              "question": "« Silenzio richiesto in sala lettura » demande :",
+              "type": "single_choice",
+              "options": [
+                "Bruit libre",
+                "Silence en salle lecture",
+                "Musique",
+                "Téléphone autorisé"
+              ],
+              "correctAnswers": ["Silence en salle lecture"],
+              "explanation": "Sala lettura = salle de lecture."
+            },
+            {
+              "id": "q3",
+              "question": "« Tessera biblioteca gratuita per residenti » — carte :",
+              "type": "single_choice",
+              "options": [
+                "Payante pour tous",
+                "Gratuite pour résidents",
+                "Interdite",
+                "Une journée seulement"
+              ],
+              "correctAnswers": ["Gratuite pour résidents"],
+              "explanation": "Residenti = habitants de la commune."
+            },
+            {
+              "id": "q4",
+              "question": "« Orario estivo: chiuso il lunedì » — été :",
+              "type": "single_choice",
+              "options": [
+                "Ouvert lundi",
+                "Fermé le lundi",
+                "24h/24",
+                "Nuit seulement"
+              ],
+              "correctAnswers": ["Fermé le lundi"],
+              "explanation": "Orario estivo = horaires d'été."
+            },
+            {
+              "id": "q5",
+              "question": "« Multa per ritardo: 0,50 € al giorno » — pénalité :",
+              "type": "single_choice",
+              "options": [
+                "0,50 € par jour de retard",
+                "Amende fixe 50 €",
+                "Gratuit",
+                "Prison"
+              ],
+              "correctAnswers": ["0,50 € par jour de retard"],
+              "explanation": "Ritardo = retard de restitution."
+            },
+            {
+              "id": "q6",
+              "question": "« Posti con connessione Wi-Fi — prenotazione consigliata » :",
+              "type": "single_choice",
+              "options": [
+                "Places avec Wi-Fi, réservation conseillée",
+                "Sans internet",
+                "Interdit ordinateurs",
+                "Payant 10 €/h"
+              ],
+              "correctAnswers": ["Places avec Wi-Fi, réservation conseillée"],
+              "explanation": "Prenotazione consigliata = recommandée."
+            },
+            {
+              "id": "q7",
+              "question": "« Sezione ragazzi — letture dai 6 ai 12 anni » cible :",
+              "type": "single_choice",
+              "options": ["Adultes", "6-12 ans", "Université", "Archives"],
+              "correctAnswers": ["6-12 ans"],
+              "explanation": "Ragazzi = enfants/jeunes."
+            },
+            {
+              "id": "q8",
+              "question": "« Restituzione libri nella cassetta esterna 24h » permet :",
+              "type": "single_choice",
+              "options": [
+                "Retour boîte extérieure 24h",
+                "Jamais rendre",
+                "Mail seulement",
+                "Vente"
+              ],
+              "correctAnswers": ["Retour boètte extérieure 24h"],
+              "explanation": "Cassetta esterna = dépôt externe."
+            },
+            {
+              "id": "q9",
+              "question": "« Evento: lettura ad alta voce sabato ore 10 » — activité :",
+              "type": "single_choice",
+              "options": [
+                "Lecture à voix haute samedi 10h",
+                "Concert",
+                "Fermeture",
+                "Sport"
+              ],
+              "correctAnswers": ["Lecture à voix haute samedi 10h"],
+              "explanation": "Alta voce = à voix haute."
+            },
+            {
+              "id": "q10",
+              "question": "« Accesso con tessera valida » — entrée :",
+              "type": "single_choice",
+              "options": [
+                "Carte valide requise",
+                "Libre sans carte",
+                "Passeport seul",
+                "Ticket métro"
+              ],
+              "correctAnswers": ["Carte valide requise"],
+              "explanation": "Tessera = carte de bibliothèque."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Carta dei servizi",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Farmacia turno: Via Roma 12 · Aperto h24 · Tel. 800 123456 ». Quelles infos sont adresse et permanence ?",
+              "type": "multiple_choice",
+              "options": [
+                "Via Roma 12",
+                "Aperto h24",
+                "Tel. 800",
+                "Farmacia chiusa"
+              ],
+              "correctAnswers": ["Via Roma 12", "Aperto h24"],
+              "explanation": "Adresse et ouverture 24h/24 de garde."
+            },
+            {
+              "id": "q2",
+              "question": "« Poste Italiane — lunedì chiuso » — Poste :",
+              "type": "single_choice",
+              "options": [
+                "Ouverte lundi",
+                "Fermée le lundi",
+                "Nuit",
+                "Dimanche seulement"
+              ],
+              "correctAnswers": ["Fermée le lundi"],
+              "explanation": "Fréquent en Italie : bureau poste fermé lundi."
+            },
+            {
+              "id": "q3",
+              "question": "« Numero emergenza 112 » en Europe sert surtout à :",
+              "type": "single_choice",
+              "options": ["Pizza", "Urgences / secours", "Météo", "Tourisme"],
+              "correctAnswers": ["Urgences / secours"],
+              "explanation": "112 = numéro d'urgence européen."
+            },
+            {
+              "id": "q4",
+              "question": "« Autobus urbano — biglietto 1,50 € valido 75 min » — validité :",
+              "type": "single_choice",
+              "options": ["75 minutes", "75 km", "Un mois", "Une année"],
+              "correctAnswers": ["75 minutes"],
+              "explanation": "Durée d'usage après validation."
+            },
+            {
+              "id": "q5",
+              "question": "« Tassa di soggiorno 2 € a notte per ospite » — taxe :",
+              "type": "single_choice",
+              "options": [
+                "Séjour hôtel par nuit et personne",
+                "Transport",
+                "Musée",
+                "Restaurant"
+              ],
+              "correctAnswers": ["Séjour hôtel par nuit et personne"],
+              "explanation": "Soggiorno = séjour touristique."
+            },
+            {
+              "id": "q6",
+              "question": "« Mercato coperto — martedì e venerdì mattina » ouvert :",
+              "type": "single_choice",
+              "options": [
+                "Mardi et vendredi matin",
+                "Tous les soirs",
+                "Dimanche nuit",
+                "Janvier seul"
+              ],
+              "correctAnswers": ["Mardi et vendredi matin"],
+              "explanation": "Mercato coperto = marché couvert."
+            },
+            {
+              "id": "q7",
+              "question": "« Bancomat fuori servizio — prossimo in Piazza Garibaldi » informe :",
+              "type": "single_choice",
+              "options": [
+                "DAB en panne, autre place Garibaldi",
+                "Gratuit",
+                "Fermé banque",
+                "Carte refusée partout"
+              ],
+              "correctAnswers": ["DAB en panne, autre place Garibaldi"],
+              "explanation": "Fuori servizio = hors service."
+            },
+            {
+              "id": "q8",
+              "question": "« Orario ufficio: 9:00-13:00 / 15:00-18:00 » — après-midi :",
+              "type": "single_choice",
+              "options": ["15h-18h", "Fermé l'après-midi", "Minuit", "8h-9h"],
+              "correctAnswers": ["15h-18h"],
+              "explanation": "Pause déjeuner typique des administrations."
+            },
+            {
+              "id": "q9",
+              "question": "« Raccolta differenziata: plastica giovedì » — plastique :",
+              "type": "single_choice",
+              "options": ["Jeudi", "Lundi", "Interdit", "Annuel"],
+              "correctAnswers": ["Jeudi"],
+              "explanation": "Tri sélectif le jeudi."
+            },
+            {
+              "id": "q10",
+              "question": "« Centro antiviolenza — numero verde gratuito » propose :",
+              "type": "single_choice",
+              "options": [
+                "Aide victimes violence — numéro vert",
+                "Vente",
+                "Sport",
+                "Météo"
+              ],
+              "correctAnswers": ["Aide victimes violence — numéro vert"],
+              "explanation": "Numero verde = ligne gratuite d'écoute."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Locandina cinema",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Film in versione originale con sottotitoli in italiano · Sala 3 · Inizio 20:30 ». Quels détails sont langue et heure ?",
+              "type": "multiple_choice",
+              "options": [
+                "versione originale",
+                "sottotitoli in italiano",
+                "Inizio 20:30",
+                "Sala 1"
+              ],
+              "correctAnswers": ["sottotitoli in italiano", "Inizio 20:30"],
+              "explanation": "Sous-titres IT et heure de début de séance."
+            },
+            {
+              "id": "q2",
+              "question": "« Biglietto intero 9 € · ridotto studenti 7 € » — étudiant :",
+              "type": "single_choice",
+              "options": ["7 €", "9 €", "Gratuit", "12 €"],
+              "correctAnswers": ["7 €"],
+              "explanation": "Ridotto = tarif réduit."
+            },
+            {
+              "id": "q3",
+              "question": "« Vietato registrare durante lo spettacolo » interdit :",
+              "type": "single_choice",
+              "options": [
+                "Enregistrer pendant le film",
+                "Manger",
+                "Entrer",
+                "Sous-titres"
+              ],
+              "correctAnswers": ["Enregistrer pendant le film"],
+              "explanation": "Registrare = filmer/enregistrer."
+            },
+            {
+              "id": "q4",
+              "question": "« Prenota i posti sul sito del cinema » — places :",
+              "type": "single_choice",
+              "options": [
+                "Réservation en ligne",
+                "Uniquement guichet",
+                "Debout",
+                "Extérieur"
+              ],
+              "correctAnswers": ["Réservation en ligne"],
+              "explanation": "Prenota = réserve."
+            },
+            {
+              "id": "q5",
+              "question": "« Durata: 118 minuti » — durée :",
+              "type": "single_choice",
+              "options": [
+                "118 minutes",
+                "118 heures",
+                "1h18 exactement annoncé autrement",
+                "18 min"
+              ],
+              "correctAnswers": ["118 minutes"],
+              "explanation": "Minuti = minutes."
+            },
+            {
+              "id": "q6",
+              "question": "« Consigliato per pubblico over 14 » — public :",
+              "type": "single_choice",
+              "options": [
+                "Dès 14 ans conseillé",
+                "0-6 ans",
+                "Interdit adultes",
+                "Scolaire obligatoire"
+              ],
+              "correctAnswers": ["Dès 14 ans conseillé"],
+              "explanation": "Classification d'âge indicative."
+            },
+            {
+              "id": "q7",
+              "question": "« Trailer disponibile su YouTube » renvoie :",
+              "type": "single_choice",
+              "options": [
+                "Bande-annonce en ligne",
+                "Billet",
+                "Critique papier",
+                "Horaire bus"
+              ],
+              "correctAnswers": ["Bande-annonce en ligne"],
+              "explanation": "Trailer = bande-annonce."
+            },
+            {
+              "id": "q8",
+              "question": "« Stereo Dolby Atmos — Sala Premium » indique :",
+              "type": "single_choice",
+              "options": [
+                "Son immersif salle premium",
+                "Film muet",
+                "Noir et blanc seulement",
+                "Place debout"
+              ],
+              "correctAnswers": ["Son immersif salle premium"],
+              "explanation": "Équipement audio de qualité."
+            },
+            {
+              "id": "q9",
+              "question": "« Uscita nazionale 4 ottobre » — sortie en salles :",
+              "type": "single_choice",
+              "options": [
+                "4 octobre (national)",
+                "4 heures",
+                "4 salles",
+                "Annulée"
+              ],
+              "correctAnswers": ["4 octobre (national)"],
+              "explanation": "Uscita nazionale = date de sortie nationale."
+            },
+            {
+              "id": "q10",
+              "question": "« Attenzione: flash fotografici vietati » — interdit :",
+              "type": "single_choice",
+              "options": [
+                "Flash photo",
+                "Popcorn",
+                "Parler bas",
+                "Carte fidélité"
+              ],
+              "correctAnswers": ["Flash photo"],
+              "explanation": "Flash fotografici = flash des appareils."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le langue et les salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En Italie, « Buongiorno » le matin et « Buonasera » le soir sont des formules de politesse. Lesquelles sont des salutations ?",
+              "type": "multiple_choice",
+              "options": [
+                "Buongiorno",
+                "Buonasera",
+                "Grazie mille",
+                "Arrivederci"
+              ],
+              "correctAnswers": ["Buongiorno", "Buonasera"],
+              "explanation": "Buongiorno/Buonasera = bonjour/bonsoir ; grazie = merci."
+            },
+            {
+              "id": "q2",
+              "question": "« Ciao » en italien courant sert surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer ou dire au revoir (familier)",
+                "Demander l'addition",
+                "Commander un café",
+                "Présenter des excuses officielles"
+              ],
+              "correctAnswers": ["Saluer ou dire au revoir (familier)"],
+              "explanation": "Ciao est informel, très répandu."
+            },
+            {
+              "id": "q3",
+              "question": "La langue officielle de la République italienne est :",
+              "type": "single_choice",
+              "options": [
+                "Italien",
+                "Latin exclusivement",
+                "Français",
+                "Allemand"
+              ],
+              "correctAnswers": ["Italien"],
+              "explanation": "L'italien est langue nationale depuis l'unification."
+            },
+            {
+              "id": "q4",
+              "question": "« Per favore » et « Grazie » correspondent à :",
+              "type": "single_choice",
+              "options": [
+                "S'il vous plaît / Merci",
+                "Bonjour / Au revoir",
+                "Oui / Non",
+                "Entrée / Sortie"
+              ],
+              "correctAnswers": ["S'il vous plaît / Merci"],
+              "explanation": "Formules essentielles de politesse."
+            },
+            {
+              "id": "q5",
+              "question": "En Sicile ou en Sardaigne, on entend parfois d'autres langues régionales, mais à l'école on enseigne surtout :",
+              "type": "single_choice",
+              "options": [
+                "Italien standard",
+                "Uniquement anglais",
+                "Latin obligatoire",
+                "Allemand"
+              ],
+              "correctAnswers": ["Italien standard"],
+              "explanation": "Langues régionales existent ; scolarité en italien."
+            },
+            {
+              "id": "q6",
+              "question": "« Scusi » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Excuser / attirer poliment l'attention",
+                "Refuser",
+                "Féliciter",
+                "Commander"
+              ],
+              "correctAnswers": ["Excuser / attirer poliment l'attention"],
+              "explanation": "Équivalent de « excusez-moi »."
+            },
+            {
+              "id": "q7",
+              "question": "Le drapeau italien (vert, blanc, rouge) est surnommé :",
+              "type": "single_choice",
+              "options": [
+                "Tricolore",
+                "Quadrifoglio",
+                "Stella",
+                "Gonfalone seulement"
+              ],
+              "correctAnswers": ["Tricolore"],
+              "explanation": "Il tricolore = les trois couleurs nationales."
+            },
+            {
+              "id": "q8",
+              "question": "« Prego » peut répondre à « Grazie » et signifier :",
+              "type": "single_choice",
+              "options": [
+                "De rien / je vous en prie",
+                "Non merci",
+                "Au revoir",
+                "Aidez-moi"
+              ],
+              "correctAnswers": ["De rien / je vous en prie"],
+              "explanation": "Réponse courante à un remerciement."
+            },
+            {
+              "id": "q9",
+              "question": "Les accents écrits en italien (à, è, ì, ò, ù) servent surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Indiquer la prononciation / stress",
+                "Changer le sens en emoji",
+                "Remplacer les majuscules",
+                "Marquer le pluriel seul"
+              ],
+              "correctAnswers": ["Indiquer la prononciation / stress"],
+              "explanation": "L'italien utilise peu d'accents mais ils guident la lecture."
+            },
+            {
+              "id": "q10",
+              "question": "« Arrivederci » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Bon appétit",
+                "Bonne nuit",
+                "Félicitations"
+              ],
+              "correctAnswers": ["Au revoir"],
+              "explanation": "Formule standard de départ."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Roma capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Rome est capitale de l'Italie et siège du Vatican voisin. Quels repères géographiques sont italiens ?",
+              "type": "multiple_choice",
+              "options": [
+                "Colosseo",
+                "Piazza San Pietro (État du Vatican)",
+                "Tour Eiffel",
+                "Big Ben"
+              ],
+              "correctAnswers": [
+                "Colosseo",
+                "Piazza San Pietro (État du Vatican)"
+              ],
+              "explanation": "Colisée à Rome ; place Saint-Pierre au Vatican enclavé."
+            },
+            {
+              "id": "q2",
+              "question": "Le fleuve qui traverse Rome s'appelle :",
+              "type": "single_choice",
+              "options": ["Tibre (Tevere)", "Pô", "Arno", "Nil"],
+              "correctAnswers": ["Tibre (Tevere)"],
+              "explanation": "Le Tevere traverse la capitale."
+            },
+            {
+              "id": "q3",
+              "question": "« Roma caput mundi » évoque l'idée historique que Rome était :",
+              "type": "single_choice",
+              "options": [
+                "Centre du monde antique / empire",
+                "Capitale de France",
+                "Port principal",
+                "Ville industrielle seule"
+              ],
+              "correctAnswers": ["Centre du monde antique / empire"],
+              "explanation": "Héritage de l'Empire romain."
+            },
+            {
+              "id": "q4",
+              "question": "La monnaie utilisée en Italie depuis 2002 est :",
+              "type": "single_choice",
+              "options": ["Euro (€)", "Lire", "Dollar", "Franc suisse"],
+              "correctAnswers": ["Euro (€)"],
+              "explanation": "La lire a été remplacée par l'euro."
+            },
+            {
+              "id": "q5",
+              "question": "Le Parlement italien siège notamment à :",
+              "type": "single_choice",
+              "options": [
+                "Rome",
+                "Venise uniquement",
+                "Milan seulement",
+                "Naples"
+              ],
+              "correctAnswers": ["Rome"],
+              "explanation": "Institutions centrales à Rome."
+            },
+            {
+              "id": "q6",
+              "question": "« La dolce vita » renvoie à une image culturelle liée à :",
+              "type": "single_choice",
+              "options": [
+                "Art de vivre italien (cinéma, Rome)",
+                "Guerre",
+                "Industrie lourde",
+                "Banquise"
+              ],
+              "correctAnswers": ["Art de vivre italien (cinéma, Rome)"],
+              "explanation": "Expression célèbre du cinéma italien."
+            },
+            {
+              "id": "q7",
+              "question": "Les « Catacombe » près de Rome sont :",
+              "type": "single_choice",
+              "options": [
+                "Sépultures souterraines antiques",
+                "Stades modernes",
+                "Ports",
+                "Glaciers"
+              ],
+              "correctAnswers": ["Sépultures souterraines antiques"],
+              "explanation": "Réseaux funéraires chrétiens/pré-chrétiens."
+            },
+            {
+              "id": "q8",
+              "question": "Le « Foro Romano » était :",
+              "type": "single_choice",
+              "options": [
+                "Place publique et centre civique antique",
+                "Aéroport",
+                "Gare",
+                "Plage"
+              ],
+              "correctAnswers": ["Place publique et centre civique antique"],
+              "explanation": "Forum = cœur politique et social de Rome antique."
+            },
+            {
+              "id": "q9",
+              "question": "La fête de la République italienne se célèbre le :",
+              "type": "single_choice",
+              "options": [
+                "2 juin",
+                "14 juillet",
+                "4 juillet",
+                "1er mai seulement"
+              ],
+              "correctAnswers": ["2 juin"],
+              "explanation": "Festa della Repubblica le 2 juin."
+            },
+            {
+              "id": "q10",
+              "question": "« Comune di Roma » désigne :",
+              "type": "single_choice",
+              "options": [
+                "La mairie / municipalité de Rome",
+                "Un restaurant",
+                "Une région",
+                "Un parc d'attractions"
+              ],
+              "correctAnswers": ["La mairie / municipalité de Rome"],
+              "explanation": "Comune = collectivité municipale."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Milano e il Nord",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Milan est capitale économique ; la Lombardie est une région du nord. Quels noms sont italiens ?",
+              "type": "multiple_choice",
+              "options": ["Milano", "Lombardia", "Barcelone", "Munich"],
+              "correctAnswers": ["Milano", "Lombardia"],
+              "explanation": "Milano et Lombardia sont en Italie du Nord."
+            },
+            {
+              "id": "q2",
+              "question": "Le « Duomo di Milano » est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Une cathédrale gothique célèbre",
+                "Un stade",
+                "Un port",
+                "Une gare seule"
+              ],
+              "correctAnswers": ["Une cathédrale gothique célèbre"],
+              "explanation": "Cathédrale emblématique en marbre."
+            },
+            {
+              "id": "q3",
+              "question": "La « Scala » à Milan est connue pour :",
+              "type": "single_choice",
+              "options": ["L'opéra", "Le ski", "La plongée", "Le rugby"],
+              "correctAnswers": ["L'opéra"],
+              "explanation": "Teatro alla Scala = opéra mondial."
+            },
+            {
+              "id": "q4",
+              "question": "« Expo » et mode internationale associent souvent Milan à :",
+              "type": "single_choice",
+              "options": [
+                "Design, mode et foires",
+                "Pêche arctique",
+                "Désert",
+                "Volcan actif unique"
+              ],
+              "correctAnswers": ["Design, mode et foires"],
+              "explanation": "Ville créative et économique."
+            },
+            {
+              "id": "q5",
+              "question": "Le lac majeur proche (Lago Maggiore) se situe :",
+              "type": "single_choice",
+              "options": [
+                "Nord de l'Italie / Alpes",
+                "Sicile",
+                "Sardaigne sud",
+                "Mer Rouge"
+              ],
+              "correctAnswers": ["Nord de l'Italie / Alpes"],
+              "explanation": "Lacs préalpins du Nord."
+            },
+            {
+              "id": "q6",
+              "question": "« Risotto alla milanese » est typique grâce au :",
+              "type": "single_choice",
+              "options": ["Safran", "Chocolat", "Curry", "Wasabi"],
+              "correctAnswers": ["Safran"],
+              "explanation": "Riz crémeux jaune au safran."
+            },
+            {
+              "id": "q7",
+              "question": "La région « Veneto » a pour capitale :",
+              "type": "single_choice",
+              "options": ["Venezia (Venise)", "Palermo", "Bari", "Cagliari"],
+              "correctAnswers": ["Venezia (Venise)"],
+              "explanation": "Venise est capitale régionale du Veneto."
+            },
+            {
+              "id": "q8",
+              "question": "Les Alpes italienne séparent l'Italie du nord de :",
+              "type": "single_choice",
+              "options": [
+                "Pays voisins comme la France et l'Autriche",
+                "Brésil",
+                "Japon",
+                "Afrique du Sud"
+              ],
+              "correctAnswers": ["Pays voisins comme la France et l'Autriche"],
+              "explanation": "Chaîne frontalière au nord."
+            },
+            {
+              "id": "q9",
+              "question": "« Politecnico di Milano » est une grande :",
+              "type": "single_choice",
+              "options": [
+                "École d'ingénieurs / polytechnique",
+                "Banque",
+                "Plage",
+                "Fromagerie"
+              ],
+              "correctAnswers": ["École d'ingénieurs / polytechnique"],
+              "explanation": "Université technique réputée."
+            },
+            {
+              "id": "q10",
+              "question": "Le Pô est :",
+              "type": "single_choice",
+              "options": [
+                "Le plus long fleuve d'Italie (nord)",
+                "Un volcan",
+                "Un lac sicilien",
+                "Un desert"
+              ],
+              "correctAnswers": ["Le plus long fleuve d'Italie (nord)"],
+              "explanation": "Il traverse la plaine padane."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Firenze e Rinascimento",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Florence symbolise la Renaissance. Quels artistes ou monuments sont liés à Firenze ?",
+              "type": "multiple_choice",
+              "options": [
+                "Duomo di Firenze",
+                "Uffizi (musée)",
+                "Statue de la Liberté",
+                "Sagrada Familia"
+              ],
+              "correctAnswers": ["Duomo di Firenze", "Uffizi (musée)"],
+              "explanation": "Cathédrale et musée des Offices à Florence."
+            },
+            {
+              "id": "q2",
+              "question": "La Toscane (Toscana) a pour capitale :",
+              "type": "single_choice",
+              "options": ["Firenze", "Roma", "Torino", "Trieste"],
+              "correctAnswers": ["Firenze"],
+              "explanation": "Florence = capitale régionale."
+            },
+            {
+              "id": "q3",
+              "question": "« David » de Michel-Ange se visite surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Firenze (Galleria dell'Accademia)",
+                "Venise",
+                "Naples",
+                "Malte"
+              ],
+              "correctAnswers": ["Firenze (Galleria dell'Accademia)"],
+              "explanation": "Sculpture emblématique à Florence."
+            },
+            {
+              "id": "q4",
+              "question": "Le « Ponte Vecchio » enjambe :",
+              "type": "single_choice",
+              "options": ["L'Arno", "Le Tibre", "Le Pô", "Le Danube"],
+              "correctAnswers": ["L'Arno"],
+              "explanation": "Fleuve de Florence."
+            },
+            {
+              "id": "q5",
+              "question": "La Renaissance italienne désigne un renouveau surtout en :",
+              "type": "single_choice",
+              "options": [
+                "Arts, sciences et humanisme (XVe-XVIe)",
+                "Moyen Âge sombre seul",
+                "Époque contemporaine 2000",
+                "Préhistoire"
+              ],
+              "correctAnswers": ["Arts, sciences et humanisme (XVe-XVIe)"],
+              "explanation": "Période culturelle majeure."
+            },
+            {
+              "id": "q6",
+              "question": "« Dante Alighieri », auteur de la « Divina Commedia », écrit en :",
+              "type": "single_choice",
+              "options": [
+                "Italien médiéval / toscan",
+                "Latin seulement moderne",
+                "Grec",
+                "Russe"
+              ],
+              "correctAnswers": ["Italien médiéval / toscan"],
+              "explanation": "Dante fonde la littérature italienne."
+            },
+            {
+              "id": "q7",
+              "question": "« Chianti » est associé à une région viticole de :",
+              "type": "single_choice",
+              "options": [
+                "Toscane",
+                "Sicile volcanique seule",
+                "Alpes",
+                "Pô delta"
+              ],
+              "correctAnswers": ["Toscane"],
+              "explanation": "Vin rouge toscan connu."
+            },
+            {
+              "id": "q8",
+              "question": "« Palazzo Pitti » à Florence est :",
+              "type": "single_choice",
+              "options": [
+                "Un grand palais-musée",
+                "Un aéroport",
+                "Un port",
+                "Un glacier"
+              ],
+              "correctAnswers": ["Un grand palais-musée"],
+              "explanation": "Résidence médicéenne devenue musée."
+            },
+            {
+              "id": "q9",
+              "question": "La « Festa di San Giovanni » à Florence honore :",
+              "type": "single_choice",
+              "options": [
+                "Le saint patron Jean (feux d'artifice)",
+                "Halloween",
+                "Noël seulement",
+                "Pâques uniquement"
+              ],
+              "correctAnswers": ["Le saint patron Jean (feux d'artifice)"],
+              "explanation": "Fête patronale le 24 juin."
+            },
+            {
+              "id": "q10",
+              "question": "« Bottega » à la Renaissance désigne souvent :",
+              "type": "single_choice",
+              "options": ["Atelier d'artiste", "Supermarché", "Gare", "Stade"],
+              "correctAnswers": ["Atelier d'artiste"],
+              "explanation": "Workshop des maîtres florentins."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Napoli e il Sud",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Naples est au sud ; le Vésuve domine la baie. Quels éléments sont campaniens/italiens du Sud ?",
+              "type": "multiple_choice",
+              "options": ["Pizza napoletana", "Vesuvio", "Edimbourg", "Prague"],
+              "correctAnswers": ["Pizza napoletana", "Vesuvio"],
+              "explanation": "Pizza née à Naples ; volcan actif."
+            },
+            {
+              "id": "q2",
+              "question": "Pompei et Herculanum furent ensevelies par :",
+              "type": "single_choice",
+              "options": [
+                "Éruption du Vésuve (79 apr. J.-C.)",
+                "Inondation du Pô",
+                "Glacier",
+                "Tremblement en Alaska"
+              ],
+              "correctAnswers": ["Éruption du Vésuve (79 apr. J.-C.)"],
+              "explanation": "Sites archéologiques célèbres."
+            },
+            {
+              "id": "q3",
+              "question": "La région « Campania » a pour capitale :",
+              "type": "single_choice",
+              "options": ["Napoli", "Milano", "Genova", "Aosta"],
+              "correctAnswers": ["Napoli"],
+              "explanation": "Naples = chef-lieu."
+            },
+            {
+              "id": "q4",
+              "question": "« Mandolino » et « Canzone napoletana » évoquent :",
+              "type": "single_choice",
+              "options": [
+                "Tradition musicale du sud",
+                "Ski alpin",
+                "Silence total",
+                "Langue allemande"
+              ],
+              "correctAnswers": ["Tradition musicale du sud"],
+              "explanation": "Chansons et mandoline napolitaines."
+            },
+            {
+              "id": "q5",
+              "question": "La « Costiera Amalfitana » est :",
+              "type": "single_choice",
+              "options": [
+                "Côte escarpée touristique près de Naples",
+                "Désert",
+                "Steppe",
+                "Banquise"
+              ],
+              "correctAnswers": ["Côte escarpée touristique près de Naples"],
+              "explanation": "Paysage UNESCO au sud."
+            },
+            {
+              "id": "q6",
+              "question": "« Espresso » culture est forte ; Naples est réputée pour :",
+              "type": "single_choice",
+              "options": [
+                "Café serré et rituals",
+                "Thé seulement",
+                "Jus de pomme",
+                "Lait de coco"
+              ],
+              "correctAnswers": ["Café serré et rituals"],
+              "explanation": "Caffè napoletano très présent."
+            },
+            {
+              "id": "q7",
+              "question": "« Pulcinella » est un personnage de :",
+              "type": "single_choice",
+              "options": [
+                "Théâtre traditionnel (Commedia dell'arte)",
+                "Opéra viennois",
+                "Cinéma muet suédois",
+                "Manga"
+              ],
+              "correctAnswers": ["Théâtre traditionnel (Commedia dell'arte)"],
+              "explanation": "Masque napolitain comique."
+            },
+            {
+              "id": "q8",
+              "question": "La Sicile est séparée du continent par :",
+              "type": "single_choice",
+              "options": [
+                "Détroit de Messine",
+                "Manche",
+                "Gibraltar seul",
+                "Canal de Suez"
+              ],
+              "correctAnswers": ["Détroit de Messine"],
+              "explanation": "Île au sud de la péninsule."
+            },
+            {
+              "id": "q9",
+              "question": "« Ferragosto » (15 août) est une fête :",
+              "type": "single_choice",
+              "options": [
+                "Estivale / Assomption très fêtée en Italie",
+                "Halloween",
+                "Thanksgiving",
+                "Hanoukka"
+              ],
+              "correctAnswers": ["Estivale / Assomption très fêtée en Italie"],
+              "explanation": "Vacances et fêtes le 15 août."
+            },
+            {
+              "id": "q10",
+              "question": "« Mezzogiorno » désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "Le sud de l'Italie",
+                "Le nord seulement",
+                "L'Autriche",
+                "La lune"
+              ],
+              "correctAnswers": ["Le sud de l'Italie"],
+              "explanation": "Terme géographique et social pour le Sud."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Feste e tradizioni",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Natale » et « Pasqua » sont fêtes chrétiennes majeures en Italie. Lesquelles sont des fêtes italiennes courantes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Carnevale di Venezia",
+                "Festa della Liberazione (25 aprile)",
+                "Thanksgiving USA",
+                "Setsubun Japon"
+              ],
+              "correctAnswers": [
+                "Carnevale di Venezia",
+                "Festa della Liberazione (25 aprile)"
+              ],
+              "explanation": "Carnaval de Venise ; libération 1945 le 25 avril."
+            },
+            {
+              "id": "q2",
+              "question": "« Epifania » (6 janvier) apporte aux enfants la :",
+              "type": "single_choice",
+              "options": [
+                "Befana (fêtiche folklorique)",
+                "Pizza obligatoire",
+                "Examen",
+                "Neige artificielle seule"
+              ],
+              "correctAnswers": ["Befana (fêtiche folklorique)"],
+              "explanation": "La Befana distribue des cadeaux."
+            },
+            {
+              "id": "q3",
+              "question": "« Carnevale » précède :",
+              "type": "single_choice",
+              "options": ["Carême", "Noël", "Été", "Rentree scolaire seule"],
+              "correctAnswers": ["Carême"],
+              "explanation": "Fête avant le jeûne quadragésimal."
+            },
+            {
+              "id": "q4",
+              "question": "« Ferragosto » correspond au :",
+              "type": "single_choice",
+              "options": ["15 août", "1er avril", "31 octobre", "2 février"],
+              "correctAnswers": ["15 août"],
+              "explanation": "Fête nationale estivale."
+            },
+            {
+              "id": "q5",
+              "question": "« Festa del lavoro » en Italie est le :",
+              "type": "single_choice",
+              "options": ["1er mai", "8 mars", "14 juillet", "11 novembre"],
+              "correctAnswers": ["1er mai"],
+              "explanation": "Journée internationale du travail."
+            },
+            {
+              "id": "q6",
+              "question": "« Tricolore » est hissé le :",
+              "type": "single_choice",
+              "options": [
+                "7 janvier (Festa del Tricolore) et fêtes nationales",
+                "Chaque lundi",
+                "Uniquement à Pâques",
+                "Jamais"
+              ],
+              "correctAnswers": [
+                "7 janvier (Festa del Tricolore) et fêtes nationales"
+              ],
+              "explanation": "Commémoration du drapeau."
+            },
+            {
+              "id": "q7",
+              "question": "« Sagra » en village désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "Fête locale autour d'un produit (fête gastronomique)",
+                "Examen",
+                "Grève",
+                "Match de hockey"
+              ],
+              "correctAnswers": [
+                "Fête locale autour d'un produit (fête gastronomique)"
+              ],
+              "explanation": "Fêtes de village typiques."
+            },
+            {
+              "id": "q8",
+              "question": "« Palio » (ex. Sienne) est :",
+              "type": "single_choice",
+              "options": [
+                "Course équestre traditionnelle",
+                "Concert rock",
+                "Marché aux poissons seul",
+                "Examen de conduite"
+              ],
+              "correctAnswers": ["Course équestre traditionnelle"],
+              "explanation": "Palio di Siena très médiatisé."
+            },
+            {
+              "id": "q9",
+              "question": "« Capodanno » signifie :",
+              "type": "single_choice",
+              "options": ["Nouvel An", "Pâques", "Noël", "Halloween"],
+              "correctAnswers": ["Nouvel An"],
+              "explanation": "Capo d'anno = début d'année."
+            },
+            {
+              "id": "q10",
+              "question": "« Vigilia di Natale » est :",
+              "type": "single_choice",
+              "options": [
+                "Réveillon de Noël",
+                "Lendemain de Noël",
+                "Pâques",
+                "1er mai"
+              ],
+              "correctAnswers": ["Réveillon de Noël"],
+              "explanation": "Veille du 25 décembre."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Regioni d'Italia",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'Italie compte 20 régions ; la Sardaigne et la Sicile sont insulaires. Lesquelles sont des régions italiennes ?",
+              "type": "multiple_choice",
+              "options": ["Sardegna", "Sicilia", "Bretagne", "Catalogne"],
+              "correctAnswers": ["Sardegna", "Sicilia"],
+              "explanation": "Deux îles régions autonomes."
+            },
+            {
+              "id": "q2",
+              "question": "La capitale de la région « Piemonte » est :",
+              "type": "single_choice",
+              "options": ["Torino", "Bologna", "Perugia", "L'Aquila"],
+              "correctAnswers": ["Torino"],
+              "explanation": "Turin = automobile et chocolat."
+            },
+            {
+              "id": "q3",
+              "question": "« Emilia-Romagna » est réputée pour :",
+              "type": "single_choice",
+              "options": [
+                "Gastronomie (parmesan, balsamique, mortadelle)",
+                "Déserts",
+                "Glaces polaires",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [
+                "Gastronomie (parmesan, balsamique, mortadelle)"
+              ],
+              "explanation": "Bologna capitale gastronomique."
+            },
+            {
+              "id": "q4",
+              "question": "« Liguria » borde :",
+              "type": "single_choice",
+              "options": [
+                "Mer Méditerranée (Côte ligure)",
+                "Océan Atlantique",
+                "Mer Noire",
+                "Mer du Nord"
+              ],
+              "correctAnswers": ["Mer Méditerranée (Côte ligure)"],
+              "explanation": "Genova = capitale ligure."
+            },
+            {
+              "id": "q5",
+              "question": "« Trentino-Alto Adige » se caractérise par :",
+              "type": "single_choice",
+              "options": [
+                "Bilinguisme italien / allemand au nord",
+                "Désert",
+                "Volcan actif unique",
+                "Capitale Rome"
+              ],
+              "correctAnswers": ["Bilinguisme italien / allemand au nord"],
+              "explanation": "Influence autrichienne/alémanique."
+            },
+            {
+              "id": "q6",
+              "question": "« Puglia » forme le « talon » de la botte italienne, au :",
+              "type": "single_choice",
+              "options": ["Sud-est", "Nord-ouest", "Centre seulement", "Alpes"],
+              "correctAnswers": ["Sud-est"],
+              "explanation": "Région du sud-adriatique."
+            },
+            {
+              "id": "q7",
+              "question": "« Valle d'Aosta » est une petite région :",
+              "type": "single_choice",
+              "options": [
+                "Alpine au nord-ouest",
+                "Sicilienne",
+                "Sardaigne",
+                "Dans la mer"
+              ],
+              "correctAnswers": ["Alpine au nord-ouest"],
+              "explanation": "Région francophone minoritaire."
+            },
+            {
+              "id": "q8",
+              "question": "« Lazio » entoure la ville de :",
+              "type": "single_choice",
+              "options": ["Roma", "Venezia", "Trieste", "Catanzaro"],
+              "correctAnswers": ["Roma"],
+              "explanation": "Région de Rome."
+            },
+            {
+              "id": "q9",
+              "question": "« Umbria » est une région :",
+              "type": "single_choice",
+              "options": [
+                "Sans littoral (enclavée)",
+                "Insulaire",
+                "Au pôle",
+                "Océanique"
+              ],
+              "correctAnswers": ["Sans littoral (enclavée)"],
+              "explanation": "Seule région sans mer."
+            },
+            {
+              "id": "q10",
+              "question": "Le surnom « lo Stivale » désigne :",
+              "type": "single_choice",
+              "options": [
+                "La forme de la péninsule italienne",
+                "Un chaussure",
+                "Un drapeau",
+                "Un fromage"
+              ],
+              "correctAnswers": ["La forme de la péninsule italienne"],
+              "explanation": "La botte/stivale = carte en forme de botte."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Cibo e identità",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Pasta » et « gelato » sont symboles culinaires. Quels plats sont typiquement associés à l'Italie ?",
+              "type": "multiple_choice",
+              "options": ["Pizza", "Risotto", "Sushi", "Fish and chips"],
+              "correctAnswers": ["Pizza", "Risotto"],
+              "explanation": "Pizza napolitaine et risotto du nord."
+            },
+            {
+              "id": "q2",
+              "question": "« Parmigiano Reggiano » est un :",
+              "type": "single_choice",
+              "options": ["Fromage AOP", "Poisson", "Gâteau", "Soda"],
+              "correctAnswers": ["Fromage AOP"],
+              "explanation": "Parmesan de Parme-Reggio."
+            },
+            {
+              "id": "q3",
+              "question": "« Espresso » se boit souvent :",
+              "type": "single_choice",
+              "options": [
+                "Debout au bar, en petite tasse",
+                "En litre au breakfast seul",
+                "Froid obligatoire",
+                "Sans caféine toujours"
+              ],
+              "correctAnswers": ["Debout au bar, en petite tasse"],
+              "explanation": "Culture du café italien."
+            },
+            {
+              "id": "q4",
+              "question": "« Aperitivo » en Italie est pris :",
+              "type": "single_choice",
+              "options": [
+                "En fin d'après-midi avant le dîner",
+                "Au petit déjeuner seulement",
+                "À minuit seulement",
+                "Jamais"
+              ],
+              "correctAnswers": ["En fin d'après-midi avant le dîner"],
+              "explanation": "Moment social avant le repas du soir."
+            },
+            {
+              "id": "q5",
+              "question": "« DOC » sur une bouteille italienne indique :",
+              "type": "single_choice",
+              "options": [
+                "Appellation / origine contrôlée vin",
+                "Dessert",
+                "Fromage fondu",
+                "Eau minérale seule"
+              ],
+              "correctAnswers": ["Appellation / origine contrôlée vin"],
+              "explanation": "Denominazione di origine controllata."
+            },
+            {
+              "id": "q6",
+              "question": "« Gelato » diffère souvent de la glace industrielle par :",
+              "type": "single_choice",
+              "options": [
+                "Moins d'air, saveurs artisanales",
+                "Plus de sel",
+                "Cuisson obligatoire",
+                "Servi chaud"
+              ],
+              "correctAnswers": ["Moins d'air, saveurs artisanales"],
+              "explanation": "Texture crémeuse artisanale."
+            },
+            {
+              "id": "q7",
+              "question": "« Olio d'oliva extravergine » provient surtout du :",
+              "type": "single_choice",
+              "options": [
+                "Sud et centre (oliviers)",
+                "Pôle Nord",
+                "Himalaya",
+                "Banquise"
+              ],
+              "correctAnswers": ["Sud et centre (oliviers)"],
+              "explanation": "Huile d'olive méditerranéenne."
+            },
+            {
+              "id": "q8",
+              "question": "« Slow Food » est né en Italie pour :",
+              "type": "single_choice",
+              "options": [
+                "Défendre alimentation de qualité et traditions",
+                "Accélérer fast-food",
+                "Interdire pasta",
+                "Supprimer marchés"
+              ],
+              "correctAnswers": [
+                "Défendre alimentation de qualité et traditions"
+              ],
+              "explanation": "Mouvement né à Bra (Piémont)."
+            },
+            {
+              "id": "q9",
+              "question": "« Panettone » est traditionnel à :",
+              "type": "single_choice",
+              "options": ["Noël", "Pâques seulement", "Été", "Halloween"],
+              "correctAnswers": ["Noël"],
+              "explanation": "Brioche milanaise des fêtes."
+            },
+            {
+              "id": "q10",
+              "question": "« Mangia bene! » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bon appétit / mange bien",
+                "Au revoir",
+                "Silence",
+                "Payer"
+              ],
+              "correctAnswers": ["Bon appétit / mange bien"],
+              "explanation": "Formule familière autour de la table."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sport e media",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le calcio (football) passionne l'Italie ; le Giro d'Italia est une grande course cycliste. Quels événements sont italiens ?",
+              "type": "multiple_choice",
+              "options": [
+                "Serie A",
+                "Giro d'Italia",
+                "Super Bowl",
+                "Wimbledon seul"
+              ],
+              "correctAnswers": ["Serie A", "Giro d'Italia"],
+              "explanation": "Championnat foot ; tour cycliste."
+            },
+            {
+              "id": "q2",
+              "question": "« Forza Azzurri! » encourage surtout :",
+              "type": "single_choice",
+              "options": [
+                "Équipe nationale italienne (bleu)",
+                "Équipe de France",
+                "Club anglais",
+                "Club allemand"
+              ],
+              "correctAnswers": ["Équipe nationale italienne (bleu)"],
+              "explanation": "Azzurri = surnom de la Nazionale."
+            },
+            {
+              "id": "q3",
+              "question": "« San Siro » (Giuseppe Meazza) est un stade à :",
+              "type": "single_choice",
+              "options": ["Milano", "Roma", "Palermo", "Bolzano"],
+              "correctAnswers": ["Milano"],
+              "explanation": "Temple du foot milanais."
+            },
+            {
+              "id": "q4",
+              "question": "« Vespa » est une marque italienne de :",
+              "type": "single_choice",
+              "options": ["Scooter", "Avion", "Train", "Ski"],
+              "correctAnswers": ["Scooter"],
+              "explanation": "Piaggio, icône italienne."
+            },
+            {
+              "id": "q5",
+              "question": "« Ferrari » et « Fiat » sont associées à :",
+              "type": "single_choice",
+              "options": [
+                "Automobile italienne",
+                "Pâtisserie",
+                "Poisson",
+                "Textile seul"
+              ],
+              "correctAnswers": ["Automobile italienne"],
+              "explanation": "Industrie du Nord et Modena."
+            },
+            {
+              "id": "q6",
+              "question": "« Festival di Sanremo » concerne :",
+              "type": "single_choice",
+              "options": [
+                "Chanson italienne",
+                "Rugby",
+                "Cuisine seule",
+                "Peinture seule"
+              ],
+              "correctAnswers": ["Chanson italienne"],
+              "explanation": "Concours musical célèbre."
+            },
+            {
+              "id": "q7",
+              "question": "« Cinema italien » : Neorealismo évoque :",
+              "type": "single_choice",
+              "options": [
+                "Films d'après-guerre réalistes",
+                "Western US seulement",
+                "Animation seule",
+                "Silence total"
+              ],
+              "correctAnswers": ["Films d'après-guerre réalistes"],
+              "explanation": "Rossellini, De Sica…"
+            },
+            {
+              "id": "q8",
+              "question": "« Olimpiadi invernali » 2006 à Turin montrent :",
+              "type": "single_choice",
+              "options": [
+                "Alpes italiennes accueillent grands événements",
+                "Désert",
+                "Plage seule",
+                "Pas de neige"
+              ],
+              "correctAnswers": [
+                "Alpes italiennes accueillent grands événements"
+              ],
+              "explanation": "Torino 2006."
+            },
+            {
+              "id": "q9",
+              "question": "« Gazzetta dello Sport » est :",
+              "type": "single_choice",
+              "options": [
+                "Journal sportif",
+                "Banque",
+                "Fromagerie",
+                "Aéroport"
+              ],
+              "correctAnswers": ["Journal sportif"],
+              "explanation": "Quotidien rose du sport."
+            },
+            {
+              "id": "q10",
+              "question": "« Calcio » en italien signifie :",
+              "type": "single_choice",
+              "options": ["Football", "Basket", "Tennis", "Natation"],
+              "correctAnswers": ["Football"],
+              "explanation": "Le calcio = soccer/football."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Patrimoine UNESCO",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'Italie compte de nombreux sites UNESCO. Lesquels sont en Italie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Centro storico di Venezia",
+                "Leaning Tower (Torre di Pisa)",
+                "Stonehenge",
+                "Machu Picchu"
+              ],
+              "correctAnswers": [
+                "Centro storico di Venezia",
+                "Leaning Tower (Torre di Pisa)"
+              ],
+              "explanation": "Venise et tour penchée de Pise."
+            },
+            {
+              "id": "q2",
+              "question": "« Venezia » est menacée notamment par :",
+              "type": "single_choice",
+              "options": [
+                "Acqua alta (marées hautes)",
+                "Désertification",
+                "Glaciers alpins",
+                "Volcan antarctique"
+              ],
+              "correctAnswers": ["Acqua alta (marées hautes)"],
+              "explanation": "Montée d'eau dans la lagune."
+            },
+            {
+              "id": "q3",
+              "question": "« Cinque Terre » se trouve en :",
+              "type": "single_choice",
+              "options": [
+                "Ligurie",
+                "Sicile",
+                "Sardaigne",
+                "Val d'Aoste seule"
+              ],
+              "correctAnswers": ["Ligurie"],
+              "explanation": "Cinq villages côtiers colorés."
+            },
+            {
+              "id": "q4",
+              "question": "« Pompei » est classé pour :",
+              "type": "single_choice",
+              "options": [
+                "Site archéologique antique",
+                "Stade moderne",
+                "Port pétrolier",
+                "Banque"
+              ],
+              "correctAnswers": ["Site archéologique antique"],
+              "explanation": "Ville romaine conservée."
+            },
+            {
+              "id": "q5",
+              "question": "« Duomo di Modena » (UNESCO) est :",
+              "type": "single_choice",
+              "options": ["Cathédrale romane", "Gare", "Plage", "Casino"],
+              "correctAnswers": ["Cathédrale romane"],
+              "explanation": "Chef-d'œuvre roman en Émilie."
+            },
+            {
+              "id": "q6",
+              "question": "« Matera » (Basilicata) est célèbre pour :",
+              "type": "single_choice",
+              "options": [
+                "Sassi (habitations troglodytes)",
+                "Glacier",
+                "Volcan actif seul",
+                "Port arctique"
+              ],
+              "correctAnswers": ["Sassi (habitations troglodytes)"],
+              "explanation": "Ville de pierre ancienne."
+            },
+            {
+              "id": "q7",
+              "question": "« Val d'Orcia » (Toscane) est protégée pour :",
+              "type": "single_choice",
+              "options": [
+                "Paysage cultural typique",
+                "Mine d'or",
+                "Usine",
+                "Autoroute seule"
+              ],
+              "correctAnswers": ["Paysage cultural typique"],
+              "explanation": "Collines et cyprès toscans."
+            },
+            {
+              "id": "q8",
+              "question": "« Alberobello » (Puglia) est connu pour :",
+              "type": "single_choice",
+              "options": [
+                "Trulli (maisons coniques)",
+                "Gratte-ciels",
+                "Pyramides égyptiennes",
+                "Igloos"
+              ],
+              "correctAnswers": ["Trulli (maisons coniques)"],
+              "explanation": "Architecture en pierre sèche."
+            },
+            {
+              "id": "q9",
+              "question": "« Patrimonio mondiale » en italien se dit :",
+              "type": "single_choice",
+              "options": [
+                "Patrimonio mondiale dell'UNESCO",
+                "Solo pizza",
+                "Solo calcio",
+                "Niente cultura"
+              ],
+              "correctAnswers": ["Patrimonio mondiale dell'UNESCO"],
+              "explanation": "Traduction du concept UNESCO."
+            },
+            {
+              "id": "q10",
+              "question": "Protéger le patrimoine italien, c'est aussi :",
+              "type": "single_choice",
+              "options": [
+                "Préserver identité et tourisme responsable",
+                "Interdire toute visite",
+                "Détruire monuments",
+                "Oublier langue"
+              ],
+              "correctAnswers": ["Préserver identité et tourisme responsable"],
+              "explanation": "Équilibre conservation et accès."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

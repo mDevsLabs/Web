@@ -449,6 +449,21 @@ textarea:focus-visible {
   }
 }
 
+@keyframes quizzy-pop {
+  from {
+    opacity: 0.65;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility quizzy-pop {
+  animation: quizzy-pop 0.35s var(--ease-spring) both;
+}
+
 @utility fade-up {
   animation: fade-up 0.25s var(--ease-spring) both;
 }
@@ -578,15 +593,14 @@ textarea:focus-visible {
  * Les éléments arrivent à leur état FINAL : la coupe ne doit pas laisser
  * une page à mi-transition, ni masquer un contenu.
  */
-html[data-economy="true"] {
-  &,
-  &::before,
-  &::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+html[data-economy="true"],
+html[data-economy="true"] *,
+html[data-economy="true"] *::before,
+html[data-economy="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
 }
 
 /**

@@ -1,0 +1,2158 @@
+{
+  "id": "6e-allemand-01",
+  "year": "6e",
+  "subject": "allemand",
+  "title": "Découvrir l'allemand",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Dire bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions allemandes signifient « bonjour » (formel ou informel) ?",
+              "options": ["Guten Tag", "Hallo", "Tschüss", "Danke"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Guten Tag » et « Hallo » servent à saluer ; « Tschüss » dit au revoir et « Danke » remercie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « bonjour » le matin en allemand ?",
+              "options": [
+                "Guten Morgen",
+                "Gute Nacht",
+                "Guten Abend",
+                "Guten Appetit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Guten Morgen » s'utilise le matin jusqu'à environ midi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Guten Tag » ?",
+              "options": [
+                "Bonjour (journée)",
+                "Bonne nuit",
+                "Bon appétit",
+                "À bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Guten Tag » est une salutation polie en journée, équivalente à « bonjour »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle salutation est la plus informelle ?",
+              "options": [
+                "Hallo",
+                "Guten Tag",
+                "Guten Morgen",
+                "Sehr geehrter Herr"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hallo » est court et familier, comme « salut » en français."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment saluer quelqu'un le soir ?",
+              "options": [
+                "Guten Abend",
+                "Guten Morgen",
+                "Guten Tag",
+                "Gute Reise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Guten Abend » convient à partir du début de soirée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Servus » est surtout utilisé en…",
+              "options": [
+                "Autriche et Bavière",
+                "France",
+                "Angleterre",
+                "Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Servus » est une salutation régionale très courante au sud de l'Allemagne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que répond-on souvent à « Wie geht's ? » ?",
+              "options": [
+                "Gut, danke",
+                "Tschüss",
+                "Bitte schön",
+                "Entschuldigung"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond « Gut, danke » (bien, merci) ou une variante proche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Guten Tag » se prononce approximativement…",
+              "options": ["goutène tag", "goutène morguen", "alo", "tchüss"],
+              "correctAnswers": [0],
+              "explanation": "Le « u » de « Guten » se lit « ou » et « Tag » rime avec « tag »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est une salutation et non un au-revoir ?",
+              "options": ["Hallo", "Auf Wiedersehen", "Tschüss", "Bis bald"],
+              "correctAnswers": [0],
+              "explanation": "« Hallo » accueille ; les trois autres prennent congé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe, le professeur dit souvent en entrant…",
+              "options": [
+                "Guten Morgen",
+                "Gute Nacht",
+                "Guten Appetit",
+                "Prost"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le matin en cours, « Guten Morgen » est la formule la plus naturelle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules allemandes disent au revoir ?",
+              "options": ["Tschüss", "Auf Wiedersehen", "Hallo", "Guten Tag"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Tschüss » et « Auf Wiedersehen » concluent la conversation ; les deux autres saluent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Auf Wiedersehen » signifie…",
+              "options": [
+                "Au revoir (formel)",
+                "Bonjour",
+                "Merci",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littéralement « jusqu'à revoir », c'est poli et un peu soutenu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tschüss » est…",
+              "options": [
+                "Familier",
+                "Très officiel",
+                "Un remerciement",
+                "Une excuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On l'emploie entre amis, en famille ou entre camarades."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dire « à bientôt » ?",
+              "options": ["Bis bald", "Guten Tag", "Danke", "Ja"],
+              "correctAnswers": [0],
+              "explanation": "« Bis bald » promet une prochaine rencontre proche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bis morgen » veut dire…",
+              "options": ["À demain", "À ce soir", "Bonne nuit", "Bon voyage"],
+              "correctAnswers": [0],
+              "explanation": "« Morgen » = demain ; on se quitte en pensant au lendemain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avant de dormir, on dit plutôt…",
+              "options": ["Gute Nacht", "Guten Morgen", "Guten Tag", "Hallo"],
+              "correctAnswers": [0],
+              "explanation": "« Gute Nacht » souhaite une bonne nuit, pas un simple au revoir de jour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ciao » en allemand courant, on entend parfois…",
+              "options": [
+                "Tschüss",
+                "Guten Appetit",
+                "Entschuldigung",
+                "Bitte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tschüss » remplace souvent un adieu court, un peu comme « ciao »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle formule est la plus polie avec un inconnu ?",
+              "options": ["Auf Wiedersehen", "Tschüss", "Servus", "Hi"],
+              "correctAnswers": [0],
+              "explanation": "« Auf Wiedersehen » convient mieux dans un magasin ou avec des adultes inconnus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bis später » signifie…",
+              "options": [
+                "À plus tard",
+                "À jamais",
+                "Bon appétit",
+                "Félicitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Später » = plus tard ; on se reverra dans la même journée souvent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En quittant l'école à midi, on peut dire…",
+              "options": ["Tschüss", "Gute Nacht", "Prost", "Guten Appetit"],
+              "correctAnswers": [0],
+              "explanation": "« Tschüss » est naturel entre élèves en partant."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions demandent « comment ça va ? » en allemand ?",
+              "options": [
+                "Wie geht's?",
+                "Wie geht es dir?",
+                "Wie heißt du?",
+                "Wo wohnst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières portent sur le bien-être ; les autres demandent le nom ou le lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wie geht es Ihnen ? » s'adresse à…",
+              "options": [
+                "Une personne vouvoyée",
+                "Un animal",
+                "Un objet",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ihnen » est la forme de politesse, comme « vous » en français."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse positive courante :",
+              "options": ["Sehr gut", "Schlecht", "Nein", "Tschüss"],
+              "correctAnswers": [0],
+              "explanation": "« Sehr gut » = très bien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Es geht » signifie environ…",
+              "options": [
+                "Comme ci, comme ça",
+                "Très mal",
+                "Au revoir",
+                "Merci beaucoup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une réponse mitigée, ni très bien ni mal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Und dir ? » après « Gut, danke » veut dire…",
+              "options": ["Et toi ?", "Et lui ?", "Où ?", "Quand ?"],
+              "correctAnswers": [0],
+              "explanation": "« dir » = à toi ; on renvoie la question."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nicht so gut » exprime…",
+              "options": ["Pas très bien", "Formidable", "De rien", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "« Nicht » nie ; « so gut » = si bien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wie geht's » est la forme…",
+              "options": [
+                "Abrégée familière",
+                "Très soutenue",
+                "D'un menu",
+                "D'une recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On contracte « geht es » en « geht's » à l'oral."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour demander poliment à un adulte :",
+              "options": [
+                "Wie geht es Ihnen?",
+                "Wie geht's, Kumpel?",
+                "Tschüss!",
+                "Hallo du!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vouvoiement « Ihnen » reste respectueux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Prima ! » comme réponse veut dire…",
+              "options": ["Super !", "Non", "Pardon", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "« Prima » est enthousiaste, surtout chez les jeunes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après « Wie geht's ? », une réponse polie inclut souvent…",
+              "options": ["Danke", "Tschüss", "Entschuldigung", "Nein danke"],
+              "correctAnswers": [0],
+              "explanation": "On remercie implicitement en disant « Gut, danke »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Se présenter : le prénom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases demandent le prénom en allemand ?",
+              "options": [
+                "Wie heißt du?",
+                "Wie heißen Sie?",
+                "Wie alt bist du?",
+                "Woher kommst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wie heißt du/Sie » = comment t'appelez-vous ; les autres posent l'âge ou l'origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich heiße Marie » signifie…",
+              "options": [
+                "Je m'appelle Marie",
+                "J'ai Marie",
+                "Marie part",
+                "Bonjour Marie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« heißen » = s'appeler."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mein Name ist Paul » veut dire…",
+              "options": [
+                "Mon nom est Paul",
+                "Mon frère Paul",
+                "Paul est grand",
+                "Paul dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule un peu plus formelle que « Ich heiße »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« du » dans « Wie heißt du ? » correspond à…",
+              "options": ["tu", "vous (poli)", "ils", "nous"],
+              "correctAnswers": [0],
+              "explanation": "Le tutoiement allemand utilise « du »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse à « Wie heißt du ? » :",
+              "options": [
+                "Ich heiße Lisa",
+                "Guten Tag",
+                "Danke schön",
+                "Auf Wiedersehen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On donne son prénom avec « Ich heiße… »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Freut mich » après une présentation signifie…",
+              "options": ["Enchanté(e)", "Au revoir", "J'ai faim", "Désolé"],
+              "correctAnswers": [0],
+              "explanation": "Abrégé de « Es freut mich », je suis content de te rencontrer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sie » dans « Wie heißen Sie ? » est…",
+              "options": [
+                "Le vouvoiement",
+                "Le tutoiement",
+                "Un prénom",
+                "Une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sie » majuscule = vous de politesse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich bin Tom » peut aussi présenter en disant…",
+              "options": [
+                "Je suis Tom",
+                "Tom mange",
+                "Tom dort",
+                "Tom va bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ich bin » + prénom est très courant à l'oral."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le verbe « heißen » conjugué à « ich » donne…",
+              "options": ["heiße", "heißt", "heißen", "heisse"],
+              "correctAnswers": [0],
+              "explanation": "« Ich heiße » avec eszett ou ss selon l'orthographe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour présenter un ami : « Das ist… »",
+              "options": ["Voici…", "Au revoir…", "Merci…", "Où est…"],
+              "correctAnswers": [0],
+              "explanation": "« Das ist Anna » = voici Anna."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'âge",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions parlent de l'âge ?",
+              "options": [
+                "Wie alt bist du?",
+                "Wie alt sind Sie?",
+                "Wie groß bist du?",
+                "Wie heißt du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wie alt » = quel âge ; « Wie groß » = quelle taille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich bin zwölf » signifie…",
+              "options": [
+                "J'ai douze ans",
+                "Je suis grand",
+                "J'habite à douze",
+                "Il est midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En allemand on « est » un âge : « ich bin » + nombre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« elf » en chiffres, c'est…",
+              "options": ["11", "12", "10", "13"],
+              "correctAnswers": [0],
+              "explanation": "« elf » = onze."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« dreizehn » vaut…",
+              "options": ["13", "3", "30", "33"],
+              "correctAnswers": [0],
+              "explanation": "« dreizehn » = treize."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse à « Wie alt bist du ? » pour 11 ans :",
+              "options": [
+                "Ich bin elf",
+                "Ich bin elfe",
+                "Ich habe elf",
+                "Ich esse elf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie « sein » (être), pas « haben » pour l'âge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Jahre alt » dans « Ich bin zehn Jahre alt » signifie…",
+              "options": ["Ans", "Kilos", "Mètres", "Euros"],
+              "correctAnswers": [0],
+              "explanation": "« Jahr » = an ; « alt » = vieux/âgé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« neun » correspond au chiffre…",
+              "options": ["9", "19", "90", "6"],
+              "correctAnswers": [0],
+              "explanation": "Attention à ne pas confondre avec « neunzehn » (19)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un adulte, on demande plutôt…",
+              "options": [
+                "Wie alt sind Sie?",
+                "Wie alt bist du?",
+                "Hallo du!",
+                "Tschüss Kind!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vouvoiement « Sie » est adapté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« zehn » en allemand, c'est…",
+              "options": ["10", "2", "20", "100"],
+              "correctAnswers": [0],
+              "explanation": "Nombre de base à mémoriser en 6e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich bin sechs » convient pour un élève de…",
+              "options": ["CP / CE1", "Terminale", "Université", "Retraite"],
+              "correctAnswers": [0],
+              "explanation": "Six ans correspond au début de l'école primaire en France."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "D'où viens-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions demandent la provenance ?",
+              "options": [
+                "Woher kommst du?",
+                "Woher kommen Sie?",
+                "Wo wohnst du?",
+                "Wie alt bist du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Woher » = d'où ; « Wo wohnst du » = où habites-tu (lieu actuel)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich komme aus Frankreich » signifie…",
+              "options": [
+                "Je viens de France",
+                "Je vais en France",
+                "Je suis français",
+                "J'aime la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« aus » + pays = origine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Deutschland » en français, c'est…",
+              "options": [
+                "L'Allemagne",
+                "L'Autriche",
+                "La Suisse",
+                "La Belgique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pays où l'on parle allemand majoritairement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich komme aus Berlin » indique…",
+              "options": [
+                "Une ville d'origine",
+                "Un plat",
+                "Un sport",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Berlin est la capitale allemande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« aus » suivi d'un pays répond à…",
+              "options": ["Woher?", "Wie?", "Was?", "Wann?"],
+              "correctAnswers": [0],
+              "explanation": "Provenance = Woher."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Österreich » est…",
+              "options": [
+                "L'Autriche",
+                "L'Australie",
+                "L'Algérie",
+                "L'Armenie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pays germanophone voisin de l'Allemagne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ich bin aus Paris » est…",
+              "options": [
+                "Courant à l'oral",
+                "Impossible en allemand",
+                "Un au revoir",
+                "Une commande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entend parfois « sein aus » à l'oral bien que « kommen aus » soit canonique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Schweiz » = …",
+              "options": ["La Suisse", "La Suède", "La Syrie", "La Slovaquie"],
+              "correctAnswers": [0],
+              "explanation": "Pays avec plusieurs langues dont l'allemand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse polie : « Ich komme aus … » avec",
+              "options": [
+                "einem Land oder einer Stadt",
+                "einem Essen",
+                "einer Farbe",
+                "einem Tier nur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On nomme un pays ou une ville."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Woher kommen Sie ? » s'adresse à…",
+              "options": ["Vous (poli)", "Tu", "Nous", "Eux seulement"],
+              "correctAnswers": [0],
+              "explanation": "« Sie » = forme de respect."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Où habites-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent du lieu de vie actuel ?",
+              "options": [
+                "Wo wohnst du?",
+                "Wo wohnen Sie?",
+                "Ich wohne in München",
+                "Woher kommst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wo wohnen » = où habitez-vous ; « woher » = d'où (origine)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich wohne in Lyon » signifie…",
+              "options": [
+                "J'habite à Lyon",
+                "Je viens de Lyon",
+                "Je vais à Lyon",
+                "Lyon est grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« wohnen in » + ville."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La préposition pour une ville est…",
+              "options": ["in", "aus", "von", "mit"],
+              "correctAnswers": [0],
+              "explanation": "« in Berlin », « in Paris »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hamburg » est une…",
+              "options": ["Ville allemande", "Montagne", "Couleur", "Boisson"],
+              "correctAnswers": [0],
+              "explanation": "Grande ville du nord de l'Allemagne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« das Dorf » signifie…",
+              "options": ["Le village", "La porte", "Le dortoir", "Le drapeau"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire de lieu utile en 6e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Stadt » = …",
+              "options": ["La ville", "La rue", "La maison", "La campagne"],
+              "correctAnswers": [0],
+              "explanation": "Opposé courant au village à l'école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question à un camarade :",
+              "options": [
+                "Wo wohnst du?",
+                "Wo wohnen Sie?",
+                "Guten Appetit",
+                "Prost"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre élèves, on tutoie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich wohne auf dem Land » veut dire…",
+              "options": [
+                "J'habite à la campagne",
+                "Je suis perdu",
+                "Je voyage",
+                "Je travaille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« auf dem Land » = à la campagne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Köln » se trouve en…",
+              "options": ["Allemagne", "Italie", "Pologne", "Portugal"],
+              "correctAnswers": [0],
+              "explanation": "Ville connue sur le Rhin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« in » + ville répond à…",
+              "options": ["Wo?", "Wer?", "Warum?", "Wessen?"],
+              "correctAnswers": [0],
+              "explanation": "Lieu = question « Wo »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Politesse de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands sont des marques de politesse courantes ?",
+              "options": ["Bitte", "Danke", "Tschüss", "Hallo"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Bitte » et « Danke » structurent les échanges polis ; les autres saluent ou disent au revoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Danke » signifie…",
+              "options": ["Merci", "Pardon", "Bonjour", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Mot indispensable dès la 6e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Bitte » peut vouloir dire…",
+              "options": [
+                "S'il vous plaît / de rien",
+                "Au revoir seulement",
+                "J'ai faim",
+                "Il pleut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bitte » demande ou répond à un remerciement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Entschuldigung » sert à…",
+              "options": ["S'excuser", "Féliciter", "Commander", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "Équivalent de « pardon / excusez-moi »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse à « Danke » :",
+              "options": ["Bitte", "Tschüss", "Hallo", "Nein"],
+              "correctAnswers": [0],
+              "explanation": "« Bitte » = de rien dans ce contexte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Danke schön » est…",
+              "options": [
+                "Merci beaucoup",
+                "Bon appétit",
+                "Bonne nuit",
+                "À demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule un peu plus chaleureuse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avant de entrer, frapper et dire…",
+              "options": [
+                "Bitte / Herein",
+                "Prost",
+                "Gute Nacht",
+                "Auf Wiedersehen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Herein » invite à entrer après « Bitte? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ja, bitte ? » dans un magasin signifie…",
+              "options": [
+                "Oui, je vous écoute",
+                "Non merci",
+                "Au revoir",
+                "Fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vendeur propose son aide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Vielen Dank » = …",
+              "options": [
+                "Merci beaucoup",
+                "Très mal",
+                "Très grand",
+                "Très jeune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Viel » renforce le remerciement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour accepter poliment une offre :",
+              "options": [
+                "Ja, bitte",
+                "Nein, tschüss",
+                "Hallo nein",
+                "Danke tschüss"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ja, bitte » = oui, s'il vous plaît."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dialogue de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles répliques conviennent au début d'un dialogue de présentation ?",
+              "options": ["Hallo!", "Wie heißt du?", "Gute Nacht", "Prost"],
+              "correctAnswers": [0, 1],
+              "explanation": "On salue puis on demande le nom ; les autres sont hors contexte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre logique : 1) Hallo 2) … 3) Gut, danke",
+              "options": ["Wie geht's?", "Gute Nacht", "Tschüss", "Prost"],
+              "correctAnswers": [0],
+              "explanation": "Salut → formule de bien-être → réponse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le professeur dit « Setzt euch ! » : les élèves…",
+              "options": ["S'asseyent", "Partent", "Dansent", "Dormen"],
+              "correctAnswers": [0],
+              "explanation": "« sich setzen » = s'asseoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Stellt euch vor ! » demande de…",
+              "options": ["Se présenter", "Se taire", "Sortir", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "« sich vorstellen » = se présenter."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich bin neu hier » signifie…",
+              "options": [
+                "Je suis nouveau ici",
+                "Je suis fatigué",
+                "Je suis en retard",
+                "Je suis prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« neu » = nouveau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour demander de répéter :",
+              "options": ["Wie bitte?", "Tschüss!", "Danke!", "Prost!"],
+              "correctAnswers": [0],
+              "explanation": "« Wie bitte? » = pardon ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Langsam, bitte » au professeur veut…",
+              "options": [
+                "Parler plus lentement",
+                "Aller plus vite",
+                "Fermer la porte",
+                "Ouvrir le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« langsam » = lentement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« das Heft » en classe, c'est…",
+              "options": [
+                "Le cahier",
+                "Le tableau",
+                "La cloche",
+                "Le cartable seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet scolaire fréquent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Auf Deutsch, bitte » demande de parler…",
+              "options": [
+                "En allemand",
+                "En français",
+                "Plus fort",
+                "Plus bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Deutsch » = allemand."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fin de cours polie :",
+              "options": [
+                "Auf Wiedersehen",
+                "Guten Morgen",
+                "Hallo nochmal",
+                "Wie heißt du"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prend congé du groupe."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples salut / présentation sont corrects en allemand ?",
+              "options": [
+                "Hallo! Ich heiße…",
+                "Guten Tag! Mein Name ist…",
+                "Tschüss! Wie geht's?",
+                "Danke! Wo wohnst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premiers enchaînent salutation et nom ; les autres mélangent incohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mini-dialogue : « Wie heißt du ? » — « … »",
+              "options": [
+                "Ich heiße Max",
+                "Ich bin alt",
+                "Ich komme tschüss",
+                "Guten Abend Max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse directe au prénom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Freut mich » suit souvent…",
+              "options": [
+                "Une présentation",
+                "Un au revoir",
+                "Un repas",
+                "Un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On se dit enchanté après les noms."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Matin + prénom + bien : « Guten Morgen! Ich heiße… Gut, … »",
+              "options": ["danke", "tschüss", "nacht", "prost"],
+              "correctAnswers": [0],
+              "explanation": "« Gut, danke » complète « Wie geht's ? »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich bin 12 » répond à…",
+              "options": [
+                "Wie alt bist du?",
+                "Wo wohnst du?",
+                "Was ist das?",
+                "Wer bist du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre = âge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ich komme aus Marseille » répond à…",
+              "options": [
+                "Woher kommst du?",
+                "Wie spät ist es?",
+                "Wie viel kostet das?",
+                "Was machst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Provenance avec « aus »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Politesse : on dit « Danke » et on entend « … »",
+              "options": ["Bitte", "Hallo", "Nein", "Tschüss"],
+              "correctAnswers": [0],
+              "explanation": "Réponse standard à un remerciement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Formel du soir en entrant chez quelqu'un :",
+              "options": [
+                "Guten Abend",
+                "Guten Morgen",
+                "Gute Nacht",
+                "Guten Appetit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut du soir, pas souhait de nuit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Auf Wiedersehen » convient quand…",
+              "options": [
+                "On quitte poliment",
+                "On arrive",
+                "On mange",
+                "On dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de départ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un adulte inconnu, on évite…",
+              "options": [
+                "Le tutoiement « du »",
+                "« Guten Tag »",
+                "« Auf Wiedersehen »",
+                "« Danke schön »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un inconnu adulte, « Sie » est plus sûr."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Oui, non, peut-être",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands signifient « oui » (direct ou poli) ?",
+              "options": ["Ja", "Doch", "Nein", "Vielleicht"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ja » est oui standard ; « Doch » contredit une négation (oui quand même)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nein » signifie…",
+              "options": ["Non", "Oui", "Merci", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Réponse négative courte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Vielleicht » veut dire…",
+              "options": ["Peut-être", "Jamais", "Toujours", "Vite"],
+              "correctAnswers": [0],
+              "explanation": "Exprime l'incertitude."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Natürlich » dans une réponse positive = …",
+              "options": ["Bien sûr", "Non merci", "Au revoir", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Renforce un accord."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Kein Problem » signifie…",
+              "options": [
+                "Pas de problème",
+                "Gros problème",
+                "Question difficile",
+                "Devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression rassurante courante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Genau » peut vouloir dire…",
+              "options": ["Exactement", "Jamais", "Lentement", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Confirme qu'on est d'accord."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Stimmt » dans « Das stimmt » = …",
+              "options": [
+                "C'est vrai",
+                "C'est faux",
+                "C'est loin",
+                "C'est cher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valide une information."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nein, danke » sert à…",
+              "options": ["Refuser poliment", "Accepter", "Saluer", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "On dit non tout en remerciant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Klar » à l'oral jeune signifie souvent…",
+              "options": ["OK / d'accord", "Non", "Triste", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Familier mais très fréquent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Doch » répond à « Hast du kein … ? » pour dire…",
+              "options": ["Si, j'en ai", "Non", "Peut-être", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "« Doch » contredit la négation de la question."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les nombres 0 à 12",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres allemands valent 1 et 2 ?",
+              "options": ["eins", "zwei", "drei", "zehn"],
+              "correctAnswers": [0, 1],
+              "explanation": "« eins » et « zwei » ; « drei » = 3, « zehn » = 10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« null » en allemand, c'est…",
+              "options": ["0", "1", "9", "10"],
+              "correctAnswers": [0],
+              "explanation": "Comme en français « zéro »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« fünf » = …",
+              "options": ["5", "4", "6", "15"],
+              "correctAnswers": [0],
+              "explanation": "Nombre à mémoriser."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« acht » correspond à…",
+              "options": ["8", "18", "80", "3"],
+              "correctAnswers": [0],
+              "explanation": "Ne pas confondre avec « achtzehn »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« zwölf » vaut…",
+              "options": ["12", "2", "20", "22"],
+              "correctAnswers": [0],
+              "explanation": "Fin de la série 0-12 en 6e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« vier » en chiffres :",
+              "options": ["4", "7", "14", "40"],
+              "correctAnswers": [0],
+              "explanation": "Quatre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« sechs » = …",
+              "options": ["6", "16", "60", "7"],
+              "correctAnswers": [0],
+              "explanation": "Six."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« sieben » signifie…",
+              "options": ["7", "17", "1", "11"],
+              "correctAnswers": [0],
+              "explanation": "Sept."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le nombre après « zehn » est…",
+              "options": ["elf", "neun", "acht", "null"],
+              "correctAnswers": [0],
+              "explanation": "11 = elf."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« drei » + « vier » = … (en allemand on dit le total)",
+              "options": ["sieben", "sechs", "acht", "zehn"],
+              "correctAnswers": [0],
+              "explanation": "3 + 4 = 7 = sieben."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Couleurs de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs allemandes sont « rouge » et « bleu » ?",
+              "options": ["rot", "blau", "grün", "gelb"],
+              "correctAnswers": [0, 1],
+              "explanation": "« rot » rouge, « blau » bleu ; « grün » vert, « gelb » jaune."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« grün » signifie…",
+              "options": ["Vert", "Gris", "Grand", "Gros"],
+              "correctAnswers": [0],
+              "explanation": "Couleur de l'herbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« gelb » = …",
+              "options": ["Jaune", "Bleu", "Blanc", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Comme le soleil."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« schwarz » veut dire…",
+              "options": ["Noir", "Blanc", "Rose", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Couleur foncée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« weiß » (eszett) signifie…",
+              "options": ["Blanc", "Bleu clair", "Vert clair", "Rouge"],
+              "correctAnswers": [0],
+              "explanation": "Neige = Schnee, blanc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« braun » = …",
+              "options": ["Marron", "Bleu", "Vert", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Couleur du chocolat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« orange » en allemand s'écrit aussi…",
+              "options": ["orange", "orangen", "orang", "orangi"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt identique en 6e."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Die Flagge ist schwarz, rot und gold » décrit…",
+              "options": [
+                "Le drapeau allemand",
+                "Le drapeau français",
+                "Un drapeau bleu seul",
+                "Un tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs nationales : noir, rouge, or."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« pink » ou « rosa » désigne…",
+              "options": ["Rose", "Rouge foncé", "Gris", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Deux mots pour le rose."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« grau » signifie…",
+              "options": ["Gris", "Vert", "Grand", "Groupe"],
+              "correctAnswers": [0],
+              "explanation": "Couleur du nuage."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent « père » et « mère » ?",
+              "options": [
+                "der Vater",
+                "die Mutter",
+                "der Bruder",
+                "die Schwester"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vater / Mutter ; Bruder = frère, Schwester = sœur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« der Bruder » signifie…",
+              "options": ["Le frère", "La sœur", "Le père", "La mère"],
+              "correctAnswers": [0],
+              "explanation": "Membre masculin de la fratrie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« die Schwester » = …",
+              "options": ["La sœur", "Le frère", "La tante", "La grand-mère"],
+              "correctAnswers": [0],
+              "explanation": "Membre féminin de la fratrie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« die Eltern » veut dire…",
+              "options": [
+                "Les parents",
+                "Les enfants",
+                "Les voisins",
+                "Les profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel toujours pour la paire père-mère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« das Kind » signifie…",
+              "options": ["L'enfant", "Le chien", "La maison", "Le livre"],
+              "correctAnswers": [0],
+              "explanation": "Neutre en allemand."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Großmutter » = …",
+              "options": [
+                "La grand-mère",
+                "Le grand-père",
+                "La mère",
+                "La fille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« groß » = grand."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« der Großvater » signifie…",
+              "options": ["Le grand-père", "Le frère", "Le cousin", "L'oncle"],
+              "correctAnswers": [0],
+              "explanation": "Père ou mère du parent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Meine Familie » dans une phrase = …",
+              "options": ["Ma famille", "Mon école", "Ma ville", "Mon chat"],
+              "correctAnswers": [0],
+              "explanation": "« mein/meine » = mon/ma."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« der Onkel » = …",
+              "options": ["L'oncle", "La tante", "Le neveu", "La nièce"],
+              "correctAnswers": [0],
+              "explanation": "Frère ou beau-frère des parents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« die Tante » signifie…",
+              "options": ["La tante", "La sœur", "La mère", "La fille"],
+              "correctAnswers": [0],
+              "explanation": "Sœur ou belle-sœur des parents."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des objets ou lieux scolaires ?",
+              "options": ["das Buch", "der Stift", "der Tisch", "das Auto"],
+              "correctAnswers": [0, 1],
+              "explanation": "Livre et stylo ; « Tisch » = table (classe), « Auto » = voiture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Schule » signifie…",
+              "options": ["L'école", "La rue", "Le stade", "Le magasin"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'apprentissage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Lehrer / die Lehrerin » = …",
+              "options": [
+                "Le professeur / la professeure",
+                "L'élève",
+                "Le directeur seulement",
+                "Le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genre marqué en allemand."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Schüler / die Schülerin » désigne…",
+              "options": ["L'élève", "Le parent", "Le médecin", "Le vendeur"],
+              "correctAnswers": [0],
+              "explanation": "Personne qui apprend à l'école."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« der Radiergummi » signifie…",
+              "options": ["La gomme", "Le crayon", "La règle", "La craie"],
+              "correctAnswers": [0],
+              "explanation": "Pour effacer au crayon."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Tafel » en classe, c'est…",
+              "options": ["Le tableau", "La porte", "La fenêtre", "Le plafond"],
+              "correctAnswers": [0],
+              "explanation": "Où le professeur écrit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Klasse » peut vouloir dire…",
+              "options": [
+                "La classe (groupe)",
+                "La leçon seule",
+                "La cour seule",
+                "Le devoir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupe d'élèves du même niveau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Hausaufgabe » = …",
+              "options": ["Les devoirs", "La maison", "Le repas", "Le jeu"],
+              "correctAnswers": [0],
+              "explanation": "Travail à faire à la maison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« der Bleistift » signifie…",
+              "options": [
+                "Le crayon à papier",
+                "Le stylo bille",
+                "Le feutre",
+                "La gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Blei » historique = mine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« der Kuli » est familièrement…",
+              "options": ["Le stylo", "Le cartable", "Le prof", "La cloche"],
+              "correctAnswers": [0],
+              "explanation": "Abréviation de « Kugelschreiber »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Jours et mois",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours allemands sont « lundi » et « vendredi » ?",
+              "options": ["Montag", "Freitag", "Sonntag", "Januar"],
+              "correctAnswers": [0, 1],
+              "explanation": "Montag / Freitag ; Sonntag = dimanche, Januar = mois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sonntag » = …",
+              "options": ["Dimanche", "Samedi", "Lundi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Jour de repos traditionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mittwoch » signifie…",
+              "options": ["Mercredi", "Mardi", "Jeudi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Milieu de semaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Samstag » en Allemagne du sud on dit aussi…",
+              "options": ["Sonnabend", "Montag", "Freitag", "Dienstag"],
+              "correctAnswers": [0],
+              "explanation": "Variante régionale pour samedi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Januar » est…",
+              "options": ["Janvier", "Juin", "Juillet", "Décembre"],
+              "correctAnswers": [0],
+              "explanation": "Premier mois de l'année."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Dezember » = …",
+              "options": ["Décembre", "Octobre", "Mars", "Avril"],
+              "correctAnswers": [0],
+              "explanation": "Mois des fêtes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« heute » signifie…",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps fréquent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« morgen » (sans majuscule) veut dire…",
+              "options": ["Demain", "Le matin", "Mercredi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Attention : « der Morgen » = le matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Am Montag » indique…",
+              "options": ["Le lundi", "Tous les jours", "La nuit", "L'année"],
+              "correctAnswers": [0],
+              "explanation": "« am » + jour = un lundi précis ou habituel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« die Woche » = …",
+              "options": ["La semaine", "Le week-end", "Le mois", "L'heure"],
+              "correctAnswers": [0],
+              "explanation": "Sept jours."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Animaux familiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels animaux sont « chien » et « chat » en allemand ?",
+              "options": ["der Hund", "die Katze", "das Pferd", "die Kuh"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hund / Katze ; Pferd = cheval, Kuh = vache."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« das Kaninchen » signifie…",
+              "options": ["Le lapin", "Le cochon", "Le mouton", "Le poisson"],
+              "correctAnswers": [0],
+              "explanation": "Animal de compagnie courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Vogel » = …",
+              "options": ["L'oiseau", "Le ver", "Le serpent", "La souris"],
+              "correctAnswers": [0],
+              "explanation": "Peut être en cage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« das Pferd » signifie…",
+              "options": ["Le cheval", "Le chien", "Le chat", "Le hamster"],
+              "correctAnswers": [0],
+              "explanation": "Grand animal, pas toujours domestique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« der Hamster » est…",
+              "options": ["Le hamster", "Le poisson", "La tortue", "Le lapin"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt quasi identique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Fisch » = …",
+              "options": ["Le poisson", "Le oiseau", "Le chat", "Le cheval"],
+              "correctAnswers": [0],
+              "explanation": "Souvent dans un aquarium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mein Hund heißt Bello » parle de…",
+              "options": [
+                "Le nom du chien",
+                "La couleur du chat",
+                "L'école",
+                "La ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« heißen » aussi pour les animaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Maus » signifie…",
+              "options": ["La souris", "Le rat géant", "Le lion", "L'éléphant"],
+              "correctAnswers": [0],
+              "explanation": "Petit rongeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« das Tier » = …",
+              "options": ["L'animal", "La plante", "La pierre", "La voiture"],
+              "correctAnswers": [0],
+              "explanation": "Mot générique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich habe eine Katze » signifie…",
+              "options": [
+                "J'ai un chat",
+                "Je suis un chat",
+                "Je mange un chat",
+                "Je crains les chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« haben » = avoir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Nourriture simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands signifient « eau » et « pain » ?",
+              "options": ["das Wasser", "das Brot", "die Milch", "der Apfel"],
+              "correctAnswers": [0, 1],
+              "explanation": "Wasser / Brot ; Milch = lait, Apfel = pomme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« der Apfel » = …",
+              "options": ["La pomme", "L'orange", "La banane", "Le raisin"],
+              "correctAnswers": [0],
+              "explanation": "Fruit courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« die Milch » signifie…",
+              "options": ["Le lait", "Le jus", "Le thé", "Le café"],
+              "correctAnswers": [0],
+              "explanation": "Boisson de base."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Guten Appetit » se dit…",
+              "options": [
+                "Avant de manger",
+                "En dormant",
+                "En partant",
+                "En courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme « bon appétit »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« das Essen » peut vouloir dire…",
+              "options": [
+                "Le repas / la nourriture",
+                "L'eau seule",
+                "La table seule",
+                "Le stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom du repas ou de la nourriture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Käse » = …",
+              "options": [
+                "Le fromage",
+                "Le gâteau",
+                "La soupe",
+                "Le poisson cru"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit laitier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Suppe » signifie…",
+              "options": ["La soupe", "La salade", "Le sandwich", "Le riz"],
+              "correctAnswers": [0],
+              "explanation": "Plat liquide chaud."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich habe Hunger » veut dire…",
+              "options": [
+                "J'ai faim",
+                "J'ai soif",
+                "Je suis fatigué",
+                "Je suis content"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hunger » = faim."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ich habe Durst » signifie…",
+              "options": ["J'ai soif", "J'ai froid", "J'ai chaud", "J'ai peur"],
+              "correctAnswers": [0],
+              "explanation": "« Durst » = soif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« das Frühstück » = …",
+              "options": [
+                "Le petit-déjeuner",
+                "Le dîner",
+                "Le goûter",
+                "Le coucher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas du matin."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Questions de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs allemands signifient « qui » et « quoi » ?",
+              "options": ["Wer", "Was", "Wo", "Wann"],
+              "correctAnswers": [0, 1],
+              "explanation": "Wer = qui, Was = quoi ; Wo = où, Wann = quand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo » introduit une question sur…",
+              "options": [
+                "Le lieu",
+                "La couleur",
+                "Le nombre seul",
+                "Le jour seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Où ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Wann » demande…",
+              "options": ["Quand", "Pourquoi", "Comment", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "Moment dans le temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Wie » peut signifier…",
+              "options": [
+                "Comment / combien (avec alt)",
+                "Qui",
+                "Où",
+                "De rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polyvalent : Wie geht's, Wie alt…"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Warum » = …",
+              "options": ["Pourquoi", "Où", "Qui", "Quoi"],
+              "correctAnswers": [0],
+              "explanation": "Cause ou raison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Was ist das ? » signifie…",
+              "options": [
+                "Qu'est-ce que c'est ?",
+                "Où es-tu ?",
+                "Qui es-tu ?",
+                "Quand pars-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifier un objet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wer ist das ? » demande…",
+              "options": [
+                "Qui est-ce ?",
+                "Quelle heure ?",
+                "Quel prix ?",
+                "Quelle couleur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifier une personne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Wie viel » ou « Wie viele » sert à…",
+              "options": [
+                "Demander une quantité",
+                "Saluer",
+                "Dormir",
+                "Couper"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combien ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une question oui/non en allemand place souvent le verbe…",
+              "options": [
+                "En deuxième position",
+                "À la fin seulement",
+                "Jamais",
+                "Deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. « Hast du … ? » verbe en tête après le mot interrogatif éventuel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Wo ist die Toilette ? » cherche…",
+              "options": ["Les toilettes", "Le prof", "Le stylo", "Le chien"],
+              "correctAnswers": [0],
+              "explanation": "Phrase utile en voyage ou à l'école."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des marques de politesse ou de accord ?",
+              "options": ["Bitte", "Ja", "Nein", "Tschüss"],
+              "correctAnswers": [0, 1],
+              "explanation": "Bitte et Ja participent aux échanges ; Nein refuse, Tschüss quitte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« rot » + « blau » = couleurs…",
+              "options": [
+                "Rouge et bleu",
+                "Vert et jaune",
+                "Noir et blanc",
+                "Rose et gris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révision couleurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Vater » et « die Mutter » forment…",
+              "options": [
+                "die Eltern",
+                "die Kinder",
+                "die Schule",
+                "die Farbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parents ensemble."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Montag » vient après…",
+              "options": ["Sonntag", "Freitag", "Januar", "Heute"],
+              "correctAnswers": [0],
+              "explanation": "Ordre des jours : dimanche puis lundi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« zehn » en lettres françaises, c'est…",
+              "options": ["Dix", "Douze", "Deux", "Zéro"],
+              "correctAnswers": [0],
+              "explanation": "Nombre allemand de base."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« das Buch » et « der Stift » sont dans…",
+              "options": [
+                "Le cartable de l'élève",
+                "La piscine",
+                "Le ciel",
+                "La lune seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériel scolaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ich habe Hunger » → on propose « … »",
+              "options": [
+                "Guten Appetit",
+                "Gute Nacht",
+                "Auf Wiedersehen",
+                "Entschuldigung"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Hund » est un…",
+              "options": ["Animal", "Meuble", "Jour", "Mois"],
+              "correctAnswers": [0],
+              "explanation": "Chien = animal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour demander l'identité d'un objet : « … ist das ? »",
+              "options": ["Was", "Wer", "Wo", "Warum"],
+              "correctAnswers": [0],
+              "explanation": "Was = quoi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Vielleicht » exprime…",
+              "options": [
+                "Le doute",
+                "La certitude",
+                "La colère",
+                "Le sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut-être = pas sûr."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

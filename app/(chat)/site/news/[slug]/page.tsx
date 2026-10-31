@@ -11,7 +11,7 @@ import Link from "@/components/site/router";
 import { ArticleAttachmentButton } from "@/components/site/ui/article-attachment";
 import { NewsMedia } from "@/components/site/ui/media";
 import { getCanonicalUrl } from "@/lib/site/app-url";
-import { getAllNewsArticles, getNewsArticle } from "@/lib/site/news";
+import { getNewsArticle, getNewsArticles } from "@/lib/site/news";
 import { CommentSection, ShareButtons } from "./ArticleClient";
 
 const formatDate = (dateStr: any) => {
@@ -22,7 +22,7 @@ const formatDate = (dateStr: any) => {
 };
 
 export async function generateStaticParams() {
-  const articles = getAllNewsArticles();
+  const articles = getNewsArticles();
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -39,7 +39,7 @@ export default async function ArticlePage({
   const requestHeaders = await headers;
   const article = getNewsArticle(resolvedParams.slug);
 
-  if (!article) {
+  if (!article || article.visibility === "hidden") {
     notFound();
   }
 

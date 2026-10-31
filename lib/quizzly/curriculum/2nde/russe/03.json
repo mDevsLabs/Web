@@ -1,0 +1,2323 @@
+{
+  "id": "2nde-russe-03",
+  "year": "2nde",
+  "subject": "russe",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Menu d'un café",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Sur l'affiche « Меню кафе » : quels mots indiquent des boissons chaudes ?",
+              "options": ["чай", "кофе", "суп", "салат"],
+              "correctAnswers": [0, 1],
+              "explanation": "чай = thé et кофе = café ; суп et салат sont des plats."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Капучино — 250 рублей » : que peut-on commander ?",
+              "options": ["un thé", "un cappuccino", "une soupe", "un billet"],
+              "correctAnswers": [1],
+              "explanation": "Капучино est emprunté au français ; le prix est en roubles."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сок — 180 р. » signifie",
+              "options": [
+                "jus — 180 roubles",
+                "soupe — 180 roubles",
+                "fromage — 180 roubles",
+                "eau — 80 roubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "сок = jus ; р. = roubles."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Без сахара » sur une commande veut dire",
+              "options": [
+                "sans sucre",
+                "avec sucre",
+                "sans lait",
+                "très chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "без = sans ; сахар = sucre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Круассан » dans un menu russe désigne",
+              "options": [
+                "un viennoiserie",
+                "une boisson",
+                "une soupe",
+                "un dessert glacé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot emprunté, courant dans les cafés urbains."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Открыто до 22:00 » indique",
+              "options": [
+                "ouvert jusqu'à 22 h",
+                "fermé à 22 h",
+                "ouvert à 22 h seulement",
+                "réouverture à 22 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "до = jusqu'à ; открыто = ouvert."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Завтрак с 8:00 до 11:00 » concerne",
+              "options": [
+                "le service petit-déjeuner",
+                "le dîner",
+                "la fermeture",
+                "les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "завтрак = petit-déjeuner ; с… до… = de… à…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« С собой » (sur un gobelet) signifie",
+              "options": ["à emporter", "sur place", "gratuit", "chaud"],
+              "correctAnswers": [0],
+              "explanation": "Expression fixe pour les boissons à emporter."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Латте » est généralement classé comme",
+              "options": [
+                "boisson au lait/café",
+                "plat principal",
+                "entrée froide",
+                "alcool"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latte = café au lait, comme en français."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Оплата картой » signifie",
+              "options": [
+                "paiement par carte",
+                "paiement en espèces",
+                "réservation obligatoire",
+                "pourboire inclus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "картой = par carte (instrumental)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Horaire de bus",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Sur « Расписание автобуса № 12 » : quels éléments sont des heures de départ ?",
+              "options": ["07:15", "18:40", "улица", "остановка"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les horaires sont en format 24 h ; улица et остановка ne sont pas des heures."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Отправление » en tête de colonne =",
+              "options": ["départ", "arrivée", "retard", "ticket"],
+              "correctAnswers": [0],
+              "explanation": "отправление = départ (transport)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Прибытие » =",
+              "options": ["arrivée", "départ", "arrêt", "quai"],
+              "correctAnswers": [0],
+              "explanation": "прибытие = arrivée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Каждые 15 минут » signifie",
+              "options": [
+                "toutes les 15 minutes",
+                "dans 15 minutes",
+                "15 minutes de retard",
+                "15 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "каждые + chiffre = fréquence."
+            },
+            {
+              "type": "single_choice",
+              "question": "« По будням » =",
+              "options": [
+                "en semaine",
+                "le week-end",
+                "les jours fériés",
+                "la nuit seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "будни = jours ouvrables."
+            },
+            {
+              "type": "single_choice",
+              "question": "« По выходным » =",
+              "options": [
+                "le week-end",
+                "en semaine",
+                "le lundi",
+                "tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "выходные = week-end."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Конечная остановка » =",
+              "options": [
+                "arrêt terminus",
+                "premier arrêt",
+                "arrêt facultatif",
+                "gare routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "конечная = terminale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Пересадка на метро » indique",
+              "options": [
+                "correspondance avec le métro",
+                "interdiction de métro",
+                "prix du métro",
+                "fermeture du métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "пересадка = changement de ligne/moyen."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Работает с 6:00 » =",
+              "options": [
+                "circule / ouvert à partir de 6 h",
+                "fermé à 6 h",
+                "6 bus par heure",
+                "6 arrêts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "работает = fonctionne, est en service."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Внимание! Изменение расписания » =",
+              "options": [
+                "Attention : changement d'horaire",
+                "Bus supprimé définitivement",
+                "Grève",
+                "Gratuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "изменение = modification."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Affiche de concert",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Affiche « КОНЦЕРТ » : quels mots donnent date et lieu ?",
+              "options": [
+                "15 марта",
+                "Концертный зал « Зарядье »",
+                "чай",
+                "метро"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "15 марта = date ; зал = salle de concert."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Начало в 19:30 » =",
+              "options": [
+                "début à 19 h 30",
+                "fin à 19 h 30",
+                "durée 19 min",
+                "portes 19 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "начало = début."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вход по билетам » =",
+              "options": [
+                "entrée sur présentation de billets",
+                "entrée libre",
+                "réservation téléphone seule",
+                "interdit aux mineurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "вход по = entrée moyennant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Билеты в кассе и онлайн » =",
+              "options": [
+                "billets à la guiche et en ligne",
+                "billets uniquement en ligne",
+                "plus de billets",
+                "billets gratuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "касса = guichet ; онлайн = en ligne."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Программа: русские романсы » annonce",
+              "options": [
+                "des romances russes",
+                "un match de foot",
+                "un film",
+                "un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "романсы = romances (chansons)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Длительность: 2 часа » =",
+              "options": [
+                "durée : 2 heures",
+                "début dans 2 heures",
+                "2 interprètes",
+                "2 salles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "длительность = durée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Скидка студентам » =",
+              "options": [
+                "réduction pour les étudiants",
+                "interdit aux étudiants",
+                "examens",
+                "cours gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "скидка = réduction."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Фойе открыто в 18:00 » : le foyer ouvre",
+              "options": [
+                "à 18 h",
+                "à 19 h 30",
+                "à minuit",
+                "après le concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "фойе = foyer (salle)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Запись запрещена » =",
+              "options": [
+                "enregistrement interdit",
+                "réservation obligatoire",
+                "photos autorisées",
+                "silence demandé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "запись = enregistrement ; запрещена = interdit (f.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Адрес: ул. Варварка, 6 » donne",
+              "options": [
+                "une rue et un numéro à Moscou",
+                "un horaire de train",
+                "un menu",
+                "un prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ул. = rue (улица)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Menu de restaurant",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Section « Первые блюда » : quels plats sont des entrées chaudes ?",
+              "options": ["борщ", "щи", "мороженое", "компот"],
+              "correctAnswers": [0, 1],
+              "explanation": "борщ et щи = soupes ; мороженое = glace."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Второе блюдо » =",
+              "options": ["plat principal", "dessert", "boisson", "pain seul"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième service = plat principal."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Гарнир: картофель » =",
+              "options": [
+                "accompagnement : pommes de terre",
+                "dessert",
+                "sauce",
+                "entrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "гарнир = garniture/accompagnement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Порция 300 г » indique",
+              "options": [
+                "portion de 300 g",
+                "300 roubles",
+                "300 kcal obligatoires",
+                "300 places"
+              ],
+              "correctAnswers": [0],
+              "explanation": "порция = portion ; г = grammes."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вегетарианское блюдо » =",
+              "options": [
+                "plat végétarien",
+                "plat au poisson",
+                "plat épicé",
+                "plat du chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "вегетарианское = végétarien."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Острое » sur un plat =",
+              "options": ["épicé", "froid", "sans sel", "pour enfant"],
+              "correctAnswers": [0],
+              "explanation": "острое = piquant/épicé."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Счёт, пожалуйста! » (contexte menu) sert à",
+              "options": [
+                "demander l'addition",
+                "commander une soupe",
+                "réserver",
+                "refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule polie au restaurant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Детское меню » =",
+              "options": [
+                "menu enfant",
+                "menu du jour",
+                "menu dégustation",
+                "carte des vins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "детское = pour enfants."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Бизнес-ланч с 12:00 до 15:00 » =",
+              "options": [
+                "formule déjeuner en journée",
+                "dîner de gala",
+                "petit-déjeuner nocturne",
+                "buffet illimité nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ланч = lunch ; plage horaire midi."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Чаевые приветствуются » =",
+              "options": [
+                "pourboire bienvenu",
+                "service compris obligatoire",
+                "interdit de payer",
+                "carte refusée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "чаевые = pourboire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Horaire de musée",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Panneau « Музей открыт » : quelles infos sont des jours ou heures ?",
+              "options": ["вторник", "10:00–18:00", "картина", "экскурсия"],
+              "correctAnswers": [0, 1],
+              "explanation": "вторник = mardi ; plage horaire classique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Выходной: понедельник » =",
+              "options": [
+                "fermé le lundi",
+                "ouvert le lundi",
+                "lundi gratuit",
+                "lundi nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "выходной = jour de fermeture."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Касса закрывается за 30 минут » =",
+              "options": [
+                "guichet ferme 30 min avant le musée",
+                "musée ouvert 30 min",
+                "gratuit 30 min",
+                "visite 30 min max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "закрывается = ferme."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Экскурсия в 14:00 » =",
+              "options": [
+                "visite guidée à 14 h",
+                "fermeture à 14 h",
+                "exposition permanente",
+                "cafétéria"
+              ],
+              "correctAnswers": [0],
+              "explanation": "экскурсия = visite guidée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вход: 500 рублей » =",
+              "options": [
+                "tarif d'entrée 500 RUB",
+                "500 visiteurs max",
+                "500 m²",
+                "500 œuvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "вход = entrée (prix)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Льготный билет » =",
+              "options": [
+                "tarif réduit",
+                "billet perdu",
+                "billet VIP",
+                "gratuit pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "льготный = préférentiel/réduit."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Последний понедельник месяца — санитарный день » =",
+              "options": [
+                "fermeture technique ce lundi-là",
+                "grande fête",
+                "nuit blanche",
+                "entrée double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sanitär = nettoyage/entretien, pas de public."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Аудиогид на русском и английском » =",
+              "options": [
+                "audioguide RU/EN",
+                "film sans son",
+                "guide papier seulement",
+                "interdit de parler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "аудиогид = audioguide."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Фотосъёмка без вспышки » =",
+              "options": [
+                "photos sans flash autorisées",
+                "photos interdites",
+                "vidéo obligatoire",
+                "flash obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "без вспышки = sans flash."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Гардероб бесплатно » =",
+              "options": [
+                "vestiaire gratuit",
+                "vestiaire interdit",
+                "manteau obligatoire payant",
+                "café gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "гардероб = vestiaire ; бесплатно = gratuit."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Affiche d'exposition",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Affiche « ВЫСТАВКА » : quels termes renvoient au thème artistique ?",
+              "options": [
+                "живопись",
+                "скulptура",
+                "расписание автобуса",
+                "борщ"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "peinture et sculpture ; les autres hors contexte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« До 30 апреля » =",
+              "options": [
+                "jusqu'au 30 avril",
+                "à partir du 30 avril",
+                "le 30 avril seulement",
+                "avril interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "до + date = échéance."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Художник: Репин » présente",
+              "options": [
+                "un artiste",
+                "un musicien",
+                "un athlète",
+                "un cuisinier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "художник = artiste/peintre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Третьяковская галерея » est",
+              "options": [
+                "une célèbre galerie moscovite",
+                "une gare",
+                "un stade",
+                "un aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère culturel majeur de Moscou."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Временная экспозиция » =",
+              "options": [
+                "exposition temporaire",
+                "collection permanente",
+                "magasin",
+                "cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "временная = temporaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Открытие выставки — 12 мая, 18:00 » =",
+              "options": [
+                "vernissage le 12 mai à 18 h",
+                "fermeture",
+                "prix du billet",
+                "fin des travaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "открытие = ouverture/inauguration."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Спонсор: … » indique",
+              "options": [
+                "mécène / sponsor",
+                "horaire",
+                "langue",
+                "interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "спонсор = sponsor."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Бесплатный вход в первый четверг » =",
+              "options": [
+                "entrée gratuite le 1er jeudi (du mois)",
+                "toujours gratuit",
+                "jamais gratuit",
+                "jeudi fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule culturelle fréquente en Russie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Каталог на русском » =",
+              "options": [
+                "catalogue en russe",
+                "catalogue interdit",
+                "audio seulement",
+                "site en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "каталог = catalogue."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мастер-класс для школьников » =",
+              "options": [
+                "atelier pour lycéens/collégiens",
+                "examen",
+                "match",
+                "repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "мастер-класс = atelier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Menu de cantine",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "« Меню столовой » : quels plats sont typiques d'une cantine ?",
+              "options": ["котлета с пюре", "компот", "билет", "метро"],
+              "correctAnswers": [0, 1],
+              "explanation": "cutlet+puree et compote ; les autres hors menu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Первое / второе / напиток » structure",
+              "options": [
+                "entrée + plat + boisson",
+                "dessert seulement",
+                "un seul plat",
+                "buffet libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule soviétique/post-soviétique encore visible."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Комплексный обед — 350 р. » =",
+              "options": [
+                "formule déjeuner à 350 RUB",
+                "350 g de pain",
+                "350 places",
+                "350 kcal max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "комплексный обед = menu complet."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Салат « Оливье » » est",
+              "options": [
+                "salade Olivier (classique)",
+                "soupe",
+                "boisson",
+                "dessert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat emblématique des fêtes et cantines."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Гарячее блюдо » (orthographe ukr./vieille affiche) évoque",
+              "options": ["plat chaud", "plat froid", "boisson chaude", "pain"],
+              "correctAnswers": [0],
+              "explanation": "Même sens que « горячее блюдо »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Очередь с 12:30 » signale",
+              "options": [
+                "file d'attente attendue à 12 h 30",
+                "fermeture",
+                "gratuité",
+                "menu enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "очередь = queue."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Безалкогольные напитки » =",
+              "options": [
+                "boissons sans alcool",
+                "alcools forts",
+                "vins seulement",
+                "interdiction de boire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "безалкогольные = non alcoolisées."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Диетическое меню » =",
+              "options": [
+                "menu diététique",
+                "menu très épicé",
+                "menu géant",
+                "menu interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "диетическое = diététique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Стоимость по карте столовой » =",
+              "options": [
+                "paiement avec carte de cantine",
+                "carte bancaire seule",
+                "espèces seulement",
+                "gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carte prépayée interne fréquente."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Повторная порция по желанию » (affiche rare) =",
+              "options": [
+                "second service possible",
+                "portion unique",
+                "interdit de manger",
+                "dessert obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "повторная порция = deuxième portion."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Emploi du temps",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Document « Расписание уроков » : quels champs sont des matières ou créneaux ?",
+              "options": ["математика", "10:45–11:30", "улица", "билет"],
+              "correctAnswers": [0, 1],
+              "explanation": "maths = matière ; créneau horaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Урок № 3 » =",
+              "options": [
+                "3e cours de la journée",
+                "3e étage",
+                "3 profs",
+                "3 salles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "урок = cours."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Перемена 15 минут » =",
+              "options": [
+                "récréation de 15 min",
+                "cours de 15 min",
+                "retard 15 min",
+                "vacances 15 j"
+              ],
+              "correctAnswers": [0],
+              "explanation": "перемена = récréation."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кабинет 204 » =",
+              "options": ["salle 204", "bus 204", "204 élèves", "204 roubles"],
+              "correctAnswers": [0],
+              "explanation": "кабинет = salle de classe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Русский язык » dans l'emploi du temps =",
+              "options": [
+                "cours de russe",
+                "cours d'anglais",
+                "sport",
+                "musique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipline nationale obligatoire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Иностранный язык » =",
+              "options": [
+                "langue étrangère (LV2)",
+                "russe",
+                "maths",
+                "histoire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "иностранный = étranger."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Смена: первая » =",
+              "options": [
+                "première session (demi-journée)",
+                "deuxième semaine",
+                "nuit",
+                "week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écoles parfois en deux shifts."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День самоуправления » (note au planning) =",
+              "options": [
+                "journée des élèves délégués",
+                "examen",
+                "fermeture",
+                "vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition scolaire russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Собрание в 17:00 » =",
+              "options": [
+                "réunion à 17 h",
+                "cours matinal",
+                "match",
+                "concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "собрание = réunion."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Замена: физика вместо химии » =",
+              "options": [
+                "changement : physique à la place de chimie",
+                "annulation",
+                "double chimie",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "вместо = au lieu de."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Affiche de théâtre",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Affiche « БОЛЬШОЙ ТЕАТР » : quels mots renvoient au spectacle ?",
+              "options": ["балет", "опера", "расписание автобуса", "суп"],
+              "correctAnswers": [0, 1],
+              "explanation": "ballet et opéra au Bolchoï."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Спектакль » =",
+              "options": ["pièce / spectacle", "exposition", "match", "cours"],
+              "correctAnswers": [0],
+              "explanation": "спектакль = représentation."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Антракт 20 минут » =",
+              "options": [
+                "entracte 20 min",
+                "durée totale 20 min",
+                "retard 20 min",
+                "20 actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "антракт = entracte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Места в партере » =",
+              "options": [
+                "places en parterre",
+                "places en haut",
+                "carré d'or seulement",
+                "debout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "партер = parterre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дресс-код: вечерний » =",
+              "options": [
+                "tenue de soirée souhaitée",
+                "tenue sport",
+                "interdit de manteau",
+                "costume national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "вечерний = de soirée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Премьера » =",
+              "options": [
+                "première (nouvelle mise en scène)",
+                "dernière représentation",
+                "répétition",
+                "annulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "премьера = première."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Автор: Чехов » renvoie à",
+              "options": [
+                "Anton Tchekhov",
+                "Pouchkine seulement",
+                "Gogol obligatoire",
+                "Tolstoï toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand auteur de théâtre russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Билетный стол: +7 … » =",
+              "options": [
+                "bureau de billetterie (téléphone)",
+                "cafétéria",
+                "vestiaire",
+                "métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "билетный стол = guichet."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Детям до 6 лет вход запрещён » =",
+              "options": [
+                "interdit aux moins de 6 ans",
+                "gratuit pour enfants",
+                "obligatoire pour enfants",
+                "sans billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "до 6 лет = jusqu'à 6 ans."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Субтитры на английском » (tournée) =",
+              "options": [
+                "surtitres anglais",
+                "audio russe seulement",
+                "silence",
+                "programme papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "субтитры = sous-titres."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse documents",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Pour lire un document court en russe, quels outils sont utiles ?",
+              "options": [
+                "заголовок (titre)",
+                "цена / время",
+                "alphabet latin seul",
+                "ignorer les chiffres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Titre et indices chiffrés (prix, heures) orientent la compréhension."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вход / выход » sur un plan =",
+              "options": [
+                "entrée / sortie",
+                "achat / vente",
+                "montée / descente",
+                "ouvert / fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères de circulation."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сегодня / завтра » sur une affiche =",
+              "options": [
+                "aujourd'hui / demain",
+                "hier / demain",
+                "toujours / jamais",
+                "ici / là"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères temporels fréquents."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Бесплатно » =",
+              "options": ["gratuit", "cher", "fermé", "complet"],
+              "correctAnswers": [0],
+              "explanation": "Mot clé des affiches culturelles."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Только » =",
+              "options": ["seulement", "beaucoup", "souvent", "ensemble"],
+              "correctAnswers": [0],
+              "explanation": "Restriction (ex. « только наличные »)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« С … по … » exprime",
+              "options": [
+                "de… à… (plage)",
+                "sans… avec…",
+                "avant… après…",
+                "chez… chez…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure horaire standard."
+            },
+            {
+              "type": "single_choice",
+              "question": "« № » dans un document =",
+              "options": ["numéro", "non", "nom", "nord"],
+              "correctAnswers": [0],
+              "explanation": "Abréviation universelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« р. / руб. » =",
+              "options": ["roubles", "minutes", "mètres", "pages"],
+              "correctAnswers": [0],
+              "explanation": "Monnaie nationale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« внимание » en majuscules =",
+              "options": ["mise en garde", "remise", "menu", "merci"],
+              "correctAnswers": [0],
+              "explanation": "Équivalent de « attention »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Lire « Меню / Расписание / Афиша » distingue",
+              "options": [
+                "carte alimentaire, horaire, affiche d'événement",
+                "trois villes",
+                "trois langues",
+                "trois examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois types de documents visés en 2nde."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Alphabet cyrillique",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles lettres cyrilliques correspondent à des sons proches du français ?",
+              "options": ["А", "М", "Щ", "Ъ"],
+              "correctAnswers": [0, 1],
+              "explanation": "А ≈ a ; М ≈ m ; Щ = ch long ; Ъ = signe dur."
+            },
+            {
+              "type": "single_choice",
+              "question": "La lettre « Р » se prononce",
+              "options": ["r", "p", "n", "v"],
+              "correctAnswers": [0],
+              "explanation": "Piège visuel : Р = r, pas p."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Н » =",
+              "options": ["n", "h", "i", "g"],
+              "correctAnswers": [0],
+              "explanation": "Н = n ; H latine = ache en russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« В » =",
+              "options": ["v", "b", "w", "f"],
+              "correctAnswers": [0],
+              "explanation": "В = v."
+            },
+            {
+              "type": "single_choice",
+              "question": "« С » dans « сок » =",
+              "options": ["s", "c", "k", "z"],
+              "correctAnswers": [0],
+              "explanation": "С = s."
+            },
+            {
+              "type": "single_choice",
+              "question": "« У » =",
+              "options": ["ou", "u français fermé", "y", "w"],
+              "correctAnswers": [0],
+              "explanation": "У = son [ou]."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ж » =",
+              "options": ["j (son doux)", "ch", "ch long", "s"],
+              "correctAnswers": [0],
+              "explanation": "Ж ≈ j français dans « jour »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ц » =",
+              "options": ["ts", "tch", "k", "s"],
+              "correctAnswers": [0],
+              "explanation": "Ц = ts (pizza)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я » en début de mot « я » =",
+              "options": ["je", "ya / ia", "a seule", "o"],
+              "correctAnswers": [0],
+              "explanation": "Pronom je ; lettre = ya."
+            },
+            {
+              "type": "single_choice",
+              "question": "33 lettres modernes : combien de voyelles on retient souvent en classe ?",
+              "options": ["10", "5", "15", "1"],
+              "correctAnswers": [0],
+              "explanation": "Environ dix voyelles selon le décompte pédagogique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Grandes villes",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles paires ville — pays sont correctes ?",
+              "options": [
+                "Москва — Россия",
+                "Санкт-Петербург — Россия",
+                "Париж — Россия",
+                "Токio — Россия"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moscou et Saint-Pétersbourg sont en Russie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Москва » est",
+              "options": [
+                "la capitale",
+                "un village",
+                "une île grecque",
+                "une rivière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale politique et économique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Санкт-Петербург » fondée par Pierre le Grand est surtout connue pour",
+              "options": [
+                "canaux et musées",
+                "désert",
+                "volcans",
+                "grands barrages seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Venise du Nord », Ermitage…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кремль » évoque surtout",
+              "options": [
+                "ensemble fortifié au cœur de Moscou",
+                "gare",
+                "aéroport",
+                "stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole historique et politique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Красная площадь » =",
+              "options": [
+                "Place Rouge",
+                "Place Verte",
+                "Place Bleue",
+                "Place Jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "красная = rouge (sens historique « belle » aussi)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Невский проспект » est une artère de",
+              "options": [
+                "Saint-Pétersbourg",
+                "Moscou",
+                "Kazan",
+                "Vladivostok"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avenue centrale spb."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Владивосток » se situe",
+              "options": [
+                "à l'extrême Est, sur le Pacifique",
+                "en Crimée",
+                "en Sibérie centrale",
+                "en Finlande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Port du bout du Transsib."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Казань » est capitale de",
+              "options": ["Tatarstan", "Moscou", "Sibérie", "Arctique"],
+              "correctAnswers": [0],
+              "explanation": "Ville multiculturelle sur la Volga."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сибирь » désigne",
+              "options": [
+                "vaste région est/nord-est",
+                "quartier de Moscou",
+                "lac unique",
+                "montagne caucasienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace continental immense."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Русь » dans l'histoire scolaire renvoie à",
+              "options": [
+                "origines de l'État russe",
+                "Union soviétique seule",
+                "Fédération d'aujourd'hui seule",
+                "empire romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médievale, avant Empire moderne."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Fêtes nationales",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles dates sont des fêtes majeures en Russie ?",
+              "options": ["1 января", "9 мая", "14 juillet", "Thanksgiving US"],
+              "correctAnswers": [0, 1],
+              "explanation": "Nouvel An et Victoire ; les autres étrangers."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Новый год » =",
+              "options": ["Nouvel An", "Noël orthodoxe", "Pâques", "1er mai"],
+              "correctAnswers": [0],
+              "explanation": "Fête la plus populaire, sapin, Ded Moroz."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День Победы » (9 mai) commémore",
+              "options": [
+                "1945 / Grande Guerre patriotique",
+                "Révolution 1917",
+                "Fondation de Moscou",
+                "JO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Victoire sur l'Allemagne nazie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дед Мороз » =",
+              "options": [
+                "Père Frost (cadeaux)",
+                "Père Noël occidental seul",
+                "Saint Nicolas grec",
+                "lapin de Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure du Nouvel An russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Снегурочка » =",
+              "options": [
+                "petite-fille des neiges (compagne)",
+                "grand-mère des neiges",
+                "reine d'été",
+                "fée de forêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aide de Ded Moroz."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Рождество » (7 janvier pour orthodoxes) =",
+              "options": [
+                "Noël (calendrier julien)",
+                "Nouvel An",
+                "Maslenitsa",
+                "Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date julienne traditionnelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Масленица » =",
+              "options": [
+                "carnaval de la crêpe/blini",
+                "Armistice",
+                "Jour de la cosmonautique",
+                "Jour de la Russie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semaine avant le Carême."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День России » (12 juin) célèbre",
+              "options": [
+                "souveraineté / fédération moderne",
+                "chute du mur",
+                "hiver",
+                "moisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête nationale récente."
+            },
+            {
+              "type": "single_choice",
+              "question": "« 8 Марта » =",
+              "options": [
+                "Journée internationale des femmes",
+                "Jour des hommes",
+                "Victoire",
+                "Rentree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Très célébrée avec fleurs."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Салют » le 9 mai désigne",
+              "options": [
+                "feu d'artifice",
+                "défilé seulement",
+                "jeûne",
+                "messe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "salut / fireworks nocturnes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Monuments et patrimoine",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels lieux sont des repères culturels russes ?",
+              "options": ["Эрмитаж", "Байkal", "Tour Eiffel", "Big Ben"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ermitage (SPb) et lac Baïkal ; autres hors Russie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Эрмитаж » (Государственный) =",
+              "options": [
+                "grand musée à Saint-Pétersbourg",
+                "théâtre à Moscou",
+                "gare",
+                "monastère seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Millions d'objets, palais d'hiver."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Собор Василия Блаженного » =",
+              "options": [
+                "cathédrale Saint-Basile (Moscou)",
+                "Kremlin souterrain",
+                "gare Kazanskaïa",
+                "stade Luzhniki"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coupoles colorées, Place Rouge."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Транссиб » =",
+              "options": [
+                "chemin de fer transsibérien",
+                "métro moscovite",
+                "route de la soie",
+                "canal de Suez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relie Moscou à l'Extrême-Orient."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Байкал » =",
+              "options": [
+                "lac le plus profond / majeur",
+                "mont Elbrus",
+                "volcan Kamtchatka",
+                "désert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine naturel UNESCO."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Эльбрус » =",
+              "options": [
+                "plus haut sommet européen (Caucase)",
+                "fleuve Volga",
+                "lac Onega",
+                "baie d'Arctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montagne emblématique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Золотое кольцо » =",
+              "options": [
+                "circuit de villes anciennes près de Moscou",
+                "anneau olympique",
+                "ceinture de métro",
+                "route du thé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suzdal, Vladimir… tourisme culturel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Памятник » =",
+              "options": ["monument / statue", "billet", "menu", "horaire"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire ville + histoire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« UNESCO » sur une affiche russe indique",
+              "options": [
+                "patrimoine mondial protégé",
+                "match de foot",
+                "soldes",
+                "visa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Label international."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Русский музей » (Санкт-Петербург) est centré sur",
+              "options": [
+                "art russe",
+                "sport",
+                "technique seule",
+                "marine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peinture/sculpture nationales."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Carte et géographie",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Sur une carte en russe, quels mots sont des éléments géographiques ?",
+              "options": ["река", "озеро", "меню", "билет"],
+              "correctAnswers": [0, 1],
+              "explanation": "река = fleuve ; озеро = lac."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Москва река » =",
+              "options": [
+                "la Moskova (fleuve)",
+                "mer Noire",
+                "Baïkal",
+                "Volga seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traverse la capitale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Волга » =",
+              "options": [
+                "plus long fleuve européen de Russie",
+                "montagne",
+                "désert",
+                "golf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Axe historique et économique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Урал » =",
+              "options": [
+                "chaîne frontière Europe-Asie",
+                "lac",
+                "cap",
+                "volcan seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frontière conventionnelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Север » / « Юг » =",
+              "options": [
+                "nord / sud",
+                "est / ouest",
+                "haut / bas",
+                "gauche / droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points cardinaux."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Столица » =",
+              "options": ["capitale", "province", "village", "frontière"],
+              "correctAnswers": [0],
+              "explanation": "столица = capitale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Федерация » dans « Российская Федерация » =",
+              "options": [
+                "État fédéral ( régions)",
+                "monarchie",
+                "empire seul",
+                "union avec l'UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "86 sujets fédéraux environ."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Граница » =",
+              "options": ["frontière", "centre", "plage", "forêt"],
+              "correctAnswers": [0],
+              "explanation": "граница = limite."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Остров » =",
+              "options": ["île", "mont", "plaine", "dune"],
+              "correctAnswers": [0],
+              "explanation": "Ex. îles de Saint-Pétersbourg."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Климат континентale » (cours) décrit",
+              "options": [
+                "hivers froids, étés chauds à l'intérieur",
+                "tropical constant",
+                "désert sec partout",
+                "polaire été seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandes amplitudes en Russie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Traditions",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots relèvent de traditions russes ?",
+              "options": ["блины", "сауна / баня", "smartphone", "homework EN"],
+              "correctAnswers": [0, 1],
+              "explanation": "blinis (Maslenitsa) et banya."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Баня » =",
+              "options": [
+                "bain vapeur traditionnel",
+                "bibliothèque",
+                "banque",
+                "bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel social et santé."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Чай из самовара » =",
+              "options": [
+                "thé servi au samovar",
+                "café express",
+                "soda",
+                "jus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Samovar = icône culturelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Матрёшка » =",
+              "options": [
+                "poupées gigognes",
+                "balalaïka",
+                "ushanka seule",
+                "drapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvenir typique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Балалайка » =",
+              "options": ["instrument à cordes", "danse", "soupe", "fête"],
+              "correctAnswers": [0],
+              "explanation": "Triangle caractéristique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ушанка » =",
+              "options": [
+                "chapka à oreilles",
+                "botte",
+                "gant",
+                "écharpe seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coiffe hiver."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Гостеприимство » =",
+              "options": ["hospitalité", "vitesse", "colère", "tristesse"],
+              "correctAnswers": [0],
+              "explanation": "Valeur sociale importante."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Подарок » =",
+              "options": ["cadeau", "punition", "devoir", "ticket"],
+              "correctAnswers": [0],
+              "explanation": "Nouvel An, 8 mars…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Тост » (за …) =",
+              "options": [
+                "toast (porter un verre)",
+                "pain grillé seul",
+                "examen",
+                "poème interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discours court lors du repas."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сменная обувь » à l'école =",
+              "options": [
+                "chaussures d'intérieur",
+                "chaussures de sport seules",
+                "interdit de chaussures",
+                "uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude scolaire russe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Saint-Pétersbourg",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Saint-Pétersbourg : quels repères culturels ?",
+              "options": [
+                "Эрмитаж",
+                "Мариинский театр",
+                "Tour Eiffel",
+                "Colisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ermitage et théâtre Mariinski."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Город на Неве » =",
+              "options": [
+                "ville sur la Neva",
+                "ville sur la Volga",
+                "ville sur Baïkal",
+                "ville sur Seine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surnom poétique de SPb."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Белые ночи » =",
+              "options": [
+                "nuits claires d'été",
+                "neige permanente",
+                "black-out",
+                "fête de Noël"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénomène estival nordique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дворцовый мост » =",
+              "options": [
+                "pont du Palais (levée)",
+                "pont de Brooklyn",
+                "pont du Millénaire seul",
+                "pont romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image touristique classique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Петергоф » =",
+              "options": [
+                "parcs et fontaines (banlieue)",
+                "Kremlin",
+                "metro",
+                "aéroport Cheremetievo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Versailles » russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Пушкин » (ville) / musée lié au poète =",
+              "options": [
+                "Tsarskoïe Selo / Alexandre Pouchkine",
+                "Léon Tolstoï seul",
+                "Tchekhov seul",
+                "Gogol seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poète national, lyceum."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Блокада Ленинграда » (histoire) =",
+              "options": [
+                "siège WWII 1941–1944",
+                "révolution 1905",
+                "guerre froide seule",
+                "JO 1980"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoire collective intense."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ленинград » est l'ancien nom de",
+              "options": [
+                "Saint-Pétersbourg (période soviétique)",
+                "Moscou",
+                "Kiev",
+                "Minsk"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renommé en 1924–1991."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Развод мостов » =",
+              "options": [
+                "ouverture nocturne des ponts",
+                "fermeture métro",
+                "parade",
+                "feu d'artifice seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectacle estival navigation."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кунstkamera » (historique) =",
+              "options": [
+                "musée anthropologie Peter I",
+                "bibliothèque seule",
+                "stade",
+                "gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier musée public russe."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Symboles de l'État",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Symboles officiels : lesquels sont russes ?",
+              "options": [
+                "трикolor (drapeau)",
+                "герб с aigle bicéphale",
+                "drapeau US",
+                "Union Jack"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tricolore blanc-bleu-rouge et aigle."
+            },
+            {
+              "type": "single_choice",
+              "question": "Couleurs du drapeau (haut → bas) :",
+              "options": [
+                "blanc, bleu, rouge",
+                "rouge, blanc, bleu",
+                "bleu, jaune, rouge",
+                "vert, blanc, rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre officiel depuis les années 1990."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Гимн » =",
+              "options": ["hymne national", "poème seul", "devise", "carte"],
+              "correctAnswers": [0],
+              "explanation": "Musique de Alexandre Alexandrov (version moderne)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Герб » =",
+              "options": [
+                "armoiries / emblème",
+                "monnaie",
+                "timbre seul",
+                "passeport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aigle bicéphale sur fond heraldique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Президент » dirige",
+              "options": [
+                "l'exécutif fédéral",
+                "le metro seul",
+                "l'Ermitage",
+                "UNESCO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution post-soviétique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кремль » comme symbole =",
+              "options": [
+                "siège du pouvoir à Moscou",
+                "lac",
+                "fleuve",
+                "chaîne montagneuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaphore médiatique fréquente."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Рубль » (₽) =",
+              "options": ["monnaie nationale", "ville", "fête", "langue"],
+              "correctAnswers": [0],
+              "explanation": "Code ISO RUB."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Флаг на Красной площади » (cérémonie) =",
+              "options": [
+                "relève de la garde",
+                "match",
+                "concert rock",
+                "marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel touristique au Kremlin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Двуглавый орёл » =",
+              "options": ["aigle à deux têtes", "lion", "ours seul", "loup"],
+              "correctAnswers": [0],
+              "explanation": "Héritage impérial/byzantin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Государственный » dans un nom de musée =",
+              "options": [
+                "national / d'État",
+                "privé",
+                "régional seulement",
+                "étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préfixe fréquent (Гос. музей…)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Calendrier scolaire et fêtes",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels événements rythment l'année scolaire russe ?",
+              "options": [
+                "1 сентября",
+                "каникулы",
+                "Black Friday US",
+                "Thanksgiving"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rentree 1er sept. et vacances."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День знаний » (1 septembre) =",
+              "options": [
+                "rentrée des classes",
+                "dernier jour",
+                "examens seuls",
+                "fête des mères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cérémonie, fleurs aux profs."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Осенние каникулы » =",
+              "options": [
+                "vacances d'automne",
+                "vacances d'été seules",
+                "Noël seulement",
+                "Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une des périodes de каникулы."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Зимние каникулы » inclut souvent",
+              "options": [
+                "Nouvel An et début janvier",
+                "juillet",
+                "mai seul",
+                "septembre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue pause hivernale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Весенние каникулы » =",
+              "options": [
+                "vacances de printemps",
+                "rentrée",
+                "armée seule",
+                "récolte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin mars / avril selon région."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Летние каникулы » =",
+              "options": [
+                "grandes vacances d'été",
+                "une semaine",
+                "un week-end",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus longue période."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Последний звонок » =",
+              "options": [
+                "dernier coup de cloche (fin collège/lycée)",
+                "premier cours",
+                "examen",
+                "concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel de fin de scolarité."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Выпускной » =",
+              "options": [
+                "bal de fin d'études",
+                "rentrée",
+                "carnaval Maslenitsa",
+                "9 mai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soirée festive des terminaux."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День учителя » (5 octobre, calendrier int.) =",
+              "options": [
+                "hommage aux enseignants",
+                "jour des élèves",
+                "fermeture écoles",
+                "examens nationaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête professionnelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« День космонавтики » (12 avril) rappelle",
+              "options": [
+                "Gagarine 1961",
+                "Lune US",
+                "Spoutnik seul",
+                "ISS seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fierté spatiale soviétique/russe."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse civilisation",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Pour un repère de civilisation russe en 2nde, on retient surtout",
+              "options": [
+                "une ville emblématique",
+                "une fête nationale",
+                "une recette seule sans contexte",
+                "ignorer l'alphabet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Géographie culturelle + calendrier festif."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Русский язык » est langue officielle de",
+              "options": ["Fédération de Russie", "France", "Chine", "Brésil"],
+              "correctAnswers": [0],
+              "explanation": "Langue d'État, aussi minorités bilingues."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кириллица » honore",
+              "options": [
+                "Cyrille et Méthode (tradition)",
+                "Pierre le Grand seul",
+                "Lénine",
+                "Gagarine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alphabet slave ecclésiastique puis laïque."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мультикультурализм » en Russie (cours) mentionne souvent",
+              "options": [
+                "peuples et langues des régions",
+                "un seul dialecte",
+                "absence de minorités",
+                "anglais seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tatar, tchétchène, iakoute…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Патриотические » chants / hymnes à l'école visent",
+              "options": [
+                "identité et histoire partagée",
+                "menu cantine",
+                "horaire bus",
+                "publicité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension civique du programme."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Литература » au programme inclut souvent",
+              "options": [
+                "Pouchkine, Tolstoï, Tchekhov…",
+                "Shakespeare seul",
+                "Cervantes seul",
+                "Homère seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classiques nationaux."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Олимпиада по русскому языку » =",
+              "options": [
+                "concours scolaire de russe",
+                "JO sport",
+                "examen de conduite",
+                "concours cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olympiades disciplinaires russes."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дружба народов » (expression soviétique encore vue) =",
+              "options": [
+                "amitié des peuples",
+                "guerre des peuples",
+                "isolement",
+                "export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idéal multiculturel historique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Relier document + civilisation : une affiche du Bolchoï montre",
+              "options": [
+                "lien arts / institution nationale",
+                "horaire de tram",
+                "menu",
+                "carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture de l'affiche + repère culturel."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif 2nde « Culture et documents » :",
+              "options": [
+                "comprendre un support authentique et le situer",
+                "recopier sans lire",
+                "traduire mot à mot sans contexte",
+                "oublier les chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence du chapitre : document + repère."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

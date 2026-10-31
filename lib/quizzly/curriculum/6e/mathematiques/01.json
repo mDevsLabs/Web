@@ -1,0 +1,1783 @@
+{
+  "id": "6e-mathematiques-01",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Nombres entiers et décimaux",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Numération",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont strictement supérieurs à 3 450 ?",
+              "options": ["3 449", "3 451", "3 450", "3 500"],
+              "correctIndices": [1, 3]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Compare : 7 892 … 7 891",
+              "options": [">", "<", "=", "≠"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Quel est le plus grand ?",
+              "options": ["12 340", "12 403", "12 034", "12 304"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "5,6 … 5,60",
+              "options": ["<", ">", "=", "impossible"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Écris en chiffres : quatre mille vingt-trois.",
+              "options": ["4 023", "4 230", "4023", "4230"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Dans 56 789, le chiffre des dizaines de mille vaut :",
+              "options": ["5", "6", "7", "8"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "0,45 + 0,05 =",
+              "options": ["0,40", "0,50", "1,00", "0,55"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Arrondir 3,47 à l'unité donne :",
+              "options": ["3", "4", "3,4", "3,5"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le nombre 2 050 000 s'écrit aussi :",
+              "options": [
+                "205 millions",
+                "2,05 millions",
+                "20,5 millions",
+                "0,205 million"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Quelle fraction décimale vaut 0,7 ?",
+              "options": ["7/10", "7/100", "70/1000", "1/7"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont inférieurs à 100 ?",
+              "options": ["99", "100", "101", "50"],
+              "correctIndices": [0, 3]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Range du plus petit au plus grand : 8 ; 3 ; 11. Le milieu est :",
+              "options": ["3", "8", "11", "22"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "1,25 … 1,3",
+              "options": [">", "<", "=", "?"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Décomposition de 4 306 :",
+              "options": ["4300 + 6", "4000 + 306", "4000 + 30 + 6", "430 + 6"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "0,8 km en mètres :",
+              "options": ["8 m", "80 m", "800 m", "8000 m"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Le chiffre 9 dans 29,47 est le chiffre des :",
+              "options": ["unités", "dixièmes", "centièmes", "dizaines"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Écriture décimale de 3/4 :",
+              "options": ["0,34", "0,75", "0,43", "3,4"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Complète : 5, ___ = 5 unités et 3 dixièmes",
+              "options": ["0,3", "3", "0,03", "30"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Quel nombre est pair ?",
+              "options": ["127", "348", "501", "999"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "10 000 + 500 + 7 =",
+              "options": ["10 507", "10 570", "15 007", "1 507"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres décimaux sont égaux à 2,5 ?",
+              "options": ["2,50", "2,05", "25/10", "250/100"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Le successeur de 999 est :",
+              "options": ["998", "1000", "990", "1001"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Compare : -3 et 2 (on considère les entiers relatifs simples) :",
+              "options": ["-3 > 2", "-3 < 2", "-3 = 2", "non comparable"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "0,125 + 0,875 =",
+              "options": ["0,900", "1", "1,000", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "En chiffres : huit cent six.",
+              "options": ["806", "860", "8 006", "80 6"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Quelle est la valeur du 4 dans 54,321 ?",
+              "options": ["4", "40", "0,4", "0,04"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Arrondir 6,78 au dixième :",
+              "options": ["6,7", "6,8", "7", "6,77"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "3,2 × 10 =",
+              "options": ["32", "3,20", "320", "0,32"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le plus petit de {0,9 ; 0,89 ; 0,908} est :",
+              "options": ["0,9", "0,89", "0,908", "égaux"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "1 000 000 = … milliers",
+              "options": ["10", "100", "1 000", "10 000"],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels entiers sont multiples de 5 ?",
+              "options": ["15", "22", "35", "41"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Écriture fractionnaire de 0,25 :",
+              "options": ["1/4", "1/25", "25/10", "2/5"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "45,678 arrondi au centième :",
+              "options": ["45,67", "45,68", "45,7", "46"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Dans l'écriture 70 024, combien de dizaines de mille ?",
+              "options": ["7", "0", "70", "700"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "0,4 + 0,04 + 0,004 =",
+              "options": ["0,444", "0,404", "4,44", "0,44"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Quel nombre est entre 5,1 et 5,2 ?",
+              "options": ["5,09", "5,15", "5,21", "5,01"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "2,5 × 100 =",
+              "options": ["25", "250", "2500", "0,025"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Le double de 0,6 est :",
+              "options": ["0,12", "1,2", "0,62", "6"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Écris en lettres le nombre 1 007.",
+              "options": [
+                "mille sept",
+                "mille sept cent",
+                "cent sept",
+                "dix mille sept"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Comparer : 1/2 et 0,49",
+              "options": [
+                "1/2 < 0,49",
+                "1/2 > 0,49",
+                "1/2 = 0,49",
+                "impossible"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres ont 3 comme chiffre des unités ?",
+              "options": ["153", "230", "403", "312"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "0,09 × 10 =",
+              "options": ["0,9", "9", "0,009", "90"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "La moitié de 14 est :",
+              "options": ["6", "7", "8", "28"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Décompose 12,345 en unités, dixièmes, centièmes, millièmes :",
+              "options": [
+                "12 + 0,3 + 0,04 + 0,005",
+                "12 + 3 + 4 + 5",
+                "1 + 2 + 345",
+                "12 + 0,345"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Quel est l'antécédent de 501 ?",
+              "options": ["500", "502", "499", "5000"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "3,141 … 3,14",
+              "options": [">", "<", "=", "≈"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "250 centimes = … euros",
+              "options": ["0,25", "2,50", "25", "250"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Le nombre de dizaines dans 480 est :",
+              "options": ["8", "48", "480", "4"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "0,5 + 0,25 + 0,25 =",
+              "options": ["0,75", "1", "1,25", "0,525"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Écriture décimale de 45/100 :",
+              "options": ["0,45", "4,5", "0,045", "45"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont supérieurs ou égaux à 10 ?",
+              "options": ["9", "10", "10,1", "9,99"],
+              "correctIndices": [1, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de milliers dans 305 000 ?",
+              "options": ["3", "30", "305", "3050"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "1,001 + 0,999 =",
+              "options": ["1,900", "2", "2,000", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Quel nombre est impair ?",
+              "options": ["246", "135", "808", "420"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "0,3 × 0,1 =",
+              "options": ["0,03", "0,3", "3", "0,31"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Placer sur une droite : 0,5 est à mi-chemin entre :",
+              "options": ["0 et 0,1", "0 et 1", "1 et 2", "0,4 et 0,6"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Écriture en chiffres : trois virgule zéro cinq.",
+              "options": ["3,05", "3,5", "30,5", "3,005"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "1000 ÷ 100 =",
+              "options": ["1", "10", "100", "10000"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le plus grand entier à 3 chiffres est :",
+              "options": ["999", "990", "909", "100"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "0,2 + 0,2 + 0,2 + 0,2 + 0,2 =",
+              "options": ["0,10", "1", "0,25", "2,5"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres décimaux sont inférieurs à 1 ?",
+              "options": ["0,99", "1,0", "0,001", "1,01"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Dans 0,807, le chiffre des centièmes est :",
+              "options": ["8", "0", "7", "80"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "4 × 0,25 =",
+              "options": ["0,1", "1", "4,25", "0,25"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Écriture développée de 907 :",
+              "options": ["900 + 7", "90 + 7", "9000 + 7", "9 + 0 + 7"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Comparer 2,40 et 2,4 :",
+              "options": ["2,40 > 2,4", "2,40 < 2,4", "2,40 = 2,4", "≠"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "75 mm = … cm",
+              "options": ["0,75", "7,5", "75", "750"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Le quart de 100 est :",
+              "options": ["20", "25", "40", "50"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Nombre de centaines dans 12 400 :",
+              "options": ["124", "12", "1", "1240"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "0,999 … 1",
+              "options": [">", "<", "=", "≥"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Écriture décimale de 8/10 :",
+              "options": ["0,08", "0,8", "8,0", "0,18"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont des multiples de 10 ?",
+              "options": ["130", "135", "200", "205"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "1,5 + 2,5 =",
+              "options": ["3", "4", "4,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Arrondir 9,95 à l'unité :",
+              "options": ["9", "10", "9,9", "9,0"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Écrire 6 millions 40 en chiffres :",
+              "options": ["6 000 040", "6 040 000", "640", "6 400 000"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "0,6 - 0,2 =",
+              "options": ["0,4", "0,8", "4", "0,02"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Le tiers de 9 est :",
+              "options": ["3", "6", "27", "4,5"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Quel nombre a 5 dizaines et 8 unités ?",
+              "options": ["58", "85", "508", "580"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "10 × 0,07 =",
+              "options": ["0,7", "7", "0,007", "70"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Comparer : 0,33 et 1/3 (0,333…)",
+              "options": [
+                "0,33 > 1/3",
+                "0,33 < 1/3",
+                "0,33 = 1/3",
+                "impossible"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "500 + 500 =",
+              "options": ["550", "1000", "100", "505"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont strictement entre 4 et 5 ?",
+              "options": ["4,1", "5", "4,99", "3,9"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "2,000 … 2",
+              "options": ["<", ">", "=", "≠"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Écriture fractionnaire de 0,2 :",
+              "options": ["1/5", "2/10", "Les deux réponses A et B", "2/100"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "0,15 + 0,35 =",
+              "options": ["0,40", "0,50", "0,5", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Dans 1 234 567, le chiffre des unités de mille est :",
+              "options": ["4", "5", "6", "7"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "3,7 × 0 =",
+              "options": ["3,7", "0", "37", "indéfini"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Le nombre de dizaines dans 730 est :",
+              "options": ["3", "73", "7", "730"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "1,2 - 0,8 =",
+              "options": ["0,4", "0,6", "2,0", "4"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Quel est le plus petit entier à 4 chiffres ?",
+              "options": ["999", "1000", "1001", "0999"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "0,01 × 100 =",
+              "options": ["0,1", "1", "10", "100"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels nombres sont égaux à 100/1000 ?",
+              "options": ["0,1", "0,01", "1/10", "10/1000"],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Révision : 456 + 44 =",
+              "options": ["490", "500", "510", "400"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Révision : 1 000 - 237 =",
+              "options": ["763", "773", "673", "837"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Révision : compare 0,505 et 0,55",
+              "options": ["0,505 > 0,55", "0,505 < 0,55", "=", "≠"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Révision : écris deux cent cinq mille trois.",
+              "options": ["205 003", "205 300", "20 503", "2 050 003"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Révision : 0,9 - 0,45 =",
+              "options": ["0,45", "0,55", "0,54", "1,35"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Révision : valeur de 7 dans 72,1",
+              "options": ["7", "70", "0,7", "700"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Révision : 12 × 0,5 =",
+              "options": ["6", "12,5", "60", "0,6"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Révision : arrondir 4,51 à l'unité",
+              "options": ["4", "5", "4,5", "4,6"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Révision : 3/5 en décimal",
+              "options": ["0,35", "0,6", "0,53", "3,5"],
+              "correctIndex": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Calculs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles égalités sont vraies ?",
+              "options": [
+                "47 + 53 = 100",
+                "99 + 1 = 100",
+                "50 + 40 = 80",
+                "25 + 25 = 60"
+              ],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "356 + 428 =",
+              "options": ["774", "784", "684", "794"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "902 - 587 =",
+              "options": ["315", "325", "415", "305"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "24 × 5 =",
+              "options": ["100", "120", "125", "96"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Division euclidienne : 47 ÷ 6 → quotient et reste",
+              "options": ["q=7, r=5", "q=8, r=1", "q=7, r=6", "q=6, r=11"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "3 + 4 × 2 =",
+              "options": ["14", "11", "10", "24"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "12,4 + 3,6 =",
+              "options": ["15", "16", "16,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "8,5 - 2,3 =",
+              "options": ["6,2", "6,3", "5,2", "10,8"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "(5 + 3) × 4 =",
+              "options": ["20", "32", "17", "24"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "100 ÷ 4 =",
+              "options": ["20", "25", "40", "24"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels produits valent 60 ?",
+              "options": ["12 × 5", "15 × 4", "10 × 5", "8 × 7"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "703 - 459 =",
+              "options": ["244", "254", "344", "234"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "18 × 3 =",
+              "options": ["51", "54", "56", "48"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "83 ÷ 9 → quotient et reste",
+              "options": ["q=9, r=2", "q=8, r=11", "q=9, r=3", "q=10, r=7"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "20 - 6 ÷ 2 =",
+              "options": ["7", "17", "14", "4"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "0,75 + 1,25 =",
+              "options": ["1,9", "2", "2,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "5,5 × 2 =",
+              "options": ["10", "11", "11,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "144 ÷ 12 =",
+              "options": ["11", "12", "13", "14"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "2 × (7 + 8) =",
+              "options": ["22", "30", "17", "23"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "1 000 + 2 345 =",
+              "options": ["3 345", "2 445", "3 435", "3345"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles soustractions valent 25 ?",
+              "options": ["50 - 25", "100 - 75", "30 - 10", "40 - 20"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "67 × 4 =",
+              "options": ["258", "268", "278", "248"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "125 ÷ 8 → q et r",
+              "options": ["q=15, r=5", "q=16, r=7", "q=15, r=0", "q=14, r=13"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "15 + 9 × 2 =",
+              "options": ["48", "33", "30", "24"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "4,8 + 2,15 =",
+              "options": ["6,95", "7,05", "6,85", "7,95"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "9,0 - 4,75 =",
+              "options": ["4,25", "5,25", "4,35", "5,75"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "36 ÷ (6 - 2) =",
+              "options": ["6", "9", "12", "4"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "250 × 4 =",
+              "options": ["100", "1000", "900", "1040"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "1 204 - 876 =",
+              "options": ["328", "338", "428", "318"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "7 × 8 + 7 × 2 =",
+              "options": ["56", "70", "63", "14"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels calculs donnent 100 ?",
+              "options": ["25 × 4", "50 × 2", "20 × 4", "33 × 3"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "999 + 1 =",
+              "options": ["1000", "991", "1001", "990"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "56 ÷ 7 =",
+              "options": ["6", "7", "8", "9"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "100 - 37 × 2 =",
+              "options": ["126", "26", "74", "63"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "3,14 + 0,86 =",
+              "options": ["3,90", "4", "4,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "10,5 - 3,25 =",
+              "options": ["7,25", "7,35", "7,15", "8,25"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "96 ÷ 12 =",
+              "options": ["7", "8", "9", "6"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "(12 - 4) × (3 + 2) =",
+              "options": ["40", "36", "20", "44"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "45 + 38 + 55 =",
+              "options": ["128", "138", "148", "118"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "73 ÷ 8 → q et r",
+              "options": ["q=9, r=1", "q=8, r=9", "q=9, r=0", "q=10, r=7"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles expressions valent 18 ?",
+              "options": ["6 × 3", "9 × 2", "5 × 4", "12 + 5"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "408 × 2 =",
+              "options": ["816", "806", "718", "826"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "2 000 - 1 537 =",
+              "options": ["463", "473", "563", "453"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "48 ÷ 5 → q et r",
+              "options": ["q=9, r=3", "q=8, r=8", "q=10, r=2", "q=9, r=4"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "8 + 12 ÷ 3 =",
+              "options": ["6", "12", "20", "4"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "6,25 + 3,75 =",
+              "options": ["9", "10", "10,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "15,6 - 8,9 =",
+              "options": ["6,7", "7,7", "6,8", "7,5"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "125 × 8 =",
+              "options": ["900", "1000", "925", "1050"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "100 ÷ (5 × 2) =",
+              "options": ["10", "5", "20", "50"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "34 + 67 =",
+              "options": ["91", "101", "111", "97"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels quotients euclidiens sont corrects pour dividende 52 et diviseur 7 ?",
+              "options": [
+                "q=7, r=3",
+                "q=8, r=4",
+                "52 = 7×7 + 3",
+                "52 = 7×8 + 4"
+              ],
+              "correctIndices": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "29 × 11 =",
+              "options": ["309", "319", "329", "299"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "810 - 295 =",
+              "options": ["515", "525", "615", "505"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "5 × 6 - 4 × 3 =",
+              "options": ["18", "12", "42", "24"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "0,4 × 0,5 =",
+              "options": ["0,2", "0,02", "2", "0,9"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "7,5 + 2,5 + 4 =",
+              "options": ["13", "14", "14,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "63 ÷ 9 =",
+              "options": ["6", "7", "8", "9"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "(40 - 10) ÷ 6 =",
+              "options": ["4", "5", "6", "3"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "156 + 244 =",
+              "options": ["390", "400", "410", "380"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "91 ÷ 13 =",
+              "options": ["6", "7", "8", "9"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels calculs respectent la priorité des opérations et valent 16 ?",
+              "options": ["2 × (3 + 5)", "8 + 8", "4 × 3 + 4", "32 ÷ 2"],
+              "correctIndices": [0, 3]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "475 + 326 =",
+              "options": ["791", "801", "811", "781"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "1 500 - 678 =",
+              "options": ["822", "832", "922", "812"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "14 × 15 =",
+              "options": ["200", "210", "220", "195"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "101 ÷ 11 → q et r",
+              "options": ["q=9, r=2", "q=8, r=13", "q=9, r=1", "q=10, r=1"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "18 ÷ 3 + 2 × 5 =",
+              "options": ["16", "20", "26", "10"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "2,05 + 1,95 =",
+              "options": ["3,9", "4", "4,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "20,0 - 13,45 =",
+              "options": ["6,55", "7,55", "6,45", "7,45"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "75 × 12 =",
+              "options": ["850", "900", "800", "950"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "64 ÷ 8 =",
+              "options": ["7", "8", "9", "6"],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles divisions euclidiennes sont exactes (reste 0) ?",
+              "options": ["42 ÷ 7", "45 ÷ 9", "50 ÷ 8", "63 ÷ 7"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "888 + 112 =",
+              "options": ["990", "1000", "998", "1010"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "3 456 - 1 789 =",
+              "options": ["1667", "1677", "1767", "1657"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "16 × 25 =",
+              "options": ["350", "400", "375", "425"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "50 - 5 × 5 + 5 =",
+              "options": ["0", "25", "30", "50"],
+              "correctIndex": 2
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "1,2 × 3 =",
+              "options": ["3,6", "36", "1,23", "4,2"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "9,99 - 4,99 =",
+              "options": ["4", "5", "5,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "117 ÷ 13 =",
+              "options": ["8", "9", "10", "11"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "(100 - 25) × 2 =",
+              "options": ["100", "150", "175", "125"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "59 ÷ 6 → q et r",
+              "options": ["q=9, r=5", "q=10, r=1", "q=9, r=6", "q=8, r=11"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels calculs décimaux valent 1 ?",
+              "options": ["0,2 × 5", "0,25 × 4", "0,5 × 3", "10 × 0,1"],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "2 468 + 532 =",
+              "options": ["3000", "2990", "3010", "2900"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "5 000 - 2 345 =",
+              "options": ["2655", "2755", "2555", "3655"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "23 × 17 =",
+              "options": ["381", "391", "401", "371"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "200 ÷ 16 → q et r",
+              "options": ["q=12, r=8", "q=13, r=0", "q=12, r=0", "q=11, r=24"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "4 + 6 × 3 - 2 =",
+              "options": ["20", "16", "24", "28"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "3,33 + 6,67 =",
+              "options": ["9", "10", "10,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "12,5 - 4,75 =",
+              "options": ["7,75", "8,75", "7,85", "8,25"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "84 ÷ 14 =",
+              "options": ["5", "6", "7", "8"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "3 × (4 + 5) - 10 =",
+              "options": ["17", "27", "7", "37"],
+              "correctIndex": 0
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles égalités sont correctes ?",
+              "options": [
+                "7 × 8 = 56",
+                "9 × 9 = 81",
+                "6 × 7 = 41",
+                "12 × 12 = 144"
+              ],
+              "correctIndices": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Synthèse : 789 + 211 =",
+              "options": ["990", "1000", "900", "1100"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Synthèse : 1 000 - 648 =",
+              "options": ["352", "362", "452", "342"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Synthèse : 35 × 6 =",
+              "options": ["180", "210", "200", "220"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Synthèse : 100 ÷ 7 → q et r",
+              "options": ["q=14, r=2", "q=13, r=9", "q=14, r=0", "q=15, r=5"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Synthèse : 2 + 3 × 4² (4² = 16) =",
+              "options": ["80", "50", "68", "20"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Synthèse : 4,5 + 5,5 =",
+              "options": ["9", "10", "10,0", "Les réponses B et C"],
+              "correctIndex": 3
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Synthèse : 16,0 - 9,35 =",
+              "options": ["6,65", "7,65", "6,75", "7,55"],
+              "correctIndex": 0
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Synthèse : (50 + 50) ÷ 5 =",
+              "options": ["10", "20", "100", "5"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Synthèse : 99 × 3 =",
+              "options": ["277", "297", "287", "307"],
+              "correctIndex": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

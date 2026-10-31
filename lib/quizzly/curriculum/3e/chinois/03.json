@@ -1,0 +1,2643 @@
+{
+  "id": "3e-chinois-03",
+  "year": "3e",
+  "subject": "chinois",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Menu du restaurant 小馆",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Extrait : « 米饭 mǐfàn — 8元 · 面条 miàntiáo — 12元 ». Quelles lignes indiquent un plat principal ?",
+              "type": "multiple_choice",
+              "options": [
+                "米饭 mǐfàn (riz cuit)",
+                "可乐 kělè (cola)",
+                "面条 miàntiáo (nouilles)",
+                "茶 chá (thé)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "米饭 et 面条 sont des plats de base ; 可乐 et 茶 sont des boissons."
+            },
+            {
+              "id": "q2",
+              "question": "« 特价 tièjià » en tête de menu signifie surtout :",
+              "type": "single_choice",
+              "options": [
+                "Prix promotionnel",
+                "Fermé aujourd'hui",
+                "Réservation obligatoire",
+                "Menu enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "特价 = prix spécial / promotion."
+            },
+            {
+              "id": "q3",
+              "question": "« 元 yuán » après un chiffre indique :",
+              "type": "single_choice",
+              "options": [
+                "La monnaie (yuan)",
+                "La taille du plat",
+                "Le numéro de table",
+                "L'heure de service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "元 est l'unité monétaire chinoise."
+            },
+            {
+              "id": "q4",
+              "question": "« 不要辣 bù yào là » sur une commande veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Sans piment / pas épicé",
+                "Plus de riz",
+                "À emporter",
+                "Très sucré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不要 = ne pas vouloir ; 辣 = épicé/piment."
+            },
+            {
+              "id": "q5",
+              "question": "« 素菜 sùcài » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Plats végétariens",
+                "Viande de porc",
+                "Fruits de mer",
+                "Desserts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "素 = végétarien ; 菜 = plat/légumes."
+            },
+            {
+              "id": "q6",
+              "question": "Lire « 12元 » : le prix est :",
+              "type": "single_choice",
+              "options": [
+                "Douze yuan",
+                "Un yuan et deux",
+                "Cent vingt",
+                "Deux yuan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chinois, le chiffre arabe + 元 se lit comme en français."
+            },
+            {
+              "id": "q7",
+              "question": "« 打包 dǎbāo » en caisse signifie souvent :",
+              "type": "single_choice",
+              "options": [
+                "Emporter (sac à emporter)",
+                "Payer en carte",
+                "Manger sur place",
+                "Annuler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "打包 = mettre dans un sac, emporter."
+            },
+            {
+              "id": "q8",
+              "question": "« 水 shuǐ » sur un menu est :",
+              "type": "single_choice",
+              "options": ["Eau", "Soupe", "Vin", "Jus d'orange"],
+              "correctAnswers": [0],
+              "explanation": "水 = eau."
+            },
+            {
+              "id": "q9",
+              "question": "« 今日 jīnrì » sur une ardoise du jour :",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Chaque semaine"],
+              "correctAnswers": [0],
+              "explanation": "今日 = aujourd'hui (aujourd'hui en langue écrite)."
+            },
+            {
+              "id": "q10",
+              "question": "« 份 fèn » après un plat indique :",
+              "type": "single_choice",
+              "options": [
+                "Une portion",
+                "Une heure",
+                "Une table",
+                "Un ingrédient secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "份 = portion / part individuelle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Horaire de bus 203",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Panneau : « 首班车 shǒubānchē 6:00 · 末班车 mòbānchē 22:30 ». Quelles infos donnent début et fin de service ?",
+              "type": "multiple_choice",
+              "options": [
+                "首班车 6:00",
+                "票价 2元",
+                "末班车 22:30",
+                "下一站 学校"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "首班车 = premier bus ; 末班车 = dernier bus."
+            },
+            {
+              "id": "q2",
+              "question": "« 每 ten minutes 一班 » (每10分钟一班) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Un bus toutes les 10 minutes",
+                "Dix bus par heure seulement le matin",
+                "Arrêt fermé 10 minutes",
+                "Trajet de 10 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每…一班 = une fréquence régulière."
+            },
+            {
+              "id": "q3",
+              "question": "« 站 zhàn » sur la ligne 203 :",
+              "type": "single_choice",
+              "options": [
+                "Arrêt / station",
+                "Ticket",
+                "Conducteur",
+                "Quai réservé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "站 = arrêt (bus, métro, gare)."
+            },
+            {
+              "id": "q4",
+              "question": "« 方向 fāngxiàng : 火车站 » indique :",
+              "type": "single_choice",
+              "options": [
+                "Destination vers la gare",
+                "Retour au dépôt",
+                "Bus de nuit",
+                "Ligne annulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "方向 = sens / direction du trajet."
+            },
+            {
+              "id": "q5",
+              "question": "« 周末 zhōumò » l'horaire peut être :",
+              "type": "single_choice",
+              "options": [
+                "Différent le week-end",
+                "Identique à minuit",
+                "Sans bus",
+                "Réservé aux élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "周末 = week-end ; les horaires changent souvent."
+            },
+            {
+              "id": "q6",
+              "question": "« 请排队 qǐng páiduì » à l'arrêt :",
+              "type": "single_choice",
+              "options": [
+                "Veuillez faire la queue",
+                "Montez par l'arrière",
+                "Course prioritaire",
+                "Arrêt supprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请 = veuillez ; 排队 = faire la file."
+            },
+            {
+              "id": "q7",
+              "question": "Heure « 14:15 » se lit en usage courant :",
+              "type": "single_choice",
+              "options": [
+                "Quatorze heures quinze",
+                "Quatre heures et demie",
+                "Deux heures du matin",
+                "Une heure moins le quart"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les horaires affichent le format 24 h."
+            },
+            {
+              "id": "q8",
+              "question": "« 临时调整 línshí tiáozhěng » annonce :",
+              "type": "single_choice",
+              "options": [
+                "Modification temporaire",
+                "Prix réduit",
+                "Nouvelle ligne permanente",
+                "Gratuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "临时 = temporaire ; 调整 = ajuster."
+            },
+            {
+              "id": "q9",
+              "question": "« 刷卡 shuākǎ » pour monter :",
+              "type": "single_choice",
+              "options": [
+                "Passer la carte de transport",
+                "Acheter un sandwich",
+                "Demander un plan",
+                "Changer de ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刷 = passer/swipe ; 卡 = carte."
+            },
+            {
+              "id": "q10",
+              "question": "« 下一站 xià yī zhàn : 图书馆 » :",
+              "type": "single_choice",
+              "options": [
+                "Prochain arrêt : bibliothèque",
+                "Terminus bibliothèque",
+                "Bibliothèque fermée",
+                "Correspondance métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下一站 = prochain arrêt."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Affiche de cinéma",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Affiche : « 今天 jīntiān 19:30 · 明天 míngtiān 15:00 ». Quels mots indiquent des jours ?",
+              "type": "multiple_choice",
+              "options": [
+                "今天 (aujourd'hui)",
+                "电影 (film)",
+                "明天 (demain)",
+                "座位 (siège)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "今天 et 明天 situent les séances dans le temps."
+            },
+            {
+              "id": "q2",
+              "question": "« 场次 chǎngcì » sur l'affiche :",
+              "type": "single_choice",
+              "options": [
+                "Séance / horaire de projection",
+                "Titre du film",
+                "Nom du réalisateur",
+                "Langue des sous-titres uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "场次 = séance (cinéma, spectacle)."
+            },
+            {
+              "id": "q3",
+              "question": "« 票 piào » en bas d'affiche renvoie à :",
+              "type": "single_choice",
+              "options": [
+                "Billet",
+                "Popcorn",
+                "Sortie de secours",
+                "Bande-annonce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "票 = billet / ticket."
+            },
+            {
+              "id": "q4",
+              "question": "« 3D » avec « 眼镜 yǎnjìng » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Lunettes 3D",
+                "Film muet",
+                "Version courte",
+                "Entrée interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "眼镜 = lunettes."
+            },
+            {
+              "id": "q5",
+              "question": "« 国语 guóyǔ » pour la version :",
+              "type": "single_choice",
+              "options": [
+                "Langue chinoise (mandarin)",
+                "Anglais seulement",
+                "Sans son",
+                "Doublage japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "国语 = langue nationale, le mandarin."
+            },
+            {
+              "id": "q6",
+              "question": "« 已满 yǐ mǎn » sur une séance :",
+              "type": "single_choice",
+              "options": [
+                "Complet / plus de places",
+                "Gratuit",
+                "Reporté",
+                "Première mondiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "已满 = déjà plein."
+            },
+            {
+              "id": "q7",
+              "question": "« 大厅 dàtīng » avec une flèche :",
+              "type": "single_choice",
+              "options": [
+                "Hall / foyer",
+                "Toilettes",
+                "Parking",
+                "Scène extérieure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大厅 = grand hall, foyer."
+            },
+            {
+              "id": "q8",
+              "question": "Prix « 45元 » pour un billet étudiant marqué « 学生 xuésheng » :",
+              "type": "single_choice",
+              "options": [
+                "Tarif étudiant 45 yuan",
+                "45 élèves maximum",
+                "Film scolaire obligatoire",
+                "Durée 45 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 = étudiant/élève ; tarif associé."
+            },
+            {
+              "id": "q9",
+              "question": "« 请勿吸烟 qǐng wù xīyān » :",
+              "type": "single_choice",
+              "options": [
+                "Interdiction de fumer",
+                "Merci de fumer dehors",
+                "Zone fumeur",
+                "Ventilation en panne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请勿 = ne pas (formule d'interdiction)."
+            },
+            {
+              "id": "q10",
+              "question": "« 片长 piàn cháng 120分钟 » :",
+              "type": "single_choice",
+              "options": [
+                "Durée du film : 120 minutes",
+                "120 versions",
+                "Film interdit -12 ans",
+                "120 places"
+              ],
+              "correctAnswers": [0],
+              "explanation": "片长 = durée du film ; 分钟 = minutes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Plan de métro simplifié",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Légende : « 换乘 huànchéng · 出口 chūkǒu ». Quels symboles aident à changer de ligne et sortir ?",
+              "type": "multiple_choice",
+              "options": [
+                "换乘 (correspondance)",
+                "换乘 et 出口",
+                "出口 (sortie)",
+                "厕所 (toilettes)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "换乘 = changer de ligne ; 出口 = sortie."
+            },
+            {
+              "id": "q2",
+              "question": "« 线路 xiànlù 2 » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Ligne 2",
+                "Deux sorties",
+                "Deuxième wagon",
+                "Billet double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "线路 = ligne (de métro/bus)."
+            },
+            {
+              "id": "q3",
+              "question": "Couleur différente par ligne sur le plan sert à :",
+              "type": "single_choice",
+              "options": [
+                "Distinguer les lignes",
+                "Indiquer le prix",
+                "Montrer la météo",
+                "Marquer les restaurants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne a une couleur propre sur les plans chinois."
+            },
+            {
+              "id": "q4",
+              "question": "« 您在这里 nín zài zhèlǐ » avec un point :",
+              "type": "single_choice",
+              "options": [
+                "Vous êtes ici",
+                "Sortie interdite",
+                "Travaux",
+                "Fin de service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您 = vous (poli) ; 在这里 = être ici."
+            },
+            {
+              "id": "q5",
+              "question": "« 北 běi · 南 nán » sur la rose des vents :",
+              "type": "single_choice",
+              "options": [
+                "Nord et sud",
+                "Entrée et sortie",
+                "Montée et descente",
+                "Hier et demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "北 = nord ; 南 = sud."
+            },
+            {
+              "id": "q6",
+              "question": "Station « 人民广场 Rénmín Guǎngchǎng » est un nom de :",
+              "type": "single_choice",
+              "options": [
+                "Place du Peuple (exemple de lieu)",
+                "Horloge",
+                "Bus scolaire",
+                "Menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "人民 = peuple ; 广场 = place publique."
+            },
+            {
+              "id": "q7",
+              "question": "« 往 wǎng 浦东 Pǔdōng » sur un quai :",
+              "type": "single_choice",
+              "options": [
+                "Direction Pudong",
+                "Retour centre-ville",
+                "Ascenseur en panne",
+                "Quai fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "往 = vers (direction)."
+            },
+            {
+              "id": "q8",
+              "question": "« 首末班车 » en bas du plan rappelle :",
+              "type": "single_choice",
+              "options": [
+                "Premier et dernier métro",
+                "Prix du ticket",
+                "Nom du maire",
+                "Numéro de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même vocabulaire que pour les bus."
+            },
+            {
+              "id": "q9",
+              "question": "Icône 轮椅 (fauteuil) indique :",
+              "type": "single_choice",
+              "options": [
+                "Accès handicapé / PMR",
+                "Zone vélo",
+                "Boutique",
+                "Cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "轮椅 = fauteuil roulant, accessibilité."
+            },
+            {
+              "id": "q10",
+              "question": "Compter 3 stations entre A et B sur le plan, c'est lire :",
+              "type": "single_choice",
+              "options": [
+                "Le nombre d'arrêts intermédiaires",
+                "Le prix en yuan",
+                "L'âge du métro",
+                "La vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque point nommé = une station."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Carte des boissons",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 热 rè 奶茶 nǎichá · 冰 bīng 奶茶 ». Quels mots opposent chaud et froid ?",
+              "type": "multiple_choice",
+              "options": [
+                "热 (chaud)",
+                "冰 (glacé)",
+                "大 (grand)",
+                "小 (petit)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "热 = chaud ; 冰 = avec glace, froid."
+            },
+            {
+              "id": "q2",
+              "question": "« 中杯 zhōng bēi » taille :",
+              "type": "single_choice",
+              "options": [
+                "Taille moyenne",
+                "Très grande",
+                "Mini",
+                "Sans glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中 = moyen ; 杯 = tasse/format."
+            },
+            {
+              "id": "q3",
+              "question": "« 少糖 shǎo táng » :",
+              "type": "single_choice",
+              "options": [
+                "Peu sucré",
+                "Beaucoup sucre",
+                "Sans thé",
+                "Double lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "少 = peu ; 糖 = sucre."
+            },
+            {
+              "id": "q4",
+              "question": "« 果汁 guǒzhī » :",
+              "type": "single_choice",
+              "options": ["Jus de fruit", "Café", "Bière", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "果 = fruit ; 汁 = jus."
+            },
+            {
+              "id": "q5",
+              "question": "« 免费 refills » traduit souvent :",
+              "type": "single_choice",
+              "options": [
+                "续杯 xù bēi (recharge gratuite)",
+                "闭店 bì diàn",
+                "辣 là",
+                "票 piào"
+              ],
+              "correctAnswers": [0],
+              "explanation": "续杯 = remplir à nouveau le verre."
+            },
+            {
+              "id": "q6",
+              "question": "« 豆浆 dòujiāng » est :",
+              "type": "single_choice",
+              "options": ["Lait de soja", "Thé au lait", "Eau gazeuse", "Vin"],
+              "correctAnswers": [0],
+              "explanation": "豆 = soja ; 浆 = liquide/lait."
+            },
+            {
+              "id": "q7",
+              "question": "« 推荐 tuījiàn » sur la carte :",
+              "type": "single_choice",
+              "options": [
+                "Recommandé par la maison",
+                "Épuisé",
+                "Interdit aux mineurs",
+                "Sans prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "推荐 = recommander."
+            },
+            {
+              "id": "q8",
+              "question": "« 温 wēn » entre 热 et 冰 :",
+              "type": "single_choice",
+              "options": [
+                "Tiède / tempéré",
+                "Très piquant",
+                "Avec perles",
+                "Sans lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "温 = tiède, température modérée."
+            },
+            {
+              "id": "q9",
+              "question": "Lire « 18元 大杯 » :",
+              "type": "single_choice",
+              "options": [
+                "18 yuan pour le grand format",
+                "18 grandes tables",
+                "18 ingrédients",
+                "18 minutes d'attente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大杯 = grande taille + prix en yuan."
+            },
+            {
+              "id": "q10",
+              "question": "« 无咖啡因 wú kāfēi yīn » :",
+              "type": "single_choice",
+              "options": [
+                "Sans caféine",
+                "Double expresso",
+                "Thé vert obligatoire",
+                "Eau interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "无 = sans ; 咖啡因 = caféine."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Emploi du temps scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Grille : « 周一 zhōuyī 语文 · 周二 zhōu'èr 数学 ». Quels jours apparaissent ?",
+              "type": "multiple_choice",
+              "options": [
+                "周一 (lundi)",
+                "周三 (mercredi seul)",
+                "周二 (mardi)",
+                "周日 (dimanche)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "周一 = lundi ; 周二 = mardi."
+            },
+            {
+              "id": "q2",
+              "question": "« 第三节 dì sān jié » :",
+              "type": "single_choice",
+              "options": [
+                "Troisième cours (créneau)",
+                "Troisième étage",
+                "Trois devoirs",
+                "Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "节 = période/cours ; 第三 = troisième."
+            },
+            {
+              "id": "q3",
+              "question": "« 语文 yǔwén » matière :",
+              "type": "single_choice",
+              "options": [
+                "Langue et littérature chinoises",
+                "Sport",
+                "Musique",
+                "Informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "语文 = langue/littérature (chinois)."
+            },
+            {
+              "id": "q4",
+              "question": "« 休息 xiūxi 10:00—10:15 » :",
+              "type": "single_choice",
+              "options": [
+                "Pause récréation",
+                "Examen",
+                "Vacances",
+                "Cours de nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "休息 = repos/pause."
+            },
+            {
+              "id": "q5",
+              "question": "« 教室 jiàoshì 302 » indique :",
+              "type": "single_choice",
+              "options": [
+                "Salle de classe 302",
+                "Bus 302",
+                "302 élèves",
+                "302 yuan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教室 = salle de classe."
+            },
+            {
+              "id": "q6",
+              "question": "« 英语 Yīngyǔ » :",
+              "type": "single_choice",
+              "options": [
+                "Anglais (langue)",
+                "Géographie",
+                "Arts plastiques",
+                "Cantonais seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "英语 = langue anglaise."
+            },
+            {
+              "id": "q7",
+              "question": "« 自习 zìxí » soir :",
+              "type": "single_choice",
+              "options": [
+                "Étude autonome / travail personnel",
+                "Sortie obligatoire",
+                "Fête",
+                "Pas de cours toute la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "自习 = étudier par soi-même (surveillé)."
+            },
+            {
+              "id": "q8",
+              "question": "« 迟到 chídào » noté en rouge :",
+              "type": "single_choice",
+              "options": [
+                "Retard",
+                "Absence justifiée",
+                "Félicitations",
+                "Deuxième place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "迟到 = arriver en retard."
+            },
+            {
+              "id": "q9",
+              "question": "« 周五 zhōuwǔ » après 周四 :",
+              "type": "single_choice",
+              "options": ["Vendredi", "Jeudi", "Samedi", "Lundi"],
+              "correctAnswers": [0],
+              "explanation": "周五 = vendredi (五 = 5)."
+            },
+            {
+              "id": "q10",
+              "question": "« 考试 kǎoshì » dans la case :",
+              "type": "single_choice",
+              "options": [
+                "Contrôle / examen",
+                "Cantine",
+                "Piscine",
+                "Réunion parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "考试 = examen, contrôle."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Affiche culturelle locale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Affiche : « 展览 zhǎnlǎn · 免费 miǎnfèi ». Quelles infos attirent le public ?",
+              "type": "multiple_choice",
+              "options": [
+                "展览 (exposition)",
+                "展览 et 免费",
+                "免费 (gratuit)",
+                "辣 (épicé)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "展览 = expo ; 免费 = gratuit."
+            },
+            {
+              "id": "q2",
+              "question": "« 地点 dìdiǎn : 博物馆 » :",
+              "type": "single_choice",
+              "options": [
+                "Lieu : musée",
+                "Heure : minuit",
+                "Prix : 100",
+                "Interdit aux photos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "地点 = lieu ; 博物馆 = musée."
+            },
+            {
+              "id": "q3",
+              "question": "« 截止 jiézhǐ 5月10日 » :",
+              "type": "single_choice",
+              "options": [
+                "Date limite : 10 mai",
+                "Ouverture le 5 octobre",
+                "Durée 5 heures",
+                "5 artistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "截止 = date limite de fin."
+            },
+            {
+              "id": "q4",
+              "question": "« 书法 shūfǎ » atelier :",
+              "type": "single_choice",
+              "options": ["Calligraphie", "Cuisine", "Football", "Natation"],
+              "correctAnswers": [0],
+              "explanation": "书法 = art calligraphique."
+            },
+            {
+              "id": "q5",
+              "question": "« 扫码 sǎo mǎ » pour s'inscrire :",
+              "type": "single_choice",
+              "options": [
+                "Scanner le QR code",
+                "Payer en espèces seulement",
+                "Téléphoner au directeur",
+                "Écrire en pinyin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "扫码 = scanner un code."
+            },
+            {
+              "id": "q6",
+              "question": "« 欢迎 huānyíng » en gros titres :",
+              "type": "single_choice",
+              "options": ["Bienvenue", "Danger", "Fermé", "Interdit"],
+              "correctAnswers": [0],
+              "explanation": "欢迎 = bienvenue."
+            },
+            {
+              "id": "q7",
+              "question": "« 传统文化 chuántǒng wénhuà » :",
+              "type": "single_choice",
+              "options": [
+                "Culture traditionnelle",
+                "Fast-food",
+                "Métro express",
+                "Film d'horreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "传统 = traditionnel ; 文化 = culture."
+            },
+            {
+              "id": "q8",
+              "question": "« 下午 xiàwǔ 2点 » :",
+              "type": "single_choice",
+              "options": [
+                "Après-midi, 14 h (2点 = 2 heures)",
+                "Deux matinées",
+                "Deux jours",
+                "Deuxième mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下午 = après-midi ; 点 = heure."
+            },
+            {
+              "id": "q9",
+              "question": "« 志愿者 zhìyuànzhě » recrutés :",
+              "type": "single_choice",
+              "options": [
+                "Bénévoles",
+                "Professeurs payés",
+                "Policiers",
+                "Vendeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "志愿者 = bénévole."
+            },
+            {
+              "id": "q10",
+              "question": "« 合影 héyǐng 禁止 » :",
+              "type": "single_choice",
+              "options": [
+                "Photos de groupe interdites",
+                "Selfies obligatoires",
+                "Gratuit pour tous",
+                "Concert de nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "合影 = photo de groupe ; 禁止 = interdit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Plan du parc 公园",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Plan : « 入口 rùkǒu · 湖 hú · 卫生间 wèishēngjiān ». Quels repères sont utiles au visiteur ?",
+              "type": "multiple_choice",
+              "options": [
+                "入口 (entrée)",
+                "湖 (lac)",
+                "卫生间 (toilettes)",
+                "元 (yuan)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Entrée et toilettes sont des repères pratiques ; 湖 aussi mais la question cible entrée + sanitaires — 入口 et 卫生间."
+            },
+            {
+              "id": "q2",
+              "question": "« 湖 hú » sur le plan :",
+              "type": "single_choice",
+              "options": ["Lac", "Montagne", "Gare", "Cinéma"],
+              "correctAnswers": [0],
+              "explanation": "湖 = lac."
+            },
+            {
+              "id": "q3",
+              "question": "« 东门 Dōng mén » :",
+              "type": "single_choice",
+              "options": [
+                "Porte est",
+                "Porte ouest",
+                "Sortie sud",
+                "Entrée payante seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "东 = est ; 门 = porte."
+            },
+            {
+              "id": "q4",
+              "question": "« 禁止吸烟 » dans le parc comme au cinéma :",
+              "type": "single_choice",
+              "options": [
+                "Interdiction de fumer",
+                "Zone fumeur",
+                "Vente de cigarettes",
+                "Feu d'artifice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même formule d'interdiction."
+            },
+            {
+              "id": "q5",
+              "question": "« 开放时间 kāifàng shíjiān 6:00—21:00 » :",
+              "type": "single_choice",
+              "options": [
+                "Heures d'ouverture",
+                "Prix du ticket",
+                "Nombre d'arbres",
+                "Langue du guide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开放时间 = horaires d'ouverture."
+            },
+            {
+              "id": "q6",
+              "question": "« 路线 lùxiàn A » sentier :",
+              "type": "single_choice",
+              "options": [
+                "Itinéraire / parcours A",
+                "Bus ligne A",
+                "Salle A",
+                "Menu A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "路线 = itinéraire, parcours."
+            },
+            {
+              "id": "q7",
+              "question": "« 小心滑倒 xiǎoxīn huádǎo » près du lac :",
+              "type": "single_choice",
+              "options": [
+                "Attention, sol glissant",
+                "Nager interdit",
+                "Pique-nique obligatoire",
+                "Fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "小心 = attention ; 滑倒 = glisser, tomber."
+            },
+            {
+              "id": "q8",
+              "question": "« 门票 ménpiào 20元 » :",
+              "type": "single_choice",
+              "options": [
+                "Billet d'entrée 20 yuan",
+                "20 portes",
+                "Gratuit",
+                "20 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "门票 = billet d'entrée."
+            },
+            {
+              "id": "q9",
+              "question": "« 儿童乐园 értóng lèyuán » zone :",
+              "type": "single_choice",
+              "options": [
+                "Aire de jeux pour enfants",
+                "Bibliothèque",
+                "Cimetière",
+                "Usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "儿童 = enfants ; 乐园 = parc de loisirs."
+            },
+            {
+              "id": "q10",
+              "question": "Flèche « 北 ↑ » oriente le plan comme :",
+              "type": "single_choice",
+              "options": [
+                "Le nord en haut (convention)",
+                "Le sud en haut",
+                "Pas de sens",
+                "L'est uniquement à droite toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plans chinois indiquent souvent le nord."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Menu de cantine scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 星期一 红烧肉 hóngshāoròu · 星期二 清炒青菜 qīngchǎo qīngcài ». Quels plats sont nommés ?",
+              "type": "multiple_choice",
+              "options": [
+                "红烧肉 (porc braisé)",
+                "清炒青菜 (légumes verts)",
+                "地铁 (métro)",
+                "电影 (film)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux plats du menu hebdomadaire sont cités."
+            },
+            {
+              "id": "q2",
+              "question": "« 食堂 shítáng » :",
+              "type": "single_choice",
+              "options": [
+                "Cantine / réfectoire",
+                "Bibliothèque",
+                "Stade",
+                "Bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食堂 = cantine."
+            },
+            {
+              "id": "q3",
+              "question": "« 过敏 guòmǐn 请说明 » :",
+              "type": "single_choice",
+              "options": [
+                "Signaler une allergie",
+                "Demander plus de sel",
+                "Refuser de payer",
+                "Changer de classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "过敏 = allergie ; 请说明 = veuillez préciser."
+            },
+            {
+              "id": "q4",
+              "question": "« 汤 tāng » à côté du plat :",
+              "type": "single_choice",
+              "options": [
+                "Soupe",
+                "Dessert glacé",
+                "Boisson alcoolisée",
+                "Pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "汤 = soupe."
+            },
+            {
+              "id": "q5",
+              "question": "« 光盘 guāngdié » campagne affichée :",
+              "type": "single_choice",
+              "options": [
+                "Finir son assiette (anti-gaspillage)",
+                "Écouter un CD",
+                "Jeter la nourriture",
+                "Commander deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "光盘行动 = mouvement « assiette vide »."
+            },
+            {
+              "id": "q6",
+              "question": "« 排队取餐 páiduì qǔ cān » :",
+              "type": "single_choice",
+              "options": [
+                "Faire la queue pour recevoir le repas",
+                "Cuisiner soi-même",
+                "Manger dans la cour sans file",
+                "Sortir de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "取餐 = prendre le repas servi."
+            },
+            {
+              "id": "q7",
+              "question": "« 营养 yíngyǎng 搭配 » :",
+              "type": "single_choice",
+              "options": [
+                "Équilibre nutritionnel",
+                "Devoir de maths",
+                "Examen sportif",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "营养 = nutrition ; 搭配 = association équilibrée."
+            },
+            {
+              "id": "q8",
+              "question": "« 素食窗口 sùshí chuāngkǒu » :",
+              "type": "single_choice",
+              "options": [
+                "Guichet végétarien",
+                "Fenêtre ouverte",
+                "Caisse des profs",
+                "Poubelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "素食 = végétarien ; 窗口 = guichet."
+            },
+            {
+              "id": "q9",
+              "question": "« 今日例汤 jīnrì lì tāng » :",
+              "type": "single_choice",
+              "options": [
+                "Soupe du jour",
+                "Soupe interdite",
+                "Soupe d'hier",
+                "Sans soupe jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "例汤 = soupe proposée du jour."
+            },
+            {
+              "id": "q10",
+              "question": "« 11:30 开饭 kāi fàn » :",
+              "type": "single_choice",
+              "options": [
+                "Repas servi à 11 h 30",
+                "Fin des cours à minuit",
+                "Fermeture",
+                "Réunion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开饭 = commencer le repas / servir à manger."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Horaire d'un magasin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Vitrine : « 平日 píngrì 9:00—21:00 · 节假日 jiéjiàrì 10:00—22:00 ». Quels termes distinguent jours normaux et fériés ?",
+              "type": "multiple_choice",
+              "options": [
+                "平日 (jours ordinaires)",
+                "节假日 (jours fériés)",
+                "辣 (piment)",
+                "票 (billet)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "平日 = semaine/jours normaux ; 节假日 = vacances/fêtes."
+            },
+            {
+              "id": "q2",
+              "question": "« 营业中 yíngyè zhōng » néon :",
+              "type": "single_choice",
+              "options": [
+                "Ouvert (en service)",
+                "Fermé définitivement",
+                "En travaux",
+                "Réservé aux employés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "营业 = exercer le commerce ; 中 = en cours."
+            },
+            {
+              "id": "q3",
+              "question": "« 打折 dǎzhé » affiche :",
+              "type": "single_choice",
+              "options": [
+                "Promotion / réduction",
+                "Prix doublé",
+                "Produit interdit",
+                "Horaire change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "打折 = faire une réduction."
+            },
+            {
+              "id": "q4",
+              "question": "« 试衣间 shìyī jiān » :",
+              "type": "single_choice",
+              "options": ["Cabine d'essayage", "Cuisine", "Parking", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "试衣 = essayer des vêtements ; 间 = pièce."
+            },
+            {
+              "id": "q5",
+              "question": "« 收银台 shōuyíntái » :",
+              "type": "single_choice",
+              "options": [
+                "Caisse (paiement)",
+                "Entrée principale",
+                "Toilettes",
+                "Stock interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "收银 = encaisser ; 台 = comptoir."
+            },
+            {
+              "id": "q6",
+              "question": "« 退货 tuìhuò 7天内 » :",
+              "type": "single_choice",
+              "options": [
+                "Retour produit sous 7 jours",
+                "Retour après 7 ans",
+                "Pas de retour",
+                "Échange de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "退货 = retourner la marchandise ; 7天内 = dans les 7 jours."
+            },
+            {
+              "id": "q7",
+              "question": "« 暂停营业 zàntíng yíngyè » :",
+              "type": "single_choice",
+              "options": [
+                "Fermeture temporaire",
+                "Ouvert 24 h",
+                "Grande braderie",
+                "Nouveau magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "暂停 = suspendre temporairement."
+            },
+            {
+              "id": "q8",
+              "question": "« 会员 huìyuán » carte :",
+              "type": "single_choice",
+              "options": [
+                "Carte de fidélité / membre",
+                "Carte scolaire obligatoire",
+                "Passeport",
+                "Ticket métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会员 = membre (client fidèle)."
+            },
+            {
+              "id": "q9",
+              "question": "« 谢谢光临 xièxie guānglín » à la sortie :",
+              "type": "single_choice",
+              "options": [
+                "Merci de votre visite",
+                "Interdiction de revenir",
+                "Fermez la porte",
+                "Appelez la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "光临 = honorer de sa présence (formule polie)."
+            },
+            {
+              "id": "q10",
+              "question": "Lire « 21:00 关门 guān mén » :",
+              "type": "single_choice",
+              "options": [
+                "Fermeture à 21 h",
+                "Ouverture à 21 h",
+                "21 magasins",
+                "21 yuan seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "关门 = fermer (les portes)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Deux grandes villes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 北京 Běijīng » et « 上海 Shànghǎi » : que peut-on dire ?",
+              "type": "multiple_choice",
+              "options": [
+                "北京 est la capitale politique",
+                "上海 est une grande métropole économique et portuaire",
+                "Ce sont deux dialectes écrits",
+                "Ce sont deux jours fériés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "北京 = capitale ; 上海 = ville mondiale du commerce et du port."
+            },
+            {
+              "id": "q2",
+              "question": "北京 est la capitale de :",
+              "type": "single_choice",
+              "options": [
+                "La République populaire de Chine",
+                "Le Japon",
+                "La France",
+                "L'Inde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "北京 = Pékin, capitale chinoise."
+            },
+            {
+              "id": "q3",
+              "question": "« 市 shì » dans 北京市 :",
+              "type": "single_choice",
+              "options": [
+                "Ville (administrative)",
+                "Marché uniquement",
+                "Rivière",
+                "Montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "市 marque une ville de niveau municipal."
+            },
+            {
+              "id": "q4",
+              "question": "上海 est connue pour son :",
+              "type": "single_choice",
+              "options": [
+                "Port et skyline moderne",
+                "Désert de Gobi",
+                "Pôle nord",
+                "Grande Muraille seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shanghai : Bund, finance, port sur le Yangtsé."
+            },
+            {
+              "id": "q5",
+              "question": "« 人口 rénkǒu » d'une ville désigne :",
+              "type": "single_choice",
+              "options": ["La population", "Le métro", "La météo", "Le pinyin"],
+              "correctAnswers": [0],
+              "explanation": "人口 = population (personnes + bouche)."
+            },
+            {
+              "id": "q6",
+              "question": "Guangzhou 广州 est une grande ville du :",
+              "type": "single_choice",
+              "options": [
+                "Sud de la Chine",
+                "Pôle Nord",
+                "Tibet seul",
+                "Europe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "广州 (Canton) est au sud, proche de Hong Kong/Macau."
+            },
+            {
+              "id": "q7",
+              "question": "« 省 shěng » (ex. 四川省) :",
+              "type": "single_choice",
+              "options": ["Province", "Quartier", "Gare", "Menu"],
+              "correctAnswers": [0],
+              "explanation": "省 = province administrative."
+            },
+            {
+              "id": "q8",
+              "question": "Xi'an 西安 est célèbre pour l'histoire près de :",
+              "type": "single_choice",
+              "options": [
+                "Armée de terre cuite (région)",
+                "Grande barrière de corail",
+                "Pôle sud",
+                "Aucun monument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Xi'an : ancienne capitale, proximité des sites Qin."
+            },
+            {
+              "id": "q9",
+              "question": "« 长江 Cháng Jiāng » traverse l'est de la Chine ; c'est :",
+              "type": "single_choice",
+              "options": [
+                "Le fleuve Yangtsé (long fleuve)",
+                "Un métro",
+                "Une fête",
+                "Un alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "长江 = Yangtsé, fleuve majeur."
+            },
+            {
+              "id": "q10",
+              "question": "Hong Kong 香港 a un statut :",
+              "type": "single_choice",
+              "options": [
+                "Région administrative spéciale",
+                "Capitale de la France",
+                "Village sans électricité",
+                "Province du Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "香港 : R.A.S. de Chine, bilingue chinois-anglais."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fête du Printemps 春节",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 春节 Chūnjié » et « 过年 guònián » :",
+              "type": "multiple_choice",
+              "options": [
+                "春节 nomme la Fête du Printemps",
+                "过年 signifie « passer l'année » (Nouvel An)",
+                "Ce sont deux lignes de métro",
+                "Ce sont deux plats de cantine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "春节 = fête ; 过年 = vivre/passer le nouvel an lunaire."
+            },
+            {
+              "id": "q2",
+              "question": "« 红包 hóngbāo » tradition :",
+              "type": "single_choice",
+              "options": [
+                "Enveloppe rouge avec de l'argent",
+                "Chapeau bleu",
+                "Gâteau salé",
+                "Carte de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "红包 = enveloppe rouge (cadeau)."
+            },
+            {
+              "id": "q3",
+              "question": "« 团圆 tuányuán » repas :",
+              "type": "single_choice",
+              "options": [
+                "Retrouvailles en famille",
+                "Course de vélo",
+                "Examen final",
+                "Voyage seul obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "团圆 = retrouvailles, réunion familiale."
+            },
+            {
+              "id": "q4",
+              "question": "« 饺子 jiǎozi » souvent mangés :",
+              "type": "single_choice",
+              "options": [
+                "Au Nouvel An (Nord surtout)",
+                "Jamais en Chine",
+                "Seulement à Noël occidental",
+                "Uniquement le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "饺子 = raviolis, symbole de prospérité."
+            },
+            {
+              "id": "q5",
+              "question": "« 春联 chūnlián » sur les portes :",
+              "type": "single_choice",
+              "options": [
+                "Distiques du Nouvel An (calligraphie)",
+                "Plan de métro",
+                "Menu McDonald",
+                "Horaire de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "春联 = couplets de poésie pour le printemps."
+            },
+            {
+              "id": "q6",
+              "question": "« 龙 lóng » année du Dragon (exemple) :",
+              "type": "single_choice",
+              "options": [
+                "Un signe du zodiac chinois",
+                "Un jour de la semaine",
+                "Une monnaie",
+                "Une province"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十二生肖 inclut le dragon."
+            },
+            {
+              "id": "q7",
+              "question": "« 放鞭炮 fàng biānpào » (tradition) :",
+              "type": "single_choice",
+              "options": [
+                "Feux d'artifice / pétards (symbole)",
+                "Lire un menu",
+                "Dormir toute la journée",
+                "Étudier le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "鞭炮 = pétards, chasser les mauvais esprits."
+            },
+            {
+              "id": "q8",
+              "question": "Le calendrier du 春节 suit surtout :",
+              "type": "single_choice",
+              "options": [
+                "Le calendrier lunaire",
+                "Le calendrier musulman uniquement",
+                "Un cycle de 3 jours fixes",
+                "Le calendrier maya"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date changeante selon la lune."
+            },
+            {
+              "id": "q9",
+              "question": "« 恭喜发财 gōngxǐ fācái » :",
+              "type": "single_choice",
+              "options": [
+                "Vœu de prospérité",
+                "Demande de direction",
+                "Interdiction",
+                "Au revoir triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "恭喜 = félicitations ; 发财 = fortune."
+            },
+            {
+              "id": "q10",
+              "question": "« 初一 chūyī » premier jour :",
+              "type": "single_choice",
+              "options": [
+                "Premier jour du premier mois lunaire",
+                "Premier cours de maths",
+                "Premier bus",
+                "Premier euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "初一 = jour 1 du mois lunaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fête de la Mi-Automne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 中秋节 Zhōngqiū jié » associe souvent :",
+              "type": "multiple_choice",
+              "options": [
+                "月饼 yuèbǐng (gâteau de lune)",
+                "赏月 shǎng yuè (admirer la lune)",
+                "Grande Muraille uniquement",
+                "Horaire de métro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mid-Autumn : gâteaux de lune et contemplation de la pleine lune."
+            },
+            {
+              "id": "q2",
+              "question": "« 月饼 yuèbǐng » :",
+              "type": "single_choice",
+              "options": [
+                "Gâteau rond de la fête",
+                "Soupe de nouilles",
+                "Billet de train",
+                "Carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "月饼 = mooncake."
+            },
+            {
+              "id": "q3",
+              "question": "La fête tombe au :",
+              "type": "single_choice",
+              "options": [
+                "15e jour du 8e mois lunaire",
+                "1er janvier grégorien fixe",
+                "Chaque lundi",
+                "Jamais en automne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中秋 = milieu de l'automne, pleine lune."
+            },
+            {
+              "id": "q4",
+              "question": "« 月亮 yuèliang » symbolise :",
+              "type": "single_choice",
+              "options": [
+                "La lune (réunion, nostalgie)",
+                "Le soleil seulement",
+                "Le métro",
+                "Le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "月亮 = lune."
+            },
+            {
+              "id": "q5",
+              "question": "« 嫦娥 Cháng'é » légende :",
+              "type": "single_choice",
+              "options": [
+                "Figure lunaire de la mythologie",
+                "Conducteur de bus",
+                "Prof de sport",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "嫦娥 est liée à la lune dans le conte."
+            },
+            {
+              "id": "q6",
+              "question": "« 灯笼 dēnglong » la nuit :",
+              "type": "single_choice",
+              "options": [
+                "Lanternes décoratives",
+                "Ordinateurs",
+                "Chaussures",
+                "Examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "灯笼 = lanterne (souvent rouge)."
+            },
+            {
+              "id": "q7",
+              "question": "Famille « 赏月 » ensemble :",
+              "type": "single_choice",
+              "options": [
+                "Regarder la lune ensemble",
+                "Manger sans parler",
+                "Interdit de sortir",
+                "Remplacer le Nouvel An"
+              ],
+              "correctAnswers": [0],
+              "explanation": "赏月 = apprécier la lune."
+            },
+            {
+              "id": "q8",
+              "question": "Saveur classique de 月饼 :",
+              "type": "single_choice",
+              "options": [
+                "Pâte de graine de lotus ou noix",
+                "Poivron seul",
+                "Eau pure",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recettes traditionnelles sucrées/salées variées."
+            },
+            {
+              "id": "q9",
+              "question": "« 团圆 » revient aussi à Mid-Autumn car :",
+              "type": "single_choice",
+              "options": [
+                "La lune ronde évoque la réunion",
+                "C'est un jour de course",
+                "École obligatoire",
+                "Pas de sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rondeur = union familiale."
+            },
+            {
+              "id": "q10",
+              "question": "« 八月十五 bā yuè shíwǔ » date populaire :",
+              "type": "single_choice",
+              "options": [
+                "15 août lunaire (expression)",
+                "15 août grégorien toujours",
+                "8 h 15 du matin",
+                "815 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression pour la date lunaire de la fête."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mandarin et pinyin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 普通话 Pǔtōnghuà » et « 汉语 Hànyǔ » :",
+              "type": "multiple_choice",
+              "options": [
+                "普通话 désigne le mandarin standard",
+                "汉语 désigne la langue chinoise (Han)",
+                "Ce sont deux monnaies",
+                "Ce sont deux stations de bus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "普通话 = langue commune ; 汉语 = nom général de la langue."
+            },
+            {
+              "id": "q2",
+              "question": "Le pinyin sert à :",
+              "type": "single_choice",
+              "options": [
+                "Transcrire la prononciation en alphabet latin",
+                "Remplacer tous les hanzi à l'école sans les lire",
+                "Compter l'argent",
+                "Dessiner des cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pinyin = romanisation officielle."
+            },
+            {
+              "id": "q3",
+              "question": "« 声调 shēngdiào » :",
+              "type": "single_choice",
+              "options": [
+                "Tons de la voix (4+ neutre)",
+                "Couleurs du drapeau",
+                "Types de bus",
+                "Heures de magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mandarin est tonal."
+            },
+            {
+              "id": "q4",
+              "question": "« nǐ hǎo » 你好 signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bonjour",
+                "Au revoir",
+                "Merci beaucoup",
+                "Excusez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你好 = salutation courante."
+            },
+            {
+              "id": "q5",
+              "question": "« 谢谢 xièxie » :",
+              "type": "single_choice",
+              "options": ["Merci", "Non", "Peut-être", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 = remerciement."
+            },
+            {
+              "id": "q6",
+              "question": "En Chine, on écrit surtout en :",
+              "type": "single_choice",
+              "options": [
+                "Caractères hanzi (plus pinyin pour apprendre)",
+                "Cyrillique officiel",
+                "Arabe obligatoire",
+                "Uniquement emojis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hanzi + pinyin à l'école pour la prononciation."
+            },
+            {
+              "id": "q7",
+              "question": "« 方言 fāngyán » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Dialectes régionaux",
+                "Une monnaie",
+                "Un plat",
+                "Un métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "方言 = parler local (cantonais, etc.)."
+            },
+            {
+              "id": "q8",
+              "question": "« 拼音 Pīnyīn » a été standardisé pour :",
+              "type": "single_choice",
+              "options": [
+                "Faciliter l'apprentissage et l'alphabétisation",
+                "Supprimer le chinois",
+                "Écrire en français",
+                "Coder des bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système des années 1950, usage pédagogique."
+            },
+            {
+              "id": "q9",
+              "question": "« 吗 ma » en fin de phrase :",
+              "type": "single_choice",
+              "options": [
+                "Marque souvent une question oui/non",
+                "Indique le passé",
+                "Remplace un nom",
+                "Compte les yuan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particule interrogative."
+            },
+            {
+              "id": "q10",
+              "question": "Lire « Zhōngguó » 中国 :",
+              "type": "single_choice",
+              "options": [
+                "Chine ( pays )",
+                "Japon",
+                "Corée du Nord seule",
+                "Thaïlande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中国 = pays du Milieu, la Chine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Caractères et sens",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 人 rén » et « 大 dà » :",
+              "type": "multiple_choice",
+              "options": [
+                "人 signifie « personne »",
+                "大 signifie « grand »",
+                "Ce sont des tickets de cinéma",
+                "Ce sont des heures de bus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux caractères élémentaires appris très tôt."
+            },
+            {
+              "id": "q2",
+              "question": "« 水 shuǐ » rappelle visuellement :",
+              "type": "single_choice",
+              "options": [
+                "L'eau (idée de flux)",
+                "Le feu",
+                "Une voiture",
+                "Un bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "水 = eau, composant fréquent."
+            },
+            {
+              "id": "q3",
+              "question": "« 简体字 jiǎntǐzì » en RPC :",
+              "type": "single_choice",
+              "options": [
+                "Caractères simplifiés (usage courant)",
+                "Caractères égyptiens",
+                "Pinyin seul",
+                "Braille chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "简体 = forme simplifiée vs 繁体."
+            },
+            {
+              "id": "q4",
+              "question": "« 爱 ài » (amour) en simplifié vs traditionnel 愛 montre :",
+              "type": "single_choice",
+              "options": [
+                "Réforme graphique du XXe siècle",
+                "Aucune différence jamais",
+                "Remplacement par l'alphabet",
+                "Usage uniquement au Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplification des traits."
+            },
+            {
+              "id": "q5",
+              "question": "Ordre des traits 笔画 :",
+              "type": "single_choice",
+              "options": [
+                "Règles pour écrire correctement",
+                "Ordre des bus",
+                "Menu du restaurant",
+                "Zodiac seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écriture suit un ordre standard."
+            },
+            {
+              "id": "q6",
+              "question": "« 木 mù » signifie souvent :",
+              "type": "single_choice",
+              "options": ["Arbre / bois", "Eau", "Or", "Route"],
+              "correctAnswers": [0],
+              "explanation": "木 = bois, arbre (radical)."
+            },
+            {
+              "id": "q7",
+              "question": "« 好 hǎo » (bon) combine :",
+              "type": "single_choice",
+              "options": [
+                "女 (femme) + 子 (enfant) — idée positive",
+                "Deux bus",
+                "Deux lunes",
+                "Rien de composé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure sémantique + phonétique courante."
+            },
+            {
+              "id": "q8",
+              "question": "« 数字 shùzì » :",
+              "type": "single_choice",
+              "options": [
+                "Chiffres / nombres",
+                "Couleurs",
+                "Fêtes",
+                "Provinces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "数字 = nombres (一, 二, 三… ou arabes)."
+            },
+            {
+              "id": "q9",
+              "question": "Lire horizontalement de gauche à droite en chinois moderne :",
+              "type": "single_choice",
+              "options": [
+                "Oui, surtout sur affiches et menus",
+                "Non, toujours de bas en haut seule",
+                "Uniquement en arabe",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens gauche-droite dominant aujourd'hui."
+            },
+            {
+              "id": "q10",
+              "question": "« 学 xué » dans 学生 :",
+              "type": "single_choice",
+              "options": ["Étudier / apprendre", "Manger", "Dormir", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "学 = étudier ; 学生 = élève."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Grande Muraille 长城",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 长城 Chángchéng » et « 万里 wànlǐ » évoquent :",
+              "type": "multiple_choice",
+              "options": [
+                "Longue muraille défensive",
+                "Expression « dix mille li » ( très long )",
+                "Un menu de cantine",
+                "Un horaire de cinéma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "长城 = Grande Muraille ; 万里长城 = « muraille de dix mille li »."
+            },
+            {
+              "id": "q2",
+              "question": "But principal historique :",
+              "type": "single_choice",
+              "options": [
+                "Défense des frontières nord",
+                "Piscine olympique",
+                "Aéroport",
+                "Bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection contre raids nomades."
+            },
+            {
+              "id": "q3",
+              "question": "« 北京 » secteurs touristiques (Badaling, etc.) :",
+              "type": "single_choice",
+              "options": [
+                "Sections visitables près de Pékin",
+                "Sous l'océan Pacifique",
+                "En Afrique",
+                "Fictives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sections restaurées accessibles aux visiteurs."
+            },
+            {
+              "id": "q4",
+              "question": "« 世界遗产 shìjiè yíchǎn » :",
+              "type": "single_choice",
+              "options": [
+                "Patrimoine mondial (UNESCO)",
+                "Ticket de bus",
+                "Gâteau de lune",
+                "Devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classement UNESCO du site."
+            },
+            {
+              "id": "q5",
+              "question": "Construction sur plusieurs :",
+              "type": "single_choice",
+              "options": [
+                "Dynasties / siècles",
+                "Jours seulement",
+                "Minutes",
+                "Planètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforcements sur Qin, Ming, etc."
+            },
+            {
+              "id": "q6",
+              "question": "« 烽火台 fēnghuǒtái » :",
+              "type": "single_choice",
+              "options": [
+                "Tour de signalisation (feux)",
+                "Cinéma",
+                "Cantine",
+                "Métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tours pour transmettre des alertes."
+            },
+            {
+              "id": "q7",
+              "question": "Visiteur marche sur :",
+              "type": "single_choice",
+              "options": [
+                "Sentier et marches en pierre/brique",
+                "Rails de TGV uniquement",
+                "Eau",
+                "Nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemins pentus, escaliers."
+            },
+            {
+              "id": "q8",
+              "question": "« 游客 yóukè » panneau :",
+              "type": "single_choice",
+              "options": [
+                "Touristes",
+                "Professeurs",
+                "Soldats actifs",
+                "Robots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "游客 = visiteur/touriste."
+            },
+            {
+              "id": "q9",
+              "question": "Mythe « visible depuis la Lune » :",
+              "type": "single_choice",
+              "options": [
+                "Faux avec l'œil nu ; symbole culturel fort",
+                "Vrai sans télescope",
+                "Mur invisible",
+                "Mur en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole national, pas visible depuis l'espace à l'œil nu."
+            },
+            {
+              "id": "q10",
+              "question": "« 历史 lìshǐ » liée au site :",
+              "type": "single_choice",
+              "options": [
+                "Histoire longue de la Chine",
+                "Recette de soupe",
+                "Horaire 203",
+                "Pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "历史 = histoire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dynasties repères",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 秦 Qín » et « 汉 Hàn » :",
+              "type": "multiple_choice",
+              "options": [
+                "秦 est une dynastie d'unification",
+                "汉 est une dynastie impériale majeure",
+                "Ce sont deux boissons glacées",
+                "Ce sont deux sorties de métro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repères chronologiques de l'histoire chinoise."
+            },
+            {
+              "id": "q2",
+              "question": "« 朝代 cháodài » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Dynastie (période impériale)",
+                "Heure de bus",
+                "Taille de tasse",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朝代 = dynastie."
+            },
+            {
+              "id": "q3",
+              "question": "« 明 Míng » dynastie connue pour :",
+              "type": "single_choice",
+              "options": [
+                "Renforcements de la Grande Muraille",
+                "Invention du pizza",
+                "Capitale à Paris",
+                "Alphabet latin officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ming : grands travaux dont le mur."
+            },
+            {
+              "id": "q4",
+              "question": "« 皇帝 huángdì » :",
+              "type": "single_choice",
+              "options": ["Empereur", "Élève", "Conducteur", "Serveur"],
+              "correctAnswers": [0],
+              "explanation": "皇帝 = empereur."
+            },
+            {
+              "id": "q5",
+              "question": "« 唐 Táng » évoque une époque :",
+              "type": "single_choice",
+              "options": [
+                "Florissante (poésie, routes)",
+                "Sans écriture",
+                "Futuriste 2026",
+                "Grecque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tang : âge d'or culturel."
+            },
+            {
+              "id": "q6",
+              "question": "« 丝绸之路 Sīchóu zhī lù » :",
+              "type": "single_choice",
+              "options": [
+                "Route de la soie (échanges)",
+                "Ligne de bus 1",
+                "Corridor de cantine",
+                "Fil de lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce vers l'Asie centrale et l'Occident."
+            },
+            {
+              "id": "q7",
+              "question": "Fin des dynasties impériales ≈ :",
+              "type": "single_choice",
+              "options": [
+                "Début XXe siècle (1911 révolution)",
+                "Hier",
+                "500 av. J.-C. seulement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute de la dynastie Qing, république."
+            },
+            {
+              "id": "q8",
+              "question": "« 故宫 Gùgōng » à Pékin :",
+              "type": "single_choice",
+              "options": [
+                "Cité interdite (palais impériaux)",
+                "Stade",
+                "Gare",
+                "Parc d'attractions fictif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "故宫 = ancien palais des empereurs."
+            },
+            {
+              "id": "q9",
+              "question": "« 文明 wénmíng » :",
+              "type": "single_choice",
+              "options": ["Civilisation", "Bus", "Menu", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "文明 = civilisation."
+            },
+            {
+              "id": "q10",
+              "question": "Ordre chronologique simplifié appris en 3e :",
+              "type": "single_choice",
+              "options": [
+                "Repères clés (Qin, Han, Tang, Ming…)",
+                "Un seul jour",
+                "Alphabet inverse",
+                "Sans dates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retient des jalons, pas toute la liste."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Calligraphie 书法",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 毛笔 máobǐ » et « 墨 mò » :",
+              "type": "multiple_choice",
+              "options": [
+                "毛笔 est le pinceau",
+                "墨 est l'encre",
+                "Ce sont deux lignes de bus",
+                "Ce sont deux prix en yuan"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pinceau + encre = outils de base du 书法."
+            },
+            {
+              "id": "q2",
+              "question": "« 书法 shūfǎ » est considéré comme :",
+              "type": "single_choice",
+              "options": [
+                "Art majeur en Chine",
+                "Sport olympique obligatoire",
+                "Langue étrangère",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "书法 = art calligraphique."
+            },
+            {
+              "id": "q3",
+              "question": "« 楷书 kǎishū » style :",
+              "type": "single_choice",
+              "options": [
+                "Regular / standard lisible",
+                "Graffiti aléatoire",
+                "Chiffres romains",
+                "Braille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "楷书 = écriture régulière."
+            },
+            {
+              "id": "q4",
+              "question": "« 宣纸 xuānzhǐ » :",
+              "type": "single_choice",
+              "options": [
+                "Papier de riz pour calligraphie",
+                "Carte métro",
+                "Billet",
+                "Téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Papier absorbant traditionnel."
+            },
+            {
+              "id": "q5",
+              "question": "Pratiquer la calligraphie développe :",
+              "type": "single_choice",
+              "options": [
+                "Contrôle du trait et mémoire des caractères",
+                "Conduite de bus",
+                "Natation",
+                "Cuisine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien esthétique + apprentissage des hanzi."
+            },
+            {
+              "id": "q6",
+              "question": "« 作品 zuòpǐn » exposée :",
+              "type": "single_choice",
+              "options": ["Œuvre d'art", "Horaire", "Plan", "Recette"],
+              "correctAnswers": [0],
+              "explanation": "作品 = création, œuvre."
+            },
+            {
+              "id": "q7",
+              "question": "Sceau rouge « 印章 yìnzhāng » :",
+              "type": "single_choice",
+              "options": [
+                "Signature artistique gravée",
+                "Feu rouge",
+                "Ticket métro",
+                "Lanterne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tampon en pierre ou bois."
+            },
+            {
+              "id": "q8",
+              "question": "« 横 héng » trait :",
+              "type": "single_choice",
+              "options": [
+                "Trait horizontal",
+                "Trait vertical seulement",
+                "Cercle obligatoire",
+                "Point illégal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "横 = trait horizontal de base."
+            },
+            {
+              "id": "q9",
+              "question": "Calligraphie lors du 春节 sur 春联 :",
+              "type": "single_choice",
+              "options": [
+                "Courant (vœux en beaux caractères)",
+                "Interdit",
+                "En anglais seulement",
+                "Sans encre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplets calligraphiés sur papier rouge."
+            },
+            {
+              "id": "q10",
+              "question": "« 练习 liànxí » :",
+              "type": "single_choice",
+              "options": [
+                "S'entraîner / exercice",
+                "Fermer le magasin",
+                "Manger",
+                "Dormir en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "练习 = pratiquer, répéter."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Armée de terre cuite",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 兵马俑 Bīngmǎ yǒng » et « 西安 Xī'ān » sont liés à :",
+              "type": "multiple_choice",
+              "options": [
+                "Fouilles près de Xi'an",
+                "Statues du premier empereur Qin",
+                "Un cinéma de Shanghai",
+                "Un menu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "兵马俑 = armée en terre cuite ; site près de Xi'an."
+            },
+            {
+              "id": "q2",
+              "question": "« 秦始皇 Qín Shǐhuáng » :",
+              "type": "single_choice",
+              "options": [
+                "Premier empereur unificateur Qin",
+                "Professeur de français",
+                "Conducteur de métro",
+                "Astronaute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "秦始皇 = Shi Huangdi, dynastie Qin."
+            },
+            {
+              "id": "q3",
+              "question": "Statues représentent surtout :",
+              "type": "single_choice",
+              "options": [
+                "Soldats et chevaux",
+                "Pizzas",
+                "Bus 203",
+                "Lunes en chocolat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Armée funéraire protectrice."
+            },
+            {
+              "id": "q4",
+              "question": "« 考古 kǎogǔ » :",
+              "type": "single_choice",
+              "options": ["Archéologie", "Cuisine", "Sport", "Pinyin"],
+              "correctAnswers": [0],
+              "explanation": "考古 = étude des vestiges."
+            },
+            {
+              "id": "q5",
+              "question": "Découverte moderne (1974) par des :",
+              "type": "single_choice",
+              "options": [
+                "Paysans creusant un puits",
+                "Robots martiens",
+                "Enfants en classe de 3e",
+                "Pirates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découverte fortuite près de Xi'an."
+            },
+            {
+              "id": "q6",
+              "question": "Couleurs originales des statues :",
+              "type": "single_choice",
+              "options": [
+                "Peintures vives (souvent effacées)",
+                "Toujours bleu métro",
+                "Invisibles jamais peintes",
+                "Or seulement aujourd'hui sur place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pigments antiques, dégradation au temps."
+            },
+            {
+              "id": "q7",
+              "question": "« 博物馆 bówùguǎn » sur place :",
+              "type": "single_choice",
+              "options": [
+                "Musée / site visitable",
+                "Cantine",
+                "Gare",
+                "Parc sans entrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "博物馆 = musée."
+            },
+            {
+              "id": "q8",
+              "question": "Chaque statue a des traits :",
+              "type": "single_choice",
+              "options": [
+                "Faciaux variés (artisans)",
+                "Identiques au millimètre numérique",
+                "Sans tête",
+                "En papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Individualisation des visages."
+            },
+            {
+              "id": "q9",
+              "question": "« 历史遗迹 lìshǐ yíjì » :",
+              "type": "single_choice",
+              "options": [
+                "Site historique",
+                "Ticket de cinéma",
+                "Horaire magasin",
+                "Plan métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "遗迹 = vestige, trace du passé."
+            },
+            {
+              "id": "q10",
+              "question": "Apprendre ce site en 3e aide à :",
+              "type": "single_choice",
+              "options": [
+                "Relier langue, histoire et géographie",
+                "Oublier le pinyin",
+                "Ne plus lire de menus",
+                "Ignorer les fêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère culturel majeur de la Chine antique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Zodiac 生肖",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 生肖 shēngxiào » inclut par ex. :",
+              "type": "multiple_choice",
+              "options": [
+                "鼠 shǔ (rat)",
+                "龙 lóng (dragon)",
+                "Bus 203",
+                "元 yuán"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cycle de 12 animaux ; rat et dragon en font partie."
+            },
+            {
+              "id": "q2",
+              "question": "Cycle complet du zodiac :",
+              "type": "single_choice",
+              "options": ["12 ans", "3 ans", "100 ans", "1 mois"],
+              "correctAnswers": [0],
+              "explanation": "Un animal par année lunaire, rotation sur 12."
+            },
+            {
+              "id": "q3",
+              "question": "« 你属什么？ Nǐ shǔ shénme ? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Quel est ton signe (animal) ?",
+                "Quel est ton bus ?",
+                "Ton menu ?",
+                "Ton plan ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "属 = appartenir au signe de naissance."
+            },
+            {
+              "id": "q4",
+              "question": "« 牛 niú » signe :",
+              "type": "single_choice",
+              "options": [
+                "Buffle / bœuf",
+                "Chat européen du calendrier",
+                "Poisson",
+                "Aigle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "牛 = bœuf/buffle dans le cycle."
+            },
+            {
+              "id": "q5",
+              "question": "Décoration du Nouvel An avec animaux :",
+              "type": "single_choice",
+              "options": [
+                "Images du signe de l'année",
+                "Horaires de métro",
+                "Plans de parc",
+                "Tickets de cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'année en cours est mise en avant."
+            },
+            {
+              "id": "q6",
+              "question": "« 虎 hǔ » :",
+              "type": "single_choice",
+              "options": ["Tigre", "Lapin", "Coq", "Chien"],
+              "correctAnswers": [0],
+              "explanation": "虎 = tigre."
+            },
+            {
+              "id": "q7",
+              "question": "Légendes du zodiac expliquent :",
+              "type": "single_choice",
+              "options": [
+                "Ordre des 12 animaux (course)",
+                "Prix du thé",
+                "Ligne 2 du métro",
+                "Grammaire française"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conte populaire de la course céleste."
+            },
+            {
+              "id": "q8",
+              "question": "« 羊 yáng » peut désigner :",
+              "type": "single_choice",
+              "options": [
+                "Chèvre / mouton (signe)",
+                "Dragon",
+                "Rat",
+                "Serpent occidental"
+              ],
+              "correctAnswers": [0],
+              "explanation": "羊 = ovins dans le cycle."
+            },
+            {
+              "id": "q9",
+              "question": "Compatibilité des signes en culture :",
+              "type": "single_choice",
+              "options": [
+                "Croyances populaires (mariage, chance)",
+                "Loi du code civil français",
+                "Horaire de bus",
+                "Recette obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage folklorique, pas une science."
+            },
+            {
+              "id": "q10",
+              "question": "Relier zodiac et 春节 :",
+              "type": "single_choice",
+              "options": [
+                "Chaque Nouvel An célèbre un nouvel animal",
+                "Rien à voir",
+                "Remplace le pinyin",
+                "Supprime les hanzi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage à l'animal suivant du cycle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

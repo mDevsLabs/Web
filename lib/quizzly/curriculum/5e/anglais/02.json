@@ -1,0 +1,2303 @@
+{
+  "id": "5e-anglais-02",
+  "year": "5e",
+  "subject": "anglais",
+  "title": "Famille et loisirs",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La famille",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent des parents ? (deux réponses)",
+              "options": ["mother", "sister", "father", "cousin"],
+              "correctAnswers": [0, 2],
+              "explanation": "Mother et father sont la mère et le père ; sister et cousin ne sont pas des parents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « le frère » en anglais ?",
+              "options": ["brother", "sister", "uncle", "nephew"],
+              "correctAnswers": [0],
+              "explanation": "Brother signifie « frère »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la traduction de « la grand-mère » ?",
+              "options": ["grandfather", "grandmother", "aunt", "grandparent"],
+              "correctAnswers": [1],
+              "explanation": "Grandmother correspond à « grand-mère »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cousin » en français, c'est…",
+              "options": ["le neveu", "le cousin", "l'oncle", "le petit-fils"],
+              "correctAnswers": [1],
+              "explanation": "Cousin se traduit par « cousin » (ou « cousine » pour une fille)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « les parents » (père et mère) ?",
+              "options": ["parents", "relatives", "children", "grandparents"],
+              "correctAnswers": [0],
+              "explanation": "Parents désigne le père et la mère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot anglais signifie « la fille » ?",
+              "options": ["son", "daughter", "wife", "niece"],
+              "correctAnswers": [1],
+              "explanation": "Daughter signifie « fille » (enfant féminin)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nephew » correspond à…",
+              "options": [
+                "le neveu",
+                "le petit-fils",
+                "le beau-frère",
+                "le cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nephew signifie « neveu »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'oncle » ?",
+              "options": ["aunt", "uncle", "father-in-law", "brother"],
+              "correctAnswers": [1],
+              "explanation": "Uncle se traduit par « oncle »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle traduction convient pour « aunt » ?",
+              "options": ["la tante", "la nièce", "la belle-sœur", "la mère"],
+              "correctAnswers": [0],
+              "explanation": "Aunt signifie « tante »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Son » en anglais familial signifie…",
+              "options": [
+                "le fils",
+                "sa / son (possessif)",
+                "le petit-fils",
+                "les deux premières réponses selon le contexte"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Son peut être « fils » ou le possessif « son / sa » selon la phrase."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Ma famille — vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des frères et sœurs ? (deux réponses)",
+              "options": ["brother", "father", "sister", "grandmother"],
+              "correctAnswers": [0, 2],
+              "explanation": "Brother et sister désignent un frère et une sœur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « This is my family », que signifie « my » ?",
+              "options": ["mon / ma / mes", "ton / ta", "son / sa", "notre"],
+              "correctAnswers": [0],
+              "explanation": "My est l'adjectif possessif « mon, ma, mes »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « mon père » ?",
+              "options": [
+                "my father",
+                "your father",
+                "his father",
+                "her father"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On associe my + father pour « mon père »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Her sister » signifie…",
+              "options": [
+                "sa sœur (à elle)",
+                "ta sœur",
+                "ma sœur",
+                "leur sœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Her + sister = sa sœur (à une fille ou une femme)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase présente la famille ?",
+              "options": [
+                "This is my family.",
+                "I like swimming.",
+                "She has got a dog.",
+                "We play football."
+              ],
+              "correctAnswers": [0],
+              "explanation": "This is my family présente la famille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Their grandparents » veut dire…",
+              "options": [
+                "leurs grands-parents",
+                "mes grands-parents",
+                "tes grands-parents",
+                "nos grands-parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Their = leur / leurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduire « nos enfants » ?",
+              "options": [
+                "our children",
+                "your children",
+                "their children",
+                "my children"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Our children = nos enfants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mot « baby » signifie…",
+              "options": [
+                "bébé",
+                "enfant (âge scolaire)",
+                "adolescent",
+                "adulte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baby désigne un très jeune enfant, un bébé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Twin » désigne…",
+              "options": [
+                "un jumeau / une jumelle",
+                "un cousin",
+                "un beau-père",
+                "un petit-enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Twin = jumeau ou jumelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une famille, « only child » signifie…",
+              "options": [
+                "enfant unique",
+                "premier enfant",
+                "dernier enfant",
+                "enfant adopté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Only child = enfant unique (sans frères ni sœurs)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Have got — affirmatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement have got à l'affirmatif ? (deux réponses)",
+              "options": [
+                "I have got a sister.",
+                "She have got a brother.",
+                "We have got two cats.",
+                "He have got a bike."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec she/he, on emploie has got, pas have got ; I et we prennent have got."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'ai un frère » ?",
+              "options": [
+                "I have got a brother.",
+                "I has got a brother.",
+                "I have a got brother.",
+                "I got have a brother."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec I, la forme est I have got + nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« She has got blue eyes » signifie…",
+              "options": [
+                "Elle a les yeux bleus.",
+                "Elle aime les yeux bleus.",
+                "Elle n'a pas les yeux bleus.",
+                "Elle voit en bleu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Has got exprime la possession ou une caractéristique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme est correcte pour « ils ont » ?",
+              "options": [
+                "They have got",
+                "They has got",
+                "They have get",
+                "They haves got"
+              ],
+              "correctAnswers": [0],
+              "explanation": "They s'accorde avec have got."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour « mon cousin a », on écrit…",
+              "options": [
+                "My cousin has got",
+                "My cousin have got",
+                "My cousin haves got",
+                "My cousin has get"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cousin (he/she) → has got au singulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We have got a big family » veut dire…",
+              "options": [
+                "Nous avons une grande famille.",
+                "Nous sommes une grande famille.",
+                "Nous visitons une grande famille.",
+                "Nous aimons les grandes familles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have got indique ce que l'on possède ou ce dont on dispose."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Have got est surtout utilisé en anglais…",
+              "options": [
+                "britannique",
+                "uniquement écrit",
+                "uniquement au passé",
+                "jamais à l'oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have got est très courant en anglais britannique pour la possession."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« You have got a nice smile » s'adresse à…",
+              "options": [
+                "une ou plusieurs personnes (tu / vous)",
+                "lui seulement",
+                "elle seulement",
+                "moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "You prend have got, que ce soit singulier ou pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour dire « il a deux sœurs », on choisit…",
+              "options": [
+                "He has got two sisters.",
+                "He have got two sisters.",
+                "He has got two sister.",
+                "He have two sisters got."
+              ],
+              "correctAnswers": [0],
+              "explanation": "He → has got ; sisters est au pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Got dans have got exprime…",
+              "options": [
+                "la possession (avoir)",
+                "l'action de courir",
+                "le futur",
+                "la négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have got = avoir (possession)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Have got — négatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes négatives sont correctes ? (deux réponses)",
+              "options": [
+                "I haven't got a brother.",
+                "She hasn't got a car.",
+                "They hasn't got pets.",
+                "He haven't got a dog."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Haven't avec I/they ; hasn't avec she/he ; les mélanges he haven't et they hasn't sont faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je n'ai pas de sœur » ?",
+              "options": [
+                "I haven't got a sister.",
+                "I don't has got a sister.",
+                "I haven't get a sister.",
+                "I not have got a sister."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation de have got est haven't got."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« He hasn't got any cousins » signifie…",
+              "options": [
+                "Il n'a pas de cousins.",
+                "Il a beaucoup de cousins.",
+                "Il a un cousin.",
+                "Il cherche des cousins."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hasn't got = n'a pas ; any renforce la négation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La contraction de has not got est…",
+              "options": [
+                "hasn't got",
+                "haven't got",
+                "has'nt got",
+                "has not've got"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Has not → hasn't."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« We haven't got a garden » veut dire…",
+              "options": [
+                "Nous n'avons pas de jardin.",
+                "Nous avons un petit jardin.",
+                "Nous aimons le jardin.",
+                "Nous sommes dans le jardin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haven't got = n'avons pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après une négation, on emploie souvent…",
+              "options": ["any", "some", "a lot", "every"],
+              "correctAnswers": [0],
+              "explanation": "Any est fréquent dans les phrases négatives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "She hasn't got a bike.",
+                "They haven't got time.",
+                "It haven't got a name.",
+                "You haven't got homework."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Avec it/he/she, on dit hasn't, pas haven't."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« My parents haven't got a car » : sujet + négation = …",
+              "options": [
+                "My parents haven't got",
+                "My parents hasn't got",
+                "My parents don't has got",
+                "My parents not have got"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parents est pluriel → haven't got."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour dire « elle n'a pas d'animal », on écrit…",
+              "options": [
+                "She hasn't got a pet.",
+                "She haven't got a pet.",
+                "She hasn't get a pet.",
+                "She not has got a pet."
+              ],
+              "correctAnswers": [0],
+              "explanation": "She → hasn't got."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Haven't et hasn't remplacent…",
+              "options": [
+                "have not et has not",
+                "do not et does not",
+                "is not et are not",
+                "will not et would not"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les contractions de have not / has not dans have got."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Have got — questions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions avec have got sont bien formées ? (deux réponses)",
+              "options": [
+                "Have you got a sister?",
+                "Has she got a brother?",
+                "Have he got a dog?",
+                "Has they got a cat?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Have + you/we/they ; Has + he/she/it."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment demander « As-tu un frère ? »",
+              "options": [
+                "Have you got a brother?",
+                "Do you have got a brother?",
+                "Has you got a brother?",
+                "You have got a brother?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On inverse Have + sujet + got."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Has your mother got long hair? » attend une réponse du type…",
+              "options": [
+                "Yes, she has. / No, she hasn't.",
+                "Yes, she have. / No, she haven't.",
+                "Yes, she is. / No, she isn't.",
+                "Yes, she does. / No, she doesn't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond avec has/hasn't pour have got."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « Est-ce qu'ils ont des enfants ? » on choisit…",
+              "options": [
+                "Have they got children?",
+                "Has they got children?",
+                "Do they has got children?",
+                "They have got children?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "They → Have they got…?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une question, got reste…",
+              "options": [
+                "après le sujet",
+                "avant Have/Has",
+                "omis",
+                "remplacé par get"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure : Have/Has + sujet + got + …?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Has Tom got a big family? » : Tom est…",
+              "options": ["he → Has", "they → Have", "I → Have", "we → Has"],
+              "correctAnswers": [0],
+              "explanation": "Tom = he → Has Tom got…?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une réponse courte positive à « Have you got cousins? » est…",
+              "options": [
+                "Yes, I have.",
+                "Yes, I has.",
+                "Yes, I do got.",
+                "Yes, I've got."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse courte : Yes, I have. (sans répéter got)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Have your grandparents got a house? » parle de…",
+              "options": [
+                "tes grands-parents",
+                "mes grands-parents",
+                "ses grands-parents",
+                "nos grands-parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Your = tes / vos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour interroger sur « elle », on commence par…",
+              "options": ["Has", "Have", "Do", "Are"],
+              "correctAnswers": [0],
+              "explanation": "She → Has she got…?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« No, we haven't » répond à une question avec…",
+              "options": [
+                "Have we got…?",
+                "Are we…?",
+                "Do we like…?",
+                "Can we…?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haven't répond à Have … got."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Décrire sa famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs peuvent décrire une personne ? (deux réponses)",
+              "options": ["tall", "mother", "kind", "brother"],
+              "correctAnswers": [0, 2],
+              "explanation": "Tall (grand) et kind (gentil) sont des adjectifs ; mother et brother sont des noms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« My dad is funny » signifie…",
+              "options": [
+                "Mon papa est drôle.",
+                "Mon papa est grand.",
+                "Mon papa est strict.",
+                "Mon papa est fatigué."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Funny = drôle, amusant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dire « ma mère est gentille » ?",
+              "options": [
+                "My mum is kind.",
+                "My mum is kind of.",
+                "My mum are kind.",
+                "My mum have kind."
+              ],
+              "correctAnswers": [0],
+              "explanation": "My mum is + adjectif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Young » décrit quelqu'un…",
+              "options": ["jeune", "vieux", "grand", "petit (taille)"],
+              "correctAnswers": [0],
+              "explanation": "Young = jeune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « She is twelve years old », twelve indique…",
+              "options": ["l'âge", "la taille", "le métier", "la nationalité"],
+              "correctAnswers": [0],
+              "explanation": "Years old exprime l'âge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« He has got brown hair » parle de…",
+              "options": [
+                "la couleur des cheveux",
+                "la longueur des cheveux",
+                "les yeux",
+                "la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brown hair = cheveux bruns."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Old signifie souvent…",
+              "options": ["âgé / vieux", "nouveau", "content", "occupé"],
+              "correctAnswers": [0],
+              "explanation": "Old = vieux, âgé (ou ancien selon le contexte)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« They are friendly » veut dire qu'ils sont…",
+              "options": ["sympathiques", "tristes", "en colère", "silencieux"],
+              "correctAnswers": [0],
+              "explanation": "Friendly = amical, sympathique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter sa sœur : « This is my sister. ___ name is Emma. »",
+              "options": ["Her", "His", "Your", "Their"],
+              "correctAnswers": [0],
+              "explanation": "Sister → her name."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« We live in Paris » indique…",
+              "options": [
+                "le lieu de vie de la famille",
+                "un hobby",
+                "un repas",
+                "un sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Live in = habiter à."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Âges et famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent de l'âge ? (deux réponses)",
+              "options": [
+                "I am fourteen.",
+                "She is my aunt.",
+                "He is ten years old.",
+                "They have got a cat."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Am fourteen et ten years old indiquent l'âge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment demander l'âge en anglais ?",
+              "options": [
+                "How old are you?",
+                "How many years you?",
+                "What age have you?",
+                "How old you are?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How old are you? est la formule standard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I am thirteen » : thirteen = …",
+              "options": ["13", "30", "3", "33"],
+              "correctAnswers": [0],
+              "explanation": "Thirteen = treize (13)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un garçon de 11 ans : « He is ___ »",
+              "options": ["eleven", "eleventh", "eleven years", "eleven old"],
+              "correctAnswers": [0],
+              "explanation": "He is eleven ou eleven years old."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« My little brother is six » : little brother = …",
+              "options": ["petit frère", "grand frère", "cousin", "oncle"],
+              "correctAnswers": [0],
+              "explanation": "Little brother = petit frère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Older » signifie…",
+              "options": [
+                "plus âgé",
+                "plus jeune",
+                "plus petit",
+                "plus gentil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Older = plus âgé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse à « How old is your sister? » : « ___ is fifteen. »",
+              "options": ["She", "He", "It", "They"],
+              "correctAnswers": [0],
+              "explanation": "Sister → she."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Teenager » désigne…",
+              "options": [
+                "un adolescent",
+                "un bébé",
+                "un adulte",
+                "un grand-parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teenager = adolescent (environ 13–19 ans)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« We are the same age » veut dire…",
+              "options": [
+                "Nous avons le même âge.",
+                "Nous sommes cousins.",
+                "Nous habitons ensemble.",
+                "Nous sommes jumeaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Same age = même âge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Eighteen years old correspond à…",
+              "options": ["18 ans", "8 ans", "80 ans", "28 ans"],
+              "correctAnswers": [0],
+              "explanation": "Eighteen = dix-huit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pluriels et mots de famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pluriels de mots de famille sont corrects ? (deux réponses)",
+              "options": ["brothers", "childs", "children", "mothers"],
+              "correctAnswers": [0, 2],
+              "explanation": "Brothers et children sont corrects ; child → children (irrégulier)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pluriel de child est…",
+              "options": ["children", "childs", "childes", "childrens"],
+              "correctAnswers": [0],
+              "explanation": "Child a un pluriel irrégulier : children."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux brother → …",
+              "options": ["brothers", "brotheres", "brother", "brothers'"],
+              "correctAnswers": [0],
+              "explanation": "On ajoute -s : brothers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Grandparents » signifie…",
+              "options": [
+                "grands-parents (les deux ou plusieurs)",
+                "grand-mère seulement",
+                "grand-père seulement",
+                "parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandparents = grands-parents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« They are my cousins » : cousins est…",
+              "options": ["pluriel", "singulier", "un verbe", "une question"],
+              "correctAnswers": [0],
+              "explanation": "Cousins est le pluriel de cousin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "People signifie souvent…",
+              "options": [
+                "des personnes / des gens",
+                "des animaux",
+                "des maisons",
+                "des pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "People = personnes (pluriel de person)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Women » est le pluriel de…",
+              "options": ["woman", "women", "wife", "girl"],
+              "correctAnswers": [0],
+              "explanation": "Woman → women (irrégulier)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Men » est le pluriel de…",
+              "options": ["man", "men", "boy", "husband"],
+              "correctAnswers": [0],
+              "explanation": "Man → men."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Three sisters » décrit…",
+              "options": [
+                "trois sœurs",
+                "trois frères",
+                "trois cousins",
+                "trois oncles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sisters = sœurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Family au pluriel families signifie…",
+              "options": [
+                "plusieurs familles",
+                "une grande famille",
+                "la famille royale",
+                "famille (singulier)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Families = des familles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Famille — phrases à compléter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sur la famille sont correctes en anglais ? (deux réponses)",
+              "options": [
+                "My family is big.",
+                "My family are big.",
+                "I love my parents.",
+                "I love my parent."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Family est singulier (is) ; parents est pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« There are four people in my family » : people = …",
+              "options": ["personnes", "animaux", "maisons", "villes"],
+              "correctAnswers": [0],
+              "explanation": "People compte les personnes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisis la bonne phrase : « ___ got a sister. » (Elle)",
+              "options": ["She's", "She're", "She've", "She"],
+              "correctAnswers": [0],
+              "explanation": "She's got = She has got."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Who is he? » demande…",
+              "options": ["qui est-ce", "combien", "où", "quand"],
+              "correctAnswers": [0],
+              "explanation": "Who = qui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse : « ___ my uncle. »",
+              "options": ["He's", "She's", "They're", "I'm"],
+              "correctAnswers": [0],
+              "explanation": "Uncle → he → He's."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I haven't got any brothers » = …",
+              "options": [
+                "Je n'ai pas de frères.",
+                "Je n'ai pas de sœurs.",
+                "J'ai un frère.",
+                "J'ai deux frères."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brothers = frères ; any avec la négation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Meet my family » invite à…",
+              "options": [
+                "faire connaissance avec la famille",
+                "quitter la famille",
+                "telephoner",
+                "manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meet = rencontrer, faire connaissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Her name is Lisa » : Lisa est…",
+              "options": [
+                "une fille / femme (she)",
+                "un garçon (he)",
+                "un animal (it)",
+                "plusieurs personnes (they)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Her → elle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« We are a happy family » : happy = …",
+              "options": ["heureux / heureuse", "grand", "riche", "nombreux"],
+              "correctAnswers": [0],
+              "explanation": "Happy = heureux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Do you live with your grandparents? » parle de…",
+              "options": [
+                "habiter avec les grands-parents",
+                "aimer les grands-parents",
+                "appeler les grands-parents",
+                "visiter une fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Live with = habiter avec."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés à have got ? (deux réponses)",
+              "options": ["hasn't", "playing", "haven't", "swimming"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hasn't et haven't sont des formes de have got ; playing/swimming relèvent de like + -ing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction : « I have got a big brother. »",
+              "options": [
+                "J'ai un grand frère.",
+                "J'aime mon grand frère.",
+                "Mon grand frère est grand.",
+                "Je suis grand frère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have got = avoir ; big brother = grand frère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Niece » = …",
+              "options": ["nièce", "tante", "cousine", "sœur"],
+              "correctAnswers": [0],
+              "explanation": "Niece = nièce."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Question correcte : « ___ your father got a job? »",
+              "options": ["Has", "Have", "Do", "Are"],
+              "correctAnswers": [0],
+              "explanation": "Your father = he → Has."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« They haven't got any pets » : pets = …",
+              "options": [
+                "animaux de compagnie",
+                "parents",
+                "jouets",
+                "cousins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pets = animaux domestiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Husband » signifie…",
+              "options": ["mari", "épouse", "frère", "fils"],
+              "correctAnswers": [0],
+              "explanation": "Husband = mari."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Wife » signifie…",
+              "options": ["épouse", "sœur", "mère", "fille"],
+              "correctAnswers": [0],
+              "explanation": "Wife = épouse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Our family tree » : family tree = …",
+              "options": [
+                "arbre généalogique",
+                "maison familiale",
+                "photo de famille",
+                "repas de famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Family tree = arbre généalogique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« He's got green eyes » : contraction de He has got = …",
+              "options": ["He's got", "He've got", "He're got", "He'd got"],
+              "correctAnswers": [0],
+              "explanation": "He's = He is ou He has ; ici He has got → He's got."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour parler de toute la famille réunie : « ___ family » (toute la)",
+              "options": ["whole", "sport", "music", "reading"],
+              "correctAnswers": [0],
+              "explanation": "Whole family = toute la famille (vocabulaire utile en 5e)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vocabulaire des loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des loisirs ? (deux réponses)",
+              "options": ["hobby", "homework", "free time", "exam"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hobby et free time concernent les passe-temps ; homework et exam sont scolaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hobby » signifie…",
+              "options": [
+                "passe-temps / loisir favori",
+                "devoir",
+                "école",
+                "travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hobby = activité de loisir qu'on aime."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « le temps libre » ?",
+              "options": ["free time", "busy time", "school time", "bed time"],
+              "correctAnswers": [0],
+              "explanation": "Free time = temps libre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« At the weekend » veut dire…",
+              "options": ["le week-end", "en semaine", "le matin", "la nuit"],
+              "correctAnswers": [0],
+              "explanation": "Weekend = week-end."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Play the guitar » : guitar = …",
+              "options": ["guitare", "piano", "violon", "batterie"],
+              "correctAnswers": [0],
+              "explanation": "Guitar = guitare."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Watch TV » signifie…",
+              "options": [
+                "regarder la télé",
+                "écouter la radio",
+                "lire un livre",
+                "jouer au foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Watch TV = regarder la télévision."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Go shopping » = …",
+              "options": [
+                "faire les courses / shopping",
+                "aller à l'école",
+                "faire du sport",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Go shopping = aller faire les courses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ride a bike » décrit…",
+              "options": [
+                "faire du vélo",
+                "conduire une voiture",
+                "courir",
+                "nager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ride a bike = faire du vélo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Listen to music » : listen = …",
+              "options": ["écouter", "jouer", "chanter", "danser"],
+              "correctAnswers": [0],
+              "explanation": "Listen to = écouter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Activity » signifie…",
+              "options": ["activité", "animal", "anniversaire", "adresse"],
+              "correctAnswers": [0],
+              "explanation": "Activity = activité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Like + -ing — bases",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Après like, quelles formes sont correctes ? (deux réponses)",
+              "options": ["swimming", "swim", "reading", "to reading"],
+              "correctAnswers": [0, 2],
+              "explanation": "Like + verbe en -ing ; swim seul ou to reading sont incorrects ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I like playing football » signifie…",
+              "options": [
+                "J'aime jouer au football.",
+                "Je joue au football maintenant.",
+                "Je n'aime pas le football.",
+                "Je vais jouer au football."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Like + -ing exprime une activité aimée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Play → … après like",
+              "options": ["playing", "played", "plays", "playings"],
+              "correctAnswers": [0],
+              "explanation": "On ajoute -ing : playing."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« She likes dancing » : dancing vient de…",
+              "options": ["dance", "danced", "dances", "dancer"],
+              "correctAnswers": [0],
+              "explanation": "Dance + ing → dancing (e muet supprimé)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Run → … (like + -ing)",
+              "options": ["running", "runing", "runned", "runs"],
+              "correctAnswers": [0],
+              "explanation": "Run double le n : running."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We like watching films » : films = …",
+              "options": [
+                "films",
+                "film (toujours singulier)",
+                "filmes",
+                "filming"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Films = films (cinéma)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avec he/she/it, like devient…",
+              "options": ["likes", "like", "liking", "liked"],
+              "correctAnswers": [0],
+              "explanation": "3e personne singulier : likes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« I like drawing » : drawing = …",
+              "options": [
+                "dessiner / le dessin",
+                "dormir",
+                "nager",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Draw → drawing = dessiner."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Swim → swimming : pourquoi deux m ?",
+              "options": [
+                "consonne finale accentuée courte + une voyelle",
+                "règle du pluriel",
+                "faute d'orthographe",
+                "passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme run → running, on double la consonne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« They like singing » parle de…",
+              "options": [
+                "aimer chanter",
+                "chanter maintenant",
+                "ne pas aimer chanter",
+                "demander de chanter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Like + -ing = aimer faire (activité)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "N'aime pas — don't like",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment une aversion ? (deux réponses)",
+              "options": [
+                "I don't like running.",
+                "She doesn't like cooking.",
+                "He likes swimming.",
+                "We love reading."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Don't / doesn't like indiquent ce qu'on n'aime pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je n'aime pas jouer aux jeux vidéo » : …",
+              "options": [
+                "I don't like playing video games.",
+                "I don't like play video games.",
+                "I not like playing video games.",
+                "I doesn't like playing video games."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Don't like + -ing pour I."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec she, la négation de like est…",
+              "options": [
+                "doesn't like",
+                "don't like",
+                "not likes",
+                "doesn't likes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "She doesn't like (+ base ou -ing selon structure ; ici -ing après like)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« He doesn't like getting up early » : getting up = …",
+              "options": ["se lever", "se coucher", "manger", "étudier"],
+              "correctAnswers": [0],
+              "explanation": "Get up = se lever."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Don't s'utilise avec…",
+              "options": [
+                "I / you / we / they",
+                "he / she / it",
+                "uniquement I",
+                "uniquement they"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Do not → don't avec I, you, we, they."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We don't like doing homework » : doing homework = …",
+              "options": [
+                "faire les devoirs",
+                "aimer l'école",
+                "jouer",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homework = devoirs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question : « ___ you like swimming? » (négatif)",
+              "options": ["Don't", "Doesn't", "Not", "Aren't"],
+              "correctAnswers": [0],
+              "explanation": "Don't you like…? avec you."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She hates waiting » : hate est plus fort que…",
+              "options": ["don't like", "love", "enjoy", "prefer"],
+              "correctAnswers": [0],
+              "explanation": "Hate = détester, plus intense que not like."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après doesn't like, le verbe d'activité reste en…",
+              "options": [
+                "-ing",
+                "infinitif sans to seul",
+                "passé",
+                "participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Like (et don't like) + -ing en 5e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« They don't enjoy fishing » : enjoy ≈ …",
+              "options": [
+                "aimer / apprécier",
+                "refuser",
+                "oublier",
+                "commencer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjoy = apprécier (souvent + -ing aussi)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Sports et jeux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sports utilisent souvent play + sport ? (deux réponses)",
+              "options": [
+                "play tennis",
+                "play football",
+                "go swimming",
+                "go skiing"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Play + tennis/football ; go + swimming/skiing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I like playing basketball » : basketball = …",
+              "options": ["basket-ball", "volley", "rugby", "handball"],
+              "correctAnswers": [0],
+              "explanation": "Basketball = basket."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Go swimming » utilise…",
+              "options": [
+                "go + activité en -ing",
+                "play + sport",
+                "do + sport",
+                "make + sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Go swimming / go skiing sont des collocations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Do martial arts » : do s'emploie avec…",
+              "options": [
+                "certaines activités (gym, judo…)",
+                "tous les sports avec ballon",
+                "uniquement la musique",
+                "jamais les loisirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Do + gym, judo, etc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Team sport » = …",
+              "options": [
+                "sport d'équipe",
+                "sport individuel",
+                "jeu de société",
+                "sport extrême"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Team = équipe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« She likes playing chess » : chess = …",
+              "options": ["échecs", "dames", "cartes", "Monopoly"],
+              "correctAnswers": [0],
+              "explanation": "Chess = échecs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Video games » en loisir : « I like playing ___ »",
+              "options": [
+                "video games",
+                "the video game",
+                "videos game",
+                "gaming video"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression courante : video games."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Match » dans le sport = …",
+              "options": [
+                "match (rencontre)",
+                "entraînement",
+                "arbitre",
+                "terrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Match = rencontre sportive."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Win » signifie…",
+              "options": ["gagner", "perdre", "jouer", "s'entraîner"],
+              "correctAnswers": [0],
+              "explanation": "Win = gagner."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Practise » (UK) / practice (US) = …",
+              "options": [
+                "s'entraîner / pratiquer",
+                "arrêter",
+                "regarder",
+                "acheter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Practise = s'entraîner."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Musique et arts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités sont des loisirs artistiques ? (deux réponses)",
+              "options": [
+                "playing the piano",
+                "doing maths homework",
+                "singing in a choir",
+                "taking an exam"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Piano et choir (chorale) sont artistiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Play the piano » : on utilise l'article…",
+              "options": ["the", "a", "an", "aucun article"],
+              "correctAnswers": [0],
+              "explanation": "Instruments : play the piano, the guitar…"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I like listening to pop music » : pop = …",
+              "options": [
+                "musique pop",
+                "musique classique",
+                "jazz",
+                "rock uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pop music = musique pop."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Singing » vient de…",
+              "options": ["sing", "song", "singer", "sang"],
+              "correctAnswers": [0],
+              "explanation": "Sing → singing."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Painting » peut signifier…",
+              "options": [
+                "peindre / la peinture",
+                "jouer au tennis",
+                "nager",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paint → painting."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Band » dans la musique = …",
+              "options": [
+                "groupe (musical)",
+                "orchestre symphonique seulement",
+                "solo",
+                "concours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Band = groupe de musique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« She loves playing the violin » : violin = …",
+              "options": ["violon", "guitare", "flûte", "trompette"],
+              "correctAnswers": [0],
+              "explanation": "Violin = violon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Concert » = …",
+              "options": [
+                "concert",
+                "cours de musique",
+                "partition",
+                "microphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concert = même mot en français."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Photography » : hobby = …",
+              "options": ["photographie", "cinéma", "théâtre", "danse"],
+              "correctAnswers": [0],
+              "explanation": "Photography = photographie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« I enjoy writing stories » : writing = …",
+              "options": ["écrire", "lire", "parler", "écouter"],
+              "correctAnswers": [0],
+              "explanation": "Write → writing."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Activités de plein air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent des activités dehors ? (deux réponses)",
+              "options": [
+                "I like hiking.",
+                "I like sleeping indoors.",
+                "We enjoy camping.",
+                "She likes doing the dishes."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hiking et camping se pratiquent dehors."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Go for a walk » = …",
+              "options": [
+                "faire une promenade",
+                "courir un marathon",
+                "dormir",
+                "regarder la TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Walk = promenade."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Skateboarding » = …",
+              "options": [
+                "faire du skateboard",
+                "faire du ski",
+                "faire du surf",
+                "faire du vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Skateboard → skateboarding."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« I like going to the park » : park = …",
+              "options": ["parc", "plage", "montagne", "musée"],
+              "correctAnswers": [0],
+              "explanation": "Park = parc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Fishing » = …",
+              "options": ["pêche", "chasse", "natation", "voile"],
+              "correctAnswers": [0],
+              "explanation": "Fish → fishing = pêcher."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Climbing » peut signifier…",
+              "options": ["escalade", "plongée", "patinage", "équitation"],
+              "correctAnswers": [0],
+              "explanation": "Climb → climbing."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Beach » + loisir : « go to the ___ »",
+              "options": ["beach", "kitchen", "classroom", "office"],
+              "correctAnswers": [0],
+              "explanation": "Beach = plage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Horse riding » = …",
+              "options": ["équitation", "course à pied", "gymnastique", "boxe"],
+              "correctAnswers": [0],
+              "explanation": "Horse riding = équitation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Picnic » = …",
+              "options": [
+                "pique-nique",
+                "camping-car",
+                "barbecue seulement",
+                "restaurant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Picnic = pique-nique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Outdoor activities » = …",
+              "options": [
+                "activités en plein air",
+                "activités à la maison",
+                "devoirs",
+                "cours magistral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outdoor = en plein air."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fréquence et habitudes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes indiquent la fréquence ? (deux réponses)",
+              "options": ["always", "never", "brother", "happy"],
+              "correctAnswers": [0, 1],
+              "explanation": "Always et never parlent de fréquence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I always play football on Saturdays » : always = …",
+              "options": ["toujours", "jamais", "parfois", "rarement"],
+              "correctAnswers": [0],
+              "explanation": "Always = toujours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Never » signifie…",
+              "options": ["jamais", "toujours", "souvent", "de temps en temps"],
+              "correctAnswers": [0],
+              "explanation": "Never = jamais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sometimes I read comics » : sometimes = …",
+              "options": [
+                "parfois",
+                "tous les jours",
+                "jamais",
+                "chaque heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sometimes = parfois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Often » = …",
+              "options": ["souvent", "rarement", "une fois", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Often = souvent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Every day » avec like + -ing : « I like reading ___ »",
+              "options": ["every day", "yesterday", "tomorrow", "never day"],
+              "correctAnswers": [0],
+              "explanation": "Every day = tous les jours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Once a week » = …",
+              "options": [
+                "une fois par semaine",
+                "deux fois par jour",
+                "chaque mois",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Once a week = une fois par semaine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Usually » = …",
+              "options": [
+                "d'habitude / généralement",
+                "exceptionnellement",
+                "soudainement",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usually = en général."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adverbe de fréquence : place courante avec like…",
+              "options": [
+                "avant ou après le verbe like selon la phrase (souvent après le sujet)",
+                "toujours en fin de phrase en 5e",
+                "jamais en anglais",
+                "uniquement au début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e, on voit souvent I sometimes like… ou I like… every day."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hardly ever » signifie…",
+              "options": [
+                "presque jamais",
+                "toujours",
+                "très souvent",
+                "deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hardly ever = presque jamais."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Questions sur les loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions parlent de loisirs ? (deux réponses)",
+              "options": [
+                "What do you like doing?",
+                "How old are you?",
+                "Do you like swimming?",
+                "Have you got a sister?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "What do you like doing et Do you like swimming concernent les hobbies."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« What do you like doing in your free time? » demande…",
+              "options": [
+                "ce que tu aimes faire pendant ton temps libre",
+                "ton âge",
+                "ta famille",
+                "ton école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Free time = temps libre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : « I like ___ books. » (lire)",
+              "options": ["reading", "read", "to read", "reads"],
+              "correctAnswers": [0],
+              "explanation": "Like + reading."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Do you like dancing? » — réponse courte oui : …",
+              "options": [
+                "Yes, I do.",
+                "Yes, I like.",
+                "Yes, I does.",
+                "Yes, I am."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse avec do/don't."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Does he like playing rugby? » — réponse non : …",
+              "options": [
+                "No, he doesn't.",
+                "No, he don't.",
+                "No, he isn't.",
+                "No, he hasn't."
+              ],
+              "correctAnswers": [0],
+              "explanation": "He → does/doesn't."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« What's your favourite hobby? » : favourite = …",
+              "options": ["préféré", "dernier", "difficile", "secret"],
+              "correctAnswers": [0],
+              "explanation": "Favourite = préféré."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Who do you play football with? » parle de…",
+              "options": [
+                "avec qui tu joues",
+                "où tu joues",
+                "quand tu joues",
+                "pourquoi tu joues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Who = qui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« When do you practise the guitar? » : when = …",
+              "options": ["quand", "comment", "pourquoi", "combien"],
+              "correctAnswers": [0],
+              "explanation": "When = quand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Why do you like cooking? » attend…",
+              "options": [
+                "une raison",
+                "un lieu",
+                "un nombre",
+                "un membre de famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Why = pourquoi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« How often do you go swimming? » : how often = …",
+              "options": [
+                "à quelle fréquence",
+                "combien de temps",
+                "comment",
+                "où"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How often = combien de fois / à quelle fréquence."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Loisirs — phrases mixtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités utilisent go + -ing ? (deux réponses)",
+              "options": [
+                "go shopping",
+                "go swimming",
+                "play the drums",
+                "read a book"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Go shopping et go swimming suivent go + -ing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I prefer reading to watching TV » : prefer = …",
+              "options": ["préférer", "détester", "commencer", "arrêter"],
+              "correctAnswers": [0],
+              "explanation": "Prefer = préférer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cooking is fun » : fun = …",
+              "options": ["amusant", "difficile", "dangereux", "ennuyeux"],
+              "correctAnswers": [0],
+              "explanation": "Fun = amusant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Boring » décrit une activité…",
+              "options": ["ennuyeuse", "passionnante", "rapide", "gratuite"],
+              "correctAnswers": [0],
+              "explanation": "Boring = ennuyeux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Exciting » = …",
+              "options": ["passionnant / excitant", "calme", "facile", "long"],
+              "correctAnswers": [0],
+              "explanation": "Exciting = excitant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Collect stamps » : hobby = …",
+              "options": [
+                "collectionner des timbres",
+                "jouer au foot",
+                "nager",
+                "danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stamps = timbres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Chat online » (loisir) = …",
+              "options": ["discuter en ligne", "dormir", "courir", "peindre"],
+              "correctAnswers": [0],
+              "explanation": "Chat online = tchatter en ligne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Relax » après les cours : « I like ___ »",
+              "options": ["relaxing", "relax", "relaxed", "relaxes"],
+              "correctAnswers": [0],
+              "explanation": "Like + relaxing."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Meet friends » = …",
+              "options": [
+                "voir / retrouver des amis",
+                "appeler la police",
+                "faire les devoirs",
+                "manger seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meet friends = retrouver des amis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Stay at home and play board games » : board games = …",
+              "options": [
+                "jeux de société",
+                "jeux vidéo seulement",
+                "sports",
+                "films"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Board games = jeux de plateau / société."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctes ? (deux réponses)",
+              "options": [
+                "She likes riding her bike.",
+                "He like playing tennis.",
+                "They like going to the cinema.",
+                "I likes swimming."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "He/I → likes ; like sans s est faux pour he et I (I like, pas I likes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction : « We don't like getting up early. »",
+              "options": [
+                "Nous n'aimons pas nous lever tôt.",
+                "Nous aimons nous coucher tôt.",
+                "Nous nous levons tôt.",
+                "Nous n'avons pas de lit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Don't like + getting up early."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hobby » dans « My favourite hobby is drawing » = …",
+              "options": [
+                "loisir / passe-temps",
+                "matière scolaire",
+                "membre de famille",
+                "repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hobby = activité de loisir préférée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Make → … (like + -ing) pour « faire du gâteau »",
+              "options": [
+                "making cakes",
+                "make cakes",
+                "maked cakes",
+                "making cakeing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Make → making."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I love playing with my dog » : love est plus fort que…",
+              "options": ["like", "hate", "never", "don't"],
+              "correctAnswers": [0],
+              "explanation": "Love = adorer, plus intense que like."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Cinema » = …",
+              "options": ["cinéma", "théâtre", "stade", "piscine"],
+              "correctAnswers": [0],
+              "explanation": "Cinema = cinéma."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Take photos » en -ing : « I like ___ photos. »",
+              "options": ["taking", "take", "taked", "takes"],
+              "correctAnswers": [0],
+              "explanation": "Take → taking."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« On Mondays I have guitar lessons » : lessons = …",
+              "options": ["cours", "matchs", "vacances", "devoirs seulement"],
+              "correctAnswers": [0],
+              "explanation": "Lessons = cours (leçons)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Spend time with friends » : spend = …",
+              "options": ["passer (du temps)", "gagner", "perdre", "voler"],
+              "correctAnswers": [0],
+              "explanation": "Spend time = passer du temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résumer ses loisirs : « In my free time, I like ___ and ___. »",
+              "options": [
+                "deux activités en -ing",
+                "deux noms de famille",
+                "have got",
+                "has got"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On liste des activités avec like + -ing."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

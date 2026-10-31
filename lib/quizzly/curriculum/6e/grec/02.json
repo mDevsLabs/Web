@@ -1,0 +1,1943 @@
+{
+  "id": "6e-grec-02",
+  "year": "6e",
+  "subject": "grec",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les parents et les enfants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes de mots grecs désignent bien des parents ou ascendants du foyer ?",
+              "options": [
+                "πατήρ et μήτηρ",
+                "γονεῖς",
+                "υἱός et θυγάτηρ seuls",
+                "ἀγορά et στοά"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Πατήρ et μήτηρ sont père et mère ; γονεῖς regroupe les deux parents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « fils » en grec ancien ?",
+              "options": ["θυγάτηρ", "υἱός", "πατήρ", "γυνή"],
+              "correctAnswers": [1],
+              "explanation": "Υἱός signifie « fils »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « fille » ?",
+              "options": ["θυγάτηρ", "υἱός", "ἀνήρ", "παῖς toujours fils"],
+              "correctAnswers": [0],
+              "explanation": "Θυγάτηρ est le mot usuel pour « fille »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie πατήρ ?",
+              "options": ["Le père", "La mère", "Le frère", "L'oncle"],
+              "correctAnswers": [0],
+              "explanation": "Πατήρ correspond au père."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie μήτηρ ?",
+              "options": ["La mère", "La fille", "L'épouse seule", "La sœur"],
+              "correctAnswers": [0],
+              "explanation": "Μήτηρ signifie « mère »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le mot παῖς désigne surtout…",
+              "options": ["Un enfant", "Un temple", "Un navire", "Une loi"],
+              "correctAnswers": [0],
+              "explanation": "Παῖς renvoie à l'enfant, garçon ou fille selon le contexte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ἀδελφός signifie…",
+              "options": ["Frère ou sœur", "Cousin uniquement", "Père", "Roi"],
+              "correctAnswers": [0],
+              "explanation": "Ἀδελφός couvre frère et sœur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le foyer grec (οἶκος), qui avait l'autorité légale principale ?",
+              "options": [
+                "Le père",
+                "Le plus jeune enfant",
+                "Le voisin",
+                "Le marchand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le père dirigeait le oikos dans la cité classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Γυνή signifie en contexte familial surtout…",
+              "options": [
+                "Femme / épouse",
+                "Fille enfant",
+                "Grand-mère fixe",
+                "Esclave seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Γυνή veut dire « femme », souvent « épouse » à la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Τέκνον est un mot…",
+              "options": [
+                "Affectueux pour « enfant »",
+                "Pour « guerre »",
+                "Pour « marché »",
+                "Pour « loi »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Τέκνον s'adresse tendrement à un enfant."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots grecs renvoient à des parties ou lieux de la maison ?",
+              "options": [
+                "οἰκία",
+                "αὐλή (cour)",
+                "γυμνάσιον olympique intérieur",
+                "θύρα"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Οἰκία et αὐλή décrivent le logis et sa cour ; un gymnase n'est pas une pièce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Θύρα signifie…",
+              "options": ["Porte", "Toit", "Table", "Lit"],
+              "correctAnswers": [0],
+              "explanation": "Θύρα est la porte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Οἰκία désigne…",
+              "options": ["La maison", "La mer", "La guerre", "Le poème"],
+              "correctAnswers": [0],
+              "explanation": "Οἰκία est la maison ou demeure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La cour ouverte au centre s'appelle…",
+              "options": ["αὐλή", "βουλή", "τέχνη", "νίκη"],
+              "correctAnswers": [0],
+              "explanation": "Αὐλή est la cour de la maison."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un meuble ou objet domestique peut être un…",
+              "options": ["ἔπιπλον", "ὅπλον", "ἱστίον", "τόξον"],
+              "correctAnswers": [0],
+              "explanation": "Ἔπιπλον désigne un meuble."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Γείτων signifie…",
+              "options": ["Voisin", "Soldat", "Prêtre", "Roi"],
+              "correctAnswers": [0],
+              "explanation": "Γείτων est le voisin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire « dans la maison », on emploie souvent la préposition…",
+              "options": [
+                "ἐν + datif",
+                "εἰς + datif",
+                "ἀπό + accusatif pour le lieu",
+                "ὑπό + génitif pour le lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἐν avec le datif indique le lieu « dans »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Δῶμα renvoie surtout au…",
+              "options": ["Toit", "Puits", "Jardin public", "Théâtre"],
+              "correctAnswers": [0],
+              "explanation": "Δῶμα signifie le toit ou l'étage haut."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Οἶκος désigne le…",
+              "options": [
+                "Foyer familial",
+                "Exercice militaire",
+                "Chant choral seul",
+                "Impôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Οἶκος est le foyer, la maisonnée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les Grecs habitaient surtout des maisons en…",
+              "options": [
+                "Pierre et brique",
+                "Acier",
+                "Plastique",
+                "Verre moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pierre, brique crue et bois étaient courants."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au vocabulaire scolaire grec ?",
+              "options": [
+                "διδάσκαλος",
+                "μαθητής",
+                "τριαήρης de classe",
+                "βιβλίον"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Maître et élève sont scolaires ; une trière est un navire de guerre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Μαθητής signifie…",
+              "options": ["Élève", "Juge", "Boulanger", "Pilote"],
+              "correctAnswers": [0],
+              "explanation": "Μαθητής est l'apprenant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Διδάσκω signifie…",
+              "options": ["J'enseigne", "Je cours", "Je dors", "Je nage"],
+              "correctAnswers": [0],
+              "explanation": "Διδάσκω veut dire « enseigner »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Βιβλίον signifie…",
+              "options": ["Livre", "Cheval", "Route", "Lance"],
+              "correctAnswers": [0],
+              "explanation": "Βιβλίον est un livre ou rouleau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Σχολή signifiait d'abord…",
+              "options": [
+                "Loisir consacré à l'étude",
+                "Prison",
+                "Bataille",
+                "Tempête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Σχολή évoquait le temps libre, d'où « école »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Γράφω signifie…",
+              "options": ["J'écris", "Je lis seul", "Je chante", "Je combats"],
+              "correctAnswers": [0],
+              "explanation": "Γράφω signifie « écrire »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les élèves gravaient souvent sur…",
+              "options": [
+                "Tablettes de cire",
+                "Écrans LCD",
+                "Bandes vidéo",
+                "Disques vinyle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cire et le stylet servaient à s'exercer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Παιδαγωγός désigne souvent…",
+              "options": [
+                "L'esclave qui accompagne l'enfant",
+                "Le roi",
+                "Le dieu Hermès",
+                "Le sculpteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pedagogue escortait l'écolier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Μανθάνω signifie…",
+              "options": ["J'apprends", "Je vends", "Je brûle", "Je jure"],
+              "correctAnswers": [0],
+              "explanation": "Μανθάνω signifie « apprendre »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un grammatiste (γραμματιστής) enseignait surtout…",
+              "options": [
+                "Lecture et écriture",
+                "Construction navale",
+                "Médecine avancée",
+                "Droit romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il formait aux lettres et à la poésie de base."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Repas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aliments grecs antique sont nommés par des mots grecs courants ?",
+              "options": ["ἄρτος", "ἔλαιον", "Sushi", "οἶνος"],
+              "correctAnswers": [0, 3],
+              "explanation": "Pain et vin sont grecs ; le sushi est absent de la Méditerranée antique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἄρτος signifie…",
+              "options": ["Pain", "Poisson", "Sel", "Fromage"],
+              "correctAnswers": [0],
+              "explanation": "Ἄρτος est le pain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ὕδωρ signifie…",
+              "options": ["Eau", "Feu", "Air", "Terre"],
+              "correctAnswers": [0],
+              "explanation": "Ὕδωρ signifie « eau »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Πίνω signifie…",
+              "options": ["Je bois", "Je vois", "Je pars", "Je tombe"],
+              "correctAnswers": [0],
+              "explanation": "Πίνω signifie « boire »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἐσθίω signifie…",
+              "options": ["Je mange", "Je parle", "Je construis", "Je pleure"],
+              "correctAnswers": [0],
+              "explanation": "Ἐσθίω signifie « manger »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Οἶνος signifie…",
+              "options": ["Vin", "Huile", "Miel", "Lait"],
+              "correctAnswers": [0],
+              "explanation": "Οἶνος est le vin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ἔλαιον signifie…",
+              "options": ["Huile (d'olive)", "Viande", "Fruit", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "Ἔλαιον désigne l'huile."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Δεῖπνον désigne surtout…",
+              "options": [
+                "Le repas du soir",
+                "Le lever du soleil",
+                "La course",
+                "Le serment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Δεῖπνον est le dîner, repas principal du soir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Μέλι signifie…",
+              "options": ["Miel", "Sel", "Poivre", "Vinaigre"],
+              "correctAnswers": [0],
+              "explanation": "Μέλι est le miel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Κρέας signifie…",
+              "options": ["Viande", "Légume", "Pain", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Κρέας désigne la viande."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Jeux et sport",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux servaient à l'entraînement des Grecs ?",
+              "options": [
+                "γυμνάσιον",
+                "στάδιον",
+                "ἀγορά comme piste seule",
+                "παλαίστρα"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gymnase et stade accueillaient le sport ; l'agora n'était pas une piste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Παίζω signifie…",
+              "options": ["Je joue", "Je tue", "Je juge", "Je paie"],
+              "correctAnswers": [0],
+              "explanation": "Παίζω signifie « jouer »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Τρέχω signifie…",
+              "options": ["Je cours", "Je reste", "Je lis", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "Τρέχω signifie « courir »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Γυμνάζομαι signifie…",
+              "options": ["Je m'entraîne", "Je pleure", "Je mens", "Je vole"],
+              "correctAnswers": [0],
+              "explanation": "Γυμνάζομαι exprime l'exercice physique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Σφαῖρα signifie…",
+              "options": ["Balle / sphère", "Lance", "Bouclier", "Navire"],
+              "correctAnswers": [0],
+              "explanation": "Σφαῖρα est une balle ou une sphère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Πάλη désigne…",
+              "options": [
+                "La lutte",
+                "La tragédie",
+                "La géométrie",
+                "La peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Πάλη est la lutte, sport olympique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Δίσκος signifie…",
+              "options": ["Disque", "Arc", "Javelot", "Bouclier"],
+              "correctAnswers": [0],
+              "explanation": "Δίσκος est le disque du pentathlon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les Jeux d'Olympie honoraient surtout…",
+              "options": ["Zeus", "Poséidon seul", "Arès seul", "Aucun dieu"],
+              "correctAnswers": [0],
+              "explanation": "Olympie était un grand sanctuaire de Zeus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ἆθλον signifie souvent…",
+              "options": ["Prix de compétition", "Amende", "Impôt", "Poème"],
+              "correctAnswers": [0],
+              "explanation": "ἆθλον est la récompense sportive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ἵππος signifie…",
+              "options": ["Cheval", "Chien", "Oiseau", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Ἵππος est le cheval."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Vêtements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels vêtements grecs antiques sont authentiques ?",
+              "options": ["χιτών", "ἱμάτιον", "Jean", "πέπλος"],
+              "correctAnswers": [0, 1],
+              "explanation": "Chiton et himation sont attestés ; jean est anachronique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Χιτών désigne…",
+              "options": ["La tunique", "Le casque", "Le char", "La lyre"],
+              "correctAnswers": [0],
+              "explanation": "Χιτών est la tunique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ἱμάτιον désigne…",
+              "options": [
+                "Le manteau",
+                "La sandale",
+                "Le bouclier",
+                "La couronne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἱμάτιον est le manteau porté par-dessus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Λευκός signifie…",
+              "options": ["Blanc", "Noir", "Rouge", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Λευκός signifie blanc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Μέλας signifie…",
+              "options": ["Noir", "Blanc", "Bleu", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Μέλας signifie noir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Καλός peut signifier…",
+              "options": ["Beau, bon", "Laid", "Petit", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Καλός marque la beauté ou la qualité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Μέγας signifie…",
+              "options": ["Grand", "Petit", "Rapide", "Faible"],
+              "correctAnswers": [0],
+              "explanation": "Μέγας signifie grand."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Μικρός signifie…",
+              "options": ["Petit", "Grand", "Fort", "Beau"],
+              "correctAnswers": [0],
+              "explanation": "Μικρός signifie petit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ὑπόδημα signifie…",
+              "options": ["Chaussure", "Gant", "Chapeau", "Ceinture"],
+              "correctAnswers": [0],
+              "explanation": "Ὑπόδημα est la chaussure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Λούομαι signifie…",
+              "options": ["Je me lave", "Je mange", "Je cours", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "Λούομαι exprime le lavage du corps."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Amis et salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots expriment des relations sociales en grec ?",
+              "options": ["φίλος", "ἐχθρός", "λάπτοπ", "ξένος"],
+              "correctAnswers": [0, 3],
+              "explanation": "Φίλος est l'ami ; ξένος l'étranger ou l'hôte ; ἐχθρός l'ennemi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Φίλος signifie…",
+              "options": ["Ami", "Ennemi", "Roi", "Esclave"],
+              "correctAnswers": [0],
+              "explanation": "Φίλος signifie « ami »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Χαῖρε sert à…",
+              "options": ["Saluer", "Menacer", "Compter", "Peindre"],
+              "correctAnswers": [0],
+              "explanation": "Χαῖρε est une formule de salut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Λέγω signifie…",
+              "options": ["Je dis", "Je cours", "Je nage", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "Λέγω signifie « dire »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἀκούω signifie…",
+              "options": ["J'écoute", "Je vois", "Je goûte", "Je touche"],
+              "correctAnswers": [0],
+              "explanation": "Ἀκούω signifie « entendre, écouter »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Βοηθέω signifie…",
+              "options": ["J'aide", "Je vole", "Je cache", "Je tue"],
+              "correctAnswers": [0],
+              "explanation": "Βοηθέω signifie « aider »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Πίστις renvoie à…",
+              "options": [
+                "La confiance",
+                "La vitesse",
+                "La couleur",
+                "La faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Πίστις est la confiance ou fidélité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Φιλέω signifie souvent…",
+              "options": ["J'aime", "Je hais", "Je vends", "Je brûle"],
+              "correctAnswers": [0],
+              "explanation": "Φιλέω exprime l'affection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ἐχθρός signifie…",
+              "options": ["Ennemi", "Ami", "Hôte", "Enfant"],
+              "correctAnswers": [0],
+              "explanation": "Ἐχθρός signifie « ennemi »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ξένος peut désigner…",
+              "options": [
+                "L'étranger ou l'hôte",
+                "Le citoyen seul",
+                "Le dieu seul",
+                "Le cheval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ξένος couvre l'étranger accueilli ou l'hôte."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Temps du jour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots grecs désignent des moments du temps ?",
+              "options": ["ἡμέρα", "νύξ", "λaptop", "αὔριον"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ἡμέρα et νύξ opposent jour et nuit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Σήμερον signifie…",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Σήμερον signifie « aujourd'hui »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Αὔριον signifie…",
+              "options": ["Demain", "Hier", "Toujours", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "Αὔριον signifie « demain »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Χθές signifie…",
+              "options": ["Hier", "Demain", "Maintenant", "Bientôt"],
+              "correctAnswers": [0],
+              "explanation": "Χθές signifie « hier »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Νῦν signifie…",
+              "options": ["Maintenant", "Autrefois", "Nulle part", "Personne"],
+              "correctAnswers": [0],
+              "explanation": "Νῦν signifie « maintenant »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ἐγείρομαι signifie…",
+              "options": ["Je me lève", "Je dors", "Je mange", "Je nage"],
+              "correctAnswers": [0],
+              "explanation": "Ἐγείρομαι signifie « me lever »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Κοιμῶμαι signifie…",
+              "options": ["Je dors", "Je parle", "Je combats", "Je ris"],
+              "correctAnswers": [0],
+              "explanation": "Κοιμῶμαι signifie « dormir »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ἡμέρα signifie…",
+              "options": ["Jour", "Nuit", "Guerre", "Mer"],
+              "correctAnswers": [0],
+              "explanation": "Ἡμέρα signifie « jour »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Νύξ signifie…",
+              "options": ["Nuit", "Jour", "Midi", "Aube seule"],
+              "correctAnswers": [0],
+              "explanation": "Νύξ signifie « nuit »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ἐργάζομαι signifie…",
+              "options": [
+                "Je travaille",
+                "Je joue seul",
+                "Je mens",
+                "Je tombe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἐργάζομαι signifie « travailler »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Animaux et nature",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels animaux ont un nom grec clair ?",
+              "options": ["κύων", "ἵππος", "Ornithorynque", "αἲξ"],
+              "correctAnswers": [0, 1],
+              "explanation": "Chien et cheval sont grecs ; l'ornithorynque n'est pas méditerranéen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Κύων signifie…",
+              "options": ["Chien", "Chat", "Loup", "Taureau"],
+              "correctAnswers": [0],
+              "explanation": "Κύων signifie « chien »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Αἴλουρος signifie…",
+              "options": ["Chat", "Cheval", "Oiseau", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Αἴλουρος désigne le chat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Λύκος signifie…",
+              "options": ["Loup", "Chien", "Mouton", "Bœuf"],
+              "correctAnswers": [0],
+              "explanation": "Λύκος signifie « loup »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ὄρνις signifie…",
+              "options": ["Oiseau", "Poisson", "Arbre", "Pierre"],
+              "correctAnswers": [0],
+              "explanation": "Ὄρνις signifie « oiseau »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ἰχθύς signifie…",
+              "options": ["Poisson", "Chien", "Cheval", "Chèvre"],
+              "correctAnswers": [0],
+              "explanation": "Ἰχθύς signifie « poisson »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Θάλασσα signifie…",
+              "options": ["Mer", "Montagne", "Ville", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "Θάλασσα signifie « mer »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ὄρος signifie…",
+              "options": ["Montagne", "Mer", "Plaine seule", "Île"],
+              "correctAnswers": [0],
+              "explanation": "Ὄρος signifie « montagne »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Δένδρον signifie…",
+              "options": ["Arbre", "Fleur seule", "Nuage", "Route"],
+              "correctAnswers": [0],
+              "explanation": "Δένδρον signifie « arbre »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ἥλιος signifie…",
+              "options": ["Soleil", "Lune", "Étoile seule", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Ἥλιος signifie « soleil »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision u1",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent la journée d'un enfant grec ?",
+              "options": [
+                "μανθάνω",
+                "παίζω",
+                "λανθάνω comme « manger »",
+                "γράφω"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Apprendre et jouer rythment la journée ; λανθάνω signifie « échapper à la notice »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Πολίτης signifie…",
+              "options": ["Citoyen", "Barbare", "Esclave", "Roi perse"],
+              "correctAnswers": [0],
+              "explanation": "Πολίτης est le citoyen de la polis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Δοῦλος signifie…",
+              "options": ["Esclave", "Maître", "Juge", "Général"],
+              "correctAnswers": [0],
+              "explanation": "Δοῦλος signifie « esclave »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἀγορά est surtout…",
+              "options": [
+                "Le marché et la place publique",
+                "La chambre",
+                "Le lit",
+                "La tombe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἀγορά est le centre commercial et civique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Βαίνω / ἔρχομαι signifient souvent…",
+              "options": [
+                "Je vais",
+                "Je reste",
+                "Je suis malade",
+                "Je suis roi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces verbes marquent le déplacement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Μένω signifie…",
+              "options": ["Je reste", "Je fuis", "Je meurs", "Je nais"],
+              "correctAnswers": [0],
+              "explanation": "Μένω signifie « rester »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Πλούσιος signifie…",
+              "options": ["Riche", "Pauvre", "Petit", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Πλούσιος signifie « riche »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Πένης signifie…",
+              "options": ["Pauvre", "Riche", "Fort", "Beau"],
+              "correctAnswers": [0],
+              "explanation": "Πένης signifie « pauvre »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Εὐδαίμων signifie…",
+              "options": ["Heureux", "Triste", "En colère", "Affamé"],
+              "correctAnswers": [0],
+              "explanation": "Εὐδαίμων marque le bonheur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier le quotidien grec en 6e sert surtout à…",
+              "options": [
+                "Reconnaître mots et habitudes antiques",
+                "Supprimer le français",
+                "Oublier l'alphabet",
+                "Remplacer l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vocabulaire ouvre la culture grecque et la suite du cours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Adjectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent une apparence positive ?",
+              "options": ["καλός", "αἰσχρός", "ὡραῖος", "κακός"],
+              "correctAnswers": [0, 2],
+              "explanation": "Καλός et ὡραῖος suggèrent beauté ; αἰσχρός est laid."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἰσχυρός signifie…",
+              "options": ["Fort", "Faible", "Long", "Court"],
+              "correctAnswers": [0],
+              "explanation": "Ἰσχυρός signifie « fort »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ἀσθενής signifie…",
+              "options": ["Faible", "Fort", "Rapide", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Ἀσθενής signifie « faible »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Μακρός signifie…",
+              "options": ["Long", "Court", "Large", "Étroit"],
+              "correctAnswers": [0],
+              "explanation": "Μακρός signifie « long »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Βραχύς signifie…",
+              "options": ["Court", "Long", "Haut", "Bas"],
+              "correctAnswers": [0],
+              "explanation": "Βραχύς signifie « court »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ταχύς signifie…",
+              "options": ["Rapide", "Lent", "Lourd", "Léger"],
+              "correctAnswers": [0],
+              "explanation": "Ταχύς signifie « rapide »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Βραδύς signifie…",
+              "options": ["Lent", "Rapide", "Beau", "Laid"],
+              "correctAnswers": [0],
+              "explanation": "Βραδύς signifie « lent »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ἀγαθός signifie…",
+              "options": ["Bon, brave", "Mauvais", "Stupide", "Lâche"],
+              "correctAnswers": [0],
+              "explanation": "Ἀγαθός marque la bonté ou l'excellence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Κακός signifie…",
+              "options": ["Mauvais", "Bon", "Juste", "Sage"],
+              "correctAnswers": [0],
+              "explanation": "Κακός signifie « mauvais »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un adjectif grec s'accorde avec le nom en…",
+              "options": [
+                "Genre, nombre et cas",
+                "Couleur des yeux",
+                "Saison",
+                "Nom de dieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif suit le nom au genre, nombre et cas."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs et formes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles couleurs grecques sont enseignées en 6e ?",
+              "options": ["λευκός", "μέλας", "Infrared", "κυανός"],
+              "correctAnswers": [0, 1],
+              "explanation": "Blanc et noir sont des bases ; infrared n'est pas grec antique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἐρυθρός signifie…",
+              "options": ["Rouge", "Vert", "Bleu pâle", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Ἐρυθρός signifie « rouge »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Χλωρός peut signifier…",
+              "options": ["Vert / frais", "Noir", "Gris", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Χλωρός évoque le vert ou le frais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Κύκλος signifie…",
+              "options": ["Cercle", "Carré", "Ligne", "Point"],
+              "correctAnswers": [0],
+              "explanation": "Κύκλος signifie « cercle »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Τρίγωνον signifie…",
+              "options": ["Triangle", "Cercle", "Sphère", "Cube"],
+              "correctAnswers": [0],
+              "explanation": "Τρίγωνον a trois angles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Τετράγωνον signifie…",
+              "options": ["Quadrilatère", "Triangle", "Cercle", "Ligne"],
+              "correctAnswers": [0],
+              "explanation": "Τετράγωνον a quatre angles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Γωνία signifie…",
+              "options": ["Angle", "Racine", "Sommet seul", "Base"],
+              "correctAnswers": [0],
+              "explanation": "Γωνία signifie « angle »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ξηρός signifie…",
+              "options": ["Sec", "Humide", "Doux", "Amer"],
+              "correctAnswers": [0],
+              "explanation": "Ξηρός signifie « sec »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ὑγρός signifie…",
+              "options": ["Humide", "Sec", "Dur", "Mou"],
+              "correctAnswers": [0],
+              "explanation": "Ὑγρός signifie « humide »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Πορφύρεος renvoie à…",
+              "options": [
+                "Pourpre / rouge foncé",
+                "Blanc",
+                "Vert clair",
+                "Gris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Πορφύρεος désigne la pourpre."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Présent : je…",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont à la 1re personne du singulier au présent ?",
+              "options": ["λέγω", "γράφω", "λέγουσι", "ἔλεγον"],
+              "correctAnswers": [0, 1],
+              "explanation": "Λέγω et γράφω valent « je » ; λέγουσι est « ils »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Εἰμί signifie…",
+              "options": ["Je suis", "Tu es", "Il est", "Nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "Εἰμί signifie « je suis »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ἔχω signifie…",
+              "options": ["J'ai", "Tu as", "Il a", "Ils ont"],
+              "correctAnswers": [0],
+              "explanation": "Ἔχω signifie « j'ai »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Φέρω signifie…",
+              "options": ["Je porte", "Je vois", "Je dors", "Je mange"],
+              "correctAnswers": [0],
+              "explanation": "Φέρω signifie « je porte »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ποιῶ signifie…",
+              "options": ["Je fais", "Je vends", "Je tue", "Je pars"],
+              "correctAnswers": [0],
+              "explanation": "Ποιῶ signifie « je fais »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Δίδωμι au présent 1re sg. est…",
+              "options": ["δίδωμι", "διδοῦσι", "ἔδωκα", "δώσω"],
+              "correctAnswers": [0],
+              "explanation": "Δίδωμι est « je donne »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Λαμβάνω signifie…",
+              "options": ["Je prends", "Je pose", "Je brûle", "Je tombe"],
+              "correctAnswers": [0],
+              "explanation": "Λαμβάνω signifie « je prends »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Βούλομαι signifie…",
+              "options": ["Je veux", "Je peux", "Je sais", "Je dois"],
+              "correctAnswers": [0],
+              "explanation": "Βούλομαι exprime le vouloir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Δύναμαι signifie…",
+              "options": ["Je peux", "Je veux", "Je suis", "J'ai"],
+              "correctAnswers": [0],
+              "explanation": "Δύναμαι signifie « je peux »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ὁρῶ / βλέπω signifient…",
+              "options": ["Je vois", "J'entends", "Je goûte", "Je sens"],
+              "correctAnswers": [0],
+              "explanation": "Ces verbes marquent la vision."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Il, elle, ils",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles terminaisons indiquent la 3e personne du pluriel au présent ?",
+              "options": ["-ουσι(ν)", "-ᾱσι(ν)", "-ω", "-εις"],
+              "correctAnswers": [0, 1],
+              "explanation": "-ουσι et -ᾱσι marquent « ils » au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Λέγει signifie…",
+              "options": ["Il/elle dit", "Je dis", "Nous disons", "Dis !"],
+              "correctAnswers": [0],
+              "explanation": "Λέγει est la 3e personne du singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Λέγουσι signifie…",
+              "options": ["Ils disent", "Il dit", "Je dis", "Tu dis"],
+              "correctAnswers": [0],
+              "explanation": "Λέγουσι est « ils disent »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἔχει signifie…",
+              "options": ["Il/elle a", "J'ai", "Avoir !", "Ils ont seul"],
+              "correctAnswers": [0],
+              "explanation": "Ἔχει est « il/elle a »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ἔχουσι signifie…",
+              "options": ["Ils ont", "Il a", "Tu as", "Nous avons"],
+              "correctAnswers": [0],
+              "explanation": "Ἔχουσι est « ils ont »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ποιεῖ signifie…",
+              "options": ["Il/elle fait", "Je fais", "Fais !", "Ils font"],
+              "correctAnswers": [0],
+              "explanation": "Ποιεῖ est la 3e sg. de « faire »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Τρέχει signifie…",
+              "options": [
+                "Il/elle court",
+                "Je cours",
+                "Cours !",
+                "Ils courent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Τρέχει signifie « il/elle court »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Βαίνει signifie…",
+              "options": ["Il/elle va", "Je vais", "Va !", "Nous allons"],
+              "correctAnswers": [0],
+              "explanation": "Βαίνει marque le déplacement à la 3e sg."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Μένουσι signifie…",
+              "options": ["Ils restent", "Il reste", "Je reste", "Reste !"],
+              "correctAnswers": [0],
+              "explanation": "Μένουσι signifie « ils restent »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ἐστί(ν) signifie…",
+              "options": ["Il/elle est", "Je suis", "Es !", "Ils sont seul"],
+              "correctAnswers": [0],
+              "explanation": "Ἐστί est « il/elle est »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Négation et questions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à nier ou interroger en grec ?",
+              "options": ["οὐ", "μή", "Wi-Fi", "τίς"],
+              "correctAnswers": [0, 3],
+              "explanation": "Οὐ nie ; τίς interroge sur une personne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Οὐ avec l'indicatif sert surtout à…",
+              "options": ["Nier un fait", "Souhaiter", "Saluer", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "Οὐ nie un fait affirmé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Τίς signifie…",
+              "options": ["Qui ?", "Où ?", "Quand ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "Τίς interroge sur une personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Τί signifie…",
+              "options": ["Quoi ?", "Qui ?", "Pourquoi ?", "Combien ?"],
+              "correctAnswers": [0],
+              "explanation": "Τί interroge sur la chose."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ποῦ signifie…",
+              "options": ["Où ?", "Qui ?", "Quoi ?", "Quand ?"],
+              "correctAnswers": [0],
+              "explanation": "Ποῦ interroge sur le lieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Πότε signifie…",
+              "options": ["Quand ?", "Où ?", "Qui ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "Πότε interroge sur le moment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Πῶς signifie…",
+              "options": ["Comment ?", "Pourquoi ?", "Combien ?", "Quoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Πῶς interroge sur la manière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Διὰ τί signifie…",
+              "options": ["Pourquoi ?", "Où ?", "Qui ?", "Quand ?"],
+              "correctAnswers": [0],
+              "explanation": "Διὰ τί demande la cause."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ἆρα introduit souvent…",
+              "options": ["Une question", "Un ordre", "Un adieu", "Un chiffre"],
+              "correctAnswers": [0],
+              "explanation": "Ἆρα marque une question ouverte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Οὐκ ἔστι signifie…",
+              "options": ["Ce n'est pas", "C'est", "Peut-être", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Οὐκ ἔστι nie l'existence ou l'identité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Prépositions de lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions indiquent un lieu en grec ?",
+              "options": ["ἐν", "εἰς", "Bluetooth", "ἐκ / ἐξ"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ἐn situe dans ; εἰς indique le mouvement vers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ἐν + datif indique…",
+              "options": ["Dans / à (lieu)", "Vers", "Depuis", "Avec"],
+              "correctAnswers": [0],
+              "explanation": "Ἐν + datif localise."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Εἰς + accusatif indique souvent…",
+              "options": ["Mouvement vers", "Repos dans", "Origine", "Manière"],
+              "correctAnswers": [0],
+              "explanation": "Εἰς + acc. marque la direction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἐκ / ἐξ + génitif indique…",
+              "options": ["Sortie de / depuis", "Entrée dans", "Avec", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "Ἐκ exprime la provenance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Πρός + accusatif peut marquer…",
+              "options": ["Vers / chez", "Hors de", "Pendant", "Malgré"],
+              "correctAnswers": [0],
+              "explanation": "Πρός + acc. indique la direction vers quelqu'un."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ἀπό + génitif indique…",
+              "options": ["Depuis / loin de", "Dans", "Vers", "Sous"],
+              "correctAnswers": [0],
+              "explanation": "Ἀπό marque l'éloignement ou l'origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ὑπό + datif peut signifier…",
+              "options": ["Sous / près de", "Sur", "Contre", "Entre"],
+              "correctAnswers": [0],
+              "explanation": "Ὑπό localise « sous » ou l'agent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ἐπί + génitif/accusatif selon sens peut signifier…",
+              "options": ["Sur / vers", "Hors", "Sans", "Malgré"],
+              "correctAnswers": [0],
+              "explanation": "Ἐπί couvre « sur » ou « vers » selon le cas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Μετά + génitif signifie souvent…",
+              "options": ["Avec / après", "Sans", "Contre", "Sous"],
+              "correctAnswers": [0],
+              "explanation": "Μετά + gén. indique compagnie ou succession."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dire « à Athènes » on met souvent la ville au…",
+              "options": [
+                "Datif ou acc. selon construction",
+                "Vocatif seul",
+                "Infinitif",
+                "Dual"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms de lieu varient selon préposition et sens."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Raconter au passé (notions)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels temps grecs servent à raconter au passé en 6e ?",
+              "options": [
+                "Imparfait (ἔ- + thème)",
+                "Aoriste (souvent -σα)",
+                "Futur proche en -wifi",
+                "Présent seul pour hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Imparfait et aoriste racontent le passé ; le présent seul ne suffit pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'imparfait grec indique souvent…",
+              "options": [
+                "Action durant / répétée",
+                "Action unique ponctuelle seule",
+                "Ordre",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait décrit ou répète dans le passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'aoriste grec marque souvent…",
+              "options": [
+                "Action achevée",
+                "Description longue",
+                "Futur",
+                "Vœu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aoriste enregistre un fait accompli."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἔλεγον signifie…",
+              "options": ["Ils disaient", "Ils diront", "Dis !", "Je dis"],
+              "correctAnswers": [0],
+              "explanation": "Ἔλεγον est l'imparfait « ils disaient »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Εἶπον signifie souvent…",
+              "options": ["Ils dirent", "Ils disent", "Je dis", "Dis !"],
+              "correctAnswers": [0],
+              "explanation": "Εἶπον est un aoriste « ils dirent »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ἦν signifie…",
+              "options": ["Il/elle était", "Il/elle est", "Soyez", "Je suis"],
+              "correctAnswers": [0],
+              "explanation": "Ἦν est l'imparfait de εἰμί."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour enchaîner un récit on emploie des mots comme…",
+              "options": [
+                "καί, ἔπειτα, οὖν",
+                "Uniquement οὐ",
+                "Aucun lien",
+                "Chiffres romains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les connecteurs ordonnent le récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Καί signifie…",
+              "options": ["Et", "Mais", "Ou", "Car"],
+              "correctAnswers": [0],
+              "explanation": "Καί est la conjonction « et »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ἔπειτα signifie…",
+              "options": ["Ensuite", "Avant", "Jamais", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Ἔπειτα marque la suite du récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raconter en grec demande surtout de…",
+              "options": [
+                "Choisir le bon temps verbal",
+                "Ignorer le sujet",
+                "Supprimer les verbes",
+                "Tout mettre au vocatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps verbal situe l'action dans le récit."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots décrivent une personne en grec ?",
+              "options": ["ψυχή (âme)", "σῶμα (corps)", "HTML", "ἡλικία (âge)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Corps et âme décrivent l'humain ; HTML est anachronique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Σῶμα signifie…",
+              "options": ["Corps", "Esprit seul", "Loi", "Guerre"],
+              "correctAnswers": [0],
+              "explanation": "Σῶμα signifie « corps »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Κεφαλή signifie…",
+              "options": ["Tête", "Main", "Pied", "Cœur"],
+              "correctAnswers": [0],
+              "explanation": "Κεφαλή signifie « tête »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Χείρ signifie…",
+              "options": ["Main", "Pied", "Œil", "Oreille"],
+              "correctAnswers": [0],
+              "explanation": "Χείρ signifie « main »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Πούς (pied) au pluriel πόδες signifie…",
+              "options": ["Pieds", "Mains", "Yeux", "Dents"],
+              "correctAnswers": [0],
+              "explanation": "Πούς désigne le pied."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ὀφθαλμός signifie…",
+              "options": ["Œil", "Nez", "Bouche", "Cou"],
+              "correctAnswers": [0],
+              "explanation": "Ὀφθαλμός signifie « œil »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Γελάω signifie…",
+              "options": ["Je ris", "Je pleure", "Je crie", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "Γελάω signifie « rire »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Κλαίω signifie…",
+              "options": ["Je pleure", "Je ris", "Je chante", "Je mange"],
+              "correctAnswers": [0],
+              "explanation": "Κλαίω signifie « pleurer »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ὑψηλός signifie…",
+              "options": ["Grand / haut", "Petit", "Gros", "Maigre"],
+              "correctAnswers": [0],
+              "explanation": "Ὑψηλός signifie « haut, grand »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Παιδίον signifie…",
+              "options": ["Petit enfant", "Vieillard", "Soldat", "Roi"],
+              "correctAnswers": [0],
+              "explanation": "Παιδίον désigne un jeune enfant."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots décrivent un paysage grec ?",
+              "options": [
+                "πεδίον (plaine)",
+                "νῆσος (île)",
+                "Autoroute A86",
+                "λίμνη (lac)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plaine et île sont grecs ; une autoroute moderne ne convient pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Πόλις signifie…",
+              "options": ["Cité", "Campagne seule", "Mer", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Πόλις signifie « cité »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ἄστυ signifie…",
+              "options": ["Ville / cité", "Mer", "Montagne", "Forêt"],
+              "correctAnswers": [0],
+              "explanation": "Ἄστυ désigne la ville."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ἀγρός signifie…",
+              "options": ["Champ / campagne", "Temple", "Palais", "Port seul"],
+              "correctAnswers": [0],
+              "explanation": "Ἀγρός est le champ ou la campagne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Λίμνη signifie…",
+              "options": ["Lac", "Mer", "Rivière", "Source"],
+              "correctAnswers": [0],
+              "explanation": "Λίμνη signifie « lac »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ποταμός signifie…",
+              "options": ["Fleuve", "Mer", "Lac", "Pluie"],
+              "correctAnswers": [0],
+              "explanation": "Ποταμός signifie « fleuve »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Νῆσος signifie…",
+              "options": ["Île", "Mont", "Désert", "Volcan moderne"],
+              "correctAnswers": [0],
+              "explanation": "Νῆσος signifie « île »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Καλός appliqué à un lieu peut signifier…",
+              "options": ["Beau, agréable", "Laid", "Dangereux", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Καλός qualifie aussi un beau paysage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ἐν τῇ οἰκίᳳ signifie…",
+              "options": [
+                "Dans la maison",
+                "Vers la mer",
+                "Hors de la cité",
+                "Sous la terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ἐν + datif situe dans la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour décrire un lieu, on combine souvent…",
+              "options": [
+                "Nom + adjectif + préposition",
+                "Uniquement des chiffres",
+                "Aucun verbe jamais",
+                "Que des noms propres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectifs et prépositions précisent le lieu."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils linguistiques servent à raconter ?",
+              "options": [
+                "Connecteurs (καί, ἔπειτα)",
+                "Temps du passé",
+                "Emojis seuls",
+                "Présent narratif appris plus tard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Connecteurs et temps passés structurent le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Οὖν signifie souvent…",
+              "options": ["Donc", "Mais", "Car", "Si"],
+              "correctAnswers": [0],
+              "explanation": "Οὖν marque une conclusion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ἀλλά signifie…",
+              "options": ["Mais", "Et", "Ou", "Donc"],
+              "correctAnswers": [0],
+              "explanation": "Ἀλλά est l'adversatif « mais »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Γάρ signifie…",
+              "options": ["Car", "Mais", "Ou", "Ni"],
+              "correctAnswers": [0],
+              "explanation": "Γάρ introduit une explication."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Πολλοί / πολλαί / πολλά signifie…",
+              "options": ["Beaucoup de / nombreux", "Peu", "Aucun", "Un seul"],
+              "correctAnswers": [0],
+              "explanation": "Πολύς s'accorde et signifie « beaucoup »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ὀλίγοι signifie…",
+              "options": ["Peu (de gens)", "Beaucoup", "Tous", "Personne"],
+              "correctAnswers": [0],
+              "explanation": "Ὀλίγος marque la petite quantité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Πᾶς / πᾶσα / πᾶν signifie…",
+              "options": ["Tout", "Rien", "Quelques", "Autre"],
+              "correctAnswers": [0],
+              "explanation": "Πᾶς signifie « tout » avec accord."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Λέγων… (participe) peut introduire…",
+              "options": [
+                "« En disant… » dans un récit",
+                "Un futur seul",
+                "Une interjection",
+                "Un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe présent enchaîne les actions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décrire puis raconter, c'est d'abord…",
+              "options": [
+                "Situer personnages et lieux puis enchaîner les actions",
+                "Oublier les verbes",
+                "Tout mettre au futur",
+                "Ne jamais nommer les personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description et narration se complètent dans un texte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, décrire et raconter en grec prépare surtout à…",
+              "options": [
+                "Lire de courts textes adaptés",
+                "Traduire Homer intégral",
+                "Abandonner le français",
+                "Ignorer la grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bases servent à aborder des textes simples ensuite."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

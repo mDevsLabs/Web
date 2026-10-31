@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/api/error-response";
+import { isProductionEnvironment } from "@/lib/constants";
 import { installPlugin } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
 import {
@@ -43,16 +44,16 @@ export async function GET(
   const { provider } = await params;
   const descriptor = getIntegrationProvider(provider);
   const query = request.nextUrl.searchParams;
-  const store = await cookies();
-  const cookieName = stateCookieName(provider);
-  const nonce = store.get(cookieName)?.value;
+  let nonce: string | undefined;
+  try {
+    nonce = (await cookies()).get(stateCookieName(provider))?.value;
+  } catch (error) {
+    logError(
+      `GET /api/integration/${provider}/callback — lecture du nonce`,
+      error
+    );
+  }
   const opened = openState(query.get("state"), { nonce, provider });
-  // L'état a servi : il meurt avec ce tour de navigateur, et ne peut pas être
-  // rejoué sur un second aller-retour.
-  store.delete({
-    name: cookieName,
-    path: stateCookiePath(request.nextUrl.basePath),
-  });
 
   const target =
     opened?.r ??
@@ -60,8 +61,8 @@ export async function GET(
   const back = (
     reason: IntegrationFailureReason | null,
     extra?: { account?: string; installation?: string }
-  ) =>
-    NextResponse.redirect(
+  ) => {
+    const response = NextResponse.redirect(
       internalUrl(request.nextUrl, target, {
         account: extra?.account,
         installation: extra?.installation,
@@ -70,122 +71,140 @@ export async function GET(
         reason: reason ?? undefined,
       })
     );
+    // Le nonce meurt sur la réponse, pas via cookies().delete() : combiner
+    // les deux avec une redirection a déjà rendu un HTTP 500 sur ce callback.
+    response.cookies.set({
+      httpOnly: true,
+      maxAge: 0,
+      name: stateCookieName(provider),
+      path: stateCookiePath(request.nextUrl.basePath),
+      sameSite: "lax",
+      secure: isProductionEnvironment,
+      value: "",
+    });
+    return response;
+  };
 
-  if (!descriptor) {
-    return back("state_invalid");
-  }
-
-  // Refus explicite sur l'écran de consentement : ce n'est pas une panne.
-  if (query.get("error")) {
-    return back(
-      query.get("error") === "access_denied"
-        ? "provider_denied"
-        : "exchange_failed"
-    );
-  }
-  if (!opened) {
-    return back("state_invalid");
-  }
-  if (opened.i && opened.i !== descriptor.pluginId) {
-    return back("state_invalid");
-  }
-  if (!isEncryptionConfigured()) {
-    return back("vault_unconfigured");
-  }
-
-  const credentials = readCredentials(descriptor);
-  const code = query.get("code");
-  const redirectUri = callbackUriFor({
-    protocol: request.headers.get("x-forwarded-proto"),
-    requestUrl: request.url,
-  });
-  if (!credentials || !code || !redirectUri) {
-    return back(credentials ? "exchange_failed" : "not_configured");
-  }
-
-  const exchanged = await exchangeCode(descriptor, {
-    code,
-    credentials,
-    redirectUri,
-  });
-  if (!exchanged.ok) {
-    logError(
-      `GET /api/integration/${provider}/callback — échange du code`,
-      new Error(exchanged.reason)
-    );
-    return back("exchange_failed");
-  }
-
-  const identity = await resolveAccount(
-    descriptor,
-    exchanged.value,
-    credentials
-  );
-  if (!identity) {
-    // Un jeton sans identité vérifiable ne peut être attribué à personne : il
-    // est jeté plutôt que stocké sur une supposition de compte.
-    logError(
-      `GET /api/integration/${provider}/callback — identité`,
-      new Error("compte fournisseur illisible")
-    );
-    return back("exchange_failed");
-  }
-
-  const already = await getPrimaryConnection({
-    provider: descriptor.id,
-    userId: opened.u,
-  });
-
-  await storeConnection({
-    accessToken: exchanged.value.accessToken,
-    accountEmail: identity.accountEmail,
-    accountLabel: identity.accountLabel,
-    expiresAt: exchanged.value.expiresAt,
-    provider: descriptor.id,
-    providerAccountId: identity.providerAccountId,
-    refreshToken: exchanged.value.refreshToken,
-    scopes: exchanged.value.scopes,
-    userId: opened.u,
-  });
-
-  // Identité : `userId` vient de `user.id || user.email`. Si le backend rend un
-  // `id` là où il n'en rendait pas, le même humain devient deux comptes et ses
-  // connexions se scindent en silence. Cette ligne est le seul endroit où ce
-  // cas devient observable dans les journaux.
-  console.info(
-    `[integration] guard=connection provider=${descriptor.id} account=${identity.providerAccountId} reconnect=${Boolean(already)}`
-  );
-
-  let installation: string | undefined;
-  if (opened.i) {
-    const manifest = getPluginManifest(opened.i);
-    const persistedTier = await getPersistedTier({ userId: opened.u });
-    if (!manifest) {
-      installation = "failed";
-    } else if (!persistedTier.ok) {
-      installation = "tier_unavailable";
-    } else if (canUsePlugin(manifest, persistedTier.tier)) {
-      try {
-        await installPlugin({
-          pluginId: manifest.id,
-          userId: opened.u,
-          version: manifest.version,
-        });
-        installation = "installed";
-      } catch (error) {
-        logError(
-          `GET /api/integration/${provider}/callback — installation du plugin`,
-          error
-        );
-        installation = "failed";
-      }
-    } else {
-      installation = "plan_required";
+  try {
+    if (!descriptor) {
+      return back("state_invalid");
     }
-  }
 
-  return back(null, {
-    account: accountLabelForUrl(identity.accountLabel),
-    installation,
-  });
+    // Refus explicite sur l'écran de consentement : ce n'est pas une panne.
+    if (query.get("error")) {
+      return back(
+        query.get("error") === "access_denied"
+          ? "provider_denied"
+          : "exchange_failed"
+      );
+    }
+    if (!opened) {
+      return back("state_invalid");
+    }
+    if (opened.i && opened.i !== descriptor.pluginId) {
+      return back("state_invalid");
+    }
+    if (!isEncryptionConfigured()) {
+      return back("vault_unconfigured");
+    }
+
+    const credentials = readCredentials(descriptor);
+    const code = query.get("code");
+    const redirectUri = callbackUriFor({
+      protocol: request.headers.get("x-forwarded-proto"),
+      requestUrl: request.url,
+    });
+    if (!credentials || !code || !redirectUri) {
+      return back(credentials ? "exchange_failed" : "not_configured");
+    }
+
+    const exchanged = await exchangeCode(descriptor, {
+      code,
+      credentials,
+      redirectUri,
+    });
+    if (!exchanged.ok) {
+      logError(
+        `GET /api/integration/${provider}/callback — échange du code`,
+        new Error(exchanged.reason)
+      );
+      return back("exchange_failed");
+    }
+
+    const identity = await resolveAccount(
+      descriptor,
+      exchanged.value,
+      credentials
+    );
+    if (!identity) {
+      // Un jeton sans identité vérifiable ne peut être attribué à personne : il
+      // est jeté plutôt que stocké sur une supposition de compte.
+      logError(
+        `GET /api/integration/${provider}/callback — identité`,
+        new Error("compte fournisseur illisible")
+      );
+      return back("exchange_failed");
+    }
+
+    const already = await getPrimaryConnection({
+      provider: descriptor.id,
+      userId: opened.u,
+    });
+
+    await storeConnection({
+      accessToken: exchanged.value.accessToken,
+      accountEmail: identity.accountEmail,
+      accountLabel: identity.accountLabel,
+      expiresAt: exchanged.value.expiresAt,
+      provider: descriptor.id,
+      providerAccountId: identity.providerAccountId,
+      refreshToken: exchanged.value.refreshToken,
+      scopes: exchanged.value.scopes,
+      userId: opened.u,
+    });
+
+    // Identité : `userId` vient de `user.id || user.email`. Si le backend rend un
+    // `id` là où il n'en rendait pas, le même humain devient deux comptes et ses
+    // connexions se scindent en silence. Cette ligne est le seul endroit où ce
+    // cas devient observable dans les journaux.
+    console.info(
+      `[integration] guard=connection provider=${descriptor.id} account=${identity.providerAccountId} reconnect=${Boolean(already)}`
+    );
+
+    let installation: string | undefined;
+    if (opened.i) {
+      const manifest = getPluginManifest(opened.i);
+      const persistedTier = await getPersistedTier({ userId: opened.u });
+      if (!manifest) {
+        installation = "failed";
+      } else if (!persistedTier.ok) {
+        installation = "tier_unavailable";
+      } else if (canUsePlugin(manifest, persistedTier.tier)) {
+        try {
+          await installPlugin({
+            pluginId: manifest.id,
+            userId: opened.u,
+            version: manifest.version,
+          });
+          installation = "installed";
+        } catch (error) {
+          logError(
+            `GET /api/integration/${provider}/callback — installation du plugin`,
+            error
+          );
+          installation = "failed";
+        }
+      } else {
+        installation = "plan_required";
+      }
+    }
+
+    return back(null, {
+      account: accountLabelForUrl(identity.accountLabel),
+      installation,
+    });
+  } catch (error) {
+    logError(`GET /api/integration/${provider}/callback`, error);
+    return back("exchange_failed");
+  }
 }

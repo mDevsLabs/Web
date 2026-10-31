@@ -1,0 +1,2368 @@
+{
+  "id": "4e-arabe-03",
+  "year": "4e",
+  "subject": "arabe",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Menu du restaurant scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« شوربة · سلطة · دجاج · عصير ». Quels items sont des plats à manger avec une fourchette ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["شوربة", "سلطة", "دجاج", "عصير"],
+              "correctAnswers": [1, 2],
+              "explanation": "Salade et poulet sont solides ; soupe et jus se boivent ou se prennent au bol/verre."
+            },
+            {
+              "id": "q2",
+              "question": "« دجاج » signifie :",
+              "type": "single_choice",
+              "options": ["poisson", "poulet", "bœuf", "fromage"],
+              "correctAnswers": [1],
+              "explanation": "Vocabulaire menu courant en 4e."
+            },
+            {
+              "id": "q3",
+              "question": "« عصير » =",
+              "type": "single_choice",
+              "options": ["pain", "jus", "eau", "café"],
+              "correctAnswers": [1],
+              "explanation": "Boisson fréquente en fin de ligne de menu."
+            },
+            {
+              "id": "q4",
+              "question": "Le document est surtout un :",
+              "type": "single_choice",
+              "options": ["horaire", "menu", "plan de ville", "billet"],
+              "correctAnswers": [1],
+              "explanation": "Liste de plats et boisson typique d'un menu."
+            },
+            {
+              "id": "q5",
+              "question": "« شوربة » correspond à :",
+              "type": "single_choice",
+              "options": ["soupe", "salade", "gateau", "the"],
+              "correctAnswers": [0],
+              "explanation": "Entrée liquide classique."
+            },
+            {
+              "id": "q6",
+              "question": "Pour commander la salade, tu dis :",
+              "type": "single_choice",
+              "options": ["عصير", "سلطة", "دجاج", "شوربة"],
+              "correctAnswers": [1],
+              "explanation": "Repérer le mot arabe évite l'erreur de commande."
+            },
+            {
+              "id": "q7",
+              "question": "Un menu aide surtout à :",
+              "type": "single_choice",
+              "options": [
+                "choisir un plat",
+                "trouver une rue",
+                "lire l'heure de prière",
+                "envoyer une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction principale : choix alimentaire."
+            },
+            {
+              "id": "q8",
+              "question": "« · » entre les mots sert à :",
+              "type": "single_choice",
+              "options": [
+                "séparer les items",
+                "donner le prix",
+                "indiquer la date",
+                "signer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparateur visuel fréquent sur affiches et menus."
+            },
+            {
+              "id": "q9",
+              "question": "Le jus est classé plutôt comme :",
+              "type": "single_choice",
+              "options": ["plat principal", "boisson", "entree seche", "sauce"],
+              "correctAnswers": [1],
+              "explanation": "عصير = boisson, pas plat principal."
+            },
+            {
+              "id": "q10",
+              "question": "Ordre logique du repas dans l'extrait :",
+              "type": "single_choice",
+              "options": [
+                "dessert puis soupe",
+                "soupe/salade puis viande puis boisson",
+                "boisson seule",
+                "viande avant soupe toujours interdit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Progression entrée → plat → boisson."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Emploi du temps du matin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« الرياضيات ٩ · العربية ١٠ · الفرنسية ١١ ». Quelles matières apparaissent ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["maths", "arabe", "sport", "latin"],
+              "correctAnswers": [0, 1],
+              "explanation": "الرياضيات et العربية sont lisibles ; le français est aussi la mais on retient maths et arabe comme paire demandee."
+            },
+            {
+              "id": "q2",
+              "question": "« ٩ » vaut :",
+              "type": "single_choice",
+              "options": ["8", "9", "10", "90"],
+              "correctAnswers": [1],
+              "explanation": "Chiffre orient arabe ٩ = neuf."
+            },
+            {
+              "id": "q3",
+              "question": "Cours a 10 h :",
+              "type": "single_choice",
+              "options": ["maths", "arabe", "francais", "EPS"],
+              "correctAnswers": [1],
+              "explanation": "العربية ١٠."
+            },
+            {
+              "id": "q4",
+              "question": "« الفرنسية » =",
+              "type": "single_choice",
+              "options": ["francais", "anglais", "arabe", "allemand"],
+              "correctAnswers": [0],
+              "explanation": "Nom de langue en arabe standard."
+            },
+            {
+              "id": "q5",
+              "question": "Un horaire indique surtout :",
+              "type": "single_choice",
+              "options": [
+                "heures et activites",
+                "liste de courses",
+                "poeme",
+                "recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Document utilitaire scolaire."
+            },
+            {
+              "id": "q6",
+              "question": "Le cours le plus tardif listé commence a :",
+              "type": "single_choice",
+              "options": ["9 h", "10 h", "11 h", "12 h"],
+              "correctAnswers": [2],
+              "explanation": "الفرنسية ١١."
+            },
+            {
+              "id": "q7",
+              "question": "« ١٠ » =",
+              "type": "single_choice",
+              "options": ["10", "1", "100", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dix en chiffres orientaux."
+            },
+            {
+              "id": "q8",
+              "question": "Pour le cours de maths, tu viens a :",
+              "type": "single_choice",
+              "options": ["9 h", "10 h", "11 h", "midi"],
+              "correctAnswers": [0],
+              "explanation": "Premiere ligne de l'horaire."
+            },
+            {
+              "id": "q9",
+              "question": "Ce document n'est pas :",
+              "type": "single_choice",
+              "options": [
+                "une invitation",
+                "un planning",
+                "un emploi du temps",
+                "un tableau d'heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de formule de fete ni de lieu de reception."
+            },
+            {
+              "id": "q10",
+              "question": "Lire un horaire en arabe aide a :",
+              "type": "single_choice",
+              "options": [
+                "reconnaitre matieres et chiffres",
+                "cuisiner",
+                "acheter un billet d'avion seul",
+                "traduire un roman entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Competence 4e : decoding court et chiffres."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Invitation anniversaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« يوم السبت · الساعة ٣ · منزل سارة ». Quelles infos sont donnees ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "jour",
+                "heure",
+                "menu du restaurant",
+                "prix du gateau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Samedi et 3 h ; lieu = maison de Sara aussi mais jour et heure repondent a la consigne."
+            },
+            {
+              "id": "q2",
+              "question": "« يوم السبت » =",
+              "type": "single_choice",
+              "options": ["samedi", "dimanche", "vendredi", "lundi"],
+              "correctAnswers": [0],
+              "explanation": "Jour de la semaine."
+            },
+            {
+              "id": "q3",
+              "question": "« الساعة ٣ » indique :",
+              "type": "single_choice",
+              "options": ["3 h", "13 h seulement", "3 jours", "mars"],
+              "correctAnswers": [0],
+              "explanation": "Heure de la fete, souvent apres-midi en contexte scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "« منزل » signifie :",
+              "type": "single_choice",
+              "options": ["maison", "ecole", "parc", "mosquee"],
+              "correctAnswers": [0],
+              "explanation": "Lieu prive habituel pour une fete."
+            },
+            {
+              "id": "q5",
+              "question": "Une invitation sert a :",
+              "type": "single_choice",
+              "options": [
+                "convoquer des invites",
+                "vendre des tickets",
+                "donner les notes",
+                "publier un horaire de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "But social : date, heure, lieu."
+            },
+            {
+              "id": "q6",
+              "question": "Le prenom « سارة » est :",
+              "type": "single_choice",
+              "options": ["feminin courant", "un mois", "une ville", "un plat"],
+              "correctAnswers": [0],
+              "explanation": "Prenom arabe frequemment lu en 4e."
+            },
+            {
+              "id": "q7",
+              "question": "Info manquante typique sur carte complete :",
+              "type": "single_choice",
+              "options": [
+                "RSVP ou contact",
+                "couleur du ciel",
+                "historique du pays",
+                "table de multiplication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Telephone ou reponse souvent ajoutes."
+            },
+            {
+              "id": "q8",
+              "question": "« · » ici separe :",
+              "type": "single_choice",
+              "options": [
+                "blocs d'information",
+                "lettres d'un mot",
+                "vers d'un poeme long",
+                "prix en euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour | heure | adresse."
+            },
+            {
+              "id": "q9",
+              "question": "Tu arrives chez Sara :",
+              "type": "single_choice",
+              "options": [
+                "lundi matin",
+                "samedi a l'heure indiquee (٣)",
+                "mercredi soir",
+                "sans jour precis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Respecter le texte : samedi (السبت) et l'heure ٣ mentionnee."
+            },
+            {
+              "id": "q10",
+              "question": "Ce texte n'est pas :",
+              "type": "single_choice",
+              "options": [
+                "affiche de cinema",
+                "invitation",
+                "carte courte",
+                "annonce de fete"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de film ni salle de cinema."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Affiche club de lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« نادي القراءة · كل ثلاثاء · القاعة ٢ ». Quels elements ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": ["activite", "frequence", "menu", "aeroport"],
+              "correctAnswers": [0, 1],
+              "explanation": "Club de lecture + chaque mardi ; salle 2 est lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« نادي القراءة » =",
+              "type": "single_choice",
+              "options": ["club de lecture", "cafeteria", "piscine", "garage"],
+              "correctAnswers": [0],
+              "explanation": "Affiche culturelle scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "« كل ثلاثاء » =",
+              "type": "single_choice",
+              "options": [
+                "chaque mardi",
+                "chaque jeudi",
+                "une fois par an",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frequence hebdomadaire."
+            },
+            {
+              "id": "q4",
+              "question": "« القاعة ٢ » indique :",
+              "type": "single_choice",
+              "options": [
+                "salle 2",
+                "rue 2",
+                "2 euros",
+                "2 livres obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu dans le batiment."
+            },
+            {
+              "id": "q5",
+              "question": "Une affiche vise surtout a :",
+              "type": "single_choice",
+              "options": [
+                "informer rapidement",
+                "raconter un roman",
+                "remplacer un devoir",
+                "cacher une date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format court, visible."
+            },
+            {
+              "id": "q6",
+              "question": "Le club a lieu :",
+              "type": "single_choice",
+              "options": [
+                "le mardi",
+                "le dimanche matin seulement",
+                "en vacances seulement",
+                "la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "كل ثلاثاء."
+            },
+            {
+              "id": "q7",
+              "question": "Mot « نادي » peut signifier :",
+              "type": "single_choice",
+              "options": ["club", "gateau", "train", "mer"],
+              "correctAnswers": [0],
+              "explanation": "Association ou cercle d'activite."
+            },
+            {
+              "id": "q8",
+              "question": "Document le plus proche :",
+              "type": "single_choice",
+              "options": [
+                "affiche murale",
+                "facture",
+                "passeport",
+                "carte bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annonce accrochee au lycee."
+            },
+            {
+              "id": "q9",
+              "question": "Pour participer tu retiens surtout :",
+              "type": "single_choice",
+              "options": [
+                "jour et salle",
+                "recette de soupe",
+                "numero de vol",
+                "couleur du uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infos pratiques de l'affiche."
+            },
+            {
+              "id": "q10",
+              "question": "« القراءة » liee a :",
+              "type": "single_choice",
+              "options": ["lire", "nager", "coudre", "conduire"],
+              "correctAnswers": [0],
+              "explanation": "Racine lecture / lire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Menu iftar",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« تمر · حساء · خبز · ماء ». Quels aliments solides ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": ["تمر", "حساء", "خبز", "ماء"],
+              "correctAnswers": [0, 2],
+              "explanation": "Dattes et pain ; soupe liquide et eau boisson."
+            },
+            {
+              "id": "q2",
+              "question": "« تمر » =",
+              "type": "single_choice",
+              "options": ["dattes", "pommes", "carottes", "fromage"],
+              "correctAnswers": [0],
+              "explanation": "Tradition iftar."
+            },
+            {
+              "id": "q3",
+              "question": "« خبز » =",
+              "type": "single_choice",
+              "options": ["pain", "viande", "sucre", "the"],
+              "correctAnswers": [0],
+              "explanation": "Accompagnement courant."
+            },
+            {
+              "id": "q4",
+              "question": "« ماء » =",
+              "type": "single_choice",
+              "options": ["eau", "lait", "jus", "cafe"],
+              "correctAnswers": [0],
+              "explanation": "Hydratation au rupture du jeune."
+            },
+            {
+              "id": "q5",
+              "question": "Contexte du menu :",
+              "type": "single_choice",
+              "options": [
+                "repas du soir ramadan",
+                "petit-dejeuner classique",
+                "collation sportive",
+                "dejeuner cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iftar = rupture du jeune."
+            },
+            {
+              "id": "q6",
+              "question": "« حساء » proche de :",
+              "type": "single_choice",
+              "options": ["soupe", "salade", "glace", "biscuit"],
+              "correctAnswers": [0],
+              "explanation": "Plat liquide chaud."
+            },
+            {
+              "id": "q7",
+              "question": "Ordre symbolique souvent :",
+              "type": "single_choice",
+              "options": [
+                "dattes puis eau",
+                "pain seul interdit",
+                "eau interdite",
+                "pas de sequence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dattes et eau frequentes en premier."
+            },
+            {
+              "id": "q8",
+              "question": "Ce menu est :",
+              "type": "single_choice",
+              "options": [
+                "court et thematique",
+                "un roman",
+                "un horaire de train",
+                "une loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste alimentaire breve."
+            },
+            {
+              "id": "q9",
+              "question": "Lire « تمر » aide lors d'une fete :",
+              "type": "single_choice",
+              "options": [
+                "religieuse/culturelle",
+                "de ski",
+                "aquatique sans texte",
+                "sans nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire ramadan utile en 4e."
+            },
+            {
+              "id": "q10",
+              "question": "Nombre d'items listes :",
+              "type": "single_choice",
+              "options": ["4", "2", "10", "0"],
+              "correctAnswers": [0],
+              "explanation": "Quatre elements separes."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Horaire bus ligne 5",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« ٧:١٥ · ٧:٤٥ · ٨:١٥ ». Quelles sont des heures de passage ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": ["7 h 15", "7 h 45", "midi", "minuit"],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux premieres valeurs ; 8 h 15 aussi mais paire 7:15 et 7:45 valide."
+            },
+            {
+              "id": "q2",
+              "question": "« ٨:١٥ » =",
+              "type": "single_choice",
+              "options": ["8 h 15", "8 h 50", "18 h 15", "815 km"],
+              "correctAnswers": [0],
+              "explanation": "Lecture chiffres orientaux."
+            },
+            {
+              "id": "q3",
+              "question": "Document type :",
+              "type": "single_choice",
+              "options": [
+                "horaire transport",
+                "menu",
+                "invitation mariage",
+                "affiche film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heures successives = bus ou train."
+            },
+            {
+              "id": "q4",
+              "question": "Intervalle entre 7 h 15 et 7 h 45 :",
+              "type": "single_choice",
+              "options": ["30 min", "15 min", "1 h", "2 h"],
+              "correctAnswers": [0],
+              "explanation": "Calcul simple de transport."
+            },
+            {
+              "id": "q5",
+              "question": "Pour attraper le deuxieme bus tu viens a :",
+              "type": "single_choice",
+              "options": ["7 h 45", "7 h 00", "9 h 00", "6 h"],
+              "correctAnswers": [0],
+              "explanation": "Deuxieme horaire liste."
+            },
+            {
+              "id": "q6",
+              "question": "Ligne « 5 » souvent indique :",
+              "type": "single_choice",
+              "options": [
+                "numero de ligne",
+                "5 euros toujours",
+                "5 jours sans bus",
+                "5 villes en arabe seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre du quiz : ligne 5."
+            },
+            {
+              "id": "q7",
+              "question": "Ce texte n'a pas :",
+              "type": "single_choice",
+              "options": [
+                "liste de plats",
+                "heures",
+                "chiffres arabes",
+                "format court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de nourriture."
+            },
+            {
+              "id": "q8",
+              "question": "Competence mobilisee :",
+              "type": "single_choice",
+              "options": [
+                "lire l'heure",
+                "conjuguer passe compose",
+                "dessiner une carte",
+                "chanter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaire = heures."
+            },
+            {
+              "id": "q9",
+              "question": "« ٧ » =",
+              "type": "single_choice",
+              "options": ["7", "1", "70", "0"],
+              "correctAnswers": [0],
+              "explanation": "Chiffre sept."
+            },
+            {
+              "id": "q10",
+              "question": "Troisieme passage :",
+              "type": "single_choice",
+              "options": ["8 h 15", "7 h 15", "8 h 45", "10 h"],
+              "correctAnswers": [0],
+              "explanation": "Troisieme valeur de la liste."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Carte invitation mariage",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« الأحد · قاعة الأفراح · الساعة ٧ مساءً ». Quelles precisions ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "jour",
+                "salle des fetes",
+                "prix du billet",
+                "numero de bus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dimanche + salle ; 7 soir est heure."
+            },
+            {
+              "id": "q2",
+              "question": "« مساءً » indique :",
+              "type": "single_choice",
+              "options": ["le soir", "le matin", "midi", "nuit sans precision"],
+              "correctAnswers": [0],
+              "explanation": "Apres-midi/soir."
+            },
+            {
+              "id": "q3",
+              "question": "« الأحد » =",
+              "type": "single_choice",
+              "options": ["dimanche", "samedi", "mercredi", "vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Jour de semaine."
+            },
+            {
+              "id": "q4",
+              "question": "« قاعة الأفراح » =",
+              "type": "single_choice",
+              "options": [
+                "salle de reception",
+                "bibliotheque",
+                "stade",
+                "aeroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de celebration."
+            },
+            {
+              "id": "q5",
+              "question": "Invitation mariage contient souvent :",
+              "type": "single_choice",
+              "options": [
+                "date lieu heure",
+                "liste courses",
+                "devoirs maths",
+                "score match"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules polies + infos pratiques."
+            },
+            {
+              "id": "q6",
+              "question": "« الساعة ٧ » avec مساءً ≈",
+              "type": "single_choice",
+              "options": ["19 h", "7 h matin", "7 min", "7 jours"],
+              "correctAnswers": [0],
+              "explanation": "7 du soir en usage 24 h."
+            },
+            {
+              "id": "q7",
+              "question": "Registre du document :",
+              "type": "single_choice",
+              "options": [
+                "formel/festif",
+                "scientifique",
+                "agressif",
+                "secret militaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Evenement social familial."
+            },
+            {
+              "id": "q8",
+              "question": "Tu ne trouves pas ici :",
+              "type": "single_choice",
+              "options": ["menu du restaurant", "jour", "lieu", "heure"],
+              "correctAnswers": [0],
+              "explanation": "Pas de plats detailles."
+            },
+            {
+              "id": "q9",
+              "question": "Lire « قاعة » aide a repérer :",
+              "type": "single_choice",
+              "options": [
+                "un lieu couvert",
+                "une couleur",
+                "un animal",
+                "une saison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salle, espace interieur."
+            },
+            {
+              "id": "q10",
+              "question": "Type de document :",
+              "type": "single_choice",
+              "options": [
+                "invitation",
+                "horaire cours",
+                "affiche recrutement",
+                "ticket metro seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convocation a un evenement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Affiche concours de calligraphie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« مسابقة الخط · التسجيل حتى ٢٠ ». Quelles infos ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "concours",
+                "date limite d'inscription",
+                "menu",
+                "horaire bus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Concours de calligraphie + jusqu'au 20."
+            },
+            {
+              "id": "q2",
+              "question": "« الخط » lie a :",
+              "type": "single_choice",
+              "options": ["calligraphie", "cuisine", "football", "natation"],
+              "correctAnswers": [0],
+              "explanation": "Art de l'ecriture arabe."
+            },
+            {
+              "id": "q3",
+              "question": "« التسجيل » =",
+              "type": "single_choice",
+              "options": [
+                "inscription",
+                "dejeuner",
+                "depart",
+                "examen final obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'inscrire au concours."
+            },
+            {
+              "id": "q4",
+              "question": "« حتى ٢٠ » =",
+              "type": "single_choice",
+              "options": [
+                "jusqu'au 20",
+                "apres le 20 seulement",
+                "20 euros",
+                "20 heures de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deadline jour 20."
+            },
+            {
+              "id": "q5",
+              "question": "Affiche culturelle vise :",
+              "type": "single_choice",
+              "options": [
+                "participer a un evenement",
+                "acheter un velo",
+                "reserver hotel",
+                "voter loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilisation scolaire."
+            },
+            {
+              "id": "q6",
+              "question": "« مسابقة » =",
+              "type": "single_choice",
+              "options": ["concours", "bibliotheque", "pluie", "gateau"],
+              "correctAnswers": [0],
+              "explanation": "Competition."
+            },
+            {
+              "id": "q7",
+              "question": "Apres le 20 sans inscription :",
+              "type": "single_choice",
+              "options": [
+                "souvent trop tard",
+                "obligatoire",
+                "automatique gagne",
+                "interdit de lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens de la date limite."
+            },
+            {
+              "id": "q8",
+              "question": "Document :",
+              "type": "single_choice",
+              "options": ["affiche", "roman", "facture eau", "carte identite"],
+              "correctAnswers": [0],
+              "explanation": "Annonce murale ou web courte."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle compétence relève d'un document culturel en arabe ?",
+              "type": "single_choice",
+              "options": [
+                "Le vocabulaire d'une affiche ou d'une invitation",
+                "La conduite d'un bateau",
+                "Le théorème de Pythagore seul",
+                "Une règle de trois en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chapitre porte sur les mots d'un document court, pas sur les maths."
+            },
+            {
+              "id": "q10",
+              "question": "Pas dans l'extrait :",
+              "type": "single_choice",
+              "options": [
+                "heure precise du concours",
+                "theme calligraphie",
+                "limite inscription",
+                "mot concours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure du jour J non donnee."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Affiche + horaire atelier",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« ورشة اللغة · الأربعاء ١٦:٠٠ · القاعة أ ». Quelles infos utiles ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "activite langue",
+                "mercredi 16 h",
+                "liste de courses",
+                "prix avion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Atelier langue + creneau ; salle A en plus."
+            },
+            {
+              "id": "q2",
+              "question": "« ورشة » =",
+              "type": "single_choice",
+              "options": ["atelier", "supermarche", "plage", "prison"],
+              "correctAnswers": [0],
+              "explanation": "Workshop scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "« الأربعاء » =",
+              "type": "single_choice",
+              "options": ["mercredi", "mardi", "samedi", "dimanche"],
+              "correctAnswers": [0],
+              "explanation": "Jour de semaine."
+            },
+            {
+              "id": "q4",
+              "question": "« ١٦:٠٠ » =",
+              "type": "single_choice",
+              "options": ["16 h", "6 h", "16 min", "160 km"],
+              "correctAnswers": [0],
+              "explanation": "Format 24 h."
+            },
+            {
+              "id": "q5",
+              "question": "« اللغة » renvoie a :",
+              "type": "single_choice",
+              "options": ["langue", "sport", "cuisine seule", "geologie"],
+              "correctAnswers": [0],
+              "explanation": "Atelier linguistique."
+            },
+            {
+              "id": "q6",
+              "question": "« القاعة أ » =",
+              "type": "single_choice",
+              "options": ["salle A", "rue A", "prof A", "note A"],
+              "correctAnswers": [0],
+              "explanation": "Localisation batiment."
+            },
+            {
+              "id": "q7",
+              "question": "Mix affiche/horaire sert a :",
+              "type": "single_choice",
+              "options": [
+                "ne pas rater l'atelier",
+                "commander pizza",
+                "lire un menu iftar",
+                "acheter timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date-heure-lieu en un bloc."
+            },
+            {
+              "id": "q8",
+              "question": "Tu viens :",
+              "type": "single_choice",
+              "options": [
+                "mercredi apres-midi",
+                "mercredi 4 h du matin",
+                "lundi matin",
+                "sans heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "16 h = apres-midi."
+            },
+            {
+              "id": "q9",
+              "question": "Ce n'est pas :",
+              "type": "single_choice",
+              "options": [
+                "invitation mariage",
+                "annonce atelier",
+                "texte court",
+                "document scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de mariage."
+            },
+            {
+              "id": "q10",
+              "question": "Lecture 4e : retrouver rapidement :",
+              "type": "single_choice",
+              "options": [
+                "jour et heure",
+                "auteur du XIXe siecle",
+                "toute grammaire",
+                "carte du monde entiere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scan d'informations cles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthese documents du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels documents contiennent souvent une HEURE ? (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "horaire bus",
+                "invitation",
+                "menu sans heure",
+                "dictionnaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Transport et fetes ; menu seul rarement l'heure."
+            },
+            {
+              "id": "q2",
+              "question": "« قائمة الطعام » designe :",
+              "type": "single_choice",
+              "options": [
+                "menu",
+                "emploi du temps",
+                "carte geographique",
+                "journal intime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste de nourriture."
+            },
+            {
+              "id": "q3",
+              "question": "« جدول » peut signifier :",
+              "type": "single_choice",
+              "options": ["tableau/horaire", "chaussure", "fenetre", "ocean"],
+              "correctAnswers": [0],
+              "explanation": "Emploi du temps scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "« دعوة » =",
+              "type": "single_choice",
+              "options": ["invitation", "refus", "colere", "silence"],
+              "correctAnswers": [0],
+              "explanation": "Convier quelqu'un."
+            },
+            {
+              "id": "q5",
+              "question": "« ملصق » proche de :",
+              "type": "single_choice",
+              "options": ["affiche", "telephone", "chaise", "nuage"],
+              "correctAnswers": [0],
+              "explanation": "Poster/colle murale."
+            },
+            {
+              "id": "q6",
+              "question": "Lire un extrait arabe en 4e :",
+              "type": "single_choice",
+              "options": [
+                "repérer mots connus",
+                "traduire Homer integral",
+                "ignorer les chiffres",
+                "eviter le contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Strategie documentaire."
+            },
+            {
+              "id": "q7",
+              "question": "Chiffres orientaux servent dans :",
+              "type": "single_choice",
+              "options": [
+                "horaires et dates",
+                "uniquement poesie ancienne",
+                "jamais en classe",
+                "sport seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique courante sur affiches MENA."
+            },
+            {
+              "id": "q8",
+              "question": "Menu + invitation : point commun",
+              "type": "single_choice",
+              "options": [
+                "texte court utile",
+                "roman long",
+                "sans mots arabes",
+                "toujours en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formats fonctionnels."
+            },
+            {
+              "id": "q9",
+              "question": "Affiche club : mot cle activite",
+              "type": "single_choice",
+              "options": ["نادي", "ماء", "حتى", "مساء"],
+              "correctAnswers": [0],
+              "explanation": "Club/association."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif u1 :",
+              "type": "single_choice",
+              "options": [
+                "comprendre documents courts",
+                "memoriser 5000 verbes",
+                "etudier astrophysique",
+                "ecrire traité philosophie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture documentaire niveau 4e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le Caire, capitale égyptienne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le Caire est repère car : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "grande ville arabe",
+                "centre culturel et media",
+                "capitale du Bresil",
+                "ile sans habitants"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Megapole egyptienne, influence regionale."
+            },
+            {
+              "id": "q2",
+              "question": "« القاهرة » =",
+              "type": "single_choice",
+              "options": ["Le Caire", "Casablanca", "Bagdad", "Riyad"],
+              "correctAnswers": [0],
+              "explanation": "Capitale d'Egypte."
+            },
+            {
+              "id": "q3",
+              "question": "Pays du Caire :",
+              "type": "single_choice",
+              "options": ["Egypte", "Maroc", "Turquie", "Indonesie"],
+              "correctAnswers": [0],
+              "explanation": "Geographie monde arabe."
+            },
+            {
+              "id": "q4",
+              "question": "Langue officielle principale en Egypte :",
+              "type": "single_choice",
+              "options": ["arabe", "japonais", "swahili seul", "latin"],
+              "correctAnswers": [0],
+              "explanation": "Arabe standard + dialecte egyptien."
+            },
+            {
+              "id": "q5",
+              "question": "Fleuve proche symbole :",
+              "type": "single_choice",
+              "options": ["Nil", "Seine", "Amazone", "Danube"],
+              "correctAnswers": [0],
+              "explanation": "Le Nil traverse l'Egypte."
+            },
+            {
+              "id": "q6",
+              "question": "Le Caire se situe en :",
+              "type": "single_choice",
+              "options": [
+                "Afrique du Nord-Est",
+                "Amerique du Sud",
+                "Oceanie",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position afro-asiatique."
+            },
+            {
+              "id": "q7",
+              "question": "Repère civilisation =",
+              "type": "single_choice",
+              "options": [
+                "lieu qui aide a situer culture",
+                "numero de telephone",
+                "recette",
+                "exercice gym"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de reference culturel/geographique."
+            },
+            {
+              "id": "q8",
+              "question": "Dialecte local parle :",
+              "type": "single_choice",
+              "options": [
+                "arabe egyptien",
+                "quebecois seul",
+                "gaulois",
+                "sans arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variété très repandue dans les medias."
+            },
+            {
+              "id": "q9",
+              "question": "Monnaie Egypte (repère) :",
+              "type": "single_choice",
+              "options": [
+                "livre egyptienne",
+                "euro",
+                "yen",
+                "dollar australien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte civilisationnel basique."
+            },
+            {
+              "id": "q10",
+              "question": "Le Caire n'est pas :",
+              "type": "single_choice",
+              "options": [
+                "capitale de la France",
+                "ville arabe",
+                "en Egypte",
+                "un repère geographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paris est capitale francaise."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Beyrouth et la langue",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Beyrouth connue pour : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "diversite linguistique",
+                "port mediterraneen",
+                "desert sans mer",
+                "pole nord"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liban : arabe, francais, anglais ; cote mediterranee."
+            },
+            {
+              "id": "q2",
+              "question": "« بيروت » =",
+              "type": "single_choice",
+              "options": ["Beyrouth", "Tunis", "Amman", "Khartoum"],
+              "correctAnswers": [0],
+              "explanation": "Capitale Liban."
+            },
+            {
+              "id": "q3",
+              "question": "Mer bordant Beyrouth :",
+              "type": "single_choice",
+              "options": [
+                "Mediterranee",
+                "Mer Rouge seule",
+                "Pacifique",
+                "Mer Morte seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littoral levantin."
+            },
+            {
+              "id": "q4",
+              "question": "Langue arabe au Liban :",
+              "type": "single_choice",
+              "options": [
+                "officielle avec autres usages",
+                "interdite",
+                "inexistante",
+                "uniquement ecrite en chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arabe libanais parle + standard."
+            },
+            {
+              "id": "q5",
+              "question": "Le francais au Liban historiquement :",
+              "type": "single_choice",
+              "options": [
+                "present dans l'education/medias",
+                "jamais entendu",
+                "langue des pyramides",
+                "remplace par latin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heritage colonial et multilinguisme."
+            },
+            {
+              "id": "q6",
+              "question": "Repère « langue » ici =",
+              "type": "single_choice",
+              "options": [
+                "plusieurs langues coexistent",
+                "une seule langue sans variete",
+                "aucune communication",
+                "uniquement gestes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beyrouth symbolise melange linguistique."
+            },
+            {
+              "id": "q7",
+              "question": "Pays de Beyrouth :",
+              "type": "single_choice",
+              "options": ["Liban", "Syrie", "Emirats", "Soudan"],
+              "correctAnswers": [0],
+              "explanation": "Etat du Proche-Orient."
+            },
+            {
+              "id": "q8",
+              "question": "« لبنان » =",
+              "type": "single_choice",
+              "options": ["Liban", "Jordanie", "Koweit", "Algerie"],
+              "correctAnswers": [0],
+              "explanation": "Nom arabe du pays."
+            },
+            {
+              "id": "q9",
+              "question": "Ville arabe : oui/non Beyrouth",
+              "type": "single_choice",
+              "options": [
+                "oui, grande ville arabe",
+                "non, capitale europeenne",
+                "non, village sans arabe",
+                "oui mais en Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monde arabe mediterraneen."
+            },
+            {
+              "id": "q10",
+              "question": "Apprendre arabe en 4e + repère Beyrouth aide a :",
+              "type": "single_choice",
+              "options": [
+                "voir diversite reelle de la langue",
+                "oublier l'alphabet",
+                "nier les dialectes",
+                "eviter la geographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard et parle coexistent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fête de l'Aïd al-Fitr",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'Aïd al-Fitr marque : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "fin du ramadan",
+                "moments de fete familiale",
+                "debut du jeune",
+                "examen national obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rupture collective et visites familiales."
+            },
+            {
+              "id": "q2",
+              "question": "« عيد الفطر » lie a :",
+              "type": "single_choice",
+              "options": [
+                "Aïd fin ramadan",
+                "Noel",
+                "Halloween",
+                "Fete vendanges France seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire fete islamique majeure."
+            },
+            {
+              "id": "q3",
+              "question": "Avant l'Aïd on observe :",
+              "type": "single_choice",
+              "options": [
+                "ramadan",
+                "carême chretien toujours",
+                "rien",
+                "seulement sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mois de jeune precede la fete."
+            },
+            {
+              "id": "q4",
+              "question": "Salutation frequente :",
+              "type": "single_choice",
+              "options": [
+                "« عيد مبارك »",
+                "« bon appetit » seul",
+                "« au revoir » seul",
+                "silence obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait de fete benie."
+            },
+            {
+              "id": "q5",
+              "question": "Repère civilisation : fete =",
+              "type": "single_choice",
+              "options": [
+                "traditions partagees",
+                "sans calendrier",
+                "uniquement commercial",
+                "ignore par les musulmans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme culturel et religieux."
+            },
+            {
+              "id": "q6",
+              "question": "« عيد » signifie souvent :",
+              "type": "single_choice",
+              "options": ["fete", "ecole", "guerre", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "Mot cle fetes."
+            },
+            {
+              "id": "q7",
+              "question": "Pratique courante :",
+              "type": "single_choice",
+              "options": [
+                "vetements neufs ou propres",
+                "jeune de 30 jours apres",
+                "interdiction de saluer",
+                "fermer livres arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbolique de renouveau."
+            },
+            {
+              "id": "q8",
+              "question": "L'Aïd est celebre dans :",
+              "type": "single_choice",
+              "options": [
+                "monde musulman large",
+                "uniquement une rue",
+                "sans mosquee/communaute",
+                "lune seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère transnational arabe/islamique."
+            },
+            {
+              "id": "q9",
+              "question": "« الفطر » evoque :",
+              "type": "single_choice",
+              "options": [
+                "rupture du jeune",
+                "debut du jeune",
+                "mer",
+                "montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iftar/fitr meme racine semantique."
+            },
+            {
+              "id": "q10",
+              "question": "En classe 4e, connaitre l'Aïd sert a :",
+              "type": "single_choice",
+              "options": [
+                "comprendre calendrier et textes",
+                "eviter dialogue interculturel",
+                "confondre avec menu cantine",
+                "rejeter arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture partagee dans le monde arabe."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Rabat, capitale du Maroc",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Rabat est : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "capitale administrative",
+                "ville atlantique",
+                "capitale du Japon",
+                "sans arabe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capitale marocaine sur l'Atlantique."
+            },
+            {
+              "id": "q2",
+              "question": "« الرباط » =",
+              "type": "single_choice",
+              "options": ["Rabat", "Alger", "Doha", "Sanaa"],
+              "correctAnswers": [0],
+              "explanation": "Ecriture arabe de la ville."
+            },
+            {
+              "id": "q3",
+              "question": "Pays :",
+              "type": "single_choice",
+              "options": ["Maroc", "Egypte", "Irak", "Mauritanie"],
+              "correctAnswers": [0],
+              "explanation": "Rabat est la capitale du Maroc (Maghreb)."
+            },
+            {
+              "id": "q4",
+              "question": "Langue officielle Maroc :",
+              "type": "single_choice",
+              "options": [
+                "arabe (et tamazight aussi)",
+                "allemand seul",
+                "russe",
+                "sans langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arabe standard + darija."
+            },
+            {
+              "id": "q5",
+              "question": "Monnaie :",
+              "type": "single_choice",
+              "options": ["dirham", "euro obligatoire", "yen", "peso"],
+              "correctAnswers": [0],
+              "explanation": "Repère economique basique."
+            },
+            {
+              "id": "q6",
+              "question": "Rabat proche de :",
+              "type": "single_choice",
+              "options": [
+                "ocean Atlantique",
+                " Himalaya",
+                "Grand Canyon",
+                "volcan Hawaii seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cote marocaine."
+            },
+            {
+              "id": "q7",
+              "question": "« المغرب » =",
+              "type": "single_choice",
+              "options": ["Maroc", "Egypte", "Libye", "Oman"],
+              "correctAnswers": [0],
+              "explanation": "Nom arabe du pays."
+            },
+            {
+              "id": "q8",
+              "question": "Capitale ≠ plus grande ville toujours ; au Maroc grande ville connue aussi :",
+              "type": "single_choice",
+              "options": ["Casablanca", "Paris", "Tokyo", "Oslo"],
+              "correctAnswers": [0],
+              "explanation": "Casablanca plus populeuse, Rabat capitale."
+            },
+            {
+              "id": "q9",
+              "question": "Repère carte : Rabat situe en :",
+              "type": "single_choice",
+              "options": [
+                "Afrique du Nord",
+                "Amerique",
+                "Europe de l'Est seule",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maghreb africain."
+            },
+            {
+              "id": "q10",
+              "question": "Etudier Rabat en arabe aide a :",
+              "type": "single_choice",
+              "options": [
+                "relier geographie et langue",
+                "oublier l'alphabet",
+                "nier le Maghreb",
+                "confondre avec Riyad"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitales comme ancres memorisation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La calligraphie arabe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Calligraphie arabe : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "art de l'ecriture",
+                "heritage culturel",
+                "sport olympique",
+                "sans lettres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Esthetique et tradition des manuscrits."
+            },
+            {
+              "id": "q2",
+              "question": "« الخط العربي » =",
+              "type": "single_choice",
+              "options": [
+                "calligraphie arabe",
+                "cuisine marocaine",
+                "type de bus",
+                "danse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression artistique liee a la langue."
+            },
+            {
+              "id": "q3",
+              "question": "Outil classique :",
+              "type": "single_choice",
+              "options": ["qalam (calame)", "skateboard", "microscope", "arc"],
+              "correctAnswers": [0],
+              "explanation": "Encre et calame historiques."
+            },
+            {
+              "id": "q4",
+              "question": "On la voit souvent sur :",
+              "type": "single_choice",
+              "options": [
+                "mosquees et affiches",
+                "sans texte",
+                "uniquement en cyrillic",
+                "lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Decoration et lisibilite sacree."
+            },
+            {
+              "id": "q5",
+              "question": "Lien avec langue :",
+              "type": "single_choice",
+              "options": [
+                "beauté des lettres arabes",
+                "remplace l'alphabet latin en France",
+                "interdit d'apprendre arabe",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meme alphabet, mise en forme artistique."
+            },
+            {
+              "id": "q6",
+              "question": "Styles connus incluent :",
+              "type": "single_choice",
+              "options": [
+                "naskh, thuluth (noms entendus en 4e)",
+                "cursive latin seule",
+                "hieroglyphes egyptiens anciens obligatoires",
+                "aucun style"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Familles de styles enseignees sommairement."
+            },
+            {
+              "id": "q7",
+              "question": "Concours d'affiche u1 « مسابقة الخط » montre :",
+              "type": "single_choice",
+              "options": [
+                "vivant culturel de l'ecriture",
+                "fin de l'arabe",
+                "remplacement par emoji seul",
+                "interet zero"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont document et civilisation."
+            },
+            {
+              "id": "q8",
+              "question": "Calligraphie ≠ simple frappe clavier car :",
+              "type": "single_choice",
+              "options": [
+                "geste et proportion comptent",
+                "identique toujours",
+                "sans encr",
+                "interdit couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps et tracé."
+            },
+            {
+              "id": "q9",
+              "question": "« فن » dans contexte art =",
+              "type": "single_choice",
+              "options": ["art", "pain", "porte", "bus"],
+              "correctAnswers": [0],
+              "explanation": "Mot arabe art."
+            },
+            {
+              "id": "q10",
+              "question": "Repère civilisation ici :",
+              "type": "single_choice",
+              "options": [
+                "identite visuelle arabe",
+                "menu restaurant",
+                "horaire metro Paris seul",
+                "recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue materialisee en art."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dubaï, modernité et diversité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dubaï repère pour : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "metropole des Emirats",
+                "echanges internationaux",
+                "village sans eau",
+                "capitale de l'Italie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ville globale du Golfe."
+            },
+            {
+              "id": "q2",
+              "question": "« دبي » =",
+              "type": "single_choice",
+              "options": ["Dubai", "Damascus", "Dakar", "Dublin"],
+              "correctAnswers": [0],
+              "explanation": "Emirat connu."
+            },
+            {
+              "id": "q3",
+              "question": "Pays (Emirats) :",
+              "type": "single_choice",
+              "options": [
+                "EAU",
+                "Arabie saoudite",
+                "Qatar seul confondu",
+                "Maroc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emirats arabes unis."
+            },
+            {
+              "id": "q4",
+              "question": "Langue officielle :",
+              "type": "single_choice",
+              "options": ["arabe", "swahili", "mandarin seul", "latin"],
+              "correctAnswers": [0],
+              "explanation": "Arabe + anglais tres present."
+            },
+            {
+              "id": "q5",
+              "question": "Mer region :",
+              "type": "single_choice",
+              "options": [
+                "Golfe Persique/Arabe",
+                "Mediterranee seule",
+                "Atlantique",
+                "Mer Baltique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geographie peninsule."
+            },
+            {
+              "id": "q6",
+              "question": "Modernité signifie ici souvent :",
+              "type": "single_choice",
+              "options": [
+                "gratte-ciels et aeroport",
+                "absence d'arabe",
+                "sans habitants",
+                "sans commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image urbaine recente."
+            },
+            {
+              "id": "q7",
+              "question": "« الإمارات » =",
+              "type": "single_choice",
+              "options": [
+                "Emirats",
+                "Egypte",
+                "Emirats + confusion Egypte non",
+                "France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Etat federatif du Golfe."
+            },
+            {
+              "id": "q8",
+              "question": "Dubaï monde arabe :",
+              "type": "single_choice",
+              "options": [
+                "oui, ville du Golfe arabophone",
+                "non europeenne uniquement",
+                "non sans arabe",
+                "oui mais en Amerique du Sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monde arabe contemporain."
+            },
+            {
+              "id": "q9",
+              "question": "Diversite a Dubai :",
+              "type": "single_choice",
+              "options": [
+                "communautes internationales",
+                "une seule langue interdite",
+                "zero tourisme",
+                "sans mosquee"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Echanges globaux."
+            },
+            {
+              "id": "q10",
+              "question": "Ne pas confondre Dubai avec :",
+              "type": "single_choice",
+              "options": [
+                "Riyad capitale Arabie",
+                "meme pays toujours",
+                "toujours Maroc",
+                "toujours Egypte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale Arabie saoudite = Riyad."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mawlid, fête du Prophète",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le Mawlid est : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "commemoration naissance du Prophete",
+                "fete observee dans plusieurs pays musulmans",
+                "jeune de ramadan",
+                "examen de maths"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mawlid an-nabi, calendrier hijri."
+            },
+            {
+              "id": "q2",
+              "question": "« المولد » =",
+              "type": "single_choice",
+              "options": ["mawlid (naissance)", "menu", "metro", "mer"],
+              "correctAnswers": [0],
+              "explanation": "Racine naissance."
+            },
+            {
+              "id": "q3",
+              "question": "Calendrier concerne :",
+              "type": "single_choice",
+              "options": [
+                "hijri",
+                "gregorien seul sans lien",
+                "calendrier maya",
+                "sans date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère calendaire islamique."
+            },
+            {
+              "id": "q4",
+              "question": "Pratiques possibles :",
+              "type": "single_choice",
+              "options": [
+                "lectures et charite",
+                "obligation jeune 30 jours",
+                "interdiction de lire",
+                "destruction livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Varie selon pays, ton recueillement."
+            },
+            {
+              "id": "q5",
+              "question": "Repère fete aide a :",
+              "type": "single_choice",
+              "options": [
+                "comprendre rythme societe",
+                "ignorer culture",
+                "confondre avec Aïd al-Fitr seul",
+                "rejeter dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs fetes dans année musulmane."
+            },
+            {
+              "id": "q6",
+              "question": "« النبي » =",
+              "type": "single_choice",
+              "options": [
+                "le Prophete",
+                "le professeur de sport",
+                "le bus",
+                "la soupe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muhammad en contexte religieux."
+            },
+            {
+              "id": "q7",
+              "question": "Monde arabe : Mawlid",
+              "type": "single_choice",
+              "options": [
+                "connu selon pays",
+                "inconnu partout",
+                "fete chretienne",
+                "fete paienne romaine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversite pratiques."
+            },
+            {
+              "id": "q8",
+              "question": "Differe de Aïd al-Fitr car :",
+              "type": "single_choice",
+              "options": [
+                "autre evenement religieux",
+                "identique toujours",
+                "sans lien islam",
+                "menu cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fetes distinctes."
+            },
+            {
+              "id": "q9",
+              "question": "En 4e on retient surtout :",
+              "type": "single_choice",
+              "options": [
+                "nom et sens general",
+                "debats theologiques avances",
+                "tous les versets",
+                "sans vocabulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau repère culturel."
+            },
+            {
+              "id": "q10",
+              "question": "Vocabulaire « عيد » vs « مولد » :",
+              "type": "single_choice",
+              "options": [
+                "fete vs naissance commemoree",
+                "identiques",
+                "sans arabe",
+                "inverse langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction lexicale simple."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Arabe standard et dialectes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Arabe vivant : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "arabe standard moderne",
+                "dialectes nationaux",
+                "une seule prononciation sans variation",
+                "langue morte sans usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diglossie : MSA + darija/egyptien etc."
+            },
+            {
+              "id": "q2",
+              "question": "« الفصحى » designe :",
+              "type": "single_choice",
+              "options": [
+                "arabe standard",
+                "dialecte marocain seul",
+                "francais",
+                "latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue medias, ecole, ecrit."
+            },
+            {
+              "id": "q3",
+              "question": "« العامية » =",
+              "type": "single_choice",
+              "options": ["dialecte parle", "calligraphie", "fete", "horaire"],
+              "correctAnswers": [0],
+              "explanation": "Usage quotidien local."
+            },
+            {
+              "id": "q4",
+              "question": "Journal TV news utilise surtout :",
+              "type": "single_choice",
+              "options": [
+                "standard",
+                "darija pure partout",
+                "japonais",
+                "sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusha a l'antenne."
+            },
+            {
+              "id": "q5",
+              "question": "Rue a Casablanca on entend plutot :",
+              "type": "single_choice",
+              "options": [
+                "darija",
+                "vieux norrois",
+                "latin classique",
+                "silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialecte maghrebin."
+            },
+            {
+              "id": "q6",
+              "question": "Meme alphabet pour :",
+              "type": "single_choice",
+              "options": [
+                "standard et dialectes",
+                "dialectes seulement cyrillic",
+                "standard seulement latin",
+                "aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ecriture arabe partagee."
+            },
+            {
+              "id": "q7",
+              "question": "Repère langue 4e :",
+              "type": "single_choice",
+              "options": [
+                "variété n'est pas erreur",
+                "dialecte = faute toujours",
+                "standard inutile",
+                "un seul pays parle arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralite linguistique."
+            },
+            {
+              "id": "q8",
+              "question": "« مرحبا » maghrebin =",
+              "type": "single_choice",
+              "options": ["salut", "au revoir", "merci", "non"],
+              "correctAnswers": [0],
+              "explanation": "Mot repère dialectal."
+            },
+            {
+              "id": "q9",
+              "question": "Films egyptiens diffusent :",
+              "type": "single_choice",
+              "options": [
+                "dialecte egyptien",
+                "quebecois",
+                "gaulois",
+                "sans voix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soft power linguistique."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif u2 langue :",
+              "type": "single_choice",
+              "options": [
+                "situer arabe dans sa diversite",
+                "apprendre 20 dialectes entiers",
+                "renoncer a lire",
+                "confondre arabe et turc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère civilisationnel."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Jérusalem, patrimoine partagé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jérusalem repère car : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "ville sainte multireligieuse",
+                "histoire longue en arabe aussi",
+                "capitale du Canada",
+                "sans habitants"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Judaisme, christianisme, islam ; nom arabe Al-Quds."
+            },
+            {
+              "id": "q2",
+              "question": "« القدس » =",
+              "type": "single_choice",
+              "options": [
+                "Jerusalem / Al-Quds",
+                "Le Caire",
+                "Istanbul",
+                "Mekka seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toponyme arabe."
+            },
+            {
+              "id": "q3",
+              "question": "Continent :",
+              "type": "single_choice",
+              "options": [
+                "Asie (Proche-Orient)",
+                "Amerique du Sud",
+                "Oceanie",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geographie."
+            },
+            {
+              "id": "q4",
+              "question": "Dome du Rocher lie a :",
+              "type": "single_choice",
+              "options": [
+                "patrimoine islamique",
+                "stade football seul",
+                "sans architecture",
+                "piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monument emblematique."
+            },
+            {
+              "id": "q5",
+              "question": "Langue presente :",
+              "type": "single_choice",
+              "options": [
+                "arabe parmi d'autres",
+                "uniquement klingon",
+                "sans langue",
+                "latin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville multilingue."
+            },
+            {
+              "id": "q6",
+              "question": "Patrimoine =",
+              "type": "single_choice",
+              "options": [
+                "heritage culturel/religieux",
+                "menu fast-food",
+                "horaire bus",
+                "devoir maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Memoire collective."
+            },
+            {
+              "id": "q7",
+              "question": "En 4e on aborde surtout :",
+              "type": "single_choice",
+              "options": [
+                "repère geographique et culturel",
+                "resolution conflit detaillee",
+                "sans respect",
+                "sans carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche civilisationnelle."
+            },
+            {
+              "id": "q8",
+              "question": "« مسجد » =",
+              "type": "single_choice",
+              "options": ["mosquee", "ecole", "marche", "aeroport"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire ville sainte."
+            },
+            {
+              "id": "q9",
+              "question": "Partage signifie :",
+              "type": "single_choice",
+              "options": [
+                "plusieurs traditions y sont liees",
+                "une seule histoire sans autre",
+                "ville recente 2020",
+                "sans monuments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexite historique."
+            },
+            {
+              "id": "q10",
+              "question": "Ne pas confondre Al-Quds avec :",
+              "type": "single_choice",
+              "options": [
+                "Rabat",
+                "nom arabe de Jerusalem",
+                "ville du Maghreb seule",
+                "capitale EAU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rabat capitale marocaine."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse monde arabe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Monde arabe inclut : (deux reponses)",
+              "type": "multiple_choice",
+              "options": [
+                "plusieurs pays et capitales",
+                "variété dialectale",
+                "un seul Etat sans diversite",
+                "aucune fete culturelle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "22 pays Ligue arabe, richete linguistique."
+            },
+            {
+              "id": "q2",
+              "question": "« الوطن العربي » =",
+              "type": "single_choice",
+              "options": [
+                "monde/pays arabe",
+                "France seule",
+                "Antarctique",
+                "une rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression courante manuels."
+            },
+            {
+              "id": "q3",
+              "question": "Capitale Arabie saoudite :",
+              "type": "single_choice",
+              "options": ["Riyad", "Dubai", "Beyrouth", "Khartoum"],
+              "correctAnswers": [0],
+              "explanation": "Repère carte Golfe."
+            },
+            {
+              "id": "q4",
+              "question": "Capitale Egypte :",
+              "type": "single_choice",
+              "options": [
+                "Le Caire",
+                "Alexandrie seule capitale",
+                "Rabat",
+                "Amman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quiz u2 q01."
+            },
+            {
+              "id": "q5",
+              "question": "Fete fin ramadan :",
+              "type": "single_choice",
+              "options": ["Aïd al-Fitr", "Mawlid", "Noel", "Pâques seule"],
+              "correctAnswers": [0],
+              "explanation": "Calendrier musulman."
+            },
+            {
+              "id": "q6",
+              "question": "Calligraphie = repère :",
+              "type": "single_choice",
+              "options": ["art de la langue", "horaire train", "menu", "sport"],
+              "correctAnswers": [0],
+              "explanation": "Civilisation visuelle."
+            },
+            {
+              "id": "q7",
+              "question": "Beyrouth illustre :",
+              "type": "single_choice",
+              "options": [
+                "multilinguisme",
+                "desert sans mer",
+                "absence d'arabe",
+                "pole nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue et ville."
+            },
+            {
+              "id": "q8",
+              "question": "Lire « عيد » dans un texte aide a repérer :",
+              "type": "single_choice",
+              "options": ["fete", "bus", "salle 2", "soupe"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire fetes."
+            },
+            {
+              "id": "q9",
+              "question": "Objectif u2 entier :",
+              "type": "single_choice",
+              "options": [
+                "ancrer villes fetes langue",
+                "memoriser tous les pays sans carte",
+                "eviter geographie",
+                "confondre dialecte et turc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères civilisation 4e."
+            },
+            {
+              "id": "q10",
+              "question": "Ce fichier 4e-arabe-03 traite surtout :",
+              "type": "single_choice",
+              "options": [
+                "documents + civilisation",
+                "physique quantique",
+                "theatre grec seul",
+                "sans arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre unités Culture et documents."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

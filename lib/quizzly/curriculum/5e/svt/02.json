@@ -1,0 +1,2738 @@
+{
+  "id": "5e-svt-02",
+  "year": "5e",
+  "subject": "svt",
+  "title": "La planète Terre",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Météo et climats",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Météo et climat : deux échelles de temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations distinguent correctement météo et climat ?",
+              "options": [
+                "La météo décrit le temps sur quelques jours",
+                "Le climat correspond à une moyenne sur plusieurs décennies",
+                "La météo et le climat sont strictement identiques",
+                "Le climat se déduit de nombreuses observations sur la durée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La météo est le temps qu'il fait à court terme ; le climat résume le régime atmosphérique sur de longues périodes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La météo concerne surtout :",
+              "options": [
+                "Les conditions atmosphériques du moment ou des prochains jours",
+                "La moyenne des températures sur 30 ans",
+                "La composition du noyau terrestre",
+                "Les marées océaniques seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Météo = état de l'atmosphère à court terme (température, nuages, vent, pluie…)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le climat d'une région se caractérise par :",
+              "options": [
+                "Des moyennes et régularités sur de longues périodes",
+                "Un seul jour de grand froid",
+                "Une unique bourrasque",
+                "Un événement de grêle isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On parle de climat lorsque l'on synthétise plusieurs années de données météo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il pleut aujourd'hui à Paris » relève plutôt de :",
+              "options": [
+                "La météo",
+                "Le climat",
+                "La géologie",
+                "La tectonique des plaques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une observation du jour appartient au domaine météorologique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Le sud de la France a des étés chauds et secs en moyenne » relève plutôt de :",
+              "options": [
+                "Le climat",
+                "Une simple rafale de vent",
+                "Un bulletin météo de demain matin",
+                "Un séisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une tendance moyenne sur la saison traduit le climat régional."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour étudier le climat, les scientifiques utilisent surtout :",
+              "options": [
+                "Des séries d'observations sur de nombreuses années",
+                "Une seule mesure de température",
+                "Uniquement des photos de nuages un jour donné",
+                "Les phases de la Lune seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le climat se définit à partir de statistiques sur la durée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un bulletin météo prévoit surtout :",
+              "options": [
+                "L'évolution probable du temps à court terme",
+                "Le climat mondial dans 10 000 ans avec certitude",
+                "La date exacte du prochain séisme",
+                "La composition chimique du magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La prévision météo porte sur les jours à venir, pas sur le climat lointain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le climat influence surtout :",
+              "options": [
+                "Les végétations et activités humaines possibles sur une région",
+                "La couleur des yeux",
+                "Le nombre de dents",
+                "La vitesse de rotation de la Terre sur une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat et milieu conditionnent faune, flore et modes de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une canicule exceptionnelle un été peut survenir sans changer immédiatement :",
+              "options": [
+                "La définition statistique du climat",
+                "Le fait que la Terre soit ronde",
+                "La présence d'azote dans l'air",
+                "L'existence des océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un événement extrême n'efface pas le climat moyen, même s'il peut le faire évoluer lentement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les paramètres météo étudiés en SVT incluent notamment :",
+              "options": [
+                "Température, pression, vent, humidité, précipitations",
+                "Uniquement la salinité du sang",
+                "La masse des planètes",
+                "Le nombre de volcans actifs dans le monde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces grandeurs décrivent l'état de l'atmosphère à un instant ou sur quelques jours."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Température, pression et humidité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont mesurés couramment en météorologie ?",
+              "options": [
+                "La température de l'air",
+                "La pression atmosphérique",
+                "La profondeur du manteau terrestre en km",
+                "L'humidité de l'air"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Température, pression et humidité font partie des mesures de base ; le manteau terrestre relève de la géologie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La température de l'air se mesure souvent avec :",
+              "options": [
+                "Un thermomètre abrité",
+                "Un sismographe",
+                "Un voltmètre",
+                "Une règle graduée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermomètre, placé à l'abri du soleil direct, mesure la température ambiante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pression atmosphérique correspond à :",
+              "options": [
+                "Le poids de la colonne d'air au-dessus d'un point",
+                "La force du vent uniquement",
+                "La température de l'eau de pluie",
+                "La vitesse de rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air a une masse ; sa pression diminue généralement avec l'altitude."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un anticyclone est associé le plus souvent à :",
+              "options": [
+                "Une pression relativement élevée et un temps plus stable",
+                "Une dépression très profonde et des tempêtes systématiques",
+                "Un séisme de magnitude 7",
+                "Une éruption volcanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous un anticyclone, l'air descend souvent et le temps est plus calme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une dépression atmosphérique correspond plutôt à :",
+              "options": [
+                "Une zone de pression plus basse",
+                "Une zone de pression maximale sur le globe",
+                "Un tsunami",
+                "Un glissement de terrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une dépression, l'air monte et peut former nuages et précipitations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'humidité de l'air indique :",
+              "options": [
+                "La quantité de vapeur d'eau présente",
+                "La salinité de l'océan",
+                "La vitesse du vent en km/h uniquement",
+                "La magnitude d'un séisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus l'air est humide, plus il contient de vapeur d'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand l'air humide se refroidit, il peut :",
+              "options": [
+                "Condenser et former des gouttelettes (nuages ou brouillard)",
+                "Disparaître totalement de l'atmosphère",
+                "Devenir de l'azote pur",
+                "Produire des ondes sismiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refroidissement favorise la condensation de la vapeur d'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au sommet d'une montagne, la pression atmosphérique est :",
+              "options": [
+                "Plus faible qu'en plaine",
+                "Plus élevée qu'en plaine",
+                "Identique partout sur Terre",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus on monte, moins il y a d'air au-dessus, donc la pression baisse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un baromètre sert à mesurer :",
+              "options": [
+                "La pression atmosphérique",
+                "La pluie tombée en mm",
+                "La direction du vent seule",
+                "La taille des gouttes de grêle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le baromètre indique les variations de pression, utiles en prévision."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une journée très chaude avec forte humidité peut sembler :",
+              "options": [
+                "Plus lourde et étouffante",
+                "Plus froide qu'en hiver",
+                "Sans aucune vapeur d'eau",
+                "Dépourvue d'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'humidité limite l'évaporation de la sueur et accentue la sensation de chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Nuages et états du ciel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment se forment les nuages dans l'atmosphère ?",
+              "options": [
+                "Par condensation de vapeur d'eau autour de poussières",
+                "Par refroidissement de l'air humide",
+                "Par fusion de roches magmatiques en altitude",
+                "Par vibration des plaques tectoniques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air humide qui se refroidit condense en gouttelettes ou cristaux de glace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les nuages sont composés surtout de :",
+              "options": [
+                "Gouttelettes d'eau ou cristaux de glace",
+                "Roche solide",
+                "Gaz uniquement sans eau",
+                "Lave refroidie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages sont visibles car l'eau condensée diffuse la lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ciel couvert signifie généralement :",
+              "options": [
+                "Beaucoup de nuages masquant le soleil",
+                "Absence totale d'atmosphère",
+                "Un séisme en cours",
+                "Une marée haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couvert = grande couverture nuageuse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les cumulus sont souvent des nuages :",
+              "options": [
+                "Blancs, en forme de choux, par beau temps",
+                "Situés uniquement dans le magma",
+                "Formés uniquement la nuit sans eau",
+                "Toujours associés à des séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cumulus typiques apparaissent par convection en journée ensoleillée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les stratus sont plutôt :",
+              "options": [
+                "Des nappes nuageuses basses et grises",
+                "Des nuages d'altitude en filaments seuls",
+                "Des roches sédimentaires",
+                "Des ondes tsunami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stratus forment un ciel uniforme bas, parfois brume ou bruine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les nuages d'orage (cumulonimbus) peuvent produire :",
+              "options": [
+                "Fortes pluies, grêle, éclairs et rafales",
+                "Uniquement du soleil sans vent",
+                "Des séismes de magnitude élevée",
+                "De la lave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cumulonimbus sont des nuages profonds de convection violente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le brouillard est :",
+              "options": [
+                "Un nuage au contact du sol",
+                "Un nuage toujours au-dessus de 10 km",
+                "Un type de tsunami",
+                "Une couche de magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brouillard = visibilité réduite par des gouttelettes près du sol."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus un nuage est épais et sombre, il contient souvent :",
+              "options": [
+                "Plus d'eau condensée",
+                "Moins de vapeur d'eau",
+                "Aucune gouttelette",
+                "Uniquement de l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande épaisseur nuageuse peut libérer des précipitations importantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les traînées de condensation derrière un avion sont :",
+              "options": [
+                "Des nuages formés par condensation de vapeur d'eau",
+                "De la fumée de charbon uniquement",
+                "Des failles sismiques",
+                "Des vagues de marée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau de l'échappement peut condenser en gouttelettes en altitude froide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer la forme et l'altitude des nuages aide à :",
+              "options": [
+                "Comprendre le temps présent et à venir",
+                "Prédire la magnitude exacte d'un séisme",
+                "Mesurer la profondeur du manteau",
+                "Dater une roche volcanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type de nuage renseigne sur les processus atmosphériques en cours."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pluie, neige et précipitations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles précipitations peuvent tomber depuis les nuages ?",
+              "options": [
+                "Pluie",
+                "Neige",
+                "Lave volcanique",
+                "Grêle ou grésil selon les conditions"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pluie et neige sont des précipitations météorologiques ; la lave ne tombe pas des nuages."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La pluie se forme quand :",
+              "options": [
+                "Les gouttelettes des nuages deviennent assez lourdes",
+                "La roche fond dans le ciel",
+                "Le vent cesse totalement",
+                "La pression devient nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion ou coalescence de gouttes entraîne leur chute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La neige tombe lorsque :",
+              "options": [
+                "Les cristaux de glace forment dans des nuages froids",
+                "La température de l'air est toujours au-dessus de 40 °C",
+                "Il n'y a aucune vapeur d'eau",
+                "Un séisme secoue les nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par temps froid, l'eau se solidifie en cristaux de neige."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un pluviomètre sert à :",
+              "options": [
+                "Mesurer la quantité de pluie tombée",
+                "Mesurer la magnitude des séismes",
+                "Mesurer la température du magma",
+                "Compter les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il recueille l'eau de pluie sur une surface définie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La grêle correspond à :",
+              "options": [
+                "Des boules de glace tombant d'orages violents",
+                "De la pluie chaude uniquement",
+                "Du sable du désert seul",
+                "Des cendres volcaniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un cumulonimbus, des grains de glace grossissent par collisions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La bruine est :",
+              "options": [
+                "Une pluie fine et persistante",
+                "Une avalanche de neige",
+                "Un tsunami",
+                "Un glissement de terrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bruine produit de très petites gouttes, souvent sous stratus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les précipitations réintroduisent de l'eau :",
+              "options": [
+                "Vers les sols, rivières et nappes",
+                "Uniquement dans le noyau terrestre",
+                "Dans le magma profond",
+                "Hors de la Terre définitivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles alimentent le cycle de l'eau à la surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur une carte météo, les isohyetes montrent :",
+              "options": [
+                "Les zones de quantités de pluie comparables",
+                "Les failles sismiques",
+                "Les crêtes volcaniques",
+                "Les limites des plaques seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isohyetes relient les points de même précipitation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une longue sécheresse dans une région signifie :",
+              "options": [
+                "Peu de pluie sur une période prolongée",
+                "Trop de neige en permanence",
+                "Des séismes quotidiens",
+                "Des éruptions chaque heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécheresse = déficit durable de précipitations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La pluie acide est liée surtout à :",
+              "options": [
+                "La pollution de l'air qui acidifie les gouttes",
+                "La rotation de la Lune",
+                "Les marées seules",
+                "La photosynthèse nocturne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains polluants se dissolvent dans l'eau de pluie et abaissent son pH."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le vent et la circulation de l'air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Qu'est-ce qui provoque le vent dans l'atmosphère ?",
+              "options": [
+                "Des différences de pression entre les zones",
+                "Le déplacement de masses d'air",
+                "La rotation de la Terre seule sans gradient de pression",
+                "Les séismes de faible profondeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air se déplace des zones de haute pression vers les basses pressions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La vitesse du vent se mesure souvent avec :",
+              "options": [
+                "Un anémomètre",
+                "Un baromètre seul",
+                "Un sismographe",
+                "Un thermomètre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anémomètre enregistre la vitesse (et parfois la direction) du vent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une girouette indique :",
+              "options": [
+                "La direction d'où vient le vent",
+                "La magnitude d'un séisme",
+                "La salinité de l'océan",
+                "La température du magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit « vent d'ouest » quand il souffle depuis l'ouest."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les brises de mer et de terre s'expliquent par :",
+              "options": [
+                "Le contraste de chauffage entre terre et mer",
+                "La fusion des glaciers uniquement",
+                "Les éruptions sous-marines systématiques",
+                "Les ondes sismiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terre se réchauffe plus vite que la mer, modifiant la pression locale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un vent fort associé à une dépression peut :",
+              "options": [
+                "Accroître les dégâts lors de tempêtes",
+                "Empêcher toute formation de nuages",
+                "Arrêter la rotation de la Terre",
+                "Provoquer un tsunami sans mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent violent + pluie = conditions de tempête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'échelle de Beaufort classe surtout :",
+              "options": [
+                "L'intensité du vent par effets observables",
+                "La magnitude des séismes",
+                "La taille des volcans",
+                "La profondeur des nappes phréatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaufort relie la force du vent à des effets sur la mer ou la végétation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aux alentours d'un anticyclone en France, le vent tourne souvent :",
+              "options": [
+                "Autour du centre de haute pression",
+                "Uniquement vers le centre de la Terre",
+                "Dans le magma",
+                "Sans aucune direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vents s'organisent autour des centres de pression ( sens modifié par la rotation terrestre)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mistral est un vent :",
+              "options": [
+                "Fort et froid venant du nord dans le couloir rhodanien",
+                "Un tsunami méditerranéen",
+                "Un séisme alpin",
+                "Une lave du Vésuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mistral est un vent régional célèbre du sud-est de la France."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transporter le pollen sur de longues distances, le vent peut :",
+              "options": [
+                "Contribuer à la dispersion des végétaux",
+                "Créer des séismes",
+                "Faire fondre le noyau terrestre",
+                "Mesurer la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent et animaux participent à la dispersion des graines et pollens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une « rafale » désigne :",
+              "options": [
+                "Une augmentation brève et forte de la vitesse du vent",
+                "Une pluie continue pendant un mois",
+                "Un glissement de terrain lent",
+                "Une éruption effusive calme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rafales dépassent momentanément la vitesse moyenne du vent."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Masses d'air et fronts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Qu'est-ce qu'une masse d'air ?",
+              "options": [
+                "Un volume d'air de grande taille aux propriétés homogènes",
+                "Un ensemble d'air qui se déplace et peut changer le temps",
+                "Un morceau de croûte terrestre",
+                "Une colonne de magma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une masse d'air est un vaste ensemble d'air aux caractéristiques similaires qui voyage dans l'atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un front froid se produit quand :",
+              "options": [
+                "Une masse d'air froid pousse une masse d'air chaud",
+                "Deux plaques sismiques se séparent",
+                "Un volcan entre en éruption",
+                "La Lune cache le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air froid, plus dense, soulève l'air chaud humide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un front chaud correspond plutôt à :",
+              "options": [
+                "Une masse d'air chaud qui glisse au-dessus d'une masse froide",
+                "Un tsunami",
+                "Un glissement de terrain",
+                "Une faille normale en géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air chaud moins dense s'élève progressivement sur l'air froid."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aux fronts, on observe souvent :",
+              "options": [
+                "Nuages et parfois précipitations",
+                "Uniquement du temps sec sans nuages",
+                "De la lave en fusion",
+                "Des ondes sismiques P uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soulèvement de l'air humide favorise condensation et pluie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une masse d'air polaire apporte en général :",
+              "options": [
+                "De l'air froid",
+                "De l'air très chaud et sec du Sahara",
+                "Du magma",
+                "De l'eau salée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Polaire » indique une origine vers les hautes latitudes froides."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une masse d'air tropicale est plutôt :",
+              "options": [
+                "Chaude et humide",
+                "Glaciale",
+                "Formée dans le noyau terrestre",
+                "Sans aucune vapeur d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les régions tropicales réchauffent l'air et l'enrichissent en humidité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur une carte météo, une ligne bleue avec triangles symbolise souvent :",
+              "options": [
+                "Un front froid",
+                "Un séisme",
+                "Un volcan actif",
+                "Une nappe phréatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les symboles triangulaires indiquent classiquement un front froid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le passage d'un front peut faire :",
+              "options": [
+                "Changer brusquement température et vent",
+                "Modifier la rotation de la Terre",
+                "Créer instantanément une montagne",
+                "Vider les océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le remplacement d'une masse d'air par une autre modifie le temps ressenti."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les dépressions se déplacent souvent :",
+              "options": [
+                "En suivant les courants jets en altitude",
+                "Au centre exact de la Terre",
+                "Uniquement lors des éclipses",
+                "Sans jamais se déplacer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les systèmes dépressionnaires sont guidés par la circulation générale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre les fronts aide à :",
+              "options": [
+                "Anticiper les changements de temps",
+                "Calculer la magnitude exacte d'un séisme",
+                "Dater une roche métamorphique",
+                "Mesurer la salinité sanguine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fronts marquent les zones de changement météorologique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Observer et prévoir le temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils aident à observer le temps qu'il fait ?",
+              "options": [
+                "Station météo avec capteurs",
+                "Images satellite",
+                "Sismographe pour la pluie",
+                "Volcanologue pour le vent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capteurs au sol et vues depuis l'espace documentent l'atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Météo-France diffuse des informations via :",
+              "options": [
+                "Bulletins, cartes et alertes",
+                "Uniquement des mesures sismiques",
+                "Des prévisions magmatiques",
+                "Des cartes de failles uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'organisme français centralise observations et prévisions météo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un satellite météorologique observe surtout :",
+              "options": [
+                "Nuages et tempêtes à grande échelle",
+                "Le noyau interne de la Terre",
+                "Les ondes sismiques",
+                "Les fossiles marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les images satellitaires suivent l'évolution des systèmes nuageux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un radar météo sert à :",
+              "options": [
+                "Détecter les précipitations et orages",
+                "Mesurer les magnitudes de séismes",
+                "Analyser la lave",
+                "Compter les volcans sous-marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radar renvoie un signal réfléchi par les gouttes de pluie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les prévisions numériques utilisent :",
+              "options": [
+                "Des modèles informatiques de l'atmosphère",
+                "Uniquement des légendes",
+                "Des tirages au sort",
+                "La position des volcans seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modèles simulent l'évolution des pressions, vents et températures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus l'échéance de prévision est lointaine, :",
+              "options": [
+                "Plus l'incertitude augmente généralement",
+                "Plus elle est toujours exacte au degré près",
+                "Moins l'atmosphère compte",
+                "Plus les séismes sont prévisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les petites erreurs s'amplifient avec le temps dans les modèles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une vigilance « orange canicule » signifie :",
+              "options": [
+                "Un épisode de chaleur dangereux à anticiper",
+                "Un tsunami imminent garanti",
+                "Une éruption volcanique certaine",
+                "Un séisme de magnitude 9"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vigilances météo alertent sur des phénomènes à impact sanitaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tenir un carnet météo à l'école permet de :",
+              "options": [
+                "Comparer observations quotidiennes sur plusieurs semaines",
+                "Remplacer toutes les stations du monde",
+                "Prédire les séismes à la minute",
+                "Mesurer le magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des mesures régulières aident à repérer tendances et variabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La rose des vents sur une carte indique :",
+              "options": [
+                "Les directions cardinales",
+                "La profondeur du manteau",
+                "La magnitude des séismes",
+                "Le volume des éruptions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nord, sud, est, ouest servent à situer le vent et les masses d'air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier plusieurs stations météo sur une carte permet de :",
+              "options": [
+                "Visualiser un même système (dépression, anticyclone)",
+                "Localiser une seule goutte de pluie",
+                "Empêcher les vents",
+                "Créer des volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synoptique compare les mesures pour décrire la situation large."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les grands types de climats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs influencent le climat d'une région ?",
+              "options": [
+                "La latitude",
+                "La proximité des océans",
+                "La couleur des yeux des habitants",
+                "L'altitude"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Latitude, relief, distance à la mer et courants modulent températures et pluies."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un climat équatorial est en général :",
+              "options": [
+                "Chaud et humide toute l'année",
+                "Froid et sec en permanence",
+                "Identique au climat polaire",
+                "Sans aucune pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Près de l'équateur, les températures restent élevées avec forte humidité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un climat désertique se caractérise par :",
+              "options": [
+                "De très faibles précipitations",
+                "Des pluies quotidiennes abondantes",
+                "Des hivers très rigoureux polaires",
+                "Des tsunamis fréquents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déserts reçoivent très peu de pluie sur l'année."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le climat océanique (ex. ouest de la France) a souvent :",
+              "options": [
+                "Des hivers doux et des étés tempérés",
+                "Des températures constantes proches de −40 °C",
+                "Aucune humidité",
+                "Des séismes quotidiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mer tempère les variations saisonnières."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un climat continental présente souvent :",
+              "options": [
+                "Des amplitudes thermiques plus marquées",
+                "Aucune saison",
+                "Une température identique jour et nuit toute l'année",
+                "Uniquement des ouragans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loin des océans, les étés peuvent être chauds et les hivers froids."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En montagne, le climat devient plus froid quand :",
+              "options": [
+                "L'altitude augmente",
+                "On descend dans une vallée profonde seule",
+                "Il pleut une fois",
+                "Un volcan est éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température diminue en moyenne avec l'altitude."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les climats méditerranéens connaissent souvent :",
+              "options": [
+                "Des étés secs et chauds",
+                "Des hivers très humides toute l'année sans sécheresse estivale",
+                "Des calottes glaciaires permanentes au bord de mer",
+                "Des tsunamis chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pluie tombe surtout en automne-hiver ; l'été est sec."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un climogramme montre :",
+              "options": [
+                "Températures et précipitations mois par mois",
+                "Les ondes sismiques",
+                "La composition du magma",
+                "Les failles actives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce graphique résume le régime climatique annuel d'une station."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La zone intertropicale reçoit beaucoup d'énergie solaire car :",
+              "options": [
+                "Les rayons arrivent plus verticalement",
+                "Le Soleil n'y brille jamais",
+                "La Terre n'y tourne pas",
+                "Il n'y a pas d'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'angle d'incidence élevé concentre le réchauffement près de l'équateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer les climats de deux villes sur 30 ans permet de :",
+              "options": [
+                "Distinguer leurs régimes pluviométriques et thermiques",
+                "Prédire le prochain séisme",
+                "Connaître la profondeur du manteau",
+                "Mesurer la vitesse des plaques au km/h instantané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les moyennes à long terme caractérisent le climat local."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Climat, effet de serre et changement global",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz contribuent à l'effet de serre naturel de la Terre ?",
+              "options": [
+                "Dioxyde de carbone (CO₂)",
+                "Vapeur d'eau",
+                "Azote pur seul sans autre gaz",
+                "Hélium atmosphérique majoritaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO₂ et vapeur d'eau retiennent une partie du rayonnement infrarouge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'effet de serre naturel est utile car il :",
+              "options": [
+                "Maintient des températures compatibles avec la vie",
+                "Refroidit la Terre à −200 °C",
+                "Supprime toute atmosphère",
+                "Empêche toute pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans effet de serre, la planète serait beaucoup plus froide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le réchauffement climatique actuel est surtout lié à :",
+              "options": [
+                "L'augmentation des gaz à effet de serre d'origine humaine",
+                "La rotation de la Lune",
+                "Les marées seules",
+                "Les séismes fréquents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combustion d'énergies fossiles et déforestation enrichissent l'atmosphère en CO₂."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une conséquence observée du changement climatique est :",
+              "options": [
+                "La fonte partielle des glaciers",
+                "La disparition instantanée de la gravité",
+                "L'arrêt de la rotation terrestre",
+                "L'absence totale de vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hausse des températures moyennes fait reculer glaces et calottes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La montée du niveau de la mer est liée notamment à :",
+              "options": [
+                "L'expansion thermique de l'eau et la fonte des glaces",
+                "Uniquement aux tsunamis",
+                "Les éruptions volcaniques seules",
+                "Les vents du mistral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau plus chaude prend plus de volume ; les glaces terrestres alimentent les océans."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduire les émissions de CO₂ peut aider à :",
+              "options": [
+                "Limiter l'ampleur du réchauffement futur",
+                "Empêcher toute pluie",
+                "Bloquer les séismes",
+                "Éteindre les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diminuer les gaz à effet de serre ralentit le forçage climatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les événements météo extrêmes (canicules, fortes pluies) peuvent :",
+              "options": [
+                "Devenir plus fréquents ou intenses avec le climat qui change",
+                "Disparaître totalement",
+                "Ne plus jamais toucher l'Europe",
+                "Remplacer les saisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un climat plus chaud modifie la probabilité de certains extrêmes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le GIEC regroupe des experts qui :",
+              "options": [
+                "Synthétisent le savoir scientifique sur le climat",
+                "Prédisent chaque séisme",
+                "Contrôlent les volcans",
+                "Mesurent le vent avec des girouettes scolaires seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Groupe d'experts intergouvernemental publie des rapports sur le climat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Planter des arbres et préserver des forêts aide car les végétaux :",
+              "options": [
+                "Captent du CO₂ par photosynthèse",
+                "Produisent du magma",
+                "Bloquent les plaques tectoniques",
+                "Créent des tsunamis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les forêts stockent du carbone dans la biomasse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Agir sur le climat diffère de prévoir la météo car :",
+              "options": [
+                "Le climat se modifie sur des décennies avec des actions collectives",
+                "La météo se contrôle en une journée avec certitude",
+                "Les deux sont identiques",
+                "Le climat n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les politiques énergétiques influencent le climat à long terme, pas le temps de demain."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : météo et climats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur la Terre et son atmosphère sont correctes ?",
+              "options": [
+                "L'eau cycle entre evaporation, nuages et précipitations",
+                "Le vent résulte de différences de pression",
+                "La météo d'un jour fixe le climat mondial instantanément",
+                "Les océans influencent le climat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cycle de l'eau, pressions et océans structurent temps et climat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La couche d'air qui entoure la Terre s'appelle :",
+              "options": [
+                "L'atmosphère",
+                "Le manteau",
+                "Le noyau externe",
+                "La lithosphère seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Météo et climat se déroulent dans l'atmosphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le Soleil est la principale source d'énergie pour :",
+              "options": [
+                "Le réchauffement de la surface et l'atmosphère",
+                "La fusion du noyau visible",
+                "Les séismes profonds",
+                "La formation instantanée des volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement solaire pilote la circulation atmosphérique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les saisons dans l'hémisphère nord existent car :",
+              "options": [
+                "L'axe de la Terre est incliné sur l'orbite",
+                "La Terre est plate",
+                "La Lune produit la chaleur estivale",
+                "Les volcans chauffent l'été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inclinaison modifie la hauteur du Soleil et la durée du jour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un hiver doux un seul mois ne prouve pas :",
+              "options": [
+                "Que le réchauffement climatique n'existe pas",
+                "Que l'atmosphère contient de l'azote",
+                "Que la Terre est sphérique",
+                "Que l'eau peut geler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variabilité météo masque les tendances climatiques à court terme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour protéger les populations des canicules, on peut :",
+              "options": [
+                "Hydrater, rafraîchir les locaux et suivre les alertes",
+                "Ignorer les bulletins",
+                "Augmenter l'activité en plein soleil",
+                "Fermer toute ventilation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les comportements adaptés limitent les risques sanitaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La différence entre temps sec et humide dépend surtout de :",
+              "options": [
+                "La quantité de vapeur d'eau dans l'air",
+                "La couleur du sol",
+                "Le nombre de volcans",
+                "La magnitude des séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humidité élevée favorise nuages et pluie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Étudier météo et climats en SVT sert à :",
+              "options": [
+                "Comprendre l'environnement et anticiper certains risques",
+                "Prédire chaque tremblement de terre",
+                "Contrôler les éruptions",
+                "Empêcher les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces connaissances aident à s'adapter aux aléas atmosphériques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une carte des isothermes relie des points de :",
+              "options": [
+                "Même température",
+                "Même magnitude sismique",
+                "Même épaisseur de lave",
+                "Même profondeur de faille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iso = égal ; therme = chaleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le chapitre « Météo et climats » prépare surtout à étudier :",
+              "options": [
+                "Les aléas naturels liés à l'atmosphère et à la Terre",
+                "Uniquement la respiration des poissons",
+                "La digestion humaine",
+                "Les équations du second degré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tempêtes, sécheresses et changement climatique mènent aux risques naturels."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Risques naturels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Aléas, risques et catastrophes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le vocabulaire des risques naturels, que signifient ces termes ?",
+              "options": [
+                "Aléa : phénomène potentiellement dangereux",
+                "Risque : aléa × enjeux (population, bâtiments…)",
+                "Catastrophe : aléa sans aucun dommage",
+                "Vulnérabilité : sensibilité d'une communauté aux dommages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'aléa devient un risque lorsqu'il menace des enjeux ; la catastrophe correspond à des dommages réels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un aléa naturel est par exemple :",
+              "options": [
+                "Un séisme",
+                "Un examen scolaire",
+                "Une panne d'internet",
+                "Un match de football"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séisme, éruption, inondation ou tsunami sont des aléas d'origine naturelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La vulnérabilité augmente si :",
+              "options": [
+                "Des habitations fragiles sont construites sur une zone inondable",
+                "Personne ne vit dans la région",
+                "Les bâtiments respectent des normes parasismiques",
+                "Les populations sont informées et préparées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus les enjeux sont exposés et fragiles, plus les dégâts potentiels sont grands."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un même séisme peut causer plus de victimes dans une ville dense car :",
+              "options": [
+                "Les enjeux humains et bâtis y sont plus importants",
+                "La magnitude change automatiquement",
+                "La gravité terrestre disparaît",
+                "Les ondes sismiques s'arrêtent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque dépend de l'intensité ressentie et de ce qui est exposé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prévenir un risque naturel signifie surtout :",
+              "options": [
+                "Réduire vulnérabilité et exposition avant la catastrophe",
+                "Attendre que tout soit détruit",
+                "Nier l'existence de l'aléa",
+                "Supprimer toutes les montagnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aménagement, normes et alertes diminuent les conséquences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une catastrophe naturelle correspond à :",
+              "options": [
+                "Un aléa ayant produit des dommages importants",
+                "Un phénomène sans aucun effet",
+                "Un devoir de SVT",
+                "Une variation météo d'une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On parle de catastrophe lorsque l'aléa affecte fortement les sociétés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les cartes de risks (PPRI, sismicité…) servent à :",
+              "options": [
+                "Identifier les zones où il faut adapter l'urbanisme",
+                "Prédire le score d'un match",
+                "Mesurer la température de l'air demain",
+                "Compter les poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La connaissance des zones à risque guide construction et evacuation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un plan communal de sauvegarde (PCS) prévoit :",
+              "options": [
+                "Les actions d'alerte et secours lors d'une crise",
+                "Le menu de la cantine",
+                "Les horaires de sport",
+                "La météo de la semaine prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque commune organise la protection des populations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différencier aléa et risque permet de :",
+              "options": [
+                "Comprendre que le danger dépend aussi de l'homme",
+                "Affirmer que les séismes n'existent pas",
+                "Ignorer les inondations",
+                "Supprimer les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne maîtrise pas totalement l'aléa, mais on peut agir sur l'exposition."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les médias et l'école participent à :",
+              "options": [
+                "La culture du risque et la préparation",
+                "La création de séismes",
+                "L'augmentation des magnitudes",
+                "La fusion des plaques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informer et s'exercer aux bons réflexes sauve des vies."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Comprendre les séismes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les séismes sont exactes ?",
+              "options": [
+                "Ils résultent d'une libération brusque d'énergie dans la croûte",
+                "Ils se produisent le plus souvent le long des limites de plaques",
+                "Ils sont causés par la pluie quotidienne",
+                "Des ondes sismiques se propagent dans les roches"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les déformations aux frontières de plaques se relâchent parfois en secousse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le foyer (hypocentre) d'un séisme est :",
+              "options": [
+                "Le point de rupture à profondeur dans la croûte",
+                "Le point à la surface directement au-dessus",
+                "Le sommet d'un volcan",
+                "Le centre du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le séisme naît au foyer ; l'épicentre est sa projection en surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'épicentre est :",
+              "options": [
+                "Le point en surface au-dessus du foyer",
+                "Toujours au pôle Nord",
+                "Dans le magma océanique seul",
+                "La magnitude du séisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la zone la plus proche du foyer à la surface terrestre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La magnitude mesure surtout :",
+              "options": [
+                "L'énergie libérée par le séisme",
+                "Le nombre de victimes",
+                "La couleur de la roche",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle de magnitude (ex. Richter moment Mw) quantifie l'énergie sismique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'intensité ressentie (ex. échelle MSK) dépend notamment de :",
+              "options": [
+                "Distance à l'épicentre et qualité des constructions",
+                "Uniquement de la couleur du ciel",
+                "Du nombre de nuages",
+                "De la salinité de la mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même magnitude peut être plus ou moins destructrice selon le lieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un sismographe enregistre :",
+              "options": [
+                "Les vibrations du sol (ondes sismiques)",
+                "La pluie en mm",
+                "La température de l'air",
+                "La pression atmosphérique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le séisme produit des ondes P et S détectées par les stations."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les ondes P sont :",
+              "options": [
+                "Des ondes rapides qui compriment les roches",
+                "Des vagues de tsunami",
+                "Des nuages d'orage",
+                "De la lave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes primaires arrivent en premier aux séismographes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une faille active peut se déplacer lors d'un séisme car :",
+              "options": [
+                "Les roches de part et d'autre glissent brusquement",
+                "Le vent pousse les montagnes",
+                "La pluie fond les roches instantanément",
+                "Le Soleil arrête de briller"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rejet de faille correspond au déplacement relatif des blocs rocheux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De nombreux séismes sont associés à :",
+              "options": [
+                "La tectonique des plaques",
+                "La photosynthèse",
+                "La respiration des mammifères",
+                "La rotation de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plaques se déforment et se cassent aux limites convergentes, divergentes ou transformantes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après un séisme, il faut :",
+              "options": [
+                "Se protéger, écouter les autorités et vérifier les fuites de gaz",
+                "Courez utiliser l'ascenseur",
+                "Rester sous une fenêtre vitrée",
+                "Allumer une flamme sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexes de mise en sécurité et consignes officielles limitent les accidents secondaires."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Séismes : où et pourquoi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où observe-t-on une forte sismicité sur Terre ?",
+              "options": [
+                "Ceinture de feu du Pacifique",
+                "Rift est-africain et certaines zones méditerranéennes",
+                "Au centre exact de chaque plaque sans faille",
+                "Uniquement dans le noyau liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les marges de plaques concentrent la majorité des séismes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La « ceinture de feu » entoure surtout :",
+              "options": [
+                "L'océan Pacifique",
+                "L'océan Atlantique nord seul",
+                "La Lune",
+                "Le pôle Sud uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle regroupe séismes et volcans le long des bordures du Pacifique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors d'une collision de plaques continentales, on peut avoir :",
+              "options": [
+                "Des séismes et formation de chaînes de montagnes",
+                "Uniquement du temps sec",
+                "Absence totale de roches",
+                "Plus de gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : collision Indo-Eurasie → Himalaya et séismes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un séisme sous-marin peut parfois déclencher :",
+              "options": [
+                "Un tsunami si le fond océanique se déplace fortement",
+                "Une pluie acide immédiate",
+                "Un anticyclone",
+                "Une éruption sans magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déplacement vertical de la croûte océanique soulève ou abaisse la masse d'eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En France métropolitaine, la sismicité est :",
+              "options": [
+                "Modérée mais présente (Sud-Est, Pyrénées, Alsace…)",
+                "Totalement nulle partout",
+                "Identique à celle du Japon chaque jour",
+                "Uniquement due au vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des séismes faibles à modérés peuvent survenir ; certaines zones sont classées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les micro-séismes sont :",
+              "options": [
+                "De faibles secousses souvent non ressenties",
+                "Toujours destructeurs",
+                "Des orages",
+                "Des marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux séismes sont enregistrés seulement par les instruments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répliques après un grand séisme sont :",
+              "options": [
+                "Des secousses plus petites sur la même zone",
+                "Des tsunamis garantis",
+                "Des pluies violentes",
+                "Des éruptions sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La croûte se réajuste progressivement après la rupture principale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La profondeur du foyer influence :",
+              "options": [
+                "L'intensité ressentie en surface",
+                "La couleur des océans",
+                "Le nombre de saisons",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un séisme profond atténue souvent les secousses en surface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cartographier les séismes passés permet de :",
+              "options": [
+                "Repérer les zones où reconstruire avec normes adaptées",
+                "Empêcher toute pluie",
+                "Prédire l'heure exacte du prochain séisme",
+                "Contrôler les volcans à distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'historique sismique guide l'aménagement et la prévention."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les limites de plaques transformantes (ex. San Andreas) produisent :",
+              "options": [
+                "Des séismes par glissement horizontal",
+                "Uniquement des inondations",
+                "De la neige artificielle",
+                "Des marées basses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les blocs se déplacent latéralement l'un par rapport à l'autre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les volcans",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques décrivent un volcan ?",
+              "options": [
+                "Conduit permettant la remontée du magma",
+                "Structures comme cône ou caldeira",
+                "Présence possible de lave, cendres et gaz",
+                "Formation uniquement par pluie froide"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un volcan est une ouverture vers le magma avec éruptions possibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le magma est :",
+              "options": [
+                "De la roche en fusion sous la surface",
+                "De l'eau de pluie",
+                "De l'air comprimé",
+                "Du bois carbonisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous terre on parle de magma ; une fois éjecté, de lave."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une éruption effusive produit surtout :",
+              "options": [
+                "Des coulées de lave",
+                "Uniquement des nuages sans matériaux",
+                "Des tsunamis systématiques",
+                "De la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lave visqueuse ou fluide s'écoule le long des flancs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une éruption explosive projette :",
+              "options": [
+                "Cendres, bombes et gaz à haute vitesse",
+                "Uniquement de l'eau douce",
+                "Des poissons",
+                "De l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression des gaz fragmente le magma en téphras."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les volcans sont surtout situés :",
+              "options": [
+                "Aux limites de plaques et points chauds",
+                "Au centre de chaque désert",
+                "Dans le noyau interne",
+                "Sur la Lune visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subduction et dorsales favorisent la remontée du magma."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un volcan dormant (endormi) :",
+              "options": [
+                "Peut se réveiller après longtemps d'inactivité",
+                "Est définitivement éteint à jamais sans exception",
+                "N'a jamais eu de magma",
+                "Est un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Endormi ≠ éteint ; le système magmatique peut encore être alimenté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lave basaltique est en général :",
+              "options": [
+                "Plus fluide que de la lave andésitique très visqueuse",
+                "Toujours solide à 1200 °C",
+                "Identique à la glace",
+                "Sans aucun gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basalte : faible viscosité ; rhyolite/andésite : plus visqueux, explosions possibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Vésuve et l'Etna se trouvent en :",
+              "options": [
+                "Italie",
+                "France métropolitaine",
+                "Antarctique seul",
+                "Désert du Sahara"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Italie possède plusieurs volcans actifs ou endormis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les gaz volcaniques (SO₂, CO₂…) peuvent :",
+              "options": [
+                "Nuire à la santé et au climat local",
+                "Rendre l'air pure sans effet",
+                "Empêcher toute éruption",
+                "Créer des séismes artificiels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acidité, pollution et nuages denses sont des dangers éruptifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer la forme d'un volcan aide à :",
+              "options": [
+                "Deviner le type d'éruptions passées",
+                "Mesurer la pluie demain",
+                "Compter les étoiles",
+                "Prédire le vent exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cônes cendrés, stratovolcans ou boucliers renseignent sur la lave et les explosions."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Products eruptifs et dangers volcaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments peuvent être émis lors d'une éruption ?",
+              "options": [
+                "Lave",
+                "Cendres et cendres chaudes",
+                "Uniquement de l'azote pur sans particules",
+                "Gaz volcaniques"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Lave, téphras et gaz composent les produits éruptifs majeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un nuage ardent (pyroclastique) est :",
+              "options": [
+                "Un mélange chaud de gaz, cendres et roches descendant rapidement",
+                "Une pluie froide",
+                "Un anticyclone",
+                "Un glissement de boue lent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrêmement dangereux, il peut dévaler les flancs à grande vitesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les lahars sont :",
+              "options": [
+                "Des coulées de boue volcanique mélangeant cendres et eau",
+                "Des vents marins",
+                "Des séismes profonds",
+                "Des marées hautes normales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie ou fonte de glace sur cendres instables produisent ces coulées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les cendres fines peuvent :",
+              "options": [
+                "Enfoncer des toitures et perturber les moteurs d'avion",
+                "Nourrir directement les forêts sans effet",
+                "Disparaître avant de retomber",
+                "Refroidir instantanément la lave à 0 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retombées de cendres posent des problèmes mécaniques et respiratoires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une caldeira se forme quand :",
+              "options": [
+                "Le toit d'une chambre magmatique s'effondre",
+                "Une rivière déborde",
+                "Un vent souffle fort",
+                "Un glacier avance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après une grande éruption, le vide magmatique peut faire s'effondrer le sommet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Surveiller un volcan inclut :",
+              "options": [
+                "Mesurer tremblements, déformations et gaz",
+                "Ignorer toute activité",
+                "Compter uniquement les touristes",
+                "Mesurer la pluie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les observatoires volcanologiques suivent signaux sismiques et géodésiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une zone d'exclusion autour d'un volcan sert à :",
+              "options": [
+                "Éloigner les populations des coulées et projections",
+                "Augmenter le tourisme au cratère",
+                "Provogquer l'éruption",
+                "Mesurer le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évacuer ou interdire l'accès limite les victimes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les sols volcaniques, une fois refroidis, peuvent devenir :",
+              "options": [
+                "Fertiles grâce aux minéraux",
+                "Totalement stériles pour toujours",
+                "De l'eau salée",
+                "De la glace permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cendres et lavas altérés enrichissent parfois les terres agricoles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La lave refroidie forme des roches comme :",
+              "options": [
+                "Le basalte",
+                "Le marbre uniquement",
+                "Le charbon",
+                "Le sel gemme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roches volcaniques proviennent du refroidissement du magma."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En cas d'éruption proche, un bon réflexe est :",
+              "options": [
+                "Suivre les consignes d'évacuation et se protéger des cendres",
+                "Se rendre au cratère",
+                "Ouvrir toutes les fenêtres face au nuage ardent",
+                "Nager dans une coulée de lave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masque, abri solide et routes officielles réduisent l'exposition."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Inondations et crues",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles situations peuvent provoquer une inondation ?",
+              "options": [
+                "Pluies intenses et prolongées",
+                "Débordement d'un fleuve ou d'une rivière",
+                "Un séisme sans aucune eau",
+                "Fonte rapide de neige avec sol saturé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Excès d'eau dans un bassin versant dépasse le lit normal du cours d'eau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une crue éclair survient souvent :",
+              "options": [
+                "Rapidement après de fortes pluies localisées",
+                "Uniquement en hiver polaire",
+                "Sans aucune goutte d'eau",
+                "Lors d'éruptions sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les orages peuvent gonfler un ruisseau en quelques minutes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un PPRI en France sert à :",
+              "options": [
+                "Planifier la prévention des risques d'inondation",
+                "Mesurer la magnitude des séismes",
+                "Compter les volcans",
+                "Prévoir le vent exact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Plan de Prévention des Risques d'Inondation encadre l'urbanisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Construire dans une zone inondable augmente :",
+              "options": [
+                "La vulnérabilité des populations",
+                "La vitesse des plaques",
+                "La taille du noyau terrestre",
+                "La rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de biens et de personnes sont exposés aux crues."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un limnigramme ou une station hydrologique mesure :",
+              "options": [
+                "La hauteur ou le débit de l'eau",
+                "La température du magma",
+                "Les ondes sismiques",
+                "La salinité du sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces outils suivent la montée des eaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'imperméabilisation des sols en ville favorise :",
+              "options": [
+                "Le ruissellement rapide vers les égouts et rivières",
+                "L'infiltration maximale partout",
+                "La disparition de toute pluie",
+                "L'absence de crues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'infiltration = eau de pluie concentrée en surface."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vigilance « crues » émise par Météo-France signifie :",
+              "options": [
+                "Risque de débordement à surveiller",
+                "Éruption volcanique certaine",
+                "Séisme de magnitude 9",
+                "Canicule sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vigilances hydrologiques alertent sur les crues possibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ne pas traverser une route inondée car :",
+              "options": [
+                "La profondeur et le courant peuvent emporter véhicules et piétons",
+                "L'eau est toujours potable",
+                "Les poissons interdisent le passage",
+                "Le vent cesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'eau en mouvement suffit à faire chavirer une voiture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les zones basses d'un bassin versant sont :",
+              "options": [
+                "Les premières touchées par une crue descendante",
+                "Toujours au sommet des montagnes",
+                "Sans aucun cours d'eau",
+                "Immunes aux pluies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau s'accumule dans les fonds de vallée et plaines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après une inondation, les risques secondaires incluent :",
+              "options": [
+                "Pollution, effondrements et maladies",
+                "Disparition de la gravité",
+                "Arrêt du cycle de l'eau",
+                "Plus de pluie impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eaux usées, boues et bâtiments fragilisés menacent encore."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tsunamis et littoral",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment se forme un tsunami ?",
+              "options": [
+                "Déplacement brutal du fond marin lors d'un séisme sous-marin",
+                "Vent fort sur un lac sans mouvement d'eau en masse",
+                "Marée haute normale",
+                "Déplacement vertical de grande masse d'eau"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Un séisme ou glissement de terrain peut déplacer l'eau et générer des vagues longues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En haute mer, un tsunami se manifeste souvent par :",
+              "options": [
+                "Une vague peu haute mais très longue",
+                "Un mur d'eau de 30 m visible immédiatement",
+                "Absence totale d'eau",
+                "De la lave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hauteur en offshore est faible ; l'énergie se concentre près du coast."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À l'approche du littoral, un tsunami peut :",
+              "options": [
+                "Devenir très haut et destructeur",
+                "Disparaître toujours",
+                "Se transformer en vent",
+                "Créer un volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le resserrement du fond fait monter l'amplitude de la vague."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le 26 décembre 2004, un tsunami dévastateur a frappé surtout :",
+              "options": [
+                "Les rives de l'océan Indien",
+                "L'océan Atlantique nord uniquement",
+                "La Lune",
+                "Le pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séisme de Sumatra → vagues meurtrières de l'Indonésie à l'Afrique orientale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un système d'alerte tsunami utilise :",
+              "options": [
+                "Bouées et séismographes pour détecter l'événement",
+                "Uniquement des girouettes",
+                "Des baromètres seuls",
+                "Des thermomètres scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détection rapide du séisme et mesure des vagues en mer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la mer se retire brusquement du rivage, il faut :",
+              "options": [
+                "Gagner les hauteurs sans attendre",
+                "Descendre collecter des coquillages",
+                "Rester sur la plage",
+                "Nager vers l'horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retrait brutal peut précéder l'arrivée d'une grande vague."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un tsunami n'est pas :",
+              "options": [
+                "Une marée astronomique ordinaire",
+                "Une série de vagues",
+                "Lié parfois à un séisme",
+                "Potentiellement dangereux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les marées suivent la Lune et le Soleil ; le tsunami est un événement soudain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les côtes basse et peu protégées sont :",
+              "options": [
+                "Plus exposées aux submersions",
+                "Toujours au-dessus de 3000 m",
+                "Sans aucun risque",
+                "Immunes aux vagues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible altitude et pente douce favorisent la pénétration de l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Érosion et tempêtes côtières, combinées à la montée du niveau marin, :",
+              "options": [
+                "Accroissent le risque littoral",
+                "Suppriment les séismes",
+                "Empêchent les pluies",
+                "Éteignent les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le littoral devient plus fragile face aux vagues et submersions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur un panneau « zone tsunami », il faut connaître :",
+              "options": [
+                "Le trajet d'évacuation vers les hauteurs",
+                "Le menu du restaurant",
+                "La météo de la semaine",
+                "Le nom des poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères d'évacuation et exercices sauvent des vies."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Prévenir, protéger, alerter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions relèvent de la prévention des risques naturels ?",
+              "options": [
+                "Construire selon normes parasismiques",
+                "Interdire ou limiter construction en zone inondable",
+                "Ignorer les cartes d'aléas",
+                "Diffuser alertes via FR-Alert ou sirènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Normes, aménagement du territoire et alerte réduisent l'exposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors d'un séisme, la conduite « se mettre à couvert » signifie :",
+              "options": [
+                "S'abriter sous un meuble solide, loin des vitres",
+                "Courir dans les escaliers",
+                "Sortir en courant sans regarder",
+                "Rester près d'une bibliothèque non fixée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéger sa tête et éviter chutes d'objets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un kit d'urgence familial peut contenir :",
+              "options": [
+                "Eau, radio à piles, trousse de secours",
+                "Uniquement des jouets",
+                "De la lave refroidie",
+                "Des cendres volcaniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie de quelques heures en cas de coupure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "FR-Alert envoie :",
+              "options": [
+                "Des messages sur téléphone en zone à risque",
+                "Des prévisions météo quotidiennes",
+                "Des devoirs de SVT",
+                "Des tickets de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système d'alerte aux populations en cas de danger imminent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les exercices de séisme à l'école servent à :",
+              "options": [
+                "Automatiser les bons gestes",
+                "Provoquer un tremblement réel",
+                "Mesurer la magnitude",
+                "Créer un volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répéter « baisser, couvrir, accrocher » libère vite les réflexes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Assurer son logement contre certains aléas permet de :",
+              "options": [
+                "Faciliter la reconstruction financière",
+                "Empêcher tout séisme",
+                "Arrêter les pluies",
+                "Supprimer les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assurance indemnise parfois après catastrophe naturelle reconnue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le « triangle de la sécurité » en risques naturels lie :",
+              "options": [
+                "Aléa, vulnérabilité, enjeux",
+                "Vent, pluie, neige",
+                "Lune, Soleil, Mars",
+                "Chat, chien, poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque naît de la rencontre entre phénomène, fragilité et ce qui est exposé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après une éruption, boire une eau :",
+              "options": [
+                "Potable contrôlée ou fournie par les secours",
+                "Directement mélangée de cendres",
+                "De mer non traitée",
+                "Inconnue sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cendres peuvent contaminer les ressources locales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les pompiers et la sécurité civile interviennent pour :",
+              "options": [
+                "Secourir, évacuer et sécuriser les zones",
+                "Modifier la tectonique",
+                "Contrôler le climat",
+                "Empêcher les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Services de secours coordonnés lors des catastrophes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La prévention est plus efficace quand :",
+              "options": [
+                "Élus, scientifiques et citoyens coopèrent",
+                "Personne ne communique",
+                "On construit partout sans règle",
+                "On cache les cartes de risques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance locale et information publique renforcent la résilience."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Risques naturels en France",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aléas touchent la France métropolitaine ou ultramarine ?",
+              "options": [
+                "Inondations et crues",
+                "Séismes modérés dans certaines zones",
+                "Aucune tempête ni cyclone possible",
+                "Éruptions volcaniques aux Antilles (ex. Montagne Pelée, Soufrière)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "France diverse : crues, séismes du Sud-Est, cyclones en outre-mer, volcans aux Antilles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Montagne Pelée est un volcan situé en :",
+              "options": ["Martinique", "Normandie", "Alsace", "Bretagne"],
+              "correctAnswers": [0],
+              "explanation": "Éruption de 1902, catastrophe majeure de Saint-Pierre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La zone sismique la plus classée en France métropolitaine inclut :",
+              "options": [
+                "Sud-Est (Provence, Alpes, Corse)",
+                "Centre du Sahara",
+                "Pôle Nord",
+                "Orbite lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carte sismicité : zones 3 à 5 dans le Sud-Est notamment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La tempête Xynthia (2010) a surtout causé :",
+              "options": [
+                "Submersion marine et crues sur la côte atlantique",
+                "Éruption du Vésuve",
+                "Séisme magnitude 9 en Alsace",
+                "Tsunami en Méditerranée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vents, marée haute et vagues ont submergé des secteurs du littoral."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Guadeloupe et Martinique, le risque volcanique est suivi par :",
+              "options": [
+                "L'Observatoire volcanologique et sismologique des Antilles",
+                "Uniquement des stations météo sans géologie",
+                "Des observatoires lunaires",
+                "Des stations de ski"
+              ],
+              "correctAnswers": [0],
+              "explanation": "OVSG-IPGP surveille la Soufrière et la Pelée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les avalanches concernent surtout :",
+              "options": [
+                "Les massifs montagneux enneigés",
+                "Les plages sableuses",
+                "Le centre des villes plates",
+                "Le désert sans relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente, neige instable et déclencheurs produisent des avalanches."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La sécheresse et les feux de forêt en été relèvent aussi :",
+              "options": [
+                "D'aléas climatiques aggravés par la végétation sèche",
+                "De séismes",
+                "De tsunamis",
+                "De marées seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Canicule + vent = risque incendie majeur en forêt méditerranéenne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La loi Barnier et le régime CAT-NAT concernent :",
+              "options": [
+                "Indemnisation après catastrophe naturelle reconnue",
+                "Prévision météo d'une journée",
+                "Mesure du vent uniquement",
+                "Exploration martienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État de catastrophe naturelle ouvre droit à certaines prises en charge."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La Réunion peut être frappée par :",
+              "options": [
+                "Cyclones tropicaux",
+                "Uniquement de la neige permanente au niveau de la mer",
+                "Aucun aléa",
+                "Des séismes impossibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Île du sud-ouest de l'océan Indien exposée aux cyclones."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître les risques de son département permet de :",
+              "options": [
+                "Adapter son logement et son plan familial",
+                "Supprimer les aléas",
+                "Changer la magnitude des séismes",
+                "Empêcher la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DDRM et cartes communales informent les habitants."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : vivre avec les aléas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples aléa / exemple sont corrects ?",
+              "options": [
+                "Séisme : secousse de terrain",
+                "Volcan : éruption de magma",
+                "Inondation : toujours sans eau",
+                "Tsunami : vagues liées à un choc en mer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Séisme, volcan, crue et tsunami sont des aléas majeurs étudiés en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La tectonique des plaques explique à la fois :",
+              "options": [
+                "Séismes et volcanisme aux frontières",
+                "Uniquement la météo d'un jour",
+                "La photosynthèse",
+                "La digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvements de plaques déforment la croûte et libèrent magma."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "On ne peut pas prévoir précisément :",
+              "options": [
+                "La date et l'heure exactes du prochain grand séisme",
+                "La saison des pluies moyennes",
+                "La direction générale du vent demain",
+                "La température demain matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sismologie estime des probabilités, pas l'instant précis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réduire les gaz à effet de serre peut limiter :",
+              "options": [
+                "Certains impacts climatiques (montée des eaux, extrêmes)",
+                "Tous les séismes",
+                "Toutes les éruptions",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuer le changement climatique diminue certains risques futurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un même aléa peut avoir des effets différents selon :",
+              "options": [
+                "L'exposition et la préparation des populations",
+                "La couleur des nuages seule",
+                "Le jour de la semaine",
+                "Le prénom des habitants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le risque dépend des enjeux humains et des mesures prises."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les scientifiques partagent leurs observations pour :",
+              "options": [
+                "Améliorer cartes d'aléas et alertes",
+                "Créer des séismes",
+                "Augmenter les éruptions",
+                "Vider les océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux sismologiques, météo et volcanologie coopèrent internationalement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Éducation aux risques à l'école vise à :",
+              "options": [
+                "Former des citoyens responsables face aux aléas",
+                "Remplacer les secours",
+                "Nier les catastrophes passées",
+                "Supprimer les normes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre pour mieux se protéger et participer à la prévention."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les médias doivent relayer :",
+              "options": [
+                "Consignes officielles sans créer de panique inutile",
+                "Rumeurs non vérifiées",
+                "Fausses alertes volontaires",
+                "Messages contradictoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information fiable et calme facilite les comportements adaptés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après ce chapitre, on retient que la Terre est :",
+              "options": [
+                "Dynamique, avec aléas à connaître et à prévenir",
+                "Totalement immobile et sans risque",
+                "Dépourvue d'atmosphère",
+                "Sans eau ni roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plaque tectonique, climat et hydrologie coexistent avec des risques naturels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le lien entre « La planète Terre », météo et risques est :",
+              "options": [
+                "Atmosphère et croûte interagissent et affectent les sociétés",
+                "Aucun rapport",
+                "Uniquement mathématique",
+                "Uniquement artistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps, climat et géologie forment un ensemble à étudier pour la sécurité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

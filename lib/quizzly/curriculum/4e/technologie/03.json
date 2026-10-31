@@ -1,0 +1,2713 @@
+{
+  "id": "4e-technologie-03",
+  "year": "4e",
+  "subject": "technologie",
+  "title": "Informatique et réseaux",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Structurer l'information",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Données et bits",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments sont des exemples de données numériques ?",
+              "type": "multiple_choice",
+              "options": [
+                "Une température mesurée",
+                "Une odeur de fleur",
+                "Un texte tapé au clavier",
+                "Le goût d'un fruit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Seules les grandeurs ou textes encodables deviennent des données traitables par un ordinateur."
+            },
+            {
+              "id": "q2",
+              "question": "Combien vaut le bit dans le système binaire ?",
+              "type": "single_choice",
+              "options": ["0 ou 1", "0 à 9", "Une lettre", "Un pixel coloré"],
+              "correctAnswers": [0],
+              "explanation": "Le bit est la plus petite unité d'information et ne prend que deux valeurs."
+            },
+            {
+              "id": "q3",
+              "question": "Un octet regroupe combien de bits ?",
+              "type": "single_choice",
+              "options": ["8", "4", "16", "10"],
+              "correctAnswers": [0],
+              "explanation": "Huit bits forment un octet, unité courante pour mesurer la taille des fichiers."
+            },
+            {
+              "id": "q4",
+              "question": "Le codage UTF-8 sert surtout à représenter quoi ?",
+              "type": "single_choice",
+              "options": [
+                "Des caractères de texte",
+                "Des images brutes",
+                "Des sons analogiques",
+                "Des tensions électriques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 encode les caractères pour les échanger entre logiciels."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle unité est généralement plus grande qu'un octet ?",
+              "type": "single_choice",
+              "options": ["Le kilo-octet", "Le bit", "Le pixel", "Le hertz"],
+              "correctAnswers": [0],
+              "explanation": "Un kilo-octet regroupe environ mille octets."
+            },
+            {
+              "id": "q6",
+              "question": "Un capteur de luminosité produit plutôt une donnée de type…",
+              "type": "single_choice",
+              "options": [
+                "Mesure",
+                "Narration",
+                "Partition musicale",
+                "Plan de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un capteur convertit une grandeur physique en valeur numérique."
+            },
+            {
+              "id": "q7",
+              "question": "Pourquoi numérise-t-on une information ?",
+              "type": "single_choice",
+              "options": [
+                "Pour la stocker et la traiter",
+                "Pour la rendre secrète automatiquement",
+                "Pour la détruire",
+                "Pour éviter toute copie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La numérisation permet stockage, copie et traitement automatisé."
+            },
+            {
+              "id": "q8",
+              "question": "Une image matricielle est surtout décrite par…",
+              "type": "single_choice",
+              "options": [
+                "Des pixels",
+                "Des paragraphes",
+                "Des formules chimiques",
+                "Des adresses postales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque pixel porte une couleur codée numériquement."
+            },
+            {
+              "id": "q9",
+              "question": "La compression sans perte signifie que…",
+              "type": "single_choice",
+              "options": [
+                "Le fichier original est restitué à l'identique",
+                "L'image devient floue",
+                "Le son perd des aigus",
+                "Les données disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucune information utile n'est supprimée lors de la décompression."
+            },
+            {
+              "id": "q10",
+              "question": "Un fichier texte brut contient surtout…",
+              "type": "single_choice",
+              "options": [
+                "Des caractères encodés",
+                "Un programme exécutable seul",
+                "Un câble réseau",
+                "Une pile électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contenu lisible provient de l'encodage des caractères."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fichiers et dossiers",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments aident à structurer le stockage sur un disque ?",
+              "type": "multiple_choice",
+              "options": [
+                "Des dossiers",
+                "Des arbres généalogiques papier",
+                "Des noms de fichiers explicites",
+                "Des nuages météo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'arborescence et des noms clairs facilitent la recherche."
+            },
+            {
+              "id": "q2",
+              "question": "Une extension comme .txt indique surtout…",
+              "type": "single_choice",
+              "options": [
+                "Le type de fichier",
+                "La vitesse du processeur",
+                "La couleur de l'écran",
+                "La marque du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extension aide le système à choisir le bon logiciel."
+            },
+            {
+              "id": "q3",
+              "question": "Un chemin d'accès décrit…",
+              "type": "single_choice",
+              "options": [
+                "L'emplacement d'un fichier",
+                "La température du CPU",
+                "Le nombre d'utilisateurs",
+                "La longueur d'un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il enchaîne dossiers et nom de fichier depuis la racine."
+            },
+            {
+              "id": "q4",
+              "question": "Renommer un fichier sans changer son contenu modifie…",
+              "type": "single_choice",
+              "options": [
+                "Seulement son identifiant visible",
+                "Chaque octet interne",
+                "La vitesse du réseau",
+                "La résolution de l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom est une métadonnée distincte du contenu."
+            },
+            {
+              "id": "q5",
+              "question": "Copier un fichier vers un autre dossier…",
+              "type": "single_choice",
+              "options": [
+                "Duplique les données",
+                "Efface l'original obligatoirement",
+                "Compresse toujours en ZIP",
+                "Change le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La copie crée un second fichier avec le même contenu."
+            },
+            {
+              "id": "q6",
+              "question": "Un raccourci sur le bureau pointe vers…",
+              "type": "single_choice",
+              "options": [
+                "Un fichier ou dossier existant",
+                "Un nouveau disque dur physique",
+                "Un câble USB",
+                "Une adresse IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le raccourci est un lien, pas une duplication complète."
+            },
+            {
+              "id": "q7",
+              "question": "La corbeille sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Retirer temporairement des fichiers",
+                "Accélérer Internet",
+                "Chiffrer les mots de passe",
+                "Imprimer en couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments peuvent être restaurés tant qu'ils n'y sont pas vidés."
+            },
+            {
+              "id": "q8",
+              "question": "Classer les photos par date dans des sous-dossiers, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Organiser l'information",
+                "Pirater un serveur",
+                "Souder un circuit",
+                "Mesurer un courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hiérarchie reflète un critère de classement choisi."
+            },
+            {
+              "id": "q9",
+              "question": "Deux fichiers homonymes dans le même dossier…",
+              "type": "single_choice",
+              "options": [
+                "Entrent souvent en conflit",
+                "Fusionnent automatiquement",
+                "Devient un seul octet",
+                "Accélèrent le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système exige en général des noms uniques par emplacement."
+            },
+            {
+              "id": "q10",
+              "question": "Une sauvegarde externe protège surtout contre…",
+              "type": "single_choice",
+              "options": [
+                "La perte de données locale",
+                "L'absence de clavier",
+                "Un écran trop petit",
+                "Un manque de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une copie séparée limite l'impact d'une panne ou d'une suppression."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Tableur et cellules",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un tableur, quels objets structurent les données ?",
+              "type": "multiple_choice",
+              "options": [
+                "Les cellules",
+                "Les lignes et colonnes",
+                "Les vis de la carte mère",
+                "Les câbles d'alimentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La grille croise lignes et colonnes pour localiser chaque valeur."
+            },
+            {
+              "id": "q2",
+              "question": "La cellule B3 se trouve…",
+              "type": "single_choice",
+              "options": [
+                "Colonne B, ligne 3",
+                "Ligne B, colonne 3",
+                "Feuille 3 uniquement",
+                "Dans le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lettre indique la colonne et le chiffre la ligne."
+            },
+            {
+              "id": "q3",
+              "question": "Une formule commence en général par…",
+              "type": "single_choice",
+              "options": [
+                "Le signe =",
+                "Le symbole #",
+                "Trois points …",
+                "Une parenthèse seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableur distingue ainsi calcul et texte saisi."
+            },
+            {
+              "id": "q4",
+              "question": "La fonction SOMME sert à…",
+              "type": "single_choice",
+              "options": [
+                "Additionner des valeurs",
+                "Couper une image",
+                "Envoyer un mail",
+                "Tester un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle totalise une plage de nombres."
+            },
+            {
+              "id": "q5",
+              "question": "Une plage A1:A5 désigne…",
+              "type": "single_choice",
+              "options": [
+                "Cinq cellules de la colonne A",
+                "Cinq feuilles",
+                "Cinq ordinateurs",
+                "Cinq réseaux Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux repères encadrent un rectangle de cellules."
+            },
+            {
+              "id": "q6",
+              "question": "Mettre la première ligne en titres aide à…",
+              "type": "single_choice",
+              "options": [
+                "Identifier chaque colonne",
+                "Changer la tension secteur",
+                "Réparer un ventilateur",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les en-têtes nomment les champs du tableau."
+            },
+            {
+              "id": "q7",
+              "question": "Trier une colonne de notes permet de…",
+              "type": "single_choice",
+              "options": [
+                "Ordonner les valeurs",
+                "Effacer le disque",
+                "Souder des composants",
+                "Mesurer le débit fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri réorganise les lignes selon un critère."
+            },
+            {
+              "id": "q8",
+              "question": "Un graphique issu d'un tableur visualise…",
+              "type": "single_choice",
+              "options": [
+                "Des séries de données",
+                "Le bruit du ventilateur",
+                "La longueur d'un câble VGA",
+                "La couleur du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il rend visibles des tendances chiffrées."
+            },
+            {
+              "id": "q9",
+              "question": "Une cellule affichant ##### signifie souvent…",
+              "type": "single_choice",
+              "options": [
+                "Colonne trop étroite pour le nombre",
+                "Virus détecté",
+                "Internet coupé",
+                "Imprimante en panne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élargir la colonne révèle la valeur."
+            },
+            {
+              "id": "q10",
+              "question": "Référencer une cellule dans une autre feuille sert à…",
+              "type": "single_choice",
+              "options": [
+                "Centraliser des calculs",
+                "Changer l'adresse MAC",
+                "Couper l'alimentation",
+                "Graver un DVD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les feuilles multiples restent liées par des formules."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Tables et enregistrements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans une base simple, quels termes décrivent la structure ?",
+              "type": "multiple_choice",
+              "options": ["Table", "Enregistrement", "Marteau", "Tournevis"],
+              "correctAnswers": [0, 1],
+              "explanation": "Une table regroupe des enregistrements homogènes."
+            },
+            {
+              "id": "q2",
+              "question": "Un champ correspond à…",
+              "type": "single_choice",
+              "options": [
+                "Une catégorie d'information",
+                "Un câble réseau",
+                "Un ventilateur",
+                "Une touche Ctrl"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque champ stocke un type de donnée pour chaque fiche."
+            },
+            {
+              "id": "q3",
+              "question": "Une clé primaire sert à…",
+              "type": "single_choice",
+              "options": [
+                "Identifier uniquement chaque enregistrement",
+                "Colorier l'écran",
+                "Augmenter le son",
+                "Recharger la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle évite les doublons d'identifiant."
+            },
+            {
+              "id": "q4",
+              "question": "Filtrer une table affiche…",
+              "type": "single_choice",
+              "options": [
+                "Seulement les lignes qui respectent un critère",
+                "Toutes les pages web",
+                "Le menu démarrer",
+                "Les câbles USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre masque temporairement le reste."
+            },
+            {
+              "id": "q5",
+              "question": "Une relation entre deux tables lie souvent…",
+              "type": "single_choice",
+              "options": [
+                "Des clés communes",
+                "Des couleurs identiques",
+                "Des câbles parallèles",
+                "Des ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé étrangère pointe vers un enregistrement lié."
+            },
+            {
+              "id": "q6",
+              "question": "Un formulaire de saisie aide à…",
+              "type": "single_choice",
+              "options": [
+                "Entrer des données sans voir toute la table",
+                "Souder un circuit",
+                "Couper le Wi-Fi",
+                "Mesurer un ampérage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il guide l'utilisateur champ par champ."
+            },
+            {
+              "id": "q7",
+              "question": "Une requête permet de…",
+              "type": "single_choice",
+              "options": [
+                "Interroger la base selon des conditions",
+                "Peindre un boîtier",
+                "Changer de processeur",
+                "Réparer un écran cassé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle extrait ou calcule un sous-ensemble utile."
+            },
+            {
+              "id": "q8",
+              "question": "Normaliser des données, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Éviter les répétitions inutiles",
+                "Supprimer Internet",
+                "Couper l'électricité",
+                "Gonfler un fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fait est stocké une seule fois au bon endroit."
+            },
+            {
+              "id": "q9",
+              "question": "Un export CSV contient surtout…",
+              "type": "single_choice",
+              "options": [
+                "Du texte tabulaire séparé",
+                "Un film HD",
+                "Un programme compilé",
+                "Un schéma électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les valeurs sont séparées pour être relues ailleurs."
+            },
+            {
+              "id": "q10",
+              "question": "Sauvegarder une base avant une grosse modification…",
+              "type": "single_choice",
+              "options": [
+                "Limite les risques de perte",
+                "Accélère toujours le processeur",
+                "Change l'adresse IP",
+                "Coupe le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut revenir en arrière si l'opération échoue."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Métadonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels exemples sont des métadonnées ?",
+              "type": "multiple_choice",
+              "options": [
+                "La date de création d'un fichier",
+                "Le poids d'un marteau physique",
+                "L'auteur d'une photo",
+                "La saveur d'un yaourt"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les métadonnées décrivent le fichier sans en être le contenu principal."
+            },
+            {
+              "id": "q2",
+              "question": "Les métadonnées EXIF d'une photo peuvent indiquer…",
+              "type": "single_choice",
+              "options": [
+                "L'appareil utilisé",
+                "La marque du clavier",
+                "La vitesse du ventilateur",
+                "La couleur du bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles enregistrent des paramètres de prise de vue."
+            },
+            {
+              "id": "q3",
+              "question": "Indexer un document sert à…",
+              "type": "single_choice",
+              "options": [
+                "Accélérer sa recherche",
+                "Le rendre invisible",
+                "Couper Internet",
+                "Changer de carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'index mémorise des mots-clés ou des champs."
+            },
+            {
+              "id": "q4",
+              "question": "Un mot-clé associé à un fichier aide à…",
+              "type": "single_choice",
+              "options": [
+                "Le retrouver plus vite",
+                "Augmenter la tension",
+                "Réparer un écran",
+                "Souder des broches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il résume le contenu pour le classement."
+            },
+            {
+              "id": "q5",
+              "question": "La taille d'un fichier en octets est une…",
+              "type": "single_choice",
+              "options": [
+                "Métadonnée",
+                "Puce graphique",
+                "Antenne radio",
+                "Vis de fixation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle décrit le volume occupé sur le support."
+            },
+            {
+              "id": "q6",
+              "question": "Modifier les métadonnées sans toucher au contenu…",
+              "type": "single_choice",
+              "options": [
+                "Change seulement la description",
+                "Efface toutes les photos",
+                "Formate le disque",
+                "Coupe le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fichier principal reste identique."
+            },
+            {
+              "id": "q7",
+              "question": "Un hash de fichier sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "Vérifier l'intégrité",
+                "Colorier l'interface",
+                "Mesurer la température",
+                "Régler le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une empreinte change si le contenu est altéré."
+            },
+            {
+              "id": "q8",
+              "question": "Les droits d'auteur dans les métadonnées indiquent…",
+              "type": "single_choice",
+              "options": [
+                "Qui autorise l'usage",
+                "La vitesse du bus USB",
+                "La taille de la RAM",
+                "Le modèle de souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils encadrent la réutilisation légale."
+            },
+            {
+              "id": "q9",
+              "question": "Un catalogue bibliothèque numérique fonctionne comme…",
+              "type": "single_choice",
+              "options": [
+                "Un index de métadonnées",
+                "Un moteur thermique",
+                "Un transformateur",
+                "Un fusible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il référence titres, auteurs et emplacements."
+            },
+            {
+              "id": "q10",
+              "question": "Effacer les métadonnées avant de publier une photo…",
+              "type": "single_choice",
+              "options": [
+                "Peut protéger la vie privée",
+                "Augmente toujours la résolution",
+                "Répare un disque",
+                "Change le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retire par exemple la géolocalisation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Tri et recherche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels critères permettent de classer des fichiers ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le nom",
+                "La date",
+                "La couleur des yeux d'un élève papier",
+                "Le parfum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom et date sont des métadonnées exploitables par le système."
+            },
+            {
+              "id": "q2",
+              "question": "Un tri alphabétique ordonne selon…",
+              "type": "single_choice",
+              "options": [
+                "Les lettres",
+                "La tension électrique",
+                "La vitesse du vent",
+                "La masse d'un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre lexicographique facilite la recherche visuelle."
+            },
+            {
+              "id": "q3",
+              "question": "Rechercher *rapport* avec un joker peut trouver…",
+              "type": "single_choice",
+              "options": [
+                "rapport_fin.pdf",
+                "Uniquement un fichier nommé rapport",
+                "Aucun fichier",
+                "Le BIOS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le wildcard remplace une partie inconnue du nom."
+            },
+            {
+              "id": "q4",
+              "question": "Un algorithme de recherche séquentielle parcourt…",
+              "type": "single_choice",
+              "options": [
+                "Les éléments un par un",
+                "Uniquement le premier",
+                "Le câble réseau",
+                "L'écran en diagonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il compare chaque entrée jusqu'à trouver la cible."
+            },
+            {
+              "id": "q5",
+              "question": "Trier des nombres du plus petit au plus grand, c'est un tri…",
+              "type": "single_choice",
+              "options": [
+                "Croissant",
+                "Décroissant aléatoire",
+                "Thermique",
+                "Mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque valeur suivante est plus grande ou égale."
+            },
+            {
+              "id": "q6",
+              "question": "Une recherche plein texte dans un dossier examine…",
+              "type": "single_choice",
+              "options": [
+                "Le contenu des fichiers compatibles",
+                "La couleur du boîtier",
+                "La forme du clavier",
+                "Le poids du moniteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'index ou l'analyse lit les mots à l'intérieur."
+            },
+            {
+              "id": "q7",
+              "question": "Filtrer par type .mp3 affiche…",
+              "type": "single_choice",
+              "options": [
+                "Les fichiers audio concernés",
+                "Toutes les images",
+                "Les câbles",
+                "Les ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extension sert de critère de filtre."
+            },
+            {
+              "id": "q8",
+              "question": "Un tri sur plusieurs colonnes sert quand…",
+              "type": "single_choice",
+              "options": [
+                "Le premier critère crée des ex æquo",
+                "Il n'y a aucune donnée",
+                "Le disque est vide",
+                "L'écran est éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un second critère départage les égalités."
+            },
+            {
+              "id": "q9",
+              "question": "La recherche binaire exige en général…",
+              "type": "single_choice",
+              "options": [
+                "Des données préalablement triées",
+                "Un câble coaxial",
+                "Une imprimante 3D",
+                "Un micro sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle coupe la liste en deux à chaque étape."
+            },
+            {
+              "id": "q10",
+              "question": "Enregistrer une requête de recherche complexe permet de…",
+              "type": "single_choice",
+              "options": [
+                "La réutiliser plus tard",
+                "Changer de carte graphique",
+                "Couper le son",
+                "Formater le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de ressaisir les mêmes filtres."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Arborescence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments forment une arborescence de fichiers ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un dossier racine",
+                "Des sous-dossiers",
+                "Un moteur à explosion",
+                "Une pile AAA"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La racine se divise en branches de dossiers."
+            },
+            {
+              "id": "q2",
+              "question": "Un dossier parent contient…",
+              "type": "single_choice",
+              "options": [
+                "Des fichiers ou sous-dossiers",
+                "Uniquement des pixels",
+                "Un câble HDMI",
+                "Une puce seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hiérarchie est inclusive."
+            },
+            {
+              "id": "q3",
+              "question": "Le chemin /Projets/2026/note.txt indique que note.txt est…",
+              "type": "single_choice",
+              "options": [
+                "Dans le dossier 2026",
+                "Sur Internet obligatoirement",
+                "Dans le BIOS",
+                "Dans le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque segment représente un niveau de dossier."
+            },
+            {
+              "id": "q4",
+              "question": "Déplacer un dossier entier déplace aussi…",
+              "type": "single_choice",
+              "options": [
+                "Son contenu",
+                "Le processeur",
+                "La carte mère",
+                "Le transformateur secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments enfants suivent le parent."
+            },
+            {
+              "id": "q5",
+              "question": "Une profondeur d'arborescence excessive peut…",
+              "type": "single_choice",
+              "options": [
+                "Rendre les chemins difficiles à lire",
+                "Accélérer toujours le CPU",
+                "Couper le Wi-Fi",
+                "Changer la couleur des pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de niveaux complique la navigation."
+            },
+            {
+              "id": "q6",
+              "question": "Un diagramme en arbre peut modéliser…",
+              "type": "single_choice",
+              "options": [
+                "Une organisation de dossiers",
+                "Un courant alternatif",
+                "Une soudure",
+                "Un ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque nœud peut représenter un dossier."
+            },
+            {
+              "id": "q7",
+              "question": "La racine d'un site web / correspond à…",
+              "type": "single_choice",
+              "options": [
+                "La page d'accueil du domaine",
+                "Le ventilateur du serveur",
+                "Un câble RJ45",
+                "Une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le point de départ des URL relatives."
+            },
+            {
+              "id": "q8",
+              "question": "Créer un dossier par membre d'équipe sert à…",
+              "type": "single_choice",
+              "options": [
+                "Séparer les contributions",
+                "Mesurer un ampérage",
+                "Souder des composants",
+                "Couper la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun range ses fichiers au même endroit logique."
+            },
+            {
+              "id": "q9",
+              "question": "Un chemin relatif part de…",
+              "type": "single_choice",
+              "options": [
+                "Le dossier courant",
+                "Une autre planète",
+                "Le registre du processeur",
+                "Un câble USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il évite de répéter toute l'arborescence."
+            },
+            {
+              "id": "q10",
+              "question": "Synchroniser deux arborescences identiques permet…",
+              "type": "single_choice",
+              "options": [
+                "D'aligner les copies",
+                "De changer la RAM",
+                "De peindre le boîtier",
+                "De couper l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fichiers modifiés sont mis à jour des deux côtés."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Formats et documents",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels formats structurent un document numérique ?",
+              "type": "multiple_choice",
+              "options": ["PDF", "DOCX", "Vis de bois", "Fil de cuivre nu"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces formats encodent mise en page et texte."
+            },
+            {
+              "id": "q2",
+              "question": "Un PDF préserve surtout…",
+              "type": "single_choice",
+              "options": [
+                "La mise en page à l'impression",
+                "La vitesse du ventilateur",
+                "La couleur du câble",
+                "Le bruit du disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fige l'apparence sur différents appareils."
+            },
+            {
+              "id": "q3",
+              "question": "Les styles de titres dans un traitement de texte servent à…",
+              "type": "single_choice",
+              "options": [
+                "Hiérarchiser les sections",
+                "Souder un circuit",
+                "Mesurer un courant",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils uniformisent la structure du document."
+            },
+            {
+              "id": "q4",
+              "question": "Une table des matières automatique utilise…",
+              "type": "single_choice",
+              "options": [
+                "Les titres balisés",
+                "La température CPU",
+                "La longueur du câble",
+                "Le modèle de souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le logiciel lit les niveaux de titres."
+            },
+            {
+              "id": "q5",
+              "question": "Un fichier CSV convient pour…",
+              "type": "single_choice",
+              "options": [
+                "Importer des données tabulaires",
+                "Monter une vidéo 3D",
+                "Jouer à un FPS",
+                "Souder des pins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les colonnes sont séparées par des délimiteurs."
+            },
+            {
+              "id": "q6",
+              "question": "Un document structuré avec titres et listes améliore…",
+              "type": "single_choice",
+              "options": [
+                "La lisibilité",
+                "La vitesse du bus USB",
+                "La tension secteur",
+                "Le poids du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur repère rapidement les idées."
+            },
+            {
+              "id": "q7",
+              "question": "La compression d'un ZIP regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs fichiers en un conteneur",
+                "Des puces sur une carte",
+                "Des câbles en parallèle",
+                "Des ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conteneur facilite le transport."
+            },
+            {
+              "id": "q8",
+              "question": "Un modèle de document évite de…",
+              "type": "single_choice",
+              "options": [
+                "Recréer la même mise en forme",
+                "Brancher le moniteur",
+                "Charger la batterie",
+                "Tester le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure est réutilisée pour chaque exemplaire."
+            },
+            {
+              "id": "q9",
+              "question": "Les métadonnées Dublin Core décrivent surtout…",
+              "type": "single_choice",
+              "options": [
+                "Des ressources documentaires",
+                "Des composants électriques",
+                "Des outils de soudure",
+                "Des câbles coaxiaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre, auteur et sujet sont standardisés."
+            },
+            {
+              "id": "q10",
+              "question": "Exporter en HTML publie un contenu…",
+              "type": "single_choice",
+              "options": [
+                "Lisible dans un navigateur",
+                "Uniquement sur imprimante",
+                "Dans le BIOS",
+                "Sur une carte SD seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le balisage web structure titres et paragraphes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modèles et schémas",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels outils représentent une organisation d'information ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un diagramme",
+                "Un organigramme",
+                "Un marteau",
+                "Une lime"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les schémas visualisent relations et hiérarchies."
+            },
+            {
+              "id": "q2",
+              "question": "Un schéma de base de données montre…",
+              "type": "single_choice",
+              "options": [
+                "Tables et liens",
+                "La vitesse du ventilateur",
+                "La couleur du boîtier",
+                "Le bruit du disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il planifie champs et relations."
+            },
+            {
+              "id": "q3",
+              "question": "Une carte mentale place l'idée centrale…",
+              "type": "single_choice",
+              "options": [
+                "Au milieu",
+                "Dans le BIOS",
+                "Sur le câble d'alim",
+                "Dans le ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les branches détaillent les sous-thèmes."
+            },
+            {
+              "id": "q4",
+              "question": "Un modèle entité-association sert en…",
+              "type": "single_choice",
+              "options": [
+                "Conception de données",
+                "Soudure de composants",
+                "Mesure de température",
+                "Réglage du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il nomme entités, attributs et associations."
+            },
+            {
+              "id": "q5",
+              "question": "Structurer un compte-rendu avec introduction et conclusion, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Organiser l'information",
+                "Pirater un serveur",
+                "Formater un disque",
+                "Couper la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur suit un parcours logique."
+            },
+            {
+              "id": "q6",
+              "question": "Un identifiant unique dans un schéma évite…",
+              "type": "single_choice",
+              "options": [
+                "La confusion entre deux fiches",
+                "La charge de la batterie",
+                "La vitesse du bus",
+                "La couleur des pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque enregistrement reste distinct."
+            },
+            {
+              "id": "q7",
+              "question": "Une légende sur un schéma explique…",
+              "type": "single_choice",
+              "options": [
+                "Les symboles utilisés",
+                "La marque du clavier",
+                "Le modèle de souris",
+                "La taille de la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle rend le diagramme autonome."
+            },
+            {
+              "id": "q8",
+              "question": "Passer du papier croqué au modèle numérique permet…",
+              "type": "single_choice",
+              "options": [
+                "De partager et modifier facilement",
+                "De couper Internet",
+                "De souder des broches",
+                "De changer le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fichier se versionne et se copie."
+            },
+            {
+              "id": "q9",
+              "question": "Un JSON structuré encode des données avec…",
+              "type": "single_choice",
+              "options": [
+                "Des paires clé-valeur",
+                "Des vis métalliques",
+                "Des câbles coaxiaux",
+                "Des ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les accolades et crochets imbriquent l'information."
+            },
+            {
+              "id": "q10",
+              "question": "Valider un schéma avec l'équipe avant de coder…",
+              "type": "single_choice",
+              "options": [
+                "Réduit les erreurs de structure",
+                "Augmente le bruit du ventilateur",
+                "Change l'adresse MAC",
+                "Coupe l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous partagent la même vision des données."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Projet numérique structuré",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour un dossier scolaire numérique, quelles bonnes pratiques ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nommer clairement les fichiers",
+                "Tout laisser sur le bureau sans dossier",
+                "Sauvegarder régulièrement",
+                "Effacer sans copie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Noms explicites et sauvegardes sécurisent le travail."
+            },
+            {
+              "id": "q2",
+              "question": "Un cahier des charges décrit…",
+              "type": "single_choice",
+              "options": [
+                "Les objectifs et contraintes",
+                "La couleur du ventilateur",
+                "Le poids du câble",
+                "La forme du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il cadre le projet avant production."
+            },
+            {
+              "id": "q3",
+              "question": "Versionner un document (v1, v2) permet de…",
+              "type": "single_choice",
+              "options": [
+                "Suivre les modifications",
+                "Couper le Wi-Fi",
+                "Souder un circuit",
+                "Changer de carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut revenir à une étape antérieure."
+            },
+            {
+              "id": "q4",
+              "question": "Une nomenclature commune dans une équipe…",
+              "type": "single_choice",
+              "options": [
+                "Facilite le partage",
+                "Empêche toute copie",
+                "Coupe l'électricité",
+                "Formate le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous retrouvent les mêmes fichiers."
+            },
+            {
+              "id": "q5",
+              "question": "Un tableau de bord de projet regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Indicateurs et tâches",
+                "Des câbles USB",
+                "Des vis",
+                "Des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il centralise l'avancement."
+            },
+            {
+              "id": "q6",
+              "question": "Archiver les sources brutes séparément du rendu final…",
+              "type": "single_choice",
+              "options": [
+                "Permet de retravailler plus tard",
+                "Supprime Internet",
+                "Change le processeur",
+                "Coupe le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On conserve matière et résultat distincts."
+            },
+            {
+              "id": "q7",
+              "question": "Documenter les choix techniques sert à…",
+              "type": "single_choice",
+              "options": [
+                "Comprendre le projet après coup",
+                "Peindre le boîtier",
+                "Mesurer un ampérage",
+                "Réparer un écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mémoire du projet évite les oublis."
+            },
+            {
+              "id": "q8",
+              "question": "Une arborescence imposée par le professeur…",
+              "type": "single_choice",
+              "options": [
+                "Uniformise la remise des copies",
+                "Accélère le ventilateur",
+                "Change la RAM",
+                "Coupe la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque élève dépose au même endroit logique."
+            },
+            {
+              "id": "q9",
+              "question": "Vérifier les sources avant de structurer un dossier…",
+              "type": "single_choice",
+              "options": [
+                "Garantit des informations fiables",
+                "Coupe le clavier",
+                "Formate la souris",
+                "Soude des broches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure ne corrige pas une info fausse."
+            },
+            {
+              "id": "q10",
+              "question": "Présenter des données en graphique après tableur…",
+              "type": "single_choice",
+              "options": [
+                "Aide à interpréter les résultats",
+                "Change l'adresse IP",
+                "Coupe l'alimentation",
+                "Répare un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La visualisation complète la structuration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Communiquer et collaborer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Réseau local et Internet",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments relient des appareils dans un réseau ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un routeur",
+                "Un câble ou le Wi-Fi",
+                "Un marteau",
+                "Une scie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le routeur achemine les données entre appareils et vers Internet."
+            },
+            {
+              "id": "q2",
+              "question": "Internet est plutôt…",
+              "type": "single_choice",
+              "options": [
+                "Un réseau de réseaux",
+                "Un seul câble sous la mer",
+                "Un logiciel de traitement de texte",
+                "Une pile rechargeable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des millions de réseaux interconnectés forment Internet."
+            },
+            {
+              "id": "q3",
+              "question": "Une adresse IP identifie…",
+              "type": "single_choice",
+              "options": [
+                "Un appareil sur le réseau",
+                "La couleur du clavier",
+                "Le modèle de souris",
+                "La taille de l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle sert à router les paquets de données."
+            },
+            {
+              "id": "q4",
+              "question": "Le Wi-Fi utilise principalement…",
+              "type": "single_choice",
+              "options": [
+                "Des ondes radio",
+                "De l'eau courante",
+                "Du gaz",
+                "Des vis métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes remplacent le fil sur une courte distance."
+            },
+            {
+              "id": "q5",
+              "question": "Un LAN désigne…",
+              "type": "single_choice",
+              "options": [
+                "Un réseau local",
+                "Un langage de programmation",
+                "Un type de batterie",
+                "Un format image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Local Area Network couvre maison ou établissement."
+            },
+            {
+              "id": "q6",
+              "question": "La box domestique combine souvent…",
+              "type": "single_choice",
+              "options": [
+                "Modem et routeur",
+                "Imprimante et scanner seuls",
+                "Clavier et souris",
+                "Écran et haut-parleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accède au FAI et partage la connexion."
+            },
+            {
+              "id": "q7",
+              "question": "Un pare-feu filtre…",
+              "type": "single_choice",
+              "options": [
+                "Les flux réseau autorisés ou bloqués",
+                "La poussière du ventilateur",
+                "La couleur des pixels",
+                "Le bruit du disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il applique des règles de sécurité."
+            },
+            {
+              "id": "q8",
+              "question": "Le débit mesure…",
+              "type": "single_choice",
+              "options": [
+                "La quantité de données par seconde",
+                "La masse du câble",
+                "La température du CPU",
+                "La taille du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'exprime souvent en Mbit/s."
+            },
+            {
+              "id": "q9",
+              "question": "Une adresse web https:// indique…",
+              "type": "single_choice",
+              "options": [
+                "Un échange chiffré avec le serveur",
+                "Un câble coaxial",
+                "Une pile faible",
+                "Un ventilateur arrêté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le s signifie une couche TLS active."
+            },
+            {
+              "id": "q10",
+              "question": "Ping une adresse teste surtout…",
+              "type": "single_choice",
+              "options": [
+                "L'accessibilité réseau",
+                "La couleur de l'écran",
+                "Le poids de la souris",
+                "La forme du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse mesure aussi un délai approximatif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Protocoles et services",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels acronymes désignent des protocoles courants ?",
+              "type": "multiple_choice",
+              "options": ["HTTP", "SMTP", "VIS", "HAMMER"],
+              "correctAnswers": [0, 1],
+              "explanation": "HTTP transporte les pages web et SMTP les courriels."
+            },
+            {
+              "id": "q2",
+              "question": "DNS sert à…",
+              "type": "single_choice",
+              "options": [
+                "Traduire un nom de domaine en adresse IP",
+                "Imprimer un document",
+                "Couper le son",
+                "Souder un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On tape un nom lisible au lieu de chiffres."
+            },
+            {
+              "id": "q3",
+              "question": "Le port 443 est associé à…",
+              "type": "single_choice",
+              "options": [
+                "HTTPS sécurisé",
+                "L'impression papier",
+                "La soudure",
+                "Le refroidissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le port standard du web chiffré."
+            },
+            {
+              "id": "q4",
+              "question": "FTP permet surtout…",
+              "type": "single_choice",
+              "options": [
+                "Transférer des fichiers",
+                "Mesurer un courant",
+                "Régler le clavier",
+                "Changer la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Client et serveur échangent des fichiers."
+            },
+            {
+              "id": "q5",
+              "question": "Un client web envoie une requête…",
+              "type": "single_choice",
+              "options": [
+                "Au serveur hébergeant la page",
+                "Au ventilateur",
+                "À la pile",
+                "Au câble seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur renvoie HTML ou JSON."
+            },
+            {
+              "id": "q6",
+              "question": "SMTP concerne surtout…",
+              "type": "single_choice",
+              "options": [
+                "L'envoi de courriels",
+                "La compression vidéo",
+                "La soudure",
+                "Le refroidissement liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simple Mail Transfer Protocol gère l'expédition."
+            },
+            {
+              "id": "q7",
+              "question": "Une API REST expose…",
+              "type": "single_choice",
+              "options": [
+                "Des services via HTTP",
+                "Des vis de fixation",
+                "Des câbles coaxiaux",
+                "Des ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les applications échangent des données structurées."
+            },
+            {
+              "id": "q8",
+              "question": "IPv6 a été introduit pour…",
+              "type": "single_choice",
+              "options": [
+                "Plus d'adresses disponibles",
+                "Couper Internet",
+                "Changer la couleur des pixels",
+                "Réparer un écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adresses sur 128 bits augmentent l'espace."
+            },
+            {
+              "id": "q9",
+              "question": "Un serveur héberge…",
+              "type": "single_choice",
+              "options": [
+                "Des ressources accessibles en réseau",
+                "Uniquement un clavier",
+                "Une pile AAA",
+                "Un marteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sites, fichiers ou bases y sont stockés."
+            },
+            {
+              "id": "q10",
+              "question": "Le protocole WebSocket permet…",
+              "type": "single_choice",
+              "options": [
+                "Un échange bidirectionnel persistant",
+                "Souder des composants",
+                "Mesurer un ampérage",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour le chat ou le temps réel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Courriel efficace",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments rendent un courriel professionnel clair ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un objet précis",
+                "Une formule de politesse adaptée",
+                "Des majuscules partout",
+                "Dix emojis par phrase"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Objet et ton courtois structurent le message."
+            },
+            {
+              "id": "q2",
+              "question": "Le champ Cc signifie…",
+              "type": "single_choice",
+              "options": [
+                "Copie visible des destinataires",
+                "Courrier confidentiel obligatoire",
+                "Compression du fichier",
+                "Couleur du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous voient qui reçoit la copie."
+            },
+            {
+              "id": "q3",
+              "question": "Cci (Bcc) sert à…",
+              "type": "single_choice",
+              "options": [
+                "Masquer des destinataires aux autres",
+                "Chiffrer automatiquement le disque",
+                "Couper Internet",
+                "Souder un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adresses en Cci restent invisibles entre elles."
+            },
+            {
+              "id": "q4",
+              "question": "Une pièce jointe lourde peut…",
+              "type": "single_choice",
+              "options": [
+                "Être refusée par le serveur",
+                "Accélérer le processeur",
+                "Changer la RAM",
+                "Couper l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un lien de partage est parfois préférable."
+            },
+            {
+              "id": "q5",
+              "question": "Répondre à tous envoie le message…",
+              "type": "single_choice",
+              "options": [
+                "À l'expéditeur et aux autres destinataires",
+                "Uniquement à soi-même",
+                "Au FAI seul",
+                "Au ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention à ne pas exposer des adresses inutilement."
+            },
+            {
+              "id": "q6",
+              "question": "Un fil de discussion regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Des réponses liées au même sujet",
+                "Des câbles USB",
+                "Des vis",
+                "Des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'historique reste ordonné."
+            },
+            {
+              "id": "q7",
+              "question": "Éviter le clic sur un lien suspect protège contre…",
+              "type": "single_choice",
+              "options": [
+                "Le hameçonnage",
+                "La poussière",
+                "Le bruit du disque",
+                "La couleur du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phishing vole identifiants ou données."
+            },
+            {
+              "id": "q8",
+              "question": "Signer avec prénom et classe aide le destinataire à…",
+              "type": "single_choice",
+              "options": [
+                "Vous identifier",
+                "Changer de carte mère",
+                "Couper le Wi-Fi",
+                "Formater le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'identité complète évite l'ambiguïté."
+            },
+            {
+              "id": "q9",
+              "question": "Un accusé de réception indique…",
+              "type": "single_choice",
+              "options": [
+                "Que le message a été lu ou ouvert",
+                "Que le disque est plein",
+                "Que le ventilateur tourne",
+                "Que la pile est chargée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À utiliser avec parcimonie pour ne pas spammer."
+            },
+            {
+              "id": "q10",
+              "question": "Rédiger en une seule idée par paragraphe améliore…",
+              "type": "single_choice",
+              "options": [
+                "La lisibilité",
+                "La vitesse du bus USB",
+                "La tension secteur",
+                "Le poids du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur suit le fil du message."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Outils collaboratifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels outils favorisent le travail à plusieurs en ligne ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un tableur partagé",
+                "Un pad texte collaboratif",
+                "Un marteau seul",
+                "Une scie circulaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs personnes éditent simultanément le même document."
+            },
+            {
+              "id": "q2",
+              "question": "Un commentaire dans un document partagé sert à…",
+              "type": "single_choice",
+              "options": [
+                "Proposer une modification sans effacer le texte",
+                "Couper Internet",
+                "Souder des broches",
+                "Changer le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La discussion reste attachée au passage concerné."
+            },
+            {
+              "id": "q3",
+              "question": "Un tableau Kanban classe les tâches par…",
+              "type": "single_choice",
+              "options": [
+                "Colonnes d'avancement",
+                "Couleur du boîtier",
+                "Taille du clavier",
+                "Bruit du ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À faire, en cours, terminé par exemple."
+            },
+            {
+              "id": "q4",
+              "question": "Verrouiller une cellule dans un tableur partagé…",
+              "type": "single_choice",
+              "options": [
+                "Empêche une modification accidentelle",
+                "Coupe le Wi-Fi",
+                "Formate le disque",
+                "Change la carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines zones restent protégées."
+            },
+            {
+              "id": "q5",
+              "question": "L'historique des versions permet de…",
+              "type": "single_choice",
+              "options": [
+                "Restaurer une rédaction antérieure",
+                "Mesurer un ampérage",
+                "Peindre le boîtier",
+                "Couper l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque sauvegarde horodatée est consultable."
+            },
+            {
+              "id": "q6",
+              "question": "Attribuer une tâche à un membre clarifie…",
+              "type": "single_choice",
+              "options": [
+                "Qui est responsable",
+                "La couleur des pixels",
+                "La vitesse du ventilateur",
+                "Le poids du câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rôles évitent les doublons ou les oublis."
+            },
+            {
+              "id": "q7",
+              "question": "Une visioconférence intégrée à une suite bureautique…",
+              "type": "single_choice",
+              "options": [
+                "Relie oral et documents",
+                "Soude un circuit",
+                "Coupe la fibre",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On partage l'écran du même dossier."
+            },
+            {
+              "id": "q8",
+              "question": "Notifier les coéquipiers d'une mise à jour…",
+              "type": "single_choice",
+              "options": [
+                "Synchronise l'équipe",
+                "Coupe le clavier",
+                "Formate la souris",
+                "Répare un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun sait quand relire le fichier."
+            },
+            {
+              "id": "q9",
+              "question": "Un espace de travail d'équipe regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Fichiers, discussions et calendrier",
+                "Uniquement des câbles",
+                "Des vis seules",
+                "Des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout le projet vit au même endroit numérique."
+            },
+            {
+              "id": "q10",
+              "question": "Définir des droits « lecture seule » protège…",
+              "type": "single_choice",
+              "options": [
+                "Le document contre les edits non voulus",
+                "Le ventilateur",
+                "Le câble HDMI",
+                "La pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les éditeurs autorisés modifient."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Cloud et synchronisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le cloud stocke des données…",
+              "type": "multiple_choice",
+              "options": [
+                "Sur des serveurs distants",
+                "Accessibles via Internet",
+                "Uniquement dans le clavier",
+                "Dans une pile AAA"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le stockage est externalisé et consulté en ligne."
+            },
+            {
+              "id": "q2",
+              "question": "Synchroniser un dossier signifie…",
+              "type": "single_choice",
+              "options": [
+                "Aligner local et distant",
+                "Couper le Wi-Fi",
+                "Souder un circuit",
+                "Changer le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modifications se répliquent automatiquement."
+            },
+            {
+              "id": "q3",
+              "question": "Travailler hors ligne avec sync différée…",
+              "type": "single_choice",
+              "options": [
+                "Met à jour le cloud à la reconnexion",
+                "Efface toujours le disque",
+                "Coupe l'écran",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les changements locaux partent au retour du réseau."
+            },
+            {
+              "id": "q4",
+              "question": "Un conflit de version apparaît quand…",
+              "type": "single_choice",
+              "options": [
+                "Deux edits simultanés divergent",
+                "Le ventilateur est sale",
+                "Le câble est rouge",
+                "La souris est sans fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le service demande quelle version conserver."
+            },
+            {
+              "id": "q5",
+              "question": "Chiffrer les données cloud côté client…",
+              "type": "single_choice",
+              "options": [
+                "Renforce la confidentialité",
+                "Accélère toujours le CPU",
+                "Coupe le son",
+                "Peint le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fournisseur ne lit pas le contenu en clair."
+            },
+            {
+              "id": "q6",
+              "question": "Le quota gratuit d'un service cloud…",
+              "type": "single_choice",
+              "options": [
+                "Limite l'espace stocké",
+                "Limite la couleur de l'écran",
+                "Limite le poids du clavier",
+                "Limite la forme du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà, il faut payer ou nettoyer."
+            },
+            {
+              "id": "q7",
+              "question": "Partager un lien de téléchargement permet…",
+              "type": "single_choice",
+              "options": [
+                "Distribuer un gros fichier sans pièce jointe mail",
+                "Souder des composants",
+                "Mesurer un courant",
+                "Couper la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le destinataire récupère depuis le serveur."
+            },
+            {
+              "id": "q8",
+              "question": "La haute disponibilité signifie…",
+              "type": "single_choice",
+              "options": [
+                "Le service reste accessible malgré une panne locale",
+                "Le clavier brille",
+                "Le ventilateur est silencieux",
+                "La pile dure toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les données sont répliquées sur plusieurs serveurs."
+            },
+            {
+              "id": "q9",
+              "question": "Authentification à deux facteurs sur le cloud…",
+              "type": "single_choice",
+              "options": [
+                "Complète le mot de passe",
+                "Coupe Internet",
+                "Formate le disque",
+                "Change la carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un second code réduit le vol de compte."
+            },
+            {
+              "id": "q10",
+              "question": "Vider la corbeille cloud libère…",
+              "type": "single_choice",
+              "options": [
+                "De l'espace de stockage",
+                "De la RAM locale",
+                "Du bruit du ventilateur",
+                "De la couleur des pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fichiers supprimés comptaient encore dans le quota."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Visioconférence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour une visio de classe, quelles règles ?",
+              "type": "multiple_choice",
+              "options": [
+                "Couper le micro quand on n'parle pas",
+                "Partager son écran sans prévenir",
+                "Tester caméra et micro avant",
+                "Crier dans le micro"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Micro coupé et test technique évitent le chaos."
+            },
+            {
+              "id": "q2",
+              "question": "Le partage d'écran sert à…",
+              "type": "single_choice",
+              "options": [
+                "Montrer un document aux autres",
+                "Souder un circuit",
+                "Couper le Wi-Fi",
+                "Changer le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous voient la même fenêtre."
+            },
+            {
+              "id": "q3",
+              "question": "Une connexion instable provoque…",
+              "type": "single_choice",
+              "options": [
+                "Coupures audio ou vidéo",
+                "Couleur du boîtier change",
+                "Clavier plus lourd",
+                "Pile recharge seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit insuffisant dégrade le flux."
+            },
+            {
+              "id": "q4",
+              "question": "Un salon d'attente en visio…",
+              "type": "single_choice",
+              "options": [
+                "Contrôle qui entre dans la réunion",
+                "Mesure un ampérage",
+                "Peint le boîtier",
+                "Coupe l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hôte valide chaque participant."
+            },
+            {
+              "id": "q5",
+              "question": "Le chat intégré permet…",
+              "type": "single_choice",
+              "options": [
+                "Poser une question sans couper la parole",
+                "Souder des broches",
+                "Formater le disque",
+                "Changer la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte complète l'oral."
+            },
+            {
+              "id": "q6",
+              "question": "Un fond virtuel…",
+              "type": "single_choice",
+              "options": [
+                "Masque l'arrière-plan réel",
+                "Accélère le processeur",
+                "Coupe la fibre",
+                "Répare un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il préserve l'intimité de la pièce."
+            },
+            {
+              "id": "q7",
+              "question": "Enregistrer une visio nécessite…",
+              "type": "single_choice",
+              "options": [
+                "Le consentement des participants",
+                "Un marteau",
+                "Une scie",
+                "Une lime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vie privée et le droit imposent l'information."
+            },
+            {
+              "id": "q8",
+              "question": "Brancher un casque filaire réduit souvent…",
+              "type": "single_choice",
+              "options": [
+                "L'écho et le larsen",
+                "La taille de la RAM",
+                "Le poids du câble HDMI",
+                "La couleur des pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le micro ne capte plus les haut-parleurs."
+            },
+            {
+              "id": "q9",
+              "question": "Lever la main virtuellement indique…",
+              "type": "single_choice",
+              "options": [
+                "Qu'on souhaite parler",
+                "Que le disque est plein",
+                "Que la pile est faible",
+                "Que le ventilateur est sale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'animateur gère la parole."
+            },
+            {
+              "id": "q10",
+              "question": "Quitter proprement la réunion…",
+              "type": "single_choice",
+              "options": [
+                "Libère les ressources pour les autres",
+                "Coupe le clavier",
+                "Formate la souris",
+                "Soude un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La session se ferme côté serveur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Partage de fichiers",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels moyens partagent un fichier volumineux ?",
+              "type": "multiple_choice",
+              "options": [
+                "Lien cloud",
+                "Clé USB remise en main propre",
+                "Crier le contenu",
+                "Griller le DVD sans gravure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lien ou support amovible évitent les limites mail."
+            },
+            {
+              "id": "q2",
+              "question": "Un lien public sans mot de passe…",
+              "type": "single_choice",
+              "options": [
+                "Peut être ouvert par quiconque possède l'URL",
+                "Coupe Internet",
+                "Soude un circuit",
+                "Change le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut limiter la durée ou protéger le lien."
+            },
+            {
+              "id": "q3",
+              "question": "Compresser en ZIP avant envoi…",
+              "type": "single_choice",
+              "options": [
+                "Réduit parfois la taille totale",
+                "Augmente toujours le poids",
+                "Coupe le Wi-Fi",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs fichiers deviennent un seul conteneur."
+            },
+            {
+              "id": "q4",
+              "question": "Vérifier le destinataire avant envoi évite…",
+              "type": "single_choice",
+              "options": [
+                "Une fuite de données",
+                "La poussière",
+                "Le bruit du ventilateur",
+                "La couleur du boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une adresse erronée expose le fichier."
+            },
+            {
+              "id": "q5",
+              "question": "Les droits « modification » sur un dossier partagé…",
+              "type": "single_choice",
+              "options": [
+                "Autorisent à changer les fichiers",
+                "Coupent l'électricité",
+                "Formate le clavier",
+                "Réparent l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lecture seule interdit les edits."
+            },
+            {
+              "id": "q6",
+              "question": "Un hash commun après transfert garantit…",
+              "type": "single_choice",
+              "options": [
+                "Que le fichier n'est pas corrompu",
+                "Que le ventilateur tourne",
+                "Que la pile est pleine",
+                "Que le câble est rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte doit correspondre des deux côtés."
+            },
+            {
+              "id": "q7",
+              "question": "Partager une version PDF plutôt que source modifiable…",
+              "type": "single_choice",
+              "options": [
+                "Figé le rendu pour le destinataire",
+                "Coupe la fibre",
+                "Soude des broches",
+                "Change la carte mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contenu n'est plus éditable facilement."
+            },
+            {
+              "id": "q8",
+              "question": "Une date d'expiration sur un lien…",
+              "type": "single_choice",
+              "options": [
+                "Limite la durée d'accès",
+                "Accélère le CPU",
+                "Coupe le son",
+                "Peint le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fichier devient inaccessible ensuite."
+            },
+            {
+              "id": "q9",
+              "question": "Le peer-to-peer direct entre deux élèves…",
+              "type": "single_choice",
+              "options": [
+                "Échange sans passer par un serveur central",
+                "Soude un circuit",
+                "Mesure un ampérage",
+                "Coupe l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque pair envoie des morceaux du fichier."
+            },
+            {
+              "id": "q10",
+              "question": "Scanner un fichier partagé avec un antivirus…",
+              "type": "single_choice",
+              "options": [
+                "Réduit le risque de malware",
+                "Change l'adresse IP",
+                "Formate le disque",
+                "Coupe l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne fait pas confiance aveuglément aux sources."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Identité numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments composent une identité numérique ?",
+              "type": "multiple_choice",
+              "options": [
+                "Pseudo en ligne",
+                "Adresse courriel",
+                "Couleur des yeux physique seule",
+                "Goût du chocolat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les identifiants en ligne nous représentent sur le réseau."
+            },
+            {
+              "id": "q2",
+              "question": "Une empreinte numérique regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Traces laissées par nos activités",
+                "La poussière du ventilateur",
+                "Le poids du câble",
+                "La forme du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publications, recherches et comptes s'accumulent."
+            },
+            {
+              "id": "q3",
+              "question": "Un pseudonyme permet parfois de…",
+              "type": "single_choice",
+              "options": [
+                "Se protéger en ne révélant pas son nom",
+                "Couper Internet",
+                "Souder un circuit",
+                "Changer le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il limite l'exposition personnelle."
+            },
+            {
+              "id": "q4",
+              "question": "Publier une photo géolocalisée peut révéler…",
+              "type": "single_choice",
+              "options": [
+                "Où l'on se trouvait",
+                "La vitesse du bus USB",
+                "La tension secteur",
+                "Le modèle de souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métadonnées conservent parfois le lieu."
+            },
+            {
+              "id": "q5",
+              "question": "Paramétrer un profil en privé…",
+              "type": "single_choice",
+              "options": [
+                "Restreint qui voit les publications",
+                "Coupe le Wi-Fi",
+                "Formate le disque",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les contacts approuvés accèdent au contenu."
+            },
+            {
+              "id": "q6",
+              "question": "Réutiliser le même mot de passe partout…",
+              "type": "single_choice",
+              "options": [
+                "Augmente le risque si un site fuit",
+                "Accélère le ventilateur",
+                "Coupe le son",
+                "Peint le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un vol de base compromet tous les comptes."
+            },
+            {
+              "id": "q7",
+              "question": "Un gestionnaire de mots de passe…",
+              "type": "single_choice",
+              "options": [
+                "Stocke des mots de passe uniques chiffrés",
+                "Soude des broches",
+                "Mesure un courant",
+                "Coupe la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On n'a qu'un maître mot de passe à retenir."
+            },
+            {
+              "id": "q8",
+              "question": "Signaler un faux profil usurpant votre identité…",
+              "type": "single_choice",
+              "options": [
+                "Alerte la plateforme",
+                "Change l'adresse MAC",
+                "Coupe l'écran",
+                "Répare un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modérateurs peuvent suspendre le compte frauduleux."
+            },
+            {
+              "id": "q9",
+              "question": "Réfléchir avant de publier sert à…",
+              "type": "single_choice",
+              "options": [
+                "Éviter des regrets publics",
+                "Changer de carte mère",
+                "Couper le clavier",
+                "Formater la souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet conserve longtemps les contenus."
+            },
+            {
+              "id": "q10",
+              "question": "Une adresse courriel scolaire officielle…",
+              "type": "single_choice",
+              "options": [
+                "Identifie l'élève dans le cadre éducatif",
+                "Mesure un ampérage",
+                "Soude un circuit",
+                "Coupe l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle sert aux échanges avec l'établissement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sécurité des échanges",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels gestes sécurisent les communications ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mettre à jour le logiciel",
+                "Cliquer tout lien inconnu",
+                "Vérifier l'expéditeur",
+                "Partager son mot de passe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mises à jour et vigilance limitent les attaques."
+            },
+            {
+              "id": "q2",
+              "question": "Le chiffrement TLS dans le navigateur…",
+              "type": "single_choice",
+              "options": [
+                "Protège les données en transit",
+                "Coupe le ventilateur",
+                "Change la couleur du boîtier",
+                "Soude un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tiers sur le réseau lit difficilement le flux."
+            },
+            {
+              "id": "q3",
+              "question": "Un réseau Wi-Fi public non sécurisé…",
+              "type": "single_choice",
+              "options": [
+                "Peut être espionné facilement",
+                "Accélère toujours le CPU",
+                "Coupe le son",
+                "Peint le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter les opérations sensibles sans VPN."
+            },
+            {
+              "id": "q4",
+              "question": "Un logiciel malveillant de type rançongiciel…",
+              "type": "single_choice",
+              "options": [
+                "Chiffre les fichiers et demande une rançon",
+                "Nettoie le ventilateur",
+                "Recharge la pile",
+                "Allège le câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des sauvegardes offline limitent les dégâts."
+            },
+            {
+              "id": "q5",
+              "question": "La double authentification ajoute…",
+              "type": "single_choice",
+              "options": [
+                "Une preuve supplémentaire d'identité",
+                "De la poussière",
+                "Du bruit disque",
+                "De la couleur pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vol de mot de passe seul ne suffit plus."
+            },
+            {
+              "id": "q6",
+              "question": "Un certificat expiré sur un site…",
+              "type": "single_choice",
+              "options": [
+                "Doit alerter l'utilisateur",
+                "Coupe Internet",
+                "Formate le disque",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La confiance dans le serveur est réduite."
+            },
+            {
+              "id": "q7",
+              "question": "Ne jamais transmettre un mot de passe par SMS à un inconnu…",
+              "type": "single_choice",
+              "options": [
+                "Évite l'ingénierie sociale",
+                "Accélère le ventilateur",
+                "Coupe la fibre",
+                "Répare l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne légitime ne le demande ainsi."
+            },
+            {
+              "id": "q8",
+              "question": "Journaliser les connexions sur un compte…",
+              "type": "single_choice",
+              "options": [
+                "Permet de détecter un accès suspect",
+                "Soude des broches",
+                "Mesure un ampérage",
+                "Coupe le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une IP inconnue signale peut-être un vol."
+            },
+            {
+              "id": "q9",
+              "question": "Segmenter un mot de passe long avec des phrases…",
+              "type": "single_choice",
+              "options": [
+                "Le rend mémorable et robuste",
+                "Coupe le Wi-Fi",
+                "Change le processeur",
+                "Formate la souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur et variété résistent aux attaques."
+            },
+            {
+              "id": "q10",
+              "question": "Signaler un phishing à l'IT de l'établissement…",
+              "type": "single_choice",
+              "options": [
+                "Protège toute la communauté",
+                "Change l'adresse IP",
+                "Coupe l'alimentation",
+                "Peint le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les filtres peuvent bloquer la campagne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Citoyenneté numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels comportements relèvent du respect en ligne ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ne pas insulter dans un chat",
+                "Citer ses sources",
+                "Publier des rumeurs sans vérifier",
+                "Harceler un camarade"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Courtoisie et honnêteté intellectuelle sont essentielles."
+            },
+            {
+              "id": "q2",
+              "question": "Le cyberharcèlement consiste à…",
+              "type": "single_choice",
+              "options": [
+                "Nuire répétitivement à quelqu'un en ligne",
+                "Réparer un ordinateur",
+                "Souder un circuit",
+                "Mesurer un courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un délit puni par la loi."
+            },
+            {
+              "id": "q3",
+              "question": "Creative Commons sur une image indique…",
+              "type": "single_choice",
+              "options": [
+                "Des conditions de réutilisation",
+                "Que le fichier est vide",
+                "Que le ventilateur est neuf",
+                "Que la pile est pleine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Licences précisent partage et modification."
+            },
+            {
+              "id": "q4",
+              "question": "Vérifier une info virale sur plusieurs sources fiables, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Lutter contre la désinformation",
+                "Couper le Wi-Fi",
+                "Formater le disque",
+                "Changer la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une rumeur non confirmée ne se partage pas."
+            },
+            {
+              "id": "q5",
+              "question": "Accessibilité numérique signifie…",
+              "type": "single_choice",
+              "options": [
+                "Permettre l'accès aux personnes en situation de handicap",
+                "Couper le son",
+                "Peindre le boîtier",
+                "Souder des broches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrastes, sous-titres et lecteurs d'écran aident."
+            },
+            {
+              "id": "q6",
+              "question": "Le droit à l'image impose de…",
+              "type": "single_choice",
+              "options": [
+                "Demander consentement avant de photographier autrui",
+                "Couper Internet",
+                "Changer le processeur",
+                "Couper l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publier une photo identifiante sans accord est risqué."
+            },
+            {
+              "id": "q7",
+              "question": "Une empreinte carbone du numérique mesure…",
+              "type": "single_choice",
+              "options": [
+                "L'impact environnemental des usages",
+                "Le poids du clavier",
+                "La couleur du câble",
+                "Le bruit du ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centres de données et appareils consomment de l'énergie."
+            },
+            {
+              "id": "q8",
+              "question": "Signaler un contenu illicite sur une plateforme…",
+              "type": "single_choice",
+              "options": [
+                "Active la modération",
+                "Accélère le CPU",
+                "Coupe la fibre",
+                "Répare un disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les règles d'usage prohibent certaines publications."
+            },
+            {
+              "id": "q9",
+              "question": "Collaborer à distance avec courtoisie inclut…",
+              "type": "single_choice",
+              "options": [
+                "Respecter les créneaux convenus",
+                "Souder un circuit",
+                "Mesurer un ampérage",
+                "Couper le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ponctualité et écoute maintiennent la confiance."
+            },
+            {
+              "id": "q10",
+              "question": "Archiver les preuves d'un échange agressif…",
+              "type": "single_choice",
+              "options": [
+                "Aide en cas de signalement",
+                "Change l'adresse MAC",
+                "Formate la souris",
+                "Coupe l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Captures horodatées servent aux responsables."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

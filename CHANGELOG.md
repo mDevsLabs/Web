@@ -1,5 +1,20 @@
 # Notes de version
 
+## 0.9.3
+
+### Nouveautés
+
+* **Quizzly 2.0** : introduction de Quizzly 2.0 : Quizzly devient une vraie application, pas un simple plugin ! Apprenez, accompagnez-vous d'mAI pour des explications et progressez dans vos études et apprentissages. Le plugin reste disponible pour le moment.
+* **Pages** : écrivez plus rapidement et plus intelligemment avec mAI ! Rédigez dans un éditeur moderne puis téléchargez vos documents !
+
+### Améliorations
+
+* **Performances et chargement** : optimisation du chargement des ressources et performances accrues.
+
+### Corrections
+
+* **Nombreuses corrections** : application de nombreuses corrections dans l'interface et les plugins
+
 ## 0.9.2
 
 ### Nouveautés

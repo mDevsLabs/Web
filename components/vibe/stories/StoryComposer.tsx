@@ -236,6 +236,8 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
   // Médias
   const [choix, setChoix] = useState<Choix[]>([]);
+  const choixRef = useRef(choix);
+  choixRef.current = choix;
   const [indexMediaActif, setIndexMediaActif] = useState(0);
   const [mediaContain, setMediaContain] = useState(false);
   const [mediaMirror, setMediaMirror] = useState(false);
@@ -359,19 +361,19 @@ export const StoryComposer: React.FC<StoryComposerProps> = ({
 
   const retirer = useCallback((objetUrl: string) => {
     URL.revokeObjectURL(objetUrl);
-    setChoix((actuels) => {
-      const restants = actuels.filter((c) => c.objetUrl !== objetUrl);
-      return restants;
+    const actuels = choixRef.current;
+    const index = actuels.findIndex((c) => c.objetUrl === objetUrl);
+    const restants = actuels.filter((c) => c.objetUrl !== objetUrl);
+    setChoix(restants);
+    setIndexMediaActif((courant) => {
+      if (restants.length === 0) return 0;
+      if (index >= 0 && index < courant) return courant - 1;
+      return Math.min(courant, restants.length - 1);
     });
-    setIndexMediaActif(0);
   }, []);
 
   // ── Stickers ──────────────────────────────────────────────────────────────
-  const isBadge = useCallback(
-    (emoji: string) =>
-      /[a-zA-Z0-9]/.test(emoji) || emoji.startsWith("") || emoji.startsWith(""),
-    []
-  );
+  const isBadge = useCallback((emoji: string) => /[a-zA-Z0-9]/.test(emoji), []);
 
   const ajouterSticker = useCallback((valeur: string) => {
     setStickers((liste) => {

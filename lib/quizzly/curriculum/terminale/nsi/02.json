@@ -1,0 +1,2683 @@
+{
+  "id": "terminale-nsi-02",
+  "year": "terminale",
+  "subject": "nsi",
+  "title": "Bases de données",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Modèle relationnel",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Relation, schéma et extension",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le modèle relationnel, une relation est :",
+              "options": [
+                "Un ensemble de tuples de même schéma",
+                "Une table sans ordre significatif des lignes",
+                "Un fichier binaire exécutable",
+                "Un graphe d'appels réseau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Relation = extension ; schéma = attributs et domaines ; pas d'ordre logique des lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le schéma d'une relation décrit :",
+              "options": [
+                "Les attributs et leurs domaines",
+                "Le nombre actuel de lignes uniquement",
+                "Le plan d'exécution SQL",
+                "La taille du disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure indépendante du contenu (extension)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un tuple correspond à :",
+              "options": [
+                "Une ligne, une occurrence",
+                "Une colonne",
+                "Un index B-tree",
+                "Une transaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N-uple de valeurs, une entité instanciée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'extension d'une relation, c'est :",
+              "options": [
+                "L'ensemble des tuples présents",
+                "La liste des clés étrangères",
+                "Le journal WAL",
+                "La vue matérialisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenu à un instant donné."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un domaine contraint :",
+              "options": [
+                "Les valeurs autorisées pour un attribut",
+                "Le serveur hébergeur",
+                "Le port TCP",
+                "La licence SGBD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. entiers, dates, chaînes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "NULL représente :",
+              "options": [
+                "Absence ou inconnue, ≠ 0 ni ''",
+                "Zéro arithmétique",
+                "Chaîne vide",
+                "Erreur SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaisons via IS NULL / IS NOT NULL."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Degré d'une relation :",
+              "options": [
+                "Nombre d'attributs",
+                "Nombre de lignes",
+                "Nombre de jointures",
+                "Nombre de vues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cardinalité des colonnes du schéma."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cardinalité d'une relation :",
+              "options": [
+                "Nombre de tuples",
+                "Nombre de bases",
+                "Profondeur d'index",
+                "Nombre de triggers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "|R| = taille de l'extension."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passer du MCD au relationnel :",
+              "options": [
+                "Entités → relations ; liens → FK ou tables",
+                "Tout fusionner en une table",
+                "Supprimer les clés",
+                "Ignorer les cardinalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction standard en terminale NSI."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Notation courante de la PK au schéma :",
+              "options": [
+                "Soulignement des attributs clés",
+                "Astérisque sur chaque ligne",
+                "Couleur de colonne",
+                "Ordre alphabétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention pédagogique du cours."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Clés primaires et candidates",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une clé primaire garantit :",
+              "options": [
+                "Unicité de chaque tuple",
+                "Identifiabilité minimale (candidate)",
+                "Trois attributs obligatoires",
+                "Rotation à chaque UPDATE"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PK ⊂ super-clés ; minimale parmi les identifiants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Clé primaire composée :",
+              "options": [
+                "Plusieurs attributs dont le tuple est unique",
+                "Deux PK sur une table",
+                "Interdit en NSI",
+                "Sans contrainte UNIQUE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unicité sur le n-uplet complet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Clé candidate :",
+              "options": [
+                "Super-clé minimale",
+                "Toujours numérique",
+                "Clé étrangère seule",
+                "Non unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une candidate est choisie comme PK."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Identifiant surrogate (id auto) :",
+              "options": [
+                "Artificiel, stable si aucune clé naturelle",
+                "Toujours le nom",
+                "Interdit avec FK",
+                "Non unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique courante en conception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux lignes ne peuvent partager :",
+              "options": [
+                "Les mêmes valeurs sur toute la PK",
+                "Un attribut non clé différent",
+                "La même table",
+                "Une clé étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrainte d'unicité PK."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Table N-N A-B : PK typique :",
+              "options": [
+                "(id_A, id_B)",
+                "id_A seul",
+                "Première colonne",
+                "UUID aléatoire sans contrainte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque paire d'occurrences est unique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Email comme PK :",
+              "options": [
+                "Risqué (changement, unicité)",
+                "Recommandé toujours",
+                "Obligatoire SQL",
+                "Index automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférer clé stable ou surrogate."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Super-clé :",
+              "options": [
+                "Identifie univoquement, pas forcément minimal",
+                "N'identifie pas",
+                "= clé étrangère",
+                "Contient NULL obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute PK est super-clé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans PK déclarée :",
+              "options": [
+                "Identifiant logique fragile",
+                "Insertions impossibles",
+                "Doublons auto-supprimés",
+                "FK interdites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD peut ne pas imposer seul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir une PK :",
+              "options": [
+                "Stable, unique, NOT NULL",
+                "Le texte le plus long",
+                "Attribut nullable",
+                "Colonne calculée volatile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonnes pratiques de modélisation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Clés étrangères et intégrité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une clé étrangère :",
+              "options": [
+                "Référence une PK (ou clé unique) parente",
+                "Exprime un lien entre relations",
+                "Remplace toujours la PK locale",
+                "Interdit toute jointure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intégrité référentielle entre tables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "commande.client_id → client.id est :",
+              "options": [
+                "Une contrainte référentielle",
+                "Un produit cartésien",
+                "Une projection",
+                "Un index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "FK côté enfant vers parent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "FK orpheline (parent absent) :",
+              "options": [
+                "Violation si contrainte active",
+                "Toujours autorisée",
+                "Crée une PK",
+                "Supprime la ligne parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD refuse ou reporte selon règle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "FK nullable signifie :",
+              "options": [
+                "Lien optionnel (0..1 ou 0..N)",
+                "Obligation de référence",
+                "Interdit JOIN",
+                "Doublon PK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NULL = pas de référence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ON DELETE CASCADE :",
+              "options": [
+                "Supprime enfants si parent supprimé",
+                "Interdit DELETE",
+                "Met NULL partout",
+                "Crée cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique de propagation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ON DELETE RESTRICT :",
+              "options": [
+                "Bloque suppression parent référencé",
+                "Supprime toute la base",
+                "Ignore FK",
+                "Duplique lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection des orphelins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plusieurs FK vers même table :",
+              "options": [
+                "Possible (rôles différents)",
+                "Interdit",
+                "Une seule colonne par table",
+                "Sans ON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. adresse livraison / facturation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "JOIN INNER utilise souvent :",
+              "options": [
+                "PK parent = FK enfant",
+                "Deux PK sans lien",
+                "CROSS JOIN",
+                "Sans condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appariement par clés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Types incohérents FK/PK :",
+              "options": [
+                "Jointure ou contrainte échoue",
+                "Toujours OK",
+                "Accélère requêtes",
+                "Crée vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même domaine requis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Table de liaison N-N contient :",
+              "options": [
+                "Deux FK vers entités",
+                "Une PK sans attributs",
+                "Un seul tuple",
+                "Aucune contrainte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle relationnel standard."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dépendances fonctionnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dépendance fonctionnelle X → Y :",
+              "options": [
+                "Si deux tuples égaux sur X, ils le sont sur Y",
+                "Décrit lien de détermination entre attributs",
+                "Signifie X < Y numériquement",
+                "Remplace la normalisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Notion centrale pour 2FN/3FN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "PK → tous les autres attributs :",
+              "options": [
+                "Vrai si PK identifie la ligne",
+                "Faux toujours",
+                "Interdit en 1FN",
+                "Uniquement en SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La PK détermine la ligne entière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DF non triviale :",
+              "options": [
+                "Y n'est pas sous-ensemble de X",
+                "X = Y",
+                "Sans attribut",
+                "Triviale seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'intéresse aux dépendances utiles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Transitivité A→B et B→C implique :",
+              "options": [
+                "A→C (sous conditions d'axiomes)",
+                "A→C toujours faux",
+                "Suppression PK",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermeture armoire des DF."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clé K détermine tous attributs :",
+              "options": [
+                "K est super-clé",
+                "K est toujours FK",
+                "K nullable",
+                "K interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition de super-clé via DF."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Décomposer selon DF sert à :",
+              "options": [
+                "Réduire redondance et anomalies",
+                "Augmenter duplication",
+                "Supprimer PK",
+                "Créer CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif de la normalisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "code_postal → ville (simplifié) :",
+              "options": [
+                "DF si ville déterminée par CP dans le modèle",
+                "Toujours faux",
+                "PK",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple pédagogique de dépendance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fermeture de X, X+ :",
+              "options": [
+                "Ensemble des attributs déterminés par X",
+                "Nombre de lignes",
+                "Taille index",
+                "Liste SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calcul théorique de dépendances."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "DF partielle (non clé → attribut) :",
+              "options": [
+                "Problème pour 2FN si sur clé composite",
+                "Toujours souhaitable",
+                "Obligatoire en 3FN",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation de la 2FN."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser les DF avant schéma :",
+              "options": [
+                "Guide découpage en relations",
+                "Remplace SGBD",
+                "Interdit FK",
+                "Supprime NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception relationnelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Première forme normale (1FN)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1FN exige :",
+              "options": [
+                "Domaines atomiques (pas de listes dans une cellule)",
+                "Un schéma de ligne fixe",
+                "Absence de NULL",
+                "Une seule table"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Valeurs indivisibles et structure tabulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Champ « sports: tennis, judo » viole :",
+              "options": ["1FN (multi-valeur)", "3FN seulement", "PK", "Index"],
+              "correctAnswers": [0],
+              "explanation": "Non atomicité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Corriger multi-valeurs :",
+              "options": [
+                "Table séparée ou ligne par valeur",
+                "Grouper en un blob",
+                "Ignorer",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation eleve_sport par ex."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1FN permet NULL :",
+              "options": [
+                "Oui, NULL n'est pas multi-valeur",
+                "Non jamais",
+                "Interdit SQL",
+                "Supprime FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1FN concerne atomicité, pas NULL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Colonne « adresse complète » multiligne en une cellule :",
+              "options": [
+                "Peut violer atomicité métier",
+                "Toujours 3FN",
+                "PK auto",
+                "JOIN interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent découper rue, CP, ville."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répéter groupe (tel1,tel2,tel3) colonnes :",
+              "options": [
+                "1FN mais redondant ; autre modèle possible",
+                "Hors 1FN",
+                "Interdit",
+                "Sans PK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1FN OK ; normalisation plus haute ensuite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relation en 1FN minimum pour SGBD relationnel :",
+              "options": [
+                "Oui, prérequis",
+                "Non requis",
+                "Remplace SQL",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle tabulaire strict."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CSV avec colonnes variables par ligne :",
+              "options": [
+                "Hors modèle relationnel strict",
+                "Toujours 3FN",
+                "Clé naturelle",
+                "Vue SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma fixe requis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Clé primaire en 1FN :",
+              "options": [
+                "Possible et courante",
+                "Interdite",
+                "Toujours composite",
+                "Sans unicité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendant des formes normales supérieures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif 1FN :",
+              "options": [
+                "Structure atomique et requêtable",
+                "Produit cartésien",
+                "Chiffrement",
+                "Réplication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base de la normalisation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Deuxième forme normale (2FN)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2FN (si 1FN) :",
+              "options": [
+                "Toute DF non triviale partielle depuis une clé composite est éliminée",
+                "Chaque attribut non clé dépend de la clé entière",
+                "Interdit clé composite",
+                "Autorise redondance libre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de dépendance à un sous-ensemble de PK."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "PK simple implique :",
+              "options": [
+                "2FN automatique si 1FN (pas de dépendance partielle)",
+                "Violation 2FN",
+                "3FN impossible",
+                "Sans FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partielle seulement si PK composite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(id_eleve, id_cours, nom_eleve) avec nom dépend de id_eleve seul :",
+              "options": [
+                "Viole 2FN",
+                "Parfait 3FN",
+                "Sans anomalie",
+                "1FN seulement OK métier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nom_eleve devrait être dans Eleve."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Anomalie de mise à jour 2FN :",
+              "options": [
+                "Modifier nom à plusieurs endroits",
+                "Index manquant",
+                "JOIN lent",
+                "UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Redondance de nom_eleve."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Corriger violation 2FN :",
+              "options": [
+                "Déplacer attributs vers relation où ils dépendent de la clé",
+                "Fusionner toutes tables",
+                "Supprimer PK",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décomposition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dépendance partielle A→B avec A strict sous-ensemble PK :",
+              "options": [
+                "Problème 2FN",
+                "Toujours 3FN",
+                "Souhaitable",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition 2FN."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2FN implique 1FN :",
+              "options": ["Oui", "Non", "Inverse", "Sans lien"],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie des formes normales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Table Inscription(eleve, cours, nom_classe) nom_classe → cours :",
+              "options": [
+                "Peut violer 2FN selon clé",
+                "Toujours OK",
+                "Sans DF",
+                "PK absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyser la clé choisie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "But 2FN :",
+              "options": [
+                "Éviter redondance liée à sous-clés",
+                "Accélérer disque",
+                "Remplacer SQL",
+                "NULL interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence sémantique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester 2FN :",
+              "options": [
+                "Lister DF depuis sous-ensembles de PK",
+                "Compter lignes",
+                "ORDER BY",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode analytique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Troisième forme normale (3FN)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "3FN (si 2FN) :",
+              "options": [
+                "Aucun attribut non clé ne dépend transitivement de la PK",
+                "Chaque non-clé dépend directement de la clé",
+                "Autorise dépendances transitives",
+                "Supprime toutes FK"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de chaîne clé → non-clé → non-clé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transitive id→code_postal→ville :",
+              "options": [
+                "Peut violer 3FN si ville non clé",
+                "Toujours 1FN",
+                "Obligatoire",
+                "Index seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ville devrait être liée au CP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3FN réduit :",
+              "options": [
+                "Anomalies mise à jour sur attributs indirects",
+                "Besoin de JOIN",
+                "Taille disque toujours",
+                "Nombre de tables à 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de redondance sémantique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "BCNF est :",
+              "options": [
+                "Renforcement de 3FN (toute DF depuis clé candidate)",
+                "Identique 1FN",
+                "Sans DF",
+                "CSV seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boyce-Codd, extension terminale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Décomposer pour 3FN :",
+              "options": [
+                "Créer tables pour dépendances transitives",
+                "Tout mettre en JSON",
+                "Une colonne",
+                "Supprimer contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma plus fin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3FN implique 2FN :",
+              "options": [
+                "Oui si définitions standard",
+                "Non",
+                "Seulement avec NULL",
+                "Sans PK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cumulative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur-normaliser :",
+              "options": [
+                "Trop de JOIN pour gain marginal",
+                "Toujours optimal",
+                "Interdit NSI",
+                "Supprime index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis pratique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Eleve(id, id_classe, nom_classe) nom_classe→id_classe :",
+              "options": [
+                "Violation 3FN typique",
+                "Parfait",
+                "Sans DF",
+                "1FN seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nom_classe dans Classe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contrôle 3FN :",
+              "options": [
+                "Chercher DF entre non-clés",
+                "SELECT *",
+                "CROSS JOIN",
+                "BOM UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse des dépendances."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Intérêt pédagogique 3FN :",
+              "options": [
+                "Modèle cohérent pour SGBD",
+                "Remplace réseau",
+                "Oublie intégrité",
+                "Fin du SQL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préparation conception SQL."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Algèbre relationnelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Opérateurs algèbre relationnelle :",
+              "options": [
+                "Sélection σ, projection π, jointure ⋈",
+                "Union, différence, produit cartésien",
+                "Compiler Python",
+                "Chiffrer disque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Base formelle des requêtes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "σ_age>18(R) :",
+              "options": [
+                "Sélection de lignes",
+                "Projection",
+                "Renommage seul",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre sur prédicat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "π_nom,prenom(R) :",
+              "options": [
+                "Projection de colonnes",
+                "Cartésien",
+                "Différence",
+                "Insertion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-ensemble d'attributs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "R ⋈ S :",
+              "options": [
+                "Jointure (souvent équijointure)",
+                "Union",
+                "Intersection seule",
+                "DROP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison liée par condition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "R × S produit cartésien :",
+              "options": ["|R|×|S| lignes", "|R|+|S|", "Min(|R|,|S|)", "0"],
+              "correctAnswers": [0],
+              "explanation": "Toutes paires de tuples."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "SQL SELECT ... WHERE correspond à :",
+              "options": [
+                "σ puis π (logiquement)",
+                "π seul",
+                "Sans algèbre",
+                "Trigger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien cours NSI SQL/algèbre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Renommage ρ :",
+              "options": [
+                "Change nom relation/attribut",
+                "Supprime lignes",
+                "Crée PK",
+                "Commit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour clarté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Union R ∪ S exige :",
+              "options": [
+                "Schémas compatibles (même arité, domaines)",
+                "Tables quelconques",
+                "FK identiques",
+                "CSV identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même structure colonnes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence R − S :",
+              "options": [
+                "Tuples de R absents de S",
+                "JOIN",
+                "HAVING",
+                "GRANT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opérate ensembliste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Algèbre vs SQL :",
+              "options": [
+                "SQL déclaratif, algèbre formelle équivalente",
+                "Sans lien",
+                "Algèbre exécutable seule",
+                "SQL non relationnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même modèle sous-jacent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Du conceptuel au relationnel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Entité forte en relationnel :",
+              "options": [
+                "Relation avec PK propre",
+                "Attributs scalares",
+                "Toujours sans FK",
+                "Fichier CSV"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Table avec identifiant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Association 1-N :",
+              "options": [
+                "FK côté N vers 1",
+                "Deux PK identiques",
+                "Cartésien",
+                "Sans clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. classe ← élève."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Association N-N :",
+              "options": [
+                "Table associative + deux FK",
+                "FK unique",
+                "Colonne JSON seule",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inscription eleve-cours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Attribut multivalué MCD :",
+              "options": [
+                "Nouvelle relation ou table en 1FN",
+                "Colonne multi-valeur",
+                "Ignore",
+                "PK composite seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction normalisée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Spécialisation IS-A :",
+              "options": [
+                "Plusieurs relations ou FK + type",
+                "Une ligne géante",
+                "Sans PK",
+                "Vue seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs stratégies."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cardinalité min 1 côté élève-classe :",
+              "options": [
+                "FK NOT NULL si chaque élève a une classe",
+                "FK nullable toujours",
+                "Sans contrainte",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modélisation contraintes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Identifiant faible MCD :",
+              "options": [
+                "Dépend clé parent + discriminant",
+                "PK globale seule",
+                "Sans relation",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clé composite fréquente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dupliquer attribut pour perf (dénormalisation) :",
+              "options": [
+                "Compromis conscience redondance",
+                "Toujours 3FN",
+                "Interdit SGBD",
+                "Supprime FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hors normalisation stricte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Schéma relationnel document :",
+              "options": [
+                "Liste relations, attributs, PK, FK",
+                "Code Python",
+                "Plan réseau",
+                "HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Livrable conception."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier schéma :",
+              "options": [
+                "DF, FN, intégrité référentielle",
+                "Couleur UI",
+                "Port 443",
+                "Encodage image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revue de conception."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse modèle relationnel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le modèle relationnel repose sur :",
+              "options": [
+                "Relations, contraintes, algèbre",
+                "Indépendance logique/physique partielle",
+                "Absence de clés",
+                "Fichiers non structurés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SGBD : requêtes déclaratives sur tables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Intégrité entité :",
+              "options": ["PK unique et NOT NULL", "FK seule", "Index", "Vue"],
+              "correctAnswers": [0],
+              "explanation": "Identité des lignes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Intégrité référentielle :",
+              "options": [
+                "FK valides ou NULL autorisé",
+                "Cartésien",
+                "Projection",
+                "Trigger seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence inter-tables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Redondance non contrôlée cause :",
+              "options": [
+                "Anomalies insertion/màj/suppression",
+                "Index auto",
+                "JOIN plus rapide",
+                "3FN garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation normalisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "SGBD garantit typiquement :",
+              "options": [
+                "Persistance, concurrence, requêtes",
+                "Compilation C",
+                "Rendu 3D",
+                "CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle du système."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Catalogue système stocke :",
+              "options": [
+                "Métadonnées schémas, tables, contraintes",
+                "Uniquement données user",
+                "Logs web",
+                "Images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "information_schema etc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vue (view) :",
+              "options": [
+                "Requête nommée, virtuelle ou matérialisée",
+                "PK physique",
+                "Fichier CSV",
+                "Index obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abstraction logique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transaction ACID :",
+              "options": [
+                "Atomicité, cohérence, isolation, durabilité",
+                "Algèbre seule",
+                "1FN",
+                "Export CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiabilité des mises à jour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passer à u2 SQL :",
+              "options": [
+                "Implémenter schéma et requêtes",
+                "Abandonner relations",
+                "Sans contraintes",
+                "Réseau bas niveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien programme NSI."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compétence clé terminale :",
+              "options": [
+                "Concevoir schéma normalisé et l'interroger",
+                "Ignorer FK",
+                "Cartésien systématique",
+                "Sans algèbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bases de données NSI."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "SQL",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "SELECT et FROM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "SELECT ... FROM ... :",
+              "options": [
+                "Projection et source(s) de table(s)",
+                "Base d'une requête de lecture",
+                "Remplace toujours INSERT",
+                "Crée index automatique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "FROM lie les relations ; SELECT choisit colonnes/expressions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "SELECT * FROM Eleve :",
+              "options": [
+                "Toutes colonnes, tous élèves",
+                "Aucune ligne",
+                "Crée table",
+                "Supprime données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Requête de consultation totale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Alias AS sur colonne :",
+              "options": [
+                "Renomme affichage résultat",
+                "Change schéma permanent",
+                "PK",
+                "FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom de colonne dans résultat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "FROM A, B sans WHERE :",
+              "options": [
+                "Produit cartésien",
+                "INNER JOIN automatique",
+                "Erreur syntaxe toujours",
+                "Union"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ancienne notation ; préférer JOIN explicite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DISTINCT :",
+              "options": [
+                "Élimine doublons de lignes projetées",
+                "Trie",
+                "Filtre WHERE",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble de résultats unique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Expression SELECT note*2 :",
+              "options": ["Colonne calculée", "Contrainte FK", "DROP", "GRANT"],
+              "correctAnswers": [0],
+              "explanation": "Valeur dérivée par ligne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Requête sans FROM (selon SGBD) :",
+              "options": [
+                "Peut renvoyer scalaire (ex. SELECT 1)",
+                "Toujours interdite partout",
+                "Crée vue",
+                "Migration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SQL standard autorise SELECT sans table."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Alias table T :",
+              "options": ["Raccourci T.colonne", "PK", "Commit", "CSV"],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité multi-tables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résultat SELECT est :",
+              "options": [
+                "Relation (table virtuelle)",
+                "Fichier binaire",
+                "Index disque",
+                "Trigger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas toujours persisté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens SQL SELECT/FROM/WHERE :",
+              "options": [
+                "Lecture déclarative du résultat voulu",
+                "Impératif ligne à ligne",
+                "Assembleur",
+                "HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD optimise l'exécution."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "WHERE, NULL et logique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "WHERE filtre :",
+              "options": [
+                "Les lignes avant projection finale (logique)",
+                "Selon prédicat vrai/faux",
+                "Remplace JOIN obligatoire",
+                "Crée PK"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "σ en algèbre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "age IS NULL :",
+              "options": [
+                "Teste valeur inconnue",
+                "age = 0",
+                "age = ''",
+                "Erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "= NULL est incorrect en SQL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AND lie plus fort que OR :",
+              "options": [
+                "Vrai ; utiliser parenthèses",
+                "Faux toujours",
+                "Sans effet",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Priorité opérateurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "BETWEEN 10 AND 20 :",
+              "options": [
+                "Bornes inclusives",
+                "Exclusive toujours",
+                "JOIN",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intervalle fermé standard."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "IN (1,2,3) :",
+              "options": [
+                "Appartenance à liste",
+                "Produit cartésien",
+                "HAVING",
+                "CREATE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccourci disjonction."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "LIKE 'A%' :",
+              "options": [
+                "Commence par A",
+                "Finit par A",
+                "Égal A seul",
+                "Sans motif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "% = suite quelconque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "NOT (note >= 10) :",
+              "options": [
+                "note < 10 si ordre total",
+                "note = 10",
+                "NULL interdit",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation prédicat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparaison NULL avec = :",
+              "options": [
+                "Résultat UNKNOWN, ligne exclue",
+                "Toujours vrai",
+                "Crée index",
+                "FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique à trois valeurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "WHERE après JOIN ON :",
+              "options": [
+                "Filtre le résultat joint",
+                "Remplace ON",
+                "Supprime FROM",
+                "DDL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat sur tables combinées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prédicat toujours faux :",
+              "options": [
+                "Aucune ligne retournée",
+                "Toutes lignes",
+                "Erreur parse",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble vide."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Jointures SQL",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "INNER JOIN :",
+              "options": [
+                "Lignes avec match ON des deux côtés",
+                "Exclut non-appariées",
+                "Identique CROSS sans ON",
+                "Sans condition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intersection appariée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "LEFT OUTER JOIN :",
+              "options": [
+                "Toutes lignes gauche, NULL si pas match droite",
+                "Seulement matches",
+                "Supprime gauche",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conserve entité optionnelle côté gauche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ON Eleve.classe_id = Classe.id :",
+              "options": [
+                "Condition équijointure",
+                "WHERE obligatoire à la place",
+                "PK auto",
+                "HAVING"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère de correspondance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oublier ON avec JOIN implicite vieux style :",
+              "options": [
+                "Risque cartésien",
+                "Erreur immédiate toujours",
+                "Accélère",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplication lignes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Self-join :",
+              "options": [
+                "Table jointe à elle-même (alias)",
+                "Deux bases",
+                "Impossible",
+                "Sans WHERE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. employé / manager."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "NATURAL JOIN :",
+              "options": [
+                "Jointure sur colonnes homonymes",
+                "Toujours recommandé",
+                "Remplace PK",
+                "DDL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À manier avec prudence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plusieurs JOIN enchaînés :",
+              "options": [
+                "Combinaison progressive tables",
+                "Un seul ON global",
+                "Interdit",
+                "Union"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne de clés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Colonne id ambiguë sans alias :",
+              "options": [
+                "Erreur ou ambiguïté",
+                "PK double",
+                "NULL",
+                "DISTINCT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualifier T.id."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "RIGHT JOIN :",
+              "options": [
+                "Symétrique LEFT en inversant tables",
+                "Inner seulement",
+                "DELETE",
+                "GRANT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins usité que LEFT."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "JOIN + WHERE ville='Paris' :",
+              "options": [
+                "Filtre après fusion",
+                "Remplace ON",
+                "Crée table",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection sur résultat joint."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "INSERT, UPDATE, DELETE",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "DML inclut :",
+              "options": [
+                "INSERT, UPDATE, DELETE",
+                "Modification données existantes",
+                "CREATE TABLE seulement",
+                "GRANT"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Manipulation des tuples."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "INSERT INTO T (a,b) VALUES (1,'x') :",
+              "options": [
+                "Ajoute une ligne",
+                "Supprime table",
+                "Crée index",
+                "SELECT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insertion explicite colonnes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "UPDATE T SET note=20 WHERE id=5 :",
+              "options": [
+                "Modifie lignes satisfaisant prédicat",
+                "Toutes lignes si sans WHERE",
+                "DDL",
+                "JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention WHERE omis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "DELETE FROM T WHERE ... :",
+              "options": [
+                "Supprime lignes",
+                "DROP table",
+                "Truncate nom différent selon SGBD",
+                "CREATE VIEW"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DML vs DDL TRUNCATE."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Violation FK à INSERT enfant :",
+              "options": [
+                "Erreur si parent absent",
+                "Toujours OK",
+                "Crée parent",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrité référentielle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "INSERT multiple VALUES :",
+              "options": [
+                "Plusieurs lignes une commande",
+                "Une seule colonne",
+                "Interdit",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batch insertion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "UPDATE sans WHERE :",
+              "options": [
+                "Toutes lignes concernées",
+                "Aucune",
+                "Erreur syntaxe",
+                "Commit auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Danger production."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "RETURNING (PostgreSQL) :",
+              "options": [
+                "Renvoie lignes affectées",
+                "Remplace SELECT",
+                "DDL",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extension utile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transaction autour DML :",
+              "options": [
+                "COMMIT/ROLLBACK pour atomicité",
+                "Inutile",
+                "Index",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout ou rien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contrainte UNIQUE à INSERT doublon :",
+              "options": [
+                "Échec insertion",
+                "Ignore silencieux toujours",
+                "CROSS JOIN",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unicité appliquée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "CREATE TABLE et DDL",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "DDL comprend :",
+              "options": [
+                "CREATE, ALTER, DROP (tables, contraintes)",
+                "Définition structure persistante",
+                "SELECT",
+                "INSERT"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Data Definition Language."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CREATE TABLE Eleve (id INT PRIMARY KEY) :",
+              "options": [
+                "Crée relation avec PK",
+                "Insère ligne",
+                "Jointure",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma stocké catalogue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "FOREIGN KEY (classe_id) REFERENCES Classe(id) :",
+              "options": [
+                "Contrainte référentielle",
+                "Index seul",
+                "SELECT",
+                "HAVING"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien déclaratif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ALTER TABLE ADD COLUMN :",
+              "options": [
+                "Évolution schéma additive",
+                "Supprime données toujours",
+                "DML",
+                "GRANT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migration courante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DROP TABLE T :",
+              "options": [
+                "Supprime table et données",
+                "Supprime une ligne",
+                "CREATE",
+                "INDEX seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Destructif DDL."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "NOT NULL sur colonne :",
+              "options": ["Interdit NULL", "Autorise NULL", "FK", "DISTINCT"],
+              "correctAnswers": [0],
+              "explanation": "Contrainte domaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DEFAULT valeur :",
+              "options": ["Valeur si INSERT omise", "PK", "JOIN", "OR"],
+              "correctAnswers": [0],
+              "explanation": "Simplifie insertions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CHECK (age >= 0) :",
+              "options": ["Contrainte métier", "Remplace FK", "Vue", "CROSS"],
+              "correctAnswers": [0],
+              "explanation": "Validation ligne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "SERIAL / AUTO_INCREMENT :",
+              "options": [
+                "Identifiant auto pour PK surrogate",
+                "Supprime UNIQUE",
+                "DDL interdit",
+                "SELECT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon SGBD."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CREATE INDEX :",
+              "options": [
+                "Accélère recherche, structure auxiliaire",
+                "Remplace PK",
+                "DML",
+                "DELETE ALL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Performance, pas logique métier."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Agrégats et GROUP BY",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fonctions agrégats :",
+              "options": [
+                "COUNT, SUM, AVG, MIN, MAX",
+                "Opèrent sur ensemble de lignes groupées",
+                "Remplacent WHERE",
+                "Sans GROUP BY toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Résumés statistiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GROUP BY classe :",
+              "options": [
+                "Un groupe par valeur classe",
+                "Trie seulement",
+                "JOIN",
+                "DDL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partition lignes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "HAVING filtre :",
+              "options": [
+                "Groupes après agrégation",
+                "Lignes avant agrégat (WHERE)",
+                "PK",
+                "INSERT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat sur groupes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "SELECT classe, AVG(note) GROUP BY classe :",
+              "options": [
+                "Moyenne par classe",
+                "Moyenne globale sans groupe",
+                "Erreur toujours",
+                "CROSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colonne non agrégée dans GROUP BY."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "COUNT(*) :",
+              "options": [
+                "Nombre lignes du groupe",
+                "Ignore NULL colonnes nommées selon COUNT(col)",
+                "Supprime doublons auto",
+                "FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter lignes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "WHERE avant GROUP BY :",
+              "options": [
+                "Filtre lignes sources",
+                "Filtre groupes",
+                "Remplace HAVING toujours",
+                "DDL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre logique SQL."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "SUM(montant) sans GROUP BY :",
+              "options": [
+                "Une ligne agrégat global",
+                "Erreur",
+                "Par tuple",
+                "JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agrégat sur toute table."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "HAVING AVG(note) >= 10 :",
+              "options": [
+                "Garde groupes moyenne ≥ 10",
+                "Ligne par ligne",
+                "CREATE",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condition sur agrégat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "COUNT(DISTINCT id) :",
+              "options": [
+                "Compte valeurs distinctes",
+                "Cartésien",
+                "PK",
+                "DROP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unicité dans agrégat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Colonne SELECT hors GROUP BY non agrégée :",
+              "options": ["Erreur SQL standard", "Toujours OK", "FK", "Index"],
+              "correctAnswers": [0],
+              "explanation": "Règle functional dependency."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "ORDER BY et LIMIT",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "ORDER BY :",
+              "options": [
+                "Trie le résultat",
+                "ASC/DESC par colonne",
+                "Remplace WHERE",
+                "Crée PK"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Présentation ordonnée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "LIMIT 10 OFFSET 20 :",
+              "options": [
+                "Pagination 10 lignes après 20",
+                "Supprime 20 tables",
+                "DDL",
+                "HAVING"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialecte courant (OFFSET)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ORDER BY note DESC, nom ASC :",
+              "options": [
+                "Tri secondaire",
+                "Un seul critère",
+                "GROUP BY",
+                "INSERT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clés multiples."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tri NULLS FIRST/LAST :",
+              "options": [
+                "Comportement NULL configurable (PostgreSQL)",
+                "Interdit",
+                "JOIN",
+                "FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon SGBD."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ORDER BY sans index :",
+              "options": [
+                "Tri en mémoire ou externe",
+                "Impossible",
+                "Gratuit O(1)",
+                "DDL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût possible grand volume."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "FETCH FIRST n ROWS ONLY (SQL standard) :",
+              "options": ["Limite lignes", "Union", "DELETE", "GRANT"],
+              "correctAnswers": [0],
+              "explanation": "Équivalent LIMIT."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ORDER BY expression :",
+              "options": [
+                "Autorisé (ex. YEAR(date))",
+                "Interdit",
+                "PK seule",
+                "CROSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri sur calcul."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résultat sans ORDER BY :",
+              "options": [
+                "Ordre non garanti logiquement",
+                "Toujours PK order",
+                "Alphabétique",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble, pas liste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "TOP n (SQL Server) :",
+              "options": [
+                "Limite lignes dialecte",
+                "GROUP BY",
+                "ALTER",
+                "VIEW drop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variantes dialectales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pagination API + SQL :",
+              "options": [
+                "LIMIT/OFFSET ou curseur",
+                "Cartésien",
+                "Sans index jamais",
+                "DDL seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pattern applications."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Contraintes et intégrité en SQL",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Contraintes SQL :",
+              "options": [
+                "PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, NOT NULL",
+                "Appliquées par le SGBD",
+                "Remplacent transactions",
+                "Sans catalogue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Garanties déclaratives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "UNIQUE vs PK :",
+              "options": [
+                "UNIQUE permet NULL multiples selon SGBD ; une seule PK",
+                "Identiques",
+                "PK non unique",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PK = identifiant principal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DEFERRABLE constraint :",
+              "options": [
+                "Vérification fin transaction possible",
+                "Toujours immédiate",
+                "DML interdit",
+                "Vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancé, selon SGBD."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nommer contrainte :",
+              "options": [
+                "Facilite messages erreur et ALTER",
+                "Obligatoire SQL",
+                "Supprime FK",
+                "CROSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CONSTRAINT nom ..."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ALTER DROP CONSTRAINT :",
+              "options": [
+                "Retire contrainte nommée",
+                "Supprime toutes données",
+                "SELECT",
+                "HAVING"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution schéma."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "FK ON UPDATE CASCADE :",
+              "options": [
+                "Propage changement PK parent",
+                "Interdit UPDATE",
+                "Index",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synchronise références."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "CHECK violé à INSERT :",
+              "options": ["Transaction rejetée", "Ignoré", "Crée vue", "JOIN"],
+              "correctAnswers": [0],
+              "explanation": "Cohérence données."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Composite PRIMARY KEY en CREATE :",
+              "options": [
+                "PRIMARY KEY (a,b)",
+                "Deux PRIMARY KEY séparées",
+                "Sans parenthèses",
+                "DML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Syntaxe standard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "information_schema :",
+              "options": [
+                "Vue métadonnées standard SQL",
+                "Données métier",
+                "Fichier CSV",
+                "Python csv"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Introspection."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Intégrité + application :",
+              "options": [
+                "Contraintes SGBD + règles métier code",
+                "Code seul suffit toujours",
+                "Sans FK",
+                "Cartésien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défense en profondeur."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sous-requêtes et ensembles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sous-requête :",
+              "options": [
+                "Requête imbriquée dans WHERE/FROM/SELECT",
+                "Peut renvoyer scalaire ou table",
+                "Remplace toujours JOIN",
+                "DDL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Composition de requêtes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "WHERE id IN (SELECT ...) :",
+              "options": [
+                "Test appartenance ensemble",
+                "Produit cartésien",
+                "HAVING seul",
+                "DROP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semi-join logique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "EXISTS (SELECT 1 ...) :",
+              "options": [
+                "Vrai si sous-requête non vide",
+                "Compte lignes",
+                "PK",
+                "GRANT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test existence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sous-requête scalaire :",
+              "options": [
+                "Une valeur ; erreur si plusieurs lignes",
+                "Toujours table",
+                "JOIN interdit",
+                "CREATE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisation prudente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "FROM (SELECT ...) AS sub :",
+              "options": [
+                "Table dérivée inline",
+                "Vue permanente",
+                "Index",
+                "DELETE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-requête FROM."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "UNION :",
+              "options": [
+                "Combine résultats même schéma, déduplique par défaut",
+                "JOIN",
+                "CROSS",
+                "ALTER"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UNION ALL garde doublons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "INTERSECT / EXCEPT :",
+              "options": [
+                "Intersection / différence ensembliste",
+                "HAVING",
+                "LIKE",
+                "FK"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opérateurs SQL standard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Correlated subquery :",
+              "options": [
+                "Référence table externe",
+                "Sans lien",
+                "DDL",
+                "Index CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluation ligne par ligne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "JOIN vs IN subquery :",
+              "options": [
+                "Souvent réécrivables, optimiseur choisit",
+                "Jamais équivalents",
+                "Interdit NSI",
+                "Sans perf diff"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Style et lisibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "WITH cte AS (SELECT ...) :",
+              "options": [
+                "Common Table Expression nommée",
+                "Trigger",
+                "DROP",
+                "GRANT ALL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité requêtes complexes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse SQL terminale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Compétences SQL terminale NSI :",
+              "options": [
+                "Lecture/écriture, jointures, agrégats, contraintes",
+                "Lien modèle relationnel et SGBD",
+                "Remplacer toute modélisation",
+                "Ignorer intégrité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SQL comme langage déclaratif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Injection SQL :",
+              "options": [
+                "Requêtes paramétrées / prepared statements",
+                "Concaténer entrée user",
+                "Toujours safe avec '",
+                "DDL seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité applicative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "EXPLAIN / plan requête :",
+              "options": [
+                "Comprend coût et index utilisés",
+                "Modifie données",
+                "Crée PK",
+                "CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimisation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vue CREATE VIEW :",
+              "options": [
+                "Requête stockée, accès contrôlé",
+                "Table physique toujours",
+                "Remplace backup",
+                "Sans SELECT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abstraction et droits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transaction BEGIN ... COMMIT :",
+              "options": [
+                "Groupe DML atomique",
+                "SELECT seul",
+                "Index",
+                "LIKE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence concurrente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jointure + agrégat + filtre :",
+              "options": [
+                "Pattern analyse données réelle",
+                "Interdit",
+                "Sans GROUP BY",
+                "Cartésien seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Requêtes métier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "SQLite en NSI :",
+              "options": [
+                "SGBD embarqué pour TP SQL",
+                "Remplace modèle relationnel",
+                "Sans SQL",
+                "Serveur cluster"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil pédagogique courant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Normaliser puis CREATE TABLE :",
+              "options": [
+                "Schéma cohérent avant DDL",
+                "DDL avant modèle",
+                "Sans FK",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur « column must appear in GROUP BY » :",
+              "options": [
+                "Corriger SELECT ou agrégat",
+                "Ajouter CROSS JOIN",
+                "DROP DATABASE",
+                "Ignorer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle SQL standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message clé chapitre BDD :",
+              "options": [
+                "Modéliser, contraindre, interroger en SQL",
+                "Oublier clés",
+                "CSV seul",
+                "Sans transactions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil terminale NSI bases de données."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

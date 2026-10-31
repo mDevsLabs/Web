@@ -1,0 +1,2278 @@
+{
+  "id": "3e-italien-01",
+  "year": "3e",
+  "subject": "italien",
+  "title": "Découvrir l'italien",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules polies le matin avec un adulte :",
+              "type": "multiple_choice",
+              "options": [
+                "Buongiorno, signore.",
+                "Ciao, prof!",
+                "Buongiorno, signora.",
+                "Ehi, come va?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Buongiorno + signore/signora ; Ciao/Ehi trop familiers."
+            },
+            {
+              "id": "q2",
+              "question": "Saluer une professeure :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno, professoressa.",
+                "Ciao bella!",
+                "Ehi prof!",
+                "Salve amica!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buongiorno, professoressa."
+            },
+            {
+              "id": "q3",
+              "question": "Buonasera =",
+              "type": "single_choice",
+              "options": ["Bonsoir", "Bonne nuit", "Bonjour", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Fin de journée."
+            },
+            {
+              "id": "q4",
+              "question": "Come sta? — réponse (Lei) :",
+              "type": "single_choice",
+              "options": [
+                "Sto bene, grazie.",
+                "Stai bene.",
+                "Bene tu?",
+                "Ciao bene."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sto = je vais (Lei)."
+            },
+            {
+              "id": "q5",
+              "question": "Enchanté (vouvoiement) :",
+              "type": "single_choice",
+              "options": [
+                "Piacere di conoscerLa.",
+                "Piacere di conoscerti.",
+                "Arrivederci.",
+                "Mi chiamo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ConoscerLa."
+            },
+            {
+              "id": "q6",
+              "question": "Mi chiamo Marco :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Marco.",
+                "J'ai Marco ans.",
+                "Je suis de Marco.",
+                "Marco ho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi chiamo = prénom."
+            },
+            {
+              "id": "q7",
+              "question": "Ho sedici anni :",
+              "type": "single_choice",
+              "options": [
+                "J'ai 16 ans.",
+                "J'ai 16 an.",
+                "Je suis 16 ans.",
+                "Sono sedici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho + anni."
+            },
+            {
+              "id": "q8",
+              "question": "Sono di Bordeaux :",
+              "type": "single_choice",
+              "options": [
+                "Je suis de Bordeaux.",
+                "J'habite à Bordeaux.",
+                "Je m'appelle Bordeaux.",
+                "J'ai Bordeaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di = origine."
+            },
+            {
+              "id": "q9",
+              "question": "Quitter poliment :",
+              "type": "single_choice",
+              "options": [
+                "Arrivederci, grazie.",
+                "Ciao ciao!",
+                "Piacere!",
+                "Buonanotte matin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrivederci + grazie."
+            },
+            {
+              "id": "q10",
+              "question": "Lei =",
+              "type": "single_choice",
+              "options": ["Vous (poli)", "Toi", "Nous", "Eux"],
+              "correctAnswers": [0],
+              "explanation": "Vouvoiement au lycée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tu ou Lei",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Interlocuteurs en tutoiement au lycée :",
+              "type": "multiple_choice",
+              "options": [
+                "Un compagno di classe.",
+                "Un amico del liceo.",
+                "Il preside.",
+                "La professoressa nuova."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Entre élèves/amis : tu."
+            },
+            {
+              "id": "q2",
+              "question": "Comment t'appelles-tu? :",
+              "type": "single_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come si chiama?",
+                "Come mi chiami?",
+                "Come Lei chiami?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ti chiami = tu."
+            },
+            {
+              "id": "q3",
+              "question": "Comment vous appelez-vous? :",
+              "type": "single_choice",
+              "options": [
+                "Come si chiama?",
+                "Come ti chiami?",
+                "Come chiami tu?",
+                "Come si chiamo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si chiama = Lei."
+            },
+            {
+              "id": "q4",
+              "question": "Tu as 16 ans :",
+              "type": "single_choice",
+              "options": [
+                "Hai sedici anni.",
+                "Ha sedici anni.",
+                "Ho sedici anni.",
+                "Hai sedici ano."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai = tu as."
+            },
+            {
+              "id": "q5",
+              "question": "Vous avez … (Lei) :",
+              "type": "single_choice",
+              "options": [
+                "Ha … anni.",
+                "Hai … anni.",
+                "Ho … anni.",
+                "Hanno … anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha = Lei a."
+            },
+            {
+              "id": "q6",
+              "question": "D'où es-tu? :",
+              "type": "single_choice",
+              "options": [
+                "Di dove sei?",
+                "Di dov'è?",
+                "Dove sei di?",
+                "Sono di dove?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sei = tu es."
+            },
+            {
+              "id": "q7",
+              "question": "D'où êtes-vous? :",
+              "type": "single_choice",
+              "options": [
+                "Di dov'è?",
+                "Di dove sei?",
+                "Di dove siamo?",
+                "Dov'è di?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "È = Lei."
+            },
+            {
+              "id": "q8",
+              "question": "Sto bene, e Lei? :",
+              "type": "single_choice",
+              "options": [
+                "Réponse au vouvoiement.",
+                "Au revoir.",
+                "Prénom.",
+                "Origine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reprend Lei."
+            },
+            {
+              "id": "q9",
+              "question": "Piacere di conoscerti →",
+              "type": "single_choice",
+              "options": ["Tu", "Lei adulte", "Au revoir", "Bonsoir"],
+              "correctAnswers": [0],
+              "explanation": "Conoscerti = te."
+            },
+            {
+              "id": "q10",
+              "question": "Au prof :",
+              "type": "single_choice",
+              "options": [
+                "Piacere di conoscerLa.",
+                "Piacere di conoscerti.",
+                "Ciao prof tu.",
+                "Ehi piacere."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ConoscerLa."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mi chiamo",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases correctes pour se présenter :",
+              "type": "multiple_choice",
+              "options": [
+                "Mi chiamo Eva, ho quindici anni.",
+                "Mi chiamo Eva, sono quindici anni.",
+                "Mi chiamo Eva e sono di Nantes.",
+                "Chiamo Eva mi."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mi chiamo + ho anni ; sono … anni faux."
+            },
+            {
+              "id": "q2",
+              "question": "___ chiamo Sofia.",
+              "type": "single_choice",
+              "options": ["Mi", "Ti", "Si", "Ci"],
+              "correctAnswers": [0],
+              "explanation": "Mi chiamo."
+            },
+            {
+              "id": "q3",
+              "question": "Il s'appelle Luca :",
+              "type": "single_choice",
+              "options": [
+                "Si chiama Luca.",
+                "Mi chiama Luca.",
+                "Ti chiama Luca.",
+                "Chiama si Luca."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si chiama."
+            },
+            {
+              "id": "q4",
+              "question": "Nous nous appelons :",
+              "type": "single_choice",
+              "options": [
+                "Ci chiamiamo …",
+                "Mi chiamiamo …",
+                "Si chiamiamo …",
+                "Vi chiamiamo …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci chiamiamo."
+            },
+            {
+              "id": "q5",
+              "question": "Prénom + origine :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Anna, sono di Marsiglia.",
+                "Mi chiamo Anna, sono Marsiglia.",
+                "Chiamo Anna di.",
+                "Sono Anna chiamo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di + ville."
+            },
+            {
+              "id": "q6",
+              "question": "Come ti chiami? —",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Tom.",
+                "Si chiamo Tom.",
+                "Ti chiamo Tom.",
+                "Chiamo mi Tom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse : mi chiamo."
+            },
+            {
+              "id": "q7",
+              "question": "Come si chiama? — réponse :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo …",
+                "Ti chiamo …",
+                "Si chiamo …",
+                "Vi chiamo …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit mi chiamo pour soi."
+            },
+            {
+              "id": "q8",
+              "question": "Il s'appelle Matteo :",
+              "type": "single_choice",
+              "options": [
+                "Lui si chiama Matteo.",
+                "Lui mi chiama Matteo.",
+                "Lui ti chiama Matteo.",
+                "Lui ci chiama Matteo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si chiama."
+            },
+            {
+              "id": "q9",
+              "question": "Erreur fréquente :",
+              "type": "single_choice",
+              "options": [
+                "Chiamo Paolo (sans mi).",
+                "Mi chiamo Paolo.",
+                "Ho quindici anni.",
+                "Sono di Roma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiamo seul ≠ je m'appelle."
+            },
+            {
+              "id": "q10",
+              "question": "Buongiorno, ___ Giulia, ___ di Torino.",
+              "type": "single_choice",
+              "options": [
+                "mi chiamo / sono",
+                "ti chiamo / sei",
+                "si chiama / è",
+                "chiamo / sono"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi chiamo + sono di."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ho … anni",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Âges corrects en italien :",
+              "type": "multiple_choice",
+              "options": [
+                "Ho quattordici anni.",
+                "Ho diciassette anni.",
+                "Sono sedici anni.",
+                "Ho sedici ano."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ho + nombre + anni."
+            },
+            {
+              "id": "q2",
+              "question": "14 ans :",
+              "type": "single_choice",
+              "options": [
+                "Ho quattordici anni.",
+                "Sono quattordici anni.",
+                "Ho quattordici.",
+                "Ho quattordici ano."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anni obligatoire."
+            },
+            {
+              "id": "q3",
+              "question": "Quel âge as-tu? :",
+              "type": "single_choice",
+              "options": [
+                "Quanti anni hai?",
+                "Quanti anni ha?",
+                "Quanti anni ho?",
+                "Quanti anni hanno?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai = tu."
+            },
+            {
+              "id": "q4",
+              "question": "Quel âge avez-vous? :",
+              "type": "single_choice",
+              "options": [
+                "Quanti anni ha?",
+                "Quanti anni hai?",
+                "Quanti anni hanno?",
+                "Quanti anni siamo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha = Lei."
+            },
+            {
+              "id": "q5",
+              "question": "18 ans :",
+              "type": "single_choice",
+              "options": [
+                "Ho diciotto anni.",
+                "Ho diciotto ano.",
+                "Sono diciotto anni.",
+                "Ho anni diciotto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho diciotto anni."
+            },
+            {
+              "id": "q6",
+              "question": "Tu as 15 ans :",
+              "type": "single_choice",
+              "options": [
+                "Hai quindici anni.",
+                "Ho quindici anni.",
+                "Ha quindici anni.",
+                "Hai quindici ano."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai."
+            },
+            {
+              "id": "q7",
+              "question": "Mi chiamo Nico e ___",
+              "type": "single_choice",
+              "options": [
+                "ho quindici anni",
+                "sono quindici anni",
+                "ho quindici",
+                "ho quindici ano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho quindici anni."
+            },
+            {
+              "id": "q8",
+              "question": "sedici =",
+              "type": "single_choice",
+              "options": ["16", "6", "60", "15"],
+              "correctAnswers": [0],
+              "explanation": "Nombre italien."
+            },
+            {
+              "id": "q9",
+              "question": "diciassette =",
+              "type": "single_choice",
+              "options": ["17", "7", "70", "16"],
+              "correctAnswers": [0],
+              "explanation": "17."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase fausse :",
+              "type": "single_choice",
+              "options": [
+                "Sono quindici anni.",
+                "Ho quindici anni.",
+                "Hai sedici anni.",
+                "Ha diciotto anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas sono pour l'âge."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Sono di",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Origines correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "Sono di Nizza.",
+                "Sono di Parigi.",
+                "Sono da Nizza.",
+                "Sono Nizza."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sono di + ville."
+            },
+            {
+              "id": "q2",
+              "question": "Je suis de Bordeaux :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Bordeaux.",
+                "Sono da Bordeaux.",
+                "Sono Bordeaux.",
+                "Di sono Bordeaux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di."
+            },
+            {
+              "id": "q3",
+              "question": "Di dove sei? =",
+              "type": "single_choice",
+              "options": [
+                "D'où es-tu?",
+                "Comment t'appelles-tu?",
+                "Quel âge?",
+                "Au revoir?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine (tu)."
+            },
+            {
+              "id": "q4",
+              "question": "Je suis de Rome :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Roma.",
+                "Sono da Roma.",
+                "Sono Roma.",
+                "Mi chiamo Roma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roma."
+            },
+            {
+              "id": "q5",
+              "question": "Il est de Milan :",
+              "type": "single_choice",
+              "options": [
+                "È di Milano.",
+                "È da Milano.",
+                "Sono di Milano.",
+                "È Milano di."
+              ],
+              "correctAnswers": [0],
+              "explanation": "È di Milano."
+            },
+            {
+              "id": "q6",
+              "question": "Sono di Lille, ___ sedici anni.",
+              "type": "single_choice",
+              "options": ["ho", "sono", "hai", "ha"],
+              "correctAnswers": [0],
+              "explanation": "Origine sono di ; âge ho."
+            },
+            {
+              "id": "q7",
+              "question": "Lei è di …? demande",
+              "type": "single_choice",
+              "options": [
+                "L'origine",
+                "L'âge seul",
+                "Le prénom seul",
+                "L'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "È di = de (origine)."
+            },
+            {
+              "id": "q8",
+              "question": "Je suis de France :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Francia.",
+                "Sono da Francia.",
+                "Francia sono.",
+                "Ho Francia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Francia."
+            },
+            {
+              "id": "q9",
+              "question": "Napoli =",
+              "type": "single_choice",
+              "options": ["Naples", "Nice", "Nantes", "Novare"],
+              "correctAnswers": [0],
+              "explanation": "Ville italienne."
+            },
+            {
+              "id": "q10",
+              "question": "Présentation forum langues :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Sara, sono di Strasbourg e ho sedici anni.",
+                "Mi chiamo Sara, sono sedici Strasbourg.",
+                "Chiamo Sara ho sedici.",
+                "Sono di Sara sedici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom, origine, âge."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Come stai / sta",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions « comment vas-tu / allez-vous » :",
+              "type": "multiple_choice",
+              "options": [
+                "Come stai?",
+                "Come sta?",
+                "Come sono?",
+                "Buongiorno?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stai = tu ; sta = Lei."
+            },
+            {
+              "id": "q2",
+              "question": "Au professeur :",
+              "type": "single_choice",
+              "options": [
+                "Come sta?",
+                "Come stai?",
+                "Come state tu?",
+                "Come va tu?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sta = Lei."
+            },
+            {
+              "id": "q3",
+              "question": "À un ami :",
+              "type": "single_choice",
+              "options": [
+                "Come stai?",
+                "Come sta?",
+                "Come si sta?",
+                "Buonanotte?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stai."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse positive :",
+              "type": "single_choice",
+              "options": [
+                "Bene, grazie.",
+                "Male ciao.",
+                "Sto bene tu.",
+                "Grazie male."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bene, grazie."
+            },
+            {
+              "id": "q5",
+              "question": "Sto bene, e tu? →",
+              "type": "single_choice",
+              "options": [
+                "On t'a tutoyé.",
+                "On vous a vouvoyé.",
+                "Au revoir.",
+                "Prénom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reprend tu."
+            },
+            {
+              "id": "q6",
+              "question": "Sto bene, e Lei? →",
+              "type": "single_choice",
+              "options": [
+                "Vouvoiement.",
+                "Tutoiement.",
+                "Salut matin.",
+                "Origine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "e Lei?."
+            },
+            {
+              "id": "q7",
+              "question": "Non molto bene =",
+              "type": "single_choice",
+              "options": [
+                "Pas très bien",
+                "Très bien",
+                "Au revoir",
+                "Enchanté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q8",
+              "question": "Come va? — réponse :",
+              "type": "single_choice",
+              "options": [
+                "Tutto bene!",
+                "Arrivederci!",
+                "Mi chiamo …",
+                "Sono di …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Familier."
+            },
+            {
+              "id": "q9",
+              "question": "Come va? ≈",
+              "type": "single_choice",
+              "options": ["Ça va?", "Bonsoir?", "Merci?", "Prénom?"],
+              "correctAnswers": [0],
+              "explanation": "Informel."
+            },
+            {
+              "id": "q10",
+              "question": "Incohérent :",
+              "type": "single_choice",
+              "options": [
+                "Come sta? — Sto bene, e tu?",
+                "Come stai? — Bene, e tu?",
+                "Come sta? — Sto bene, e Lei?",
+                "Come stai? — Bene, grazie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sta puis e tu? incohérent."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Piacere",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dire « enchanté » :",
+              "type": "multiple_choice",
+              "options": [
+                "Piacere!",
+                "Piacere di conoscerti.",
+                "Arrivederci di conoscerti.",
+                "Ciao conoscerti."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Piacere ou conoscerti (tu)."
+            },
+            {
+              "id": "q2",
+              "question": "À la prof (Lei) :",
+              "type": "single_choice",
+              "options": [
+                "Piacere di conoscerLa.",
+                "Piacere di conoscerti.",
+                "Ciao piacere.",
+                "Piacere di conosci."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ConoscerLa."
+            },
+            {
+              "id": "q3",
+              "question": "Piacere seul =",
+              "type": "single_choice",
+              "options": ["Enchanté (court)", "Au revoir", "Bonjour", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Formule courte."
+            },
+            {
+              "id": "q4",
+              "question": "Ordre logique :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno → Mi chiamo → Piacere",
+                "Arrivederci → Mi chiamo",
+                "Piacere → Buonanotte",
+                "Ho anni → Ciao"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, enchanté."
+            },
+            {
+              "id": "q5",
+              "question": "Lieto di conoscerti →",
+              "type": "single_choice",
+              "options": ["Tu", "Lei seul", "Groupe au revoir", "Prof seul"],
+              "correctAnswers": [0],
+              "explanation": "Conoscerti."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse à Piacere di conoscerti :",
+              "type": "single_choice",
+              "options": [
+                "Piacere!",
+                "Arrivederci!",
+                "Buonanotte!",
+                "Grazie arrivederci!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réciproque."
+            },
+            {
+              "id": "q7",
+              "question": "Binôme lycée après prénoms :",
+              "type": "single_choice",
+              "options": [
+                "Piacere di conoscerti.",
+                "Buonanotte.",
+                "Signore.",
+                "Quanti anni ha?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre élèves."
+            },
+            {
+              "id": "q8",
+              "question": "Conoscere =",
+              "type": "single_choice",
+              "options": ["Connaître", "Appeler", "Habiter", "Avoir (âge)"],
+              "correctAnswers": [0],
+              "explanation": "Verbe conoscere."
+            },
+            {
+              "id": "q9",
+              "question": "Trop familier pour le proviseur :",
+              "type": "single_choice",
+              "options": [
+                "Ciao, piacere!",
+                "Piacere di conoscerLa.",
+                "Buongiorno, piacere di conoscerLa.",
+                "Arrivederci, grazie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciao seul."
+            },
+            {
+              "id": "q10",
+              "question": "Mi chiamo Eva. —",
+              "type": "single_choice",
+              "options": [
+                "Piacere, mi chiamo Leo.",
+                "Arrivederci Eva.",
+                "Ho Eva anni.",
+                "Sono di piacere."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse symétrique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quitter le lycée poliment :",
+              "type": "multiple_choice",
+              "options": [
+                "Arrivederci.",
+                "A presto.",
+                "Ciao ciao prof!",
+                "Ehi ci vediamo!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Arrivederci / A presto."
+            },
+            {
+              "id": "q2",
+              "question": "À demain :",
+              "type": "single_choice",
+              "options": ["A domani.", "A dopo.", "Buonanotte.", "Piacere."],
+              "correctAnswers": [0],
+              "explanation": "A domani."
+            },
+            {
+              "id": "q3",
+              "question": "À tout à l'heure :",
+              "type": "single_choice",
+              "options": ["A dopo.", "A domani.", "Buongiorno.", "Mi chiamo."],
+              "correctAnswers": [0],
+              "explanation": "A dopo."
+            },
+            {
+              "id": "q4",
+              "question": "Fin d'entretien adulte :",
+              "type": "single_choice",
+              "options": [
+                "Arrivederci, grazie.",
+                "Ciao ciao!",
+                "Ehi!",
+                "Salve salve!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poli + merci."
+            },
+            {
+              "id": "q5",
+              "question": "Buonanotte :",
+              "type": "single_choice",
+              "options": ["Bonne nuit", "Bonjour", "Merci", "Prénom"],
+              "correctAnswers": [0],
+              "explanation": "Soir/nuit."
+            },
+            {
+              "id": "q6",
+              "question": "Entre amis après cours :",
+              "type": "single_choice",
+              "options": [
+                "Ci vediamo!",
+                "Signore!",
+                "Buongiorno!",
+                "Come sta?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On se voit."
+            },
+            {
+              "id": "q7",
+              "question": "Arrivederci =",
+              "type": "single_choice",
+              "options": ["Au revoir", "Bonjour", "Merci", "Enchanté"],
+              "correctAnswers": [0],
+              "explanation": "Départ formel."
+            },
+            {
+              "id": "q8",
+              "question": "Quitter la salle :",
+              "type": "single_choice",
+              "options": [
+                "Arrivederci, professoressa.",
+                "Ciao bella!",
+                "Mi chiamo …",
+                "Piacere conoscerti prof."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre + arrivederci."
+            },
+            {
+              "id": "q9",
+              "question": "A presto =",
+              "type": "single_choice",
+              "options": ["À bientôt", "Jamais", "Bonsoir", "Prénom"],
+              "correctAnswers": [0],
+              "explanation": "Revoir bientôt."
+            },
+            {
+              "id": "q10",
+              "question": "Familier avec prof :",
+              "type": "single_choice",
+              "options": [
+                "Ciao prof, a domani!",
+                "Arrivederci, professore.",
+                "A domani, professore.",
+                "Grazie, arrivederci."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciao prof reste familier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Présentation lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Présentations complètes :",
+              "type": "multiple_choice",
+              "options": [
+                "Buongiorno, mi chiamo Alex, sono di Grenoble e ho sedici anni.",
+                "Mi chiamo Alex, ho sedici anni e sono di Grenoble.",
+                "Ciao mi Alex Grenoble.",
+                "Ho Alex di sedici."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + mi chiamo + sono di + ho anni."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre oral conseillé :",
+              "type": "single_choice",
+              "options": [
+                "Salut → prénom → origine → âge",
+                "Âge → au revoir",
+                "Origine seule",
+                "Ciao → dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure classe."
+            },
+            {
+              "id": "q3",
+              "question": "Inès, 15 ans, Toulouse :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Inès, ho quindici anni e sono di Tolosa.",
+                "Mi chiamo Inès, sono quindici Tolosa.",
+                "Ti chiamo Inès.",
+                "Sono Inès di ho quindici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tolosa = Toulouse."
+            },
+            {
+              "id": "q4",
+              "question": "Origine (tu) :",
+              "type": "single_choice",
+              "options": [
+                "Di dove sei?",
+                "Di dov'è?",
+                "Quanti anni hai?",
+                "Come si chiama?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Di dove sei."
+            },
+            {
+              "id": "q5",
+              "question": "Présentation au prof :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo …, sono di …, ho … anni.",
+                "Ciao ciao …",
+                "Arrivederci …",
+                "Piacere tu prof."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule attendue."
+            },
+            {
+              "id": "q6",
+              "question": "Lei è di Palermo? — Sì,",
+              "type": "single_choice",
+              "options": [
+                "sono di Palermo",
+                "sei di Palermo",
+                "ho di Palermo",
+                "mi chiamo Palermo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse : sono di."
+            },
+            {
+              "id": "q7",
+              "question": "En 3e, ho … anni souvent :",
+              "type": "single_choice",
+              "options": [
+                "quattordici–sedici",
+                "otto–neuf",
+                "trente",
+                "cinquante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge lycée."
+            },
+            {
+              "id": "q8",
+              "question": "Après présentation (Lei) :",
+              "type": "single_choice",
+              "options": [
+                "Piacere di conoscerLa.",
+                "Piacere di conoscerti prof.",
+                "Ciao prof!",
+                "Buonanotte."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ConoscerLa."
+            },
+            {
+              "id": "q9",
+              "question": "Sono di Montpellier indique",
+              "type": "single_choice",
+              "options": ["L'origine", "L'âge", "Le prénom", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Sono di."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur d'âge :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Rayan, sono sedici anni.",
+                "Mi chiamo Rayan, ho sedici anni.",
+                "Sono di Lione.",
+                "Ho quindici anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho sedici anni."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision u1",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Salutations matinales polies :",
+              "type": "multiple_choice",
+              "options": [
+                "Buongiorno.",
+                "Salve.",
+                "Ciao prof!",
+                "Ehi ragazzi!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Buongiorno / Salve."
+            },
+            {
+              "id": "q2",
+              "question": "Come sta? =",
+              "type": "single_choice",
+              "options": [
+                "Comment allez-vous?",
+                "Comment vas-tu?",
+                "Au revoir?",
+                "Prénom?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lei."
+            },
+            {
+              "id": "q3",
+              "question": "Mi chiamo + ho + sono di =",
+              "type": "single_choice",
+              "options": [
+                "Prénom, âge, origine",
+                "Au revoir",
+                "Question",
+                "Heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois infos."
+            },
+            {
+              "id": "q4",
+              "question": "Prénom (tu) :",
+              "type": "single_choice",
+              "options": [
+                "Come ti chiami?",
+                "Come si chiama?",
+                "Come mi chiami?",
+                "Come Lei chiami?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ti chiami."
+            },
+            {
+              "id": "q5",
+              "question": "Piacere di conoscerLa :",
+              "type": "single_choice",
+              "options": ["Vouvoiement", "Tutoiement", "Bonsoir", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "La = Lei."
+            },
+            {
+              "id": "q6",
+              "question": "Quitter :",
+              "type": "single_choice",
+              "options": ["Arrivederci.", "Piacere.", "Mi chiamo.", "Ho anni."],
+              "correctAnswers": [0],
+              "explanation": "Au revoir."
+            },
+            {
+              "id": "q7",
+              "question": "Quanti anni hai? —",
+              "type": "single_choice",
+              "options": [
+                "Ho quindici anni.",
+                "Sono quindici anni.",
+                "Ho quindici.",
+                "Ha quindici anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho quindici anni."
+            },
+            {
+              "id": "q8",
+              "question": "Di dov'è? →",
+              "type": "single_choice",
+              "options": ["Lei", "Tu seul", "Nous", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "È = Lei."
+            },
+            {
+              "id": "q9",
+              "question": "Enchanté court :",
+              "type": "single_choice",
+              "options": ["Piacere!", "Grazie!", "Scusi!", "Prego!"],
+              "correctAnswers": [0],
+              "explanation": "Piacere!."
+            },
+            {
+              "id": "q10",
+              "question": "Dialogue cohérent :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno. — Buongiorno, professore.",
+                "Ciao prof! — Ehi!",
+                "Buonanotte. — Mi chiamo …",
+                "Arrivederci. — Come ti chiami?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buongiorno réciproque."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Chiffres",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Nombres pour âges de lycéens :",
+              "type": "multiple_choice",
+              "options": [
+                "quattordici",
+                "sedici",
+                "due (seul âge)",
+                "zero (seul âge)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "14 et 16 ans typiques."
+            },
+            {
+              "id": "q2",
+              "question": "quindici =",
+              "type": "single_choice",
+              "options": ["15", "13", "50", "5"],
+              "correctAnswers": [0],
+              "explanation": "15."
+            },
+            {
+              "id": "q3",
+              "question": "due =",
+              "type": "single_choice",
+              "options": ["2", "12", "20", "200"],
+              "correctAnswers": [0],
+              "explanation": "2."
+            },
+            {
+              "id": "q4",
+              "question": "diciotto =",
+              "type": "single_choice",
+              "options": ["18", "8", "80", "28"],
+              "correctAnswers": [0],
+              "explanation": "18."
+            },
+            {
+              "id": "q5",
+              "question": "undici =",
+              "type": "single_choice",
+              "options": ["11", "10", "1", "6"],
+              "correctAnswers": [0],
+              "explanation": "11."
+            },
+            {
+              "id": "q6",
+              "question": "venti =",
+              "type": "single_choice",
+              "options": ["20", "2", "12", "22"],
+              "correctAnswers": [0],
+              "explanation": "20."
+            },
+            {
+              "id": "q7",
+              "question": "alle otto ≈",
+              "type": "single_choice",
+              "options": ["à 8 h", "8 ans", "août", "huit élèves"],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q8",
+              "question": "primo anno ≈",
+              "type": "single_choice",
+              "options": ["première année", "dernier", "deuxième", "mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Primo = premier."
+            },
+            {
+              "id": "q9",
+              "question": "zero =",
+              "type": "single_choice",
+              "options": ["zéro", "deux", "dix", "cent"],
+              "correctAnswers": [0],
+              "explanation": "0."
+            },
+            {
+              "id": "q10",
+              "question": "Ho ___ anni (16) :",
+              "type": "single_choice",
+              "options": ["sedici", "sono sedici", "sedici ano", "sedici di"],
+              "correctAnswers": [0],
+              "explanation": "Ho sedici anni."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Villes et pays",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Villes italiennes :",
+              "type": "multiple_choice",
+              "options": ["Firenze", "Venezia", "Paris (Italie)", "London"],
+              "correctAnswers": [0, 1],
+              "explanation": "Firenze, Venezia en Italie."
+            },
+            {
+              "id": "q2",
+              "question": "Torino =",
+              "type": "single_choice",
+              "options": ["Turin", "Tours", "Toronto", "Tropea"],
+              "correctAnswers": [0],
+              "explanation": "Turin."
+            },
+            {
+              "id": "q3",
+              "question": "Roma =",
+              "type": "single_choice",
+              "options": ["Rome", "Rouen", "Rimini", "Rhône"],
+              "correctAnswers": [0],
+              "explanation": "Capitale."
+            },
+            {
+              "id": "q4",
+              "question": "Francia =",
+              "type": "single_choice",
+              "options": ["France", "Francfort", "Florence", "Frioul"],
+              "correctAnswers": [0],
+              "explanation": "Pays."
+            },
+            {
+              "id": "q5",
+              "question": "Italia =",
+              "type": "single_choice",
+              "options": ["Italie", "Islande", "Irlande", "Inde"],
+              "correctAnswers": [0],
+              "explanation": "Italie."
+            },
+            {
+              "id": "q6",
+              "question": "Sicilia =",
+              "type": "single_choice",
+              "options": ["Sicile", "Prénom", "Âge", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Région."
+            },
+            {
+              "id": "q7",
+              "question": "Milano =",
+              "type": "single_choice",
+              "options": ["Milan", "Marseille", "Metz", "Monaco"],
+              "correctAnswers": [0],
+              "explanation": "Milan."
+            },
+            {
+              "id": "q8",
+              "question": "Lyon :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Lione.",
+                "Sono Lyon.",
+                "Di Lyon sono.",
+                "Ho Lione."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lione."
+            },
+            {
+              "id": "q9",
+              "question": "Spagna =",
+              "type": "single_choice",
+              "options": ["Espagne", "Spaghetti", "Suisse", "Suède"],
+              "correctAnswers": [0],
+              "explanation": "Espagne."
+            },
+            {
+              "id": "q10",
+              "question": "Origine (tu) :",
+              "type": "single_choice",
+              "options": [
+                "Di dove sei?",
+                "Dove anni?",
+                "Quanti di?",
+                "Come di?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Di dove sei."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "École",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots du lycée :",
+              "type": "multiple_choice",
+              "options": ["scuola", "liceo", "ciao seul", "pizza plat"],
+              "correctAnswers": [0, 1],
+              "explanation": "École / lycée."
+            },
+            {
+              "id": "q2",
+              "question": "liceo ≈",
+              "type": "single_choice",
+              "options": ["Lycée", "Cantine", "Bus", "Stade"],
+              "correctAnswers": [0],
+              "explanation": "Liceo."
+            },
+            {
+              "id": "q3",
+              "question": "professoressa =",
+              "type": "single_choice",
+              "options": ["Professeure", "Élève", "Cloche", "Devoir"],
+              "correctAnswers": [0],
+              "explanation": "Prof."
+            },
+            {
+              "id": "q4",
+              "question": "studente =",
+              "type": "single_choice",
+              "options": ["Élève", "Prof", "Parent", "Directeur seul"],
+              "correctAnswers": [0],
+              "explanation": "Élève."
+            },
+            {
+              "id": "q5",
+              "question": "matematica =",
+              "type": "single_choice",
+              "options": ["Maths", "Italien", "Sport", "Histoire"],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q6",
+              "question": "italiano (cours) =",
+              "type": "single_choice",
+              "options": ["Italien", "Anglais", "Latin", "Arts"],
+              "correctAnswers": [0],
+              "explanation": "Langue."
+            },
+            {
+              "id": "q7",
+              "question": "compiti =",
+              "type": "single_choice",
+              "options": ["Devoirs", "Notes", "Vacances", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Devoirs."
+            },
+            {
+              "id": "q8",
+              "question": "aula =",
+              "type": "single_choice",
+              "options": ["Salle de classe", "Gare", "Stade", "Mer"],
+              "correctAnswers": [0],
+              "explanation": "Classe."
+            },
+            {
+              "id": "q9",
+              "question": "orario =",
+              "type": "single_choice",
+              "options": ["Emploi du temps", "Note", "Origine", "Prénom"],
+              "correctAnswers": [0],
+              "explanation": "Horaire."
+            },
+            {
+              "id": "q10",
+              "question": "Studio ___ al liceo.",
+              "type": "single_choice",
+              "options": ["italiano", "italiani", "italiana", "italiano di"],
+              "correctAnswers": [0],
+              "explanation": "J'étudie l'italien."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Famille proche :",
+              "type": "multiple_choice",
+              "options": ["madre", "padre", "professore", "liceo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mère et père."
+            },
+            {
+              "id": "q2",
+              "question": "fratello =",
+              "type": "single_choice",
+              "options": ["Frère", "Sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Frère."
+            },
+            {
+              "id": "q3",
+              "question": "sorella =",
+              "type": "single_choice",
+              "options": ["Sœur", "Grand-mère", "Tante", "Fille"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q4",
+              "question": "Un frère et une sœur :",
+              "type": "single_choice",
+              "options": [
+                "Ho un fratello e una sorella.",
+                "Sono fratello sorella.",
+                "Mi chiamo fratello.",
+                "Ho fratello anni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ho un/una."
+            },
+            {
+              "id": "q5",
+              "question": "genitori =",
+              "type": "single_choice",
+              "options": ["Parents", "Grands-parents", "Enfants", "Profs"],
+              "correctAnswers": [0],
+              "explanation": "Parents."
+            },
+            {
+              "id": "q6",
+              "question": "mia madre =",
+              "type": "single_choice",
+              "options": ["Ma mère", "Mon père", "Ma sœur", "Mon école"],
+              "correctAnswers": [0],
+              "explanation": "Mia madre."
+            },
+            {
+              "id": "q7",
+              "question": "mio padre =",
+              "type": "single_choice",
+              "options": ["Mon père", "Ma mère", "Mon frère", "Mon prof"],
+              "correctAnswers": [0],
+              "explanation": "Mio padre."
+            },
+            {
+              "id": "q8",
+              "question": "Présenter sa famille :",
+              "type": "single_choice",
+              "options": [
+                "Ho … / mia … / mio …",
+                "Lei è pour soi",
+                "Arrivederci madre",
+                "Sono di madre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessifs + ho."
+            },
+            {
+              "id": "q9",
+              "question": "nonna =",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Neveu", "Cousine"],
+              "correctAnswers": [0],
+              "explanation": "Nonna."
+            },
+            {
+              "id": "q10",
+              "question": "nonno =",
+              "type": "single_choice",
+              "options": ["Grand-père", "Grand-mère", "Père", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Nonno."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Jours",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jours scolaires :",
+              "type": "multiple_choice",
+              "options": ["lunedì", "venerdì", "grazie", "arrivederci"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lundi, vendredi."
+            },
+            {
+              "id": "q2",
+              "question": "martedì =",
+              "type": "single_choice",
+              "options": ["Mardi", "Mercredi", "Jeudi", "Lundi"],
+              "correctAnswers": [0],
+              "explanation": "Mardi."
+            },
+            {
+              "id": "q3",
+              "question": "sabato =",
+              "type": "single_choice",
+              "options": ["Samedi", "Dimanche", "Vendredi", "Lundi"],
+              "correctAnswers": [0],
+              "explanation": "Samedi."
+            },
+            {
+              "id": "q4",
+              "question": "oggi =",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "Oggi."
+            },
+            {
+              "id": "q5",
+              "question": "domani =",
+              "type": "single_choice",
+              "options": ["Demain", "Aujourd'hui", "Matin", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Demain ; A domani!."
+            },
+            {
+              "id": "q6",
+              "question": "stamattina =",
+              "type": "single_choice",
+              "options": ["Ce matin", "Ce soir", "La nuit", "L'année"],
+              "correctAnswers": [0],
+              "explanation": "Ce matin."
+            },
+            {
+              "id": "q7",
+              "question": "pomeriggio =",
+              "type": "single_choice",
+              "options": ["Après-midi", "Matin", "Vacances", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Après-midi."
+            },
+            {
+              "id": "q8",
+              "question": "Buon pomeriggio ≈",
+              "type": "single_choice",
+              "options": [
+                "Bon après-midi",
+                "Bonne nuit",
+                "Au revoir",
+                "Prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut après-midi."
+            },
+            {
+              "id": "q9",
+              "question": "settimana =",
+              "type": "single_choice",
+              "options": ["Semaine", "Mois", "Heure", "Année"],
+              "correctAnswers": [0],
+              "explanation": "Semaine."
+            },
+            {
+              "id": "q10",
+              "question": "À lundi :",
+              "type": "single_choice",
+              "options": [
+                "A lunedì.",
+                "Buonanotte lunedì.",
+                "Mi chiamo lunedì.",
+                "Ho lunedì."
+              ],
+              "correctAnswers": [0],
+              "explanation": "A lunedì."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Objets de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Objets scolaires :",
+              "type": "multiple_choice",
+              "options": ["quaderno", "penna", "sono di", "mi chiamo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cahier, stylo."
+            },
+            {
+              "id": "q2",
+              "question": "libro =",
+              "type": "single_choice",
+              "options": ["Livre", "Cahier", "Table", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Livre."
+            },
+            {
+              "id": "q3",
+              "question": "banco =",
+              "type": "single_choice",
+              "options": ["Pupitre", "Prof", "Bus", "Cour seule"],
+              "correctAnswers": [0],
+              "explanation": "Bureau élève."
+            },
+            {
+              "id": "q4",
+              "question": "lavagna =",
+              "type": "single_choice",
+              "options": ["Tableau", "Porte", "Mur", "Gomme"],
+              "correctAnswers": [0],
+              "explanation": "Tableau."
+            },
+            {
+              "id": "q5",
+              "question": "zaino =",
+              "type": "single_choice",
+              "options": ["Sac à dos", "Stylo", "Clé", "Chaise"],
+              "correctAnswers": [0],
+              "explanation": "Sac."
+            },
+            {
+              "id": "q6",
+              "question": "cellulare =",
+              "type": "single_choice",
+              "options": ["Portable", "Calculatrice", "Cahier", "Table"],
+              "correctAnswers": [0],
+              "explanation": "Téléphone."
+            },
+            {
+              "id": "q7",
+              "question": "Hai una ___? (stylo)",
+              "type": "single_choice",
+              "options": [
+                "penna",
+                "penna mi chiamo",
+                "penna sono",
+                "penna grazie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hai una penna?."
+            },
+            {
+              "id": "q8",
+              "question": "cartella ≈",
+              "type": "single_choice",
+              "options": ["Cartable", "Cantine", "Sport", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Cartable."
+            },
+            {
+              "id": "q9",
+              "question": "sedia =",
+              "type": "single_choice",
+              "options": ["Chaise", "Table", "Porte", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "Chaise."
+            },
+            {
+              "id": "q10",
+              "question": "Apri il libro, per favore :",
+              "type": "single_choice",
+              "options": [
+                "Ouvre le livre",
+                "Ferme la porte",
+                "Dis ton âge",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne classe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Politesse de base :",
+              "type": "multiple_choice",
+              "options": ["grazie", "prego", "ehi", "ciao ciao prof"],
+              "correctAnswers": [0, 1],
+              "explanation": "Merci / de rien."
+            },
+            {
+              "id": "q2",
+              "question": "Grazie →",
+              "type": "single_choice",
+              "options": ["Prego.", "Ciao.", "Mi chiamo.", "Ho anni."],
+              "correctAnswers": [0],
+              "explanation": "De rien."
+            },
+            {
+              "id": "q3",
+              "question": "Scusi =",
+              "type": "single_choice",
+              "options": ["Excusez-moi", "Merci", "Au revoir", "Enchanté"],
+              "correctAnswers": [0],
+              "explanation": "Lei."
+            },
+            {
+              "id": "q4",
+              "question": "Per favore =",
+              "type": "single_choice",
+              "options": [
+                "S'il vous plaît",
+                "De rien",
+                "Bonjour",
+                "Désolé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande polie."
+            },
+            {
+              "id": "q5",
+              "question": "En retard : ___ , sono in ritardo.",
+              "type": "single_choice",
+              "options": ["Scusi", "Ciao", "Piacere", "Buonanotte"],
+              "correctAnswers": [0],
+              "explanation": "Excusez-moi."
+            },
+            {
+              "id": "q6",
+              "question": "Mi dispiace =",
+              "type": "single_choice",
+              "options": [
+                "Je suis désolé(e)",
+                "Je suis content(e)",
+                "J'ai faim",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désolé."
+            },
+            {
+              "id": "q7",
+              "question": "Document du prof →",
+              "type": "single_choice",
+              "options": [
+                "Grazie.",
+                "Arrivederci.",
+                "Di dove sei?",
+                "Ho sedici."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Merci."
+            },
+            {
+              "id": "q8",
+              "question": "Permesso? =",
+              "type": "single_choice",
+              "options": ["Puis-je entrer?", "Prénom?", "Âge?", "Au revoir?"],
+              "correctAnswers": [0],
+              "explanation": "Entrer."
+            },
+            {
+              "id": "q9",
+              "question": "Va bene ≈",
+              "type": "single_choice",
+              "options": ["D'accord", "Au revoir", "Bonsoir", "Non merci"],
+              "correctAnswers": [0],
+              "explanation": "OK."
+            },
+            {
+              "id": "q10",
+              "question": "___ , mi può aiutare?",
+              "type": "single_choice",
+              "options": ["Scusi", "Ciao", "Piacere tu", "A domani tu"],
+              "correctAnswers": [0],
+              "explanation": "Demande polie Lei."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Où habiter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions sur le lieu de vie :",
+              "type": "multiple_choice",
+              "options": [
+                "Dove abiti?",
+                "Dove abita?",
+                "Quanti mi chiamo?",
+                "Sono di dove ho?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tu abiti / Lei abita."
+            },
+            {
+              "id": "q2",
+              "question": "Abito a Marsiglia ≈",
+              "type": "single_choice",
+              "options": [
+                "J'habite à Marseille",
+                "Je suis de Marseille",
+                "Je m'appelle Marseille",
+                "J'ai Marseille ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abito a."
+            },
+            {
+              "id": "q3",
+              "question": "Sono di Roma vs Abito a Roma :",
+              "type": "single_choice",
+              "options": [
+                "Origine vs habiter",
+                "Même sens",
+                "Âge vs prénom",
+                "Salut vs au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux idées différentes."
+            },
+            {
+              "id": "q4",
+              "question": "Dove abiti? — ___ a Nantes.",
+              "type": "single_choice",
+              "options": ["Abito", "Sono di", "Mi chiamo", "Ho"],
+              "correctAnswers": [0],
+              "explanation": "Abito a."
+            },
+            {
+              "id": "q5",
+              "question": "casa =",
+              "type": "single_choice",
+              "options": ["Maison", "École", "Bus", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "Maison."
+            },
+            {
+              "id": "q6",
+              "question": "città =",
+              "type": "single_choice",
+              "options": ["Ville", "Pays", "Classe", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Ville."
+            },
+            {
+              "id": "q7",
+              "question": "vicino al liceo =",
+              "type": "single_choice",
+              "options": [
+                "Près du lycée",
+                "Loin du lycée",
+                "Dans le bus",
+                "Sans école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vicino a."
+            },
+            {
+              "id": "q8",
+              "question": "Origine + ville actuelle :",
+              "type": "single_choice",
+              "options": [
+                "Sono di Lille, ma abito a Lyon.",
+                "Ho di Lille abito.",
+                "Mi chiamo Lille Lyon.",
+                "Arrivederci Lille."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sono di + abito a."
+            },
+            {
+              "id": "q9",
+              "question": "paese peut être",
+              "type": "single_choice",
+              "options": ["Village ou pays", "Stylo", "Cloche", "Devoir"],
+              "correctAnswers": [0],
+              "explanation": "Selon contexte."
+            },
+            {
+              "id": "q10",
+              "question": "Où habites-tu? :",
+              "type": "single_choice",
+              "options": [
+                "Dove abiti?",
+                "Di dove sei?",
+                "Come ti chiami?",
+                "Quanti anni ha?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dove abiti."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Études",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Parler du lycée :",
+              "type": "multiple_choice",
+              "options": [
+                "Studio italiano al liceo.",
+                "Vado al liceo.",
+                "Mi chiamo liceo.",
+                "Ho liceo anni."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étudier / aller au lycée."
+            },
+            {
+              "id": "q2",
+              "question": "Frequento il liceo ≈",
+              "type": "single_choice",
+              "options": [
+                "Je fréquente le lycée",
+                "Je m'appelle lycée",
+                "J'ai lycée ans",
+                "Au revoir lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frequento."
+            },
+            {
+              "id": "q3",
+              "question": "Che cosa studi? =",
+              "type": "single_choice",
+              "options": [
+                "Qu'étudies-tu?",
+                "Quel âge?",
+                "D'où es-tu?",
+                "Au revoir?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matières."
+            },
+            {
+              "id": "q4",
+              "question": "Studio matematica e italiano :",
+              "type": "single_choice",
+              "options": [
+                "Je fais maths et italien",
+                "Je suis maths",
+                "J'ai maths ans",
+                "Arrivederci maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studio + matière."
+            },
+            {
+              "id": "q5",
+              "question": "classe (groupe) =",
+              "type": "single_choice",
+              "options": ["Classe", "Cantine", "Bus", "Mer"],
+              "correctAnswers": [0],
+              "explanation": "Classe."
+            },
+            {
+              "id": "q6",
+              "question": "esame ≈",
+              "type": "single_choice",
+              "options": ["Examen", "Pause", "Vacances", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Examen."
+            },
+            {
+              "id": "q7",
+              "question": "voto ≈",
+              "type": "single_choice",
+              "options": ["Note (scolaire)", "Porte", "Chaise", "Salut"],
+              "correctAnswers": [0],
+              "explanation": "Note."
+            },
+            {
+              "id": "q8",
+              "question": "Mi piace l'italiano =",
+              "type": "single_choice",
+              "options": [
+                "J'aime l'italien",
+                "Je m'appelle italien",
+                "J'ai italien ans",
+                "Sono di italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi piace."
+            },
+            {
+              "id": "q9",
+              "question": "Domani ho compiti :",
+              "type": "single_choice",
+              "options": [
+                "Demain j'ai des devoirs",
+                "Demain au revoir",
+                "Demain prénom",
+                "Demain origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compiti = devoirs."
+            },
+            {
+              "id": "q10",
+              "question": "Sono uno studente del liceo :",
+              "type": "single_choice",
+              "options": [
+                "Je suis un élève de lycée",
+                "Je suis prof",
+                "Je suis de lycée",
+                "J'ai lycée ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studente del liceo."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision u2",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots utiles en classe :",
+              "type": "multiple_choice",
+              "options": ["grazie", "per favore", "ehi prof", "sono di grazie"],
+              "correctAnswers": [0, 1],
+              "explanation": "Merci et s'il vous plaît."
+            },
+            {
+              "id": "q2",
+              "question": "liceo =",
+              "type": "single_choice",
+              "options": ["Lycée", "Maison", "Frère", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Lycée."
+            },
+            {
+              "id": "q3",
+              "question": "Ho quindici anni + sono di + mi chiamo =",
+              "type": "single_choice",
+              "options": [
+                "Âge, origine, prénom",
+                "Au revoir",
+                "Stylo",
+                "Tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel u1/u2."
+            },
+            {
+              "id": "q4",
+              "question": "penna =",
+              "type": "single_choice",
+              "options": ["Stylo", "Livre", "Chaise", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "Stylo."
+            },
+            {
+              "id": "q5",
+              "question": "lunedì =",
+              "type": "single_choice",
+              "options": ["Lundi", "Vendredi", "Merci", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q6",
+              "question": "Abito a … vs Sono di …",
+              "type": "single_choice",
+              "options": [
+                "Habiter vs origine",
+                "Même phrase",
+                "Prénom vs âge",
+                "Salut vs au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction."
+            },
+            {
+              "id": "q7",
+              "question": "Scusi + per favore :",
+              "type": "single_choice",
+              "options": ["Politesse", "Familier", "Au revoir", "Prénom"],
+              "correctAnswers": [0],
+              "explanation": "Formules polies."
+            },
+            {
+              "id": "q8",
+              "question": "Milano, Roma, Firenze :",
+              "type": "single_choice",
+              "options": ["Villes d'Italie", "Devoirs", "Jours", "Stylos"],
+              "correctAnswers": [0],
+              "explanation": "Géographie."
+            },
+            {
+              "id": "q9",
+              "question": "Quanti anni hai? en classe sert à",
+              "type": "single_choice",
+              "options": [
+                "Demander l'âge",
+                "Demander le stylo",
+                "Dire au revoir",
+                "Ouvrir le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge."
+            },
+            {
+              "id": "q10",
+              "question": "Présentation complète 3e :",
+              "type": "single_choice",
+              "options": [
+                "Buongiorno, mi chiamo …, sono di …, ho … anni.",
+                "Ciao ciao ho …",
+                "Arrivederci mi chiamo …",
+                "Prego sono di …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

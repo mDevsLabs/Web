@@ -25,7 +25,14 @@ describe("Blackline dans le catalogue des applications", () => {
 
   it("apparaît dans l'ordre d'affichage, APRÈS le CLI", () => {
     const cles = APP_ORDER.map((entree) => entree.key);
-    expect(cles).toEqual(["mai", "site", "vibe", "code", "blackline"]);
+    expect(cles).toEqual([
+      "mai",
+      "site",
+      "vibe",
+      "code",
+      "blackline",
+      "quizzly",
+    ]);
     // Le CLI n'est PAS dans APP_ORDER : c'est une entrée du « Menu favori »
     // qui ouvre le terminal local, pas une application web.
     expect(cles).not.toContain("cli");
@@ -46,12 +53,15 @@ describe("Blackline dans le catalogue des applications", () => {
       "code",
       "cli",
       "blackline",
+      "quizzly",
     ]);
 
     const positionCli = ordreMenu.indexOf("cli");
     const positionBlackline = ordreMenu.indexOf("blackline");
+    const positionQuizzly = ordreMenu.indexOf("quizzly");
     expect(positionCli).toBeGreaterThan(-1);
     expect(positionBlackline).toBeGreaterThan(positionCli);
+    expect(positionQuizzly).toBeGreaterThan(positionBlackline);
   });
 
   it("expose toutes les applications du catalogue dans le menu", () => {

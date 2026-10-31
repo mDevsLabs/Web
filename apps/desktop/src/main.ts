@@ -480,7 +480,12 @@ function createWindow(): void {
     // Ignore les erreurs d'abandon (ex: navigation interrompue)
     if (errorCode === -3) return; // ERR_ABORTED
     console.error(`[mAI] did-fail-load ${errorCode} ${errorDescription} @ ${validatedURL}`);
-    if (mainWindow && validatedURL === APP_URL) {
+    const echecDuLancement =
+      validatedURL === launchUrl ||
+      validatedURL === `${launchUrl}/` ||
+      validatedURL === APP_URL ||
+      validatedURL === `${APP_URL}/`;
+    if (mainWindow && echecDuLancement) {
       // On pourrait afficher une page offline, mais on garde simple : dialogue + retry
       dialog
         .showMessageBox(mainWindow, {
@@ -611,6 +616,7 @@ app.on("second-instance", () => {
 });
 
 app.whenReady().then(async () => {
+  if (!gotLock) return;
   try {
     APP_URL = await resolveAppUrl();
   } catch (error) {

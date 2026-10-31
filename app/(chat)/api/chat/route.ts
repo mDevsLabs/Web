@@ -1,6 +1,10 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
+import { resolveModelMaxOutput } from "@/lib/ai/models";
+import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import { getModelCapabilitiesFor } from "@/lib/ai/registry";
+import { mergeToolHints } from "@/lib/ai/tools/hints";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
@@ -14,6 +18,7 @@ import { loadMcpContext } from "@/lib/chat/mcp";
 import { buildMemoryContext } from "@/lib/chat/memory";
 import { buildPromptAddendum } from "@/lib/chat/prompt";
 import { createChatStream, createChatStreamResponse } from "@/lib/chat/stream";
+import { resolveActiveChatTools } from "@/lib/chat/tool-policy";
 import { createChatTools } from "@/lib/chat/tools";
 import {
   deleteChatById,
@@ -28,9 +33,8 @@ import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import {
   getPluginManifest,
   getReadToolIdsForPluginIds,
-  isPluginOnlyToolId,
 } from "@/lib/plugins/catalog";
-import { createPluginTools } from "@/lib/plugins/server";
+import { createPluginTools, getPluginSystemHints } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
 import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
@@ -156,20 +160,29 @@ export async function POST(request: Request) {
       });
     }
 
-    // 3. Mémoire personnalisée (globale ou spécifique agent + projet)
-    const memoryCtx = await buildMemoryContext({
-      effectiveAgentId: ctx.effectiveAgentId,
-      effectiveProjectId: ctx.effectiveProjectId ?? null,
-      isGhostMode: ctx.isGhostMode,
-      tier: ctx.maiUser.tier,
-      userId: ctx.userId,
-    });
+    // 3. Mémoire, plugins et catalogue de modèles. Le catalogue est celui du
+    // compte (fetchUserModels), le même que l'Agent : une heuristique sur le
+    // nom classerait Flint « sans outils » alors que supported_parameters
+    // contient `tools`. Un modèle absent du catalogue n'en reçoit pas.
+    const [memoryCtx, pluginInstallations, models] = await Promise.all([
+      buildMemoryContext({
+        effectiveAgentId: ctx.effectiveAgentId,
+        effectiveProjectId: ctx.effectiveProjectId ?? null,
+        isGhostMode: ctx.isGhostMode,
+        tier: ctx.maiUser.tier,
+        userId: ctx.userId,
+      }),
+      ctx.isGhostMode
+        ? Promise.resolve(
+            [] as Awaited<ReturnType<typeof getPluginInstallationsByUserId>>
+          )
+        : getPluginInstallationsByUserId({ userId: ctx.userId }),
+      fetchUserModels(),
+    ]);
+    const toolsSupported = getModelCapabilitiesFor(ctx.chatModel, models).tools;
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
     // peuvent être instanciés, même si le client les mentionne.
-    const pluginInstallations = ctx.isGhostMode
-      ? []
-      : await getPluginInstallationsByUserId({ userId: ctx.userId });
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
@@ -184,7 +197,7 @@ export async function POST(request: Request) {
 
     // 5. Addendum de prompt (instructions, mémoire, outils, commande)
     const { effectiveAddendum, requestedTools, unavailableTools } =
-      await buildPromptAddendum(ctx, memoryCtx, {
+      await buildPromptAddendum(ctx, {
         availablePluginToolIds: installedPluginToolIds,
       });
     if (unavailableTools.length > 0) {
@@ -200,7 +213,8 @@ export async function POST(request: Request) {
       ctx.userDefaultTemp ??
       undefined;
     const effectiveTopP = ctx.agentTopP ?? ctx.userDefaultTopP ?? undefined;
-    const effectiveMaxTokens = ctx.agentMaxTokens ?? undefined;
+    const effectiveMaxTokens =
+      ctx.agentMaxTokens ?? resolveModelMaxOutput(ctx.chatModel);
 
     // 6. Initialiser le modèle de langage mAI. Le collecteur est propre à la
     // requête : deux conversations concurrentes ne partagent jamais leur
@@ -222,6 +236,23 @@ export async function POST(request: Request) {
       memoryContext: memoryCtx,
       model,
       prepareTools: async (dataStream) => {
+        // Un modèle sans tool calling continue en texte. On n'instancie rien :
+        // passer `tools` ferait refuser la requête par le fournisseur, et
+        // omettre seulement `activeTools` enverrait tout le plateau.
+        if (!toolsSupported) {
+          if (requestedTools.length > 0) {
+            console.info(
+              `[chat-api] outils omis model=${ctx.chatModel} reason=capabilities.tools`
+            );
+          }
+          return {
+            announced: [],
+            effectiveAddendum,
+            tools: undefined,
+            toolsSupported: false,
+          };
+        }
+
         const mcpCtx = await loadMcpContext({
           chatId: ctx.id,
           isToolApprovalFlow: ctx.isToolApprovalFlow,
@@ -231,26 +262,6 @@ export async function POST(request: Request) {
           skillMcpToolFilter: ctx.skillMcpToolFilter,
           userId: ctx.userId,
         });
-
-        // Outils actifs : statiques demandés + outils de plugins installés +
-        // clés MCP. Un outil de plugin demandé mais non installé/activé est
-        // ignoré (garde serveur, le client ne fait pas autorité).
-        const activePluginToolIds = requestedTools.filter(
-          (t) => isPluginOnlyToolId(t) && installedPluginToolIds.includes(t)
-        );
-        const activeToolsList: string[] = [
-          ...requestedTools.filter(
-            (t) =>
-              !isPluginOnlyToolId(t) &&
-              !t.startsWith("mcp_") &&
-              t !== "mcp" &&
-              !t.startsWith("mcp:")
-          ),
-          ...activePluginToolIds,
-          ...(mcpCtx.hasMcpEnabled
-            ? mcpCtx.mcpToolKeys
-            : requestedTools.filter((t) => mcpCtx.mcpToolKeys.includes(t))),
-        ];
 
         const finalEffectiveAddendum = mcpCtx.mcpAddendum
           ? `${effectiveAddendum ? `${effectiveAddendum}\n\n` : ""}${mcpCtx.mcpAddendum}`
@@ -299,6 +310,7 @@ export async function POST(request: Request) {
             memoryAllowAdd: memoryCtx.memoryAllowAdd,
             memoryLimit: memoryCtx.memoryLimit,
             sessionToken: ctx.sessionToken,
+            toolsSupported: true,
             userEmail: ctx.userEmail,
             userId: ctx.userId,
           },
@@ -306,12 +318,29 @@ export async function POST(request: Request) {
           { ...pluginTools, ...customPlugins.tools }
         );
 
+        const announced = resolveActiveChatTools({
+          customPluginIds: customPlugins.ids,
+          eligibility: {
+            hasSessionToken: ctx.sessionToken.trim().length > 0,
+            isGhostMode: ctx.isGhostMode,
+            memoryActive: memoryCtx.memoryActive,
+            toolsSupported: true,
+          },
+          hints: mergeToolHints(getPluginSystemHints()),
+          installedPluginToolIds,
+          mcpEnabled: mcpCtx.hasMcpEnabled,
+          mcpToolIds: mcpCtx.mcpToolKeys,
+          requestedIds: requestedTools,
+          tools,
+        });
+
         return {
-          activeToolsList: [...activeToolsList, ...customPlugins.ids],
+          announced,
           effectiveAddendum: [finalEffectiveAddendum, customPlugins.addendum]
             .filter(Boolean)
             .join("\n\n"),
           tools,
+          toolsSupported: true,
         };
       },
       reasoningSink,

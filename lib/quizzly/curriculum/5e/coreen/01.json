@@ -1,0 +1,2313 @@
+{
+  "id": "5e-coreen-01",
+  "year": "5e",
+  "subject": "coreen",
+  "title": "Découvrir le coréen",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce que le hangeul ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations décrivent le hangeul ?",
+              "type": "multiple_choice",
+              "options": [
+                "Alphabet coréen officiel",
+                "Écriture inventée par le roi Sejong",
+                "Identique à l'alphabet latin",
+                "Utilisé en Corée du Sud et du Nord"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le hangeul est l'alphabet coréen créé au XVe siècle et utilisé dans les deux Corées."
+            },
+            {
+              "id": "q2",
+              "question": "Combien de lettres de base compose le hangeul ?",
+              "type": "single_choice",
+              "options": [
+                "14 consonnes et 10 voyelles",
+                "26 lettres comme en français",
+                "50 signes comme en japonais",
+                "8 symboles seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hangeul repose sur 14 consonnes et 10 voyelles de base qui se combinent en blocs."
+            },
+            {
+              "id": "q3",
+              "question": "Comment appelle-t-on un bloc de syllabe en coréen ?",
+              "type": "single_choice",
+              "options": [
+                "Un caractère syllabique",
+                "Un kanji",
+                "Un hiragana",
+                "Un pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lettres hangeul s'assemblent dans un carré pour former une syllabe."
+            },
+            {
+              "id": "q4",
+              "question": "Le hangeul se lit généralement dans quel sens ?",
+              "type": "single_choice",
+              "options": [
+                "De gauche à droite, ligne par ligne",
+                "De haut en bas, colonne par colonne",
+                "De droite à gauche",
+                "De bas en haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, le coréen se lit de gauche à droite et de haut en bas."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle voyelle hangeul correspond au son « a » ?",
+              "type": "single_choice",
+              "options": ["ㅏ", "ㅓ", "ㅗ", "ㅜ"],
+              "correctAnswers": [0],
+              "explanation": "La voyelle ㅏ se prononce comme le « a » français ouvert."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle est la première consonne du mot « annyeong » (안녕) ?",
+              "type": "single_choice",
+              "options": ["ㅇ (muette en début de syllabe)", "ㄴ", "ㄹ", "ㅎ"],
+              "correctAnswers": [0],
+              "explanation": "La syllabe 안 commence par ㅇ, qui est muette en position initiale."
+            },
+            {
+              "id": "q7",
+              "question": "Pourquoi le hangeul est-il considéré comme facile à apprendre ?",
+              "type": "single_choice",
+              "options": [
+                "Les formes des lettres rappellent la bouche",
+                "Il n'a que deux lettres",
+                "Il ne se combine jamais",
+                "Il est identique au chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sejong a conçu des formes liées à la position des organes de la parole."
+            },
+            {
+              "id": "q8",
+              "question": "Dans « hangeul », que signifie « han » dans ce contexte ?",
+              "type": "single_choice",
+              "options": ["Coréen (du peuple)", "Chinois", "Japonais", "Royal"],
+              "correctAnswers": [0],
+              "explanation": "Hangeul signifie « écriture coréenne » (한글)."
+            },
+            {
+              "id": "q9",
+              "question": "Peut-on écrire tous les sons du coréen avec le hangeul ?",
+              "type": "single_choice",
+              "options": [
+                "Oui, pour le coréen standard",
+                "Non, il manque des voyelles",
+                "Seulement les mots anciens",
+                "Uniquement les noms propres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hangeul couvre les sons du coréen moderne standard."
+            },
+            {
+              "id": "q10",
+              "question": "Avant le hangeul, quelle écriture utilisait surtout l'élite coréenne ?",
+              "type": "single_choice",
+              "options": [
+                "Les caractères chinois (hanja)",
+                "L'alphabet latin",
+                "L'arabe",
+                "Le cyrillique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hanja étaient employés avant la diffusion du hangeul."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les voyelles de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles voyelles hangeul sont des voyelles de base ?",
+              "type": "multiple_choice",
+              "options": ["ㅏ", "ㅓ", "ㅌ", "ㄱ"],
+              "correctAnswers": [0, 1],
+              "explanation": "ㅏ et ㅓ sont des voyelles ; ㅌ et ㄱ sont des consonnes."
+            },
+            {
+              "id": "q2",
+              "question": "Comment prononce-t-on ㅓ ?",
+              "type": "single_choice",
+              "options": [
+                "Comme « eu » fermé, lèvres avancées",
+                "Comme « a » ouvert",
+                "Comme « o »",
+                "Comme « i »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ㅓ est une voyelle moyenne-antérieure, proche d'un « eu » français."
+            },
+            {
+              "id": "q3",
+              "question": "Quelle voyelle ressemble à un « o » français ?",
+              "type": "single_choice",
+              "options": ["ㅗ", "ㅏ", "ㅡ", "ㅣ"],
+              "correctAnswers": [0],
+              "explanation": "ㅗ se prononce comme un « o » arrondi."
+            },
+            {
+              "id": "q4",
+              "question": "La voyelle ㅜ correspond à quel son ?",
+              "type": "single_choice",
+              "options": ["« ou »", "« i »", "« e »", "« a »"],
+              "correctAnswers": [0],
+              "explanation": "ㅜ est la voyelle arrondie « ou »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle voyelle est la plus fermée, type « i » ?",
+              "type": "single_choice",
+              "options": ["ㅣ", "ㅡ", "ㅓ", "ㅗ"],
+              "correctAnswers": [0],
+              "explanation": "ㅣ se prononce comme le « i » français."
+            },
+            {
+              "id": "q6",
+              "question": "La voyelle ㅡ se prononce comment ?",
+              "type": "single_choice",
+              "options": [
+                "Comme un « eu » très fermé, lèvres neutres",
+                "Comme « a »",
+                "Comme « ou »",
+                "Comme « o »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ㅡ est une voyelle non arrondie, entre « eu » et « i »."
+            },
+            {
+              "id": "q7",
+              "question": "Dans un bloc syllabique, où place-t-on souvent la voyelle ?",
+              "type": "single_choice",
+              "options": [
+                "À droite ou en bas de la consonne",
+                "Toujours à gauche seule",
+                "Au-dessus du texte latin",
+                "En dehors du carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voyelle se place à droite (가) ou sous la consonne (각)."
+            },
+            {
+              "id": "q8",
+              "question": "ㅐ et ㅔ en début d'apprentissage se distinguent surtout par :",
+              "type": "single_choice",
+              "options": [
+                "Des nuances de « è » proches en coréen moderne",
+                "Un son « k »",
+                "Une consonne double",
+                "Un ton chinois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les débutants, ㅐ et ㅔ sonnent très proches."
+            },
+            {
+              "id": "q9",
+              "question": "Combien de traits simples forme la voyelle ㅏ ?",
+              "type": "single_choice",
+              "options": [
+                "Un trait vertical et un trait horizontal",
+                "Trois cercles",
+                "Un seul point",
+                "Cinq lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ㅏ combine un trait vertical et un trait horizontal à droite."
+            },
+            {
+              "id": "q10",
+              "question": "Pour lire « 아 », que faut-il combiner ?",
+              "type": "single_choice",
+              "options": [
+                "ㅇ (muette) + ㅏ",
+                "ㄱ + ㅏ seulement",
+                "ㅏ seule sans consonne",
+                "ㅎ + ㅣ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아 = consonne initiale ㅇ (muette) + voyelle ㅏ, son « a »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Dire bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions signifient « bonjour » ou saluent poliment ?",
+              "type": "multiple_choice",
+              "options": [
+                "Annyeonghaseyo (안녕하세요)",
+                "Annyeong (안녕, informel)",
+                "Gamsahamnida seul",
+                "Annyeonghi gaseyo seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Annyeonghaseyo est poli ; annyeong est familier entre amis."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle salutation utilise-t-on avec un professeur ?",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo",
+                "Annyeong seul",
+                "Yo seul",
+                "Salut en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau poli -yo/-seyo convient aux adultes et en classe."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie littéralement « annyeong » ?",
+              "type": "single_choice",
+              "options": [
+                "Paix / tranquillité",
+                "Merci",
+                "Au revoir seulement",
+                "Mon nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "안녕 vient de l'idée de « sans souci », d'où la salutation."
+            },
+            {
+              "id": "q4",
+              "question": "Comment répond-on souvent à « Annyeonghaseyo » ?",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo aussi",
+                "Non seul",
+                "Gomawo seul",
+                "Annyeonghi gaseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la même formule polie."
+            },
+            {
+              "id": "q5",
+              "question": "« Annyeong » convient surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Un ami du même âge",
+                "Un inconnu âgé en magasin",
+                "Un directeur en entretien",
+                "Un policier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annyeong est informel, réservé aux proches."
+            },
+            {
+              "id": "q6",
+              "question": "Le suffixe « -seyo » dans annyeonghaseyo indique :",
+              "type": "single_choice",
+              "options": [
+                "Un registre poli",
+                "Une question",
+                "Un nombre",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-seyo marque le respect envers l'interlocuteur."
+            },
+            {
+              "id": "q7",
+              "question": "Le matin en Corée, on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo (comme bonjour général)",
+                "Uniquement « bonsoir » coréen",
+                "Rien jusqu'à midi",
+                "Seulement au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annyeonghaseyo sert de bonjour à tout moment de la journée."
+            },
+            {
+              "id": "q8",
+              "question": "En entrant en classe de coréen, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo",
+                "Annyeonghi gaseyo",
+                "Gamsahamnida",
+                "Mianhae"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On salue poliment en entrant."
+            },
+            {
+              "id": "q9",
+              "question": "« Yeoboseyo » (여보세요) sert surtout :",
+              "type": "single_choice",
+              "options": [
+                "À décrocher au téléphone",
+                "À dire bonjour matinal",
+                "À compter jusqu'à dix",
+                "À nommer une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yeoboseyo est l'équivalent de « allô » au téléphone."
+            },
+            {
+              "id": "q10",
+              "question": "Pour saluer poliment une voisine inconnue, tu choisis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo",
+                "Annyeong entre amis",
+                "Silence obligatoire",
+                "Un signe sans mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec une adulte inconnue, la forme polie est attendue."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases disent au revoir selon qui part ou reste ?",
+              "type": "multiple_choice",
+              "options": [
+                "Annyeonghi gaseyo (à celui qui part)",
+                "Annyeonghi gyeseyo (à celui qui reste)",
+                "Annyeonghaseyo seul pour tout",
+                "Gamsahamnida pour partir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gaseyo = allez en paix ; gyeseyo = restez en paix."
+            },
+            {
+              "id": "q2",
+              "question": "Tu quittes le magasin ; le vendeur reste. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi gaseyo (toi tu pars)",
+                "Annyeonghi gyeseyo",
+                "Yeoboseyo",
+                "Ireum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Celui qui part dit gaseyo ou on le lui dit ; ici tu pars."
+            },
+            {
+              "id": "q3",
+              "question": "Ton ami part ; tu restes. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi gaseyo",
+                "Annyeonghi gyeseyo",
+                "Annyeong seul au prof",
+                "Gomawo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On souhaite la paix à celui qui s'en va : annyeonghi gaseyo."
+            },
+            {
+              "id": "q4",
+              "question": "Entre amis proches, au revoir informel :",
+              "type": "single_choice",
+              "options": [
+                "Annyeong (aussi pour saluer)",
+                "Annyeonghaseyo obligatoire",
+                "Gamsahamnida",
+                "Hangugeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annyeong sert aussi pour « salut / à plus » entre amis."
+            },
+            {
+              "id": "q5",
+              "question": "« Annyeonghi gyeseyo » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "La personne qui reste sur place",
+                "La personne qui part",
+                "Le téléphone",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gyeseyo = restez (en paix)."
+            },
+            {
+              "id": "q6",
+              "question": "Avant de dormir, on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi jumuseyo (bonne nuit poli)",
+                "Annyeonghaseyo matinal",
+                "Yeoboseyo",
+                "Saram"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jumuseyo signifie « dormez bien »."
+            },
+            {
+              "id": "q7",
+              "question": "En quittant l'école le soir, les élèves disent au professeur :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi gaseyo ou formule polie d'au revoir",
+                "Uniquement bonjour",
+                "Rien",
+                "Gamsahamnida seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prend congé poliment en partant."
+            },
+            {
+              "id": "q8",
+              "question": "La racine « annyeonghi » dans ces au revoir signifie :",
+              "type": "single_choice",
+              "options": [
+                "En paix / tranquillement",
+                "Merci beaucoup",
+                "Je m'appelle",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annyeonghi = paisiblement, en paix."
+            },
+            {
+              "id": "q9",
+              "question": "Si tu restes chez toi et ta grand-mère part, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi gaseyo",
+                "Annyeonghi gyeseyo",
+                "Ireumi",
+                "Hanguk"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand-mère part : on lui dit gaseyo."
+            },
+            {
+              "id": "q10",
+              "question": "Pour un au revoir très poli en classe, on évite :",
+              "type": "single_choice",
+              "options": [
+                "Un simple « salut » français seul sans formule coréenne",
+                "Annyeonghi gaseyo",
+                "Annyeonghaseyo en entrant",
+                "Annyeong entre amis dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cours, on pratique les formules coréennes apprises."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Je m'appelle…",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots servent à se présenter ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ireum (이름) = nom",
+                "Imnida / ieyo pour « je suis »",
+                "Gaseyo = mon prénom",
+                "Jeo = je (poli)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Ireum = nom ; jeo = je poli ; on dit jeo ... imnida/ieyo."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « Je m'appelle Marie » poliment ?",
+              "type": "single_choice",
+              "options": [
+                "Jeo neun Marie imnida",
+                "Marie gaseyo",
+                "Annyeong Marie",
+                "Gamsahamnida Marie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeo neun + nom + imnida = je suis / je m'appelle Marie."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « jeo neun » ?",
+              "type": "single_choice",
+              "options": [
+                "Quant à moi / je (poli)",
+                "Toi",
+                "Merci",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeo = je poli ; neun marque le thème de la phrase."
+            },
+            {
+              "id": "q4",
+              "question": "Pour demander le nom poliment :",
+              "type": "single_choice",
+              "options": [
+                "Ireumi eotteoke doeseyo ?",
+                "Annyeonghaseyo seul",
+                "Gamsahamnida",
+                "Hangugeo imnida"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ireumi eotteoke doeseyo ? = Comment vous appelez-vous ?"
+            },
+            {
+              "id": "q5",
+              "question": "« Imnida » à la fin d'une phrase indique souvent :",
+              "type": "single_choice",
+              "options": [
+                "Une déclaration polie « c'est / je suis »",
+                "Une question",
+                "Un nombre",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imnida est la forme polie déclarative."
+            },
+            {
+              "id": "q6",
+              "question": "Un garçon dit « Je m'appelle Minho » :",
+              "type": "single_choice",
+              "options": [
+                "Jeo neun Minho imnida",
+                "Minho annyeong",
+                "Gaseyo Minho",
+                "Yeoboseyo Minho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure standard : jeo neun + prénom + imnida."
+            },
+            {
+              "id": "q7",
+              "question": "« Ireum » signifie :",
+              "type": "single_choice",
+              "options": ["Nom", "Age", "Pays", "École"],
+              "correctAnswers": [0],
+              "explanation": "Ireum (이름) = le nom d'une personne."
+            },
+            {
+              "id": "q8",
+              "question": "Après « Je m'appelle… », on ajoute souvent :",
+              "type": "single_choice",
+              "options": [
+                "Manaseo bangawoyo (enchanté)",
+                "Gamsahamnida seul",
+                "Annyeonghi gaseyo",
+                "Saram seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manaseo bangawoyo = ravi de vous rencontrer."
+            },
+            {
+              "id": "q9",
+              "question": "« Neun » après un mot sert à :",
+              "type": "single_choice",
+              "options": [
+                "Marquer le sujet dont on parle",
+                "Terminer une question",
+                "Dire merci",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neun (는) est une particule de thème/sujet."
+            },
+            {
+              "id": "q10",
+              "question": "Pour te présenter en 5e, la phrase la plus adaptée est :",
+              "type": "single_choice",
+              "options": [
+                "Jeo neun [prénom] imnida",
+                "Texte entier en hanja seul",
+                "Rien en coréen",
+                "Uniquement ton âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présentation de base commence par jeo neun + prénom."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Enchanté",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions expriment « enchanté » ?",
+              "type": "multiple_choice",
+              "options": [
+                "Manaseo bangawoyo",
+                "Bangawoyo (plus court)",
+                "Gamsahamnida seul",
+                "Annyeonghi jumuseyo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Manaseo bangawoyo et bangawoyo = ravi de te rencontrer."
+            },
+            {
+              "id": "q2",
+              "question": "Après les présentations mutuelles, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Manaseo bangawoyo",
+                "Annyeonghi gaseyo tout de suite",
+                "Yeoboseyo",
+                "Hanguk saram"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On remercie la rencontre avec bangawoyo."
+            },
+            {
+              "id": "q3",
+              "question": "« Bangawoyo » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis content de rencontrer",
+                "Merci pour le repas",
+                "Bonne nuit",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bangawoyo = je suis heureux de (vous) rencontrer."
+            },
+            {
+              "id": "q4",
+              "question": "« Manaseo » dans manaseo bangawoyo évoque :",
+              "type": "single_choice",
+              "options": [
+                "Le fait de rencontrer quelqu'un",
+                "Manger",
+                "Dormir",
+                "Partir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manaseo = en rencontrant / depuis qu'on se rencontre."
+            },
+            {
+              "id": "q5",
+              "question": "Quand un Coréen te serre la main après ton prénom, tu réponds :",
+              "type": "single_choice",
+              "options": [
+                "Manaseo bangawoyo",
+                "Annyeong informel au prof",
+                "Gaseyo",
+                "Chingu seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la réponse naturelle après une présentation."
+            },
+            {
+              "id": "q6",
+              "question": "Cette formule est plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Polie et amicale",
+                "Une insulte",
+                "Un nombre",
+                "Une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bangawoyo est poli et courant."
+            },
+            {
+              "id": "q7",
+              "question": "Avant « bangawoyo », on a souvent dit :",
+              "type": "single_choice",
+              "options": [
+                "Jeo neun … imnida",
+                "Gamsahamnida",
+                "Annyeonghi gyeseyo",
+                "Yeoboseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On se nomme d'abord, puis on dit enchanté."
+            },
+            {
+              "id": "q8",
+              "question": "« Je suis ravi » en contexte de rencontre correspond à :",
+              "type": "single_choice",
+              "options": ["Bangawoyo", "Mianhae", "Annyeong", "Gomawo seul"],
+              "correctAnswers": [0],
+              "explanation": "Bangawoyo porte cette idée de plaisir de rencontrer."
+            },
+            {
+              "id": "q9",
+              "question": "En classe, après que ton camarade se présente, tu peux dire :",
+              "type": "single_choice",
+              "options": [
+                "Manaseo bangawoyo",
+                "Annyeonghi gaseyo",
+                "Ireumi eotteoke",
+                "Hangugeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On accueille poliment la rencontre."
+            },
+            {
+              "id": "q10",
+              "question": "Bangawoyo ne remplace pas :",
+              "type": "single_choice",
+              "options": [
+                "Dire son propre prénom d'abord si on ne l'a pas dit",
+                "Un au revoir",
+                "Un merci après un cadeau",
+                "Un bonjour le matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchanté complète la présentation ; le prénom reste nécessaire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases demandent « Comment allez-vous ? » ?",
+              "type": "multiple_choice",
+              "options": [
+                "Eotteoke jineseyo ?",
+                "Jal jineseyo ? (Ça va ?)",
+                "Ireumi?",
+                "Gamsahamnida?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Eotteoke jineseyo et jal jineseyo = prendre des nouvelles poliment."
+            },
+            {
+              "id": "q2",
+              "question": "Pour répondre « Ça va bien », on dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "Ne, jal jineseyo",
+                "Aniyo, gamsahamnida",
+                "Gaseyo",
+                "Hanguk"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne, jal jineseyo = Oui, je vais bien."
+            },
+            {
+              "id": "q3",
+              "question": "« Jal » dans jal jineseyo signifie :",
+              "type": "single_choice",
+              "options": ["Bien", "Mal", "Non", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "Jal (잘) = bien."
+            },
+            {
+              "id": "q4",
+              "question": "« Annyeonghaseyo » suivi de « Eotteoke jineseyo ? » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer puis demander des nouvelles",
+                "Dire au revoir",
+                "Compter",
+                "Nommer une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation puis question sur comment ça va."
+            },
+            {
+              "id": "q5",
+              "question": "« Jineseyo » est lié à :",
+              "type": "single_choice",
+              "options": [
+                "Passer du temps / vivre",
+                "Manger",
+                "Dormir seul",
+                "Écrire hangeul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jida (vivre/passer) → jineseyo = comment vous passez ?"
+            },
+            {
+              "id": "q6",
+              "question": "Si tu vas bien, tu peux aussi dire simplement :",
+              "type": "single_choice",
+              "options": [
+                "Ne (oui)",
+                "Aniyo pour « oui »",
+                "Gamsahamnida",
+                "Yeoboseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne confirme une réponse positive."
+            },
+            {
+              "id": "q7",
+              "question": "« Eotteoke » signifie :",
+              "type": "single_choice",
+              "options": ["Comment", "Qui", "Où", "Quand"],
+              "correctAnswers": [0],
+              "explanation": "Eotteoke (어떻게) = comment."
+            },
+            {
+              "id": "q8",
+              "question": "Demander « Comment ça va ? » à un professeur, tu utilises :",
+              "type": "single_choice",
+              "options": [
+                "Eotteoke jineseyo ? (forme polie)",
+                "Annyeong seul",
+                "Gomawo",
+                "Chingu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-seyo marque le respect."
+            },
+            {
+              "id": "q9",
+              "question": "« Aniyo, jal mot jineseyo » exprimerait :",
+              "type": "single_choice",
+              "options": [
+                "Non, je ne vais pas très bien",
+                "Oui, super",
+                "Merci",
+                "Enchanté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot = pas assez ; pas très bien."
+            },
+            {
+              "id": "q10",
+              "question": "Après « Ça va ? », une réponse polie positive est :",
+              "type": "single_choice",
+              "options": [
+                "Ne, gamsahamnida. Jal jineseyo",
+                "Annyeonghi gaseyo",
+                "Ireum",
+                "Hangugeo imnida"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oui merci, je vais bien — réponse courante."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Merci et s'il vous plaît",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots expriment la politesse de base ?",
+              "type": "multiple_choice",
+              "options": [
+                "Gamsahamnida (merci poli)",
+                "Juseyo (donnez-moi / s'il vous plaît)",
+                "Gaseyo = merci",
+                "Annyeong = s'il vous plaît"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gamsahamnida = merci ; juseyo = s'il vous plaît (en demandant)."
+            },
+            {
+              "id": "q2",
+              "question": "« Merci » poliment en coréen :",
+              "type": "single_choice",
+              "options": ["Gamsahamnida", "Annyeong", "Gaseyo", "Ireum"],
+              "correctAnswers": [0],
+              "explanation": "Gamsahamnida (감사합니다) = merci."
+            },
+            {
+              "id": "q3",
+              "question": "Entre amis, « merci » plus léger :",
+              "type": "single_choice",
+              "options": [
+                "Gomawo",
+                "Gamsahamnida",
+                "Annyeonghaseyo",
+                "Jumuseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gomawo (고마워) est informel."
+            },
+            {
+              "id": "q4",
+              "question": "Pour demander de l'eau au restaurant :",
+              "type": "single_choice",
+              "options": [
+                "Mul juseyo",
+                "Mul gamsahamnida seul",
+                "Annyeong mul",
+                "Gaseyo mul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mul = eau ; juseyo = s'il vous plaît (donnez-moi)."
+            },
+            {
+              "id": "q5",
+              "question": "« Juseyo » se place :",
+              "type": "single_choice",
+              "options": [
+                "Après le mot demandé",
+                "Au début seul de toute phrase",
+                "Jamais avec un nom",
+                "Uniquement au téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit [objet] + juseyo."
+            },
+            {
+              "id": "q6",
+              "question": "Quand quelqu'un dit gamsahamnida, tu peux répondre :",
+              "type": "single_choice",
+              "options": [
+                "Cheonmaneyo (de rien poli)",
+                "Annyeong",
+                "Gaseyo",
+                "Bangawoyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cheonmaneyo = il n'y a pas de quoi."
+            },
+            {
+              "id": "q7",
+              "question": "« Gamsahamnida » contient l'idée de :",
+              "type": "single_choice",
+              "options": ["Gratitude", "Au revoir", "Nom", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Gamsa = gratitude/remerciement."
+            },
+            {
+              "id": "q8",
+              "question": "En recevant un cadeau en Corée, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Gamsahamnida",
+                "Annyeonghi gaseyo",
+                "Yeoboseyo",
+                "Hanguk"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On remercie poliment."
+            },
+            {
+              "id": "q9",
+              "question": "« S'il vous plaît » pour « un stylo » :",
+              "type": "single_choice",
+              "options": [
+                "Pensel juseyo",
+                "Pensel gamsahamnida",
+                "Annyeong pensel",
+                "Gaseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pensel (pen) + juseyo."
+            },
+            {
+              "id": "q10",
+              "question": "Gomawo convient à :",
+              "type": "single_choice",
+              "options": [
+                "Un ami de ton âge",
+                "Un directeur",
+                "Un grand-parent inconnu",
+                "Un policier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gomawo est familier ; gamsahamnida est plus sûr avec les adultes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Oui, non, pardon",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont « oui » et « non » en coréen ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ne (oui)",
+                "Aniyo (non)",
+                "Gaseyo (oui)",
+                "Ireum (non)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ne = oui ; aniyo = non (poli)."
+            },
+            {
+              "id": "q2",
+              "question": "Répondre « non » poliment :",
+              "type": "single_choice",
+              "options": ["Aniyo", "Ne", "Gamsahamnida", "Bangawoyo"],
+              "correctAnswers": [0],
+              "explanation": "Aniyo (아니요) = non."
+            },
+            {
+              "id": "q3",
+              "question": "« Pardon / désolé » informel entre amis :",
+              "type": "single_choice",
+              "options": ["Mianhae", "Gamsahamnida", "Annyeong", "Juseyo"],
+              "correctAnswers": [0],
+              "explanation": "Mianhae (미안해) = désolé (familier)."
+            },
+            {
+              "id": "q4",
+              "question": "« Désolé » plus poli :",
+              "type": "single_choice",
+              "options": ["Mianhamnida", "Gomawo", "Gaseyo", "Chingu"],
+              "correctAnswers": [0],
+              "explanation": "Mianhamnida = je suis désolé (poli)."
+            },
+            {
+              "id": "q5",
+              "question": "Si tu bouscules quelqu'un, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Mianhamnida",
+                "Annyeonghaseyo",
+                "Bangawoyo",
+                "Hangugeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'excuse poliment."
+            },
+            {
+              "id": "q6",
+              "question": "« Ne » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Confirmer / dire oui",
+                "Refuser",
+                "Saluer",
+                "Nommer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne (네) = oui."
+            },
+            {
+              "id": "q7",
+              "question": "On te demande si tu parles coréen ; tu débutes, tu réponds :",
+              "type": "single_choice",
+              "options": [
+                "Aniyo, joheum… (non, un peu)",
+                "Ne, jal… (oui très bien) sans apprendre",
+                "Gamsahamnida seul",
+                "Gaseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aniyo + joheum (un peu) est honnête pour un débutant."
+            },
+            {
+              "id": "q8",
+              "question": "« Joheum » signifie :",
+              "type": "single_choice",
+              "options": ["Un peu", "Beaucoup", "Jamais", "Toujours merci"],
+              "correctAnswers": [0],
+              "explanation": "Joheum (조금) = un peu."
+            },
+            {
+              "id": "q9",
+              "question": "Aniyo est l'opposé de :",
+              "type": "single_choice",
+              "options": ["Ne", "Gamsahamnida", "Juseyo", "Annyeong"],
+              "correctAnswers": [0],
+              "explanation": "Ne vs aniyo = oui vs non."
+            },
+            {
+              "id": "q10",
+              "question": "Après mianhamnida, l'autre peut répondre calmement ; tu as montré :",
+              "type": "single_choice",
+              "options": [
+                "De la politesse",
+                "Une couleur",
+                "Un chiffre",
+                "Un au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'excuser fait partie des bases de politesse."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révisions : saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels éléments forment une première rencontre polie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Annyeonghaseyo",
+                "Jeo neun … imnida",
+                "Gamsahamnida seul sans salut",
+                "Manaseo bangawoyo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + prénom ; enchanté complète souvent l'échange."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique en rencontrant un prof :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo → présentation → bangawoyo",
+                "Au revoir d'abord",
+                "Merci seul",
+                "Yeoboseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saluer, se nommer, dire enchanté."
+            },
+            {
+              "id": "q3",
+              "question": "Tu quittes la classe :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi gaseyo",
+                "Annyeonghaseyo en entrant",
+                "Ireumi?",
+                "Mul juseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir en partant."
+            },
+            {
+              "id": "q4",
+              "question": "Le hangeul sert à :",
+              "type": "single_choice",
+              "options": [
+                "Écrire le coréen",
+                "Remplacer le français en classe",
+                "Compter uniquement",
+                "Saluer sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alphabet du coréen."
+            },
+            {
+              "id": "q5",
+              "question": "« Je » poli :",
+              "type": "single_choice",
+              "options": ["Jeo", "Neo", "Gaseyo", "Ireum"],
+              "correctAnswers": [0],
+              "explanation": "Jeo (저) = je (poli)."
+            },
+            {
+              "id": "q6",
+              "question": "Remercier après un conseil :",
+              "type": "single_choice",
+              "options": ["Gamsahamnida", "Annyeong", "Gaseyo", "Hanguk"],
+              "correctAnswers": [0],
+              "explanation": "Merci poli."
+            },
+            {
+              "id": "q7",
+              "question": "Demander le nom :",
+              "type": "single_choice",
+              "options": [
+                "Ireumi eotteoke doeseyo?",
+                "Annyeonghi gaseyo?",
+                "Gamsahamnida?",
+                "Jumuseyo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur le nom."
+            },
+            {
+              "id": "q8",
+              "question": "Salut informel entre camarades :",
+              "type": "single_choice",
+              "options": [
+                "Annyeong",
+                "Annyeonghaseyo au directeur",
+                "Gamsahamnida",
+                "Mianhamnida"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annyeong entre amis."
+            },
+            {
+              "id": "q9",
+              "question": "« Comment allez-vous ? » :",
+              "type": "single_choice",
+              "options": [
+                "Eotteoke jineseyo?",
+                "Ireum imnida",
+                "Mul juseyo",
+                "Hangeul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de prise de nouvelles."
+            },
+            {
+              "id": "q10",
+              "question": "En 5e coréen, tu apprends surtout :",
+              "type": "single_choice",
+              "options": [
+                "Hangeul et formules de politesse",
+                "Hanja avancés seuls",
+                "Grammaire universitaire",
+                "Dialecte sans salut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bases : alphabet, saluer, se présenter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les chiffres 1 à 5",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels sont des nombres coréens natifs de 1 à 5 ?",
+              "type": "multiple_choice",
+              "options": ["Hana (1)", "Dul (2)", "Gamsa (merci)", "Yeoboseyo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hana, dul, set, net, daseot sont les comptes natifs 1-5."
+            },
+            {
+              "id": "q2",
+              "question": "« Un » en comptage natif :",
+              "type": "single_choice",
+              "options": ["Hana", "Dul", "Set", "Net"],
+              "correctAnswers": [0],
+              "explanation": "Hana (하나) = 1."
+            },
+            {
+              "id": "q3",
+              "question": "« Deux » :",
+              "type": "single_choice",
+              "options": ["Dul", "Hana", "Daseot", "Yeol"],
+              "correctAnswers": [0],
+              "explanation": "Dul (둘) = 2."
+            },
+            {
+              "id": "q4",
+              "question": "« Trois » :",
+              "type": "single_choice",
+              "options": ["Set", "Net", "Hana", "Mul"],
+              "correctAnswers": [0],
+              "explanation": "Set (셋) = 3."
+            },
+            {
+              "id": "q5",
+              "question": "« Quatre » :",
+              "type": "single_choice",
+              "options": ["Net", "Dul", "Yeol", "Gong"],
+              "correctAnswers": [0],
+              "explanation": "Net (넷) = 4."
+            },
+            {
+              "id": "q6",
+              "question": "« Cinq » :",
+              "type": "single_choice",
+              "options": ["Daseot", "Hana", "Il", "Sam"],
+              "correctAnswers": [0],
+              "explanation": "Daseot (다섯) = 5."
+            },
+            {
+              "id": "q7",
+              "question": "En Corée, on utilise souvent deux systèmes de nombres ; en 5e tu vois surtout :",
+              "type": "single_choice",
+              "options": [
+                "Les nombres natifs pour compter des objets simples",
+                "Uniquement les hanja",
+                "Aucun chiffre",
+                "Le latin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les natifs hana-dul… servent au début ; le système sino-coréen vient après."
+            },
+            {
+              "id": "q8",
+              "question": "Compter « un, deux, trois » :",
+              "type": "single_choice",
+              "options": [
+                "Hana, dul, set",
+                "Il, i, sam",
+                "Annyeong, gamsa",
+                "Gaseyo, gyeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquence native 1-2-3."
+            },
+            {
+              "id": "q9",
+              "question": "« Net » correspond au chiffre :",
+              "type": "single_choice",
+              "options": ["4", "2", "5", "10"],
+              "correctAnswers": [0],
+              "explanation": "Net = 4."
+            },
+            {
+              "id": "q10",
+              "question": "Daseot vient après net dans la série :",
+              "type": "single_choice",
+              "options": [
+                "Oui, c'est 5",
+                "Non, c'est 1",
+                "C'est 10",
+                "C'est merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre : … net (4), daseot (5)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les chiffres 6 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres natifs sont entre 6 et 10 ?",
+              "type": "multiple_choice",
+              "options": ["Yeoseot (6)", "Yeol (10)", "Gamsahamnida", "Ireum"],
+              "correctAnswers": [0, 1],
+              "explanation": "Yeoseot à arae 9, yeol = 10 en natif."
+            },
+            {
+              "id": "q2",
+              "question": "« Six » en natif :",
+              "type": "single_choice",
+              "options": ["Yeoseot", "Ilgop", "Yodeol", "Arae"],
+              "correctAnswers": [0],
+              "explanation": "Yeoseot (여섯) = 6."
+            },
+            {
+              "id": "q3",
+              "question": "« Sept » :",
+              "type": "single_choice",
+              "options": ["Ilgop", "Yeoseot", "Yeol", "Hana"],
+              "correctAnswers": [0],
+              "explanation": "Ilgop (일곱) = 7."
+            },
+            {
+              "id": "q4",
+              "question": "« Huit » :",
+              "type": "single_choice",
+              "options": ["Yodeol", "Net", "Daseot", "Sam"],
+              "correctAnswers": [0],
+              "explanation": "Yodeol (여덟) = 8."
+            },
+            {
+              "id": "q5",
+              "question": "« Neuf » :",
+              "type": "single_choice",
+              "options": ["Arae", "Yeol", "Dul", "Gong"],
+              "correctAnswers": [0],
+              "explanation": "Arae (아홉) = 9."
+            },
+            {
+              "id": "q6",
+              "question": "« Dix » en comptage natif :",
+              "type": "single_choice",
+              "options": ["Yeol", "Il", "Hana", "Sip"],
+              "correctAnswers": [0],
+              "explanation": "Yeol (열) = 10 natif ; il/sip est sino-coréen."
+            },
+            {
+              "id": "q7",
+              "question": "Après ilgop vient :",
+              "type": "single_choice",
+              "options": [
+                "Yodeol (8)",
+                "Hana (1)",
+                "Yeol (10) direct",
+                "Gamsa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7 → 8 → 9 → 10."
+            },
+            {
+              "id": "q8",
+              "question": "Yeol correspond à :",
+              "type": "single_choice",
+              "options": ["10", "6", "4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Yeol = dix."
+            },
+            {
+              "id": "q9",
+              "question": "Pour compter des doigts jusqu'à 10 en natif, la dernière syllabe est :",
+              "type": "single_choice",
+              "options": ["Yeol", "Arae seulement", "Daseot", "Annyeong"],
+              "correctAnswers": [0],
+              "explanation": "La série se termine par yeol."
+            },
+            {
+              "id": "q10",
+              "question": "Arae signifie :",
+              "type": "single_choice",
+              "options": ["9", "8", "1", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Arae = neuf."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Couleurs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des couleurs en coréen ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ppalgan (rouge)",
+                "Parang (bleu)",
+                "Gamsahamnida",
+                "Jeo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ppalgan = rouge ; parang = bleu."
+            },
+            {
+              "id": "q2",
+              "question": "« Rouge » :",
+              "type": "single_choice",
+              "options": ["Ppalgan", "Huin", "Geomun", "Norang"],
+              "correctAnswers": [0],
+              "explanation": "Ppalgan (빨간) = rouge."
+            },
+            {
+              "id": "q3",
+              "question": "« Bleu » :",
+              "type": "single_choice",
+              "options": ["Parang", "Noksaek", "Hayan", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Parang (파랑) = bleu."
+            },
+            {
+              "id": "q4",
+              "question": "« Blanc » :",
+              "type": "single_choice",
+              "options": ["Huin / hayan", "Geomun", "Ppalgan", "Chingu"],
+              "correctAnswers": [0],
+              "explanation": "Huin, hayan = blanc."
+            },
+            {
+              "id": "q5",
+              "question": "« Noir » :",
+              "type": "single_choice",
+              "options": ["Geomun", "Norang", "Parang", "Mul"],
+              "correctAnswers": [0],
+              "explanation": "Geomun (검은) = noir."
+            },
+            {
+              "id": "q6",
+              "question": "« Jaune » :",
+              "type": "single_choice",
+              "options": ["Norang", "Noksaek", "Ppalgan", "Ireum"],
+              "correctAnswers": [0],
+              "explanation": "Norang (노랑) = jaune."
+            },
+            {
+              "id": "q7",
+              "question": "« Vert » :",
+              "type": "single_choice",
+              "options": ["Noksaek / chorok", "Parang", "Huin", "Gaseyo"],
+              "correctAnswers": [0],
+              "explanation": "Noksaek ou chorok = vert."
+            },
+            {
+              "id": "q8",
+              "question": "Le drapeau coréen (Taegeukgi) contient surtout :",
+              "type": "single_choice",
+              "options": [
+                "Rouge et bleu dans le symbole central",
+                "Uniquement du jaune",
+                "Pas de couleur",
+                "Que du noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taeguk mélange rouge et bleu."
+            },
+            {
+              "id": "q9",
+              "question": "« Ciel bleu » en vocabulaire simple :",
+              "type": "single_choice",
+              "options": [
+                "Parang haneul",
+                "Ppalgan haneul",
+                "Geomun haneul",
+                "Gamsa haneul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parang = bleu ; haneul = ciel."
+            },
+            {
+              "id": "q10",
+              "question": "Hayan se rapporte à :",
+              "type": "single_choice",
+              "options": ["Blanc / clair", "Rouge", "Merci", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Hayan (하얀) = blanc."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent la famille proche ?",
+              "type": "multiple_choice",
+              "options": [
+                "Eomma (maman)",
+                "Appa (papa)",
+                "Gamsahamnida",
+                "Juseyo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Eomma et appa sont les termes courants pour les parents."
+            },
+            {
+              "id": "q2",
+              "question": "« Maman » informel :",
+              "type": "single_choice",
+              "options": ["Eomma", "Appa", "Hyung", "Noona"],
+              "correctAnswers": [0],
+              "explanation": "Eomma (엄마) = maman."
+            },
+            {
+              "id": "q3",
+              "question": "« Papa » :",
+              "type": "single_choice",
+              "options": ["Appa", "Eomma", "Halmeoni", "Harabeoji"],
+              "correctAnswers": [0],
+              "explanation": "Appa (아빠) = papa."
+            },
+            {
+              "id": "q4",
+              "question": "« Grand-mère » :",
+              "type": "single_choice",
+              "options": ["Halmeoni", "Harabeoji", "Dongsaeng", "Chingu"],
+              "correctAnswers": [0],
+              "explanation": "Halmeoni (할머니) = grand-mère."
+            },
+            {
+              "id": "q5",
+              "question": "« Grand-père » :",
+              "type": "single_choice",
+              "options": ["Harabeoji", "Eomma", "Appa", "Unni"],
+              "correctAnswers": [0],
+              "explanation": "Harabeoji (할아버지) = grand-père."
+            },
+            {
+              "id": "q6",
+              "question": "« Petit frère ou petite sœur » :",
+              "type": "single_choice",
+              "options": ["Dongsaeng", "Hyung", "Noona", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Dongsaeng (동생) = cadet(e)."
+            },
+            {
+              "id": "q7",
+              "question": "« Ami » :",
+              "type": "single_choice",
+              "options": ["Chingu", "Ireum", "Hanguk", "Gaseyo"],
+              "correctAnswers": [0],
+              "explanation": "Chingu (친구) = ami."
+            },
+            {
+              "id": "q8",
+              "question": "Hyung est utilisé par :",
+              "type": "single_choice",
+              "options": [
+                "Un garçon pour parler d'un frère aîné",
+                "Une fille pour papa",
+                "Pour grand-mère",
+                "Pour merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hyung = frère aîné (vue d'un garçon)."
+            },
+            {
+              "id": "q9",
+              "question": "Présenter ta mère : « C'est ma mère » simplifié :",
+              "type": "single_choice",
+              "options": [
+                "Igeo eomma imnida",
+                "Annyeong eomma seul",
+                "Gamsahamnida eomma",
+                "Gaseyo eomma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Igeo = ceci ; eomma imnida = c'est maman."
+            },
+            {
+              "id": "q10",
+              "question": "La famille en coréen s'appelle souvent :",
+              "type": "single_choice",
+              "options": ["Gajok", "Hanguk", "Hangeul", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Gajok (가족) = famille."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "À la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent à la maison ?",
+              "type": "multiple_choice",
+              "options": [
+                "Jip (maison)",
+                "Bang (chambre/pièce)",
+                "Annyeong seul",
+                "Yeol"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jip = maison ; bang = pièce."
+            },
+            {
+              "id": "q2",
+              "question": "« Maison » :",
+              "type": "single_choice",
+              "options": ["Jip", "Hakgyo", "Gage", "Gongwon"],
+              "correctAnswers": [0],
+              "explanation": "Jip (집) = maison."
+            },
+            {
+              "id": "q3",
+              "question": "« Pièce / chambre » :",
+              "type": "single_choice",
+              "options": ["Bang", "Mul", "Chingu", "Hana"],
+              "correctAnswers": [0],
+              "explanation": "Bang (방) = chambre."
+            },
+            {
+              "id": "q4",
+              "question": "« Porte » :",
+              "type": "single_choice",
+              "options": ["Mun", "Chang", "Sang", "Bad"],
+              "correctAnswers": [0],
+              "explanation": "Mun (문) = porte."
+            },
+            {
+              "id": "q5",
+              "question": "« Fenêtre » :",
+              "type": "single_choice",
+              "options": ["Chang", "Jip", "Ireum", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Chang (창) = fenêtre."
+            },
+            {
+              "id": "q6",
+              "question": "« Lit » :",
+              "type": "single_choice",
+              "options": ["Bad", "Sang", "Uja", "Gaseyo"],
+              "correctAnswers": [0],
+              "explanation": "Bad (침대 se dit aussi chimdae ; bad = lit court)."
+            },
+            {
+              "id": "q7",
+              "question": "« Table » :",
+              "type": "single_choice",
+              "options": ["Sang", "Mun", "Hanguk", "Dul"],
+              "correctAnswers": [0],
+              "explanation": "Sang (상) = table."
+            },
+            {
+              "id": "q8",
+              "question": "« Eau » :",
+              "type": "single_choice",
+              "options": ["Mul", "Bap", "Gajok", "Yeol"],
+              "correctAnswers": [0],
+              "explanation": "Mul (물) = eau."
+            },
+            {
+              "id": "q9",
+              "question": "En entrant chez soi, on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Annyeong / daelyeowaseyo (je rentre)",
+                "Gamsahamnida seul",
+                "Yeoboseyo",
+                "Hangugeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules familiales à l'entrée/sortie de la maison."
+            },
+            {
+              "id": "q10",
+              "question": "Jip et bang :",
+              "type": "single_choice",
+              "options": [
+                "Maison et pièce",
+                "École et parc",
+                "Merci et pardon",
+                "Rouge et bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire maison de base."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont liés à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "Hakgyo (école)",
+                "Seonsaengnim (professeur)",
+                "Gamsahamnida seul",
+                "Ppalgan"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hakgyo = école ; seonsaengnim = professeur."
+            },
+            {
+              "id": "q2",
+              "question": "« École » :",
+              "type": "single_choice",
+              "options": ["Hakgyo", "Jip", "Gage", "Byeongwon"],
+              "correctAnswers": [0],
+              "explanation": "Hakgyo (학교) = école."
+            },
+            {
+              "id": "q3",
+              "question": "« Professeur » :",
+              "type": "single_choice",
+              "options": ["Seonsaengnim", "Chingu", "Dongsaeng", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Seonsaengnim (선생님) = professeur."
+            },
+            {
+              "id": "q4",
+              "question": "« Élève / étudiant » :",
+              "type": "single_choice",
+              "options": ["Haksaeng", "Eomma", "Appa", "Halmeoni"],
+              "correctAnswers": [0],
+              "explanation": "Haksaeng (학생) = élève."
+            },
+            {
+              "id": "q5",
+              "question": "« Livre » :",
+              "type": "single_choice",
+              "options": ["Chaek", "Mul", "Bang", "Gaseyo"],
+              "correctAnswers": [0],
+              "explanation": "Chaek (책) = livre."
+            },
+            {
+              "id": "q6",
+              "question": "« Crayon / stylo » zone :",
+              "type": "single_choice",
+              "options": ["Pensel / yeonpil", "Hanguk", "Ireum", "Annyeong"],
+              "correctAnswers": [0],
+              "explanation": "Pensel (pen) ou yeonpil = crayon."
+            },
+            {
+              "id": "q7",
+              "question": "« Classe / leçon » :",
+              "type": "single_choice",
+              "options": ["Sueop", "Jip", "Gajok", "Norang"],
+              "correctAnswers": [0],
+              "explanation": "Sueop (수업) = cours."
+            },
+            {
+              "id": "q8",
+              "question": "En voyant le prof, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghaseyo",
+                "Annyeonghi gaseyo en entrant",
+                "Gomawo seul au directeur",
+                "Yeoboseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation polie."
+            },
+            {
+              "id": "q9",
+              "question": "« Cartable / sac » scolaire simple :",
+              "type": "single_choice",
+              "options": ["Gabang", "Mun", "Bad", "Geomun"],
+              "correctAnswers": [0],
+              "explanation": "Gabang (가방) = sac."
+            },
+            {
+              "id": "q10",
+              "question": "Haksaeng va surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Hakgyo",
+                "Byeongwon seul",
+                "Gongwon uniquement la nuit",
+                "Nulle part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élève va à l'école."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Nourriture de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont de la nourriture coréenne de base ?",
+              "type": "multiple_choice",
+              "options": ["Bap (riz cuit)", "Kimchi", "Annyeong", "Hangeul"],
+              "correctAnswers": [0, 1],
+              "explanation": "Bap = riz ; kimchi = légume fermenté emblématique."
+            },
+            {
+              "id": "q2",
+              "question": "« Riz (cuit) / repas » :",
+              "type": "single_choice",
+              "options": ["Bap", "Mul", "Chaek", "Jip"],
+              "correctAnswers": [0],
+              "explanation": "Bap (밥) = riz cuit, aussi repas."
+            },
+            {
+              "id": "q3",
+              "question": "« Eau » au repas :",
+              "type": "single_choice",
+              "options": ["Mul", "Bap", "Kimchi", "Gamsa"],
+              "correctAnswers": [0],
+              "explanation": "Mul = eau."
+            },
+            {
+              "id": "q4",
+              "question": "Kimchi est :",
+              "type": "single_choice",
+              "options": [
+                "Un plat fermenté (souvent pimenté)",
+                "Un salut",
+                "Une couleur",
+                "Un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kimchi = plat traditionnel fermenté."
+            },
+            {
+              "id": "q5",
+              "question": "« Bon appétit » poli avant de manger :",
+              "type": "single_choice",
+              "options": [
+                "Jal meokgesseumnida",
+                "Annyeonghi gaseyo",
+                "Gamsahamnida seul",
+                "Yeoboseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je vais bien manger = formule avant le repas."
+            },
+            {
+              "id": "q6",
+              "question": "Après le repas, on dit parfois :",
+              "type": "single_choice",
+              "options": [
+                "Jal meogeosseumnida",
+                "Annyeonghaseyo",
+                "Ireumi?",
+                "Hanguk"
+              ],
+              "correctAnswers": [0],
+              "explanation": "J'ai bien mangé — politesse après repas."
+            },
+            {
+              "id": "q7",
+              "question": "« Lait » :",
+              "type": "single_choice",
+              "options": ["Uyu", "Bap", "Ppalgan", "Chingu"],
+              "correctAnswers": [0],
+              "explanation": "Uyu (우유) = lait."
+            },
+            {
+              "id": "q8",
+              "question": "« Pain » emprunté courant :",
+              "type": "single_choice",
+              "options": ["Ppang", "Mul", "Geomun", "Set"],
+              "correctAnswers": [0],
+              "explanation": "Ppang (빵) = pain."
+            },
+            {
+              "id": "q9",
+              "question": "Commander de l'eau :",
+              "type": "single_choice",
+              "options": [
+                "Mul juseyo",
+                "Bap gamsahamnida",
+                "Annyeong mul",
+                "Gaseyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mul + juseyo."
+            },
+            {
+              "id": "q10",
+              "question": "Bap est central car :",
+              "type": "single_choice",
+              "options": [
+                "Le riz accompagne presque chaque repas coréen",
+                "C'est uniquement un dessert",
+                "C'est un au revoir",
+                "C'est une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le riz est la base alimentaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Animaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots nomment des animaux ?",
+              "type": "multiple_choice",
+              "options": [
+                "Gae (chien)",
+                "Goyangi (chat)",
+                "Gamsahamnida",
+                "Jeo neun"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gae = chien ; goyangi = chat."
+            },
+            {
+              "id": "q2",
+              "question": "« Chien » :",
+              "type": "single_choice",
+              "options": ["Gae", "Goyangi", "Sae", "Tokki"],
+              "correctAnswers": [0],
+              "explanation": "Gae (개) = chien."
+            },
+            {
+              "id": "q3",
+              "question": "« Chat » :",
+              "type": "single_choice",
+              "options": ["Goyangi", "Gae", "So", "Mal"],
+              "correctAnswers": [0],
+              "explanation": "Goyangi (고양이) = chat."
+            },
+            {
+              "id": "q4",
+              "question": "« Oiseau » :",
+              "type": "single_choice",
+              "options": ["Sae", "Mul", "Bap", "Hakgyo"],
+              "correctAnswers": [0],
+              "explanation": "Sae (새) = oiseau."
+            },
+            {
+              "id": "q5",
+              "question": "« Lapin » :",
+              "type": "single_choice",
+              "options": ["Tokki", "Gae", "Chingu", "Ireum"],
+              "correctAnswers": [0],
+              "explanation": "Tokki (토끼) = lapin."
+            },
+            {
+              "id": "q6",
+              "question": "« Vache » :",
+              "type": "single_choice",
+              "options": ["So", "Mal", "Goyangi", "Parang"],
+              "correctAnswers": [0],
+              "explanation": "So (소) = vache/bœuf."
+            },
+            {
+              "id": "q7",
+              "question": "« Cheval » :",
+              "type": "single_choice",
+              "options": ["Mal", "Sae", "Dul", "Gajok"],
+              "correctAnswers": [0],
+              "explanation": "Mal (말) = cheval."
+            },
+            {
+              "id": "q8",
+              "question": "« Poisson » :",
+              "type": "single_choice",
+              "options": ["Mulgogi", "Gae", "Bang", "Yeol"],
+              "correctAnswers": [0],
+              "explanation": "Mulgogi (물고기) = poisson."
+            },
+            {
+              "id": "q9",
+              "question": "Un animal mignon, goyangi est souvent :",
+              "type": "single_choice",
+              "options": ["Un chat", "Un chien", "Une école", "Un merci"],
+              "correctAnswers": [0],
+              "explanation": "Goyangi = chat."
+            },
+            {
+              "id": "q10",
+              "question": "Gae et goyangi sont :",
+              "type": "single_choice",
+              "options": [
+                "Animaux domestiques courants",
+                "Couleurs",
+                "Nombres",
+                "Salutations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chien et chat — vocabulaire 5e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Jours et moments",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du temps ?",
+              "type": "multiple_choice",
+              "options": [
+                "Oneul (aujourd'hui)",
+                "Naeil (demain)",
+                "Gamsahamnida",
+                "Hangeul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oneul = aujourd'hui ; naeil = demain."
+            },
+            {
+              "id": "q2",
+              "question": "« Aujourd'hui » :",
+              "type": "single_choice",
+              "options": ["Oneul", "Naeil", "Eoje", "Jeo"],
+              "correctAnswers": [0],
+              "explanation": "Oneul (오늘) = aujourd'hui."
+            },
+            {
+              "id": "q3",
+              "question": "« Demain » :",
+              "type": "single_choice",
+              "options": ["Naeil", "Eoje", "Oneul", "Yeol"],
+              "correctAnswers": [0],
+              "explanation": "Naeil (내일) = demain."
+            },
+            {
+              "id": "q4",
+              "question": "« Hier » :",
+              "type": "single_choice",
+              "options": ["Eoje", "Naeil", "Hana", "Bap"],
+              "correctAnswers": [0],
+              "explanation": "Eoje (어제) = hier."
+            },
+            {
+              "id": "q5",
+              "question": "« Matin » :",
+              "type": "single_choice",
+              "options": ["Achim", "Bam", "Jeonyeok", "Oneul"],
+              "correctAnswers": [0],
+              "explanation": "Achim (아침) = matin."
+            },
+            {
+              "id": "q6",
+              "question": "« Soir » :",
+              "type": "single_choice",
+              "options": ["Jeonyeok", "Achim", "Mul", "Gae"],
+              "correctAnswers": [0],
+              "explanation": "Jeonyeok (저녁) = soir."
+            },
+            {
+              "id": "q7",
+              "question": "« Nuit » :",
+              "type": "single_choice",
+              "options": ["Bam", "Achim", "Hakgyo", "Chingu"],
+              "correctAnswers": [0],
+              "explanation": "Bam (밤) = nuit."
+            },
+            {
+              "id": "q8",
+              "question": "« Maintenant » :",
+              "type": "single_choice",
+              "options": ["Jigeum", "Eoje", "Gamsa", "Ireum"],
+              "correctAnswers": [0],
+              "explanation": "Jigeum (지금) = maintenant."
+            },
+            {
+              "id": "q9",
+              "question": "Le matin à l'école, oneul signifie :",
+              "type": "single_choice",
+              "options": [
+                "Ce jour-ci / aujourd'hui",
+                "Demain",
+                "Hier",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oneul = today."
+            },
+            {
+              "id": "q10",
+              "question": "Avant de dormir (bam), on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Annyeonghi jumuseyo",
+                "Mul juseyo",
+                "Hakgyo imnida",
+                "Gae gae"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne nuit polie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révisions : mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels groupes de mots sont des bases vocabulaire 5e ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nombres hana-yeol",
+                "Couleurs ppalgan/parang",
+                "Gaseyo = chiffre",
+                "Annyeong = vert"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chiffres natifs et couleurs font partie des essentiels."
+            },
+            {
+              "id": "q2",
+              "question": "Eomma et appa :",
+              "type": "single_choice",
+              "options": [
+                "Maman et papa",
+                "École et prof",
+                "Rouge et bleu",
+                "Six et dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parents."
+            },
+            {
+              "id": "q3",
+              "question": "Hakgyo et haksaeng :",
+              "type": "single_choice",
+              "options": [
+                "École et élève",
+                "Maison et porte",
+                "Chat et chien",
+                "Hier et demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "Bap et mul au restaurant :",
+              "type": "single_choice",
+              "options": [
+                "Riz/repas et eau",
+                "Merci et pardon",
+                "Prof et livre",
+                "Grand-père et ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nourriture de base."
+            },
+            {
+              "id": "q5",
+              "question": "Gae et goyangi :",
+              "type": "single_choice",
+              "options": [
+                "Chien et chat",
+                "Table et lit",
+                "Aujourd'hui et demain",
+                "Un et deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Animaux."
+            },
+            {
+              "id": "q6",
+              "question": "Oneul et naeil :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui et demain",
+                "Blanc et noir",
+                "Maman et papa",
+                "Crayon et livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères temporels."
+            },
+            {
+              "id": "q7",
+              "question": "Jip, bang, mun :",
+              "type": "single_choice",
+              "options": [
+                "Maison, pièce, porte",
+                "Kimchi, riz, eau",
+                "Salut, merci, pardon",
+                "Corée, alphabet, ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maison."
+            },
+            {
+              "id": "q8",
+              "question": "Yeol en comptage natif :",
+              "type": "single_choice",
+              "options": ["10", "5", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Yeol = dix."
+            },
+            {
+              "id": "q9",
+              "question": "Chingu signifie :",
+              "type": "single_choice",
+              "options": ["Ami", "Professeur", "Eau", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Chingu = ami."
+            },
+            {
+              "id": "q10",
+              "question": "En unité « mots essentiels », tu consolides :",
+              "type": "single_choice",
+              "options": [
+                "Nombres, couleurs, famille, lieux, école, nourriture, animaux, temps",
+                "Uniquement les hanja",
+                "Sans vocabulaire",
+                "Seulement la grammaire avancée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panorama des mots de survie en 5e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

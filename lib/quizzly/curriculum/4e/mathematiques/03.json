@@ -1,0 +1,2028 @@
+{
+  "id": "4e-mathematiques-03",
+  "year": "4e",
+  "subject": "mathematiques",
+  "title": "Statistiques et probabilités",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Moyenne et étendue",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Calculer une moyenne simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions donnent la moyenne de 8, 12 et 10 ?",
+              "type": "multiple_choice",
+              "options": [
+                "(8+12+10)÷3",
+                "(8×12×10)÷3",
+                "30÷3",
+                "Somme des trois notes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La moyenne est la somme divisée par le nombre de valeurs."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne de 5, 7 et 9 ?",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "21"],
+              "correctAnswers": [1],
+              "explanation": "21÷3 = 7."
+            },
+            {
+              "id": "q3",
+              "question": "Notes 10, 12, 14, 16 : moyenne ?",
+              "type": "single_choice",
+              "options": ["12", "13", "14", "52"],
+              "correctAnswers": [1],
+              "explanation": "52÷4 = 13."
+            },
+            {
+              "id": "q4",
+              "question": "Températures 18, 20, 22 °C : moyenne ?",
+              "type": "single_choice",
+              "options": ["19", "20", "21", "60"],
+              "correctAnswers": [1],
+              "explanation": "60÷3 = 20 °C."
+            },
+            {
+              "id": "q5",
+              "question": "Cinq nombres identiques de somme 35 : chaque nombre ?",
+              "type": "single_choice",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [2],
+              "explanation": "35÷5 = 7."
+            },
+            {
+              "id": "q6",
+              "question": "Moyenne de 0, 4 et 8 ?",
+              "type": "single_choice",
+              "options": ["2", "3", "4", "12"],
+              "correctAnswers": [2],
+              "explanation": "12÷3 = 4."
+            },
+            {
+              "id": "q7",
+              "question": "Somme de 6 valeurs = 42. Moyenne ?",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "36"],
+              "correctAnswers": [1],
+              "explanation": "42÷6 = 7."
+            },
+            {
+              "id": "q8",
+              "question": "Moyenne de 8 et 12 ?",
+              "type": "single_choice",
+              "options": ["9", "10", "11", "20"],
+              "correctAnswers": [1],
+              "explanation": "20÷2 = 10."
+            },
+            {
+              "id": "q9",
+              "question": "Moyenne de quatre fois la valeur 3 ?",
+              "type": "single_choice",
+              "options": ["0", "3", "6", "12"],
+              "correctAnswers": [1],
+              "explanation": "Si toutes les valeurs valent 3, la moyenne vaut 3."
+            },
+            {
+              "id": "q10",
+              "question": "Distances 2, 4, 6, 8 km : moyenne ?",
+              "type": "single_choice",
+              "options": ["4", "5", "6", "20"],
+              "correctAnswers": [1],
+              "explanation": "20÷4 = 5 km."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Moyenne avec effectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour une moyenne avec effectifs, que calcule-t-on d'abord ?",
+              "type": "multiple_choice",
+              "options": [
+                "Valeur × effectif pour chaque ligne",
+                "Maximum − minimum",
+                "Somme des (valeur×effectif)",
+                "Produit de toutes les valeurs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On totalise les produits valeur×effectif avant de diviser par l'effectif total."
+            },
+            {
+              "id": "q2",
+              "question": "Note 10 (3 élèves) et 14 (1 élève) : moyenne ?",
+              "type": "single_choice",
+              "options": ["11", "12", "13", "14"],
+              "correctAnswers": [0],
+              "explanation": "44÷4 = 11."
+            },
+            {
+              "id": "q3",
+              "question": "Deux fois 5 et trois fois 10 : moyenne ?",
+              "type": "single_choice",
+              "options": ["7", "8", "9", "10"],
+              "correctAnswers": [1],
+              "explanation": "40÷5 = 8."
+            },
+            {
+              "id": "q4",
+              "question": "150 cm (4 personnes), 160 cm (2) : moyenne ?",
+              "type": "single_choice",
+              "options": ["152 cm", "153,3 cm", "155 cm", "156 cm"],
+              "correctAnswers": [1],
+              "explanation": "920÷6 ≈ 153,3 cm."
+            },
+            {
+              "id": "q5",
+              "question": "5 élèves à 12 et 5 à 8 : effectif total ?",
+              "type": "single_choice",
+              "options": ["5", "8", "10", "20"],
+              "correctAnswers": [2],
+              "explanation": "5+5 = 10."
+            },
+            {
+              "id": "q6",
+              "question": "Valeur 20 répétée 4 fois : moyenne ?",
+              "type": "single_choice",
+              "options": ["5", "10", "20", "80"],
+              "correctAnswers": [2],
+              "explanation": "La moyenne d'une série constante est cette valeur."
+            },
+            {
+              "id": "q7",
+              "question": "0 (2 fois), 6 (3 fois) : moyenne ?",
+              "type": "single_choice",
+              "options": ["3", "3,6", "4", "6"],
+              "correctAnswers": [1],
+              "explanation": "18÷5 = 3,6."
+            },
+            {
+              "id": "q8",
+              "question": "4 (effectif 5) et 9 (effectif 5) : moyenne ?",
+              "type": "single_choice",
+              "options": ["4,5", "6,5", "7", "13"],
+              "correctAnswers": [1],
+              "explanation": "65÷10 = 6,5."
+            },
+            {
+              "id": "q9",
+              "question": "Moyenne de 4 notes = 10 ; trois notes valent 8, 10, 12. La 4e ?",
+              "type": "single_choice",
+              "options": ["8", "10", "12", "14"],
+              "correctAnswers": [1],
+              "explanation": "Somme 40, il manque 10."
+            },
+            {
+              "id": "q10",
+              "question": "12 ans (6), 13 ans (4) : moyenne d'âge ?",
+              "type": "single_choice",
+              "options": ["12", "12,2", "12,4", "13"],
+              "correctAnswers": [2],
+              "explanation": "124÷10 = 12,4 ans."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Étendue d'une série",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles définitions correspondent à l'étendue ?",
+              "type": "multiple_choice",
+              "options": [
+                "Max − min",
+                "Plus grande − plus petite valeur",
+                "Moyenne × 2",
+                "Effectif total"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'étendue est la différence entre extremums."
+            },
+            {
+              "id": "q2",
+              "question": "3, 7, 11, 15 : étendue ?",
+              "type": "single_choice",
+              "options": ["8", "10", "12", "15"],
+              "correctAnswers": [2],
+              "explanation": "15−3 = 12."
+            },
+            {
+              "id": "q3",
+              "question": "Notes de 8 à 16 : étendue ?",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "16"],
+              "correctAnswers": [2],
+              "explanation": "16−8 = 8."
+            },
+            {
+              "id": "q4",
+              "question": "Toutes les valeurs valent 5 : étendue ?",
+              "type": "single_choice",
+              "options": ["0", "1", "5", "10"],
+              "correctAnswers": [0],
+              "explanation": "Max = min, donc étendue 0."
+            },
+            {
+              "id": "q5",
+              "question": "−2, 0, 4 : étendue ?",
+              "type": "single_choice",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [2],
+              "explanation": "4−(−2) = 6."
+            },
+            {
+              "id": "q6",
+              "question": "12, 12, 18, 20 : étendue ?",
+              "type": "single_choice",
+              "options": ["6", "8", "10", "20"],
+              "correctAnswers": [1],
+              "explanation": "20−12 = 8."
+            },
+            {
+              "id": "q7",
+              "question": "Températures 5 °C et 17 °C : étendue ?",
+              "type": "single_choice",
+              "options": ["10", "11", "12", "22"],
+              "correctAnswers": [2],
+              "explanation": "17−5 = 12 °C."
+            },
+            {
+              "id": "q8",
+              "question": "Une seule mesure 9 cm : étendue ?",
+              "type": "single_choice",
+              "options": ["0", "1", "9", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Une valeur unique a une étendue nulle."
+            },
+            {
+              "id": "q9",
+              "question": "1,5 ; 2 ; 4,5 : étendue ?",
+              "type": "single_choice",
+              "options": ["2", "2,5", "3", "4,5"],
+              "correctAnswers": [2],
+              "explanation": "4,5−1,5 = 3."
+            },
+            {
+              "id": "q10",
+              "question": "Étendue 7 et minimum 3 : maximum ?",
+              "type": "single_choice",
+              "options": ["4", "7", "10", "11"],
+              "correctAnswers": [2],
+              "explanation": "3+7 = 10."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lire moyenne et étendue",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels indicateurs décrivent la dispersion ?",
+              "type": "multiple_choice",
+              "options": [
+                "L'étendue",
+                "L'écart max−min",
+                "La moyenne seule",
+                "La somme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'étendue mesure la dispersion, pas la moyenne."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne 15, étendue 6, min 12 : max ?",
+              "type": "single_choice",
+              "options": ["15", "17", "18", "21"],
+              "correctAnswers": [2],
+              "explanation": "12+6 = 18."
+            },
+            {
+              "id": "q3",
+              "question": "Série très dispersée : étendue probablement…",
+              "type": "single_choice",
+              "options": ["Nulle", "Faible", "Grande", "Égale à la moyenne"],
+              "correctAnswers": [2],
+              "explanation": "Plus l'étendue est grande, plus les valeurs sont éloignées."
+            },
+            {
+              "id": "q4",
+              "question": "4, 4, 4, 4 : moyenne et étendue ?",
+              "type": "single_choice",
+              "options": [
+                "Moyenne 4, étendue 0",
+                "Moyenne 0, étendue 4",
+                "Moyenne 16, étendue 0",
+                "Moyenne 4, étendue 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série constante : moyenne 4, étendue 0."
+            },
+            {
+              "id": "q5",
+              "question": "Étendue 3, maximum 11 : minimum ?",
+              "type": "single_choice",
+              "options": ["3", "7", "8", "11"],
+              "correctAnswers": [2],
+              "explanation": "11 − 3 = 8."
+            },
+            {
+              "id": "q6",
+              "question": "Deux séries même moyenne 10 ; A étendue 2, B étendue 8. La plus homogène ?",
+              "type": "single_choice",
+              "options": ["A", "B", "Identiques", "On ne sait pas"],
+              "correctAnswers": [0],
+              "explanation": "Petite étendue = valeurs plus regroupées."
+            },
+            {
+              "id": "q7",
+              "question": "Points 2, 5, 8, 11, 14 : moyenne ?",
+              "type": "single_choice",
+              "options": ["6", "7", "8", "40"],
+              "correctAnswers": [2],
+              "explanation": "40÷5 = 8."
+            },
+            {
+              "id": "q8",
+              "question": "Même série : étendue ?",
+              "type": "single_choice",
+              "options": ["10", "11", "12", "14"],
+              "correctAnswers": [2],
+              "explanation": "14−2 = 12."
+            },
+            {
+              "id": "q9",
+              "question": "Ajouter 2 à chaque valeur : la moyenne…",
+              "type": "single_choice",
+              "options": [
+                "Diminue de 2",
+                "Augmente de 2",
+                "Ne change pas",
+                "Double"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Translater toute la série translate la moyenne de la même quantité."
+            },
+            {
+              "id": "q10",
+              "question": "Ajouter 2 à chaque valeur : l'étendue…",
+              "type": "single_choice",
+              "options": [
+                "Augmente de 2",
+                "Diminue de 2",
+                "Ne change pas",
+                "Double"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Max et min augmentent pareil, la différence reste identique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Problèmes de moyenne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour retrouver une note manquante avec la moyenne, quelles étapes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Moyenne × nombre de notes",
+                "Soustraire la somme connue",
+                "Multiplier la moyenne par l'effectif total",
+                "Prendre le max"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Somme totale = moyenne × effectif, puis on isole la valeur inconnue."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne de 5 notes = 12. Somme totale ?",
+              "type": "single_choice",
+              "options": ["17", "50", "60", "72"],
+              "correctAnswers": [2],
+              "explanation": "12×5 = 60."
+            },
+            {
+              "id": "q3",
+              "question": "4 notes : 10, 11, 13. Moyenne des 4 = 12. La 4e note ?",
+              "type": "single_choice",
+              "options": ["12", "13", "14", "15"],
+              "correctAnswers": [2],
+              "explanation": "Somme 48, connue 34, il manque 14."
+            },
+            {
+              "id": "q4",
+              "question": "Luc a 8 et 12 ; il veut moyenne 11. Prochaine note ?",
+              "type": "single_choice",
+              "options": ["11", "12", "13", "14"],
+              "correctAnswers": [2],
+              "explanation": "Trois notes de somme 33 : 33−20 = 13."
+            },
+            {
+              "id": "q5",
+              "question": "Moyenne sur 3 jours : 6, 9, 15 km. Total parcouru ?",
+              "type": "single_choice",
+              "options": ["15 km", "20 km", "30 km", "45 km"],
+              "correctAnswers": [2],
+              "explanation": "6+9+15 = 30 km (ou 10×3)."
+            },
+            {
+              "id": "q6",
+              "question": "Classe : moyenne 13 sur 20 élèves. Points totaux ?",
+              "type": "single_choice",
+              "options": ["33", "130", "260", "300"],
+              "correctAnswers": [2],
+              "explanation": "13×20 = 260 points."
+            },
+            {
+              "id": "q7",
+              "question": "Moyenne 9 sur 4 tests ; trois résultats 8, 9, 10. Le 4e ?",
+              "type": "single_choice",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [1],
+              "explanation": "Somme 36, connue 27, reste 9."
+            },
+            {
+              "id": "q8",
+              "question": "Deux groupes : 10 élèves moyenne 11, 10 élèves moyenne 9. Moyenne globale 20 élèves ?",
+              "type": "single_choice",
+              "options": ["9", "10", "11", "20"],
+              "correctAnswers": [1],
+              "explanation": "(110+90)÷20 = 10."
+            },
+            {
+              "id": "q9",
+              "question": "Panier : pommes 1,20 € (3 kg), poires 2 € (2 kg). Prix moyen au kg ?",
+              "type": "single_choice",
+              "options": ["1,52 €", "1,56 €", "1,60 €", "2 €"],
+              "correctAnswers": [0],
+              "explanation": "(1,2×3+2×2)÷5 = 7,6÷5 = 1,52 €."
+            },
+            {
+              "id": "q10",
+              "question": "Moyenne de temps 12 min, 15 min, 18 min pour 3 trajets ?",
+              "type": "single_choice",
+              "options": ["14 min", "15 min", "16 min", "45 min"],
+              "correctAnswers": [1],
+              "explanation": "45÷3 = 15 min."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Séries et tableaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un tableau valeur/effectif, que représente l'effectif ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nombre de fois qu'une valeur apparaît",
+                "Effectif d'une modalité",
+                "La moyenne",
+                "L'étendue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'effectif indique combien de fois chaque valeur a été observée."
+            },
+            {
+              "id": "q2",
+              "question": "Valeurs 1 à 5, effectifs 2,3,5,3,2. Effectif total ?",
+              "type": "single_choice",
+              "options": ["5", "10", "15", "20"],
+              "correctAnswers": [2],
+              "explanation": "2+3+5+3+2 = 15."
+            },
+            {
+              "id": "q3",
+              "question": "Même tableau : somme des valeurs (avec répétitions) ?",
+              "type": "single_choice",
+              "options": ["15", "45", "50", "75"],
+              "correctAnswers": [1],
+              "explanation": "2×1+3×2+5×3+3×4+2×5 = 45."
+            },
+            {
+              "id": "q4",
+              "question": "Même tableau : moyenne ?",
+              "type": "single_choice",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1],
+              "explanation": "45÷15 = 3."
+            },
+            {
+              "id": "q5",
+              "question": "Même tableau : étendue ?",
+              "type": "single_choice",
+              "options": ["3", "4", "5", "15"],
+              "correctAnswers": [1],
+              "explanation": "5−1 = 4."
+            },
+            {
+              "id": "q6",
+              "question": "Effectif 0 pour une valeur signifie…",
+              "type": "single_choice",
+              "options": [
+                "Valeur impossible",
+                "Aucune observation de cette valeur",
+                "Moyenne nulle",
+                "Erreur de tableau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Effectif nul : la valeur n'a pas été observée."
+            },
+            {
+              "id": "q7",
+              "question": "Série 6, 6, 8, 10, 10 : mode (valeur la plus fréquente) ?",
+              "type": "single_choice",
+              "options": ["6", "8", "6 et 10", "10"],
+              "correctAnswers": [2],
+              "explanation": "6 et 10 apparaissent deux fois chacun."
+            },
+            {
+              "id": "q8",
+              "question": "Moyenne de 6, 6, 8, 10, 10 ?",
+              "type": "single_choice",
+              "options": ["7", "8", "9", "40"],
+              "correctAnswers": [1],
+              "explanation": "40÷5 = 8."
+            },
+            {
+              "id": "q9",
+              "question": "Données regroupées en classes : la moyenne exacte nécessite…",
+              "type": "single_choice",
+              "options": [
+                "Seulement les effectifs",
+                "Les valeurs individuelles ou centres de classes",
+                "Uniquement l'étendue",
+                "Le mode"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans valeurs détaillées, on approche avec les centres de classes."
+            },
+            {
+              "id": "q10",
+              "question": "Classe [10;12[ centre 11, effectif 4. Contribution à la somme ?",
+              "type": "single_choice",
+              "options": ["11", "15", "44", "48"],
+              "correctAnswers": [2],
+              "explanation": "11×4 = 44."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Interpréter une moyenne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La moyenne d'une série peut être…",
+              "type": "multiple_choice",
+              "options": [
+                "Entre le min et le max",
+                "Égale à une valeur observée",
+                "Toujours entière",
+                "Toujours égale au mode"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La moyenne est dans l'intervalle [min,max] et peut coïncider avec une donnée."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne d'âge 12,5 ans dans une classe : interprétation ?",
+              "type": "single_choice",
+              "options": [
+                "Tous ont 12,5 ans",
+                "Valeur équilibrée du groupe",
+                "Plus grand âge",
+                "Effectif 12,5"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La moyenne résume le niveau global, pas l'âge de chacun."
+            },
+            {
+              "id": "q3",
+              "question": "Moyenne de notes 16 avec max 20 : série plutôt…",
+              "type": "single_choice",
+              "options": ["Faible", "Correcte", "Élevée", "Nulle"],
+              "correctAnswers": [2],
+              "explanation": "16/20 est un bon niveau moyen."
+            },
+            {
+              "id": "q4",
+              "question": "Deux villes : même température moyenne annuelle mais étendues différentes…",
+              "type": "single_choice",
+              "options": [
+                "Même climat jour par jour",
+                "Une peut avoir des écarts saisonniers plus forts",
+                "Impossible",
+                "Moyennes fausses"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même moyenne ne signifie pas même variabilité."
+            },
+            {
+              "id": "q5",
+              "question": "Moyenne de 1, 2, 100 : pourquoi prudence ?",
+              "type": "single_choice",
+              "options": [
+                "Moyenne trop petite",
+                "Valeur extrême tire la moyenne",
+                "Étendue nulle",
+                "Effectif incorrect"
+              ],
+              "correctAnswers": [1],
+              "explanation": "100 éloigne fortement la moyenne des autres valeurs."
+            },
+            {
+              "id": "q6",
+              "question": "Moyenne de salaires vs médiane : la moyenne est sensible…",
+              "type": "single_choice",
+              "options": [
+                "Aux valeurs extrêmes",
+                "Uniquement au min",
+                "Au mode seulement",
+                "À rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les très grandes valeurs augmentent la moyenne."
+            },
+            {
+              "id": "q7",
+              "question": "Sport : temps moyen 25 s sur 8 coureurs. Total des temps ?",
+              "type": "single_choice",
+              "options": ["25 s", "100 s", "200 s", "250 s"],
+              "correctAnswers": [2],
+              "explanation": "25×8 = 200 s."
+            },
+            {
+              "id": "q8",
+              "question": "Moyenne 4,5 sur des demi-points possibles : possible ?",
+              "type": "single_choice",
+              "options": [
+                "Non, jamais",
+                "Oui",
+                "Seulement avec effectif pair",
+                "Seulement entier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La moyenne peut ne pas être une valeur du jeu de données."
+            },
+            {
+              "id": "q9",
+              "question": "Comparer deux élèves : 14,12,16 vs 15,15,15. Qui a la meilleure moyenne ?",
+              "type": "single_choice",
+              "options": ["Premier", "Second", "Égalité", "Indéterminé"],
+              "correctAnswers": [1],
+              "explanation": "14+12+16=42, moyenne 14 ; second a 15."
+            },
+            {
+              "id": "q10",
+              "question": "Moyenne de consommation d'eau par jour sur une semaine sert à…",
+              "type": "single_choice",
+              "options": [
+                "Connaître le jour le plus sec",
+                "Estimer la consommation typique",
+                "Trouver le max",
+                "Calculer l'étendue météo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La moyenne donne un ordre de grandeur habituel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Étendue et comparaison",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comparer deux séries avec même moyenne : quel indicateur complète l'analyse ?",
+              "type": "multiple_choice",
+              "options": [
+                "L'étendue",
+                "Le max et le min",
+                "La couleur du graphique",
+                "Le titre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étendue et extremums décrivent la dispersion."
+            },
+            {
+              "id": "q2",
+              "question": "Série A : 9,10,11. Série B : 5,10,15. Mêmes moyennes ?",
+              "type": "single_choice",
+              "options": ["Non", "Oui, 10", "Oui, 11", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Les deux sommes valent 30 pour 3 valeurs."
+            },
+            {
+              "id": "q3",
+              "question": "Étendue de A ?",
+              "type": "single_choice",
+              "options": ["1", "2", "3", "10"],
+              "correctAnswers": [1],
+              "explanation": "11−9 = 2."
+            },
+            {
+              "id": "q4",
+              "question": "Étendue de B ?",
+              "type": "single_choice",
+              "options": ["5", "8", "10", "15"],
+              "correctAnswers": [2],
+              "explanation": "15−5 = 10."
+            },
+            {
+              "id": "q5",
+              "question": "Série la plus régulière ?",
+              "type": "single_choice",
+              "options": ["A", "B", "Égales", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "A a la plus petite étendue."
+            },
+            {
+              "id": "q6",
+              "question": "Max 25, min 10 : étendue ?",
+              "type": "single_choice",
+              "options": ["10", "15", "25", "35"],
+              "correctAnswers": [1],
+              "explanation": "25−10 = 15."
+            },
+            {
+              "id": "q7",
+              "question": "Étendue 0 implique…",
+              "type": "single_choice",
+              "options": [
+                "Série vide",
+                "Toutes les valeurs égales",
+                "Moyenne nulle",
+                "Effectif 0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pas d'écart sans valeurs différentes."
+            },
+            {
+              "id": "q8",
+              "question": "Doubler chaque valeur : l'étendue…",
+              "type": "single_choice",
+              "options": [
+                "Reste identique",
+                "Double",
+                "Divise par 2",
+                "Devient 0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "2×max−2×min = 2×(max−min)."
+            },
+            {
+              "id": "q9",
+              "question": "Moyenne 20, étendue 10 : min possible entier si max entier ?",
+              "type": "single_choice",
+              "options": ["10", "15", "20", "25"],
+              "correctAnswers": [1],
+              "explanation": "Si max−min=10, plusieurs couples ; min 15 avec max 25 est cohérent."
+            },
+            {
+              "id": "q10",
+              "question": "Graphique en bâtons : étendue se lit avec…",
+              "type": "single_choice",
+              "options": [
+                "Le bâton le plus bas et le plus haut",
+                "La somme des hauteurs",
+                "L'effectif",
+                "L'axe des ordonnées seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extremums visuels des bâtons."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Moyennes décimales",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une moyenne peut être un nombre décimal quand…",
+              "type": "multiple_choice",
+              "options": [
+                "La somme n'est pas divisible par l'effectif",
+                "Les données sont entières",
+                "L'étendue est paire",
+                "Le mode est unique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Des entiers peuvent produire une moyenne non entière."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne de 2,5 et 3,5 ?",
+              "type": "single_choice",
+              "options": ["2,5", "3", "3,5", "6"],
+              "correctAnswers": [1],
+              "explanation": "6÷2 = 3."
+            },
+            {
+              "id": "q3",
+              "question": "1,2 ; 1,4 ; 1,6 : moyenne ?",
+              "type": "single_choice",
+              "options": ["1,3", "1,4", "1,5", "4,2"],
+              "correctAnswers": [1],
+              "explanation": "4,2÷3 = 1,4."
+            },
+            {
+              "id": "q4",
+              "question": "Arrondir une moyenne 12,666… au dixième ?",
+              "type": "single_choice",
+              "options": ["12,6", "12,7", "13", "12,66"],
+              "correctAnswers": [1],
+              "explanation": "Le centième est ≥5, on monte à 12,7."
+            },
+            {
+              "id": "q5",
+              "question": "Notes 9,5 ; 10 ; 10,5 : moyenne ?",
+              "type": "single_choice",
+              "options": ["9,5", "10", "10,5", "30"],
+              "correctAnswers": [1],
+              "explanation": "30÷3 = 10."
+            },
+            {
+              "id": "q6",
+              "question": "Masse moyenne 0,75 kg pour 4 objets identiques : masse d'un objet ?",
+              "type": "single_choice",
+              "options": ["0,75 kg", "1,5 kg", "3 kg", "4 kg"],
+              "correctAnswers": [0],
+              "explanation": "Objets identiques : chaque masse vaut la moyenne."
+            },
+            {
+              "id": "q7",
+              "question": "Moyenne de 0,1 ; 0,2 ; 0,3 ; 0,4 ?",
+              "type": "single_choice",
+              "options": ["0,2", "0,25", "0,3", "1"],
+              "correctAnswers": [1],
+              "explanation": "1÷4 = 0,25."
+            },
+            {
+              "id": "q8",
+              "question": "3,33 ; 3,33 ; 3,34 : moyenne (approx.) ?",
+              "type": "single_choice",
+              "options": ["3,33", "3,333", "3,34", "10"],
+              "correctAnswers": [1],
+              "explanation": "Somme 10, moyenne 10/3 ≈ 3,333."
+            },
+            {
+              "id": "q9",
+              "question": "Comparer 12,4 et 12,38 : le plus grand ?",
+              "type": "single_choice",
+              "options": ["12,38", "12,4", "Égaux", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "12,4 = 12,40 > 12,38."
+            },
+            {
+              "id": "q10",
+              "question": "Moyenne 2,5 sur 6 valeurs : somme totale ?",
+              "type": "single_choice",
+              "options": ["8,5", "12,5", "15", "16"],
+              "correctAnswers": [2],
+              "explanation": "2,5×6 = 15."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse moyenne et étendue",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels calculs sont corrects pour 7, 9, 13 ?",
+              "type": "multiple_choice",
+              "options": [
+                "Moyenne 29÷3",
+                "Étendue 6",
+                "Moyenne 10",
+                "Étendue 13−7"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Moyenne 29/3 ≈ 9,67 ; étendue 6."
+            },
+            {
+              "id": "q2",
+              "question": "Moyenne de 7, 9, 13 (fraction exacte simplifiée) ?",
+              "type": "single_choice",
+              "options": ["9", "29/3", "10", "6"],
+              "correctAnswers": [1],
+              "explanation": "29÷3 = 29/3."
+            },
+            {
+              "id": "q3",
+              "question": "Étendue de 7, 9, 13 ?",
+              "type": "single_choice",
+              "options": ["2", "4", "6", "9"],
+              "correctAnswers": [2],
+              "explanation": "13−7 = 6."
+            },
+            {
+              "id": "q4",
+              "question": "Série homogène : étendue typique…",
+              "type": "single_choice",
+              "options": [
+                "Très grande",
+                "Petite",
+                "Toujours 0",
+                "Égale à la moyenne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Homogène signifie faible dispersion."
+            },
+            {
+              "id": "q5",
+              "question": "Effectif 1 : moyenne = ?",
+              "type": "single_choice",
+              "options": ["0", "Cette unique valeur", "1", "Indéfinie"],
+              "correctAnswers": [1],
+              "explanation": "Une seule observation est sa propre moyenne."
+            },
+            {
+              "id": "q6",
+              "question": "Somme 100, effectif 8 : moyenne ?",
+              "type": "single_choice",
+              "options": ["8", "12", "12,5", "100"],
+              "correctAnswers": [2],
+              "explanation": "100÷8 = 12,5."
+            },
+            {
+              "id": "q7",
+              "question": "Min 4, max 19 : étendue ?",
+              "type": "single_choice",
+              "options": ["14", "15", "16", "23"],
+              "correctAnswers": [1],
+              "explanation": "19−4 = 15."
+            },
+            {
+              "id": "q8",
+              "question": "Moyenne et étendue suffisent-ils à reconstruire toute série ?",
+              "type": "single_choice",
+              "options": [
+                "Toujours oui",
+                "Non, plusieurs séries possibles",
+                "Seulement si effectif 2",
+                "Seulement entiers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Différentes répartitions peuvent partager moyenne et étendue."
+            },
+            {
+              "id": "q9",
+              "question": "Quel indicateur résume le centre ?",
+              "type": "single_choice",
+              "options": ["Étendue", "Moyenne", "Maximum", "Effectif"],
+              "correctAnswers": [1],
+              "explanation": "La moyenne est un indicateur de position centrale."
+            },
+            {
+              "id": "q10",
+              "question": "Quel indicateur mesure l'amplitude ?",
+              "type": "single_choice",
+              "options": ["Moyenne", "Mode", "Étendue", "Somme"],
+              "correctAnswers": [2],
+              "explanation": "L'étendue quantifie l'écart entre extremums."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expériences aléatoires",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vocabulaire du hasard",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans une expérience aléatoire, quels termes désignent les résultats possibles ?",
+              "type": "multiple_choice",
+              "options": [
+                "Issues",
+                "Événements élémentaires",
+                "Certitudes",
+                "Moyennes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque résultat élémentaire est une issue."
+            },
+            {
+              "id": "q2",
+              "question": "Lancer un dé à 6 faces : nombre d'issues ?",
+              "type": "single_choice",
+              "options": ["1", "3", "6", "36"],
+              "correctAnswers": [2],
+              "explanation": "Six faces, six issues possibles."
+            },
+            {
+              "id": "q3",
+              "question": "Pile ou face avec une pièce équilibrée : issues ?",
+              "type": "single_choice",
+              "options": ["1", "2", "3", "Infini"],
+              "correctAnswers": [1],
+              "explanation": "Deux côtés distincts."
+            },
+            {
+              "id": "q4",
+              "question": "Tirer une boule rouge ou bleue dans une urne à deux couleurs : issues ?",
+              "type": "single_choice",
+              "options": ["1", "2", "4", "Dépend des quantités"],
+              "correctAnswers": [1],
+              "explanation": "Deux couleurs possibles au tirage."
+            },
+            {
+              "id": "q5",
+              "question": "Une expérience est aléatoire si…",
+              "type": "single_choice",
+              "options": [
+                "Le résultat est prévisible",
+                "Plusieurs issues possibles avant l'expérience",
+                "Il n'y a qu'une issue",
+                "La moyenne est connue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'incertitude avant le résultat caractérise le hasard."
+            },
+            {
+              "id": "q6",
+              "question": "Univers d'une expérience désigne…",
+              "type": "single_choice",
+              "options": [
+                "Toutes les issues possibles",
+                "Seulement la issue gagnante",
+                "La probabilité 1",
+                "L'étendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'univers regroupe l'ensemble des issues."
+            },
+            {
+              "id": "q7",
+              "question": "Événement « obtenir un nombre pair » au dé : issues favorables ?",
+              "type": "single_choice",
+              "options": ["2,4,6 soit 3", "1,3,5", "6", "1"],
+              "correctAnswers": [0],
+              "explanation": "2, 4 et 6 sont pairs."
+            },
+            {
+              "id": "q8",
+              "question": "Événement certain lors d'un lancer de dé ?",
+              "type": "single_choice",
+              "options": [
+                "Obtenir 7",
+                "Obtenir entre 1 et 6",
+                "Obtenir pair et impair",
+                "Obtenir 0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Toute face est entre 1 et 6."
+            },
+            {
+              "id": "q9",
+              "question": "Événement impossible au dé ?",
+              "type": "single_choice",
+              "options": [
+                "Obtenir 3",
+                "Obtenir 8",
+                "Obtenir impair",
+                "Obtenir ≤6"
+              ],
+              "correctAnswers": [1],
+              "explanation": "8 n'est pas une face du dé."
+            },
+            {
+              "id": "q10",
+              "question": "Noter P(A) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Périmètre de A",
+                "Probabilité de l'événement A",
+                "Produit des issues",
+                "Plus grande issue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "P(A) est la probabilité de A."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Probabilité et équiprobabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Si les issues sont équiprobables, P(une issue) vaut…",
+              "type": "multiple_choice",
+              "options": [
+                "1/n",
+                "1 divisé par le nombre d'issues",
+                "Toujours 1/2",
+                "Somme des effectifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque issue a la même chance 1/n."
+            },
+            {
+              "id": "q2",
+              "question": "Dé équilibré : P(obtenir 4) ?",
+              "type": "single_choice",
+              "options": ["1/6", "1/4", "1/3", "4/6"],
+              "correctAnswers": [0],
+              "explanation": "Une face favorable sur six."
+            },
+            {
+              "id": "q3",
+              "question": "Pièce équilibrée : P(pile) ?",
+              "type": "single_choice",
+              "options": ["1/4", "1/3", "1/2", "1"],
+              "correctAnswers": [2],
+              "explanation": "Deux issues équiprobables."
+            },
+            {
+              "id": "q4",
+              "question": "Dé : P(nombre ≥5) ?",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "3/6", "5/6"],
+              "correctAnswers": [1],
+              "explanation": "Issues 5 et 6 : 2/6 = 1/3."
+            },
+            {
+              "id": "q5",
+              "question": "Somme des probabilités de toutes les issues ?",
+              "type": "single_choice",
+              "options": ["0", "1/2", "1", "6"],
+              "correctAnswers": [2],
+              "explanation": "Une certitude vaut probabilité 1."
+            },
+            {
+              "id": "q6",
+              "question": "P(impossible) = ?",
+              "type": "single_choice",
+              "options": ["0", "1/2", "1", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Un événement impossible a probabilité 0."
+            },
+            {
+              "id": "q7",
+              "question": "P(certain) = ?",
+              "type": "single_choice",
+              "options": ["0", "1/2", "1", "2"],
+              "correctAnswers": [2],
+              "explanation": "Il se réalise dans tous les cas."
+            },
+            {
+              "id": "q8",
+              "question": "Dé : P(pair) ?",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [2],
+              "explanation": "Trois faces paires sur six."
+            },
+            {
+              "id": "q9",
+              "question": "Roue 8 secteurs égaux numérotés 1 à 8 : P(3) ?",
+              "type": "single_choice",
+              "options": ["1/8", "3/8", "1/3", "3/24"],
+              "correctAnswers": [0],
+              "explanation": "Un secteur favorable sur huit."
+            },
+            {
+              "id": "q10",
+              "question": "Probabilité toujours entre…",
+              "type": "single_choice",
+              "options": ["−1 et 1", "0 et 1", "0 et 100", "1 et 6"],
+              "correctAnswers": [1],
+              "explanation": "Une probabilité appartient à [0;1]."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calculer une probabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formule équiprobable pour P(A) ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nombre d'issues favorables ÷ nombre d'issues",
+                "Favorables / total",
+                "Max − min",
+                "Moyenne des issues"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rapport de cas favorables sur cas possibles."
+            },
+            {
+              "id": "q2",
+              "question": "Urne : 3 rouges, 2 bleues, tirage une boule. P(rouge) ?",
+              "type": "single_choice",
+              "options": ["2/5", "3/5", "3/2", "1/3"],
+              "correctAnswers": [1],
+              "explanation": "3 rouges sur 5 boules."
+            },
+            {
+              "id": "q3",
+              "question": "Même urne : P(bleue) ?",
+              "type": "single_choice",
+              "options": ["2/5", "3/5", "2/3", "1/5"],
+              "correctAnswers": [0],
+              "explanation": "2 bleues sur 5."
+            },
+            {
+              "id": "q4",
+              "question": "Carte dans un jeu 32 : P(as) ?",
+              "type": "single_choice",
+              "options": ["1/32", "4/32", "8/32", "1/4"],
+              "correctAnswers": [1],
+              "explanation": "4 as dans 32 cartes."
+            },
+            {
+              "id": "q5",
+              "question": "P(cœur) dans un jeu 32 ?",
+              "type": "single_choice",
+              "options": ["4/32", "8/32", "1/32", "16/32"],
+              "correctAnswers": [1],
+              "explanation": "8 cœurs sur 32."
+            },
+            {
+              "id": "q6",
+              "question": "Dé : P(multiple de 3) ?",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1],
+              "explanation": "3 et 6 : deux issues."
+            },
+            {
+              "id": "q7",
+              "question": "Lettre tirée dans {A,B,C,D} : P(voyelle) si seul A est voyelle ?",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "3/4", "1"],
+              "correctAnswers": [0],
+              "explanation": "Une voyelle sur quatre lettres."
+            },
+            {
+              "id": "q8",
+              "question": "10 boules numérotées 1 à 10 : P(nombre >7) ?",
+              "type": "single_choice",
+              "options": ["2/10", "3/10", "4/10", "7/10"],
+              "correctAnswers": [1],
+              "explanation": "8, 9, 10 : trois cas."
+            },
+            {
+              "id": "q9",
+              "question": "P(A)=0,25 équivaut à la fraction ?",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "1/4", "1/5"],
+              "correctAnswers": [2],
+              "explanation": "0,25 = 1/4."
+            },
+            {
+              "id": "q10",
+              "question": "P(A)=3/8 en pourcentage ?",
+              "type": "single_choice",
+              "options": ["3,8 %", "37,5 %", "38 %", "75 %"],
+              "correctAnswers": [1],
+              "explanation": "3/8 = 0,375 = 37,5 %."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Événements contraires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Si A est « obtenir pair », le contraire est…",
+              "type": "multiple_choice",
+              "options": [
+                "Obtenir impair",
+                "Non pair au dé",
+                "Obtenir 7",
+                "Obtenir 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contraire regroupe les issues où A ne se réalise pas."
+            },
+            {
+              "id": "q2",
+              "question": "P(A)=0,3. P(contraire de A) ?",
+              "type": "single_choice",
+              "options": ["0,3", "0,5", "0,7", "1,3"],
+              "correctAnswers": [2],
+              "explanation": "1 − 0,3 = 0,7."
+            },
+            {
+              "id": "q3",
+              "question": "Dé : P(non 6) ?",
+              "type": "single_choice",
+              "options": ["1/6", "5/6", "6/6", "0"],
+              "correctAnswers": [1],
+              "explanation": "Cinq faces ne sont pas 6."
+            },
+            {
+              "id": "q4",
+              "question": "P(A)=2/5. P(contraire) ?",
+              "type": "single_choice",
+              "options": ["2/5", "3/5", "5/2", "1/5"],
+              "correctAnswers": [1],
+              "explanation": "1 − 2/5 = 3/5."
+            },
+            {
+              "id": "q5",
+              "question": "Pièce : P(non pile) = P(face) ?",
+              "type": "single_choice",
+              "options": ["Non", "Oui", "Toujours 0", "Toujours 1"],
+              "correctAnswers": [1],
+              "explanation": "Non pile signifie face."
+            },
+            {
+              "id": "q6",
+              "question": "P(contraire)=1 signifie P(A)= ?",
+              "type": "single_choice",
+              "options": ["1", "0", "1/2", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Contraire certain ⇒ A impossible."
+            },
+            {
+              "id": "q7",
+              "question": "P(contraire)=0 signifie…",
+              "type": "single_choice",
+              "options": [
+                "A impossible",
+                "A certain",
+                "A et contraire possibles",
+                "Univers vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le contraire impossible ⇒ A toujours vrai."
+            },
+            {
+              "id": "q8",
+              "question": "Urne sans vert : P(tirer vert) et P(non vert) ?",
+              "type": "single_choice",
+              "options": ["1 et 0", "0 et 1", "1/2 et 1/2", "0 et 0"],
+              "correctAnswers": [1],
+              "explanation": "Impossible de tirer vert ; non vert est certain."
+            },
+            {
+              "id": "q9",
+              "question": "A et son contraire peuvent-ils arriver ensemble ?",
+              "type": "single_choice",
+              "options": [
+                "Oui toujours",
+                "Non, jamais",
+                "Seulement au dé",
+                "Si P=1/2"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils sont incompatibles."
+            },
+            {
+              "id": "q10",
+              "question": "P(A)+P(contraire)= ?",
+              "type": "single_choice",
+              "options": ["0", "1/2", "1", "2"],
+              "correctAnswers": [2],
+              "explanation": "Les deux recouvrent tout l'univers sans chevauchement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Deux lancers et dénombrement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux lancers de pièce : quelles paires d'issues sont possibles ?",
+              "type": "multiple_choice",
+              "options": ["PP", "PF", "FP", "FF"],
+              "correctAnswers": [0, 1],
+              "explanation": "PP et PF font partie des quatre couples ordonnés possibles."
+            },
+            {
+              "id": "q2",
+              "question": "Deux pièces équilibrées : nombre d'issues équiprobables ?",
+              "type": "single_choice",
+              "options": ["2", "3", "4", "8"],
+              "correctAnswers": [2],
+              "explanation": "2×2 = 4 listes ordonnées."
+            },
+            {
+              "id": "q3",
+              "question": "P(deux piles) avec deux pièces ?",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "3/4", "1"],
+              "correctAnswers": [0],
+              "explanation": "Une issue PP sur quatre."
+            },
+            {
+              "id": "q4",
+              "question": "P(au moins un pile) ?",
+              "type": "single_choice",
+              "options": ["1/4", "2/4", "3/4", "1"],
+              "correctAnswers": [2],
+              "explanation": "Tout sauf FF : 3/4."
+            },
+            {
+              "id": "q5",
+              "question": "Deux dés : nombre d'issues ordonnées ?",
+              "type": "single_choice",
+              "options": ["6", "12", "36", "72"],
+              "correctAnswers": [2],
+              "explanation": "6×6 = 36 couples."
+            },
+            {
+              "id": "q6",
+              "question": "Deux dés : P(somme 7) ?",
+              "type": "single_choice",
+              "options": ["4/36", "5/36", "6/36", "7/36"],
+              "correctAnswers": [2],
+              "explanation": "Six couples donnent 7."
+            },
+            {
+              "id": "q7",
+              "question": "P(double 3,3) ?",
+              "type": "single_choice",
+              "options": ["1/36", "2/36", "3/36", "6/36"],
+              "correctAnswers": [0],
+              "explanation": "Un seul couple (3,3)."
+            },
+            {
+              "id": "q8",
+              "question": "P(somme paire) sur deux dés ?",
+              "type": "single_choice",
+              "options": ["1/2", "18/36", "17/36", "9/36"],
+              "correctAnswers": [1],
+              "explanation": "18 couples sur 36."
+            },
+            {
+              "id": "q9",
+              "question": "Arbre à deux étapes avec 3 choix puis 2 : nombre de chemins ?",
+              "type": "single_choice",
+              "options": ["5", "6", "8", "9"],
+              "correctAnswers": [1],
+              "explanation": "3×2 = 6."
+            },
+            {
+              "id": "q10",
+              "question": "Tirage lettre puis chiffre (4 lettres, 5 chiffres) : issues ?",
+              "type": "single_choice",
+              "options": ["9", "20", "25", "40"],
+              "correctAnswers": [1],
+              "explanation": "4×5 = 20 couples."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Fréquences et probabilités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur beaucoup de répétitions, la fréquence d'un événement…",
+              "type": "multiple_choice",
+              "options": [
+                "Se rapproche de sa probabilité",
+                "Oscille autour de la probabilité théorique",
+                "Devient toujours exactement P",
+                "Vaut toujours 1/2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La loi des grands nombres explique cette stabilisation approximative."
+            },
+            {
+              "id": "q2",
+              "question": "20 lancers de dé, 5 fois le 6 : fréquence de 6 ?",
+              "type": "single_choice",
+              "options": [
+                "5/20",
+                "1/4",
+                "Les deux réponses 5/20 et 1/4",
+                "6/20"
+              ],
+              "correctAnswers": [2],
+              "explanation": "5/20 = 1/4."
+            },
+            {
+              "id": "q3",
+              "question": "Fréquence 0,2 sur 50 essais : nombre de succès ?",
+              "type": "single_choice",
+              "options": ["5", "10", "20", "25"],
+              "correctAnswers": [1],
+              "explanation": "0,2×50 = 10."
+            },
+            {
+              "id": "q4",
+              "question": "100 pièces : 47 piles. Fréquence pile ?",
+              "type": "single_choice",
+              "options": ["0,47", "47", "0,53", "1/2 exact"],
+              "correctAnswers": [0],
+              "explanation": "47/100 = 0,47."
+            },
+            {
+              "id": "q5",
+              "question": "Probabilité théorique pile 0,5 ; 10 lancers peuvent donner…",
+              "type": "single_choice",
+              "options": [
+                "Exactement 5 piles obligatoirement",
+                "Un nombre de piles variable",
+                "Toujours 0 pile",
+                "Toujours 10 piles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Petits échantillons fluctuent."
+            },
+            {
+              "id": "q6",
+              "question": "Tableau d'effectifs : fréquence = ?",
+              "type": "single_choice",
+              "options": [
+                "Effectif × total",
+                "Effectif ÷ effectif total",
+                "Max − min",
+                "Moyenne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fréquence relative = effectif / total."
+            },
+            {
+              "id": "q7",
+              "question": "Somme des fréquences d'un tableau complet ?",
+              "type": "single_choice",
+              "options": ["0", "1/2", "1", "100"],
+              "correctAnswers": [2],
+              "explanation": "Toutes les catégories couvrent 100 %."
+            },
+            {
+              "id": "q8",
+              "question": "200 tirages, fréquence rouge 0,35 : combien de rouges ?",
+              "type": "single_choice",
+              "options": ["35", "70", "135", "200"],
+              "correctAnswers": [1],
+              "explanation": "0,35×200 = 70."
+            },
+            {
+              "id": "q9",
+              "question": "Simuler un dé avec un générateur 1–6 sert à…",
+              "type": "single_choice",
+              "options": [
+                "Calculer une moyenne",
+                "Observer des fréquences expérimentales",
+                "Trouver l'étendue",
+                "Prouver P=0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les simulations estiment les fréquences."
+            },
+            {
+              "id": "q10",
+              "question": "Fréquence 1/5 vaut en décimal ?",
+              "type": "single_choice",
+              "options": ["0,05", "0,2", "0,5", "1,5"],
+              "correctAnswers": [1],
+              "explanation": "1/5 = 0,2."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Modéliser une situation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour modéliser un tirage équitable, on suppose souvent…",
+              "type": "multiple_choice",
+              "options": [
+                "Issues équiprobables",
+                "Indépendance entre tirages avec remise",
+                "Toujours deux issues",
+                "Moyenne nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Équiprobabilité et conditions de tirage définissent le modèle."
+            },
+            {
+              "id": "q2",
+              "question": "Sac 5 bonbons goûts différents, un tirage : P(gout choisi) ?",
+              "type": "single_choice",
+              "options": ["1/5", "1/4", "5/5", "0"],
+              "correctAnswers": [0],
+              "explanation": "Un bonbon favorable sur cinq."
+            },
+            {
+              "id": "q3",
+              "question": "Roue truquée non étudiée : calcul exact de P ?",
+              "type": "single_choice",
+              "options": [
+                "Toujours 1/2",
+                "Impossible sans infos sur les secteurs",
+                "Toujours 0",
+                "1/n automatique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans équiprobabilité, il faut des données."
+            },
+            {
+              "id": "q4",
+              "question": "Météo annonce 30 % de pluie : interprétation ?",
+              "type": "single_choice",
+              "options": [
+                "Pluie 30 minutes",
+                "Pluie certaine",
+                "Modèle sur nombreux jours similaires",
+                "Impossible"
+              ],
+              "correctAnswers": [2],
+              "explanation": "C'est une probabilité sur des situations comparables."
+            },
+            {
+              "id": "q5",
+              "question": "Jeu de cartes : tirage une carte, remise, second tirage : issues totales ?",
+              "type": "single_choice",
+              "options": ["32", "64", "32×32", "1024"],
+              "correctAnswers": [2],
+              "explanation": "Avec remise, 32 possibilités à chaque étape."
+            },
+            {
+              "id": "q6",
+              "question": "Numéro gagnant parmi 1000 tickets numérotés 000–999 : P(gagner) ?",
+              "type": "single_choice",
+              "options": ["1/100", "1/1000", "1/999", "10/1000"],
+              "correctAnswers": [1],
+              "explanation": "Un ticket gagnant sur mille."
+            },
+            {
+              "id": "q7",
+              "question": "Équipe marque penalty : modèle 80 % réussite sur un tirage : P(rater) ?",
+              "type": "single_choice",
+              "options": ["0,8", "0,2", "0,5", "1,8"],
+              "correctAnswers": [1],
+              "explanation": "1 − 0,8 = 0,2."
+            },
+            {
+              "id": "q8",
+              "question": "Dé truqué sans liste des probabilités : on peut…",
+              "type": "single_choice",
+              "options": [
+                "Appliquer 1/6 à chaque face",
+                "Estimer par fréquences expérimentales",
+                "Affirmer P=1",
+                "Ignorer les données"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'expérience complète le modèle."
+            },
+            {
+              "id": "q9",
+              "question": "Choix aléatoire d'un élève dans 28 : P(être choisi) ?",
+              "type": "single_choice",
+              "options": ["1/28", "28", "1/2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Un élève sur vingt-huit."
+            },
+            {
+              "id": "q10",
+              "question": "Deux événements incompatibles ont intersection…",
+              "type": "single_choice",
+              "options": [
+                "Vide",
+                "Univers entier",
+                "Toujours 1/2",
+                "Deux issues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils ne peuvent pas se produire ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Probabilités et fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles écritures désignent la même probabilité que 1/2 ?",
+              "type": "multiple_choice",
+              "options": ["0,5", "50 %", "2/4", "1/3"],
+              "correctAnswers": [0, 1],
+              "explanation": "1/2 = 0,5 = 50 %."
+            },
+            {
+              "id": "q2",
+              "question": "3/8 + 5/8 = ?",
+              "type": "single_choice",
+              "options": ["8/16", "1", "8/8", "15/64"],
+              "correctAnswers": [1],
+              "explanation": "Même dénominateur : somme 8/8 = 1."
+            },
+            {
+              "id": "q3",
+              "question": "Réduire 6/36 ?",
+              "type": "single_choice",
+              "options": ["1/6", "1/4", "1/3", "2/9"],
+              "correctAnswers": [0],
+              "explanation": "6/36 = 1/6."
+            },
+            {
+              "id": "q4",
+              "question": "Comparer 2/5 et 1/2 : la plus grande ?",
+              "type": "single_choice",
+              "options": ["2/5", "1/2", "Égales", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "2/5 = 0,4 < 0,5."
+            },
+            {
+              "id": "q5",
+              "question": "P(A)=1/3, P(B)=1/3, A et B incompatibles et couvrent tout : manque-t-il un événement ?",
+              "type": "single_choice",
+              "options": [
+                "Non, somme 2/3",
+                "Oui, il reste 1/3",
+                "Somme déjà 1",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "2/3 < 1, il reste une part de l'univers."
+            },
+            {
+              "id": "q6",
+              "question": "Dé : P(≤2) ?",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1],
+              "explanation": "Issues 1 et 2."
+            },
+            {
+              "id": "q7",
+              "question": "0,125 comme fraction ?",
+              "type": "single_choice",
+              "options": ["1/4", "1/6", "1/8", "1/10"],
+              "correctAnswers": [2],
+              "explanation": "0,125 = 1/8."
+            },
+            {
+              "id": "q8",
+              "question": "75 % en fraction ?",
+              "type": "single_choice",
+              "options": ["3/4", "7/5", "75/100 réductible en 3/4", "1/75"],
+              "correctAnswers": [0],
+              "explanation": "75/100 = 3/4."
+            },
+            {
+              "id": "q9",
+              "question": "Bag 12 billes dont 4 vertes : P(verte) simplifiée ?",
+              "type": "single_choice",
+              "options": ["1/3", "1/4", "4/12", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "4/12 = 1/3."
+            },
+            {
+              "id": "q10",
+              "question": "Probabilité 1 en pourcentage ?",
+              "type": "single_choice",
+              "options": ["1 %", "10 %", "100 %", "1000 %"],
+              "correctAnswers": [2],
+              "explanation": "Certitude = 100 %."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Raisonner sur le hasard",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Après 6 pile d'affilée à la pièce, au 7e lancer…",
+              "type": "multiple_choice",
+              "options": [
+                "P(pile) reste 1/2 si pièce équilibrée",
+                "Les lancers passés ne changent pas la pièce",
+                "P(pile) devient 0",
+                "P(pile) devient 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaque lancer est indépendant avec une pièce honnête."
+            },
+            {
+              "id": "q2",
+              "question": "« Plus probable » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Probabilité plus grande",
+                "Certain",
+                "Impossible",
+                "Fréquence exacte connue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer des probabilités, pas des certitudes."
+            },
+            {
+              "id": "q3",
+              "question": "P(A)=0,9 et P(B)=0,1 : lequel est le plus probable ?",
+              "type": "single_choice",
+              "options": ["A", "B", "Égaux", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "0,9 > 0,1."
+            },
+            {
+              "id": "q4",
+              "question": "Lancer dé : événement le plus probable parmi {obtenir 1 ; obtenir ≤6 ; obtenir 7} ?",
+              "type": "single_choice",
+              "options": ["Obtenir 1", "Obtenir ≤6", "Obtenir 7", "Tous égaux"],
+              "correctAnswers": [1],
+              "explanation": "≤6 est certain, probabilité 1."
+            },
+            {
+              "id": "q5",
+              "question": "Deux dés, somme 2 vs somme 7 : la plus probable ?",
+              "type": "single_choice",
+              "options": ["Somme 2", "Somme 7", "Égales", "Somme 12"],
+              "correctAnswers": [1],
+              "explanation": "7 a six couples, 2 n'en a qu'un."
+            },
+            {
+              "id": "q6",
+              "question": "Échantillon 15 lancers : fréquence peut différer de 1/6 car…",
+              "type": "single_choice",
+              "options": [
+                "Calcul faux",
+                "Fluctuation d'échantillon",
+                "Dé obligatoirement truqué",
+                "Probabilité change"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Peu de répétitions ⇒ variation."
+            },
+            {
+              "id": "q7",
+              "question": "Jeu équitable : chaque joueur a…",
+              "type": "single_choice",
+              "options": [
+                "Même probabilité de gagner",
+                "Toujours probabilité 1",
+                "Probabilité 0",
+                "Issues différentes interdites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équité = chances égales de victoire."
+            },
+            {
+              "id": "q8",
+              "question": "Tirage sans remise dans urne 5 boules change…",
+              "type": "single_choice",
+              "options": [
+                "Rien",
+                "Les probabilités au 2e tirage",
+                "Uniquement l'étendue",
+                "La moyenne obligatoirement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les effectifs évoluent après un tirage."
+            },
+            {
+              "id": "q9",
+              "question": "Liste {1,2,3,4,5} tirage au hasard : P(nombre premier) ?",
+              "type": "single_choice",
+              "options": ["2/5", "3/5", "1/5", "5/5"],
+              "correctAnswers": [1],
+              "explanation": "2, 3, 5 sont premiers : trois sur cinq."
+            },
+            {
+              "id": "q10",
+              "question": "Probabilité 0 signifie événement…",
+              "type": "single_choice",
+              "options": [
+                "Certain",
+                "Impossible (dans le modèle)",
+                "Le plus rare mais possible",
+                "Fréquence 100 %"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Probabilité nulle = ne se produit pas dans le modèle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan expériences aléatoires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour calculer P(A) en équiprobabilité, il faut connaître…",
+              "type": "multiple_choice",
+              "options": [
+                "Le nombre total d'issues",
+                "Le nombre d'issues favorables à A",
+                "La moyenne des issues",
+                "L'étendue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le rapport favorables/possibles définit P(A)."
+            },
+            {
+              "id": "q2",
+              "question": "Dé : P(nombre strictement supérieur à 4) ?",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1],
+              "explanation": "5 et 6 : deux issues."
+            },
+            {
+              "id": "q3",
+              "question": "Pièce 3 fois : P(trois face) ?",
+              "type": "single_choice",
+              "options": ["1/8", "1/4", "3/8", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Un seul enchaînement FFF sur 8."
+            },
+            {
+              "id": "q4",
+              "question": "P(A)=0,45. P(contraire) ?",
+              "type": "single_choice",
+              "options": ["0,45", "0,55", "1,45", "0"],
+              "correctAnswers": [1],
+              "explanation": "1 − 0,45 = 0,55."
+            },
+            {
+              "id": "q5",
+              "question": "Urne 1 rouge, 1 bleue : P(même couleur deux tirages avec remise) ?",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "3/4", "1"],
+              "correctAnswers": [1],
+              "explanation": "RR ou BB : 1/4+1/4 = 1/2."
+            },
+            {
+              "id": "q6",
+              "question": "Fréquence 0,6 sur 250 essais : effectif ?",
+              "type": "single_choice",
+              "options": ["60", "150", "250", "600"],
+              "correctAnswers": [1],
+              "explanation": "0,6×250 = 150."
+            },
+            {
+              "id": "q7",
+              "question": "Somme de probabilités de issues d'un dé ?",
+              "type": "single_choice",
+              "options": ["1/6", "6/6", "0", "36"],
+              "correctAnswers": [1],
+              "explanation": "Six fractions 1/6 somment à 1."
+            },
+            {
+              "id": "q8",
+              "question": "Événement contraire de « tirer as » dans 52 cartes ?",
+              "type": "single_choice",
+              "options": [
+                "Tirer as",
+                "Ne pas tirer as",
+                "Tirer roi",
+                "Tirer cœur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contraire = pas d'as."
+            },
+            {
+              "id": "q9",
+              "question": "P(A)=1/5, P(B)=2/5, A et B disjoints : P(A ou B) ?",
+              "type": "single_choice",
+              "options": ["3/10", "3/5", "2/25", "1"],
+              "correctAnswers": [1],
+              "explanation": "Somme 1/5+2/5 = 3/5."
+            },
+            {
+              "id": "q10",
+              "question": "Une probabilité mesure…",
+              "type": "single_choice",
+              "options": [
+                "Une certitude absolue",
+                "Une chance de réalisation d'un événement",
+                "Une moyenne",
+                "Une étendue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La probabilité quantifie le hasard d'un événement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

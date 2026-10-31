@@ -64,6 +64,8 @@ const buildSchema = (tier?: string | null) =>
       .optional(),
     enabled: z.boolean().optional(),
     ghostMemoryEnabled: z.boolean().optional(),
+    pagesDefaultModel: z.string().max(200).nullable().optional(),
+    pagesDefaultPrompt: buildCustomInstructionsSchema(tier),
     reasoningLevel: z.enum(REASONING_LEVELS).optional(),
     // Préférences de recherche mAI Search. Les listes viennent de
     // `lib/search/sources.ts` — la même source que l'interface : impossible
@@ -124,6 +126,8 @@ export async function GET() {
       defaultTranslationLanguage: "EN",
       enabled: false,
       ghostMemoryEnabled: false,
+      pagesDefaultModel: null,
+      pagesDefaultPrompt: "",
       reasoningLevel: "medium",
       // Préférences de recherche mAI Search : les défauts du serveur, pour
       // que l'interface affiche une section cohérente même quand la table

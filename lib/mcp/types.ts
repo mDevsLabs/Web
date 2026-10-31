@@ -14,19 +14,43 @@ export type McpApprovalPolicy =
 
 export type McpActionType = "read" | "write" | "delete" | "execute" | "other";
 
-export type McpToolParameterProperty = {
-  type: string;
-  description?: string;
-  enum?: string[];
+/**
+ * Sous-ensemble de JSON Schema publié par un outil MCP.
+ * `type` peut manquer (anyOf, oneOf, $ref) ou être un tableau.
+ */
+export type McpJsonSchema = {
+  $defs?: Record<string, McpJsonSchema>;
+  $ref?: string;
+  additionalProperties?: boolean | McpJsonSchema;
+  allOf?: McpJsonSchema[];
+  anyOf?: McpJsonSchema[];
+  const?: unknown;
   default?: unknown;
+  definitions?: Record<string, McpJsonSchema>;
+  description?: string;
+  enum?: unknown[];
+  exclusiveMaximum?: boolean | number;
+  exclusiveMinimum?: boolean | number;
+  format?: string;
+  items?: McpJsonSchema | McpJsonSchema[];
+  maxItems?: number;
+  maxLength?: number;
+  maximum?: number;
+  minItems?: number;
+  minLength?: number;
+  minimum?: number;
+  multipleOf?: number;
+  oneOf?: McpJsonSchema[];
+  pattern?: string;
+  prefixItems?: McpJsonSchema[];
+  properties?: Record<string, McpJsonSchema>;
+  required?: string[];
+  type?: string | string[];
 };
 
-export type McpToolInputSchema = {
-  type: "object";
-  properties?: Record<string, McpToolParameterProperty>;
-  required?: string[];
-  additionalProperties?: boolean;
-};
+export type McpToolParameterProperty = McpJsonSchema;
+
+export type McpToolInputSchema = McpJsonSchema;
 
 export type McpToolDefinition = {
   name: string;

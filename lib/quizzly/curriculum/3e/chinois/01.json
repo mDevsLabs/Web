@@ -1,0 +1,2508 @@
+{
+  "id": "3e-chinois-01",
+  "year": "3e",
+  "subject": "chinois",
+  "title": "Découvrir le chinois",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Entrer au lycée : saluer le professeur",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules conviennent le matin devant un professeur au lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "老师好！ (lǎoshī hǎo !)",
+                "再见！ (zàijiàn !)",
+                "同学们好！ (tóngxuémen hǎo !)",
+                "您好！ (nín hǎo !)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "On salue un enseignant par 老师好 ou 您好, formel et poli."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dire « Je suis élève de troisième » avec 初三 ?",
+              "type": "single_choice",
+              "options": [
+                "我是初三学生。 (wǒ shì chūsān xuéshēng.)",
+                "我是三岁。 (wǒ shì sān suì.)",
+                "我初三老师。 (wǒ chūsān lǎoshī.)",
+                "初三是我。 (chūsān shì wǒ.)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "初三 désigne la classe de 3e ; 学生 signifie élève."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 你叫什么名字？ (nǐ jiào shénme míngzi ?)",
+              "type": "single_choice",
+              "options": [
+                "Comment tu t'appelles ?",
+                "Quel âge as-tu ?",
+                "D'où viens-tu ?",
+                "Quelle est ta classe ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "叫 + 名字 demande le nom."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse polie : « Je m'appelle Léa ».",
+              "type": "single_choice",
+              "options": [
+                "我叫 Léa。 (wǒ jiào Léa.)",
+                "我名字 Léa 吗？",
+                "叫 Léa 我。",
+                "Léa 是我叫。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure : 我叫 + prénom."
+            },
+            {
+              "id": "q5",
+              "question": "« J'ai quinze ans » se dit :",
+              "type": "single_choice",
+              "options": [
+                "我十五岁。 (wǒ shíwǔ suì.)",
+                "我十五。 (sans 岁, incorrect ici)",
+                "十五我岁。",
+                "岁十五我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge : 数字 + 岁."
+            },
+            {
+              "id": "q6",
+              "question": "Comment demander l'origine d'un camarade ?",
+              "type": "single_choice",
+              "options": [
+                "你是哪国人？ (nǐ shì nǎ guó rén ?)",
+                "你几岁？",
+                "你几点上课？",
+                "你会法语吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国人 = de quel pays."
+            },
+            {
+              "id": "q7",
+              "question": "« Je suis française » :",
+              "type": "single_choice",
+              "options": [
+                "我是法国人。 (wǒ shì Fǎguó rén.)",
+                "我是法国。",
+                "我法国是。",
+                "法国人是我国。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité : 国 + 人."
+            },
+            {
+              "id": "q8",
+              "question": "Sens de 很高兴认识你。 (hěn gāoxìng rènshi nǐ.)",
+              "type": "single_choice",
+              "options": [
+                "Ravi de te rencontrer.",
+                "Au revoir.",
+                "Bonne chance au lycée.",
+                "À demain en cours."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de présentation courante."
+            },
+            {
+              "id": "q9",
+              "question": "Où met-on 吗 pour une question oui/non ?",
+              "type": "single_choice",
+              "options": [
+                "Fin de phrase : 你是新生吗？",
+                "Au début : 吗你是新生？",
+                "Entre sujet et verbe seulement en écriture",
+                "Jamais au lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 transforme une phrase en question."
+            },
+            {
+              "id": "q10",
+              "question": "Traduction de 我来自里昂。 (wǒ láizì Lí'áng.)",
+              "type": "single_choice",
+              "options": [
+                "Je viens de Lyon.",
+                "J'habite à Lyon depuis toujours.",
+                "Lyon est ma nationalité.",
+                "Je parle lyonnais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "来自 + ville = provenance."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Se présenter en classe de 3e",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux réponses correctes à « 你好吗？ » (nǐ hǎo ma ?) :",
+              "type": "multiple_choice",
+              "options": [
+                "我很好，谢谢。 (wǒ hěn hǎo, xièxie.)",
+                "不太好，有点累。 (bú tài hǎo, yǒudiǎn lèi.)",
+                "再见！",
+                "我十五岁。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On répond à l'état ; les deux premières sont possibles."
+            },
+            {
+              "id": "q2",
+              "question": "« Notre professeur de chinois » :",
+              "type": "single_choice",
+              "options": [
+                "我们的中文老师 (wǒmen de Zhōngwén lǎoshī)",
+                "我们中文老师好",
+                "的我们的老师中文",
+                "中文老师我们"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 marque la possession : 我们的…"
+            },
+            {
+              "id": "q3",
+              "question": "Pinyin de 同学 (camarade de classe) :",
+              "type": "single_choice",
+              "options": ["tóngxué", "tōngxué", "tǒngxué", "tòngxué"],
+              "correctAnswers": [0],
+              "explanation": "Ton 2-2 sur tong xue."
+            },
+            {
+              "id": "q4",
+              "question": "Phrase pour « Je suis en 3e, filière générale » (简化) :",
+              "type": "single_choice",
+              "options": [
+                "我在初三普通班。 (wǒ zài chūsān pǔtōng bān.)",
+                "我是普通初三。",
+                "初三普通我在。",
+                "普通班初三岁。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + classe ; 班 = classe/groupe."
+            },
+            {
+              "id": "q5",
+              "question": "« Il s'appelle Marc » :",
+              "type": "single_choice",
+              "options": [
+                "他叫 Marc。 (tā jiào Marc.)",
+                "他名字 Marc 吗",
+                "Marc 叫他",
+                "他叫是 Marc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il/elle : 他/她 + 叫."
+            },
+            {
+              "id": "q6",
+              "question": "Question sur l'âge :",
+              "type": "single_choice",
+              "options": [
+                "你今年几岁？ (nǐ jīnnián jǐ suì ?)",
+                "你今年什么？",
+                "几是你岁？",
+                "岁几你？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今年 = cette année ; 几 = combien."
+            },
+            {
+              "id": "q7",
+              "question": "Caractère pour « merci » :",
+              "type": "single_choice",
+              "options": ["谢 (xiè)", "好 (hǎo)", "请 (qǐng)", "对 (duì)"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 = remercier."
+            },
+            {
+              "id": "q8",
+              "question": "« Pas de quoi » se dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "不客气。 (bú kèqi.)",
+                "不对。",
+                "不好。",
+                "没有谢。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse à 谢谢."
+            },
+            {
+              "id": "q9",
+              "question": "Sens de 请自我介绍。 (qǐng zìwǒ jièshào.)",
+              "type": "single_choice",
+              "options": [
+                "Présentez-vous, s'il vous plaît.",
+                "Asseyez-vous.",
+                "Ouvrez le livre.",
+                "Silence en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "自我介绍 = auto-présentation."
+            },
+            {
+              "id": "q10",
+              "question": "« Je prépare l'entrée au lycée » (语境 3e) :",
+              "type": "single_choice",
+              "options": [
+                "我在准备上高中。 (wǒ zài zhǔnbèi shàng gāozhōng.)",
+                "我准备三岁。",
+                "高中准备我岁。",
+                "上准备我在。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "准备 + verbe ; 高中 = lycée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'âge et la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases donnent un âge correct en chinois ?",
+              "type": "multiple_choice",
+              "options": [
+                "我十六岁。 (wǒ shíliù suì.)",
+                "我十六。 (wǒ shíliù.) — oral familier parfois",
+                "我岁十六。",
+                "岁我十六是。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avec 岁 c'est complet ; 我十六 peut passer à l'oral."
+            },
+            {
+              "id": "q2",
+              "question": "« Combien as-tu ? » pour l'âge :",
+              "type": "single_choice",
+              "options": [
+                "你多大？/ 你几岁？",
+                "你多名字？",
+                "你几班？",
+                "你多国？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "多大 et 几岁 demandent l'âge."
+            },
+            {
+              "id": "q3",
+              "question": "Classe « troisième année du collège » :",
+              "type": "single_choice",
+              "options": [
+                "初三 (chūsān)",
+                "三高 (gāozhōng)",
+                "小学三 (xiǎoxué)",
+                "大学三"
+              ],
+              "correctAnswers": [0],
+              "explanation": "初一二三 = collège."
+            },
+            {
+              "id": "q4",
+              "question": "« Nous sommes dans la même classe » :",
+              "type": "single_choice",
+              "options": [
+                "我们在同一个班。 (wǒmen zài tóng yī ge bān.)",
+                "我们同岁班。",
+                "同一个我们在。",
+                "班同我们一个。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同一个 = le/la même."
+            },
+            {
+              "id": "q5",
+              "question": "Nombre 十五 en pinyin :",
+              "type": "single_choice",
+              "options": [
+                "shíwǔ",
+                "shíwú",
+                "shíwù",
+                "shíwǔ — shíwǔ identique, bonne graphie : shíwǔ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 shí + 5 wǔ."
+            },
+            {
+              "id": "q6",
+              "question": "« Elle a quatorze ans » :",
+              "type": "single_choice",
+              "options": [
+                "她十四岁。 (tā shísì suì.)",
+                "他十四岁。",
+                "她十四。岁是",
+                "十四她岁。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "她 = elle."
+            },
+            {
+              "id": "q7",
+              "question": "Antonyme de 大 (grand) pour « plus grand » âge ?",
+              "type": "single_choice",
+              "options": [
+                "Plus âgé : 更大 ; question âge : 多大",
+                "小名字",
+                "少班",
+                "低同学"
+              ],
+              "correctAnswers": [0],
+              "explanation": "多大 = avoir quel âge (lit. combien grand)."
+            },
+            {
+              "id": "q8",
+              "question": "« Mon anniversaire est en mars » (intro) :",
+              "type": "single_choice",
+              "options": [
+                "我的生日在三月。 (wǒ de shēngrì zài sānyuè.)",
+                "我生日三月岁。",
+                "三月生日我班。",
+                "在生日我三月。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "生日 = anniversaire ; 在 + mois."
+            },
+            {
+              "id": "q9",
+              "question": "Caractère 岁 signifie :",
+              "type": "single_choice",
+              "options": ["Ans (âge)", "Classe", "Pays", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Classifier d'âge."
+            },
+            {
+              "id": "q10",
+              "question": "Répondre « J'ai un an de plus que toi » (simple) :",
+              "type": "single_choice",
+              "options": [
+                "我比你大一岁。 (wǒ bǐ nǐ dà yī suì.)",
+                "我你大岁。",
+                "比大我一你。",
+                "大一比你岁我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比…大…岁 = comparer l'âge."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Origine et nationalité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux nationalités bien formées :",
+              "type": "multiple_choice",
+              "options": [
+                "我是法国人。 (Fǎguó rén)",
+                "我是中国人。 (Zhōngguó rén)",
+                "我是法。",
+                "我是人中国。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pays + 人 = habitant."
+            },
+            {
+              "id": "q2",
+              "question": "« D'où viens-tu ? » (pays/ville) :",
+              "type": "single_choice",
+              "options": [
+                "你从哪里来？ (nǐ cóng nǎlǐ lái ?)",
+                "你从谁爱？",
+                "你哪班来？",
+                "你从几来？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从…来 = venir de."
+            },
+            {
+              "id": "q3",
+              "question": "France en chinois :",
+              "type": "single_choice",
+              "options": ["法国 (Fǎguó)", "法国国", "法中国", "国法"],
+              "correctAnswers": [0],
+              "explanation": "Standard : 法国."
+            },
+            {
+              "id": "q4",
+              "question": "« Je suis d'origine marocaine » :",
+              "type": "single_choice",
+              "options": [
+                "我是摩洛哥人。 (wǒ shì Móluògē rén.)",
+                "我是摩洛哥。",
+                "摩洛哥我是。",
+                "人摩洛哥我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même structure 国+人."
+            },
+            {
+              "id": "q5",
+              "question": "中国 signifie :",
+              "type": "single_choice",
+              "options": ["Chine", "Chinois (langue)", "Classe", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "Pays : 中国."
+            },
+            {
+              "id": "q6",
+              "question": "« Ma mère est espagnole » :",
+              "type": "single_choice",
+              "options": [
+                "我妈妈是西班牙人。 (wǒ māma shì Xībānyá rén.)",
+                "我妈妈西班牙。",
+                "妈妈我西人。",
+                "西班牙妈妈是我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 + 西班牙人."
+            },
+            {
+              "id": "q7",
+              "question": "Question : « Tu es de quelle ville ? »",
+              "type": "single_choice",
+              "options": [
+                "你是哪个城市的？ (nǐ shì nǎ ge chéngshì de ?)",
+                "你城市哪岁？",
+                "哪个你人？",
+                "城市你吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪个城市 = quelle ville."
+            },
+            {
+              "id": "q8",
+              "question": "巴黎 en chinois :",
+              "type": "single_choice",
+              "options": [
+                "巴黎 (Bālí)",
+                "里昂 (Lí'áng) seulement",
+                "北京",
+                "法国城"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transcription 巴黎."
+            },
+            {
+              "id": "q9",
+              "question": "« J'habite à Marseille » :",
+              "type": "single_choice",
+              "options": [
+                "我住在马赛。 (wǒ zhù zài Mǎsài.)",
+                "我马赛住岁。",
+                "住在马赛我班。",
+                "马赛是我住。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "住在 + lieu."
+            },
+            {
+              "id": "q10",
+              "question": "Langue : « Je parle un peu chinois » :",
+              "type": "single_choice",
+              "options": [
+                "我会一点儿中文。 (wǒ huì yìdiǎnr Zhōngwén.)",
+                "我中文是法国。",
+                "我会中文岁。",
+                "一点儿我会班。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会 = savoir (compétence) ; 一点儿 = un peu."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Parler du lycée et du collège",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases sur la scolarité correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "我在读初三。 (wǒ zài dú chūsān.)",
+                "明年上高中。 (míngnián shàng gāozhōng.)",
+                "我高中初三岁。",
+                "读我在班岁。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "读 = être scolarisé ; 上高中 = entrer au lycée."
+            },
+            {
+              "id": "q2",
+              "question": "高中 (gāozhōng) c'est :",
+              "type": "single_choice",
+              "options": [
+                "Le lycée",
+                "Le collège",
+                "La primaire",
+                "L'université"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire scolaire 3e."
+            },
+            {
+              "id": "q3",
+              "question": "« Mon établissement est grand » :",
+              "type": "single_choice",
+              "options": [
+                "我的学校很大。 (wǒ de xuéxiào hěn dà.)",
+                "我学校大吗岁。",
+                "大学校我的。",
+                "很大我学校班。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学校 = établissement scolaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Cours de chinois » :",
+              "type": "single_choice",
+              "options": [
+                "中文课 (Zhōngwén kè)",
+                "中文岁",
+                "课中文我",
+                "法中课"
+              ],
+              "correctAnswers": [0],
+              "explanation": "课 = cours/leçon."
+            },
+            {
+              "id": "q5",
+              "question": "« Après les vacances, je passe en seconde » (语境 FR→CN lycée) :",
+              "type": "single_choice",
+              "options": [
+                "开学后我上高一。 (kāixué hòu wǒ shàng gāo yī.)",
+                "假期我初三。",
+                "高一假期岁。",
+                "后开学我班。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "高一 = première année de lycée en Chine."
+            },
+            {
+              "id": "q6",
+              "question": "同学 signifie :",
+              "type": "single_choice",
+              "options": [
+                "Camarade de classe",
+                "Professeur",
+                "Parent",
+                "Étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同 = même ; 学 = étude."
+            },
+            {
+              "id": "q7",
+              "question": "« J'aime ma classe » :",
+              "type": "single_choice",
+              "options": [
+                "我喜欢我的班。 (wǒ xǐhuan wǒ de bān.)",
+                "我班喜欢岁。",
+                "喜欢班我的是。",
+                "我的班喜欢中。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢 = aimer (apprécier)."
+            },
+            {
+              "id": "q8",
+              "question": "开学 (kāixuě) :",
+              "type": "single_choice",
+              "options": [
+                "Rentrée scolaire",
+                "Fin d'année",
+                "Examen",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot clé rentrée."
+            },
+            {
+              "id": "q9",
+              "question": "« Quelle matière préfères-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "你最喜欢什么课？ (nǐ zuì xǐhuan shénme kè ?)",
+                "你课什么岁？",
+                "什么最喜欢你？",
+                "课最你什么？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最 = le plus ; 什么课 = quelle matière."
+            },
+            {
+              "id": "q10",
+              "question": "« Je suis nouveau au lycée » :",
+              "type": "single_choice",
+              "options": [
+                "我是高中新生。 (wǒ shì gāozhōng xīnshēng.)",
+                "我新生高中岁。",
+                "高中新我是。",
+                "生新我高中。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "新生 = nouvel élève."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Dire au revoir et remercier",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux formules de départ adaptées :",
+              "type": "multiple_choice",
+              "options": [
+                "再见！ (zàijiàn !)",
+                "明天见！ (míngtiān jiàn !)",
+                "老师好！ seul au départ",
+                "谢谢再见岁"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "再见 ou 明天见 au lycée."
+            },
+            {
+              "id": "q2",
+              "question": "« À demain » :",
+              "type": "single_choice",
+              "options": [
+                "明天见！ (míngtiān jiàn !)",
+                "今天见！",
+                "再见年！",
+                "见明！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天 = demain."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse à « 谢谢 » :",
+              "type": "single_choice",
+              "options": ["不客气。 (bú kèqi.)", "谢谢！", "再见！", "你好！"],
+              "correctAnswers": [0],
+              "explanation": "Politesse standard."
+            },
+            {
+              "id": "q4",
+              "question": "« Bonne continuation » (fin de cours) :",
+              "type": "single_choice",
+              "options": [
+                "下课了，再见！ (xiàkè le, zàijiàn !)",
+                "上课！",
+                "老师好！",
+                "我岁。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下课 = fin de cours."
+            },
+            {
+              "id": "q5",
+              "question": "请 (qǐng) devant un verbe :",
+              "type": "single_choice",
+              "options": ["S'il vous plaît", "Non", "Très", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "请 = veuillez."
+            },
+            {
+              "id": "q6",
+              "question": "« Merci professeur » :",
+              "type": "single_choice",
+              "options": [
+                "谢谢老师！ (xièxie lǎoshī !)",
+                "不老师谢。",
+                "老师岁谢。",
+                "谢不老师。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢谢 + titre."
+            },
+            {
+              "id": "q7",
+              "question": "晚上好 (wǎnshang hǎo) :",
+              "type": "single_choice",
+              "options": [
+                "Bonsoir",
+                "Bonjour",
+                "Bonne nuit au revoir",
+                "Bonne année"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut du soir."
+            },
+            {
+              "id": "q8",
+              "question": "« À bientôt » (approximation courante) :",
+              "type": "single_choice",
+              "options": [
+                "回头见！ (huítóu jiàn !)",
+                "不客气！",
+                "几岁见！",
+                "班见！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression orale fréquente."
+            },
+            {
+              "id": "q9",
+              "question": "对不起 (duìbuqǐ) :",
+              "type": "single_choice",
+              "options": ["Désolé / pardon", "Merci", "Bonjour", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Excuse."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à 对不起 :",
+              "type": "single_choice",
+              "options": [
+                "没关系。 (méi guānxi.)",
+                "谢谢。",
+                "再见。",
+                "不好。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ce n'est rien »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Demander des nouvelles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux questions sur l'état correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "你最近怎么样？ (nǐ zuìjìn zěnmeyàng ?)",
+                "你好吗？ (nǐ hǎo ma ?)",
+                "你几岁班？",
+                "怎么样你吗岁"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comment ça va / récemment."
+            },
+            {
+              "id": "q2",
+              "question": "« Ça va bien » :",
+              "type": "single_choice",
+              "options": [
+                "还不错。/ 挺好的。 (hái búcuò / tǐng hǎo de.)",
+                "不对。",
+                "没好。",
+                "见好。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponses positives modérées."
+            },
+            {
+              "id": "q3",
+              "question": "« Je suis un peu stressé pour le lycée » :",
+              "type": "single_choice",
+              "options": [
+                "我对上高中有点儿紧张。 (wǒ duì shàng gāozhōng yǒudiǎnr jǐnzhāng.)",
+                "我紧张高中岁。",
+                "有点儿我对班。",
+                "上高中紧张我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对…紧张 = stress vis-à-vis de."
+            },
+            {
+              "id": "q4",
+              "question": "怎么样 (zěnmeyàng) signifie :",
+              "type": "single_choice",
+              "options": ["Comment / comment c'est", "Combien", "Où", "Qui"],
+              "correctAnswers": [0],
+              "explanation": "Question ouverte sur qualité."
+            },
+            {
+              "id": "q5",
+              "question": "« Et toi ? » après une réponse :",
+              "type": "single_choice",
+              "options": ["你呢？ (nǐ ne ?)", "你吗？", "你岁？", "你班？"],
+              "correctAnswers": [0],
+              "explanation": "呢 reprend la question."
+            },
+            {
+              "id": "q6",
+              "question": "« Pas mal » (modeste) :",
+              "type": "single_choice",
+              "options": [
+                "还可以。 (hái kěyǐ.)",
+                "很好！ seul",
+                "不对。",
+                "没问。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还可以 = passable/correct."
+            },
+            {
+              "id": "q7",
+              "question": "最近 (zuìjìn) :",
+              "type": "single_choice",
+              "options": ["Récemment", "Demain", "Toujours", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps."
+            },
+            {
+              "id": "q8",
+              "question": "« Les cours de chinois vont bien » :",
+              "type": "single_choice",
+              "options": [
+                "中文课进行得不错。 (Zhōngwén kè jìnxíng de búcuò.)",
+                "中文课我岁。",
+                "进行中文不。",
+                "不错课进行。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "进行得 + adverbe."
+            },
+            {
+              "id": "q9",
+              "question": " Comment dire « Tu t'adaptes au lycée ? » ?",
+              "type": "single_choice",
+              "options": [
+                "你适应高中了吗？ (nǐ shìyìng gāozhōng le ma ?)",
+                "你高中岁了吗？",
+                "适应你吗高中？",
+                "了吗适应你？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了吗 = aspect passé + question."
+            },
+            {
+              "id": "q10",
+              "question": "« Oui, de mieux en mieux » :",
+              "type": "single_choice",
+              "options": [
+                "是的，越来越好。 (shì de, yuè lái yuè hǎo.)",
+                "是不好。",
+                "越来我岁。",
+                "好越来不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "越来越 = de plus en plus."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Présenter un camarade",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux présentations correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "这是我同学 Tom。 (zhè shì wǒ tóngxué Tom.)",
+                "他叫 Tom，来自加拿大。 (tā jiào Tom, láizì Jiānádà.)",
+                "这 Tom 岁是我。",
+                "叫这他同学不。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "这是… / 他叫…来自…"
+            },
+            {
+              "id": "q2",
+              "question": "« Voici ma amie » (elle) :",
+              "type": "single_choice",
+              "options": [
+                "这是我朋友 Anna。 (zhè shì wǒ péngyou Anna.)",
+                "这是我同学他。",
+                "这朋友我岁。",
+                "朋友这是我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朋友 = ami(e) ; contexte clarifie le genre."
+            },
+            {
+              "id": "q3",
+              "question": "这是 (zhè shì) :",
+              "type": "single_choice",
+              "options": ["Voici / c'est", "Au revoir", "Merci", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Présenter quelqu'un."
+            },
+            {
+              "id": "q4",
+              "question": "« Il est canadien » :",
+              "type": "single_choice",
+              "options": [
+                "他是加拿大人。 (tā shì Jiānádà rén.)",
+                "他是加拿大。",
+                "加拿大是他岁。",
+                "人加拿大他。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité avec 是."
+            },
+            {
+              "id": "q5",
+              "question": "« Nous sommes voisins de classe » :",
+              "type": "single_choice",
+              "options": [
+                "我们是同桌。 (wǒmen shì tóngzhuō.)",
+                "我们同桌岁。",
+                "是桌同我们。",
+                "同我们桌。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同桌 = partagent un bureau."
+            },
+            {
+              "id": "q6",
+              "question": "Introduire deux personnes : « Tom, 这是 Léa » :",
+              "type": "single_choice",
+              "options": [
+                "Tom，这是 Léa。 (Tom, zhè shì Léa.)",
+                "Tom Léa 这。",
+                "这是 Tom Léa 岁。",
+                "Léa Tom 叫这。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appeler puis 这是."
+            },
+            {
+              "id": "q7",
+              "question": "« Enchanté » (homme) :",
+              "type": "single_choice",
+              "options": [
+                "认识你很高兴。 (rènshi nǐ hěn gāoxìng.)",
+                "我认识你岁。",
+                "很高兴认。",
+                "你认识高兴。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même formule que 很高兴认识你."
+            },
+            {
+              "id": "q8",
+              "question": "她 (tā) vs 他 (tā) :",
+              "type": "single_choice",
+              "options": [
+                "Elle / il (oral même ton, écrit différent)",
+                "Ils / nous",
+                "Merci / bonjour",
+                "Classe / lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction écrite 3e."
+            },
+            {
+              "id": "q9",
+              "question": "« Elle aussi est en 3e » :",
+              "type": "single_choice",
+              "options": [
+                "她也是初三。 (tā yě shì chūsān.)",
+                "他也初三。",
+                "她初三岁。",
+                "也她初三是。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "也 = aussi ; 她 pour elle."
+            },
+            {
+              "id": "q10",
+              "question": "« Ils s'entendent bien » (camarades) :",
+              "type": "single_choice",
+              "options": [
+                "他们相处得很好。 (tāmen xiāngchǔ de hěn hǎo.)",
+                "他们好相处岁。",
+                "很相处他们。",
+                "得相处他们好。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "相处 = s'entendre (relation)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Où j'habite et mon quartier",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases sur le lieu de vie :",
+              "type": "multiple_choice",
+              "options": [
+                "我住在学校附近。 (wǒ zhù zài xuéxiào fùjìn.)",
+                "我家在这个城市。 (wǒ jiā zài zhè ge chéngshì.)",
+                "我住岁法国。",
+                "家我城不。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "住在… / 家在城市."
+            },
+            {
+              "id": "q2",
+              "question": "附近 (fùjìn) :",
+              "type": "single_choice",
+              "options": ["Aux alentours / près de", "Loin", "Dedans", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Près du lycée par ex."
+            },
+            {
+              "id": "q3",
+              "question": "« Quelle est ton adresse ? » (simple) :",
+              "type": "single_choice",
+              "options": [
+                "你住在哪里？ (nǐ zhù zài nǎlǐ ?)",
+                "你几岁哪里？",
+                "哪里你吗住？",
+                "住哪里你岁？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在哪里 = où."
+            },
+            {
+              "id": "q4",
+              "question": "家 (jiā) signifie souvent :",
+              "type": "single_choice",
+              "options": ["Foyer / chez moi", "École", "Pays", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "我家 = mon domicile."
+            },
+            {
+              "id": "q5",
+              "question": "« Je prends le bus pour le lycée » :",
+              "type": "single_choice",
+              "options": [
+                "我坐公共汽车去高中。 (wǒ zuò gōnggòng qìchē qù gāozhōng.)",
+                "我高中公共汽车岁。",
+                "去坐我 Bus。",
+                "公共汽车我去。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐 + transport ; 去 = aller vers."
+            },
+            {
+              "id": "q6",
+              "question": "城市 (chéngshì) :",
+              "type": "single_choice",
+              "options": ["Ville", "Village", "Classe", "Matière"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire lieu."
+            },
+            {
+              "id": "q7",
+              "question": "« Loin de chez moi » :",
+              "type": "single_choice",
+              "options": [
+                "离我家很远。 (lí wǒ jiā hěn yuǎn.)",
+                "我家很远离。",
+                "远很我离。",
+                "离远我很家。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "离…远 = être loin de."
+            },
+            {
+              "id": "q8",
+              "question": "« Près du collège » :",
+              "type": "single_choice",
+              "options": [
+                "离初中很近。 (lí chūzhōng hěn jìn.)",
+                "初中离岁。",
+                "很近离初中。",
+                "离近我很。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "近 = proche."
+            },
+            {
+              "id": "q9",
+              "question": "去 (qù) + lieu :",
+              "type": "single_choice",
+              "options": ["Aller à / vers", "Venir de", "Être", "Avoir"],
+              "correctAnswers": [0],
+              "explanation": "Verbe aller."
+            },
+            {
+              "id": "q10",
+              "question": "Présentation complète (choix le plus complet) :",
+              "type": "single_choice",
+              "options": [
+                "我叫 Léa，十五岁，法国人，住在里昂，读初三。",
+                "我叫 Léa 岁法国。",
+                "Léa 十五法国住。",
+                "读我 Léa 初三岁。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle de présentation 3e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : entretien de présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux éléments attendus dans une présentation 3e :",
+              "type": "multiple_choice",
+              "options": [
+                "Nom et âge (我叫… 我…岁)",
+                "Classe ou préparation lycée (初三 / 高中)",
+                "Uniquement 再见",
+                "Seulement des couleurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Profil scolaire + identité."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique :",
+              "type": "single_choice",
+              "options": [
+                "你好 → 我叫… → 我…岁 → 来自… → 读初三",
+                "再见 → 谢谢 → 你好",
+                "几岁 → 再见",
+                "来自 → 吗 only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut puis infos personnelles."
+            },
+            {
+              "id": "q3",
+              "question": "Traduire « Ravi de vous rencontrer » (formel) :",
+              "type": "single_choice",
+              "options": [
+                "很高兴认识您。 (hěn gāoxìng rènshi nín.)",
+                "很高兴认识你。 (tutoiement)",
+                "再见您。",
+                "您好岁。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您 = vous de politesse."
+            },
+            {
+              "id": "q4",
+              "question": "Erreur à éviter :",
+              "type": "single_choice",
+              "options": [
+                "我是十五。 sans 岁 dans un exercice écrit soigné",
+                "我是法国人。",
+                "我在初三。",
+                "我来自巴黎。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférer 十五岁 à l'écrit."
+            },
+            {
+              "id": "q5",
+              "question": "« Pose-moi des questions » :",
+              "type": "single_choice",
+              "options": [
+                "你可以问我问题。 (nǐ kěyǐ wèn wǒ wèntí.)",
+                "你问题我岁。",
+                "问我可以问题你。",
+                "问题问我你。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以 = pouvoir ; 问 = demander."
+            },
+            {
+              "id": "q6",
+              "question": "哪 (nǎ) sert à :",
+              "type": "single_choice",
+              "options": [
+                "Interroger « quel/le »",
+                "Dire merci",
+                "Compter",
+                "Saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪个 / 哪国…"
+            },
+            {
+              "id": "q7",
+              "question": "是…的 pour insister (origine) :",
+              "type": "single_choice",
+              "options": [
+                "我是从法国来的。 (wǒ shì cóng Fǎguó lái de.)",
+                "我是法国来的 de (结构 emphase)",
+                "法国我是的。",
+                "来的法国我是。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure 是…的 vue en 3e."
+            },
+            {
+              "id": "q8",
+              "question": "Combien de tons en pinyin « nǐ hǎo » ?",
+              "type": "single_choice",
+              "options": [
+                "Deux syllabes ton 3 et 3",
+                "Un ton",
+                "Quatre mots",
+                "Zéro ton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ni3 hao3."
+            },
+            {
+              "id": "q9",
+              "question": "Caractères simplifiés : 学 signifie :",
+              "type": "single_choice",
+              "options": [
+                "Étudier / apprendre",
+                "Maison",
+                "Merci",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学校, 同学…"
+            },
+            {
+              "id": "q10",
+              "question": "Phrase de clôture polie après présentation :",
+              "type": "single_choice",
+              "options": [
+                "请多多指教。 (qǐng duōduo zhǐjiào.) — demande indulgence",
+                "谢谢再见岁",
+                "不对不好",
+                "我岁谢谢"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule humble en contexte scolaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Chiffres et l'âge au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux écritures d'âge acceptables à l'oral soigné :",
+              "type": "multiple_choice",
+              "options": [
+                "十七岁 (shíqī suì)",
+                "十七 (shíqī) avec contexte",
+                "七十 (qīshí) pour 17 ans",
+                "岁十七我"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "17 = 十七 ; 岁 en contexte écrit."
+            },
+            {
+              "id": "q2",
+              "question": "Nombre 20 :",
+              "type": "single_choice",
+              "options": [
+                "二十 (èrshí)",
+                "十二 (shí'èr)",
+                "两十 (liǎngshí seul incorrect)",
+                "二十岁 only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vingt = 二十."
+            },
+            {
+              "id": "q3",
+              "question": "« J'aurai dix-huit ans l'année prochaine » :",
+              "type": "single_choice",
+              "options": [
+                "明年我十八岁。 (míngnián wǒ shíbā suì.)",
+                "明年我八岁。",
+                "我明年岁十八。",
+                "十八明年我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明年 = l'an prochain."
+            },
+            {
+              "id": "q4",
+              "question": "两 (liǎng) vs 二 (èr) :",
+              "type": "single_choice",
+              "options": [
+                "两 devant classifier (两个班)",
+                "二 always before 十 in 十二",
+                "两十 correct",
+                "无区别"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两 + quantifier courant."
+            },
+            {
+              "id": "q5",
+              "question": "Zero :",
+              "type": "single_choice",
+              "options": [
+                "零 (líng)",
+                "〇 only oral",
+                "没有 (méiyǒu) = zéro",
+                "空"
+              ],
+              "correctAnswers": [0],
+              "explanation": "零 dans les nombres."
+            },
+            {
+              "id": "q6",
+              "question": "100 :",
+              "type": "single_choice",
+              "options": ["一百 (yībǎi)", "十十", "百一", "一百岁 mandatory"],
+              "correctAnswers": [0],
+              "explanation": "Cent = 百."
+            },
+            {
+              "id": "q7",
+              "question": "« Trois camarades » :",
+              "type": "single_choice",
+              "options": [
+                "三个同学 (sān ge tóngxué)",
+                "三同学无ge",
+                "三个同",
+                "同学三个我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classifier 个."
+            },
+            {
+              "id": "q8",
+              "question": "第 (dì) + nombre :",
+              "type": "single_choice",
+              "options": [
+                "Ordinal (第一, 第二…)",
+                "Pluriel",
+                "Question",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第一 = premier."
+            },
+            {
+              "id": "q9",
+              "question": "« En quelle année de collège es-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "你读初几？ (nǐ dú chū jǐ ?)",
+                "你几初？",
+                "初几你岁？",
+                "读你初？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "初几 = quelle année du collège."
+            },
+            {
+              "id": "q10",
+              "question": "18 en pinyin :",
+              "type": "single_choice",
+              "options": ["shíbā", "shíbá", "shíbǎ", "bāshí"],
+              "correctAnswers": [0],
+              "explanation": "10+8."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Pronoms personnels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux pronoms corrects :",
+              "type": "multiple_choice",
+              "options": [
+                "我们 (wǒmen) — nous",
+                "他们 (tāmen) — ils",
+                "我们 (faux)",
+                "她们 for mixed group only always"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我们/他们 standard ; 她们 = elles."
+            },
+            {
+              "id": "q2",
+              "question": "« Vous » formel singulier :",
+              "type": "single_choice",
+              "options": [
+                "您 (nín)",
+                "你 (nǐ) always formal",
+                "你们 for one teacher",
+                "我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您 politesse."
+            },
+            {
+              "id": "q3",
+              "question": "« C'est moi » :",
+              "type": "single_choice",
+              "options": [
+                "是我。 (shì wǒ.)",
+                "我的是。",
+                "是我吗 question",
+                "我在。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse courte."
+            },
+            {
+              "id": "q4",
+              "question": "你们 (nǐmen) :",
+              "type": "single_choice",
+              "options": [
+                "Vous (pluriel)",
+                "Ils seulement",
+                "Elle",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel tu."
+            },
+            {
+              "id": "q5",
+              "question": "« Qui es-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "你是谁？ (nǐ shì shéi ?)",
+                "你什么？",
+                "你哪？",
+                "你吗谁？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谁 = qui."
+            },
+            {
+              "id": "q6",
+              "question": "« Ce sont mes parents » :",
+              "type": "single_choice",
+              "options": [
+                "他们是我的父母。 (tāmen shì wǒ de fùmǔ.)",
+                "他们我父母岁。",
+                "是我父母他们。",
+                "父母他们是我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他们 + 的."
+            },
+            {
+              "id": "q7",
+              "question": "我 vs 我们 :",
+              "type": "single_choice",
+              "options": [
+                "Je / nous",
+                "Il / elle",
+                "Tu / vous",
+                "Merci / bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base pronoms."
+            },
+            {
+              "id": "q8",
+              "question": "« Elle et moi sommes amies » :",
+              "type": "single_choice",
+              "options": [
+                "她和我是朋友。 (tā hé wǒ shì péngyou.)",
+                "她我是朋友。",
+                "和她是朋友我。",
+                "朋友她和我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "和 = et."
+            },
+            {
+              "id": "q9",
+              "question": "自己 (zìjǐ) :",
+              "type": "single_choice",
+              "options": ["Soi-même", "Autre", "Professeur", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "自我介绍 = se présenter soi-même."
+            },
+            {
+              "id": "q10",
+              "question": "« Eux deux sont en 3e » :",
+              "type": "single_choice",
+              "options": [
+                "他们两个人都读初三。 (tāmen liǎng ge rén dōu dú chūsān.)",
+                "他们二个人岁。",
+                "都读他们初三。",
+                "两个人他们。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两个 + 都."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Verbe 是 (shì)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux usages de 是 :",
+              "type": "multiple_choice",
+              "options": [
+                "我是学生。 (identité)",
+                "这是中文课。 (c'est)",
+                "我是学生吗岁",
+                "是我不对"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Copule identificative."
+            },
+            {
+              "id": "q2",
+              "question": "Négation de 是 :",
+              "type": "single_choice",
+              "options": ["不是 (bú shì)", "没是", "不我", "是没有"],
+              "correctAnswers": [0],
+              "explanation": "不是 = ne pas être."
+            },
+            {
+              "id": "q3",
+              "question": "« Tu n'es pas en première au lycée » :",
+              "type": "single_choice",
+              "options": [
+                "你不是高一。 (nǐ bú shì gāo yī.)",
+                "你没高一。",
+                "你不高一岁。",
+                "不是高一你。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nier identité/classe."
+            },
+            {
+              "id": "q4",
+              "question": "Question avec 是 :",
+              "type": "single_choice",
+              "options": [
+                "你是法国人吗？",
+                "你吗是法国？",
+                "法国你是？",
+                "是法国你吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…吗？"
+            },
+            {
+              "id": "q5",
+              "question": "« Oui, c'est ça » :",
+              "type": "single_choice",
+              "options": ["是的。 (shì de.)", "不是。", "对不。", "没是。"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation."
+            },
+            {
+              "id": "q6",
+              "question": "Erreur :",
+              "type": "single_choice",
+              "options": [
+                "我是很好 (mélange 是/很)",
+                "我很好。",
+                "我是法国人。",
+                "我是学生。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État : 很 + adj, pas 是."
+            },
+            {
+              "id": "q7",
+              "question": "« C'est un professeur de français » :",
+              "type": "single_choice",
+              "options": [
+                "他是法语老师。 (tā shì Fǎyǔ lǎoshī.)",
+                "他法语是老师岁。",
+                "是老师法语他。",
+                "法语他老师。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue + 老师."
+            },
+            {
+              "id": "q8",
+              "question": "还是 (háishì) dans une question :",
+              "type": "single_choice",
+              "options": ["Ou (choix)", "Et", "Mais", "Donc"],
+              "correctAnswers": [0],
+              "explanation": "A还是B ?"
+            },
+            {
+              "id": "q9",
+              "question": "« Sommes-nous en retard ? » (simple) :",
+              "type": "single_choice",
+              "options": [
+                "我们迟到吗？ (wǒmen chídào ma ?)",
+                "我们是迟到？",
+                "迟到我们？",
+                "吗迟到我们？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "迟到 = être en retard."
+            },
+            {
+              "id": "q10",
+              "question": "« C'était intéressant » (intro 是…的) :",
+              "type": "single_choice",
+              "options": [
+                "那节课是很有趣的。 (nà jié kè shì hěn yǒuqù de.)",
+                "那节课很有趣是。",
+                "是有趣那节课。",
+                "的有趣是课。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emphase passée légère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Particules 的 et 吗",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases avec 的 correctes :",
+              "type": "multiple_choice",
+              "options": [
+                "我的学校 (wǒ de xuéxiào)",
+                "老师的课 (lǎoshī de kè)",
+                "我学校无的",
+                "的我在"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "的 = possession/attribution."
+            },
+            {
+              "id": "q2",
+              "question": "吗 en fin de phrase :",
+              "type": "single_choice",
+              "options": [
+                "你读初三吗？",
+                "吗你读初三？",
+                "你读吗初三",
+                "读初三你吗中间"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question oui/non."
+            },
+            {
+              "id": "q3",
+              "question": "« Est-ce ta première année de chinois ? »",
+              "type": "single_choice",
+              "options": [
+                "这是你第一年学中文吗？ (zhè shì nǐ dì yī nián xué Zhōngwén ma ?)",
+                "这你第一年中文？",
+                "吗第一年这？",
+                "第一年你吗这？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第一年 = première année."
+            },
+            {
+              "id": "q4",
+              "question": "Sans 吗, même question avec 是不是 :",
+              "type": "single_choice",
+              "options": [
+                "你是不是读初三？",
+                "你是不是读初三吗 double",
+                "你否读初三",
+                "是不是你吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是不是 = est-ce que."
+            },
+            {
+              "id": "q5",
+              "question": "的 after adjectif (nominalisation) :",
+              "type": "single_choice",
+              "options": [
+                "重要的 (zhòngyào de) — ce qui est important",
+                "重要的人 (direct adj)",
+                "的人重要",
+                "的很重要我"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adj + 的 = nom."
+            },
+            {
+              "id": "q6",
+              "question": "« Le livre du professeur » :",
+              "type": "single_choice",
+              "options": [
+                "老师的书 (lǎoshī de shū)",
+                "老师书 no 的 ok? 老师的书 standard",
+                "书老师的",
+                "的书老师"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession."
+            },
+            {
+              "id": "q7",
+              "question": "Pas de 吗 avec :",
+              "type": "single_choice",
+              "options": [
+                "谁 / 什么 / 哪 (questions ouvertes)",
+                "你好",
+                "谢谢",
+                "再见"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mots interrogatifs suffisent."
+            },
+            {
+              "id": "q8",
+              "question": "« C'est le lycée de ma sœur » :",
+              "type": "single_choice",
+              "options": [
+                "这是我姐姐的高中。 (zhè shì wǒ jiějie de gāozhōng.)",
+                "我姐姐高中间。",
+                "高中姐姐的我。",
+                "的 High 姐姐。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "姐姐 = grande sœur."
+            },
+            {
+              "id": "q9",
+              "question": "真 (zhēn) + adj :",
+              "type": "single_choice",
+              "options": [
+                "真的很有趣 (zhēn de hěn yǒuqù)",
+                "真吗有趣",
+                "的真有趣",
+                "有趣真吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforcement."
+            },
+            {
+              "id": "q10",
+              "question": "« N'est-ce pas ? » (tag) approximatif :",
+              "type": "single_choice",
+              "options": [
+                "对不对？ (duì bu duì ?)",
+                "吗不对？",
+                "不对吗对？",
+                "对不对我岁？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对 = correct."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Vocabulaire école et lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots « école » contextuels :",
+              "type": "multiple_choice",
+              "options": [
+                "学校 (xuéxiào) — établissement",
+                "中学 (zhōngxué) — collège/lycée type",
+                "学校岁",
+                "中校"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 général ; 中学 secondaire."
+            },
+            {
+              "id": "q2",
+              "question": "教室 (jiàoshì) :",
+              "type": "single_choice",
+              "options": ["Salle de classe", "Cantine", "Cour", "Bureau prof"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de cours."
+            },
+            {
+              "id": "q3",
+              "question": "« Devoir à la maison » :",
+              "type": "single_choice",
+              "options": ["作业 (zuòyè)", "作课", "业作", "工作 homework rare"],
+              "correctAnswers": [0],
+              "explanation": "作业 = devoirs."
+            },
+            {
+              "id": "q4",
+              "question": "考试 (kǎoshì) :",
+              "type": "single_choice",
+              "options": ["Examen", "Vacances", "Sport", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Préparation lycée."
+            },
+            {
+              "id": "q5",
+              "question": "« Je suis en retard pour le cours » :",
+              "type": "single_choice",
+              "options": [
+                "我上课迟到了。 (wǒ shàngkè chídào le.)",
+                "我迟到上课。",
+                "了迟到我课。",
+                "上课我迟。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上课 = suivre cours ; 了 aspect."
+            },
+            {
+              "id": "q6",
+              "question": "图书馆 (túshūguǎn) :",
+              "type": "single_choice",
+              "options": ["Bibliothèque", "Piscine", "Gym", "Cafétéria"],
+              "correctAnswers": [0],
+              "explanation": "Lieu étude."
+            },
+            {
+              "id": "q7",
+              "question": "成绩 (chéngjì) :",
+              "type": "single_choice",
+              "options": [
+                "Résultats scolaires / notes",
+                "Heure",
+                "Classe",
+                "Prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler du niveau."
+            },
+            {
+              "id": "q8",
+              "question": "« Quelle est ta matière préférée au lycée ? »",
+              "type": "single_choice",
+              "options": [
+                "你高中最喜欢什么科目？ (nǐ gāozhōng zuì xǐhuan shénme kēmù ?)",
+                "你科目什么岁？",
+                "高中科目你吗？",
+                "什么科目高中？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "科目 = matière."
+            },
+            {
+              "id": "q9",
+              "question": "校长 (xiàozhǎng) :",
+              "type": "single_choice",
+              "options": ["Chef d'établissement", "Élève", "Parent", "Bus"],
+              "correctAnswers": [0],
+              "explanation": "Administration."
+            },
+            {
+              "id": "q10",
+              "question": "« Club scolaire » :",
+              "type": "single_choice",
+              "options": ["社团 (shètuán)", "社会", "团社", "社岁"],
+              "correctAnswers": [0],
+              "explanation": "Activités extrascolaires."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Nationalités et langues",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux langues bien nommées :",
+              "type": "multiple_choice",
+              "options": [
+                "法语 (Fǎyǔ)",
+                "英语 (Yīngyǔ)",
+                "法国语",
+                "法文 only wrong char set"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Standard mandarin."
+            },
+            {
+              "id": "q2",
+              "question": "« Je parle français et un peu anglais » :",
+              "type": "single_choice",
+              "options": [
+                "我会法语和一点儿英语。 (wǒ huì Fǎyǔ hé yìdiǎnr Yīngyǔ.)",
+                "我会法语英语岁。",
+                "和法语我会。",
+                "英语法语一点儿。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "和 relie deux objets."
+            },
+            {
+              "id": "q3",
+              "question": "中文 (Zhōngwén) :",
+              "type": "single_choice",
+              "options": ["Langue chinoise", "Chine pays", "Classe", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Matière au lycée."
+            },
+            {
+              "id": "q4",
+              "question": "德国 (Déguó) + personne :",
+              "type": "single_choice",
+              "options": ["德国人 (Déguó rén)", "德国语", "德人国", "国人德"],
+              "correctAnswers": [0],
+              "explanation": "Allemagne / allemand."
+            },
+            {
+              "id": "q5",
+              "question": "« Quelle langue parles-tu à la maison ? »",
+              "type": "single_choice",
+              "options": [
+                "你在家说什么语言？ (nǐ zài jiā shuō shénme yǔyán ?)",
+                "你语言什么家？",
+                "说什么你语言？",
+                "家语言你吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "语言 = langue."
+            },
+            {
+              "id": "q6",
+              "question": "说 (shuō) :",
+              "type": "single_choice",
+              "options": ["Parler / dire", "Écrire", "Lire", "Écouter"],
+              "correctAnswers": [0],
+              "explanation": "说中文."
+            },
+            {
+              "id": "q7",
+              "question": "« Bilingue » (simple) :",
+              "type": "single_choice",
+              "options": [
+                "我会两种语言。 (wǒ huì liǎng zhǒng yǔyán.)",
+                "我两语言岁。",
+                "两种我会语言。",
+                "语言两种。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两种 = deux types."
+            },
+            {
+              "id": "q8",
+              "question": "日本 (Rìběn) person :",
+              "type": "single_choice",
+              "options": ["日本人", "日本语 only", "日人", "本人"],
+              "correctAnswers": [0],
+              "explanation": "Japon / Japonais."
+            },
+            {
+              "id": "q9",
+              "question": "« Je n'ai pas encore un bon niveau » :",
+              "type": "single_choice",
+              "options": [
+                "我的水平还不够高。 (wǒ de shuǐpíng hái bú gòu gāo.)",
+                "我水平高不够吗岁。",
+                "不够我水平。",
+                "水平高我还。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "水平 = niveau."
+            },
+            {
+              "id": "q10",
+              "question": "写 (xiě) :",
+              "type": "single_choice",
+              "options": ["Écrire (caractères)", "Parler", "Marcher", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "Écrire le chinois."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Adverbes de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux adverbes fréquents :",
+              "type": "multiple_choice",
+              "options": [
+                "很 (hěn) — très",
+                "也 (yě) — aussi",
+                "是 (copule)",
+                "的 (particule)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "很 + adj ; 也."
+            },
+            {
+              "id": "q2",
+              "question": "« Je vais aussi au lycée l'an prochain » :",
+              "type": "single_choice",
+              "options": [
+                "我明年也上高中。 (wǒ míngnián yě shàng gāozhōng.)",
+                "我也明年高中岁。",
+                "上高中也我。",
+                "明年高中我也。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "也 place."
+            },
+            {
+              "id": "q3",
+              "question": "不 (bù) before :",
+              "type": "single_choice",
+              "options": [
+                "Verb/adj : 不好",
+                "After verb always",
+                "End only",
+                "Before 吗 only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q4",
+              "question": "« Pas encore » :",
+              "type": "single_choice",
+              "options": ["还没 (hái méi)", "不没", "没还", "还无"],
+              "correctAnswers": [0],
+              "explanation": "还没 + V."
+            },
+            {
+              "id": "q5",
+              "question": "都 (dōu) :",
+              "type": "single_choice",
+              "options": [
+                "Tous / aussi (global)",
+                "Un seulement",
+                "Jamais",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我们都读初三."
+            },
+            {
+              "id": "q6",
+              "question": "« Toujours » (habitude) :",
+              "type": "single_choice",
+              "options": [
+                "总是 (zǒngshì)",
+                "经常 (jīngcháng) aussi fréquent",
+                "常总",
+                "总常"
+              ],
+              "correctAnswers": [0],
+              "explanation": "总是 = toujours."
+            },
+            {
+              "id": "q7",
+              "question": "再 (zài) :",
+              "type": "single_choice",
+              "options": ["Encore / de nouveau", "Déjà (还)", "Jamais", "Très"],
+              "correctAnswers": [0],
+              "explanation": "再见 = revoir."
+            },
+            {
+              "id": "q8",
+              "question": "« Je ne suis pas du tout fatigué » :",
+              "type": "single_choice",
+              "options": [
+                "我一点儿也不累。 (wǒ yìdiǎnr yě bú lèi.)",
+                "我一点儿累也不。",
+                "也不我累。",
+                "累我不一点儿。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforcement négatif."
+            },
+            {
+              "id": "q9",
+              "question": "已经 (yǐjīng) :",
+              "type": "single_choice",
+              "options": ["Déjà", "Pas encore", "Demain", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "Aspect temporel."
+            },
+            {
+              "id": "q10",
+              "question": "« Souvent » :",
+              "type": "single_choice",
+              "options": ["常常 (chángcháng)", "少 (shǎo)", "没", "别 (bié)"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Questions avec 什么",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux questions avec 什么 :",
+              "type": "multiple_choice",
+              "options": [
+                "你叫什么名字？",
+                "这是什么？ (zhè shì shénme ?)",
+                "什么你吗",
+                "叫名字什么岁"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "什么 = quoi/quel."
+            },
+            {
+              "id": "q2",
+              "question": "« Qu'est-ce que c'est ? » (objet) :",
+              "type": "single_choice",
+              "options": [
+                "这是什么？",
+                "这什么是？",
+                "什么是这？",
+                "这吗什么？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre SVO."
+            },
+            {
+              "id": "q3",
+              "question": "« Quelle est ta spécialité au lycée ? » (简化) :",
+              "type": "single_choice",
+              "options": [
+                "你高中学什么？ (nǐ gāozhōng xué shénme ?)",
+                "你什么高中学？",
+                "学什么你高中？",
+                "高中什么学？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学什么 = quelle filière/matières."
+            },
+            {
+              "id": "q4",
+              "question": "为什么 (wèishénme) :",
+              "type": "single_choice",
+              "options": ["Pourquoi", "Quoi", "Où", "Qui"],
+              "correctAnswers": [0],
+              "explanation": "Pourquoi apprendre le chinois."
+            },
+            {
+              "id": "q5",
+              "question": "« Pourquoi choisis-tu le chinois ? »",
+              "type": "single_choice",
+              "options": [
+                "你为什么选中文？ (nǐ wèishénme xuǎn Zhōngwén ?)",
+                "你什么选中文？",
+                "为什么你吗选？",
+                "选中文为什么你？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "选 = choisir."
+            },
+            {
+              "id": "q6",
+              "question": "什么时候 (shénme shíhou) :",
+              "type": "single_choice",
+              "options": ["Quand", "Où", "Combien", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "Moment."
+            },
+            {
+              "id": "q7",
+              "question": "« Quand commences-tu le lycée ? »",
+              "type": "single_choice",
+              "options": [
+                "你什么时候开始上高中？",
+                "你什么开始高中？",
+                "开始什么时候你？",
+                "高中什么时候？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开始 = commencer."
+            },
+            {
+              "id": "q8",
+              "question": "怎么 (zěnme) :",
+              "type": "single_choice",
+              "options": ["Comment", "Quoi", "Pourquoi", "Qui"],
+              "correctAnswers": [0],
+              "explanation": "Comment dire…"
+            },
+            {
+              "id": "q9",
+              "question": "« Comment écrire ton nom en chinois ? »",
+              "type": "single_choice",
+              "options": [
+                "你的名字用中文怎么写？ (nǐ de míngzi yòng Zhōngwén zěnme xiě ?)",
+                "你怎么写名字中文？",
+                "写怎么名字？",
+                "中文名字什么写？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "用 = avec ; 怎么写."
+            },
+            {
+              "id": "q10",
+              "question": "别 (bié) + V :",
+              "type": "single_choice",
+              "options": [
+                "Ne pas (impératif) : 别担心 (bié dānxīn)",
+                "别去 worry",
+                "不别",
+                "别吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别担心 = ne t'inquiète pas."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ordinaux et dates scolaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux ordinaux corrects :",
+              "type": "multiple_choice",
+              "options": [
+                "第一 (dì yī) — premier",
+                "第三 (dì sān) — troisième",
+                "第岁",
+                "一第"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "第 + chiffre."
+            },
+            {
+              "id": "q2",
+              "question": "« Premier trimestre » (approx) :",
+              "type": "single_choice",
+              "options": [
+                "第一个学期 (dì yī ge xuéqī)",
+                "第一学期 often same",
+                "学期第一无",
+                "一第学期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学期 = semestre/trimestre scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "星期 (xīngqī) :",
+              "type": "single_choice",
+              "options": [
+                "Semaine / jour de la semaine",
+                "Mois",
+                "Année",
+                "Heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "星期一…"
+            },
+            {
+              "id": "q4",
+              "question": "« Lundi » :",
+              "type": "single_choice",
+              "options": [
+                "星期一 (xīngqī yī)",
+                "星期七",
+                "周一 (zhōu yī) aussi",
+                "礼拜一 ok"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lundi standard."
+            },
+            {
+              "id": "q5",
+              "question": "« Aujourd'hui c'est vendredi » :",
+              "type": "single_choice",
+              "options": [
+                "今天是星期五。 (jīntiān shì xīngqī wǔ.)",
+                "今天星期五岁。",
+                "是今天五星期。",
+                "星期五今天是。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今天是…"
+            },
+            {
+              "id": "q6",
+              "question": "月 (yuè) :",
+              "type": "single_choice",
+              "options": ["Mois", "Semaine", "Jour", "Année"],
+              "correctAnswers": [0],
+              "explanation": "三月…"
+            },
+            {
+              "id": "q7",
+              "question": "年 (nián) :",
+              "type": "single_choice",
+              "options": ["Année", "Mois", "Jour", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "今年."
+            },
+            {
+              "id": "q8",
+              "question": "« En septembre j'entre au lycée » :",
+              "type": "single_choice",
+              "options": [
+                "九月我上高中。 (jiǔyuè wǒ shàng gāozhōng.)",
+                "九月我高中岁。",
+                "上九月高中。",
+                "我高中九月。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mois + action."
+            },
+            {
+              "id": "q9",
+              "question": "每天 (měitiān) :",
+              "type": "single_choice",
+              "options": ["Chaque jour", "Chaque mois", "Jamais", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Routine scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "« Combien de jours par semaine as-tu cours de chinois ? »",
+              "type": "single_choice",
+              "options": [
+                "你一个星期有几天中文课？ (nǐ yī ge xīngqī yǒu jǐ tiān Zhōngwén kè ?)",
+                "你几天中文星期？",
+                "有课中文几天？",
+                "星期几中文你吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有 + nombre + 天."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Mots du quotidien au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux expressions utiles :",
+              "type": "multiple_choice",
+              "options": [
+                "没问题 (méi wèntí) — pas de problème",
+                "当然 (dāngrán) — bien sûr",
+                "有问题没 reverse only",
+                "问题没对"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réponses courantes."
+            },
+            {
+              "id": "q2",
+              "question": "« D'accord » :",
+              "type": "single_choice",
+              "options": ["好的 (hǎo de)", "不对", "不好", "没好"],
+              "correctAnswers": [0],
+              "explanation": "Accord."
+            },
+            {
+              "id": "q3",
+              "question": "可能 (kěnéng) :",
+              "type": "single_choice",
+              "options": [
+                "Peut-être",
+                "Certainement non",
+                "Jamais",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incertitude."
+            },
+            {
+              "id": "q4",
+              "question": "« J'ai besoin d'aide pour les devoirs » :",
+              "type": "single_choice",
+              "options": [
+                "我需要作业帮助。 (wǒ xūyào zuòyè bāngzhù.) — 我需要帮助做功课。 aussi",
+                "我需要帮作业岁。",
+                "帮助我需要。",
+                "作业帮我需要。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "需要 = avoir besoin."
+            },
+            {
+              "id": "q5",
+              "question": "时间 (shíjiān) :",
+              "type": "single_choice",
+              "options": ["Temps / horaire", "Lieu", "Personne", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Gérer emploi du temps."
+            },
+            {
+              "id": "q6",
+              "question": "« À quelle heure finit le cours ? »",
+              "type": "single_choice",
+              "options": [
+                "几点下课？ (jǐ diǎn xiàkè ?)",
+                "几时下课？",
+                "下课几点吗你？",
+                "点几下课？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几点 = quelle heure."
+            },
+            {
+              "id": "q7",
+              "question": "东西 (dōngxi) :",
+              "type": "single_choice",
+              "options": ["Chose(s) / affaires", "Est", "Ouest", "Nord"],
+              "correctAnswers": [0],
+              "explanation": "带东西 = apporter affaires."
+            },
+            {
+              "id": "q8",
+              "question": "« N'oublie pas ton cahier » :",
+              "type": "single_choice",
+              "options": [
+                "别忘了你的笔记本。 (bié wàng le nǐ de bǐjìběn.)",
+                "别忘笔记本你。",
+                "忘了别笔记本。",
+                "笔记本别你。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别忘了 = n'oublie pas."
+            },
+            {
+              "id": "q9",
+              "question": "一起 (yīqǐ) :",
+              "type": "single_choice",
+              "options": ["Ensemble", "Seul", "Loin", "Tôt"],
+              "correctAnswers": [0],
+              "explanation": "一起学习."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase récap essentiels 3e :",
+              "type": "single_choice",
+              "options": [
+                "你好！我叫…，我…岁，我是…人，读初三，准备上高中。",
+                "你好再见岁。",
+                "我是吗初三。",
+                "叫读我高中。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

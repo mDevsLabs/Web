@@ -1,0 +1,2063 @@
+{
+  "id": "1ere-mathematiques-02",
+  "year": "1ere",
+  "subject": "mathematiques",
+  "title": "Fonctions dérivées",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Nombre dérivé",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Définition",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Le nombre dérivé f'(a) correspond à :",
+              "options": [
+                "La limite de (f(a+h)-f(a))/h quand h→0",
+                "La pente de la tangente en a",
+                "Toujours f(a)",
+                "Le taux pour h=1 uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Définition par limite du taux et interprétation géométrique (pente de la tangente)."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "prompt": "f(x)=x². f'(3)= ?",
+              "options": ["3", "6", "9", "12"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=2x, donc f'(3)=6."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "prompt": "f(x)=5. f'(2)= ?",
+              "options": ["0", "5", "2", "10"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée d'une constante : 0."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "prompt": "f(x)=4x. f'(7)= ?",
+              "options": ["4", "7", "28", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée de ax : a, ici 4."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "prompt": "f(x)=x³. f'(2)= ?",
+              "options": ["6", "8", "12", "4"],
+              "correctAnswers": [2],
+              "explanation": "f'(x)=3x², f'(2)=12."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "prompt": "f(x)=x⁵. f'(1)= ?",
+              "options": ["1", "5", "10", "25"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=5x⁴, f'(1)=5."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "prompt": "f(x)=-3x+2. f'(0)= ?",
+              "options": ["-3", "0", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "Pente -3."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x². Taux en 1 tend vers :",
+              "options": ["1", "2", "2h", "0"],
+              "correctAnswers": [1],
+              "explanation": "((1+h)²-1)/h=2+h→2."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "prompt": "f(x)=2x². f'(5)= ?",
+              "options": ["10", "20", "25", "50"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=4x, f'(5)=20."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "prompt": "f(x)=x². Tangente horizontale en 0 ?",
+              "options": [
+                "Oui, f'(0)=0",
+                "Non, f(0)≠0",
+                "Oui, f(0)=0 suffit",
+                "Non, f'(0)=1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'(0)=0."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Polynômes",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "prompt": "Dérivée constante sur ℝ pour :",
+              "options": ["f(x)=3x-1", "f(x)=-2x+5", "f(x)=x²", "f(x)=x³"],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les fonctions affines ont f' constante."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-4x+3. f'(1)= ?",
+              "options": ["-2", "-1", "0", "2"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=2x-4, f'(1)=-2."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "prompt": "f(x)=x³-x. f'(2)= ?",
+              "options": ["11", "12", "10", "8"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=3x²-1, f'(2)=11."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "prompt": "f(x)=5x². f'(-1)= ?",
+              "options": ["-10", "-5", "5", "10"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=10x, f'(-1)=-10."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "prompt": "f(x)=x⁴. f'(2)= ?",
+              "options": ["16", "32", "8", "64"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=4x³, f'(2)=32."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "prompt": "f(x)=-x²+6x. f'(3)= ?",
+              "options": ["0", "3", "6", "-6"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=-2x+6, f'(3)=0."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "prompt": "f(x)=3x³+2. f'(1)= ?",
+              "options": ["9", "11", "5", "3"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=9x², f'(1)=9."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+1. f'(a)= ?",
+              "options": ["2a", "a²", "2a+1", "a+1"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée 2x."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "prompt": "f(x)=4x²-8. f'(2)= ?",
+              "options": ["8", "16", "0", "4"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=8x, f'(2)=16."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-9. Où f'(x)=0 ?",
+              "options": ["x=0", "x=3", "x=-3", "x=9"],
+              "correctAnswers": [0],
+              "explanation": "2x=0 ⟺ x=0."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Taux",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x². Égal à f'(2)=4 :",
+              "options": [
+                "4",
+                "Pente tangente en 2",
+                "f(2+1)-f(2) seul",
+                "f(2)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f'(2)=4, pente de la tangente."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "prompt": "Taux de x² entre 0 et 2 :",
+              "options": ["1", "2", "4", "0"],
+              "correctAnswers": [1],
+              "explanation": "4/2=2."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "prompt": "f(x)=3x², taux entre 1 et 3 :",
+              "options": ["6", "9", "12", "24"],
+              "correctAnswers": [2],
+              "explanation": "(27-3)/2=12."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "prompt": "f(x)=x. f'(5)= ?",
+              "options": ["0", "1", "5", "10"],
+              "correctAnswers": [1],
+              "explanation": "Dérivée 1."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "prompt": "f(x)=x². f'(4)= ?",
+              "options": ["4", "8", "16", "32"],
+              "correctAnswers": [1],
+              "explanation": "2×4=8."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "prompt": "f(x)=-x²+4. f'(1)= ?",
+              "options": ["-2", "2", "3", "-1"],
+              "correctAnswers": [0],
+              "explanation": "f'(x)=-2x."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "prompt": "f'(a) est la pente de :",
+              "options": ["Tangente en a", "Sécante h=1", "Axe Ox", "y=f(a)"],
+              "correctAnswers": [0],
+              "explanation": "Interprétation géométrique."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x³. f'(-2)= ?",
+              "options": ["12", "-12", "8", "-8"],
+              "correctAnswers": [0],
+              "explanation": "3×4=12."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "prompt": "f(x)=6x-1. f'(x)= ?",
+              "options": ["6", "6x", "-1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Affine, pente 6."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+2x. f'(1)= ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [2],
+              "explanation": "2+2=4."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Formules",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "prompt": "Égalités correctes :",
+              "options": ["(x²)'=2x", "(x³)'=3x²", "(x²)'=x", "(5)'=5"],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules de base x^n."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "prompt": "(7x³)' = ?",
+              "options": ["21x²", "7x²", "21x", "3x²"],
+              "correctAnswers": [0],
+              "explanation": "7×3x²."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "prompt": "(x²+x)' = ?",
+              "options": ["2x+1", "2x", "x+1", "2x²"],
+              "correctAnswers": [0],
+              "explanation": "Somme des dérivées."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "prompt": "(-4x²+3x)' = ?",
+              "options": ["-8x+3", "-8x", "8x+3", "-4x+3"],
+              "correctAnswers": [0],
+              "explanation": "-8x+3."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "prompt": "h(x)=x⁴-x². h'(2)= ?",
+              "options": ["28", "30", "32", "24"],
+              "correctAnswers": [0],
+              "explanation": "32-4=28."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "prompt": "(2x⁵)' = ?",
+              "options": ["10x⁴", "2x⁴", "10x⁵", "5x⁴"],
+              "correctAnswers": [0],
+              "explanation": "10x⁴."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-5x+6. f'(2)= ?",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "4-5=-1."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "prompt": "(x³+3x²)' = ?",
+              "options": ["3x²+6x", "3x²+3x", "x²+2x", "3x+6"],
+              "correctAnswers": [0],
+              "explanation": "3x²+6x."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "prompt": "k(x)=9. k'(x)= ?",
+              "options": ["0", "9", "1", "9x"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+4x+4. f'(-2)= ?",
+              "options": ["0", "4", "-4", "8"],
+              "correctAnswers": [0],
+              "explanation": "-4+4=0."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Numérique",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "prompt": "Si f dérivable en a :",
+              "options": [
+                "f continue en a",
+                "Tangente pente f'(a)",
+                "f'(a) toujours >0",
+                "f non définie en a"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dérivable ⇒ continue ; pente f'(a)."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-1. f'(0)= ?",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [1],
+              "explanation": "2x en 0."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "prompt": "f(x)=3x²-12x. f'(2)= ?",
+              "options": ["-12", "0", "12", "-6"],
+              "correctAnswers": [1],
+              "explanation": "12-12=0."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "prompt": "Tangente à x² en 1, pente m :",
+              "options": ["1", "2", "3", "0"],
+              "correctAnswers": [1],
+              "explanation": "f'(1)=2."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "prompt": "f(x)=x³. f'(0)= ?",
+              "options": ["0", "1", "3", "-1"],
+              "correctAnswers": [0],
+              "explanation": "3x² en 0."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "prompt": "f(x)=5x²+1. f'(-1)= ?",
+              "options": ["-10", "-5", "10", "5"],
+              "correctAnswers": [0],
+              "explanation": "10×(-1)."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+3. f'(2)= ?",
+              "options": ["4", "7", "3", "2"],
+              "correctAnswers": [0],
+              "explanation": "4."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "prompt": "f(x)=-x³+3x. f'(1)= ?",
+              "options": ["0", "3", "-3", "6"],
+              "correctAnswers": [0],
+              "explanation": "-3+3=0."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x²/2. f'(4)= ?",
+              "options": ["2", "4", "8", "16"],
+              "correctAnswers": [1],
+              "explanation": "f'(x)=x."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "prompt": "f(x)=2x³-x. f'(-1)= ?",
+              "options": ["5", "7", "-5", "3"],
+              "correctAnswers": [0],
+              "explanation": "6-1=5."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Tangente",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x² en (2;4) :",
+              "options": [
+                "f'(2)=4",
+                "Tangente pente 4",
+                "f'(2)=2",
+                "Tangente horizontale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f'(2)=4."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "prompt": "x², tangente en 0 :",
+              "options": ["0", "1", "2", "NA"],
+              "correctAnswers": [0],
+              "explanation": "f'(0)=0."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "prompt": "f(x)=3x+2. f'(1)= ?",
+              "options": ["3", "5", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "3."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-2x. f'(3)= ?",
+              "options": ["4", "3", "5", "6"],
+              "correctAnswers": [0],
+              "explanation": "6-2=4."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "prompt": "f'(a)<0 : tangente",
+              "options": [
+                "Décroissante",
+                "Horizontale",
+                "Inexistante",
+                "Verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente négative."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "prompt": "f(x)=x⁴. f'(1)= ?",
+              "options": ["4", "1", "0", "8"],
+              "correctAnswers": [0],
+              "explanation": "4x³ en 1."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "prompt": "f(x)=-2x²+8. f'(2)= ?",
+              "options": ["-8", "0", "8", "-4"],
+              "correctAnswers": [0],
+              "explanation": "-4×2."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x³+1. f'(-1)= ?",
+              "options": ["3", "-3", "0", "4"],
+              "correctAnswers": [0],
+              "explanation": "3x²."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "prompt": "f(x)=4x²-4x. f'(1)= ?",
+              "options": ["4", "0", "8", "-4"],
+              "correctAnswers": [0],
+              "explanation": "8-4=4."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "prompt": "f'(a)>0 localement :",
+              "options": ["Croissante", "Décroissante", "Constante", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Signe local de f'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Limites",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x², f'(3)=6 :",
+              "options": [
+                "lim ((3+h)²-9)/h",
+                "lim (f(3+h)-f(3))/h",
+                "f(4)-f(3) exact",
+                "2×3"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux écritures du taux."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "prompt": "|x| en 0 :",
+              "options": [
+                "Non dérivable",
+                "f(0) absent",
+                "f'(0)=0",
+                "Dérivable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pentes -1 et +1."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "prompt": "((2+h)²-4)/h = ?",
+              "options": ["4+h", "2+h", "4", "2h"],
+              "correctAnswers": [0],
+              "explanation": "4+h."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "prompt": "f(x)=x³-3x. f'(2)= ?",
+              "options": ["9", "12", "3", "6"],
+              "correctAnswers": [0],
+              "explanation": "12-3=9."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "prompt": "f(x)=10x. f'(x)= ?",
+              "options": ["10", "10x", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "10."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+5x. f'(-5)= ?",
+              "options": ["-5", "0", "5", "10"],
+              "correctAnswers": [0],
+              "explanation": "-10+5."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "prompt": "f(x)=1. f'(x)= ?",
+              "options": ["0", "1", "n", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-x-6. f'(3)= ?",
+              "options": ["5", "6", "4", "3"],
+              "correctAnswers": [0],
+              "explanation": "6-1=5."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "prompt": "f(x)=-x+7. f'(4)= ?",
+              "options": ["-1", "0", "7", "4"],
+              "correctAnswers": [0],
+              "explanation": "-1."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "prompt": "x², f'(-3)= ?",
+              "options": ["-6", "6", "-3", "3"],
+              "correctAnswers": [0],
+              "explanation": "2×(-3)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Trinômes",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=ax²+bx+c, a≠0 :",
+              "options": ["f'(x)=2ax+b", "f' affine", "f'=ax²", "f'=0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dérivée affine."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+4x+4. f'(-2)= ?",
+              "options": ["0", "4", "-4", "8"],
+              "correctAnswers": [0],
+              "explanation": "0."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "prompt": "f(x)=2x²-8x+6. f'(2)= ?",
+              "options": ["0", "4", "-4", "8"],
+              "correctAnswers": [0],
+              "explanation": "8-8=0."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "prompt": "f(x)=-x²+2. f'(1)= ?",
+              "options": ["-2", "2", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "-2."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "prompt": "x²-6x+5, f'=0 en x=",
+              "options": ["3", "2", "5", "6"],
+              "correctAnswers": [0],
+              "explanation": "2x-6=0."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "prompt": "f(x)=3x²+9. f'(0)= ?",
+              "options": ["0", "3", "9", "6"],
+              "correctAnswers": [0],
+              "explanation": "6x en 0."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-1. f'(2)= ?",
+              "options": ["4", "3", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "4."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "prompt": "f(x)=5x²-x. f'(1)= ?",
+              "options": ["9", "10", "4", "5"],
+              "correctAnswers": [0],
+              "explanation": "10-1=9."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+2x+1. f'(-1)= ?",
+              "options": ["0", "2", "-2", "4"],
+              "correctAnswers": [0],
+              "explanation": "0."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "prompt": "(-3x²+12)' = ?",
+              "options": ["-6x", "-6x+12", "6x", "-3x"],
+              "correctAnswers": [0],
+              "explanation": "-6x."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Synthèse u1",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Dérivables sur ℝ :",
+              "options": ["x³-2x", "5x+1", "1/x", "|x|"],
+              "correctAnswers": [0, 1],
+              "explanation": "Polynômes et affines."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "prompt": "f(x)=x³+x². f'(1)= ?",
+              "options": ["5", "4", "6", "3"],
+              "correctAnswers": [0],
+              "explanation": "3+2=5."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-3x+2. f'(2)= ?",
+              "options": ["1", "2", "0", "-1"],
+              "correctAnswers": [0],
+              "explanation": "4-3=1."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "prompt": "f(x)=4x³-3x. f'(1)= ?",
+              "options": ["9", "12", "1", "6"],
+              "correctAnswers": [0],
+              "explanation": "12-3=9."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "prompt": "Pente tangente x² en -1 :",
+              "options": ["-2", "2", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "-2."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "prompt": "f(x)=x⁴-16. f'(2)= ?",
+              "options": ["32", "16", "8", "0"],
+              "correctAnswers": [0],
+              "explanation": "32."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "prompt": "f(x)=-x²+4x-3. f'(2)= ?",
+              "options": ["0", "4", "-4", "2"],
+              "correctAnswers": [0],
+              "explanation": "-4+4=0."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "prompt": "f(x)=6x². f'(3)= ?",
+              "options": ["36", "18", "12", "6"],
+              "correctAnswers": [0],
+              "explanation": "12×3."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+7. f'(-4)= ?",
+              "options": ["-8", "8", "-4", "23"],
+              "correctAnswers": [0],
+              "explanation": "-8."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "prompt": "f(x)=x³-27. f'(3)= ?",
+              "options": ["27", "9", "0", "54"],
+              "correctAnswers": [0],
+              "explanation": "27."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan u1",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x², vrai :",
+              "options": ["f'(0)=0", "f'(3)=6", "f'(3)=9", "f'(1)=1"],
+              "correctAnswers": [0, 1],
+              "explanation": "f'(x)=2x."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "prompt": "f(x)=2x²+3x-1. f'(1)= ?",
+              "options": ["7", "5", "9", "4"],
+              "correctAnswers": [0],
+              "explanation": "4+3=7."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "prompt": "f(x)=x⁵. f'(0)= ?",
+              "options": ["0", "1", "5", "NA"],
+              "correctAnswers": [0],
+              "explanation": "0."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "prompt": "f(x)=-4x²+1. f'(1)= ?",
+              "options": ["-8", "8", "-4", "0"],
+              "correctAnswers": [0],
+              "explanation": "-8."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "prompt": "Taux de x entre 2 et 5 :",
+              "options": ["1", "3", "5", "7"],
+              "correctAnswers": [0],
+              "explanation": "3/3=1."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "prompt": "f(x)=x²-4. f'(3)= ?",
+              "options": ["6", "5", "9", "3"],
+              "correctAnswers": [0],
+              "explanation": "6."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "prompt": "f(x)=3x³-2x². f'(1)= ?",
+              "options": ["5", "3", "7", "1"],
+              "correctAnswers": [0],
+              "explanation": "9-4=5."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+2x+1. f'(0)= ?",
+              "options": ["2", "0", "1", "4"],
+              "correctAnswers": [0],
+              "explanation": "2."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x³+3x. f'(0)= ?",
+              "options": ["3", "0", "1", "6"],
+              "correctAnswers": [0],
+              "explanation": "3."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "prompt": "f(x)=5x²-20. f'(2)= ?",
+              "options": ["20", "0", "10", "40"],
+              "correctAnswers": [0],
+              "explanation": "20."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Variations",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Signe f'",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Si f'>0 sur I et f'<0 sur J :",
+              "options": [
+                "f croît sur I",
+                "f décroit sur J",
+                "f constante sur I",
+                "f croît sur J"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Théorème de monotonie."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "prompt": "f(x)=2x+1 sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "Ni l'une ni l'autre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=2>0."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "prompt": "f(x)=-3x+5 :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "Alternée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-3."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "prompt": "x² sur ]-∞;0[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x<0."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "prompt": "x² sur ]0;+∞[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x>0."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "prompt": "f(x)=5 :",
+              "options": [
+                "Constante",
+                "Croissante",
+                "Décroissante",
+                "Strictement croissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=0."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "prompt": "-x²+4 sur ]0;+∞[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "Croissante sur ℝ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-2x<0."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "prompt": "x³ sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "Décroissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=3x²≥0, nul seulement en 0."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "prompt": "f'<0 sur ]2;5] :",
+              "options": [
+                "f strictement décroissante",
+                "f strictement croissante",
+                "Maximum en 2",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe négatif."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "prompt": "f(x)=3x²-6x, f'=0 en x=",
+              "options": ["1", "0", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "6x-6=0."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Extremums",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x² en 0 :",
+              "options": [
+                "f'(0)=0",
+                "Minimum local",
+                "Maximum local",
+                "f(0) absent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sommet en 0, a>0."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "prompt": "-x²+9, max en x=",
+              "options": ["0", "3", "-3", "9"],
+              "correctAnswers": [0],
+              "explanation": "Sommet x=0."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "prompt": "x²-4x+3, min en x=",
+              "options": ["2", "1", "3", "0"],
+              "correctAnswers": [0],
+              "explanation": "2x-4=0."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "prompt": "x²-6x+10, min vaut",
+              "options": ["1", "0", "10", "-6"],
+              "correctAnswers": [0],
+              "explanation": "f(3)=1."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "prompt": "2x²+8x+5, sommet x=",
+              "options": ["-2", "2", "0", "-4"],
+              "correctAnswers": [0],
+              "explanation": "4x+8=0."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "prompt": "-x²+2x, max vaut",
+              "options": ["1", "0", "2", "-1"],
+              "correctAnswers": [0],
+              "explanation": "f(1)=1."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "prompt": "f' + vers - en a :",
+              "options": [
+                "Maximum local",
+                "Minimum local",
+                "f(a)=0",
+                "Pas d'extremum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tableau de signes."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "prompt": "f' - vers + en a :",
+              "options": [
+                "Minimum local",
+                "Maximum local",
+                "Asymptote",
+                "Discontinuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimum."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "prompt": "x³-3x, f'=0 en",
+              "options": ["-1 et 1", "0 seul", "-3 et 3", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "3(x²-1)=0."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "prompt": "x²+1, min sur ℝ",
+              "options": ["1", "0", "2", "-1"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=1."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tableaux",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x²-4 :",
+              "options": [
+                "Décroît sur ]-∞;0]",
+                "Croît sur [0;+∞[",
+                "Croît sur ]-∞;0]",
+                "f'=2x-4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f'=2x."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "prompt": "x³-3x², f'(x)=",
+              "options": ["3x²-6x", "3x²-3", "x²-6x", "3x-6"],
+              "correctAnswers": [0],
+              "explanation": "3x²-6x."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "prompt": "x³-3x², f'=0 en",
+              "options": ["0 et 2", "1 seul", "0 seul", "2 seul"],
+              "correctAnswers": [0],
+              "explanation": "3x(x-2)=0."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "prompt": "x³-3x² sur ]-∞;0[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "Alternée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=3x(x-2)>0 si x<0."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "prompt": "x³-3x² sur ]0;2[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "Croissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'<0 entre 0 et 2."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "prompt": "x³-3x² sur ]2;+∞[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'>0."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+2x, f'=0 en x=",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "2x+2=0."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "prompt": "x²+2x, min vaut",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "f(-1)=-1."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "prompt": "-2x+8 sur ℝ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-2."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "prompt": "x²-1 sur ]1;+∞[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x>0."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Applications",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=-x²+4x :",
+              "options": [
+                "Max en x=2",
+                "f'(x)=-2x+4",
+                "Min en x=2",
+                "Toujours croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parabole a<0, sommet x=2."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "prompt": "-x²+4x, max vaut",
+              "options": ["4", "2", "0", "8"],
+              "correctAnswers": [0],
+              "explanation": "f(2)=4."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "prompt": "x²-8x+15, min vaut",
+              "options": ["-1", "0", "15", "8"],
+              "correctAnswers": [0],
+              "explanation": "f(4)=-1."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "prompt": "f(x)=x³, f' sur ]-1;1[ :",
+              "options": [
+                "≥0 avec égalité en 0",
+                "Toujours <0",
+                "Toujours >0",
+                "Nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3x²≥0."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "prompt": "x⁴-4x², f'(0)=",
+              "options": ["0", "4", "-4", "8"],
+              "correctAnswers": [0],
+              "explanation": "4x³-8x en 0."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "prompt": "x⁴-4x², f'=0 inclut x=",
+              "options": ["0", "4 seul", "2 seul", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "4x(x²-2)=0."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "prompt": "3x-9 sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=3."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "prompt": "-x³ sur ]0;+∞[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-3x²<0."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "prompt": "x²+4 sur ℝ :",
+              "options": [
+                "Strictement croissante sur ]0;+∞[",
+                "Décroissante sur ]0;+∞[",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x>0 si x>0."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "prompt": "f'=0 et f' change +→- :",
+              "options": [
+                "Maximum local",
+                "Minimum local",
+                "Point d'inflexion seul",
+                "Discontinuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe de f'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Polynômes",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x²-5x+6 :",
+              "options": [
+                "Décroît sur ]-∞;2.5]",
+                "Croît sur [2.5;+∞[",
+                "Croît sur ]-∞;2.5]",
+                "Min en x=3"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sommet x=2.5."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "prompt": "x²-5x+6, min vaut",
+              "options": ["-0.25", "0", "6", "5"],
+              "correctAnswers": [0],
+              "explanation": "f(2.5)=-0.25."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "prompt": "2x²+4x+1, sommet x=",
+              "options": ["-1", "1", "0", "-2"],
+              "correctAnswers": [0],
+              "explanation": "4x+4=0."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "prompt": "2x²+4x+1, min vaut",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "f(-1)=-1."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "prompt": "-3x²+12x, max en x=",
+              "options": ["2", "0", "4", "6"],
+              "correctAnswers": [0],
+              "explanation": "-6x+12=0."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "prompt": "-3x²+12x, max vaut",
+              "options": ["12", "9", "6", "3"],
+              "correctAnswers": [0],
+              "explanation": "f(2)=12."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "prompt": "x³+x sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=3x²+1>0."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "prompt": "-2x-1 sur ℝ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-2."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "prompt": "x² sur [-2;0] :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x≤0."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "prompt": "x² sur [0;2] :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x≥0."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Signes",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x²-1 :",
+              "options": [
+                "f'<0 sur ]-∞;0[",
+                "f'>0 sur ]0;+∞[",
+                "f'>0 sur ]-∞;0[",
+                "f constante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f'=2x."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "prompt": "x²-1, min sur ℝ vaut",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=-1."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "prompt": "x³-12x, f'(x)=",
+              "options": ["3x²-12", "3x²-12x", "x²-12", "3x-12"],
+              "correctAnswers": [0],
+              "explanation": "3x²-12."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "prompt": "x³-12x, f'=0 en",
+              "options": ["-2 et 2", "0 seul", "2 seul", "4 seul"],
+              "correctAnswers": [0],
+              "explanation": "3(x²-4)=0."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "prompt": "Sur ]-∞;-2[, x³-12x :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3x²-12>0 si |x|>2."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "prompt": "Sur ]-2;2[, x³-12x :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'<0."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "prompt": "Sur ]2;+∞[, x³-12x :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'>0."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "prompt": "f(x)=4-x², max vaut",
+              "options": ["4", "0", "2", "-4"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=4."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "prompt": "4-x² sur ]0;+∞[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-2x<0."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "prompt": "f'=0 sans changement de signe :",
+              "options": [
+                "Pas d'extremum local",
+                "Toujours max",
+                "Toujours min",
+                "Discontinuité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. x³ en 0."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Étude",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "prompt": "Pour étudier les variations :",
+              "options": [
+                "Calculer f'",
+                "Étudier le signe de f'",
+                "Intégrer f",
+                "Sommer f sur [a;b]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Méthode standard."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "prompt": "x²-2x, f'=0 en x=",
+              "options": ["1", "0", "2", "-1"],
+              "correctAnswers": [0],
+              "explanation": "2x-2=0."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "prompt": "x²-2x, min vaut",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "f(1)=-1."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "prompt": "-x²+6x-5, max en x=",
+              "options": ["3", "1", "5", "6"],
+              "correctAnswers": [0],
+              "explanation": "-2x+6=0."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "prompt": "-x²+6x-5, max vaut",
+              "options": ["4", "5", "6", "9"],
+              "correctAnswers": [0],
+              "explanation": "f(3)=4."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "prompt": "x³ en 0 :",
+              "options": ["f'=0, pas d'extremum", "Maximum", "Minimum", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Signe f' ne change pas."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "prompt": "7 sur ℝ :",
+              "options": ["Constante", "Croissante", "Décroissante", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée nulle."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "prompt": "x²+2 sur ]-3;-1[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x<0."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "prompt": "x²+2 sur ]1;3[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x>0."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "prompt": "f croissante ⟺ sur I :",
+              "options": [
+                "f'(x)≥0 (sous hypothèses usuelles)",
+                "f'(x)≤0",
+                "f(x)≥0",
+                "f(x)≤0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien signe dérivée / variations."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Problèmes",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "prompt": "f(x)=x(4-x)=-x²+4x :",
+              "options": [
+                "Max en x=2",
+                "f'(x)=4-2x",
+                "Min en x=2",
+                "Croissante sur ℝ"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Trinôme a<0."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "prompt": "x(4-x), max vaut",
+              "options": ["4", "2", "0", "8"],
+              "correctAnswers": [0],
+              "explanation": "f(2)=4."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "prompt": "x²-4x sur [0;4] : min vaut",
+              "options": ["-4", "0", "4", "-8"],
+              "correctAnswers": [0],
+              "explanation": "Sommet x=2, f(2)=-4."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "prompt": "Sur [0;4], x²-4x :",
+              "options": [
+                "Décroît puis croît",
+                "Croît puis décroit",
+                "Toujours croît",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Min en 2."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "prompt": "3x²+1 sur ℝ :",
+              "options": [
+                "Strictement croissante sur ]0;+∞[",
+                "Décroissante sur ]0;+∞[",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6x>0 si x>0."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "prompt": "-x²+1 sur ℝ : max vaut",
+              "options": ["1", "0", "-1", "2"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=1."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "prompt": "x³-3x, max local en x=",
+              "options": ["-1", "0", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "f' + puis -."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "prompt": "x³-3x, min local en x=",
+              "options": ["1", "-1", "0", "3"],
+              "correctAnswers": [0],
+              "explanation": "f' - puis +."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "prompt": "f(-1)=2 pour x³-3x ?",
+              "options": ["2", "0", "-2", "4"],
+              "correctAnswers": [0],
+              "explanation": "-1+3=2."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "prompt": "f(1) pour x³-3x ?",
+              "options": ["-2", "2", "0", "-4"],
+              "correctAnswers": [0],
+              "explanation": "1-3=-2."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Synthèse u2",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Si f'(x)=0 sur I :",
+              "options": [
+                "f constante sur I",
+                "f peut être constante",
+                "f forcément nulle",
+                "f toujours croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Théorème : f'=0 ⇒ f constante (I intervalle)."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "prompt": "x⁴ sur ℝ :",
+              "options": [
+                "Strictement croissante sur ]0;+∞[",
+                "Décroissante sur ]0;+∞[",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4x³>0 si x>0."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "prompt": "x⁴ sur ]-∞;0[ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4x³<0 si x<0."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "prompt": "2x+3 sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=2."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "prompt": "-5x+2 sur ℝ :",
+              "options": [
+                "Strictement décroissante",
+                "Strictement croissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=-5."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "prompt": "x²-9, min vaut",
+              "options": ["-9", "0", "9", "3"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=-9."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "prompt": "x²-9 sur ]0;+∞[ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2x>0."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "prompt": "Point où f' s'annule sans extremum (exemple) :",
+              "options": ["x=0 pour x³", "x=0 pour x²", "x=1 pour x²", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "x³ : f' ne change pas de signe en 0."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x²+3x, f'=0 en x=",
+              "options": ["-1.5", "0", "1.5", "3"],
+              "correctAnswers": [0],
+              "explanation": "2x+3=0 ⟺ x=-1.5."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "prompt": "x²+3x, min vaut",
+              "options": ["-2.25", "0", "2.25", "-3"],
+              "correctAnswers": [0],
+              "explanation": "f(-1.5)=-2.25."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan u2",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "prompt": "Lien dérivée / variations :",
+              "options": [
+                "f'>0 ⇒ croissante (strict, I)",
+                "f'<0 ⇒ décroissante (strict, I)",
+                "f'>0 ⇒ décroissante",
+                "f'<0 ⇒ croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Théorème fondamental."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "prompt": "x²-6x+9, min vaut",
+              "options": ["0", "9", "-9", "3"],
+              "correctAnswers": [0],
+              "explanation": "Carré (x-3)², min 0."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "prompt": "x²-6x+9, f'=0 en x=",
+              "options": ["3", "0", "6", "9"],
+              "correctAnswers": [0],
+              "explanation": "2x-6=0."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "prompt": "-2x²+8, max vaut",
+              "options": ["8", "0", "4", "-8"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=8."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "prompt": "x³-6x²+9x, f'(1)=",
+              "options": ["0", "3", "-3", "6"],
+              "correctAnswers": [0],
+              "explanation": "3-12+9=0."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "prompt": "Sur ]0;+∞[, 1/x (hors programme dérivée usuelle) — pour f(x)=1/x² : f'(1)=",
+              "options": ["-2", "2", "-1", "0"],
+              "correctAnswers": [0],
+              "explanation": "f(x)=x⁻², f'(x)=-2x⁻³, f'(1)=-2."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "prompt": "f(x)=x², sur [-1;1] :",
+              "options": [
+                "Décroît sur [-1;0] et croît sur [0;1]",
+                "Toujours croît",
+                "Toujours décroit",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe de 2x."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "prompt": "Plus grande valeur de -x²+4 sur ℝ :",
+              "options": ["4", "2", "0", "-4"],
+              "correctAnswers": [0],
+              "explanation": "Max f(0)=4."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "prompt": "f(x)=x³-1 sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Strictement décroissante",
+                "Constante",
+                "NA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'=3x²≥0."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "prompt": "Résumé : annuler f' sert surtout à",
+              "options": [
+                "Repérer extremums et variations",
+                "Calculer une aire",
+                "Trouver une asymptote",
+                "Intégrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points critiques et tableau de signes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

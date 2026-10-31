@@ -1,0 +1,2723 @@
+{
+  "id": "terminale-svt-03",
+  "year": "terminale",
+  "subject": "svt",
+  "title": "De la plante sauvage à la plante domestiquée",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Photosynthèse",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Bilan et localisation",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "question": "Quels organites sont le siège de la photosynthèse chez une cellule végétale ?",
+              "options": [
+                "Chloroplastes",
+                "Mitochondries",
+                "Peroxysomes",
+                "Réticulum endoplasmique lisse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les chloroplastes hébergent les réactions photochimiques et une partie du métabolisisme associé ; les peroxysomes interviennent notamment dans la photorespiration avec les mitochondries."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "question": "Quelle est la formule globale simplifiée de la photosynthèse oxygénique ?",
+              "options": [
+                "6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂",
+                "C₆H₁₂O₆ → 2 CO₂ + 2 C₂H₅OH",
+                "6 CO₂ + 6 O₂ → C₆H₁₂O₆ + 6 H₂O",
+                "2 H₂O → 2 H₂ + O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse oxygénique fixe le CO₂ et libère de l'O₂ en utilisant l'eau comme source d'électrons."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "question": "Dans quel compartiment chloroplastique se déroule la phase photochimique ?",
+              "options": [
+                "Thylakoïdes",
+                "Stroma",
+                "Membrane externe",
+                "Espace intermembranaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réactions lumineuses ont lieu dans la membrane des thylakoïdes où sont situés les photosystèmes."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "question": "Quelle molécule est le accepteur final des électrons du photosystème I dans la voie non cyclique ?",
+              "options": ["NADP⁺", "O₂", "CO₂", "NAD⁺"],
+              "correctAnswers": [0],
+              "explanation": "Le NADP⁺ est réduit en NADPH, indispensable au cycle de Calvin."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "question": "Quel pigment absorbe principalement dans le rouge et le bleu ?",
+              "options": [
+                "Chlorophylle a",
+                "Caroténoïdes",
+                "Phycoérythrine",
+                "Anthocyanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chlorophylle a présente des pics d'absorption vers 430 nm et 662 nm environ."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "question": "Quel gaz est libéré lors du photolyse de l'eau au niveau du photosystème II ?",
+              "options": ["Oxygène", "Azote", "Méthane", "CO"],
+              "correctAnswers": [0],
+              "explanation": "La scission de l'eau au PSII fournit des électrons, des protons et de l'O₂."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "question": "Quelle réaction du cycle de Calvin fixe le CO₂ sur un accepteur à cinq carbones ?",
+              "options": [
+                "Carboxylation du RuBP",
+                "Réduction du NADPH",
+                "Régénération du RuBP",
+                "Photolyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rubisco catalyse la fixation du CO₂ sur le ribulose-1,5-bisphosphate (RuBP)."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "question": "Quel facteur environnemental limite souvent la photosynthèse en milieu aquatique profond ?",
+              "options": [
+                "Intensité lumineuse",
+                "Salinité du sol",
+                "Vent",
+                "Température nocturne basse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière diminue avec la profondeur et devient souvent le facteur limitant."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "question": "Quel transporteur d'électrons relie le PSII au PSI dans la chaîne photosynthétique ?",
+              "options": [
+                "Plastocyanine et cytochrome b₆f",
+                "ATP synthase seule",
+                "Rubisco",
+                "NADH déshydrogénase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les électrons passent par la chaîne cytochrome b₆f et la plastocyanine entre PSII et PSI."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "question": "Où sont stockés temporairement les assimilats sous forme d'amidon le jour ?",
+              "options": [
+                "Chloroplastes",
+                "Vacuole",
+                "Paroi cellulaire",
+                "Noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amidon transitoire s'accumule dans le stroma chloroplastique pendant la journée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Phase claire",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "question": "Quels produits de la phase claire alimentent directement le cycle de Calvin ?",
+              "options": ["ATP", "NADPH", "O₂", "Glucose libre"],
+              "correctAnswers": [0, 1],
+              "explanation": "ATP et NADPH sont consommés lors de la réduction et de la régénération du RuBP dans le stroma."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "question": "Quel événement initie le transport d'électrons dans le PSII ?",
+              "options": [
+                "Absorption d'un photon par P680",
+                "Fixation du CO₂",
+                "Hydrolyse de l'ATP",
+                "Diffusion de l'O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'excitation du centre réactionnel P680 déclenche la chaîne d'oxydoréduction."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "question": "Quelle protéine phosphoryle l'ADP grâce au gradient de protons thylakoïdien ?",
+              "options": ["ATP synthase", "Rubisco", "Ferrodoxine", "LHC II"],
+              "correctAnswers": [0],
+              "explanation": "Le flux de protons à travers l'ATP synthase permet la synthèse d'ATP photophosphorylation."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "question": "Quel rôle joue la ferrodoxine ?",
+              "options": [
+                "Transfert d'électrons vers le NADP⁺",
+                "Fixation du CO₂",
+                "Stockage de l'amidon",
+                "Absorption du vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ferrodoxine réduit le NADP⁺ via la ferrodoxine-NADP⁺ réductase."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "question": "Le transport cyclique des électrons produit surtout :",
+              "options": [
+                "ATP supplémentaire",
+                "NADPH supplémentaire",
+                "O₂ supplémentaire",
+                "CO₂ fixé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle autour du PSI augmente le rapport ATP/NADPH sans nouveau NADPH."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "question": "Les antennes collectrices (LHC) servent à :",
+              "options": [
+                "Capteur et transfert d'énergie vers le centre réactionnel",
+                "Catalyser la rubisco",
+                "Pomper le CO₂",
+                "Synthétiser le cellulose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pigments des complexes antennaires funnel l'énergie lumineuse vers P680 ou P700."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "question": "La photoinhibition du PSII survient surtout lorsque :",
+              "options": [
+                "Excès de lumière et stress oxydatif",
+                "Manque total de CO₂ la nuit",
+                "Absence de chlorophylle",
+                "Température proche de 0 °C uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un excès photonique endommage le PSII et active des mécanismes de réparation."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "question": "Le pH du lumen thylakoïdien augmente ou diminue lors du fonctionnement ?",
+              "options": [
+                "Diminue (acidification)",
+                "Augmente fortement",
+                "Reste identique au stroma",
+                "Devient neutre obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pompage de protons dans le lumen acidifie ce compartiment."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "question": "Quel pigment est au centre réactionnel du photosystème I ?",
+              "options": ["P700", "P680", "Phycocyanine", "Xanthophylle seule"],
+              "correctAnswers": [0],
+              "explanation": "P700 désigne la forme réduite du chlorophyll a spécialisée du PSI."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "question": "La voie non cyclique des électrons nécessite :",
+              "options": [
+                "PSII, cytochrome b₆f, PSI et photolyse de l'eau",
+                "Uniquement PSI",
+                "Rubisco active",
+                "Absence d'O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie linéaire relie les deux photosystèmes et libère de l'oxygène."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Cycle de Calvin",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "question": "Quelles étapes appartiennent au cycle de Calvin dans le stroma ?",
+              "options": [
+                "Fixation du CO₂ sur le RuBP",
+                "Réduction des intermédiaires à trois carbones",
+                "Photolyse de l'eau",
+                "Régénération du RuBP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calvin comprend carboxylation, réduction (NADPH) et régénération du RuBP ; la photolyse est dans les thylakoïdes."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "question": "Combien de molécules de CO₂ fixées produisent une molécule de triose phosphate exportable ?",
+              "options": [
+                "3 CO₂ pour 1 G3P net",
+                "1 CO₂ pour 1 glucose immédiat",
+                "6 CO₂ pour 1 O₂",
+                "2 CO₂ pour 1 RuBP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut trois tours de cycle pour un G3P net, consommant 9 ATP et 6 NADPH au total."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "question": "Quelle enzyme catalyse la première fixation du CO₂ chez les C3 ?",
+              "options": [
+                "Rubisco",
+                "PEP carboxylase",
+                "ATP synthase",
+                "Nitrogenase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ribulose-1,5-bisphosphate carboxylase/oxygénase fixe le CO₂ sur le RuBP."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "question": "Le triose phosphate (G3P) peut servir à :",
+              "options": [
+                "Synthèse de sucres et de lipides",
+                "Libérer directement de l'O₂",
+                "Remplacer la chlorophylle",
+                "Pomper les protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le G3P est un précurseur du saccharose, de l'amidon et de composés organiques."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "question": "La régénération du RuBP consomme surtout :",
+              "options": ["ATP", "NADPH seul", "O₂", "CO"],
+              "correctAnswers": [0],
+              "explanation": "Des kinases utilisent l'ATP pour reconstituer le RuBP à partir des intermédiaires."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "question": "Le cycle de Calvin fonctionne principalement :",
+              "options": [
+                "De jour, lorsque ATP et NADPH sont disponibles",
+                "Uniquement la nuit",
+                "Sans chloroplastes",
+                "Sans CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il dépend des produits de la phase claire, donc de la lumière en conditions naturelles."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "question": "Un intermédiaire à cinq carbones du cycle est :",
+              "options": ["RuBP", "O₂", "NADP⁺", "Phosphénolpyruvate"],
+              "correctAnswers": [0],
+              "explanation": "Le ribulose-1,5-bisphosphate est l'accepteur initial du CO₂."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "question": "Si le RuBP n'est pas régénéré, on observe :",
+              "options": [
+                "Arrêt progressif du cycle malgré l'ATP",
+                "Augmentation illimitée de la fixation",
+                "Plus d'O₂ au PSII",
+                "Disparition des thylakoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans accepteur, la carboxylation cesse même si la phase claire tourne encore."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "question": "Les réactions du cycle de Calvin sont aussi dites :",
+              "options": [
+                "Phase obscure (historique)",
+                "Phase lumineuse",
+                "Photolyse",
+                "Respiration cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On les nommait « phase obscure » car elles ne requièrent pas directement la lumière."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "question": "La sortie nette de carbone du cycle vers le cytosol passe surtout par :",
+              "options": [
+                "Export de trioses phosphates",
+                "Diffusion de CO₂",
+                "Transport de chlorophylle",
+                "Exocytose de rubisco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une partie du G3P quitte le chloroplaste pour alimenter le métabolisme de la cellule."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Rubisco et photorespiration",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent la photorespiration chez les plantes C3 ?",
+              "options": [
+                "Oxygénation du RuBP par la rubisco",
+                "Perte nette de CO₂ fixé",
+                "Production directe de glucose sans ATP",
+                "Implication des peroxysomes et mitochondries"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La rubisco peut fixer O₂ ; le métabolisme associé consomme de l'énergie et libère du CO₂ via organites peroxysomaux et mitochondries."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "question": "La photorespiration augmente surtout quand :",
+              "options": [
+                "Ratio O₂/CO₂ élevé autour de la rubisco",
+                "Lumière nulle",
+                "Température très basse uniquement",
+                "CO₂ très élevé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un faible CO₂ stromatique ou un O₂ élevé favorise l'oxygénation du RuBP."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "question": "La rubisco est une enzyme :",
+              "options": [
+                "Abondante et relativement lente",
+                "Rare et ultra-rapide",
+                "Exclusivement mitochondriale",
+                "Qui fixe l'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est probablement la protéine la plus abondante sur Terre, avec un turnover catalytique modeste."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "question": "Le produit initial de l'oxygénation du RuBP est :",
+              "options": ["Phosphoglycolate", "PEP", "Malate", "Citrate"],
+              "correctAnswers": [0],
+              "explanation": "Le phosphoglycolate entre dans la voie de récupération avec coût énergétique."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "question": "Fermer partiellement les stomates par stress hydrique entraîne souvent :",
+              "options": [
+                "Plus de photorespiration",
+                "Moins de respiration cellulaire",
+                "Arrêt du PSII",
+                "Fixation accrue du N₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La baisse de CO₂ interne favorise la voie oxygénase de la rubisco."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "question": "Les plantes C4 réduisent la photorespiration en :",
+              "options": [
+                "Concentrant le CO₂ autour de la rubisco",
+                "Supprimant la rubisco",
+                "Fixant O₂ au PSI",
+                "Évitant les stomates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie C4 fournit du CO₂ au bundle sheath où la rubisco fonctionne surtout en mode carboxylase."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "question": "Où se déroule une partie clé du métabolisme du glycolate ?",
+              "options": [
+                "Peroxysome",
+                "Nucléon",
+                "Lysosome animal",
+                "Ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décarboxylation du glycine en serine implique peroxysomes et mitochondries."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "question": "La photorespiration est considérée comme :",
+              "options": [
+                "Un coût métabolique lors de conditions défavorables",
+                "Une voie de production d'O₂",
+                "Une alternative au cycle de Calvin la nuit",
+                "Un processus uniquement racinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle consomme ATP et libère du CO₂ sans gain net de carbone."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "question": "Augmenter la température peut favoriser la photorespiration car :",
+              "options": [
+                "La solubilité du CO₂ diminue plus que celle de l'O₂ relativement",
+                "La rubisco disparaît",
+                "Le PSII s'arrête",
+                "Le RuBP est détruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ stromatique baisse relativement, ce qui favorise l'oxygénation."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "question": "Stratégie des CAM pour limiter les pertes :",
+              "options": [
+                "Séparer dans le temps fixation et ouverture stomatique",
+                "Supprimer la rubisco",
+                "Ne jamais ouvrir les stomates la nuit",
+                "Fixer O₂ au lieu de CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les CAM stockent l'acide malique la nuit et décarboxylent le jour derrière stomates fermés."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Facteurs limitants",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "question": "Selon la loi du minimum de Liebig appliquée à la photosynthèse, quels facteurs peuvent devenir limitants ?",
+              "options": [
+                "Intensité lumineuse",
+                "Concentration en CO₂",
+                "Température",
+                "Couleur des pétales uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lumière, CO₂ et température modulent le rendement ; le facteur le plus contraint freine le flux global."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "question": "À forte lumière, le facteur limitant devient souvent :",
+              "options": [
+                "CO₂ ou température",
+                "Absence de chlorophylle",
+                "Gravité",
+                "Salinité du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fois saturée la phase claire, la fixation du CO₂ ou les enzymes limitent."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "question": "La courbe lumière-intensité de photosynthèse présente typiquement :",
+              "options": [
+                "Une phase linéaire puis un plateau",
+                "Une décroissance exponentielle dès le début",
+                "Aucune variation",
+                "Un maximum à l'obscurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement augmente puis sature lorsque un autre facteur devient limitant."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "question": "Enrichir l'air en CO₂ dans une serre peut :",
+              "options": [
+                "Augmenter le taux de photosynthèse jusqu'à saturation",
+                "Supprimer le besoin en eau",
+                "Empêcher la respiration",
+                "Rendre la rubisco inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que d'autres facteurs ne limitent pas, plus de CO₂ stimule la fixation."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "question": "Une température trop élevée peut diminuer la photosynthèse car :",
+              "options": [
+                "Les enzymes se dénaturent ou le stress hydrique ferme les stomates",
+                "Le PSII produit trop d'ATP",
+                "Le CO₂ devient toxique obligatoirement",
+                "La lumière disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà de l'optimum enzymatique, photoinhibition et fermeture stomatique réduisent le flux."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "question": "La compensation lumière est le point où :",
+              "options": [
+                "Photosynthèse nette = respiration",
+                "Production d'O₂ est nulle absolue",
+                "CO₂ interne est infini",
+                "Stomates toujours ouverts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux photosynthétique net nul : gains et pertes de carbone s'équilibrent."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "question": "Un déficit en eau limite surtout via :",
+              "options": [
+                "Fermeture stomatique et baisse de CO₂ interne",
+                "Destruction du DNA chloroplastique",
+                "Arrêt instantané du PSI",
+                "Absence de rubisco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stomates se ferment pour limiter l'évaporation, réduisant l'entrée de CO₂."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "question": "Carence en azote foliaire limite la photosynthèse car :",
+              "options": [
+                "Moins de rubisco et de chlorophylle",
+                "Plus de CO₂ dans l'air",
+                "Fermeture nocturne des stomates uniquement",
+                "Excès de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'azote entre dans les pigments et enzymes photosynthétiques."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "question": "Mesurer le flux de CO₂ net avec un IRGA permet d'estimer :",
+              "options": [
+                "La photosynthèse nette de la feuille",
+                "La masse du noyau",
+                "La vitesse du vent global",
+                "La salinité du sol uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyseur infrarouge quantifie les échanges gazeux CO₂/H₂O."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "question": "Chez une plante ombragée transférée au plein soleil, on observe souvent :",
+              "options": [
+                "Photoinhibition transitoire puis acclimatation",
+                "Disparition des chloroplastes en une heure",
+                "Fixation de N₂",
+                "Arrêt permanent du cycle de Calvin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des mécanismes d'ajustement (xanthophyll cycle, réparation PSII) restaurent le rendement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Stratégies C3, C4 et CAM",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations distinguent correctement C4 et CAM ?",
+              "options": [
+                "C4 sépare spatialement les réactions ; CAM sépare temporellement",
+                "Les deux fixent initialement le CO₂ via PEP carboxylase dans certains cas",
+                "Les C3 n'ont pas de rubisco",
+                "Les CAM ouvrent toujours leurs stomates le jour"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "C4 = double compartiment (mésophylle/bundle sheath) ; CAM = fixation nocturne et décarboxylation diurne ; PEP carboxylase intervient en amont."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "question": "La première fixation du CO₂ en C4 se fait en :",
+              "options": [
+                "Acide à quatre carbones (malate/aspartate)",
+                "RuBP directement",
+                "O₂",
+                "Amidon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PEP carboxylase produit un C4 transporté vers les cellules du faisceau."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "question": "Les plantes C4 sont avantagées surtout en :",
+              "options": [
+                "Climat chaud, lumineux et parfois sec",
+                "Forêt tropicale ombragée permanente",
+                "Milieu aquatique profond",
+                "Hiver arctique sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur mécanisme limite la photorespiration lorsque stomates partiellement fermés."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "question": "Anatomie « Kranz » désigne :",
+              "options": [
+                "Couronne de cellules du faisceau entourées de mésophylle spécialisé",
+                "Racines en forme de spirale",
+                "Feuilles sans stomates",
+                "Absence de chloroplastes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation typique des C4 avec chloroplastes dimorphes selon les cellules."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "question": "Chez les CAM, le CO₂ nocturne est stocké sous forme de :",
+              "options": [
+                "Acide malique",
+                "Amidon uniquement",
+                "Protéines",
+                "Lipides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixation nocturne en C4 puis stockage vacuolaire d'acide malique."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "question": "Exemple typique de plante CAM :",
+              "options": [
+                "Cactus",
+                "Blé tendre",
+                "Riz des rizières inondées",
+                "Mousse de forêt tempérée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les succulentes utilisent la CAM pour économiser l'eau."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "question": "La majorité des plantes terrestres sont :",
+              "options": [
+                "C3",
+                "C4 uniquement",
+                "CAM uniquement",
+                "Sans photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voies C4 et CAM sont des adaptations dérivées chez certaines lignées."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "question": "PEP carboxylase diffère de la rubisco car elle :",
+              "options": [
+                "Ne fixe pas l'O₂ et possède une affinité élevée pour le CO₂",
+                "Fixe l'azote",
+                "Fonctionne dans le thylakoïde",
+                "Produit de l'O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PEP carboxylase est moins sujette à la compétition O₂/CO₂."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "question": "Le maïs (Zea mays) est une plante :",
+              "options": [
+                "C4",
+                "CAM strict",
+                "C3 exclusivement",
+                "Sans stomates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maïs utilise la voie C4, d'où son bon rendement en conditions chaudes."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "question": "Passer d'une voie C3 à C4 sur de courtes générations par sélection simple est :",
+              "options": [
+                "Impossible : évolution complexe de l'anatomie et des enzymes",
+                "Trivial en une génération",
+                "Automatique en serre",
+                "Lié uniquement à plus d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La C4 implique modifications anatomiques et expression génique coordonnées."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Mesures et bilans",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "question": "Quels bilans énergétiques et redox sont corrects pour la photosynthèse oxygénique ?",
+              "options": [
+                "Lumière fournit l'énergie pour synthétiser ATP et NADPH",
+                "Le NADPH fournit électrons pour réduire le CO₂",
+                "L'O₂ provient du CO₂",
+                "Le glucose est produit directement dans le thylakoïde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phase claire : énergie lumineuse → ATP/NADPH ; phase Calvin : NADPH réduit le carbone ; l'O₂ vient de l'eau."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "question": "La production d'O₂ mesurée au photosynthèomètre reflète surtout :",
+              "options": [
+                "Activité du PSII et photolyse",
+                "Cycle de Calvin seul",
+                "Respiration mitochondriale seule",
+                "Fixation de N₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évolution d'oxygène est liée au flux d'électrons depuis l'eau au PSII."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "question": "Le rendement quantique maximal théorique des plantes est :",
+              "options": [
+                "Inférieur à 100 % car l'énergie lumineuse est partiellement dissipée",
+                "Exactement 100 %",
+                "Nul de jour",
+                "Indépendant de la longueur d'onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion, transmission et chaleur réduisent la fraction utile des photons."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "question": "La respiration photorespiratoire et mitochondriale diurne :",
+              "options": [
+                "Diminue le gain net de carbone",
+                "Augmente toujours la photosynthèse",
+                "N'a aucun effet",
+                "Produit de l'O₂ au PSII"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pertes de CO₂ et consommation d'ATP réduisent l'assimilation nette."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "question": "Un excès de lumière peut être dissipé via :",
+              "options": [
+                "Cycle des xanthophyllies",
+                "Rubisco",
+                "Synthèse de cellulose nocturne",
+                "Fixation de N₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conversion violaxanthine → zéaxanthine dissipe l'énergie en chaleur."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "question": "L'expérience de Engelmann avec algues et bactéries a montré :",
+              "options": [
+                "Une photosynthèse plus active aux longueurs absorbées par les pigments",
+                "Que le CO₂ produit l'O₂",
+                "L'absence de PSII",
+                "Que la lumière verte est la plus efficace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bactéries aerobies se concentrent là où l'O₂ est produit selon la couleur."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "question": "Calvin a identifié le cycle du CO₂ en utilisant :",
+              "options": [
+                "14CO₂ en chromatographie",
+                "Seulement de la lumière verte",
+                "Des isotopes d'azote",
+                "Aucun traceur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ marqué a permis de suivre les intermédiaires du cycle."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "question": "La productivité primaire brute (PPB) inclut :",
+              "options": [
+                "Toute la matière organique produite par photosynthèse",
+                "Uniquement ce qui est consommé par l'homme",
+                "Seulement la nuit",
+                "La décomposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PPB = production totale ; PPN = PPB moins autotrophe respiration."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "question": "Dans un écosystème forestier, la majeure partie de la PPB peut être :",
+              "options": [
+                "Respirée par les plantes elles-mêmes",
+                "Exportée sous forme de roche",
+                "Perdue en O₃",
+                "Stockée dans le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La respiration foliaire et racinaire consomme une fraction importante."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "question": "Augmenter la durée du jour artificiellement peut augmenter la production si :",
+              "options": [
+                "Un autre facteur n'est pas devenu limitant",
+                "La lumière est nulle",
+                "Les stomates sont toujours fermés",
+                "Il n'y a pas de chlorophylle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de photons utiles prolongent l'assimilation tant que CO₂ et température suivent."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Chloroplaste et adaptations",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "question": "Quelles structures internes caractérisent le chloroplaste ?",
+              "options": [
+                "Thylakoïdes empilés en grana",
+                "Stroma aqueux",
+                "Cristae mitochondriales",
+                "Enveloppe double"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Membrane interne en thylakoïdes et matrice stromale ; les cristae appartiennent aux mitochondries."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "question": "Les chloroplastes possèdent :",
+              "options": [
+                "ADN circulaire et ribosomes 70S",
+                "Un seule membrane",
+                "Pas de génome",
+                "Un noyau propre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Endosymbiose : génome plastidial et traduction partiellement autonome."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "question": "Le mouvement des chloroplastes dans la cellule (phototropisme chloroplastique) sert à :",
+              "options": [
+                "Optimiser la capture lumineuse ou éviter les photodomages",
+                "Fixer l'azote",
+                "Produire des stomates",
+                "Synthétiser la paroi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réorientation selon l'intensité lumineuse pour équilibrer photosynthèse et stress."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "question": "Les caroténoïdes dans l'antenne protègent en :",
+              "options": [
+                "Désactivant l'énergie excitée et le singulet O₂",
+                "Fixant le CO₂",
+                "Transportant les électrons au PSI uniquement",
+                "Remplaçant la rubisco"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils participent à la photoprotection et à la dissipation."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "question": "Feuilles d'ombre vs soleil diffèrent souvent par :",
+              "options": [
+                "Densité stomatique et épaisseur du mésophylle",
+                "Absence de chloroplastes en soleil",
+                "Couleur due à l'absence de rubisco",
+                "Pas de cuticule en soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acclimatation morpho-physiologique aux flux lumineux."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "question": "La dégradation des thylakoïdes en sénescence foliaire implique :",
+              "options": [
+                "Recyclage des nutriments dont azote",
+                "Production accrue de chlorophylle",
+                "Fixation de CO₂ accrue",
+                "Fermeture permanente des stomates uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments mobiles sont réexportés vers les parties jeunes."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "question": "Les algues unicellulaires sans grana possèdent :",
+              "options": [
+                "Thylakoïdes libres dans le stroma",
+                "Pas de photosynthèse",
+                "Rubisco dans le noyau",
+                "PSII absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation thylakoïdienne variable selon les taxons."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "question": "Un herbicide inhibant le PSII agit en :",
+              "options": [
+                "Bloquant le transport d'électrons au niveau du QB",
+                "Stimulant la rubisco",
+                "Fermant les stomates mécaniquement",
+                "Ajoutant du CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : triazines liées au site QB du D1."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "question": "La biogenèse chloroplastique nécessite :",
+              "options": [
+                "Génome nucléaire et plastidial",
+                "Uniquement le cytosol",
+                "Absence de protéines importées",
+                "Mitochondries seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La majorité des protéines chloroplastiques sont codées au noyau et importées."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "question": "Comparées aux C4, les C3 en conditions chaudes et sèches ont souvent :",
+              "options": [
+                "Rendement photosynthétique net plus faible",
+                "Taux de photorespiration nul",
+                "Pas de rubisco",
+                "Stomates toujours grands ouverts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photorespiration et fermeture stomatique pénalisent les C3."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Photosynthèse et agriculture",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "question": "Quels leviers agronomiques peuvent augmenter l'assimilation de carbone ?",
+              "options": [
+                "Optimiser l'irrigation pour maintenir stomates fonctionnels",
+                "Ajuster la fertilisation azotée",
+                "Supprimer toute lumière",
+                "Réduire le CO₂ atmosphérique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Eau et azote soutiennent rubisco et chlorophylle ; CO₂ et lumière doivent rester adéquats."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "question": "Le rendement des cultures dépend aussi de :",
+              "options": [
+                "Partition assimilats vers grains vs paille",
+                "Couleur du ciel uniquement",
+                "Absence de respiration",
+                "Taille du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse doit être suivie d'une allocation efficace aux organes récoltés."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "question": "Ombre d'un couvert végétal dense peut :",
+              "options": [
+                "Limiter la photosynthèse des plantes du sous-étage",
+                "Augmenter toujours le rendement",
+                "Empêcher toute respiration",
+                "Créer du CO₂ intracellulaire infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière devient le facteur limitant pour les strates basses."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "question": "Sélectionner des variétés à haute efficience d'utilisation de l'eau vise à :",
+              "options": [
+                "Maintenir photosynthèse avec moins de transpiration",
+                "Supprimer les stomates",
+                "Éliminer la rubisco",
+                "Réduire la chlorophylle à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleur rapport carbone fixé par eau transpirée."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "question": "La photosynthèse des cultures en serre peut être suivie par :",
+              "options": [
+                "Capteurs de fluorescence chlorophyllienne",
+                "Mesure de la gravité terrestre",
+                "Comptage des chromosomes",
+                "Analyse du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fluorescence indique l'état du PSII et le stress."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "question": "Un sol compacté limite la photosynthèse surtout via :",
+              "options": [
+                "Stress racinaire et fermeture stomatique",
+                "Plus de lumière",
+                "Plus de CO₂ dans l'air",
+                "Absence d'eau dans l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvaise oxygénation racinaire et signal hydrique réduisent l'assimilation foliaire."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "question": "Les OGM visant la rubisco cherchent à :",
+              "options": [
+                "Améliorer spécificité CO₂/O₂ ou activité",
+                "Supprimer le cycle de Calvin",
+                "Empêcher la phase claire",
+                "Éliminer les chloroplastes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire photorespiration ou accélérer la carboxylation."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "question": "Rotation de cultures avec légumineuses beneficie la photosynthèse suivante car :",
+              "options": [
+                "Azote minéral supplémentaire pour feuilles",
+                "CO₂ absent",
+                "Stomates supprimés",
+                "Moins de chlorophylle requis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixation biologique enrichit le sol en azote assimilable."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "question": "Canopée fermée mature présente souvent :",
+              "options": [
+                "Couche supérieure saturée et intérieur ombragé",
+                "Photosynthèse nulle part",
+                "Uniformité parfaite de lumière",
+                "Absence de respiration foliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gradient lumineux vertical dans le couvert."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "question": "L'efficacité photosynthétique intrinsèque se distingue du rendement agronomique car :",
+              "options": [
+                "Le rendement inclut pertes et allocation des assimilats",
+                "Elles sont toujours identiques",
+                "Le rendement ignore la respiration",
+                "La photosynthèse ne compte pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement = photosynthèse nette × partition − autres pertes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse photosynthèse",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "question": "Quelles propositions résument correctement la photosynthèse oxygénique ?",
+              "options": [
+                "Elle convertit l'énergie lumineuse en énergie chimique",
+                "Elle est à l'origine de la biomasse dans les chaînes alimentaires",
+                "Elle consomme de l'O₂ pour produire du CO₂",
+                "Elle se déroule uniquement dans les racines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Base énergétique des écosystèmes ; l'O₂ est produit, non consommé, et les feuilles chlorophylliennes sont le site principal."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "question": "L'eau utilisée en photosynthèse provient surtout de :",
+              "options": [
+                "Absorption racinaire et transport xylème",
+                "Air uniquement",
+                "Sol sous forme de roche",
+                "Atmosphère comme CO₂ principal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transpiration alimente le flux hydrique vers les feuilles."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "question": "La relation entre photosynthèse et respiration cellulaire est :",
+              "options": [
+                "Opposée pour le bilan carbone : l'une fixe, l'autre libère CO₂",
+                "Identique",
+                "Sans lien",
+                "Exclusivement nocturne pour les deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photosynthèse autotrophe vs respiration catabolique des sucres."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "question": "Sans photosynthèse, l'atmosphère terrestre moderne :",
+              "options": [
+                "Ne contiendrait pas la fraction actuelle d'O₂ libre",
+                "Serait identique",
+                "N'aurait pas de CO₂",
+                "Serait pure azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'O₂ libre résulte surtout de la photolyse de l'eau liée à la photosynthèse oxygénique."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "question": "Les cyanobactéries ont contribué à :",
+              "options": [
+                "L'oxygénation primordiale de l'atmosphère",
+                "La domestication du blé",
+                "La formation du noyau terrestre",
+                "La photosynthèse chez les animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photosynthèse oxygénique procaryote avant les plantes."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "question": "La chlorophylle verte transmet surtout :",
+              "options": [
+                "Le vert (faible absorption) aux observateurs",
+                "Toute l'énergie au PSII",
+                "Rien",
+                "Uniquement l'infrarouge visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reflet/transmission du vert explique la couleur des feuilles."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "question": "Un plant en lumière faible augmente souvent :",
+              "options": [
+                "Surface foliaire et chlorophylle par unité de masse",
+                "Photorespiration obligatoirement",
+                "Concentration de rubisco nulle",
+                "Fermeture stomatique permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acclimatation à l'ombre (shade leaves)."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "question": "La photosynthèse alimente directement la croissance via :",
+              "options": [
+                "Assimilats carbonés",
+                "Absorption d'azote gazeux foliaire majeure",
+                "Fixation du fer",
+                "Production de méthane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sucres et dérivés construisent biomasse et métabolites."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "question": "Étudier la fluorescence modulée permet de :",
+              "options": [
+                "Détecter un stress photosynthétique précoce",
+                "Mesurer la masse génomique",
+                "Compter les stomates seulement",
+                "Dater les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur non destructif de l'efficacité du PSII."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "question": "La photosynthèse est centrale pour la domestication car :",
+              "options": [
+                "Elle détermine le rendement énergétique des cultures sélectionnées",
+                "Elle supprime le besoin d'eau",
+                "Elle élimine la variabilité génétique",
+                "Elle n'affecte pas le blé ni le maïs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection sur rendement et allocation lie performance photosynthétique et traits agronomiques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Domestication",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Domestication et évolution",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent la domestication des plantes ?",
+              "options": [
+                "Sélection par l'humain de traits favorables",
+                "Modification génétique sur de nombreuses générations",
+                "Culture sans aucun changement génétique",
+                "Disparition de toute diversité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Domestication = coévolution plante-humain avec sélection et héritabilité des traits."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Le centre de domestication d'une espèce est :",
+              "options": [
+                "Zone géographique d'origine de sa domestication",
+                "Unique pour toutes les espèces",
+                "Toujours en Europe",
+                "L'endroit où la plante est sauvage aujourd'hui uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vavilov a décrit des foyers de diversité correspondant aux origines."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Le syndrome de domestication inclut souvent :",
+              "options": [
+                "Graines plus grosses et non dormantes",
+                "Augmentation des défenses physiques",
+                "Diminution du rendement",
+                "Dispersion explosive des graines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits sélectionnés : graines/légumes plus gros, germination facilitée, récolte aisée."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Une plante cultivée diffère d'une plante sauvage proche par :",
+              "options": [
+                "Allèles fixés ou fréquents liés aux traits sélectionnés",
+                "Absence totale de génome",
+                "Identité génétique strictement nulle",
+                "Impossibilité de croiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des régions génomiques portent signatures de sélection."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "La domestication est un processus :",
+              "options": [
+                "Graduel sur des millénaires",
+                "Instantané en une saison",
+                "Purement culturel sans génétique",
+                "Réversible en une génération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accumulation lente de mutations et de recombinations favorisées."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Le blé cultivé descend de :",
+              "options": [
+                "Plantes sauvages du Proche-Orient",
+                "Algues marines",
+                "Champignons",
+                "Conifères uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domestication du blé au Croissant fertile."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Hybridation entre cultivar et sauvage peut :",
+              "options": [
+                "Introduire des allèles sauvages dans les champs",
+                "Stopper toute évolution",
+                "Empêcher la pollinisation",
+                "Supprimer la diversité génétique sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux de gènes sauvage → cultivé modifie les populations cultivées."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "La domestication diffère de la simple cueillette car :",
+              "options": [
+                "Implique culture et sélection délibérée",
+                "Ne modifie jamais le sol",
+                "Exclut la sédentarisation",
+                "N'utilise pas de graines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en culture avec choix des semences replantées."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Étudier l'ADN ancien de grains archéologiques permet de :",
+              "options": [
+                "Tracer l'histoire génétique des domestications",
+                "Mesurer la photosynthèse passée",
+                "Dater le noyau terrestre",
+                "Observer les chloroplastes vivants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paléogénomique végétale éclaire les transitions sauvage-cultivé."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Le maïs moderne est génétiquement lié au :",
+              "options": [
+                "Téosinte",
+                "Blé",
+                "Riz sauvage d'Asie",
+                "Orge primitive européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zea mays domestiqué à partir de téosinte au Mexique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Révolution néolithique",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "La transition néolithique en Méditerranée orientale implique :",
+              "options": [
+                "Domestication du blé et de l'orge",
+                "Sédentarisation partielle",
+                "Disparition immédiate de la chasse",
+                "Apparition simultanée de l'agriculture sur tous les continents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Premières cultures céréalières et villages ; autres régions domestication indépendante plus tard."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Le Néolithique est surtout marqué par :",
+              "options": [
+                "Production alimentaire et poterie",
+                "Métallurgie du fer industrielle",
+                "Écriture alphabétique",
+                "Machines à vapeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agriculture, élevage, céramique caractérisent le Néolithique."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Domestication animale associée aux premières cultures inclut :",
+              "options": [
+                "Chèvre et mouton",
+                "Requin",
+                "Grenouille tropicale uniquement",
+                "Baleine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caprinés et bovins proches accompagnent l'agriculture précoce."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "L'agriculture a favorisé des densités humaines plus :",
+              "options": [
+                "Élevées",
+                "Faibles",
+                "Identiques au Paléolithique",
+                "Nulles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surplus alimentaire soutient croissance démographique."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Les premiers villages agricoles montrent :",
+              "options": [
+                "Stockage de graines et outils de moisson",
+                "Absence de structures",
+                "Uniquement chasse",
+                "Pas de sélection de plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silos, faucilles en silex, grains carbonisés témoignent de l'agriculture."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Diffusion vs indépendance des domestications signifie :",
+              "options": [
+                "Certaines cultures se propagent, d'autres foyers sont indépendants",
+                "Toutes viennent d'un seul point en une année",
+                "Aucune migration humaine",
+                "Pas de génétique impliquée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blé/orge diffusés ; riz, maïs, pomme de terre domestications locales."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "La sédentarisation agricole a modifié :",
+              "options": [
+                "Paysages et pression sur ressources locales",
+                "La gravité",
+                "Le noyau terrestre",
+                "La photosynthèse des algues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déforestation, irrigation, érosion liées aux pratiques."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Cueillette avant domestication fournissait :",
+              "options": [
+                "Connaissance des cycles et des variétés locales",
+                "Aucune information botanique",
+                "Graines stériles uniquement",
+                "Blé hybride moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir écologique préalable à la mise en culture."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Le riz asiatique cultivé est domesticé :",
+              "options": [
+                "Indépendamment en Asie",
+                "Au même moment exact que le maïs en Europe",
+                "Sans sélection",
+                "Uniquement au XXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foyer de domestication distinct en Asie de l'Est/Sud."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Archéologie et génétique concordent que la domestication :",
+              "options": [
+                "Est un processus multiforme dans le temps et l'espace",
+                "Est un mythe",
+                "N'a laissé aucune trace",
+                "Concerne seulement les animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches croisées fossiles, ADN, morphologie des grains."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Sélection et génétique",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "La sélection massale chez les plantes consiste à :",
+              "options": [
+                "Replanter des graines des meilleurs pieds",
+                "Conserver des traits héréditaires",
+                "Cloner sans variation",
+                "Éliminer toute diversité en une récolte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Choix reproducteurs oriente les fréquences alléliques sur générations."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "La sélection moderne accélère les gains par :",
+              "options": [
+                "Croisements contrôlés et tests multi-environnements",
+                "Hasard seul",
+                "Absence de données phénotypiques",
+                "Interdiction de croiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programmes de sélection avec QTL et génomique."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Effet de goulot d'étranglement génétique :",
+              "options": [
+                "Réduction de diversité après fondation ou sélection intense",
+                "Augmentation illimitée de variabilité",
+                "Absence de dérive",
+                "Uniquement chez les animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'individus fondateurs ou sélection réduit l'hétérozygotie."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Un gène majeur de domestication peut contrôler :",
+              "options": [
+                "Taille des grains ou dormance",
+                "Rotation terrestre",
+                "Photosynthèse absente",
+                "Nombre de chromosomes humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : sh4 pour grain de riz, tb1 pour architecture du maïs."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Croiser cultivar × sauvage puis backcross sert à :",
+              "options": [
+                "Introduire un allèle sauvage utile dans un fond cultivé",
+                "Créer une espèce animale",
+                "Supprimer la photosynthèse",
+                "Empêcher la méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Introgression ciblée (résistance, stress)."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "La perte de diversité génétique des cultivars modernes pose risque de :",
+              "options": [
+                "Vulnérabilité aux maladies et stress",
+                "Augmentation automatique du rendement",
+                "Immunité totale",
+                "Stérilité du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniformité génétique favorise épidémies."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Banques de gènes conservent :",
+              "options": [
+                "Ressources génétiques pour l'amélioration future",
+                "Uniquement des espèces animales",
+                "Rien de vivant",
+                "Seulement OGM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collections de variétés anciennes et sauvages."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Polyploïdisation du blé a :",
+              "options": [
+                "Augmenté taille et robustesse via génomes multiples",
+                "Supprimé toute génétique",
+                "Empêché la domestication",
+                "Réduit les chromosomes à un seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blés hexaploïdes combinent génomes de plusieurs espèces apparentées."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Marqueurs moléculaires en sélection assistée servent à :",
+              "options": [
+                "Suivre des allèles sans attendre le phénotype adulte",
+                "Remplacer l'ADN",
+                "Mesurer la lumière",
+                "Compter les stomates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection sur génotype pour traits coûteux à mesurer."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Domestication laisse des signatures :",
+              "options": [
+                "Sélectives dans le génome (regions of selection)",
+                "Uniquement dans le sol",
+                "Absentes de l'ADN",
+                "Seulement mitochondriales chez l'humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Balayages génétiques détectent pics de différenciation sauvage/cultivé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Traits sélectionnés",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Quels traits sont fréquemment sélectionnés chez les céréales ?",
+              "options": [
+                "Grains non dispersés (non shattering)",
+                "Taille de l'épi ou de la panicule",
+                "Augmentation des épines de défense",
+                "Dormance prolongée obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Faciliter récolte et rendement ; réduction de la dispersion naturelle des graines."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Le « shattering » réduit la domestication car :",
+              "options": [
+                "Les graines se dispersent avant récolte",
+                "Il augmente le rendement",
+                "Il est sélectionné positivement",
+                "Il n'existe pas chez les graminées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutations non casseurs retiennent les grains sur l'épi."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Chez le maïs, la sélection a favorisé :",
+              "options": [
+                "Épis volumineux et grains fixés",
+                "Dispersion des grains au vent",
+                "Absence de fécondation",
+                "Tiges rampantes uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture compacte et gros grains nourriciers."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Racines tubéreuses chez la pomme de terre sont sélectionnées pour :",
+              "options": [
+                "Réserve de starch et rendement souterrain",
+                "Photosynthèse foliaire accrue",
+                "Fixation de N₂",
+                "Production de bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organe de stockage consommé."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Réduction de l'amertume chez certaines cucurbitacées illustre :",
+              "options": [
+                "Sélection sur métabolites secondaires",
+                "Sélection sur photosynthèse uniquement",
+                "Domestication animale",
+                "Géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compounds toxiques ou amers réduits pour consommation."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Plantes oléagineuses domestiquées sont choisies pour :",
+              "options": [
+                "Teneur en huide dans les graines",
+                "Bois dur",
+                "Épines",
+                "Feuilles toxiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lipides stockés dans les graines (colza, tournesol, soja)."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Synchronisation de la floraison en culture :",
+              "options": [
+                "Facilite pollinisation et récolte uniforme",
+                "Empêche toute fécondation",
+                "Est impossible",
+                "N'est jamais sélectionnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déterminisme floral contrôlé pour pratiques agricoles."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Diminution de la lignification chez légumes-feuilles vise :",
+              "options": [
+                "Tendreté et consommation",
+                "Bois dur",
+                "Dispersion des graines",
+                "Photosynthèse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection sur texture et qualité culinaire."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Résistance aux herbicides chez certaines variétés est :",
+              "options": [
+                "Sélectionnée ou ingénierée pour l'agriculture",
+                "Un trait ancestral sauvage obligatoire",
+                "Toujours dangereuse sans effet agronomique",
+                "Liée au noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trait cible pour certaines systems de désherbage."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Taille réduite de la plante (ex. blé dwarf) permet :",
+              "options": [
+                "Investissement dans les grains plutôt que tige",
+                "Dispersion éolienne accrue",
+                "Absence de grains",
+                "Croissance arborescente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vernalisation et gibberellines : semi-nains limitent verse."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Archéobotanique",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Quelles sources archéobotaniques documentent la domestication ?",
+              "options": [
+                "Graines carbonisées",
+                "Empreintes de céréales dans la céramique",
+                "ADN nucléaire humain uniquement",
+                "Météorites"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Macrorestes et microfossiles (phytolithes, empreintes) datent les cultures."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Un grain plus gros en contexte archéologique jeune suggère :",
+              "options": [
+                "Progression de la domestication",
+                "Retour au sauvage obligatoire",
+                "Aucune sélection",
+                "Erreur de datation systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Augmentation taille des graines est un syndrome classique."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Les phytolithes servent à :",
+              "options": [
+                "Identifier des taxons ou parties de plantes fossilisées",
+                "Mesurer l'O₂ atmosphérique direct",
+                "Compter les chromosomes",
+                "Observer PSII vivant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silice cellulaire persiste après décomposition organique."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Pollen de céréales en sédiments indique :",
+              "options": [
+                "Présence passée de cultures ou prairies",
+                "Domestication animale",
+                "Activité volcanique seule",
+                "Photosynthèse marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Palynologie retrace végétation et agriculture."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Datation radiocarbone d'une couche avec grains :",
+              "options": [
+                "Situe chronologiquement l'agriculture locale",
+                "Mesure la rubisco",
+                "Donne l'âge de la Terre",
+                "Remplace la génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "14C sur matériel organique associé aux restes cultivés."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Morphométrie des grains permet de :",
+              "options": [
+                "Distinguer formes sauvages vs domestiquées",
+                "Mesurer la vitesse de lumière",
+                "Séquencer le génome entier sans ADN",
+                "Observer mitochondries"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyses de forme et taille des caryopses."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Sites du Proche-Orient montrent domestication du blé vers :",
+              "options": [
+                "~10 000 ans avant présent (ordre de grandeur)",
+                "Hier",
+                "100 Ma",
+                "Période jurassique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Holocène précoce, transition néolithique."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Téosinte vs maïs archéologique démontre :",
+              "options": [
+                "Changement morphologique rapide sous sélection",
+                "Identité sans domestication",
+                "Absence de croisement",
+                "Domestication uniquement au XXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fossiles et cobs anciens montrent transition vers maïs."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Conserver des variétés anciennes en collections :",
+              "options": [
+                "Aide à reconstituer histoire et traits perdus",
+                "Empêche toute recherche",
+                "Remplace banques de gènes",
+                "Supprime diversité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine génétique pour études comparatives."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "L'archéobotanique croise souvent :",
+              "options": [
+                "Génétique des populations modernes et anciennes",
+                "Astronomie seule",
+                "Géologie planétaire uniquement",
+                "Étude des virus humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles cohérents entre fossiles, ADN ancien et diversité actuelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Diversité et ressources génétiques",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Pourquoi conserver la diversité génétique des plantes cultivées ?",
+              "options": [
+                "Source d'allèles pour adaptation au changement climatique",
+                "Réduction des épidémies par uniformité",
+                "Base pour amélioration variétale future",
+                "Obligation de n'utiliser qu'une seule variété"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Variabilité = résilience et matière première pour sélection ; l'uniformité augmente les risques."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Variété locale ou « landrace » :",
+              "options": [
+                "Variété traditionnelle adaptée à un territoire",
+                "OGM obligatoire",
+                "Espèce sauvage non cultivée",
+                "Hybride F1 stérile uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine agricole local souvent diversifié."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Homogénéisation variétale mondiale peut :",
+              "options": [
+                "Réduire agrobiodiversité",
+                "Augmenter toujours les ressources génétiques",
+                "Empêcher toute sélection",
+                "Créer plus de landraces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quelques variétés à haut rendement remplacent diversité locale."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Croisement avec espèce sauvage proche sert à :",
+              "options": [
+                "Introduire résistance aux stress ou maladies",
+                "Supprimer photosynthèse",
+                "Empêcher banques de gènes",
+                "Uniformiser le génome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pool génétique sauvage riche en défenses."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Semences paysannes désignent :",
+              "options": [
+                "Semences sélectionnées et échangées par agriculteurs",
+                "Uniquement semences industrielles",
+                "Graines stériles",
+                "Semences sans ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion communautaire de la diversité cultivée."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Diversité intra-spécifique du blé inclut :",
+              "options": [
+                "Variétés d'hiver vs printemps, dures vs tendres",
+                "Un seul génotype mondial",
+                "Absence de gènes",
+                "Uniquement blé sauvage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples variétés pour usages et climats."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Érosion génétique signifie :",
+              "options": [
+                "Perte d'allèles ou de variétés",
+                "Gain de diversité",
+                "Duplication du génome",
+                "Fixation de l'O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disparition de lignées ou allèles rares."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Les jardins botaniques et banques de semences :",
+              "options": [
+                "Conservent ex situ des ressources végétales",
+                "Remplacent tous les champs",
+                "Empêchent domestication",
+                "Ne stockent que du ADN humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation sécurisée hors milieu naturel."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Diversité phénotypique visible chez tomates anciennes :",
+              "options": [
+                "Couleur, taille, saveur variables",
+                "Identité stricte",
+                "Absence de fruits",
+                "Pas de génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort polymorphisme morphologique et chimique."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Réintroduire allèles oubliés depuis variétés anciennes est :",
+              "options": [
+                "Stratégie d'amélioration durable",
+                "Impossible génétiquement",
+                "Sans intérêt agronomique",
+                "Identique à la photorespiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rescue breeding depuis patrimoine génétique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Agriculture moderne",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Quels outils caractérisent l'amélioration variétale moderne ?",
+              "options": [
+                "Hybrides F1",
+                "OGM ou édition ciblée du génome",
+                "Absence de croisement",
+                "Sélection uniquement par gravité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hybridation vigoure et biotechnologies complètent sélection phénotypique."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Un hybride F1 de maïs est :",
+              "options": [
+                "Produit de croisement de deux lignées homozygotes complémentaires",
+                "Clone identique",
+                "Plante sauvage",
+                "Toujours stérile sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hétérozygote uniforme avec effet de vigueur hybride."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Limite des hybrides F1 pour paysans :",
+              "options": [
+                "Doivent racheter semences chaque saison pour même performance",
+                "Impossible de cultiver",
+                "Pas de rendement",
+                "Interdiction légale universelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segregation en F2 perd uniformité et vigueur."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "OGM plante signifie souvent :",
+              "options": [
+                "Transgène stable intégré au génome",
+                "Mutation aléatoire sans sélection",
+                "Absence d'ADN",
+                "Domestication néolithique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gène exogène ou régulation modifiée selon réglementation."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Édition CRISPR peut :",
+              "options": [
+                "Modifier précisément un gène sans transgène parfois",
+                "Remplacer photosynthèse",
+                "Créer chloroplastes artificiels",
+                "Empêcher méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cisgenèse ou indels ciblés selon cadre juridique."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Agriculture de conservation vise à :",
+              "options": [
+                "Préserver sol et eau tout en maintenant rendement",
+                "Supprimer toute culture",
+                "Éliminer variétés",
+                "Augmenter labour intensif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratiques limitant érosion et perte organique."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Phytopathologie liée à monoculture intense :",
+              "options": [
+                "Épidémies favorisées par uniformité génétique",
+                "Disparition de tous pathogènes",
+                "Photosynthèse accrue automatiquement",
+                "Fixation de N₂ foliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même génotype = même sensibilité."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Irrigation et sélection ont permis :",
+              "options": [
+                "Extension cultures en zones arides",
+                "Fin de domestication",
+                "Disparition du blé",
+                "Réduction rendement obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Water management + variétés adaptées."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Rendement global céréales XXe siècle dû surtout à :",
+              "options": [
+                "Sélection variétale et intrants (engrais, eau)",
+                "Photosynthèse absente",
+                "Domestication néolithique seule",
+                "Chute CO₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révolution verte : génétique + agronomie."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Agroécologie promeut parfois :",
+              "options": [
+                "Mélange variétal et diversité pour résilience",
+                "Monoculture stricte",
+                "Semences uniques mondiales",
+                "Abandon de toute sélection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité spatiale et variétale pour stabilité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Plantes sauvages vs cultivées",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Différences fréquentes sauvage vs cultivé :",
+              "options": [
+                "Graines plus petites et dispersées chez sauvage",
+                "Moins de défenses physiques chez cultivé",
+                "Cultivé toujours polyploïde obligatoire",
+                "Sauvage jamais photosynthétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Syndrome de domestication : graines, défenses, architecture modifiées."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Mauvaises herbes résistantes aux herbicides :",
+              "options": [
+                "Sélection évolutive dans les champs",
+                "Domestication néolithique",
+                "Photorespiration",
+                "Absence de gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression de sélection par herbicides."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Plantes envahissantes cultivées échappées :",
+              "options": [
+                "Peuvent devenir invasives",
+                "Ne survivent jamais hors champ",
+                "Perdent toujours photosynthèse",
+                "Sont toujours stériles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétition écologique hors agrosystème."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Parent sauvage du riz (Oryza rufipogon) apporte :",
+              "options": [
+                "Allèles de résistance aux stress",
+                "Uniquement grains plus petits",
+                "Pas de croisement possible",
+                "ADN humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressource pour introgression."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Différenciation génétique cultivé/sauvage mesurée par :",
+              "options": [
+                "FST ou scans sélectifs du génome",
+                "Couleur des pétales seule",
+                "Température du sol",
+                "Nombre de stomates humains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statistiques populationnelles sur SNP."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Culture in vitro de meristemes sert à :",
+              "options": [
+                "Obtenir plants sans pathogènes",
+                "Domestiquer le blé néolithique",
+                "Mesurer photorespiration",
+                "Créer téosinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Micropropagation sanitaire."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Retour au sauvage (feral) d'une culture :",
+              "options": [
+                "Sélection naturelle en l'absence d'entretien agricole",
+                "Impossible",
+                "Supprime génome",
+                "Crée photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populations échappées évoluent sans récolte."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "L'amélioration par mutation induite :",
+              "options": [
+                "Crée diversité allélique à partir de cultivars",
+                "Remplace sélection",
+                "Empêche domestication",
+                "Mesure O₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutagenèse chimique ou radiations."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "Comparaison téosinte-maïs montre rôle de :",
+              "options": [
+                "Quelques gènes à fort effet + sélection multiple",
+                "Un seul gène sans sélection",
+                "Photosynthèse CAM",
+                "Génome humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "tb1, tga1, etc. plus polygènes."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Zones de contact sauvage-cultivé sont importantes pour :",
+              "options": [
+                "Flux de gènes et coévolution",
+                "Géologie",
+                "Mesure FST humaine",
+                "Absence de pollen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hybridation naturelle modifie les deux pools."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Enjeux contemporains",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Quels défis lient domestication et avenir agricole ?",
+              "options": [
+                "Changement climatique",
+                "Perte de biodiversité cultivée",
+                "Rendement indépendant de la photosynthèse",
+                "Fin de toute sélection"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Adapter variétés et conserver ressources génétiques face stress."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Sécheresse récurrente pousse à :",
+              "options": [
+                "Sélectionner variétés économes en eau",
+                "Abandonner toute culture",
+                "Supprimer stomates définitivement",
+                "Réduire rubisco à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits racinaires et stomatiques ciblés."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Propriété intellectuelle sur semences peut :",
+              "options": [
+                "Restreindre replantation de hybrides ou variétés protégées",
+                "Augmenter diversité paysanne obligatoirement",
+                "Empêcher toute recherche publique",
+                "Supprimer banques de gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats droits farmers vs certificats d'obtention."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Alimentation mondiale dépend encore de :",
+              "options": [
+                "Poaceae domesticées (blé, riz, maïs)",
+                "Seulement viande",
+                "Champignons sauvages",
+                "Photosynthèse animale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Céréales base calorique globale."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Agroforesterie combine :",
+              "options": [
+                "Arbres et cultures sur même parcelle",
+                "Uniquement forêt vierge",
+                "Absence de domestication",
+                "Pêche et riz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Systèmes diversifiés et services écosystémiques."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Résilience face maladie favorisée par :",
+              "options": [
+                "Mélange génétique et rotation",
+                "Monoculture étendue",
+                "Semence unique",
+                "Ignorer sauvage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité réduit propagation homogène."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Objectifs « 4 pour 1000 » concernent surtout :",
+              "options": [
+                "Carbone organique des sols agricoles",
+                "O₂ atmosphérique",
+                "Noyau terrestre",
+                "Photorespiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Initiative stockage carbone via pratiques culturales."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Biocarburants à partir de cultures posent question de :",
+              "options": [
+                "Concurrence alimentation vs énergie",
+                "Fin photosynthèse",
+                "Domestication néolithique",
+                "Génome humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allocation terres et ressources."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Citoyens et consommateurs influencent domestication par :",
+              "options": [
+                "Demande de variétés, labels, circuits courts",
+                "Mesure FST",
+                "Datation radiocarbone",
+                "Photolyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marché oriente choix de traits et variétés."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Recherche sur C4 chez riz vise à :",
+              "options": [
+                "Améliorer efficience photosynthétique en conditions chaudes",
+                "Supprimer rubisco",
+                "Empêcher domestication",
+                "Créer téosinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet C4 rice pour rendement et stress."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse domestication",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "La domestication des plantes a transformé :",
+              "options": [
+                "Sociétés humaines sédentaires",
+                "Paysages agricoles mondiaux",
+                "Atmosphère par photosynthèse uniquement hier",
+                "Génome humain en chloroplastes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Neolithisation et agroécosystèmes ; photosynthèse reste mécanisme biologique, non créée par domestication."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Lien photosynthèse-domestication le plus direct :",
+              "options": [
+                "Sélection sur rendement et allocation des assimilats",
+                "Suppression chloroplastes",
+                "Fixation N₂ par blé",
+                "CAM obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Performance carbonée sous-tend biomasse récoltée."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Domestication continue aujourd'hui via :",
+              "options": [
+                "Amélioration variétale et biotechnologies",
+                "Arrêt total sélection",
+                "Uniquement cueillette",
+                "Photosynthèse absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus dynamique, pas figé au Néolithique."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Conservation in situ des landraces :",
+              "options": [
+                "Maintient diversité dans milieu d'origine",
+                "Remplace banques de gènes toujours",
+                "Empêche sélection",
+                "Supprime agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermes traditionnelles = laboratoires vivants."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Étudier téosinte aide à :",
+              "options": [
+                "Comprendre bases génétiques du maïs",
+                "Dater Terre",
+                "Mesurer PSII direct",
+                "Créer OGM humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison sauvage-cultivé éclaire gènes domestiques."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Domestication n'est pas synonyme de :",
+              "options": [
+                "Amélioration génétique moderne seule",
+                "Culture",
+                "Sélection",
+                "Histoire longue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domestication historique ≠ uniquement biotech récente."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Pour nourrir population croissante durablement, il faut :",
+              "options": [
+                "Combiner génétique, agronomie et préservation ressources",
+                "Ignorer diversité",
+                "Réduire photosynthèse",
+                "Un seul cultivar mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche intégrée science-pratique-conservation."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Plante sauvage proche du cultivé est :",
+              "options": [
+                "Réservoir génétique potentiel",
+                "Sans intérêt",
+                "Toujours envahissante",
+                "Identique au blé hexaploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parent sauvage source d'allèles utiles."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Signature génétique de domestication peut être :",
+              "options": [
+                "Détectée par comparatif sauvage/cultivé",
+                "Absente de l'ADN",
+                "Uniquement visible au microscope optique des stomates humains",
+                "Liée au noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sweeps sélectifs et SNP fixés."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Message clé du chapitre plante sauvage → domestiquée :",
+              "options": [
+                "Coévolution homme-plante appuyée sur photosynthèse et génétique",
+                "Fin de l'agriculture",
+                "Photosynthèse remplacée par culture",
+                "Domestication sans hérédité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De la fixation du carbone à la sélection humaine, trajectoire biologique et sociétale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

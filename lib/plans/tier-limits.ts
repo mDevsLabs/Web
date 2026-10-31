@@ -34,6 +34,15 @@ export type TierLimits = {
    * route API le lisent, elles ne le recalculent pas.
    */
   searchResults: number;
+  /**
+   * Nombre maximum de pages Markdown mAI (`/pages`).
+   * `null` = illimité (forfait Max).
+   *
+   * Ce n'est pas le quota des pages Wakies (`WAKIES_QUOTAS.pages`) : celles-là
+   * vivent dans les espaces Wakies et sont un paywall. Les pages mAI sont
+   * ouvertes à tous les forfaits, bornées par ce compte.
+   */
+  pages: number | null;
 };
 
 /**
@@ -62,6 +71,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 5,
     label: "Free",
     memoryEntries: 50,
+    pages: 10,
     searchResults: 50,
     speechWeeklyTokens: 30_000_000,
     storageBytes: 10 * GiB,
@@ -74,6 +84,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 35,
     label: "Max",
     memoryEntries: 150,
+    pages: null,
     searchResults: 200,
     speechWeeklyTokens: 300_000_000,
     storageBytes: 60 * GiB,
@@ -85,6 +96,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 10,
     label: "Plus",
     memoryEntries: 75,
+    pages: 40,
     searchResults: 100,
     speechWeeklyTokens: 75_000_000,
     storageBytes: 20 * GiB,
@@ -96,6 +108,7 @@ export const TIER_LIMITS: Record<TierKey, TierLimits> = {
     imagesPerDay: 20,
     label: "Pro",
     memoryEntries: 100,
+    pages: 100,
     searchResults: 150,
     speechWeeklyTokens: 150_000_000,
     storageBytes: 40 * GiB,
@@ -154,6 +167,27 @@ export function getTierAgentLimit(tier?: string | null): number | null {
 
 export function isAgentLimitUnlimited(tier?: string | null): boolean {
   return getTierAgentLimit(tier) === null;
+}
+
+/**
+ * Nombre maximum de pages Markdown mAI pour un forfait.
+ * `null` = illimité. Un forfait illisible retombe sur Free : la limite se
+ * réduit, elle ne s'étend jamais.
+ */
+export function getTierPageLimit(tier?: string | null): number | null {
+  return getTierLimits(tier).pages;
+}
+
+export function isPageQuotaExceeded(
+  tier: string | null | undefined,
+  currentCount: number
+): boolean {
+  const limit = getTierPageLimit(tier);
+  return limit !== null && currentCount >= limit;
+}
+
+export function pageQuotaMessage(limit: number): string {
+  return `Limite de ${limit} pages atteinte. Supprimez une page avant d'en créer une nouvelle.`;
 }
 
 /**

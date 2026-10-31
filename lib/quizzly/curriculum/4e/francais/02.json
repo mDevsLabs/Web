@@ -1,0 +1,2733 @@
+{
+  "id": "4e-francais-02",
+  "year": "4e",
+  "subject": "francais",
+  "title": "Le théâtre",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Comédie et dialogue",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La comédie au théâtre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs peut poursuivre une comédie ?",
+              "options": [
+                "Faire rire le public",
+                "Imposer un silence absolu",
+                "Dénouncer des comportements ridicules",
+                "Interdire tout conflit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La comédie vise le rire et critique souvent des défauts par l'humour."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une comédie se distingue surtout d'une tragédie par…",
+              "options": [
+                "Un dénouement heureux ou léger",
+                "L'absence de personnages",
+                "L'interdiction du dialogue",
+                "L'usage exclusif du vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comédie privilégie le rire, la légèreté ou la résolution favorable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le comique de situation repose sur…",
+              "options": [
+                "Un malentendu ou un imprévu",
+                "Un monologue solennel",
+                "Une description de paysage",
+                "Un chœur antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les péripéties absurdes ou inattendues provoquent le rire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le comique de caractère met en scène…",
+              "options": [
+                "Des traits exagérés et stables",
+                "Des héros sans défaut",
+                "Un narrateur invisible",
+                "Un décor unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un personnage porte un défaut repoussoir amplifié (avarice, hypocrisie…)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le comique de mots joue sur…",
+              "options": [
+                "Les double sens et les jeux de langue",
+                "Le silence total",
+                "La musique seule",
+                "Les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quiproquos, répétitions et ambiguïtés créent l'effet comique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Molière est surtout associé au genre…",
+              "options": ["Comique", "Épique", "Pastoral", "Historique"],
+              "correctAnswers": [0],
+              "explanation": "Molière a marqué le théâtre comique français du XVIIe siècle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une farce médiévale ou comique ancienne utilise souvent…",
+              "options": [
+                "Des gags physiques et des types rebattus",
+                "Un chœur tragique",
+                "Un récit épique",
+                "Un opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La farce mise sur la vivacité des actions et des personnages types."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La satire au théâtre critique…",
+              "options": [
+                "Les mœurs ou les institutions",
+                "Uniquement la météo",
+                "Les règles de grammaire",
+                "Les couleurs du décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La satire ridiculise pour faire réfléchir sur la société."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un dénouement comique évite généralement…",
+              "options": [
+                "La mort du héros principal",
+                "La réconciliation",
+                "Le mariage",
+                "La révélation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comédie clôt souvent sur une issue favorable ou apaisée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le public rit aussi quand il reconnaît…",
+              "options": [
+                "Des situations ou des types familiers",
+                "Une langue étrangère inconnue",
+                "Un texte illisible",
+                "Un décor vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le reconnaissable et le vraisemblable renforcent le comique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Personnages et types comiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles typiques rencontre-t-on dans une comédie classique ?",
+              "options": [
+                "Le valet malin",
+                "Le tyran sans faille",
+                "L'avare ou l'hypocrite",
+                "Le narrateur omniscient du roman"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Serviteurs rusés et personnages porteurs de défauts sont des figures comiques fréquentes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage comique peut servir de…",
+              "options": [
+                "Contre-pied au héros",
+                "Chœur antique obligatoire",
+                "Decor immobile",
+                "Commentateur du livret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste entre personnages produit souvent l'humour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le « type » théâtral désigne…",
+              "options": [
+                "Un personnage schématisé reconnaissable",
+                "Un acteur sans texte",
+                "Un décor peint",
+                "Une entracte musicale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le public identifie vite le médecin charlatan, le pedant, etc."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans l'Avare, Harpagon incarne surtout…",
+              "options": [
+                "L'avarice",
+                "Le courage héroïque",
+                "La piété silencieuse",
+                "La sagesse politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son nom et ses répliques portent le trait dominant de l'avarice."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un antagoniste comique est souvent…",
+              "options": [
+                "Ridiculisé par ses excès",
+                "Invincible et respecté",
+                "Absent de la scène",
+                "Muet du début à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ses défauts exposés provoquent le rire ou la critique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le couple maître / valet permet…",
+              "options": [
+                "Des duos de répliques et d'intrigues",
+                "L'absence de dialogue",
+                "Un seul monologue",
+                "La suppression des conflits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le valet commente, contredit ou déjoue son maître."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une jeune fille contrariée dans une comédie est souvent…",
+              "options": [
+                "Au cœur de l'intrigue amoureuse",
+                "Hors scène en permanence",
+                "Le seul personnage tragique",
+                "Le metteur en scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les obstacles à l'amour structurent l'action comique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Caractériser un personnage comique, c'est…",
+              "options": [
+                "Repérer son trait dominant et ses réactions",
+                "Compter les actes seulement",
+                "Ignorer ses répliques",
+                "Décrire uniquement le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trait explique comportements et effet comique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le masque dans la commedia dell'arte sert à…",
+              "options": [
+                "Signaler un type fixe de personnage",
+                "Cacher le texte",
+                "Remplacer le dialogue",
+                "Supprimer le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arlequin, Pantalon… sont reconnus par costume et masque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un personnage « flatteur » produit du comique en…",
+              "options": [
+                "Exagérant les louanges",
+                "Refusant de parler",
+                "Chantant à la place",
+                "Quittant la pièce dès l'acte I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'excès de compliments révèle l'hypocrisie ou la bêtise."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le dialogue théâtral",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions assure le dialogue au théâtre ?",
+              "options": [
+                "Faire avancer l'intrigue",
+                "Remplacer toute mise en scène",
+                "Révéler la personnalité des personnages",
+                "Supprimer le conflit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les répliques entraînent l'action et caractérisent les voix des personnages."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Au théâtre, le dialogue oppose surtout…",
+              "options": [
+                "Des voix en présence sur scène",
+                "Un narrateur et le lecteur",
+                "Des chapitres numérotés",
+                "Des notes de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnages s'affrontent oralement devant le public."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une réplique courte peut créer un effet de…",
+              "options": [
+                "Rythme et surprise",
+                "Description paysagère",
+                "Commentaire historique",
+                "Table des matières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La brièveté marque le ton comique ou la tension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un aparté s'adresse…",
+              "options": [
+                "Au public en aparté des autres personnages",
+                "Uniquement au décor",
+                "Au metteur en scène seul",
+                "Au livre de poche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le personnage confie un secret ou un commentaire au spectateur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un tirade désigne…",
+              "options": [
+                "Un long passage d'un seul personnage",
+                "Une scène sans paroles",
+                "Une didascalie",
+                "Un changement de décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tirade concentre émotion ou argumentation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le quiproquo dialogue repose sur…",
+              "options": [
+                "Une mauvaise interprétation des mots",
+                "L'absence de verbes",
+                "Un décor réaliste",
+                "Un chœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun croit parler de la même chose alors que non."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Alterner répliques courtes sert à…",
+              "options": [
+                "Accélérer le rythme comique",
+                "Effacer le conflit",
+                "Interdire la réplique",
+                "Remplacer les actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stichomythie dynamise l'échange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le registre familier dans le dialogue peut…",
+              "options": [
+                "Marquer la comédie ou la vulgarité",
+                "Interdire toute émotion",
+                "Supprimer le public",
+                "Remplacer les acteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau de langue participe du portrait du personnage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une réplique ironique dit souvent…",
+              "options": [
+                "Le contraire de ce qu'on pense",
+                "Exactement la vérité nue",
+                "Rien de compréhensible",
+                "Un texte en prose scientifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ironie joue sur l'écart entre sens et intention."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire un dialogue à voix haute aide à…",
+              "options": [
+                "Entendre le rythme et les voix",
+                "Ignorer les personnages",
+                "Supprimer les didascalies",
+                "Changer le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La oralisation révèle ton, coupes et effets."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Répliques et échanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés structurent un échange comique ?",
+              "options": [
+                "Questions et réponses décalées",
+                "Monologue unique de trois heures",
+                "Répétition et echo",
+                "Absence totale de réplique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le décalage et les reprises créent complicité et rire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une répartie est…",
+              "options": [
+                "Une réponse vive et spirituelle",
+                "Une didascalie de sortie",
+                "Un changement de acte",
+                "Un décor peint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répartie surprend par sa rapidité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couper la parole sur scène peut signifier…",
+              "options": [
+                "Impatience ou autorité",
+                "Respect absolu",
+                "Fin de la pièce",
+                "Absence de conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interruption révèle rapports de force."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un silence après une réplique…",
+              "options": [
+                "Peut être comique ou pesant",
+                "Est interdit au théâtre",
+                "Remplace le texte",
+                "Supprime le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blanc scénique fait partie du jeu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le dialogue d'exposition informe…",
+              "options": [
+                "Le public des faits nécessaires",
+                "Uniquement le metteur en scène",
+                "Les personnages absents",
+                "Le décorateur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rappelle événements ou relations pour comprendre l'intrigue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux personnages qui parlent en même temps créent…",
+              "options": [
+                "Confusion comique ou tension",
+                "Un sonnet parfait",
+                "Une ode antique",
+                "Un récit épique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cacophonie peut être voulue pour l'effet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Changer de registre en cours de dialogue…",
+              "options": [
+                "Peut produire un effet comique",
+                "Est une faute systématique",
+                "Efface le personnage",
+                "Supprime l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passer du tragique au trivial surprend le public."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une question rhétorique au théâtre…",
+              "options": [
+                "N'attend pas toujours de réponse",
+                "Interdit toute réplique",
+                "Remplace l'acte II",
+                "Est une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle souligne une idée ou une émotion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le verbe au théâtre est surtout…",
+              "options": [
+                "À l'oral, à l'indicatif ou à l'impératif",
+                "Toujours au passé simple du roman",
+                "Absent des comédies",
+                "Réservé aux didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent théâtral simule l'action en direct."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser un échange, c'est observer…",
+              "options": [
+                "Qui parle, ton, enjeu",
+                "Seulement la ponctuation du livre",
+                "La couleur du programme",
+                "Le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Situation et intention guident l'interprétation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Humour, satire et registre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets peut produire l'humour théâtral ?",
+              "options": [
+                "Détendre le public",
+                "Empêcher toute réflexion",
+                "Critiquer des comportements",
+                "Effacer le texte"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rire et critique sociale coexistent souvent dans la comédie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le registre burlesque exagère…",
+              "options": [
+                "Gestes et traits physiques",
+                "Uniquement la syntaxe latine",
+                "Les didascalies absentes",
+                "Le silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps et le grotesque dominent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une satire vise plutôt…",
+              "options": [
+                "Des cibles sociales identifiables",
+                "La description météo",
+                "La rime interne seule",
+                "Le nombre d'actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On moque des milieux, des professions, des mœurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le comique de repetition consiste à…",
+              "options": [
+                "Reprendre plusieurs fois la même situation",
+                "Ne jamais répéter une réplique",
+                "Supprimer le dialogue",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulation provoque le rire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un euphémisme comique…",
+              "options": [
+                "Adoucit une vérité gênante de façon drôle",
+                "Rend le texte incompréhensible",
+                "Supprime la scène",
+                "Interdit le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourner autour du pot crée parfois l'humour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le second degré suppose…",
+              "options": [
+                "Comprendre un sens caché",
+                "Lire sans contexte",
+                "Ignorer les personnages",
+                "Ne jamais rire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut saisir l'ironie ou l'allusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moquer un pedant, c'est ridiculiser…",
+              "options": [
+                "Le savoir affiché et vide",
+                "Toute forme d'école",
+                "Le décor seul",
+                "Le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le personnage enfermé dans les mots devient risible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le comique noir joue sur…",
+              "options": [
+                "Le rire face au grave ou tabou",
+                "Uniquement les jeux de mots tendres",
+                "L'absence de conflit",
+                "Des chœurs antiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il met en tension rire et inconfort."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisir un registre soutenu pour un valet peut…",
+              "options": [
+                "Créer un contraste comique",
+                "Interdire la pièce",
+                "Supprimer l'intrigue",
+                "Remplacer les acteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart entre statut et langue fait rire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer la satire dans un texte, c'est identifier…",
+              "options": [
+                "La cible et les procédés moqueurs",
+                "Seulement les rimes",
+                "La date d'impression",
+                "La taille de la salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte et caricature orientent la lecture."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Molière et la comédie classique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels thèmes molièresques sont fréquents ?",
+              "options": [
+                "Hypocrisie et faux dévots",
+                "Monologues épiques sans scène",
+                "Conflit entre apparence et vérité",
+                "Suppression du dialogue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Molière démasque masques sociaux et défauts moraux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le Misanthrope mêle surtout…",
+              "options": [
+                "Comique et critique des mœurs",
+                "Opéra et ballet seuls",
+                "Récit historique",
+                "Poème didactique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alceste et Célimène opposent sincérité et mondaineté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tartuffe est une comédie qui vise…",
+              "options": [
+                "L'hypocrisie religieuse",
+                "La guerre épique",
+                "Le voyage maritime",
+                "La chasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imposteur Tartuffe trompe une famille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les comédies-ballets de Molière associent…",
+              "options": [
+                "Texte, musique et danse",
+                "Roman et essai",
+                "Carte et atlas",
+                "Journal intime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'art de cour mêlait spectacle et comédie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le vers alexandrin chez Molière sert surtout au…",
+              "options": [
+                "Dialogue des comédies en vers",
+                "Commentaire du metteur en scène",
+                "Programme du théâtre",
+                "Affiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Malade imaginaire ou Le Misanthrope alternent prose et vers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un « comique de caractère » molièresque fixe…",
+              "options": [
+                "Un défaut dominant",
+                "Un décor unique",
+                "Un acte sans parole",
+                "Un chœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harpagon, Arnolphe… incarnent un trait."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La scène du pourboire dans l'Avare illustre…",
+              "options": [
+                "Comique de situation et trait",
+                "Tragédie grecque",
+                "Récit lyrique",
+                "Epopee"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'avarice pousse à des gestes ridicules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les femmes savantes moquent…",
+              "options": [
+                "Pedantisme et prétention intellectuelle",
+                "Uniquement la campagne",
+                "Le silence",
+                "Les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salons et jargon savant deviennent grotesques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le dénouement molièresque restitue souvent…",
+              "options": [
+                "Ordre social avec leçon morale",
+                "Mort du héros",
+                "Fin ouverte sans sens",
+                "Suppression du public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mariages et démasquages clôturent l'intrigue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire Molière au théâtre implique…",
+              "options": [
+                "Prêter attention au rythme des répliques",
+                "Ignorer le jeu des acteurs",
+                "Supprimer les actes",
+                "Ne lire que les titres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comédie vit par l'interprétation scénique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Intrigue amoureuse et comique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels obstacles structurent une comédie amoureuse ?",
+              "options": [
+                "Père autoritaire",
+                "Absence de tout conflit",
+                "Rival ou contrat",
+                "Suppression du dialogue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Autorité paternelle et rivals retardent l'union."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un « mariage forcé » dans l'intrigue sert à…",
+              "options": [
+                "Créer tension comique",
+                "Terminer la pièce au acte I",
+                "Supprimer les jeunes",
+                "Interdire le valet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les amants cherchent à déjouer le plan."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le déguisement comique permet…",
+              "options": [
+                "Quiproquos et reconnaissances",
+                "Effacer le texte",
+                "Remplacer les acteurs par des décors",
+                "Supprimer le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identités feintes provoquent malentendus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une scène de reconnaissance finale…",
+              "options": [
+                "Clarifie les identités et prépare le dénouement",
+                "Ouvre toujours l'acte I",
+                "Supprime l'intrigue",
+                "Interdit le rire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérités révélées dénouent les nœuds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le valet amoureux aide souvent…",
+              "options": [
+                "Les jeunes à contrecarrer les obstacles",
+                "Le tyran seul",
+                "A supprimer la scène",
+                "A réécrire la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figaro ou Scapin organisent les ruses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jaloux et soupçons produisent…",
+              "options": [
+                "Comique de situation",
+                "Epopee héroïque",
+                "Ode solitaire",
+                "Silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreurs de jalousie entraînent gags."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une lettre interceptée au théâtre…",
+              "options": [
+                "Fait avancer l'intrigue",
+                "Remplace le dialogue",
+                "Est une didascalie",
+                "Supprime les actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet scénique déclenche péripéties."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le contrat ou la dot dans une comédie renvoie à…",
+              "options": [
+                "Enjeux sociaux et économiques",
+                "Uniquement la météo",
+                "La couleur du rideau",
+                "Le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mariage et argent structurent l'action."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un dénouement en mariages multiples…",
+              "options": [
+                "Restaure l'harmonie comique",
+                "Imite toujours la tragédie",
+                "Efface les personnages",
+                "Supprime le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couple trouve une issue heureuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser l'intrigue amoureuse, c'est suivre…",
+              "options": [
+                "Désirs, obstacles, dénouement",
+                "Seulement les didascalies",
+                "Le prix des places",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma désir / blocage / résolution guide la lecture."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Proverbes, maximes et réparties",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés relèvent du comique verbal ?",
+              "options": [
+                "Maximes paradoxales",
+                "Absence de verbes",
+                "Jeux de mots",
+                "Suppression des répliques"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Formules frappantes et ambiguïtés amusent l'oreille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une maxime au théâtre peut…",
+              "options": [
+                "Résumer une vision du monde",
+                "Remplacer toute la scène",
+                "Interdire le dialogue",
+                "Supprimer le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase générale éclaire le personnage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le comique de mots inclut…",
+              "options": [
+                "Calambours et homophonies",
+                "Uniquement le silence",
+                "Les changements de décor",
+                "Le chœur antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Similarité sonore crée malentendus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Citer un proverbe en scène sert parfois à…",
+              "options": [
+                "Moquer une situation",
+                "Effacer l'intrigue",
+                "Supprimer les actes",
+                "Interdire la comédie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sagesse populaire détourne ou commente l'action."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une antithèse dans une réplique…",
+              "options": [
+                "Oppose deux idées pour frapper l'esprit",
+                "Supprime le conflit",
+                "Remplace les personnages",
+                "Est une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste renforce l'effet comique ou satirique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répéter un mot de façon obsédante…",
+              "options": [
+                "Peut devenir comique",
+                "Est interdit",
+                "Supprime le sens",
+                "Efface le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulation ridiculise ou fatigue volontairement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un personnage qui parle en latin comique…",
+              "options": [
+                "Montre un pedantisme risible",
+                "Prouve toujours sa science",
+                "Supprime le dialogue",
+                "Remplace le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue savante mal maîtrisée devient grotesque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'euphémisme « emprunter sans rendre » désigne humoristiquement…",
+              "options": ["Voler", "Lire", "Dormir", "Chanter"],
+              "correctAnswers": [0],
+              "explanation": "Périphrase adoucit un acte blâmable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une réplique célèbre se retient grâce à…",
+              "options": [
+                "Rythme, image ou surprise",
+                "Absence de sens",
+                "Longueur extrême seule",
+                "Didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulation marquante fixe la scène en mémoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier le comique verbal, c'est repérer…",
+              "options": [
+                "Champs lexicaux et figures de style",
+                "Uniquement la marge du livre",
+                "La couleur des costumes",
+                "Le numéro de siège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Style et lexique produisent l'humour."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Du texte à la scène comique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments du texte guident le jeu comique ?",
+              "options": [
+                "Didascalies de geste",
+                "Indifférence au rythme",
+                "Ton des répliques",
+                "Suppression des personnages"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Indications scéniques et ton orientent l'interprétation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jouer comique, pour un comédien, c'est…",
+              "options": [
+                "Exagérer avec mesure le trait du personnage",
+                "Ignorer le public",
+                "Lire sans expression",
+                "Supprimer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caricature contrôlée produit le rire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le tempo rapide convient souvent à…",
+              "options": [
+                "Chasse, dispute, ruse",
+                "Monologue funèbre",
+                "Ode solitaire",
+                "Description épique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scènes d'action comique demandent vivacité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Regarder le public en comédie peut…",
+              "options": [
+                "Créer complicité (coup d'œil)",
+                "Interdire la pièce",
+                "Supprimer les actes",
+                "Remplacer le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wink au spectateur renforce l'effet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une chute comique correspond à…",
+              "options": [
+                "Dénouement d'un gag ou d'une scène",
+                "Premier acte seulement",
+                "Didascalie de décor",
+                "Entracte musical obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pointe finale provoque le rire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le lazzi (commedia) désigne…",
+              "options": [
+                "Gags improvisés ou codifiés",
+                "Vers tragiques",
+                "Chœur antique",
+                "Programme imprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Business comique inséré dans l'action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Costume excentrique aide à…",
+              "options": [
+                "Signaler le personnage comique",
+                "Supprimer le dialogue",
+                "Effacer l'intrigue",
+                "Interdire la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silhouette et couleurs renforcent le trait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ralentir avant une chute comique…",
+              "options": [
+                "Prépare la surprise",
+                "Supprime le public",
+                "Efface le texte",
+                "Interdit le rire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suspense accentue l'effet final."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En répétition, « trouver le comique » signifie…",
+              "options": [
+                "Tester timing et intentions",
+                "Changer l'auteur",
+                "Supprimer les didascalies",
+                "Lire sans jouer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essais scéniques ajustent le jeu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer de la lecture à la représentation demande…",
+              "options": [
+                "Imaginer corps, voix et espace",
+                "Oublier le texte",
+                "Supprimer le public",
+                "Ne garder que le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre = texte plus incarnation scénique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Analyser un extrait comique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour commenter un passage comique, on observe…",
+              "options": [
+                "Situation et enjeu",
+                "Uniquement la couverture du livre",
+                "Procédés humoristiques",
+                "Nombre de chapitres"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Contexte et techniques d'humour structurent l'analyse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Identifier le type de comique, c'est nommer…",
+              "options": [
+                "Situation, mots, caractère…",
+                "La date de naissance de l'acteur",
+                "Le prix du billet",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classification aide à expliquer l'effet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Citer une réplique en analyse sert à…",
+              "options": [
+                "Illustrer un procédé repéré",
+                "Remplacer l'argument",
+                "Allonger sans raison",
+                "Supprimer le contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple court appuie le commentaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un quiproquo dans l'extrait se repère quand…",
+              "options": [
+                "Les personnages ne parlent pas de la même chose",
+                "Personne ne parle",
+                "Il n'y a qu'un acteur",
+                "Le décor est vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double entendre ou erreur crée le malentendu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'effet sur le public visé est souvent…",
+              "options": [
+                "Rire, complicité ou moquerie",
+                "Peur tragique seule",
+                "Sommeil",
+                "Silence interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comédie cherche réaction collective joyeuse ou ironique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relier comique et thème, c'est montrer…",
+              "options": [
+                "Comment le rire sert la critique",
+                "Que le thème est absent",
+                "Que le texte est un roman",
+                "Que les actes n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humour porte message sur mœurs ou valeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une progression en trois temps (mise en place, péripétie, chute) structure…",
+              "options": [
+                "Un gag ou une scène comique",
+                "Un sonnet seul",
+                "Une table des matières",
+                "Un index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montée et retournement mènent à la pointe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux répliques adjacentes permet de…",
+              "options": [
+                "Voir contrastes et réparties",
+                "Supprimer l'intrigue",
+                "Ignorer le ton",
+                "Effacer les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance des voix révèle le dynamisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mentionner l'acte et la scène situe…",
+              "options": [
+                "Le passage dans l'intrigue",
+                "La couleur du costume seule",
+                "Le nombre de spectateurs",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère précis aide à comprendre enjeux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Conclure une analyse comique, c'est…",
+              "options": [
+                "Synthétiser effet et procédés",
+                "Copier l'extrait entier",
+                "Oublier le texte",
+                "Ne citer aucun exemple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan clair relie techniques et intention."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "La mise en scène du texte",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les didascalies",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que peuvent indiquer les didascalies ?",
+              "options": [
+                "Gestes et déplacements",
+                "Le prix des places",
+                "Ton ou émotion",
+                "Le menu du buffet"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Elles guident jeu, voix et mise en espace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les didascalies se distinguent du dialogue car…",
+              "options": [
+                "Elles ne sont pas prononcées par les acteurs",
+                "Elles remplacent toujours les répliques",
+                "Elles sont en alexandrin obligatoire",
+                "Elles sont le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paratexte scénique lu par metteur en scène et comédiens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Entrent… », « Il sort… » sont des didascalies de…",
+              "options": [
+                "Mouvement scénique",
+                "Rime",
+                "Syntaxe",
+                "Orthographe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles organisent présence et circulation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une didascalie de décor précise…",
+              "options": [
+                "Lieu et éléments visibles",
+                "Le revenu du public",
+                "La date de publication",
+                "Le nombre de chapitres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre spatial oriente l'imaginaire scénique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« À part » dans une didascalie signifie…",
+              "options": [
+                "Réplique entendue seulement par le public ou un personnage",
+                "Silence total",
+                "Fin de pièce",
+                "Changement de siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aparté ou murmure scénique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Didascalies lacunaires laissent…",
+              "options": [
+                "Liberté au metteur en scène",
+                "Aucun choix possible",
+                "Texte illisible",
+                "Suppression du dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en scène invente alors certains détails."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Indiquer « riant » ou « sérieux » concerne…",
+              "options": [
+                "Le jeu du comédien",
+                "La couverture du livre",
+                "Le billetterie",
+                "La grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ton vocal et facial du personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les didascalies modernes peuvent être…",
+              "options": [
+                "Plus détaillées ou poétiques",
+                "Toujours identiques au XVIIe siècle",
+                "Interdites",
+                "Remplacées par le chœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution du théâtre enrichit parfois les indications."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire les didascalies en classe aide à…",
+              "options": [
+                "Visualiser la scène",
+                "Ignorer le dialogue",
+                "Supprimer les personnages",
+                "Changer l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles complètent les paroles pour imaginer le spectacle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une didascalie de bruit ou de musique oriente…",
+              "options": [
+                "Ambiance sonore",
+                "Seulement la ponctuation",
+                "Le nombre d'actes",
+                "La météo réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son fait partie de la mise en scène."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Décor, espace et scène",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent l'espace scénique ?",
+              "options": [
+                "Plateau et décor",
+                "Liste de courses",
+                "Accessoires",
+                "Index du manuel"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Scène, décors et objets construisent le lieu fictif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le lieu unique (unité de lieu classique) signifie…",
+              "options": [
+                "Action concentrée en un même espace principal",
+                "Voyage sans fin",
+                "Absence de décor",
+                "Roman feuilleton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle classique limite changements de lieux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un décor minimaliste suggère…",
+              "options": [
+                "L'essentiel par peu d'éléments",
+                "Tout montrer en détail réaliste",
+                "Supprimer les acteurs",
+                "Interdire la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suggestion laisse place à l'imaginaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La scène italienne se caractérise par…",
+              "options": [
+                "Cadre de proscenium et perspective",
+                "Absence de public",
+                "Lecture seule",
+                "Chœur grec obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture moderne du théâtre occidental."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un accessoire (lettre, bourse…) sert à…",
+              "options": [
+                "Concrétiser l'action",
+                "Remplacer le texte",
+                "Supprimer le dialogue",
+                "Effacer les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet scénique déclenche ou symbolise l'intrigue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Changer de décor entre actes…",
+              "options": [
+                "Peut marquer nouveau lieu ou temps",
+                "Est interdit au théâtre",
+                "Supprime les répliques",
+                "Remplace les comédiens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entracte ou machinerie permet la transformation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le hors-scène désigne…",
+              "options": [
+                "Ce qui est suggéré mais non visible",
+                "Le public",
+                "Le programme",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coups de porte, cris… existent parfois off."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Profondeur de scène permet…",
+              "options": [
+                "Jeux de distance et de focus",
+                "Supprimer la voix",
+                "Interdire les gestes",
+                "Effacer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier plan / fond oriente le regard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un décor symbolique privilégie…",
+              "options": [
+                "Idées et métaphores visuelles",
+                "Copie photographique",
+                "Silence absolu",
+                "Suppression des actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formes simples évoquent un univers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire « une chambre » en didascalie invite à…",
+              "options": [
+                "Imaginer intimité et cadre",
+                "Ignorer le dialogue",
+                "Supprimer les personnages",
+                "Changer de siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu influence relations et ton."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Entrées, sorties et présence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À quoi servent entrées et sorties de scène ?",
+              "options": [
+                "Structurer la présence des personnages",
+                "Supprimer le dialogue",
+                "Créer surprise ou retard",
+                "Remplacer les actes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Arrivées et départs rythment l'action et les effets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une entrée tardive d'un personnage peut…",
+              "options": [
+                "Susciter attente ou mystère",
+                "Effacer l'intrigue",
+                "Supprimer le public",
+                "Interdire les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retard dramatique prépare la révélation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sortir en slamant la porte exprime souvent…",
+              "options": [
+                "Colère ou orgueil",
+                "Joie silencieuse",
+                "Absence de conflit",
+                "Fin du théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geste scénique traduit émotion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le quadrillage des personnages sur scène…",
+              "options": [
+                "Organise qui voit qui",
+                "Supprime les répliques",
+                "Remplace le texte",
+                "Est le programme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disposition crée relations visuelles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une scène où tous quittent le plateau…",
+              "options": [
+                "Peut préparer un changement ou un vide",
+                "Interdit la suite",
+                "Supprime les actes",
+                "Est une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vide scénique marque transition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entrer au milieu d'une tirade…",
+              "options": [
+                "Peut interrompre ou surprendre",
+                "Est impossible",
+                "Supprime le dialogue",
+                "Efface le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timing modifie tension comique ou dramatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les coulisses permettent…",
+              "options": [
+                "Entrées sans être vus avant",
+                "Lecture du roman",
+                "Suppression du public",
+                "Changement d'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace technique du théâtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Regarder la porte en scène oriente…",
+              "options": [
+                "Attention du public vers l'arrivée",
+                "Ponctuation du livre",
+                "Météo",
+                "Grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en scène focalise le regard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Multiples personnages en scène complexifient…",
+              "options": [
+                "Jeu des groupes et des alliances",
+                "Uniquement la couverture",
+                "Le billet",
+                "L'index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foule ou salon demande blocking clair."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Didascalie « reste seul » annonce…",
+              "options": [
+                "Monologue ou confession",
+                "Chœur antique",
+                "Fin obligatoire",
+                "Suppression du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolement met en lumière un personnage."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Jeu du comédien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils le comédien mobilise-t-il ?",
+              "options": [
+                "Corps et voix",
+                "Uniquement le décor peint",
+                "Regard et émotion",
+                "Le chapitre du roman"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Incarnation passe par geste, diction et intention."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jouer « juste » signifie surtout…",
+              "options": [
+                "Respecter intention du texte et crédibilité",
+                "Improviser tout le dialogue",
+                "Ignorer le public",
+                "Supprimer les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vraisemblance et sens guident le jeu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le travail d'énervation (théâtre) concerne…",
+              "options": [
+                "Maîtrise du corps et de la respiration",
+                "Peinture du décor",
+                "Vente de billets",
+                "Orthographe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préparation physique soutient la voix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Écouter son partenaire en scène permet…",
+              "options": [
+                "Réagir au présent de la scène",
+                "Lire le livre",
+                "Supprimer les répliques",
+                "Ignorer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réplique devient réaction, pas récitation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Exagérer un geste au fond de salle…",
+              "options": [
+                "Assure visibilité sans caricature excessive",
+                "Supprime la voix",
+                "Interdit le dialogue",
+                "Efface le public proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplification mesurée pour tous les spectateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le « fourth wall » est…",
+              "options": [
+                "Frontière imaginaire avec le public",
+                "Un décor en pierre",
+                "Un acte supplémentaire",
+                "Une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On joue avec ou contre cette barrière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Improviser dans le cadre du texte…",
+              "options": [
+                "Peut enrichir un gag convenu",
+                "Remplace toujours l'auteur",
+                "Supprime la mise en scène",
+                "Interdit la répétition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté contrôlée dans commedia ou comédie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Costume et maquillage aident à…",
+              "options": [
+                "Construire le personnage",
+                "Supprimer le dialogue",
+                "Effacer l'intrigue",
+                "Remplacer la voix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apparence soutient transformation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répéter « en jeu » diffère de lire car…",
+              "options": [
+                "On teste déplacements et intentions",
+                "On oublie le texte",
+                "On supprime le public",
+                "On change l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en espace concrétise les didascalies."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Adapter le jeu au genre comique implique…",
+              "options": [
+                "Timing et légèreté",
+                "Monotonie",
+                "Silence total",
+                "Suppression des gestes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision rythmique sert l'humour."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Voix, diction et oralité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels paramètres vocaux comptent au théâtre ?",
+              "options": [
+                "Volume et articulation",
+                "Couleur de couverture",
+                "Débit et pauses",
+                "Numéro de page"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Clarté et rythme rendent le texte audible et vivant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Projecter la voix sert à…",
+              "options": [
+                "Être entendu sans crier inutilement",
+                "Supprimer le dialogue",
+                "Remplacer le décor",
+                "Lire sans émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Portée adapte salle et intention."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pause avant une réplique…",
+              "options": [
+                "Crée suspense ou comique",
+                "Efface le sens",
+                "Supprime l'acte",
+                "Interdit le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silence fait partie du jeu vocal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changer de ton entre personnages…",
+              "options": [
+                "Différencie les voix",
+                "Supprime l'intrigue",
+                "Remplace les didascalies",
+                "Interdit la prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre et inflexion signalent identité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Murmurer en scène demande…",
+              "options": [
+                "Contrôle pour rester audible",
+                "Absence de micro et de technique",
+                "Suppression du texte",
+                "Chœur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intimité scénique reste perceptible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le vers au théâtre impose…",
+              "options": [
+                "Respect des coupes et du rythme",
+                "Prose sans accent",
+                "Silence",
+                "Suppression des actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alexandrin structure respiration et emphasis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cri ou exclamation se distingue par…",
+              "options": [
+                "Intensité et intention",
+                "Orthographe seule",
+                "Couleur du rideau",
+                "Index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emotion guide le volume."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lire une tirade implique…",
+              "options": [
+                "Varier le tempo sans perdre le fil",
+                "Parler toujours vite",
+                "Ignorer le sens",
+                "Supprimer les autres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue unité demande dynamique interne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accentuer un mot-clé dans une réplique…",
+              "options": [
+                "Oriente le sens pour le public",
+                "Supprime la phrase",
+                "Efface le décor",
+                "Change l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en relief clarifie l'enjeu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Oraliser un texte théâtral en classe…",
+              "options": [
+                "Révèle rythme et difficultés de diction",
+                "Remplace l'analyse",
+                "Supprime les personnages",
+                "Interdit les didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture à voix haute teste matérialité du dialogue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Geste, déplacement et blocking",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels choix relèvent du blocking ?",
+              "options": [
+                "Trajectoires sur le plateau",
+                "Prix du programme",
+                "Positions face au public",
+                "Table des matières"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Blocking organise qui va où et quand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Se tourner dos au public peut…",
+              "options": [
+                "Signifier rejet ou honte",
+                "Interdire la pièce",
+                "Supprimer la voix",
+                "Effacer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation corporelle porte sens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un geste symbolique (main sur le cœur)…",
+              "options": [
+                "Traduit émotion",
+                "Remplace tout le dialogue",
+                "Supprime l'intrigue",
+                "Est une didascalie interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps illustre ce que les mots disent ou taisent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Descendre vers le public…",
+              "options": [
+                "Crée proximité",
+                "Supprime les actes",
+                "Interdit le rire",
+                "Efface les costumes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancée rapproche spectateurs et action."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Immobilité d'un personnage peut…",
+              "options": [
+                "Contraster avec l'agitation",
+                "Supprimer le texte",
+                "Interdire la scène",
+                "Remplacer le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixité attire le regard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Didascalie « ils se battent » demande…",
+              "options": [
+                "Chorégraphie sécurisée",
+                "Silence total",
+                "Suppression du dialogue",
+                "Lecture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combat scénique se prépare en répétition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Croiser les bras en jeu peut suggérer…",
+              "options": [
+                "Fermeture ou défi",
+                "Joie ouverte",
+                "Absence de personnage",
+                "Fin de pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langage corporel non verbal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Synchroniser geste et réplique…",
+              "options": [
+                "Renforce clarté",
+                "Supprime le sens",
+                "Interdit le comique",
+                "Efface le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité parole-geste convainc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Utiliser tout l'espace évite…",
+              "options": [
+                "Monotonie visuelle",
+                "Toute émotion",
+                "Le dialogue",
+                "Les actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacements dynamisent la scène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Noter les déplacements en répétition…",
+              "options": [
+                "Fixe blocking pour cohérence",
+                "Change l'auteur",
+                "Supprime les didascalies",
+                "Interdit le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan de scène stabilise les représentations."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lumière, son et ambiance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment lumière et son participent-ils à la mise en scène ?",
+              "options": [
+                "Créer l'atmosphère",
+                "Remplacer le texte intégral",
+                "Guider le regard",
+                "Supprimer les acteurs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ambiance et focus orientent perception du spectacle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couper les lumières entre actes…",
+              "options": [
+                "Marque entracte ou temps",
+                "Supprime le dialogue",
+                "Interdit le public",
+                "Efface l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obscurité structure représentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Projecteur sur un personnage isole…",
+              "options": [
+                "Un élément important",
+                "Le programme",
+                "La couverture",
+                "L'index"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière focalise attention."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Musique d'entracte ou scène…",
+              "options": [
+                "Soutient émotion ou rythme",
+                "Remplace toujours les répliques",
+                "Supprime les didascalies",
+                "Interdit le jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bande son enrichit le sens."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bruit de tempête en coulisse…",
+              "options": [
+                "Suggère météo off",
+                "Supprime le texte",
+                "Est une didascalie lue",
+                "Interdit la comédie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son off complète l'univers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lumière rouge peut évoquer…",
+              "options": [
+                "Passion, danger ou coucher",
+                "Silence",
+                "Grammaire",
+                "Pagination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur colore interprétation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chuchotements amplifiés mal…",
+              "options": [
+                "Cassent l'intimité scénique",
+                "Améliorent toujours le texte",
+                "Suppriment l'intrigue",
+                "Remplacent le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau sonore doit servir le jeu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Silence sonore total rare au théâtre car…",
+              "options": [
+                "Ambiance réelle ou musicale existe",
+                "Dialogue interdit",
+                "Public absent",
+                "Texte vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectacle live inclut bruits de salle ou fond."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Didascalie « tonnerre » implique…",
+              "options": [
+                "Effet sonore scénique",
+                "Changement d'auteur",
+                "Suppression des actes",
+                "Lecture du roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressort technique traduit l'indication."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Harmoniser lumière avec ton du texte…",
+              "options": [
+                "Renforce cohérence",
+                "Efface les personnages",
+                "Supprime le dialogue",
+                "Interdit le comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours sensoriel accompagne le sens."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Du texte imprimé à la représentation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes mènent du script au spectacle ?",
+              "options": [
+                "Lecture et analyse",
+                "Ignorer les didascalies",
+                "Répétitions et choix scéniques",
+                "Suppression du public"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Compréhension puis essais matérialisent la pièce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le metteur en scène propose…",
+              "options": [
+                "Vision d'ensemble du spectacle",
+                "Uniquement les costumes du public",
+                "La vente des billets",
+                "L'orthographe des copies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il coordonne arts et sens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une même pièce peut avoir…",
+              "options": [
+                "Mises en scène différentes",
+                "Un seul décor possible",
+                "Aucune variation",
+                "Texte interchangeable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interprétations multiples du même script."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Concept scénique désigne…",
+              "options": [
+                "Idée directrice de la mise en scène",
+                "Résumé Wikipédia",
+                "Liste de courses",
+                "Chapitre de roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil conducteur esthétique et thématique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Adapter un classique à notre époque…",
+              "options": [
+                "Peut moderniser costumes ou contexte",
+                "Interdit le texte",
+                "Supprime le dialogue",
+                "Efface l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transposition rend l'œuvre parlante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maquette ou storyboard de salle…",
+              "options": [
+                "Prépare placement décors et acteurs",
+                "Remplace la pièce",
+                "Supprime les répétitions",
+                "Interdit le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Planification visuelle anticiper le jeu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Première représentation (première)…",
+              "options": [
+                "Teste choix devant public",
+                "Supprime le texte",
+                "Interdit les didascalies",
+                "Efface l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retours public affinent parfois le spectacle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Programme de salle informe…",
+              "options": [
+                "Équipe et parfois intention",
+                "Uniquement la météo",
+                "Le nombre de chapitres",
+                "La grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paratexte accompagne le spectateur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Filmer une pièce diffère du live car…",
+              "options": [
+                "Cadre caméra remplace regard libre",
+                "Dialogue disparaît",
+                "Didascalies deviennent répliques",
+                "Public absent du tournage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médiation visuelle change l'expérience."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compte rendu de spectacle décrit…",
+              "options": [
+                "Choix scéniques vus",
+                "Seulement la couverture du livre",
+                "La météo du jour de lecture",
+                "L'index du manuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique relate mise en scène et effets."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Spectateur et effets scéniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets le théâtre cherche-t-il chez le spectateur ?",
+              "options": [
+                "Rire ou émotion",
+                "Sommeil garanti",
+                "Réflexion",
+                "Oubli total du texte"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Plaisir esthétique et prise de distance critique coexistent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La salle en fer à cheval place le public…",
+              "options": [
+                "Autour de la scène",
+                "Derrière la scène seulement",
+                "Hors du bâtiment",
+                "Dans les coulisses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité modifie relation acteurs-spectateurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Catharsis tragique diffère du rire comique car…",
+              "options": [
+                "Elle libère tension par pity/fear",
+                "Elle supprime l'émotion",
+                "Elle interdit le dialogue",
+                "Elle remplace la scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme antique pour effet dramatique intense."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Participation du public (applaudir)…",
+              "options": [
+                "Clôt souvent une représentation",
+                "Supprime le texte",
+                "Interdit les actes",
+                "Remplace le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel de reconnaissance collective."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effet de réel au théâtre…",
+              "options": [
+                "Vient du live partagé",
+                "Vient du livre fermé",
+                "Supprime les acteurs",
+                "Interdit la voix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence simultanée crée intensité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Regarder une scène de dos (jardin)…",
+              "options": [
+                "Limite visibilité exprès",
+                "Améliore toujours tout",
+                "Supprime le dialogue",
+                "Efface l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix scénique oriente frustration ou mystère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rupture de quatrième mur…",
+              "options": [
+                "Adresse directe au public",
+                "Suppression des répliques",
+                "Fin obligatoire",
+                "Didascalie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complicité explicite avec spectateurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Entracte permet…",
+              "options": [
+                "Repos et changements techniques",
+                "Suppression de l'intrigue",
+                "Lecture du roman",
+                "Silence interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause structure le spectacle live."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Brouhaha du public avant lever de rideau…",
+              "options": [
+                "Fait partie de l'expérience",
+                "Remplace la pièce",
+                "Est une didascalie",
+                "Supprime les acteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rituel d'attente collective."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décrire l'effet ressenti après pièce…",
+              "options": [
+                "Relie mise en scène et émotion",
+                "Ignore le spectacle",
+                "Copie le texte",
+                "Supprime l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique ou compte rendu valorise ressenti."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Mettre en scène un passage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour proposer une mise en scène de classe, on…",
+              "options": [
+                "Relie didascalies et intentions",
+                "Ignore le texte",
+                "Choisit gestes et voix",
+                "Supprime les personnages"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Projet scénique s'appuie sur script et choix corporels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Justifier un déplacement, c'est expliquer…",
+              "options": [
+                "Quel sens il crée",
+                "Le prix du costume",
+                "La météo",
+                "La pagination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque choix doit servir le texte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distribuer les rôles en atelier…",
+              "options": [
+                "Permet essais concrets",
+                "Remplace l'analyse",
+                "Supprime le dialogue",
+                "Interdit la lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jouer clarifie enjeux du passage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Objet scénique absent peut être…",
+              "options": [
+                "Simulé par le geste",
+                "Raison d'annuler la scène",
+                "Didascalie lue",
+                "Chapitre de roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mime ou substitution en contexte scolaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Respecter le temps du gag…",
+              "options": [
+                "Évite de couper la chute",
+                "Supprime le public",
+                "Efface les actes",
+                "Interdit le rire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme préserve effet comique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Proposer un décor minimal en classe…",
+              "options": [
+                "Concentre sur jeu et voix",
+                "Interdit toute créativité",
+                "Supprime le texte",
+                "Remplace les répliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplicité met l'accent sur l'interprétation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Évaluer une mise en scène scolaire regarde…",
+              "options": [
+                "Compréhension du texte et clarté",
+                "Couleur des chaises",
+                "Météo",
+                "Taille du cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fidélité au sens prime."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Confrontation de deux mises en scène…",
+              "options": [
+                "Montre interprétations possibles",
+                "Prouve une seule vérité",
+                "Supprime l'auteur",
+                "Efface le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralité des lectures enrichit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Noter ses choix scéniques…",
+              "options": [
+                "Aide à présenter le projet",
+                "Remplace le texte",
+                "Interdit la répétition",
+                "Supprime le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trace écrite soutient oral de restitution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif final de la mise en scène du texte…",
+              "options": [
+                "Rendre le script vivant et intelligible",
+                "Effacer l'auteur",
+                "Supprimer le dialogue",
+                "Ignorer le public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incarnation partagée donne sens au théâtre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

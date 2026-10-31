@@ -98,6 +98,9 @@ export function createAgentToolController(params: {
   approvalRequiredToolIds: string[];
   base: AgentToolBaseContext;
   executionOwner?: string | null;
+  // Temps restant de l'invocation. Un Retry-After plus long que ce budget
+  // n'est pas attendu : l'appel serait terminé avant la reprise.
+  getRemainingMs?: () => number;
   maxToolAttempts: number;
   onPlanProgress: (progress: {
     status: AgentStepStatus;
@@ -615,6 +618,7 @@ export function createAgentToolController(params: {
             ? {}
             : { retryAfterMs: result.error.retryAfterMs }),
         });
+        const remainingMs = params.getRemainingMs?.();
         const decision = decideToolRetry({
           attempt,
           error: normalized,
@@ -622,6 +626,7 @@ export function createAgentToolController(params: {
             ...DEFAULT_TOOL_RETRY_POLICY,
             maxAttempts: params.maxToolAttempts,
           },
+          ...(remainingMs === undefined ? {} : { remainingMs }),
         });
         if (!decision.retry) {
           break;

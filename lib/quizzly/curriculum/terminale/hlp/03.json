@@ -1,0 +1,2758 @@
+{
+  "id": "terminale-hlp-03",
+  "year": "terminale",
+  "subject": "hlp",
+  "title": "Savoirs et croyances",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Démontrer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Distinction savoir et croyance",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Quels critères distinguent classiquement un savoir d'une croyance ?",
+              "options": [
+                "Vérité et justification adéquate",
+                "Intensité de la conviction",
+                "Accord aveugle avec une autorité",
+                "Croyance vraie justifiée"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le savoir exige vérité et fondements ; la triade croyance vraie justifiée structure l'épistémologie avant Gettier."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Chez Platon, la doxa se distingue de l'epistêmê par :",
+              "options": [
+                "Le rapport aux Formes et à l'être",
+                "La popularité",
+                "La longueur du discours",
+                "Le style poétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion : monde sensible ; savoir : intelligible."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Une croyance vraie peut ne pas être un savoir si :",
+              "options": [
+                "Elle est correcte par hasard",
+                "Elle est majoritaire",
+                "Elle est ancienne",
+                "Elle est dite fortement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans justification, la vérité accidentelle reste opinion."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Le doute cartésien sert à :",
+              "options": [
+                "Fonder une certitude indubitable",
+                "Nier toute vérité",
+                "Remplacer la raison par la foi",
+                "Valider les sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode : rejeter le douteable pour atteindre l'évident."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "L'évidence cartésienne est :",
+              "options": [
+                "Clarté imposant l'assentiment",
+                "Autorité reçue",
+                "Impression sensible",
+                "Sondage d'opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté et distinction entraînent le consentement de la raison."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "Le cogito établit :",
+              "options": [
+                "L'existence du sujet pensant",
+                "La vérité des sens",
+                "Le monde matériel",
+                "L'innéisme total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Douter prouve qu'un je pense."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Démontrer, c'est :",
+              "options": [
+                "Enchaîner prémisses et conclusion valide",
+                "Persuader par émotion",
+                "Révéler sans raison",
+                "Affirmer sans preuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure logique distincte de la rhétorique."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Le relativisme cognitif met en cause :",
+              "options": [
+                "Une vérité unique hors contexte",
+                "Toute croyance vraie",
+                "Les mathématiques seules",
+                "La logique formelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadres culturels et critères de vérité varient selon cette thèse."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Doxa signifie surtout :",
+              "options": ["Opinion", "Démonstration", "Mystère", "Loi"],
+              "correctAnswers": [0],
+              "explanation": "Terme grec central dans le débat savoir/opinion."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "« Je sais que p » engage :",
+              "options": [
+                "Vérité de p et capacité de justifier",
+                "Ignorance des objections",
+                "Hypothèse fictive",
+                "Immobilité dogmatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribution de savoir = responsabilité épistémique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Vérité et justification",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "La théorie de correspondance affirme :",
+              "options": [
+                "Vérité = adéquation au réel",
+                "Vérité = seule cohérence",
+                "Vérité = utilité",
+                "Langage et réel sont en jeu"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Correspondance : lien proposition/état de choses."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "Gettier montre :",
+              "options": [
+                "JTB peut manquer de savoir",
+                "La vérité est inutile",
+                "Seule la foi compte",
+                "Toute science est fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contre-exemples à la définition classique du savoir."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "Foundationalisme :",
+              "options": [
+                "Bases justificatrices non inférées",
+                "Pas de justification",
+                "Rejet de la logique",
+                "Emotions seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pyramide : fondations puis croyances dérivées."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "Cohérentisme :",
+              "options": [
+                "Justification par le réseau de croyances",
+                "Bases indubitables atomiques",
+                "Rejet du dialogue",
+                "Secret des preuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence mutuelle remplace fondations isolées."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "A priori :",
+              "options": [
+                "Indépendant de l'expérience",
+                "Toujours faux",
+                "Témoignage seul",
+                "Mesure instrumentale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposé à a posteriori."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "Épochè sceptique :",
+              "options": [
+                "Suspension du jugement",
+                "Certitude absolue",
+                "Refus d'argumenter",
+                "Foi aveugle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Académie : équipollence des raisons."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "Apodeixis aristotélicienne :",
+              "options": [
+                "Démonstration à partir de principes",
+                "Opinion populaire",
+                "Poésie seule",
+                "Doute permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Science = connaître par les causes."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Croyance =",
+              "options": [
+                "Tenir p pour vrai",
+                "Savoir démontré",
+                "Absurdité",
+                "Oubli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attitude propositionnelle."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "Témoignage : enjeu de",
+              "options": [
+                "Crédibilité de la source",
+                "Impossibilité de savoir",
+                "Absence de vérité",
+                "Rejet des faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande part du savoir est indirecte."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "Fallibilisme :",
+              "options": [
+                "Savoir corrigible",
+                "Tout est faux",
+                "Scepticisme total",
+                "Vérité inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certitudes revisables sans nihilisme."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Raison et expérience",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Empirisme moderne :",
+              "options": [
+                "Tabula rasa",
+                "Toutes idées innées",
+                "Expérience source majeure",
+                "Raison seule sans sens"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Locke, Hume : origine expérientielle."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "Hume sur causalité :",
+              "options": [
+                "Non déductible a priori",
+                "Analytique nécessaire",
+                "Pure révélation",
+                "Illusion sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude et faits empiriques."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "Problème induction :",
+              "options": [
+                "Justifier passé → futur",
+                "Nier les chiffres",
+                "Rejeter la logique",
+                "Interdire la parole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniformité de la nature non prouvée sans cercle."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "Kant face à Hume :",
+              "options": [
+                "Formes a priori de l'expérience",
+                "Sens toujours faux",
+                "Pas de science",
+                "Métaphysique intacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique : conditions de possibilité du savoir."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "Idée innée rationaliste :",
+              "options": [
+                "Présente sans expérience particulière",
+                "Apprise par les sens",
+                "Toujours illusoire",
+                "Souvenir oublié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descartes, Leibniz : complément à l'expérience."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "Cercle cartésien :",
+              "options": [
+                "Garantir la raison avec la raison",
+                "Cogito faux",
+                "Pas de Dieu",
+                "Sens seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat sur la preuve de la fiabilité."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "Expérience contrôlée :",
+              "options": [
+                "Tester des hypothèses",
+                "Confirmer tout préjugé",
+                "Remplacer la logique",
+                "Interdire réfutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode scientifique."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "Falsifiabilité (Popper) :",
+              "options": [
+                "Critère science / pseudo-science",
+                "Beauté seule",
+                "Art seul",
+                "Émotion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théories réfutables."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "Illusion des sens :",
+              "options": [
+                "Erreur possible, savoir corrigeable",
+                "Science nulle",
+                "Raison inutile",
+                "Pas de vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prudence sans rejet total de l'empirie."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "Sens commun critiqué si :",
+              "options": [
+                "Confond habitude et justification",
+                "Toujours exact",
+                "Toujours démontré",
+                "Sans opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préjugés sociaux ≠ savoir."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Science et croyance",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Savoir scientifique :",
+              "options": [
+                "Méthodes publiques",
+                "Secret total",
+                "Révisabilité",
+                "Immunité absolue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Science ouverte et progressive."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "Scientisme :",
+              "options": [
+                "Modèle scientifique étendu abusivement",
+                "Respect des protocoles",
+                "Distinction savoir/opinion",
+                "Histoire des sciences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction abusive de toute vérité à la science."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "Théorie provisoire :",
+              "options": [
+                "Mieux justifiée mais corrigible",
+                "Vérité finale",
+                "Sans preuve",
+                "Croyance arbitraire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statut scientifique ≠ certitude définitive."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "Sous-détermination :",
+              "options": [
+                "Plusieurs théories compatibles avec les données",
+                "Toute théorie fausse",
+                "Une seule possible",
+                "Pas de faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données ne fixent pas toujours une unique théorie."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "Paradigme (Kuhn) :",
+              "options": [
+                "Cadre partagé par une communauté",
+                "Vérité hors histoire",
+                "Croyance isolée",
+                "Dogme sans pratique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Science normale et révolutions."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "Astrologie prédictive :",
+              "options": [
+                "Sans validation robuste",
+                "Consensus scientifique",
+                "Démonstration logique",
+                "Théorie falsifiée acceptée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croyance, non savoir établi."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Hypothético-deductif :",
+              "options": [
+                "Hypothèse, conséquences, test",
+                "Autorité sans test",
+                "Sans prédiction",
+                "Observation sans théorie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Articulation raison et expérience."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "Valeur épistémique :",
+              "options": [
+                "Fondement et lien au savoir",
+                "Ancienneté seule",
+                "Nombre de partisans",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité des raisons, pas popularité."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "Pseudo-science :",
+              "options": [
+                "Protection contre réfutation",
+                "Publication ouverte",
+                "Réplication",
+                "Ajustement aux anomalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite les tests decisifs."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "Consensus climatique repose sur :",
+              "options": [
+                "Preuves convergentes",
+                "Une étude seule",
+                "Sondage",
+                "Tradition sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples lignes indépendantes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Foi et raison",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Débat foi-raison :",
+              "options": [
+                "Foi cherchant intelligence",
+                "Aucun rapport possible",
+                "Fidéisme écarte la raison",
+                "Raison seule sans limite"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Positions classiques en théologie et philosophie."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Pascal, raison des cœurs :",
+              "options": [
+                "Ordres non réductibles au calcul",
+                "Géométrie fausse",
+                "Toute croyance absurde",
+                "Raison discursive seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit de finesse et de géométrie."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "Foi rationnelle au sens faible :",
+              "options": [
+                "Cohérence et arguments existentiels",
+                "Théorème prouvé",
+                "Contraire à la science",
+                "Sans réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théologie philosophique articule foi et raison."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "Argument ontologique :",
+              "options": [
+                "Existence de Dieu du concept",
+                "Seule Bible",
+                "Pas de métaphysique",
+                "Sens seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raisonnement a priori contesté par Kant."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "Credo quia absurdum (Tertullien) :",
+              "options": [
+                "Paradoxe de la foi chrétienne",
+                "Manuel scientifique",
+                "Preuve logique",
+                "Scepticisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression polémique, interprétation débattue."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Croyance au progrès illimité :",
+              "options": [
+                "Idéal contestable",
+                "Théorème",
+                "Vérité analytique",
+                "Sans contenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction espoir et savoir avéré."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "Spinoza : connaissance Dieu/Nature",
+              "options": [
+                "Raison et intuition libératrice",
+                "Rejet raison",
+                "Pure superstition",
+                "Inaccessible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scientia intuitiva vs superstition."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "Révélation : problème de",
+              "options": [
+                "Interprétation et recevabilité",
+                "Preuve en labo",
+                "Sans contenu",
+                "Opinion quelconque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herméneutique et témoignage."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Science et religion :",
+              "options": [
+                "Modèles conflict, indépendance, dialogue",
+                "Toujours identiques",
+                "Interdit",
+                "Réglé au XVIIe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats contemporains nuancés."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Rumeur non vérifiée :",
+              "options": [
+                "Croyance faiblement justifiée",
+                "Savoir scientifique",
+                "Démonstration",
+                "Vérité analytique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désinformation et absence de contrôle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Argumentation",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Argument valide :",
+              "options": [
+                "Forme logique correcte",
+                "Émotion seule",
+                "Prémisses vraies pour solidité",
+                "Rhétorique sans inférence"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Validité et solidité distinctes."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "Ad hominem :",
+              "options": [
+                "Attaque la personne",
+                "Validité formelle",
+                "Données expérimentales",
+                "Définitions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sophisme fréquent."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "Autorité non spécialisée :",
+              "options": [
+                "Figure irrelevante comme preuve",
+                "Expert prudent",
+                "Définitions claires",
+                "Preuves empiriques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorité hors champ ne démontre pas."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "Généralisation hâtive :",
+              "options": [
+                "Cas isolé → loi universelle",
+                "Grand échantillon",
+                "Statistique rigoureuse",
+                "Causalité distinguée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur inductive."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "Principe de charité :",
+              "options": [
+                "Version la plus forte de la thèse",
+                "Caricature",
+                "Ignorer arguments",
+                "Confondre croyance/savoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique exige compréhension."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "Analogie faible :",
+              "options": [
+                "Différences pertinentes omises",
+                "Limites précisées",
+                "Points communs structurants",
+                "Test empirique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison non démonstrative."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "Pétition de principe :",
+              "options": [
+                "Conclusion dans la prémisse",
+                "Prémisses fausses",
+                "Argument long",
+                "Statistiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circularité."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "Débat public : distinguer croire/savoir",
+              "options": [
+                "Preuves proportionnées",
+                "Interdire opinion",
+                "Accepter tout",
+                "Vote = vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes épistémiques."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "Syllogisme Socrate :",
+              "options": [
+                "Valide et solide",
+                "Invalide",
+                "Sans conclusion",
+                "Rhétorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barbara classique."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "Charge de la preuve :",
+              "options": [
+                "À celui qui affirme",
+                "Au douteur sans argument",
+                "À personne",
+                "Religion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affirmation contestable à justifier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Opinion publique",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Opinion ≠ vérité car :",
+              "options": [
+                "Majorité peut se tromper",
+                "Nombre établit science",
+                "Vérité ne se vote pas",
+                "Minorité a toujours raison"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Critique du nombre comme critère."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "Platon et démocratie :",
+              "options": [
+                "Confusion pouvoir et sagesse",
+                "Philosophes-rois garantis",
+                "Pas de discussion",
+                "Géométrie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crainte de la doxa politique."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "Bulle de filtres :",
+              "options": [
+                "Croyances renforcées, sources limitées",
+                "Falsifiabilité",
+                "Réplication",
+                "Contradiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Algorithmes et choix personnels."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "Post-vérité :",
+              "options": [
+                "Affects et récits vs faits",
+                "Fin communication",
+                "Triomphe science",
+                "Pas de croyance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédibilité affective."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "Sapere aude :",
+              "options": [
+                "Penser par soi-même",
+                "Rejeter science",
+                "Tradition aveugle",
+                "Interdire débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumières : libre examen."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "Sondage mesure :",
+              "options": [
+                "Croyances déclarées",
+                "Vérité objective",
+                "Validité logique",
+                "Causalité physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion reportée ≠ fait."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "Propagande :",
+              "options": [
+                "Former croyances par moyens non épistémiques",
+                "Protocoles publics",
+                "Peer review",
+                "Doute méthodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manipulation de l'opinion."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "Fact-checking :",
+              "options": [
+                "Vérifier affirmations factuelles",
+                "Imposer religion",
+                "Remplacer philosophie",
+                "Supprimer opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapprocher discours et faits."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "Groupthink :",
+              "options": [
+                "Adhésion par appartenance",
+                "Critique interne",
+                "Diversité maximale",
+                "Méthode stricte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression sociale."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "Transparence des sources :",
+              "options": [
+                "Contrôle et reproduction",
+                "Secret",
+                "Interdit doute",
+                "Fusion opinion/démo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir public vérifiable."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Limites du savoir",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Limites (Kant) :",
+              "options": [
+                "Connaissance des phénomènes",
+                "Chose en soi sans condition",
+                "Raison spéculative outre-passée",
+                "Limite = impossibilité de croire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Critique transcendantale."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "Phénomène / noumène :",
+              "options": [
+                "Apparence vs chose en soi",
+                "Pas de monde",
+                "Sens parfaits",
+                "Foi seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre de l'expérience possible."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "Mystère :",
+              "options": [
+                "Dépassement intelligible",
+                "Ignorance demain résolue",
+                "Absurdité prouvée",
+                "Sophisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite sans incohérence avérée."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "Agnosticisme :",
+              "options": [
+                "Pas de savoir sur certaines questions",
+                "Certitude inexistence divine",
+                "Certitude existence",
+                "Rejet science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suspension ou négation de savoir métaphysique."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "Aletheia (Heidegger) :",
+              "options": [
+                "Dévoilement",
+                "Opinion majoritaire",
+                "Secret",
+                "Calcul utilitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérité comme unconcealment."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "Question mal posée :",
+              "options": [
+                "Cadre incohérent",
+                "Toute métaphysique fausse",
+                "Science répond à tout",
+                "Croyance = savoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse conceptuelle."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "Principium individuationis :",
+              "options": [
+                "Distinction des individus",
+                "Vitesse lumière",
+                "Syntaxe",
+                "Bourse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité individuelle métaphysique."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "« Je ne sais pas » peut être :",
+              "options": [
+                "Honnêteté intellectuelle",
+                "Toujours faute",
+                "Croyance aveugle",
+                "Démonstration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ignorance reconnue."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "Condillac :",
+              "options": [
+                "Origine des idées",
+                "Rejet analyse",
+                "Astrologie",
+                "Interdit empirisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sensualisme des Lumières."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "Feuerbach/Marx sur religion :",
+              "options": [
+                "Explication sociale/psychique",
+                "Preuve logique Dieu",
+                "Loi physique",
+                "Vérité analytique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genèse ≠ réfutation automatique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Témoignage et mémoire",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Témoignage historique :",
+              "options": [
+                "Proximité de la source",
+                "Absence totale de biais",
+                "Corroboration",
+                "Longueur seule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Critique documentaire."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "Mémoire individuelle :",
+              "options": [
+                "Reconstructive, erreurs possibles",
+                "Infaillible",
+                "Identique répétition",
+                "Toujours mensonge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Psychologie cognitive."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "Tradition orale :",
+              "options": [
+                "Savoirs et croyances à évaluer",
+                "Seulement maths",
+                "Rien",
+                "Seulement mensonges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthodes anthropologiques."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "Témoignage post-Shoah :",
+              "options": [
+                "Vérité face au négationnisme",
+                "Inutilité histoire",
+                "Rejet archives",
+                "Astrologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique et épistémique."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "Descartes et Dieu garant :",
+              "options": [
+                "Mémoire claire et réel",
+                "Sens toujours faux",
+                "Pas de monde",
+                "Toute croyance vraie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dieu non trompeur."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "Archive fiable si :",
+              "options": [
+                "Accessible, datée, contextualisée",
+                "Secrète",
+                "Unique sans critique",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole historique."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "Témoin unique sans corroboration :",
+              "options": [
+                "Prudence épistémique",
+                "Sophisme systématique",
+                "Interdit croire",
+                "Preuve de mensonge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sincérité ≠ exactitude."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "Mémoire collective (Halbwachs) :",
+              "options": [
+                "Reconstruction sociale du passé",
+                "Inscription biologique exacte",
+                "Comme physique",
+                "Oubli total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadres sociaux du souvenir."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "Croire un ami sur parole :",
+              "options": [
+                "Confiance, pas savoir public",
+                "Démonstration",
+                "Protocole labo",
+                "Loi naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation vs institution."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "Photo comme preuve :",
+              "options": [
+                "Manipulable, contextualisable",
+                "Toujours fausse",
+                "Remplace analyse",
+                "Opinion vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice, non vérité automatique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse démonstrative",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Montrer qu'une croyance n'est pas savoir :",
+              "options": [
+                "Absence de justification",
+                "Elle est majoritaire",
+                "Contradiction avec faits",
+                "Ironie seule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Critique des fondements et cohérence."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Thème HLP Savoirs et croyances :",
+              "options": [
+                "Régimes de vérité et justification",
+                "Dates sans lien",
+                "Rejet science",
+                "Confondre art et logique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme terminale."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "Dissertation :",
+              "options": [
+                "Thèse argumentée et nuancée",
+                "Opinions sans structure",
+                "Biographies seules",
+                "Citations seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démontrer en HLP."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Doxographie :",
+              "options": [
+                "Recenser doctrines",
+                "Refuser historicité",
+                "Preuve expérimentale antique",
+                "Remplacer textes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartographie des opinions."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "Cohérentisme : vérité comme",
+              "options": [
+                "Ajustement systémique",
+                "Couleur des livres",
+                "Nombre de pages",
+                "Âge auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorie cohérente standard."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Science ouverte s'oppose à :",
+              "options": [
+                "Rétention dogmatique",
+                "Peer review",
+                "Données publiées",
+                "Débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique collective."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "Proposition contingente :",
+              "options": [
+                "Vraie mais pourrait être fausse",
+                "Nécessaire",
+                "Toujours fausse",
+                "Sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir empirique revisable."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "Épistémologie vertueuse :",
+              "options": [
+                "Traits favorisant le savoir",
+                "Vertus sportives",
+                "Rhétorique seule",
+                "Rejet éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curiosité, prudence intellectuelle."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "Refuter négationnisme :",
+              "options": [
+                "Archives, témoignages, logique",
+                "Insulte seule",
+                "Silence",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérité historique."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Objectif terminale :",
+              "options": [
+                "Citoyenneté critique",
+                "Acceptation passive",
+                "Rejet philosophie",
+                "Confusion registres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discerner savoir et croyance."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interpréter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Texte philosophique",
+          "questions": [
+            {
+              "id": "u2q01-01",
+              "type": "multiple_choice",
+              "question": "Lire Descartes sur le doute : repérer",
+              "options": [
+                "Intention méthodique",
+                "Jeu sans enjeu",
+                "Gradation du doute",
+                "Rejet total raison"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Projet de fondation du savoir."
+            },
+            {
+              "id": "u2q01-02",
+              "type": "single_choice",
+              "question": "Paraphrase fidèle :",
+              "options": [
+                "Reformuler en conservant le sens",
+                "Ajouter thèses absentes",
+                "Copier sans comprendre",
+                "Anecdote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre puis reformuler."
+            },
+            {
+              "id": "u2q01-03",
+              "type": "single_choice",
+              "question": "Contexte de publication sert à",
+              "options": [
+                "Éclairer arguments et vocabulaire",
+                "Remplacer analyse",
+                "Prouver faux",
+                "Ignorer logique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herméneutique historique."
+            },
+            {
+              "id": "u2q01-04",
+              "type": "single_choice",
+              "question": "Caverne platonicienne :",
+              "options": [
+                "Allégorie opinion → savoir",
+                "Manuel astro",
+                "Rejet politique",
+                "Preuve expérimentale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statuts de l'âme."
+            },
+            {
+              "id": "u2q01-05",
+              "type": "single_choice",
+              "question": "Citation hors contexte :",
+              "options": [
+                "Croyance déformée",
+                "Démonstration plus solide",
+                "Loi scientifique",
+                "Vérité analytique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragment tronqué."
+            },
+            {
+              "id": "u2q01-06",
+              "type": "single_choice",
+              "question": "Lexique technique :",
+              "options": [
+                "Explicité",
+                "Ignoré",
+                "Traduit au hasard",
+                "Synonymes vagues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision conceptuelle."
+            },
+            {
+              "id": "u2q01-07",
+              "type": "single_choice",
+              "question": "Commentaire composé :",
+              "options": [
+                "Sens, argumentation, critique",
+                "Opinions sans texte",
+                "Biographies",
+                "Citations seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode HLP."
+            },
+            {
+              "id": "u2q01-08",
+              "type": "single_choice",
+              "question": "Pascal deux infinis :",
+              "options": [
+                "Limites de la raison",
+                "Preuve géométrique Dieu",
+                "Rejet science",
+                "Pas de croyance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vertige épistémique."
+            },
+            {
+              "id": "u2q01-09",
+              "type": "single_choice",
+              "question": "Anachronisme :",
+              "options": [
+                "Projeter concepts actuels sans prudence",
+                "Resituer auteur",
+                "Comparer doctrines",
+                "Traduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historicité des concepts."
+            },
+            {
+              "id": "u2q01-10",
+              "type": "single_choice",
+              "question": "Thème oriente vers",
+              "options": [
+                "Crédibilité et justification",
+                "Grammaire seule",
+                "Art ornamental",
+                "Calcul commercial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre savoir/croyance."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Concepts",
+          "questions": [
+            {
+              "id": "u2q02-01",
+              "type": "multiple_choice",
+              "question": "Couples pertinents HLP :",
+              "options": [
+                "Savoir / opinion",
+                "Couleur / parfum seuls",
+                "Foi / raison",
+                "Vérité / justification"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Axes du programme."
+            },
+            {
+              "id": "u2q02-02",
+              "type": "single_choice",
+              "question": "Epistêmê vs doxa :",
+              "options": [
+                "Savoir stable vs opinion",
+                "Synonymes",
+                "Poésie vs prose",
+                "Loi vs coutume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire platonicien."
+            },
+            {
+              "id": "u2q02-03",
+              "type": "single_choice",
+              "question": "Justification :",
+              "options": [
+                "Raisons de tenir p pour vrai",
+                "Émotion seule",
+                "Majorité",
+                "Ancienneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondement épistémique."
+            },
+            {
+              "id": "u2q02-04",
+              "type": "single_choice",
+              "question": "Croyance religieuse vs savoir scientifique :",
+              "options": [
+                "Régimes de validation distincts",
+                "Identiques",
+                "Sans contenu",
+                "Interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas confondre registres."
+            },
+            {
+              "id": "u2q02-05",
+              "type": "single_choice",
+              "question": "Opinion publique :",
+              "options": [
+                "Doxa sociale",
+                "Epistêmê démontrée",
+                "Théorème",
+                "Axiome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion ≠ savoir."
+            },
+            {
+              "id": "u2q02-06",
+              "type": "single_choice",
+              "question": "Scepticisme :",
+              "options": [
+                "Mise en question des pretentions au savoir",
+                "Certitude",
+                "Dogme",
+                "Rejet parole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épochè ou doute."
+            },
+            {
+              "id": "u2q02-07",
+              "type": "single_choice",
+              "question": "Fidéisme :",
+              "options": [
+                "Vérité religieuse indépendante de la raison",
+                "Preuve scientifique",
+                "Logique seule",
+                "Sans foi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position théologique."
+            },
+            {
+              "id": "u2q02-08",
+              "type": "single_choice",
+              "question": "Pragmatisme (James) : vérité comme",
+              "options": [
+                "Ce qui « marche » pratiquement",
+                "Correspondance seule",
+                "Opinion majoritaire",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conception alternative."
+            },
+            {
+              "id": "u2q02-09",
+              "type": "single_choice",
+              "question": "Idée reçue :",
+              "options": [
+                "Croyance non examinée",
+                "Savoir démontré",
+                "Loi",
+                "Théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À interroger."
+            },
+            {
+              "id": "u2q02-10",
+              "type": "single_choice",
+              "question": "Concept : définition utile pour",
+              "options": [
+                "Argumenter sans equivoque",
+                "Décorer",
+                "Remplacer texte",
+                "Éviter lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté argumentative."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Littérature et savoir",
+          "questions": [
+            {
+              "id": "u2q03-01",
+              "type": "multiple_choice",
+              "question": "Roman et vérité :",
+              "options": [
+                "Vérité fictionnelle / existentielle",
+                "Rapport identique au labo",
+                "Mise en scène des croyances",
+                "Rejet de toute réflexion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Littérature explore convictions."
+            },
+            {
+              "id": "u2q03-02",
+              "type": "single_choice",
+              "question": "Autobiographie : frontière",
+              "options": [
+                "Témoignage et construction narrative",
+                "Preuve scientifique",
+                "Théorème",
+                "Sans subjectivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je narratif ≠ rapport objectif."
+            },
+            {
+              "id": "u2q03-03",
+              "type": "single_choice",
+              "question": "Fable :",
+              "options": [
+                "Morale et croyance transmise",
+                "Démonstration logique",
+                "Protocole expérimental",
+                "Statistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme didactique."
+            },
+            {
+              "id": "u2q03-04",
+              "type": "single_choice",
+              "question": "Satire des Lumières :",
+              "options": [
+                "Critique des préjugés",
+                "Affirmation dogme",
+                "Rejet raison",
+                "Science seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voltaire et croyances reçues."
+            },
+            {
+              "id": "u2q03-05",
+              "type": "single_choice",
+              "question": "Poème engagé :",
+              "options": [
+                "Conviction et visée persuasive",
+                "Preuve mathématique",
+                "Sans idée",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre persuasif vs démonstratif."
+            },
+            {
+              "id": "u2q03-06",
+              "type": "single_choice",
+              "question": "Narrateur unreliable :",
+              "options": [
+                "Remet en cause crédibilité du récit",
+                "Garantit vérité",
+                "Scientifique",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture critique du dire."
+            },
+            {
+              "id": "u2q03-07",
+              "type": "single_choice",
+              "question": "Mythe :",
+              "options": [
+                "Récit fondateur de sens et croyances",
+                "Expérience reproductible",
+                "Calcul",
+                "Sans interprétation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Herméneutique mythique."
+            },
+            {
+              "id": "u2q03-08",
+              "type": "single_choice",
+              "question": "Essai (Montaigne) :",
+              "options": [
+                "Exploration des opinions de l'auteur",
+                "Démonstration géométrique",
+                "Sans doute",
+                "Loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Que sais-je ?"
+            },
+            {
+              "id": "u2q03-09",
+              "type": "single_choice",
+              "question": "Uchronie :",
+              "options": [
+                "Fiction historique questionnant le réel",
+                "Preuve documentaire",
+                "Sans sens",
+                "Vérité scientifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrefactuel littéraire."
+            },
+            {
+              "id": "u2q03-10",
+              "type": "single_choice",
+              "question": "Intertexte philosophique en littérature :",
+              "options": [
+                "Dialogue avec thèses savoir/croyance",
+                "Erreur",
+                "Interdit",
+                "Sans lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HLP croise disciplines."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Images et discours",
+          "questions": [
+            {
+              "id": "u2q04-01",
+              "type": "multiple_choice",
+              "question": "Image de presse :",
+              "options": [
+                "Construit une vision du monde",
+                "Preuve automatique",
+                "Peut orienter croyances",
+                "Remplace archives"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Iconographie et opinion."
+            },
+            {
+              "id": "u2q04-02",
+              "type": "single_choice",
+              "question": "Deepfake :",
+              "options": [
+                "Remet en cause crédibilité visuelle",
+                "Renforce savoir",
+                "Théorème",
+                "Sans enjeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation aux médias."
+            },
+            {
+              "id": "u2q04-03",
+              "type": "single_choice",
+              "question": "Infographie scientifique :",
+              "options": [
+                "Médiation du savoir",
+                "Opinion sans source",
+                "Secret",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vulgarisation argumentée."
+            },
+            {
+              "id": "u2q04-04",
+              "type": "single_choice",
+              "question": "Mème politique :",
+              "options": [
+                "Diffusion rapide de croyances",
+                "Peer review",
+                "Démonstration",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion viral."
+            },
+            {
+              "id": "u2q04-05",
+              "type": "single_choice",
+              "question": "Légende d'une photo :",
+              "options": [
+                "Cadre interprétatif",
+                "Vérité garantie",
+                "Sans effet",
+                "Preuve seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contextualisation nécessaire."
+            },
+            {
+              "id": "u2q04-06",
+              "type": "single_choice",
+              "question": "Documentaire :",
+              "options": [
+                "Argumentation filmée à analyser",
+                "Vérité brute",
+                "Sans auteur",
+                "Théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de vue et montage."
+            },
+            {
+              "id": "u2q04-07",
+              "type": "single_choice",
+              "question": "Publicité :",
+              "options": [
+                "Visée persuasion, non démonstration",
+                "Savoir scientifique",
+                "Neutralité",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction registres."
+            },
+            {
+              "id": "u2q04-08",
+              "type": "single_choice",
+              "question": "Carte géographique :",
+              "options": [
+                "Représentation sélective",
+                "Copie exacte 1:1",
+                "Sans choix",
+                "Opinion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir cartographique interprété."
+            },
+            {
+              "id": "u2q04-09",
+              "type": "single_choice",
+              "question": "Statistique mal lue :",
+              "options": [
+                "Croyance erronée",
+                "Démonstration",
+                "Vérité analytique",
+                "Sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littératie des données."
+            },
+            {
+              "id": "u2q04-10",
+              "type": "single_choice",
+              "question": "Interpréter une affiche :",
+              "options": [
+                "Repérer visée et présupposés",
+                "Ignorer contexte",
+                "Accepter sans critique",
+                "Confondre avec labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse visuelle HLP."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Humanités et histoire",
+          "questions": [
+            {
+              "id": "u2q05-01",
+              "type": "multiple_choice",
+              "question": "Histoire des sciences :",
+              "options": [
+                "Montre révisions des savoirs",
+                "Immobilité dogmatique",
+                "Croyances remplacées par preuves",
+                "Contexte des découvertes"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Savoir en devenir."
+            },
+            {
+              "id": "u2q05-02",
+              "type": "single_choice",
+              "question": "Révolution copernicienne :",
+              "options": [
+                "Bouleverse croyances cosmologiques",
+                "Sans impact",
+                "Opinion seule",
+                "Rejet observation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple de changement de paradigme."
+            },
+            {
+              "id": "u2q05-03",
+              "type": "single_choice",
+              "question": "Procès Galilée interprété comme",
+              "options": [
+                "Tension autorité religieuse et savoir",
+                "Preuve que science est fausse",
+                "Sans enjeu",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat foi/raison historique."
+            },
+            {
+              "id": "u2q05-04",
+              "type": "single_choice",
+              "question": "Encyclopédie :",
+              "options": [
+                "Diffusion des Lumières et savoirs",
+                "Secret",
+                "Opinion seule",
+                "Rejet science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet collectif de connaissance."
+            },
+            {
+              "id": "u2q05-05",
+              "type": "single_choice",
+              "question": "Archive numérisée :",
+              "options": [
+                "Nouvelle lecture critique des sources",
+                "Vérité automatique",
+                "Sans méthode",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil, pas garantie."
+            },
+            {
+              "id": "u2q05-06",
+              "type": "single_choice",
+              "question": "Iconoclasme historique :",
+              "options": [
+                "Rapport images et croyances",
+                "Calcul",
+                "Sans religion",
+                "Labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images et conviction."
+            },
+            {
+              "id": "u2q05-07",
+              "type": "single_choice",
+              "question": "Humanisme renaissance :",
+              "options": [
+                "Retour aux sources et savoirs antiques",
+                "Rejet texte",
+                "Sans philologie",
+                "Opinion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Philologie et érudition."
+            },
+            {
+              "id": "u2q05-08",
+              "type": "single_choice",
+              "question": "Colonialisme et savoir :",
+              "options": [
+                "Questionner biais des classifications",
+                "Neutralité parfaite",
+                "Sans histoire",
+                "Vérité unique simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique épistémique postcoloniale."
+            },
+            {
+              "id": "u2q05-09",
+              "type": "single_choice",
+              "question": "Musée :",
+              "options": [
+                "Médiation sélective du patrimoine",
+                "Vérité brute",
+                "Sans scénographie",
+                "Opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discours expositif."
+            },
+            {
+              "id": "u2q05-10",
+              "type": "single_choice",
+              "question": "Lire un discours historique :",
+              "options": [
+                "Situer enjeux de vérité et pouvoir",
+                "Ignorer auteur",
+                "Preuve labo",
+                "Sans contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rhétorique et croyance collective."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Herméneutique",
+          "questions": [
+            {
+              "id": "u2q06-01",
+              "type": "multiple_choice",
+              "question": "Herméneutique :",
+              "options": [
+                "Art d'interpréter",
+                "Copie mot à mot",
+                "Cercle partie-tout",
+                "Rejet de sens"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Comprendre le sens global et local."
+            },
+            {
+              "id": "u2q06-02",
+              "type": "single_choice",
+              "question": "Cercle herméneutique :",
+              "options": [
+                "Comprendre le tout par les parties et inversement",
+                "Cercle vicieux sans sens",
+                "Preuve logique",
+                "Statistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode interprétative."
+            },
+            {
+              "id": "u2q06-03",
+              "type": "single_choice",
+              "question": "Intention auteur vs sens texte :",
+              "options": [
+                "Débat interprétatif",
+                "Résolu une fois",
+                "Sans importance",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gadamer, Ricœur."
+            },
+            {
+              "id": "u2q06-04",
+              "type": "single_choice",
+              "question": "Exégèse biblique :",
+              "options": [
+                "Interprétation des Écritures",
+                "Preuve labo",
+                "Sans histoire",
+                "Opinion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foi, texte, raison."
+            },
+            {
+              "id": "u2q06-05",
+              "type": "single_choice",
+              "question": "Lecture symptômale :",
+              "options": [
+                "Cherche présupposés non dits",
+                "Ignore contexte",
+                "Copie",
+                "Preuve math"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique."
+            },
+            {
+              "id": "u2q06-06",
+              "type": "single_choice",
+              "question": "Traduction philosophique :",
+              "options": [
+                "Choix interprétatif de concepts",
+                "Neutre à 100%",
+                "Sans perte",
+                "Inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Equivalence difficile."
+            },
+            {
+              "id": "u2q06-07",
+              "type": "single_choice",
+              "question": "Commentaire linéaire :",
+              "options": [
+                "Suit progression du texte",
+                "Sans ordre",
+                "Biographie seule",
+                "Sans citation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode scolaire."
+            },
+            {
+              "id": "u2q06-08",
+              "type": "single_choice",
+              "question": "Silence d'un texte :",
+              "options": [
+                "Peut signifier par omission",
+                "Sans sens",
+                "Erreur",
+                "Preuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire aussi les lacunes."
+            },
+            {
+              "id": "u2q06-09",
+              "type": "single_choice",
+              "question": "Polysémie :",
+              "options": [
+                "Plusieurs sens possibles",
+                "Un seul sens",
+                "Erreur",
+                "Sans interprétation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuancer la lecture."
+            },
+            {
+              "id": "u2q06-10",
+              "type": "single_choice",
+              "question": "Fusion des horizons (Gadamer) :",
+              "options": [
+                "Dialogue passé et présent",
+                "Anachronisme",
+                "Rejet auteur",
+                "Sans lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compréhension historique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Éthique et vérité",
+          "questions": [
+            {
+              "id": "u2q07-01",
+              "type": "multiple_choice",
+              "question": "Devoir de vérité :",
+              "options": [
+                "Ne pas mentir délibérément",
+                "Mensonge toujours utile",
+                "Responsabilité du discours",
+                "Indifférence"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Éthique de la sincérité."
+            },
+            {
+              "id": "u2q07-02",
+              "type": "single_choice",
+              "question": "Mensonge noble (Platon) :",
+              "options": [
+                "Débat sur vérité politique",
+                "Preuve scientifique",
+                "Sans polémique",
+                "Théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mythe de Métaux, lecture critique."
+            },
+            {
+              "id": "u2q07-03",
+              "type": "single_choice",
+              "question": "Parole du témoin :",
+              "options": [
+                "Engagement éthique et crédibilité",
+                "Sans responsabilité",
+                "Fiction",
+                "Calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Témoignage et vérité."
+            },
+            {
+              "id": "u2q07-04",
+              "type": "single_choice",
+              "question": "Whistleblower :",
+              "options": [
+                "Révèle savoir caché au nom du public",
+                "Propagande",
+                "Sans faits",
+                "Opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérité et intérêt general."
+            },
+            {
+              "id": "u2q07-05",
+              "type": "single_choice",
+              "question": "Secret d'État vs transparence :",
+              "options": [
+                "Tension démocratique",
+                "Sans débat",
+                "Toujours mensonge",
+                "Toujours vérité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interpréter les régimes de visibilité."
+            },
+            {
+              "id": "u2q07-06",
+              "type": "single_choice",
+              "question": "Désinformation :",
+              "options": [
+                "Fausse croyance diffusée sciemment",
+                "Savoir",
+                "Démonstration",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manipulation épistémique."
+            },
+            {
+              "id": "u2q07-07",
+              "type": "single_choice",
+              "question": "Liberté d'expression et faits :",
+              "options": [
+                "Droit ≠ licence de tromper sur le réel",
+                "Identité totale",
+                "Interdit critique",
+                "Sans limite éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat contemporain."
+            },
+            {
+              "id": "u2q07-08",
+              "type": "single_choice",
+              "question": "Confiance institutionnelle :",
+              "options": [
+                "Condition de croire les savoirs officiels",
+                "Inutile",
+                "Toujours aveugle",
+                "Sans histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crise de confiance = crise croyance."
+            },
+            {
+              "id": "u2q07-09",
+              "type": "single_choice",
+              "question": "Excuses publiques :",
+              "options": [
+                "Reconnaissance d'une vérité sur le passé",
+                "Sans sens",
+                "Fiction",
+                "Calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verité historique et réparation."
+            },
+            {
+              "id": "u2q07-10",
+              "type": "single_choice",
+              "question": "Charité interprétative en éthique :",
+              "options": [
+                "Éviter de mal lire autrui",
+                "Caricature",
+                "Mensonge",
+                "Rejet dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect epistémique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Art et vérité",
+          "questions": [
+            {
+              "id": "u2q08-01",
+              "type": "multiple_choice",
+              "question": "Art et vérité :",
+              "options": [
+                "Vérité sensible ou existentielle",
+                "Identique au labo",
+                "Question de croyance esthétique",
+                "Sans interprétation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Registres distincts."
+            },
+            {
+              "id": "u2q08-02",
+              "type": "single_choice",
+              "question": "Mimesis platonicienne :",
+              "options": [
+                "Art éloigné de la vérité des Formes",
+                "Art = savoir",
+                "Sans critique",
+                "Preuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poète et imitation."
+            },
+            {
+              "id": "u2q08-03",
+              "type": "single_choice",
+              "question": "Heidegger art :",
+              "options": [
+                "Dévoilement de l'être",
+                "Simple divertissement",
+                "Sans vérité",
+                "Calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aletheia esthétique."
+            },
+            {
+              "id": "u2q08-04",
+              "type": "single_choice",
+              "question": "Autoportrait :",
+              "options": [
+                "Construction du soi, non preuve objective",
+                "Photo scientifique",
+                "Théorème",
+                "Sans subjectivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interpréter le je."
+            },
+            {
+              "id": "u2q08-05",
+              "type": "single_choice",
+              "question": "Opéra engagé :",
+              "options": [
+                "Transmet convictions",
+                "Démonstration",
+                "Sans idée",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art et opinion."
+            },
+            {
+              "id": "u2q08-06",
+              "type": "single_choice",
+              "question": "Photographie artistique vs document :",
+              "options": [
+                "Statuts de vérité différents",
+                "Identiques",
+                "Sans choix",
+                "Opinion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre et intention."
+            },
+            {
+              "id": "u2q08-07",
+              "type": "single_choice",
+              "question": "Littérature fantastique :",
+              "options": [
+                "Interroge croyance au réel",
+                "Preuve surnaturelle",
+                "Sans lecture",
+                "Labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hesitation interpretative."
+            },
+            {
+              "id": "u2q08-08",
+              "type": "single_choice",
+              "question": "Installation mémorielle :",
+              "options": [
+                "Favorise mémoire et sens",
+                "Sans public",
+                "Preuve math",
+                "Opinion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commémoration et vérité."
+            },
+            {
+              "id": "u2q08-09",
+              "type": "single_choice",
+              "question": "Censure artistique :",
+              "options": [
+                "Rapport pouvoir et vérité dite",
+                "Sans enjeu",
+                "Renforce science",
+                "Théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique des savoirs."
+            },
+            {
+              "id": "u2q08-10",
+              "type": "single_choice",
+              "question": "Critique d'art :",
+              "options": [
+                "Argumente une interprétation",
+                "Mesure labo",
+                "Sans thèse",
+                "Copie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discours justifié sur l'oeuvre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Numérique et croyance",
+          "questions": [
+            {
+              "id": "u2q09-01",
+              "type": "multiple_choice",
+              "question": "Réseaux sociaux :",
+              "options": [
+                "Accélèrent diffusion de croyances",
+                "Garantissent vérité",
+                "Algorithmes orientent visibilité",
+                "Remplacent méthode scientifique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Écosystème informationnel."
+            },
+            {
+              "id": "u2q09-02",
+              "type": "single_choice",
+              "question": "Wikipédia :",
+              "options": [
+                "Savoir collaboratif à vérifier",
+                "Vérité absolue sans source",
+                "Sans biais",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire notes et sources."
+            },
+            {
+              "id": "u2q09-03",
+              "type": "single_choice",
+              "question": "IA générative :",
+              "options": [
+                "Peut produire contenus faux plausibles",
+                "Infailible",
+                "Sans critique",
+                "Archive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier les affirmations."
+            },
+            {
+              "id": "u2q09-04",
+              "type": "single_choice",
+              "question": "Recommandation YouTube :",
+              "options": [
+                "Renforce croyances existantes",
+                "Peer review",
+                "Démonstration",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bulles informationnelles."
+            },
+            {
+              "id": "u2q09-05",
+              "type": "single_choice",
+              "question": "Open data :",
+              "options": [
+                "Permet contrôle citoyen des faits",
+                "Opinion seule",
+                "Sans méthode",
+                "Fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence des savoirs publics."
+            },
+            {
+              "id": "u2q09-06",
+              "type": "single_choice",
+              "question": "Phishing :",
+              "options": [
+                "Exploite croyance en une autorité",
+                "Savoir",
+                "Théorème",
+                "Sans danger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ingénierie sociale."
+            },
+            {
+              "id": "u2q09-07",
+              "type": "single_choice",
+              "question": "Podcast éducatif :",
+              "options": [
+                "Médiation à évaluer",
+                "Preuve automatique",
+                "Sans auteur",
+                "Loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité variable."
+            },
+            {
+              "id": "u2q09-08",
+              "type": "single_choice",
+              "question": "Cryptographie :",
+              "options": [
+                "Savoir technique de confiance",
+                "Opinion",
+                "Poésie",
+                "Sans sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preuves mathématiques de sécurité."
+            },
+            {
+              "id": "u2q09-09",
+              "type": "single_choice",
+              "question": "Modération de contenu :",
+              "options": [
+                "Arbitrage vérité/ opinion / harm",
+                "Sans enjeu",
+                "Supprime science",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance épistémique."
+            },
+            {
+              "id": "u2q09-10",
+              "type": "single_choice",
+              "question": "Empreinte numérique :",
+              "options": [
+                "Construit image de soi et crédibilité",
+                "Vérité totale",
+                "Sans interprétation",
+                "Archive parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité et croyance d'autrui."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse interprétative",
+          "questions": [
+            {
+              "id": "u2q10-01",
+              "type": "multiple_choice",
+              "question": "Interpréter savoirs et croyances implique :",
+              "options": [
+                "Croiser textes, arts, sciences",
+                "Ignorer contexte",
+                "Repérer registres de discours",
+                "Confondre tout"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Objectif HLP terminale."
+            },
+            {
+              "id": "u2q10-02",
+              "type": "single_choice",
+              "question": "Dissertation HLP interprétative :",
+              "options": [
+                "Mobiliser oeuvres et concepts",
+                "Sans exemples",
+                "Liste dates",
+                "Sans problématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Argumentation documentée."
+            },
+            {
+              "id": "u2q10-03",
+              "type": "single_choice",
+              "question": "Conclusion de commentaire :",
+              "options": [
+                "Bilan sens et portée",
+                "Répéter intro",
+                "Biographie",
+                "Citation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ouverture maîtrisée."
+            },
+            {
+              "id": "u2q10-04",
+              "type": "single_choice",
+              "question": "Objet d'étude commun HLP :",
+              "options": [
+                "Question sur vérité, foi, science",
+                "Grammaire seule",
+                "Sport",
+                "Calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fil rouge du chapitre."
+            },
+            {
+              "id": "u2q10-05",
+              "type": "single_choice",
+              "question": "Lecture comparée de deux textes :",
+              "options": [
+                "Convergences et divergences argumentées",
+                "Paraphrase double",
+                "Sans thèse",
+                "Ignorer auteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode comparative."
+            },
+            {
+              "id": "u2q10-06",
+              "type": "single_choice",
+              "question": "Croyance scientifique populaire erronée :",
+              "options": [
+                "Objet d'interprétation critique",
+                "Savoir établi",
+                "Sans correction",
+                "Théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vulgarisation et idées reçues."
+            },
+            {
+              "id": "u2q10-07",
+              "type": "single_choice",
+              "question": "Phrase problématique :",
+              "options": [
+                "Ouvre débat interprétatif",
+                "Affirmation sans question",
+                "Décor",
+                "Sans lien thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problématiser en HLP."
+            },
+            {
+              "id": "u2q10-08",
+              "type": "single_choice",
+              "question": "Registre hybride (discours politique + chiffres) :",
+              "options": [
+                "Demander quelle part savoir et croyance",
+                "Accepter tout",
+                "Rejeter chiffres",
+                "Sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démêler preuve et persuasion."
+            },
+            {
+              "id": "u2q10-09",
+              "type": "single_choice",
+              "question": "Autoformation citoyenne :",
+              "options": [
+                "Continuer à interpréter sources variées",
+                "Stopper après bac",
+                "Sans esprit critique",
+                "Une seule autorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prolongement du programme."
+            },
+            {
+              "id": "u2q10-10",
+              "type": "single_choice",
+              "question": "Unité Interpréter complète Démontrer en :",
+              "options": [
+                "Passant de preuve à sens des discours",
+                "Remplaçant logique par opinion",
+                "Abandonnant textes",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux faces du même thème HLP."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

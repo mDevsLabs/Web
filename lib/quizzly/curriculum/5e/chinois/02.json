@@ -1,0 +1,2338 @@
+{
+  "id": "5e-chinois-02",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des parents en chinois ?",
+              "type": "multiple_choice",
+              "options": [
+                "爸爸 (bàba)",
+                "妈妈 (māma)",
+                "老师 (lǎoshī)",
+                "同学 (tóngxué)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "爸爸 et 妈妈 sont papa et maman."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « grand-père paternel » ?",
+              "type": "single_choice",
+              "options": [
+                "爷爷 (yéye)",
+                "奶奶 (nǎinai)",
+                "外公 (wàigōng)",
+                "外婆 (wàipó)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "爷爷 est le grand-père du côté paternel."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 姐姐 (jiějie) ?",
+              "type": "single_choice",
+              "options": ["Grande sœur", "Petite sœur", "Grand frère", "Tante"],
+              "correctAnswers": [0],
+              "explanation": "姐姐 désigne la sœur aînée."
+            },
+            {
+              "id": "q4",
+              "question": "Quel caractère signifie « mère » dans 妈妈 ?",
+              "type": "single_choice",
+              "options": ["妈 (mā)", "爸 (bà)", "姐 (jiě)", "妹 (mèi)"],
+              "correctAnswers": [0],
+              "explanation": "妈 est le radical pour mère."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « mon frère cadet » ?",
+              "type": "single_choice",
+              "options": [
+                "我的弟弟 (wǒ de dìdi)",
+                "我的哥哥 (wǒ de gēge)",
+                "我的姐姐 (wǒ de jiějie)",
+                "我的同学 (wǒ de tóngxué)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "弟弟 est le frère cadet avec 我的 pour « mon »."
+            },
+            {
+              "id": "q6",
+              "question": "Que veut dire 家 (jiā) au sens familial ?",
+              "type": "single_choice",
+              "options": ["Famille / foyer", "École", "Magasin", "Route"],
+              "correctAnswers": [0],
+              "explanation": "家 évoque le foyer et la famille."
+            },
+            {
+              "id": "q7",
+              "question": "Quel mot désigne « grand-mère paternelle » ?",
+              "type": "single_choice",
+              "options": [
+                "奶奶 (nǎinai)",
+                "爷爷 (yéye)",
+                "叔叔 (shūshu)",
+                "哥哥 (gēge)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "奶奶 est la grand-mère paternelle."
+            },
+            {
+              "id": "q8",
+              "question": "Comment traduit-on « famille » ?",
+              "type": "single_choice",
+              "options": [
+                "家庭 (jiātíng)",
+                "学校 (xuéxiào)",
+                "朋友 (péngyou)",
+                "国家 (guójiā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "家庭 signifie la famille au sens du foyer."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie 妹妹 (mèimei) ?",
+              "type": "single_choice",
+              "options": ["Petite sœur", "Grande sœur", "Mère", "Fille"],
+              "correctAnswers": [0],
+              "explanation": "妹妹 est la sœur cadette."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 我爱家人, que signifie 爱 (ài) ?",
+              "type": "single_choice",
+              "options": ["Aimer", "Voir", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "爱 signifie aimer."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Possession et présentation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pronoms forment « mon » ou « son » avec 的 ?",
+              "type": "multiple_choice",
+              "options": ["我 (wǒ)", "你 (nǐ)", "他 (tā)", "吗 (ma)"],
+              "correctAnswers": [0, 2],
+              "explanation": "我的 et 他的 marquent la possession."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 的 (de) dans 我的妈妈 ?",
+              "type": "single_choice",
+              "options": [
+                "Marque de possession",
+                "Question",
+                "Passé",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 relie le possesseur au nom."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « ta sœur » ?",
+              "type": "single_choice",
+              "options": [
+                "你的姐姐/妹妹 (nǐ de jiějie/mèimei)",
+                "我的姐姐 (wǒ de jiějie)",
+                "他的妈妈 (tā de māma)",
+                "我们的家 (wǒmen de jiā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你的 indique « ta / ton / tes »."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 我们 (wǒmen) ?",
+              "type": "single_choice",
+              "options": ["Nous", "Vous", "Ils", "Elles"],
+              "correctAnswers": [0],
+              "explanation": "我们 est le pronom « nous »."
+            },
+            {
+              "id": "q5",
+              "question": "Comment se dit « ils » en chinois ?",
+              "type": "single_choice",
+              "options": [
+                "他们 (tāmen)",
+                "我们 (wǒmen)",
+                "你们 (nǐmen)",
+                "它 (tā)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "他们 désigne un groupe masculin ou mixte."
+            },
+            {
+              "id": "q6",
+              "question": "Dans 这是我爸爸, que signifie 这 (zhè) ?",
+              "type": "single_choice",
+              "options": ["Ceci / voici", "Là-bas", "Qui", "Quoi"],
+              "correctAnswers": [0],
+              "explanation": "这 signifie « ceci » pour présenter quelqu'un."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 是 (shì) ?",
+              "type": "single_choice",
+              "options": ["Être", "Avoir", "Aller", "Faire"],
+              "correctAnswers": [0],
+              "explanation": "是 est le verbe être pour identifier."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « combien de personnes dans ta famille » (intro) ?",
+              "type": "single_choice",
+              "options": [
+                "你家有几口人？(nǐ jiā yǒu jǐ kǒu rén ?)",
+                "你好吗？(nǐ hǎo ma ?)",
+                "几点了？(jǐ diǎn le ?)",
+                "多少钱？(duōshao qián ?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几口人 demande le nombre de membres du foyer."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie 口 (kǒu) dans 几口人 ?",
+              "type": "single_choice",
+              "options": [
+                "Compteur pour personnes du foyer",
+                "Bouche seulement",
+                "Porte",
+                "Heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "口 compte les membres d'une famille."
+            },
+            {
+              "id": "q10",
+              "question": "Comment répond-on « trois personnes » ?",
+              "type": "single_choice",
+              "options": [
+                "三口人 (sān kǒu rén)",
+                "三个人 (sān ge rén) aussi possible",
+                "三个家 (sān ge jiā)",
+                "三老师 (sān lǎoshī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三口人 est la réponse idiomatique pour la taille du foyer."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "À l'école : lieux et personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent au vocabulaire scolaire ?",
+              "type": "multiple_choice",
+              "options": [
+                "学校 (xuéxiào)",
+                "老师 (lǎoshī)",
+                "游泳 (yóuyǒng)",
+                "电视 (diànshì)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 et 老师 désignent l'école et l'enseignant."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 同学 (tóngxué) ?",
+              "type": "single_choice",
+              "options": [
+                "Camarade de classe",
+                "Directeur",
+                "Bibliothèque",
+                "Cours de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同学 est un élève de la même classe."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « classe (salle) » ?",
+              "type": "single_choice",
+              "options": [
+                "教室 (jiàoshì)",
+                "厕所 (cèsuǒ)",
+                "厨房 (chúfáng)",
+                "公园 (gōngyuán)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教室 est la salle de classe."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 学生 (xuésheng) ?",
+              "type": "single_choice",
+              "options": [
+                "Élève / étudiant",
+                "Professeur",
+                "Parent",
+                "Médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 désigne l'apprenant."
+            },
+            {
+              "id": "q5",
+              "question": "Où lit-on des livres à l'école ?",
+              "type": "single_choice",
+              "options": [
+                "图书馆 (túshūguǎn)",
+                "饭店 (fàndiàn)",
+                "医院 (yīyuàn)",
+                "银行 (yínháng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "图书馆 est la bibliothèque."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 课 (kè) ?",
+              "type": "single_choice",
+              "options": [
+                "Leçon / cours",
+                "Devoir maison",
+                "Vacances",
+                "Cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "课 désigne une leçon ou un cours."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « directeur d'école » (courant) ?",
+              "type": "single_choice",
+              "options": [
+                "校长 (xiàozhǎng)",
+                "医生 (yīshēng)",
+                "司机 (sījī)",
+                "服务员 (fúwùyuán)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "校长 dirige l'établissement."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie 汉语 (Hànyǔ) ?",
+              "type": "single_choice",
+              "options": [
+                "La langue chinoise",
+                "Les maths",
+                "L'anglais",
+                "Le sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "汉语 est la langue chinoise standard."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 我学习中文, que signifie 学习 (xuéxí) ?",
+              "type": "single_choice",
+              "options": ["Étudier / apprendre", "Jouer", "Dormir", "Crier"],
+              "correctAnswers": [0],
+              "explanation": "学习 signifie apprendre."
+            },
+            {
+              "id": "q10",
+              "question": "Que veut dire 中文 (Zhōngwén) ?",
+              "type": "single_choice",
+              "options": [
+                "Langue / écriture chinoise",
+                "Japonais",
+                "Français",
+                "Carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中文 désigne la langue chinoise écrite et parlée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matériel et actions scolaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets trouve-t-on dans le cartable ?",
+              "type": "multiple_choice",
+              "options": ["书 (shū)", "笔 (bǐ)", "鱼 (yú)", "车 (chē)"],
+              "correctAnswers": [0, 1],
+              "explanation": "书 et 笔 sont livre et stylo."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 本子 (běnzi) ?",
+              "type": "single_choice",
+              "options": ["Cahier", "Table", "Chaise", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "本子 est un cahier."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « écrire » ?",
+              "type": "single_choice",
+              "options": ["写 (xiě)", "听 (tīng)", "说 (shuō)", "跑 (pǎo)"],
+              "correctAnswers": [0],
+              "explanation": "写 signifie écrire."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 读 (dú) ?",
+              "type": "single_choice",
+              "options": ["Lire", "Manger", "Nager", "Chanter"],
+              "correctAnswers": [0],
+              "explanation": "读 signifie lire à voix haute ou lire."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « écouter le professeur » ?",
+              "type": "single_choice",
+              "options": [
+                "听老师说话 (tīng lǎoshī shuōhuà)",
+                "看老师 (kàn lǎoshī)",
+                "打老师 (dǎ lǎoshī)",
+                "找老师 (zhǎo lǎoshī) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听 … 说话 exprime écouter parler."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 作业 (zuòyè) ?",
+              "type": "single_choice",
+              "options": ["Devoirs", "Récréation", "Examen final", "Cantine"],
+              "correctAnswers": [0],
+              "explanation": "作业 désigne les devoirs."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « poser une question » ?",
+              "type": "single_choice",
+              "options": [
+                "问问题 (wèn wèntí)",
+                "回答问题 (húidá wèntí)",
+                "没有问题 (méiyǒu wèntí)",
+                "问题问题 (wèntí wèntí)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "问问题 signifie poser une question."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 回答 (huídá) ?",
+              "type": "single_choice",
+              "options": ["Répondre", "Oublier", "Copier", "Quitter"],
+              "correctAnswers": [0],
+              "explanation": "回答 signifie répondre."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 我用铅笔写字, que signifie 用 (yòng) ?",
+              "type": "single_choice",
+              "options": ["Utiliser", "Acheter", "Casser", "Prêter"],
+              "correctAnswers": [0],
+              "explanation": "用 indique l'instrument utilisé."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 铅笔 (qiānbǐ) ?",
+              "type": "single_choice",
+              "options": ["Crayon à papier", "Gomme", "Règle", "Trousse"],
+              "correctAnswers": [0],
+              "explanation": "铅笔 est le crayon à mine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Emploi du temps scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du moment ou de l'horaire ?",
+              "type": "multiple_choice",
+              "options": [
+                "点 (diǎn)",
+                "星期 (xīngqī)",
+                "苹果 (píngguǒ)",
+                "狗 (gǒu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "点 compte les heures et 星期 les jours de la semaine."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « lundi » ?",
+              "type": "single_choice",
+              "options": [
+                "星期一 (xīngqīyī)",
+                "星期天 (xīngqītiān)",
+                "今天 (jīntiān)",
+                "明天 (míngtiān)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "星期一 est le premier jour ouvré."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 上课 (shàngkè) ?",
+              "type": "single_choice",
+              "options": [
+                "Commencer le cours",
+                "Finir l'école",
+                "Manger",
+                "Dormir en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上课 signifie avoir cours."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « la récréation » (pause) ?",
+              "type": "single_choice",
+              "options": [
+                "休息 (xiūxi)",
+                "考试 (kǎoshì)",
+                "毕业 (bìyè)",
+                "开学 (kāixué)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "休息 est une pause ou du repos."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 下课 (xiàkè) ?",
+              "type": "single_choice",
+              "options": [
+                "Fin du cours",
+                "Début du cours",
+                "Devoir noté",
+                "Absence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下课 marque la fin de la leçon."
+            },
+            {
+              "id": "q6",
+              "question": "À quelle heure commence souvent la matinée (huit heures) ?",
+              "type": "single_choice",
+              "options": [
+                "八点 (bā diǎn)",
+                "八点八 (bā diǎn bā)",
+                "十八点 (shíbā diǎn) pour le soir",
+                "零点 (líng diǎn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "八点 exprime huit heures."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 今天 (jīntiān) ?",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Chaque jour"],
+              "correctAnswers": [0],
+              "explanation": "今天 signifie aujourd'hui."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « demain » ?",
+              "type": "single_choice",
+              "options": [
+                "明天 (míngtiān)",
+                "昨天 (zuótiān)",
+                "现在 (xiànzài)",
+                "以后 (yǐhòu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天 est demain."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 有时候 (yǒu shíhou) ?",
+              "type": "single_choice",
+              "options": ["Parfois", "Jamais", "Toujours", "Tout de suite"],
+              "correctAnswers": [0],
+              "explanation": "有时候 signifie parfois."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 我七点去学校, que signifie 去 (qù) ?",
+              "type": "single_choice",
+              "options": [
+                "Aller (vers)",
+                "Venir",
+                "Rester",
+                "Rentrer chez soi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 indique le déplacement vers un lieu."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Loisirs : sports et jeux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles activités sont des loisirs courants ?",
+              "type": "multiple_choice",
+              "options": [
+                "打篮球 (dǎ lánqiú)",
+                "踢足球 (tī zúqiú)",
+                "上课 (shàngkè)",
+                "做作业 (zuò zuòyè)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "篮球 et 足球 sont pratiqués pour le plaisir."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 游泳 (yóuyǒng) ?",
+              "type": "single_choice",
+              "options": ["Nager", "Courir", "Dessiner", "Cuisiner"],
+              "correctAnswers": [0],
+              "explanation": "游泳 signifie nager."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « jouer au ballon / jouer » (sport) ?",
+              "type": "single_choice",
+              "options": [
+                "打 / 踢 + sport",
+                "吃 + sport",
+                "睡 + sport",
+                "写 + sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise 打 ou 踢 selon le sport."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 跑步 (pǎobù) ?",
+              "type": "single_choice",
+              "options": [
+                "Courir",
+                "Marcher lentement",
+                "Sauter à la corde",
+                "Skier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跑步 signifie courir."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « regarder la télévision » ?",
+              "type": "single_choice",
+              "options": [
+                "看电视 (kàn diànshì)",
+                "听电视 (tīng diànshì)",
+                "写电视 (xiě diànshì)",
+                "吃电视 (chī diànshì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看 s'emploie pour regarder."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 音乐 (yīnyuè) ?",
+              "type": "single_choice",
+              "options": ["Musique", "Peinture", "Théâtre seulement", "Photo"],
+              "correctAnswers": [0],
+              "explanation": "音乐 désigne la musique."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « écouter de la musique » ?",
+              "type": "single_choice",
+              "options": [
+                "听音乐 (tīng yīnyuè)",
+                "看音乐 (kàn yīnyuè)",
+                "打音乐 (dǎ yīnyuè)",
+                "问音乐 (wèn yīnyuè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听 s'utilise pour écouter."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 喜欢 (xǐhuan) ?",
+              "type": "single_choice",
+              "options": [
+                "Aimer / apprécier",
+                "Détester",
+                "Oublier",
+                "Commencer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢 exprime une préférence."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 我喜欢看书, que signifie 看 (kàn) ?",
+              "type": "single_choice",
+              "options": [
+                "Regarder / lire (regarder un livre)",
+                "Écrire",
+                "Manger",
+                "Acheter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看书 est lire un livre (litt. regarder livre)."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 玩儿 (wánr) / 玩 (wán) ?",
+              "type": "single_choice",
+              "options": [
+                "Jouer / s'amuser",
+                "Travailler",
+                "Dormir",
+                "Étudier sérieusement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "玩 exprime jouer ou s'amuser."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Loisirs : sorties et amis",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels lieux correspondent à une sortie ?",
+              "type": "multiple_choice",
+              "options": [
+                "公园 (gōngyuán)",
+                "电影院 (diànyǐngyuàn)",
+                "教室 (jiàoshì)",
+                "厕所 (cèsuǒ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parc et cinéma sont des sorties de loisirs."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 朋友 (péngyou) ?",
+              "type": "single_choice",
+              "options": [
+                "Ami(e)",
+                "Ennemi",
+                "Voisin obligatoire",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朋友 signifie ami."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « aller au parc » ?",
+              "type": "single_choice",
+              "options": [
+                "去公园 (qù gōngyuán)",
+                "来公园 (lái gōngyuán) depuis le parc",
+                "是公园 (shì gōngyuán)",
+                "有公园 (yǒu gōngyuán) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 indique aller au parc."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 一起 (yìqǐ) ?",
+              "type": "single_choice",
+              "options": ["Ensemble", "Seul", "Avant", "Après"],
+              "correctAnswers": [0],
+              "explanation": "一起 signifie ensemble."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « jouer avec des amis » ?",
+              "type": "single_choice",
+              "options": [
+                "跟朋友一起玩 (gēn péngyou yìqǐ wán)",
+                "朋友不玩 (péngyou bù wán)",
+                "玩朋友 (wán péngyou)",
+                "朋友去 (péngyou qù)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟 … 一起 w marque la compagnie."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 电影 (diànyǐng) ?",
+              "type": "single_choice",
+              "options": ["Film", "Chanson", "Roman", "Journal"],
+              "correctAnswers": [0],
+              "explanation": "电影 est un film."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « voir un film » ?",
+              "type": "single_choice",
+              "options": [
+                "看电影 (kàn diànyǐng)",
+                "听电影 (tīng diànyǐng)",
+                "写电影 (xiě diànyǐng)",
+                "吃电影 (chī diànyǐng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看电影 est aller au cinéma / voir un film."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 周末 (zhōumò) ?",
+              "type": "single_choice",
+              "options": [
+                "Week-end",
+                "Semaine scolaire",
+                "Vacances d'été",
+                "Matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "周末 désigne le week-end."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 周末我休息, que signifie 休息 (xiūxi) ici ?",
+              "type": "single_choice",
+              "options": [
+                "Se reposer",
+                "Passer un examen",
+                "Aller en cours",
+                "Faire les courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "休息 indique se reposer le week-end."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 逛街 (guàngjiē) ?",
+              "type": "single_choice",
+              "options": [
+                "Faire les magasins / flâner en ville",
+                "Courir un marathon",
+                "Rester à la maison",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "逛街 est une sortie shopping ou balade urbaine."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Nourriture et goûts au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels aliments sont des bases du vocabulaire 5e ?",
+              "type": "multiple_choice",
+              "options": ["米饭 (mǐfàn)", "水 (shuǐ)", "书 (shū)", "笔 (bǐ)"],
+              "correctAnswers": [0, 1],
+              "explanation": "米饭 et 水 sont riz et eau."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 吃 (chī) ?",
+              "type": "single_choice",
+              "options": ["Manger", "Boire", "Dormir", "Parler"],
+              "correctAnswers": [0],
+              "explanation": "吃 signifie manger."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « boire de l'eau » ?",
+              "type": "single_choice",
+              "options": [
+                "喝水 (hē shuǐ)",
+                "吃水 (chī shuǐ)",
+                "看水 (kàn shuǐ)",
+                "写水 (xiě shuǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喝 s'utilise pour boire."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 苹果 (píngguǒ) ?",
+              "type": "single_choice",
+              "options": ["Pomme", "Banane", "Orange", "Raisin"],
+              "correctAnswers": [0],
+              "explanation": "苹果 est la pomme."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « le petit-déjeuner » (repas du matin) ?",
+              "type": "single_choice",
+              "options": [
+                "早饭 (zǎofàn)",
+                "午饭 (wǔfàn)",
+                "晚饭 (wǎnfàn)",
+                "夜宵 (yèxiāo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "早饭 est le repas du matin."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 好吃 (hǎochī) ?",
+              "type": "single_choice",
+              "options": [
+                "Bon / délicieux (au goût)",
+                "Cher",
+                "Froid",
+                "Épicé obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "好吃 dit que c'est bon à manger."
+            },
+            {
+              "id": "q7",
+              "question": "Comment exprime-t-on « n'aime pas » ?",
+              "type": "single_choice",
+              "options": [
+                "不喜欢 (bù xǐhuan)",
+                "没喜欢 (méi xǐhuan)",
+                "不喜欢吗 (bù xǐhuan ma) seulement",
+                "喜欢不 (xǐhuan bù)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 avant le verbe nie l'appréciation."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 牛奶 (niúnǎi) ?",
+              "type": "single_choice",
+              "options": ["Lait", "Thé", "Jus d'orange", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "牛奶 signifie lait de vache."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 我要一碗米饭, que signifie 碗 (wǎn) ?",
+              "type": "single_choice",
+              "options": [
+                "Bol (compteur)",
+                "Assiette plate",
+                "Fourchette",
+                "Cuillère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "碗 compte les bols de riz."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 要 (yào) dans une commande simple ?",
+              "type": "single_choice",
+              "options": ["Vouloir / prendre", "Donner", "Refuser", "Partir"],
+              "correctAnswers": [0],
+              "explanation": "要 exprime vouloir ou commander."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Maison et routines",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots décrivent la maison ?",
+              "type": "multiple_choice",
+              "options": [
+                "房间 (fángjiān)",
+                "厨房 (chúfáng)",
+                "学校 (xuéxiào)",
+                "机场 (jīchǎng)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "房间 et 厨房 sont chambre et cuisine."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 睡觉 (shuìjiào) ?",
+              "type": "single_choice",
+              "options": ["Dormir", "Se lever", "Se laver", "Cuisiner"],
+              "correctAnswers": [0],
+              "explanation": "睡觉 signifie dormir."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « se lever » ?",
+              "type": "single_choice",
+              "options": [
+                "起床 (qǐchuáng)",
+                "睡觉 (shuìjiào)",
+                "坐下 (zuòxia)",
+                "出去 (chūqù)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "起床 est quitter le lit le matin."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 洗脸 (xǐliǎn) ?",
+              "type": "single_choice",
+              "options": [
+                "Se laver le visage",
+                "Se brosser les dents",
+                "Prendre une douche entière",
+                "Peigner les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "洗脸 lave le visage."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « à la maison » ?",
+              "type": "single_choice",
+              "options": [
+                "在家 (zài jiā)",
+                "去家 (qù jiā)",
+                "是家 (shì jiā)",
+                "有家 (yǒu jiā) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在家 indique être à la maison."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 晚上 (wǎnshang) ?",
+              "type": "single_choice",
+              "options": ["Le soir", "Le matin", "Midi", "L'après-midi"],
+              "correctAnswers": [0],
+              "explanation": "晚上 désigne la soirée."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « le matin » ?",
+              "type": "single_choice",
+              "options": [
+                "早上 (zǎoshang)",
+                "中午 (zhōngwǔ)",
+                "下午 (xiàwǔ)",
+                "夜里 (yèlǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "早上 est le matin."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 帮忙 (bāngmáng) ?",
+              "type": "single_choice",
+              "options": [
+                "Aider / rendre service",
+                "Déranger",
+                "Cacher",
+                "Punir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "帮忙 signifie aider."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 妈妈做饭, que signifie 做饭 (zuòfàn) ?",
+              "type": "single_choice",
+              "options": [
+                "Préparer à manger / cuisiner",
+                "Laver la vaisselle",
+                "Acheter des livres",
+                "Réparer la télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "做饭 est préparer les repas."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 干净 (gānjìng) ?",
+              "type": "single_choice",
+              "options": ["Propre", "Sale", "Brûlant", "Lourd"],
+              "correctAnswers": [0],
+              "explanation": "干净 décrit la propreté."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision famille, école, loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels termes relient école et personnes ?",
+              "type": "multiple_choice",
+              "options": [
+                "老师 (lǎoshī)",
+                "学生 (xuésheng)",
+                "飞机 (fēijī)",
+                "月亮 (yuèliang)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "老师 et 学生 sont enseignant et élève."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « mon école » ?",
+              "type": "single_choice",
+              "options": [
+                "我的学校 (wǒ de xuéxiào)",
+                "我学校 (wǒ xuéxiào) sans 的 parfois oral",
+                "学校我 (xuéxiào wǒ)",
+                "的我的学校 (de wǒ de xuéxiào)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我的学校 est la forme standard."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 快乐 (kuàilè) ?",
+              "type": "single_choice",
+              "options": ["Heureux / joyeux", "Triste", "Fatigué", "En colère"],
+              "correctAnswers": [0],
+              "explanation": "快乐 exprime la joie."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduit-on « J'aime jouer au football » ?",
+              "type": "single_choice",
+              "options": [
+                "我喜欢踢足球 (wǒ xǐhuan tī zúqiú)",
+                "我踢喜欢足球 (wǒ tī xǐhuan zúqiú)",
+                "足球喜欢我 (zúqiú xǐhuan wǒ)",
+                "我不踢足球喜欢 (wǒ bù tī zúqiú xǐhuan)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre sujet + 喜欢 + activité est naturel."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 忙 (máng) ?",
+              "type": "single_choice",
+              "options": ["Occupé", "Libre", "Malade", "Perdu"],
+              "correctAnswers": [0],
+              "explanation": "忙 signifie être occupé."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « petit frère » ?",
+              "type": "single_choice",
+              "options": [
+                "弟弟 (dìdi)",
+                "哥哥 (gēge)",
+                "叔叔 (shūshu)",
+                "孩子 (háizi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "弟弟 est le frère cadet."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 请 (qǐng) dans 请坐 ?",
+              "type": "single_choice",
+              "options": [
+                "Inviter poliment / s'il vous plaît",
+                "Interdiction",
+                "Question",
+                "Passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请 adoucit une invitation."
+            },
+            {
+              "id": "q8",
+              "question": "Dans 你好吗, que signifie 吗 (ma) ?",
+              "type": "single_choice",
+              "options": [
+                "Particule de question oui/non",
+                "Négation",
+                "Pluriel",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 transforme l'affirmation en question."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 很好 (hěn hǎo) ?",
+              "type": "single_choice",
+              "options": ["Très bien", "Très mal", "Un peu", "Pas du tout"],
+              "correctAnswers": [0],
+              "explanation": "很 intensifie 好."
+            },
+            {
+              "id": "q10",
+              "question": "Comment répond-on poliment à 谢谢 (xièxie) ?",
+              "type": "single_choice",
+              "options": [
+                "不客气 (bú kèqi)",
+                "谢谢 (xièxie) encore",
+                "再见 (zàijiàn)",
+                "对不起 (duìbuqǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不客气 répond à un remerciement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Couleurs et apparence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles couleurs de base apprend-on en premier ?",
+              "type": "multiple_choice",
+              "options": [
+                "红 (hóng)",
+                "蓝 (lán)",
+                "星期 (xīngqī)",
+                "老师 (lǎoshī)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "红 et 蓝 sont rouge et bleu."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 白 (bái) ?",
+              "type": "single_choice",
+              "options": ["Blanc", "Noir", "Vert", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "白 signifie blanc."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « noir » ?",
+              "type": "single_choice",
+              "options": ["黑 (hēi)", "灰 (huī)", "粉 (fěn)", "银 (yín)"],
+              "correctAnswers": [0],
+              "explanation": "黑 est noir."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 大 (dà) ?",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Moyen", "Rond"],
+              "correctAnswers": [0],
+              "explanation": "大 signifie grand."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « petit » ?",
+              "type": "single_choice",
+              "options": [
+                "小 (xiǎo)",
+                "少 (shǎo)",
+                "矮 (ǎi) parfois pour taille",
+                "短 (duǎn) pour longueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "小 est l'adjectif petit général."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 漂亮 (piàoliang) ?",
+              "type": "single_choice",
+              "options": ["Beau / joli", "Laid", "Fatigué", "Sale"],
+              "correctAnswers": [0],
+              "explanation": "漂亮 décrit la beauté."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « haut (personne) » ?",
+              "type": "single_choice",
+              "options": [
+                "高 (gāo)",
+                "长 (cháng) pour longueur",
+                "远 (yuǎn)",
+                "重 (zhòng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "高 décrit la taille d'une personne."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 眼睛 (yǎnjing) ?",
+              "type": "single_choice",
+              "options": ["Yeux", "Cheveux", "Nez", "Bouche"],
+              "correctAnswers": [0],
+              "explanation": "眼睛 signifie les yeux."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 她有一头长发, que signifie 头发 (tóufa) ?",
+              "type": "single_choice",
+              "options": ["Cheveux", "Main", "Pied", "Oreille"],
+              "correctAnswers": [0],
+              "explanation": "头发 désigne la chevelure."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 穿 (chuān) ?",
+              "type": "single_choice",
+              "options": ["Porter (vêtements)", "Manger", "Ouvrir", "Fermer"],
+              "correctAnswers": [0],
+              "explanation": "穿 s'emploie pour porter des habits."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Vêtements et météo simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots décrivent le temps qu'il fait ?",
+              "type": "multiple_choice",
+              "options": ["热 (rè)", "冷 (lěng)", "书 (shū)", "笔 (bǐ)"],
+              "correctAnswers": [0, 1],
+              "explanation": "热 et 冷 sont chaud et froid."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 下雨 (xiàyǔ) ?",
+              "type": "single_choice",
+              "options": [
+                "Il pleut",
+                "Il neige",
+                "Il vente fort",
+                "Il fait soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下雨 indique la pluie."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « soleil / beau temps » (simple) ?",
+              "type": "single_choice",
+              "options": [
+                "晴天 (qíngtiān)",
+                "雨天 (yǔtiān)",
+                "雪天 (xuětiān)",
+                "风天 (fēngtiān) moins usuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晴天 est une journée ensoleillée."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 衣服 (yīfu) ?",
+              "type": "single_choice",
+              "options": [
+                "Vêtements",
+                "Chaussures seulement",
+                "Chapeau seulement",
+                "Sac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "衣服 regroupe les habits."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « porter un manteau » (idée) ?",
+              "type": "single_choice",
+              "options": [
+                "穿外套 (chuān wàitào)",
+                "吃外套 (chī wàitào)",
+                "写外套 (xiě wàitào)",
+                "听外套 (tīng wàitào)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "穿 introduit le vêtement porté."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 今天很冷, que veut dire 很 (hěn) ici ?",
+              "type": "single_choice",
+              "options": ["Très (devant adjectif)", "Peu", "Non", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "很 renforce l'adjectif sans « être » séparé."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « vent » (nom) ?",
+              "type": "single_choice",
+              "options": ["风 (fēng)", "雨 (yǔ)", "云 (yún)", "雷 (léi)"],
+              "correctAnswers": [0],
+              "explanation": "风 signifie le vent."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 雪 (xuě) ?",
+              "type": "single_choice",
+              "options": ["Neige", "Glace en boisson", "Pluie", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "雪 est la neige."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 我要带伞, que signifie 伞 (sǎn) ?",
+              "type": "single_choice",
+              "options": ["Parapluie", "Chapeau", "Gant", "Écharpe"],
+              "correctAnswers": [0],
+              "explanation": "伞 est le parapluie."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 天气 (tiānqì) ?",
+              "type": "single_choice",
+              "options": [
+                "Météo / temps atmosphérique",
+                "Saison uniquement",
+                "Heure",
+                "Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "天气 désigne la météo."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Adjectifs pour décrire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne ou une chose ?",
+              "type": "multiple_choice",
+              "options": [
+                "好 (hǎo)",
+                "坏 (huài)",
+                "桌子 (zhuōzi)",
+                "椅子 (yǐzi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "好 et 坏 sont bon et mauvais."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 新 (xīn) ?",
+              "type": "single_choice",
+              "options": ["Neuf / nouveau", "Vieux", "Lent", "Cher"],
+              "correctAnswers": [0],
+              "explanation": "新 signifie nouveau."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « vieux (objet) » ?",
+              "type": "single_choice",
+              "options": [
+                "旧 (jiù)",
+                "老 (lǎo) surtout personne",
+                "早 (zǎo)",
+                "晚 (wǎn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "旧 décrit un objet usagé."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 快 (kuài) ?",
+              "type": "single_choice",
+              "options": ["Rapide", "Lent", "Lourd", "Doux"],
+              "correctAnswers": [0],
+              "explanation": "快 signifie rapide."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « lent » ?",
+              "type": "single_choice",
+              "options": ["慢 (màn)", "远 (yuǎn)", "近 (jìn)", "多 (duō)"],
+              "correctAnswers": [0],
+              "explanation": "慢 est lent."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 有意思 (yǒu yìsi) ?",
+              "type": "single_choice",
+              "options": ["Intéressant", "Ennuyeux", "Dangereux", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "有意思 dit que c'est intéressant."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « ennuyeux » (familier) ?",
+              "type": "single_choice",
+              "options": [
+                "没意思 (méi yìsi)",
+                "有意思 (yǒu yìsi)",
+                "很好 (hěn hǎo)",
+                "很忙 (hěn máng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没意思 nie l'intérêt."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 安静 (ānjìng) ?",
+              "type": "single_choice",
+              "options": ["Calme / silencieux", "Bruyant", "Sale", "Chaud"],
+              "correctAnswers": [0],
+              "explanation": "安静 décrit le calme."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 这个房间很大, que signifie 这个 (zhège) ?",
+              "type": "single_choice",
+              "options": [
+                "Ce / cette (chose proche)",
+                "Cette personne lointaine",
+                "Quel",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这个 est un démonstratif proche."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 太 … 了 (tài … le) ?",
+              "type": "single_choice",
+              "options": [
+                "Trop / vraiment (intensité)",
+                "Un peu",
+                "Jamais",
+                "Peut-être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "太 … 了 intensifie jusqu'à l'excès."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Localisation : 在 et lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots indiquent un lieu ?",
+              "type": "multiple_choice",
+              "options": ["在 (zài)", "上 (shàng)", "吃 (chī)", "睡 (shuì)"],
+              "correctAnswers": [0, 1],
+              "explanation": "在 situe ; 上 peut indiquer « sur »."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 在图书馆 (zài túshūguǎn) ?",
+              "type": "single_choice",
+              "options": [
+                "Être à la bibliothèque",
+                "Aller à la bibliothèque demain",
+                "Bibliothèque fermée",
+                "Acheter une bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 marque la position à un lieu."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « sous la table » (structure) ?",
+              "type": "single_choice",
+              "options": [
+                "在桌子下 (zài zhuōzi xià)",
+                "在桌子上 (zài zhuōzi shàng)",
+                "桌子在 (zhuōzi zài)",
+                "下桌子在 (xià zhuōzi zài)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下 place sous l'objet."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 里 (lǐ) dans 在房间里 ?",
+              "type": "single_choice",
+              "options": ["À l'intérieur", "Dehors", "Devant", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "里 indique l'intérieur."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « devant l'école » ?",
+              "type": "single_choice",
+              "options": [
+                "在学校前 (zài xuéxiào qián)",
+                "在学校后 (zài xuéxiào hòu)",
+                "学校前在 (xuéxiào qián zài)",
+                "前学校 (qián xuéxiào)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "前 signifie devant."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 旁边 (pángbiān) ?",
+              "type": "single_choice",
+              "options": ["À côté", "Loin", "Au-dessus", "En dessous"],
+              "correctAnswers": [0],
+              "explanation": "旁边 indique la proximité latérale."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « ici » ?",
+              "type": "single_choice",
+              "options": [
+                "这里 (zhèlǐ)",
+                "那里 (nàlǐ)",
+                "哪里 (nǎlǐ)",
+                "为什么 (wèishénme)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这里 signifie ici."
+            },
+            {
+              "id": "q8",
+              "question": "Que veut dire 那里 (nàlǐ) ?",
+              "type": "single_choice",
+              "options": ["Là-bas", "Ici", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "那里 désigne un lieu éloigné."
+            },
+            {
+              "id": "q9",
+              "question": "Dans 猫在椅子上, que signifie 猫 (māo) ?",
+              "type": "single_choice",
+              "options": ["Chat", "Chien", "Oiseau", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "猫 est le chat."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie 哪儿 / 哪里 (nǎr / nǎlǐ) dans une question ?",
+              "type": "single_choice",
+              "options": ["Où ?", "Qui ?", "Quand ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "哪里 demande le lieu."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Nombres et quantités pour raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels chiffres sont des nombres de base en mandarin ?",
+              "type": "multiple_choice",
+              "options": [
+                "三 (sān)",
+                "七 (qī)",
+                "老师 (lǎoshī)",
+                "朋友 (péngyou)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "三 et 七 valent trois et sept."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie 十 (shí) ?",
+              "type": "single_choice",
+              "options": ["Dix", "Cent", "Mille", "Zéro"],
+              "correctAnswers": [0],
+              "explanation": "十 vaut dix."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « zéro » ?",
+              "type": "single_choice",
+              "options": ["零 (líng)", "一 (yī)", "二 (èr)", "两 (liǎng)"],
+              "correctAnswers": [0],
+              "explanation": "零 est zéro."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 两 (liǎng) devant un compteur ?",
+              "type": "single_choice",
+              "options": ["Deux (quantité)", "Un", "Trois", "Dix"],
+              "correctAnswers": [0],
+              "explanation": "两 remplace 二 devant les compteurs."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « vingt ans » (âge) ?",
+              "type": "single_choice",
+              "options": [
+                "二十岁 (èrshí suì)",
+                "二十口 (èrshí kǒu)",
+                "二十家 (èrshí jiā)",
+                "二十老师 (èrshí lǎoshī)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "岁 compte les années d'âge."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 个 (ge) ?",
+              "type": "single_choice",
+              "options": [
+                "Compteur général",
+                "Verbe manger",
+                "Adjectif grand",
+                "Particule question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 est le compteur le plus courant."
+            },
+            {
+              "id": "q7",
+              "question": "Dans 三个人, que signifie 三 (sān) ?",
+              "type": "single_choice",
+              "options": ["Trois", "Trente", "Treize", "Troisième jour"],
+              "correctAnswers": [0],
+              "explanation": "三 vaut trois."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « beaucoup » (adverbe courant) ?",
+              "type": "single_choice",
+              "options": [
+                "很多 (hěn duō)",
+                "很少 (hěn shǎo)",
+                "不大 (bú dà)",
+                "不对 (bú duì)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很多 exprime une grande quantité."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 少 (shǎo) ?",
+              "type": "single_choice",
+              "options": ["Peu / peu nombreux", "Beaucoup", "Trop", "Assez"],
+              "correctAnswers": [0],
+              "explanation": "少 indique une faible quantité."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 我有五本书, que signifie 五 (wǔ) ?",
+              "type": "single_choice",
+              "options": ["Cinq", "Six", "Quatre", "Huit"],
+              "correctAnswers": [0],
+              "explanation": "五 vaut cinq."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Passé simple : 了",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases marquent un changement accompli avec 了 ?",
+              "type": "multiple_choice",
+              "options": [
+                "我吃了饭 (wǒ chī le fàn)",
+                "他去了学校 (tā qù le xuéxiào)",
+                "我是学生 (wǒ shì xuésheng)",
+                "你好吗 (nǐ hǎo ma)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "了 après le verbe indique l'action réalisée."
+            },
+            {
+              "id": "q2",
+              "question": "Que suggère 了 en fin de phrase parfois ?",
+              "type": "single_choice",
+              "options": [
+                "Changement de situation",
+                "Question",
+                "Négation",
+                "Futur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 en fin de phrase annonce un nouveau état."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « J'ai mangé » (simple) ?",
+              "type": "single_choice",
+              "options": [
+                "我吃了 (wǒ chī le)",
+                "我吃 (wǒ chī) seul",
+                "了吃我 (le chī wǒ)",
+                "我不吃了吗 (wǒ bù chī le ma)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 suit le verbe pour le passé accompli."
+            },
+            {
+              "id": "q4",
+              "question": "Que veut dire 昨天 (zuótiān) ?",
+              "type": "single_choice",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Chaque jour"],
+              "correctAnswers": [0],
+              "explanation": "昨天 signifie hier."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « l'année dernière » ?",
+              "type": "single_choice",
+              "options": [
+                "去年 (qùnián)",
+                "明年 (míngnián)",
+                "今年 (jīnnián)",
+                "每天 (měitiān)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去年 est l'année passée."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie 刚才 (gāngcái) ?",
+              "type": "single_choice",
+              "options": [
+                "À l'instant / tout à l'heure",
+                "Dans longtemps",
+                "Jamais",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 situe une action très récente."
+            },
+            {
+              "id": "q7",
+              "question": "Dans 他买了一本书, que signifie 买 (mǎi) ?",
+              "type": "single_choice",
+              "options": ["Acheter", "Vendre", "Prêter", "Perdre"],
+              "correctAnswers": [0],
+              "explanation": "买 signifie acheter."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « raconter / dire » (verbe courant) ?",
+              "type": "single_choice",
+              "options": ["说 (shuō)", "听 (tīng)", "看 (kàn)", "写 (xiě)"],
+              "correctAnswers": [0],
+              "explanation": "说 sert à raconter ou dire."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 然后 (ránhòu) ?",
+              "type": "single_choice",
+              "options": ["Ensuite / puis", "Avant", "Pendant", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "然后 enchaîne les étapes d'un récit."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 我先写作业，然后看电视, que signifie 先 (xiān) ?",
+              "type": "single_choice",
+              "options": ["D'abord", "Après", "Ensemble", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "先 indique la première action."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Raconter une journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots ordonnent un récit du matin au soir ?",
+              "type": "multiple_choice",
+              "options": [
+                "早上 (zǎoshang)",
+                "晚上 (wǎnshang)",
+                "零 (líng)",
+                "的 (de) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "早上 et 晚上 cadrent la journée."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « après l'école » (idée) ?",
+              "type": "single_choice",
+              "options": [
+                "放学后 (fàngxué hòu)",
+                "上学前 (shàngxué qián)",
+                "学校是 (xuéxiào shì)",
+                "在学校吗 (zài xuéxiào ma) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "后 marque « après »."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 回家 (huí jiā) ?",
+              "type": "single_choice",
+              "options": [
+                "Rentrer à la maison",
+                "Quitter la maison",
+                "Visiter un ami",
+                "Aller à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "回家 est le retour au foyer."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduit-on « je me suis levé tôt » (structure) ?",
+              "type": "single_choice",
+              "options": [
+                "我起得很早 (wǒ qǐ de hěn zǎo)",
+                "我早起床了 (wǒ zǎo qǐchuáng le) aussi possible",
+                "早我起 (zǎo wǒ qǐ)",
+                "起床早我 (qǐchuáng zǎo wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "得 … 早 décrit la manière du lever."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 一起 (yìqǐ) dans un récit ?",
+              "type": "single_choice",
+              "options": ["Ensemble", "Seul", "Vite", "Lentement"],
+              "correctAnswers": [0],
+              "explanation": "一起 indique une action partagée."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « s'amuser beaucoup » (idée) ?",
+              "type": "single_choice",
+              "options": [
+                "玩得很高兴 (wán de hěn gāoxìng)",
+                "玩不高兴 (wán bù gāoxìng)",
+                "高兴玩 (gāoxìng wán)",
+                "很玩 (hěn wán)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "得很 + adjectif décrit le résultat."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 因为 (yīnwèi) … 所以 (suǒyǐ) ?",
+              "type": "single_choice",
+              "options": [
+                "Parce que … donc",
+                "Si … alors",
+                "Bien que",
+                "Avant que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "因为 … 所以 exprime la cause et la conséquence."
+            },
+            {
+              "id": "q8",
+              "question": "Comment traduit-on « il pleuvait, alors je suis resté » (idée) ?",
+              "type": "single_choice",
+              "options": [
+                "因为下雨，所以我待在家里 (yīnwèi xiàyǔ, suǒyǐ wǒ dāi zài jiā lǐ)",
+                "所以下雨因为我 (suǒyǐ xiàyǔ yīnwèi wǒ)",
+                "待家里所以雨 (dāi jiā suǒyǐ yǔ)",
+                "雨待我所以 (yǔ dāi wǒ suǒyǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cause météo précède la conséquence."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 待 (dāi) ici ?",
+              "type": "single_choice",
+              "options": [
+                "Rester / passer du temps",
+                "Courir",
+                "Manger",
+                "Dormir obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "待 signifie rester quelque part."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 今天我很累, que signifie 累 (lèi) ?",
+              "type": "single_choice",
+              "options": ["Fatigué", "Content", "Affamé", "Ennuyé"],
+              "correctAnswers": [0],
+              "explanation": "累 décrit la fatigue."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Questions pour interviewer",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots interrogatifs servent à raconter en posant des questions ?",
+              "type": "multiple_choice",
+              "options": [
+                "什么 (shénme)",
+                "谁 (shéi)",
+                "的 (de)",
+                "了 (le) seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "什么 demande « quoi » et 谁 « qui »."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « quoi ? » (objet) ?",
+              "type": "single_choice",
+              "options": [
+                "什么 (shénme)",
+                "哪里 (nǎlǐ)",
+                "怎么 (zěnme)",
+                "为什么 (wèishénme)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么 interroge sur la chose."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 谁 (shéi) ?",
+              "type": "single_choice",
+              "options": ["Qui ?", "Où ?", "Quand ?", "Combien ?"],
+              "correctAnswers": [0],
+              "explanation": "谁 demande une personne."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduit-on « quand ? » ?",
+              "type": "single_choice",
+              "options": [
+                "什么时候 (shénme shíhou)",
+                "什么书 (shénme shū)",
+                "什么人 (shénme rén)",
+                "什么颜色 (shénme yánsè)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "什么时候 interroge le moment."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 怎么 (zěnme) ?",
+              "type": "single_choice",
+              "options": ["Comment ?", "Pourquoi ?", "Combien ?", "Lequel ?"],
+              "correctAnswers": [0],
+              "explanation": "怎么 demande la manière."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « pourquoi ? » ?",
+              "type": "single_choice",
+              "options": [
+                "为什么 (wèishénme)",
+                "是什么 (shì shénme)",
+                "有吗 (yǒu ma)",
+                "可以吗 (kěyǐ ma)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "为什么 interroge la raison."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 吗 (ma) à la fin d'une phrase ?",
+              "type": "single_choice",
+              "options": [
+                "Question oui/non",
+                "Exclamation forte",
+                "Passé",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 forme une question fermée."
+            },
+            {
+              "id": "q8",
+              "question": "Comment demander « Est-ce que tu aimes … ? » (modèle) ?",
+              "type": "single_choice",
+              "options": [
+                "你喜欢……吗？(nǐ xǐhuan … ma ?)",
+                "你不喜欢 (nǐ bù xǐhuan) seul",
+                "吗你喜欢 (ma nǐ xǐhuan)",
+                "喜欢吗你 (xǐhuan ma nǐ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + verbe + 吗 est le schéma standard."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 呢 (ne) dans 你呢？",
+              "type": "single_choice",
+              "options": [
+                "Et toi ? / tournure de relance",
+                "Négation",
+                "Passé",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "呢 renvoie la question à l'interlocuteur."
+            },
+            {
+              "id": "q10",
+              "question": "Dans 你是哪国人？, que signifie 哪 (nǎ) ?",
+              "type": "single_choice",
+              "options": ["Quel / quelle (choix)", "Très", "Non", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "哪 sélectionne parmi des options."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comparer et opposer",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs s'opposent pour décrire ?",
+              "type": "multiple_choice",
+              "options": [
+                "大 (dà) / 小 (xiǎo)",
+                "好 (hǎo) / 坏 (huài)",
+                "书 (shū) / 笔 (bǐ)",
+                "我 (wǒ) / 你 (nǐ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "大/小 et 好/坏 forment des paires opposées."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « plus … que » (structure intro) ?",
+              "type": "single_choice",
+              "options": ["比 (bǐ)", "和 (hé)", "在 (zài)", "的 (de)"],
+              "correctAnswers": [0],
+              "explanation": "比 introduit la comparaison."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 我比你高 ?",
+              "type": "single_choice",
+              "options": [
+                "Je suis plus grand que toi",
+                "Je suis moins grand que toi",
+                "Nous sommes aussi grands",
+                "Tu es plus grand que moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比 indique la supériorité de la taille."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduit-on « aussi … que » ( aussi haut) ?",
+              "type": "single_choice",
+              "options": [
+                "跟……一样 (gēn … yíyàng)",
+                "比……一样 (bǐ … yíyàng)",
+                "和……比 (hé … bǐ)",
+                "在……一样 (zài … yíyàng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟……一样 exprime l'égalité."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 但是 (dànshì) ?",
+              "type": "single_choice",
+              "options": ["Mais", "Et", "Donc", "Parce que"],
+              "correctAnswers": [0],
+              "explanation": "但是 oppose deux idées."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « et » (coordination) ?",
+              "type": "single_choice",
+              "options": ["和 (hé)", "比 (bǐ)", "吗 (ma)", "了 (le)"],
+              "correctAnswers": [0],
+              "explanation": "和 relie des éléments similaires."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 还是 (háishì) dans un choix ?",
+              "type": "single_choice",
+              "options": ["Ou (alternative)", "Encore", "Déjà", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "还是 propose un choix entre options."
+            },
+            {
+              "id": "q8",
+              "question": "Dans 今天比昨天冷, que compare-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "La température aujourd'hui et hier",
+                "Deux écoles",
+                "Deux professeurs",
+                "Deux livres identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比 compare le froid des deux jours."
+            },
+            {
+              "id": "q9",
+              "question": "Que veut dire 一样 (yíyàng) ?",
+              "type": "single_choice",
+              "options": [
+                "Pareil / identique",
+                "Différent",
+                "Meilleur",
+                "Pire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一样 signifie « pareil »."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « différent » (adjectif) ?",
+              "type": "single_choice",
+              "options": [
+                "不一样 (bù yíyàng)",
+                "一样 (yíyàng)",
+                "很好 (hěn hǎo)",
+                "很忙 (hěn máng)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不一样 nie la similitude."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels outils combinent description et récit au niveau 5e ?",
+              "type": "multiple_choice",
+              "options": [
+                "很 + adjectif",
+                "了 pour le passé",
+                "吗 comme seul marqueur de possession",
+                "的 absent de toute phrase"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "很 décrit ; 了 situe une action passée."
+            },
+            {
+              "id": "q2",
+              "question": "Comment décrire « une belle fille » (ordre naturel) ?",
+              "type": "single_choice",
+              "options": [
+                "一个漂亮的女孩 (yí ge piàoliang de nǚhái)",
+                "女孩漂亮一个 (nǚhái piàoliang yí ge)",
+                "漂亮女孩一个 (piàoliang nǚhái yí ge)",
+                "一个女孩漂亮 (yí ge nǚhái piàoliang) sans 的"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compteur + adjectif + 的 + nom est courant."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 女孩 (nǚhái) ?",
+              "type": "single_choice",
+              "options": [
+                "Fille / jeune fille",
+                "Garçon",
+                "Femme âgée",
+                "Bébé seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "女孩 désigne une fille."
+            },
+            {
+              "id": "q4",
+              "question": "Comment raconter « hier j'ai vu un film » (idée) ?",
+              "type": "single_choice",
+              "options": [
+                "昨天我看了一个电影 (zuótiān wǒ kàn le yí ge diànyǐng)",
+                "我看电影昨天了 (wǒ kàn diànyǐng zuótiān le)",
+                "了昨天电影我 (le zuótiān diànyǐng wǒ)",
+                "电影昨天看 (diànyǐng zuótiān kàn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps en tête + sujet + verbe + 了 + objet."
+            },
+            {
+              "id": "q5",
+              "question": "Que veut dire 男孩 (nánhái) ?",
+              "type": "single_choice",
+              "options": ["Garçon", "Fille", "Homme", "Enfant neutre"],
+              "correctAnswers": [0],
+              "explanation": "男孩 signifie garçon."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « raconter une histoire » ?",
+              "type": "single_choice",
+              "options": [
+                "讲故事 (jiǎng gùshi)",
+                "听故事 (tīng gùshi) seulement",
+                "写故事吗 (xiě gùshi ma)",
+                "故事讲我 (gùshi jiǎng wǒ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "讲 + 故事 exprime raconter un récit."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie 故事 (gùshi) ?",
+              "type": "single_choice",
+              "options": ["Histoire / récit", "Chanson", "Carte", "Devoir"],
+              "correctAnswers": [0],
+              "explanation": "故事 est une histoire à raconter."
+            },
+            {
+              "id": "q8",
+              "question": "Dans 他高兴地说, que décrit 地 (de) ?",
+              "type": "single_choice",
+              "options": [
+                "Manière de parler (joyeusement)",
+                "Possession",
+                "Lieu",
+                "Temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "地 lie un adverbe de manière au verbe."
+            },
+            {
+              "id": "q9",
+              "question": "Comment conclure poliment un petit récit oral ?",
+              "type": "single_choice",
+              "options": [
+                "就这样 (jiù zhèyàng) / 完了 (wán le)",
+                "为什么 (wèishénme)",
+                "什么 (shénme)",
+                "谁 (shéi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "就这样 ou 完了 marque la fin du récit."
+            },
+            {
+              "id": "q10",
+              "question": "Que veut dire 真 (zhēn) devant un adjectif (真好玩) ?",
+              "type": "single_choice",
+              "options": ["Vraiment", "Peut-être", "Pas du tout", "Trop peu"],
+              "correctAnswers": [0],
+              "explanation": "真 renforce l'adjectif comme « vraiment »."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

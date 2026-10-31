@@ -1,0 +1,2743 @@
+{
+  "id": "3e-francais-01",
+  "year": "3e",
+  "subject": "francais",
+  "title": "Le roman et la société",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Le personnage de roman",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un personnage de roman ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices permettent de construire un personnage ?",
+              "options": [
+                "Paroles et actions",
+                "Seule la couverture",
+                "Le numéro ISBN",
+                "Description et comportement"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le récit montre le personnage par ce qu'il dit, fait et par la manière dont il est présenté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage de fiction est avant tout :",
+              "options": [
+                "Une création littéraire",
+                "Toujours une biographie exacte",
+                "Un simple prénom",
+                "Un personnage de bande dessinée uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le romancier invente ou transforme des figures pour servir son récit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le portrait peut mêler :",
+              "options": [
+                "Traits physiques et gestes",
+                "Uniquement la météo",
+                "Le prix du livre",
+                "La date de parution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apparence et manières aident le lecteur à visualiser le personnage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le dialogue sert à :",
+              "options": [
+                "Caractériser et faire avancer l'intrigue",
+                "Compter les pages",
+                "Remplacer le narrateur systématiquement",
+                "Indiquer le chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par la voix, le vocabulaire et le ton, chaque personnage se distingue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage « type » :",
+              "options": [
+                "Condense des traits d'un groupe social",
+                "Est toujours le héros",
+                "N'a pas de nom",
+                "Est invisible dans le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type représente une catégorie (bourgeois, paysan, etc.) reconnaissable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La focalisation change :",
+              "options": [
+                "L'information disponible sur le personnage",
+                "La langue du dictionnaire",
+                "Le nombre de chapitres obligatoire",
+                "La couleur du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le point de vue, on voit plus ou moins les pensées et actes d'un personnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'évolution d'un personnage au long du roman s'appelle souvent :",
+              "options": [
+                "Un parcours ou une transformation",
+                "Une pagination",
+                "Un paratexte",
+                "Une annotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de romans suivent une maturation ou une prise de conscience."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour étayer une analyse, on :",
+              "options": [
+                "Cite des passages du texte",
+                "Copie la quatrième de couverture",
+                "Invente des scènes absentes",
+                "Ignore les exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argumentation littéraire repose sur des preuves textuelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un personnage secondaire peut :",
+              "options": [
+                "Révéler ou contraster avec le héros",
+                "Supprimer toute intrigue",
+                "Remplacer l'auteur",
+                "Être le seul narrateur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les seconds rôles éclairent le protagoniste et la société du récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le prénom ou le nom d'un personnage peut être :",
+              "options": [
+                "Choisi pour une valeur symbolique",
+                "Tiré au sort sans intention",
+                "Interdit en littérature",
+                "Identique pour tous les héros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les auteurs utilisent parfois l'étymologie ou le sonorité des noms."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Héros, protagoniste et antagoniste",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant le protagoniste, on peut dire que :",
+              "options": [
+                "Il est au centre de l'intrigue",
+                "Il est parfois le narrateur",
+                "Il est toujours un surhomme sans faille",
+                "Il n'apparaît jamais dans le récit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le protagoniste mène l'action ; il peut raconter en « je » sans que ce soit obligatoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'antagoniste :",
+              "options": [
+                "S'oppose au personnage principal",
+                "Est toujours le narrateur",
+                "Est le lecteur",
+                "Est la préface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition crée le conflit dramatique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un anti-héros se caractérise par :",
+              "options": [
+                "Des faiblesses ou une moralité ambiguë",
+                "Une perfection absolue",
+                "L'absence de rôle dans l'intrigue",
+                "Un statut de dieu antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anti-héros s'éloigne du héros classique idéalisable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le roman du XIXe siècle, le héros peut représenter :",
+              "options": [
+                "Une condition sociale ou un milieu",
+                "Uniquement la mythologie",
+                "Des équations scientifiques",
+                "Le catalogue de l'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le personnage incarne souvent enjeux et aspirations collectives."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un conflit intérieur oppose :",
+              "options": [
+                "Des désirs ou valeurs chez un même personnage",
+                "Deux couvertures différentes",
+                "Deux auteurs",
+                "Deux langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le drame psychologique naît de tensions internes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le narrateur-personnage à la première personne :",
+              "options": [
+                "Utilise le « je »",
+                "Est toujours omniscient",
+                "Ne raconte jamais",
+                "Est le même que le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première personne limite le récit au point de vue du « je »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer le héros dans un extrait, c'est identifier :",
+              "options": [
+                "Celui dont l'action ou le regard structure le passage",
+                "Le mot le plus court",
+                "La note de bas de page",
+                "L'illustrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On suit qui décide, souffre ou transforme la situation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un personnage tragique connaît souvent :",
+              "options": [
+                "Une chute liée à une faille",
+                "Un succès sans obstacle",
+                "L'absence de conflit",
+                "Un récit sans émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tragédie lie destinée, erreur ou excès et conséquences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un personnage collectif :",
+              "options": [
+                "Désigne un groupe agissant comme une entité",
+                "Est toujours un seul individu",
+                "Est le paratexte",
+                "Est la table des matières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La foule ou une communauté peut fonctionner comme personnage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un héros positif peut quand même :",
+              "options": [
+                "Avoir des défauts et évoluer",
+                "Être sans aucune contradiction",
+                "Ne jamais agir",
+                "Ignorer l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La complexité rend le personnage crédible."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Portrait et caractérisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La caractérisation directe :",
+              "options": [
+                "Le narrateur nomme explicitement un trait",
+                "Le narrateur juge ou qualifie le personnage",
+                "Consiste à ne jamais parler du personnage",
+                "Se limite au décor"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Directe : traits énoncés par le narrateur ; indirecte : traits déduits des actes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La caractérisation indirecte repose sur :",
+              "options": [
+                "Actes, paroles, réactions des autres",
+                "Uniquement le titre du livre",
+                "La date d'édition",
+                "Le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur infère le caractère à partir du comportement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un portrait statique :",
+              "options": [
+                "Fixe l'apparence à un instant",
+                "Raconte toute la biographie réelle de l'auteur",
+                "Remplace l'intrigue",
+                "Supprime le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La description peut figer un moment ou un type physique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les métaphores dans un portrait servent à :",
+              "options": [
+                "Suggérer des traits par comparaison",
+                "Indiquer le prix",
+                "Compter les chapitres",
+                "Signer le contrat d'édition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les figures de style enrichissent la vision du personnage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le registre de langue d'un personnage révèle :",
+              "options": [
+                "Son milieu social ou son éducation",
+                "La couleur de sa veste uniquement",
+                "Le nombre de tirages",
+                "La marge du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire et syntaxe sont des marqueurs sociaux en fiction."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un personnage rond (complexe) :",
+              "options": [
+                "Présente contradictions et profondeur",
+                "N'a qu'un seul trait",
+                "N'évolue jamais",
+                "N'a pas de nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnages nuancés semblent proches de personnes réelles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un personnage plat :",
+              "options": [
+                "Incarné surtout par un trait dominant",
+                "Est toujours le héros",
+                "Est le narrateur omniscient",
+                "Est interdit au XIXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le personnage plat sert souvent une fonction satirique ou typologique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les pensées d'un personnage peuvent être données par :",
+              "options": [
+                "Le monologue intérieur ou la focalisation interne",
+                "Uniquement la couverture",
+                "Le code-barres",
+                "La bibliographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le discours intérieur rapproche le lecteur de la subjectivité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer deux personnages, c'est :",
+              "options": [
+                "Mettre en regard traits, rôles et évolutions",
+                "Ignorer le texte",
+                "Résumer l'éditeur",
+                "Compter les dialogues sans les lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste éclaire les enjeux du roman."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un adjectif répété à propos d'un personnage peut :",
+              "options": [
+                "Créer un effet de caractérisation",
+                "Changer la pagination",
+                "Supprimer le conflit",
+                "Remplacer l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition insiste sur un trait essentiel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Personnages du roman du XIXe siècle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le roman réaliste, le personnage :",
+              "options": [
+                "S'inscrit dans un milieu social précis",
+                "Est décrit avec attention au concret",
+                "Doit être un roi médiéval obligatoire",
+                "Ne peut pas travailler"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le réalisme lie individu et contexte social observable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jean Valjean (Les Misérables) illustre :",
+              "options": [
+                "La rédemption et l'injustice sociale",
+                "Un conte féerique sans enjeu",
+                "Une enquête policière seule",
+                "Un manuel de cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo mêle parcours individuel et critique des institutions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Emma Bovary représente :",
+              "options": [
+                "Le mal du siècle et la quête de rêve",
+                "Un héros de science-fiction",
+                "Un personnage sans désir",
+                "Un simple décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flaubert montre les décalages entre fantasme et réalité provinciale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rastignac (Le Père Goriot) :",
+              "options": [
+                "Incarné l'ascension sociale à Paris",
+                "Est un paysan immobile",
+                "Ne parle jamais",
+                "Vit au Moyen Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Balzac montre la corruption possible du parvenu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le naturalisme insiste sur :",
+              "options": [
+                "L'hérédité et le milieu",
+                "La magie exclusive",
+                "L'absence de description",
+                "Les dieux grecs seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zola et ses héritiers expliquent les comportements par la science du temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un personnage de roman historique :",
+              "options": [
+                "Peut mêler figure réelle et fiction",
+                "Doit être 100 % document sans invention",
+                "Ne peut pas parler",
+                "Est toujours le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman historique recompose le passé avec liberté créatrice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La figure du bourgeois au XIXe siècle sert souvent à :",
+              "options": [
+                "Critiquer l'argent et les convenances",
+                "Louer sans nuance la richesse",
+                "Supprimer la satire",
+                "Éviter tout conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux romans visent l'argent, l'étroitesse d'esprit et la pose sociale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Gervaise (L'Assommoir) montre :",
+              "options": [
+                "La déchéance liée au milieu",
+                "Un conte sans souffrance",
+                "Un héros invincible",
+                "Une utopie parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zola suit une destinée marquée par la misère et l'alcool."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le personnage d'enfant dans le roman social :",
+              "options": [
+                "Peut symboliser l'innocence victime",
+                "Est interdit",
+                "Ne sert jamais l'intrigue",
+                "Remplace toujours le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enfance malheureuse souligne l'injustice sociale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier personnage et époque, c'est :",
+              "options": [
+                "Montrer comment le contexte façonne les choix",
+                "Ignorer l'histoire",
+                "Ne lire que le prénom",
+                "Oublier la société du récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman du XIXe siècle dialogue avec son temps."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Voix, point de vue et personnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un narrateur omniscient :",
+              "options": [
+                "Connaît pensées et passé des personnages",
+                "Peut commenter leurs actions",
+                "Ne connaît que ce qu'il voit physiquement sans autre savoir",
+                "Est toujours un enfant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'omniscience autorise un savoir large et un jugement narratif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un narrateur interne (focalisation interne) :",
+              "options": [
+                "Se limite au savoir d'un personnage",
+                "Sait tout sur tous les mondes",
+                "Est le lecteur",
+                "Est la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit avec les yeux d'un « je » ou d'un « il » focalisé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le changement de focalisation :",
+              "options": [
+                "Modifie la vision d'un personnage",
+                "Change le genre en poésie obligatoire",
+                "Supprime les dialogues",
+                "Efface l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passer d'un point de vue à un autre brouille ou enrichit le récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le « je » narrateur :",
+              "options": [
+                "Peut être protagoniste ou témoin",
+                "Est toujours l'auteur biographique",
+                "Ne peut pas mentir",
+                "Est interdit au XIXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le narrateur fictif doit être distingué de l'auteur réel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage témoin :",
+              "options": [
+                "Observe et raconte sans être au centre",
+                "Est toujours antagoniste",
+                "Ne parle jamais",
+                "Est le titre du chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le témoin filtre l'histoire (ex. certaines narrations de voyages)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La distance narrative influence :",
+              "options": [
+                "Le ton envers le personnage",
+                "La taille du papier",
+                "Le nombre de lecteurs",
+                "La couleur de l'encre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ironie, compassion ou froideur dépendent du narrateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le discours indirect libre :",
+              "options": [
+                "Mêle voix du narrateur et pensées du personnage",
+                "Supprime tout personnage",
+                "Est un dialogue théâtral",
+                "Est une note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette technique floute la frontière entre narration et subjectivité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un personnage silencieux peut :",
+              "options": [
+                "Peser par le mystère ou le regard des autres",
+                "Ne pas exister dans le récit",
+                "Remplacer la description",
+                "Être le seul autorisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de parole crée parfois une forte présence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distinguer auteur et narrateur, c'est :",
+              "options": [
+                "Ne pas confondre créateur réel et voix fictive",
+                "Penser que tout est autobiographie",
+                "Ignorer le texte",
+                "Supprimer l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le narrateur est un masque narratif, pas l'auteur en personne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser le regard sur un personnage, c'est étudier :",
+              "options": [
+                "Comment le narrateur ou les autres le décrivent",
+                "Uniquement la taille du livre",
+                "Le code postal de l'éditeur",
+                "Le nombre de fautes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard construit l'image que le lecteur reçoit."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Parcours et évolution du personnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un parcours initiatique implique :",
+              "options": [
+                "Une épreuve qui transforme le personnage",
+                "Un gain de maturité ou de conscience",
+                "L'absence totale de changement",
+                "Uniquement un déplacement géographique sans sens"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'initiation mêle épreuves et prise de conscience."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un personnage statique :",
+              "options": [
+                "Ne change guère de traits ou de valeurs",
+                "Évolue à chaque phrase obligatoirement",
+                "Disparaît du roman",
+                "Devient narrateur omniscient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains personnages typés restent stables pour servir la satire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le déclencheur narratif pousse le personnage à :",
+              "options": [
+                "Entrer dans l'action",
+                "Quitter le livre",
+                "Devenir auteur",
+                "Effacer le chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un événement initial lance la quête ou le conflit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La chute d'un personnage tragique :",
+              "options": [
+                "Clôt souvent une série d'erreurs",
+                "Garantit toujours un happy end",
+                "Supprime le sens du récit",
+                "Remplace le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chute concentre les conséquences dramatiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage qui renonce à ses illusions :",
+              "options": [
+                "Illustre un désillusionnement",
+                "Ne peut exister en roman",
+                "Est toujours comique",
+                "Ignore l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman réaliste aime montrer le choc avec le réel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La rédemption (Valjean) montre :",
+              "options": [
+                "Une reconquête morale possible",
+                "Que le personnage ne change jamais",
+                "L'absence de justice",
+                "Un conte sans enjeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parcours peut aller de la faute à la réparation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Schéma situation initiale → péripéties → dénouement :",
+              "options": [
+                "Structure l'évolution du personnage",
+                "Concerne seulement la poésie",
+                "Interdit les dialogues",
+                "Supprime le conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les péripéties testent et transforment le héros."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un choix moral difficile révèle :",
+              "options": [
+                "La profondeur et les valeurs du personnage",
+                "La couverture du livre",
+                "Le tirage",
+                "La marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dilemmes sont des moments clés de caractérisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer début et fin du roman pour un personnage :",
+              "options": [
+                "Permet de mesurer son évolution",
+                "Est inutile",
+                "Remplace la lecture",
+                "Ignore le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste temporal éclaire la transformation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un personnage qui échoue socialement peut :",
+              "options": [
+                "Critiquer une société injuste",
+                "Ne jamais intéresser le lecteur",
+                "Être interdit",
+                "Supprimer le thème social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec individuel peut signifier un échec collectif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Relations entre personnages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les relations familiales dans le roman servent à :",
+              "options": [
+                "Montrer héritage et conflits de générations",
+                "Révéler enjeux d'argent ou de prestige",
+                "Remplacer toute description",
+                "Supprimer la société"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Famille et héritage structurent souvent le réalisme du XIXe siècle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un duo de personnages (double) :",
+              "options": [
+                "Met en regard deux trajectoires",
+                "Empêche toute comparaison",
+                "Est toujours identique",
+                "Ne sert pas l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double éclaire par contraste (bien/mal, pauvre/riche)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La relation maître / serviteur peut :",
+              "options": [
+                "Critiquer les inégalités",
+                "Ignorer la société",
+                "Supprimer le dialogue",
+                "Remplacer le héros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rapports de domination révèlent une hiérarchie sociale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un personnage mentor :",
+              "options": [
+                "Guide ou forme le héros",
+                "Est toujours antagoniste",
+                "Ne parle pas",
+                "Est le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mentor transmet savoir ou valeur avant de disparaître ou trahir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La jalousie entre personnages :",
+              "options": [
+                "Alimente le conflit dramatique",
+                "Efface l'intrigue",
+                "Interdit l'analyse",
+                "Remplace le décor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les passions rivales poussent l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les réseaux de personnages (Balzac) :",
+              "options": [
+                "Recréent une société entière",
+                "Sont une liste sans lien",
+                "N'existent qu'au théâtre",
+                "Suppriment le réalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réapparitions de figures lient les romans entre eux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un personnage marginal :",
+              "options": [
+                "Observe la société depuis la périphérie",
+                "Est toujours roi",
+                "Ne peut pas commenter",
+                "Est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exclusion permet un regard critique sur le centre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le triangle amoureux :",
+              "options": [
+                "Crée tension et choix",
+                "Supprime les émotions",
+                "Est absent du roman",
+                "Remplace le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les désirs croisés compliquent le parcours des personnages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Analyser les dialogues entre deux personnages, c'est :",
+              "options": [
+                "Étudier rapport de force et caractère",
+                "Compter les lettres",
+                "Ignorer le contexte",
+                "Lire la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque réplique positionne les interlocuteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un personnage « faire-valoir » :",
+              "options": [
+                "Met en valeur un autre par contraste",
+                "Est toujours le héros",
+                "N'a aucun rôle",
+                "Est le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faire-valoir souligne traits ou statut du protagoniste."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Personnage et symbolique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un personnage symbolique :",
+              "options": [
+                "Représente une idée ou un groupe",
+                "Peut porter un nom évocateur",
+                "Doit être une photographie",
+                "Ne peut pas évoluer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La symbolique dépasse l'individu pour viser un sens plus large."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quasimodo peut incarner :",
+              "options": [
+                "La laideur rejetée et la bonté intérieure",
+                "Un manuel de grammaire",
+                "Une formule chimique",
+                "Un concours de mathématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo oppose apparence monstrueuse et sensibilité humaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le personnage allegorique :",
+              "options": [
+                "Personnifie une abstraction",
+                "Est toujours réaliste minute",
+                "Ne parle jamais",
+                "Est interdit en 3e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Justice, la Mort, etc. peuvent prendre figure humaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet associé à un personnage (canne, chapeau) :",
+              "options": [
+                "Peut devenir un attribut symbolique",
+                "Ne sert jamais",
+                "Remplace le texte",
+                "Est le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les attributs fixent l'identité visuelle et morale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le personnage fantastique dans un roman réaliste :",
+              "options": [
+                "Crée un trouble entre réel et surnaturel",
+                "Supprime la crédibilité obligatoirement",
+                "N'existe pas au XIXe siècle",
+                "Remplace la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fantastique questionne les limites du rationnel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une laideur physique décrite longuement peut :",
+              "options": [
+                "Signifier un rejet social",
+                "Être sans signification",
+                "Remplacer l'intrigue",
+                "Indiquer l'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps est souvent signe de destinée sociale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le personnage « everyman » :",
+              "options": [
+                "Représente le lecteur ordinaire",
+                "Est toujours un roi",
+                "Ne vit pas d'épreuves",
+                "Est une note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il permet l'identification du public."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couleurs ou lumière autour d'un personnage :",
+              "options": [
+                "Peuvent renforcer une symbolique",
+                "Sont interdites en prose",
+                "Remplacent les dialogues",
+                "Indiquent le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le champ lexical chromatique oriente l'interprétation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relier personnage et lieu (Paris / province) :",
+              "options": [
+                "Éclaire identité et ambition",
+                "Est inutile",
+                "Supprime le réalisme",
+                "Efface le conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espace social marque le personnage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interpréter un personnage, c'est :",
+              "options": [
+                "Proposer un sens argumenté à partir du texte",
+                "Inventer sans preuve",
+                "Résumer l'éditeur",
+                "Ignorer les scènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interprétation reste fidèle aux indices du roman."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Analyser un extrait : le personnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un commentaire de personnage, on repère :",
+              "options": [
+                "Verbes d'action et traits",
+                "Registres de langue et dialogues",
+                "Uniquement la pagination",
+                "Le code ISBN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Actions, paroles et ton construisent l'analyse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La problématique d'un commentaire :",
+              "options": [
+                "Formule une question sur le texte",
+                "Copie le résumé du livre",
+                "Liste les chapitres",
+                "Ignore l'extrait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle oriente toute la démonstration."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un plan thématique pour un personnage :",
+              "options": [
+                "Regroupe idées par traits ou évolutions",
+                "Suit seulement les dates",
+                "Évite les exemples",
+                "Ne cite pas le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On organise par grandes idées, pas par ordre des phrases."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Introduire une citation, c'est :",
+              "options": [
+                "La glisser dans une phrase avec des guillemets",
+                "Coller un chapitre entier",
+                "Oublier la source",
+                "Citer sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La citation illustre une idée formulée par l'élève."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conclusion d'un commentaire :",
+              "options": [
+                "Bilan sans nouvel exemple long",
+                "Nouveau récit complet",
+                "Liste de livres",
+                "Copie de l'intro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ouvre parfois sur une nuance finale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Repérer un champ lexical :",
+              "options": [
+                "Regrouper mots d'un même thème",
+                "Compter les points",
+                "Ignorer les adjectifs",
+                "Lire la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les répétitions sémantiques caractérisent le personnage ou l'atmosphère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un adverbe dans une réplique peut :",
+              "options": [
+                "Nuancer le comportement",
+                "Changer le genre du roman",
+                "Supprimer le sens",
+                "Indiquer l'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« brutalement », « doucement » modifient la perception du personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux extraits sur un même personnage :",
+              "options": [
+                "Montre évolution ou changement de regard",
+                "Est interdit",
+                "Remplace la lecture",
+                "Ignore le contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer dans le temps du récit éclaire la transformation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Éviter la paraphrase, c'est :",
+              "options": [
+                "Interpréter plutôt que reformuler ligne à ligne",
+                "Ne rien dire",
+                "Copier deux fois",
+                "Supprimer les citations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commentaire avance une lecture, pas un résumé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lien personnage / narrateur dans l'extrait :",
+              "options": [
+                "À traiter si le point de vue structure le passage",
+                "À ignorer toujours",
+                "Remplace le personnage",
+                "Concerne seulement la poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard narratif fait partie de la caractérisation reçue."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : le personnage de roman",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le personnage de roman au programme de 3e :",
+              "options": [
+                "Se lie au récit du XIXe siècle",
+                "S'inscrit dans une vision sociale",
+                "Est absent des romans réalistes",
+                "Ne se décrit jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Personnage et société se répondent dans le roman étudié."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan : un bon personnage mémorable :",
+              "options": [
+                "A une fonction dans l'intrigue et une profondeur",
+                "N'a pas de nom",
+                "Ne parle jamais",
+                "Ignore la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction narrative et dimension humaine se combinent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Relier personnage et genre romanesque :",
+              "options": [
+                "Le réalisme valorise la crédibilité sociale",
+                "Le conte ignore tout personnage",
+                "La fable est le seul roman",
+                "Le roman n'a pas de genre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réalisme ancre les figures dans un monde reconnaissable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour réviser, il est utile de :",
+              "options": [
+                "Refaire des fiches par personnage clé",
+                "Oublier les citations",
+                "Ne lire que le titre",
+                "Ignorer les relations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiches avec traits, citations et rôle aident mémorisation et analyse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le personnage peut être victime :",
+              "options": [
+                "D'un système ou d'autrui",
+                "Uniquement de la météo",
+                "Du nombre de pages",
+                "De la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La victimisation individuelle critique parfois une injustice collective."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le courage d'un personnage se montre par :",
+              "options": [
+                "Actes et choix sous pression",
+                "Le silence total",
+                "L'absence du récit",
+                "La préface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les décisions révèlent la valeur morale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La laideur morale d'un personnage :",
+              "options": [
+                "Peut le rendre antipathique ou effrayant",
+                "L'empêche d'exister",
+                "Le rend toujours comique",
+                "Supprime l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monstruosité intérieure participe au conflit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un personnage féminin au XIXe siècle :",
+              "options": [
+                "Souvent enfermé dans des rôles sociaux",
+                "Toujours libre sans contrainte",
+                "Absent des romans",
+                "Ne dialogue jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman montre aussi les limites imposées aux femmes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En dissertation ou commentaire, le personnage sert à :",
+              "options": [
+                "Illustrer une problématique sur le roman",
+                "Remplacer la problématique",
+                "Éviter la société",
+                "Supprimer les exemples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le personnage est preuve d'une réflexion sur le genre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message final sur le personnage :",
+              "options": [
+                "Il est le cœur battant du roman de société",
+                "Il est décoratif sans rôle",
+                "Il remplace l'auteur en classe",
+                "Il n'intéresse pas le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans personnage, pas de récit ni de regard sur le monde."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Roman et regard social",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Roman et société au XIXe siècle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le roman du XIXe siècle s'intéresse souvent à :",
+              "options": [
+                "Classes sociales et inégalités",
+                "Mœurs et transformations de la société",
+                "Uniquement les batailles médiévales sans contexte",
+                "Formules scientifiques sans récit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le roman devient un miroir critique du monde contemporain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le roman de mœurs :",
+              "options": [
+                "Observe habitudes et comportements d'un groupe",
+                "Ignore les personnages",
+                "Est toujours fantastique",
+                "Ne se lit pas en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il décrit coutumes, valeurs et hypocrisies sociales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le réalisme affirme :",
+              "options": [
+                "Représenter la vie avec vraisemblance",
+                "Ne jamais décrire le travail",
+                "Exclure la ville",
+                "Interdire la critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Balzac, Flaubert ou Zola cherchent la précision du concret."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un roman engagé :",
+              "options": [
+                "Défend une cause ou dénonce une injustice",
+                "N'a aucun message",
+                "Est toujours comique",
+                "Supprime les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo mêle fiction et appel à la justice sociale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La révolution industrielle influence le roman car :",
+              "options": [
+                "Elle crée nouveaux milieux ouvriers et bourgeois",
+                "Elle supprime Paris",
+                "Elle interdit le dialogue",
+                "Elle efface l'argent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usines, banlieues et fortunes nouvelles alimentent les intrigues."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le roman historique diffère du réaliste contemporain car :",
+              "options": [
+                "Il reconstitue un passé",
+                "Il n'a pas de personnages",
+                "Il est toujours futuriste",
+                "Il ignore la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il dialogue avec la mémoire collective et le présent du lecteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lecture d'un roman de société invite à :",
+              "options": [
+                "Relier fiction et enjeux humains collectifs",
+                "Ignorer le contexte",
+                "Ne voir que l'intrigue policière",
+                "Oublier l'époque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre le siècle éclaire le sens des actions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La presse et le feuilleton au XIXe siècle :",
+              "options": [
+                "Diffusent le roman auprès d'un large public",
+                "Empêchent toute lecture",
+                "Remplacent les livres par des images seules",
+                "Suppriment les auteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La serialisation façonne le rythme et la popularité du genre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le roman peut critiquer :",
+              "options": [
+                "Lois, institutions et préjugés",
+                "Uniquement la météo",
+                "Le nombre de chapitres",
+                "La couleur du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fiction contourne parfois la censure par l'ironie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier « roman et société », c'est :",
+              "options": [
+                "Voir comment le texte parle du monde",
+                "Résumer sans analyse",
+                "Ignorer les personnages",
+                "Ne lire que la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman propose une vision du réel à interroger."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Classes sociales et représentation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le roman réaliste, on représente :",
+              "options": [
+                "Bourgeoisie et prolétariat",
+                "Paysans et aristocrates déchus",
+                "Uniquement des extraterrestres",
+                "Seulement des rois sans peuple"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le panorama social est une ambition majeure du siècle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ascension sociale (Rastignac) montre :",
+              "options": [
+                "Ambition et corruption possibles",
+                "Un monde sans argent",
+                "L'absence de Paris",
+                "Un conte sans enjeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monter en grade peut exiger reniement et calcul."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La misère ouvrière (Zola) sert à :",
+              "options": [
+                "Dénoncer conditions de vie et travail",
+                "Louer l'usine sans critique",
+                "Supprimer les personnages",
+                "Ignorer la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le naturalisme documente souffrance et déterminismes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La bourgeoisie provinciale (Flaubert) :",
+              "options": [
+                "Est parfois moquée pour étroitesse d'esprit",
+                "Est toujours héroïque",
+                "N'existe pas en roman",
+                "Remplace le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flaubert satirise bêtise et conformisme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'argent dans le roman du XIXe siècle :",
+              "options": [
+                "Structure désirs et conflits",
+                "N'intéresse jamais les auteurs",
+                "Supprime l'intrigue",
+                "Est interdit comme thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritages, dettes et speculations poussent l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le parvenu :",
+              "options": [
+                "Grimpe socialement par opportunisme",
+                "Reste toujours pauvre",
+                "Est le lecteur",
+                "Ne parle pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure emblématique d'une société mobile et dure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La province opposée à Paris symbolise :",
+              "options": [
+                "Étroitesse vs ambition",
+                "Deux planètes sans lien",
+                "L'absence de personnages",
+                "Uniquement la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste spatial traduit enjeux moraux et sociaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un domestique dans le roman :",
+              "options": [
+                "Révèle hiérarchies et secrets",
+                "Est décor sans fonction",
+                "Remplace l'auteur",
+                "Ne peut pas observer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les subservients voient de l'intérieur la maison bourgeoise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pauvreté « héroïque » chez Hugo :",
+              "options": [
+                "Valorise dignité des exclus",
+                "Moque les pauvres",
+                "Ignore la justice",
+                "Supprime le récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les misérables portent une éthique de la compassion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser une scène de salon bourgeois, c'est :",
+              "options": [
+                "Montrer codes, langage et pouvoir",
+                "Compter les chaises seulement",
+                "Ignorer les dialogues",
+                "Lire la quatrième de couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rituels sociaux révèlent domination et hypocrisie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Regard du narrateur et distance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le narrateur peut :",
+              "options": [
+                "Juger les personnages avec ironie",
+                "Montrer compassion ou indignation",
+                "Être neutre sans aucune trace de voix",
+                "Être toujours le même que l'auteur biographique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La voix narrative colore le regard social porté sur les faits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ironie du narrateur :",
+              "options": [
+                "Fait entendre une critique sous une surface",
+                "Supprime le sens",
+                "Interdit la satire",
+                "Remplace les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dire le contraire de ce qu'on pense dénonce sans sermon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La satire dans le roman :",
+              "options": [
+                "Ridiculise comportements ou institutions",
+                "Loue sans nuance",
+                "N'existe pas au XIXe siècle",
+                "Efface la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exagération et grotesque visent une cible sociale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un narrateur impassible :",
+              "options": [
+                "Limite les commentaires moraux",
+                "Est toujours comique",
+                "Ne raconte rien",
+                "Est le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flaubert recherche parfois l'objectivité apparente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le pathos hugolien :",
+              "options": [
+                "Sollicite émotion et pitié du lecteur",
+                "Refuse toute émotion",
+                "Supprime les pauvres",
+                "Est un manuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo dramatise souffrance pour appeler à la fraternité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le free indirect (style indirect libre) :",
+              "options": [
+                "Glisse pensée sociale du personnage dans la narration",
+                "Supprime le roman",
+                "Est une pièce de théâtre",
+                "Est un paratexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entend la conscience d'une classe ou d'un individu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Regard « de haut » sur un personnage :",
+              "options": [
+                "Crée une distance critique",
+                "Empêche toute lecture",
+                "Signifie toujours admiration",
+                "Remplace l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condescendance révèle une position de classe du narrateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un narrateur omniscient jugeant la société :",
+              "options": [
+                "Peut commenter lois et mœurs",
+                "Ne connaît rien",
+                "Est interdit",
+                "Est le code ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'omniscience autorise digressions et généralisations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le lecteur moderne doit :",
+              "options": [
+                "Repérer idées du siècle dans le regard narratif",
+                "Copier le XIXe sans réfléchir",
+                "Ignorer l'histoire",
+                "Confondre auteur et personnage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contextualiser évite anachronismes et simplifications."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser le « regard social », c'est :",
+              "options": [
+                "Étudier comment le texte voit la société",
+                "Compter les pages",
+                "Résumer l'éditeur",
+                "Oublier la narration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de vue et ton construisent une vision du monde."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Espace urbain et espace rural",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paris dans le roman du XIXe siècle :",
+              "options": [
+                "Concentre ambition et corruption",
+                "Offre lumières, foule et contrastes",
+                "Est absent des récits",
+                "Est toujours un village"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La capitale est laboratoire des ascensions et des chutes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le faubourg ouvrier :",
+              "options": [
+                "Matérialise misère et collectif",
+                "N'apparaît jamais",
+                "Remplace les personnages",
+                "Est une préface"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espace popularisé par Zola devient personnage social."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La province :",
+              "options": [
+                "Peut étouffer désirs (Emma Bovary)",
+                "Est toujours paradis",
+                "Supprime le réalisme",
+                "Ignore l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ennui provincial pousse parfois à la fuite onirique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le décor réaliste :",
+              "options": [
+                "N'est pas neutre : il signifie",
+                "Est toujours invisible",
+                "Remplace l'intrigue",
+                "Interdit l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appartement, rue, usine renvoient à une classe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La promenade dans Paris :",
+              "options": [
+                "Peut symboliser découverte ou piège social",
+                "Ne sert jamais",
+                "Est interdite en roman",
+                "Efface les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se déplacer révèle codes et dangers de la ville."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Campagne et nature :",
+              "options": [
+                "Parfois idealisées ou au contraire dures",
+                "N'existent pas",
+                "Remplacent la société",
+                "Sont le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paysage accorde ou refuse un refuge au personnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'appartement bourgeois décrit :",
+              "options": [
+                "Traduit goût, argent et étroitesse",
+                "N'a aucun sens",
+                "Est toujours palais",
+                "Supprime le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objets et aménagement sont signes sociaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lieu de travail (atelier, usine) :",
+              "options": [
+                "Montre exploitation ou savoir-faire",
+                "Est absent du roman social",
+                "Remplace le héros",
+                "Est la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le travail structure identité et destinée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Opposition ville / campagne sert à :",
+              "options": [
+                "Organiser contrastes moraux et sociaux",
+                "Compter les kilomètres sans sens",
+                "Ignorer les personnages",
+                "Supprimer l'époque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déplacements traduisent désirs et blocages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un commentaire, décrire le lieu :",
+              "options": [
+                "Éclaire le regard social du passage",
+                "Remplace l'analyse des personnages",
+                "Est inutile",
+                "Ignore le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace et société se renforcent mutuellement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Justice, loi et institutions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les Misérables critiquent :",
+              "options": [
+                "Injustice pénale et misère",
+                "Condition des exclus et des pauvres",
+                "Uniquement la cuisine",
+                "Les mathématiques scolaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hugo dénonce lois dures, galères et précarité qui broient les plus faibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Javert incarne :",
+              "options": [
+                "La loi rigide sans humanité",
+                "La poésie bucolique",
+                "Le conte féerique",
+                "L'absence de conflit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le policier représente devoir aveugle face à la rédemption."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le tribunal ou la prison dans le roman :",
+              "options": [
+                "Montrent rapport du personnage à la justice",
+                "N'apparaissent jamais",
+                "Remplacent le héros",
+                "Sont le paratexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les scènes judiciaires révèlent inégalités devant la loi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'Église ou la charité :",
+              "options": [
+                "Peuvent aider ou juger les miséreux",
+                "Sont absentes du roman social",
+                "Suppriment l'intrigue",
+                "Interdisent la critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutions religieuses participent parfois à la compassion ou à l'ordre moral."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un personnage condamné injustement :",
+              "options": [
+                "Sert la dénonciation du système",
+                "Ne peut pas exister",
+                "Est toujours comique",
+                "Efface le thème social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'erreur judiciaire dramatise l'urgence de réformes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La loi du bagne (Valjean) :",
+              "options": [
+                "Marque le corps et l'identité sociale",
+                "N'a aucun effet",
+                "Remplace Paris",
+                "Est une note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le numéro du condamné le suit au-delà de la peine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le roman peut plaider pour :",
+              "options": [
+                "Plus de fraternité et de justice",
+                "Silence total",
+                "Suppression de toute règle sans nuance",
+                "Ignorer les pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fiction touche l'émotion où le discours politique peine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Analyser une scène d'arrestation :",
+              "options": [
+                "Montre rapport de force avec l'État",
+                "Compter les virgules",
+                "Ignorer le contexte",
+                "Lire la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La violence institutionnelle structure le regard social."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La rédemption de Valjean oppose :",
+              "options": [
+                "Merci individuel et loi inflexible",
+                "Deux couvertures",
+                "Deux auteurs",
+                "Poésie et maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parcours moral questionne la pureté de la justice."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Institution et regard social :",
+              "options": [
+                "Le narrateur montre qui protège ou écrase",
+                "N'intéresse pas le roman",
+                "Remplace les personnages",
+                "Supprime la ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pouvoir public et privé se croisent dans l'intrigue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Famille, mariage et rôles de genre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le roman du XIXe siècle, la femme :",
+              "options": [
+                "Subit souvent contraintes matrimoniales",
+                "Peut être enfermée dans l'ennui ou l'interdit",
+                "Est toujours libre de tout choix sans limite",
+                "N'apparaît jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Emma Bovary ou Fantine illustrent emprise des normes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le mariage d'intérêt :",
+              "options": [
+                "Lie argent et convenances",
+                "N'existe pas en fiction",
+                "Supprime la société",
+                "Est toujours heureux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alliances familiales structurent l'ascension ou la chute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La maternité (Fantine) :",
+              "options": [
+                "Expose vulnérabilité sociale",
+                "Est un thème interdit",
+                "Remplace l'intrigue policière seule",
+                "Ignore la misère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mère seule devient victime des préjugés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le père autoritaire ou absent :",
+              "options": [
+                "Influence destin des enfants",
+                "N'a aucun rôle",
+                "Est le lecteur",
+                "Supprime le réalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patriarcat et héritage pèsent sur les parcours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'adultère dans Madame Bovary :",
+              "options": [
+                "Critique étroitesse bourgeoise et rêve",
+                "Loue sans nuance la triche",
+                "N'a pas de sens social",
+                "Supprime Emma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fautes d'Emma révèlent conflit désir / devoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Orphelin ou enfant abandonné :",
+              "options": [
+                "Symbole de fragilité sociale",
+                "Décoration sans fonction",
+                "Remplace Hugo",
+                "Interdit en 3e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les enfants victimes appellent à la protection collective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le foyer domestique :",
+              "options": [
+                "Peut être piège ou refuge",
+                "N'est jamais décrit",
+                "Est toujours paradis",
+                "Efface les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maison matérialise rapports de genre et de classe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un personnage féminin qui lit des romans :",
+              "options": [
+                "Montre soif d'évasion (Emma)",
+                "Prouve que les livres sont inutiles",
+                "Supprime la société",
+                "Est le narrateur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lecture alimente rêve et décalage avec le réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Analyser genre et société, c'est :",
+              "options": [
+                "Relier rôles attendus et conflits",
+                "Ignorer le contexte",
+                "Ne voir que l'action",
+                "Oublier le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes de genre participent du regard social du roman."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le roman réaliste sur la famille :",
+              "options": [
+                "Dévoile tensions cachées derrière la façade",
+                "Cache toujours la vérité",
+                "N'a pas de personnages",
+                "Est purement scientifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intérieur privé reflète ordre ou crise de la société."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Travail, argent et consommation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le travail dans le roman social :",
+              "options": [
+                "Définit identité et statut",
+                "Peut détruire corps et espoir",
+                "N'est jamais mentionné",
+                "Remplace tous les dialogues"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ouvriers et artisans portent histoire du labeur et de l'épuisement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'usine chez Zola :",
+              "options": [
+                "Condense exploitation collective",
+                "Est un décor neutre",
+                "N'existe pas",
+                "Remplace les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Machines, bruit et cadences modelent vies ouvrières."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dettes et faillite :",
+              "options": [
+                "Poussent chute de personnages",
+                "N'intéressent pas le roman",
+                "Suppriment Paris",
+                "Sont interdites comme sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argent manquant déclenche drames familiaux et sociaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Luxe et boutique (Emma) :",
+              "options": [
+                "Matérialisent désir de consommation",
+                "Sont absents du récit",
+                "Effacent la critique",
+                "Remplacent le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Achats et marchands piègent la bourgeoise endettée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le patron ou l'employeur :",
+              "options": [
+                "Incarnent les rapports de domination",
+                "Ne parle jamais",
+                "Est toujours héros",
+                "Est le code ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie économique structure conflits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Grève ou révolte ouvrière :",
+              "options": [
+                "Montre conscience collective",
+                "N'apparaît jamais au XIXe",
+                "Supprime le réalisme",
+                "Est une fable seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman peut faire entendre voix des exploités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Héritage disputé :",
+              "options": [
+                "Révèle avidité et lois familiales",
+                "N'a aucun enjeu",
+                "Remplace la ville",
+                "Ignore les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succession concentre enjeux de propriété et de pouvoir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chômage ou précarité :",
+              "options": [
+                "Alimente misère romanesque",
+                "Est absent du siècle",
+                "Loue sans nuance la pauvreté",
+                "Supprime l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instabilité économique menace identité et survie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relier argent et regard social :",
+              "options": [
+                "Montrer qui possède le pouvoir de décider",
+                "Compter les pièces sans analyse",
+                "Ignorer les scènes",
+                "Lire la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitaux et dettes orientent regards et destinées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le naturalisme sur le travail :",
+              "options": [
+                "Insiste sur hérédité et milieu",
+                "Refuse toute description",
+                "Est pure fantasy",
+                "N'a pas de personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zola lie conditions matérielles et comportements."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Éducation, savoir et culture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'instruction dans le roman du XIXe siècle :",
+              "options": [
+                "Peut être un ascenseur social fragile",
+                "Marque séparation entre classes",
+                "Est identique pour tous sans exception",
+                "N'intéresse jamais les auteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Savoir ouvre parfois des portes tout en rappelant inégalités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le professeur ou le maître d'école :",
+              "options": [
+                "Figure d'autorité ou de progrès",
+                "N'existe pas",
+                "Remplace Hugo",
+                "Est le paratexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'école participe du rêve républicain ou de la discipline."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'analphabétisme ou la culture populaire :",
+              "options": [
+                "Montre fractures sociales",
+                "Est caché systématiquement",
+                "Supprime le réalisme",
+                "Interdit l'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès au savoir sépare milieux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bibliothèque et lecture :",
+              "options": [
+                "Alimentent désir d'ailleurs",
+                "N'apparaissent jamais",
+                "Effacent les personnages",
+                "Sont le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les livres façonnent imaginaire et révolte intérieure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le parvenu cultivé (Rastignac) :",
+              "options": [
+                "Utilise savoir pour réussir",
+                "Ignore toute leçon",
+                "Ne va jamais à Paris",
+                "Est un conte sans société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diplomatie et lecture servent stratégies sociales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Presse et opinions :",
+              "options": [
+                "Diffusent idées du siècle",
+                "Sont absentes du roman",
+                "Remplacent l'intrigue",
+                "Suppriment la satire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Journaux et pamphlets nourrissent débats fictionnels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Science et positivisme (naturalisme) :",
+              "options": [
+                "Influencent regard sur les personnages",
+                "Interdisent le roman",
+                "Suppriment la ville",
+                "Ne concernent pas Zola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observations médicales ou sociales infusent le récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Théâtre et opéra dans le roman :",
+              "options": [
+                "Lieu de rêve et de codes mondains",
+                "N'apparaissent jamais",
+                "Effacent la société",
+                "Remplacent le héros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sorties parisiennes signalent classe et désir d'artifice."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Culture et regard social :",
+              "options": [
+                "Qui sait lire ou parler latin marque son rang",
+                "Est sans importance",
+                "Ignore les dialogues",
+                "Supprime le contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langues et références distinguent élites et populaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 3e, relier culture et roman :",
+              "options": [
+                "Montre comment savoirs façonnent destinées",
+                "Oublie le texte",
+                "Ne cite jamais",
+                "Réduit au résumé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation et goûts participent du portrait social."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Intertextualité et héritage littéraire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le roman du XIXe siècle dialogue avec :",
+              "options": [
+                "L'histoire de France récente",
+                "Genres antérieurs (roman picaresque, mémoires)",
+                "Uniquement la bande dessinée contemporaine",
+                "Aucune tradition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Héritage et actualité se croisent dans la forme romanesque."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Citer un autre auteur dans le roman :",
+              "options": [
+                "Situe culture du personnage",
+                "Est interdit",
+                "Supprime l'intrigue",
+                "Remplace la société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Références livresques révèlent milieu et désirs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le roman feuilleton :",
+              "options": [
+                "Influence rythme et suspense",
+                "N'existe pas",
+                "Est pure poésie",
+                "Efface les classes sociales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cliffhangers et régularité nourrissent le public."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reprise d'un mythe ou d'une légende :",
+              "options": [
+                "Peut éclairer personnage moderne",
+                "Est impossible",
+                "Supprime le réalisme",
+                "Ignore le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo recycle parfois archétypes pour parler du présent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parodie d'un genre :",
+              "options": [
+                "Critique conventions sociales ou littéraires",
+                "Loue sans distance",
+                "N'a pas de sens",
+                "Remplace le narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ridiculiser un modèle révèle ses limites."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le préface d'auteur (Hugo) :",
+              "options": [
+                "Expose parfois visée sociale",
+                "Est toujours invisible",
+                "Remplace le roman entier",
+                "Est le chapitre 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paratexte oriente lecture engagée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comparaison avec un tableau ou une sculpture :",
+              "options": [
+                "Enrichit description réaliste",
+                "Interdit en prose",
+                "Supprime personnages",
+                "Est le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ekphrasis rapproche roman et arts visuels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lecture du roman aujourd'hui :",
+              "options": [
+                "Demande distance historique",
+                "Doit copier préjugés sans critique",
+                "Ignore le XIXe",
+                "Confond tout avec TikTok"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre le siècle évite jugements anachroniques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adaptation cinéma ou série :",
+              "options": [
+                "Transfigure regard mais garde enjeux",
+                "Efface le texte source",
+                "Interdit l'étude",
+                "Remplace la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer médias montre ce qui survit du message social."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Héritage du roman social :",
+              "options": [
+                "Influence encore fiction engagée",
+                "Disparaît totalement",
+                "N'intéresse pas 3e",
+                "Supprime personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dénoncer injustices reste une force du genre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : roman et regard social",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le regard social d'un roman combine :",
+              "options": [
+                "Choix des personnages et situations",
+                "Ton et point de vue du narrateur",
+                "Uniquement la couverture",
+                "Nombre de pages sans sens"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contenu et narration construisent ensemble la vision du monde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour une synthèse en 3e, on retient :",
+              "options": [
+                "Lien personnages / société / narrateur",
+                "Seulement dates de naissance",
+                "Liste ISBN",
+                "Couleur du cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois piliers structurent le chapitre programme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un roman peut changer le regard du lecteur en :",
+              "options": [
+                "Faisant empathie avec des exclus",
+                "Supprimant toute émotion",
+                "Interdisant réflexion",
+                "Effaçant le contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification fictionnelle ouvre conscience sociale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Critiquer un roman du XIXe avec respect :",
+              "options": [
+                "Signaler limites de son époque sans le réduire",
+                "Le juger comme s'il était écrit hier sans contexte",
+                "Ignorer le texte",
+                "Copier l'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse historique et éthique se complètent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Exemple d'enjeu de regard social :",
+              "options": [
+                "Montrer misère sans la naturaliser complètement",
+                "Effacer toute critique",
+                "Supprimer personnages",
+                "Ne lire que le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dénoncer n'empêche pas de questionner représentations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un devoir, articuler roman et société :",
+              "options": [
+                "Enchaîner idée, citation, interprétation",
+                "Paraphraser tout le livre",
+                "Oublier exemples",
+                "Ignorer narrateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode commentaire/dissertation reste la même."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le roman n'est pas un pamphlet pur car :",
+              "options": [
+                "Il mêle intrigue, personnages et style",
+                "Il n'a aucune idée",
+                "Il est interdit",
+                "Il supprime la fiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La littérature dépasse le seul discours militant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réviser « Roman et regard social » :",
+              "options": [
+                "Refaire cartes mentales auteurs, thèmes, procédés",
+                "Ne rien relire",
+                "Ignorer personnages",
+                "Apprendre seulement dates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualiser liens aide mémorisation active."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Message du chapitre pour le lecteur :",
+              "options": [
+                "Lire fiction pour comprendre autrui et le monde",
+                "Lire sans réfléchir",
+                "Oublier la société",
+                "Réduire au divertissement seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le roman social invite à regarder autrement réalités humaines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan final 3e francais 01 :",
+              "options": [
+                "Personnage et société s'éclairent mutuellement",
+                "Sont sans lien",
+                "Remplacent maths",
+                "N'intéressent pas le Brevet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme relie étude du personnage et critique du monde romanesque."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

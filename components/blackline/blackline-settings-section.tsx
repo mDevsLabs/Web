@@ -37,6 +37,7 @@ import {
   SmartphoneIcon,
   Volume2Icon,
 } from "@mdevs/icons";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
 import { useAutosaveSection } from "@/hooks/use-autosave-section";
@@ -137,11 +138,10 @@ export function BlacklineSettingsSection() {
   const [chargement, setChargement] = useState(true);
   const [actionEnAttente, setActionEnAttente] = useState<string | null>(null);
 
-  const { data, error, mutate } = useSWR<{ settings: BlacklineSettings }>(
-    "/api/blackline/settings",
-    fetcher,
-    { dedupingInterval: 15_000 }
-  );
+  const { data, error, mutate } = useSWR<{
+    displayName?: string | null;
+    settings: BlacklineSettings;
+  }>("/api/blackline/settings", fetcher, { dedupingInterval: 15_000 });
 
   useEffect(() => {
     if (!data) {
@@ -364,15 +364,22 @@ export function BlacklineSettingsSection() {
           <input
             className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-1.5 text-xs text-foreground"
             id="blackline-callsign"
-            maxLength={18}
-            onChange={(evenement) => maj("callsign", evenement.target.value)}
-            placeholder="MATHIAS"
+            readOnly
             type="text"
-            value={lire("callsign", DEFAUTS.callsign)}
+            value={
+              data?.displayName?.trim() || lire("callsign", DEFAUTS.callsign)
+            }
           />
           <span className="text-[10px] text-muted-foreground">
-            Le nom affiché au-dessus de votre personnage.
+            Nom du profil Quizzly et de Vibe. Blackline en affiche les 18
+            premiers caractères au-dessus du personnage.
           </span>
+          <Link
+            className="text-[11px] font-semibold underline"
+            href="/settings?tab=applications#quizzly"
+          >
+            Modifier dans Quizzly
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

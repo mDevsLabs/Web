@@ -1,0 +1,2782 @@
+{
+  "id": "6e-mathematiques-02",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Géométrie plane",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Figures usuelles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont exactement quatre côtés ?",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Triangle" },
+                { "id": "d", "label": "Cercle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de sommets a un triangle ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "4" },
+                { "id": "d", "label": "5" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Un carré possède combien d'angles droits ?",
+              "options": [
+                { "id": "a", "label": "1" },
+                { "id": "b", "label": "2" },
+                { "id": "c", "label": "3" },
+                { "id": "d", "label": "4" }
+              ],
+              "correctAnswers": ["d"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Tous les côtés d'un losange sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles deux à deux" },
+                { "id": "b", "label": "De même longueur" },
+                { "id": "c", "label": "Perpendiculaires" },
+                { "id": "d", "label": "De longueurs quelconques" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le rectangle a ses angles :",
+              "options": [
+                { "id": "a", "label": "Tous droits" },
+                { "id": "b", "label": "Tous aigus" },
+                { "id": "c", "label": "Tous obtus" },
+                { "id": "d", "label": "Sans angle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un cercle est l'ensemble des points à égale distance de :",
+              "options": [
+                { "id": "a", "label": "Son centre" },
+                { "id": "b", "label": "Un sommet" },
+                { "id": "c", "label": "Un angle" },
+                { "id": "d", "label": "Une droite" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un carré est aussi un :",
+              "options": [
+                { "id": "a", "label": "Triangle" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Segment" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Combien de côtés a un losange ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "5" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "La somme des angles d'un triangle vaut :",
+              "options": [
+                { "id": "a", "label": "90°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "270°" },
+                { "id": "d", "label": "360°" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Un carré possède combien de côtés de même longueur ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "4" },
+                { "id": "d", "label": "Aucun" }
+              ],
+              "correctAnswers": ["c"]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures sont des polygones ?",
+              "options": [
+                { "id": "a", "label": "Triangle" },
+                { "id": "b", "label": "Cercle" },
+                { "id": "c", "label": "Carré" },
+                { "id": "d", "label": "Losange" }
+              ],
+              "correctAnswers": ["a", "c"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un rectangle possède combien de côtés ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "6" },
+                { "id": "d", "label": "Illimité" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Les côtés opposés d'un rectangle sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles et de même longueur" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Confondus" },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un losange est un quadrilatère dont :",
+              "options": [
+                { "id": "a", "label": "Tous les angles sont droits" },
+                { "id": "b", "label": "Les quatre côtés ont la même longueur" },
+                { "id": "c", "label": "Il n'a pas de côté" },
+                { "id": "d", "label": "Un seul côté est droit" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le rayon d'un cercle relie le centre à un point :",
+              "options": [
+                { "id": "a", "label": "Du cercle" },
+                { "id": "b", "label": "Hors du cercle seulement" },
+                { "id": "c", "label": "Du triangle" },
+                { "id": "d", "label": "Du rectangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un triangle équilatéral a ses trois côtés :",
+              "options": [
+                { "id": "a", "label": "De même longueur" },
+                { "id": "b", "label": "Tous perpendiculaires" },
+                { "id": "c", "label": "Parallèles" },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un carré est un losange avec :",
+              "options": [
+                { "id": "a", "label": "Quatre angles droits" },
+                { "id": "b", "label": "Trois côtés" },
+                { "id": "c", "label": "Aucun angle" },
+                { "id": "d", "label": "Des côtés inégaux" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Combien de diamètres peut-on tracer dans un cercle en passant par le centre ?",
+              "options": [
+                { "id": "a", "label": "Aucun" },
+                { "id": "b", "label": "Exactement un" },
+                { "id": "c", "label": "Une infinité" },
+                { "id": "d", "label": "Trois seulement" }
+              ],
+              "correctAnswers": ["c"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un triangle rectangle possède :",
+              "options": [
+                { "id": "a", "label": "Un angle droit" },
+                { "id": "b", "label": "Quatre angles droits" },
+                { "id": "c", "label": "Aucun angle" },
+                { "id": "d", "label": "Cinq sommets" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Le périmètre d'un carré de côté 5 cm vaut :",
+              "options": [
+                { "id": "a", "label": "10 cm" },
+                { "id": "b", "label": "15 cm" },
+                { "id": "c", "label": "20 cm" },
+                { "id": "d", "label": "25 cm" }
+              ],
+              "correctAnswers": ["c"]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont tous leurs angles droits ?",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Losange non carré" },
+                { "id": "d", "label": "Triangle quelconque" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de côtés possède un cercle ?",
+              "options": [
+                { "id": "a", "label": "0 côté rectiligne" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "4" },
+                { "id": "d", "label": "6" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Deux côtés consécutifs d'un rectangle sont :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "c", "label": "De même longueur obligatoirement" },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un losange a ses côtés opposés :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "De longueurs différentes toujours" },
+                { "id": "d", "label": "Absents" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Un triangle isocèle a au moins :",
+              "options": [
+                { "id": "a", "label": "Deux côtés de même longueur" },
+                { "id": "b", "label": "Quatre côtés" },
+                { "id": "c", "label": "Aucun sommet" },
+                { "id": "d", "label": "Cinq angles" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Le diamètre d'un cercle mesure :",
+              "options": [
+                { "id": "a", "label": "Deux fois le rayon" },
+                { "id": "b", "label": "La moitié du rayon" },
+                { "id": "c", "label": "Le périmètre entier" },
+                { "id": "d", "label": "Trois rayons" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un carré de côté 3 cm a un périmètre de :",
+              "options": [
+                { "id": "a", "label": "6 cm" },
+                { "id": "b", "label": "9 cm" },
+                { "id": "c", "label": "12 cm" },
+                { "id": "d", "label": "15 cm" }
+              ],
+              "correctAnswers": ["c"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un rectangle qui n'est pas un carré a :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "Des côtés consécutifs de longueurs différentes"
+                },
+                { "id": "b", "label": "Trois côtés seulement" },
+                { "id": "c", "label": "Aucun angle droit" },
+                { "id": "d", "label": "La forme d'un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Combien de sommets a un losange ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "5" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["b"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Un triangle a toujours :",
+              "options": [
+                { "id": "a", "label": "Trois côtés" },
+                { "id": "b", "label": "Quatre angles droits" },
+                { "id": "c", "label": "Un côté courbe" },
+                { "id": "d", "label": "Six sommets" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont quatre angles droits ?",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Losange oblique" },
+                { "id": "d", "label": "Triangle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "La ligne qui ferme un cercle s'appelle :",
+              "options": [
+                { "id": "a", "label": "Circonférence" },
+                { "id": "b", "label": "Hypoténuse" },
+                { "id": "c", "label": "Médiane" },
+                { "id": "d", "label": "Diagonale du carré" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Un carré est un rectangle avec :",
+              "options": [
+                { "id": "a", "label": "Quatre côtés égaux" },
+                { "id": "b", "label": "Trois côtés" },
+                { "id": "c", "label": "Des angles obtus" },
+                { "id": "d", "label": "Un seul sommet" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Les diagonales d'un rectangle se coupent en :",
+              "options": [
+                { "id": "a", "label": "Leur milieu" },
+                { "id": "b", "label": "Un sommet seulement" },
+                { "id": "c", "label": "Dehors du rectangle toujours" },
+                { "id": "d", "label": "Le centre du cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Un triangle scalène a ses côtés :",
+              "options": [
+                { "id": "a", "label": "Tous de longueurs différentes" },
+                { "id": "b", "label": "Tous égaux" },
+                { "id": "c", "label": "Parallèles deux à deux" },
+                { "id": "d", "label": "Inexistants" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Combien d'axes de symétrie a un carré ?",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "1" },
+                { "id": "c", "label": "0" },
+                { "id": "d", "label": "6" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un losange qui n'est pas un carré peut avoir des angles :",
+              "options": [
+                { "id": "a", "label": "Qui ne sont pas tous droits" },
+                { "id": "b", "label": "Tous droits obligatoirement" },
+                { "id": "c", "label": "Absents" },
+                { "id": "d", "label": "Tous supérieurs à 180°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Le centre d'un cercle est :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "À égale distance de tous les points du cercle"
+                },
+                { "id": "b", "label": "Sur la circonférence seulement" },
+                { "id": "c", "label": "Un sommet du triangle" },
+                { "id": "d", "label": "Hors du plan" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un rectangle de longueur 8 cm et largeur 2 cm a un périmètre de :",
+              "options": [
+                { "id": "a", "label": "10 cm" },
+                { "id": "b", "label": "16 cm" },
+                { "id": "c", "label": "20 cm" },
+                { "id": "d", "label": "32 cm" }
+              ],
+              "correctAnswers": ["c"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Un triangle peut être :",
+              "options": [
+                { "id": "a", "label": "Acutangle, rectangle ou obtusangle" },
+                { "id": "b", "label": "Un cercle" },
+                { "id": "c", "label": "Sans sommet" },
+                { "id": "d", "label": "À quatre côtés" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont des côtés opposés parallèles ?",
+              "options": [
+                { "id": "a", "label": "Rectangle" },
+                { "id": "b", "label": "Losange" },
+                { "id": "c", "label": "Triangle" },
+                { "id": "d", "label": "Cercle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de côtés a un quadrilatère ?",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "5" },
+                { "id": "d", "label": "2" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Un carré appartient à la famille des :",
+              "options": [
+                { "id": "a", "label": "Quadrilatères" },
+                { "id": "b", "label": "Cercles" },
+                { "id": "c", "label": "Segments" },
+                { "id": "d", "label": "Droites" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "La plus grande corde d'un cercle passant par le centre est le :",
+              "options": [
+                { "id": "a", "label": "Diamètre" },
+                { "id": "b", "label": "Rayon" },
+                { "id": "c", "label": "Segment du triangle" },
+                { "id": "d", "label": "Demi-droite" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Un triangle équilatéral a ses angles :",
+              "options": [
+                { "id": "a", "label": "Tous de 60°" },
+                { "id": "b", "label": "Tous droits" },
+                { "id": "c", "label": "Tous de 90°" },
+                { "id": "d", "label": "Inexistants" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Les diagonales d'un carré sont :",
+              "options": [
+                { "id": "a", "label": "De même longueur et perpendiculaires" },
+                { "id": "b", "label": "Parallèles au cercle" },
+                { "id": "c", "label": "Toujours horizontales" },
+                { "id": "d", "label": "Absentes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un rectangle possède combien de diagonales ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "1" },
+                { "id": "c", "label": "4" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un losange possède combien de côtés égaux ?",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "2" },
+                { "id": "c", "label": "1" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "La somme des angles d'un quadrilatère vaut :",
+              "options": [
+                { "id": "a", "label": "360°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "90°" },
+                { "id": "d", "label": "270°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Un point à l'intérieur du disque mais pas sur le cercle est :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "À distance du centre inférieure au rayon"
+                },
+                { "id": "b", "label": "Toujours sur la circonférence" },
+                { "id": "c", "label": "Un sommet du losange" },
+                { "id": "d", "label": "Sur une droite infinie seulement" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures sont des quadrilatères avec quatre côtés égaux ?",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Losange" },
+                { "id": "c", "label": "Rectangle non carré" },
+                { "id": "d", "label": "Triangle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un triangle a combien d'angles ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "2" },
+                { "id": "d", "label": "Illimité" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Le rectangle est un parallélogramme avec :",
+              "options": [
+                { "id": "a", "label": "Quatre angles droits" },
+                { "id": "b", "label": "Trois côtés" },
+                { "id": "c", "label": "Un angle de 360°" },
+                { "id": "d", "label": "Aucun côté parallèle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un cercle partagé par une droite en deux parties égales donne deux :",
+              "options": [
+                { "id": "a", "label": "Demi-cercles" },
+                { "id": "b", "label": "Triangles" },
+                { "id": "c", "label": "Rectangles" },
+                { "id": "d", "label": "Losanges" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Combien de côtés parallèles deux à deux a un rectangle ?",
+              "options": [
+                { "id": "a", "label": "4 côtés (deux paires)" },
+                { "id": "b", "label": "2 côtés seulement" },
+                { "id": "c", "label": "0" },
+                { "id": "d", "label": "6" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un losange est aussi un :",
+              "options": [
+                { "id": "a", "label": "Parallélogramme" },
+                { "id": "b", "label": "Cercle" },
+                { "id": "c", "label": "Segment" },
+                { "id": "d", "label": "Angle seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Le périmètre d'un cercle de rayon r est proportionnel à :",
+              "options": [
+                { "id": "a", "label": "r" },
+                { "id": "b", "label": "Le nombre de sommets" },
+                { "id": "c", "label": "180° seulement" },
+                { "id": "d", "label": "Aucune grandeur" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un triangle dont un angle vaut 90° est :",
+              "options": [
+                { "id": "a", "label": "Rectangle" },
+                { "id": "b", "label": "Équilatéral" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Losange" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un carré de côté 7 cm a un périmètre de :",
+              "options": [
+                { "id": "a", "label": "14 cm" },
+                { "id": "b", "label": "21 cm" },
+                { "id": "c", "label": "28 cm" },
+                { "id": "d", "label": "49 cm" }
+              ],
+              "correctAnswers": ["c"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Les sommets d'un rectangle sont au nombre de :",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "2" },
+                { "id": "d", "label": "Illimité" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ne sont pas des polygones à côtés droits ?",
+              "options": [
+                { "id": "a", "label": "Cercle" },
+                { "id": "b", "label": "Carré" },
+                { "id": "c", "label": "Segment seul" },
+                { "id": "d", "label": "Rectangle" }
+              ],
+              "correctAnswers": ["a", "c"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un losange possède combien d'angles ?",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "2" },
+                { "id": "d", "label": "1" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Dans un carré, les côtés consécutifs sont :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "c", "label": "De longueurs différentes" },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un triangle obtusangle possède un angle :",
+              "options": [
+                { "id": "a", "label": "Plus grand qu'un angle droit" },
+                { "id": "b", "label": "Toujours nul" },
+                { "id": "c", "label": "Égal à 360°" },
+                { "id": "d", "label": "Égal à 0° seulement" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le rayon et le diamètre d'un même cercle vérifient d = :",
+              "options": [
+                { "id": "a", "label": "2r" },
+                { "id": "b", "label": "r/2" },
+                { "id": "c", "label": "r + 1" },
+                { "id": "d", "label": "r - 2" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un rectangle possède combien d'angles droits ?",
+              "options": [
+                { "id": "a", "label": "4" },
+                { "id": "b", "label": "2" },
+                { "id": "c", "label": "1" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un parallélogramme rectangle est un :",
+              "options": [
+                { "id": "a", "label": "Rectangle" },
+                { "id": "b", "label": "Triangle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Point seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Combien de sommets a un cercle ?",
+              "options": [
+                { "id": "a", "label": "Aucun sommet au sens polygone" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "3" },
+                { "id": "d", "label": "1 sommet angulaire" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un losange et un carré ont en commun :",
+              "options": [
+                { "id": "a", "label": "Quatre côtés de même longueur" },
+                { "id": "b", "label": "Trois côtés seulement" },
+                { "id": "c", "label": "Aucun côté" },
+                { "id": "d", "label": "Une forme circulaire" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "La figure formée de trois segments reliant trois points non alignés est un :",
+              "options": [
+                { "id": "a", "label": "Triangle" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Losange" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles affirmations sont vraies pour un carré ?",
+              "options": [
+                { "id": "a", "label": "C'est un rectangle" },
+                { "id": "b", "label": "C'est un losange" },
+                { "id": "c", "label": "C'est un triangle" },
+                { "id": "d", "label": "Ce n'est pas un quadrilatère" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un triangle acutangle a tous ses angles :",
+              "options": [
+                { "id": "a", "label": "Plus petits qu'un angle droit" },
+                { "id": "b", "label": "Égaux à 90°" },
+                { "id": "c", "label": "Égaux à 180°" },
+                { "id": "d", "label": "Absents" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Les côtés d'un rectangle opposés deux à deux sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires entre opposés" },
+                {
+                  "id": "c",
+                  "label": "Toujours de même longueur que les côtés consécutifs"
+                },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un disque est l'intérieur d'un :",
+              "options": [
+                { "id": "a", "label": "Cercle" },
+                { "id": "b", "label": "Triangle" },
+                { "id": "c", "label": "Segment" },
+                { "id": "d", "label": "Angle seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Combien de paires de côtés parallèles dans un losange ?",
+              "options": [
+                { "id": "a", "label": "2 paires" },
+                { "id": "b", "label": "0" },
+                { "id": "c", "label": "1 paire" },
+                { "id": "d", "label": "4 paires de côtés consécutifs" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un rectangle de côtés 5 cm et 5 cm est un :",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Triangle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Segment" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "La diagonale d'un carré de côté c est plus longue que :",
+              "options": [
+                { "id": "a", "label": "c" },
+                { "id": "b", "label": "0" },
+                {
+                  "id": "c",
+                  "label": "Le rayon d'un cercle quelconque toujours"
+                },
+                { "id": "d", "label": "Aucun segment" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un triangle isocèle a :",
+              "options": [
+                { "id": "a", "label": "Deux angles de même mesure à la base" },
+                { "id": "b", "label": "Quatre côtés" },
+                { "id": "c", "label": "Tous les angles droits" },
+                { "id": "d", "label": "La forme d'un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le périmètre d'un rectangle 4 cm sur 6 cm vaut :",
+              "options": [
+                { "id": "a", "label": "20 cm" },
+                { "id": "b", "label": "10 cm" },
+                { "id": "c", "label": "24 cm" },
+                { "id": "d", "label": "12 cm" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Un quadrilatère dont les quatre côtés sont égaux peut être :",
+              "options": [
+                { "id": "a", "label": "Un losange ou un carré" },
+                { "id": "b", "label": "Un triangle" },
+                { "id": "c", "label": "Un cercle" },
+                { "id": "d", "label": "Une droite" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures possèdent un centre de symétrie (au moins) ?",
+              "options": [
+                { "id": "a", "label": "Cercle" },
+                { "id": "b", "label": "Rectangle" },
+                { "id": "c", "label": "Triangle scalène général" },
+                { "id": "d", "label": "Segment seul" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de côtés a un triangle rectangle ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "2" },
+                { "id": "d", "label": "5" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Un carré possède combien de diagonales ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "1" },
+                { "id": "c", "label": "4" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Les angles opposés d'un parallélogramme sont :",
+              "options": [
+                { "id": "a", "label": "De même mesure" },
+                { "id": "b", "label": "Toujours droits" },
+                { "id": "c", "label": "Toujours 180°" },
+                { "id": "d", "label": "Inexistants" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Un point sur le cercle est à distance du centre :",
+              "options": [
+                { "id": "a", "label": "Égale au rayon" },
+                { "id": "b", "label": "Toujours nulle" },
+                { "id": "c", "label": "Double du diamètre toujours" },
+                { "id": "d", "label": "Inférieure au rayon toujours" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un losange possède combien de diagonales ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "3" },
+                { "id": "c", "label": "1" },
+                { "id": "d", "label": "0" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un triangle équilatéral possède combien de côtés égaux ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "2" },
+                { "id": "c", "label": "1" },
+                { "id": "d", "label": "4" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Le rectangle est un cas particulier de :",
+              "options": [
+                { "id": "a", "label": "Parallélogramme" },
+                { "id": "b", "label": "Cercle" },
+                { "id": "c", "label": "Demi-droite" },
+                { "id": "d", "label": "Angle seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un carré de côté 10 cm a un périmètre de :",
+              "options": [
+                { "id": "a", "label": "40 cm" },
+                { "id": "b", "label": "20 cm" },
+                { "id": "c", "label": "100 cm" },
+                { "id": "d", "label": "10 cm" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "La figure plane limitée par un arc de cercle fermé est un :",
+              "options": [
+                { "id": "a", "label": "Cercle (contour) / disque (intérieur)" },
+                { "id": "b", "label": "Triangle seulement" },
+                { "id": "c", "label": "Segment" },
+                { "id": "d", "label": "Rectangle obligatoire" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont quatre sommets ?",
+              "options": [
+                { "id": "a", "label": "Losange" },
+                { "id": "b", "label": "Carré" },
+                { "id": "c", "label": "Triangle" },
+                { "id": "d", "label": "Cercle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un triangle rectangle possède combien d'angles droits ?",
+              "options": [
+                { "id": "a", "label": "1" },
+                { "id": "b", "label": "2" },
+                { "id": "c", "label": "3" },
+                { "id": "d", "label": "4" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Dans un rectangle, deux côtés opposés ont :",
+              "options": [
+                { "id": "a", "label": "La même longueur" },
+                { "id": "b", "label": "Toujours des longueurs différentes" },
+                { "id": "c", "label": "Une longueur nulle" },
+                { "id": "d", "label": "Une forme circulaire" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un losange dont les diagonales sont perpendiculaires et de même longueur est un :",
+              "options": [
+                { "id": "a", "label": "Carré" },
+                { "id": "b", "label": "Triangle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Segment" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Combien de côtés a un triangle isocèle ?",
+              "options": [
+                { "id": "a", "label": "3" },
+                { "id": "b", "label": "4" },
+                { "id": "c", "label": "2" },
+                { "id": "d", "label": "5" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Le centre d'un cercle appartient :",
+              "options": [
+                { "id": "a", "label": "Au disque" },
+                { "id": "b", "label": "Uniquement à la circonférence" },
+                { "id": "c", "label": "Au triangle seulement" },
+                { "id": "d", "label": "Hors du plan" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un carré possède combien de côtés parallèles deux à deux ?",
+              "options": [
+                { "id": "a", "label": "4 (deux paires)" },
+                { "id": "b", "label": "0" },
+                { "id": "c", "label": "2 seulement" },
+                { "id": "d", "label": "1" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "La somme des angles d'un triangle est toujours :",
+              "options": [
+                { "id": "a", "label": "180°" },
+                { "id": "b", "label": "360°" },
+                { "id": "c", "label": "90°" },
+                { "id": "d", "label": "270°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un rectangle qui n'est pas carré a des côtés consécutifs :",
+              "options": [
+                { "id": "a", "label": "De longueurs généralement différentes" },
+                { "id": "b", "label": "Tous égaux" },
+                { "id": "c", "label": "Courbes" },
+                { "id": "d", "label": "Absents" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Parmi ces figures, la seule sans côté rectiligne est le :",
+              "options": [
+                { "id": "a", "label": "Cercle" },
+                { "id": "b", "label": "Carré" },
+                { "id": "c", "label": "Losange" },
+                { "id": "d", "label": "Triangle" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Droites et angles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels objets ne sont pas illimités des deux côtés ?",
+              "options": [
+                { "id": "a", "label": "Segment" },
+                { "id": "b", "label": "Droite" },
+                { "id": "c", "label": "Demi-droite" },
+                { "id": "d", "label": "Droite et demi-droite confondues" }
+              ],
+              "correctAnswers": ["a", "c"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Une droite est :",
+              "options": [
+                { "id": "a", "label": "Illimitée des deux côtés" },
+                { "id": "b", "label": "Limitée par un seul point" },
+                { "id": "c", "label": "Toujours un segment" },
+                { "id": "d", "label": "Toujours un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Un segment est une portion de droite :",
+              "options": [
+                { "id": "a", "label": "Comprise entre deux points" },
+                { "id": "b", "label": "Sans extrémité" },
+                { "id": "c", "label": "Courbe seulement" },
+                { "id": "d", "label": "Formant un angle de 360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Une demi-droite part d'un point et est :",
+              "options": [
+                { "id": "a", "label": "Illimitée d'un seul côté" },
+                { "id": "b", "label": "Fermée des deux côtés" },
+                { "id": "c", "label": "Un triangle" },
+                { "id": "d", "label": "Un rectangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Deux droites perpendiculaires forment des angles :",
+              "options": [
+                { "id": "a", "label": "Droits" },
+                { "id": "b", "label": "Toujours obtus" },
+                { "id": "c", "label": "De 180° seulement" },
+                { "id": "d", "label": "Inexistants" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Deux droites parallèles dans un plan :",
+              "options": [
+                { "id": "a", "label": "Ne se coupent pas" },
+                { "id": "b", "label": "Se coupent toujours en un point" },
+                { "id": "c", "label": "Sont perpendiculaires" },
+                { "id": "d", "label": "Forment un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un angle droit mesure :",
+              "options": [
+                { "id": "a", "label": "90°" },
+                { "id": "b", "label": "45°" },
+                { "id": "c", "label": "180°" },
+                { "id": "d", "label": "360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Le sommet d'un angle est :",
+              "options": [
+                { "id": "a", "label": "Le point commun aux deux demi-droites" },
+                { "id": "b", "label": "Le centre du cercle toujours" },
+                { "id": "c", "label": "Un sommet du losange seulement" },
+                { "id": "d", "label": "L'infini" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Deux segments perpendiculaires se coupent en formant :",
+              "options": [
+                { "id": "a", "label": "Un angle droit" },
+                { "id": "b", "label": "Un cercle" },
+                { "id": "c", "label": "Un triangle sans angle" },
+                { "id": "d", "label": "Deux droites parallèles" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Par un point extérieur à une droite, combien de parallèles à cette droite (dans le plan) ?",
+              "options": [
+                { "id": "a", "label": "Une seule" },
+                { "id": "b", "label": "Aucune" },
+                { "id": "c", "label": "Une infinité" },
+                { "id": "d", "label": "Exactement deux" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Dans un rectangle, quelles affirmations sont exactes ?",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "Deux côtés consécutifs sont perpendiculaires"
+                },
+                { "id": "b", "label": "Deux côtés opposés sont parallèles" },
+                {
+                  "id": "c",
+                  "label": "Deux côtés opposés sont perpendiculaires"
+                },
+                { "id": "d", "label": "Il n'y a aucun angle droit" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un angle plat mesure :",
+              "options": [
+                { "id": "a", "label": "180°" },
+                { "id": "b", "label": "90°" },
+                { "id": "c", "label": "60°" },
+                { "id": "d", "label": "30°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Deux droites qui se coupent en un point forment :",
+              "options": [
+                { "id": "a", "label": "Quatre angles" },
+                { "id": "b", "label": "Aucun angle" },
+                { "id": "c", "label": "Un cercle" },
+                { "id": "d", "label": "Un segment seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Le symbole ⊥ signifie :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaire" },
+                { "id": "b", "label": "Parallèle" },
+                { "id": "c", "label": "Cercle" },
+                { "id": "d", "label": "Triangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le symbole // signifie :",
+              "options": [
+                { "id": "a", "label": "Parallèle" },
+                { "id": "b", "label": "Perpendiculaire" },
+                { "id": "c", "label": "Angle droit" },
+                { "id": "d", "label": "Segment fermé" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un segment [AB] contient :",
+              "options": [
+                { "id": "a", "label": "Les points A, B et ceux entre eux" },
+                { "id": "b", "label": "Toute la droite (AB)" },
+                { "id": "c", "label": "Le cercle de centre A" },
+                { "id": "d", "label": "Aucun point" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "La demi-droite [AB) a pour origine :",
+              "options": [
+                { "id": "a", "label": "A" },
+                { "id": "b", "label": "B toujours" },
+                { "id": "c", "label": "Le milieu du segment seulement" },
+                { "id": "d", "label": "Le centre du cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Deux angles opposés par le sommet sont :",
+              "options": [
+                { "id": "a", "label": "De même mesure" },
+                { "id": "b", "label": "Toujours droits" },
+                { "id": "c", "label": "Toujours 360°" },
+                { "id": "d", "label": "Sans sommet" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un triangle rectangle possède un angle de :",
+              "options": [
+                { "id": "a", "label": "90°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "360°" },
+                { "id": "d", "label": "0°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Deux droites parallèles coupées par une sécante forment des angles :",
+              "options": [
+                { "id": "a", "label": "Alternes-internes égaux" },
+                { "id": "b", "label": "Tous de 90° obligatoirement" },
+                { "id": "c", "label": "Tous nuls" },
+                { "id": "d", "label": "Sans relation" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels objets géométriques sont illimités ?",
+              "options": [
+                { "id": "a", "label": "Droite" },
+                { "id": "b", "label": "Demi-droite" },
+                { "id": "c", "label": "Segment" },
+                { "id": "d", "label": "Cercle (circonférence)" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Deux angles complémentaires ont une somme de :",
+              "options": [
+                { "id": "a", "label": "90°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "360°" },
+                { "id": "d", "label": "45°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Deux angles supplémentaires ont une somme de :",
+              "options": [
+                { "id": "a", "label": "180°" },
+                { "id": "b", "label": "90°" },
+                { "id": "c", "label": "270°" },
+                { "id": "d", "label": "360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Si deux droites sont perpendiculaires, chaque angle formé mesure :",
+              "options": [
+                { "id": "a", "label": "90°" },
+                { "id": "b", "label": "45°" },
+                { "id": "c", "label": "180°" },
+                { "id": "d", "label": "60°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le milieu d'un segment [AB] est équidistant de :",
+              "options": [
+                { "id": "a", "label": "A et B" },
+                { "id": "b", "label": "Du centre du cercle seulement" },
+                { "id": "d", "label": "De l'infini" },
+                { "id": "c", "label": "D'aucun point" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Deux droites parallèles distinctes ont :",
+              "options": [
+                { "id": "a", "label": "La même direction" },
+                { "id": "b", "label": "Des directions perpendiculaires" },
+                { "id": "c", "label": "Toujours un point commun" },
+                { "id": "d", "label": "La forme d'un triangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un angle aigu mesure :",
+              "options": [
+                { "id": "a", "label": "Moins de 90°" },
+                { "id": "b", "label": "Exactement 180°" },
+                { "id": "c", "label": "Plus de 180°" },
+                { "id": "d", "label": "Exactement 360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un angle obtus mesure :",
+              "options": [
+                { "id": "a", "label": "Entre 90° et 180°" },
+                { "id": "b", "label": "Moins de 90°" },
+                { "id": "c", "label": "Exactement 0°" },
+                { "id": "d", "label": "Exactement 360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "La bissectrice d'un angle le partage en deux angles :",
+              "options": [
+                { "id": "a", "label": "De même mesure" },
+                { "id": "b", "label": "D'un toujours droit" },
+                { "id": "c", "label": "De 180° chacun" },
+                { "id": "d", "label": "Sans sommet" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Deux segments parallèles appartiennent à des droites :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Qui se coupent toujours" },
+                { "id": "d", "label": "Circulaires" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels angles sont droits ?",
+              "options": [
+                { "id": "a", "label": "Un angle de 90°" },
+                { "id": "b", "label": "Un angle de 45°" },
+                { "id": "c", "label": "L'angle d'un carré au sommet" },
+                { "id": "d", "label": "Un angle plat de 180°" }
+              ],
+              "correctAnswers": ["a", "c"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Trois points alignés appartiennent à la même :",
+              "options": [
+                { "id": "a", "label": "Droite" },
+                { "id": "b", "label": "Cercle obligatoirement" },
+                { "id": "c", "label": "Triangle" },
+                { "id": "d", "label": "Aire du losange" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Le point d'intersection de deux droites perpendiculaires est :",
+              "options": [
+                { "id": "a", "label": "Unique si les droites se coupent" },
+                { "id": "b", "label": "Toujours absent" },
+                { "id": "c", "label": "Le centre du cercle toujours" },
+                { "id": "d", "label": "Infini en nombre" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Un segment est contenu dans :",
+              "options": [
+                { "id": "a", "label": "Une droite" },
+                { "id": "b", "label": "Un cercle seulement" },
+                { "id": "c", "label": "Aucune droite" },
+                { "id": "d", "label": "Un triangle fermé seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Deux droites parallèles à une troisième droite sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles entre elles" },
+                { "id": "b", "label": "Perpendiculaires entre elles" },
+                { "id": "c", "label": "Toujours confondues" },
+                { "id": "d", "label": "Sécantes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "La mesure d'un angle ne dépend pas de :",
+              "options": [
+                { "id": "a", "label": "La longueur des côtés tracés" },
+                { "id": "b", "label": "L'ouverture entre les demi-droites" },
+                { "id": "c", "label": "Son sommet" },
+                { "id": "d", "label": "Son degré d'ouverture" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un angle de 30° est :",
+              "options": [
+                { "id": "a", "label": "Aigu" },
+                { "id": "b", "label": "Obtus" },
+                { "id": "c", "label": "Plat" },
+                { "id": "d", "label": "Plein" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un angle de 120° est :",
+              "options": [
+                { "id": "a", "label": "Obtus" },
+                { "id": "b", "label": "Aigu" },
+                { "id": "c", "label": "Droit" },
+                { "id": "d", "label": "Nul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Deux demi-droites [Ox) et [Oy) formant un angle droit sont :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "d", "label": "Confondues" },
+                { "id": "c", "label": "Sans sommet O" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Dans un carré, chaque angle intérieur est :",
+              "options": [
+                { "id": "a", "label": "Un angle droit" },
+                { "id": "b", "label": "Aigu seulement" },
+                { "id": "c", "label": "Obtus toujours" },
+                { "id": "d", "label": "Plat" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles droites d'un carré sont parallèles ?",
+              "options": [
+                { "id": "a", "label": "Deux côtés opposés" },
+                { "id": "b", "label": "Deux côtés consécutifs" },
+                { "id": "c", "label": "L'autre paire de côtés opposés" },
+                { "id": "d", "label": "Toutes les paires de côtés consécutifs" }
+              ],
+              "correctAnswers": ["a", "c"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Combien de points distincts suffisent pour déterminer une droite ?",
+              "options": [
+                { "id": "a", "label": "2" },
+                { "id": "b", "label": "1" },
+                { "id": "c", "label": "0" },
+                { "id": "d", "label": "5" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Deux points distincts déterminent :",
+              "options": [
+                { "id": "a", "label": "Un segment et une droite" },
+                { "id": "b", "label": "Un cercle unique toujours" },
+                { "id": "c", "label": "Rien" },
+                { "id": "d", "label": "Trois triangles" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Si l'angle (AOB) mesure 90°, les demi-droites [OA) et [OB) sont :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "c", "label": "Confondues" },
+                { "id": "d", "label": "Sans origine" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Un angle nul a une mesure de :",
+              "options": [
+                { "id": "a", "label": "0°" },
+                { "id": "b", "label": "90°" },
+                { "id": "c", "label": "180°" },
+                { "id": "d", "label": "360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Deux angles adjacents ont :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "Un côté commun et des sommets confondus"
+                },
+                { "id": "b", "label": "Aucun sommet" },
+                { "id": "c", "label": "Toujours 180° chacun" },
+                { "id": "d", "label": "La forme d'un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "La somme des angles autour d'un point (sans chevauchement) vaut :",
+              "options": [
+                { "id": "a", "label": "360°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "90°" },
+                { "id": "d", "label": "0°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Deux droites perpendiculaires à une même droite sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles entre elles" },
+                { "id": "b", "label": "Perpendiculaires entre elles" },
+                { "id": "c", "label": "Identiques toujours" },
+                { "id": "d", "label": "Sans direction" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le segment le plus court entre deux points est :",
+              "options": [
+                { "id": "a", "label": "Le segment [AB]" },
+                { "id": "b", "label": "Une demi-droite" },
+                { "id": "c", "label": "Une droite entière" },
+                { "id": "d", "label": "Un cercle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Dans le triangle rectangle, l'angle droit est :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "L'angle entre les deux côtés les plus courts adjacents"
+                },
+                { "id": "b", "label": "Toujours au centre du cercle" },
+                { "id": "c", "label": "Absent" },
+                { "id": "d", "label": "De 180°" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels couples d'angles ont une somme de 90° ?",
+              "options": [
+                { "id": "a", "label": "30° et 60°" },
+                { "id": "b", "label": "45° et 45°" },
+                { "id": "c", "label": "50° et 50°" },
+                { "id": "d", "label": "90° et 90°" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Deux droites qui se croisent sans être perpendiculaires forment des angles :",
+              "options": [
+                { "id": "a", "label": "Aigus et obtus" },
+                { "id": "b", "label": "Tous droits" },
+                { "id": "c", "label": "Tous plats" },
+                { "id": "d", "label": "Inexistants" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Le côté commun de deux angles adjacents est une :",
+              "options": [
+                { "id": "a", "label": "Demi-droite" },
+                { "id": "b", "label": "Cercle" },
+                { "id": "c", "label": "Aire du rectangle" },
+                { "id": "d", "label": "Diagonale du losange" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Tracer la perpendiculaire à une droite en un point donné donne :",
+              "options": [
+                { "id": "a", "label": "Une droite formant un angle droit" },
+                { "id": "b", "label": "Une droite parallèle identique" },
+                { "id": "c", "label": "Un cercle" },
+                { "id": "d", "label": "Un triangle seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Tracer la parallèle à une droite passant par un point donné donne :",
+              "options": [
+                { "id": "a", "label": "Une droite qui ne la coupe pas" },
+                {
+                  "id": "b",
+                  "label": "Une droite perpendiculaire obligatoire"
+                },
+                { "id": "c", "label": "Un segment fermé" },
+                { "id": "d", "label": "Un angle de 360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Les côtés d'un angle sont des :",
+              "options": [
+                { "id": "a", "label": "Demi-droites" },
+                { "id": "b", "label": "Cercles complets" },
+                { "id": "c", "label": "Rectangles" },
+                { "id": "d", "label": "Losanges" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Si deux droites parallèles sont coupées par une sécante, les angles correspondants sont :",
+              "options": [
+                { "id": "a", "label": "Égaux" },
+                { "id": "b", "label": "Toujours droits" },
+                { "id": "c", "label": "Toujours 180°" },
+                { "id": "d", "label": "Sans mesure" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Un angle plein mesure :",
+              "options": [
+                { "id": "a", "label": "360°" },
+                { "id": "b", "label": "180°" },
+                { "id": "c", "label": "90°" },
+                { "id": "d", "label": "0°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Deux segments [AB] et [CD] sont parallèles si leurs supports sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Confondus toujours" },
+                { "id": "d", "label": "Circulaires" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Dans un rectangle, un côté et une diagonale ne sont en général pas :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Sur le même plan" },
+                { "id": "c", "label": "Des segments" },
+                { "id": "d", "label": "Des parties de droites" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles relations peuvent exister entre deux droites d'un plan ?",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Sécantes" },
+                { "id": "c", "label": "Toujours perpendiculaires" },
+                { "id": "d", "label": "Toujours identiques" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un angle de 90° est aussi appelé :",
+              "options": [
+                { "id": "a", "label": "Angle droit" },
+                { "id": "b", "label": "Angle plat" },
+                { "id": "c", "label": "Angle plein" },
+                { "id": "d", "label": "Angle nul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "La notation (d1) // (d2) signifie que les droites d1 et d2 sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Confondues toujours" },
+                { "id": "d", "label": "Des cercles" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "La notation (d1) ⊥ (d2) signifie que les droites d1 et d2 sont :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "c", "label": "Sans intersection" },
+                { "id": "d", "label": "Des triangles" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Deux angles opposés par le sommet sont formés quand :",
+              "options": [
+                { "id": "a", "label": "Deux droites se coupent" },
+                { "id": "b", "label": "Un cercle est tracé" },
+                { "id": "c", "label": "Un triangle n'a pas de sommet" },
+                { "id": "d", "label": "Un rectangle n'a pas d'angle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Si un angle mesure 35°, son angle complémentaire mesure :",
+              "options": [
+                { "id": "a", "label": "55°" },
+                { "id": "b", "label": "145°" },
+                { "id": "c", "label": "90°" },
+                { "id": "d", "label": "35°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Si un angle mesure 110°, son angle supplémentaire mesure :",
+              "options": [
+                { "id": "a", "label": "70°" },
+                { "id": "b", "label": "20°" },
+                { "id": "c", "label": "110°" },
+                { "id": "d", "label": "360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Les angles formés par deux droites perpendiculaires sont tous :",
+              "options": [
+                { "id": "a", "label": "Droits" },
+                { "id": "b", "label": "Aigus" },
+                { "id": "c", "label": "Obtus seulement" },
+                { "id": "d", "label": "Plats" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Un segment est plus court que :",
+              "options": [
+                { "id": "a", "label": "La demi-droite qui le prolonge" },
+                { "id": "b", "label": "Tout chemin toujours" },
+                { "id": "c", "label": "Lui-même strictement" },
+                { "id": "d", "label": "Le point A seul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Dans un losange, les côtés opposés sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Courbes" },
+                { "id": "d", "label": "Absents" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels outils servent à tracer un angle droit ?",
+              "options": [
+                { "id": "a", "label": "Équerre" },
+                { "id": "b", "label": "Rapporteur seul pour vérifier 90°" },
+                { "id": "c", "label": "Compas seul pour tracer l'angle" },
+                { "id": "d", "label": "Règle seule sans consigne" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Deux droites sécantes non perpendiculaires ont :",
+              "options": [
+                { "id": "a", "label": "Exactement un point d'intersection" },
+                { "id": "b", "label": "Aucun point commun" },
+                { "id": "c", "label": "Une infinité d'intersections" },
+                { "id": "d", "label": "Toujours deux intersections" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Le rapporteur sert à :",
+              "options": [
+                { "id": "a", "label": "Mesurer ou reporter un angle" },
+                { "id": "b", "label": "Tracer un cercle seulement" },
+                { "id": "c", "label": "Calculer un périmètre de carré" },
+                { "id": "d", "label": "Compter les sommets d'un triangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "La règle graduée permet de mesurer la longueur d'un :",
+              "options": [
+                { "id": "a", "label": "Segment" },
+                { "id": "b", "label": "Angle en degrés directement" },
+                { "id": "c", "label": "Cercle entier sans compas" },
+                { "id": "d", "label": "Sommet isolé" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Si (d) // (d') et (d') // (d''), alors (d) et (d'') sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires" },
+                { "id": "c", "label": "Toujours confondues" },
+                { "id": "d", "label": "Sécantes obligatoirement" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Un angle dont la mesure est 89° est :",
+              "options": [
+                { "id": "a", "label": "Aigu" },
+                { "id": "b", "label": "Obtus" },
+                { "id": "c", "label": "Plat" },
+                { "id": "d", "label": "Plein" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un angle dont la mesure est 91° est :",
+              "options": [
+                { "id": "a", "label": "Obtus" },
+                { "id": "b", "label": "Aigu" },
+                { "id": "c", "label": "Droit" },
+                { "id": "d", "label": "Nul" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Les angles alternes-internes entre parallèles sont :",
+              "options": [
+                { "id": "a", "label": "Égaux" },
+                { "id": "b", "label": "Toujours 90°" },
+                { "id": "c", "label": "Toujours supplémentaires" },
+                { "id": "d", "label": "Sans lien" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "Le point commun à une droite et une demi-droite incluse est :",
+              "options": [
+                {
+                  "id": "a",
+                  "label": "L'origine de la demi-droite si elle est sur la droite"
+                },
+                { "id": "b", "label": "Toujours deux points" },
+                { "id": "c", "label": "Le centre du cercle" },
+                { "id": "d", "label": "Impossible" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Deux droites parallèles et une sécante créent des angles qui permettent de prouver le :",
+              "options": [
+                { "id": "a", "label": "Parallélisme" },
+                { "id": "b", "label": "Volume du cube" },
+                { "id": "c", "label": "Périmètre du cercle exact" },
+                { "id": "d", "label": "Nombre de sommets du triangle" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quelles figures ont des paires de côtés parallèles ?",
+              "options": [
+                { "id": "a", "label": "Rectangle" },
+                { "id": "b", "label": "Losange" },
+                { "id": "c", "label": "Triangle" },
+                { "id": "d", "label": "Cercle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Un angle de 180° est un angle :",
+              "options": [
+                { "id": "a", "label": "Plat" },
+                { "id": "b", "label": "Aigu" },
+                { "id": "c", "label": "Droit" },
+                { "id": "d", "label": "Complet de 360°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "Deux demi-droites d'origine O forment un angle de sommet :",
+              "options": [
+                { "id": "a", "label": "O" },
+                { "id": "b", "label": "A toujours" },
+                { "id": "c", "label": "Au centre du rectangle" },
+                { "id": "d", "label": "Sans nom" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Si deux angles sont égaux et adjacents, leur bissectrice est :",
+              "options": [
+                { "id": "a", "label": "La demi-droite du côté commun" },
+                { "id": "b", "label": "Un cercle" },
+                { "id": "c", "label": "Toujours perpendiculaire au segment" },
+                { "id": "d", "label": "Parallèle au triangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Le compas sert surtout à tracer :",
+              "options": [
+                { "id": "a", "label": "Des cercles ou des arcs" },
+                { "id": "b", "label": "Des angles en degrés sans rapporteur" },
+                { "id": "c", "label": "Des droites parallèles seules" },
+                { "id": "d", "label": "Des rectangles sans règle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Deux segments perpendiculaires ont des supports :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaires" },
+                { "id": "b", "label": "Parallèles" },
+                { "id": "c", "label": "Circulaires" },
+                { "id": "d", "label": "Sans droite support" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Un triangle ne peut pas avoir deux angles droits car la somme dépasserait :",
+              "options": [
+                { "id": "a", "label": "180°" },
+                { "id": "b", "label": "90° seulement" },
+                { "id": "c", "label": "360° avant tout calcul" },
+                { "id": "d", "label": "0°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Les côtés opposés d'un parallélogramme rectangle (rectangle) sont :",
+              "options": [
+                { "id": "a", "label": "Parallèles" },
+                { "id": "b", "label": "Perpendiculaires entre opposés" },
+                {
+                  "id": "c",
+                  "label": "De même direction que les diagonales du cercle"
+                },
+                { "id": "d", "label": "Courbes" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "La distance d'un point à une droite est la longueur du segment :",
+              "options": [
+                { "id": "a", "label": "Perpendiculaire au point" },
+                { "id": "b", "label": "Parallèle à la droite" },
+                { "id": "c", "label": "Du centre du cercle" },
+                { "id": "d", "label": "Oblique quelconque toujours" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Deux angles formés par une sécante sur des parallèles et situés entre les parallèles d'un même côté sont :",
+              "options": [
+                { "id": "a", "label": "Supplémentaires" },
+                { "id": "b", "label": "Toujours 45°" },
+                { "id": "c", "label": "Toujours 90°" },
+                { "id": "d", "label": "Sans somme constante" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "prompt": "Quels énoncés décrivent un segment ?",
+              "options": [
+                { "id": "a", "label": "Portion de droite entre deux points" },
+                {
+                  "id": "b",
+                  "label": "Ensemble des points entre A et B inclus"
+                },
+                { "id": "c", "label": "Illimité des deux côtés" },
+                { "id": "d", "label": "Toujours un cercle" }
+              ],
+              "correctAnswers": ["a", "b"]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "prompt": "Une droite et une parallèle à elle ont :",
+              "options": [
+                { "id": "a", "label": "Aucun point commun ou sont confondues" },
+                { "id": "b", "label": "Toujours un angle droit entre elles" },
+                { "id": "c", "label": "Toujours deux intersections" },
+                { "id": "d", "label": "La forme d'un triangle" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "prompt": "L'angle entre le petit et le grand côté d'une équerre est :",
+              "options": [
+                { "id": "a", "label": "Un angle droit" },
+                { "id": "b", "label": "Un angle plat" },
+                { "id": "c", "label": "Un angle plein" },
+                { "id": "d", "label": "Toujours 60°" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "prompt": "Deux droites perpendiculaires découpent le plan en :",
+              "options": [
+                { "id": "a", "label": "Quatre régions" },
+                { "id": "b", "label": "Une seule région" },
+                { "id": "c", "label": "Aucune région" },
+                { "id": "d", "label": "Un cercle rempli" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "prompt": "Si un angle mesure 25°, il est :",
+              "options": [
+                { "id": "a", "label": "Aigu" },
+                { "id": "b", "label": "Obtus" },
+                { "id": "c", "label": "Plat" },
+                { "id": "d", "label": "Droit" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "prompt": "Si un angle mesure 90°, il est :",
+              "options": [
+                { "id": "a", "label": "Droit" },
+                { "id": "b", "label": "Aigu strictement" },
+                { "id": "c", "label": "Obtus" },
+                { "id": "d", "label": "Plat" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "prompt": "Les angles d'un triangle rectangle ont pour mesures possibles :",
+              "options": [
+                { "id": "a", "label": "90°, aigu, aigu" },
+                { "id": "b", "label": "Trois angles droits" },
+                { "id": "c", "label": "Trois angles plats" },
+                { "id": "d", "label": "360° au total seulement" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "prompt": "Deux parallèles coupées par une perpendiculaire commune forment des angles :",
+              "options": [
+                { "id": "a", "label": "Droits" },
+                { "id": "b", "label": "Toujours 45°" },
+                { "id": "c", "label": "Obtus seulement" },
+                { "id": "d", "label": "Sans mesure" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "prompt": "La demi-droite [AB) contient le point :",
+              "options": [
+                { "id": "a", "label": "A" },
+                { "id": "b", "label": "B seulement si B est avant A" },
+                { "id": "c", "label": "Aucun point" },
+                { "id": "d", "label": "Tous les points de la droite entière" }
+              ],
+              "correctAnswers": ["a"]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "prompt": "Pour montrer que deux droites sont parallèles, on peut utiliser des angles :",
+              "options": [
+                { "id": "a", "label": "Alternes-internes égaux" },
+                { "id": "b", "label": "Toujours supplémentaires à 360°" },
+                { "id": "c", "label": "Toujours nuls seuls" },
+                { "id": "d", "label": "Du cercle uniquement" }
+              ],
+              "correctAnswers": ["a"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

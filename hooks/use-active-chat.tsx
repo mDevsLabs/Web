@@ -30,6 +30,11 @@ import {
   isProfileAwaiting,
 } from "@/lib/ai/tools/account-status";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
+import { clearInFlightChat, markInFlightChat } from "@/lib/chat/in-flight";
+import {
+  GHOST_EXCLUDED_CHAT_TOOL_MESSAGE,
+  isGhostExcludedChatTool,
+} from "@/lib/chat/tool-policy";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
@@ -258,18 +263,8 @@ export function ActiveChatProvider({
     pendingToolsRef.current = tools;
   }, []);
   const togglePendingTool = useCallback((tool: ToolId) => {
-    if (tool === "imageGenerate" && isGhostModeRef.current) {
-      toast.error("La génération d'image est indisponible en Mode fantôme");
-      return;
-    }
-    if (tool === "updateAccountProfile" && isGhostModeRef.current) {
-      toast.error("La modification de profil est indisponible en Mode fantôme");
-      return;
-    }
-    if (tool === "updateProfilePicture" && isGhostModeRef.current) {
-      toast.error(
-        "Le changement de photo de profil est indisponible en Mode fantôme"
-      );
+    if (isGhostModeRef.current && isGhostExcludedChatTool(tool)) {
+      toast.error(GHOST_EXCLUDED_CHAT_TOOL_MESSAGE[tool]);
       return;
     }
     setPendingToolsState((prev) => {
@@ -668,7 +663,7 @@ export function ActiveChatProvider({
           ? []
           : isGhostModeRef.current
             ? pendingToolsRef.current.filter(
-                (t) => t !== "imageGenerate" && t !== "updateAccountProfile"
+                (tool) => !isGhostExcludedChatTool(tool)
               )
             : [...pendingToolsRef.current];
         if (!isToolApprovalContinuation && pendingToolsRef.current.length > 0) {
@@ -692,6 +687,7 @@ export function ActiveChatProvider({
           setTimeout(() => clearPendingCommand(), 0);
         }
 
+        markInFlightChat(request.id);
         return {
           body: {
             id: request.id,
@@ -724,7 +720,10 @@ export function ActiveChatProvider({
     if (status === "submitted" || status === "ready" || status === "error") {
       setWaitingStatus(undefined);
     }
-  }, [status, setWaitingStatus]);
+    if (status === "ready" || status === "error") {
+      clearInFlightChat(chatId);
+    }
+  }, [chatId, status, setWaitingStatus]);
 
   const lastLoadedChatIdRef = useRef<string | null>(null);
 

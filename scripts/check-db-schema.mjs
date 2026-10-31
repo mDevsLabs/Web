@@ -89,10 +89,59 @@ const REQUIRED_TABLES = [
   // Migration 0070 : plugins créés par le compte (serveur MCP ou OAuth).
   "UserPlugin",
   "UserPluginSecret",
+  // Migration 0072 : pages Markdown. Sans ces tables, /pages répond 42P01
+  // dès l'ouverture de l'éditeur.
+  "Page",
+  "PageRevision",
+  "PageMessage",
+  "PageProposal",
+  // Migration 0073 : progression Quizzly. Sans ces tables, /quizzly
+  // ne peut ni lire les cœurs ni enregistrer un quiz.
+  "QuizzlyProfile",
+  "QuizzlyQuizProgress",
+  "QuizzlyQuest",
+  // Migration 0074 : un signalement d'exercice ne peut pas s'enregistrer
+  // si la table manque.
+  "QuizzlyReport",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  // Migration 0072 : le verrou de révision et le rattachement projet sont
+  // relus à chaque enregistrement.
+  { column: "projectId", table: "Page" },
+  { column: "revision", table: "Page" },
+  { column: "customPrompt", table: "Page" },
+  { column: "modelId", table: "Page" },
+  { column: "content", table: "Page" },
+  { column: "source", table: "PageRevision" },
+  { column: "parts", table: "PageMessage" },
+  { column: "status", table: "PageProposal" },
+  { column: "baseHash", table: "PageProposal" },
+  { column: "ops", table: "PageProposal" },
+  // Migration 0073 : cœurs, année et quêtes sont relus à chaque écran Quizzly.
+  { column: "schoolYear", table: "QuizzlyProfile" },
+  { column: "yearChosen", table: "QuizzlyProfile" },
+  { column: "xp", table: "QuizzlyProfile" },
+  { column: "gems", table: "QuizzlyProfile" },
+  { column: "hearts", table: "QuizzlyProfile" },
+  { column: "quizId", table: "QuizzlyQuizProgress" },
+  { column: "passed", table: "QuizzlyQuizProgress" },
+  { column: "questKey", table: "QuizzlyQuest" },
+  // Migration 0075 : le Coach relit le modèle du compte et la dernière tentative.
+  { column: "modelId", table: "QuizzlyProfile" },
+  { column: "lastAttempt", table: "QuizzlyQuizProgress" },
+  // Migration 0074 : le signalement relit la question, la matière et le compte.
+  { column: "message", table: "QuizzlyReport" },
+  { column: "questionNumber", table: "QuizzlyReport" },
+  { column: "quizId", table: "QuizzlyReport" },
+  { column: "subjectId", table: "QuizzlyReport" },
+  { column: "userId", table: "QuizzlyReport" },
+  // Migration 0071 : sans ces colonnes, la barre latérale ne peut ni épingler,
+  // ni renommer, ni rouvrir la réflexion d'une recherche.
+  { column: "pinned", table: "MaiSearchQuery" },
+  { column: "reasoning", table: "MaiSearchQuery" },
+  { column: "title", table: "MaiSearchQuery" },
   // Migration 0069 : le PIN et sa version sont relus à chaque ouverture ; les
   // colonnes reset* portent la réinitialisation par e-mail. Une base
   // partiellement migrée doit être signalée AVANT le déploiement.
@@ -180,6 +229,11 @@ const REQUIRED_COLUMNS = [
   { column: "searchResultCount", table: "user_preferences" },
   { column: "searchSafetyLevel", table: "user_preferences" },
   { column: "searchSources", table: "user_preferences" },
+  // Migration 0076 : défauts des nouvelles Pages. Une colonne absente fait
+  // échouer la lecture des préférences en 42703, donc toute la page
+  // Paramètres.
+  { column: "pagesDefaultModel", table: "user_preferences" },
+  { column: "pagesDefaultPrompt", table: "user_preferences" },
   // Migration 0059 : typage des modèles (chat, audio, image) et fournisseur.
   { column: "type", table: "openrouter_models" },
   { column: "fournisseur", table: "openrouter_models" },

@@ -1,0 +1,2198 @@
+{
+  "id": "1ere-physique-chimie-02",
+  "year": "1ere",
+  "subject": "physique-chimie",
+  "title": "Mouvement et interactions",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lois de Newton",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Repères du mouvement",
+          "questions": [
+            {
+              "id": "u1-q01-n01",
+              "type": "multiple_choice",
+              "text": "Dans le modèle héliocentrique, quelles affirmations sont correctes ?",
+              "options": [
+                "La Terre est au centre",
+                "Les planètes décrivent des orbites elliptiques autour du Soleil",
+                "Le Soleil est au foyer des orbites",
+                "Le mouvement des planètes est décrit par Kepler"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Héliocentrisme : ellipses autour du Soleil ; les lois de Kepler quantifient ces trajectoires."
+            },
+            {
+              "id": "u1-q01-n02",
+              "type": "single_choice",
+              "text": "Un référentiel galiléen est un référentiel dans lequel :",
+              "options": [
+                "tout corps isolé a une trajectoire rectiligne uniforme",
+                "la vitesse est toujours nulle",
+                "les forces sont nulles partout",
+                "l'énergie est conservée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition : référentiel où un mobile sans interaction nette a un mouvement rectiligne uniforme (1re loi de Newton)."
+            },
+            {
+              "id": "u1-q01-n03",
+              "type": "single_choice",
+              "text": "La vitesse moyenne entre t=0 s et t=4 s pour un déplacement de +20 m sur l'axe (Ox) vaut :",
+              "options": ["5 m·s⁻¹", "20 m·s⁻¹", "80 m·s⁻¹", "0,25 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "v_moy = Δx/Δt = 20/4 = 5 m·s⁻¹."
+            },
+            {
+              "id": "u1-q01-n04",
+              "type": "single_choice",
+              "text": "L'accélération d'un mobile en MRUA avec v₀=0, a=2 m·s⁻² à t=3 s vaut :",
+              "options": ["2 m·s⁻²", "6 m·s⁻¹", "9 m", "0 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "En MRUA, a est constante et vaut 2 m·s⁻² à tout instant."
+            },
+            {
+              "id": "u1-q01-n05",
+              "type": "single_choice",
+              "text": "La position x(t)=3t² (SI) correspond à une accélération :",
+              "options": ["6 m·s⁻²", "3 m·s⁻²", "nulle", "variable"],
+              "correctAnswers": [0],
+              "explanation": "v=dx/dt=6t, a=dv/dt=6 m·s⁻² constante."
+            },
+            {
+              "id": "u1-q01-n06",
+              "type": "single_choice",
+              "text": "Un graphique x(t) linéaire indique un mouvement :",
+              "options": [
+                "rectiligne uniforme",
+                "uniformément accéléré",
+                "circulaire uniforme",
+                "au repos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x proportionnelle à t : vitesse constante, trajectoire rectiligne si l'axe est aligné avec le mouvement."
+            },
+            {
+              "id": "u1-q01-n07",
+              "type": "single_choice",
+              "text": "La norme de l'accélération centripète en mouvement circulaire uniforme de rayon R et vitesse v vaut :",
+              "options": ["v²/R", "v/R", "R/v²", "v·R"],
+              "correctAnswers": [0],
+              "explanation": "a_c = v²/R dirige vers le centre du cercle."
+            },
+            {
+              "id": "u1-q01-n08",
+              "type": "single_choice",
+              "text": "Convertir 72 km·h⁻¹ en m·s⁻¹ donne :",
+              "options": ["20 m·s⁻¹", "72 m·s⁻¹", "259,2 m·s⁻¹", "7,2 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "72/3,6 = 20 m·s⁻¹."
+            },
+            {
+              "id": "u1-q01-n09",
+              "type": "single_choice",
+              "text": "Le vecteur vitesse est toujours :",
+              "options": [
+                "tangent à la trajectoire",
+                "perpendiculaire à la trajectoire",
+                "dirigé vers le centre",
+                "horizontal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse est tangente à la courbe trajectoire au point considéré."
+            },
+            {
+              "id": "u1-q01-n10",
+              "type": "single_choice",
+              "text": "Un mobile parcourt 100 m en 10 s à vitesse constante. Sa vitesse vaut :",
+              "options": ["10 m·s⁻¹", "1000 m·s⁻¹", "1 m·s⁻¹", "50 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "v = 100/10 = 10 m·s⁻¹."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Première loi de Newton",
+          "questions": [
+            {
+              "id": "u1-q02-n01",
+              "type": "multiple_choice",
+              "text": "La première loi de Newton (principe d'inertie) implique que :",
+              "options": [
+                "sans force nette, v reste constante",
+                "ΣF=0 ⟺ repos ou MRU",
+                "le repos est le seul état naturel",
+                "l'inertie dépend de la vitesse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Inertie : interaction nette nulle ⇔ vitesse constante (repos ou MRU)."
+            },
+            {
+              "id": "u1-q02-n02",
+              "type": "single_choice",
+              "text": "Un passager non ceinturé est projeté vers l'avant au freinage à cause de :",
+              "options": [
+                "son inertie",
+                "une force fictive réelle",
+                "la gravité seule",
+                "l'absence de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps tend à conserver sa vitesse (inertie) dans le référentiel du véhicule qui ralentit."
+            },
+            {
+              "id": "u1-q02-n03",
+              "type": "single_choice",
+              "text": "La masse inerte quantifie :",
+              "options": [
+                "la résistance à la variation de vitesse",
+                "le poids sur Terre",
+                "le volume du corps",
+                "la force gravitationnelle exercée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus m est grande, plus il faut de force pour la même accélération (ΣF=ma)."
+            },
+            {
+              "id": "u1-q02-n04",
+              "type": "single_choice",
+              "text": "Un palet sur air table sans frottement, non poussé, :",
+              "options": [
+                "reste au repos ou en MRU",
+                "accélère toujours",
+                "ralentit",
+                "tourne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interaction nette nulle ⇒ principe d'inertie."
+            },
+            {
+              "id": "u1-q02-n05",
+              "type": "single_choice",
+              "text": "Le référentiel terrestre est approximativement galiléen pour :",
+              "options": [
+                "des durées courtes et échelles modestes",
+                "toute durée astronomique",
+                "uniquement au pôle",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coriolis et rotation deviennent sensibles sur longues durées ou grandes distances."
+            },
+            {
+              "id": "u1-q02-n06",
+              "type": "single_choice",
+              "text": "Une bille lancée horizontalement dans le vide (sans frottement) :",
+              "options": [
+                "parabole si g vertical",
+                "cercle",
+                "droite horizontale sans chute",
+                "reste suspendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement composé : MRU horizontal et chute libre verticale."
+            },
+            {
+              "id": "u1-q02-n07",
+              "type": "single_choice",
+              "text": "« Un corps persévère dans son état » signifie que sans cause extérieure nette :",
+              "options": [
+                "v ne change pas",
+                "x reste nulle",
+                "a vaut g",
+                "p est constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État de repos ou de MRU tant que la somme des forces extérieures est nulle."
+            },
+            {
+              "id": "u1-q02-n08",
+              "type": "single_choice",
+              "text": "L'unité SI de la masse est :",
+              "options": [
+                "le kilogramme",
+                "le newton",
+                "le joule",
+                "le pascal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kg est l'unité de base SI pour la masse."
+            },
+            {
+              "id": "u1-q02-n09",
+              "type": "single_choice",
+              "text": "Deux forces égales opposées sur un même corps donnent :",
+              "options": [
+                "accélération nulle",
+                "accélération double",
+                "rotation obligatoire",
+                "vitesse infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ΣF=0 ⇒ inertie : pas de changement de vitesse."
+            },
+            {
+              "id": "u1-q02-n10",
+              "type": "single_choice",
+              "text": "Le principe d'inertie a été formulé clairement par :",
+              "options": ["Newton", "Archimède", "Dalton", "Avogadro"],
+              "correctAnswers": [0],
+              "explanation": "Newton énonce les trois lois du mouvement dans les Principia (1687)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Deuxième loi de Newton",
+          "questions": [
+            {
+              "id": "u1-q03-n01",
+              "type": "multiple_choice",
+              "text": "La relation fondamentale de la dynamique (RFD) implique :",
+              "options": [
+                "ΣF⃗ = m a⃗",
+                "a = ΣF/m si m ≠ 0",
+                "F⃗ = m v⃗",
+                "a⃗ = m ΣF⃗"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forme vectorielle ΣF=ma ; à masse constante, l'accélération est proportionnelle à la force résultante."
+            },
+            {
+              "id": "u1-q03-n02",
+              "type": "single_choice",
+              "text": "Un corps de masse 2 kg subit ΣF=6 N. Son accélération vaut :",
+              "options": ["3 m·s⁻²", "12 m·s⁻²", "0,33 m·s⁻²", "6 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "a = ΣF/m = 6/2 = 3 m·s⁻²."
+            },
+            {
+              "id": "u1-q03-n03",
+              "type": "single_choice",
+              "text": "Le newton (N) correspond à :",
+              "options": ["1 kg·m·s⁻²", "1 kg·m·s⁻¹", "1 J·s", "1 kg·m²"],
+              "correctAnswers": [0],
+              "explanation": "1 N = 1 kg·m·s⁻² par définition de la force dans le SI."
+            },
+            {
+              "id": "u1-q03-n04",
+              "type": "single_choice",
+              "text": "Pour doubler l'accélération d'un objet à masse fixe, il faut :",
+              "options": [
+                "doubler la force nette",
+                "diviser la force par 2",
+                "doubler la masse",
+                "rien changer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a proportionnelle à ΣF si m constante."
+            },
+            {
+              "id": "u1-q03-n05",
+              "type": "single_choice",
+              "text": "Un mobile de 500 g soumis à 2 N (net) a pour a :",
+              "options": ["4 m·s⁻²", "2 m·s⁻²", "0,004 m·s⁻²", "1000 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "m=0,5 kg ⇒ a=2/0,5=4 m·s⁻²."
+            },
+            {
+              "id": "u1-q03-n06",
+              "type": "single_choice",
+              "text": "Le diagramme des forces sert à :",
+              "options": [
+                "représenter toutes les forces sur le système",
+                "mesurer la vitesse",
+                "calculer l'énergie",
+                "tracer la trajectoire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On isole le système et on dessine les forces extérieures pour appliquer ΣF=ma."
+            },
+            {
+              "id": "u1-q03-n07",
+              "type": "single_choice",
+              "text": "En chute libre (négligeant frottements), a vaut environ :",
+              "options": [
+                "9,8 m·s⁻² vers le bas",
+                "0 m·s⁻²",
+                "9,8 m·s⁻² vers le haut",
+                "dépend de la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les corps tombent avec la même accélération g en l'absence de résistance de l'air."
+            },
+            {
+              "id": "u1-q03-n08",
+              "type": "single_choice",
+              "text": "Projeter ΣF⃗ et a⃗ sur un axe (Ox) donne :",
+              "options": [
+                "ΣFx = m ax",
+                "ΣFx = m vx",
+                "Fx = a",
+                "ΣFx = 0 toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La RFD est vectorielle ; chaque composante vérifie ΣFx = m ax."
+            },
+            {
+              "id": "u1-q03-n09",
+              "type": "single_choice",
+              "text": "Si ΣF=0 alors :",
+              "options": ["a=0", "v=0 obligatoirement", "m=0", "F=mg toujours"],
+              "correctAnswers": [0],
+              "explanation": "Accélération nulle ; la vitesse peut être non nulle (MRU)."
+            },
+            {
+              "id": "u1-q03-n10",
+              "type": "single_choice",
+              "text": "Une force nette de 10 N sur m=5 kg pendant 2 s (partant du repos) donne v finale :",
+              "options": ["4 m·s⁻¹", "20 m·s⁻¹", "2 m·s⁻¹", "10 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "a=2 m·s⁻² ; v=at=4 m·s⁻¹."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Troisième loi de Newton",
+          "questions": [
+            {
+              "id": "u1-q04-n01",
+              "type": "multiple_choice",
+              "text": "Principe des actions réciproques :",
+              "options": [
+                "forces par paires égales et opposées",
+                "agissent sur deux corps différents",
+                "forces sur le même corps",
+                "forces de contact uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "A exerce sur B une force égale et opposée à celle de B sur A, sur la même ligne d'action mais sur des corps distincts."
+            },
+            {
+              "id": "u1-q04-n02",
+              "type": "single_choice",
+              "text": "La Terre attire une pomme avec 1 N. La pomme attire la Terre avec :",
+              "options": ["1 N", "une force négligeable", "0 N", "g fois plus"],
+              "correctAnswers": [0],
+              "explanation": "3e loi : forces réciproques de même norme."
+            },
+            {
+              "id": "u1-q04-n03",
+              "type": "single_choice",
+              "text": "La réaction du sol sur un livre posé s'appelle :",
+              "options": ["force normale", "tension", "poids", "frottement"],
+              "correctAnswers": [0],
+              "explanation": "Contact : le sol pousse le livre perpendiculairement à la surface."
+            },
+            {
+              "id": "u1-q04-n04",
+              "type": "single_choice",
+              "text": "Deux forces action-réaction peuvent-elles s'annuler dans ΣF sur un corps ?",
+              "options": [
+                "non, elles agissent sur deux corps",
+                "oui toujours",
+                "oui si même point",
+                "seulement en vol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne somme que les forces extérieures sur le système choisi."
+            },
+            {
+              "id": "u1-q04-n05",
+              "type": "single_choice",
+              "text": "Un astronaute pousse une station : il recule car :",
+              "options": [
+                "la station le pousse en retour",
+                "il n'y a pas de gravité",
+                "sa masse disparaît",
+                "c'est une force fictive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action-réaction entre astronaute et station dans l'espace."
+            },
+            {
+              "id": "u1-q04-n06",
+              "type": "single_choice",
+              "text": "La tension d'une corde idéale exerce sur chaque extrémité :",
+              "options": [
+                "des forces de même norme",
+                "des forces nulles",
+                "le poids",
+                "une force normale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle corde : même tension aux deux bouts (masse négligeable)."
+            },
+            {
+              "id": "u1-q04-n07",
+              "type": "single_choice",
+              "text": "Le poids P⃗ et la force exercée par la Terre sur le corps sont :",
+              "options": [
+                "la même interaction gravitationnelle",
+                "deux forces indépendantes",
+                "toujours perpendiculaires",
+                "nulles en orbite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P⃗ = m g⃗ modélise l'attraction terrestre sur le corps."
+            },
+            {
+              "id": "u1-q04-n08",
+              "type": "single_choice",
+              "text": "Marcher : le pied pousse le sol vers l'arrière, le sol :",
+              "options": [
+                "pousse le pied vers l'avant",
+                "ne réagit pas",
+                "attire le pied",
+                "exerce seulement le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction du sol (frottement statique) propulse le marcheur."
+            },
+            {
+              "id": "u1-q04-n09",
+              "type": "single_choice",
+              "text": "Les forces réciproques ont des durées :",
+              "options": ["identiques", "différentes", "nulles", "inconnues"],
+              "correctAnswers": [0],
+              "explanation": "Elles existent simultanément tant que l'interaction dure."
+            },
+            {
+              "id": "u1-q04-n10",
+              "type": "single_choice",
+              "text": "Sur un diagramme, la force du fil sur la masse et celle de la masse sur le fil :",
+              "options": [
+                "ne sont pas sur le même système",
+                "s'annulent sur la masse",
+                "sont parallèles même sens",
+                "n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'une est extérieure à la masse, l'autre au fil : systèmes distincts."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Poids et gravitation",
+          "questions": [
+            {
+              "id": "u1-q05-n01",
+              "type": "multiple_choice",
+              "text": "Le poids d'un corps près de la Terre :",
+              "options": [
+                "P = m g",
+                "dépend de la masse",
+                "est identique à la masse",
+                "s'exprime en kg"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "P=mg (N) ; même g, plus m est grand plus P est grand. Masse et poids ne se confondent pas."
+            },
+            {
+              "id": "u1-q05-n02",
+              "type": "single_choice",
+              "text": "g ≈ 9,8 m·s⁻² ; masse 60 kg ⇒ poids ≈ :",
+              "options": ["588 N", "60 N", "6 N", "980 N"],
+              "correctAnswers": [0],
+              "explanation": "P = 60 × 9,8 ≈ 588 N."
+            },
+            {
+              "id": "u1-q05-n03",
+              "type": "single_choice",
+              "text": "Une balance à ressort mesure :",
+              "options": [
+                "le poids",
+                "la masse directement sans calibration",
+                "l'énergie",
+                "la vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mesure la force de contact liée au poids (calibrée en kg sur Terre)."
+            },
+            {
+              "id": "u1-q05-n04",
+              "type": "single_choice",
+              "text": "En apesanteur apparente en chute libre (sans air), le poids apparent vaut :",
+              "options": ["0", "mg", "2mg", "infini"],
+              "correctAnswers": [0],
+              "explanation": "Corps et support tombent ensemble : plus de réaction normale."
+            },
+            {
+              "id": "u1-q05-n05",
+              "type": "single_choice",
+              "text": "La masse gravitationnelle et la masse inerte sont :",
+              "options": [
+                "égales en mécanique newtonienne",
+                "sans rapport",
+                "inversement proportionnelles",
+                "mesurées en newtons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe d'équivalence : même m dans F=ma et F gravitationnelle."
+            },
+            {
+              "id": "u1-q05-n06",
+              "type": "single_choice",
+              "text": "Sur la Lune, g plus faible ⇒ même masse a un poids :",
+              "options": ["plus faible", "identique", "plus grand", "nul"],
+              "correctAnswers": [0],
+              "explanation": "P=mg : g lunaire ≈ 1,6 m·s⁻²."
+            },
+            {
+              "id": "u1-q05-n07",
+              "type": "single_choice",
+              "text": "Le vecteur g⃗ est dirigé :",
+              "options": [
+                "vers le centre de la Terre (local)",
+                "vers le nord",
+                "tangente au sol",
+                "vers le haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ de pesanteur radial vers le centre planétaire localement."
+            },
+            {
+              "id": "u1-q05-n08",
+              "type": "single_choice",
+              "text": "Un objet de 2 kg a un poids de 19,6 N. g vaut :",
+              "options": ["9,8 m·s⁻²", "39,2 m·s⁻²", "4,9 m·s⁻²", "19,6 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "g = P/m = 19,6/2 = 9,8 m·s⁻²."
+            },
+            {
+              "id": "u1-q05-n09",
+              "type": "single_choice",
+              "text": "La force gravitationnelle entre deux masses est :",
+              "options": [
+                "attractive",
+                "répulsive",
+                "nulle",
+                "horizontale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi de gravitation universelle : attraction proportionnelle aux masses."
+            },
+            {
+              "id": "u1-q05-n10",
+              "type": "single_choice",
+              "text": "À altitude croissante (modèle local), g :",
+              "options": [
+                "diminue légèrement",
+                "augmente",
+                "reste exactement 9,81",
+                "devient négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'éloigne du centre terrestre : intensité du champ diminue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Forces de contact et frottement",
+          "questions": [
+            {
+              "id": "u1-q06-n01",
+              "type": "multiple_choice",
+              "text": "Le frottement sec obéit souvent à :",
+              "options": [
+                "f ≤ μ N",
+                "f = μ N en glissement",
+                "f toujours nul",
+                "f indépendant de N"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repos : f s'adapte jusqu'à μ_s N ; glissement : f ≈ μ_d N."
+            },
+            {
+              "id": "u1-q06-n02",
+              "type": "single_choice",
+              "text": "μ sans dimension car :",
+              "options": [
+                "f et N ont même unité",
+                "c'est une énergie",
+                "c'est une masse",
+                "c'est une vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "μ = f/N : rapport de deux forces, sans unité."
+            },
+            {
+              "id": "u1-q06-n03",
+              "type": "single_choice",
+              "text": "Force normale sur plan horizontal, bloc au repos, poids P :",
+              "options": ["N = P", "N = 0", "N = μ P", "N = ma"],
+              "correctAnswers": [0],
+              "explanation": "Pas d'accélération verticale ⇒ N compense P."
+            },
+            {
+              "id": "u1-q06-n04",
+              "type": "single_choice",
+              "text": "Frottement fluide à basse vitesse ∝ souvent :",
+              "options": ["v", "v²", "1/v", "constant"],
+              "correctAnswers": [0],
+              "explanation": "Modèle linéaire Stokes pour petites vitesses."
+            },
+            {
+              "id": "u1-q06-n05",
+              "type": "single_choice",
+              "text": "Tension d'une corde : direction :",
+              "options": [
+                "le long de la corde",
+                "perpendiculaire",
+                "verticale toujours",
+                "aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde inextensible : force tirante colinéaire à la corde."
+            },
+            {
+              "id": "u1-q06-n06",
+              "type": "single_choice",
+              "text": "Bloc sur plan incliné angle θ : composante du poids le long du plan :",
+              "options": ["mg sin θ", "mg cos θ", "mg tan θ", "mg"],
+              "correctAnswers": [0],
+              "explanation": "Projection du poids sur l'axe parallèle au plan incliné."
+            },
+            {
+              "id": "u1-q06-n07",
+              "type": "single_choice",
+              "text": "Le frottement de glissement s'oppose :",
+              "options": [
+                "au mouvement relatif",
+                "au poids",
+                "à la normale",
+                "toujours au nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction opposée au glissement entre surfaces."
+            },
+            {
+              "id": "u1-q06-n08",
+              "type": "single_choice",
+              "text": "Sans frottement, un bloc sur plan incliné lisse :",
+              "options": [
+                "accélère le long du plan",
+                "reste immobile",
+                "monte seul",
+                "flotte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composante mg sin θ non compensée ⇒ accélération."
+            },
+            {
+              "id": "u1-q06-n09",
+              "type": "single_choice",
+              "text": "Réaction normale et poids ne sont pas action-réaction car :",
+              "options": [
+                "même corps, forces différentes origines",
+                "forces égales",
+                "même direction",
+                "n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids : Terre sur corps ; N : sol sur corps — deux interactions."
+            },
+            {
+              "id": "u1-q06-n10",
+              "type": "single_choice",
+              "text": "μ = 0,4, N = 50 N, glissement ⇒ f ≈ :",
+              "options": ["20 N", "125 N", "0,4 N", "50 N"],
+              "correctAnswers": [0],
+              "explanation": "f = μ N = 0,4 × 50 = 20 N."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Plan incliné et équilibre",
+          "questions": [
+            {
+              "id": "u1-q07-n01",
+              "type": "multiple_choice",
+              "text": "Équilibre d'un solide sur plan incliné sans glissement :",
+              "options": [
+                "ΣF = 0",
+                "f statique compense composante du poids",
+                "N = mg sin θ",
+                "a ≠ 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repos : somme nulle ; frottement statique équilibre mg sin θ le long du plan."
+            },
+            {
+              "id": "u1-q07-n02",
+              "type": "single_choice",
+              "text": "N sur plan incliné θ (bloc au repos) vaut :",
+              "options": ["mg cos θ", "mg sin θ", "mg", "0"],
+              "correctAnswers": [0],
+              "explanation": "Pas d'accélération perpendiculaire au plan ⇒ N = mg cos θ."
+            },
+            {
+              "id": "u1-q07-n03",
+              "type": "single_choice",
+              "text": "Angle limite de glissement tan θ_max = :",
+              "options": ["μ_s", "μ_d", "1/μ_s", "sin θ"],
+              "correctAnswers": [0],
+              "explanation": "Au seuil : mg sin θ = μ_s mg cos θ ⇒ tan θ = μ_s."
+            },
+            {
+              "id": "u1-q07-n04",
+              "type": "single_choice",
+              "text": "Deux masses M et m en Atwood : accélération a = :",
+              "options": ["(M-m)g/(M+m)", "g", "0", "(M+m)g"],
+              "correctAnswers": [0],
+              "explanation": "Système à deux corps : a = (M-m)g/(M+m) pour M>m."
+            },
+            {
+              "id": "u1-q07-n05",
+              "type": "single_choice",
+              "text": "Équilibre stable : petite perturbation ⇒",
+              "options": [
+                "retour à l'équilibre",
+                "éloignement définitif",
+                "explosion",
+                "vitesse lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces de rappel ramènent le système vers la position d'équilibre."
+            },
+            {
+              "id": "u1-q07-n06",
+              "type": "single_choice",
+              "text": "Bloc 5 kg, θ=30°, g=10 ⇒ composante poids le long plan ≈ :",
+              "options": ["25 N", "43 N", "50 N", "5 N"],
+              "correctAnswers": [0],
+              "explanation": "mg sin 30° = 50 × 0,5 = 25 N."
+            },
+            {
+              "id": "u1-q07-n07",
+              "type": "single_choice",
+              "text": "Trois forces concourantes en équilibre : somme vectorielle :",
+              "options": [
+                "nulle",
+                "maximale",
+                "égale au poids seul",
+                "infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condition d'équilibre translation : ΣF⃗ = 0."
+            },
+            {
+              "id": "u1-q07-n08",
+              "type": "single_choice",
+              "text": "Modèle « fil sans masse » implique :",
+              "options": [
+                "même tension partout",
+                "tension nulle",
+                "pas de force",
+                "corde infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masse négligeable ⇒ pas d'accélération propre de la corde."
+            },
+            {
+              "id": "u1-q07-n09",
+              "type": "single_choice",
+              "text": "Sur plan horizontal, tirer bloc avec T horizontal, μ=0,2, m=10 kg, g=10 : f = :",
+              "options": ["20 N", "100 N", "2 N", "0 N"],
+              "correctAnswers": [0],
+              "explanation": "N=100 N, f=μN=20 N en glissement."
+            },
+            {
+              "id": "u1-q07-n10",
+              "type": "single_choice",
+              "text": "Le choix du système en mécanique sert à :",
+              "options": [
+                "appliquer ΣF=ma au bon objet",
+                "ignorer les forces",
+                "fixer g",
+                "mesurer l'énergie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On trace les forces extérieures au système isolé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mouvement circulaire",
+          "questions": [
+            {
+              "id": "u1-q08-n01",
+              "type": "multiple_choice",
+              "text": "Mouvement circulaire uniforme (MCU) :",
+              "options": [
+                "|v| constant",
+                "accélération centripète non nulle",
+                "accélération nulle",
+                "force nette nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vitesse tangentielle constante mais direction change ⇒ a_c = v²/R."
+            },
+            {
+              "id": "u1-q08-n02",
+              "type": "single_choice",
+              "text": "Période T et fréquence f vérifient :",
+              "options": ["f = 1/T", "f = T", "f = T²", "f = 2πT"],
+              "correctAnswers": [0],
+              "explanation": "Définition : f = 1/T (Hz)."
+            },
+            {
+              "id": "u1-q08-n03",
+              "type": "single_choice",
+              "text": "v = 2πR/T car :",
+              "options": ["distance 2πR en temps T", "R/T", "T/R", "π seul"],
+              "correctAnswers": [0],
+              "explanation": "Un tour complet : longueur 2πR parcourue en T."
+            },
+            {
+              "id": "u1-q08-n04",
+              "type": "single_choice",
+              "text": "Force centripète est :",
+              "options": [
+                "la résultante vers le centre",
+                "une 4e loi",
+                "toujours le poids",
+                "tangente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom de la force nette radiale inward en trajectoire circulaire."
+            },
+            {
+              "id": "u1-q08-n05",
+              "type": "single_choice",
+              "text": "R=5 m, v=10 m·s⁻¹ ⇒ a_c = :",
+              "options": ["20 m·s⁻²", "2 m·s⁻²", "50 m·s⁻²", "100 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "a_c = v²/R = 100/5 = 20 m·s⁻²."
+            },
+            {
+              "id": "u1-q08-n06",
+              "type": "single_choice",
+              "text": "Satellite en orbite circulaire : force centripète fournie par :",
+              "options": [
+                "gravitation",
+                "moteur continu",
+                "normale",
+                "tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attraction gravitationnelle vers le centre de la planète."
+            },
+            {
+              "id": "u1-q08-n07",
+              "type": "single_choice",
+              "text": "En MCU, l'accélération est :",
+              "options": [
+                "perpendiculaire à v",
+                "parallèle à v",
+                "nulle",
+                "constante nulle en norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a_c perpendiculaire à v (radiale)."
+            },
+            {
+              "id": "u1-q08-n08",
+              "type": "single_choice",
+              "text": "f = 2 Hz ⇒ T = :",
+              "options": ["0,5 s", "2 s", "4 s", "π s"],
+              "correctAnswers": [0],
+              "explanation": "T = 1/f = 0,5 s."
+            },
+            {
+              "id": "u1-q08-n09",
+              "type": "single_choice",
+              "text": "Virage en voiture : frottement lateral joue rôle de :",
+              "options": [
+                "force centripète",
+                "force centrifuge réelle",
+                "poids",
+                "énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement routier orienté vers l'intérieur du virage (si pas de dérapage)."
+            },
+            {
+              "id": "u1-q08-n10",
+              "type": "single_choice",
+              "text": "Double v ⇒ a_c multipliée par :",
+              "options": ["4", "2", "8", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "a_c ∝ v² : (2v)² = 4 v²."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Applications RFD",
+          "questions": [
+            {
+              "id": "u1-q09-n01",
+              "type": "multiple_choice",
+              "text": "Chute avec frottement air ∝ v : à régime permanent :",
+              "options": ["v limite constante", "a = 0", "a = g", "v = 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand f = mg, ΣF=0 ⇒ vitesse limite et accélération nulle."
+            },
+            {
+              "id": "u1-q09-n02",
+              "type": "single_choice",
+              "text": "Projectile lancé vitesse v₀ angle α : portée parfaite sans air dépend de :",
+              "options": ["v₀, α, g", "masse seule", "couleur", "T seulement"],
+              "correctAnswers": [0],
+              "explanation": "Cinématique du projectile : paramètres v₀, α, g."
+            },
+            {
+              "id": "u1-q09-n03",
+              "type": "single_choice",
+              "text": "MRUA v = v₀ + at avec v₀=5, a=2, t=3 ⇒ v = :",
+              "options": ["11 m·s⁻¹", "6 m·s⁻¹", "15 m·s⁻¹", "8 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "v = 5 + 6 = 11 m·s⁻¹."
+            },
+            {
+              "id": "u1-q09-n04",
+              "type": "single_choice",
+              "text": "x = v₀t + ½at² avec v₀=0, a=4, t=2 ⇒ x = :",
+              "options": ["8 m", "4 m", "16 m", "2 m"],
+              "correctAnswers": [0],
+              "explanation": "x = 0,5 × 4 × 4 = 8 m."
+            },
+            {
+              "id": "u1-q09-n05",
+              "type": "single_choice",
+              "text": "v² = v₀² + 2ax avec v₀=0, a=3, x=6 ⇒ v = :",
+              "options": ["6 m·s⁻¹", "3 m·s⁻¹", "9 m·s⁻¹", "18 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "v² = 36 ⇒ v = 6 m·s⁻¹."
+            },
+            {
+              "id": "u1-q09-n06",
+              "type": "single_choice",
+              "text": "Système Terre-lune : centre de masse :",
+              "options": [
+                "proche du centre terrestre",
+                "au milieu exact",
+                "sur la Lune",
+                "au Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M_T >> M_L : barycentre légèrement décalé de la Terre."
+            },
+            {
+              "id": "u1-q09-n07",
+              "type": "single_choice",
+              "text": "Force résultante constante parallèle au mouvement ⇒ :",
+              "options": ["MRUA", "MRU", "repos", "MCU obligatoire"],
+              "correctAnswers": [0],
+              "explanation": "a constante ⇒ mouvement uniformément accéléré."
+            },
+            {
+              "id": "u1-q09-n08",
+              "type": "single_choice",
+              "text": "Graphique v(t) linéaire pente 2 ⇒ a = :",
+              "options": ["2 m·s⁻²", "2 m·s⁻¹", "0", "4 m·s⁻²"],
+              "correctAnswers": [0],
+              "explanation": "Pente de v(t) = accélération."
+            },
+            {
+              "id": "u1-q09-n09",
+              "type": "single_choice",
+              "text": "Deux forces 3 N et 4 N perpendiculaires : module résultante :",
+              "options": ["5 N", "7 N", "1 N", "12 N"],
+              "correctAnswers": [0],
+              "explanation": "Pythagore : √(9+16) = 5 N."
+            },
+            {
+              "id": "u1-q09-n10",
+              "type": "single_choice",
+              "text": "Unité de a dans SI :",
+              "options": ["m·s⁻²", "m·s⁻¹", "N", "J"],
+              "correctAnswers": [0],
+              "explanation": "Accélération : mètre par seconde carrée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse Newton",
+          "questions": [
+            {
+              "id": "u1-q10-n01",
+              "type": "multiple_choice",
+              "text": "Les trois lois de Newton permettent de :",
+              "options": [
+                "relier forces et mouvement",
+                "prévoir trajectoires si forces connues",
+                "remplacer conservation énergie toujours",
+                "ignorer le référentiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dynamique newtonienne : ΣF=ma + choix référentiel galiléen ; l'énergie est un autre outil."
+            },
+            {
+              "id": "u1-q10-n02",
+              "type": "single_choice",
+              "text": "Impulsion J = F Δt modifie :",
+              "options": [
+                "la quantité de mouvement",
+                "la masse",
+                "g",
+                "la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème : Δp = J (approche première)."
+            },
+            {
+              "id": "u1-q10-n03",
+              "type": "single_choice",
+              "text": "Quantité de mouvement p = :",
+              "options": ["mv", "ma", "½mv²", "mgh"],
+              "correctAnswers": [0],
+              "explanation": "p⃗ = m v⃗ (kg·m·s⁻¹)."
+            },
+            {
+              "id": "u1-q10-n04",
+              "type": "single_choice",
+              "text": "Système isolé : ΣF_ext = 0 ⇒ p_total :",
+              "options": ["conservée", "nulle", "double", "aléatoire"],
+              "correctAnswers": [0],
+              "explanation": "Conservation de la quantité de mouvement."
+            },
+            {
+              "id": "u1-q10-n05",
+              "type": "single_choice",
+              "text": "Collision élastique 1D : se conservent :",
+              "options": ["p et Ec", "masse seule", "température", "volume"],
+              "correctAnswers": [0],
+              "explanation": "Chocs élastiques : énergie cinétique et quantité de mouvement."
+            },
+            {
+              "id": "u1-q10-n06",
+              "type": "single_choice",
+              "text": "Fusée : éjection des gaz ⇒ propulsion par :",
+              "options": [
+                "action-réaction",
+                "gravité seule",
+                "magie",
+                "frottement air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3e loi : gaz poussés vers l'arrière, fusée vers l'avant."
+            },
+            {
+              "id": "u1-q10-n07",
+              "type": "single_choice",
+              "text": "1 kN vaut :",
+              "options": ["1000 N", "100 N", "10 N", "1 N"],
+              "correctAnswers": [0],
+              "explanation": "kilo = 10³ : 1 kN = 1000 N."
+            },
+            {
+              "id": "u1-q10-n08",
+              "type": "single_choice",
+              "text": "Dynamique en SI utilise principalement :",
+              "options": ["m, kg, s", "cm, g, min", "lb, ft", "L, mol"],
+              "correctAnswers": [0],
+              "explanation": "Système international : kg, m, s pour mécanique."
+            },
+            {
+              "id": "u1-q10-n09",
+              "type": "single_choice",
+              "text": "Force de 100 N pendant 0,2 s : impulsion = :",
+              "options": ["20 N·s", "500 N·s", "0,002 N·s", "100 N·s"],
+              "correctAnswers": [0],
+              "explanation": "J = FΔt = 100 × 0,2 = 20 N·s."
+            },
+            {
+              "id": "u1-q10-n10",
+              "type": "single_choice",
+              "text": "Modéliser un skieur : on inclut souvent :",
+              "options": [
+                "poids, normale, frottement",
+                "uniquement poids",
+                "aucune force",
+                "force centrifuge réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces de contact et pesanteur dominent sur la pente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Énergie mécanique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Travail d'une force",
+          "questions": [
+            {
+              "id": "u2-q01-n01",
+              "type": "multiple_choice",
+              "text": "Le travail d'une force constante F sur déplacement Δx colinéaire :",
+              "options": [
+                "W = F Δx",
+                "s'exprime en joules",
+                "W = F/Δx",
+                "dépend du temps seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "W = F·Δx (J) si F parallèle au déplacement ; 1 J = 1 N·m."
+            },
+            {
+              "id": "u2-q01-n02",
+              "type": "single_choice",
+              "text": "Force 20 N, déplacement 3 m même sens : W = :",
+              "options": ["60 J", "23 J", "17 J", "600 J"],
+              "correctAnswers": [0],
+              "explanation": "W = 20 × 3 = 60 J."
+            },
+            {
+              "id": "u2-q01-n03",
+              "type": "single_choice",
+              "text": "Force perpendiculaire au déplacement : travail :",
+              "options": ["nul", "maximal", "négatif toujours", "infini"],
+              "correctAnswers": [0],
+              "explanation": "W = F d cos 90° = 0."
+            },
+            {
+              "id": "u2-q01-n04",
+              "type": "single_choice",
+              "text": "Travail moteur :",
+              "options": ["W > 0", "W < 0 toujours", "W = 0", "interdit"],
+              "correctAnswers": [0],
+              "explanation": "Force favorise le déplacement (composante de F dans le sens du mouvement > 0)."
+            },
+            {
+              "id": "u2-q01-n05",
+              "type": "single_choice",
+              "text": "Travail du poids en montée verticale h :",
+              "options": ["-mgh", "mgh", "0", "2mgh"],
+              "correctAnswers": [0],
+              "explanation": "Poids opposé au déplacement ascendant : W_P = -mgh."
+            },
+            {
+              "id": "u2-q01-n06",
+              "type": "single_choice",
+              "text": "Unité SI du travail :",
+              "options": ["joule", "watt", "newton", "pascal"],
+              "correctAnswers": [0],
+              "explanation": "1 J = 1 N·m."
+            },
+            {
+              "id": "u2-q01-n07",
+              "type": "single_choice",
+              "text": "F = 10 N, angle 60° avec déplacement 2 m : W = :",
+              "options": ["10 J", "20 J", "5 J", "0 J"],
+              "correctAnswers": [0],
+              "explanation": "W = F d cos 60° = 10 × 2 × 0,5 = 10 J."
+            },
+            {
+              "id": "u2-q01-n08",
+              "type": "single_choice",
+              "text": "Travail résistant :",
+              "options": ["W < 0", "W > 0", "toujours nul", "sans unité"],
+              "correctAnswers": [0],
+              "explanation": "Force opposée au déplacement : travail négatif."
+            },
+            {
+              "id": "u2-q01-n09",
+              "type": "single_choice",
+              "text": "Graphique F(x) : travail = :",
+              "options": ["aire sous courbe", "pente", "ordonnée", "périmètre"],
+              "correctAnswers": [0],
+              "explanation": "W = ∫ F dx : aire entre courbe et axe x."
+            },
+            {
+              "id": "u2-q01-n10",
+              "type": "single_choice",
+              "text": "Le travail dépend :",
+              "options": [
+                "du chemin suivi",
+                "uniquement de la vitesse instantanée seule",
+                "de la masse seule",
+                "jamais de la force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeur liée au déplacement et aux forces le long du trajet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Énergie cinétique",
+          "questions": [
+            {
+              "id": "u2-q02-n01",
+              "type": "multiple_choice",
+              "text": "Énergie cinétique :",
+              "options": [
+                "Ec = ½ mv²",
+                "augmente avec v²",
+                "Ec = mgh",
+                "s'exprime en watts"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ec en joules ; double la vitesse quadruple Ec."
+            },
+            {
+              "id": "u2-q02-n02",
+              "type": "single_choice",
+              "text": "m=2 kg, v=3 m·s⁻¹ ⇒ Ec = :",
+              "options": ["9 J", "6 J", "18 J", "3 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = 0,5 × 2 × 9 = 9 J."
+            },
+            {
+              "id": "u2-q02-n03",
+              "type": "single_choice",
+              "text": "Théorème de l'énergie cinétique : ΔEc = :",
+              "options": ["W total des forces", "W du poids seul", "0", "mgh"],
+              "correctAnswers": [0],
+              "explanation": "ΔEc = ΣW des forces extérieures (travail résultant)."
+            },
+            {
+              "id": "u2-q02-n04",
+              "type": "single_choice",
+              "text": "Vitesse double ⇒ Ec multipliée par :",
+              "options": ["4", "2", "8", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Ec ∝ v²."
+            },
+            {
+              "id": "u2-q02-n05",
+              "type": "single_choice",
+              "text": "Mobile au repos a Ec :",
+              "options": ["nulle", "mgh", "infinie", "mg"],
+              "correctAnswers": [0],
+              "explanation": "v=0 ⇒ Ec=0."
+            },
+            {
+              "id": "u2-q02-n06",
+              "type": "single_choice",
+              "text": "W = 50 J sur m=5 kg partant du repos ⇒ v = :",
+              "options": ["√20 m·s⁻¹", "10 m·s⁻¹", "5 m·s⁻¹", "2 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "½mv²=50 ⇒ v²=20 ⇒ v=√20 m·s⁻¹."
+            },
+            {
+              "id": "u2-q02-n07",
+              "type": "single_choice",
+              "text": "Ec est toujours :",
+              "options": ["≥ 0", "≤ 0", "négative", "complexe"],
+              "correctAnswers": [0],
+              "explanation": "v² ≥ 0 ⇒ Ec ≥ 0."
+            },
+            {
+              "id": "u2-q02-n08",
+              "type": "single_choice",
+              "text": "1 kJ vaut :",
+              "options": ["1000 J", "100 J", "10 J", "1 J"],
+              "correctAnswers": [0],
+              "explanation": "kilo = 10³ joules."
+            },
+            {
+              "id": "u2-q02-n09",
+              "type": "single_choice",
+              "text": "Freinage : travail du frottement sur Ec :",
+              "options": ["diminue Ec", "augmente Ec", "inchangé", "double m"],
+              "correctAnswers": [0],
+              "explanation": "Travail résistant convertit Ec en chaleur."
+            },
+            {
+              "id": "u2-q02-n10",
+              "type": "single_choice",
+              "text": "Deux masses même v : Ec ratio m₁/m₂ = :",
+              "options": ["m₁/m₂", "v²", "1/m", "0"],
+              "correctAnswers": [0],
+              "explanation": "Ec proportionnelle à m à v fixée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Énergie potentielle de pesanteur",
+          "questions": [
+            {
+              "id": "u2-q03-n01",
+              "type": "multiple_choice",
+              "text": "Énergie potentielle gravitationnelle près de la Terre :",
+              "options": [
+                "Ep = mgh",
+                "dépend du niveau de référence",
+                "Ep = ½mv²",
+                "toujours négative"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ep relative : choix h=0 fixe la constante ; variations ΔEp = mgΔh."
+            },
+            {
+              "id": "u2-q03-n02",
+              "type": "single_choice",
+              "text": "m=3 kg, h=4 m, g=10 ⇒ Ep = :",
+              "options": ["120 J", "12 J", "40 J", "30 J"],
+              "correctAnswers": [0],
+              "explanation": "Ep = 3 × 10 × 4 = 120 J."
+            },
+            {
+              "id": "u2-q03-n03",
+              "type": "single_choice",
+              "text": "Descendre de h : variation Ep :",
+              "options": ["-mgh", "+mgh", "0", "2mgh"],
+              "correctAnswers": [0],
+              "explanation": "h diminue ⇒ Ep diminue de mgh."
+            },
+            {
+              "id": "u2-q03-n04",
+              "type": "single_choice",
+              "text": "Travail du poids en chute h :",
+              "options": ["+mgh", "-mgh", "0", "-2mgh"],
+              "correctAnswers": [0],
+              "explanation": "Poids moteur sur descente : W = +mgh."
+            },
+            {
+              "id": "u2-q03-n05",
+              "type": "single_choice",
+              "text": "Ep double si :",
+              "options": [
+                "h double à m fixe",
+                "v double",
+                "g nul",
+                "m divisée par 2 seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ep ∝ h (à g et m constants)."
+            },
+            {
+              "id": "u2-q03-n06",
+              "type": "single_choice",
+              "text": "Référence Ep au sol : bloc à 2 m :",
+              "options": ["Ep = 2mg", "Ep = 0", "Ep = -2mg", "Ep = mg/2"],
+              "correctAnswers": [0],
+              "explanation": "h mesurée depuis le sol choisi zéro."
+            },
+            {
+              "id": "u2-q03-n07",
+              "type": "single_choice",
+              "text": "Force conservative : travail sur circuit fermé :",
+              "options": ["nul", "maximal", "2mgh", "infini"],
+              "correctAnswers": [0],
+              "explanation": "Poids et gravitation : travail indépendant du chemin en Δ entre deux points."
+            },
+            {
+              "id": "u2-q03-n08",
+              "type": "single_choice",
+              "text": "Frottement sec : force :",
+              "options": [
+                "non conservative",
+                "conservative",
+                "sans travail",
+                "toujours nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail de frottement dépend du chemin ; dissipation thermique."
+            },
+            {
+              "id": "u2-q03-n09",
+              "type": "single_choice",
+              "text": "ΔEp = 30 J pour m=2 kg, g=10 ⇒ Δh = :",
+              "options": ["1,5 m", "3 m", "15 m", "0,15 m"],
+              "correctAnswers": [0],
+              "explanation": "Δh = ΔEp/(mg) = 30/20 = 1,5 m."
+            },
+            {
+              "id": "u2-q03-n10",
+              "type": "single_choice",
+              "text": "Lancer vertical : en sommet v=0, Ep max si :",
+              "options": [
+                "référence au point de lancement",
+                "référence au sommet",
+                "sans référence",
+                "Ep toujours max partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie mécanique se redistribue ; au sommet Ec=0 donc Em=Ep max relativement au bas."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Énergie mécanique",
+          "questions": [
+            {
+              "id": "u2-q04-n01",
+              "type": "multiple_choice",
+              "text": "Énergie mécanique Em :",
+              "options": [
+                "Em = Ec + Ep",
+                "conservée si forces non dissipatives seules",
+                "Em = F·d",
+                "toujours croissante"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Somme Ec+Ep ; conservation si pas de frottement/travail externe dissipatif."
+            },
+            {
+              "id": "u2-q04-n02",
+              "type": "single_choice",
+              "text": "Ec=40 J, Ep=60 J ⇒ Em = :",
+              "options": ["100 J", "20 J", "2400 J", "50 J"],
+              "correctAnswers": [0],
+              "explanation": "Em = 40 + 60 = 100 J."
+            },
+            {
+              "id": "u2-q04-n03",
+              "type": "single_choice",
+              "text": "Chute libre sans air : Em :",
+              "options": [
+                "constante",
+                "nulle",
+                "diminue",
+                "double chaque seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul poids (conservatif) : Em conservée."
+            },
+            {
+              "id": "u2-q04-n04",
+              "type": "single_choice",
+              "text": "Avec frottement : Em :",
+              "options": ["diminue", "augmente", "constante", "infinie"],
+              "correctAnswers": [0],
+              "explanation": "Énergie dissipée en chaleur."
+            },
+            {
+              "id": "u2-q04-n05",
+              "type": "single_choice",
+              "text": "Pendule sans frottement : Em entre deux positions :",
+              "options": [
+                "identique",
+                "nulle au milieu",
+                "max au repos",
+                "aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion Ec ↔ Ep à Em constante."
+            },
+            {
+              "id": "u2-q04-n06",
+              "type": "single_choice",
+              "text": "m=1 kg, v=4 m·s⁻¹, h=3 m, g=10 : Em = :",
+              "options": ["38 J", "8 J", "30 J", "68 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec=8 J, Ep=30 J, Em=38 J."
+            },
+            {
+              "id": "u2-q04-n07",
+              "type": "single_choice",
+              "text": "Graphique Ep+Ec vs t sans dissipation :",
+              "options": [
+                "droite horizontale",
+                "parabole",
+                "décroissante",
+                "circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Em constante ⇒ somme constante dans le temps."
+            },
+            {
+              "id": "u2-q04-n08",
+              "type": "single_choice",
+              "text": "Au plus bas du pendule sans frottement :",
+              "options": ["Ec max", "Ep max", "Em nulle", "v nulle"],
+              "correctAnswers": [0],
+              "explanation": "h minimale ⇒ Ep min, Ec max."
+            },
+            {
+              "id": "u2-q04-n09",
+              "type": "single_choice",
+              "text": "Conservation Em : ΔEc + ΔEp = :",
+              "options": ["0", "Em", "W frottement", "mg"],
+              "correctAnswers": [0],
+              "explanation": "Échanges entre formes sans perte."
+            },
+            {
+              "id": "u2-q04-n10",
+              "type": "single_choice",
+              "text": "Travail externe +50 J sur système sans dissipation augmente Em de :",
+              "options": ["50 J", "0", "-50 J", "25 J"],
+              "correctAnswers": [0],
+              "explanation": "W_ext = ΔEm si pas de pertes internes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Puissance",
+          "questions": [
+            {
+              "id": "u2-q05-n01",
+              "type": "multiple_choice",
+              "text": "Puissance mécanique :",
+              "options": [
+                "P = W/Δt",
+                "P = F·v en cas colinéaire",
+                "P s'exprime en joules",
+                "P = mv"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Watt = J/s ; si F // v, P = Fv."
+            },
+            {
+              "id": "u2-q05-n02",
+              "type": "single_choice",
+              "text": "W=200 J en 4 s ⇒ P = :",
+              "options": ["50 W", "800 W", "0,02 W", "200 W"],
+              "correctAnswers": [0],
+              "explanation": "P = 200/4 = 50 W."
+            },
+            {
+              "id": "u2-q05-n03",
+              "type": "single_choice",
+              "text": "1 kW = :",
+              "options": ["1000 W", "100 W", "1 W", "10 W"],
+              "correctAnswers": [0],
+              "explanation": "kilo watt = 10³ W."
+            },
+            {
+              "id": "u2-q05-n04",
+              "type": "single_choice",
+              "text": "F=100 N, v=2 m·s⁻¹ même sens : P = :",
+              "options": ["200 W", "50 W", "102 W", "0 W"],
+              "correctAnswers": [0],
+              "explanation": "P = Fv = 200 W."
+            },
+            {
+              "id": "u2-q05-n05",
+              "type": "single_choice",
+              "text": "Moteur 60 W pendant 10 s fournit W = :",
+              "options": ["600 J", "6 J", "6000 J", "60 J"],
+              "correctAnswers": [0],
+              "explanation": "W = PΔt = 600 J."
+            },
+            {
+              "id": "u2-q05-n06",
+              "type": "single_choice",
+              "text": "Cheval-vapeur approximatif : 1 ch ≈ :",
+              "options": ["736 W", "100 W", "1000 W", "1 W"],
+              "correctAnswers": [0],
+              "explanation": "Unité historique ≈ 736 W."
+            },
+            {
+              "id": "u2-q05-n07",
+              "type": "single_choice",
+              "text": "Puissance instantanée grande signifie :",
+              "options": [
+                "travail fourni rapidement",
+                "grande énergie stockée",
+                "vitesse nulle",
+                "force nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P élevé : même travail en moins de temps."
+            },
+            {
+              "id": "u2-q05-n08",
+              "type": "single_choice",
+              "text": "Grimper vite même hauteur : puissance :",
+              "options": [
+                "plus grande",
+                "plus petite",
+                "nulle",
+                "identique en W si même masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même W=mgh mais Δt plus petit ⇒ P plus grand."
+            },
+            {
+              "id": "u2-q05-n09",
+              "type": "single_choice",
+              "text": "Unité SI puissance :",
+              "options": ["watt", "joule", "newton", "hertz"],
+              "correctAnswers": [0],
+              "explanation": "W = J/s."
+            },
+            {
+              "id": "u2-q05-n10",
+              "type": "single_choice",
+              "text": "P=0 signifie :",
+              "options": [
+                "pas de transfert énergétique (instantané)",
+                "Em infinie",
+                "v infinie",
+                "F infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de travail par unité de temps (ex. repos ou F perpendiculaire à v)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Rendement et conversions",
+          "questions": [
+            {
+              "id": "u2-q06-n01",
+              "type": "multiple_choice",
+              "text": "Rendement η d'un système :",
+              "options": [
+                "η = énergie utile / énergie reçue",
+                "0 ≤ η ≤ 1 souvent",
+                "η toujours > 1",
+                "sans dimension en % possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fraction de l'énergie convertie utilement ; pertes thermiques limitent η."
+            },
+            {
+              "id": "u2-q06-n02",
+              "type": "single_choice",
+              "text": "Reçoit 500 J, utile 200 J : η = :",
+              "options": ["0,40", "2,5", "0,20", "0,60"],
+              "correctAnswers": [0],
+              "explanation": "η = 200/500 = 0,40 soit 40 %."
+            },
+            {
+              "id": "u2-q06-n03",
+              "type": "single_choice",
+              "text": "Freinage : Ec devient surtout :",
+              "options": ["chaleur", "Ep", "lumière seule", "masse"],
+              "correctAnswers": [0],
+              "explanation": "Dissipation par frottement : transfert thermique."
+            },
+            {
+              "id": "u2-q06-n04",
+              "type": "single_choice",
+              "text": "η = 80 %, W reçu 1000 J ⇒ utile :",
+              "options": ["800 J", "1250 J", "200 J", "80 J"],
+              "correctAnswers": [0],
+              "explanation": "0,8 × 1000 = 800 J."
+            },
+            {
+              "id": "u2-q06-n05",
+              "type": "single_choice",
+              "text": "Pertes d'énergie mécanique avec frottement vont souvent en :",
+              "options": [
+                "énergie interne",
+                "Ec additionnelle",
+                "travail nul",
+                "masse perdue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échauffement des surfaces et de l'air."
+            },
+            {
+              "id": "u2-q06-n06",
+              "type": "single_choice",
+              "text": "Machine idéale sans perte : η = :",
+              "options": ["1", "0", "infini", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "Modèle théorique : toute l'énergie reçue est utile."
+            },
+            {
+              "id": "u2-q06-n07",
+              "type": "single_choice",
+              "text": "Convertir 1 kWh en J :",
+              "options": ["3,6×10⁶ J", "1000 J", "360 J", "10⁶ J"],
+              "correctAnswers": [0],
+              "explanation": "1 kWh = 1000 W × 3600 s = 3,6 MJ."
+            },
+            {
+              "id": "u2-q06-n08",
+              "type": "single_choice",
+              "text": "Ressort comprimé stocke :",
+              "options": [
+                "énergie potentielle élastique",
+                "Ec seule",
+                "chaleur seule",
+                "quantité de mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deformation élastique : Ep élastique (hors programme détaillé mais notion première)."
+            },
+            {
+              "id": "u2-q06-n09",
+              "type": "single_choice",
+              "text": "Batterie alimente moteur : chaîne :",
+              "options": [
+                "chimique → électrique → mécanique",
+                "mécanique → chimique direct",
+                "sans pertes",
+                "nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversions successives avec rendement global < 1."
+            },
+            {
+              "id": "u2-q06-n10",
+              "type": "single_choice",
+              "text": "η exprimé en pourcentage 25 % vaut :",
+              "options": ["0,25", "25", "2,5", "250"],
+              "correctAnswers": [0],
+              "explanation": "25 % = 25/100 = 0,25 en fraction."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Applications conservation",
+          "questions": [
+            {
+              "id": "u2-q07-n01",
+              "type": "multiple_choice",
+              "text": "Lancer oblique sans air : au sommet :",
+              "options": [
+                "v_y = 0",
+                "Ec minimale pour composante verticale",
+                "Em conservée",
+                "Ep nulle toujours"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Composante verticale nulle au sommet ; Em constante sans frottement."
+            },
+            {
+              "id": "u2-q07-n02",
+              "type": "single_choice",
+              "text": "Glissade sans frottement de h=5 m, g=10 : v au bas (v₀=0) = :",
+              "options": ["10 m·s⁻¹", "5 m·s⁻¹", "50 m·s⁻¹", "√50 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "mgh = ½mv² ⇒ v = √(2gh) = 10 m·s⁻¹."
+            },
+            {
+              "id": "u2-q07-n03",
+              "type": "single_choice",
+              "text": "m=2 kg lancé v=6 m·s⁻¹ : Ec = :",
+              "options": ["36 J", "12 J", "18 J", "6 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = 0,5 × 2 × 36 = 36 J."
+            },
+            {
+              "id": "u2-q07-n04",
+              "type": "single_choice",
+              "text": "Em=100 J, au point h Ep=40 J ⇒ Ec = :",
+              "options": ["60 J", "140 J", "40 J", "100 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = Em - Ep = 60 J."
+            },
+            {
+              "id": "u2-q07-n05",
+              "type": "single_choice",
+              "text": "Saut à l'élastique (modèle sans pertes) : Em :",
+              "options": [
+                "constante",
+                "nulle",
+                "double à chaque rebond",
+                "perdue totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle conservatif : Ec+Ep+Ep_elastique constante."
+            },
+            {
+              "id": "u2-q07-n06",
+              "type": "single_choice",
+              "text": "Double h en chute libre sans v₀ ⇒ v final multipliée par :",
+              "options": ["√2", "2", "4", "1"],
+              "correctAnswers": [0],
+              "explanation": "v = √(2gh) ∝ √h."
+            },
+            {
+              "id": "u2-q07-n07",
+              "type": "single_choice",
+              "text": "Bloc ressort : v max quand :",
+              "options": [
+                "Ep ressort min (souvent position équilibre)",
+                "Ep max",
+                "au repos initial",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion maximale Ep_el → Ec au passage équilibre (modèle usuel)."
+            },
+            {
+              "id": "u2-q07-n08",
+              "type": "single_choice",
+              "text": "Travail net 0 sur trajet : ΔEc = :",
+              "options": ["0", "Em", "mgh", "infini"],
+              "correctAnswers": [0],
+              "explanation": "Théorème Ec : ΔEc = W_net."
+            },
+            {
+              "id": "u2-q07-n09",
+              "type": "single_choice",
+              "text": "Masse dans Em conservation disparaît si on compare vitesses chute libre :",
+              "options": [
+                "v indépendante de m",
+                "v ∝ m",
+                "v ∝ 1/m",
+                "v nulle gros m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v = √(2gh) sans dépendance à m."
+            },
+            {
+              "id": "u2-q07-n10",
+              "type": "single_choice",
+              "text": "Mesurer h et v en bas permet de vérifier :",
+              "options": [
+                "conservation Em (sans frottement)",
+                "masse atomique",
+                "charge",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mgh ≈ ½mv² si négligeable dissipation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Forces et énergie",
+          "questions": [
+            {
+              "id": "u2-q08-n01",
+              "type": "multiple_choice",
+              "text": "Lien force conservative et Ep :",
+              "options": [
+                "F = -dEp/dx (1D)",
+                "travail = -ΔEp",
+                "F toujours dissipative",
+                "Ep = Fv"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dérivée opposée du potentiel ; W_cons = -ΔEp."
+            },
+            {
+              "id": "u2-q08-n02",
+              "type": "single_choice",
+              "text": "Poids près Terre : Ep augmente quand :",
+              "options": ["h augmente", "h diminue", "v augmente", "m diminue"],
+              "correctAnswers": [0],
+              "explanation": "Ep = mgh croît avec l'altitude."
+            },
+            {
+              "id": "u2-q08-n03",
+              "type": "single_choice",
+              "text": "Tension corde verticale MRU : travail sur masse :",
+              "options": [
+                "compense poids si v constante",
+                "toujours nul",
+                "toujours mgh",
+                "infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "T = mg si v constante ; travail net nul sur Δy=0 par cycle."
+            },
+            {
+              "id": "u2-q08-n04",
+              "type": "single_choice",
+              "text": "Freinage W=-150 J, m=3 kg, v₀=10 m/s : v² final :",
+              "options": [
+                "v₀² + 2W/m",
+                "0 si W suffisant",
+                "200",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ΔEc = W ⇒ ½m(v²-v₀²)=W ; ici W négatif diminue Ec."
+            },
+            {
+              "id": "u2-q08-n05",
+              "type": "single_choice",
+              "text": "Force motrice 500 N, 20 m, rendement 100 % : W = :",
+              "options": ["10 000 J", "25 J", "520 J", "480 J"],
+              "correctAnswers": [0],
+              "explanation": "W = F d = 10 000 J."
+            },
+            {
+              "id": "u2-q08-n06",
+              "type": "single_choice",
+              "text": "Système Terre-bloc : Em du bloc seule si on ignore :",
+              "options": ["travail interne Terre", "poids", "Ec", "Ep"],
+              "correctAnswers": [0],
+              "explanation": "Terre quasi immobile : approximation usuelle lycée."
+            },
+            {
+              "id": "u2-q08-n07",
+              "type": "single_choice",
+              "text": "Action réciproque : travail de A sur B et B sur A :",
+              "options": [
+                "somme peut être nulle (déplacements)",
+                "toujours égaux",
+                "toujours positifs",
+                "interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail dépend du déplacement de chaque point d'application."
+            },
+            {
+              "id": "u2-q08-n08",
+              "type": "single_choice",
+              "text": "Ec passe de 20 à 50 J : W_net = :",
+              "options": ["30 J", "70 J", "-30 J", "0 J"],
+              "correctAnswers": [0],
+              "explanation": "ΔEc = 30 J = W_net."
+            },
+            {
+              "id": "u2-q08-n09",
+              "type": "single_choice",
+              "text": "Unité F·d correcte :",
+              "options": ["N·m = J", "N/m", "W/s", "kg·m/s"],
+              "correctAnswers": [0],
+              "explanation": "Produit force × distance = joule."
+            },
+            {
+              "id": "u2-q08-n10",
+              "type": "single_choice",
+              "text": "Frottement sur distance d : Em :",
+              "options": [
+                "diminue de |W_f|",
+                "augmente",
+                "double",
+                "inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail résistant retire de l'énergie mécanique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Problèmes quantitatifs",
+          "questions": [
+            {
+              "id": "u2-q09-n01",
+              "type": "multiple_choice",
+              "text": "Pour m=4 kg, v=5 m·s⁻¹, h=2 m et g=9,8 m·s⁻², quelles valeurs sont correctes ?",
+              "options": [
+                "Em ≈ 128,4 J",
+                "Ec = 50 J",
+                "Ep = 78,4 J",
+                "Ep = 19,6 J"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ec = ½×4×25 = 50 J ; Ep = 4×9,8×2 = 78,4 J ; Em = Ec + Ep ≈ 128,4 J."
+            },
+            {
+              "id": "u2-q09-n02",
+              "type": "single_choice",
+              "text": "m=4 kg, v=5 m·s⁻¹, h=2 m, g=9,8 ⇒ Em = :",
+              "options": ["128,4 J", "58,4 J", "50 J", "78,4 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec=½×4×25=50 J ; Ep=78,4 J ; Em=128,4 J."
+            },
+            {
+              "id": "u2-q09-n03",
+              "type": "single_choice",
+              "text": "P=1500 W monte m=60 kg sur h=4 m en g=10 : temps min ≈ :",
+              "options": ["1,6 s", "0,16 s", "16 s", "160 s"],
+              "correctAnswers": [0],
+              "explanation": "mgh=2400 J ; t=W/P=2400/1500=1,6 s."
+            },
+            {
+              "id": "u2-q09-n04",
+              "type": "single_choice",
+              "text": "v=12 m·s⁻¹, m=0,5 kg : Ec = :",
+              "options": ["36 J", "6 J", "72 J", "144 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = 0,5 × 0,5 × 144 = 36 J."
+            },
+            {
+              "id": "u2-q09-n05",
+              "type": "single_choice",
+              "text": "Chute 20 m sans v₀, g=10 : v = :",
+              "options": ["20 m·s⁻¹", "10 m·s⁻¹", "400 m·s⁻¹", "√20 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "v=√(2×10×20)=20 m·s⁻¹."
+            },
+            {
+              "id": "u2-q09-n06",
+              "type": "single_choice",
+              "text": "W=120 J, Δt=3 s : P moyenne = :",
+              "options": ["40 W", "360 W", "0,025 W", "123 W"],
+              "correctAnswers": [0],
+              "explanation": "P=120/3=40 W."
+            },
+            {
+              "id": "u2-q09-n07",
+              "type": "single_choice",
+              "text": "η=0,3, utile 90 J : énergie reçue = :",
+              "options": ["300 J", "27 J", "0,3 J", "90 J"],
+              "correctAnswers": [0],
+              "explanation": "E_reçue = 90/0,3 = 300 J."
+            },
+            {
+              "id": "u2-q09-n08",
+              "type": "single_choice",
+              "text": "ΔEp=45 J, m=1,5 kg, g=10 : Δh = :",
+              "options": ["3 m", "30 m", "4,5 m", "0,3 m"],
+              "correctAnswers": [0],
+              "explanation": "Δh = 45/(1,5×10) = 3 m."
+            },
+            {
+              "id": "u2-q09-n09",
+              "type": "single_choice",
+              "text": "F=40 N sur 2,5 m oppose mouvement : W = :",
+              "options": ["-100 J", "100 J", "16 J", "0 J"],
+              "correctAnswers": [0],
+              "explanation": "Force opposée : W = -40×2,5 = -100 J."
+            },
+            {
+              "id": "u2-q09-n10",
+              "type": "single_choice",
+              "text": "Ec ratio si v₁=3 m/s et v₂=9 m/s même m :",
+              "options": ["1/9", "3", "9", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Ec∝v² : (3/9)² = 1/9."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse énergie mécanique",
+          "questions": [
+            {
+              "id": "u2-q10-n01",
+              "type": "multiple_choice",
+              "text": "Bilan énergétique mécanique avec frottement :",
+              "options": [
+                "Em finale < Em initiale",
+                "W_f < 0",
+                "Em toujours conservée",
+                "Ec toujours nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Frottement dissipe : ΔEm = W_frottement (négatif)."
+            },
+            {
+              "id": "u2-q10-n02",
+              "type": "single_choice",
+              "text": "Choix méthode : sans frottement, trouver v :",
+              "options": ["conservation Em", "loi des gaz", "Nernst", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Em initiale = Em finale souvent plus rapide que RFD intégrée."
+            },
+            {
+              "id": "u2-q10-n03",
+              "type": "single_choice",
+              "text": "Travail total forces conservatives sur cycle fermé :",
+              "options": ["nul", "2mgh", "Em", "positif"],
+              "correctAnswers": [0],
+              "explanation": "ΔEp=0 sur boucle ⇒ W_cons total nul."
+            },
+            {
+              "id": "u2-q10-n04",
+              "type": "single_choice",
+              "text": "Sécurité routière : Ec à 130 km/h vs 50 km/h ratio ≈ :",
+              "options": ["(130/50)²", "130/50", "égal", "50/130"],
+              "correctAnswers": [0],
+              "explanation": "Distance freinage ∝ Ec ∝ v²."
+            },
+            {
+              "id": "u2-q10-n05",
+              "type": "single_choice",
+              "text": "Em = 80 J, Ep = 80 J ⇒ Ec = :",
+              "options": ["0 J", "160 J", "80 J", "40 J"],
+              "correctAnswers": [0],
+              "explanation": "Ec = Em - Ep = 0."
+            },
+            {
+              "id": "u2-q10-n06",
+              "type": "single_choice",
+              "text": "Unité cohérente : 1 J = :",
+              "options": ["1 kg·m²·s⁻²", "1 kg·m·s⁻¹", "1 N·s", "1 W·m"],
+              "correctAnswers": [0],
+              "explanation": "Dimension énergie en SI."
+            },
+            {
+              "id": "u2-q10-n07",
+              "type": "single_choice",
+              "text": "Hydroélectricité : Ep eau → :",
+              "options": [
+                "énergie électrique via turbine",
+                "masse",
+                "vitesse lumière",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion gravitaire → mécanique → électrique."
+            },
+            {
+              "id": "u2-q10-n08",
+              "type": "single_choice",
+              "text": "Graphique Ec(t) parabole sur chute libre :",
+              "options": [
+                "Ec croît avec t",
+                "Ec constante",
+                "Ec linéaire décroissante",
+                "Ec négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v augmente ⇒ Ec = ½mv² croît."
+            },
+            {
+              "id": "u2-q10-n09",
+              "type": "single_choice",
+              "text": "Deux objets même h, chute libre sans air : arrivée :",
+              "options": [
+                "même v",
+                "plus lourd plus vite",
+                "plus léger plus vite",
+                "v nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v=√(2gh) indépendant de m."
+            },
+            {
+              "id": "u2-q10-n10",
+              "type": "single_choice",
+              "text": "Objectif chapitre énergie mécanique :",
+              "options": [
+                "quantifier transferts et formes d'énergie",
+                "remplacer toutes les forces",
+                "supprimer g",
+                "mesurer température seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail, puissance, Ec, Ep et conservation pour analyser mouvements."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

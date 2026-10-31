@@ -1,0 +1,1973 @@
+{
+  "id": "5e-mathematiques-01",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Proportionnalité",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Tableaux et pourcentages",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Reconnaître un tableau de proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un tableau de proportionnalité, quelles affirmations sont toujours vraies ?",
+              "options": [
+                "Le quotient de deux valeurs d'une même colonne est constant d'une ligne à l'autre.",
+                "On peut passer d'une ligne à l'autre en multipliant par un même nombre.",
+                "Tous les tableaux à deux lignes sont proportionnels.",
+                "La somme des nombres de la première ligne donne le coefficient."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La proportionnalité se caractérise par un rapport constant et par des multiplications par un même coefficient entre lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Poids (kg) : 2, 4, 6. Prix (€) : 5, 10, 15. Ce tableau est-il proportionnel ?",
+              "options": [
+                "Oui, car 5÷2 = 10÷4 = 15÷6",
+                "Non, car les nombres augmentent",
+                "Oui, car 2+4=6",
+                "Non, car le prix est plus grand que le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rapports prix÷poids valent tous 2,5 € par kg."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heures : 1, 2, 3. Distance (km) : 60, 120, 180. Quelle distance pour 5 h ?",
+              "options": ["240 km", "300 km", "360 km", "180 km"],
+              "correctAnswers": [1],
+              "explanation": "La vitesse est 60 km/h, donc 5 × 60 = 300 km."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nombre de stylos : 3, 6, 9. Coût (€) : 4,50, 9, 12. Ce tableau est-il proportionnel ?",
+              "options": [
+                "Non, car 12÷9 ≠ 4,50÷3",
+                "Oui, tous les quotients valent 1,5",
+                "Oui, car 3×3=9",
+                "Non, car 9 > 6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4,50÷3 = 1,5 mais 12÷9 ≈ 1,33, le rapport n'est pas constant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Recette pour 4 personnes : 200 g de farine. Pour 10 personnes, il faut :",
+              "options": ["400 g", "500 g", "800 g", "250 g"],
+              "correctAnswers": [1],
+              "explanation": "200÷4 = 50 g par personne, donc 10 × 50 = 500 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un tableau proportionnel, le coefficient passant de la 1re à la 2e ligne vaut 3. Si la 1re ligne contient 7, la 2e contient :",
+              "options": ["10", "21", "4", "28"],
+              "correctAnswers": [1],
+              "explanation": "7 × 3 = 21."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Litres : 5, 10, 15. kg : 4, 8, 12. Coefficient litres → kg ?",
+              "options": ["0,8", "1,25", "2", "20"],
+              "correctAnswers": [0],
+              "explanation": "4÷5 = 0,8 kg par litre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un tableau a pour quotients 4, 4 et 4 entre deux lignes. On dit qu'il est :",
+              "options": [
+                "additif",
+                "proportionnel",
+                "aléatoire",
+                "symétrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un rapport constant entre lignes définit la proportionnalité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Minutes : 20, 40, 60. Pages lues : 15, 30, 45. Pages lues en 100 min ?",
+              "options": ["60", "75", "80", "90"],
+              "correctAnswers": [1],
+              "explanation": "15÷20 = 0,75 page/min, donc 100 × 0,75 = 75 pages."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Âge (ans) : 10, 12, 14. Taille (cm) : 140, 150, 160. Ce tableau est-il proportionnel ?",
+              "options": [
+                "Oui",
+                "Non, les rapports taille÷âge ne sont pas égaux",
+                "Oui, car tout augmente",
+                "Impossible à dire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "140÷10=14, 150÷12=12,5 et 160÷14≈11,4 : pas un même rapport."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Coefficient de proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le coefficient de proportionnalité permet de :",
+              "options": [
+                "Passer de la première grandeur à la seconde en multipliant",
+                "Vérifier la proportionnalité en divisant deux valeurs correspondantes",
+                "Additionner les deux lignes du tableau",
+                "Trouver une valeur manquante sans calcul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On le multiplie pour convertir une grandeur, et on le retrouve par un quotient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 kg coûtent 12 €. Le coefficient prix par kg est :",
+              "options": ["4 €/kg", "36", "0,25 €/kg", "9 €/kg"],
+              "correctAnswers": [0],
+              "explanation": "12 ÷ 3 = 4 € par kilogramme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En 2 h, un cycliste parcourt 36 km. Coefficient distance par heure :",
+              "options": ["18 km/h", "72 km/h", "34 km/h", "0,055 km/h"],
+              "correctAnswers": [0],
+              "explanation": "36 ÷ 2 = 18 km par heure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "8 bonbons coûtent 2 €. Prix de 20 bonbons ?",
+              "options": ["4 €", "5 €", "6 €", "10 €"],
+              "correctAnswers": [1],
+              "explanation": "2÷8 = 0,25 € par bonbon, donc 20 × 0,25 = 5 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Coefficient 2,5 de A vers B. Si A = 8, alors B =",
+              "options": ["10,5", "20", "3,2", "5,5"],
+              "correctAnswers": [1],
+              "explanation": "8 × 2,5 = 20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4 m de tissu pèsent 1,2 kg. Masse de 10 m ?",
+              "options": ["2,4 kg", "3 kg", "4,8 kg", "12 kg"],
+              "correctAnswers": [1],
+              "explanation": "1,2÷4 = 0,3 kg/m, donc 10 × 0,3 = 3 kg."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De B vers A, le coefficient est l'inverse de 4. Si B = 20, A =",
+              "options": ["80", "5", "16", "24"],
+              "correctAnswers": [1],
+              "explanation": "Multiplier par 4 donne B, donc A = 20 ÷ 4 = 5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "12 photos en 3 min. Nombre de photos en 7 min (même cadence) ?",
+              "options": ["24", "28", "36", "21"],
+              "correctAnswers": [1],
+              "explanation": "12÷3 = 4 photos/min, donc 7 × 4 = 28 photos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un robinet remplit 15 L en 5 min. Volume en 12 min ?",
+              "options": ["30 L", "36 L", "27 L", "60 L"],
+              "correctAnswers": [1],
+              "explanation": "15÷5 = 3 L/min, donc 12 × 3 = 36 L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5 workers en 6 jours. Même travail, 10 workers : combien de jours ?",
+              "options": ["12 jours", "3 jours", "5 jours", "30 jours"],
+              "correctAnswers": [1],
+              "explanation": "Double effectif ⇒ moitié du temps : 6 ÷ 2 = 3 jours (proportionnalité inverse, mais ici l'énoncé suppose travail total fixe et cadence proportionnelle aux ouvriers — en 5e on retient 3 j)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Produit en croix",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour trouver une valeur manquante x dans un tableau proportionnel, on peut :",
+              "options": [
+                "Utiliser le produit en croix : a×d = b×c",
+                "Multiplier par le coefficient de proportionnalité",
+                "Additionner toutes les valeurs du tableau",
+                "Choisir la plus grande valeur de la ligne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produit en croix et coefficient sont deux méthodes équivalentes en situation proportionnelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 → 12 et 5 → x. Valeur de x ?",
+              "options": ["15", "20", "8", "17"],
+              "correctAnswers": [1],
+              "explanation": "12÷3 = 4, donc x = 5 × 4 = 20."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "4 kg → 10 € et 7 kg → ?",
+              "options": ["14 €", "17,50 €", "28 €", "11 €"],
+              "correctAnswers": [1],
+              "explanation": "10÷4 = 2,5 €/kg, donc 7 × 2,5 = 17,50 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "6 → 9 et x → 15. x = ?",
+              "options": ["8", "10", "12", "9"],
+              "correctAnswers": [1],
+              "explanation": "9÷6 = 1,5, donc x = 15 ÷ 1,5 = 10."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2,5 L → 5 € et 4 L → ?",
+              "options": ["6 €", "7 €", "8 €", "10 €"],
+              "correctAnswers": [2],
+              "explanation": "5÷2,5 = 2 €/L, donc 4 × 2 = 8 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "8 → 20 et 12 → x. x = ?",
+              "options": ["24", "30", "28", "32"],
+              "correctAnswers": [1],
+              "explanation": "20÷8 = 2,5, donc x = 12 × 2,5 = 30."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Produit en croix : 5×18 = 9×x. x = ?",
+              "options": ["10", "8", "12", "15"],
+              "correctAnswers": [0],
+              "explanation": "90 = 9x, donc x = 10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "150 km en 3 h. Distance en 5 h ?",
+              "options": ["200 km", "250 km", "225 km", "300 km"],
+              "correctAnswers": [1],
+              "explanation": "150÷3 = 50 km/h, donc 5 × 50 = 250 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recette : 3 œufs pour 180 g de farine. Farine pour 5 œufs ?",
+              "options": ["240 g", "300 g", "360 g", "900 g"],
+              "correctAnswers": [1],
+              "explanation": "180÷3 = 60 g par œuf, donc 5 × 60 = 300 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "10 → 4 et 25 → x. x = ?",
+              "options": ["8", "10", "12", "6,4"],
+              "correctAnswers": [1],
+              "explanation": "4÷10 = 0,4, donc x = 25 × 0,4 = 10."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pourcentages : définition et conversion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "25 % signifie :",
+              "options": [
+                "25 pour 100, soit la fraction 25/100",
+                "Le nombre 0,25 en écriture décimale",
+                "25 fois 100",
+                "Toujours 25 euros"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "25 % = 25/100 = 0,25 de la quantité de référence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir 50 % en fraction décimale :",
+              "options": ["0,5", "5", "0,05", "50"],
+              "correctAnswers": [0],
+              "explanation": "50 % = 50/100 = 0,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "0,2 en pourcentage :",
+              "options": ["2 %", "20 %", "0,2 %", "200 %"],
+              "correctAnswers": [1],
+              "explanation": "0,2 × 100 = 20 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/4 en pourcentage :",
+              "options": ["34 %", "75 %", "43 %", "0,75 %"],
+              "correctAnswers": [1],
+              "explanation": "3/4 = 0,75 = 75 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "100 % d'une quantité correspond à :",
+              "options": ["La moitié", "Le double", "La totalité", "Rien"],
+              "correctAnswers": [2],
+              "explanation": "100 % = tout le tout, la quantité entière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "10 % en fraction :",
+              "options": [
+                "10/100",
+                "10/10",
+                "1/10 seulement si simplifié — ici 10/100",
+                "100/10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 % s'écrit 10/100, qui se simplifie en 1/10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "150 % d'une valeur, c'est :",
+              "options": [
+                "Moins que la valeur",
+                "La valeur plus la moitié",
+                "La moitié de la valeur",
+                "Zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "150 % = 1,5 fois la valeur, soit la valeur + 50 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/5 en pourcentage :",
+              "options": ["5 %", "15 %", "20 %", "25 %"],
+              "correctAnswers": [2],
+              "explanation": "1/5 = 0,2 = 20 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel pourcentage représente 3/20 ?",
+              "options": ["3 %", "15 %", "20 %", "30 %"],
+              "correctAnswers": [1],
+              "explanation": "3/20 = 15/100 = 15 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0 % d'un stock signifie :",
+              "options": [
+                "Stock entier",
+                "Aucune partie du stock",
+                "Stock doublé",
+                "Stock divisé par 2"
+              ],
+              "correctAnswers": [1],
+              "explanation": "0 % ne prend aucune part de la quantité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Calculer un pourcentage d'une quantité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour calculer 20 % de 150, on peut :",
+              "options": [
+                "Calculer 150 × 0,20",
+                "Calculer 150 × 20 ÷ 100",
+                "Calculer 150 + 20",
+                "Diviser 150 par 20 sans multiplier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "20 % de 150 = 150 × 20/100 = 150 × 0,2 = 30."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "10 % de 80 = ?",
+              "options": ["8", "18", "800", "0,8"],
+              "correctAnswers": [0],
+              "explanation": "80 × 0,10 = 8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "25 % de 200 = ?",
+              "options": ["25", "40", "50", "75"],
+              "correctAnswers": [2],
+              "explanation": "200 × 0,25 = 50."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "15 % de 60 € = ?",
+              "options": ["9 €", "15 €", "6 €", "12 €"],
+              "correctAnswers": [0],
+              "explanation": "60 × 0,15 = 9 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "50 % de 124 = ?",
+              "options": ["50", "62", "74", "124"],
+              "correctAnswers": [1],
+              "explanation": "50 % = la moitié : 124 ÷ 2 = 62."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 % de 400 = ?",
+              "options": ["20", "40", "200", "4"],
+              "correctAnswers": [0],
+              "explanation": "400 × 0,05 = 20."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "30 % de 90 = ?",
+              "options": ["27", "30", "63", "3"],
+              "correctAnswers": [0],
+              "explanation": "90 × 0,30 = 27."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une classe de 28 élèves : 25 % sont absents. Nombre d'absents ?",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [2],
+              "explanation": "28 × 0,25 = 7 élèves."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "12 % de 250 = ?",
+              "options": ["25", "30", "12", "20"],
+              "correctAnswers": [1],
+              "explanation": "250 × 0,12 = 30."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "75 % de 48 = ?",
+              "options": ["36", "32", "24", "40"],
+              "correctAnswers": [0],
+              "explanation": "48 × 0,75 = 36."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Augmentations en pourcentage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Augmenter un prix de 10 % revient à :",
+              "options": [
+                "Multiplier le prix par 1,10",
+                "Ajouter 10 % du prix au prix initial",
+                "Multiplier le prix par 0,10 seul",
+                "Soustraire 10 % du prix"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nouveau prix = prix × (1 + 10/100) = prix × 1,10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un article à 80 € augmente de 5 %. Nouveau prix ?",
+              "options": ["85 €", "84 €", "88 €", "80,5 €"],
+              "correctAnswers": [1],
+              "explanation": "80 × 1,05 = 84 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Salaire 1 200 €, +8 %. Nouveau salaire ?",
+              "options": ["1 208 €", "1 296 €", "1 280 €", "960 €"],
+              "correctAnswers": [1],
+              "explanation": "1 200 × 1,08 = 1 296 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Population 5 000 hab., +12 %. Nouvelle population ?",
+              "options": ["5 120", "5 600", "5 500", "5 012"],
+              "correctAnswers": [1],
+              "explanation": "5 000 × 1,12 = 5 600 habitants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un livre passe de 20 € à 22 €. Augmentation en % ?",
+              "options": ["2 %", "10 %", "11 %", "20 %"],
+              "correctAnswers": [1],
+              "explanation": "Augmentation 2 € sur 20 € : 2/20 = 10 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "50 € + 20 % = ?",
+              "options": ["55 €", "60 €", "70 €", "52 €"],
+              "correctAnswers": [1],
+              "explanation": "50 × 1,20 = 60 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Note 12/20 augmentée fictivement de 25 % (sur la note) : 12 × 1,25 = ?",
+              "options": ["13", "14", "15", "16"],
+              "correctAnswers": [2],
+              "explanation": "12 × 1,25 = 15."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Loyer 450 €, hausse de 4 %. Nouveau loyer ?",
+              "options": ["454,50 €", "468 €", "459 €", "486 €"],
+              "correctAnswers": [1],
+              "explanation": "450 × 1,04 = 468 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "100 g de sucre dans une recette, +10 %. Nouvelle masse ?",
+              "options": ["101 g", "110 g", "111 g", "90 g"],
+              "correctAnswers": [1],
+              "explanation": "100 × 1,10 = 110 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Coefficient multiplicateur pour +15 % :",
+              "options": ["0,15", "1,15", "15", "1,015"],
+              "correctAnswers": [1],
+              "explanation": "Augmenter de 15 % multiplie par 1 + 0,15 = 1,15."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Diminutions et remises",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Baisser un prix de 30 % équivaut à :",
+              "options": [
+                "Multiplier par 0,70",
+                "Retirer 30 % du prix initial",
+                "Multiplier par 1,30",
+                "Ajouter 30 au prix"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prix final = prix × (1 − 0,30) = prix × 0,70."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article 120 €, remise 25 %. Prix payé ?",
+              "options": ["90 €", "95 €", "100 €", "30 €"],
+              "correctAnswers": [0],
+              "explanation": "120 × 0,75 = 90 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "60 € avec −10 % :",
+              "options": ["54 €", "50 €", "59 €", "66 €"],
+              "correctAnswers": [0],
+              "explanation": "60 × 0,90 = 54 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coefficient pour une baisse de 5 % :",
+              "options": ["0,05", "0,95", "1,05", "5"],
+              "correctAnswers": [1],
+              "explanation": "On garde 95 % : multiplier par 0,95."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prix initial 200 €, soldes −40 %. Prix soldé ?",
+              "options": ["80 €", "120 €", "160 €", "140 €"],
+              "correctAnswers": [1],
+              "explanation": "200 × 0,60 = 120 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une quantité passe de 80 à 68. Diminution en % ?",
+              "options": ["12 %", "15 %", "17 %", "20 %"],
+              "correctAnswers": [1],
+              "explanation": "Perte 12 sur 80 : 12/80 = 0,15 = 15 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "350 €, remise 20 %. Montant de la remise ?",
+              "options": ["35 €", "70 €", "280 €", "100 €"],
+              "correctAnswers": [1],
+              "explanation": "20 % de 350 = 70 € de remise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "45 € après −10 %. Prix avant remise ?",
+              "options": ["49,50 €", "50 €", "55 €", "40,5 €"],
+              "correctAnswers": [1],
+              "explanation": "45 = prix × 0,9, donc prix = 45 ÷ 0,9 = 50 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Stock 500, −8 %. Stock restant ?",
+              "options": ["460", "492", "450", "420"],
+              "correctAnswers": [0],
+              "explanation": "500 × 0,92 = 460."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire de 50 % revient à :",
+              "options": [
+                "Diviser par 2",
+                "Multiplier par 2",
+                "Retirer 50 €",
+                "Multiplier par 0,5 et diviser par 2 — même effet : diviser par 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "−50 % = multiplier par 0,5, c'est-à-dire diviser par 2."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Compléter des tableaux proportionnels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour compléter une case vide d'un tableau proportionnel connu, on peut :",
+              "options": [
+                "Chercher le coefficient entre les deux lignes",
+                "Utiliser le produit en croix sur deux colonnes complètes",
+                "Mettre la moyenne des nombres voisins sans calcul",
+                "Copier le nombre de la colonne d'à côté au hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coefficient ou produit en croix donnent la valeur manquante exacte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Euros : 2, 5, 8, ?. kg : 1, 2,5, 4, 6. Case manquante (euros) ?",
+              "options": ["10", "12", "14", "11"],
+              "correctAnswers": [1],
+              "explanation": "2 €/kg partout : 6 × 2 = 12 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "h : 1, 3, ?, 7. km : 14, 42, 70, 98. Heures manquantes ?",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [1],
+              "explanation": "14 km/h : 70 ÷ 14 = 5 h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Personnes : 2, 4, 6. Crêpes : 6, 12, ?",
+              "options": ["14", "16", "18", "24"],
+              "correctAnswers": [2],
+              "explanation": "3 crêpes par personne : 6 × 3 = 18."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "cm : 5, 10, 15. mm : 50, ?, 150",
+              "options": ["75", "100", "125", "80"],
+              "correctAnswers": [1],
+              "explanation": "1 cm = 10 mm, donc 10 cm = 100 mm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L : 2, 5, 8. € : 3, 7,50, ?",
+              "options": ["10", "11", "12", "9"],
+              "correctAnswers": [2],
+              "explanation": "1,5 €/L : 8 × 1,5 = 12 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jours : 4, 6, 10. Pièces : 20, ?, 50",
+              "options": ["25", "30", "35", "40"],
+              "correctAnswers": [1],
+              "explanation": "5 pièces/jour : 6 × 5 = 30."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "×3 entre ligne A et B. A : 4, 7, 11. B : 12, ?, 33",
+              "options": ["14", "21", "18", "24"],
+              "correctAnswers": [1],
+              "explanation": "7 × 3 = 21."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Min : 15, 25, 40. mL : 45, 75, ?",
+              "options": ["100", "110", "120", "160"],
+              "correctAnswers": [2],
+              "explanation": "3 mL/min : 40 × 3 = 120 mL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quotient constant 2,5. Si ligne du bas : 10, 15, x et ligne du haut : 4, 6, 8 alors x = ?",
+              "options": ["12,5", "20", "18", "16"],
+              "correctAnswers": [1],
+              "explanation": "8 × 2,5 = 20."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Proportionnalité dans la vie courante",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Situations souvent proportionnelles en 5e :",
+              "options": [
+                "Prix total en fonction du poids acheté (prix unitaire fixe)",
+                "Distance parcourue à vitesse constante en fonction du temps",
+                "Taille d'un enfant en fonction de son âge sur plusieurs années",
+                "Nombre de pages lues à cadence constante en fonction du temps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prix unitaire fixe et vitesse constante donnent des tableaux proportionnels; la croissance ou l'âge ne le garantissent pas toujours."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Essence : 1,80 €/L. Coût pour 25 L ?",
+              "options": ["40 €", "43 €", "45 €", "50 €"],
+              "correctAnswers": [2],
+              "explanation": "25 × 1,80 = 45 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Imprimante : 120 pages en 4 min. Pages en 10 min ?",
+              "options": ["240", "300", "280", "360"],
+              "correctAnswers": [1],
+              "explanation": "30 pages/min × 10 = 300 pages."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4 paint pots couvrent 20 m². Surface pour 7 pots ?",
+              "options": ["28 m²", "35 m²", "40 m²", "25 m²"],
+              "correctAnswers": [1],
+              "explanation": "5 m² par pot : 7 × 5 = 35 m²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un robinet : 9 L en 6 min. Litres en 20 min ?",
+              "options": ["27 L", "30 L", "36 L", "45 L"],
+              "correctAnswers": [1],
+              "explanation": "1,5 L/min × 20 = 30 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cartes : 3 pour 2 €. Prix de 12 cartes ?",
+              "options": ["6 €", "8 €", "9 €", "24 €"],
+              "correctAnswers": [1],
+              "explanation": "4 paquets de 3 : 4 × 2 = 8 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vitesse 90 km/h. Distance en 2 h 30 min (2,5 h) ?",
+              "options": ["180 km", "200 km", "225 km", "250 km"],
+              "correctAnswers": [2],
+              "explanation": "90 × 2,5 = 225 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conversion €/kg : 6 kg pour 24 €. Prix de 2,5 kg ?",
+              "options": ["8 €", "10 €", "12 €", "15 €"],
+              "correctAnswers": [1],
+              "explanation": "4 €/kg × 2,5 = 10 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une machine fabrique 45 pièces en 15 min. Pièces en 1 h ?",
+              "options": ["120", "150", "180", "200"],
+              "correctAnswers": [2],
+              "explanation": "3 pièces/min × 60 = 180 pièces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur un graphique linéaire passant par l'origine, la situation est :",
+              "options": [
+                "Toujours proportionnelle",
+                "Proportionnelle si la droite passe par (0;0)",
+                "Jamais proportionnelle",
+                "Proportionnelle seulement si horizontale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Proportionnalité ⟺ droite linéaire passant par l'origine."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes mixtes tableaux et pourcentages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un magasin affiche −20 % sur un article à 50 €. On peut :",
+              "options": [
+                "Calculer 50 × 0,80 pour le prix final",
+                "Calculer 20 % de 50 puis soustraire",
+                "Ajouter 20 € au prix",
+                "Multiplier par 1,20"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Remise 20 % : payer 80 % du prix, ou soustraire 10 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 cahiers 7,50 €. Prix de 8 cahiers ?",
+              "options": ["18 €", "20 €", "22 €", "24 €"],
+              "correctAnswers": [1],
+              "explanation": "2,50 € par cahier : 8 × 2,5 = 20 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Note 16/20. Équivalent en pourcentage ?",
+              "options": ["16 %", "64 %", "80 %", "160 %"],
+              "correctAnswers": [2],
+              "explanation": "16/20 = 0,8 = 80 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prix 240 €, +5 % puis −5 % sur le nouveau prix. Résultat ?",
+              "options": [
+                "240 €",
+                "Plus bas que 240 €",
+                "Plus haut que 240 €",
+                "Exactement 252 €"
+              ],
+              "correctAnswers": [1],
+              "explanation": "252 × 0,95 = 239,40 €, légèrement sous 240 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "40 % de 75 = ?",
+              "options": ["25", "30", "35", "40"],
+              "correctAnswers": [1],
+              "explanation": "75 × 0,40 = 30."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 m de fil coûtent 3,50 €. Coût de 12 m ?",
+              "options": ["7 €", "8,40 €", "9 €", "10,50 €"],
+              "correctAnswers": [1],
+              "explanation": "0,70 €/m × 12 = 8,40 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "TVA 20 % sur 15 € HT. Prix TTC ?",
+              "options": ["16 €", "17 €", "18 €", "19 €"],
+              "correctAnswers": [2],
+              "explanation": "15 × 1,20 = 18 € TTC."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un score passe de 40 à 50. Augmentation relative ?",
+              "options": ["10 %", "20 %", "25 %", "50 %"],
+              "correctAnswers": [2],
+              "explanation": "Gain 10 sur 40 : 10/40 = 25 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau : 6→15 et 14→x. x = ?",
+              "options": ["28", "30", "35", "32"],
+              "correctAnswers": [2],
+              "explanation": "15÷6 = 2,5, donc x = 14 × 2,5 = 35."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduction 15 % sur 80 €. Prix final ?",
+              "options": ["65 €", "68 €", "72 €", "75 €"],
+              "correctAnswers": [1],
+              "explanation": "80 × 0,85 = 68 €."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Échelles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Lire et interpréter une échelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'échelle 1/50 000 sur une carte signifie :",
+              "options": [
+                "1 cm sur la carte représente 50 000 cm en réalité",
+                "50 000 cm réels mesurent 1 cm sur le plan",
+                "1 km sur la carte vaut 50 000 km",
+                "La carte est 50 000 fois plus grande que la réalité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux formulations décrivent le même rapport 1 : 50 000 entre plan et réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Échelle 1/100. 3 cm sur le plan valent en réel :",
+              "options": ["3 m", "30 cm", "300 m", "3 km"],
+              "correctAnswers": [0],
+              "explanation": "3 × 100 = 300 cm = 3 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un plan d'architecte 1/200, 2 cm représentent :",
+              "options": ["4 m", "2 m", "40 cm", "400 m"],
+              "correctAnswers": [0],
+              "explanation": "2 × 200 = 400 cm = 4 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle échelle est la plus réduite (petit plan pour grande distance) ?",
+              "options": ["1/500", "1/5 000", "1/50 000", "1/25 000"],
+              "correctAnswers": [2],
+              "explanation": "1/50 000 est le plus petit rapport : beaucoup de réel pour 1 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Échelle 1/1 000. Distance réelle 50 m = ? cm sur le plan",
+              "options": ["5 cm", "50 cm", "500 cm", "0,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "50 m = 5 000 cm ; 5 000 ÷ 1 000 = 5 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1/25 000 : 4 cm sur la carte = ? km en réel",
+              "options": ["0,4 km", "1 km", "4 km", "0,1 km"],
+              "correctAnswers": [1],
+              "explanation": "4 × 25 000 cm = 100 000 cm = 1 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Échelle graphique : 1 cm ↔ 25 m. 6 cm sur le plan = ?",
+              "options": ["150 m", "125 m", "1,5 km", "25 m"],
+              "correctAnswers": [0],
+              "explanation": "6 × 25 m = 150 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le numérateur 1 dans 1/n indique :",
+              "options": [
+                "1 unité sur le plan",
+                "1 unité en réel",
+                "n unités sur le plan",
+                "L'échelle est n fois agrandie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare 1 mesure sur le plan à n mesures identiques en réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plan 1/500, segment 8 cm. Longueur réelle ?",
+              "options": ["4 m", "40 m", "400 m", "8 m"],
+              "correctAnswers": [1],
+              "explanation": "8 × 500 = 4 000 cm = 40 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une échelle d'agrandissement de figure peut s'écrire :",
+              "options": ["2/1", "1/2", "1/1 seulement", "0/1"],
+              "correctAnswers": [0],
+              "explanation": "2/1 signifie 2 cm sur la copie pour 1 cm sur l'original."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "De la carte vers la réalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour passer d'une longueur sur le plan à la réalité avec échelle 1/E :",
+              "options": [
+                "Multiplier la mesure du plan par E (même unité)",
+                "Convertir d'abord en unités compatibles si besoin",
+                "Diviser par E pour obtenir le réel",
+                "Ignorer l'unité utilisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Longueur réelle = mesure plan × E, dans la même unité ou après conversion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carte 1/25 000, 3 cm entre deux villes. Distance réelle ?",
+              "options": ["750 m", "0,75 km", "7,5 km", "75 km"],
+              "correctAnswers": [1],
+              "explanation": "3 × 25 000 cm = 75 000 cm = 750 m = 0,75 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plan 1/100, pièce 4,5 cm de large. Largeur réelle ?",
+              "options": ["4,5 m", "45 m", "450 cm", "0,45 m"],
+              "correctAnswers": [0],
+              "explanation": "4,5 × 100 = 450 cm = 4,5 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échelle 1 cm pour 5 m. 7 cm sur le dessin = ?",
+              "options": ["35 m", "12 m", "7,5 m", "3,5 m"],
+              "correctAnswers": [0],
+              "explanation": "7 × 5 = 35 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/50 000 : 12 cm sur la carte = ? km",
+              "options": ["6 km", "60 km", "0,6 km", "600 m"],
+              "correctAnswers": [0],
+              "explanation": "12 × 50 000 cm = 600 000 cm = 6 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maquette 1/20, hauteur 3 cm. Hauteur réelle du bâtiment ?",
+              "options": ["60 cm", "6 m", "0,6 m", "15 m"],
+              "correctAnswers": [0],
+              "explanation": "3 × 20 = 60 cm (modèle réduit)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plan 1/200, couloir 5 cm. Longueur réelle ?",
+              "options": ["10 m", "1 m", "100 m", "2,5 m"],
+              "correctAnswers": [0],
+              "explanation": "5 × 200 = 1 000 cm = 10 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/10 000, 8 mm sur la carte (8 mm = 0,8 cm). Distance réelle ?",
+              "options": ["80 m", "800 m", "8 km", "0,8 km"],
+              "correctAnswers": [0],
+              "explanation": "0,8 cm × 10 000 = 8 000 cm = 80 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle 1/4 000, 5 cm. Réel en mètres ?",
+              "options": ["200 m", "20 m", "2 km", "400 m"],
+              "correctAnswers": [0],
+              "explanation": "5 × 4 000 cm = 20 000 cm = 200 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur une carte, plus l'échelle est grande (ex. 1/500 vs 1/50 000), le territoire montré sur 1 cm est :",
+              "options": [
+                "Plus petit en réel",
+                "Plus grand en réel",
+                "Identique",
+                "Toujours 1 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/500 : 1 cm = 5 m ; 1/50 000 : 1 cm = 500 m — ici « grande échelle» = grand rapport 1/n petit n."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "De la réalité vers le plan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour reporter une distance réelle D sur un plan d'échelle 1/E :",
+              "options": [
+                "Diviser D par E (mêmes unités)",
+                "Multiplier D par E pour le plan",
+                "Mesurer D en cm obligatoirement sans conversion",
+                "Utiliser le coefficient 1/E comme table de proportionnalité"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Mesure plan = D ÷ E ; c'est une situation proportionnelle entre réel et plan."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pièce de 6 m de long. Plan 1/100. Longueur sur le plan ?",
+              "options": ["6 cm", "60 cm", "600 cm", "0,6 cm"],
+              "correctAnswers": [0],
+              "explanation": "6 m = 600 cm ; 600 ÷ 100 = 6 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Route réelle 3 km. Carte 1/50 000. Distance sur la carte ?",
+              "options": ["6 cm", "60 cm", "0,6 cm", "600 cm"],
+              "correctAnswers": [0],
+              "explanation": "3 km = 300 000 cm ; 300 000 ÷ 50 000 = 6 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mur de 2,4 m. Échelle 1/50. Longueur dessinée ?",
+              "options": ["4,8 cm", "48 cm", "12 cm", "240 cm"],
+              "correctAnswers": [0],
+              "explanation": "240 cm ÷ 50 = 4,8 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 cm ↔ 20 m. Terrain 140 m de profondeur. Sur le plan ?",
+              "options": ["7 cm", "14 cm", "2,8 cm", "70 cm"],
+              "correctAnswers": [0],
+              "explanation": "140 ÷ 20 = 7 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stade 100 m. Plan 1/200. Segment ?",
+              "options": ["50 cm", "5 cm", "0,5 cm", "20 cm"],
+              "correctAnswers": [0],
+              "explanation": "10 000 cm ÷ 200 = 50 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Distance réelle 750 m. Carte 1/25 000. Mesure ?",
+              "options": ["3 cm", "30 cm", "0,3 cm", "7,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "75 000 cm ÷ 25 000 = 3 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Table 1,20 m. Maquette 1/10. Longueur modèle ?",
+              "options": ["12 cm", "1,2 cm", "120 cm", "10 cm"],
+              "correctAnswers": [0],
+              "explanation": "120 cm ÷ 10 = 12 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lac 2 km. Plan 1/100 000. Sur la carte ?",
+              "options": ["2 cm", "20 cm", "0,2 cm", "200 cm"],
+              "correctAnswers": [0],
+              "explanation": "200 000 cm ÷ 100 000 = 2 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Échelle 1/40, réel 8 m. Plan ?",
+              "options": ["20 cm", "2 cm", "32 cm", "200 cm"],
+              "correctAnswers": [0],
+              "explanation": "800 cm ÷ 40 = 20 cm."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Conversions d'unités et échelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avant d'appliquer une échelle, il faut souvent :",
+              "options": [
+                "Exprimer plan et réel dans des unités compatibles",
+                "Se rappeler que 1 km = 100 000 cm",
+                "Toujours travailler en millimètres seulement",
+                "Confondre m et cm sans conversion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 km = 100 000 cm est une conversion clé pour les cartes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "5 km = ? cm",
+              "options": ["50 000", "500 000", "5 000", "500 0000"],
+              "correctAnswers": [1],
+              "explanation": "5 × 100 000 = 500 000 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1,5 m = ? cm",
+              "options": ["15", "150", "1 500", "0,015"],
+              "correctAnswers": [1],
+              "explanation": "1,5 × 100 = 150 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carte 1/20 000, 4 cm. Réel en km ?",
+              "options": ["0,8 km", "8 km", "80 km", "0,08 km"],
+              "correctAnswers": [0],
+              "explanation": "4 × 20 000 cm = 80 000 cm = 0,8 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "250 m = ? km",
+              "options": ["0,25", "2,5", "25", "0,025"],
+              "correctAnswers": [0],
+              "explanation": "250 m = 0,25 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plan 1/500, réel 25 m. Longueur plan ?",
+              "options": ["5 cm", "50 cm", "0,5 cm", "125 cm"],
+              "correctAnswers": [0],
+              "explanation": "2 500 cm ÷ 500 = 5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "80 mm = ? cm",
+              "options": ["8", "0,8", "800", "80"],
+              "correctAnswers": [0],
+              "explanation": "80 mm = 8 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/100 000, 15 km réels. Sur la carte ?",
+              "options": ["15 cm", "1,5 cm", "150 cm", "0,15 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 500 000 cm ÷ 100 000 = 15 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,6 km en mètres ?",
+              "options": ["60", "600", "6 000", "6"],
+              "correctAnswers": [1],
+              "explanation": "0,6 × 1 000 = 600 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Échelle 1 cm : 2 km. Équivalent fractionnaire ?",
+              "options": ["1/200 000", "1/20 000", "1/2 000", "1/20"],
+              "correctAnswers": [0],
+              "explanation": "2 km = 200 000 cm, donc 1/200 000."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Échelles et proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une échelle définit un tableau proportionnel entre :",
+              "options": [
+                "Longueurs sur le plan et longueurs réelles",
+                "Aires sur le plan et aires réelles avec le même coefficient linéaire",
+                "Distances réelles et distances sur le plan",
+                "Volumes identiques sans conversion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'échelle linéaire relie mesures plan et réel; les aires suivent le carré du coefficient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Échelle 1/100. Réel 3 m et 5 m. Segments plan ?",
+              "options": [
+                "3 cm et 5 cm",
+                "30 cm et 50 cm",
+                "300 cm et 500 cm",
+                "0,3 cm et 0,5 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "300 cm et 500 cm ÷ 100 = 3 cm et 5 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si 2 cm ↔ 100 m, alors 5 cm ↔ ?",
+              "options": ["200 m", "250 m", "300 m", "500 m"],
+              "correctAnswers": [1],
+              "explanation": "50 m par cm : 5 × 50 = 250 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coefficient réel/plan pour 1/250 ?",
+              "options": ["250", "0,004", "1/250", "25"],
+              "correctAnswers": [0],
+              "explanation": "1 cm plan × 250 = longueur réelle en cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plan : 4 cm et 6 cm. Échelle 1/50. Réels ?",
+              "options": [
+                "2 m et 3 m",
+                "200 m et 300 m",
+                "20 cm et 30 cm",
+                "4 m et 6 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4×50=200 cm=2 m ; 6×50=300 cm=3 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux cartes du même lieu : 1/10 000 et 1/20 000. La plus détaillée est :",
+              "options": [
+                "1/10 000",
+                "1/20 000",
+                "Les deux pareilles",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le dénominateur est petit, plus 1 cm représente peu de réel : zoom plus fort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tableau : plan 1, 2, 3 cm ; réel 25, 50, 75 m. Échelle ?",
+              "options": ["1/2 500", "1/25 000", "1/250", "1/2 50"],
+              "correctAnswers": [0],
+              "explanation": "25 m = 2 500 cm ; rapport 1 : 2 500."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/1 000 : tripler la mesure sur le plan multiplie le réel par :",
+              "options": ["3", "1 000", "3 000", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité : ×3 sur le plan ⇒ ×3 sur le réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Segment plan 7,5 cm, échelle 1/400. Réel ?",
+              "options": ["30 m", "3 m", "300 m", "7,5 m"],
+              "correctAnswers": [0],
+              "explanation": "7,5 × 400 = 3 000 cm = 30 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Échelle 1/n. Doubler n (ex. 1/500 → 1/1 000) rend 1 cm sur le plan :",
+              "options": [
+                "Plus représentatif de réel",
+                "Moins de réel pour 1 cm",
+                "Plus de réel pour 1 cm",
+                "Sans effet"
+              ],
+              "correctAnswers": [2],
+              "explanation": "n plus grand : 1 cm couvre plus de terrain réel (carte plus « petite»)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Agrandissements et réductions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une réduction d'échelle 1/2 sur une longueur :",
+              "options": [
+                "Divise la longueur par 2 sur le plan",
+                "Multiplie la longueur réelle par 2 sur le plan",
+                "Conserve les angles en figures semblables",
+                "Multiplie les aires par 2"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Réduction linéaire ÷2 ; figures semblables gardent les angles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Segment 8 cm, réduction 1/4. Image ?",
+              "options": ["2 cm", "32 cm", "4 cm", "0,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "8 ÷ 4 = 2 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Agrandissement ×3. Côté 5 cm devient :",
+              "options": ["8 cm", "15 cm", "1,67 cm", "25 cm"],
+              "correctAnswers": [1],
+              "explanation": "5 × 3 = 15 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échelle 2/1 (agrandissement). Réel 6 cm. Dessin ?",
+              "options": ["3 cm", "12 cm", "8 cm", "4 cm"],
+              "correctAnswers": [1],
+              "explanation": "6 × 2 = 12 cm sur la copie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Photo 10 cm, réduite en 1/5. Nouvelle largeur ?",
+              "options": ["2 cm", "50 cm", "5 cm", "0,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "10 ÷ 5 = 2 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Coefficient d'agrandissement 1,5. 4 cm → ?",
+              "options": ["5,5 cm", "6 cm", "8 cm", "2,67 cm"],
+              "correctAnswers": [1],
+              "explanation": "4 × 1,5 = 6 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De 1/100 à 1/50, la figure sur le plan devient :",
+              "options": [
+                "Plus petite",
+                "Plus grande",
+                "Identique",
+                "Invisible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dénominateur divisé par 2 : mesures plan doublées pour même réel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 12 cm × 4 cm, réduction 1/2. Nouveaux côtés ?",
+              "options": [
+                "6 cm et 2 cm",
+                "24 cm et 8 cm",
+                "8 cm et 6 cm",
+                "10 cm et 3 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque côté est divisé par 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modèle 1/24 voiture réelle 4,08 m. Longueur modèle ?",
+              "options": ["17 cm", "1,7 cm", "170 cm", "34 cm"],
+              "correctAnswers": [0],
+              "explanation": "408 cm ÷ 24 = 17 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Agrandissement ×2 puis ×0,5. Effet net sur une longueur ?",
+              "options": ["×4", "×1 (inchangée)", "×0,25", "÷2 seulement"],
+              "correctAnswers": [1],
+              "explanation": "2 × 0,5 = 1 : on retrouve la longueur initiale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Plans, cartes et problèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour parcourir une distance lue sur une carte, on doit :",
+              "options": [
+                "Convertir la mesure cartographique en distance réelle",
+                "Utiliser l'échelle indiquée sur la carte",
+                "Compter les carreaux sans tenir compte de l'échelle",
+                "Supposer 1 cm = 1 km sur toute carte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans échelle, une longueur sur le plan n'a pas de sens en réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carte 1/50 000, trajet 6 cm. Distance à parcourir ?",
+              "options": ["3 km", "30 km", "300 m", "0,3 km"],
+              "correctAnswers": [0],
+              "explanation": "6 × 50 000 cm = 300 000 cm = 3 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plan maison 1/100, salon 5 cm × 4 cm. Dimensions réelles ?",
+              "options": [
+                "5 m × 4 m",
+                "50 cm × 40 cm",
+                "500 m × 400 m",
+                "0,5 m × 0,4 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5×100=500 cm=5 m ; 4×100=400 cm=4 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux segments 3 cm et 5 cm sur carte 1/25 000. Écart réel ?",
+              "options": ["0,5 km", "2 km", "0,2 km", "5 km"],
+              "correctAnswers": [0],
+              "explanation": "5 − 3 = 2 cm ; 2 × 25 000 cm = 50 000 cm = 0,5 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Île 800 m de long. Carte 1/20 000. Longueur sur la carte ?",
+              "options": ["4 cm", "40 cm", "0,4 cm", "16 cm"],
+              "correctAnswers": [0],
+              "explanation": "80 000 cm ÷ 20 000 = 4 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plan jardin : 1 cm ↔ 2 m. Allée réelle 14 m. Sur le plan ?",
+              "options": ["7 cm", "28 cm", "14 cm", "70 cm"],
+              "correctAnswers": [0],
+              "explanation": "14 ÷ 2 = 7 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carte routière 1/200 000, 8 cm entre deux villes. Distance réelle ?",
+              "options": ["16 km", "1,6 km", "160 km", "800 km"],
+              "correctAnswers": [0],
+              "explanation": "8 × 200 000 cm = 1 600 000 cm = 16 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bureau 3,60 m × 2,40 m. Plan 1/60. Dimensions sur le plan ?",
+              "options": [
+                "6 cm × 4 cm",
+                "60 cm × 40 cm",
+                "3,6 cm × 2,4 cm",
+                "36 cm × 24 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "360 cm et 240 cm ÷ 60 = 6 cm et 4 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle 1/500, deux bâtiments 4 cm et 9 cm sur le plan. Écart réel ?",
+              "options": ["25 m", "50 m", "5 m", "250 m"],
+              "correctAnswers": [0],
+              "explanation": "Écart 5 cm ; 5 × 500 cm = 2 500 cm = 25 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1/50 000 : combien de cm pour 4 km ?",
+              "options": ["8 cm", "4 cm", "80 cm", "0,8 cm"],
+              "correctAnswers": [0],
+              "explanation": "4 km = 400 000 cm ; 400 000 ÷ 50 000 = 8 cm."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Échelles numériques et graphiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une échelle graphique sur une carte montre :",
+              "options": [
+                "Un segment gradué reliant une longueur sur le plan à une distance réelle",
+                "Comment mesurer sans calculer le coefficient 1/n",
+                "Toujours 1 cm pour 1 km sans exception",
+                "Uniquement les altitudes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La barre d'échelle traduit visuellement le rapport plan/réel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Barre d'échelle : 2 cm ↔ 500 m. Distance réelle pour 5 cm ?",
+              "options": ["1,25 km", "125 m", "2,5 km", "1 km"],
+              "correctAnswers": [0],
+              "explanation": "250 m par cm ; 5 × 250 m = 1 250 m = 1,25 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écrire « 1 cm pour 250 m » en fraction 1/n :",
+              "options": ["1/25 000", "1/250", "1/2 500", "1/25"],
+              "correctAnswers": [0],
+              "explanation": "250 m = 25 000 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plan 1/75, segment 12 cm. Réel ?",
+              "options": ["9 m", "90 m", "0,9 m", "900 cm"],
+              "correctAnswers": [0],
+              "explanation": "12 × 75 = 900 cm = 9 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/8 000, réel 2,4 km. Mesure sur la carte ?",
+              "options": ["3 cm", "30 cm", "0,3 cm", "24 cm"],
+              "correctAnswers": [1],
+              "explanation": "2,4 km = 240 000 cm ; 240 000 ÷ 8 000 = 30 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plan : 1 cm ↔ 2,5 m. Réel 17,5 m. Sur le plan ?",
+              "options": ["7 cm", "70 cm", "1,75 cm", "35 cm"],
+              "correctAnswers": [0],
+              "explanation": "17,5 ÷ 2,5 = 7 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fraction 1/250 : 1 cm sur le plan vaut en réel :",
+              "options": ["2,5 m", "250 m", "25 cm", "2,5 km"],
+              "correctAnswers": [0],
+              "explanation": "250 cm = 2,5 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Échelle 1/40 000, réel 10 km. Distance sur la carte ?",
+              "options": ["25 cm", "2,5 cm", "4 cm", "40 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 000 000 cm ÷ 40 000 = 25 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 cm = 500 m. Distance réelle pour 3,2 cm ?",
+              "options": ["1,6 km", "16 km", "160 m", "0,16 km"],
+              "correctAnswers": [0],
+              "explanation": "3,2 × 500 m = 1 600 m = 1,6 km."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Même objet : échelle 1/500 puis 1/1 000. Le second plan est :",
+              "options": [
+                "Deux fois plus petit",
+                "Deux fois plus grand",
+                "Identique",
+                "Cent fois plus petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur double, la longueur sur le plan est divisée par 2."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comparer et choisir une échelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour faire tenir un grand terrain sur une feuille, on utilise :",
+              "options": [
+                "Une forte réduction (grand dénominateur dans 1/n)",
+                "Une échelle 1/n avec n grand",
+                "L'échelle 1/1 sans réduction",
+                "Une échelle d'agrandissement 3/1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plus n est grand, plus 1 cm représente de réel et plus le dessin tient sur la page."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle échelle donne le zoom le plus fort ?",
+              "options": ["1/200", "1/2 000", "1/20 000", "1/200 000"],
+              "correctAnswers": [0],
+              "explanation": "1/200 : peu de mètres réels par centimètre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Modèle ferroviaire 1/87, rame réelle 20 m. Longueur du modèle ?",
+              "options": ["≈ 23 cm", "≈ 230 cm", "≈ 2,3 m", "≈ 87 cm"],
+              "correctAnswers": [0],
+              "explanation": "20 m = 2 000 cm ; 2 000 ÷ 87 ≈ 23 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Distance réelle 2 km. Sur quelle échelle le segment est-il le plus long ?",
+              "options": ["1/10 000", "1/50 000", "1/100 000", "1/250 000"],
+              "correctAnswers": [0],
+              "explanation": "Plus n est petit, plus le même réel mesure de centimètres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Même pièce : plan 1/20 et plan 1/100. Le 1/20 est :",
+              "options": [
+                "Plus grand sur le papier",
+                "Plus petit",
+                "Identique",
+                "Impossible à comparer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de réduction ⇒ dessin plus grand."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Échelle 1/3 000, 6 mm sur la carte (= 0,6 cm). Distance réelle ?",
+              "options": ["180 m", "18 m", "1,8 km", "30 m"],
+              "correctAnswers": [1],
+              "explanation": "0,6 × 3 000 cm = 1 800 cm = 18 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carte IGN 1/25 000 couvre environ 5 km × 5 km. Carte 1/50 000 sur même format couvre :",
+              "options": [
+                "Un territoire plus vaste",
+                "Un territoire plus petit",
+                "Exactement pareil",
+                "0 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À surface de feuille fixe, une échelle deux fois plus réduite montre environ deux fois plus de côté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un plan de classe à 1/100, une salle de 8 m × 6 m mesure :",
+              "options": [
+                "8 cm × 6 cm",
+                "80 cm × 60 cm",
+                "0,8 cm × 0,6 cm",
+                "800 cm × 600 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "800 cm et 600 cm ÷ 100 = 8 cm et 6 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle 2/1 sur une figure :",
+              "options": [
+                "Agrandit le côté par 2",
+                "Réduit par 2",
+                "Ne change rien",
+                "Divise l'aire par 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2/1 multiplie chaque longueur par 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1/500 vs 1/5 000 : laquelle est la plus adaptée à une ville entière ?",
+              "options": [
+                "1/5 000",
+                "1/500",
+                "Les deux équivalentes",
+                "Ni l'une ni l'autre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1/5 000 compresse davantage pour représenter de grandes distances."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse échelles et proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relier plan et réel avec une échelle, c'est :",
+              "options": [
+                "Utiliser une situation de proportionnalité",
+                "Multiplier ou diviser par le coefficient n de 1/n",
+                "Additionner plan et réel",
+                "Ignorer les unités"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plan et réel sont proportionnels ; n est le coefficient entre mesures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/100, plan 3,5 cm. Réel ?",
+              "options": ["3,5 m", "35 m", "350 m", "0,35 m"],
+              "correctAnswers": [0],
+              "explanation": "3,5 × 100 = 350 cm = 3,5 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réel 450 m. Carte 1/15 000. Mesure ?",
+              "options": ["3 cm", "30 cm", "0,3 cm", "45 cm"],
+              "correctAnswers": [0],
+              "explanation": "45 000 cm ÷ 15 000 = 3 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 cm : 40 m. Échelle fractionnaire ?",
+              "options": ["1/4 000", "1/400", "1/40", "1/40 000"],
+              "correctAnswers": [0],
+              "explanation": "40 m = 4 000 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carte 1/20 000, 15 cm. Distance réelle ?",
+              "options": ["3 km", "30 km", "300 m", "1,5 km"],
+              "correctAnswers": [0],
+              "explanation": "15 × 20 000 cm = 300 000 cm = 3 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduction 1/5 d'un segment de 35 cm. Longueur image ?",
+              "options": ["7 cm", "175 cm", "30 cm", "5 cm"],
+              "correctAnswers": [0],
+              "explanation": "35 ÷ 5 = 7 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plan 1/250, deux longueurs réelles 10 m et 25 m. Écart sur le plan ?",
+              "options": ["6 cm", "15 cm", "60 cm", "1,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "Différence 15 m = 1 500 cm ; 1 500 ÷ 250 = 6 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Agrandissement ×4. Côté 2,5 cm devient :",
+              "options": ["10 cm", "6,5 cm", "8 cm", "1 cm"],
+              "correctAnswers": [0],
+              "explanation": "2,5 × 4 = 10 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1/50 000, réel 12,5 km. Sur la carte ?",
+              "options": ["25 cm", "2,5 cm", "125 cm", "12,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 250 000 cm ÷ 50 000 = 25 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau proportionnel : plan 2, 5, 8 cm ; réel 50, 125, 200 m. Coefficient réel/plan ?",
+              "options": ["25 m par cm", "2 cm par m", "50", "125"],
+              "correctAnswers": [0],
+              "explanation": "50 m ÷ 2 cm = 25 m par centimètre (50 m = 5 000 cm, rapport 2 500 en cm)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

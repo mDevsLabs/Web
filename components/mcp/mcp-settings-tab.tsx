@@ -1,6 +1,8 @@
 "use client";
 
-import { Loader2Icon, SettingsIcon, Trash2Icon } from "lucide-react";
+import { SettingsIcon } from "@mdevs/icons/controls/settings";
+import { Loader2Icon } from "@mdevs/icons/misc/loader-2";
+import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

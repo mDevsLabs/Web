@@ -1,0 +1,2703 @@
+{
+  "id": "3e-physique-chimie-02",
+  "year": "3e",
+  "subject": "physique-chimie",
+  "title": "Signaux et lumière",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lumière et couleurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Propagation rectiligne de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le vide, la lumière se propage :",
+              "options": [
+                "En ligne droite",
+                "En suivant une courbe",
+                "À la vitesse d'environ 300 000 km/s",
+                "Plus lentement que le son"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La lumière se propage en ligne droite et sa vitesse dans le vide est d'environ 3×10⁸ m/s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un faisceau laser dans l'air sans obstacle suit principalement :",
+              "options": [
+                "Une trajectoire rectiligne",
+                "Un cercle",
+                "Une spirale",
+                "Une trajectoire aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que le milieu est homogène et transparent, la lumière conserve une propagation rectiligne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le modèle du rayon lumineux sert à :",
+              "options": [
+                "Représenter la direction de propagation",
+                "Mesurer la masse d'un photon",
+                "Décrire la couleur d'un objet",
+                "Calculer la fréquence du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayon indique le chemin et la direction suivis par la lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour observer une ombre nette, la source doit être :",
+              "options": [
+                "Ponctuelle ou quasi ponctuelle",
+                "Très diffuse et large",
+                "Invisible",
+                "Toujours solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une source ponctuelle produit une ombre aux contours plus nets."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La lumière du Soleil met environ 8 minutes pour nous parvenir ; cela montre que :",
+              "options": [
+                "La lumière met du temps à voyager",
+                "Le Soleil est une source sonore",
+                "La lumière n'a pas de vitesse",
+                "La Terre émet la lumière du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même très rapide, la lumière met un temps fini à parcourir une distance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet opaque devant une source produit :",
+              "options": [
+                "Une zone d'ombre",
+                "Une réfraction obligatoire",
+                "Une couleur complémentaire",
+                "Un ultrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet bloque une partie des rayons et crée une ombre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lumière peut traverser sans être arrêtée :",
+              "options": [
+                "Un milieu transparent",
+                "Un métal épais",
+                "Un mur de brique",
+                "Une feuille d'aluminium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les milieux transparents laissent passer une grande partie de la lumière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer l'ombre d'une source ponctuelle et d'une source étendue :",
+              "options": [
+                "L'ombre de la source étendue comporte une pénombre",
+                "Les deux sont toujours identiques",
+                "La source étendue ne forme jamais d'ombre",
+                "La ponctuelle forme toujours une pénombre large"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une source étendue éclaire partiellement les bords et crée une pénombre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La vitesse de la lumière dans le vide est notée c et vaut environ :",
+              "options": ["3×10⁸ m/s", "340 m/s", "3×10⁵ m/s", "1500 m/s"],
+              "correctAnswers": [0],
+              "explanation": "c ≈ 300 000 km/s, valeur de référence en physique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Trois alignements source–obstacle–écran permettent de vérifier :",
+              "options": [
+                "La propagation rectiligne de la lumière",
+                "La masse volumique de l'air",
+                "La fréquence d'un son",
+                "La composition d'un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre apparaît sur l'écran lorsque les rayons sont bloqués en ligne droite."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Sources lumineuses et objets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sont des sources primaires de lumière :",
+              "options": [
+                "Le Soleil",
+                "Une ampoule allumée",
+                "La Lune",
+                "Un miroir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les sources qui émettent elles-mêmes la lumière sont dites primaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Lune vue dans le ciel est :",
+              "options": [
+                "Un objet qui réfléchit la lumière du Soleil",
+                "Une source primaire",
+                "Une étoile",
+                "Un corps qui émet sa propre lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune n'émet pas de lumière visible propre, elle renvoie celle du Soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet éclairé visible dans une pièce sombre l'est parce qu'il :",
+              "options": [
+                "Diffuse une partie de la lumière reçue",
+                "Crée toujours de la lumière",
+                "Absorbe toute la lumière",
+                "Émet des infrarouges visibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous voyons les objets grâce à la lumière qu'ils renvoient vers nos yeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une étoile est considérée comme :",
+              "options": [
+                "Une source lumineuse naturelle",
+                "Un simple réflecteur",
+                "Un filtre coloré",
+                "Un milieu opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les étoiles produisent leur lumière par des réactions nucléaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un écran blanc sous une lampe paraît clair car il :",
+              "options": [
+                "Renvoie une grande partie de la lumière",
+                "Absorbe toute la lumière",
+                "Est une source primaire",
+                "Ne reçoit aucun rayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un corps clair diffuse fortement la lumière incidente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un corps noir éclairé paraît sombre car il :",
+              "options": [
+                "Absorbe une grande partie de la lumière",
+                "Émet trop de lumière",
+                "Est transparent",
+                "Réfléchit tout comme un miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les surfaces sombres absorbent davantage qu'elles ne diffusent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une LED allumée est :",
+              "options": [
+                "Une source artificielle",
+                "Un objet uniquement réfléchissant",
+                "Toujours une source secondaire",
+                "Un milieu de propagation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dispositifs d'éclairage fabriqués par l'homme sont des sources artificielles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour qu'un objet non lumineux soit vu, il faut :",
+              "options": [
+                "Une source qui l'éclaire et un observateur",
+                "Aucune source",
+                "Uniquement un miroir",
+                "Un milieu opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut de la lumière incidente puis renvoyée vers l'œil."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le feu d'une bougie produit de la lumière par :",
+              "options": [
+                "Combustion (émission thermique)",
+                "Réflexion sur la cire",
+                "Réfraction dans l'air",
+                "Vibration mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flamme émet de la lumière liée à la réaction chimique et à la chaleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un miroir non éclairé dans le noir ne se voit pas car :",
+              "options": [
+                "Il ne reçoit pas de lumière à renvoyer",
+                "Il est une source primaire",
+                "Il absorbe toujours 100 %",
+                "Il émet uniquement du rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans lumière incidente, aucun objet réfléchissant n'est visible."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Ombres et éclipses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une éclipse de Lune, quelles descriptions sont exactes ?",
+              "options": [
+                "La Lune entre dans l'ombre de la Terre",
+                "Le Soleil, la Terre et la Lune sont alignés",
+                "La Lune devient une source primaire",
+                "La Lune se place entre la Terre et le Soleil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'éclipse de Lune correspond à l'entrée de la Lune dans le cône d'ombre terrestre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ombre portée d'un objet éclairé par le Soleil change de taille si :",
+              "options": [
+                "On éloigne l'objet de l'écran",
+                "On rapproche la source de l'objet",
+                "On change la couleur de l'objet sans changer la lumière",
+                "On mesure la masse de l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taille de l'ombre dépend des distances source–objet et objet–écran."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pénombre est la zone où :",
+              "options": [
+                "Une partie seulement des rayons lumineux est masquée",
+                "Aucune lumière n'arrive",
+                "Tous les rayons sont bloqués",
+                "Le son est réfléchi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la pénombre, la source est partiellement visible depuis le point."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une éclipse de Soleil vue depuis la Terre se produit quand :",
+              "options": [
+                "La Lune cache le Soleil pour certaines zones",
+                "La Terre cache la Lune",
+                "Le Soleil s'éteint",
+                "La Lune émet sa propre lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune, interposée, projette une ombre sur une partie de la Terre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour modéliser une éclipse, on utilise souvent :",
+              "options": [
+                "Des sphères et une source ponctuelle",
+                "Un prisme uniquement",
+                "Un mégaphone",
+                "Une balance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spheres et lampe reproduisent alignements et zones d'ombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'umbra désigne :",
+              "options": [
+                "La zone d'ombre totale",
+                "La zone de pénombre",
+                "Le centre d'un miroir",
+                "La fréquence d'un son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'umbra est la région où la source est entièrement masquée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus la source est étendue, plus la pénombre est :",
+              "options": [
+                "Large",
+                "Absente toujours",
+                "Identique à l'ombre totale",
+                "Mesurée en hertz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une source de grande taille éclaire partiellement les bords de l'ombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un calendrier d'éclipses montre qu'elles :",
+              "options": [
+                "Ne se produisent pas à chaque pleine Lune",
+                "Arrivent chaque jour",
+                "Concernent uniquement le son",
+                "Empêchent la réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite inclinée de la Lune empêche un alignement à chaque cycle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Observer une ombre nette sur un écran suppose :",
+              "options": [
+                "Des rayons rectilignes bloqués par un obstacle",
+                "Un milieu opaque pour toute la lumière du Soleil",
+                "Une réflexion totale interne",
+                "Une vibration mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle rectiligne explique la forme de l'ombre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protéger ses yeux lors d'une éclipse de Soleil signifie :",
+              "options": [
+                "Ne jamais regarder directement sans filtre adapté",
+                "Regarder fixement le Soleil nu",
+                "Utiliser un miroir pour viser le Soleil",
+                "Confondre éclipse et réfraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière solaire concentrée peut brûler la rétine."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Réflexion de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Selon la loi de la réflexion, quelles relations sont correctes ?",
+              "options": [
+                "L'angle d'incidence i égale l'angle de réflexion r",
+                "Les angles se mesurent par rapport à la normale",
+                "i vaut toujours le double de r",
+                "La lumière ne peut pas rebondir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "i et r sont égaux et définis par rapport à la normale au surface."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La normale à une surface réfléchissante est :",
+              "options": [
+                "Une droite perpendiculaire à la surface",
+                "Parallèle au rayon incident",
+                "Toujours horizontale",
+                "Le rayon réfléchi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La normale sert de référence pour mesurer i et r."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un rayon incident et le rayon réfléchi sont dans :",
+              "options": [
+                "Le même plan que la normale",
+                "Des plans toujours perpendiculaires sans lien",
+                "Le vide uniquement",
+                "Un milieu opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réflexion obéit à la coplanarité incident–normale–réfléchi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une surface polie réfléchit de façon :",
+              "options": [
+                "Régulière (réflexion spéculaire)",
+                "Toujours diffuse uniquement",
+                "Sans angle égal",
+                "Uniquement en infrarouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microfacettes alignées renvoient des rayons parallèles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une feuille de papier blanc diffuse la lumière car :",
+              "options": [
+                "Sa surface est rugueuse à l'échelle microscopique",
+                "Elle est un miroir parfait",
+                "Elle absorbe tout",
+                "Elle émet des ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réflexions multiples orientent les rayons dans plusieurs directions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'angle d'incidence vaut 30° ; l'angle de réflexion vaut :",
+              "options": ["30°", "60°", "90°", "0°"],
+              "correctAnswers": [0],
+              "explanation": "Par la loi de la réflexion, r = i."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Voir son reflet dans une vitre propre combine :",
+              "options": [
+                "Réflexion et transmission",
+                "Uniquement absorption",
+                "Production de son",
+                "Réfraction sans réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une partie de la lumière rebondit, une autre traverse le verre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changer la couleur du rayon incident sur un miroir argenté change :",
+              "options": [
+                "La couleur perçue du rayon réfléchi",
+                "La loi i = r",
+                "Le fait que la lumière soit rectiligne",
+                "La vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le miroir renvoie les couleurs présentes dans le faisceau incident."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesurer i et r sur un schéma de rayons sert à :",
+              "options": [
+                "Vérifier la loi de la réflexion",
+                "Calculer la masse molaire",
+                "Mesurer une fréquence sonore",
+                "Déterminer le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'activité classique du chapitre lumière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un capteur solaire orienté vers le Soleil vise à :",
+              "options": [
+                "Recevoir un maximum de rayons incidentes",
+                "Créer une ombre totale permanente",
+                "Empêcher toute réflexion",
+                "Produire du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orientation maximise l'éclairement utile."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Miroirs et images",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec un miroir plan, quelles propriétés de l'image sont correctes ?",
+              "options": [
+                "L'image est virtuelle",
+                "L'image a la même taille que l'objet",
+                "L'image est réelle et inversée en hauteur",
+                "L'image est toujours agrandie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le miroir plan donne une image virtuelle, même taille, symétrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'image d'un objet donné par un miroir plan est située :",
+              "options": [
+                "Derrière le miroir, à la même distance que l'objet",
+                "Devant le miroir sur l'objet",
+                "Au centre du Soleil",
+                "Dans le milieu opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La symétrie par rapport au plan du miroir fixe la position virtuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un miroir plan renverse latéralement l'image :",
+              "options": [
+                "Gauche et droite semblent inversées",
+                "Haut et bas sont toujours inversés",
+                "La couleur devient infrarouge",
+                "La vitesse de la lumière change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'inversion gauche–droite du reflet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour tracer l'image d'un point, on utilise :",
+              "options": [
+                "Le modèle du rayon et la loi de réflexion",
+                "Un voltmètre",
+                "Une règle de trois chimique",
+                "Un sonomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux rayons réfléchis suffisent à localiser l'image virtuelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un miroir concave peut :",
+              "options": [
+                "Concentrer des rayons parallèles vers un foyer",
+                "Toujours donner une image virtuelle seule",
+                "Empêcher toute réflexion",
+                "Mesurer une masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les miroirs courbes modifient la convergence des rayons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un rétroviseur plan d'une voiture montre :",
+              "options": [
+                "Une image virtuelle derrière le véhicule",
+                "Une image réelle sur le miroir",
+                "Un son amplifié",
+                "Une ombre solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le conducteur voit une image virtuelle dans le miroir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Agrandir un miroir plan (surface plus grande) :",
+              "options": [
+                "Permet de voir un champ visuel plus large",
+                "Change la taille de l'image d'un objet donné",
+                "Double la vitesse de la lumière",
+                "Crée une réfraction obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taille de l'image reste égale à l'objet, mais le champ s'élargit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un miroir sale diffuse parfois plus car :",
+              "options": [
+                "La rugosité et les taches dispersent les rayons",
+                "Il devient transparent",
+                "Il émet de la lumière",
+                "Il absorbe le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les imperfections favorisent la diffusion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'image virtuelle ne peut pas être projetée sur un écran car :",
+              "options": [
+                "Les rayons réfléchis semblent provenir d'un point derrière le miroir",
+                "Elle est toujours trop petite",
+                "Elle n'existe pas optiquement",
+                "Elle est un son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons divergent après réflexion ; leur prolongement définit l'image."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux personnes se voient mutuellement dans un miroir plan car :",
+              "options": [
+                "Chacune renvoie de la lumière vers l'autre via le miroir",
+                "Le miroir émet des photons seuls",
+                "L'air devient opaque",
+                "La réfraction remplace la réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière de l'une réfléchie vers l'autre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réfraction de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La réfraction de la lumière correspond à :",
+              "options": [
+                "Un changement de direction à l'interface entre deux milieux",
+                "Un changement de vitesse de propagation",
+                "Une absorption totale systématique",
+                "La production d'un son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passer d'un milieu à un autre modifie vitesse et direction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un rayon passe de l'air dans le verre et se rapproche de la normale : le verre est :",
+              "options": [
+                "Plus réfringent que l'air",
+                "Moins réfringent que le vide seul",
+                "Opaque",
+                "Sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers un milieu plus réfringent, le rayon se incline vers la normale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'indice de réfraction compare :",
+              "options": [
+                "La vitesse de la lumière dans le vide à celle dans le milieu",
+                "La masse d'un photon à celle d'un électron",
+                "La fréquence du son à sa vitesse",
+                "La température à la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n = c/v où v est la vitesse dans le milieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un bâton partiellement dans l'eau paraît « cassé » à cause :",
+              "options": [
+                "De la réfraction à la surface air–eau",
+                "De la réflexion totale seule",
+                "De l'absorption du rouge uniquement",
+                "Du timbre du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La direction des rayons change à l'interface."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La réfraction explique pourquoi une piscine paraît :",
+              "options": [
+                "Moins profonde qu'elle ne l'est",
+                "Plus bruyante",
+                "Opaque au Soleil",
+                "Sans couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons depuis le fond sont déviés vers l'observateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un rayon incident perpendiculaire à la surface (le long de la normale) :",
+              "options": [
+                "N'est pas dévié",
+                "Est toujours réfléchi totalement",
+                "Disparaît",
+                "Devient un ultrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans angle d'incidence, pas de déviation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La dispersion dans un prisme est liée à :",
+              "options": [
+                "Une réfraction dépendant de la couleur",
+                "Une réflexion unique",
+                "Une ombre portée",
+                "Une vibration mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice varie légèrement avec la longueur d'onde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La réflexion totale interne peut survenir :",
+              "options": [
+                "Quand le rayon passe d'un milieu plus réfringent vers un moins réfringent avec un grand angle",
+                "Dans le vide vers l'air toujours",
+                "Sans interface",
+                "Pour le son uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà d'un angle limite, toute la lumière reste réfléchie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Des lunettes correctrices utilisent des verres qui :",
+              "options": [
+                "Dévient les rayons pour focaliser l'image sur la rétine",
+                "Absorbent toute lumière",
+                "Créent des ombres",
+                "Mesurent le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lentilles convergentes ou divergentes corrigent la convergence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer réflexion et réfraction :",
+              "options": [
+                "La réflexion renvoie le rayon dans le milieu d'origine",
+                "La réfraction le fait entrer dans un autre milieu",
+                "Les deux suppriment la lumière",
+                "Les deux sont des sons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion = rebond ; réfraction = passage avec déviation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lentilles et vision",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une lentille convergente :",
+              "options": [
+                "Est plus épaisse au centre",
+                "Fait converger des rayons parallèles vers un foyer",
+                "Est toujours divergente",
+                "Ne travaille qu'avec le son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Son profil bombé concentre les faisceaux parallèles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une lentille divergente :",
+              "options": [
+                "Est plus mince au centre",
+                "Écarte des rayons parallèles",
+                "Concentre toujours vers un point réel",
+                "Mesure une masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle disperse les rayons incidentes parallèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'image réelle d'un objet éloigné par une lentille convergente se forme :",
+              "options": [
+                "Dans le plan focal image",
+                "Toujours virtuelle",
+                "Sans rayons",
+                "Dans l'oreille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons parallèles convergent au foyer image."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'œil humain possède un cristallin qui agit comme :",
+              "options": [
+                "Une lentille convergente variable",
+                "Un miroir plan",
+                "Un prisme absorbant",
+                "Un haut-parleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cristallin accommode pour focaliser sur la rétine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La myopie correspond souvent à une image formée :",
+              "options": [
+                "Avant la rétine",
+                "Derrière la rétine",
+                "Sur le tympan",
+                "Dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œil convergent trop fort ou globe trop long."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une lunette pour myope utilise en général :",
+              "options": [
+                "Des lentilles divergentes",
+                "Des miroirs concaves seuls",
+                "Des filtres rouges seuls",
+                "Des ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles dévient les rayons pour reculer le plan image."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'hypermétropie voit mal de pris car l'image tend à se former :",
+              "options": [
+                "Derrière la rétine",
+                "Avant la rétine",
+                "Dans le canal auditif",
+                "Sans lentille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence insuffisante pour les objets proches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le foyer d'une lentille convergente est le point où :",
+              "options": [
+                "Les rayons parallèles à l'axe se croisent",
+                "Tous les sons convergent",
+                "La lumière s'éteint",
+                "La réflexion totale est impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition optique du foyer image."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Approcher un objet d'une loupe (lentille convergente) donne :",
+              "options": [
+                "Une image agrandie virtuelle si l'objet est dans le foyer objet",
+                "Une image toujours réelle minuscule",
+                "Un son plus aigu",
+                "Une ombre sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage classique de la loupe en 3e."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protéger une lentille de poussière sert à :",
+              "options": [
+                "Éviter diffusion et rayures qui gênent l'image",
+                "Augmenter la fréquence sonore",
+                "Changer la couleur du Soleil",
+                "Empêcher la réfraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une surface sale diffuse et floute."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Décomposition de la lumière blanche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un prisme décompose la lumière blanche car :",
+              "options": [
+                "Chaque couleur est déviée différemment",
+                "Il existe une dispersion liée à l'indice",
+                "Il absorbe obligatoirement le violet",
+                "Il transforme la lumière en son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La dépendance de n à la longueur d'onde sépare les couleurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le spectre continu obtenu avec un prisme va du :",
+              "options": [
+                "Violet au rouge",
+                "Rouge au violet sans transition",
+                "Bleu au vert uniquement",
+                "Son grave au son aigu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre usuel : violet (plus dévié) vers rouge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un arc-en-ciel est dû principalement à :",
+              "options": [
+                "Réfraction et réflexion dans les gouttes d'eau",
+                "Combustion de l'air",
+                "Émission de lumière par la Terre",
+                "Vibration d'un diapason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gouttes dispersent la lumière solaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un filtre coloré transmet surtout :",
+              "options": [
+                "La couleur qu'il laisse passer",
+                "Toutes les couleurs également",
+                "Uniquement les infrarouges visibles",
+                "Le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il absorbe les autres composantes du blanc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La lumière blanche du Soleil contient :",
+              "options": [
+                "Un ensemble de radiations visibles",
+                "Une seule longueur d'onde",
+                "Uniquement du vert",
+                "Des fréquences sonores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blanc solaire est un mélange de couleurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un réseau ou CD peut iriser car :",
+              "options": [
+                "Il réfléchit et interfère selon la longueur d'onde",
+                "Il est une source sonore",
+                "Il absorbe toute lumière",
+                "Il est toujours opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microstructures séparent les couleurs par diffraction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Observer un spectre avec une fente étroite permet :",
+              "options": [
+                "Une meilleure séparation des couleurs",
+                "D'augmenter le volume sonore",
+                "De mesurer une masse",
+                "De créer une éclipse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fente limite la géométrie du faisceau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le violet est plus dévié que le rouge dans un prisme car :",
+              "options": [
+                "Il est plus réfracté pour le verre usuel",
+                "Il voyage plus lentement que le son",
+                "Il est plus chaud",
+                "Il n'existe pas dans le blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice légèrement plus élevé pour les courtes longueurs d'onde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recomposer le blanc avec un second prisme inversé montre :",
+              "options": [
+                "Que les couleurs peuvent se superposer à nouveau",
+                "Que la lumière disparaît",
+                "Que seul le rouge existe",
+                "Que le son revient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expérience de Newton : recombinaison additive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un écran noir dans une salle de projection :",
+              "options": [
+                "Absorbe la lumière parasite pour augmenter le contraste",
+                "Émet la lumière du projecteur",
+                "Crée un arc-en-ciel permanent",
+                "Mesure les décibels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de lumière parasite, image plus nette."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Couleurs additives et soustractives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En lumière additive et soustractive, quelles affirmations sont exactes ?",
+              "options": [
+                "Les écrans utilisent rouge, vert, bleu",
+                "Les encres utilisent cyan, magenta, jaune",
+                "RVB et CMJ jouent le même rôle",
+                "Le son recompose le blanc"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "RVB est additive ; CMJ est soustractive en impression."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Superposer rouge, vert et bleu sur un écran donne :",
+              "options": [
+                "Blanc (si intensités adaptées)",
+                "Noir",
+                "Uniquement jaune",
+                "Un son pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addition des trois composantes recompose le blanc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En peinture (soustractif), mélanger cyan, magenta et jaune tend vers :",
+              "options": [
+                "Noir ou brun foncé",
+                "Blanc pur",
+                "Transparent",
+                "Ultrason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque encre absorbe des composantes ; le mélange absorbe beaucoup."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un projecteur vert sur un écran blanc éclaire en :",
+              "options": ["Vert", "Rouge seul", "Noir obligatoire", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "L'écran diffuse la couleur transmise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélange additif rouge + vert donne :",
+              "options": ["Jaune", "Bleu", "Violet", "Gris toujours"],
+              "correctAnswers": [0],
+              "explanation": "Classique des lumières colorées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une encre magenta absorbe surtout :",
+              "options": [
+                "Le vert",
+                "Le rouge uniquement",
+                "Toutes les couleurs",
+                "Le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magenta = moins de vert dans la lumière renvoyée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un feu tricolore utilise des LED de couleurs différentes car :",
+              "options": [
+                "Chaque diode émet une couleur dominante",
+                "Elles fonctionnent au son",
+                "Elles absorbent le blanc",
+                "Elles sont des miroirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources monochromatiques ou quasi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Imprimer une photo couleur repose sur :",
+              "options": [
+                "Le mélange soustractif d'encres",
+                "L'addition de lumière laser seule dans le papier",
+                "L'absence de pigments",
+                "La réflexion totale interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les encres CMJ absorbent sélectivement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Blanc à l'écran signifie :",
+              "options": [
+                "Les trois canaux RVB sont fortement allumés",
+                "Aucun pixel n'est allumé",
+                "Seul le bleu est actif",
+                "Le haut-parleur est muet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maximum des trois composantes lumineuses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre additive et soustractive mène à :",
+              "options": [
+                "Des prédictions de couleur incorrectes",
+                "Une meilleure audition",
+                "Une vitesse du son plus élevée",
+                "Une ombre sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière transmise et pigments réfléchis obéissent à des règles différentes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Couleur des objets et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un objet paraît coloré en lumière blanche car :",
+              "options": [
+                "Il diffuse certaines longueurs d'onde",
+                "Il absorbe les autres couleurs du blanc",
+                "Il émet toujours toutes les couleurs",
+                "Il ne reçoit jamais de lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couleur perçue = lumière renvoyée après absorption sélective."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un objet rouge éclairé en lumière blanche renvoie surtout :",
+              "options": [
+                "Le rouge",
+                "Le bleu",
+                "Le vert seul",
+                "Aucune lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il absorbe largement les autres couleurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet bleu sous lumière rouge pure paraît :",
+              "options": ["Sombre ou noir", "Bleu vif", "Blanc", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Peu de lumière bleue incidente à renvoyer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La rétine contient des cônes sensibles à :",
+              "options": [
+                "Différentes couleurs",
+                "Uniquement au son",
+                "La pression",
+                "Le magnétisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois types de cônes participent à la vision couleur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Regarder le Soleil sans protection peut :",
+              "options": [
+                "Brûler la rétine",
+                "Améliorer la vision",
+                "Changer le timbre",
+                "Produire un écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux lumineux intense dangereux pour l'œil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Des lunettes de soleil certifiées filtrent :",
+              "options": [
+                "Une partie de l'UV et réduisent l'éblouissement",
+                "Toute lumière utile pour voir la nuit",
+                "Uniquement le son",
+                "Les ondes radio seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection contre UV et intensité excessive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le laser de présentation ne doit pas être dirigé :",
+              "options": [
+                "Vers les yeux",
+                "Vers un écran prévu",
+                "Vers un mur",
+                "Vers une surface diffuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faisceau étroit très énergétique par unité de surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La lumière UV excessive sur la peau :",
+              "options": [
+                "Peut provoquer des brûlures et des risques à long terme",
+                "Renforce toujours la vision",
+                "Est identique au son",
+                "Ne traverse jamais l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UV ionisants ou actiniques nécessitent protection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet blanc sous lumière blanche paraît blanc car il :",
+              "options": [
+                "Diffuse la plupart des couleurs",
+                "Absorbe tout",
+                "Émet du rouge seul",
+                "Vibre à 440 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion diffuse quasi totale du blanc incident."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éteindre la lumière d'une pièce rend les objets invisibles car :",
+              "options": [
+                "Il n'y a plus de lumière incidente à renvoyer",
+                "Les objets deviennent transparents",
+                "La réflexion devient réfraction",
+                "Le son remplace la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans éclairement, pas de signal visuel vers l'œil."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Signaux sonores",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Production et propagation du son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le son est produit et se propage lorsque :",
+              "options": [
+                "Un objet vibre",
+                "Un milieu matériel transporte la perturbation",
+                "Le vide transmet les ondes sonores",
+                "La lumière se réfléchit seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vibration puis transmission dans un milieu (air, eau, solide)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un diapason émet un son car :",
+              "options": [
+                "Ses branches vibrent",
+                "Il est une source lumineuse",
+                "Il crée du vide",
+                "Il mesure une tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vibration mécanique entraîne l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le son ne se propage pas dans le vide car :",
+              "options": [
+                "Il nécessite des particules du milieu",
+                "Il est plus rapide que la lumière",
+                "Il n'a pas de fréquence",
+                "Il est toujours ultrasonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans particules, pas de compression–détente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Frapper un tambour produit un son par :",
+              "options": [
+                "Vibration de la membrane",
+                "Réflexion de la lumière",
+                "Réfraction dans l'eau",
+                "Émission de photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau vibrante pousse l'air."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entre deux montagnes, on peut parfois entendre un écho car :",
+              "options": [
+                "Le son se réfléchit sur les parois",
+                "Le son traverse la Terre",
+                "La lumière devient son",
+                "Le vide transporte l'onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion acoustique renvoie une partie de l'énergie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La propagation du son dans l'air est une succession de :",
+              "options": [
+                "Zones de compression et de détente",
+                "Photons sans milieu",
+                "Ombres lumineuses",
+                "Couleurs primaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onde mécanique longitudinale dans l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parler produit un son car :",
+              "options": [
+                "Les cordes vocales vibrent",
+                "La langue émet de la lumière",
+                "L'air devient opaque",
+                "Le crâne devient un miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vibration des cordes vocales modifie le flux d'air."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On entend un train arriver avant de le voir car :",
+              "options": [
+                "Le son dans l'air est plus lent que la lumière",
+                "Le son est plus rapide que la lumière",
+                "La lumière ne se propage pas",
+                "Le train est silencieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière arrive quasi instantanément, le son avec retard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un haut-parleur transforme :",
+              "options": [
+                "Un signal électrique en vibration du cone",
+                "De la lumière en chaleur seule",
+                "Un prisme en miroir",
+                "Une ombre en couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bobine et la membrane agitent l'air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Couvrir une cloche sous la cloche à vide (expérience) montre :",
+              "options": [
+                "Le son ne traverse pas le vide",
+                "Le son devient plus fort",
+                "La lumière s'éteint",
+                "La fréquence devient nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans air, plus de transmission sonore."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fréquence et hauteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La fréquence d'un son et sa hauteur perçue :",
+              "options": [
+                "Une fréquence plus élevée correspond à un son plus aigu",
+                "La fréquence se mesure en hertz",
+                "La fréquence se mesure en décibels",
+                "Doubler la fréquence divise toujours la vitesse par deux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hauteur liée à f ; unité SI du hertz."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité de fréquence est :",
+              "options": [
+                "Le hertz (Hz)",
+                "Le décibel (dB)",
+                "Le mètre (m)",
+                "Le joule (J)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Hz = 1 vibration par seconde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un son grave a :",
+              "options": [
+                "Une fréquence basse",
+                "Une fréquence très élevée",
+                "Une vitesse supérieure à c",
+                "Aucune amplitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grave = faible fréquence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un son aigu a :",
+              "options": [
+                "Une fréquence élevée",
+                "Une fréquence proche de 0 Hz",
+                "Une couleur bleue",
+                "Une vitesse infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aigu = fréquence haute."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si un diapason passe de 440 Hz à 880 Hz, le son devient :",
+              "options": [
+                "Plus aigu",
+                "Plus grave",
+                "Silencieux",
+                "Plus lent que la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doublement de f monte d'une octave."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La période T et la fréquence f vérifient :",
+              "options": [
+                "T = 1/f",
+                "T = f",
+                "T = f²",
+                "T = c/f pour le son dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période et fréquence sont réciproques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le domaine audible humain moyen s'étend approximativement de :",
+              "options": [
+                "20 Hz à 20 000 Hz",
+                "1 Hz à 10 Hz",
+                "100 MHz à 200 MHz",
+                "400 nm à 800 nm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur classique au collège."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un oscilloscope peut afficher :",
+              "options": [
+                "La forme du signal sonore dans le temps",
+                "La couleur d'un filtre",
+                "La masse d'un photon",
+                "Le pH d'une solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualisation tension–temps d'un micro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux notes de même hauteur ont :",
+              "options": [
+                "La même fréquence fondamentale",
+                "Toujours le même timbre",
+                "La même couleur",
+                "La même vitesse que la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur = fréquence perçue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Augmenter la tension d'un générateur audio sans changer la forme peut :",
+              "options": [
+                "Augmenter le volume si le haut-parleur suit",
+                "Changer la fréquence fondamentale obligatoirement",
+                "Créer du vide",
+                "Empêcher toute vibration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitude du signal souvent liée au volume."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Amplitude et volume",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le volume perçu d'un son dépend surtout de :",
+              "options": [
+                "L'amplitude de la vibration",
+                "L'énergie transportée par l'onde",
+                "La couleur de la source",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amplitude et intensité influencent la sensation de fort ou faible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parler plus fort correspond à :",
+              "options": [
+                "Une amplitude plus grande",
+                "Une fréquence nulle",
+                "Une vitesse supérieure à c",
+                "Une lumière plus intense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cordes vocales déplacent l'air davantage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Éloigner une source sonore sans changer sa puissance fait généralement :",
+              "options": [
+                "Diminuer le volume perçu",
+                "Augmenter la fréquence",
+                "Créer une éclipse",
+                "Rendre le son plus aigu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intensité diminue avec la distance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Amplitude nulle signifie :",
+              "options": [
+                "Absence de signal sonore",
+                "Fréquence infinie",
+                "Son ultrasonore",
+                "Lumière blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de vibration, pas de son."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réglage « volume » sur une enceinte agit sur :",
+              "options": [
+                "L'amplitude du signal envoyé",
+                "La couleur de la LED",
+                "La vitesse du vent",
+                "La réfraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gain électronique modifie l'amplitude."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un son faible peut être rendu audible en :",
+              "options": [
+                "Se rapprochant ou augmentant le gain",
+                "Supprimant le milieu",
+                "Utilisant uniquement le vide",
+                "Regardant le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance et amplification changent le niveau reçu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux sons de même fréquence peuvent différer en volume si :",
+              "options": [
+                "Leurs amplitudes diffèrent",
+                "Leurs couleurs diffèrent",
+                "Ils se propagent dans le vide",
+                "Ils sont des photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même hauteur, intensités différentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Frapper fort une table produit :",
+              "options": [
+                "Une vibration de plus grande amplitude",
+                "Une fréquence toujours nulle",
+                "Une ombre lumineuse",
+                "Un arc-en-ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact plus énergique excite davantage le bois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un limiteur de volume protège en :",
+              "options": [
+                "Plafonnant l'amplitude du signal",
+                "Changeant la couleur du son",
+                "Créant du vide",
+                "Annulant la fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite des niveaux dangereux au haut-parleur ou à l'oreille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre amplitude et fréquence mène à :",
+              "options": [
+                "Croire qu'un son plus aigu est toujours plus fort",
+                "Comprendre le timbre",
+                "Mesurer correctement c",
+                "Décrire une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur (f) et volume (amplitude) sont distincts."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Timbre d'un son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le timbre permet de :",
+              "options": [
+                "Distinguer deux instruments jouant la même note",
+                "Reconnaître une voix",
+                "Mesurer la vitesse de la lumière",
+                "Décrire une réfraction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forme du signal et harmoniques créent la « couleur » du son."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux pianos et deux flûtes jouant la même fréquence diffèrent surtout par :",
+              "options": [
+                "Le timbre",
+                "La vitesse du son dans le vide",
+                "La couleur RVB",
+                "L'ombre portée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même hauteur, signatures spectrales différentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le timbre est lié à :",
+              "options": [
+                "Le contenu en harmoniques du son",
+                "La forme d'onde au fil du temps",
+                "La masse d'un électron",
+                "La loi i = r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre riche définit le caractère du son."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un son « nasillard » ou « rond » décrit :",
+              "options": [
+                "Des qualités de timbre",
+                "La vitesse supersonique",
+                "Une fréquence nulle",
+                "Une couleur primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire subjectif du timbre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enregistrer une voix puis la lire à l'envers change :",
+              "options": [
+                "Le timbre perçu peut devenir étrange",
+                "La vitesse de la lumière",
+                "La fréquence fondamentale obligatoirement",
+                "Le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inversion modifie l'écoute du timbre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un filtre qui ne laisse passer qu'une fréquence transforme un son complexe en :",
+              "options": [
+                "Un son plus pur (sinusoïde)",
+                "Une lumière blanche",
+                "Un ultrason toujours",
+                "Une image virtuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage réduit les harmoniques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Même note, même volume, instruments différents :",
+              "options": [
+                "Timbres différents",
+                "Fréquences fondamentales forcément différentes",
+                "Propagation dans le vide",
+                "Couleurs identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur et intensité peuvent être identiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un spectre sonore montre :",
+              "options": [
+                "Les fréquences présentes et leurs amplitudes",
+                "La trajectoire d'un photon",
+                "La normale à un miroir",
+                "Le pH d'un sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse fréquentielle du timbre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une voix synthétique peu naturelle manque souvent de :",
+              "options": [
+                "Richesse harmonique du timbre humain",
+                "Vitesse du son dans l'air",
+                "Lumière additive",
+                "Ombres nettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles simplifiés ont un spectre pauvre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le timbre ne doit pas être confondu avec :",
+              "options": [
+                "La hauteur (fréquence)",
+                "Le volume (amplitude)",
+                "La couleur d'un filtre optique",
+                "Les deux premiers"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Timbre, hauteur et volume sont trois grandeurs distinctes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Vitesse du son dans l'air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans l'air à environ 20 °C, la vitesse du son est :",
+              "options": [
+                "D'environ 340 m/s",
+                "Bien inférieure à c",
+                "Identique à 3×10⁸ m/s",
+                "Nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "340 m/s ordre de grandeur ; toujours << c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La vitesse du son dans l'air à 20 °C vaut environ :",
+              "options": ["340 m/s", "340 km/s", "34 m/s", "3×10⁸ m/s"],
+              "correctAnswers": [0],
+              "explanation": "Valeur de référence au collège."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le son se propage plus vite dans l'eau que dans l'air car :",
+              "options": [
+                "Les particules du milieu transmettent mieux la vibration",
+                "Le vide est présent",
+                "La lumière ralentit le son",
+                "La fréquence double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu plus dense et plus incompressible favorise la célérité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer la distance avec un éclair et tonnerre utilise :",
+              "options": [
+                "Le délai entre lumière et son",
+                "v_son ≈ 340 m/s",
+                "La couleur du ciel",
+                "La réflexion dans un miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière arrive quasi instantanément, le retard du tonnerre donne la distance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3 secondes entre éclair et tonnerre correspond à environ :",
+              "options": ["1 km", "340 m", "10 m", "300 km"],
+              "correctAnswers": [0],
+              "explanation": "d ≈ v×t ≈ 340×3 ≈ 1 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La vitesse du son dépend :",
+              "options": [
+                "Du milieu et de sa température",
+                "De la couleur de la source",
+                "De la masse du photon",
+                "Du pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus chaud souvent un peu plus rapide dans l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un son et une lumière partant ensemble :",
+              "options": [
+                "La lumière arrive toujours en premier sur grande distance",
+                "Le son arrive toujours en premier",
+                "Ils arrivent toujours ensemble",
+                "Ils ne se propagent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "c >> v_son."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le vide spatial entre astres, on n'entend pas le Soleil car :",
+              "options": [
+                "Il n'y a pas de milieu pour transporter le son",
+                "Le Soleil est silencieux par définition",
+                "La lumière bloque le son",
+                "La fréquence est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propagation sonore impossible dans le vide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesurer le temps de parcours sur une distance connue permet de :",
+              "options": [
+                "Estimer la célérité du son",
+                "Mesurer la couleur",
+                "Calculer i = r",
+                "Déterminer le nombre de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v = d/t expérience classique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre vitesse du son et vitesse de la lumière fausse :",
+              "options": [
+                "Les calculs de distance avec la foudre",
+                "La loi de réflexion",
+                "Le mélange RVB",
+                "La fréquence d'un diapason"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut utiliser ~340 m/s pour le son, pas c."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Ultrasons et infrasons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les ultrasons sont des sons :",
+              "options": [
+                "De fréquence supérieure à environ 20 000 Hz",
+                "Inaudibles pour l'oreille humaine moyenne",
+                "Qui ne se propagent pas dans l'air",
+                "Identiques aux infrasons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au-delà de 20 kHz, audition humaine habituelle ne suit plus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les infrasons ont des fréquences :",
+              "options": [
+                "Inférieures à environ 20 Hz",
+                "Trop basses pour être entendus par l'homme",
+                "Toujours supérieures à 1 MHz",
+                "Égales à la lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Très basses fréquences, souvent inaudibles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les ultrasons médicaux servent à :",
+              "options": [
+                "Imager l'intérieur du corps",
+                "Mesurer des distances internes",
+                "Voir la couleur d'un filtre",
+                "Remplacer la lumière du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échographie utilise réflexion des ultrasons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les chiens entendent parfois :",
+              "options": [
+                "Des fréquences plus hautes que l'homme",
+                "Uniquement les infrasons",
+                "Rien au-dessus de 20 Hz",
+                "La lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Audition canine s'étend plus haut en fréquence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un sifflet très aigu approche la limite :",
+              "options": [
+                "Haute du domaine audible",
+                "Basse des infrasons",
+                "Visible du spectre",
+                "De la vitesse c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquences élevées mais encore audibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les chauves-souris utilisent des ultrasons pour :",
+              "options": [
+                "Écholocaliser leurs proies",
+                "Produire de la lumière",
+                "Créer des ombres",
+                "Réfracter la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émission et réception d'échos ultrasonores."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un détecteur d'ultrasons transforme :",
+              "options": [
+                "Les ultrasons en signal électrique audible ou visible",
+                "La lumière en son grave",
+                "Le vide en air",
+                "Les couleurs en décibels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteurs pour visualiser ou convertir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les infrasons peuvent être produits par :",
+              "options": [
+                "De grands mouvements atmosphériques ou sismiques",
+                "Un diapason 440 Hz seul",
+                "Un laser",
+                "Un miroir plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénomènes massifs basse fréquence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour l'homme, un ultrason pur est :",
+              "options": [
+                "Inaudible",
+                "Toujours très fort",
+                "Une couleur violette",
+                "Une image réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence hors domaine audible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence ultrason / infrason :",
+              "options": [
+                "Ultrason = fréquence haute ; infrason = fréquence basse",
+                "Les deux sont identiques",
+                "Les deux sont de la lumière",
+                "Les deux ne se propagent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position par rapport au spectre audible."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'oreille et l'audition",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'oreille capte et traite le son lorsque :",
+              "options": [
+                "Les vibrations de l'air atteignent le tympan",
+                "Des cellules ciliées transmettent un message au cerveau",
+                "De la lumière visible remplace le signal",
+                "L'onde se propage dans le vide seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chaîne mécanique puis électrophysiologique jusqu'au cerveau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pavillon de l'oreille sert à :",
+              "options": [
+                "Collecter et orienter les sons",
+                "Produire des ultrasons",
+                "Filtrer la lumière",
+                "Mesurer la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentration de l'énergie acoustique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le tympan :",
+              "options": [
+                "Vibre sous l'action de l'air",
+                "Transmet le mouvement aux osselets",
+                "Est une lentille convergente",
+                "Émet des photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Membrane fine sensible aux variations de pression."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les osselets transmettent les vibrations vers :",
+              "options": ["La cochlée", "Le rétine", "Un prisme", "Le Soleil"],
+              "correctAnswers": [0],
+              "explanation": "Amplification mécanique vers l'oreille interne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La cochlée contient :",
+              "options": [
+                "Des cellules ciliées sensibles aux fréquences",
+                "Un miroir plan",
+                "De l'encre magenta",
+                "Un générateur 230 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse fréquentielle du son."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une forte exposition sonore peut endommager :",
+              "options": [
+                "Les cellules ciliées",
+                "Uniquement le pavillon externe",
+                "La couleur des yeux",
+                "Le prisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lésions irréversibles possibles du capital auditif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le seuil d'audibilité correspond au :",
+              "options": [
+                "Son le plus faible perceptible",
+                "Son le plus aigu possible",
+                "Volume d'une ampoule",
+                "Angle de réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite basse de perception."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Boucher les oreilles avec des bouchons réduit :",
+              "options": [
+                "L'amplitude du son entrant",
+                "La vitesse de la lumière",
+                "La fréquence du Soleil",
+                "La réfraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation mécanique du signal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une personne âgée peut entendre moins les aigus car :",
+              "options": [
+                "L'usure cochléaire affecte surtout les hautes fréquences",
+                "Le son ne se propage plus",
+                "La lumière absorbe le son",
+                "Les ultrasons deviennent visibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Presbyacousie fréquente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester l'audition avec un audiogramme mesure :",
+              "options": [
+                "Les seuils par fréquence",
+                "La couleur d'un objet",
+                "La vitesse c",
+                "L'angle i = r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphique sensibilité–fréquence."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Niveau sonore et décibels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le niveau sonore en décibels (dB) renseigne sur :",
+              "options": [
+                "L'intensité perçue ou mesurée du son",
+                "Le caractère potentiellement nocif à forte valeur",
+                "La couleur d'une lumière",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "dB échelle logarithmique liée à l'intensité ; seuils de risque existent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le décibel (dB) s'utilise pour :",
+              "options": [
+                "Exprimer un niveau sonore",
+                "Comparer des intensités sonores",
+                "Mesurer une fréquence en hertz directement",
+                "Décrire une longueur d'onde lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeur logarithmique d'intensité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une conversation normale est de l'ordre de :",
+              "options": [
+                "60 dB",
+                "0 dB absolu de toute source",
+                "200 dB",
+                "1 Hz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur courant en éducation à la santé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un concert rock très fort peut dépasser :",
+              "options": [
+                "100 dB",
+                "10 dB",
+                "0 dB sans risque",
+                "La vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux dangereux sans protection."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Augmenter de 10 dB correspond approximativement à :",
+              "options": [
+                "Une sensation de son dix fois plus intense",
+                "Une fréquence dix fois plus haute",
+                "Une vitesse dix fois c",
+                "Une couleur dix fois plus rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle logarithmique : +10 dB ≈ ×10 en intensité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0 dB dans l'audiométrie de référence correspond au :",
+              "options": [
+                "Seuil d'audibilité normal pour 1 kHz",
+                "Silence absolu universel",
+                "Volume d'un moteur d'avion",
+                "Maximum du spectre visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence conventionnelle, pas le vide sonore."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un sonomètre mesure :",
+              "options": [
+                "Le niveau sonore en dB",
+                "La couleur RVB",
+                "La masse molaire",
+                "Le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appareil de mesure du bruit ambiant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Limiter le temps d'exposition à 85 dB ou plus :",
+              "options": [
+                "Protège l'audition",
+                "Augmente la fréquence",
+                "Crée une éclipse",
+                "Ralentit la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations de sécurité au travail et en loisirs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un casque anti-bruit actif peut :",
+              "options": [
+                "Atténuer certaines fréquences par signal inverse",
+                "Rendre le son plus fort",
+                "Transformer le son en lumière",
+                "Supprimer le besoin de milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annulation partielle par interférence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre dB et Hz mène à :",
+              "options": [
+                "Mélanger intensité et fréquence",
+                "Bien décrire le timbre",
+                "Calculer v = d/t",
+                "Nommer les couleurs primaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hz = fréquence ; dB = niveau sonore."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Écho et réverbération",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un écho se produit quand :",
+              "options": [
+                "Le son se réfléchit sur une surface",
+                "Le délai est suffisant pour distinguer le retour",
+                "Le son traverse le vide",
+                "La lumière devient son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réflexion acoustique avec retard perceptible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour entendre un écho distinct, il faut souvent :",
+              "options": [
+                "Une distance suffisante au mur",
+                "Un délai supérieur à environ 0,1 s",
+                "Un milieu opaque à la lumière",
+                "Une fréquence nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cerveau sépare les arrivées si le retard est assez grand."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La réverbération diffère de l'écho car :",
+              "options": [
+                "Elle résulte de multiples réflexions rapprochées",
+                "Elle prolonge le son dans une salle",
+                "Elle supprime toute réflexion",
+                "Elle mesure la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange de retours très rapprochés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Crier dans une montagne peut produire :",
+              "options": [
+                "Un écho",
+                "Une réverbération naturelle",
+                "Une éclipse de Lune",
+                "Un arc-en-ciel sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion sur parois rocheuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les salles de concert traitent l'acoustique pour :",
+              "options": [
+                "Contrôler réverbération et clarté",
+                "Empêcher toute propagation",
+                "Créer du vide",
+                "Changer la vitesse c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux absorbants et forme influencent l'écoute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sonar ou écholocation utilisent :",
+              "options": [
+                "Le temps de retour d'un écho",
+                "La vitesse du son dans l'eau",
+                "La couleur magenta",
+                "La loi i = r"
+              ],
+              "correctAnswers": [0],
+              "explanation": "d = v×t/2 pour un aller-retour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une salle vide réverbère souvent plus car :",
+              "options": [
+                "Les murs durs renvoient le son",
+                "Il n'y a pas de meubles absorbants",
+                "Le vide remplit la pièce",
+                "La lumière est bloquée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'absorption, beaucoup de réflexions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tapis et rideaux dans un salon :",
+              "options": [
+                "Réduisent la réverbération",
+                "Augmentent les échos nets",
+                "Créent des ultrasons visibles",
+                "Mesurent le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériaux absorbants atténuent les réflexions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'écho d'un claquement de mains dans un tunnel est dû à :",
+              "options": [
+                "Réflexions successives sur les parois",
+                "Réfraction de la lumière",
+                "Absorption totale",
+                "Production de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onde sonore renvoyée plusieurs fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans réflexion sonore, on n'entendrait pas :",
+              "options": [
+                "D'effet de salle ni d'écho",
+                "Aucun son direct",
+                "La voix à proximité",
+                "Un diapason en contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son direct existe, mais l'ambiance acoustique disparaît."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Signaux sonores et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour préserver son audition au quotidien :",
+              "options": [
+                "Limiter le volume des écouteurs",
+                "S'éloigner des sources très bruyantes",
+                "Augmenter sans limite le temps d'exposition",
+                "Utiliser le vide pour écouter"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Volume, durée et distance sont des leviers de prévention."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Porter des bouchons d'oreille lors d'un festival :",
+              "options": [
+                "Réduit le niveau sonore entrant",
+                "Empêche toute audition future",
+                "Transforme le son en lumière",
+                "Mesure la fréquence en nm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection individuelle recommandée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un signal sonore d'alarme doit être :",
+              "options": [
+                "Distinct et audible",
+                "Adapté au contexte (continu ou intermittent)",
+                "Toujours infrasonore",
+                "Identique à une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alerte efficace par contraste sonore."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bruit chronique en ville peut :",
+              "options": [
+                "Fatiguer et stresser l'organisme",
+                "Améliorer toujours le sommeil",
+                "Augmenter la vitesse de la lumière",
+                "Créer des ombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuisances sonores impactent la santé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réglementation travail limite l'exposition à certains :",
+              "options": [
+                "Niveaux sonores en dB",
+                "Couleurs de lumière",
+                "Angles de réflexion",
+                "Masses molaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection des travailleurs contre le bruit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Téléphone en écouteurs à volume maximal prolongé :",
+              "options": [
+                "Risque de lésions auditives",
+                "Améliore la réfraction",
+                "Crée un prisme",
+                "Ralentit le son à c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude dangereuse chez les jeunes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un signal « silence » au cinéma rappelle :",
+              "options": [
+                "D'éteindre les sonneries bruyantes",
+                "De regarder le Soleil",
+                "D'ouvrir les fenêtres",
+                "De parler fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect du public et du niveau sonore de la séance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Son et lumière comme signaux :",
+              "options": [
+                "Transportent de l'information",
+                "Se propagent tous deux dans le vide",
+                "Ont toujours la même vitesse",
+                "N'ont aucun usage technologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alarmes, téléphones, fibres optiques transmettent des infos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Signaler un danger avec un klaxon utilise :",
+              "options": [
+                "Un son fort et bref",
+                "Une lumière seule",
+                "Une ombre portée",
+                "Un filtre cyan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal sonore d'alerte routier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse du chapitre signaux sonores :",
+              "options": [
+                "Fréquence → hauteur ; amplitude → volume ; milieu nécessaire",
+                "Le son est plus rapide que la lumière",
+                "Les dB mesurent la couleur",
+                "L'oreille émet la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeurs clés et conditions de propagation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

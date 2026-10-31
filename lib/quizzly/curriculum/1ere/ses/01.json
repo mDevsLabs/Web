@@ -1,0 +1,2433 @@
+{
+  "id": "1ere-ses-01",
+  "year": "1ere",
+  "subject": "ses",
+  "title": "Science économique",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Marché et prix",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Sur un marché concurrentiel, quels mécanismes ajustent les échanges après un choc de demande ?",
+              "options": [
+                "Le prix plus élevé incite à produire davantage",
+                "Le prix est toujours administré",
+                "La tension sur les stocks peut faire monter le prix",
+                "Les agents ignorent totalement le prix"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le prix signale la rareté et modifie les incitations à produire et à consommer."
+            },
+            {
+              "type": "single_choice",
+              "question": "La courbe de demande ordinaire est en général :",
+              "options": [
+                "croissante",
+                "décroissante",
+                "verticale",
+                "horizontale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quand le prix augmente, la quantité demandée diminue, c'est la loi de la demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Un excédent de demande non réglementé pousse le prix à :",
+              "options": ["baisser", "monter", "rester fixe", "disparaître"],
+              "correctAnswers": [1],
+              "explanation": "Les acheteurs se concurrencent et acceptent un prix plus haut jusqu'à l'équilibre."
+            },
+            {
+              "type": "single_choice",
+              "question": "À l'équilibre de marché :",
+              "options": [
+                "Qo = 0",
+                "Qd infinie",
+                "Qd = Qo",
+                "profit maximal garanti"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Quantités demandées et offertes coïncident sans surplus ni pénurie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Coûts de production en hausse : l'offre se déplace :",
+              "options": [
+                "à droite",
+                "à gauche",
+                "sans changement",
+                "vers l'infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins de production rentable à chaque prix : contraction de l'offre."
+            },
+            {
+              "type": "single_choice",
+              "question": "L'élasticité-prix de la demande mesure :",
+              "options": [
+                "le PIB",
+                "la réaction de Qd au prix",
+                "le taux de chômage",
+                "la masse monétaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle exprime la variation relative de la demande pour 1 % de variation du prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande inélastique : hausse du prix ⇒ quantités vendues :",
+              "options": [
+                "chutent fortement",
+                "peu affectées",
+                "nulles",
+                "doublées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Peu de substituts : les consommateurs continuent d'acheter malgré le prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix plafonné sous l'équilibre :",
+              "options": [
+                "excédent",
+                "pénurie",
+                "offre infinie",
+                "demande nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À ce prix, la demande dépasse l'offre disponible."
+            },
+            {
+              "type": "single_choice",
+              "question": "Concurrence pure et parfaite inclut :",
+              "options": [
+                "monopole",
+                "barrières fortes",
+                "atomicité et libre entrée",
+                "prix collusion"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Modèle de référence avec nombreux agents et homogénéité du bien."
+            },
+            {
+              "type": "single_choice",
+              "question": "Surplus du consommateur =",
+              "options": [
+                "profit de la firme",
+                "dispo à payer moins prix payé",
+                "impôt",
+                "coût fixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gain des acheteurs qui paient moins que leur valorisation du bien."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels chocs augmentent la demande d'un bien normal ?",
+              "options": [
+                "Revenu des ménages en hausse",
+                "Substitut moins cher",
+                "Goût favorable pour le bien",
+                "Complément plus cher"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Revenu et préférences déplacent la demande à droite ; substitut moins cher ou complément plus cher la réduisent."
+            },
+            {
+              "type": "single_choice",
+              "question": "Externalité négative de production :",
+              "options": [
+                "coût social > coût privé",
+                "marché toujours optimal",
+                "aucun effet sur tiers",
+                "profit nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des coûts sont imposés à la collectivité sans être payés par le producteur."
+            },
+            {
+              "type": "single_choice",
+              "question": "Coût marginal :",
+              "options": [
+                "coût total / Q",
+                "coût de la dernière unité",
+                "loyer",
+                "prix administré"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Variation du coût total pour une unité supplémentaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Firme preneuse de prix car :",
+              "options": [
+                "elle domine le marché",
+                "part de marché négligeable",
+                "État fixe tout",
+                "offre nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En CPP, aucune firme n'influence le prix d'équilibre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Taxe sur un bien : offre se déplace :",
+              "options": ["droite", "gauche", "demande seule", "aucun effet"],
+              "correctAnswers": [1],
+              "explanation": "Coût plus élevé pour les vendeurs, moins d'offre à chaque prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Offre élastique si :",
+              "options": [
+                "capacité rigide",
+                "production ajustable vite",
+                "monopole",
+                "stock fixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les producteurs peuvent réagir rapidement aux variations de prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Bien inférieur : revenu baisse ⇒ demande :",
+              "options": ["augmente", "diminue", "stable", "infinie"],
+              "correctAnswers": [0],
+              "explanation": "Substituts de meilleure qualité deviennent moins accessibles."
+            },
+            {
+              "type": "single_choice",
+              "question": "Recettes du producteur concurrentiel =",
+              "options": [
+                "loyer permanent",
+                "prix × quantités vendues",
+                "subvention seule",
+                "zéro toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il vend au prix du marché la quantité choisie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Baisse des coûts (demande constante) :",
+              "options": ["P↓ Q↑", "P↑ Q↓", "inchangé", "offre nulle"],
+              "correctAnswers": [0],
+              "explanation": "Offre accrue tire le prix vers le bas et augmente les échanges."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix allocatif :",
+              "options": [
+                "fixe le SMIC",
+                "oriente ressources vers usages valorisés",
+                "interdit concurrence",
+                "crée monopole"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les signaux-prix coordonnent production et consommation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Un excédent d'offre (surplus) entraîne typiquement :",
+              "options": [
+                "pression à la baisse sur le prix",
+                "pénurie immédiate",
+                "des stocks invendus",
+                "demande illimitée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Trop d'offre : les vendeurs baissent le prix pour écouler les stocks."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande de travail dérivée signifie :",
+              "options": [
+                "indépendante de la production",
+                "liée à la demande de biens produits",
+                "fixée par l'État",
+                "nulle en CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les entreprises embauchent si la demande finale pour leurs produits le justifie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Substituts proches : élasticité croisée de la demande est :",
+              "options": ["négative", "positive", "nulle", "infinie"],
+              "correctAnswers": [1],
+              "explanation": "Prix du substitut en hausse augmente la demande du bien considéré."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix plancher au-dessus de l'équilibre :",
+              "options": [
+                "pénurie",
+                "excédent durable",
+                "Q = 0",
+                "demande infinie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prix minimum trop élevé : l'offre dépasse la demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe d'offre individuelle en CPP correspond au :",
+              "options": [
+                "coût moyen",
+                "coût marginal au-dessus du seuil",
+                "revenu",
+                "prix plafond"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La firme offre tant que le prix couvre le coût marginal (au-delà du seuil de fermeture)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Externalité positive : sans intervention,",
+              "options": [
+                "trop produit",
+                "sous-production sociale",
+                "équilibre parfait",
+                "prix nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les bénéfices pour autrui ne sont pas internalisés par le marché privé."
+            },
+            {
+              "type": "single_choice",
+              "question": "Choc positif sur les préférences (demande) :",
+              "options": [
+                "P↓",
+                "P↑ et Q↑",
+                "offre seule bouge",
+                "marché disparaît"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Demande accrue tire prix et quantité vers le haut à offre donnée."
+            },
+            {
+              "type": "single_choice",
+              "question": "Biens complémentaires : prix du complément baisse ⇒",
+              "options": [
+                "demande baisse",
+                "demande du bien augmente",
+                "offre nulle",
+                "élasticité nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Consommer l'ensemble coûte moins cher, d'où plus de demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Surplus du producteur mesure :",
+              "options": [
+                "impôt",
+                "gain au-delà du coût de la vente",
+                "chômage",
+                "inflation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Différence entre prix reçu et coût minimal accepté pour vendre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Concurrence monopolistique se distingue par :",
+              "options": [
+                "produit homogène",
+                "différenciation et nombre limité",
+                "CPP",
+                "un seul acheteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Firmes nombreuses mais produits différenciés, pouvoir de prix limité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels instruments publics corrigent une externalité négative ?",
+              "options": [
+                "Taxe pigouvienne",
+                "Subvention à la pollution",
+                "Réglementation des émissions",
+                "Suppression de toute norme"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Taxer ou réglementer internalise le coût social de la pollution."
+            },
+            {
+              "type": "single_choice",
+              "question": "Élasticité-prix |E| > 1 : demande dite :",
+              "options": ["inélastique", "élastique", "nulle", "parfaite"],
+              "correctAnswers": [1],
+              "explanation": "La quantité réagit plus que proportionnellement au prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Hausse simultanée demande et offre : quantité équilibre :",
+              "options": ["baisse sûre", "augmente sûre", "nulle", "indéfinie"],
+              "correctAnswers": [1],
+              "explanation": "Les deux chocs tirent Q vers le haut ; l'effet sur P est ambigu."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monopole : courbe de demande vue par la firme est :",
+              "options": [
+                "horizontale",
+                "décroissante du marché",
+                "verticale",
+                "inexistante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seul vendeur : pour vendre plus, il doit baisser le prix sur toutes les unités."
+            },
+            {
+              "type": "single_choice",
+              "question": "Rationnement par le prix vs par la queue :",
+              "options": [
+                "identiques",
+                "prix alloue sans file d'attente en équilibre",
+                "queue augmente offre",
+                "prix n'a aucun rôle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le prix équilibre évite les files ; plafonnement peut imposer l'attente."
+            },
+            {
+              "type": "single_choice",
+              "question": "Coût d'opportunité d'un choix :",
+              "options": [
+                "prix affiché seul",
+                "valeur de la meilleure option renoncée",
+                "profit comptable",
+                "TVA"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mesure ce à quoi on renonce en utilisant une ressource."
+            },
+            {
+              "type": "single_choice",
+              "question": "Offre de travail individuelle peut se courber en arrière si :",
+              "options": [
+                "leisure devient très valorisé",
+                "salaire n'influence jamais",
+                "demande nulle",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà d'un salaire élevé, l'effet revenu peut réduire l'offre d'heures."
+            },
+            {
+              "type": "single_choice",
+              "question": "Indice de concentration élevé suggère :",
+              "options": [
+                "CPP",
+                "pouvoir de marché plus fort",
+                "atomicité",
+                "prix nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Peu de firmes dominantes peuvent influencer prix et quantités."
+            },
+            {
+              "type": "single_choice",
+              "question": "Libéralisation d'un marché protégé tend à :",
+              "options": [
+                "réduire concurrence",
+                "accroître concurrence et pression sur les prix",
+                "supprimer l'offre",
+                "fixer les prix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Entrée de concurrents et arbitrages renforcent la compétition."
+            },
+            {
+              "type": "single_choice",
+              "question": "Effet revenu d'une hausse de prix sur un bien normal :",
+              "options": [
+                "augmente Qd",
+                "diminue Qd",
+                "Qd infinie",
+                "offre baisse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pouvoir d'achat réel baisse : moins de quantité demandée, toute chose égale."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Caractéristiques du marché du travail en première :",
+              "options": [
+                "Demande dérivée",
+                "Salaire peut être négocié",
+                "Offre de travail des ménages",
+                "Prix toujours identique pour tous métiers"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les entreprises demandent du travail selon leurs ventes ; les individus offrent leur force de travail."
+            },
+            {
+              "type": "single_choice",
+              "question": "SMIC est un exemple de :",
+              "options": ["prix plafond", "prix plancher", "taxe", "monopole"],
+              "correctAnswers": [1],
+              "explanation": "Salaire minimum légal : plancher en dessous duquel le salaire horaire ne peut pas descendre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Chômage d'équilibre en analyse classique peut venir de :",
+              "options": [
+                "rigidités salariales",
+                "CPP parfaite instantanée",
+                "absence de frictions",
+                "demande infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salaires rigides ou institutions empêchent l'ajustement complet."
+            },
+            {
+              "type": "single_choice",
+              "question": "Productivité marginale du travail :",
+              "options": [
+                "production totale",
+                "apport de la dernière heure embauchée",
+                "salaire médian",
+                "PIB"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gain de production lié à une unité supplémentaire de travail."
+            },
+            {
+              "type": "single_choice",
+              "question": "Oligopole :",
+              "options": [
+                "un vendeur",
+                "peu de vendeurs interdépendants",
+                "CPP",
+                "acheteur unique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Stratégies des firmes dépendent des anticipations sur les concurrents."
+            },
+            {
+              "type": "single_choice",
+              "question": "Bien public pur :",
+              "options": [
+                "rival et excludable",
+                "non rival et non excludable",
+                "taxé uniquement",
+                "monopole privé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Consommation d'un agent n'empêche pas les autres ; difficile d'exclure."
+            },
+            {
+              "type": "single_choice",
+              "question": "Asymétrie d'information peut mener à :",
+              "options": [
+                "marché toujours efficient",
+                "aléa moral ou sélection adverse",
+                "prix nul",
+                "offre infinie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un camp sait plus que l'autre : risque de mauvaise allocation."
+            },
+            {
+              "type": "single_choice",
+              "question": "Hausse de la productivité globale tend à :",
+              "options": [
+                "baisser production",
+                "augmenter production potentielle",
+                "supprimer salaires",
+                "fixer prix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus de output pour mêmes facteurs, sous réserve de demande effective."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe de Phillips (court terme) relie souvent :",
+              "options": [
+                "inflation et chômage",
+                "prix et monnaie",
+                "export et import seuls",
+                "CPP et monopole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trade-off historique entre inflation et chômage à court terme (lecture introductive)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Liberté d'entrée sur un marché :",
+              "options": [
+                "renforce concurrence long terme",
+                "crée monopole",
+                "supprime profit toujours",
+                "interdit investissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveaux entrants augmentent l'offre et contestent les positions établies."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Facteurs déplaçant l'offre à droite :",
+              "options": [
+                "Progrès technique",
+                "Subvention à la production",
+                "Taxe sur les ventes",
+                "Hausse du prix des inputs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Progrès et subventions augmentent l'offre ; une taxe ou des inputs plus chers la déplacent à gauche."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande horizontale pour une firme en CPP signifie :",
+              "options": [
+                "P variable",
+                "P constant au niveau du marché",
+                "monopole",
+                "demande nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle vend autant qu'elle veut au prix d'équilibre du marché."
+            },
+            {
+              "type": "single_choice",
+              "question": "Rentabilité à court terme : produire si :",
+              "options": [
+                "P < CMV",
+                "P ≥ coût variable moyen",
+                "revenu nul",
+                "Q = 0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Couvrir au moins les coûts variables pour limiter la perte vs fermeture."
+            },
+            {
+              "type": "single_choice",
+              "question": "Diffusion d'une innovation baisse les prix car :",
+              "options": [
+                "demande chute",
+                "offre augmente",
+                "monopole renforcé",
+                "taxe nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Production moins chère et concurrence accrue tirent les prix vers le bas."
+            },
+            {
+              "type": "single_choice",
+              "question": "Marché des changes : prix d'une monnaie exprimé en :",
+              "options": ["tonnes", "autre monnaie", "heures", "kWh"],
+              "correctAnswers": [1],
+              "explanation": "Taux de change : combien d'unités d'une monnaie pour une unité d'une autre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Protectionnisme (tarif douanier) sur un bien importé :",
+              "options": [
+                "baisse prix intérieur",
+                "réduit concurrence étrangère, prix intérieur tend à monter",
+                "augmente offre mondiale",
+                "CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Barrière commerciale qui favorise les producteurs nationaux à la charge des consommateurs."
+            },
+            {
+              "type": "single_choice",
+              "question": "Avantage comparatif (Ricardo) explique :",
+              "options": [
+                "autarcie optimale",
+                "gains à l'échange selon spécialisations",
+                "monopole naturel",
+                "prix plafond"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Spécialisation relative améliore l'allocation mondiale des ressources."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe d'offre globale long terme est souvent :",
+              "options": [
+                "verticale",
+                "plus élastique qu'à court terme",
+                "nulle",
+                "horizontale toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Capacités et facteurs s'ajustent avec le temps."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix relatif d'un bien :",
+              "options": [
+                "nominal seul",
+                "rapport de son prix à celui d'autres biens",
+                "TVA",
+                "SMIC"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Compare le coût d'opportunité en termes d'autres consommations."
+            },
+            {
+              "type": "single_choice",
+              "question": "Un quota d'importation limite :",
+              "options": [
+                "quantités étrangères admises",
+                "uniquement la demande intérieure",
+                "le taux de change",
+                "le SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière non tarifaire qui restreint le volume importé et soutient souvent les prix intérieurs."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Conséquences d'un monopole sans régulation :",
+              "options": [
+                "Prix plus élevé qu'en CPP",
+                "Quantité plus faible qu'en CPP",
+                "Surplus total maximal",
+                "Concurrence parfaite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le monopole restreint l'offre pour maintenir un prix supérieur au coût marginal."
+            },
+            {
+              "type": "single_choice",
+              "question": "Discrimination tarifaire :",
+              "options": [
+                "prix unique",
+                "prix différents selon clients sans coût différent",
+                "offre nulle",
+                "CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Capturer plus de surplus en faisant payer selon la disposition à payer."
+            },
+            {
+              "type": "single_choice",
+              "question": "Regroupement horizontal :",
+              "options": [
+                "fournisseur + distributeur",
+                "concurrents même étape",
+                "État seul",
+                "ménage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fusion de firmes au même stade de la filière."
+            },
+            {
+              "type": "single_choice",
+              "question": "Barrières à l'entrée incluent :",
+              "options": [
+                "libre entrée",
+                "brevets, économies d'échelle",
+                "CPP",
+                "atomicité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Protègent les positions établies contre de nouveaux concurrents."
+            },
+            {
+              "type": "single_choice",
+              "question": "Effet substitution d'une hausse de prix :",
+              "options": [
+                "achète plus du bien",
+                "achète plus de substituts",
+                "demande infinie",
+                "offre baisse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le bien devient relativement plus cher : bascule vers des alternatives."
+            },
+            {
+              "type": "single_choice",
+              "question": "Marché factoriel du capital : prix d'équilibre =",
+              "options": [
+                "salaire",
+                "taux de rentabilité / coût du capital",
+                "SMIC",
+                "inflation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rémunération de la ressource capital selon offre et demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Déficit commercial d'un pays :",
+              "options": [
+                "export > import",
+                "import > export",
+                "PIB nul",
+                "budget équilibré"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valeur des importations dépasse celle des exportations sur la période."
+            },
+            {
+              "type": "single_choice",
+              "question": "Écart prix marché / coût social optimal avec externalité :",
+              "options": [
+                "défaillance possible",
+                "toujours optimal",
+                "sans lien",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Externalités et biens publics justifient parfois l'intervention publique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe d'offre de marché est :",
+              "options": [
+                "somme horizontale des offres individuelles",
+                "demande inversée",
+                "vertical toujours",
+                "fixée par le consommateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque prix, on additionne les quantités offertes par les firmes."
+            },
+            {
+              "type": "single_choice",
+              "question": "Anticipations inflationnistes à la hausse peuvent :",
+              "options": [
+                "accélérer achats immédiats",
+                "stopper toute demande",
+                "supprimer monnaie",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acheter avant la hausse des prix prévue (effet sur demande court terme)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Rôle informatif du prix :",
+              "options": [
+                "Signale la rareté",
+                "Coordonne producteurs",
+                "Élimine toute incertitude",
+                "Remplace toujours l'État"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le prix transmet l'information sur les conditions de marché et guide les décisions."
+            },
+            {
+              "type": "single_choice",
+              "question": "Nash en oligopole : chaque firme :",
+              "options": [
+                "ignore les autres",
+                "maximise profit sachant les choix des autres",
+                "fixe P = 0",
+                "CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Équilibre où personne ne veut dévier unilatéralement sa stratégie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Loyer économique :",
+              "options": [
+                "salaire minimum",
+                "revenu au-delà du coût d'opportunité du facteur",
+                "impôt",
+                "subvention"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Profit sur un facteur rare ou une position protégée."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe de demande de marché :",
+              "options": [
+                "somme horizontale des demandes",
+                "offre verticale",
+                "monopole seul",
+                "sans prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque prix, on additionne les quantités demandées par les acheteurs."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix nominaux vs réels : réels corrigent :",
+              "options": ["TVA", "inflation", "goût", "offre"],
+              "correctAnswers": [1],
+              "explanation": "Mesurent le pouvoir d'achat en retirant la variation générale des prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Segmentation de marché :",
+              "options": [
+                "un prix unique",
+                "groupes de clients traités différemment",
+                "CPP",
+                "offre nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Stratégie commerciale selon élasticités ou préférences distinctes."
+            },
+            {
+              "type": "single_choice",
+              "question": "Offre parfaitement inélastique (courbe verticale) :",
+              "options": [
+                "Q fixe quoi qu'il arrive",
+                "P fixe",
+                "demande nulle",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité constante indépendamment du prix (exemple pédagogique : terrain unique)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande parfaitement élastique pour une firme :",
+              "options": [
+                "courbe horizontale",
+                "verticale",
+                "monopole",
+                "oligopole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petite variation de prix fait chuter les ventes à zéro (concurrence intense)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Internalisation d'une externalité par marché de permis d'émettre :",
+              "options": [
+                "fixe un prix sur les droits à polluer",
+                "supprime toute production",
+                "CPP",
+                "gratuité totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les entreprises achètent/vendent des quotas : coût privé reflète la rareté écologique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Choc négatif offre (pétrole) :",
+              "options": ["P↓ Q↑", "P↑ Q↓", "inchangé", "demande seule"],
+              "correctAnswers": [1],
+              "explanation": "Offre réduite augmente le prix et diminue la quantité échangée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Indices de mesure du pouvoir de marché :",
+              "options": [
+                "Parts de marché",
+                "Indice HHI",
+                "Taux de marge sans contexte",
+                "Nombre d'acheteurs CPP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parts et concentration aident à évaluer la structure concurrentielle."
+            },
+            {
+              "type": "single_choice",
+              "question": "Double marginalisation (chaîne verticale) peut :",
+              "options": [
+                "réduire prix final",
+                "augmenter prix cumulés de marge",
+                "CPP",
+                "offre infinie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque maillon ajoute sa marge, parfois au-delà de l'intégration optimale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Concurrence imparfaite vs CPP : surplus total :",
+              "options": [
+                "toujours plus élevé en imparfaite",
+                "souvent plus faible qu'en CPP (perte sèche)",
+                "identique",
+                "nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Restriction de quantité crée une perte de surplus par rapport à l'optimum."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prix d'achat minimum garanti (agriculture) ressemble à :",
+              "options": ["plafond", "plancher", "taxe", "monopole acheteur"],
+              "correctAnswers": [1],
+              "explanation": "L'État ou un organisme garantit un revenu minimum via un prix plancher."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande agrégée keynésienne (intro) : baisse de P global :",
+              "options": [
+                "augmente toujours Y",
+                "effet richesse / taux peut moduler dépenses",
+                "supprime monnaie",
+                "CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À revenus nominaux donnés, baisse des prix peut stimuler demande (effet richesse)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Offre agrégée long terme est souvent vue :",
+              "options": [
+                "verticale au plein emploi",
+                "horizontale toujours",
+                "nulle",
+                "demande seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau de production déterminé par capacités et facteurs, pas par les prix nominaux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Rigidité nominale des salaires peut prolonger :",
+              "options": [
+                "chômage",
+                "CPP instantanée",
+                "surplus total max",
+                "prix nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajustement incomplet des salaires face aux chocs de demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe de Laffer (intro) : taxe trop élevée peut :",
+              "options": [
+                "maximiser recettes toujours",
+                "réduire assiette et recettes",
+                "supprimer offre",
+                "CPP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comportements d'évasion et moindre activité peuvent baisser le produit de la taxe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Bien Giffen (cas rare) :",
+              "options": [
+                "demande baisse quand P baisse",
+                "demande augmente quand P baisse",
+                "CPP",
+                "offre verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet revenu négatif très fort domine l'effet substitution (pédagogie avancée)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Équilibre général (idée) :",
+              "options": [
+                "tous marchés s'ajustent simultanément",
+                "un seul marché isolé",
+                "sans prix",
+                "monopole unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interactions entre marchés via prix relatifs et revenus."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Synthèse marché-prix en première :",
+              "options": [
+                "Offre et demande déterminent l'équilibre",
+                "Les prix transmettent l'information",
+                "L'État doit toujours fixer tous les prix",
+                "Externalités peuvent justifier intervention"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mécanisme de marché coordonné par les prix ; les défaillances comme les externalités peuvent appeler l'intervention publique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Qui paie une taxe à la consommation dépend surtout de :",
+              "options": [
+                "élasticités offre et demande",
+                "couleur du bien",
+                "CPP seule",
+                "monnaie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partage de la charge fiscale selon rigidités relatives offre/demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Perte sèche d'un monopole :",
+              "options": [
+                "surplus détruit vs CPP",
+                "gain total",
+                "profit nul",
+                "taxe zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unités non échangées qui auraient créé du surplus en concurrence."
+            },
+            {
+              "type": "single_choice",
+              "question": "Concurrence par comparaison (services publics) :",
+              "options": [
+                "benchmark entre opérateurs",
+                "monopole sans contrôle",
+                "prix nul",
+                "sans régulateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simuler pression concurrentielle via régulation et comparaison de performance."
+            },
+            {
+              "type": "single_choice",
+              "question": "Indexation des salaires sur inflation vise à :",
+              "options": [
+                "préserver pouvoir d'achat nominal",
+                "supprimer prix",
+                "CPP",
+                "offre nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revalorisation automatique selon évolution des prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Marché contestable : menace d'entrée :",
+              "options": [
+                "discipline comportement comme concurrence",
+                "monopole sûr",
+                "prix nul",
+                "sans profit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de barrières : comportement pro-concurrentiel même avec peu de firmes présentes."
+            },
+            {
+              "type": "single_choice",
+              "question": "Coûts de transaction élevés (Coase) :",
+              "options": [
+                "peuvent empêcher négociations privées",
+                "garantissent optimalité",
+                "CPP",
+                "sans externalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si négocier coûte cher, le marché peut ne pas internaliser seul les externalités."
+            },
+            {
+              "type": "single_choice",
+              "question": "Signal-prix lors d'une canicule sur l'électricité :",
+              "options": [
+                "incite à réduire consommation",
+                "supprime demande",
+                "fixe SMIC",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix spot élevé reflète la rareté et modère la demande."
+            },
+            {
+              "type": "single_choice",
+              "question": "Bien commun (rival, non excludable) tend à :",
+              "options": [
+                "surconsommation / tragédie des communs",
+                "CPP",
+                "surplus max",
+                "offre infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun ignore le coût imposé aux autres, entraînant surutilisation."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif allocatif efficace (Pareto) :",
+              "options": [
+                "impossible d'améliorer un agent sans nuire à un autre",
+                "profit max d'une firme",
+                "prix nul",
+                "chômage zéro toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimalité au sens où plus de gain sans perdant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Monnaie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Fonctions traditionnelles de la monnaie :",
+              "options": [
+                "Intermédiaire des échanges",
+                "Unité de compte",
+                "Production de biens physiques",
+                "Fixation unilatérale du SMIC"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La monnaie sert aussi de réserve de valeur, mais ici les deux fonctions immédiates du programme sont l'intermédiaire des échanges et l'unité de compte."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monnaie scripturale désigne :",
+              "options": [
+                "pièces uniquement",
+                "soldes bancaires et virements",
+                "or uniquement",
+                "barter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aujourd'hui la majorité des paiements passe par les comptes bancaires."
+            },
+            {
+              "type": "single_choice",
+              "question": "Banque centrale en zone euro :",
+              "options": ["BNP seule", "BCE", "FMI", "OMC"],
+              "correctAnswers": [1],
+              "explanation": "La BCE définit la politique monétaire unique pour l'euro."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif principal de la BCE (mandat) :",
+              "options": [
+                "stabilité des prix",
+                "emploi seul",
+                "cours du dollar",
+                "budget État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inflation proche de 2 % à moyen terme est l'objectif de référence."
+            },
+            {
+              "type": "single_choice",
+              "question": "Création monétaire primaire :",
+              "options": [
+                "ménages seuls",
+                "principalement banque centrale via opérations",
+                "commerce international seul",
+                "sans banques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La BC émet la monnaie centrale et intervient sur le système bancaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Multiplicateur de crédit dépend surtout de :",
+              "options": [
+                "Réserves obligatoires et comportement de prêt",
+                "couleur des billets",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les banques prêtent une partie des dépôts, dans le cadre réglementaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Inflation :",
+              "options": [
+                "baisse générale des prix",
+                "hausse générale et durable des prix",
+                "taux de change fixe",
+                "chômage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Érosion du pouvoir d'achat de la monnaie dans le temps."
+            },
+            {
+              "type": "single_choice",
+              "question": "Déflation :",
+              "options": [
+                "inflation forte",
+                "baisse générale des prix",
+                "croissance",
+                "euro fort seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Phenomène inverse de l'inflation, rare et risqué pour l'activité."
+            },
+            {
+              "type": "single_choice",
+              "question": "Taux d'intérêt directeur élevé tend à :",
+              "options": [
+                "stimuler crédit",
+                "refroidir demande et inflation",
+                "créer toujours inflation",
+                "supprimer monnaie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Crédit plus cher : investissement et consommation ralentissent."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monnaie fiduciaire repose sur :",
+              "options": [
+                "convertibilité or obligatoire",
+                "confiance et régulation étatique",
+                "CPP",
+                "troc"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Valeur acceptée car reconnue légalement et par usage social."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Actifs monétaires au sens large incluent souvent :",
+              "options": [
+                "Billets et pièces",
+                "Dépôts à vue",
+                "Actions",
+                "Titres très liquides proches (M2 selon définition)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aggrégats monétaires classent liquidité ; M1 inclut cash et dépôts à vue."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande de monnaie pour transaction :",
+              "options": [
+                "diminue avec activité",
+                "augmente avec revenus et paiements",
+                "nulle",
+                "fixe par BCE"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus d'échanges ⇒ besoin de liquidités pour régler les transactions."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande de monnaie pour précaution :",
+              "options": [
+                "couverture imprévus",
+                "sans lien incertitude",
+                "CPP",
+                "offre agricole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garder de la liquidité face aux chocs et dépenses imprévues."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande de monnaie pour spéculation (Keynes) dépend du :",
+              "options": ["taux d'intérêt", "SMIC", "météo", "CPP"],
+              "correctAnswers": [0],
+              "explanation": "Détention monnaie vs titres rapportant intérêt : arbitrage selon taux attendus."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quantitative easing : BC achète :",
+              "options": [
+                "actions privées seules",
+                "titres (souvent publics) pour injecter liquidités",
+                "or obligatoire",
+                "SMIC"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Politique non conventionnelle pour abaisser taux longs et soutenir crédit."
+            },
+            {
+              "type": "single_choice",
+              "question": "Velocity of money (vélocité) :",
+              "options": [
+                "vitesse des billets",
+                "rythme de circulation de la monnaie",
+                "inflation seule",
+                "export"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nombre de fois que la monnaie sert à payer transactions sur une période."
+            },
+            {
+              "type": "single_choice",
+              "question": "Équation quantitative MV = PY relie :",
+              "options": [
+                "monnaie, activité et prix",
+                "chômage seul",
+                "CPP",
+                "douanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité comptable liant masse monétaire, vélocité, prix et production."
+            },
+            {
+              "type": "single_choice",
+              "question": "Hyperinflation caractérisée par :",
+              "options": [
+                "inflation très élevée et instabilité monétaire",
+                "déflation",
+                "taux zéro",
+                "euro fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perte rapide de confiance dans la monnaie nationale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique monétaire expansionniste :",
+              "options": [
+                "taux ↑",
+                "taux ↓ ou liquidités ↑",
+                "budget austéritaire",
+                "tarifs ↑"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cherche à soutenir activité en facilitant le financement."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réserves obligatoires des banques :",
+              "options": [
+                "fraction des dépôts non prêtable",
+                "profit net",
+                "SMIC",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité et contrôle de la création monétaire secondaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Canaux de transmission de la politique monétaire :",
+              "options": [
+                "Taux de crédit",
+                "Taux de change",
+                "Fixation directe des salaires privés",
+                "Anticipations d'inflation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La banque centrale agit via le coût du crédit et le change ; les anticipations amplifient l'effet, mais elle ne fixe pas les salaires privés."
+            },
+            {
+              "type": "single_choice",
+              "question": "Parité pouvoir d'achat (PPP) suggère :",
+              "options": [
+                "taux de change aligné sur ratio de prix",
+                "SMIC identique",
+                "CPP",
+                "sans commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À long terme, même bien devrait coûter pareil converti (hors frictions)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Appréciation de l'euro vs dollar :",
+              "options": [
+                "exportations zone euro plus compétitives",
+                "exportations moins compétitives",
+                "sans effet",
+                "inflation mécanique nulle toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Biens euro chers à l'étranger : pression sur exportations."
+            },
+            {
+              "type": "single_choice",
+              "question": "Balance des paiements enregistre :",
+              "options": [
+                "flux économiques avec l'étranger",
+                "budget État seul",
+                "SMIC",
+                "offre interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptes courant, capital et financier des transactions internationales."
+            },
+            {
+              "type": "single_choice",
+              "question": "Compte courant déficitaire :",
+              "options": [
+                "export > import",
+                "import > export",
+                "sans flux",
+                "monnaie nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Besoin de financement extérieur net sur biens/services/revenus."
+            },
+            {
+              "type": "single_choice",
+              "question": "Taux de change flottant :",
+              "options": [
+                "fixé à vie",
+                "déterminé par offre/demande de devises",
+                "SMIC",
+                "BCE seule sans marché"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Marché des changes fixe le prix relatif des monnaies."
+            },
+            {
+              "type": "single_choice",
+              "question": "Spread bancaire :",
+              "options": [
+                "taux prêt - taux rémunération dépôts",
+                "inflation",
+                "PIB",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marge des banques entre financement et crédit."
+            },
+            {
+              "type": "single_choice",
+              "question": "Crédit interdit / rationné :",
+              "options": [
+                "quantités prêtées plafonnées",
+                "CPP",
+                "monnaie or",
+                "sans banque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines périodes limitent le volume de prêts indépendamment du taux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Anticipations inflationnistes ancrées :",
+              "options": [
+                "facilitent stabilité des prix",
+                "accélèrent toujours hyperinflation",
+                "suppriment BC",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédibilité de la BC aide à stabiliser comportements salariaux et prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monnaie digitale de banque centrale (CBDC) :",
+              "options": [
+                "liability de la BC en forme numérique",
+                "crypto sans régulation",
+                "or physique",
+                "troc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet de monnaie publique numérique complémentaire du cash."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Causes possibles d'inflation par la demande :",
+              "options": [
+                "Politique monétaire accommodante",
+                "Relance budgétaire forte",
+                "Choc négatif d'offre sur le pétrole",
+                "Excès de demande globale"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Relance monétaire et excès de demande tirent les prix ; un choc pétrolier relève surtout l'inflation par les coûts."
+            },
+            {
+              "type": "single_choice",
+              "question": "Inflation par les coûts :",
+              "options": [
+                "hausse coûts production pousse prix",
+                "demande nulle",
+                "déflation",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entreprises répercutent hausses salaires/énergie sur prix de vente."
+            },
+            {
+              "type": "single_choice",
+              "question": "Indexation des contrats sur inflation :",
+              "options": [
+                "protège contre érosion nominale",
+                "supprime BC",
+                "fixe taux change",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clauses liant paiements futurs à l'évolution des prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Cercle vicieux inflationniste implique :",
+              "options": [
+                "anticipations qui entretiennent hausses",
+                "prix stables",
+                "sans salaires",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix et salaires se réindexent mutuellement à la hausse."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique monétaire contracyclique :",
+              "options": [
+                "relance en récession",
+                "pro-cyclique toujours",
+                "sans BC",
+                "fixe budget"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assouplir quand activité faible, resserrer quand surchauffe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Piège à liquidité (Keynes) :",
+              "options": [
+                "taux bas n' stimulent plus investissement",
+                "hyperinflation",
+                "or obligatoire",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférence pour liquidité limite efficacité baisse des taux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monnaie exogène (modèle simple) :",
+              "options": [
+                "contrôlée par BC",
+                "créée seulement par ménages",
+                "sans banques",
+                "or seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pédagogie : BC fixe l'offre de monnaie (modèle à nuancer avec endogénéité bancaire)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Endogénéité du crédit :",
+              "options": [
+                "prêts créent des dépôts",
+                "dépôts existent toujours avant prêts",
+                "sans banque",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vision post-keynésienne : demande de crédit drive création monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Taux réel ≈",
+              "options": [
+                "taux nominal - inflation anticipée",
+                "nominal + inflation",
+                "SMIC",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendement corrigé de l'érosion monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Stagflation combine :",
+              "options": [
+                "stagnation et inflation",
+                "croissance forte",
+                "déflation",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choc offre typique des années 1970 : prix montent, activité faible."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Instruments classiques de la BCE :",
+              "options": [
+                "Opérations open market",
+                "Facilités de prêt et de dépôt",
+                "Fixation du SMIC",
+                "Réserves obligatoires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La BCE guide les taux et la liquidité via le marché ouvert et ses facilités permanentes ; les réserves obligatoires complètent le dispositif."
+            },
+            {
+              "type": "single_choice",
+              "question": "Forward guidance :",
+              "options": [
+                "communication sur futur taux",
+                "suppression cash",
+                "budget État",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oriente anticipations des marchés sur trajectoire monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Livret A (exemple) : taux administré influence :",
+              "options": [
+                "coût ressources bancaires domestiques",
+                "taux Fed",
+                "CPP",
+                "offre pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épargne réglementée affecte financement des banques en France."
+            },
+            {
+              "type": "single_choice",
+              "question": "Eurodollar désigne historiquement :",
+              "options": [
+                "dollars déposés hors USA",
+                "euro physique",
+                "monnaie BCE",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marché offshore de dépôts en dollars."
+            },
+            {
+              "type": "single_choice",
+              "question": "Swap lines entre banques centrales :",
+              "options": [
+                "liquidités en devises en crise",
+                "fusion banques",
+                "CPP",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès temporaire à monnaie étrangère pour stabiliser marchés."
+            },
+            {
+              "type": "single_choice",
+              "question": "Seigniorage :",
+              "options": [
+                "profit lié émission monnaie",
+                "taxe locale",
+                "SMIC",
+                "export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recette pour l'émetteur lorsque coût fabrication < valeur faciale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Bitcoin n'est pas monnaie légale en zone euro car :",
+              "options": [
+                "pas cours légal obligatoire",
+                "émis par BCE",
+                "garanti état",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actif spéculatif/volatile sans statut de monnaie officielle."
+            },
+            {
+              "type": "single_choice",
+              "question": "Stablecoin prétend :",
+              "options": [
+                "parité stable vs actif (souvent dollar)",
+                "hyperinflation",
+                "sans technologie",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crypto adossée à réserve pour limiter volatilité."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique change compétitive (dévaluer) vise :",
+              "options": [
+                "booster exportations",
+                "réduire export",
+                "SMIC",
+                "sans commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monnaie moins chère à l'étranger améliore compétitivité-prix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Zone euro : politique change est surtout :",
+              "options": [
+                "fédérée / BCE",
+                "17 politiques séparées",
+                "sans BCE",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taux flottant de l'euro géré au niveau union."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Effets d'une baisse des taux directeurs :",
+              "options": [
+                "Crédit moins cher",
+                "Investissement plus attractif",
+                "Épargne rémunérée plus fortement",
+                "Consommation durable plus facilement financée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un assouplissement réduit le coût du crédit et favorise investissement et consommation ; la rémunération de l'épargne tend au contraire à baisser."
+            },
+            {
+              "type": "single_choice",
+              "question": "Courbe des taux ascendante signifie :",
+              "options": [
+                "taux longs > taux courts",
+                "inverse",
+                "plats toujours",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prime de terme : prêter longtemps rémunéré davantage (en temps normal)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Inversion courbe des taux peut signaler :",
+              "options": [
+                "anticipation ralentissement",
+                "hyperinflation certaine",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marché anticipe baisse future des taux courts (récession possible)."
+            },
+            {
+              "type": "single_choice",
+              "question": "M3 (agrégat) inclut approximativement :",
+              "options": [
+                "monnaie + quasi-monnaie",
+                "or seul",
+                "actions",
+                "immobilier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure élargie liquidités et dépôts moins immédiats."
+            },
+            {
+              "type": "single_choice",
+              "question": "Crédit à la consommation :",
+              "options": [
+                "finance achats ménages",
+                "budget État",
+                "export",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prêts pour biens durables, revolving, etc."
+            },
+            {
+              "type": "single_choice",
+              "question": "Moral hazard bancaire :",
+              "options": [
+                "prises de risque si sauvetage attendu",
+                "sans régulation",
+                "CPP",
+                "cash only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garanties publiques peuvent inciter à excessive risk-taking."
+            },
+            {
+              "type": "single_choice",
+              "question": "Règle de Taylor (idée) relie taux à :",
+              "options": [
+                "écart inflation cible et output",
+                "SMIC",
+                "météo",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de réaction de politique monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Neutral rate (r*) est :",
+              "options": [
+                "taux compatible plein emploi stable",
+                "zéro toujours",
+                "SMIC",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ni expansionniste ni restrictif à capacité utilisée normale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pertes sur prêts (provisions) :",
+              "options": [
+                "affectent profitabilité banques",
+                "créent monnaie",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque crédit se matérialise en coûts pour les établissements."
+            },
+            {
+              "type": "single_choice",
+              "question": "Hausse des taux directeurs vise surtout à :",
+              "options": [
+                "refroidir crédit et demande",
+                "augmenter masse monétaire",
+                "fixer le budget de l'État",
+                "abaisser l'inflation importée mécaniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un resserrement monétaire rend le financement plus coûteux pour freiner la surchauffe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Différences monnaie vs actif financier risqué :",
+              "options": [
+                "Monnaie plus liquide",
+                "Actions ont rendement variable",
+                "Monnaie garantit richesse réelle",
+                "Titres peuvent être illiquides"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liquidité et risque différencient cash et placements."
+            },
+            {
+              "type": "single_choice",
+              "question": "Fuite vers qualité en crise :",
+              "options": [
+                "demande actifs sûrs (cash, obligations État)",
+                "vers actifs risqués",
+                "CPP",
+                "sans BC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférence liquidité et sécurité en période d'incertitude."
+            },
+            {
+              "type": "single_choice",
+              "question": "Target2 (euro) concerne :",
+              "options": [
+                "compensation paiements intra-zone",
+                "SMIC",
+                "budget France",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système règlement brut en temps réel entre banques centrales euro."
+            },
+            {
+              "type": "single_choice",
+              "question": "Inflation importée via change :",
+              "options": [
+                "euro faible ⇒ importations plus chères",
+                "sans effet",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépréciation monétaire relève prix des biens importés en monnaie locale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique budgétaire vs monétaire :",
+              "options": [
+                "dépenses/impôts vs taux et liquidité",
+                "identiques",
+                "sans État",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux leviers macro distincts, coordination parfois nécessaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Crowding out : déficit public élevé peut :",
+              "options": [
+                "monter taux et évinçer investissement privé",
+                "baisser taux toujours",
+                "CPP",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concurrence sur marché financier pour épargne disponible."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monétisation déficit (débat) :",
+              "options": [
+                "BC finance directement dette État",
+                "sans inflation possible",
+                "CPP",
+                "interdit toujours partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque inflationniste si création monétaire excessive pour budget."
+            },
+            {
+              "type": "single_choice",
+              "question": "Accord de Bretton Woods (historique) :",
+              "options": [
+                "changes fixes partiels dollar-or",
+                "euro",
+                "crypto",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système post-1944 jusqu'aux années 1970."
+            },
+            {
+              "type": "single_choice",
+              "question": "Banque d'investissement vs dépôt :",
+              "options": [
+                "activités marché vs collecte dépôts retail",
+                "identiques",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles d'affaires bancaires différents (simplifié)."
+            },
+            {
+              "type": "single_choice",
+              "question": "LCR (liquidité bancaire) vise :",
+              "options": [
+                "coussin actifs liquides",
+                "profit max",
+                "CPP",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulation post-crise pour résister aux stress de liquidité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Risques inflationnistes en zone euro peuvent combiner :",
+              "options": [
+                "Chocs sur l'énergie",
+                "Relances de la demande",
+                "Désancrage des anticipations",
+                "Concurrence pure et parfaite généralisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prix énergie et relances peuvent entretenir l'inflation ; des anticipations déstabilisées amplifient le phénomène."
+            },
+            {
+              "type": "single_choice",
+              "question": "Core inflation exclut souvent :",
+              "options": [
+                "énergie et alimentation volatiles",
+                "tous biens",
+                "services",
+                "loyers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure sous-jacente pour pilotage monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Déflation importée possible si :",
+              "options": [
+                "partenaires commerciaux exportent déflation",
+                "sans commerce",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biens importés moins chers tirent inflation locale vers le bas."
+            },
+            {
+              "type": "single_choice",
+              "question": "Wage-price spiral :",
+              "options": [
+                "salaires et prix s'entraînent",
+                "CPP",
+                "sans travail",
+                "cash only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indexations mutuelles perpétuent inflation."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique monétaire en union monétaire :",
+              "options": [
+                "taille unique peut convenir mal à certains États",
+                "parfaite pour tous",
+                "CPP",
+                "sans BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asymétries économiques : taux unique pas optimal partout."
+            },
+            {
+              "type": "single_choice",
+              "question": "Transmission asymétrique taux immobilier :",
+              "options": [
+                "ménages endettés variable vs fixe",
+                "sans logement",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure crédit immobilier modifie sensibilité aux taux BC."
+            },
+            {
+              "type": "single_choice",
+              "question": "Digitalisation paiements :",
+              "options": [
+                "accélère vitesse circulation scripturale",
+                "supprime monnaie",
+                "CPP",
+                "or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartes et instantanés réduisent frictions transactionnelles."
+            },
+            {
+              "type": "single_choice",
+              "question": "Blanchiment d'argent :",
+              "options": [
+                "légalisation flux illicites",
+                "politique BC",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque financier combattu par LCB-FT."
+            },
+            {
+              "type": "single_choice",
+              "question": "IBAN facilite :",
+              "options": ["virements transfrontaliers", "troc", "CPP", "or"],
+              "correctAnswers": [0],
+              "explanation": "Standardisation comptes bancaires en Europe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Taux négatif sur dépôts BC (expérience) vise :",
+              "options": [
+                "inciter prêts plutôt que excès réserves",
+                "punir ménages directs",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique non conventionnelle sur réserves bancaires."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Liens monnaie et financement des entreprises :",
+              "options": [
+                "Crédit bancaire",
+                "Émissions obligataires",
+                "SMIC national",
+                "Autofinancement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les firmes s'appuient sur le crédit, les marchés de titres et leurs profits ; le SMIC ne finance pas directement les entreprises."
+            },
+            {
+              "type": "single_choice",
+              "question": "Prime de risque sur taux :",
+              "options": ["compense défaut emprunteur", "SMIC", "TVA", "CPP"],
+              "correctAnswers": [0],
+              "explanation": "Spread corporate au-dessus des taux sans risque."
+            },
+            {
+              "type": "single_choice",
+              "question": "OAT (France) :",
+              "options": ["dette État négociable", "action", "crypto", "CPP"],
+              "correctAnswers": [0],
+              "explanation": "Titres publics financent le budget via marché."
+            },
+            {
+              "type": "single_choice",
+              "question": "Rating souverain influence :",
+              "options": ["coût emprunt État", "SMIC", "météo", "CPP"],
+              "correctAnswers": [0],
+              "explanation": "Agences évaluent probabilité remboursement dette publique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Banque centrale prêteur en dernier ressort :",
+              "options": [
+                "évite panique liquidité système",
+                "supprime banques",
+                "CPP",
+                "cash only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité financière : liquidité d'urgence aux établissements solvables."
+            },
+            {
+              "type": "single_choice",
+              "question": "Run bancaire :",
+              "options": [
+                "retraits massifs menacent liquidité",
+                "profit record",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peur sur solvabilité ⇒ ruée vers cash, peut devenir prophétie."
+            },
+            {
+              "type": "single_choice",
+              "question": "Assurance dépôts (FGDR) :",
+              "options": [
+                "limite panique sur comptes couverts",
+                "garantit actions",
+                "CPP",
+                "or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection partielle des déposants pour confiance système."
+            },
+            {
+              "type": "single_choice",
+              "question": "Macroprudential policy :",
+              "options": [
+                "limiter risques systémiques crédit/immobilier",
+                "fixer SMIC",
+                "CPP",
+                "TVA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coussins capital, limites LTV, etc."
+            },
+            {
+              "type": "single_choice",
+              "question": "Euro commercial paper :",
+              "options": [
+                "dettes court terme entreprises",
+                "monnaie BC",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Financement trésorerie sur marché monétaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique monétaire restrictif vise surtout :",
+              "options": [
+                "refroidir inflation",
+                "augmenter chômage volontairement long terme",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Resserrer conditions financières pour rapprocher inflation de la cible."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Synthèse monnaie en première :",
+              "options": [
+                "La banque centrale pilote liquidité et taux",
+                "La création monétaire passe surtout par le crédit bancaire",
+                "L'inflation dépend uniquement de la masse monétaire",
+                "Le change peut alimenter l'inflation importée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Politique monétaire et crédit bancaire structurent le système ; l'inflation et le change s'analysent au-delà d'une seule variable."
+            },
+            {
+              "type": "single_choice",
+              "question": "Fisher effect (long terme) :",
+              "options": [
+                "taux nominal ≈ réel + inflation anticipée",
+                "SMIC",
+                "CPP",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investisseurs exigent compensation inflation dans taux nominaux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Trappe à déflation :",
+              "options": [
+                "taux proches zéro limitent relance",
+                "hyperinflation",
+                "CPP",
+                "or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique monétaire perd efficacité en déflation persistante."
+            },
+            {
+              "type": "single_choice",
+              "question": "Monnaie locale complémentaire :",
+              "options": [
+                "circule parallèlement euro",
+                "remplace BCE",
+                "CPP",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil territorial de liquidité, pas monnaie légale unique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Politique monétaire et inégalités (débat) :",
+              "options": [
+                "effets redistributifs via actifs et crédit",
+                "sans effet",
+                "CPP",
+                "SMIC seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausse actifs financiers/immobilier vs épargne modeste."
+            },
+            {
+              "type": "single_choice",
+              "question": "Inflation cible 2 % BCE vise :",
+              "options": [
+                "ancrage anticipations",
+                "zéro absolu",
+                "hyperinflation",
+                "CPP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marge contre déflation et marge de manœuvre taux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demande de monnaie stable long terme (quantité) si :",
+              "options": [
+                "vélocité et output stables",
+                "hyperinflation",
+                "CPP",
+                "sans BC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture simplifiée MV=PY : M lié à croissance et vélocité."
+            },
+            {
+              "type": "single_choice",
+              "question": "Paiement instantané SEPA :",
+              "options": [
+                "réduit délais règlement",
+                "supprime euro",
+                "CPP",
+                "or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernisation infrastructure monétaire scripturale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Coordination politique économique UE :",
+              "options": [
+                "complète union monétaire",
+                "remplace BCE seule",
+                "CPP",
+                "sans budget"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiscal et structurel accompagnent taux unique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Confiance dans l'euro repose sur :",
+              "options": [
+                "institutions BC et cadre juridique",
+                "or obligatoire",
+                "CPP",
+                "troc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédibilité anti-inflation et stabilité système paiements."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

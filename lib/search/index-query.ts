@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, desc, eq, ilike, inArray, type SQL, sql } from "drizzle-orm";
+import { and, desc, eq, ilike, inArray, or, type SQL, sql } from "drizzle-orm";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -13,6 +13,7 @@ import {
   agentStep,
   chat,
   customCommand,
+  page as maiPage,
   mcpServer,
   message,
   mprojectsImageGenerations,
@@ -358,6 +359,58 @@ const projectSource: SourceResolver = {
         source: "project" as const,
         subtitle: excerpt(row.description ?? "") || "Projet",
         title: row.name,
+      })),
+      total: toNumber(rows[0]?.total),
+    };
+  },
+};
+
+const pageSource: SourceResolver = {
+  key: "page",
+  search: async (ctx, terms) => {
+    const projectIds = await getAccessibleProjectIds({
+      userEmail: ctx.user.email,
+      userId: ctx.user.id ?? "",
+    });
+    const database = getDb();
+    const identity = identityList(ctx.userIds);
+    const owned = sql`${maiPage.userId}::text IN (${identity})`;
+    const shared =
+      projectIds.length > 0
+        ? inArray(maiPage.projectId, projectIds)
+        : undefined;
+    const visible = shared ? or(owned, shared) : owned;
+    const rows = await database
+      .select({
+        content: sql<string>`left(${maiPage.content}, 240)`.as("content"),
+        id: maiPage.id,
+        title: maiPage.title,
+        total: totalColumn(),
+        updatedAt: maiPage.updatedAt,
+      })
+      .from(maiPage)
+      .where(
+        and(
+          visible,
+          matchAllTerms(terms, (term) => [
+            sql`${maiPage.title} ILIKE ${term.like}`,
+            sql`${maiPage.content} ILIKE ${term.like}`,
+          ])
+        )
+      )
+      .orderBy(...relevance(sql`${maiPage.title}`, terms))
+      .limit(ctx.limit)
+      .offset(ctx.offset);
+
+    return {
+      capped: rows.length === ctx.limit,
+      hits: rows.map((row) => ({
+        href: `/pages/${row.id}`,
+        id: row.id,
+        meta: toDate(row.updatedAt),
+        source: "page" as const,
+        subtitle: excerpt(row.content ?? "") || "Page",
+        title: row.title,
       })),
       total: toNumber(rows[0]?.total),
     };
@@ -1376,6 +1429,7 @@ const SQL_SOURCES: SourceResolver[] = [
   chatSource,
   messageSource,
   projectSource,
+  pageSource,
   docSource,
   skillSource,
   mcpSource,
@@ -1417,6 +1471,7 @@ export const SOURCE_ORDER: SearchSourceKey[] = [
   "message",
   "wakies",
   "project",
+  "page",
   "doc",
   "coder",
   "skill",

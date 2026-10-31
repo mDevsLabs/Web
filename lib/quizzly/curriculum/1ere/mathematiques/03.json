@@ -1,0 +1,2083 @@
+{
+  "id": "1ere-mathematiques-03",
+  "year": "1ere",
+  "subject": "mathematiques",
+  "title": "Géométrie dans l'espace",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Repérage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "text": "Repère orthonormé (O;i,j,k). Vrai :",
+              "options": [
+                "i,j,k orthogonaux deux à deux",
+                "||i||=1",
+                "j colinéaire à k",
+                "O n'est pas l'origine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Base orthonormée : vecteurs unitaires et orthogonaux."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "text": "Coordonnées de A(2;-1;3)",
+              "options": ["(2;-1;3)", "(3;-1;2)", "(-1;2;3)", "(2;3;-1)"],
+              "correctAnswers": [0],
+              "explanation": "Triplet (x;y;z)."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "text": "A(1;0;2), B(4;2;5) → AB",
+              "options": ["(3;2;3)", "(5;2;7)", "(-3;-2;-3)", "(4;2;5)"],
+              "correctAnswers": [0],
+              "explanation": "AB = B − A."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "text": "Milieu de A(0;4;6) et B(2;0;2)",
+              "options": ["(1;2;4)", "(2;4;8)", "(1;-2;2)", "(0;2;3)"],
+              "correctAnswers": [0],
+              "explanation": "Demi-somme des coordonnées."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "text": "Distance M(1;2;2), N(4;6;5)",
+              "options": ["√34", "5", "√50", "7"],
+              "correctAnswers": [0],
+              "explanation": "√(3²+4²+3²)=√34."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "text": "P(3;-1;0) appartient-il au plan x+y+z=2 ?",
+              "options": ["Non", "Oui", "Seulement sur Oz", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "3+(−1)+0=2."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "text": "Une droite est déterminée par",
+              "options": [
+                "Un point et un vecteur directeur non nul",
+                "Un plan",
+                "Deux points confondus",
+                "Aucune donnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle affine point + direction."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "text": "u(2;-4;6), v(1;-2;3)",
+              "options": ["u=2v", "u·v=0", "||u||=||v||", "u=−v"],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées proportionnelles."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "text": "Droite par A(1;0;0), direction u(0;1;1)",
+              "options": [
+                "x=1, y=t, z=t",
+                "x=t, y=0, z=0",
+                "x=0, y=t, z=1",
+                "x=1, y=1, z=t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M = A + tu."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "text": "Le plan (Oxy) est l'ensemble des points",
+              "options": ["(x;y;0)", "(0;y;z)", "(x;0;z)", "(0;0;z)"],
+              "correctAnswers": [0],
+              "explanation": "z = 0."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "text": "u(1;2;0), v(2;4;0). Vrai :",
+              "options": [
+                "Colinéaires",
+                "Même direction",
+                "Orthogonaux",
+                "Identiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v = 2u."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "text": "M(−2;5;1) → vecteur OM",
+              "options": ["(−2;5;1)", "(2;−5;−1)", "(0;0;0)", "(2;5;1)"],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées de M depuis O."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "text": "A(1;1;1), B(3;3;3) → AB",
+              "options": ["(2;2;2)", "(4;4;4)", "(1;1;1)", "(0;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "Différences de coordonnées."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "text": "Distance de O à H(0;0;5)",
+              "options": ["5", "√5", "25", "0"],
+              "correctAnswers": [0],
+              "explanation": "OH = |z| = 5."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "text": "Le plan d'équation z = 3 est",
+              "options": [
+                "Parallèle au plan (Oxy)",
+                "Contient O",
+                "Perpendiculaire à Oz",
+                "D' équation x = 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z constant : translate de (Oxy)."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "text": "Équation du plan (Oxz)",
+              "options": ["y = 0", "x = 0", "z = 0", "y = 1"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée nulle."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "text": "Deux points de même x et y, z différents : la droite (AB) est",
+              "options": [
+                "Parallèle à Oz",
+                "Confondue",
+                "Contenue dans (Oxy)",
+                "Perpendiculaire à Oz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction (0;0;1)."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "text": "Points A, B, C alignés ⟺",
+              "options": [
+                "AB et AC colinéaires",
+                "AB·AC = 0",
+                "AB = AC",
+                "BC = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colinéarité des vecteurs."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "text": "Projection orthogonale de (2;3;4) sur (Oxy)",
+              "options": ["(2;3;0)", "(0;3;4)", "(2;0;4)", "(0;0;4)"],
+              "correctAnswers": [0],
+              "explanation": "On annule z."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "text": "Vecteur directeur de l'axe Ox",
+              "options": ["(1;0;0)", "(0;1;0)", "(0;0;1)", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "Direction i."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "text": "A(0;0;0), B(1;0;0), C(0;1;0). Vrai :",
+              "options": [
+                "Tous ont z = 0",
+                "Ils forment un triangle dans (Oxy)",
+                "Ils sont alignés",
+                "B = C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Base du repère dans le plan horizontal."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "text": "Barycentre de (A,1) et (B,1)",
+              "options": ["Milieu de [AB]", "Point A", "Point B", "Origine"],
+              "correctAnswers": [0],
+              "explanation": "Masses égales."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "text": "Norme du vecteur (3;4;0)",
+              "options": ["5", "7", "√7", "1"],
+              "correctAnswers": [0],
+              "explanation": "√(9+16) = 5."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "text": "x = 2 décrit un plan",
+              "options": [
+                "Parallèle au plan (Oyz)",
+                "Parallèle à (Oxy)",
+                "Passant par O",
+                "D' équation y = 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abscisse constante."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "text": "x = 1, y = 2, z ∈ ℝ",
+              "options": [
+                "Une droite parallèle à Oz",
+                "Un plan",
+                "Un cercle",
+                "L'ensemble vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux coordonnées fixées."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "text": "A(2;1;−1), B(2;1;4) → AB",
+              "options": ["(0;0;5)", "(0;0;−5)", "(2;1;3)", "(4;2;3)"],
+              "correctAnswers": [0],
+              "explanation": "Seule la cote z varie."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "text": "Ensemble des M tels que OM = (t;2t;0)",
+              "options": [
+                "Une droite passant par O",
+                "Un plan",
+                "Une sphère",
+                "Deux droites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramétrage linéaire."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "text": "Symétrique de M(1;2;3) par rapport à (Oxy)",
+              "options": ["(1;2;−3)", "(1;−2;3)", "(−1;2;3)", "(1;2;0)"],
+              "correctAnswers": [0],
+              "explanation": "z → −z."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "text": "Le vecteur (0;0;7) est parallèle à",
+              "options": ["L'axe Oz", "L'axe Ox", "L'axe Oy", "Aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "Colinéaire à k."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "text": "Distance de A(1;0;0) à l'axe Oz",
+              "options": ["1", "0", "√2", "2"],
+              "correctAnswers": [0],
+              "explanation": "√(x²+y²) = 1."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "text": "Plans coordonnés du repère :",
+              "options": [
+                "(Oxy) : z = 0",
+                "(Oyz) : x = 0",
+                "(Oxz) : y = 0",
+                "(Oxy) : x = 0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "(Oxy) et (Oxz) : z = 0 et y = 0."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "text": "M(4;−3;0) appartient au plan",
+              "options": [
+                "(Oxy)",
+                "(Oyz) seulement",
+                "Oz seul",
+                "Aucun plan coordonné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z = 0."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "text": "y = 0 est l'équation du plan",
+              "options": ["(Oxz)", "(Oxy)", "(Oyz)", "x = 0"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième coordonnée nulle."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "text": "Cube unité d'arêtes Ox, Oy, Oz : le point (1;1;1) est",
+              "options": [
+                "Le sommet opposé à O",
+                "Sur une arête",
+                "Le centre",
+                "L'origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sommet maximal du pavé."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "text": "A(0;0;1), B(0;0;3) : vecteur directeur de (AB)",
+              "options": ["(0;0;1)", "(1;0;0)", "(0;1;0)", "(1;1;1)"],
+              "correctAnswers": [0],
+              "explanation": "Parallèle à Oz."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "text": "Si AB = (3;0;0), alors (AB) est parallèle à",
+              "options": ["Ox", "Oy", "Oz", "Aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "Direction i."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "text": "L'ensemble des points vérifiant z = 2x est",
+              "options": [
+                "Un plan",
+                "Une droite seule",
+                "Une sphère",
+                "Un cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation linéaire avec y libre."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "text": "Lieu des points équidistants de A et B",
+              "options": [
+                "Plan médiateur",
+                "Droite (AB)",
+                "Point A",
+                "Une sphère quelconque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MA = MB en dimension 3."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "text": "Translation de vecteur (1;0;−1) appliquée à M(2;3;4)",
+              "options": ["(3;3;3)", "(1;3;5)", "(2;4;3)", "(3;4;4)"],
+              "correctAnswers": [0],
+              "explanation": "Somme coordonnée par coordonnée."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "text": "Le vecteur nul a pour coordonnées",
+              "options": ["(0;0;0)", "(1;0;0)", "(0;1;1)", "Il n'existe pas"],
+              "correctAnswers": [0],
+              "explanation": "Toutes les composantes valent 0."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "text": "Droite : x = 2+t, y = 1−t, z = 3. Vrai :",
+              "options": [
+                "Vecteur directeur (1;−1;0)",
+                "Point (2;1;3) pour t = 0",
+                "La droite passe par O",
+                "C'est un plan horizontal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "t = 0 donne le point ; dérivées (1;−1;0)."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "text": "Plan 2x − y + 3z − 6 = 0 : un point du plan est",
+              "options": ["(3;0;0)", "(0;0;0)", "(1;1;1)", "(0;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "2·3 − 0 + 0 − 6 = 0."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "text": "A(1;2;3), B(4;2;3) : (AB) est horizontale car",
+              "options": [
+                "z est constant",
+                "x est constant",
+                "y = 0",
+                "AB est nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même cote z."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "text": "Centre de la sphère de diamètre [AB], A(0;0;0), B(2;0;0)",
+              "options": ["(1;0;0)", "(0;0;0)", "(2;0;0)", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "Milieu du diamètre."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "text": "Rayon de la sphère de centre O passant par (0;3;4)",
+              "options": ["5", "7", "25", "√7"],
+              "correctAnswers": [0],
+              "explanation": "√(9+16) = 5."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "text": "M(1;1;1) vérifie x + y + z =",
+              "options": ["3", "1", "0", "2"],
+              "correctAnswers": [0],
+              "explanation": "Somme des coordonnées."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "text": "Intersection des plans x = 1 et y = 2",
+              "options": [
+                "Une droite parallèle à Oz",
+                "Un plan",
+                "Un point unique",
+                "L'ensemble vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z reste libre."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "text": "Deux droites de même vecteur directeur non colinéaire sont",
+              "options": [
+                "Parallèles",
+                "Sécantes",
+                "Perpendiculaires",
+                "Confondues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Directions égales."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "text": "A(0;1;0) est situé sur",
+              "options": ["L'axe Oy", "L'axe Ox", "L'axe Oz", "Aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "x = z = 0."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "text": "AB avec A(0;0;0), B(1;2;2) a pour longueur",
+              "options": ["3", "√5", "√9", "1"],
+              "correctAnswers": [0],
+              "explanation": "√(1+4+4) = 3."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "text": "u(1;0;2), v(−2;0;−4). Vrai :",
+              "options": [
+                "u et v colinéaires",
+                "v = −2u",
+                "u et v orthogonaux",
+                "u = v"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coordonnées proportionnelles : v = −2u."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "text": "Un point de l'axe Oz distinct de O",
+              "options": ["(0;0;5)", "(5;0;0)", "(0;5;0)", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "x = y = 0, z ≠ 0."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "text": "Plan passant par O et contenant Ox et Oy",
+              "options": ["(Oxy)", "x = 1", "z = 5", "y = 2"],
+              "correctAnswers": [0],
+              "explanation": "Engendré par i et j."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "text": "Distance M(2;−2;1), N(2;4;1)",
+              "options": ["6", "√36", "√12", "2"],
+              "correctAnswers": [0],
+              "explanation": "Δy = 6, autres composantes nulles."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "text": "Dans (Oxy), x + y = 0 représente",
+              "options": [
+                "Une droite passant par O",
+                "Un cercle",
+                "Une parallèle à Ox",
+                "Un plan de l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droite du plan z = 0."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "text": "Nombre de points non alignés pour déterminer un plan",
+              "options": ["3", "1", "2", "4"],
+              "correctAnswers": [0],
+              "explanation": "Trois points non colinéaires."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "text": "D(1;0;0), E(1;1;0), F(1;0;1) définissent le plan",
+              "options": ["x = 1", "y = 0", "z = 0", "x + y + z = 1"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse constante."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "text": "Opposé du vecteur (2;−1;3)",
+              "options": ["(−2;1;−3)", "(2;1;3)", "(2;−1;−3)", "(0;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "Changer le signe de chaque composante."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "text": "Milieu de O et P(6;0;8)",
+              "options": ["(3;0;4)", "(6;0;8)", "(0;0;0)", "(3;0;8)"],
+              "correctAnswers": [0],
+              "explanation": "Demi-coordonnées."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "text": "M = (1−t)A + tB avec t = 1/2",
+              "options": [
+                "Milieu de [AB]",
+                "Point A",
+                "Point B",
+                "Hors du segment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = 1/2 : milieu."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "text": "D : x = t, y = 0, z = 0 et D' : x = 0, y = s, z = 0. Vrai :",
+              "options": [
+                "Les deux droites passent par O",
+                "Elles sont coplanaires dans (Oxy)",
+                "Elles sont parallèles",
+                "Elles sont skew sans intersection"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Axes du plan z = 0, intersection en O."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "text": "Système x = 1, y = 0 (z libre) : ensemble des solutions",
+              "options": [
+                "Une droite parallèle à Oz",
+                "Un unique point",
+                "Aucun point",
+                "Deux points"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z n'est pas contraint."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "text": "Plans z = 0 et z = 1 sont",
+              "options": [
+                "Parallèles",
+                "Sécants selon une droite",
+                "Confondus",
+                "Perpendiculaires entre eux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même direction normale."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "text": "A(1;2;3), AM = (0;0;1) : coordonnées de M",
+              "options": ["(1;2;4)", "(1;2;2)", "(0;0;4)", "(1;3;3)"],
+              "correctAnswers": [0],
+              "explanation": "A + AM."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "text": "Test de colinéarité en 3D par coordonnées",
+              "options": [
+                "Proportionnalité des composantes",
+                "Somme nulle",
+                "Égalité des normes",
+                "Produit nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition en première."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "text": "Face z = 1 du cube [0;1]³ : un sommet est",
+              "options": ["(0;0;1)", "(0;0;0)", "(1;0;0)", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "z = 1, x et y dans [0,1]."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "text": "Diagonale de (0;0;0) à (1;1;1) : vecteur",
+              "options": ["(1;1;1)", "(1;0;0)", "(0;1;1)", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "Différence des sommets."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "text": "Le plan x + y + z = 0 contient",
+              "options": ["O", "(1;1;1)", "(1;0;0) seul", "Aucun point"],
+              "correctAnswers": [0],
+              "explanation": "0 + 0 + 0 = 0."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "text": "Distance euclidienne en repère orthonormé",
+              "options": [
+                "√(Δx²+Δy²+Δz²)",
+                "Δx+Δy+Δz",
+                "max(Δx,Δy,Δz)",
+                "Δx² seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de Pythagore en 3D."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "text": "P(2;5;−1) : signe de z indique",
+              "options": [
+                "Sous le plan (Oxy)",
+                "Au-dessus de (Oxy)",
+                "Sur (Oxy)",
+                "Sur Oz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "z < 0."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "text": "u(1;1;0), v(2;2;0). Vrai :",
+              "options": [
+                "Colinéaires",
+                "Même direction que (1;1;0)",
+                "Orthogonaux",
+                "De normes égales obligatoirement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v = 2u."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "text": "Droite parallèle à (Oxy) au-dessus du sol : équation type",
+              "options": ["z = c constant", "x = c", "y = c", "x + y = 0"],
+              "correctAnswers": [0],
+              "explanation": "Plan horizontal translate."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "text": "A(0;0;2) projeté orthogonalement sur (Oxy)",
+              "options": ["(0;0;0)", "(0;0;2)", "(2;0;0)", "(0;2;0)"],
+              "correctAnswers": [0],
+              "explanation": "z → 0."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "text": "Ensemble |z| ≤ 1",
+              "options": [
+                "Bande entre z = −1 et z = 1",
+                "Une droite",
+                "Le plan x = 1",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tranche horizontale."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "text": "Norme de (3;0;0)",
+              "options": ["3", "√3", "9", "0"],
+              "correctAnswers": [0],
+              "explanation": "|3| = 3."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "text": "A(1;0;0), B(0;1;0), C(0;0;1) non alignés car",
+              "options": [
+                "AB et AC ne sont pas colinéaires",
+                "AB = 0",
+                "Ils sont confondus",
+                "Impossible en 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Directions indépendantes."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "text": "M(1;2;3) + translation (−1;−2;−3)",
+              "options": ["O", "(2;4;6)", "(1;2;3)", "(0;0;1)"],
+              "correctAnswers": [0],
+              "explanation": "Annulation des coordonnées."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "text": "Dans M = A + tu, t = 0 correspond à",
+              "options": ["M = A", "M = B", "M = O", "Aucun point"],
+              "correctAnswers": [0],
+              "explanation": "Paramètre initial."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "text": "y = 2x (z libre) est",
+              "options": [
+                "Un plan vertical",
+                "Une droite seulement",
+                "Un point",
+                "Une sphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "y − 2x = 0, z quelconque."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "text": "Repère orthonormé : longueur unité sur les axes",
+              "options": [
+                "1 en x, y et z",
+                "Sans unité",
+                "π",
+                "Variable selon z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle isométrique sur les trois axes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "text": "Cube de sommets (0;0;0), (1;0;0), (0;1;0), (0;0;1). Vrai :",
+              "options": [
+                "Arêtes de longueur 1 depuis O",
+                "Une face est dans z = 0",
+                "Diagonale (1;1;1) a pour norme √3",
+                "Tous les sommets ont z = 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pavé unité standard ; base z = 0."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "text": "Milieu de (0;0;0) et (2;4;6)",
+              "options": ["(1;2;3)", "(2;4;6)", "(1;1;1)", "(0;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "Moyennes arithmétiques."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "text": "x + y = 1 avec z quelconque",
+              "options": ["Un plan", "Une droite", "Un point", "Une sphère"],
+              "correctAnswers": [0],
+              "explanation": "z libre : plan incliné."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "text": "Distance de A(3;4;12) à O",
+              "options": ["13", "√169", "5", "7"],
+              "correctAnswers": [0],
+              "explanation": "Triple 3-4-5 multiplié par 3."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "text": "Vecteur directeur de (1;2;3) + t(0;0;2)",
+              "options": ["(0;0;2)", "(1;2;3)", "(0;0;1)", "(2;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "Coefficient de t."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "text": "Intersection des plans x = 0 et y = 0",
+              "options": ["L'axe Oz", "L'axe Ox", "L'axe Oy", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "x = y = 0."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "text": "Ensemble x² + y² + z² = 0 dans ℝ³",
+              "options": ["{O}", "Sphère de rayon 1", "Un plan", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Seul le triplet nul convient."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "text": "B(0;0;0), C(0;0;4) → BC",
+              "options": ["(0;0;4)", "(0;0;−4)", "(4;0;0)", "(0;4;0)"],
+              "correctAnswers": [0],
+              "explanation": "Δz = 4."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "text": "Point de Ox à distance 5 de O",
+              "options": [
+                "(5;0;0) ou (−5;0;0)",
+                "(0;5;0)",
+                "(0;0;5)",
+                "(5;5;0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur l'axe des abscisses."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "text": "La coordonnée z mesure",
+              "options": [
+                "La hauteur selon Oz",
+                "L'abscisse",
+                "L'angle",
+                "L'aire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troisième coordonnée spatiale."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "text": "Synthèse repérage. Vrai :",
+              "options": [
+                "AB = (xB−xA; yB−yA; zB−zA)",
+                "Distance invariante par translation",
+                "Milieu : OM = (OA+OB)/2",
+                "Le plan z = 0 est vertical"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules vectorielles ; z = 0 est horizontal."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "text": "Plans x = 0, y = 0, z = 0 se coupent en",
+              "options": ["O", "Aucun point", "Une droite", "Un plan"],
+              "correctAnswers": [0],
+              "explanation": "Triplet (0;0;0)."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "text": "P(1;1;1) appartient à x + y + z = 3 ?",
+              "options": ["Oui", "Non", "Parfois", "Plan vertical"],
+              "correctAnswers": [0],
+              "explanation": "1 + 1 + 1 = 3."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "text": "Le vecteur nul est-il colinéaire à tout vecteur ?",
+              "options": ["Oui (convention)", "Non", "Seulement à i", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Convention usuelle en classe."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "text": "Droite horizontale : vecteur directeur avec",
+              "options": [
+                "Composante z nulle",
+                "x = 0 obligatoire",
+                "Norme nulle",
+                "y = 0 obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallèle au plan (Oxy)."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "text": "A(2;0;0), B(2;3;0) : distance AB",
+              "options": ["3", "√13", "2", "5"],
+              "correctAnswers": [0],
+              "explanation": "Segment dans z = 0."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "text": "Plan par (1;0;0), (0;1;0), (0;0;1) : équation",
+              "options": ["x + y + z = 1", "z = 0", "x = 1", "xyz = 0"],
+              "correctAnswers": [0],
+              "explanation": "Plan affine canonique."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "text": "M(4;0;3) est sur (Oxy) si",
+              "options": ["z = 0", "x = 0", "y = 0", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Condition z = 0."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "text": "Repère direct orthonormé : i × j =",
+              "options": ["k", "−k toujours", "0", "i"],
+              "correctAnswers": [0],
+              "explanation": "Orientation de la base."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "text": "Objectif de l'unité Repérage",
+              "options": [
+                "Modéliser positions, droites et plans",
+                "Dériver des fonctions",
+                "Factoriser des polynômes",
+                "Étudier les suites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géométrie affine dans l'espace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Orthogonalité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "text": "u(1;0;0), v(0;1;0). Vrai :",
+              "options": [
+                "u·v = 0",
+                "u et v orthogonaux",
+                "u et v colinéaires",
+                "||u|| = ||v|| = 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "i et j sont perpendiculaires."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "text": "(2;1;0)·(3;−6;0)",
+              "options": ["0", "5", "6", "−6"],
+              "correctAnswers": [0],
+              "explanation": "6 − 6 = 0."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "text": "u·v = 0 signifie",
+              "options": [
+                "u et v orthogonaux",
+                "u et v colinéaires",
+                "u = v",
+                "Plans confondus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du produit scalaire."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "text": "||(1;2;2)||",
+              "options": ["3", "√9", "√5", "1"],
+              "correctAnswers": [0],
+              "explanation": "1 + 4 + 4 = 9."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "text": "Angle droit : cos θ =",
+              "options": ["0", "1", "−1", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "θ = 90°."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "text": "u·u =",
+              "options": ["||u||²", "0", "||u||", "1"],
+              "correctAnswers": [0],
+              "explanation": "Carré scalaire de la norme."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "text": "(1;0;0)·(1;0;0)",
+              "options": ["1", "0", "2", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Norme de i au carré."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "text": "Vecteur normal au plan (Oxy)",
+              "options": [
+                "Colinéaire à k",
+                "Colinéaire à i",
+                "Contenu dans le plan",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perpendiculaire à z = 0."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "text": "Droite perpendiculaire à un plan : direction",
+              "options": [
+                "Colinéaire à un normal",
+                "Toujours dans le plan",
+                "Nulle",
+                "Oblique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alignée sur la normale."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "text": "u(2;0;0), v(0;3;0) : u·v",
+              "options": ["0", "6", "5", "1"],
+              "correctAnswers": [0],
+              "explanation": "Axes orthogonaux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "text": "Plan ax+by+cz+d=0, normal n(a;b;c). Vrai :",
+              "options": [
+                "n est normal au plan",
+                "Si a = 0, plan peut être // à Ox",
+                "n·OM constant pour M du plan",
+                "d = 0 ⟹ O appartient au plan"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Normal et passage par O si d = 0."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "text": "Plan z = 0 : un vecteur normal est",
+              "options": ["(0;0;1)", "(1;0;0)", "(0;1;0)", "(1;1;1)"],
+              "correctAnswers": [0],
+              "explanation": "Direction k."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "text": "Distance de M(0;0;3) au plan z = 0",
+              "options": ["3", "0", "√3", "9"],
+              "correctAnswers": [0],
+              "explanation": "|z|."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "text": "u(1;1;0), v(1;−1;0) : u·v",
+              "options": ["0", "2", "−2", "1"],
+              "correctAnswers": [0],
+              "explanation": "1 − 1 = 0."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "text": "Deux vecteurs orthogonaux ⟺",
+              "options": [
+                "Produit scalaire nul",
+                "Même norme",
+                "Somme nulle",
+                "Produit des coordonnées nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère algébrique."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "text": "Deux plans perpendiculaires : leurs normaux",
+              "options": [
+                "Ont un produit scalaire nul",
+                "Sont colinéaires",
+                "Sont nuls",
+                "Sont égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n₁·n₂ = 0."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "text": "(3;0;0)·(0;4;0)",
+              "options": ["0", "12", "7", "5"],
+              "correctAnswers": [0],
+              "explanation": "Composantes sur axes orthogonaux."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "text": "(2;0;0) est orthogonal à",
+              "options": ["(0;5;3)", "(2;1;0)", "(1;0;1)", "(4;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "2×0 = 0."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "text": "Projection orthogonale de u sur v (v ≠ 0)",
+              "options": ["((u·v)/(v·v)) v", "u − v", "u + v", "v/u"],
+              "correctAnswers": [0],
+              "explanation": "Formule du cours."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "text": "||u|| = 0 ⟺",
+              "options": ["u = 0", "u·v = 0", "u colinéaire à v", "||u|| = 1"],
+              "correctAnswers": [0],
+              "explanation": "Norme nulle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "text": "Directions u, v de deux droites perpendiculaires. Vrai :",
+              "options": [
+                "u·v = 0 (vecteurs non nuls)",
+                "Angle droit entre les directions",
+                "u = v",
+                "Toujours coplanaires en 3D"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produit scalaire nul."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "text": "Plan x = 1 est perpendiculaire à",
+              "options": ["Ox", "Oy", "Oz", "(Oxy)"],
+              "correctAnswers": [0],
+              "explanation": "Normal (1;0;0)."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "text": "Distance de M(1;2;3) au plan x = 0",
+              "options": ["1", "2", "3", "√14"],
+              "correctAnswers": [0],
+              "explanation": "|x|."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "text": "(1;2;3)·(0;0;1)",
+              "options": ["3", "1", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Composante selon k."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "text": "Cauchy-Schwarz : |u·v| ≤",
+              "options": ["||u|| ||v||", "||u|| + ||v||", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "Inégalité fondamentale."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "text": "u(1;0;1), v(1;0;−1) : u·v",
+              "options": ["0", "2", "−2", "1"],
+              "correctAnswers": [0],
+              "explanation": "1 − 1 = 0."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "text": "Plan perpendiculaire à Oz contient typiquement",
+              "options": [
+                "Ox et Oy",
+                "Seulement Oz",
+                "Aucune droite",
+                "Un seul point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans horizontaux z = c."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "text": "Distance d'un point M au plan, H pied de la perpendiculaire :",
+              "options": ["MH", "MO", "OH", "0"],
+              "correctAnswers": [0],
+              "explanation": "Segment orthogonal."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "text": "Normal (0;2;0) : plan parallèle à",
+              "options": ["(Oxz)", "(Oxy)", "(Oyz)", "Oblique"],
+              "correctAnswers": [0],
+              "explanation": "Normal // Oy."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "text": "u·v > 0 : angle",
+              "options": ["Aigu (< 90°)", "Obtus", "Droit", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "Cosinus positif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "text": "Cube repère, arêtes Ox, Oy, Oz issues de O. Vrai :",
+              "options": ["Ox ⊥ Oy", "Ox · Oy = 0", "Ox // Oz", "Oy · k = 1"],
+              "correctAnswers": [0, 1],
+              "explanation": "Arêtes orthogonales du cube."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "text": "M(1;1;−2) appartient à x + y + z = 0 ?",
+              "options": ["Oui", "Non", "Toujours O", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "1 + 1 − 2 = 0."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "text": "Droite perpendiculaire à un plan : vecteur directeur",
+              "options": [
+                "Colinéaire au normal",
+                "Dans le plan",
+                "Nul",
+                "Tangent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction normale."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "text": "(2;2;0)·(1;−1;0)",
+              "options": ["0", "4", "−4", "2"],
+              "correctAnswers": [0],
+              "explanation": "2 − 2 = 0."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "text": "2x + 2y + 2z = 4 : vecteur normal (non nul)",
+              "options": ["(1;1;1)", "(2;0;0)", "(0;2;0)", "(0;0;2)"],
+              "correctAnswers": [0],
+              "explanation": "Diviser par 2."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "text": "P(0;0;5) projeté sur (Oxy)",
+              "options": ["O", "(0;0;5)", "(5;0;0)", "(0;5;0)"],
+              "correctAnswers": [0],
+              "explanation": "Pied z = 0."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "text": "Deux vecteurs unitaires orthogonaux",
+              "options": [
+                "Peuvent compléter une base orthonormée",
+                "Sont colinéaires",
+                "Ont même direction",
+                "Somme nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compléter par un troisième."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "text": "||(3;4;0)||",
+              "options": ["5", "7", "25", "√7"],
+              "correctAnswers": [0],
+              "explanation": "3-4-5."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "text": "Plan // (Oxy) : normal //",
+              "options": ["Oz", "Ox", "Oy", "(1;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "z = c ⟹ normal vertical."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "text": "Droite ⊥ plan ⟺ droite //",
+              "options": [
+                "Normal au plan",
+                "Tangente au plan",
+                "Médiane",
+                "Bissectrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition première."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "text": "u(1;2;2), v(−2;1;0). Vrai :",
+              "options": [
+                "u·v = 0",
+                "||u|| = 3",
+                "u et v colinéaires",
+                "u · k = 2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "−2+2+0=0 et √(1+4+4)=3."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "text": "Distance M(0;0;4) au plan (Oxy)",
+              "options": ["4", "0", "√4", "16"],
+              "correctAnswers": [0],
+              "explanation": "|z|."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "text": "(1;0;2)·(0;1;0)",
+              "options": ["0", "2", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "Produit nul avec j."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "text": "Plan x + y = 0, z libre : normal possible",
+              "options": ["(1;1;0)", "(0;0;1)", "(1;0;0)", "(0;1;0)"],
+              "correctAnswers": [0],
+              "explanation": "Coefficients de x et y."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "text": "Deux vecteurs non nuls orthogonaux : angle",
+              "options": ["90°", "0°", "180°", "45°"],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "text": "Proj. ortho. de (3;0;0) sur (Oy)",
+              "options": ["O", "(3;0;0)", "(0;3;0)", "(3;3;0)"],
+              "correctAnswers": [0],
+              "explanation": "Composante selon Oy seule."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "text": "n(2;0;0) normal : plan //",
+              "options": ["(Oyz)", "(Oxy)", "(Oxz)", "Sphère"],
+              "correctAnswers": [0],
+              "explanation": "x constant."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "text": "(a;0;0)·(0;b;0) pour a,b réels",
+              "options": ["0", "ab", "a+b", "|ab|"],
+              "correctAnswers": [0],
+              "explanation": "Axes orthogonaux."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "text": "Hauteur d'un point au plan horizontal z = c",
+              "options": ["|z − c|", "x", "y", "√(x²+y²)"],
+              "correctAnswers": [0],
+              "explanation": "Différence de cotes."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "text": "u·v = ||u|| ||v|| cos θ : θ = 90° donne",
+              "options": ["u·v = 0", "u·v = 1", "u·v = ||u||", "u·v = −1"],
+              "correctAnswers": [0],
+              "explanation": "cos 90° = 0."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "text": "Plan 3x − 4y + 12 = 0 (z libre). Vrai :",
+              "options": [
+                "Normal (3;−4;0)",
+                "Parallèle à Oz",
+                "Contient Oz",
+                "Normal // k"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de z : direction verticale du plan."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "text": "M(2;−1;5) distance au plan z = 0",
+              "options": ["5", "2", "√30", "0"],
+              "correctAnswers": [0],
+              "explanation": "|z| = 5."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "text": "(1;1;1)·(1;−1;0)",
+              "options": ["0", "2", "1", "−1"],
+              "correctAnswers": [0],
+              "explanation": "1 − 1 = 0."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "text": "Vecteur directeur Ox, normal plan (Oyz)",
+              "options": [
+                "Colinéaire à i",
+                "Colinéaire à j",
+                "Colinéaire à k",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan x = 0, normal selon Ox."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "text": "Orthogonalité u·v=0 avec ||u||=||v||=1",
+              "options": [
+                "Vecteurs unitaires perpendiculaires",
+                "Colinéaires",
+                "Égaux",
+                "Opposés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base orthonormée partielle."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "text": "Plan z = 2x + 1 : vecteur (1;0;−2) est-il normal ?",
+              "options": [
+                "Non (test : direction dans le plan)",
+                "Oui toujours",
+                "Nul",
+                "// k"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normal serait (−2;0;1) type."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "text": "(0;3;4)·(0;3;4)",
+              "options": ["25", "7", "5", "9"],
+              "correctAnswers": [0],
+              "explanation": "9+16=25."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "text": "Droite // (Oxy) : perpendiculaire à",
+              "options": ["Oz", "Ox", "Oy", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "Horizontale ⟂ verticale."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "text": "Deux plans x=0 et y=0 : angle dièdre",
+              "options": ["90°", "0°", "180°", "45°"],
+              "correctAnswers": [0],
+              "explanation": "Normaux i et j orthogonaux."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "text": "Comp. selon k de (2;−1;7)",
+              "options": ["7", "2", "−1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Troisième coordonnée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "text": "Sphère centre O, M sur sphère. Vrai :",
+              "options": [
+                "OM · OM = R²",
+                "Pour tout u ⊥ OM, u·OM=0",
+                "OM · i = R",
+                "M = O"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Norme R ; tangente perpendiculaire au rayon."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "text": "Distance M(1;2;2) au plan x = 0",
+              "options": ["1", "2", "3", "√9"],
+              "correctAnswers": [0],
+              "explanation": "|x|."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "text": "(1;2;0)·(2;−1;0) =",
+              "options": ["0", "4", "−4", "2"],
+              "correctAnswers": [0],
+              "explanation": "2 − 2 = 0 : vecteurs orthogonaux dans (Oxy)."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "text": "Normal au plan y = 3",
+              "options": ["(0;1;0)", "(1;0;0)", "(0;0;1)", "(3;3;3)"],
+              "correctAnswers": [0],
+              "explanation": "Direction j."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "text": "u·v = v·u reflète",
+              "options": [
+                "Symétrie du produit scalaire",
+                "Colinéarité",
+                "Inégalité triangulaire",
+                "Division"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commutativité."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "text": "P(3;0;0) distance au plan (Oyz)",
+              "options": ["3", "0", "√9", "√3"],
+              "correctAnswers": [0],
+              "explanation": "|x|."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "text": "(1;0;0) et (0;0;1) :",
+              "options": ["Orthogonaux", "Colinéaires", "Égaux", "Opposés"],
+              "correctAnswers": [0],
+              "explanation": "i · k = 0."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "text": "Plan de normal (1;1;0) (non nul, dans (Oxy))",
+              "options": [
+                "Plan vertical contenant Oz",
+                "Confondu à (Oxy)",
+                "Parallèle à Ox uniquement",
+                "Passant seulement par O"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normal horizontal : le plan est vertical et contient l'axe Oz."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "text": "||u+v||² = ||u||² + ||v||² + 2u·v. Si u⊥v",
+              "options": [
+                "||u+v||² = ||u||² + ||v||²",
+                "=0",
+                "=1",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pythagore vectoriel."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "text": "Foot de M sur plan // (Oxy) z=c",
+              "options": ["(xM;yM;c)", "(c;yM;zM)", "(0;0;c)", "(xM;0;0)"],
+              "correctAnswers": [0],
+              "explanation": "Conserve x,y, fixe z."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "text": "Droite Δ de direction u perpendiculaire au plan Π de normal n (non nuls). Vrai :",
+              "options": [
+                "u et n colinéaires",
+                "n est normal à Π",
+                "Δ est parallèle à Π",
+                "u·n = 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Δ ⊥ Π ⟺ u colinéaire à n ; n ⊥ au plan Π."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "text": "(4;0;0)·(0;5;0)",
+              "options": ["0", "20", "9", "1"],
+              "correctAnswers": [0],
+              "explanation": "Produit nul."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "text": "M(1;1;1) distance au plan x+y+z=0",
+              "options": ["√3", "0", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "|1+1+1|/√3 = √3."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "text": "Vecteurs (1;0;0) et (1;1;0) :",
+              "options": [
+                "Non orthogonaux",
+                "Orthogonaux",
+                "Colinéaires",
+                "Nuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produit 1 ≠ 0."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "text": "Plan x = 0 et plan y = 0 sont",
+              "options": [
+                "Perpendiculaires",
+                "Parallèles",
+                "Confondus",
+                "// Oz seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normaux i et j orthogonaux."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "text": "Vecteur normal (0;0;a) avec a ≠ 0 : plan de la forme",
+              "options": [
+                "z = d (parallèle à (Oxy))",
+                "x = 0",
+                "y = 0",
+                "y = x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normal colinéaire à k : plan horizontal."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "text": "u·0 (vecteur nul)",
+              "options": ["0", "||u||", "1", "Indéfini en 1ère"],
+              "correctAnswers": [0],
+              "explanation": "Produit nul."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "text": "Angle entre i et j",
+              "options": ["90°", "0°", "180°", "60°"],
+              "correctAnswers": [0],
+              "explanation": "Axes orthogonaux."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "text": "Proj. de u sur u",
+              "options": ["u", "0", "2u", "−u"],
+              "correctAnswers": [0],
+              "explanation": "Coefficient 1."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "text": "Orthogonalité et perpendicularité géométrique",
+              "options": [
+                "Coincident en 1ère (produit scalaire nul)",
+                "Sans lien",
+                "= parallélisme",
+                "= colinéarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction algébrique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "text": "Tetraèdre régulier : arêtes issues d'un sommet. Vrai en repère adapté :",
+              "options": [
+                "Trois arêtes deux à deux orthogonales (cube)",
+                "Certaines arêtes orthogonales",
+                "Toutes colinéaires",
+                "Produit scalaire toujours 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sommet cube : 3 arêtes ⊥ deux à deux."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "text": "(1;2;2)·(−2;1;0)",
+              "options": ["0", "−2", "2", "4"],
+              "correctAnswers": [0],
+              "explanation": "−2+2+0=0."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "text": "Plan 2x + 2y + 2z = 0 : M(1;1;−2) dedans ?",
+              "options": ["Oui", "Non", "O seulement", "Tous les M"],
+              "correctAnswers": [0],
+              "explanation": "2−2=0."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "text": "Distance origine-plan x = 5",
+              "options": ["5", "0", "√5", "25"],
+              "correctAnswers": [0],
+              "explanation": "|d|/||n|| avec n=(1;0;0)."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "text": "u(1;1;0), v(1;−1;0) angle",
+              "options": ["90°", "0°", "180°", "60°"],
+              "correctAnswers": [0],
+              "explanation": "u·v=0."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "text": "Normal (1;0;1) : plan ⊥ bissectrice ?",
+              "options": ["Plan incliné x+z=c", "z=0", "x=0", "y=0"],
+              "correctAnswers": [0],
+              "explanation": "x + z = constante."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "text": "||2u|| si ||u||=3",
+              "options": ["6", "9", "5", "12"],
+              "correctAnswers": [0],
+              "explanation": "Double de la norme."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "text": "M(0;4;0) distance à Ox",
+              "options": ["4", "0", "√16", "2"],
+              "correctAnswers": [0],
+              "explanation": "√(y²+z²)=4."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "text": "Deux normaux colinéaires : plans",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Sécants angle droit",
+                "Confondus toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même direction normale."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "text": "u·v < 0 : angle",
+              "options": ["Obtus", "Aigu", "Droit", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "Cosinus négatif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "text": "Synthèse orthogonalité. Vrai :",
+              "options": [
+                "u·v=0 ⟺ orthogonaux",
+                "Distance point-plan via projection orthogonale",
+                "Normal // vecteur directeur de droite ⊥ plan",
+                "Colinéarité ⟺ u·v=0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produit nul ; pas confondre avec colinéarité."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "text": "(3;0;4)·(3;0;4)",
+              "options": ["25", "7", "5", "12"],
+              "correctAnswers": [0],
+              "explanation": "9+16=25."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "text": "Plan z = 0 : distance M(2;3;−7)",
+              "options": ["7", "2", "3", "√62"],
+              "correctAnswers": [0],
+              "explanation": "|z|."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "text": "i·j + j·k + k·i en repère orthonormé",
+              "options": ["0", "1", "3", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Chaque produit nul."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "text": "Droite verticale // Oz : perpendiculaire aux plans",
+              "options": [
+                "Horizontaux z = c",
+                "x = 0 seulement",
+                "y = 0 seulement",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction // normale des plans z=c."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "text": "(1;2;3)·(3;−6;3)",
+              "options": ["0", "12", "−6", "6"],
+              "correctAnswers": [0],
+              "explanation": "3−12+9=0."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "text": "Objectif unité Orthogonalité",
+              "options": [
+                "Relier perpendicularité et produit scalaire",
+                "Repérer sans calcul",
+                "Résoudre des équations du second degré",
+                "Étudier les limites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil algébrique de la géométrie dans l'espace."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "text": "Normal n au plan, M et N dans le plan : MN·n",
+              "options": ["0", "||n||", "1", "||MN||"],
+              "correctAnswers": [0],
+              "explanation": "MN dans le plan ⟂ n."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "text": "(0;0;3) et (0;0;−1) :",
+              "options": ["Colinéaires", "Orthogonaux", "Unitaires", "Égaux"],
+              "correctAnswers": [0],
+              "explanation": "Même droite vectorielle Oz."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "text": "Pythagore 3D : si u⊥v, ||u+v||² =",
+              "options": [
+                "||u||²+||v||²",
+                "(||u||+||v||)²",
+                "0",
+                "||u||²−||v||²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité avec u·v=0."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

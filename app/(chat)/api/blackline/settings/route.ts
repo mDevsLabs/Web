@@ -9,6 +9,8 @@ import {
   BLACKLINE_SETTINGS_MAX_BYTES,
   isValidBlacklineSettingsBody,
 } from "@/lib/blackline/settings";
+import { lireNomAffiche } from "@/lib/quizzly/display-name";
+import { superposerIndicatif } from "@/lib/quizzly/name";
 
 /**
  * GET    /api/blackline/settings — les réglages enregistrés du compte.
@@ -64,8 +66,12 @@ export async function GET() {
   }
   try {
     const settings = await getBlacklineSettings(session.userId);
+    const nom = await lireNomAffiche(session.user);
     return Response.json(
-      { settings },
+      {
+        displayName: nom.displayName,
+        settings: superposerIndicatif(settings, nom.displayName),
+      },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (error) {
@@ -103,12 +109,17 @@ export async function PUT(request: Request) {
   }
 
   try {
+    const nom = await lireNomAffiche(session.user);
     const settings = await saveBlacklineSettings(
       session.userId,
-      parsed.data.settings
+      superposerIndicatif(parsed.data.settings, nom.displayName)
     );
     return Response.json(
-      { settings, success: true },
+      {
+        displayName: nom.displayName,
+        settings: superposerIndicatif(settings, nom.displayName),
+        success: true,
+      },
       { headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (error) {

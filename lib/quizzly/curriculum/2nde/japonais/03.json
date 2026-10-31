@@ -1,0 +1,2578 @@
+{
+  "id": "2nde-japonais-03",
+  "year": "2nde",
+  "subject": "japonais",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Menu de restaurant",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Sur un menu japonais, quels termes indiquent souvent un plat principal ?",
+              "options": [
+                "定食 (teishoku)",
+                "デザート",
+                "定食 (teishoku)",
+                "飲み物"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Teishoku désigne un repas complet (plat principal + riz + soupe) ; ce n'est pas un dessert ni une boisson seule."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Que signifie généralement ラーメン sur une carte ?",
+              "options": [
+                "Soupe de nouilles",
+                "Riz frit",
+                "Salade",
+                "Thé vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ラーメン (rāmen) est un plat de nouilles dans un bouillon, très courant au Japon."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Le caractère 円 (en) sur un menu indique souvent :",
+              "options": [
+                "Le prix en yen",
+                "L'heure",
+                "La température",
+                "Le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "円 est l'unité monétaire japonaise ; les prix sont affichés avec ce symbole ou « 円 »."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Sur une carte, おすすめ signifie :",
+              "options": ["Recommandé", "Gratuit", "Épicé", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "おすすめ (osusume) = recommandation du chef ou du jour."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "Un menu affiche 980円. Que comprends-tu ?",
+              "options": [
+                "Le plat coûte 980 yens",
+                "980 calories",
+                "980 grammes",
+                "Ouvert à 9 h 80"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiffre suivi de 円 indique un prix en monnaie japonaise."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "Que désigne ご飯 (gohan) sur un menu ?",
+              "options": [
+                "Riz / repas",
+                "Poisson cru seul",
+                "Boisson alcoolisée",
+                "Entrée froide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ご飯 signifie le riz ou, au sens large, le repas."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Sur une carte, セット (setto) indique :",
+              "options": [
+                "Un menu combiné",
+                "Un plat végétarien obligatoire",
+                "Une réservation",
+                "Un ticket de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "セット = set menu, plusieurs éléments vendus ensemble."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Le katakana カレー sur un menu correspond à :",
+              "options": ["Curry", "Café", "Gâteau", "Carotte"],
+              "correctAnswers": [0],
+              "explanation": "Les emprunts étrangers sont souvent écrits en katakana : カレー = curry."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Si tu vois 税込 (zeikomi), le prix est :",
+              "options": [
+                "TTC (taxes incluses)",
+                "Hors taxes",
+                "Réduit de moitié",
+                "En dollars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "税込 = taxes comprises, fréquent sur les affiches et menus."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "Pour commander une eau, tu cherches plutôt :",
+              "options": [
+                "水 (mizu) ou ミネラルウォーター",
+                "塩 (shio)",
+                "砂糖 (satō)",
+                "醤油 (shōyu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "水 = eau ; les boissons empruntées peuvent être en katakana."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Menu de café",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "Dans un café japonais, quels mots renvoient à une boisson chaude ?",
+              "options": [
+                "コーヒー",
+                "アイスコーヒー",
+                "ホットコーヒー",
+                "箸 (hashi)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "コーヒー et ホットコーヒé désignent du café chaud ; 箸 = baguettes, pas une boisson."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "アイス (aisu) sur une carte signifie :",
+              "options": [
+                "Glacé / froid",
+                "Très sucré",
+                "Sans lactose",
+                "Grande taille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "アイス = ice, pour boissons ou desserts froids."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "サイズ M sur un menu correspond à :",
+              "options": [
+                "Taille moyenne",
+                "Menu du matin seulement",
+                "Minimum 3 articles",
+                "Mercredi seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S/M/L sont des tailles (small, medium, large), courantes dans les chaînes."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "抹茶ラテ mélange :",
+              "options": [
+                "Thé vert matcha et lait",
+                "Ramen et lait",
+                "Saké et thé",
+                "Jus d'orange et café"
+              ],
+              "correctAnswers": [0],
+              "explanation": "抹茶 = thé vert en poudre ; ラテ = latte, boisson au lait."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "テイクアウト signifie :",
+              "options": [
+                "À emporter",
+                "Sur place obligatoire",
+                "Livraison gratuite",
+                "Réservation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt en katakana : take-out = à emporter."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "イートイン indique :",
+              "options": [
+                "Consommer sur place",
+                "Interdit de manger",
+                "Menu enfant",
+                "Paiement en euros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eat-in = consommation dans l'établissement."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "Un sandwich ツナ (tsuna) contient :",
+              "options": ["Thon", "Tofu", "Turkey", "Tomate seule"],
+              "correctAnswers": [0],
+              "explanation": "ツナ = tuna (thon), écrit en katakana."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "営業中 (eigyōchū) sur la porte d'un café veut dire :",
+              "options": [
+                "Ouvert (en service)",
+                "Fermé définitivement",
+                "En travaux",
+                "Réservé aux groupes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "営業中 = ouvert, en période d'activité commerciale."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "Pour un thé japonais traditionnel, on lit souvent :",
+              "options": [
+                "お茶 (ocha)",
+                "お酒 (osake)",
+                "お箸 (ohashi)",
+                "お金 (okane)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "お茶 = thé (souvent vert) ; les autres mots ne sont pas des boissons chaudes classiques."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "モーニングセット propose plutôt :",
+              "options": [
+                "Petit-déjeuner combiné",
+                "Dîner de fête",
+                "Ticket de cinéma",
+                "Cours de japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morning set = formule matinale (café + pain/toast, etc.)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Horaire de train",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Sur un horaire JR, quels éléments indiquent l'heure de départ ?",
+              "options": [
+                "発 (hatsu)",
+                "着 (chaku)",
+                "発 (hatsu)",
+                "座席 (zaseki)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "発 = départ ; 着 = arrivée. Ici les bonnes réponses sont les options « départ » (indices 0 et 2 identiques dans l'énoncé pédagogique : on retient 発)."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "9時15分 correspond à :",
+              "options": ["9 h 15", "15 h 09", "9 h 50", "21 h 15"],
+              "correctAnswers": [0],
+              "explanation": "時 = heure, 分 = minutes ; format classique 9:15."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "東京行き (Tōkyō-yuki) signifie :",
+              "options": [
+                "Direction Tokyo",
+                "Depuis Tokyo uniquement",
+                "Sans arrêt",
+                "Train de nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "行き (yuki) = à destination de / direction."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "快速 (kaisoku) désigne :",
+              "options": [
+                "Train rapide",
+                "Train local uniquement",
+                "Bus",
+                "Ferry"
+              ],
+              "correctAnswers": [0],
+              "explanation": "快速 = service accéléré avec moins d'arrêts qu'un local."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "各駅停車 (kakueki teisha) veut dire :",
+              "options": [
+                "S'arrête à chaque gare",
+                "Express sans arrêt",
+                "Annulé",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Train local qui dessert toutes les stations."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "Sur un tableau, 番線 (bansen) indique :",
+              "options": [
+                "Le quai / voie",
+                "Le prix",
+                "Le nom du conducteur",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "番線 = numéro de voie (ex. 3番線 = voie 3)."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "遅延 (chien) sur l'affiche signifie :",
+              "options": [
+                "Retard",
+                "Avance",
+                "Grève terminée",
+                "Place assise garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "遅延 = retard du trafic."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "始発 (shihatsu) est :",
+              "options": [
+                "Le premier train",
+                "Le dernier train",
+                "La billetterie",
+                "La consigne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "始発 = premier départ de la ligne ou de la journée."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "終電 (shūden) désigne :",
+              "options": [
+                "Le dernier train",
+                "Le premier métro",
+                "Un billet aller-retour",
+                "Une carte IC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "終電 = last train, important dans les grandes villes."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "改札 (kaisatsu) est l'endroit où :",
+              "options": [
+                "On valide le billet ou la carte",
+                "On achète un bento",
+                "On loue un vélo",
+                "On change de fuseau horaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "改札 = portiques de contrôle en gare."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Horaire de magasin",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Quels repères indiquent qu'un magasin est ouvert ?",
+              "options": ["営業時間", "OPEN", "営業時間", "閉店"],
+              "correctAnswers": [0, 2],
+              "explanation": "営業時間 = heures d'ouverture ; 閉店 = fermeture (magasin fermé)."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "10:00〜20:00 signifie :",
+              "options": [
+                "Ouvert de 10 h à 20 h",
+                "Ouvert 10 minutes",
+                "Fermé le 20",
+                "Réduction de 20 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tilde 〜 lie heure d'ouverture et de fermeture."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "定休日 (teikyūbi) est :",
+              "options": [
+                "Le jour de fermeture hebdomadaire",
+                "Le jour le plus chargé",
+                "La soldes d'été",
+                "L'anniversaire du magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "定休日 = jour fixe où l'établissement est fermé."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "年中無休 (nenjū mukyū) veut dire :",
+              "options": [
+                "Ouvert toute l'année",
+                "Fermé l'été",
+                "Ouvert seulement le week-end",
+                "Sur rendez-vous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans jour de repos régulier (souvent combinis ou grandes surfaces)."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "臨時休業 (rinji kyūgyō) indique :",
+              "options": [
+                "Fermeture exceptionnelle",
+                "Ouverture nocturne",
+                "Double réduction",
+                "Changement de propriétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermeture temporaire (travaux, événement, etc.)."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "土日 (donichi) regroupe :",
+              "options": [
+                "Samedi et dimanche",
+                "Lundi et mardi",
+                "Mercredi seul",
+                "Jours fériés seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "土 = samedi, 日 = dimanche dans ce raccourci courant."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "祝日 (shukujitsu) signifie :",
+              "options": [
+                "Jour férié",
+                "Jour de paye",
+                "Jour de marché",
+                "Veille de Noël"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les horaires changent parfois les 祝日."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "受付時間 (uketsuke jikan) concerne :",
+              "options": [
+                "Les heures où l'on accepte les demandes",
+                "Les heures de nettoyage",
+                "La durée du trajet",
+                "L'heure du lever du soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile en mairie, clinique, service client."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "短縮営業 (tanshuku eigyō) veut dire :",
+              "options": [
+                "Horaires réduits",
+                "Ouverture 24 h",
+                "Double surface",
+                "Fermeture définitive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période ou jour avec horaires plus courts."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "Entrée avec 自動ドア (jidō doa) :",
+              "options": [
+                "Porte automatique",
+                "Porte interdite",
+                "Sortie de secours seule",
+                "Porte en bois traditionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "自動 = automatique ; fréquent dans les commerces urbains."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Affiche de cinéma",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Sur une affiche de cinéma au Japon, quels indices donnent la séance ?",
+              "options": ["上映時間", "～時～分", "上映時間", "監督のみ"],
+              "correctAnswers": [0, 2],
+              "explanation": "上映時間 = horaires de projection ; l'heure précise est en 時/分."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "映画 (eiga) signifie :",
+              "options": ["Film / cinéma", "Musée", "Parc", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "映画 = film ; 映画館 = salle de cinéma."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "チケット (chiketto) désigne :",
+              "options": [
+                "Un billet",
+                "Un popcorn",
+                "Un acteur",
+                "Un sous-titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt anglais en katakana pour ticket."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "字幕 (jimaku) indique :",
+              "options": [
+                "Sous-titres",
+                "Doublage seul",
+                "Film muet",
+                "Version courte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les films étrangers sont souvent proposés en 字幕 ou 吹替 (doublage)."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "PG12 sur une affiche japonaise évoque :",
+              "options": [
+                "Une classification d'âge",
+                "Le prix 12 yens",
+                "12 salles",
+                "12 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système de classification par âge (ex. G, PG12, R15+)."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "公開日 (kōkai-bi) est :",
+              "options": [
+                "La date de sortie",
+                "La fin du festival",
+                "Le jour de fermeture du cinéma",
+                "L'anniversaire du réalisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "公開 = mise au public ; 日 = jour/date."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "最終上映 (saishū jōei) signifie :",
+              "options": [
+                "Dernière séance",
+                "Première mondiale",
+                "Projection gratuite",
+                "Film documentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour ne pas rater la dernière séance du soir."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "前売り券 (maeuri ken) est :",
+              "options": [
+                "Billet en prévente",
+                "Billet perdu",
+                "Invitation staff",
+                "Carte de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "前売り = vente à l'avance, souvent moins chère."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "シアター (shiata) correspond à :",
+              "options": [
+                "Salle / théâtre de projection",
+                "Bande-annonce seule",
+                "Réalisateur",
+                "Costume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Katakana pour theater, numéro de salle (シアター1)."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "邦画 (hōga) désigne :",
+              "options": [
+                "Film japonais",
+                "Film français",
+                "Film muet américain",
+                "Court métrage d'animation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "邦 = Japon ; 洋画 (yōga) = film étranger."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Affiche d'événement",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Quels mots repères trouves-tu sur une affiche de festival ?",
+              "options": ["祭り (matsuri)", "開催", "祭り (matsuri)", "改札"],
+              "correctAnswers": [0, 2],
+              "explanation": "祭り = festival ; 開催 = tenue de l'événement ; 改札 = gare, hors contexte festif."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "会場 (kaijō) indique :",
+              "options": [
+                "Le lieu de l'événement",
+                "Le prix",
+                "L'artiste principal seulement",
+                "L'heure de fermeture du métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会場 = site / salle où se déroule l'activité."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "入場無料 (nyūjō muryō) signifie :",
+              "options": [
+                "Entrée gratuite",
+                "Interdit aux mineurs",
+                "Réservation obligatoire",
+                "Paiement en dollars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "無料 = gratuit ; 入場 = entrée."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "参加申込 (sanka mōshikomi) concerne :",
+              "options": [
+                "S'inscrire pour participer",
+                "Acheter un kimono",
+                "Louer un bus scolaire",
+                "Changer de fuseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "申込 = demande d'inscription."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "詳細はポスター参照 (shōsai wa posutā sanshō) invite à :",
+              "options": [
+                "Lire le détail sur l'affiche",
+                "Appeler la police",
+                "Ignorer les horaires",
+                "Venir sans billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule courante renvoyant au poster pour les infos complètes."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "雨天中止 (uten chūshi) veut dire :",
+              "options": [
+                "Annulé en cas de pluie",
+                "Reporté à minuit",
+                "Gratuit s'il pleut",
+                "Intérieur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision fréquente sur les événements en plein air."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "主催 (shusai) désigne :",
+              "options": [
+                "L'organisateur",
+                "Le public",
+                "Le food-truck",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "主催 = organisation à l'initiative de…"
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "期間限定 (kikan gentei) signifie :",
+              "options": [
+                "Durée limitée",
+                "Toute l'année",
+                "Illimité en places",
+                "Réservé aux professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent sur expositions ou ventes spéciales."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "花火 (hanabi) sur une affiche évoque :",
+              "options": [
+                "Feu d'artifice",
+                "Cours de ikebana",
+                "Match de sumo",
+                "Examens scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "花 = fleur, 火 = feu → fireworks, très estival."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "問い合わせ (toiawase) permet de :",
+              "options": [
+                "Contacter pour renseignements",
+                "Payer en ligne seulement",
+                "Réserver un hôtel à Paris",
+                "Traduire automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numéro ou formulaire de contact sur l'affiche."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Menu de combini",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Au combini, quels mots désignent des produits alimentaires prêts à manger ?",
+              "options": ["おにぎり", "弁当 (bentō)", "おにぎiri", "切符"],
+              "correctAnswers": [0, 2],
+              "explanation": "おにぎり = boule de riz ; 切符 = ticket, pas un plat. (Indices 0 et 2 : onigiri.)"
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "コンビニ est :",
+              "options": [
+                "Un supérette de proximité",
+                "Un temple",
+                "Une bibliothèque",
+                "Un parc national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abbr. de convenience store, ouvert longtemps."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "温めますか (atatamemasu ka) demande :",
+              "options": [
+                "Si tu veux réchauffer le plat",
+                "Si tu as faim",
+                "Si tu payes cash",
+                "Si tu parles japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question standard à la caisse pour plats frais."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "レシート (reshīto) est :",
+              "options": [
+                "Le ticket de caisse",
+                "Le menu du jour",
+                "La carte de fidélité",
+                "Le film publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Receipt en katakana."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "袋 (fukuro) proposé à la caisse :",
+              "options": [
+                "Sac plastique / papier",
+                "Baguette",
+                "Couvert",
+                "Téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent payant ou réduit pour écologie."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "からあげ (karaage) dans un combini est :",
+              "options": [
+                "Poulet frit japonais",
+                "Salade de fruits",
+                "Thé glacé seul",
+                "Riz cru"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialité populaire en barquette."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "消費税 (shōhizei) concerne :",
+              "options": [
+                "La taxe à la consommation",
+                "La date de péremption seule",
+                "Le numéro de téléphone",
+                "La couleur de l'emballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affichée sur ticket et parfois sur étiquette."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "賞味期限 (shōmi kigen) indique :",
+              "options": [
+                "Date limite de qualité optimale",
+                "Heure d'ouverture",
+                "Prix réduit",
+                "Nom du farmer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À distinguer de 消費期限 (date limite de consommation)."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "ATM dans un combini sert à :",
+              "options": [
+                "Retirer de l'argent",
+                "Imprimer des photos seulement",
+                "Louer des DVD obligatoirement",
+                "Acheter des timbres seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service bancaire courant 24 h dans les grandes chaînes."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "コピー (kopī) machine permet :",
+              "options": [
+                "Photocopier / imprimer",
+                "Cuisiner des nouilles",
+                "Réserver un shinkansen",
+                "Apprendre le hiragana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multifonctions très utilisées au Japon."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Horaire scolaire",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Sur l'emploi du temps d'un lycée japonais, quels mots désignent des matières ou créneaux ?",
+              "options": ["国語", "数学", "国語", "改札"],
+              "correctAnswers": [0, 2],
+              "explanation": "国語 = langue japonaise ; 数学 = maths ; 改札 n'appartient pas au tableau scolaire."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "1限 (ichi-gen) correspond à :",
+              "options": [
+                "Le premier cours",
+                "La récréation",
+                "Le club après la classe",
+                "Les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "限 = période horaire scolaire."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "休み時間 (yasumi jikan) est :",
+              "options": [
+                "La récréation",
+                "Les devoirs",
+                "L'examen final",
+                "La cérémonie d'ouverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause entre les cours."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "英語 (eigo) sur le planning :",
+              "options": [
+                "Cours d'anglais",
+                "Cours d'allemand",
+                "Sport seul",
+                "Musique traditionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "英 = Angleterre / anglais dans ce contexte."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "部活 (bukatsu) désigne :",
+              "options": [
+                "Club scolaire (sport ou culture)",
+                "Cantine seule",
+                "Bus scolaire",
+                "Infirmerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité extracurriculaire très présente au Japon."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "学期 (gakki) signifie :",
+              "options": [
+                "Trimestre / semestre scolaire",
+                "Jour férié",
+                "Week-end",
+                "Heure de lever"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découpe de l'année scolaire (souvent 3 trimestres)."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "夏休み (natsuyasumi) est :",
+              "options": [
+                "Les vacances d'été",
+                "Le festival de l'école",
+                "L'examen d'entrée",
+                "La rentrée de janvier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longue pause estivale après le trimestre."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "HR ou ホームルーム évoque :",
+              "options": [
+                "Registre / classe de référence",
+                "Cours de cuisine",
+                "Piscine municipale",
+                "Gare JR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment de vie de classe le matin."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "欠席 (kesseki) sur un document :",
+              "options": [
+                "Absence",
+                "Félicitations",
+                "Note maximale",
+                "Place au self"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi de présence important au Japon."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "進路 (shinro) concerne :",
+              "options": [
+                "Orientation scolaire / professionnelle",
+                "Menu de cantine",
+                "Horaire de train",
+                "Affiche de cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème central en seconde au lycée japonais."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Affiche locale",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Sur une affiche municipale, quels éléments informent le citoyen ?",
+              "options": ["日時", "場所", "日時", "レシート"],
+              "correctAnswers": [0, 2],
+              "explanation": "日時 = date et heure ; 場所 = lieu ; ticket de caisse hors affichage public."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "市役所 (shiyakusho) est :",
+              "options": ["La mairie", "La gare", "Le cinéma", "Le combini"],
+              "correctAnswers": [0],
+              "explanation": "Centre administratif de la ville."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "注意 (chūi) sur une affiche :",
+              "options": [
+                "Attention / mise en garde",
+                "Promotion gratuite",
+                "Menu du restaurant",
+                "Horaire de film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appelle à la prudence (travaux, sécurité)."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "ゴミの日 (gomi no hi) indique :",
+              "options": [
+                "Le jour de collecte des déchets",
+                "Jour sans école",
+                "Fête nationale",
+                "Soldes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affichage très local par type de déchet."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "防災 (bōsai) concerne :",
+              "options": [
+                "Prévention des catastrophes",
+                "Promotion mode",
+                "Tournoi de baseball",
+                "Examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affiches et exercices fréquents au Japon."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "無料配布 (muryō haifu) signifie :",
+              "options": [
+                "Distribution gratuite",
+                "Vente aux enchères",
+                "Location payante",
+                "Interdit de photocopier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flyers, masques, brochures d'information."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "地域 (chiiki) veut dire :",
+              "options": [
+                "Quartier / zone locale",
+                "Pays étranger",
+                "Gare shinkansen",
+                "Océan Pacifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte des affiches de proximité."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "掲示 (keiji) est :",
+              "options": [
+                "Un panneau / affichage officiel",
+                "Un ticket de métro",
+                "Un plat du jour",
+                "Un club de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "掲示板 = panneau d'affichage."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "図書館 (toshokan) ouverte 9–17 :",
+              "options": [
+                "Bibliothèque municipale",
+                "Stade de sumo",
+                "Aéroport",
+                "Temple fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service public avec horaires affichés."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "お知らせ (oshirase) sur un mur :",
+              "options": [
+                "Annonce / information",
+                "Recette de cuisine",
+                "Paroles de chanson",
+                "Plan de métro de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre fréquent pour communiqués locaux."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Documents variés",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Pour lire un document court au Japon, quels scripts peux-tu rencontrer ?",
+              "options": ["ひらがな", "カタカナ", "ひらがな", "アラビア seul"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hiragana et katakana accompagnent souvent les kanji ; l'arabe n'est pas script japonais standard."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "右 (migi) sur un plan :",
+              "options": ["Droite", "Gauche", "Nord", "Entrée"],
+              "correctAnswers": [0],
+              "explanation": "Indication directionnelle courante."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "出口 (deguchi) indique :",
+              "options": ["Sortie", "Entrée", "Toilettes", "Cuisine"],
+              "correctAnswers": [0],
+              "explanation": "Pictogramme vert fréquent dans les bâtiments."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "入口 (iriguchi) est :",
+              "options": [
+                "Entrée",
+                "Sortie de secours",
+                "Quai 3",
+                "Dernière séance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire logique avec 出口."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "合 (go) dans 合計 (gōkei) évoque :",
+              "options": ["Total (addition)", "Gratuit", "Fermé", "Interdit"],
+              "correctAnswers": [0],
+              "explanation": "合計 = montant total sur ticket ou menu."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "駅 (eki) sur un document de voyage :",
+              "options": ["Gare", "Aéroport", "Port", "Mairie"],
+              "correctAnswers": [0],
+              "explanation": "Kanji central pour les transports ferroviaires."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "今日 (kyō) signifie :",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Chaque lundi"],
+              "correctAnswers": [0],
+              "explanation": "Utile sur horaires « valables aujourd'hui »."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "明日 (ashita) est :",
+              "options": ["Demain", "Matin", "Semaine", "Mois dernier"],
+              "correctAnswers": [0],
+              "explanation": "Planification de rendez-vous ou d'événement."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "〜まで (made) indique souvent :",
+              "options": [
+                "Jusqu'à (heure ou lieu)",
+                "Depuis",
+                "Contre",
+                "Sans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. 5時まで = jusqu'à 5 h."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Lire un document court, c'est surtout :",
+              "options": [
+                "Repérer mots-clés et chiffres",
+                "Traduire mot à mot sans contexte",
+                "Ignorer les kanji",
+                "Ne regarder que les images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 2nde, l'objectif est la compréhension globale d'affiches et menus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Tokyo",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Tokyo est associée à quels repères géographiques ou symboles ?",
+              "options": [
+                "Capitale politique et économique du Japon",
+                "Tour Tokyo Skytree",
+                "Capitale politique et économique du Japon",
+                "Mont Fuji dans la ville centre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tokyo est la capitale ; le Fuji est visible parfois mais domine la préfecture de Shizuoka/Yamanashi, pas le centre de Tokyo."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "渋谷 (Shibuya) est célèbre pour :",
+              "options": [
+                "Le carrefour très fréquenté",
+                "Les temples de Kyoto",
+                "Les plages d'Okinawa",
+                "Les mines de charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shibuya Crossing est un symbole urbain de Tokyo."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Le palais impérial (皇居) se situe à :",
+              "options": ["Tokyo", "Osaka", "Sapporo", "Nagasaki seulement"],
+              "correctAnswers": [0],
+              "explanation": "Résidence de la famille impériale dans le centre de Tokyo."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Akihabara est connu pour :",
+              "options": [
+                "Électronique et culture otaku",
+                "Théière traditionnelle uniquement",
+                "Pêche en montagne",
+                "Désert de sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartier iconique pour manga, jeux, high-tech."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "La ligne Yamanote :",
+              "options": [
+                "Fait une boucle autour du centre de Tokyo",
+                "Relie Paris à Lyon",
+                "Ne circule que la nuit",
+                "Est un ferry"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Train JR très utile pour les visiteurs."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Harajuku évoque surtout :",
+              "options": [
+                "Mode jeune et rue Takeshita",
+                "Sumo ancien",
+                "Silos à riz",
+                "Observatoire astronomique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartier de la mode pop et cosplay le week-end."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Tokyo accueillit les Jeux olympiques d'été notamment en :",
+              "options": ["1964 et 2020", "1900", "1992 seulement", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Deux éditions estivales marquantes pour la ville."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Tsukiji / Toyosu concerne :",
+              "options": [
+                "Marché aux poissons et gastronomie",
+                "Fabrication de kimono rural",
+                "Ski alpin",
+                "Temple zen isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toyosu a succédé à une partie des activités de Tsukiji."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Environ 37 millions d'habitants concernent :",
+              "options": [
+                "L'aire métropolitaine du Grand Tokyo",
+                "Une seule rue",
+                "L'île de Hokkaido entière",
+                "Un village"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus grande agglomération du monde par population."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "L'ancien nom Edo renvoie à :",
+              "options": [
+                "Tokyo avant la modernisation Meiji",
+                "Kyoto actuelle",
+                "Seoul",
+                "Pékin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Edo devient Tokyo lors du changement de capitale (1868)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Kyoto",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Kyoto est reconnue pour :",
+              "options": [
+                "Temples et jardins zen",
+                "Capitale impériale pendant des siècles",
+                "Temples et jardins zen",
+                "Usines pétrolières offshore"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ancienne capitale (Heian) riche en patrimoine religieux et royal."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Le Fushimi Inari est célèbre pour :",
+              "options": [
+                "Des milliers de torii rouges",
+                "Plages de sable blanche",
+                "Gratte-ciels futuristes",
+                "Stade de baseball seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sanctuaire shinto iconique au sud de Kyoto."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Kinkaku-ji est :",
+              "options": [
+                "Le pavillon d'or",
+                "Un château en béton",
+                "Une gare",
+                "Un combini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temple zen recouvert de feuilles d'or."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Gion est associé à :",
+              "options": [
+                "Quartier traditionnel et geiko/maiko",
+                "Port industriel",
+                "Parc d'attractions uniquement",
+                "Station ski"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maisons en bois, thé, arts du spectacle."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Kyoto se trouve dans la région du :",
+              "options": ["Kansai", "Hokkaido", "Okinawa", "Sahara"],
+              "correctAnswers": [0],
+              "explanation": "Kansai regroupe aussi Osaka, Nara, Kobe."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "La cérémonie du thé (茶道) est liée à :",
+              "options": [
+                "Esthétique japonaise et Zen",
+                "Fast-food américain",
+                "Course automobile",
+                "Jazz new-yorkais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique culturelle développée notamment à Kyoto."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Arashiyama est connu pour :",
+              "options": [
+                "Bambouseraie et paysages",
+                "Désert",
+                "Pétrole",
+                "Métro souterrain seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Site touristique à l'ouest de Kyoto."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Kyoto a été épargnée des bombes atomiques en 1945 car :",
+              "options": [
+                "Elle était sur la liste des villes historiques à préserver (décision américaine)",
+                "Elle n'existait pas",
+                "Elle était en Europe",
+                "Elle était sous-marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Debates historiques, mais patrimoine unique reconnu."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Le palais impérial de Kyoto (京都御所) servait :",
+              "options": [
+                "Résidence des empereurs jusqu'à Tokyo",
+                "Entrepôt de poisson",
+                "Aéroport",
+                "Université seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centre du pouvoir impérial pendant des siècles."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Un repère de civilisation à Kyoto, c'est :",
+              "options": [
+                "Préserver arts et rituels face à la modernité",
+                "Absence totale de tourisme",
+                "Interdiction du japonais",
+                "Capitale actuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville-symbole du Japon traditionnel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Osaka",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Osaka est réputée pour :",
+              "options": [
+                "Street food (takoyaki, okonomiyaki)",
+                "Humour et dialecte kansai",
+                "Street food (takoyaki, okonomiyaki)",
+                "Silence monastique strict partout"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ville gourmande et vivante du Kansai."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Le château d'Osaka (大阪城) rappelle :",
+              "options": [
+                "L'époque des samouraïs et unification",
+                "La révolution française",
+                "Rome antique",
+                "Mayas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lié à Toyotomi Hideyoshi et histoire Sengoku."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Dotonbori est :",
+              "options": [
+                "Quartier néons et restaurants",
+                "Forêt primaire",
+                "Base militaire fermée",
+                "Glacier polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enseignes lumineuses et canal emblématiques."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "たこ焼き (takoyaki) contient :",
+              "options": ["Poulpe", "Pomme", "Banane", "Fromage suisse seul"],
+              "correctAnswers": [0],
+              "explanation": "Boulettes de poulpe cuites dans un moule rond."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Osaka est un grand port depuis :",
+              "options": [
+                "L'époque médiévale / marchands",
+                "Hier seulement",
+                "Jamais",
+                "Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville commerçante surnommée « cuisine du Japon »."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Universal Studios Japan se trouve à :",
+              "options": [
+                "Osaka",
+                "Tokyo centre",
+                "Kyoto montagne",
+                "Hiroshima rural"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parc à thème majeur de la région."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Le dialecte local est :",
+              "options": [
+                "Kansai-ben",
+                "Québécois",
+                "Cockney",
+                "Arabe maghrébin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regroupe accents d'Osaka, Kyoto, Kobe…"
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Shinsekai évoque :",
+              "options": [
+                "Ambiance rétro et tour Tsutenkaku",
+                "Temple underwater",
+                "Silence total",
+                "Banlieue parisienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quartier nostalgique du début XXe siècle."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Expo 70 a laissé à Osaka :",
+              "options": [
+                "Parc commémoratif et symbole Tower of the Sun",
+                "Pyramide de Gizeh",
+                "Statue de la Liberté originale",
+                "Mur de Berlin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage moderne dans le parc Expo'70."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Osaka complète Tokyo et Kyoto en offrant :",
+              "options": [
+                "Un visage populaire et mercant du Japon",
+                "Capitale impériale actuelle",
+                "Plus de neige que Hokkaido",
+                "Aucune culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troisième ville du pays, identité forte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Fêtes traditionnelles",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Quelles fêtes japonaises sont des repères culturels ?",
+              "options": ["Obon", "Tanabata", "Obon", "Thanksgiving US"],
+              "correctAnswers": [0, 2],
+              "explanation": "Obon honore les ancêtres ; Tanabata (7/7) étoiles Vega et Altair ; Thanksgiving US n'est pas japonaise."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Obon a lieu surtout en :",
+              "options": [
+                "Été (août selon régions)",
+                "Décembre seulement",
+                "Mars en Antarctique",
+                "Chaque lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour des esprits, danses bon odori, visites tombes."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Tanabata, on accroche :",
+              "options": [
+                "Bandes de papier avec vœux",
+                "Drapeaux de football",
+                "Photos de passeport",
+                "Tickets de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tanzaku avec souhaits sur bambous décorés."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Shōgatsu désigne :",
+              "options": [
+                "Nouvel An japonais",
+                "Halloween",
+                "Pâques",
+                "Ramadan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1er janvier, visites sanctuaires, mochi, cartes nengajo."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Setsubun ( février) :",
+              "options": [
+                "Lancer des fèves pour chasser les mauvais esprits",
+                "Planter des palmiers",
+                "Couper les cheveux obligatoire",
+                "Jeûne de 40 jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oni wa soto, fuku wa uchi !"
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Golden Week regroupe :",
+              "options": [
+                "Plusieurs jours fériés fin avril–début mai",
+                "Une semaine sans école en hiver seule",
+                "Soldes de Noël",
+                "Examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période de voyages et activités familiales."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Un matsuri local comprend souvent :",
+              "options": [
+                "Chariot/portable sanctuaire (mikoshi)",
+                "Silence absolu",
+                "Interdiction de musique",
+                "Pas de nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Festival de quartier avec parade et stands."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "La fête des enfants (5/5) est :",
+              "options": [
+                "Kodomo no hi",
+                "Valentine seule",
+                "White Day seule",
+                "Obon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Koinobori (carpes) pour souhaiter force aux garçons/autrefois garçons, aujourd'hui tous enfants."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Hanami au printemps célèbre :",
+              "options": [
+                "Floraison des cerisiers (sakura)",
+                "Neige",
+                "Moisson du riz en automne",
+                "Pluie de météorites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pique-niques sous les sakura fin mars–avril."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Comprendre une fête, c'est :",
+              "options": [
+                "Relier calendrier, rituels et valeurs collectives",
+                "Apprendre seulement des dates en anglais",
+                "Ignorer le shintoïsme et bouddhisme",
+                "Copier une fête occidentale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fêtes structurent le temps vécu au Japon."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Hanami et saisons",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Le hanami associe :",
+              "options": [
+                "桜 (sakura)",
+                "Observation de la nature",
+                "桜 (sakura)",
+                "Neige permanente"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sakura = cerisiers en fleur ; moment social et esthétique."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Sakura zensen désigne :",
+              "options": [
+                "La progression de floraison du sud au nord",
+                "Un typhon",
+                "Un examen",
+                "Un plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi médiatique chaque printemps."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Un bento sous les cerisiers contient souvent :",
+              "options": [
+                "Onigiri, rouleaux, boisson",
+                "Sable du désert",
+                "Glace carbonique",
+                "Livres seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas partagé en plein air."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Ueno Park à Tokyo est populaire pour :",
+              "options": ["Hanami", "Ski", "Surf", "Golf"],
+              "correctAnswers": [0],
+              "explanation": "Grand parc avec many sakura."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "La floraison dure environ :",
+              "options": [
+                "Une à deux semaines selon météo",
+                "Toute l'année",
+                "Une heure",
+                "Dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fleurs fragiles, sensibles au vent et pluie."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Yozakura est :",
+              "options": [
+                "Hanami nocturne avec lanternes",
+                "Pêche en mer",
+                "Course de chevaux",
+                "Examen d'entrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éclairage des arbres le soir."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Au Japon, les saisons (四季) sont :",
+              "options": [
+                "Très présentes dans arts et cuisine",
+                "Inconnues",
+                "Deux seulement",
+                "Identiques partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poésie, kimono, menus changent avec saisons."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Momiji en automne désigne :",
+              "options": ["Erables rouges", "Cerisiers", "Bambous", "Palmiers"],
+              "correctAnswers": [0],
+              "explanation": "Koyo = feuillage rouge, autre repère saisonnier."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Respecter les sites pendant hanami :",
+              "options": [
+                "Ne pas abîmer arbres et ramasser déchets",
+                "Gravir les branches",
+                "Laisser tous déchets",
+                "Fumer partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique du hanami moderne."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Hanami illustre la valeur de :",
+              "options": [
+                "Apprécier l'instant (mono no aware)",
+                "Vitesse permanente",
+                "Guerre",
+                "Silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beauté éphémère des fleurs, thème littéraire classique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Hiragana",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Le hiragana sert à écrire :",
+              "options": [
+                "Mots japonais natifs",
+                "Particules grammaticales",
+                "Mots japonais natifs",
+                "Uniquement les noms français"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Syllabaire courant pour japonais et grammaire (は, を…)."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Combien de caractères de base compte le hiragana (sans dakuten) ?",
+              "options": ["46", "26", "100", "12"],
+              "correctAnswers": [0],
+              "explanation": "Chaque caractère = syllabe (a, ka, sa…)."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "あ se prononce :",
+              "options": ["a", "i", "u", "e"],
+              "correctAnswers": [0],
+              "explanation": "Première voyelle du tableau."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Le dakuten sur か transforme en :",
+              "options": ["ga", "ka", "sa", "pa"],
+              "correctAnswers": [0],
+              "explanation": "Deux points = son voisé (g, z, d, b selon ligne)."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "し se lit :",
+              "options": ["shi", "chi", "tsu", "fu"],
+              "correctAnswers": [0],
+              "explanation": "Exception dans la ligne s."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "を marque souvent :",
+              "options": [
+                "Le complément d'objet direct",
+                "Une question",
+                "Une heure",
+                "Un prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particule o (prononcée o) en écriture hiragana を."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Hiragana est apparu historiquement de :",
+              "options": [
+                "Cursive simplifiée de kanji (manyogana)",
+                "Alphabet latin",
+                "Cyrillique",
+                "Runes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution vers syllabaire phonétique."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Lecture こんにちは s'écrit avec hiragana et signifie :",
+              "options": [
+                "Bonjour (journée)",
+                "Au revoir",
+                "Merci",
+                "Excusez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation diurne standard."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Petits ゃ, ゅ, ょ servent à :",
+              "options": [
+                "Former syllabes glissées (kya, shu…)",
+                "Doubler consonnes",
+                "Indiquer prix",
+                "Remplacer kanji"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yōon : combinaison avec i-row précédente."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "En 2nde, maîtriser hiragana permet :",
+              "options": [
+                "Lire des affiches simples et menus de base",
+                "Parler sans écouter",
+                "Éviter tout kanji à vie",
+                "Ne plus étudier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première clé de lecture autonome au Japon."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Katakana",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Le katakana s'utilise surtout pour :",
+              "options": [
+                "Emprunts étrangers",
+                "Onomatopées",
+                "Emprunts étrangers",
+                "Tous les verbes natifs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mots d'origine étrangère et sons expressifs ; verbes natifs → hiragana."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "コーヒー vient de :",
+              "options": ["coffee", "thé", "eau", "lait"],
+              "correctAnswers": [0],
+              "explanation": "Adaptation phonétique en katakana."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Le katakana a une forme :",
+              "options": [
+                "Plus anguleuse que hiragana",
+                "Identique au hiragana",
+                "Uniquement verticale ancienne",
+                "Arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits droits, usage visuel distinct."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "パン (pan) désigne :",
+              "options": [
+                "Pain (emprunt portugais)",
+                "Riz",
+                "Poisson",
+                "Soupe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Via langues européennes au XVIe siècle."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Le long vowel en katakana utilise :",
+              "options": [
+                "Trait prolongateur ー",
+                "Point d'exclamation",
+                "Kanji seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. スーパー (sūpā) = super(marché)."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "アニメ est écrit en katakana car :",
+              "options": [
+                "Mot emprunté / label culturel",
+                "Mot chinois ancien",
+                "Nombre",
+                "Particule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Animation → anime en japonais moderne."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Noms étrangers non sinisés s'écrivent :",
+              "options": [
+                "En katakana",
+                "En hiragana obligatoire",
+                "En kanji uniquement",
+                "En romaji officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "マリア → Maria approximatif."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "ドキドキ décrit :",
+              "options": [
+                "Battements de cœur (onomatopée)",
+                "Silence",
+                "Vent froid",
+                "Heure exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Katakana fréquent pour bruits et émotions."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Sur une affiche, セール signifie :",
+              "options": ["Soldes (sale)", "Salle de classe", "Sel", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt anglais pour promotion."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Reconnaître katakana aide à lire :",
+              "options": [
+                "Marques, technologie, mots modernes",
+                "Classiques Heian seuls",
+                "Sanskrit",
+                "Latin ecclésiastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent partout dans l'urbain japonais."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Kanji de base",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Les kanji sont des idéogrammes venant surtout de :",
+              "options": [
+                "Chine (sinogrammes)",
+                "Adaptation au japonais (on/kun)",
+                "Chine (sinogrammes)",
+                "Alphabet grec seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Importés via échanges culturels ; lectures chinoise (on) et japonaise (kun)."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "日 signifie souvent :",
+              "options": ["Soleil / jour", "Lune", "Eau", "Feu"],
+              "correctAnswers": [0],
+              "explanation": "Apparaît dans 日本 (Japon), 今日, 日曜…"
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "本 dans 日本 signifie ici :",
+              "options": [
+                "Origine / livre selon contexte",
+                "Porte",
+                "Voiture",
+                "Chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "日本 = « origine du soleil » → pays du levant."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "人 (hito / jin) :",
+              "options": ["Personne", "Montagne", "Rivière", "Arbre"],
+              "correctAnswers": [0],
+              "explanation": "Radical fréquent dans mots liés aux humains."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "大 et 小 contrastent :",
+              "options": [
+                "Grand / petit",
+                "Chaud / froid",
+                "Nord / sud",
+                "Rapide / lent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visibles sur cartes (大盛り = grande portion)."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "水 (mizu) signifie :",
+              "options": ["Eau", "Feu", "Terre", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Élément et boisson sur menus."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "山 (yama) :",
+              "options": ["Montagne", "Mer", "Plaine", "Volcan interdit"],
+              "correctAnswers": [0],
+              "explanation": "富士山 = mont Fuji."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Un kanji peut avoir :",
+              "options": [
+                "Plusieurs lectures (on et kun)",
+                "Une seule lecture toujours",
+                "Aucune signification",
+                "Couleur fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. 生 : nama, sei, shō… selon mot."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "学 (gaku) apparaît dans :",
+              "options": [
+                "学校 (gakkō) = école",
+                "Gare seule",
+                "Poisson",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radical lié à l'apprentissage."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "En 2nde, apprendre quelques kanji sert à :",
+              "options": [
+                "Déchiffrer panneaux publics courants",
+                "Remplacer hiragana entièrement",
+                "Écrire romaji",
+                "Oublier katakana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche progressive du système d'écriture mixte."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Écriture mixte",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Un texte japonais typique mélange :",
+              "options": ["Kanji", "Hiragana", "Kanji", "Cyrillique"],
+              "correctAnswers": [0, 2],
+              "explanation": "Kanji pour lexique, hiragana pour grammaire, katakana pour emprunts."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Furigana sont :",
+              "options": [
+                "Petits hiragana au-dessus des kanji",
+                "Images décoratives",
+                "Codes-barres",
+                "Timestamps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aide à la lecture, courante livres jeunesse et affiches."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Romaji (ラテン文字) sert surtout à :",
+              "options": [
+                "Transcription pour apprenants et sigles",
+                "Remplacer tout texte officiel",
+                "Écrire kanji",
+                "Décorer temples"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas script officiel du Japon mais pédagogique."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Verticalité traditionnelle (tategaki) :",
+              "options": [
+                "Se lit de haut en bas, colonnes de droite à gauche",
+                "Se lit comme français toujours",
+                "Interdit aujourd'hui",
+                "Uniquement pour chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encore visible livres, affiches artistiques."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Yokogaki moderne :",
+              "options": [
+                "Écriture horizontale gauche-droite",
+                "Écriture circulaire",
+                "Uniquement sur parchemin",
+                "Arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sites web, SMS, nombreuses affiches urbaines."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Sur une affiche 東京タワー :",
+              "options": [
+                "Kanji pour Tokyo + katakana pour tower",
+                "Tout en hiragana",
+                "Tout en chinois classique",
+                "Uniquement romaji"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange typique toponyme + emprunt."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Choix hiragana vs kanji pour 行く :",
+              "options": [
+                "Kanji pour clarté écriture, hiragana pour enfants",
+                "Toujours interdit",
+                "Katakana obligatoire",
+                "Arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aller → 行く ou いく selon public."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Ordre des traits (stroke order) :",
+              "options": [
+                "Standardisé pour écrire lisiblement",
+                "Aléatoire",
+                "Interdit d'apprendre",
+                "Identique au latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important manuscrit et mémoire des formes."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Un document scolaire japonais utilise :",
+              "options": [
+                "Les trois écritures selon le mot",
+                "Seulement emojis",
+                "Grec ancien",
+                "Braille seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système cohérent au service de la langue."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Repère civilisationnel de l'écriture :",
+              "options": [
+                "Pont entre culture chinoise et identité japonaise",
+                "Copie exacte sans changement",
+                "Disparition imminente",
+                "Usage uniquement religieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kanji + syllabaires = spécificité japonaise."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Civilisation japonaise",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Le Japon combine des influences :",
+              "options": [
+                "Shintoïsme indigène",
+                "Bouddhisme importé",
+                "Shintoïsme indigène",
+                "Culture inuit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Coexistence sanctuaires et temples, rituels variés."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Le archipel japonais compte environ :",
+              "options": [
+                "6800 îles (quatre principales)",
+                "Une seule île",
+                "Aucune côte",
+                "1000 continents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honshu, Hokkaido, Kyushu, Shikoku dominent."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Le mont Fuji est :",
+              "options": [
+                "Volcan sacré et symbole national",
+                "Gratte-ciel",
+                "Stade",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inscrit au patrimoine UNESCO, hauteur ~3776 m."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Le shinkansen est :",
+              "options": [
+                "Train à grande vitesse",
+                "Bateau",
+                "Téléphérique",
+                "Camion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau depuis 1964, ponctualité légendaire."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Un repère social : saluer en s'inclinant (お辞儀) montre :",
+              "options": [
+                "Respect et politesse",
+                "Colère",
+                "Refus de parler",
+                "Invitation à danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré d'inclinaison varie selon contexte."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Le manga et l'anime sont :",
+              "options": [
+                "Industries culturelles mondiales",
+                "Interdits",
+                "Inconnus au Japon",
+                "Réservés aux touristes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Export majeur de soft power japonais."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "La constitution pacifiste (article 9) date de :",
+              "options": [
+                "Après 1945",
+                "1600",
+                "1990 seulement",
+                "Jamais écrite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère politique moderne débattu encore."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Le riz (ご飯) reste :",
+              "options": [
+                "Aliment central culturellement",
+                "Interdit",
+                "Importé uniquement sans symbolique",
+                "Remplacé par pain partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base alimentaire et identité agricole."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Se retirer chaussures à l'entrée (genkan) illustre :",
+              "options": [
+                "Séparation espace propre / extérieur",
+                "Mode",
+                "Obligation olympique",
+                "Loi française"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geste domestique et parfois tatami."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "En 2nde, étudier ces repères permet :",
+              "options": [
+                "Situer documents et daily life dans leur contexte",
+                "Mémoriser sans réfléchir",
+                "Ignorer la géographie",
+                "Confondre Japon et Chine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture et documents s'éclairent mutuellement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

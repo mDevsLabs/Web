@@ -1,0 +1,2733 @@
+{
+  "id": "terminale-enseignement-scientifique-02",
+  "year": "terminale",
+  "subject": "enseignement-scientifique",
+  "title": "La biodiversité",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Érosion de la biodiversité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Définir la biodiversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments entrent dans la notion de biodiversité au sens large ?",
+              "options": [
+                "La diversité génétique au sein des espèces",
+                "La diversité des couleurs des logos écologiques",
+                "La diversité des écosystèmes et des habitats",
+                "La diversité des espèces vivantes"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La biodiversité recouvre la diversité génétique, spécifique et des écosystèmes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de grands niveaux d'organisation de la biodiversité distingue-t-on classiquement ?",
+              "options": ["Un seul", "Trois", "Cinq", "Dix"],
+              "correctAnswers": [1],
+              "explanation": "On distingue la diversité génétique, spécifique et écosystémique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La diversité génétique désigne surtout :",
+              "options": [
+                "Les différences d'ADN et d'allèles au sein d'une espèce",
+                "Le nombre de parcs nationaux",
+                "La taille des océans",
+                "Le nombre de saisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mesure la variabilité héréditaire à l'intérieur des populations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un hotspot de biodiversité se caractérise par :",
+              "options": [
+                "Peu d'espèces endémiques et faible menace",
+                "Forte endémisme et forte dégradation des habitats",
+                "Absence totale d'activité humaine",
+                "Climat polaire stable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ces zones concentrent endémisme et pressions anthropiques élevées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'endémisme signifie qu'une espèce :",
+              "options": [
+                "Vit sur tous les continents",
+                "Est présente uniquement dans une zone géographique restreinte",
+                "Disparaît chaque hiver",
+                "Ne se reproduit qu'en laboratoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une espèce endémique est naturellement confinée à un territoire limité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La diversité fonctionnelle renvoie à :",
+              "options": [
+                "Les rôles écologiques des espèces dans un écosystème",
+                "Le nombre de pages d'un manuel scolaire",
+                "La couleur des feuilles en automne",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle décrit les fonctions assurées par les espèces (pollinisation, décomposition, etc.)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le biome forêt tropicale humide abrite surtout :",
+              "options": [
+                "Une faible diversité spécifique",
+                "Une très forte diversité spécifique",
+                "Uniquement des espèces introduites",
+                "Aucun insecte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les forêts tropicales concentrent une part majeure de la diversité mondiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La phylogénie permet de :",
+              "options": [
+                "Mesurer uniquement la température",
+                "Reconstruire les liens de parenté entre espèces",
+                "Compter les véhicules en ville",
+                "Prédire les marées sans données"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'analyse phylogénétique éclaire l'histoire évolutive et les parentés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une espèce généraliste se distingue par :",
+              "options": [
+                "Un habitat très étroit et une alimentation unique",
+                "Une large tolérance écologique",
+                "L'absence de concurrence",
+                "Une reproduction uniquement asexuée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les généralistes utilisent des ressources variées et des milieux divers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La biodiversité culturelle, au sens large, peut inclure :",
+              "options": [
+                "Les savoirs locaux liés à la nature",
+                "Le nombre de satellites",
+                "La vitesse de la lumière",
+                "La masse du noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pratiques et savoirs traditionnels participent à la relation sociétés-nature."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Mesurer et estimer les espèces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou approches aident à estimer le nombre d'espèces sur Terre ?",
+              "options": [
+                "Modèles statistiques à partir d'échantillons",
+                "Comptage exact de chaque individu planétaire",
+                "Inventaires taxonomiques et bases de données",
+                "Devinettes sans données de terrain"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Taxonomie, inventaires et modèles permettent d'estimer une diversité encore incomplètement décrite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une courbe espèce-habitat ou espèce-surface montre souvent :",
+              "options": [
+                "Une baisse du nombre d'espèces quand la surface augmente",
+                "Une augmentation du nombre d'espèces avec la surface",
+                "Aucun lien",
+                "Une extinction instantanée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus la surface d'habitat est grande, plus le nombre d'espèces tend à être élevé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le code-barres ADN (COI) sert surtout à :",
+              "options": [
+                "Identifier et distinguer des espèces proches",
+                "Mesurer la pression atmosphérique",
+                "Calculer le PIB",
+                "Prédire les élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marqueur COI facilite l'identification moléculaire des espèces."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La taxonomie alpha concerne :",
+              "options": [
+                "La diversité au sein d'un site",
+                "La diversité entre sites",
+                "La diversité régionale globale",
+                "La diversité des galaxies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diversité alpha est mesurée à l'échelle locale d'un écosystème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un inventaire participatif (science citoyenne) peut :",
+              "options": [
+                "Compléter les données professionnelles sur la répartition",
+                "Remplacer toute validation scientifique sans contrôle",
+                "Supprimer le besoin de protocoles",
+                "Éliminer les biais sans effort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les observations citoyennes enrichissent les jeux de données lorsqu'elles sont contrôlées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'indice de Shannon mesure surtout :",
+              "options": [
+                "La richesse et l'équitabilité des espèces",
+                "La vitesse du vent",
+                "La salinité seule",
+                "Le nombre de jours de pluie uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shannon combine nombre d'espèces et répartition des effectifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour les insectes, une grande part des espèces :",
+              "options": [
+                "Est déjà décrite et nommée à 100 %",
+                "Reste probablement non décrite",
+                "N'existe pas",
+                "Vit uniquement en Antarctique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "De nombreux groupes, surtout les invertébrés, restent insuffisamment inventoriés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une espèce cryptique désigne :",
+              "options": [
+                "Des morphotypes similaires mais génétiquement distincts",
+                "Une espèce visible à des kilomètres",
+                "Un minéral",
+                "Un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des espèces jumelles morphologiquement peuvent être séparées par la génétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La biogéographie insulaire prédit que sur une île :",
+              "options": [
+                "Immigration et extinction déterminent le nombre d'espèces",
+                "Le nombre d'espèces est fixe sans échange",
+                "Aucune espèce ne peut coloniser",
+                "La distance au continent n'a aucun effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle de MacArthur et Wilson lie taille d'île, distance et équilibre spécies."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un herbarium ou une collection de référence sert à :",
+              "options": [
+                "Conserver des spécimens pour comparaison et identification",
+                "Stocker uniquement des images sans spécimen",
+                "Remplacer les lois de conservation",
+                "Mesurer le rayonnement cosmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les collections voucher documentent la diversité et sécurisent les identifications."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Extinctions et fossiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices documentent les extinctions passées ?",
+              "options": [
+                "Couches fossiles et datations",
+                "Disparition de tous les minéraux",
+                "Registres paléontologiques",
+                "Absence de roches sédimentaires"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fossiles et stratigraphie retracent les crises biologiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La grande extinction du Permien (-252 Ma) a surtout touché :",
+              "options": [
+                "Organismes marins et terrestres",
+                "Uniquement les dinosaures",
+                "Seulement les virus",
+                "Rien du vivant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crise majeure avec pertes massives sur mer et terre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une extinction de masse se définit par :",
+              "options": [
+                "Un taux de disparition très supérieur au fondement",
+                "La mort d'un seul individu",
+                "La migration saisonnière",
+                "La reproduction asexuée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux d'extinction dépasse largement le bruit de fond géologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le fondement des extinctions mesure :",
+              "options": [
+                "Les disparitions naturelles de base",
+                "100 % des espèces par an",
+                "Zéro espèce perdue",
+                "Uniquement les plantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hors crises, un faible nombre d'espèces disparaît en continu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les dinosaures non aviens ont disparu à la limite :",
+              "options": [
+                "Crétacé-Paléogène (~66 Ma)",
+                "Permien-Trias",
+                "Aujourd'hui seulement",
+                "Il y a 1 an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact et changements climatiques marquent la limite K-Pg."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un fossile index aide à :",
+              "options": [
+                "Dater et corréler des couches",
+                "Mesurer la vitesse du vent",
+                "Compter les satellites",
+                "Prédire les marées sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces à courte durée et large répartition servent de repères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Extinction locale vs globale :",
+              "options": [
+                "Locale = perte dans une zone ; globale = planétaire",
+                "Identiques",
+                "Locale toujours plus grave qu'une masse",
+                "Globale sans trace géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle spatiale distingue les deux phénomènes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La datation radiométrique repose sur :",
+              "options": [
+                "La décroissance d'isotopes instables",
+                "La couleur des fossiles",
+                "Le nombre de feuilles",
+                "La salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-vies connues datent les événements géologiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une espèce relique :",
+              "options": [
+                "Survit alors que la plupart de ses proches ont disparu",
+                "N'a jamais existé",
+                "Vit uniquement dans l'espace",
+                "Disparaît chaque hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : cœlacanthe, groupe autrefois plus diversifié."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les registres du Quaternaire montrent :",
+              "options": [
+                "Disparitions récentes de mégafaune",
+                "Aucune extinction",
+                "Création spontanée d'espèces",
+                "Absence de l'Homme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mammouths et dodos illustrent des pertes récentes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Pressions anthropiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités accélèrent l'érosion de la biodiversité ?",
+              "options": [
+                "Destruction et fragmentation d'habitats",
+                "Sur-exploitation des ressources",
+                "Augmentation garantie de toute diversité",
+                "Pollution chimique et plastique"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Habitat, sur-exploitation et pollution sont des drivers majeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'IPBES recense notamment combien de drivers directs majeurs ?",
+              "options": ["Cinq", "Un seul", "Cent", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Climat, pollution, espèces exotiques, usage des sols, sur-exploitation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La déforestation tropicale menace surtout :",
+              "options": [
+                "Des hotspots à fort endémisme",
+                "Les déserts sans vie",
+                "Le pôle Nord uniquement",
+                "Les roches magmatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts tropicales concentrent diversité et pressions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Surpêche signifie :",
+              "options": [
+                "Captures au-delà du renouvellement des stocks",
+                "Pêche uniquement de nuit",
+                "Absence de bateaux",
+                "Protection totale des océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stocks s'effondrent si les prélèvements sont trop élevés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Agriculture intensive peut réduire la biodiversité par :",
+              "options": [
+                "Monocultures et pesticides",
+                "Augmentation automatique de toutes les espèces",
+                "Suppression du sol",
+                "Création d'habitats naturels partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplification écosystémique et toxicité nuisent aux espèces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Urbanisation fragmente les habitats en :",
+              "options": [
+                "Mosaïque d'îlots isolés",
+                "Un seul biome continu",
+                "Océan global",
+                "Espace sans routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Routes et bâtiments découpent les corridors écologiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le changement climatique affecte les espèces via :",
+              "options": [
+                "Décalage des niches et phénologies",
+                "Stabilité parfaite des saisons",
+                "Disparition de toute variabilité",
+                "Arrêt de la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réchauffement et extrêmes perturbent répartition et cycles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Eutrophisation des eaux :",
+              "options": [
+                "Favorise algues puis zones hypoxiques",
+                "Clarifie toujours l'eau",
+                "Supprime les nitrates",
+                "Augmente l'oxygène sans limite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excès de nutriments provoque blooms et anoxie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Espèce menacée (UICN) signifie :",
+              "options": [
+                "Risque élevé de disparition",
+                "Abondance maximale",
+                "Statut décoratif",
+                "Espèce invasive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les catégories UICN quantifient le risque d'extinction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Empreinte écologique compare :",
+              "options": [
+                "Demande humaine en ressources à la capacité biosphère",
+                "Masse du noyau",
+                "Vitesse de la lumière",
+                "Nombre de satellites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surconsommation dépasse parfois la régénération planétaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fragmentation des habitats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets la fragmentation produit-elle ?",
+              "options": [
+                "Réduction de la taille des populations",
+                "Isolement génétique",
+                "Augmentation garantie de la diversité partout",
+                "Effets de lisière"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Populations isolées perdent diversité et subissent les lisières."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un corridor écologique sert à :",
+              "options": [
+                "Relier des habitats pour les déplacements",
+                "Bloquer toute faune",
+                "Remplacer toutes les aires protégées",
+                "Augmenter les routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La connexion réduit l'isolement des populations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effet de lisière implique souvent :",
+              "options": [
+                "Conditions différentes en bordure de patch",
+                "Homogénéité parfaite",
+                "Absence de lumière",
+                "Climat polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lisières subissent vent, lumière et prédation spécifiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Métapopulation décrit :",
+              "options": [
+                "Sous-populations reliées par dispersion",
+                "Une seule cellule",
+                "Population sans échange",
+                "Espèce uniquement marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une extinction locale peut être compensée par recolonisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Surface minimale viable dépend de :",
+              "options": [
+                "Besoins de l'espèce et qualité du habitat",
+                "Couleur du logo",
+                "Nombre de pages web",
+                "Phase lunaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aire suffisante pour démographie et diversité génétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Route en forêt fragmente surtout :",
+              "options": [
+                "Grands mammifères et dispersion lente",
+                "Toutes espèces sans effet",
+                "Uniquement champignons profonds",
+                "Les minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrières physiques limitent les déplacements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Patch d'habitat :",
+              "options": [
+                "Fragment de milieu naturel entouré d'autres usages",
+                "Océan entier",
+                "Atmosphère",
+                "Noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Îlots de nature dans une matrice anthropique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diversité en îlots plus petits tend à :",
+              "options": [
+                "Diminuer à long terme",
+                "Toujours doubler",
+                "Rester identique sans limite",
+                "Disparaître en une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de surface et isolement réduisent la richesse spécifique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Planification paysagère vise à :",
+              "options": [
+                "Réseau d'espaces connectés",
+                "Étendre le béton sans limite",
+                "Supprimer toute agriculture",
+                "Ignorer les espèces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trame verte et bleue intègrent la connectivité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesurer la fragmentation utilise :",
+              "options": [
+                "Indices de patch et télédétection",
+                "Thermomètre seul",
+                "pH du sang",
+                "Vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SIG quantifient la configuration des habitats."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Pollution et toxiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels polluants affectent le vivant ?",
+              "options": [
+                "Pesticides et métaux lourds",
+                "Microplastiques",
+                "Onde gravitationnelle pure",
+                "Lumière stellaire non filtrée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Toxiques et plastiques pénètrent les réseaux trophiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bioaccumulation signifie :",
+              "options": [
+                "Concentration croissante le long de la chaîne alimentaire",
+                "Dilution infinie",
+                "Disparition instantanée",
+                "Absence de transfert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les prédateurs apex accumulent les polluants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Biomagnification concerne surtout :",
+              "options": [
+                "Composés persistants lipophiles",
+                "Gaz noble inerte",
+                "Eau pure",
+                "Azote atmosphérique inerte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mercure et PCB se concentrent dans les tissus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Eutrophisation provoque :",
+              "options": [
+                "Hypoxie et pertes faunistiques",
+                "Clarification permanente",
+                "Suppression des algues",
+                "Oxygène maximal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décomposition consomme l'oxygène en fond d'eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Néonicotinoïdes menacent surtout :",
+              "options": [
+                "Pollinisateurs",
+                "Roches ignées",
+                "Marées",
+                "Magnétisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toxicité pour abeilles et auxiliaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Micropolluants pharmaceutiques :",
+              "options": [
+                "Perturbent organismes aquatiques",
+                "Renforcent toujours l'immunité",
+                "Sans effet",
+                "Uniquement dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résidus médicamenteux passent dans les eaux usées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plastique en mer :",
+              "options": [
+                "Entraîne ingestion et enchevêtrement",
+                "Se dégrade toujours en jours",
+                "Est nutritif pour coraux",
+                "Sans impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Macro et microplastiques nuisent à la faune."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Toxicologie étudie :",
+              "options": [
+                "Effets des substances sur organismes",
+                "Orbite lunaire",
+                "Fusion nucléaire solaire",
+                "Tectonique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doses-effets et seuils de nocivité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "LC50 mesure :",
+              "options": [
+                "Concentration létale pour 50 % d'une population test",
+                "Masse molaire",
+                "Albédo",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur standard en écotoxicologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire la pollution passe par :",
+              "options": [
+                "Substitution chimique et traitement des effluents",
+                "Rejet illimité",
+                "Ignorer les normes",
+                "Augmenter les déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention à la source et dépollution."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Espèces invasives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels caractères favorisent une invasion ?",
+              "options": [
+                "Fort taux de reproduction",
+                "Large niche écologique",
+                "Absence totale de dispersion",
+                "Faible adaptabilité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Reproduction rapide et polyvalence facilitent la colonisation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Espèce invasive :",
+              "options": [
+                "Introduite, s'établit et nuit aux écosystèmes",
+                "Toujours native",
+                "Sans compétition",
+                "Toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact négatif sur espèces ou services locaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Voie d'introduction fréquente :",
+              "options": [
+                "Commerce et transport international",
+                "Formation des montagnes",
+                "Rotation terrestre",
+                "Marées seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La globalisation multiplie les introductions accidentelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Renouée du Japon illustre :",
+              "options": [
+                "Plante invasive en ripisylve",
+                "Espèce endémique protégée",
+                "Champignon comestible",
+                "Poisson des abysses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance vigoureuse étouffe la flore locale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contrôle biologique :",
+              "options": [
+                "Utiliser ennemis naturels avec précaution",
+                "Lâcher sans étude",
+                "Toujours interdit",
+                "Remplace toute réglementation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque d'impact sur espèces non cibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Compétition en invasion :",
+              "options": [
+                "Exclut espèces natives des ressources",
+                "Augmente toujours diversité",
+                "Sans effet",
+                "Crée de l'ozone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'invasive monopolise niche ou ressource."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prédation par invasive :",
+              "options": [
+                "Peut décimer proies natives",
+                "Protège systématiquement",
+                "Impossible",
+                "Uniquement végétale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : prédateurs introduits sur îles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phytosanitaire aux frontières :",
+              "options": [
+                "Contrôle importations végétales",
+                "Mesure le vent",
+                "Date les fossiles",
+                "Compte les étoiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspection limite pathogènes et invasives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Détection précoce + éradication :",
+              "options": [
+                "Moins coûteux avant établissement large",
+                "Toujours impossible",
+                "Inutile",
+                "Remplace conservation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction rapide limite les dégâts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CDB encourage :",
+              "options": [
+                "Gestion des risques espèces exotiques",
+                "Libre circulation sans contrôle",
+                "Introductions massives",
+                "Ignorer impacts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre international pour la biosécurité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Surpêche et usages des sols",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles pressions liées à l'alimentation menacent la biodiversité ?",
+              "options": [
+                "Surpêche et prélèvements excessifs",
+                "Conversion de forêts en cultures ou pâturages",
+                "Augmentation garantie de toutes les espèces",
+                "Absence totale d'agriculture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mer et terres agricoles concentrent sur-exploitation et artificialisation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quota de pêche vise à :",
+              "options": [
+                "Limiter captures à niveau durable",
+                "Maximiser prélèvements",
+                "Supprimer régulation",
+                "Interdire toute mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches précautionnaires pour les stocks."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aquaculture mal gérée peut :",
+              "options": [
+                "Polluer et propager maladies",
+                "Toujours réduire pression sur mer",
+                "Sans impact",
+                "Créer récifs coralliens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nutriments, antibiotiques, espèces fugitives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Monoculture agricole :",
+              "options": [
+                "Réduit diversité paysage et auxiliaires",
+                "Augmente tous pollinisateurs sans limite",
+                "Identique forêt primaire",
+                "Sans pesticides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simplification et intrants chimiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prairies permanentes favorisent :",
+              "options": [
+                "Flore messicole et sols vivants",
+                "Désertification immédiate",
+                "Béton",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotations et couverts soutiennent la biodiversité agricole."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Irrigation excessive peut :",
+              "options": [
+                "Saliniser sols et dégrader milieux",
+                "Créer forêt tropicale",
+                "Sans effet",
+                "Supprimer évaporation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lessivage et assèchement des cours d'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Élevage intensif :",
+              "options": [
+                "Concentre nutriments et émissions",
+                "Zéro impact",
+                "Augmente prairies naturelles partout",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthane, nitrates, consommation de fourrage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Certification durable (MSC) :",
+              "options": [
+                "Encourage pratiques vérifiables",
+                "Garantit 100 % sans contrôle",
+                "Remplace science",
+                "Interdit pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Labels à critères environnementaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Jachère fleurie aide :",
+              "options": [
+                "Pollinisateurs et auxiliaires",
+                "Uniquement minéraux",
+                "Rien",
+                "Pesticides seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitats temporaires en milieu agricole."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sobriété protéique végétale peut :",
+              "options": [
+                "Réduire pression sur terres et forêts",
+                "Augmenter déforestation obligatoire",
+                "Sans lien",
+                "Supprimer agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de surface pour élevage intensif."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Climat et répartition des espèces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment le changement climatique perturbe-t-il les espèces ?",
+              "options": [
+                "Déplacement des aires de répartition",
+                "Désynchronisation des interactions (phénologie)",
+                "Stabilité parfaite de toutes les saisons",
+                "Disparition instantanée de la photosynthèse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réchauffement modifie où et quand les espèces vivent et interagissent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Décalage phénologique :",
+              "options": [
+                "Dates floraison ou migration avancées",
+                "Arrêt cycles biologiques",
+                "Fixité totale",
+                "Suppression saisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Printemps précoce désynchronise les interactions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Barrière de dispersion limite :",
+              "options": [
+                "Adaptation si changement trop rapide",
+                "Migration instantanée",
+                "Aucun effet",
+                "Nouvelles espèces en heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation empêche d'atteindre refuges climatiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coraux blanchissent quand :",
+              "options": [
+                "Stress thermique expulse zooxanthelles",
+                "Eau trop froide toujours",
+                "Sans changement",
+                "Par excès d'oxygène seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur et acidification menacent les récifs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Acidification océans vient de :",
+              "options": [
+                "Absorption CO₂ formant acide carbonique",
+                "Ozone",
+                "Vent solaire seul",
+                "Marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH baisse, calcification plus difficile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Refuge climatique montagnard :",
+              "options": [
+                "Sommets plus frais temporairement",
+                "Océan profond seul",
+                "Espace",
+                "Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montée en altitude compense le réchauffement local."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Modèles de niche prédisent :",
+              "options": [
+                "Zones futures d'occurrence",
+                "Masse solaire",
+                "Sismique",
+                "Albédo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variables climatiques contraignent la répartition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Espèces généralistes climat :",
+              "options": [
+                "Parfois plus résilientes que spécialistes",
+                "Toujours disparaissent",
+                "Sans intérêt",
+                "Uniquement invasives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Large tolérance aide à persister."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Migrateurs longue distance :",
+              "options": [
+                "Sensibles à désynchronisation ressources",
+                "Immunes au climat",
+                "Sans énergie",
+                "Terrestres seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dates d'arrivée vs pic d'insectes ou nectar."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Atténuation climat limite :",
+              "options": [
+                "Forçages qui accélèrent pertes d'espèces",
+                "Extinctions volontaires",
+                "Réchauffement extrême",
+                "Pression sur espèces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire les GES ralentit la dégradation des habitats."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse érosion biodiversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Drivers IPBES directs incluent :",
+              "options": [
+                "Changement climatique",
+                "Pollution",
+                "Usage des sols",
+                "Gravité lunaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Climat, pollution, sols et sur-exploitation dominent les pressions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sixième extinction de masse :",
+              "options": [
+                "Rôle majeur des activités humaines",
+                "Taux comparable au fondement",
+                "Uniquement volcans",
+                "Absence de preuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération anthropique des disparitions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Perte biodiversité affaiblit :",
+              "options": [
+                "Résilience et services écosystémiques",
+                "Stabilité garantie",
+                "Rien",
+                "Climat seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité stabilise les fonctions écosystémiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "One Health relie :",
+              "options": [
+                "Santé humaine, animale et environnement",
+                "Uniquement hôpitaux",
+                "Rien",
+                "Marketing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zoonoses et écosystèmes dégradés interagissent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Red List UICN sert à :",
+              "options": [
+                "Prioriser conservation",
+                "Classer minéraux",
+                "Mesurer vent",
+                "Remplacer lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statuts guident les actions de protection."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plan national biodiversité vise :",
+              "options": [
+                "Objectifs mesurables",
+                "Supprimer science",
+                "Augmenter destruction",
+                "Ignorer société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégies territoriales et nationales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Citoyen peut contribuer via :",
+              "options": [
+                "Consommation responsable et science participative",
+                "Rejet de toute donnée",
+                "Pollution volontaire",
+                "Ignorance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix quotidiens et inventaires locaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Économie circulaire réduit :",
+              "options": [
+                "Prélèvement ressources vierges",
+                "Biodiversité obligatoirement",
+                "Toute agriculture",
+                "Eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réemploi limite extraction et déchets."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Restauration écologique diffère de :",
+              "options": [
+                "Simple plantation sans écosystème cible",
+                "Réhabilitation visant dynamiques naturelles",
+                "Béton",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restaurer processus et communautés, pas seulement décor."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Urgence biodiversité implique :",
+              "options": [
+                "Actions simultanées protection et réduction pressions",
+                "Attendre siècles",
+                "Nier données",
+                "Un seul levier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aires protégées, régulation et modes de vie combinés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Préserver le vivant",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Aires protégées et réserves",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Objectifs des aires protégées ?",
+              "options": [
+                "Maintenir espèces et écosystèmes",
+                "Permettre toute extraction sans limite",
+                "Associer gouvernance locale",
+                "Ignorer populations"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Conservation in situ avec gouvernance adaptée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parc national protège :",
+              "options": [
+                "Patrimoine naturel avec règles strictes",
+                "Uniquement béton",
+                "Rien",
+                "Mines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglementation limitant activités impactantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réserve biologique intégrale :",
+              "options": [
+                "Non-intervention minimale",
+                "Chasse libre",
+                "Urbanisation",
+                "Pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laisser évolution naturelle sans gestion active."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Zone tampon entoure :",
+              "options": [
+                "Cœur sensible avec activités régulées",
+                "Centre commercial",
+                "Autoroute",
+                "Décharge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graduation des contraintes autour du cœur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conservation en mosaïque :",
+              "options": [
+                "Réseau paysager + aires formelles",
+                "Un seul petit parc",
+                "Rien hors urbain",
+                "Mer seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation intégrée au territoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Gestion adaptative :",
+              "options": [
+                "Ajuster actions selon suivi",
+                "Fixe sans monitoring",
+                "Sans science",
+                "Ignorer climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle planifier-agir-évaluer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Co-gestion avec populations :",
+              "options": [
+                "Renforce légitimité et efficacité",
+                "Toujours interdite",
+                "Sans droit local",
+                "Remplace État seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoirs locaux et gouvernance partagée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Catégories UICN classent :",
+              "options": [
+                "Types d'aires selon objectifs",
+                "Minéraux",
+                "Satellites",
+                "Routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Catégories I à VI selon usage autorisé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Connectivité entre aires :",
+              "options": [
+                "Essentielle pour grands migrateurs",
+                "Inutile",
+                "Négative toujours",
+                "Remplace corridors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau écologique pour espèces mobiles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Financement conservation peut inclure :",
+              "options": [
+                "Fonds publics et paiements pour services",
+                "Uniquement publicité",
+                "Rien",
+                "Taxe sur air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversification des ressources pour gestion durable."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Trame verte et bleue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Trame verte et bleue vise :",
+              "options": [
+                "Continuités écologiques terrestres",
+                "Continuités aquatiques",
+                "Bétonner rivières",
+                "Couper forêts"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Connexion des habitats réduit l'isolement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corridor fluvial permet :",
+              "options": [
+                "Migration poissons et dispersion",
+                "Assèchement",
+                "Pollution",
+                "Béton total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continuité longitudinale des rivières."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Franchissement route pour faune :",
+              "options": [
+                "Passages faune ou ponts végétalisés",
+                "Mur sans ouverture",
+                "Accélération trafic",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aménagements réduisent mortalité routière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trame verte urbaine apporte :",
+              "options": [
+                "Refuges biodiversité en ville",
+                "Chaleur seule",
+                "Rien",
+                "Béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcs, haies, toitures végétalisées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Continuité écologique légale (France) :",
+              "options": [
+                "Prise en compte obligatoire aménagements",
+                "Optionnel sans effet",
+                "Interdit nature",
+                "Remplace agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schémas régionaux SRCE."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ripisylve protège :",
+              "options": [
+                "Berges, eau et diversité",
+                "Rien",
+                "Mines",
+                "Sismique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Végétation tampon filtre et abrite espèces."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marais restaurés :",
+              "options": [
+                "Stockent carbone et filtrent eaux",
+                "Toujours asséchés",
+                "Sans vie",
+                "Déserts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zones humides à forts services écosystémiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PLU peut intégrer :",
+              "options": [
+                "Perméabilité écologique",
+                "Interdiction toute nature",
+                "Rien",
+                "Only parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zonage espaces naturels et corridors."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indicateur connectivité :",
+              "options": [
+                "Distance entre patches habitables",
+                "Couleur logo",
+                "PIB",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SIG mesurent accessibilité inter-habitats."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyen soutient trame via :",
+              "options": [
+                "Plantations haies, jardins refuge",
+                "Coupe systématique",
+                "Béton jardin",
+                "Pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actions locales complètent politiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Restauration écologique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Restauration vise à :",
+              "options": [
+                "Rétablir fonctions écosystème",
+                "Rétablir structures biologiques",
+                "Peindre en vert",
+                "Bétonner"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Processus biologiques et physiques, pas simple décor."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réintroduction espèce :",
+              "options": [
+                "Nécessite habitat viable et génétique sain",
+                "Toujours sans étude",
+                "Garantit succès",
+                "Remplace protection habitat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagnostics préalables et suivi long."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Assainissement rivière :",
+              "options": [
+                "Améliore qualité eau et habitats",
+                "Pollue",
+                "Assèche sans limite",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction rejets et morphologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Revegetalisation talus :",
+              "options": [
+                "Stabilise sols et accueille faune",
+                "Érode toujours",
+                "Sans plantes",
+                "Chimique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces natives adaptées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Renaturation friche :",
+              "options": [
+                "Succession écologique guidée ou libre",
+                "Parking obligatoire",
+                "Labo",
+                "Glacier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Friches urbaines refuges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Génie écologique utilise :",
+              "options": [
+                "Matériaux naturels pour berges",
+                "Plastique seul",
+                "Béton partout",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fascines et structures vivantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Suivi post-restauration :",
+              "options": [
+                "Indicateurs espèces et physico-chimie",
+                "Jamais",
+                "Un jour",
+                "Sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluation efficacité interventions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Restauration vs compensation :",
+              "options": [
+                "Restauration répare sur site",
+                "Compensation offset ailleurs",
+                "Identiques",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie éviter-minimiser-réparer-compenser."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sol vivant restauration :",
+              "options": [
+                "Microbiote et matière organique",
+                "Béton",
+                "Sable stérile",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé du sol base du reboisement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bénévoles en restauration :",
+              "options": [
+                "Sensibilisation et main-d'œuvre locale",
+                "Inutile",
+                "Interdit",
+                "Remplace experts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement citoyen complète professionnels."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Agriculture et agroécologie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Agroécologie combine :",
+              "options": [
+                "Écologie et pratiques durables",
+                "Diversification cultures",
+                "Uniquement pesticides",
+                "Monoculture seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diversification et auxiliaires, pas chimie seule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rotation cultures :",
+              "options": [
+                "Brise cycles maladies et nourrit sol",
+                "Toujours même plante",
+                "Sans effet",
+                "Salinité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance légumineuses et céréales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Agroforesterie :",
+              "options": [
+                "Arbres + cultures ou élevage",
+                "Désert",
+                "Béton",
+                "Sans ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biodiversité et microclimat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Auxiliaires cultures :",
+              "options": [
+                "Limitent ravageurs naturellement",
+                "Toujours nuisibles",
+                "Absents",
+                "Pesticides seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lutte biologique intégrée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "TCS réduit :",
+              "options": [
+                "Intrants et érosion",
+                "Biodiversité obligatoire",
+                "Eau",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Techniques conservatoires du sol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pollinisateurs agricoles :",
+              "options": [
+                "Essentiels rendement fruits",
+                "Optionnels toujours",
+                "Nuisibles",
+                "Remplaçables par vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abeilles et pollinisateurs sauvages."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Labels HVE ou bio :",
+              "options": [
+                "Critères environnementaux vérifiés",
+                "Sans contrôle",
+                "Marketing seul",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certification des pratiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Semences paysannes :",
+              "options": [
+                "Diversité génétique cultivée",
+                "Uniforme seule",
+                "Sans intérêt",
+                "Interdites toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine variétal local."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduction pesticides UE :",
+              "options": [
+                "Objectifs sobriété phytosanitaire",
+                "Augmentation",
+                "Rien",
+                "Interdit agriculture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégie Farm to Fork."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Circuit court :",
+              "options": [
+                "Moins transport et lien producteur",
+                "Toujours plus polluant",
+                "Sans effet",
+                "Obligatoire partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut soutenir agriculture locale diverse."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Gouvernance et conventions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Convention diversité biologique :",
+              "options": [
+                "Cadre mondial conservation",
+                "COP biodiversité",
+                "Traité commerce armes",
+                "Météo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CBD et COP cadrent actions internationales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Accord Kunming-Montréal 2022 vise :",
+              "options": [
+                "30 % terres/eaux protégées d'ici 2030",
+                "0 % protection",
+                "Fin agriculture",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif 30x30 pour freiner l'érosion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Protocole Nagoya traite :",
+              "options": [
+                "Partage benefits ressources génétiques",
+                "Climat seul",
+                "Pêche",
+                "Nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Access and benefit sharing."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "IPBES produit :",
+              "options": [
+                "Rapports synthèse pour décideurs",
+                "Films seulement",
+                "Rien",
+                "Lois directes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface science-politique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Natura 2000 :",
+              "options": [
+                "Réseau sites UE habitats et espèces",
+                "Routes",
+                "Taxe",
+                "Air seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Directive habitats-faune-flore."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "REDD+ concerne :",
+              "options": [
+                "Réduction déforestation",
+                "Océans seuls",
+                "Urbanisme",
+                "Sismique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts, carbone et biodiversité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objectifs Aichi 2011-2020 :",
+              "options": [
+                "Partiellement atteints",
+                "100 % réussis",
+                "Inexistants",
+                "Loi française seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation du cadre Kunming-Montréal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Gouvernance multi-niveaux :",
+              "options": [
+                "Local à international",
+                "Uniquement ONG",
+                "Sans État",
+                "Secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination des acteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Justice environnementale :",
+              "options": [
+                "Équité charges et bénéfices",
+                "Ignorer populations",
+                "Sans droit",
+                "Marketing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communautés vulnérables souvent exposées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sanctions environnement :",
+              "options": [
+                "Dissuasion infractions",
+                "Toujours absentes",
+                "Inutiles",
+                "Remplacent éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit complète sensibilisation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Services écosystémiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Service provisioning :",
+              "options": [
+                "Ressources alimentaires et bois",
+                "Eau potable naturelle",
+                "Régulation climat seule",
+                "Loisir seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Produits matériels de la biosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Service régulation :",
+              "options": [
+                "Pollinisation",
+                "Contrôle érosion",
+                "Monnaie",
+                "Transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus stabilisant l'environnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Service culturel :",
+              "options": [
+                "Loisirs et esthétique",
+                "Égouts seuls",
+                "Béton",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bénéfices immatériels de la nature."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Valuation économique :",
+              "options": [
+                "Informe décisions sans tout réduire au prix",
+                "Remplace toute éthique",
+                "Inutile",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TEEB éclaire coûts et bénéfices."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Capital naturel :",
+              "options": [
+                "Stock ressources et écosystèmes",
+                "Uniquement financier",
+                "Dette",
+                "Satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actif renouvelable si bien géré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Paiement services écosystémiques :",
+              "options": [
+                "Récompense gestion favorable",
+                "Récompense pollution",
+                "Sans contrat",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitations pour propriétaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tourisme nature responsable :",
+              "options": [
+                "Finance protection si encadré",
+                "Toujours destructeur",
+                "Interdit",
+                "Sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capacité d'accueil et sentiers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bioéconomie durable :",
+              "options": [
+                "Biomasse renouvelable sans épuiser sol",
+                "Toute biomasse sans limite",
+                "Pétrole",
+                "Plastique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circularité matières biosourcées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Externalités négatives :",
+              "options": [
+                "Coûts non payés par pollueur",
+                "Toujours positives",
+                "Inexistantes",
+                "Loisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internaliser pour prix juste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sobriété foncière :",
+              "options": [
+                "Limiter artificialisation",
+                "Étendre béton",
+                "Sans lien biodiv",
+                "Béton obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif zéro artificialisation nette en France."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Conservation ex situ",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conservation ex situ :",
+              "options": [
+                "Banques graines et zoos",
+                "Cryoconservation",
+                "Remplace toute nature",
+                "Béton"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Complément in situ, pas remplacement total."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Banque Svalbard :",
+              "options": [
+                "Sauvegarde variétés agricoles",
+                "Data center",
+                "Militaire",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Backup global ressources génétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Zoo conservation :",
+              "options": [
+                "Élevage espèces menacées",
+                "Spectacle seul",
+                "Sans science",
+                "Toujours mauvais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Studbooks et réintroductions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Diversité génétique faible :",
+              "options": [
+                "Vulnérabilité maladies",
+                "Toujours avantage",
+                "Sans effet",
+                "Maximale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet fondateur et consanguinité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Assisted migration :",
+              "options": [
+                "Translocation climat si risque extinction",
+                "Toujours obligatoire",
+                "Interdit réfléchir",
+                "Sans éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si habitat futur inaccessible naturellement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cryoconservation gamètes :",
+              "options": [
+                "Réserve génétique long terme",
+                "Cuisine",
+                "Rien",
+                "Béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément populations captives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "CITES régule :",
+              "options": [
+                "Commerce espèces menacées",
+                "Tout libre",
+                "Air",
+                "Internet seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appendices contrôlent export/import."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "DNA barcoding conservation :",
+              "options": [
+                "Identifie échantillons saisis",
+                "Rien",
+                "Remplace habitat",
+                "Loi seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité produits faune/flore."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Population viable minimale :",
+              "options": [
+                "Taille éviter extinction stochastique",
+                "1 individu",
+                "Infini",
+                "Sans calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Génétique et démographie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "In situ prioritaire car :",
+              "options": [
+                "Maintient sélection naturelle",
+                "Toujours impossible",
+                "Sans coût",
+                "Zoo suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie favorise milieu naturel."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Éducation et science participative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Science participative permet :",
+              "options": [
+                "Grandes séries de données",
+                "Validation expert des observations",
+                "Remplacer protocoles",
+                "Rien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Citoyens + contrôle qualité = inventaires étendus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Apps nature (iNaturalist) :",
+              "options": [
+                "Observations géolocalisées",
+                "Piratage",
+                "Sans intérêt",
+                "Remplace lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données ouvertes pour recherche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Éducation biodiversité école :",
+              "options": [
+                "Forme citoyens responsables",
+                "Inutile",
+                "Réservée chercheurs",
+                "Anti-science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littératie écologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Médiation parcs :",
+              "options": [
+                "Sensibilise visiteurs",
+                "Interdit visite",
+                "Rien",
+                "Commercial seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guides interprètent patrimoine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Greenwashing :",
+              "options": [
+                "Affirmations non prouvées",
+                "Toujours fiable",
+                "Interdit partout",
+                "Sans impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier critères certification réels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bioblitz :",
+              "options": [
+                "Inventaire intensif site",
+                "Course",
+                "Rien",
+                "Pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilisation collective 24 h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jardin refuge LPO :",
+              "options": [
+                "Habitats urbains pollinisateurs",
+                "Béton",
+                "Sans plantes",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flore locale mellifère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réseaux écoles nature :",
+              "options": [
+                "Projets pédagogiques terrain",
+                "Sans sortie",
+                "Écrans seuls",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact direct milieux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Open data INPN :",
+              "options": [
+                "Référence espèces France",
+                "Secret",
+                "Sans carte",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inventaire national patrimoine naturel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Communication comportement :",
+              "options": [
+                "Messages adaptés cibles",
+                "Insulter public",
+                "Rien",
+                "Une affiche suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leviers psychologie sociale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Consommation et sobriété",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Empreinte biodiversité consommation :",
+              "options": [
+                "Importations déforestantes",
+                "Chaînes globales alimentaires",
+                "Local sans aucun impact",
+                "Air seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Palmier, soja, bois importés pressionnent habitats."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Label FSC bois :",
+              "options": [
+                "Gestion forestière responsable",
+                "Sans contrôle",
+                "Marketing seul",
+                "Interdit bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certification pratiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Moins viande intensive peut :",
+              "options": [
+                "Réduire pression terres",
+                "Augmenter déforestation obligatoire",
+                "Sans effet",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surfaces fourragères et importations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Obsolescence :",
+              "options": [
+                "Accroît extraction ressources",
+                "Écologique",
+                "Sans déchets",
+                "Biodiversité +"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allonger durée de vie produits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plastique réduit par :",
+              "options": [
+                "Réduction source et réemploi",
+                "Incinération seule",
+                "Plus emballages",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchie des déchets."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tourisme de masse sites fragiles :",
+              "options": [
+                "Quotas et sensibilisation",
+                "Toujours bénéfique",
+                "Sans limite",
+                "Interdit visite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surfréquentation dégrade habitats."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Achats groupés bio locaux :",
+              "options": [
+                "Soutiennent agriculteurs diversifiés",
+                "Toujours importés",
+                "Sans effet",
+                "Chers sans raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circuits courts possibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réparation appareils :",
+              "options": [
+                "Limite extraction métaux",
+                "Augmente déchets",
+                "Interdit",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie de la fonctionnalité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vote et advocacy :",
+              "options": [
+                "Orientent politiques publiques",
+                "Inutile",
+                "Sans droit",
+                "Remplace action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté démocratique environnement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Empreinte eau douce :",
+              "options": [
+                "Liée agriculture et industrie",
+                "Sans lien biodiv",
+                "Uniquement météo",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prélèvements affectent milieux aquatiques."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse préserver le vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Stratégie efficace combine :",
+              "options": [
+                "Protection in situ",
+                "Restauration et réduction pressions",
+                "Un seul levier",
+                "Attendre extinction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Panachage mesures = résilience."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Halt biodiversity loss 2030 :",
+              "options": [
+                "Stopper déclin net espèces",
+                "Supprimer nature",
+                "Augmenter extinctions",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre Kunming-Montréal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chaque individu peut :",
+              "options": [
+                "Adapter alimentation et engagement",
+                "Rien",
+                "Polluer plus",
+                "Nier science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cumul actions locales et collectives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Biodiversité et climat :",
+              "options": [
+                "Actions co-bénéfiques fréquentes",
+                "Toujours opposées",
+                "Sans lien",
+                "Climat seul suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forêts et zones humides stockent carbone et abritent espèces."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Innovation verte :",
+              "options": [
+                "Respecte limites planétaires",
+                "Remplace nature",
+                "Sans évaluation",
+                "Toujours dangereuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tech au service transition, pas greenwash."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Équité intergénérationnelle :",
+              "options": [
+                "Planète viable aux futurs",
+                "Sans importance",
+                "Court terme seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durabilité éthique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Monitoring long terme :",
+              "options": [
+                "Indispensable ajuster politiques",
+                "Inutile",
+                "Un an suffit",
+                "Sans indicateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séries temporelles espèces et habitats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Coopération internationale :",
+              "options": [
+                "Faune migratrice transfrontalière",
+                "Impossible",
+                "Sans traité",
+                "Un pays suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oiseaux, poissons, pollinisateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Restaurations réussies :",
+              "options": [
+                "Existent (loutre, forêts)",
+                "Tout perdu",
+                "Sans exemple",
+                "Inutile agir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preuves que action paye."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Message clé terminale ES :",
+              "options": [
+                "Pressions et leviers conservation",
+                "Biodiversité décorative",
+                "Hors science",
+                "Sans société"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien société-environnement-santé au cœur ES."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

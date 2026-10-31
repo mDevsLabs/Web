@@ -1,0 +1,2193 @@
+{
+  "id": "terminale-physique-chimie-01",
+  "year": "terminale",
+  "subject": "physique-chimie",
+  "title": "Acides, bases et cinétique",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Acide-base",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Couples acide-base et pH",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "À 25 °C, quelles relations sont exactes ?",
+              "options": [
+                "pH = −log₁₀([H₃O⁺])",
+                "pOH = −log₁₀([HO⁻])",
+                "pH + pOH = 7 en tout milieu",
+                "Ke = 10⁻⁷ mol·L⁻¹"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "pH et pOH se définissent par les logarithmes des concentrations. Leur somme vaut pKe (14), pas 7 sauf en eau pure."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Un acide de Brønsted :",
+              "options": [
+                "Capte un proton H⁺",
+                "Cède un proton H⁺",
+                "Cède un électron",
+                "Capte un électron"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Acide = donneur de proton ; base = accepteur."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Dans NH₄⁺/NH₃, la base conjuguée est :",
+              "options": ["NH₄⁺", "NH₃", "H₃O⁺", "HO⁻"],
+              "correctAnswers": [1],
+              "explanation": "NH₄⁺ cède H⁺ pour former NH₃."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Si [H₃O⁺] = 1,0×10⁻³ mol·L⁻¹, pH =",
+              "options": ["3,0", "11,0", "−3,0", "1,0"],
+              "correctAnswers": [0],
+              "explanation": "pH = −log(10⁻³) = 3."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "pH 9 à 25 °C : milieu",
+              "options": ["Neutre", "Acide", "Basique", "Anhydre"],
+              "correctAnswers": [2],
+              "explanation": "pH > 7 : basique."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "Ke à 25 °C vaut",
+              "options": ["10⁻¹⁴ mol²·L⁻²", "10⁻⁷", "14", "1"],
+              "correctAnswers": [0],
+              "explanation": "Produit ionique de l'eau."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "pH + pOH à 25 °C =",
+              "options": ["7", "14", "0", "1"],
+              "correctAnswers": [1],
+              "explanation": "Somme égale à pKe."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "L'échelle pH est",
+              "options": [
+                "Linéaire en [H₃O⁺]",
+                "Logarithmique",
+                "Identique au pKa",
+                "Sans unité d'ordre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Définition logarithmique décimale."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Diluer 10× une solution acide : pH",
+              "options": ["−1", "+1", "Inchangé", "−10"],
+              "correctAnswers": [1],
+              "explanation": "[H₃O⁺] diminue, pH augmente."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "H₃O⁺ en solution provient surtout de",
+              "options": [
+                "Acides dissous et autoprotolyse",
+                "Électrons libres",
+                "Sel neutre seul",
+                "Oxygène gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources acides et équilibre de l'eau."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Force des acides et Ka",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "Acide fort en eau diluée :",
+              "options": [
+                "Dissociation quasi totale",
+                "Ka très grand",
+                "pH toujours 7",
+                "Ne réagit pas avec H₂O"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fort = dissocié et Ka >> 1 ; réagit avec l'eau."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "HCl(aq) est",
+              "options": ["Faible", "Fort", "Base", "Amphotère seule"],
+              "correctAnswers": [1],
+              "explanation": "Acide minéral fort."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "CH₃COOH est",
+              "options": ["Fort", "Faible", "Base forte", "Neutre"],
+              "correctAnswers": [1],
+              "explanation": "Ka ≈ 10⁻⁴,⁸."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "Ka pour AH + H₂O ⇌ A⁻ + H₃O⁺ :",
+              "options": ["[AH][H₃O⁺]/[A⁻]", "[A⁻][H₃O⁺]/[AH]", "C²", "Ke"],
+              "correctAnswers": [1],
+              "explanation": "Expression standard à l'équilibre."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "Ka grand ⇒ acide",
+              "options": ["Plus faible", "Plus fort", "Plus dilué", "Sans H⁺"],
+              "correctAnswers": [1],
+              "explanation": "Équilibre vers produits."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "pKa =",
+              "options": ["−log Ka", "log Ka", "14 − pH", "Ke"],
+              "correctAnswers": [0],
+              "explanation": "Analogie avec pH."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "pKa 3 plus fort que pKa 5 car",
+              "options": [
+                "pKa plus petit",
+                "pKa plus grand",
+                "Plus dilué",
+                "Kb grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit pKa, grand Ka."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Conjuguée d'un acide fort",
+              "options": [
+                "Base très faible",
+                "Base forte",
+                "Toujours OH⁻",
+                "Acide fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. Cl⁻ inerte en acide-base."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "H₂O est",
+              "options": ["Amphotère", "Acide seul", "Base seule", "Inerte"],
+              "correctAnswers": [0],
+              "explanation": "Donne ou accepte H⁺."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "Comparer acides faibles via",
+              "options": ["Ka ou pKa", "Masse seule", "Couleur", "Volume"],
+              "correctAnswers": [0],
+              "explanation": "Constantes caractéristiques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Réactions acide-base",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Réaction acide-base de Brønsted :",
+              "options": [
+                "Transfert de H⁺",
+                "Forme couples conjugués",
+                "Toujours gaz",
+                "Sans solvatation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "H⁺ d'un acide vers une base ; nouveaux couples."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "H₃O⁺ + HO⁻ → 2 H₂O est",
+              "options": [
+                "Quasi totale",
+                "Très lente",
+                "Impossible",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort + fort."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "NaCl(aq) pH",
+              "options": ["≈ 7", "≈ 0", "≈ 14", "Indéfini"],
+              "correctAnswers": [0],
+              "explanation": "Ions spectateurs."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "CH₃COONa pH",
+              "options": ["Basique", "Acide", "0", "Sans ion"],
+              "correctAnswers": [0],
+              "explanation": "Hydrolyse de CH₃COO⁻."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "NH₄Cl pH",
+              "options": ["Acide", "Basique", "7 strict", "14"],
+              "correctAnswers": [0],
+              "explanation": "NH₄⁺ acide faible."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "NH₃ + H₂O : l'eau est",
+              "options": ["Acide", "Base", "Oxydant", "Catalyseur"],
+              "correctAnswers": [0],
+              "explanation": "Donne H⁺ à NH₃."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "En aqueux on écrit souvent",
+              "options": ["H₃O⁺", "H⁺ seul", "O²⁻ libre", "e⁻"],
+              "correctAnswers": [0],
+              "explanation": "Proton solvaté."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "Amphotère signifie",
+              "options": [
+                "Acide ou base",
+                "Oxydant seul",
+                "Inerte",
+                "Ion métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double rôle Brønsted."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "K d'équilibre utilise",
+              "options": [
+                "Concentrations à l'équilibre",
+                "Masses",
+                "Pression seule",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi de mass action."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "Acide le plus fort réagit avec",
+              "options": ["Base disponible", "Rien", "Métal seul", "Noble gaz"],
+              "correctAnswers": [0],
+              "explanation": "Transfert de proton favorisé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "pH des solutions",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Acide fort monoprotique concentration C (C >> 10⁻⁶) :",
+              "options": [
+                "[H₃O⁺] ≈ C",
+                "pH = −log C",
+                "pH = 14 + log C",
+                "Autoprotolyse domine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dissociation totale puis pH = −log C."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "HCl 0,010 mol·L⁻¹ : pH",
+              "options": ["1", "2", "12", "7"],
+              "correctAnswers": [1],
+              "explanation": "−log(0,01)=2."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "NaOH 10⁻³ mol·L⁻¹ : pH",
+              "options": ["3", "11", "7", "1"],
+              "correctAnswers": [1],
+              "explanation": "pOH=3, pH=11."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "Ka =",
+              "options": ["[A⁻][H₃O⁺]/[AH]", "[AH]/[A⁻]", "Ke", "C"],
+              "correctAnswers": [0],
+              "explanation": "Quotient à l'équilibre."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "Acide faible : [H₃O⁺] ≈",
+              "options": ["√(Ka·C)", "Ka/C", "C²", "Ke"],
+              "correctAnswers": [0],
+              "explanation": "Approximation classique."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "Base forte : [HO⁻]",
+              "options": ["≈ C", "≈ 0", "Ke", "Ka"],
+              "correctAnswers": [0],
+              "explanation": "Dissociation totale."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Base forte pH =",
+              "options": ["14 + log C", "−log C", "7", "pKa"],
+              "correctAnswers": [0],
+              "explanation": "À 25 °C."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "Autoprotolyse notable si C",
+              "options": ["Très faible", "Très grande", "1 mol·L⁻¹", "Infinie"],
+              "correctAnswers": [0],
+              "explanation": "Ke contribue au pH."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "Ka·Kb pour couple conjugué =",
+              "options": ["Ke", "1", "Ka²", "0"],
+              "correctAnswers": [0],
+              "explanation": "Relation à 25 °C."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "α diminue quand C",
+              "options": ["Augmente", "Diminue", "Nulle", "Fixe Ke"],
+              "correctAnswers": [0],
+              "explanation": "Le Chatelier qualitatif."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Dosages acide-base",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Équivalence acide fort / base forte :",
+              "options": [
+                "n acide = n base",
+                "pH ≈ 7",
+                "pH = pKa",
+                "Reste acide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stœchiométrie et eau seule."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Équivalence =",
+              "options": [
+                "Égalité stœchiométrique",
+                "pH 0",
+                "Début titrage",
+                "pKa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point équimolaire réactifs."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "Titrage pH-métrique mesure",
+              "options": [
+                "pH vs volume versé",
+                "Masse",
+                "Couleur fixe",
+                "P seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courbe pH(V)."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "Faible + fort à équivalence pH",
+              "options": ["> 7", "< 7", "0", "14"],
+              "correctAnswers": [0],
+              "explanation": "A⁻ basique."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "Fort + faible à équivalence pH",
+              "options": ["< 7", "> 7", "7", "14"],
+              "correctAnswers": [0],
+              "explanation": "BH⁺ acide."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Demi-équivalence faible/fort : pH",
+              "options": ["pKa", "14", "0", "7"],
+              "correctAnswers": [0],
+              "explanation": "[AH]=[A⁻]."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "Indicateur choisi pour",
+              "options": [
+                "Virage près pH équivalence",
+                "pH 0",
+                "Hors gamme",
+                "Couleur aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone de virage adaptée."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "C₁V₁ = C₂V₂ signifie",
+              "options": [
+                "n réactifs égaux",
+                "Volumes égaux",
+                "pH égaux",
+                "m égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monoprotique usuel."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Fort-fort : saut de pH",
+              "options": ["Brusque", "Absent", "Au début seul", "Linéaire"],
+              "correctAnswers": [0],
+              "explanation": "Autour équivalence."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Conductimétrie titrage suit",
+              "options": [
+                "Conductivité",
+                "Absorbance seule",
+                "Masse",
+                "Volume molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ionique en solution."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Relation pH-pKa",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Henderson-Hasselbalch AH/A⁻ :",
+              "options": [
+                "pH = pKa + log([A⁻]/[AH])",
+                "Valide si [AH],[A⁻] >> 10⁻⁶",
+                "pH = 14 − pKa toujours",
+                "Pour acides forts seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tampon ; éviter dilutions extrêmes."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "[A⁻]=[AH] ⇒ pH",
+              "options": ["pKa", "0", "14", "7"],
+              "correctAnswers": [0],
+              "explanation": "log(1)=0."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "Doubler [A⁻] : ΔpH",
+              "options": ["+0,3", "+1", "+14", "0"],
+              "correctAnswers": [0],
+              "explanation": "log₂ ≈ 0,3."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "Diagramme prédominance indique",
+              "options": [
+                "Espèce majoritaire vs pH",
+                "Vitesse",
+                "Masse",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zones AH et A⁻."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "pH < pKa − 1 : domine",
+              "options": ["AH", "A⁻", "HO⁻", "H₂"],
+              "correctAnswers": [0],
+              "explanation": "Milieu acide."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "pH > pKa + 1 : domine",
+              "options": ["A⁻", "AH", "H₃O⁺ pur", "Na"],
+              "correctAnswers": [0],
+              "explanation": "Milieu basique."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "pKa(H₂O/HO⁻) ≈",
+              "options": ["14", "0", "7", "1"],
+              "correctAnswers": [0],
+              "explanation": "À 25 °C."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "pKa mesure",
+              "options": [
+                "Force acide du couple",
+                "Volume",
+                "Densité",
+                "Vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constante intrinsèque."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "Polyacide a",
+              "options": ["Plusieurs pKa", "Un seul", "Aucun", "pKa négatif"],
+              "correctAnswers": [0],
+              "explanation": "Étapes successives."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "H₃PO₄ a",
+              "options": ["3 pKa", "1 pKa", "0", "pKa 14"],
+              "correctAnswers": [0],
+              "explanation": "Triacide."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Solutions tampons",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Tampon acide faible / sel conjugué :",
+              "options": [
+                "Stabilise le pH",
+                "Contient AH et A⁻",
+                "pH toujours 0",
+                "Sans sel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couple en proportions comparables."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "Acide fort ajouté au tampon",
+              "options": ["Réagit sur A⁻", "pH → 0", "Rien", "Précipite"],
+              "correctAnswers": [0],
+              "explanation": "Consommation modérée de H₃O⁺."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "Base forte au tampon",
+              "options": ["AH consomme HO⁻", "pH 14 fixe", "Stop", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Formation A⁻."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "Capacité max si",
+              "options": ["[AH]=[A⁻]", "[AH]=0", "pH 0", "C 0"],
+              "correctAnswers": [0],
+              "explanation": "pH = pKa."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "Tampon sang : couple",
+              "options": ["H₂CO₃/HCO₃⁻", "HCl/Cl⁻", "Na/Na⁺", "O₂/H₂"],
+              "correctAnswers": [0],
+              "explanation": "Carbonique/bicarbonate."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "Préparer tampon pH ≈ pKa",
+              "options": [
+                "Mélange acide faible + conjuguée",
+                "Deux forts",
+                "Eau seule",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stœchiométrie adaptée."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "Dilution excessive tampon",
+              "options": [
+                "Affaiblit l'effet",
+                "pH −5",
+                "Change Ka",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ke peut compter."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "Tampon base faible autour de",
+              "options": ["pKa BH⁺/B", "0", "14 exact", "Ke"],
+              "correctAnswers": [0],
+              "explanation": "Même logique HH."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "Dépassement capacité : pH",
+              "options": ["Varie fort", "Fixe", "7", "0"],
+              "correctAnswers": [0],
+              "explanation": "Excès acide/base libre."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "pH tampon dépend surtout",
+              "options": [
+                "Rapport [base]/[acide] et pKa",
+                "Forme bécher",
+                "Agitation",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Henderson-Hasselbalch."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Espèces en solution",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Ions n'altérant pas le pH (sel neutre) :",
+              "options": ["Na⁺", "Cl⁻", "CH₃COO⁻", "NH₄⁺"],
+              "correctAnswers": [0, 1],
+              "explanation": "Conjugués forts spectateurs."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "Hydrolyse =",
+              "options": [
+                "Réaction ion-eau change pH",
+                "Combustion",
+                "Fusion",
+                "Sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acide ou basique du ion."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "Sel faible + fort : pH",
+              "options": ["Basique", "Acide", "7", "0"],
+              "correctAnswers": [0],
+              "explanation": "Anion A⁻."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "Sel fort + faible : pH",
+              "options": ["Acide", "Basique", "7", "14"],
+              "correctAnswers": [0],
+              "explanation": "Cation NH₄⁺ type."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "Sel faible + faible : pH selon",
+              "options": ["Ka et Kb relatifs", "Volume", "Couleur", "P"],
+              "correctAnswers": [0],
+              "explanation": "Compétition hydrolyses."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "PO₄³⁻ peut",
+              "options": [
+                "Se protoner plusieurs fois",
+                "Être gaz",
+                "Être métal",
+                "Oxider tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base polyprotonée."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "HCO₃⁻ est",
+              "options": ["Amphotère", "Inerte", "Acide fort", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Acide-base avec eau."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "[HO⁻] =",
+              "options": ["Ke/[H₃O⁺]", "[H₃O⁺]", "0", "Ka"],
+              "correctAnswers": [0],
+              "explanation": "Produit ionique."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "Base forte en eau",
+              "options": ["Réaction quasi totale", "K nul", "pH 0", "Sans HO⁻"],
+              "correctAnswers": [0],
+              "explanation": "Kb effectif grand."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "pH mélange : d'abord",
+              "options": [
+                "Stœchiométrie puis équilibre",
+                "Couleur",
+                "Masse",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode terminale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Grandeurs acide-base",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "25 °C aqueux :",
+              "options": [
+                "pKe = 14",
+                "Ke = 10⁻¹⁴ mol²·L⁻²",
+                "pH = log[H₃O⁺]",
+                "pOH = log[HO⁻]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "pKe et Ke ; pH/pOH = −log."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "ΔpH = 1 ⇒ [H₃O⁺] facteur",
+              "options": ["10", "2", "0,1", "100"],
+              "correctAnswers": [0],
+              "explanation": "Échelle log."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "pH 4,3 ⇒ [H₃O⁺] ordre",
+              "options": ["10⁻⁵ mol·L⁻¹", "4,3 mol·L⁻¹", "10⁻⁴³", "0,43"],
+              "correctAnswers": [0],
+              "explanation": "10⁻⁴,³ ≈ 5×10⁻⁵."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "HCl 10⁻⁸ mol·L⁻¹ pH ≠ 8 car",
+              "options": ["Autoprotolyse", "Faible", "Base", "Cl⁻ basique"],
+              "correctAnswers": [0],
+              "explanation": "Ke domine."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "Kb =",
+              "options": ["[BH⁺][HO⁻]/[B]", "[B]/[BH⁺]", "Ke²", "1"],
+              "correctAnswers": [0],
+              "explanation": "Basicité."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "pKb petit ⇒ base",
+              "options": ["Forte", "Faible", "Neutre", "Solide"],
+              "correctAnswers": [0],
+              "explanation": "Kb grand."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "Q vs K prédit",
+              "options": ["Sens évolution", "Masse", "Couleur", "Vm"],
+              "correctAnswers": [0],
+              "explanation": "Quotient réactionnel."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "Unité Ke",
+              "options": ["mol²·L⁻²", "mol·L⁻¹", "J", "Pa"],
+              "correctAnswers": [0],
+              "explanation": "Produit concentrations."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "T ↑ sur eau : Ke",
+              "options": ["Augmente", "Fixe", "0", "Disparaît"],
+              "correctAnswers": [0],
+              "explanation": "Autoprotolyse endothermique."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "pH = 14 − pOH à",
+              "options": ["25 °C", "0 K", "Toute T sans changement", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "pKe = 14 référence."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse acide-base",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Neutralisation H₃O⁺/HO⁻ complète :",
+              "options": [
+                "n(H₃O⁺)=n(HO⁻)",
+                "Eau formée",
+                "pH toujours 0",
+                "Ka annulé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stœchiométrie et solvat."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Plus basique parmi pH 2,9,12,5",
+              "options": ["12", "2", "9", "5"],
+              "correctAnswers": [0],
+              "explanation": "Max pH."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "pH 4 tampon pKa 4,8 : rapport [A⁻]/[AH]",
+              "options": ["< 1", "> 10", "0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "pH < pKa."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Acide Lewis",
+              "options": [
+                "Accepte paire e⁻",
+                "Donne H⁺ seul",
+                "Toujours Brønsted",
+                "Alcalin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition électronique."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "Base Lewis",
+              "options": [
+                "Donne paire e⁻",
+                "Capte H⁺ seul",
+                "Toujours OH⁻",
+                "He"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donneur paire."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Échelle pKa eau limitée par",
+              "options": [
+                "Niveaux H₃O⁺/HO⁻",
+                "Gravité",
+                "Couleur",
+                "Pression seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux acide/base solvant."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "Fort+fort quantités égales",
+              "options": ["Neutre sans excès", "Acide", "Basique", "Solide"],
+              "correctAnswers": [0],
+              "explanation": "Neutralisation."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "K(AH+B⁻) =",
+              "options": ["Ka(AH)/Ka(HB)", "Ka·Kb", "Ke", "C"],
+              "correctAnswers": [0],
+              "explanation": "Rapport constantes couples."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "K >> 1 : réaction",
+              "options": ["Vers produits", "Bloquée", "Sans A⁻", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Favorisée thermodynamiquement."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "pH en terminale relie",
+              "options": [
+                "Acidité et équilibres",
+                "Vitesse seule",
+                "Noyau",
+                "Cristaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chimie aqueuse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Vitesse de réaction",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Vitesse et facteurs",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Vitesse volumique (définitions exactes) :",
+              "options": [
+                "v = (1/V) dξ/dt",
+                "Unité mol·L⁻¹·s⁻¹ possible",
+                "v = K thermodynamique",
+                "Indépendante de T"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Débit d'avancement par volume ; unité cohérente."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "T ↑ ⇒ v car",
+              "options": [
+                "Plus de chocs efficaces",
+                "Ea augmente",
+                "K change toujours",
+                "c diminue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrhenius qualitatif."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Catalyseur",
+              "options": [
+                "Baisse Ea, régénéré",
+                "Change ΔG",
+                "Consommé",
+                "Ralentit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre mécanisme."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "[Réactif] ↑ souvent",
+              "options": ["v ↑", "v ↓", "v=0", "K fixe v"],
+              "correctAnswers": [0],
+              "explanation": "Collisions."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Poudre vs bloc : v",
+              "options": ["Plus grande", "Plus petite", "Nulle", "Egale"],
+              "correctAnswers": [0],
+              "explanation": "Surface."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Unité v volumique",
+              "options": ["mol·L⁻¹·s⁻¹", "J·K⁻¹", "Pa", "m"],
+              "correctAnswers": [0],
+              "explanation": "Concentration/temps."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "[A](t) : v disparition A",
+              "options": ["−d[A]/dt", "Aire", "Pente nulle", "Ord origine"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée concentration."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Vitesse initiale : tangente à",
+              "options": ["t = 0", "Équilibre", "[A]=0", "Fin"],
+              "correctAnswers": [0],
+              "explanation": "Pente origine."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Inhibiteur",
+              "options": ["Diminue v", "Augmente K", "Catalyse", "Change n"],
+              "correctAnswers": [0],
+              "explanation": "Freinage."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Cinétique étudie",
+              "options": ["Rapidité", "ΔG seul", "Noyau", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Temps vs thermo."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Loi de vitesse",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "v = k[A]^m[B]^n :",
+              "options": [
+                "m,n ordres expérimentaux",
+                "Ordre total m+n",
+                "k indépendant de T",
+                "m toujours stœchiométrique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordres mesurés ; k varie avec T."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Ordre 1 en [A] : v ∝",
+              "options": ["[A]", "[A]²", "1/[A]", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Linéaire."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Ordre 0 en [A] : v",
+              "options": ["Indépendante de [A]", "∝ [A]", "Nulle", "∝ [A]²"],
+              "correctAnswers": [0],
+              "explanation": "Saturation ou autre RDS."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "k unité ordre 2 global",
+              "options": ["L·mol⁻¹·s⁻¹", "s⁻¹", "mol·L⁻¹·s⁻¹", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Cohérence dimensions."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Méthode des tangentes détermine",
+              "options": ["v à un instant", "K", "ΔH", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Pente courbe."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Méthode des vitesses initiales isole",
+              "options": [
+                "Ordres partiels",
+                "K final",
+                "Couleur",
+                "Volume molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation [A]₀."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Si v = k[A]², doubler [A]",
+              "options": ["v ×4", "v ×2", "v /2", "v fixe"],
+              "correctAnswers": [0],
+              "explanation": "Carré."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Loi de vitesse valide si",
+              "options": [
+                "Mécanisme et expérience OK",
+                "Toujours stœchiométrie",
+                "pH 7",
+                "Solide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérification expérimentale."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "RDS =",
+              "options": [
+                "Étape la plus lente",
+                "Plus rapide",
+                "Dernière",
+                "Initiale toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite v globale."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Cinétique d'ordre 1 : t₁/₂",
+              "options": [
+                "Constant si [A]₀ change",
+                "Double si [A]₀ double",
+                "Nul",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t₁/₂ = ln2/k."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Suivi temporel",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Suivi cinétique peut utiliser",
+              "options": [
+                "Spectrophotométrie",
+                "Conductimétrie",
+                "Uniquement balance",
+                "Théorie seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grandeurs physiques liées à concentration."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Loi Beer-Lambert A=εℓc sert à",
+              "options": [
+                "Relier absorbance et c",
+                "Mesurer K",
+                "Calculer Ea",
+                "Dosage acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi optique."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Ordre 1 : ln[A] vs t",
+              "options": ["Droite", "Parabole", "Horizontale", "Hyperbole"],
+              "correctAnswers": [0],
+              "explanation": "ln[A]=ln[A]₀−kt."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Ordre 2 : 1/[A] vs t",
+              "options": ["Droite", "Horizontale", "ln", "Expo"],
+              "correctAnswers": [0],
+              "explanation": "Forme intégrée."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "t₁/₂ ordre 1",
+              "options": ["ln(2)/k", "1/k[A]₀", "k", "[A]₀/k"],
+              "correctAnswers": [0],
+              "explanation": "Indépendant de [A]₀."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "t₁/₂ ordre 2",
+              "options": ["1/(k[A]₀)", "ln2/k", "k", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dépend de [A]₀."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Mélange stœchiométrique simplifie",
+              "options": [
+                "Loi de vitesse apparente",
+                "K toujours",
+                "Couleur",
+                "Masse molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une concentration trace."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Réactif en large excès : ordre vis-à-vis souvent",
+              "options": ["0", "2", "−1", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Concentration quasi constante."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Pente −k sur ln[A]=f(t) ordre",
+              "options": ["1", "0", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "Coefficient k."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Données cinétiques valident",
+              "options": ["Modèle d'ordre", "Couleur", "Goût", "Densité seule"],
+              "correctAnswers": [0],
+              "explanation": "Linéarisation."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Arrhenius",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Loi d'Arrhenius k = A e^(−Ea/RT) :",
+              "options": [
+                "Ea = énergie d'activation",
+                "T en kelvin",
+                "A sans dimension toujours",
+                "k diminue si T augmente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ea barrière ; T absolue ; k augmente avec T."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "ln k = f(1/T) : pente",
+              "options": ["−Ea/R", "Ea/R", "A", "k"],
+              "correctAnswers": [0],
+              "explanation": "Linéarisation Arrhenius."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Ea grande ⇒ à T donnée k",
+              "options": ["Petit", "Grand", "Infini", "Nul toujours"],
+              "correctAnswers": [0],
+              "explanation": "Exponentiel pénalisant."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Facteur pré-exponentiel A lie",
+              "options": [
+                "Fréquence chocs/facteur stérique",
+                "K",
+                "pH",
+                "Volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme de fréquence."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "+10 °C peut doubler v si",
+              "options": [
+                "Règle empirique parfois",
+                "Toujours exact",
+                "Jamais",
+                "K double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle de van't Hoff qualitative."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Graphique Arrhenius abscisse",
+              "options": ["1/T", "T", "t", "[A]"],
+              "correctAnswers": [0],
+              "explanation": "Linéarisation."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Catalyseur change surtout",
+              "options": ["Ea", "ΔH réaction", "Stœchiométrie", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Chemin réactionnel."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "R constante vaut",
+              "options": ["8,314 J·mol⁻¹·K⁻¹", "0,0821 L·atm", "1", "Ke"],
+              "correctAnswers": [0],
+              "explanation": "SI en Ea/R."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Deux T : ln(k₂/k₁) =",
+              "options": ["−(Ea/R)(1/T₂−1/T₁)", "Ea/T", "k₁+k₂", "0"],
+              "correctAnswers": [0],
+              "explanation": "Formule deux températures."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Ea s'exprime souvent en",
+              "options": ["kJ·mol⁻¹", "mol·L⁻¹", "s⁻¹", "Pa"],
+              "correctAnswers": [0],
+              "explanation": "Énergie molaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Mécanismes",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Élémentary step :",
+              "options": [
+                "Se produit en un acte",
+                "Loi v = k produit concentrations",
+                "Toujours RDS",
+                "Ignore les collisions"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Acte simple ; loi de mass action cinétique."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Intermédiaire réactionnel",
+              "options": [
+                "Formé puis consommé",
+                "Produit final",
+                "Catalyseur permanent",
+                "Solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèce transitoire."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "RDS détermine",
+              "options": [
+                "Loi de vitesse globale",
+                "K seul",
+                "Couleur",
+                "Masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approximation stationnaire."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Pré-équilibre rapide avant RDS",
+              "options": [
+                "Méthode courante",
+                "Impossible",
+                "Sans intermédiaire",
+                "Change n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèse équilibre."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Stœchiométrie ≠ ordre car",
+              "options": ["Mécanisme multi-étapes", "Erreur", "T=0", "K petit"],
+              "correctAnswers": [0],
+              "explanation": "RDS et dépendances."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "2 A → produits élémentaire : v",
+              "options": ["k[A]²", "k[A]", "k", "k[A]⁰"],
+              "correctAnswers": [0],
+              "explanation": "Collision bimoléculaire."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "A → produits élémentaire : v",
+              "options": ["k[A]", "k[A]²", "k", "k²"],
+              "correctAnswers": [0],
+              "explanation": "Unimoléculaire."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Mécanisme validé si",
+              "options": ["Loi v prédite = exp", "Couleur", "Goût", "Densité"],
+              "correctAnswers": [0],
+              "explanation": "Cohérence expérience."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Catalyse homogène : catalyseur",
+              "options": ["Même phase", "Surface solide", "Gaz seul", "Absent"],
+              "correctAnswers": [0],
+              "explanation": "Phase identique réactifs."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Catalyse hétérogène :",
+              "options": [
+                "Surface solide",
+                "Phase identique",
+                "Sans adsorption",
+                "Toujours enzymatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adsorption surface."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Cinétique et équilibre",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "À l'équilibre dynamique :",
+              "options": [
+                "v_directe = v_inverse",
+                "Concentrations macro constantes",
+                "Réaction arrêtée",
+                "k_direct = 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Égalité vitesses ; pas de variation nette."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "K =",
+              "options": [
+                "Produits/réactifs à équilibre",
+                "Vitesse",
+                "Ea",
+                "t₁/₂"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermodynamique."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Catalyseur à l'équilibre",
+              "options": [
+                "N'change pas K",
+                "Change K",
+                "Bloque",
+                "Supprime produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélère atteinte."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "T ↑ favorise endothermique (Le Chatelier) : K",
+              "options": ["Augmente si endo", "Diminue toujours", "0", "Fixe"],
+              "correctAnswers": [0],
+              "explanation": "Van't Hoff."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Cinétique lente + K grand :",
+              "options": [
+                "Réaction favorisée mais lente",
+                "Impossible",
+                "Instantanée",
+                "Sans produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermo ≠ vitesse."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Quotient Q < K : sens",
+              "options": [
+                "Vers produits",
+                "Vers réactifs",
+                "Stop",
+                "Inverse toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution vers équilibre."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "État d'équilibre atteint quand",
+              "options": ["Q = K", "v = 0 micro", "t = 0", "[A]=0"],
+              "correctAnswers": [0],
+              "explanation": "Condition thermodynamique."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Microscopiquement à l'équilibre",
+              "options": [
+                "Réactions continuent",
+                "Tout stop",
+                "Sans collisions",
+                "Sans énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dynamique."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Ajout catalyseur avant équilibre",
+              "options": [
+                "Raccourcit temps",
+                "Change K",
+                "Change ΔH",
+                "Change n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinétique seulement."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Constante K dépend surtout de",
+              "options": ["T", "Catalyseur", "Agitation", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Thermodynamique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Applications industrielles",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Optimiser rendement industriel :",
+              "options": [
+                "Cinétique et équilibre",
+                "Température et pression",
+                "Ignorer sécurité",
+                "Couleur réacteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Compromis v, K, coût."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Synthèse ammoniaque : haute P favorise",
+              "options": [
+                "Côté moins moles gaz",
+                "Toujours produits",
+                "Réactifs",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Chatelier pression."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Catalyseur industriel sert à",
+              "options": [
+                "Accélérer sans trop chauffer",
+                "Changer K",
+                "Remplacer réactifs",
+                "Refroidir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie énergie."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Réacteur batch :",
+              "options": [
+                "Charge puis vide",
+                "Flux continu",
+                "Sans mélange",
+                "Sans T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discontinu."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Réacteur continu CSTR",
+              "options": [
+                "Alimentation et sortie flux",
+                "Fermé",
+                "Sans agitation",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime permanent possible."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Temps de séjour lié à",
+              "options": ["Volume/débit", "K seul", "Couleur", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "τ = V/Q."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Conversion élevée demande souvent",
+              "options": [
+                "Temps ou excès réactif",
+                "K nul",
+                "T 0 K",
+                "Sans catalyseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancement."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Contrôle qualité suit",
+              "options": [
+                "Concentrations en sortie",
+                "Couleur seule",
+                "Rien",
+                "Pression seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyses."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Sécurité procédé tient compte de",
+              "options": ["Chaleur dégagée et v", "Couleur", "Goût", "Logo"],
+              "correctAnswers": [0],
+              "explanation": "Runaway possible."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Piège : K grand implique",
+              "options": [
+                "Pas toujours rapide",
+                "Toujours instantané",
+                "Sans produits",
+                "v infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction thermo/cinétique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Collisions et Ea",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Collision efficace requiert",
+              "options": [
+                "Énergie ≥ Ea",
+                "Orientation favorable",
+                "Toujours trois corps",
+                "Sans mouvement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle collisionnel."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Ea représente",
+              "options": [
+                "Barrière énergétique",
+                "Enthalpie totale",
+                "K",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sommet barrier."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Complexe activé",
+              "options": [
+                "État transition",
+                "Produit stable",
+                "Catalyseur",
+                "Solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorie transition state."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Plus T, fraction molécules ≥ Ea",
+              "options": ["Augmente", "Diminue", "Nulle", "Fixe"],
+              "correctAnswers": [0],
+              "explanation": "Distribution Maxwell-Boltzmann."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Réactions en phase gaz : v souvent ↑ avec P car",
+              "options": [
+                "[espèces] ↑",
+                "K change",
+                "Ea nulle",
+                "Masse change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentrations."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Stérique : orientation mauvaise",
+              "options": [
+                "Collision non efficace",
+                "Toujours réaction",
+                "Ea négative",
+                "K infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteur stérique."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Lumière (photchimie) fournit",
+              "options": ["Énergie activation", "K seul", "Catalyseur", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Photons."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Enzyme abaisse surtout",
+              "options": ["Ea", "ΔG", "Masse réactifs", "Volume"],
+              "correctAnswers": [0],
+              "explanation": "Catalyse biologique."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "Réaction très lente à 298 K peut être",
+              "options": [
+                "Ea élevée",
+                "K nul",
+                "Sans réactifs",
+                "Ordre 0 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de chocs efficaces."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Mesurer Ea nécessite",
+              "options": ["k à plusieurs T", "Une mesure", "Couleur", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Arrhenius."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Calculs terminale",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Ordre 1 : relations vraies",
+              "options": [
+                "[A]=[A]₀e^(−kt)",
+                "t₁/₂ = ln2/k",
+                "t₁/₂ ∝ [A]₀",
+                "v = k[A]²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Décroissance expo et demi-vie."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "k=0,10 s⁻¹ ordre 1 : t₁/₂",
+              "options": ["6,9 s", "10 s", "0,1 s", "1 s"],
+              "correctAnswers": [0],
+              "explanation": "ln2/0,1 ≈ 6,93 s."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Après 2 t₁/₂ ordre 1 reste",
+              "options": ["25 % [A]₀", "50 %", "0 %", "75 %"],
+              "correctAnswers": [0],
+              "explanation": "Deux demi-vies."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "v = 2×10⁻³ mol·L⁻¹·s⁻¹ signifie",
+              "options": [
+                "2 mmol·L⁻¹ par seconde",
+                "2 mol instant",
+                "K=2",
+                "Ea=2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interprétation unité."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Doubler k (autre identique) : t₁/₂ ordre 1",
+              "options": ["Divisé par 2", "Double", "Inchangé", "×4"],
+              "correctAnswers": [0],
+              "explanation": "t₁/₂ ∝ 1/k."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Pente ln k vs 1/T : −Ea/R = −12000 K, Ea ≈",
+              "options": ["100 kJ·mol⁻¹", "12 kJ·mol⁻¹", "8,314 kJ", "0"],
+              "correctAnswers": [0],
+              "explanation": "Ea = 12000×8,314 J ≈ 100 kJ·mol⁻¹."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "v = k[A][B], doubler A et B : v",
+              "options": ["×4", "×2", "÷2", "Fixe"],
+              "correctAnswers": [0],
+              "explanation": "2×2."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Si ordre global 0, [A] triple : v",
+              "options": ["Inchangée", "×3", "×9", "0"],
+              "correctAnswers": [0],
+              "explanation": "Indépendance."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Temps pour 75 % conversion ordre 1",
+              "options": ["2 t₁/₂", "1 t₁/₂", "3 t₁/₂", "0"],
+              "correctAnswers": [0],
+              "explanation": "25 % restant."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Dimension k ordre 1",
+              "options": ["s⁻¹", "L·mol⁻¹·s⁻¹", "mol·L⁻¹", "sans"],
+              "correctAnswers": [0],
+              "explanation": "v=k[A]."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse cinétique",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Pour accélérer une réaction utile :",
+              "options": [
+                "Augmenter T",
+                "Ajouter catalyseur",
+                "Toujours diminuer [réactifs]",
+                "Ignorer Ea"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "T et catalyse augmentent k."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Cinétique ≠ thermodynamique car",
+              "options": [
+                "v vs favorabilité",
+                "Identiques",
+                "Sans K",
+                "Sans T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux questions distinctes."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Suivi pH-métrique possible si",
+              "options": [
+                "H⁺ ou HO⁻ impliqués",
+                "Sans ions",
+                "Solide seul",
+                "Gaz inerte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation concentration ionique."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Loi de vitesse déterminée par",
+              "options": [
+                "Expérience",
+                "Seule stœchiométrie",
+                "Couleur",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordres empiriques."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Réaction explosive : v",
+              "options": [
+                "Très grande",
+                "Nulle",
+                "Constante K",
+                "Ordre 0 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libération rapide."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Stockage aliments : basse T pour",
+              "options": [
+                "Ralentir décomposition",
+                "Augmenter K",
+                "Catalyser",
+                "Changer pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinétique ralentie."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Mélange réactifs : v initiale max si",
+              "options": [
+                "Concentrations élevées",
+                "T 0 K",
+                "Sans collision",
+                "K petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi de vitesse."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Interpréter pente [A] vs t négative",
+              "options": [
+                "Consommation A",
+                "Formation A",
+                "Équilibre",
+                "Erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réactif diminue."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Programme terminale : constante k dépend de",
+              "options": [
+                "T et mécanisme",
+                "Couleur",
+                "Volume bécher",
+                "Indicateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrhenius."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Objectif chapitre cinétique",
+              "options": [
+                "Prédire évolution temporelle",
+                "Calculer pH seul",
+                "Structure cristalline",
+                "Isotopes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien temps-concentration."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

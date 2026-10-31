@@ -1,0 +1,2523 @@
+{
+  "id": "2nde-ses-03",
+  "year": "2nde",
+  "subject": "ses",
+  "title": "Comment se forment les prix ?",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Marché et prix",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un marché ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Parmi ces éléments, lesquels caractérisent un marché en SES ?",
+              "type": "multiple_choice",
+              "options": [
+                "Rencontre entre offreurs et demandeurs",
+                "Un lieu physique obligatoire",
+                "Un mécanisme de formation des prix",
+                "L'absence de règles"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Le marché permet surtout de…",
+              "type": "single_choice",
+              "options": [
+                "Fixer les salaires par décret",
+                "Mettre en relation vendeurs et acheteurs",
+                "Supprimer la concurrence",
+                "Remplacer l'État partout"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Un marché peut être…",
+              "type": "single_choice",
+              "options": [
+                "Uniquement local et en personne",
+                "Local, national ou mondial",
+                "Réservé aux produits alimentaires",
+                "Sans prix"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Les demandeurs sur un marché sont…",
+              "type": "single_choice",
+              "options": [
+                "Les producteurs",
+                "Les acheteurs",
+                "Les banques seulement",
+                "L'État uniquement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Les offreurs sur un marché sont…",
+              "type": "single_choice",
+              "options": [
+                "Les consommateurs",
+                "Ceux qui proposent un bien ou un service",
+                "Les ménages qui épargnent",
+                "Les étrangers seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "La concurrence signifie que…",
+              "type": "single_choice",
+              "options": [
+                "Un seul vendeur fixe tout",
+                "Plusieurs offreurs rivalisent",
+                "Les prix sont interdits",
+                "Il n'y a pas de choix"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Un marché de concurrence pure a…",
+              "type": "single_choice",
+              "options": [
+                "Un seul producteur",
+                "De nombreux vendeurs et acheteurs",
+                "Aucun prix",
+                "Un prix fixé par l'État"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Le prix d'équilibre est celui où…",
+              "type": "single_choice",
+              "options": [
+                "L'offre dépasse toujours la demande",
+                "Les quantités offertes et demandées s'égalisent",
+                "La demande est nulle",
+                "L'État impose un plafond"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Un excédent d'offre tend à…",
+              "type": "single_choice",
+              "options": [
+                "Faire monter le prix",
+                "Faire baisser le prix",
+                "Ne rien changer",
+                "Supprimer la demande"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Un excédent de demande tend à…",
+              "type": "single_choice",
+              "options": [
+                "Faire baisser le prix",
+                "Faire monter le prix",
+                "Annuler l'offre",
+                "Fixer le prix à zéro"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'offre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations décrivent correctement l'offre ?",
+              "type": "multiple_choice",
+              "options": [
+                "Elle exprime ce que les producteurs veulent vendre à chaque prix",
+                "Elle diminue toujours quand le prix monte",
+                "À prix plus élevé, l'offre tend à augmenter",
+                "Elle ne dépend que des goûts des consommateurs"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "La loi de l'offre dit que, ceteris paribus…",
+              "type": "single_choice",
+              "options": [
+                "Prix ↑ → offre ↓",
+                "Prix ↑ → offre ↑",
+                "Prix et offre sans lien",
+                "L'offre est fixe"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "La courbe d'offre est en général…",
+              "type": "single_choice",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Horizontale toujours",
+                "Verticale toujours"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Si le coût de production augmente, l'offre…",
+              "type": "single_choice",
+              "options": [
+                "Augmente au même prix",
+                "Diminue au même prix",
+                "Reste identique",
+                "Devient infinie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Une amélioration technologique tend à…",
+              "type": "single_choice",
+              "options": [
+                "Réduire l'offre",
+                "Augmenter l'offre",
+                "Supprimer la demande",
+                "Fixer le prix"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "L'offre de travail désigne…",
+              "type": "single_choice",
+              "options": [
+                "Les emplois créés par l'État",
+                "Le travail que les salariés acceptent de fournir selon le salaire",
+                "Les chômeurs uniquement",
+                "Les prix des produits"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Une taxe sur les producteurs…",
+              "type": "single_choice",
+              "options": [
+                "Déplace l'offre vers la droite",
+                "Déplace l'offre vers la gauche",
+                "N'affecte pas l'offre",
+                "Double la demande"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Le nombre de vendeurs sur un marché influence…",
+              "type": "single_choice",
+              "options": [
+                "Seulement la demande",
+                "L'offre globale",
+                "Uniquement la monnaie",
+                "Rien du tout"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Offrir plus à un prix donné, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Un déplacement le long de la courbe de demande",
+                "Un déplacement de la courbe d'offre",
+                "Une baisse du prix d'équilibre certaine",
+                "Une absence de marché"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Ceteris paribus signifie…",
+              "type": "single_choice",
+              "options": [
+                "Tout change en même temps",
+                "Les autres facteurs restent constants",
+                "Le prix est nul",
+                "Il n'y a pas de concurrence"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La demande",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La demande en SES correspond à…",
+              "type": "multiple_choice",
+              "options": [
+                "Les quantités que les acheteurs souhaitent acheter à chaque prix",
+                "Les stocks des magasins seulement",
+                "La loi : prix ↑ → demande ↓ (ceteris paribus)",
+                "Ce que l'État commande uniquement"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "La courbe de demande est généralement…",
+              "type": "single_choice",
+              "options": [
+                "Croissante",
+                "Décroissante",
+                "Verticale",
+                "Sans forme"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Si le revenu des ménages augmente, la demande d'un bien normal…",
+              "type": "single_choice",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Disparaît",
+                "Devient l'offre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Un bien de Giffen ou inférieur voit sa demande…",
+              "type": "single_choice",
+              "options": [
+                "Toujours augmenter avec le revenu",
+                "Parfois diminuer quand le revenu augmente",
+                "Ne jamais dépendre du prix",
+                "Être fixée par la banque"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Deux biens substituables : si le prix de A monte, la demande de B…",
+              "type": "single_choice",
+              "options": [
+                "Baisse",
+                "Augmente",
+                "Reste nulle",
+                "Devient l'offre de A"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "Deux biens complémentaires : si le prix de A monte, la demande de B…",
+              "type": "single_choice",
+              "options": ["Augmente", "Diminue", "Double", "Ne change jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "La publicité peut…",
+              "type": "single_choice",
+              "options": [
+                "Déplacer la courbe de demande",
+                "Changer la loi de l'offre",
+                "Supprimer les prix",
+                "Créer de la monnaie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "À prix plus bas, la quantité demandée…",
+              "type": "single_choice",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Est toujours zéro",
+                "Égalise l'offre sans marché"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Le « goût » des consommateurs influence…",
+              "type": "single_choice",
+              "options": [
+                "L'offre uniquement",
+                "La demande",
+                "Le taux d'intérêt seulement",
+                "La masse monétaire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Demande effective signifie souvent demande…",
+              "type": "single_choice",
+              "options": [
+                "Sans pouvoir d'achat",
+                "Avec désir et moyens de payer",
+                "Imposée par le producteur",
+                "Illimitée à prix nul"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Équilibre et prix",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Au point d'équilibre du marché…",
+              "type": "multiple_choice",
+              "options": [
+                "Quantité offerte = quantité demandée",
+                "Le prix est toujours imposé",
+                "Il existe un prix d'équilibre",
+                "Il n'y a ni offre ni demande"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Si le prix est au-dessus de l'équilibre, il y a…",
+              "type": "single_choice",
+              "options": [
+                "Pénurie",
+                "Excédent d'offre",
+                "Demande infinie",
+                "Prix plancher obligatoire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Si le prix est en dessous de l'équilibre, il y a…",
+              "type": "single_choice",
+              "options": [
+                "Excédent d'offre",
+                "Excédent de demande",
+                "Marché fermé",
+                "Offre nulle"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Un prix plafond en dessous de l'équilibre peut créer…",
+              "type": "single_choice",
+              "options": [
+                "Un surplus",
+                "Une pénurie",
+                "Plus d'offre",
+                "Prix libre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Un prix plancher au-dessus de l'équilibre peut créer…",
+              "type": "single_choice",
+              "options": [
+                "Pénurie",
+                "Un surplus",
+                "Équilibre immédiat",
+                "Demande nulle"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "L'intersection offre-demande donne…",
+              "type": "single_choice",
+              "options": [
+                "Le PIB",
+                "Le prix et la quantité d'équilibre",
+                "La masse monétaire",
+                "Le taux de chômage"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Une hausse de la demande, offre inchangée, fait…",
+              "type": "single_choice",
+              "options": [
+                "Baisser prix et quantité",
+                "Monter prix et quantité échangée",
+                "Baisser le prix seul",
+                "Supprimer l'offre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Une hausse de l'offre, demande inchangée, fait…",
+              "type": "single_choice",
+              "options": [
+                "Monter le prix",
+                "Baisser le prix et augmenter les échanges",
+                "Baisser la quantité seule",
+                "Fixer le salaire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Le mécanisme des prix sert à…",
+              "type": "single_choice",
+              "options": [
+                "Rationner par la file d'attente seule",
+                "Coordonner offre et demande",
+                "Éliminer la concurrence",
+                "Remplacer la monnaie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Sur un graphique, l'offre est souvent tracée…",
+              "type": "single_choice",
+              "options": [
+                "En rouge décroissant",
+                "En bleu ou courbe croissante",
+                "Sans axe des prix",
+                "Identique à la demande"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Elasticité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'élasticité-prix de la demande mesure…",
+              "type": "multiple_choice",
+              "options": [
+                "La sensibilité de la demande à une variation de prix",
+                "Le niveau de profit des banques",
+                "Une réaction en pourcentage de la quantité demandée",
+                "Le taux d'inflation officiel"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Demande inélastique : une hausse de prix…",
+              "type": "single_choice",
+              "options": [
+                "Fait fortement baisser les quantités",
+                "Fait peu baisser les quantités demandées",
+                "Annule l'offre",
+                "Supprime la monnaie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Demande élastique : une hausse de prix…",
+              "type": "single_choice",
+              "options": [
+                "Réduit beaucoup la quantité demandée",
+                "Ne change rien",
+                "Augmente la demande",
+                "Fixe le crédit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Un bien avec de nombreux substituts a souvent une demande…",
+              "type": "single_choice",
+              "options": [
+                "Inélastique",
+                "Élastique",
+                "Nulle",
+                "Fixe par l'État"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "À court terme, la demande est souvent…",
+              "type": "single_choice",
+              "options": [
+                "Plus élastique qu'à long terme",
+                "Moins élastique qu'à long terme",
+                "Toujours infinie",
+                "Sans lien avec le prix"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "L'élasticité-revenu positive indique un bien…",
+              "type": "single_choice",
+              "options": ["Inférieur", "Normal", "Gratuit", "Non vendu"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Si |élasticité| > 1, la demande est…",
+              "type": "single_choice",
+              "options": [
+                "Inélastique",
+                "Élastique",
+                "Parfaitement verticale",
+                "Identique à l'offre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Le sel a souvent une demande…",
+              "type": "single_choice",
+              "options": [
+                "Très élastique",
+                "Peu élastique",
+                "Inexistante",
+                "Égale à l'offre mondiale"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Connaître l'élasticité aide les entreprises à…",
+              "type": "single_choice",
+              "options": [
+                "Créer de la monnaie",
+                "Anticiper l'effet d'un changement de prix sur les ventes",
+                "Fixer le taux directeur",
+                "Imprimer des billets"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "L'élasticité croisée positive suggère des biens…",
+              "type": "single_choice",
+              "options": [
+                "Complémentaires",
+                "Substituables",
+                "Gratuits",
+                "Interdits"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Concurrence et structures de marché",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En concurrence pure et parfaite…",
+              "type": "multiple_choice",
+              "options": [
+                "Nombreux acheteurs et vendeurs",
+                "Un seul vendeur dominant",
+                "Libre entrée et sortie sur le marché",
+                "Prix toujours imposés par l'État"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Un monopole, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Beaucoup de vendeurs",
+                "Un seul vendeur sur le marché",
+                "Aucun prix",
+                "Seulement l'État acheteur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Un oligopole regroupe…",
+              "type": "single_choice",
+              "options": [
+                "Un vendeur",
+                "Peu de grandes entreprises",
+                "Des millions de producteurs",
+                "Uniquement des ménages"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "La concurrence peut faire…",
+              "type": "single_choice",
+              "options": [
+                "Monter les prix sans limite",
+                "Baisser les prix et stimuler l'efficacité",
+                "Supprimer l'offre",
+                "Interdire la demande"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Barrières à l'entrée…",
+              "type": "single_choice",
+              "options": [
+                "Facilitent toujours la concurrence",
+                "Peuvent limiter l'arrivée de nouveaux concurrents",
+                "N'existent pas en économie",
+                "Concernent seulement la monnaie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "Produit homogène signifie…",
+              "type": "single_choice",
+              "options": [
+                "Tous les biens sont différents",
+                "Les biens sont perçus comme identiques",
+                "Pas de prix",
+                "Marché monopolistique"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Concurrence monopolistique : beaucoup de vendeurs et…",
+              "type": "single_choice",
+              "options": [
+                "Produits différenciés",
+                "Un seul vendeur",
+                "Prix unique imposé",
+                "Absence de demande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Le pouvoir de marché permet à une firme de…",
+              "type": "single_choice",
+              "options": [
+                "Influencer le prix",
+                "Ne jamais fixer de prix",
+                "Créer la monnaie centrale",
+                "Supprimer l'épargne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "La concurrence imparfaite est…",
+              "type": "single_choice",
+              "options": [
+                "Rare dans la réalité",
+                "Fréquente (monopoles, oligopoles…)",
+                "Interdite partout",
+                "Identique au marché parfait"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "L'autorité de la concurrence vise à…",
+              "type": "single_choice",
+              "options": [
+                "Supprimer tous les prix",
+                "Lutter contre les pratiques anticoncurrentielles",
+                "Imprimer de l'argent",
+                "Fixer tous les salaires"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Coûts, profit et prix",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le prix d'une entreprise en concurrence dépend aussi de…",
+              "type": "multiple_choice",
+              "options": [
+                "Ses coûts de production",
+                "Uniquement des goûts sans coût",
+                "Le profit espéré à long terme",
+                "La couleur de l'emballage seule"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Coût fixe : il…",
+              "type": "single_choice",
+              "options": [
+                "Varie avec la production",
+                "Ne varie pas avec la quantité produite",
+                "Est toujours nul",
+                "Est le salaire horaire seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Coût variable…",
+              "type": "single_choice",
+              "options": [
+                "Augmente avec la production",
+                "Est toujours fixe",
+                "N'existe pas",
+                "Est la monnaie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Le profit est…",
+              "type": "single_choice",
+              "options": [
+                "Recettes − coûts",
+                "Coûts − recettes",
+                "La masse monétaire",
+                "Le taux d'intérêt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Prix minimum pour couvrir les coûts : l'entreprise fixe un prix…",
+              "type": "single_choice",
+              "options": [
+                "Toujours en dessous des coûts",
+                "Au moins égal au coût moyen à long terme pour survivre",
+                "Nul",
+                "Imposé par les ménages"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "Marge d'une entreprise : différence entre…",
+              "type": "single_choice",
+              "options": [
+                "Prix et coût unitaire",
+                "Demande et offre globales",
+                "Épargne et crédit",
+                "Monnaie scripturale et fiduciaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Économies d'échelle : produire plus…",
+              "type": "single_choice",
+              "options": [
+                "Augmente toujours le coût unitaire",
+                "Peut baisser le coût moyen par unité",
+                "Supprime la concurrence",
+                "Crée l'inflation"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Un monopole peut maintenir un prix…",
+              "type": "single_choice",
+              "options": [
+                "Toujours égal au coût marginal",
+                "Au-dessus du coût grâce à son pouvoir de marché",
+                "Nul",
+                "Sans rapport avec la demande"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Concurrence intense tend à…",
+              "type": "single_choice",
+              "options": [
+                "Augmenter les marges sans limite",
+                "Réduire les marges excessives",
+                "Supprimer les coûts",
+                "Interdire le crédit"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Recettes = …",
+              "type": "single_choice",
+              "options": [
+                "Prix × quantité vendue",
+                "Coût × quantité",
+                "Taux d'intérêt × capital",
+                "Monnaie créée par la banque"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Défaillances du marché",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une externalité négative fait que…",
+              "type": "multiple_choice",
+              "options": [
+                "Un coût est imposé à des tiers non payants",
+                "Le marché internalise toujours tout",
+                "Le prix de marché peut être trop bas",
+                "Il n'y a jamais de pollution"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Externalité positive : l'activité…",
+              "type": "single_choice",
+              "options": [
+                "Nuit aux autres",
+                "Profite à des tiers sans qu'ils paient",
+                "Supprime la demande",
+                "Crée de la monnaie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Un bien public pur est…",
+              "type": "single_choice",
+              "options": [
+                "Rival et excluable",
+                "Non rival et non excluable",
+                "Toujours payant",
+                "Vendu seulement en monopole"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Asymétrie d'information :…",
+              "type": "single_choice",
+              "options": [
+                "Tous connaissent la même info",
+                "Un acteur en sait plus qu'un autre",
+                "Les prix sont parfaits",
+                "Pas de marché"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "L'État peut corriger une externalité négative par…",
+              "type": "single_choice",
+              "options": [
+                "Une taxe pigouvienne",
+                "Suppression de toute régulation",
+                "Impression illimitée de billets",
+                "Interdiction de l'offre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Concurrence imparfaite est une…",
+              "type": "single_choice",
+              "options": [
+                "Défaillance possible du marché",
+                "Preuve que les prix n'existent pas",
+                "Fonction de la monnaie",
+                "Forme d'épargne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Sans régulation, pollution peut être…",
+              "type": "single_choice",
+              "options": [
+                "Trop faible",
+                "Excessive car non payée par le pollueur",
+                "Impossible",
+                "Un bien public"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Internaliser une externalité, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Ignorer le coût social",
+                "Faire payer ou refléter le coût/bénéfice dans le prix",
+                "Supprimer la demande",
+                "Fixer le taux directeur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "L'éducation peut avoir des externalités…",
+              "type": "single_choice",
+              "options": [
+                "Uniquement négatives",
+                "Positives pour la société",
+                "Nulles toujours",
+                "Seulement monétaires"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Le libre marché ne produit pas toujours la quantité socialement optimale quand…",
+              "type": "single_choice",
+              "options": [
+                "Il y a concurrence parfaite sans faille",
+                "Il y a externalités ou biens publics",
+                "Les prix bougent",
+                "Il y a de la monnaie"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prix relatifs et inflation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le prix relatif d'un bien…",
+              "type": "multiple_choice",
+              "options": [
+                "Compare son prix à celui d'autres biens",
+                "Est toujours égal au prix nominal",
+                "Influence les choix des consommateurs",
+                "Est fixé uniquement par la banque centrale"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Prix nominal :…",
+              "type": "single_choice",
+              "options": [
+                "Exprimé en monnaie courante",
+                "Corrigé de l'inflation",
+                "Sans unité",
+                "Toujours constant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Inflation :…",
+              "type": "single_choice",
+              "options": [
+                "Baisse générale et durable des prix",
+                "Hausse générale et durable du niveau des prix",
+                "Stagnation des salaires seule",
+                "Disparition de la monnaie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Si tous les prix doublent, le pouvoir d'achat de la monnaie…",
+              "type": "single_choice",
+              "options": [
+                "Double",
+                "Diminue",
+                "Reste identique en nominal",
+                "Devient infini"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Un salaire nominal augmente mais moins que l'inflation : le salaire réel…",
+              "type": "single_choice",
+              "options": ["Augmente", "Diminue", "Double", "Devient une offre"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "Indice des prix mesure…",
+              "type": "single_choice",
+              "options": [
+                "Le taux de chômage",
+                "L'évolution du niveau moyen des prix",
+                "La masse monétaire seule",
+                "Le nombre de banques"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Déflation :…",
+              "type": "single_choice",
+              "options": [
+                "Hausse des prix",
+                "Baisse durable du niveau général des prix",
+                "Création monétaire",
+                "Hausse du crédit"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Anticiper de l'inflation peut inciter à…",
+              "type": "single_choice",
+              "options": [
+                "Épargner sans limite",
+                "Acheter plus tôt ou demander des hausses de prix",
+                "Supprimer l'offre",
+                "Fermer les marchés"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "question": "Prix relatif du travail (salaire) / prix des biens influence…",
+              "type": "single_choice",
+              "options": [
+                "Seulement la banque",
+                "Le coût du travail pour l'employeur et le pouvoir d'achat",
+                "Uniquement la demande de monnaie",
+                "Rien"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Stagflation combine…",
+              "type": "single_choice",
+              "options": [
+                "Forte croissance et inflation nulle",
+                "Stagnation économique et inflation",
+                "Déflation et emploi",
+                "Offre infinie et prix nuls"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse marché et prix",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Former un prix sur un marché concurrentiel suppose…",
+              "type": "multiple_choice",
+              "options": [
+                "Interaction offre et demande",
+                "Absence totale de monnaie",
+                "Un mécanisme d'ajustement des excédents",
+                "Un prix unique imposé à jamais"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "La loi de l'offre et de la demande s'applique…",
+              "type": "single_choice",
+              "options": [
+                "Seulement au marché du travail",
+                "À de nombreux marchés de biens et services",
+                "Uniquement à la monnaie",
+                "Jamais en présence d'État"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Un choc d'offre négatif (coûts ↑) tend à…",
+              "type": "single_choice",
+              "options": [
+                "Baisser le prix d'équilibre",
+                "Augmenter le prix d'équilibre",
+                "Supprimer la demande",
+                "Créer un bien public"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "question": "Le rôle informatif du prix :…",
+              "type": "single_choice",
+              "options": [
+                "Cacher la rareté",
+                "Signaler la rareté relative aux agents",
+                "Remplacer le crédit",
+                "Fixer le taux directeur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "question": "Marché du travail : le « prix » du travail est…",
+              "type": "single_choice",
+              "options": [
+                "Le salaire",
+                "La masse monétaire",
+                "Le taux d'intérêt",
+                "L'inflation seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Libéralisation d'un marché peut…",
+              "type": "single_choice",
+              "options": [
+                "Renforcer la concurrence et influencer les prix",
+                "Supprimer offre et demande",
+                "Interdire les prix",
+                "Éliminer la monnaie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Régulation des prix peut viser à…",
+              "type": "single_choice",
+              "options": [
+                "Protéger certains consommateurs ou producteurs",
+                "Supprimer tout équilibre",
+                "Créer la monnaie",
+                "Annuler le crédit bancaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "En SES, le prix d'équilibre n'est pas forcément…",
+              "type": "single_choice",
+              "options": [
+                "Juste socialement ou écologiquement",
+                "Le résultat de offre et demande",
+                "Variable dans le temps",
+                "Visible sur un graphique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Une innovation qui réduit les coûts…",
+              "type": "single_choice",
+              "options": [
+                "Déplace l'offre favorablement aux consommateurs",
+                "Déplace la demande vers le bas obligatoirement",
+                "Supprime la concurrence",
+                "Augmente toujours l'inflation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Comprendre la formation des prix aide à analyser…",
+              "type": "single_choice",
+              "options": [
+                "Uniquement la bourse",
+                "Les choix des ménages, des entreprises et des politiques publiques",
+                "Seulement la numismatique",
+                "Rien en 2nde"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Monnaie et financement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les fonctions de la monnaie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La monnaie remplit classiquement…",
+              "type": "multiple_choice",
+              "options": [
+                "Intermédiaire des échanges",
+                "Unité de compte",
+                "Réserve de valeur",
+                "Production de tous les biens"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Intermédiaire des échanges : la monnaie…",
+              "type": "single_choice",
+              "options": [
+                "Oblige au troc",
+                "Facilite les transactions sans troc direct",
+                "Supprime les prix",
+                "Est seulement de l'or"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "Unité de compte : la monnaie…",
+              "type": "single_choice",
+              "options": [
+                "Permet de comparer et additionner des valeurs",
+                "Ne sert qu'à épargner",
+                "Est uniquement fiduciaire",
+                "Remplace les banques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Réserve de valeur : on peut…",
+              "type": "single_choice",
+              "options": [
+                "Conserver du pouvoir d'achat dans le temps",
+                "Supprimer l'inflation toujours",
+                "Éviter tout prix",
+                "Ne jamais perdre de valeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Monnaie fiduciaire :…",
+              "type": "single_choice",
+              "options": [
+                "Pièces et billets",
+                "Comptes en banque seulement",
+                "Uniquement l'or",
+                "Actions en bourse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Monnaie scripturale :…",
+              "type": "single_choice",
+              "options": [
+                "Billets uniquement",
+                "Monnaie inscrite sur des comptes bancaires",
+                "Troc",
+                "Biens de consommation"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "question": "Aujourd'hui, la plus grande part de la monnaie est…",
+              "type": "single_choice",
+              "options": [
+                "Fiduciaire en circulation",
+                "Scripturale",
+                "Sous forme d'or",
+                "Absente"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "La monnaie est acceptée car…",
+              "type": "single_choice",
+              "options": [
+                "Confiance et réglementation",
+                "Elle n'a jamais de valeur",
+                "Il n'y a pas de banques",
+                "Les prix sont fixes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Sans monnaie, le troc est…",
+              "type": "single_choice",
+              "options": [
+                "Toujours plus efficace",
+                "Limité par la double coïncidence des besoins",
+                "Interdit en France",
+                "Identique au crédit"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "question": "Le euro est…",
+              "type": "single_choice",
+              "options": [
+                "Monnaie de la zone euro",
+                "Uniquement une unité comptable privée",
+                "De l'or",
+                "Un bien public local seulement"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Création monétaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En économie ouverte, la monnaie est créée surtout par…",
+              "type": "multiple_choice",
+              "options": [
+                "Les banques commerciales via le crédit",
+                "Uniquement l'impression de billets sans limite",
+                "La banque centrale qui fixe le cadre",
+                "Les ménages qui fabriquent des pièces"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "question": "Créer du crédit, une banque…",
+              "type": "single_choice",
+              "options": [
+                "Prête uniquement des billets existants",
+                "Inscrit une créance et une dette sur des comptes",
+                "Supprime la monnaie",
+                "Ne touche pas aux comptes"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "question": "La banque centrale émet…",
+              "type": "single_choice",
+              "options": [
+                "Monnaie fiduciaire et encadre la politique monétaire",
+                "Tous les crédits immobiliers",
+                "Les salaires",
+                "Les actions"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "En zone euro, la banque centrale européenne est la…",
+              "type": "single_choice",
+              "options": ["BCE", "Banque mondiale", "MFN", "OCDE"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Multiplier bancaire : les dépôts permettent…",
+              "type": "single_choice",
+              "options": [
+                "De ne jamais prêter",
+                "De renouveler des crédits dans certaines limites",
+                "De supprimer la monnaie scripturale",
+                "D'annuler l'offre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "question": "Masse monétaire :…",
+              "type": "single_choice",
+              "options": [
+                "Ensemble de la monnaie en circulation et dépôts pertinents",
+                "Seulement les billets",
+                "Le PIB",
+                "Les prix des actions"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Trop de création monétaire peut alimenter…",
+              "type": "single_choice",
+              "options": [
+                "Déflation certaine",
+                "Inflation si la production ne suit pas",
+                "Disparition du crédit",
+                "Offre nulle"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "question": "Les réserves bancaires servent à…",
+              "type": "single_choice",
+              "options": [
+                "Satisfaire obligations et liquidité",
+                "Remplacer tous les salaires",
+                "Fixer les prix des légumes",
+                "Supprimer l'épargne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Monnaie centrale :…",
+              "type": "single_choice",
+              "options": [
+                "Monnaie émise par la banque centrale",
+                "Crédit immobilier",
+                "Monnaie privée sans règle",
+                "Troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Détruire de la monnaie peut se faire quand…",
+              "type": "single_choice",
+              "options": [
+                "Les crédits sont remboursés",
+                "L'offre augmente",
+                "Les prix baissent toujours",
+                "Il n'y a pas de banques"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La banque commerciale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une banque commerciale…",
+              "type": "multiple_choice",
+              "options": [
+                "Collecte des dépôts",
+                "Accorde des crédits",
+                "Fixe seule le taux directeur européen",
+                "Transforme liquidités et maturités"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Intermédiation financière : la banque…",
+              "type": "single_choice",
+              "options": [
+                "Relie épargnants et emprunteurs",
+                "Produit des biens industriels",
+                "Fixe les prix du marché",
+                "Remplace l'offre et la demande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Compte courant :…",
+              "type": "single_choice",
+              "options": [
+                "Moyen de paiement et dépôt",
+                "Uniquement placement long terme",
+                "Monnaie fiduciaire",
+                "Action en bourse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Spread bancaire : différence entre…",
+              "type": "single_choice",
+              "options": [
+                "Taux débiteur et taux créditeur",
+                "Offre et demande de pommes",
+                "Prix nominal et réel",
+                "Inflation et chômage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "La banque gagne en partie avec…",
+              "type": "single_choice",
+              "options": [
+                "Intérêts des crédits et frais",
+                "Impression de billets pour elle",
+                "Fixation des salaires",
+                "Vente de monnaie au troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Risque de crédit :…",
+              "type": "single_choice",
+              "options": [
+                "Emprunteur ne rembourse pas",
+                "Prix baissent",
+                "Demande augmente",
+                "Monnaie disparaît"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Régulation bancaire vise à…",
+              "type": "single_choice",
+              "options": [
+                "Assurer solidité et protection des déposants",
+                "Supprimer toute monnaie",
+                "Interdire l'épargne",
+                "Fixer tous les prix"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "DAB et virements utilisent surtout…",
+              "type": "single_choice",
+              "options": [
+                "Monnaie scripturale",
+                "Troc",
+                "Or uniquement",
+                "Billets créés par le client"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Une banque doit gérer sa…",
+              "type": "single_choice",
+              "options": [
+                "Liquidité et solvabilité",
+                "Courbe de demande de pommes",
+                "Offre agricole",
+                "Inflation seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Dépôt bancaire : le client…",
+              "type": "single_choice",
+              "options": [
+                "Confie des fonds à la banque",
+                "Crée la monnaie centrale",
+                "Fixe le taux directeur",
+                "Supprime le crédit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le crédit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le crédit bancaire…",
+              "type": "multiple_choice",
+              "options": [
+                "Met des ressources à disposition avec remboursement",
+                "Crée de la monnaie scripturale à l'octroi",
+                "Est toujours gratuit",
+                "Ne concerne que l'État"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Emprunter, c'est…",
+              "type": "single_choice",
+              "options": [
+                "Recevoir des fonds à rembourser avec intérêts",
+                "Donner de l'argent sans retour",
+                "Supprimer la monnaie",
+                "Fixer le prix d'équilibre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Crédit à la consommation finance…",
+              "type": "single_choice",
+              "options": [
+                "Achats des ménages",
+                "Uniquement les exportations",
+                "La masse monétaire centrale",
+                "L'offre globale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Crédit d'investissement aide à…",
+              "type": "single_choice",
+              "options": [
+                "Financer équipements et projets productifs",
+                "Payer uniquement les impôts",
+                "Supprimer l'épargne",
+                "Interdire les prix"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Taux d'intérêt du crédit : rémunération pour…",
+              "type": "single_choice",
+              "options": [
+                "Risque et report de liquidité",
+                "Offre de travail",
+                "Demande de sel",
+                "Inflation nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Surendettement :…",
+              "type": "single_choice",
+              "options": [
+                "Dettes difficiles à rembourser",
+                "Absence de toute monnaie",
+                "Excédent d'offre",
+                "Prix d'équilibre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Garantie d'un crédit :…",
+              "type": "single_choice",
+              "options": [
+                "Bien ou caution en cas de défaut",
+                "Prix du marché",
+                "Loi de l'offre",
+                "Monnaie fiduciaire seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Refus de crédit peut venir de…",
+              "type": "single_choice",
+              "options": [
+                "Risque jugé trop élevé",
+                "Trop d'épargne obligatoire",
+                "Prix plafond",
+                "Demande nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Crédit stimule la demande quand…",
+              "type": "single_choice",
+              "options": [
+                "Les ménages ou firmes achètent plus tôt",
+                "L'offre disparaît",
+                "La monnaie est supprimée",
+                "Les prix sont nuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Rembourser un crédit…",
+              "type": "single_choice",
+              "options": [
+                "Réduit la monnaie scripturale correspondante",
+                "Double la masse monétaire",
+                "Fixe le salaire minimum",
+                "Crée un monopole"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Épargne et investissement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'épargne des ménages…",
+              "type": "multiple_choice",
+              "options": [
+                "Part du revenu non consommée",
+                "Peut être déposée en banque",
+                "Est toujours sous le matelas",
+                "N'a aucun lien avec le financement"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "Investissement des entreprises :…",
+              "type": "single_choice",
+              "options": [
+                "Acquisition de capital pour produire",
+                "Achat de biens de consommation courants",
+                "Troc",
+                "Suppression du crédit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Financement par capitaux propres :…",
+              "type": "single_choice",
+              "options": [
+                "Fonds des actionnaires",
+                "Crédit bancaire seulement",
+                "Monnaie fiduciaire",
+                "Impôts uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Financement par dette :…",
+              "type": "single_choice",
+              "options": [
+                "Emprunt à rembourser",
+                "Don sans retour",
+                "Offre de travail",
+                "Prix d'équilibre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "L'épargne placée en banque peut servir à…",
+              "type": "single_choice",
+              "options": [
+                "Accorder des crédits",
+                "Imprimer des billets chez le ménage",
+                "Fixer l'inflation directement",
+                "Supprimer la demande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Taux d'épargne élevé peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "Moins de consommation immédiate",
+                "Plus de monnaie fiduciaire obligatoire",
+                "Offre nulle",
+                "Prix plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Investissement public :…",
+              "type": "single_choice",
+              "options": [
+                "Financé en partie par l'État",
+                "Toujours privé",
+                "Sans monnaie",
+                "Uniquement troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Autofinancement : l'entreprise utilise…",
+              "type": "single_choice",
+              "options": [
+                "Ses bénéfices non distribués",
+                "Uniquement le troc",
+                "La banque centrale seule",
+                "Les prix relatifs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Sans financement, un projet…",
+              "type": "single_choice",
+              "options": [
+                "Peut ne pas voir le jour",
+                "A toujours un crédit illimité",
+                "Fixe le taux directeur",
+                "Supprime l'offre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Choix consommation / épargne dépend du…",
+              "type": "single_choice",
+              "options": [
+                "Revenu, taux d'intérêt, anticipations",
+                "Prix d'un seul marché",
+                "Couleur de la monnaie",
+                "Offre agricole seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Financer une entreprise",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour se développer, une entreprise peut…",
+              "type": "multiple_choice",
+              "options": [
+                "Emprunter à la banque",
+                "Émettre des actions",
+                "Toujours se financer sans banque ni marché",
+                "Recourir au crédit bancaire ou marchés financiers"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "Action : titre de…",
+              "type": "single_choice",
+              "options": [
+                "Propriété partielle de l'entreprise",
+                "Dette à rembourser",
+                "Monnaie fiduciaire",
+                "Impôt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Obligation :…",
+              "type": "single_choice",
+              "options": [
+                "Titre de dette",
+                "Action",
+                "Billet de banque",
+                "Offre de travail"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Le marché financier…",
+              "type": "single_choice",
+              "options": [
+                "Échange titres et finance l'économie",
+                "Remplace tous les magasins",
+                "Fixe le prix des légumes",
+                "Supprime la monnaie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Levée de fonds en Bourse :…",
+              "type": "single_choice",
+              "options": [
+                "Vente d'actions au public",
+                "Crédit sans remboursement",
+                "Troc international",
+                "Prix plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Banque d'affaires conseille parfois…",
+              "type": "single_choice",
+              "options": [
+                "Fusions et financements",
+                "Cuisine domestique",
+                "Loi de l'offre seule",
+                "Demande de sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "PME accède souvent au crédit…",
+              "type": "single_choice",
+              "options": [
+                "Bancaire",
+                "Uniquement par impression de billets",
+                "Sans contrat",
+                "Par troc obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Dividende :…",
+              "type": "single_choice",
+              "options": [
+                "Part du profit versée à l'actionnaire",
+                "Taux directeur",
+                "Inflation",
+                "Prix nominal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Coût du financement inclut…",
+              "type": "single_choice",
+              "options": [
+                "Intérêts et parfois dilution du capital",
+                "Uniquement l'offre",
+                "Demande agricole",
+                "Monnaie or"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Investissement productif vise à…",
+              "type": "single_choice",
+              "options": [
+                "Augmenter capacité et compétitivité",
+                "Supprimer le crédit",
+                "Fixer tous les salaires",
+                "Interdire l'épargne"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Taux d'intérêt",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le taux d'intérêt…",
+              "type": "multiple_choice",
+              "options": [
+                "Rémunère le prêteur",
+                "Rend l'emprunt plus coûteux quand il monte",
+                "Est le prix du légume",
+                "Influence épargne et investissement"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "Taux directeur : fixé par…",
+              "type": "single_choice",
+              "options": [
+                "La banque centrale",
+                "Chaque ménage",
+                "Le supermarché",
+                "L'offre de pommes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Hausse du taux directeur tend à…",
+              "type": "single_choice",
+              "options": [
+                "Refroidir crédit et demande",
+                "Multiplier crédit sans limite",
+                "Supprimer monnaie scripturale",
+                "Baisser toujours l'inflation instantanément"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Baisse des taux peut…",
+              "type": "single_choice",
+              "options": [
+                "Encourager emprunt et investissement",
+                "Supprimer l'épargne",
+                "Fixer les prix",
+                "Annuler l'offre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Taux réel ≈ taux nominal − …",
+              "type": "single_choice",
+              "options": [
+                "Inflation anticipée",
+                "Offre",
+                "Demande",
+                "Prix plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Préférence pour la liquidité : on demande…",
+              "type": "single_choice",
+              "options": [
+                "Compensation pour immobiliser l'argent",
+                "Gratuité du crédit",
+                "Troc",
+                "Monnaie or"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Spread : banque prête plus cher qu'elle ne…",
+              "type": "single_choice",
+              "options": [
+                "Rémunère les dépôts",
+                "Fixe le PIB",
+                "Produit des biens",
+                "Demande des légumes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Taux élevé sur crédit consommation…",
+              "type": "single_choice",
+              "options": [
+                "Décourage certains emprunts",
+                "Supprime l'inflation",
+                "Crée l'offre",
+                "Fixe le salaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Politique monétaire expansive : taux…",
+              "type": "single_choice",
+              "options": [
+                "Bas",
+                "Très haut toujours",
+                "Nuls pour tous",
+                "Fixés par les prix"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Lien taux et prix des actifs : taux bas…",
+              "type": "single_choice",
+              "options": [
+                "Peut valoriser certains actifs",
+                "Supprime la monnaie",
+                "Annule le crédit",
+                "Fixe l'offre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Banque centrale et politique monétaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La banque centrale…",
+              "type": "multiple_choice",
+              "options": [
+                "Vise la stabilité des prix",
+                "Contrôle une partie de la création monétaire",
+                "Vend des légumes",
+                "Fixe parfois le taux directeur"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "Indépendance de la BCE signifie…",
+              "type": "single_choice",
+              "options": [
+                "Décisions monétaires sans ordre politique direct",
+                "Absence de règles",
+                "Crédit gratuit illimité",
+                "Suppression de l'euro"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Inflation cible souvent proche de…",
+              "type": "single_choice",
+              "options": [
+                "2 % par an en zone euro",
+                "50 % par mois",
+                "0 % strict toujours",
+                "100 %"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Politique monétaire restrictive :…",
+              "type": "single_choice",
+              "options": [
+                "Taux plus élevés pour limiter inflation",
+                "Crédit illimité",
+                "Prix plafond",
+                "Troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Quantitative easing :…",
+              "type": "single_choice",
+              "options": [
+                "Achats d'actifs par banque centrale",
+                "Suppression de toute monnaie",
+                "Fixation des salaires",
+                "Offre agricole"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Prêteur en dernier ressort : la banque centrale…",
+              "type": "single_choice",
+              "options": [
+                "Aide banques en crise de liquidité",
+                "Prête à tous sans limite",
+                "Fixe prix des biens",
+                "Supprime crédit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Stabilité des prix : pouvoir d'achat de la monnaie…",
+              "type": "single_choice",
+              "options": [
+                "Relativement préservé",
+                "Toujours nul",
+                "Doublé chaque mois",
+                "Remplacé par troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Transmission de la politique monétaire passe par…",
+              "type": "single_choice",
+              "options": [
+                "Taux interbancaires et crédit",
+                "Prix des tomates seulement",
+                "Offre de travail",
+                "Demande de sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Hyperinflation :…",
+              "type": "single_choice",
+              "options": [
+                "Inflation très forte qui détruit confiance",
+                "Déflation",
+                "Prix stables",
+                "Absence de monnaie scripturale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Objectif double parfois cité : prix stables et…",
+              "type": "single_choice",
+              "options": [
+                "Emploi (selon pays)",
+                "Suppression du crédit",
+                "Monopole universel",
+                "Prix plafond"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Monnaie, prix et économie réelle",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Plus de monnaie en circulation, toutes choses égales…",
+              "type": "multiple_choice",
+              "options": [
+                "Peut faire monter les prix si production stagne",
+                "Change toujours instantanément la production",
+                "Ne touche jamais la demande",
+                "Relie monnaie et niveau des prix à moyen terme"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "Demande de monnaie :…",
+              "type": "single_choice",
+              "options": [
+                "Besoin de détenir de la monnaie pour transactions",
+                "Offre de travail",
+                "Prix plafond",
+                "Taux de marge"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Velocity de la monnaie :…",
+              "type": "single_choice",
+              "options": [
+                "Vitesse de circulation",
+                "Prix du crédit",
+                "Offre de pommes",
+                "Elasticité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Crédit en expansion peut soutenir…",
+              "type": "single_choice",
+              "options": [
+                "La demande effective",
+                "L'offre nulle",
+                "La suppression des prix",
+                "Le troc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "Pénurie de crédit en crise :…",
+              "type": "single_choice",
+              "options": [
+                "Entreprises peinent à financer projets",
+                "Inflation nulle garantie",
+                "Offre infinie",
+                "Monnaie or"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Lien financement et croissance : investissement…",
+              "type": "single_choice",
+              "options": [
+                "Peut augmenter capacités futures",
+                "Supprime toujours emploi",
+                "Fixe le taux directeur",
+                "Interdit épargne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "Monnaie et confiance : crise bancaire…",
+              "type": "single_choice",
+              "options": [
+                "Peut réduire crédit et activité",
+                "Augmente toujours l'offre",
+                "Fixe les prix",
+                "Supprime demande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Prix des actifs financiers…",
+              "type": "single_choice",
+              "options": [
+                "Peuvent varier avec taux et anticipations",
+                "Sont identiques aux prix des légumes",
+                "Fixés par troc",
+                "Sans lien avec banques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Économie réelle :…",
+              "type": "single_choice",
+              "options": [
+                "Production de biens et services",
+                "Uniquement bourse",
+                "Seulement monnaie fiduciaire",
+                "Prix plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Financement durable d'une entreprise suppose…",
+              "type": "single_choice",
+              "options": [
+                "Projets rentables ou viables",
+                "Crédit sans remboursement",
+                "Absence de banque",
+                "Prix nuls"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse monnaie et financement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Monnaie et financement permettent…",
+              "type": "multiple_choice",
+              "options": [
+                "Faciliter échanges",
+                "Mobiliser l'épargne pour investir",
+                "Supprimer offre et demande",
+                "Relier secteur financier et économie réelle"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "question": "Sans banques, le crédit serait…",
+              "type": "single_choice",
+              "options": [
+                "Plus difficile à organiser à grande échelle",
+                "Illimité pour tous",
+                "Identique au troc",
+                "Sans intérêt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "Prix et monnaie : inflation érode…",
+              "type": "single_choice",
+              "options": [
+                "Pouvoir d'achat nominal",
+                "Offre de travail",
+                "Nombre de banques",
+                "Loi de l'offre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "Réguler le système financier vise à…",
+              "type": "single_choice",
+              "options": [
+                "Limiter crises et protéger agents",
+                "Supprimer monnaie",
+                "Fixer tous les prix",
+                "Interdire épargne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "En 2nde, comprendre le financement aide à…",
+              "type": "single_choice",
+              "options": [
+                "Lire l'actualité économique",
+                "Ignorer le crédit",
+                "Supprimer la demande",
+                "Nier l'offre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "Épargne + crédit + investissement forment…",
+              "type": "single_choice",
+              "options": [
+                "Une chaîne de financement",
+                "Un marché de pommes seulement",
+                "Une externalité négative",
+                "Un prix plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "La BCE et les banques commerciales…",
+              "type": "single_choice",
+              "options": [
+                "Ont des rôles différents",
+                "Sont identiques",
+                "N'émettent rien",
+                "Fixent les salaires"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "Taux d'intérêt relie…",
+              "type": "single_choice",
+              "options": [
+                "Temps, risque et monnaie",
+                "Offre et demande de tomates seule",
+                "Prix plafond",
+                "Elasticité seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "Création monétaire par crédit montre que…",
+              "type": "single_choice",
+              "options": [
+                "Monnaie scripturale est liée au système bancaire",
+                "Tous les prix sont nuls",
+                "L'offre n'existe pas",
+                "Le troc domine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "Thème « Comment se forment les prix ? » : la monnaie…",
+              "type": "single_choice",
+              "options": [
+                "Influence demande effective et niveau général des prix",
+                "Supprime les marchés",
+                "Remplace l'offre",
+                "Fixe chaque prix individuellement"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

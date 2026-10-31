@@ -1,0 +1,2753 @@
+{
+  "id": "terminale-ses-01",
+  "year": "terminale",
+  "subject": "ses",
+  "title": "Sources de la croissance",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Productivité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Notions fondamentales",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "La productivité mesure le rapport entre :",
+              "options": [
+                "Quantité produite et facteurs utilisés",
+                "Chiffre d'affaires et effectifs uniquement",
+                "Exportations et importations",
+                "Prix et quantités vendues"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La productivité globale des facteurs (PGF) rapporte la production aux inputs ; certaines mesures partielles (CA/effectif) en sont des approximations sectorielles."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "La productivité globale des facteurs (PGF) s'écrit :",
+              "options": [
+                "Production / (K + L)",
+                "Valeur ajoutée / (K + L)",
+                "Production / L seulement",
+                "K / L"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En SES, la PGF rapporte la valeur ajoutée à l'ensemble des facteurs capital (K) et travail (L)."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Une hausse de productivité signifie, à inputs constants :",
+              "options": [
+                "Plus de production",
+                "Moins de coûts unitaires",
+                "Les deux",
+                "Ni l'un ni l'autre"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Même volume produit avec moins de facteurs ou plus de production avec les mêmes facteurs améliore la productivité et réduit les coûts unitaires."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "La productivité apparente du travail (PAT) est :",
+              "options": ["VA / L", "L / VA", "K / L", "VA / K"],
+              "correctAnswers": [0],
+              "explanation": "PAT = valeur ajoutée par unité de travail (souvent par heure ou par salarié)."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Confondre PAT et PGF conduit à :",
+              "options": [
+                "Sous-estimer le rôle du capital",
+                "Surestimer le progrès technique pur",
+                "Attribuer au travail seul des gains liés au capital",
+                "Toutes ces réponses"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La PAT augmente aussi quand le capital par travailleur augmente (capitalisation), pas seulement grâce au progrès technique."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Le solow residual désigne :",
+              "options": [
+                "La part des salaires",
+                "La croissance non expliquée par K et L",
+                "Le taux d'épargne",
+                "La dépréciation du capital"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans le modèle de Solow, le résidu mesure la contribution du progrès technique (TFP) à la croissance."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "L'effet de capitalisation sur la PAT :",
+              "options": [
+                "La diminue mécaniquement",
+                "La augmente si K/L augmente",
+                "Est nul",
+                "Remplace le progrès technique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus de capital par travailleur accroît la production par travailleur, d'où une PAT plus élevée."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Une mesure en volume (quantités physiques) évite :",
+              "options": [
+                "Les biais de prix",
+                "Le calcul de VA",
+                "L'utilisation de L",
+                "Le rôle de K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer en valeur peut confondre inflation et gains de productivité réels."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "À l'échelle macro, la productivité soutient :",
+              "options": [
+                "Uniquement les profits",
+                "Le pouvoir d'achat si les gains sont diffusés",
+                "Jamais les salaires",
+                "Seulement l'emploi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des gains de productivité peuvent financer hausses de salaires et baisse des prix selon la répartition des gains."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "La croissance extensive repose sur :",
+              "options": [
+                "Plus de facteurs à productivité constante",
+                "Progrès technique seul",
+                "Baisse de K/L",
+                "Réduction du travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance extensive = augmentation des inputs sans gain de productivité par unité de facteur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "PGF et décomposition",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Les facteurs de production classiques incluent :",
+              "options": [
+                "Le travail (L)",
+                "Le capital (K)",
+                "La monnaie",
+                "Les préférences des ménages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Travail (L) et capital (K) sont les inputs centraux en croissance ; la monnaie n'est pas un facteur réel."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "La décomposition comptable de la croissance distingue :",
+              "options": [
+                "Contribution K, L et TFP",
+                "Prix et quantités seulement",
+                "Export et import",
+                "Secteur public et privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On isole l'apport de l'accumulation et le résidu (progrès technique / TFP)."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "TFP signifie :",
+              "options": [
+                "Total factor productivity",
+                "Taxe sur les facteurs",
+                "Taux fixe de profit",
+                "Travail à temps partiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TFP = productivité totale des facteurs, synonyme du progrès technique mesuré en résidu."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Si K et L croissent mais TFP stagne :",
+              "options": [
+                "Croissance extensive dominante",
+                "Croissance intensive maximale",
+                "Chômage zéro garanti",
+                "Productivité illimitée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans gain de TFP, la croissance repose surtout sur plus de facteurs."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "La valeur ajoutée exclut :",
+              "options": [
+                "Les consommations intermédiaires",
+                "Les salaires",
+                "Les amortissements comptables",
+                "Les profits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "VA = production − consommations intermédiaires ; elle mesure la richesse créée par l'agent."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Productivité partielle du capital :",
+              "options": ["VA / K", "K / VA", "L / K", "VA / L"],
+              "correctAnswers": [0],
+              "explanation": "On rapporte la production ou VA au stock ou flux de capital utilisé."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Un biais de mesure du capital peut :",
+              "options": [
+                "Faussar le résidu de Solow",
+                "Annuler la croissance",
+                "Supprimer L",
+                "Fixer le taux d'intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mal mesurer K (qualité, obsolescence) attribue à tort des variations à la TFP."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "La croissance intensive repose surtout sur :",
+              "options": [
+                "TFP et efficacité",
+                "Plus de main-d'œuvre seule",
+                "Expansion territoriale",
+                "Inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensive = plus de production par unité de facteur, liée au progrès technique et à l'organisation."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "En longue période, les pays développés tirent la croissance surtout de :",
+              "options": [
+                "TFP",
+                "Accroissement démographique seul",
+                "Mines",
+                "Importations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empiriquement, le progrès technique pèse lourd dans la croissance des pays avancés."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Une PGF en hausse avec K/L stable suggère :",
+              "options": [
+                "Progrès technique ou organisationnel",
+                "Seulement plus d'emplois",
+                "Baisse de VA",
+                "Choc pétrolier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans capitalisation, la hausse de PGF pointe vers gains d'efficacité globale."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Productivité et emploi",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Des gains de productivité peuvent entraîner :",
+              "options": [
+                "Destructions d'emplois à court terme",
+                "Créations si la demande augmente",
+                "Réduction des coûts relatifs",
+                "Stagnation mécanique de l'emploi toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'effet net sur l'emploi dépend de l'élasticité-prix et de la dynamique de la demande (débat productivité-emploi)."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "L'effet de compensation keynésien suppose :",
+              "options": [
+                "Baisse des prix → hausse de demande",
+                "Hausse mécanique du chômage",
+                "Fermeture des marchés",
+                "Baisse de K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des coûts unitaires plus bas peuvent stimuler la demande et l'emploi si les prix baissent."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Le débat sur les « thirty glorious » met en avant :",
+              "options": [
+                "Fortes productivités et emploi élevé",
+                "Absence de progrès technique",
+                "Chômage structurel massif",
+                "Désindustrialisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trente Glorieuses : croissance forte, modernisation et emploi soutenu en France."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Une productivité sectorielle très élevée avec demande faible peut :",
+              "options": [
+                "Réduire l'emploi du secteur",
+                "Garantir plus d'embauches",
+                "Augmenter K/L mécaniquement",
+                "Supprimer la VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans débouchés, la productivité libère du travail sans réemploi immédiat."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Les services ont souvent une productivité mesurée :",
+              "options": [
+                "Plus difficile qu'en industrie",
+                "Identique à l'agriculture",
+                "Nulle par définition",
+                "Supérieure à l'industrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité, personnalisation et intangibilité compliquent la mesure en services."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Baisser la durée du travail sans baisse de salaire suppose :",
+              "options": [
+                "Gains de productivité suffisants",
+                "Baisse de VA",
+                "Hausse de K nulle",
+                "Inflation nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partager les gains de productivité peut financer réduction du temps de travail."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Le smic indexé sur la productivité vise :",
+              "options": [
+                "Lier salaire minimum et richesse créée",
+                "Supprimer les profits",
+                "Augmenter le chômage mécaniquement",
+                "Réduire K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indexer sur la productivité promeut le partage des gains (débat normatif et empirique)."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "La polarisation de l'emploi concerne :",
+              "options": [
+                "Tâches routinières automatisables",
+                "Uniquement l'agriculture",
+                "Seulement le capital",
+                "L'absence de TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Automatisation et numérique affectent surtout les tâches routinières intermédiaires."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Productivité et compétitivité-prix :",
+              "options": [
+                "Coûts unitaires plus bas améliorent la compétitivité",
+                "Sont sans lien",
+                "Dépendent seulement du change",
+                "Ignorent la VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À qualité constante, moindres coûts unitaires renforcent la compétitivité-prix."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Une politique de formation peut augmenter :",
+              "options": [
+                "Productivité du travail",
+                "Stock de capital uniquement",
+                "Monnaie",
+                "Dette sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capital humain accroît l'efficacité du travail et la TFP à terme."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Mesures et limites",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Les limites de la mesure de productivité incluent :",
+              "options": [
+                "Qualité non captée",
+                "Externalités",
+                "Innovations de processus mal comptées",
+                "Mesure parfaite en services"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Statistiques, qualité, externalités et services rendent la mesure imparfaite."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Le paradoxe de Solow (1987) concernait :",
+              "options": [
+                "Ordinateurs visibles partout sauf dans les stats",
+                "Absence d'ordinateurs",
+                "Chômage zéro",
+                "Hyperinflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solow notait l'écart entre diffusion du numérique et gains mesurés de productivité."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Les biens numériques posent problème car :",
+              "options": [
+                "Prix tendent vers marginal cost bas",
+                "Ils n'utilisent pas L",
+                "Ils suppriment K",
+                "Ils ne créent pas de VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix bas et gratuité relative sous-estiment la contribution à la production."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Comparer des pays exige :",
+              "options": [
+                "Parité de pouvoir d'achat ou volumes",
+                "Nominal seulement",
+                "Ignorer L",
+                "Un seul secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PPA et harmonisation statistique évitent les biais de change et de niveau de prix."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Heures travaillées plutôt qu'effectifs :",
+              "options": [
+                "Affinent la PAT",
+                "Annulent la PGF",
+                "Remplacent K",
+                "Mesurent l'inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PAT par heure corrige les variations de durée et de temps partiel."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Externalités positives de R&D :",
+              "options": [
+                "Sous-estiment le progrès privé si non internalisées",
+                "Sont toujours comptées",
+                "Réduisent TFP mesurée",
+                "Suppriment K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spillovers accroissent la TFP sociale au-delà du compte privé."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Productivité agricole en France depuis 1950 :",
+              "options": [
+                "Très forte hausse avec baisse relative de l'emploi",
+                "Stagnation",
+                "Baisse de VA",
+                "Disparition de K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanisation et progrès biologiques ont libéré de la main-d'œuvre agricole."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Un choc énergétique défavorable :",
+              "options": [
+                "Peut baisser TFP mesurée à court terme",
+                "Augmente toujours K/L",
+                "Garantit plus d'emploi",
+                "Augmente VA mécaniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choc pétrolier 1973-74 : baisse d'efficacité et ralentissement de productivité."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Les inégalités de productivité entre firmes :",
+              "options": [
+                "Sont importantes dans une même branche",
+                "Sont nulles",
+                "Concernent seulement l'État",
+                "Ignorent le management"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispersion élevée : leaders vs retardataires (reallocation, concurrence)."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Benchmarking inter-entreprises vise :",
+              "options": [
+                "Diffuser les meilleures pratiques",
+                "Fixer le taux de change",
+                "Supprimer L",
+                "Augmenter les CI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer les performances aide à imiter les leaders productifs."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Distribution des gains",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Les gains de productivité peuvent se répartir entre :",
+              "options": [
+                "Salaires",
+                "Profits",
+                "Prix plus bas pour les consommateurs",
+                "Uniquement l'État"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Répartition salariale, marge et prix dépendent des négociations et de la concurrence."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Part des salaires dans la VA en France tend à :",
+              "options": [
+                "Baisser ou stagner selon périodes",
+                "Toujours augmenter",
+                "Être fixe à 100 %",
+                "Ignorer la productivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat empirique : décorrélation partielle productivité-salaires depuis les années 1980."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Indexation des salaires sur productivité en entreprise :",
+              "options": [
+                "Peut aligner rémunération et performance",
+                "Supprime les profits",
+                "Est obligatoire partout",
+                "Empêche l'investissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords de participation aux gains existent mais ne sont pas universels."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Markup élevé avec productivité stable peut :",
+              "options": [
+                "Accroître les profits",
+                "Baisser les prix",
+                "Augmenter L mécaniquement",
+                "Réduire K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pouvoir de marché permet de capturer les gains en marge plutôt qu'en prix."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Concurrence forte pousse à :",
+              "options": [
+                "Transmettre gains via prix",
+                "Augmenter toujours les markups",
+                "Réduire la VA",
+                "Ignorer TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marchés contestables : gains de coût se traduisent souvent en prix plus bas."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Productivité publique (administrations) :",
+              "options": [
+                "Difficile à mesurer et à améliorer",
+                "Toujours supérieure au privé",
+                "Sans objet",
+                "Identique au PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Services non marchands : indicateurs de performance et qualité du service public."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Investissement si profits anticipés liés à productivité :",
+              "options": [
+                "Peut augmenter K futur",
+                "Diminue TFP",
+                "Supprime l'emploi toujours",
+                "Réduit l'épargne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rentabilité attendue de l'innovation et de l'équipement motive l'investissement."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Négociations collectives et productivité :",
+              "options": [
+                "Peuvent fixer des règles de partage",
+                "Sont interdites",
+                "Fixent K",
+                "Déterminent le change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branches et entreprises négocient parfois sur les gains de productivité."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Inflation élevée fausse :",
+              "options": [
+                "Lecture des salaires réels vs productivité",
+                "Stock de K seulement",
+                "TFP toujours",
+                "Emploi uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinguer nominal et réel est crucial pour le partage des gains."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Productivité et bien-être :",
+              "options": [
+                "Corrélés mais pas équivalents",
+                "Identiques",
+                "Sans lien",
+                "Mesurés par le seul PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PIB et productivité omettent loisirs, inégalités, externalités et qualité de vie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Secteurs et convergence",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Des écarts de productivité entre pays peuvent s'expliquer par :",
+              "options": [
+                "Niveau de capital",
+                "Institutions",
+                "Éducation",
+                "Identité stricte des préférences"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "K, capital humain, institutions et innovation expliquent les écarts internationaux."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Rattrapage (catch-up) :",
+              "options": [
+                "Pays moins avancés croissent plus vite",
+                "Tous convergent instantanément",
+                "Seuls les leaders croissent",
+                "Ignore TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèse de convergence : imitation et transfert de technologie accélèrent les retardataires."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Club convergence observé surtout entre :",
+              "options": [
+                "Pays avec institutions similaires",
+                "Tous pays sans exception",
+                "Zones sans commerce",
+                "Économies fermées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convergence conditionnelle : institutions, ouverture, investissement en capital humain."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Productivité industrielle vs services en France :",
+              "options": [
+                "Industrie souvent plus élevée par heure",
+                "Services toujours leaders",
+                "Égalité parfaite",
+                "Agriculture domine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historiquement, productivité horaire plus forte dans l'industrie manufacturière."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Désindustrialisation et productivité :",
+              "options": [
+                "Emploi industriel baisse, production peut rester élevée",
+                "Production disparaît toujours",
+                "TFP nulle",
+                "K/L baisse toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gains de productivité permettent plus de production avec moins de travailleurs."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "PME vs grandes entreprises :",
+              "options": [
+                "Écart de productivité souvent notable",
+                "Productivité identique",
+                "PME toujours plus productives",
+                "Grands groupes sans TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économies d'échelle, R&D et réallocation vers les plus productifs."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Fonds européens et productivité régionale :",
+              "options": [
+                "Peuvent financer équipements et compétences",
+                "Garantissent convergence immédiate",
+                "Remplacent L",
+                "Suppriment K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques de cohésion visent à réduire écarts de capital et d'infrastructure."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Openness to trade et productivité :",
+              "options": [
+                "Concurrence et importations de biens d'équipement favorisent gains",
+                "Réduit toujours TFP",
+                "Ferme les frontières",
+                "Augmente seulement CI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commerce expose à la concurrence et diffuse technologies."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Piège à revenu intermédiaire :",
+              "options": [
+                "Ralentissement après phase de rattrapage",
+                "Convergence automatique",
+                "TFP infinie",
+                "Chômage nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficulté à passer à l'innovation frontier après croissance par imitation."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Productivité et développement durable :",
+              "options": [
+                "Doit intégrer efficience énergétique et externalités",
+                "Ignore l'environnement",
+                "Se mesure en CO2 seul",
+                "Remplace la croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Productivité « verte » et comptabilité élargie gagnent en importance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Capital humain",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Le capital humain comprend :",
+              "options": [
+                "Compétences",
+                "Savoir-faire",
+                "Santé",
+                "Stock de machines uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schultz et Becker : éducation, formation, santé accroissent la productivité du travail."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Plus d'éducation tend à :",
+              "options": [
+                "Accroître productivité individuelle et collective",
+                "Baisser TFP",
+                "Supprimer K",
+                "Réduire VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capital humain améliore l'absorption du progrès technique."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Complémentarité capital physique / humain :",
+              "options": [
+                "K moderne exige travailleurs qualifiés",
+                "Sont substituts parfaits",
+                "Sans interaction",
+                "Ignore L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Skill-biased technical change renforce le lien qualification-progrès."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Formation continue et productivité :",
+              "options": [
+                "Maintient l'adaptation aux nouvelles technologies",
+                "Est inutile",
+                "Remplace l'innovation",
+                "Diminue PGF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage tout au long de la vie face aux mutations technologiques."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Inégalités d'accès à l'éducation :",
+              "options": [
+                "Perpetuent écarts de productivité",
+                "Les effacent",
+                "Concernent seulement K",
+                "Sans effet macro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hétérogénéité des compétences alimente inégalités de revenus."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Taux de diplômation du supérieur et PIB/habitant :",
+              "options": [
+                "Corrélés positivement",
+                "Inversement liés",
+                "Indépendants",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empiriquement, éducation et richesse nationale vont souvent de pair."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Mincer earnings equation relie :",
+              "options": [
+                "Salaires à scolarité et expérience",
+                "PIB à inflation",
+                "K à L seulement",
+                "Export à import"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie du travail : rendement de l'éducation sur les salaires."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Santé des travailleurs influence :",
+              "options": [
+                "Productivité et absentéisme",
+                "Seulement profits",
+                "Taux de change",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capital humain inclut l'état de santé comme input de production."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Pénurie de compétences numériques :",
+              "options": [
+                "Freine les gains de TFP",
+                "Augmente toujours l'emploi",
+                "Supprime K",
+                "Résout le paradoxe de Solow seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adoption technologique limitée si qualifications insuffisantes."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Politique publique d'éducation vise aussi :",
+              "options": [
+                "Accroître productivité future",
+                "Réduire uniquement la dette",
+                "Fermer le commerce",
+                "Baisser K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investissement public dans l'humain soutient croissance intensive."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Organisation du travail",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "L'organisation peut accroître la productivité via :",
+              "options": [
+                "Juste-à-temps",
+                "Lean management",
+                "Travail d'équipe",
+                "Refus de toute innovation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Organisation productive, flux tendus et coopération améliorent l'efficacité."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Toyotisme associe souvent :",
+              "options": [
+                "Flexibilité et amélioration continue",
+                "Production de masse rigide",
+                "Baisse de qualité",
+                "Suppression de K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système lean : kaizen, polyvalence, réduction des gaspillages."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Taylorisme :",
+              "options": [
+                "Division des tâches et standardisation",
+                "Autonomie totale",
+                "Absence de cadence",
+                "Travail artisanal uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation scientifique du travail : spécialisation et chronométrage."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Qualité totale et productivité :",
+              "options": [
+                "Moins de rebuts améliore l'efficacité",
+                "Augmente les coûts sans gain",
+                "Ignore L",
+                "Réduit VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité et productivité ne sont pas opposées (Deming, ISO)."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Télétravail peut :",
+              "options": [
+                "Modifier productivité selon métiers et organisation",
+                "Toujours la baisser",
+                "Remplacer TFP",
+                "Supprimer le capital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effets mixtes : gains de temps vs coordination et capital social."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Participation des salariés :",
+              "options": [
+                "Peut favoriser suggestions d'amélioration",
+                "Empêche toute productivité",
+                "Fixe le taux d'intérêt",
+                "Remplace l'investissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Implication et compétences locales source de gains organisationnels."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Intensité du travail :",
+              "options": [
+                "Augmente production à court terme avec limites",
+                "Sans effet",
+                "Remplace K",
+                "Mesure TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadences élevées peuvent épuiser et nuire à la qualité à long terme."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Diversité des équipes bien gérée :",
+              "options": [
+                "Peut stimuler innovation et résolution de problèmes",
+                "Baisse toujours PGF",
+                "Ignore l'organisation",
+                "Supprime la formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité des compétences et perspectives."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Externalisation (outsourcing) :",
+              "options": [
+                "Peut spécialiser et réduire coûts",
+                "Augmente toujours VA interne",
+                "Sans effet productivité",
+                "Interdit le commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Firmes focalisent sur cœur de métier ; effets sur chaîne de valeur."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Mesurer performance individuelle par quotas :",
+              "options": [
+                "Risque d'effets pervers sur qualité",
+                "Garantit TFP maximale",
+                "Remplace PGF",
+                "Supprime concurrence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateurs étroits peuvent dégrader coopération et qualité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Politiques publiques",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "L'État peut soutenir la productivité par :",
+              "options": [
+                "R&D publique",
+                "Infrastructure",
+                "Éducation",
+                "Interdiction du progrès"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Investissements collectifs lèvent des externalités et complètent le privé."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Crédit d'impôt recherche (CIR) vise :",
+              "options": [
+                "Inciter innovation privée",
+                "Baisser L",
+                "Augmenter CI",
+                "Taxer K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien fiscal à la R&D pour internaliser spillovers."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Concurrence et productivité :",
+              "options": [
+                "Alloue ressources vers firmes efficaces",
+                "Protège toujours les moins productifs",
+                "Sans effet",
+                "Supprime TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marchés contestables et sortie des moins performants."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Réglementation excessive mal calibrée :",
+              "options": [
+                "Peut freiner productivité",
+                "L'augmente toujours",
+                "Remplace l'innovation",
+                "Supprime VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coûts de conformité vs bénéfices (environnement, santé)."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Investissement public en transport :",
+              "options": [
+                "Réduit coûts logistiques",
+                "Augmente toujours chômage",
+                "Sans effet",
+                "Remplace L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infrastructure améliore efficacité économique globale."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "France Relance et numérisation :",
+              "options": [
+                "Visent modernisation et productivité",
+                "Ignorent TFP",
+                "Fermeture des PME",
+                "Baisse de K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans publics ciblent transition numérique et compétitivité."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Taux de marge élevé dans secteurs protégés :",
+              "options": [
+                "Peut réduire pression à innover",
+                "Force toujours productivité max",
+                "Sans lien",
+                "Supprime profits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrières à l'entrée affaiblissent discipline concurrentielle."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Property rights et innovation :",
+              "options": [
+                "Sécurité juridique encourage investissement",
+                "Bloquent toujours TFP",
+                "Remplacent R&D",
+                "Ignorent brevets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutions de la propriété intellectuelle et contrats."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Productivité des administrations :",
+              "options": [
+                "Objet de réformes et simplification",
+                "Impossible à considérer",
+                "Identique au privé toujours",
+                "Mesurée par le seul effectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernisation de l'action publique et services numériques."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Europe et marché unique :",
+              "options": [
+                "Élargit échelle et concurrence",
+                "Réduit productivité mécaniquement",
+                "Ferme les frontières",
+                "Supprime K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégration favorise économies d'échelle et diffusion technologique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse productivité",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Sources de hausse de productivité :",
+              "options": [
+                "Progrès technique",
+                "Capitalisation",
+                "Organisation",
+                "Réduction mécanique de L seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "TFP, plus de K par travailleur et meilleure organisation composent les gains."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Croissance du PIB potentiel dépend surtout de :",
+              "options": [
+                "Offre : K, L, TFP",
+                "Seulement demande",
+                "Export net",
+                "Dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Long terme : capacité productive de l'économie."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Productivité et compétitivité hors prix :",
+              "options": [
+                "Qualité, design, délais comptent aussi",
+                "Sans importance",
+                "Remplacent VA",
+                "Ignorent TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétitivité structurelle au-delà des coûts unitaires."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Ralentissement productivité post-2008 en zone euro :",
+              "options": [
+                "Débat sur finance, incertitude, innovation",
+                "Preuve d'absence de TFP",
+                "Fin du capital",
+                "Chômage nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples explications : crise financière, faible investissement, mesure."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "IA générative et productivité future :",
+              "options": [
+                "Enjeu d'adoption et de compétences",
+                "Garantit chômage total",
+                "Sans effet",
+                "Remplace toute PGF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incertitude empirique ; complémentarités capital humain-machine."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Productivité agrégée nationale :",
+              "options": [
+                "Moyenne pondérée sectorielle",
+                "Somme des salaires",
+                "Stock de K seul",
+                "Export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure sectorielle et reallocations influencent l'agrégat."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Loi de Okun relie approximativement :",
+              "options": [
+                "Écart de croissance au chômage",
+                "K et L",
+                "Inflation et chômage",
+                "Export et VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-croissance vs potentiel associée à hausse du chômage."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Potentiel de croissance :",
+              "options": [
+                "Vitesse max soutenable sans inflation durable",
+                "Croissance réelle toujours",
+                "Export net",
+                "Dette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépend de productivité, emploi et capital disponibles."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Stratégie industrielle et productivité :",
+              "options": [
+                "Cible filières et équipements critiques",
+                "Ignore TFP",
+                "Interdit innovation",
+                "Réduit K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques sectorielles pour sécuriser compétences et technologies."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "En terminale SES, productivité est au cœur de :",
+              "options": [
+                "Sources de la croissance",
+                "Seulement monnaie",
+                "Uniquement commerce",
+                "Théorie des jeux seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chapitre croissance : productivité et progrès technique moteurs de long terme."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Progrès technique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Définitions",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Le progrès technique désigne :",
+              "options": [
+                "Innovation de produits et procédés",
+                "Amélioration des techniques de production",
+                "Augmentation mécanique de L",
+                "Inflation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PT couvre nouveaux biens et méthodes plus efficaces, distinct de la croissance extensive."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Innovation de produit :",
+              "options": [
+                "Nouveau bien ou service",
+                "Nouvelle organisation seule",
+                "Plus de K identique",
+                "Baisse de VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schumpeter : produit nouveau ou qualité supérieure."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Innovation de procédé :",
+              "options": [
+                "Méthode de production plus efficace",
+                "Nouveau logo",
+                "Hausse des prix",
+                "Export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit coûts ou améliore qualité par le processus."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Progrès technique neutral en théorie signifie :",
+              "options": [
+                "Même elasticité K et L",
+                "Supprime L",
+                "Supprime K",
+                "Sans effet sur production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutralité : augmentation proportionnelle de la marginalité des facteurs."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Progrès technique biasé vers le travail qualifié :",
+              "options": [
+                "Skill-biased technical change",
+                "Progrès agricole seul",
+                "Régression",
+                "Stagnation TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité accrue entre technologie et compétences."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Schumpeter et « création destructive » :",
+              "options": [
+                "Nouvelles technologies remplacent anciennes",
+                "Stabilité permanente",
+                "Pas d'entrepreneurs",
+                "Monopole éternel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Innovation bouleverse structures et emplois."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "R&D signifie :",
+              "options": [
+                "Recherche et développement",
+                "Revenu des dividendes",
+                "Réduction de dette",
+                "Régulation directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activités visant à créer connaissances et innovations commercialisables."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Brevet :",
+              "options": [
+                "Protection temporaire de l'invention",
+                "Interdit toute diffusion",
+                "Remplace production",
+                "Supprime concurrence à jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrepartie de la divulgation : exclusivité limitée."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Progrès technique endogène :",
+              "options": [
+                "Innovation expliquée par choix économiques",
+                "Tombe du ciel uniquement",
+                "Sans R&D",
+                "Fixe exogènement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles endogènes : investissement en R&D et capital humain alimentent croissance."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Spillovers de R&D :",
+              "options": [
+                "Externalités positives entre firmes",
+                "Secrets parfaits",
+                "Sans effet TFP",
+                "Taxes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaissances diffusent partiellement au-delà de l'innovateur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Schumpeter et entrepreneurs",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "L'entrepreneur schumpétérien :",
+              "options": [
+                "Introduit innovations",
+                "Assume risque",
+                "Rompt avec l'équilibre",
+                "Évite toute rupture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Entrepreneur moteur du dynamisme capitaliste par l'innovation."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Profit schumpétérien :",
+              "options": [
+                "Rente temporaire liée à l'innovation",
+                "Salaire",
+                "Impôt",
+                "Subvention permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surprofit jusqu'à imitation par concurrents."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Imitation réduit :",
+              "options": [
+                "Rente de l'innovateur",
+                "TFP sociale",
+                "Stock de K",
+                "Éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffusion généralise le progrès et compresse les profits pionniers."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Cycles longs (Kondratiev) liés parfois à :",
+              "options": [
+                "Grappes d'innovations",
+                "Saisonnalité",
+                "Monnaie seule",
+                "Smic"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interprétation : vagues technologiques (vapeur, électricité, numérique)."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Start-up deep tech :",
+              "options": [
+                "Fort lien R&D et capital risque",
+                "Sans innovation",
+                "Commerce seul",
+                "Secteur public uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écosystème innovation : financement et recherche."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Destruction d'emplois par innovation :",
+              "options": [
+                "Peut être compensée par nouveaux secteurs",
+                "Toujours définitive",
+                "Impossible",
+                "Sans emploi créé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition structurelle : destruction et création d'emplois."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Monopole temporaire via brevet :",
+              "options": [
+                "Incite à innover",
+                "Empêche toute R&D",
+                "Durée illimitée",
+                "Interdit imitation à jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trade-off incitation vs diffusion (20 ans en général)."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Concurrence perfectible et innovation :",
+              "options": [
+                "Pression à innover pour survivre",
+                "Stagnation garantie",
+                "Pas de R&D",
+                "État seul innovateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rivalité pousse à différencier et réduire coûts."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Finance de l'innovation :",
+              "options": [
+                "Autofinancement, crédit, capital-risque",
+                "Seulement impôts",
+                "Sans épargne",
+                "Monnaie haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amorçage risqué souvent via venture capital et marchés financiers."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Culture entrepreneuriale :",
+              "options": [
+                "Facteur institutionnel du dynamisme",
+                "Sans effet",
+                "Remplace brevets",
+                "Fixe TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes sociales, échec acceptable, réseaux."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "R&D et externalités",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Sous-investissement privé en R&D dû aux :",
+              "options": [
+                "Externalités positives",
+                "Caractère public partiel de la connaissance",
+                "Incertitude",
+                "Subventions excessives toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Marché sous-fournit R&D socialement optimale sans intervention."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Dépenses de R&D en % du PIB (France) :",
+              "options": [
+                "Inférieures à leaders comme Corée ou Israël",
+                "Les plus élevées du monde",
+                "Nulles",
+                "100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "France ~2 % PIB ; objectifs européens vers 3 %."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Recherche fondamentale :",
+              "options": [
+                "Produits connaissances générales",
+                "Application immédiate garantie",
+                "Sans universités",
+                "Privée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent soutenue par public (externalités fortes)."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Recherche appliquée :",
+              "options": [
+                "Orientée vers innovation commercialisable",
+                "Sans brevet",
+                "Gratuite toujours",
+                "Sans entreprises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont entre science et marché."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "CIR en France :",
+              "options": [
+                "Crédit d'impôt sur dépenses R&D",
+                "Taxe sur profits",
+                "Smic",
+                "Aide à l'export seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispositif fiscal pour encourager R&D privée."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "ANR et recherche publique :",
+              "options": [
+                "Financement projets scientifiques",
+                "Banque centrale",
+                "Assurance chômage",
+                "Douanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agence nationale recherche (France)."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Open source vs brevets :",
+              "options": [
+                "Modèles de diffusion contrastés",
+                "Identiques",
+                "Sans innovation",
+                "Interdisent TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiciels libres vs propriété intellectuelle classique."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Joint ventures en R&D :",
+              "options": [
+                "Partage coûts et risques",
+                "Suppriment spillovers",
+                "Interdisent innovation",
+                "Remplacent État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération entre entreprises (avec vigilance concurrence)."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Horizon Europe :",
+              "options": [
+                "Programme UE de recherche",
+                "Politique monétaire",
+                "Zone euro",
+                "Smic européen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre financier R&I européen."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Appropriabilité des retours R&D :",
+              "options": [
+                "Capacité à capturer gains de l'innovation",
+                "Taux de change",
+                "Export net",
+                "Dette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brevets, secret, avance technologique déterminent incitations."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Révolutions industrielles",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Première révolution industrielle associée à :",
+              "options": [
+                "Machine à vapeur",
+                "Textile mécanisé",
+                "Usines",
+                "Internet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fin XVIIIe-XIXe : charbon, vapeur, manufacturing."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Deuxième révolution industrielle :",
+              "options": [
+                "Électricité, chimie, acier",
+                "Numérique",
+                "Seulement agricole",
+                "Sans transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin XIXe : énergie électrique, chaîne de montage précurseurs."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Troisième révolution (numérique) :",
+              "options": [
+                "Microprocesseurs, réseaux",
+                "Vapeur",
+                "Charbon seul",
+                "Feudalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informatique et télécommunications depuis années 1970."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Industrie 4.0 évoque :",
+              "options": [
+                "Usines connectées et IoT",
+                "Révolution agricole",
+                "Mercantilisme",
+                "Bretton Woods"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cyber-physical systems, big data en production."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "General purpose technology (GPT) :",
+              "options": [
+                "Technologie à usage général (électricité, IT)",
+                "Produit unique",
+                "Sans spillovers",
+                "Taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électricité et ordinateur transforment many sectors."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Retard du gain de productivité du numérique :",
+              "options": [
+                "Délai d'ajustement organisationnel",
+                "Preuve d'inutilité",
+                "Fin de TFP",
+                "Absence de R&D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarités : skills, processus, capital humain."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Robotisation manufacturière :",
+              "options": [
+                "Automatisation de tâches physiques",
+                "Supprime toute R&D",
+                "Sans effet emploi",
+                "Interdit services"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Robots industriels et cobots en usine."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Transition énergétique et PT :",
+              "options": [
+                "Innovations vertes (ENR, efficacité)",
+                "Stagnation",
+                "Sans capital",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologies bas-carbone comme moteur de croissance."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Biotechnologies :",
+              "options": [
+                "Innovations en santé et agro",
+                "Sans brevet",
+                "Hors croissance",
+                "Sans externalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Secteur R&D intensive et régulé."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Diffusion régionale du numérique en France :",
+              "options": [
+                "Fractures territoriales et compétences",
+                "Uniformité parfaite",
+                "Sans PME",
+                "Fin de l'emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inégalités d'accès et d'adoption des technologies."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Modèles de croissance",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Modèle de Solow :",
+              "options": [
+                "PT exogène",
+                "Épargne et accumulation K",
+                "Convergence possible",
+                "Croissance endogène sans limite"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Solow : TFP exogène ; accumulation avec rendements décroissants."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Steady state de Solow :",
+              "options": [
+                "Croissance per capita stabilisée",
+                "Chômage zéro",
+                "Sans épargne",
+                "TFP infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À long terme, croissance due surtout à PT exogène."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Modèles endogènes (Romer, Lucas) :",
+              "options": [
+                "R&D ou capital humain dans la croissance",
+                "PT purement exogène",
+                "Sans innovation",
+                "Rejet de l'épargne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques peuvent affecter taux de croissance de long terme."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Rendements décroissants du capital :",
+              "options": [
+                "Limitent croissance extensive",
+                "Absents",
+                "Rendent K inutile",
+                "Suppriment L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans PT, accumulation seule ne suffit pas indéfiniment."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Rule of 70 approxime :",
+              "options": [
+                "Temps de doublement",
+                "Taux d'épargne",
+                "Inflation",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "70 / taux croissance ≈ années pour doubler PIB/habitant."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Golden rule of accumulation :",
+              "options": [
+                "Niveau K maximisant consommation long terme",
+                "Zéro épargne",
+                "100 % épargne",
+                "Sans PT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimal théorique entre épargne et consommation."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Human capital dans croissance :",
+              "options": [
+                "Éducation accroît productivité et innovation",
+                "Sans effet",
+                "Remplace K",
+                "Fixe change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lucas : externalités de l'human capital."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Ideas non rivalisables (Romer) :",
+              "options": [
+                "Coût marginal de reproduction faible",
+                "Rivalisables comme pommes",
+                "Sans spillovers",
+                "Un seul usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connaissances : usage simultané possible."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Croissance balanceée :",
+              "options": [
+                "K, L, Y croissent à taux compatibles",
+                "Y seul",
+                "Chômage massif",
+                "Sans TFP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trajectoire où ratios capital-travail stables."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Limite des modèles :",
+              "options": [
+                "Simplifications vs réalité institutionnelle",
+                "Inutilité totale",
+                "Sans empirie",
+                "Ignorent données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèles éclairent mécanismes, à nuancer empiriquement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Travail et qualification",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Progrès technique peut :",
+              "options": [
+                "Compléter le travail",
+                "Le substituer partiellement",
+                "Créer de nouvelles tâches",
+                "Supprimer toute activité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Débat automation : destruction, création, changement de contenu des emplois."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Polarisation emploi :",
+              "options": [
+                "Tâches qualifiées et non qualifiées relativement préservées",
+                "Seul milieu prospère",
+                "Fin des services",
+                "Tous routiniers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Automatisation des tâches intermédiaires routinières."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Routine-biased automation :",
+              "options": [
+                "Machines remplacent tâches codifiables",
+                "Touche toutes tâches également",
+                "Sans effet",
+                "Crée seulement manuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorout et Dorn sur tâches routinières."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Compétences STEM et innovation :",
+              "options": [
+                "Favorisent adoption technologique",
+                "Inutiles",
+                "Remplacent management",
+                "Sans lien R&D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Science, technology, engineering, math en demande."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Accord de branche et nouvelles technologies :",
+              "options": [
+                "Négocient reconversion et conditions",
+                "Interdisent machines",
+                "Sans dialogue social",
+                "Fixent brevets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transformation numérique au travail : formation, GPEC."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Chômage technologique (Keynes) :",
+              "options": [
+                "Crainte de chômage par machines",
+                "Réalité systématique prouvée",
+                "Sans débat",
+                "Loi empirique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peur historique ; empiriquement effets mixtes."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Plateformes numériques et travail :",
+              "options": [
+                "Nouveaux modèles ( gig, algorithmes )",
+                "Fin de l'emploi",
+                "Sans PT",
+                "Hors SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie des plateformes transforme organisation."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "IA et tâches cognitives :",
+              "options": [
+                "Automatise partiellement analyse et création",
+                "Remplace 100 % emploi demain",
+                "Sans R&D",
+                "Interdit formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarités et supervision humaine restent centrales."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Salaire de productivité marginal du travail :",
+              "options": [
+                "Dépend aussi du capital associé",
+                "Fixe seul",
+                "Sans K",
+                "Ignore PT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande de travail liée à productivité marginale et prix du produit."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "France compétences et transition :",
+              "options": [
+                "Organisme formation professionnelle",
+                "Banque centrale",
+                "OMC",
+                "BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance paritaire formation continue."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Institutions et propriété intellectuelle",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Institutions favorables à l'innovation :",
+              "options": [
+                "État de droit",
+                "Marchés financiers développés",
+                "Protection PI équilibrée",
+                "Corruption élevée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sécurité contractuelle, finance et incitations sans capture."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "OMPI :",
+              "options": [
+                "Organisation mondiale propriété intellectuelle",
+                "Banque mondiale",
+                "FMI",
+                "OTAN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre international brevets, marques, droits d'auteur."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Contrefaçon :",
+              "options": [
+                "Affaiblit incitations à innover",
+                "Augmente toujours TFP",
+                "Souhaitée",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atteint rentes et financement R&D."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Licence obligatoire (médicaments) :",
+              "options": [
+                "Balance accès santé et incitation",
+                "Supprime toute R&D",
+                "Sans débat",
+                "Interdit innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension brevets pharmaceutiques et épidémies."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Standardisation (USB, 5G) :",
+              "options": [
+                "Facilite diffusion et compatibilité",
+                "Bloque innovation",
+                "Sans réseau",
+                "Taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes techniques accélèrent adoption."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Concurrence et brevets :",
+              "options": [
+                "Brevet crée monopole légal temporaire",
+                "Empêche toute concurrence permanente",
+                "Sans limite temporelle",
+                "Remplace marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis incitation-diffusion."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Data et innovation :",
+              "options": [
+                "Données comme input du machine learning",
+                "Sans valeur",
+                "Hors PT",
+                "Interdites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie des données et régulation (RGPD)."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "GAFAM et R&D :",
+              "options": [
+                "Dépenses massives en recherche",
+                "Sans innovation",
+                "Secteur public",
+                "Zéro brevet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leaders numériques investissent fortement."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Transfert technologique université-entreprise :",
+              "options": [
+                "Brevets, spin-offs, contrats",
+                "Impossible",
+                "Sans recherche publique",
+                "Interdit en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SATT, incubateurs, valorisation recherche."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Secret industriel vs brevet :",
+              "options": [
+                "Stratégies d'appropriation alternatives",
+                "Identiques",
+                "Sans protection",
+                "Public obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coca-Cola secret vs brevet limité dans le temps."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mondialisation et diffusion",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Diffusion internationale du PT via :",
+              "options": [
+                "Commerce de biens d'équipement",
+                "IDE",
+                "Licences",
+                "Autarcie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Filières globales et multinationales transfèrent technologies."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "IDE verticaux :",
+              "options": [
+                "Intégration filières multinationales",
+                "Sans transfert",
+                "Interdits",
+                "Sans emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usines offshore et chaînes globales de valeur."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Imitation internationale :",
+              "options": [
+                "Rattrapage des pays émergents",
+                "Impossible",
+                "Sans TFP",
+                "Réservée aux leaders"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chine, Corée historiquement importateurs puis innovateurs."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Propriété intellectuelle et pays en développement :",
+              "options": [
+                "Débat accès vs incitations",
+                "Sans enjeu",
+                "Uniformité parfaite",
+                "Fin du commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords TRIPS et génériques médicaments."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Déslocalisation et PT :",
+              "options": [
+                "Recherche moindres coûts avec capacités locales",
+                "Toujours perte PT pour pays d'origine",
+                "Sans lien",
+                "Interdit innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation internationale de la production."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Exportations high-tech :",
+              "options": [
+                "Indicateur de capacité innovante",
+                "Sans R&D",
+                "Agriculture seule",
+                "Sans emploi qualifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part des exportations technologiques dans le commerce."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Sanctions technologiques :",
+              "options": [
+                "Restreignent accès composants (semi-conducteurs)",
+                "Augmentent toujours TFP",
+                "Sans géopolitique",
+                "Fin innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guerre commerciale et souveraineté technologique."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Souveraineté européenne (puces, cloud) :",
+              "options": [
+                "Réduire dépendances stratégiques",
+                "Autarcie totale",
+                "Sans PT",
+                "Interdit R&D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chips Act, cloud de confiance."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Coopération scientifique internationale :",
+              "options": [
+                "Accélère découverte (CERN, vaccins)",
+                "Impossible",
+                "Sans spillovers",
+                "Sans coûts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grands projets dépassent frontières."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Clauses sociales et environnementales :",
+              "options": [
+                "Peuvent accompagner commerce et PT",
+                "Sans lien",
+                "Bloquent innovation",
+                "Remplacent OMC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat mondialisation durable et standards."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Environnement et PT vert",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Progrès technique vert inclut :",
+              "options": [
+                "Énergies renouvelables",
+                "Efficacité énergétique",
+                "Mobilité propre",
+                "Rejet de toute innovation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Innovation pour découpler croissance et pression environnementale."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Croissance verte :",
+              "options": [
+                "Allie développement et durabilité",
+                "Contradiction absolue toujours",
+                "Sans PT",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investissements ENR et économie circulaire."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Taxe carbone et innovation :",
+              "options": [
+                "Prix signal incite technologies bas-carbone",
+                "Sans effet",
+                "Interdit R&D",
+                "Subventionne fossile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internalisation externalité négative climat."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Brevets verts :",
+              "options": [
+                "Accélération procédures pour tech environnement",
+                "Sans brevet",
+                "Interdit innovation",
+                "Taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitations PI pour technologies propres."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Obsolescence programmée :",
+              "options": [
+                "Réduit durabilité, débat vs innovation",
+                "Augmente TFP verte",
+                "Souhaitée",
+                "Sans impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension durabilité et renouvellement des produits."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Économie circulaire :",
+              "options": [
+                "Réemploi, recyclage, éco-conception",
+                "Linéaire uniquement",
+                "Sans PT",
+                "Rejette innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveaux procédés et business models."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "Accord de Paris et R&D :",
+              "options": [
+                "Oriente investissements bas-carbone",
+                "Sans effet",
+                "Interdit innovation",
+                "Fin croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagements climatiques structurent politiques."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "Jevons paradox :",
+              "options": [
+                "Gain efficacité peut accroître usage total",
+                "Sans empirie",
+                "Fin énergie",
+                "Supprime PT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet rebond possible sur consommation énergétique."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Agroécologie et PT :",
+              "options": [
+                "Innovations agricoles durables",
+                "Stagnation",
+                "Sans R&D",
+                "Chimie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semences, pratiques, digitalisation agricole."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Externalités négatives non prixées :",
+              "options": [
+                "Entraînent sous-investissement vert privé",
+                "Optimal marché",
+                "Sans État",
+                "Augmentent TFP mesurée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Justifie régulation et subventions ciblées."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse progrès technique",
+          "questions": [
+            {
+              "id": "1",
+              "type": "multiple_choice",
+              "text": "Le progrès technique est moteur de croissance car :",
+              "options": [
+                "Accroît TFP",
+                "Transforme structures",
+                "Crée de nouveaux marchés",
+                "Réduit toujours emploi sans compensation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Innovation dynamise productivité et réallocation sectorielle."
+            },
+            {
+              "id": "2",
+              "type": "single_choice",
+              "text": "Lien productivité et PT :",
+              "options": [
+                "PT majeur déterminant de TFP",
+                "Sans relation",
+                "PT = seulement L",
+                "Ignore PGF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résidu de Solow interprété largement comme progrès technique."
+            },
+            {
+              "id": "3",
+              "type": "single_choice",
+              "text": "Politique industrielle et PT :",
+              "options": [
+                "Soutient filières stratégiques",
+                "Remplace entreprises",
+                "Interdit concurrence",
+                "Sans R&D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semiconducteurs, batteries, aéronautique en débat."
+            },
+            {
+              "id": "4",
+              "type": "single_choice",
+              "text": "Démographie et PT :",
+              "options": [
+                "Vieillissement pousse automatisation",
+                "Sans effet",
+                "Fin innovation",
+                "Supprime L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression sur offre de travail et robots de service."
+            },
+            {
+              "id": "5",
+              "type": "single_choice",
+              "text": "Éthique de l'IA et innovation :",
+              "options": [
+                "Encadrement sans stopper recherche",
+                "Interdit toute R&D",
+                "Sans débat",
+                "Hors SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risques, bias, emploi : gouvernance technologique."
+            },
+            {
+              "id": "6",
+              "type": "single_choice",
+              "text": "Mesurer l'innovation :",
+              "options": [
+                "Brevets, R&D, TFP, enquêtes",
+                "Uniquement chômage",
+                "Export seul",
+                "Smic"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateurs composites du dynamisme innovant."
+            },
+            {
+              "id": "7",
+              "type": "single_choice",
+              "text": "France et rang innovation (INPI, R&D) :",
+              "options": [
+                "Forces et faiblesses vs leaders",
+                "Première mondiale tous critères",
+                "Dernière sans R&D",
+                "Sans brevets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Système recherche solide, transfert et financement à renforcer."
+            },
+            {
+              "id": "8",
+              "type": "single_choice",
+              "text": "PT et inégalités :",
+              "options": [
+                "Peut creuser écart qualifiés/non qualifiés",
+                "Réduit toujours inégalités",
+                "Sans effet",
+                "Fixe redistribution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SBTC et capital-labor split en débat."
+            },
+            {
+              "id": "9",
+              "type": "single_choice",
+              "text": "Horizon 2030 numérique UE :",
+              "options": [
+                "Objectifs compétitivité et souveraineté",
+                "Fin PT",
+                "Autarcie",
+                "Sans lien croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégies européennes digital et green deal."
+            },
+            {
+              "id": "10",
+              "type": "single_choice",
+              "text": "Chapitre « Sources de la croissance » conclut :",
+              "options": [
+                "Productivité et PT centraux en terminale SES",
+                "Monnaie seule compte",
+                "Commerce seul",
+                "Sans lien emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre moteurs long terme du développement économique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

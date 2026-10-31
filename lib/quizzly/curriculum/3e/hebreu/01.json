@@ -1,0 +1,2383 @@
+{
+  "id": "3e-hebreu-01",
+  "year": "3e",
+  "subject": "hebreu",
+  "title": "Découvrir l'hébreu",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour et bonsoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses signifient « bonjour » en hébreu ?",
+              "type": "multiple_choice",
+              "options": [
+                "שָׁלוֹם (shalom)",
+                "בּוֹקֶר טוֹב (boker tov)",
+                "לַיְלָה טוֹב (layla tov)",
+                "תּוֹדָה (toda)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Shalom sert aussi de salutation ; « boker tov » veut dire « bonjour » le matin."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « bonsoir » ?",
+              "type": "single_choice",
+              "options": [
+                "עֶרֶב טוֹב (erev tov)",
+                "בּוֹקֶר טוֹב (boker tov)",
+                "שָׁלוֹם (shalom)",
+                "בְּהַצְלָחָה (behatzlacha)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Erev tov » = bonsoir ; « boker tov » = bonjour."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « shalom » ?",
+              "type": "single_choice",
+              "options": [
+                "Paix / salut",
+                "Merci",
+                "Au revoir seulement",
+                "Bonjour le matin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shalom (שָׁלוֹם) signifie paix et sert à saluer."
+            },
+            {
+              "id": "q4",
+              "question": "Dans quel sens lit-on l'hébreu ?",
+              "type": "single_choice",
+              "options": [
+                "De droite à gauche",
+                "De gauche à droite",
+                "De haut en bas",
+                "Comme le français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hébreu se lit de droite à gauche."
+            },
+            {
+              "id": "q5",
+              "question": "« Boker tov » convient surtout…",
+              "type": "single_choice",
+              "options": [
+                "Le matin",
+                "La nuit",
+                "À midi seulement",
+                "En partant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boker = matin, tov = bon."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle salutation pour la nuit ?",
+              "type": "single_choice",
+              "options": [
+                "לַיְלָה טוֹב (layla tov)",
+                "בּוֹקֶר טוֹב (boker tov)",
+                "שָׁלוֹם (shalom)",
+                "נָעִים (na'im)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Layla tov = bonne nuit / bonsoir tardif."
+            },
+            {
+              "id": "q7",
+              "question": "« Toda » (תּוֹדָה) signifie…",
+              "type": "single_choice",
+              "options": ["Merci", "Bonjour", "Pardon", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Toda = merci, pas une salutation d'entrée."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot « tov » (טוֹב) signifie…",
+              "type": "single_choice",
+              "options": ["Bon / bien", "Mauvais", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "On le retrouve dans boker tov, erev tov…"
+            },
+            {
+              "id": "q9",
+              "question": "Pour saluer quelqu'un en général, on peut dire…",
+              "type": "single_choice",
+              "options": [
+                "שָׁלוֹם (shalom)",
+                "תּוֹדָה (toda)",
+                "כֵּן (ken)",
+                "לֹא (lo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shalom est la salutation la plus courante."
+            },
+            {
+              "id": "q10",
+              "question": "« Erev » (עֶרֶב) signifie…",
+              "type": "single_choice",
+              "options": ["Soir", "Matin", "Jour", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Erev = soir ; layla = nuit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Au revoir et à bientôt",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules disent au revoir ?",
+              "type": "multiple_choice",
+              "options": [
+                "לְהִתְרָאוֹת (lehitra'ot)",
+                "שָׁלוֹם (shalom)",
+                "תּוֹדָה (toda)",
+                "בְּהַצְלָחָה (behatzlacha)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lehitra'ot = à bientôt ; shalom aussi au départ."
+            },
+            {
+              "id": "q2",
+              "question": "« Lehitra'ot » signifie…",
+              "type": "single_choice",
+              "options": [
+                "À bientôt / au revoir",
+                "Bonjour",
+                "Merci beaucoup",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule courante pour se quitter."
+            },
+            {
+              "id": "q3",
+              "question": "« Behatzlacha » veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Bonne chance / bon courage",
+                "Bonne nuit",
+                "Enchanté",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent dit en partant ou avant un examen."
+            },
+            {
+              "id": "q4",
+              "question": "Peut-on dire « shalom » en partant ?",
+              "type": "single_choice",
+              "options": [
+                "Oui",
+                "Non, jamais",
+                "Seulement le matin",
+                "Seulement à des inconnus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shalom fonctionne à l'arrivée et au départ."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle option n'est pas un au revoir ?",
+              "type": "single_choice",
+              "options": [
+                "תּוֹדָה (toda)",
+                "לְהִתְרָאוֹת (lehitra'ot)",
+                "שָׁלוֹם (shalom)",
+                "בְּהַצְלָחָה (behatzlacha)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toda = merci."
+            },
+            {
+              "id": "q6",
+              "question": "En hébreu, la première lettre d'une ligne est à…",
+              "type": "single_choice",
+              "options": ["Droite", "Gauche", "Centre", "Bas"],
+              "correctAnswers": [0],
+              "explanation": "Conséquence de la lecture RTL."
+            },
+            {
+              "id": "q7",
+              "question": "« Layla tov » au départ tard le soir…",
+              "type": "single_choice",
+              "options": [
+                "Peut souhaiter une bonne nuit",
+                "Est une insulte",
+                "Signifie bonjour",
+                "Remplace merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On souhaite une bonne nuit."
+            },
+            {
+              "id": "q8",
+              "question": "Lehitra'ot est…",
+              "type": "single_choice",
+              "options": [
+                "Neutre (tu/vous)",
+                "Réservé aux enfants",
+                "Uniquement écrit",
+                "Uniquement religieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage courant pour tous."
+            },
+            {
+              "id": "q9",
+              "question": "Après « toda », on répond parfois…",
+              "type": "single_choice",
+              "options": [
+                "בְּבַקָּשָׁה (bevakasha)",
+                "לְהִתְרָאוֹת (lehitra'ot)",
+                "בּוֹקֶר טוֹב (boker tov)",
+                "כֵּן (ken)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bevakasha = de rien / s'il vous plaît selon le contexte."
+            },
+            {
+              "id": "q10",
+              "question": "RTL signifie que les mots s'enchaînent…",
+              "type": "single_choice",
+              "options": [
+                "De droite à gauche",
+                "De gauche à droite",
+                "Verticalement",
+                "En cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Right-to-left : sens de l'hébreu."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent « comment vas-tu ? »",
+              "type": "multiple_choice",
+              "options": [
+                "מַה שְׁלוֹמְךָ? (ma shlomcha?)",
+                "מַה נִשְׁמָע? (ma nishma?)",
+                "מָה שְׁמְךָ? (ma shimcha?)",
+                "מֵאַיִן אַתָּה? (me'ayin ata?)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Shlomcha et nishma = prendre des nouvelles."
+            },
+            {
+              "id": "q2",
+              "question": "Réponse positive fréquente :",
+              "type": "single_choice",
+              "options": [
+                "טוֹב, תּוֹדָה (tov, toda)",
+                "לֹא (lo)",
+                "שָׁלוֹם (shalom)",
+                "לַיְלָה טוֹב (layla tov)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bien, merci »."
+            },
+            {
+              "id": "q3",
+              "question": "« Ma nishma ? » signifie environ…",
+              "type": "single_choice",
+              "options": [
+                "Quoi de neuf ?",
+                "Comment t'appelles-tu ?",
+                "Où habites-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littéralement « qu'est-ce qui s'entend ? »."
+            },
+            {
+              "id": "q4",
+              "question": "« Ken » (כֵּן) signifie…",
+              "type": "single_choice",
+              "options": ["Oui", "Non", "Peut-être", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Réponse affirmative courte."
+            },
+            {
+              "id": "q5",
+              "question": "« Lo » (לֹא) signifie…",
+              "type": "single_choice",
+              "options": ["Non", "Oui", "Bon", "Mal"],
+              "correctAnswers": [0],
+              "explanation": "Négation simple."
+            },
+            {
+              "id": "q6",
+              "question": "Si quelqu'un dit « ma shlomcha ? », tu peux répondre…",
+              "type": "single_choice",
+              "options": [
+                "טוֹב (tov)",
+                "לֹא (lo) seul",
+                "בּוֹקֶר (boker)",
+                "אַח (ach)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tov = bien / ça va."
+            },
+            {
+              "id": "q7",
+              "question": "« Ma shimcha ? » demande…",
+              "type": "single_choice",
+              "options": ["Ton prénom", "Ton âge", "Ta ville", "Ton humeur"],
+              "correctAnswers": [0],
+              "explanation": "Shem = nom."
+            },
+            {
+              "id": "q8",
+              "question": "Dans ma shlomcha, « shlom » vient de…",
+              "type": "single_choice",
+              "options": [
+                "Shalom (paix / bien-être)",
+                "Sham (là-bas)",
+                "Shem (nom)",
+                "Shana (année)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même racine que shalom."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « très bien » on peut entendre…",
+              "type": "single_choice",
+              "options": [
+                "טוֹב מְאֹד (tov me'od)",
+                "לֹא טוֹב (lo tov)",
+                "לַיְלָה טוֹב (layla tov)",
+                "עֶרֶב טוֹב (erev tov)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me'od = très."
+            },
+            {
+              "id": "q10",
+              "question": "L'hébreu moderne parlé en Israël s'appelle souvent…",
+              "type": "single_choice",
+              "options": ["Ivrit", "Arabe", "Yiddish", "Latin"],
+              "correctAnswers": [0],
+              "explanation": "עִבְרִית = ivrit / hébreu."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Je m'appelle",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases présentent son prénom ?",
+              "type": "multiple_choice",
+              "options": [
+                "קוֹרְאִים לִי… (kor'im li…)",
+                "שְׁמִי… (shmi…)",
+                "אֲנִי מ… (ani mi…)",
+                "תּוֹדָה (toda)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kor'im li = on m'appelle ; shmi = mon nom est."
+            },
+            {
+              "id": "q2",
+              "question": "« Shmi David » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle David",
+                "David est mon frère",
+                "David va bien",
+                "Au revoir David"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shmi = mon nom (est)."
+            },
+            {
+              "id": "q3",
+              "question": "« Ani » (אֲנִי) signifie…",
+              "type": "single_choice",
+              "options": ["Je / moi", "Tu", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "Pronom je."
+            },
+            {
+              "id": "q4",
+              "question": "« Kor'im li Sarah » = …",
+              "type": "single_choice",
+              "options": [
+                "On m'appelle Sarah",
+                "Sarah m'appelle",
+                "J'appelle Sarah",
+                "Sarah part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Construction impersonnelle courante."
+            },
+            {
+              "id": "q5",
+              "question": "Pour demander le prénom d'un garçon :",
+              "type": "single_choice",
+              "options": [
+                "מָה שְׁמְךָ? (ma shimcha?)",
+                "מָה שְׁמֵךְ? (ma shmekh?)",
+                "מָה שְׁמוֹ? (ma shmo?)",
+                "מָה שְׁמָהּ? (ma shma?)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shimcha = ton nom (masculin)."
+            },
+            {
+              "id": "q6",
+              "question": "« Ma shmekh ? » s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "Une fille / femme (tu)",
+                "Un garçon",
+                "Un groupe",
+                "Une chose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme féminine."
+            },
+            {
+              "id": "q7",
+              "question": "« Nice to meet you » se dit souvent…",
+              "type": "single_choice",
+              "options": [
+                "נָעִים מְאֹד (na'im me'od)",
+                "לְהִתְרָאוֹת (lehitra'ot)",
+                "בּוֹקֶר טוֹב (boker tov)",
+                "לֹא (lo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na'im = agréable / enchanté."
+            },
+            {
+              "id": "q8",
+              "question": "« Shem » (שֵׁם) signifie…",
+              "type": "single_choice",
+              "options": ["Nom", "Maison", "Ville", "Pays"],
+              "correctAnswers": [0],
+              "explanation": "Mot de base pour se présenter."
+            },
+            {
+              "id": "q9",
+              "question": "Après une présentation, on peut dire…",
+              "type": "single_choice",
+              "options": [
+                "נָעִים (na'im)",
+                "לַיְלָה טוֹב (layla tov)",
+                "כֵּן (ken)",
+                "אַח (ach)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse à la rencontre."
+            },
+            {
+              "id": "q10",
+              "question": "Les noms propres en hébreu s'écrivent…",
+              "type": "single_choice",
+              "options": [
+                "En alphabet hébreu comme le reste",
+                "En latin seulement",
+                "De gauche à droite",
+                "Sans voyelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même alphabet ; sens RTL."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "D'où viens-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions parlent de l'origine ?",
+              "type": "multiple_choice",
+              "options": [
+                "מֵאַיִן אַתָּה? (me'ayin ata?)",
+                "אֲנִי מ… (ani mi…)",
+                "מָה שְׁמְךָ? (ma shimcha?)",
+                "כַּמָּה שָׁנִים? (kama shanim?)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Me'ayin = d'où ; ani mi = je suis de."
+            },
+            {
+              "id": "q2",
+              "question": "« Ani mi Paris » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je viens de Paris",
+                "Paris est grand",
+                "J'aime Paris",
+                "Paris dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi = de (origine)."
+            },
+            {
+              "id": "q3",
+              "question": "« Me'ayin ata ? » demande…",
+              "type": "single_choice",
+              "options": [
+                "D'où es-tu ? (m.)",
+                "Comment t'appelles-tu ?",
+                "Quel âge as-tu ?",
+                "Où vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ata = tu (masculin)."
+            },
+            {
+              "id": "q4",
+              "question": "« Ani mi Yisrael » = …",
+              "type": "single_choice",
+              "options": [
+                "Je suis d'Israël",
+                "Israël est loin",
+                "Bonjour Israël",
+                "Israël merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yisrael = Israël."
+            },
+            {
+              "id": "q5",
+              "question": "« Ayin » dans me'ayin évoque…",
+              "type": "single_choice",
+              "options": ["D'où / source", "Nom", "Heure", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Question sur le lieu d'origine."
+            },
+            {
+              "id": "q6",
+              "question": "Pour dire « j'habite en France » on peut dire…",
+              "type": "single_choice",
+              "options": [
+                "אֲנִי גָּר בְּצָרְפַת (ani gar betzarfat)",
+                "אֲנִי מ צָרְפַת seulement",
+                "שָׁלוֹם צָרְפַת",
+                "תּוֹדָה צָרְפַת"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gar = habiter ; betzarfat = en France."
+            },
+            {
+              "id": "q7",
+              "question": "« Ata » (אַתָּה) est…",
+              "type": "single_choice",
+              "options": ["Tu (masculin)", "Tu (féminin)", "Je", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "Pronom sujet."
+            },
+            {
+              "id": "q8",
+              "question": "La capitale d'Israël en hébreu :",
+              "type": "single_choice",
+              "options": [
+                "יְרוּשָׁלַיִם (Yerushalayim)",
+                "פָּרִיז (Paris)",
+                "לוֹנְדּוֹן (London)",
+                "רוֹמָא (Roma)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jérusalem."
+            },
+            {
+              "id": "q9",
+              "question": "Répondre « me'ayin ata ? » :",
+              "type": "single_choice",
+              "options": [
+                "מֵאִטַלְיָה (me'Italya)",
+                "שְׁמִי… (shmi…)",
+                "טוֹב (tov)",
+                "כֵּן (ken)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me' = de + pays."
+            },
+            {
+              "id": "q10",
+              "question": "Sur une carte, l'hébreu en Israël est…",
+              "type": "single_choice",
+              "options": [
+                "Langue officielle avec l'arabe",
+                "Interdit",
+                "Uniquement latin",
+                "Uniquement ancien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ivrit revivifié, usage quotidien."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politesse de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont polis / utiles ?",
+              "type": "multiple_choice",
+              "options": [
+                "בְּבַקָּשָׁה (bevakasha)",
+                "סְלִיחָה (slicha)",
+                "תּוֹדָה (toda)",
+                "לֹא (lo) seul comme salut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bevakasha = s'il te plaît ; slicha = pardon."
+            },
+            {
+              "id": "q2",
+              "question": "« Slicha » signifie…",
+              "type": "single_choice",
+              "options": [
+                "Pardon / excuse-moi",
+                "Merci",
+                "Bonjour",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour s'excuser ou attirer l'attention."
+            },
+            {
+              "id": "q3",
+              "question": "« Bevakasha » peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "S'il te plaît / de rien",
+                "Bonsoir",
+                "Je m'appelle",
+                "Frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon contexte (demande ou réponse à toda)."
+            },
+            {
+              "id": "q4",
+              "question": "Avant de demander quelque chose, on dit souvent…",
+              "type": "single_choice",
+              "options": [
+                "בְּבַקָּשָׁה (bevakasha)",
+                "לְהִתְרָאוֹת (lehitra'ot)",
+                "אַח (ach)",
+                "שָׁנָה (shana)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marque de politesse."
+            },
+            {
+              "id": "q5",
+              "question": "« Toda raba » signifie…",
+              "type": "single_choice",
+              "options": ["Merci beaucoup", "Pardon", "Bonjour", "À demain"],
+              "correctAnswers": [0],
+              "explanation": "Raba = beaucoup."
+            },
+            {
+              "id": "q6",
+              "question": "Si tu bouscules quelqu'un, dis…",
+              "type": "single_choice",
+              "options": [
+                "סְלִיחָה (slicha)",
+                "מַזָּל טוֹב (mazal tov)",
+                "שָׁלוֹם (shalom) seul",
+                "כֵּן (ken)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excuse appropriée."
+            },
+            {
+              "id": "q7",
+              "question": "« Raba » (רַבָּה) signifie…",
+              "type": "single_choice",
+              "options": ["Beaucoup / grande", "Petit", "Nuit", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Renforce toda."
+            },
+            {
+              "id": "q8",
+              "question": "En classe, pour parler :",
+              "type": "single_choice",
+              "options": [
+                "סְלִיחָה, … (slicha, …)",
+                "לַיְלָה טוֹב",
+                "לֹא לֹא",
+                "אִמָּא (ima)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attirer l'attention poliment."
+            },
+            {
+              "id": "q9",
+              "question": "Toda répond souvent à…",
+              "type": "single_choice",
+              "options": [
+                "Un service rendu",
+                "Une question sur l'âge",
+                "Un nom",
+                "Une direction RTL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gratitude."
+            },
+            {
+              "id": "q10",
+              "question": "Les formules polies en hébreu sont…",
+              "type": "single_choice",
+              "options": [
+                "Courantes au quotidien",
+                "Uniquement bibliques",
+                "Interdites à l'école",
+                "Toujours en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ivrit moderne familier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tu et vous",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pronoms sont « tu » ?",
+              "type": "multiple_choice",
+              "options": ["אַתָּה (ata)", "אַתְּ (at)", "אֲנִי (ani)", "הוּא (hu)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ata = tu m. ; at = tu f."
+            },
+            {
+              "id": "q2",
+              "question": "« At » (אַתְּ) s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "Une fille / femme",
+                "Un garçon",
+                "Un groupe mixte",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deuxième personne féminin singulier."
+            },
+            {
+              "id": "q3",
+              "question": "« Ma shlomkh ? » (f.) demande…",
+              "type": "single_choice",
+              "options": [
+                "Comment vas-tu ? (à une fille)",
+                "Comment va-t-il ?",
+                "Comment allez-vous ?",
+                "Quel est ton nom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe féminin -kh."
+            },
+            {
+              "id": "q4",
+              "question": "En hébreu courant, le vouvoiement…",
+              "type": "single_choice",
+              "options": [
+                "Existe (formes plurielles de politesse)",
+                "N'existe pas du tout",
+                "Est identique à l'anglais",
+                "Remplace shalom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut utiliser 2e pers. pluriel."
+            },
+            {
+              "id": "q5",
+              "question": "« Ani » vs « ata » :",
+              "type": "single_choice",
+              "options": [
+                "Je vs tu (m.)",
+                "Tu vs je",
+                "Il vs elle",
+                "Nous vs vous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction de personne."
+            },
+            {
+              "id": "q6",
+              "question": "« Hu » (הוּא) signifie…",
+              "type": "single_choice",
+              "options": ["Il", "Elle", "Tu", "Je"],
+              "correctAnswers": [0],
+              "explanation": "3e personne masculin."
+            },
+            {
+              "id": "q7",
+              "question": "« Hi » (הִיא) signifie…",
+              "type": "single_choice",
+              "options": ["Elle", "Il", "Ils", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "3e personne féminin."
+            },
+            {
+              "id": "q8",
+              "question": "Pour une fille : « comment t'appelles-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "מָה שְׁמֵךְ? (ma shmekh?)",
+                "מָה שְׁמְךָ? (ma shimcha?)",
+                "מָה שְׁמוֹ? (ma shmo?)",
+                "מָה שְׁלוֹמֵךְ? seulement nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin sur shem."
+            },
+            {
+              "id": "q9",
+              "question": "Ata et at partagent…",
+              "type": "single_choice",
+              "options": [
+                "Le sens « tu »",
+                "Le sens « je »",
+                "Le sens « merci »",
+                "Le sens « soir »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Singulier 2e personne."
+            },
+            {
+              "id": "q10",
+              "question": "En présentation, le genre influence surtout…",
+              "type": "single_choice",
+              "options": [
+                "Les terminaisons (shimcha/shmekh…)",
+                "Le sens RTL",
+                "L'alphabet latin",
+                "L'ordre des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord grammatical."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Alphabet et lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations sur l'hébreu sont vraies ?",
+              "type": "multiple_choice",
+              "options": [
+                "Lecture de droite à gauche",
+                "Alphabet hébreu (א ב ג…)",
+                "Identique au chinois",
+                "S'écrit en cyrillique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "RTL + lettres hébraïques."
+            },
+            {
+              "id": "q2",
+              "question": "La première lettre de l'alphabet :",
+              "type": "single_choice",
+              "options": ["א (aleph)", "ב (bet)", "ת (tav)", "ש (shin)"],
+              "correctAnswers": [0],
+              "explanation": "Aleph = א."
+            },
+            {
+              "id": "q3",
+              "question": "« Bet » (ב) se prononce comme…",
+              "type": "single_choice",
+              "options": [
+                "B ou V selon contexte",
+                "Toujours Z",
+                "Silence seulement",
+                "K seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consonne versatile en ivrit."
+            },
+            {
+              "id": "q4",
+              "question": "Shalom s'écrit avec la lettre…",
+              "type": "single_choice",
+              "options": ["ש (shin/shin dot)", "א seule", "פ seule", "ץ seule"],
+              "correctAnswers": [0],
+              "explanation": "Le sh de shalom = shin."
+            },
+            {
+              "id": "q5",
+              "question": "En hébreu imprimé moderne, les voyelles…",
+              "type": "single_choice",
+              "options": [
+                "Sont souvent omises (niqud rare)",
+                "Sont toujours sur chaque lettre",
+                "N'existent pas",
+                "Remplacent les consonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Textes usuels sans points vocaliques."
+            },
+            {
+              "id": "q6",
+              "question": "Où commence une ligne hébreu ?",
+              "type": "single_choice",
+              "options": ["À droite", "À gauche", "Au milieu", "En bas"],
+              "correctAnswers": [0],
+              "explanation": "RTL."
+            },
+            {
+              "id": "q7",
+              "question": "« Tav » (ת) est souvent…",
+              "type": "single_choice",
+              "options": [
+                "La dernière lettre",
+                "La première",
+                "Une voyelle",
+                "Un chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin de l'alphabet."
+            },
+            {
+              "id": "q8",
+              "question": "Les chiffres en hébreu peuvent utiliser…",
+              "type": "single_choice",
+              "options": [
+                "Chiffres hébreux ou internationaux",
+                "Uniquement romains",
+                "Uniquement pictogrammes",
+                "Aucun nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En classe on voit les deux."
+            },
+            {
+              "id": "q9",
+              "question": "Lire « שלום » sans niqud, un débutant…",
+              "type": "single_choice",
+              "options": [
+                "Reconnaît shalom avec l'aide du contexte",
+                "Lit toujours à l'envers phonétiquement",
+                "Doit utiliser le cyrillique",
+                "Ne peut jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot très fréquent."
+            },
+            {
+              "id": "q10",
+              "question": "L'alphabet compte principalement…",
+              "type": "single_choice",
+              "options": [
+                "22 lettres consonnes",
+                "26 comme le latin",
+                "10 seulement",
+                "50"
+              ],
+              "correctAnswers": [0],
+              "explanation": "22 lettres de base."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mots de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots entend-on en cours d'hébreu ?",
+              "type": "multiple_choice",
+              "options": [
+                "כֵּן (ken)",
+                "לֹא (lo)",
+                "שָׁלוֹם (shalom)",
+                "מִשְׁפָּחָה (mishpacha) en présentation seulement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ken/lo pour répondre ; shalom en entrant."
+            },
+            {
+              "id": "q2",
+              "question": "Le professeur dit « kvar » (כְּבָר) = …",
+              "type": "single_choice",
+              "options": ["Déjà / assez", "Bonjour", "Frère", "Un"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe fréquent."
+            },
+            {
+              "id": "q3",
+              "question": "« Od pa'am » (עוֹד פַּעַם) = …",
+              "type": "single_choice",
+              "options": ["Encore une fois", "Au revoir", "Merci", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Répéter en classe."
+            },
+            {
+              "id": "q4",
+              "question": "Pour écouter :",
+              "type": "single_choice",
+              "options": ["תַּקְשִׁיבוּ (takshivu)", "לְהִתְרָאוֹת", "לַיְלָה טוֹב", "אַח"],
+              "correctAnswers": [0],
+              "explanation": "Impératif « écoutez »."
+            },
+            {
+              "id": "q5",
+              "question": "« Sefer » (סֵפֶר) = …",
+              "type": "single_choice",
+              "options": ["Livre", "Table", "Porte", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Objet de classe."
+            },
+            {
+              "id": "q6",
+              "question": "« Luach » (לוּחַ) peut signifier…",
+              "type": "single_choice",
+              "options": ["Tableau / calendrier", "Chien", "Soleil", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Tableau noir / calendrier."
+            },
+            {
+              "id": "q7",
+              "question": "Répondre oui/non à une consigne :",
+              "type": "single_choice",
+              "options": [
+                "כֵּן / לֹא (ken / lo)",
+                "שָׁלוֹם / תּוֹדָה",
+                "אַבָּא / אִמָּא",
+                "אֶחָד / שְׁנַיִם"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponses minimales."
+            },
+            {
+              "id": "q8",
+              "question": "« Milah » (מִלָּה) = …",
+              "type": "single_choice",
+              "options": [
+                "Mot",
+                "Phrase entière seulement",
+                "Lettre seulement",
+                "Chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité de vocabulaire."
+            },
+            {
+              "id": "q9",
+              "question": "Écrire en hébreu, la main part de…",
+              "type": "single_choice",
+              "options": [
+                "La droite vers la gauche",
+                "La gauche vers la droite",
+                "Le haut",
+                "Le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérent avec RTL."
+            },
+            {
+              "id": "q10",
+              "question": "En 3e, l'objectif de ce chapitre est surtout…",
+              "type": "single_choice",
+              "options": [
+                "Saluer et se présenter",
+                "Lire la Torah entière",
+                "Parler arabe",
+                "Compter jusqu'à 1000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bases communicatives."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révisions : dialogues",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles répliques forment un mini-dialogue ?",
+              "type": "multiple_choice",
+              "options": [
+                "—שָׁלוֹם! —שָׁלוֹם!",
+                "—מָה שְׁמְךָ? —שְׁמִי…",
+                "—תּוֹדָה —לְהִתְרָאוֹת comme unique réponse à toda",
+                "—לֹא —לֹא comme salut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échange de salut ; question de nom + réponse."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique :",
+              "type": "single_choice",
+              "options": [
+                "Shalom → ma shimcha ? → shmi… → na'im",
+                "Shmi → shalom jamais",
+                "Lo → slicha bonjour",
+                "Layla tov le matin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, politesse."
+            },
+            {
+              "id": "q3",
+              "question": "Quel mot clôt poliment une rencontre ?",
+              "type": "single_choice",
+              "options": ["לְהִתְרָאוֹת (lehitra'ot)", "מָה שְׁמְךָ?", "מֵאַיִן?", "כַּמָּה?"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir."
+            },
+            {
+              "id": "q4",
+              "question": "Tu ne sais pas : tu dis…",
+              "type": "single_choice",
+              "options": [
+                "סְלִיחָה, אֲנִי לֹא מֵבִין (slicha, ani lo mevin)",
+                "תּוֹדָה raba toujours",
+                "שָׁנָה tov",
+                "אַח ach"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander clarification (m.)."
+            },
+            {
+              "id": "q5",
+              "question": "« Ani lo mevin » (m.) = …",
+              "type": "single_choice",
+              "options": [
+                "Je ne comprends pas",
+                "Je m'appelle",
+                "Je vais bien",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mevin = comprendre."
+            },
+            {
+              "id": "q6",
+              "question": "Relier : toda →",
+              "type": "single_choice",
+              "options": [
+                "bevakasha (de rien)",
+                "ma shimcha",
+                "me'ayin",
+                "erev tov seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse courante."
+            },
+            {
+              "id": "q7",
+              "question": "Présentation complète inclut souvent…",
+              "type": "single_choice",
+              "options": [
+                "Nom + parfois origine",
+                "Uniquement chiffres",
+                "Uniquement famille",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shmi + ani mi…"
+            },
+            {
+              "id": "q8",
+              "question": "Le sens RTL aide à…",
+              "type": "single_choice",
+              "options": [
+                "Lire les panneaux et les mots",
+                "Compter en français",
+                "Oublier shalom",
+                "Écrire en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence de lecture."
+            },
+            {
+              "id": "q9",
+              "question": "Boker tov s'utilise…",
+              "type": "single_choice",
+              "options": [
+                "Le matin",
+                "À minuit seulement",
+                "En classe d'anglais",
+                "Jamais avec shalom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation matinale."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif u1 :",
+              "type": "single_choice",
+              "options": [
+                "Saluer et se présenter en hébreu",
+                "Maîtriser tous les verbes",
+                "Lire sans alphabet",
+                "Ignorer la politesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre de l'unité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nombres 1 à 5",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots valent « un » et « deux » ?",
+              "type": "multiple_choice",
+              "options": [
+                "אֶחָד (echad)",
+                "שְׁנַיִם (shnayim)",
+                "שָׁלוֹשׁ (shalosh)",
+                "אַרְבָּעָה (arba'a)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Echad = 1 ; shnayim = 2 (masculin)."
+            },
+            {
+              "id": "q2",
+              "question": "« Shalosh » (שָׁלוֹשׁ) = …",
+              "type": "single_choice",
+              "options": ["Trois (f.)", "Deux", "Cinq", "Un"],
+              "correctAnswers": [0],
+              "explanation": "Forme féminine de 3."
+            },
+            {
+              "id": "q3",
+              "question": "« Echad » = …",
+              "type": "single_choice",
+              "options": ["1", "2", "4", "5"],
+              "correctAnswers": [0],
+              "explanation": "Premier nombre."
+            },
+            {
+              "id": "q4",
+              "question": "« Arba'a » (אַרְבָּעָה) = …",
+              "type": "single_choice",
+              "options": ["4", "3", "2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Quatre (m.)."
+            },
+            {
+              "id": "q5",
+              "question": "« Chamesh » (חֲמִשָּׁה) = …",
+              "type": "single_choice",
+              "options": ["5", "6", "7", "10"],
+              "correctAnswers": [0],
+              "explanation": "Cinq (m.)."
+            },
+            {
+              "id": "q6",
+              "question": "Compter doigts : 1 puis 2…",
+              "type": "single_choice",
+              "options": [
+                "אֶחָד, שְׁנַיִם (echad, shnayim)",
+                "שָׁלוֹם, תּוֹדָה",
+                "אַבָּא, אִמָּא",
+                "כֵּן, לֹא"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre numérique."
+            },
+            {
+              "id": "q7",
+              "question": "En hébreu, certains nombres changent selon…",
+              "type": "single_choice",
+              "options": [
+                "Le genre du nom compté",
+                "La couleur",
+                "RTL seulement",
+                "La saison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord m./f. (niveau 3e : aperçu)."
+            },
+            {
+              "id": "q8",
+              "question": "Le chiffre 3 masculin courant :",
+              "type": "single_choice",
+              "options": [
+                "שְׁלוֹשָׁה (shlosha)",
+                "שָׁלוֹשׁ (shalosh)",
+                "שְׁנַיִם (shnayim)",
+                "אֶחָד (echad)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shlosha = 3 (m.)."
+            },
+            {
+              "id": "q9",
+              "question": "« Shnayim » = …",
+              "type": "single_choice",
+              "options": ["2", "12", "20", "200"],
+              "correctAnswers": [0],
+              "explanation": "Deux."
+            },
+            {
+              "id": "q10",
+              "question": "Les nombres en 3e servent à…",
+              "type": "single_choice",
+              "options": [
+                "Compter, âge simple, objets",
+                "Remplacer l'alphabet",
+                "Lire RTL à l'envers",
+                "Saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire essentiel."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Nombres 6 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres sont 6 et 7 ?",
+              "type": "multiple_choice",
+              "options": [
+                "שִׁשָּׁה (shisha)",
+                "שִׁבְעָה (shiv'a)",
+                "חֲמִשָּׁה (chamesh)",
+                "עֶשֶׂר (eser)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Shisha = 6 ; shiv'a = 7."
+            },
+            {
+              "id": "q2",
+              "question": "« Shmona » (שְׁמוֹנָה) = …",
+              "type": "single_choice",
+              "options": ["8", "7", "9", "10"],
+              "correctAnswers": [0],
+              "explanation": "Huit."
+            },
+            {
+              "id": "q3",
+              "question": "« Tisha » (תִּשְׁעָה) = …",
+              "type": "single_choice",
+              "options": ["9", "8", "6", "5"],
+              "correctAnswers": [0],
+              "explanation": "Neuf."
+            },
+            {
+              "id": "q4",
+              "question": "« Eser » (עֶשֶׂר) = …",
+              "type": "single_choice",
+              "options": ["10", "1", "100", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dix."
+            },
+            {
+              "id": "q5",
+              "question": "Après shiv'a vient…",
+              "type": "single_choice",
+              "options": [
+                "שְׁמוֹנָה (shmona)",
+                "שִׁשָּׁה (shisha)",
+                "חֲמִשָּׁה (chamesh)",
+                "אֶחָד (echad)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7 → 8."
+            },
+            {
+              "id": "q6",
+              "question": "« Shiv'a » rappelle…",
+              "type": "single_choice",
+              "options": [
+                "Une semaine (7 jours)",
+                "Un mois",
+                "Un frère",
+                "Shalom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même racine que « semaine »."
+            },
+            {
+              "id": "q7",
+              "question": "Compter jusqu'à 10 finit par…",
+              "type": "single_choice",
+              "options": [
+                "עֶשֶׂר (eser)",
+                "שָׁלוֹם (shalom)",
+                "תּוֹדָה (toda)",
+                "אַח (ach)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dix = eser."
+            },
+            {
+              "id": "q8",
+              "question": "6 en hébreu (m.) :",
+              "type": "single_choice",
+              "options": [
+                "שִׁשָּׁה (shisha)",
+                "שֵׁשׁ (shesh f.) seule option fausse ici",
+                "אַרְבָּעָה",
+                "שְׁלוֹשָׁה"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shisha."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « j'ai dix ans » (idée) :",
+              "type": "single_choice",
+              "options": [
+                "בֶּן עֶשֶׂר (ben eser) pour un garçon",
+                "שָׁלוֹם עֶשֶׂר",
+                "לֹא עֶשֶׂר",
+                "תּוֹדָה עֶשֶׂר"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ben = fils de / âge (m.)."
+            },
+            {
+              "id": "q10",
+              "question": "Les nombres 6-10 sont…",
+              "type": "single_choice",
+              "options": [
+                "À mémoriser comme shalom",
+                "Inutiles",
+                "Uniquement féminins",
+                "Latin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence en classe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille proche : parents",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Qui sont « papa » et « maman » ?",
+              "type": "multiple_choice",
+              "options": ["אַבָּא (aba)", "אִמָּא (ima)", "אָח (ach)", "אֲחוֹת (achot)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Aba et ima = parents."
+            },
+            {
+              "id": "q2",
+              "question": "« Ima » (אִמָּא) = …",
+              "type": "single_choice",
+              "options": ["Maman", "Papa", "Frère", "Sœur"],
+              "correctAnswers": [0],
+              "explanation": "Mère."
+            },
+            {
+              "id": "q3",
+              "question": "« Aba » (אַבָּא) = …",
+              "type": "single_choice",
+              "options": ["Papa", "Oncle", "Grand-mère", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Père."
+            },
+            {
+              "id": "q4",
+              "question": "« Horim » (הוֹרִים) = …",
+              "type": "single_choice",
+              "options": [
+                "Les parents (les deux)",
+                "Les grands-parents seulement",
+                "Les amis",
+                "Les profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel parents."
+            },
+            {
+              "id": "q5",
+              "question": "Présenter sa mère :",
+              "type": "single_choice",
+              "options": [
+                "זֹאת אִמָּא שֶׁלִּי (zot ima sheli)",
+                "שָׁלוֹם אַבָּא seulement",
+                "לֹא אִמָּא",
+                "תּוֹדָה ima"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zot = voici ; sheli = ma/mon."
+            },
+            {
+              "id": "q6",
+              "question": "« Sheli » (שֶׁלִּי) = …",
+              "type": "single_choice",
+              "options": ["À moi / mon / ma", "À toi", "Chez eux", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q7",
+              "question": "Famille proche en 3e inclut surtout…",
+              "type": "single_choice",
+              "options": [
+                "Parents et frères/sœurs",
+                "Cousins éloignés seulement",
+                "Voisins",
+                "Animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noyau familial."
+            },
+            {
+              "id": "q8",
+              "question": "« Mishpacha » (מִשְׁפָּחָה) = …",
+              "type": "single_choice",
+              "options": ["Famille", "École", "Maison seule", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "Mot-clé famille."
+            },
+            {
+              "id": "q9",
+              "question": "Aba et ima sont…",
+              "type": "single_choice",
+              "options": [
+                "Courants à l'oral",
+                "Uniquement bibliques",
+                "Anglais",
+                "Interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme « mom/dad »."
+            },
+            {
+              "id": "q10",
+              "question": "Dire « ma famille » :",
+              "type": "single_choice",
+              "options": [
+                "הַמִּשְׁפָּחָה שֶׁלִּי (hamishpacha sheli)",
+                "שָׁלוֹם sheli",
+                "לֹא mishpacha",
+                "עֶשֶׂר mishpacha"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ha- = la ; sheli = ma."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Frères et sœurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Frère et sœur :",
+              "type": "multiple_choice",
+              "options": ["אָח (ach)", "אֲחוֹת (achot)", "אַבָּא (aba)", "אִמָּא (ima)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ach / achot."
+            },
+            {
+              "id": "q2",
+              "question": "« Achot » (אֲחוֹת) = …",
+              "type": "single_choice",
+              "options": ["Sœur", "Frère", "Mère", "Père"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q3",
+              "question": "« Ach » (אָח) = …",
+              "type": "single_choice",
+              "options": ["Frère", "Sœur", "Oncle", "Tante"],
+              "correctAnswers": [0],
+              "explanation": "Frère."
+            },
+            {
+              "id": "q4",
+              "question": "« Achim » (אַחִים) = …",
+              "type": "single_choice",
+              "options": [
+                "Frères / frère et sœur (mixte parfois)",
+                "Parents",
+                "Grands-parents",
+                "Professeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel frères."
+            },
+            {
+              "id": "q5",
+              "question": "J'ai une sœur :",
+              "type": "single_choice",
+              "options": [
+                "יֵשׁ לִי אֲחוֹת (yesh li achot)",
+                "אֵין לִי אֲחוֹת toujours",
+                "שָׁלוֹם achot",
+                "לֹא ach"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yesh li = j'ai."
+            },
+            {
+              "id": "q6",
+              "question": "« Yesh » (יֵשׁ) = …",
+              "type": "single_choice",
+              "options": ["Il y a / j'ai", "Il n'y a pas", "Bonjour", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Existence/possession."
+            },
+            {
+              "id": "q7",
+              "question": "« Ein » (אֵין) = …",
+              "type": "single_choice",
+              "options": ["Il n'y a pas / je n'ai pas", "Oui", "Merci", "Dix"],
+              "correctAnswers": [0],
+              "explanation": "Négation d'existence."
+            },
+            {
+              "id": "q8",
+              "question": "Achot est féminin ; ach est…",
+              "type": "single_choice",
+              "options": ["Masculin", "Neutre latin", "Pluriel", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Paire de genre."
+            },
+            {
+              "id": "q9",
+              "question": "Dans mishpacha proche on cite…",
+              "type": "single_choice",
+              "options": [
+                "Aba, ima, ach, achot",
+                "Uniquement nombres",
+                "Uniquement shalom",
+                "Uniquement villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire familial."
+            },
+            {
+              "id": "q10",
+              "question": "« Li » dans yesh li = …",
+              "type": "single_choice",
+              "options": ["À moi", "À toi", "Chez lui", "De Paris"],
+              "correctAnswers": [0],
+              "explanation": "Préposition possessive."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Maison et école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots « maison » et « école » :",
+              "type": "multiple_choice",
+              "options": [
+                "בַּיִת (bayit)",
+                "בֵּית סֵפֶר (beit sefer)",
+                "עִיר (ir)",
+                "שָׁלוֹם (shalom)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bayit = maison ; beit sefer = école."
+            },
+            {
+              "id": "q2",
+              "question": "« Beit sefer » = …",
+              "type": "single_choice",
+              "options": [
+                "École (maison-livre)",
+                "Bibliothèque seulement",
+                "Hôpital",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littéralement maison du livre."
+            },
+            {
+              "id": "q3",
+              "question": "« Bayit » (בַּיִת) = …",
+              "type": "single_choice",
+              "options": ["Maison", "Rue", "Pays", "Frère"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'habitation."
+            },
+            {
+              "id": "q4",
+              "question": "« Ir » (עִיר) = …",
+              "type": "single_choice",
+              "options": ["Ville", "Mer", "Montagne", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Ville."
+            },
+            {
+              "id": "q5",
+              "question": "Je suis à la maison (idée) :",
+              "type": "single_choice",
+              "options": [
+                "אֲנִי בַּבַּיִת (ani babayit)",
+                "אֲנִי בְּבֵית סֵפֶר toujours",
+                "שָׁלוֹם bayit",
+                "לֹא ir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ba- = dans le/la."
+            },
+            {
+              "id": "q6",
+              "question": "Où apprend-on l'hébreu ?",
+              "type": "single_choice",
+              "options": [
+                "בֵּית סֵפֶר (beit sefer)",
+                "בַּיִת seulement dormir",
+                "בַּיִת sans école",
+                "רחוב seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte scolaire."
+            },
+            {
+              "id": "q7",
+              "question": "« Babayit » = …",
+              "type": "single_choice",
+              "options": ["À la maison", "À l'école", "En ville", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Préposition fusionnée."
+            },
+            {
+              "id": "q8",
+              "question": "Bayit et beit partagent la racine…",
+              "type": "single_choice",
+              "options": ["Maison / construction", "Eau", "Frère", "Dix"],
+              "correctAnswers": [0],
+              "explanation": "Beit = variante."
+            },
+            {
+              "id": "q9",
+              "question": "Présenter son école :",
+              "type": "single_choice",
+              "options": [
+                "זֶה בֵּית סֵפֶר שֶׁלִּי (ze beit sefer sheli)",
+                "לְהִתְרָאוֹת sefer",
+                "אֶחָד sefer",
+                "תּוֹדָה bayit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ze = ceci (m.)."
+            },
+            {
+              "id": "q10",
+              "question": "Ces lieux servent à…",
+              "type": "single_choice",
+              "options": [
+                "Parler de la vie quotidienne",
+                "Remplacer les nombres",
+                "Changer RTL",
+                "Oublier la famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire essentiel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Couleurs et objets simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Couleurs de base :",
+              "type": "multiple_choice",
+              "options": [
+                "לָבָן (lavan) blanc",
+                "שָׁחוֹר (shachor) noir",
+                "אָדוֹם (adom) rouge",
+                "שָׁלוֹם (shalom)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Lavan et adom sont des couleurs."
+            },
+            {
+              "id": "q2",
+              "question": "« Adom » (אָדוֹם) = …",
+              "type": "single_choice",
+              "options": ["Rouge", "Bleu", "Vert", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Rouge."
+            },
+            {
+              "id": "q3",
+              "question": "« Kachol » (כָּחוֹל) = …",
+              "type": "single_choice",
+              "options": ["Bleu", "Noir", "Blanc", "Gris"],
+              "correctAnswers": [0],
+              "explanation": "Bleu."
+            },
+            {
+              "id": "q4",
+              "question": "« Yarok » (יָרוֹק) = …",
+              "type": "single_choice",
+              "options": ["Vert", "Rouge", "Rose", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Vert."
+            },
+            {
+              "id": "q5",
+              "question": "« Mayim » (מַיִם) = …",
+              "type": "single_choice",
+              "options": ["Eau", "Pain", "Lait", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Nom pluriel toujours."
+            },
+            {
+              "id": "q6",
+              "question": "« Lechem » (לֶחֶם) = …",
+              "type": "single_choice",
+              "options": ["Pain", "Eau", "Porte", "Table"],
+              "correctAnswers": [0],
+              "explanation": "Aliment de base."
+            },
+            {
+              "id": "q7",
+              "question": "« Shulchan » (שֻׁלְחָן) = …",
+              "type": "single_choice",
+              "options": ["Table", "Chaise", "Fenêtre", "Sol"],
+              "correctAnswers": [0],
+              "explanation": "Meuble."
+            },
+            {
+              "id": "q8",
+              "question": "« Delet » (דֶּלֶת) = …",
+              "type": "single_choice",
+              "options": ["Porte", "Mur", "Toit", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Objet maison."
+            },
+            {
+              "id": "q9",
+              "question": "Lavan vs shachor :",
+              "type": "single_choice",
+              "options": [
+                "Blanc / noir",
+                "Grand / petit",
+                "Chaud / froid",
+                "Frère / sœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste couleurs."
+            },
+            {
+              "id": "q10",
+              "question": "Ces mots aident à…",
+              "type": "single_choice",
+              "options": [
+                "Décrire autour de soi",
+                "Compter RTL",
+                "Saluer uniquement",
+                "Ignorer l'alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lexique concret."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Jours et shalom again",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots liés au temps :",
+              "type": "multiple_choice",
+              "options": [
+                "יוֹם (yom) jour",
+                "לַיְלָה (layla) nuit",
+                "שָׁנָה (shana) année",
+                "אָח (ach) frère"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Yom et layla."
+            },
+            {
+              "id": "q2",
+              "question": "« Yom » (יוֹם) = …",
+              "type": "single_choice",
+              "options": ["Jour", "Nuit", "Semaine entière", "Heure seule"],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q3",
+              "question": "« Shavua » (שָׁבוּעַ) = …",
+              "type": "single_choice",
+              "options": ["Semaine", "Mois", "Siècle", "Minute"],
+              "correctAnswers": [0],
+              "explanation": "7 jours."
+            },
+            {
+              "id": "q4",
+              "question": "« Shana » (שָׁנָה) = …",
+              "type": "single_choice",
+              "options": ["Année", "Jour", "Frère", "École"],
+              "correctAnswers": [0],
+              "explanation": "Année."
+            },
+            {
+              "id": "q5",
+              "question": "Boker tov le matin ; layla tov …",
+              "type": "single_choice",
+              "options": [
+                "Le soir / nuit",
+                "À midi",
+                "En classe seulement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couple jour/nuit."
+            },
+            {
+              "id": "q6",
+              "question": "« Hayom » (הַיּוֹם) = …",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Ha + yom."
+            },
+            {
+              "id": "q7",
+              "question": "Shabbat (שַׁבָּת) est…",
+              "type": "single_choice",
+              "options": [
+                "Le repos hebdomadaire",
+                "Un nombre",
+                "Une couleur",
+                "Un frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture israélienne."
+            },
+            {
+              "id": "q8",
+              "question": "Combien de jours dans shavua ?",
+              "type": "single_choice",
+              "options": [
+                "7 (shiv'a)",
+                "10 (eser)",
+                "3 (shalosh)",
+                "1 (echad)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien nombres-temps."
+            },
+            {
+              "id": "q9",
+              "question": "Layla et erev :",
+              "type": "single_choice",
+              "options": [
+                "Nuit / soir proches",
+                "Matin / midi",
+                "Père / mère",
+                "Rouge / bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire salutations."
+            },
+            {
+              "id": "q10",
+              "question": "Relire l'heure du jour aide à…",
+              "type": "single_choice",
+              "options": [
+                "Choisir la bonne salutation",
+                "Écrire de gauche à droite",
+                "Oublier ima",
+                "Compter sans echad"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte communicatif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Verbes très simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Verbes / expressions utiles :",
+              "type": "multiple_choice",
+              "options": [
+                "לָלֶכֶת (lalechet) aller",
+                "לִקְרוֹא (likro) lire/appeler",
+                "תּוֹדָה (toda)",
+                "אֶחָד (echad)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lalechet et likro (niveau découverte)."
+            },
+            {
+              "id": "q2",
+              "question": "« Lomed » (לוֹמֵד) = …",
+              "type": "single_choice",
+              "options": [
+                "J'apprends (m.)",
+                "Je dors",
+                "Je mange",
+                "Je pars seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "École."
+            },
+            {
+              "id": "q3",
+              "question": "« Ochel » (אוֹכֵל) = …",
+              "type": "single_choice",
+              "options": ["Je mange (m.)", "Je bois", "Je cours", "Je lis"],
+              "correctAnswers": [0],
+              "explanation": "Repas."
+            },
+            {
+              "id": "q4",
+              "question": "« Shoté » (שׁוֹתֶה) = …",
+              "type": "single_choice",
+              "options": ["Je bois (m.)", "Je mange", "J'écris", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "Boire."
+            },
+            {
+              "id": "q5",
+              "question": "« Kor'im » dans kor'im li = …",
+              "type": "single_choice",
+              "options": ["On appelle", "On mange", "On dort", "On compte"],
+              "correctAnswers": [0],
+              "explanation": "Présentation."
+            },
+            {
+              "id": "q6",
+              "question": "« Gar » (גָּר) = …",
+              "type": "single_choice",
+              "options": ["Habiter", "Partir", "Crier", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "Ani gar…"
+            },
+            {
+              "id": "q7",
+              "question": "Likro peut signifier…",
+              "type": "single_choice",
+              "options": ["Lire / appeler", "Courir", "Dormir", "Peindre"],
+              "correctAnswers": [0],
+              "explanation": "Double sens courant."
+            },
+            {
+              "id": "q8",
+              "question": "En 3e, les verbes sont surtout…",
+              "type": "single_choice",
+              "options": [
+                "Reconnus dans des expressions fixes",
+                "Tous conjugués au passé",
+                "Absents",
+                "Uniquement en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche phrase."
+            },
+            {
+              "id": "q9",
+              "question": "Lire un livre (idée) :",
+              "type": "single_choice",
+              "options": [
+                "קוֹרֵא סֵפֶר (kore sefer)",
+                "שָׁלוֹם sefer",
+                "לֹא sefer",
+                "אַבָּא sefer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kore = lit (m.)."
+            },
+            {
+              "id": "q10",
+              "question": "Ces verbes complètent…",
+              "type": "single_choice",
+              "options": [
+                "Salutations et vocabulaire",
+                "Uniquement mathématiques",
+                "Cyrillique",
+                "RTL inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité mots essentiels."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mélange vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Associe familles et nombres :",
+              "type": "multiple_choice",
+              "options": [
+                "אַבָּא (aba)",
+                "אִמָּא (ima)",
+                "שְׁלוֹשָׁה (shlosha) 3",
+                "שָׁלוֹם seulement nombre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Parents vs nombre 3."
+            },
+            {
+              "id": "q2",
+              "question": "« Katan » (קָטָן) = …",
+              "type": "single_choice",
+              "options": ["Petit", "Grand", "Vieux", "Rapide"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif simple."
+            },
+            {
+              "id": "q3",
+              "question": "« Gadol » (גָּדוֹל) = …",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Noir", "Blanc"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de katan."
+            },
+            {
+              "id": "q4",
+              "question": "« Yafe » (יָפֶה) = …",
+              "type": "single_choice",
+              "options": ["Beau / joli", "Moche", "Lent", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Compliment simple."
+            },
+            {
+              "id": "q5",
+              "question": "« Cham » (חַם) = …",
+              "type": "single_choice",
+              "options": ["Chaud", "Froid", "Mouillé", "Sec"],
+              "correctAnswers": [0],
+              "explanation": "Température."
+            },
+            {
+              "id": "q6",
+              "question": "« Kar » (קַר) = …",
+              "type": "single_choice",
+              "options": ["Froid", "Chaud", "Doux", "Dur"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de cham."
+            },
+            {
+              "id": "q7",
+              "question": "Deux frères (idée) :",
+              "type": "single_choice",
+              "options": [
+                "שְׁנֵי אַחִים (shnei achim)",
+                "אֶחָד achim",
+                "עֶשֶׂר ach",
+                "שָׁלוֹשׁ aba"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shnei = deux (m.)."
+            },
+            {
+              "id": "q8",
+              "question": "RTL : le mot mishpacha se lit…",
+              "type": "single_choice",
+              "options": [
+                "De droite à gauche",
+                "De bas en haut",
+                "En latin",
+                "En chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel lecture."
+            },
+            {
+              "id": "q9",
+              "question": "« Lev » (לֵב) = …",
+              "type": "single_choice",
+              "options": ["Cœur", "Pied", "Tête", "Main"],
+              "correctAnswers": [0],
+              "explanation": "Corps (culturel)."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif u2 :",
+              "type": "single_choice",
+              "options": [
+                "Mots essentiels (nombres, famille, base)",
+                "Philosophie",
+                "Uniquement RTL théorie",
+                "Sans hébreu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre unité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan du chapitre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Ce chapitre 3e-hebreu-01 couvre :",
+              "type": "multiple_choice",
+              "options": [
+                "Salutations et présentation",
+                "Nombres et famille proche",
+                "Lecture RTL",
+                "Tous les verbes du passé biblique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Also RTL ; pas le passé biblique complet."
+            },
+            {
+              "id": "q2",
+              "question": "200 questions = …",
+              "type": "single_choice",
+              "options": [
+                "2 unités × 10 quiz × 10 questions",
+                "1 quiz seulement",
+                "20 questions",
+                "1000 questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure du fichier."
+            },
+            {
+              "id": "q3",
+              "question": "Shalom peut être…",
+              "type": "single_choice",
+              "options": [
+                "Bonjour et au revoir",
+                "Uniquement un nombre",
+                "Uniquement une couleur",
+                "Un frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polyvalence."
+            },
+            {
+              "id": "q4",
+              "question": "Pour compter 1-5, tu utilises…",
+              "type": "single_choice",
+              "options": [
+                "Echad … chamesh",
+                "Aba … ima",
+                "Ken … lo seulement",
+                "Bayit … ir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série numérique."
+            },
+            {
+              "id": "q5",
+              "question": "Famille immédiate :",
+              "type": "single_choice",
+              "options": [
+                "Aba, ima, ach, achot",
+                "Ir, bayit seulement",
+                "Adom, kachol seulement",
+                "Eser, shalom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noyau familial."
+            },
+            {
+              "id": "q6",
+              "question": "Question q1 de chaque quiz est…",
+              "type": "single_choice",
+              "options": [
+                "multiple_choice (2 bonnes réponses)",
+                "single_choice toujours",
+                "Sans options",
+                "Sans explication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle pédagogique."
+            },
+            {
+              "id": "q7",
+              "question": "Les options contiennent…",
+              "type": "single_choice",
+              "options": [
+                "Hébreu + transcription",
+                "Uniquement anglais",
+                "Uniquement chiffres romains",
+                "Sans UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format demandé."
+            },
+            {
+              "id": "q8",
+              "question": "L'hébreu s'écrit…",
+              "type": "single_choice",
+              "options": [
+                "De droite à gauche",
+                "Comme le français",
+                "Verticalement seulement",
+                "En cyrillique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence clé 3e."
+            },
+            {
+              "id": "q9",
+              "question": "Après ce chapitre, tu peux…",
+              "type": "single_choice",
+              "options": [
+                "Saluer, te nommer, compter un peu, citer la famille",
+                "Parler couramment comme un natif",
+                "Ignorer l'alphabet",
+                "Ne plus dire toda"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs réalistes 3e."
+            },
+            {
+              "id": "q10",
+              "question": "Le titre du module est…",
+              "type": "single_choice",
+              "options": [
+                "Découvrir l'hébreu",
+                "Maîtriser le sanskrit",
+                "Les maths",
+                "Histoire de France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ title du JSON."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

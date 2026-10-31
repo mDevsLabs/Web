@@ -1,0 +1,2248 @@
+{
+  "id": "5e-chinois-01",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Découvrir le chinois",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Pinyin et bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles propositions décrivent correctement le pinyin ?",
+              "type": "multiple_choice",
+              "options": [
+                "Il utilise l'alphabet latin pour la prononciation",
+                "Il indique les tons sur les voyelles",
+                "Il remplace tous les caractères chinois à l'école",
+                "Il sert uniquement à écrire les noms propres français"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pinyin romanise la prononciation et marque les tons ; il n'élimine pas l'apprentissage des caractères."
+            },
+            {
+              "id": "q2",
+              "question": "Comment écrit-on « bonjour » en pinyin avec les bons tons ?",
+              "type": "single_choice",
+              "options": ["Nǐ hǎo", "Ní hāo", "Nǐ hāo", "Nī hǎo"],
+              "correctAnswers": [0],
+              "explanation": "你好 se prononce nǐ (3e ton) hǎo (3e ton)."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie 你 (nǐ) ?",
+              "type": "single_choice",
+              "options": ["Tu", "Je", "Il", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "你 est le pronom de la deuxième personne du singulier."
+            },
+            {
+              "id": "q4",
+              "question": "Quel caractère signifie « bien / bon » dans 你好 ?",
+              "type": "single_choice",
+              "options": ["好", "你", "再", "见"],
+              "correctAnswers": [0],
+              "explanation": "好 hǎo veut dire bon, bien, en bonne forme."
+            },
+            {
+              "id": "q5",
+              "question": "Combien de tons marqués compte le mandarin standard (hors neutre) ?",
+              "type": "single_choice",
+              "options": ["Quatre", "Deux", "Six", "Huit"],
+              "correctAnswers": [0],
+              "explanation": "On distingue quatre tons pleins plus le ton neutre sur certaines syllabes."
+            },
+            {
+              "id": "q6",
+              "question": "Saluer plusieurs camarades, on dit plutôt…",
+              "type": "single_choice",
+              "options": ["Nǐmen hǎo", "Wǒ hǎo", "Tā hǎo", "Shéi hǎo"],
+              "correctAnswers": [0],
+              "explanation": "你们 nǐmen est le « vous » pluriel familier."
+            },
+            {
+              "id": "q7",
+              "question": "Lǎoshī hǎo signifie…",
+              "type": "single_choice",
+              "options": [
+                "Bonjour professeur",
+                "Au revoir professeur",
+                "Merci professeur",
+                "Désolé professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "老师 lǎoshī désigne l'enseignant ; 好 complète la salutation."
+            },
+            {
+              "id": "q8",
+              "question": "Le premier ton se reconnaît par…",
+              "type": "single_choice",
+              "options": [
+                "Un trait plat (mā)",
+                "Un accent aigu (má)",
+                "Un accent grave (mǎ)",
+                "Aucune marque (ma)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier ton est haut et level ; on le note avec un macron."
+            },
+            {
+              "id": "q9",
+              "question": "你好 en caractères simplifiés s'écrit…",
+              "type": "single_choice",
+              "options": ["你好", "您好", "再见", "谢谢"],
+              "correctAnswers": [0],
+              "explanation": "你好 est la forme courante entre pairs ou amis."
+            },
+            {
+              "id": "q10",
+              "question": "Pour être poli avec un adulte inconnu, on peut dire…",
+              "type": "single_choice",
+              "options": ["Nín hǎo", "Nǐ hǎo", "Bù hǎo", "Hěn hǎo"],
+              "correctAnswers": [0],
+              "explanation": "您 nín est la forme de respect pour « vous »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les quatre tons",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles syllabes illustrent deux tons différents du mot mā / má ?",
+              "type": "multiple_choice",
+              "options": [
+                "mā (mère) — premier ton",
+                "má (chanter) — deuxième ton",
+                "mǎ (cheval) — troisième ton",
+                "mà (injurier) — quatrième ton"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mā et má diffèrent par le ton : plat contre montant."
+            },
+            {
+              "id": "q2",
+              "question": "Le troisième ton en pinyin ressemble à…",
+              "type": "single_choice",
+              "options": [
+                "Un accent grave sur la voyelle (mǎ)",
+                "Un macron (mā)",
+                "Un accent aigu (má)",
+                "Une syllabe sans voyelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le troisième ton descend puis remonte ; on le note avec ˇ."
+            },
+            {
+              "id": "q3",
+              "question": "Ma (sans signe) correspond en général au…",
+              "type": "single_choice",
+              "options": [
+                "Ton neutre",
+                "Premier ton",
+                "Deuxième ton",
+                "Quatrième ton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans marque, la syllabe est souvent légère et neutre en fin de mot."
+            },
+            {
+              "id": "q4",
+              "question": "Changer le ton peut…",
+              "type": "single_choice",
+              "options": [
+                "Changer le sens du mot",
+                "Ne rien changer à la prononciation",
+                "Transformer un verbe en nom automatiquement",
+                "Indiquer le genre grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En mandarin, la même syllabe avec un autre ton peut désigner un autre mot."
+            },
+            {
+              "id": "q5",
+              "question": "Le quatrième ton se note…",
+              "type": "single_choice",
+              "options": [
+                "Avec un accent aigu descendant (mà)",
+                "Avec un macron",
+                "Avec deux points",
+                "Avec un cédille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le quatrième ton part haut et tombe nettement."
+            },
+            {
+              "id": "q6",
+              "question": "Dans nǐ hǎo, combien de syllabes portent le troisième ton ?",
+              "type": "single_choice",
+              "options": ["Deux", "Zéro", "Une seule", "Trois"],
+              "correctAnswers": [0],
+              "explanation": "Nǐ et hǎo sont toutes deux au troisième ton (avec règle de sandhi à l'oral)."
+            },
+            {
+              "id": "q7",
+              "question": "Le deuxième ton monte ; il s'écrit comme…",
+              "type": "single_choice",
+              "options": ["má", "mā", "mǎ", "mà"],
+              "correctAnswers": [0],
+              "explanation": "L'accent aigu sur la voyelle marque le deuxième ton."
+            },
+            {
+              "id": "q8",
+              "question": "Pour progresser à l'oral en 5e, il faut surtout…",
+              "type": "single_choice",
+              "options": [
+                "Prononcer clairement les tons",
+                "Ignorer les tons et lire vite",
+                "Ne lire que en français",
+                "Éviter le pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tons portent le sens ; les négliger rend la phrase incompréhensible."
+            },
+            {
+              "id": "q9",
+              "question": "Hǎo (好) au troisième ton signifie…",
+              "type": "single_choice",
+              "options": ["Bon / bien", "Non", "Eau", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "好 est l'adjectif positif très fréquent dans les salutations."
+            },
+            {
+              "id": "q10",
+              "question": "La voyelle tonique du pinyin reçoit le signe de ton quand…",
+              "type": "single_choice",
+              "options": [
+                "La syllabe en contient une (règle d'orthographe pinyin)",
+                "Jamais",
+                "Seulement en fin de phrase",
+                "Uniquement sur le consonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marqueur se place sur la voyelle principale selon des règles fixes (a o e i u ü)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Je m'appelle",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules servent à se présenter ?",
+              "type": "multiple_choice",
+              "options": ["Wǒ jiào…", "Wǒ shì…", "Zài jiàn", "Duìbuqǐ"],
+              "correctAnswers": [0, 1],
+              "explanation": "Wǒ jiào + nom et Wǒ shì + identité présentent la personne ; les deux autres ne servent pas à ça."
+            },
+            {
+              "id": "q2",
+              "question": "Wǒ jiào Lǐ Míng signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Li Ming",
+                "Je suis professeur Li",
+                "Au revoir Li Ming",
+                "Li Ming est là"
+              ],
+              "correctAnswers": [0],
+              "explanation": "叫 jiào introduit le nom : « on m'appelle… »."
+            },
+            {
+              "id": "q3",
+              "question": "Je signifie en chinois…",
+              "type": "single_choice",
+              "options": ["我 (wǒ)", "你 (nǐ)", "他 (tā)", "她 (tā)"],
+              "correctAnswers": [0],
+              "explanation": "我 wǒ est le pronom de la première personne."
+            },
+            {
+              "id": "q4",
+              "question": "叫 (jiào) dans une présentation veut dire…",
+              "type": "single_choice",
+              "options": ["S'appeler / appeler", "Manger", "Aller", "Regarder"],
+              "correctAnswers": [0],
+              "explanation": "叫 exprime le nom donné à quelqu'un."
+            },
+            {
+              "id": "q5",
+              "question": "Un prénom chinois typique comporte souvent…",
+              "type": "single_choice",
+              "options": [
+                "Deux syllabes (ex. Míng, Lì)",
+                "Une seule lettre latine",
+                "Trois noms de famille",
+                "Uniquement des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom de famille + prénom d'une ou deux syllabes est la structure courante."
+            },
+            {
+              "id": "q6",
+              "question": "Wǒ shì xuésheng signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je suis élève / étudiant",
+                "Je suis professeur",
+                "Je suis médecin",
+                "Je suis étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 xuésheng désigne l'élève ou l'étudiant."
+            },
+            {
+              "id": "q7",
+              "question": "是 (shì) dans Wǒ shì… sert à…",
+              "type": "single_choice",
+              "options": [
+                "Lier le sujet à une identité (être)",
+                "Dire bonjour",
+                "Demander l'heure",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 est le verbe « être » pour une identité ou un rôle."
+            },
+            {
+              "id": "q8",
+              "question": "Pour dire « Enchanté », on apprend souvent…",
+              "type": "single_choice",
+              "options": [
+                "Hěn gāoxìng rènshi nǐ",
+                "Hěn bù hǎo",
+                "Míngtiān jiàn",
+                "Duìbuqǐ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很高兴认识你 exprime la joie de faire connaissance."
+            },
+            {
+              "id": "q9",
+              "question": "Lǐ est probablement…",
+              "type": "single_choice",
+              "options": [
+                "Un nom de famille",
+                "Un verbe",
+                "Une particule de question",
+                "Un ton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "李 Lǐ est l'un des noms de famille les plus répandus en Chine."
+            },
+            {
+              "id": "q10",
+              "question": "Dans le pinyin d'un prénom, les tons…",
+              "type": "single_choice",
+              "options": [
+                "Doivent être indiqués pour bien prononcer",
+                "Sont interdits",
+                "Remplacent les caractères",
+                "Ne concernent que les noms français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même les noms propres se lisent avec leurs tons en mandarin."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Demander le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent le nom de quelqu'un ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nǐ jiào shénme míngzi ?",
+                "Nǐ shì shéi ?",
+                "Nǐ hǎo ma ?",
+                "Xièxie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "叫什么 et 是谁 interrogent l'identité ; 好吗 demande des nouvelles."
+            },
+            {
+              "id": "q2",
+              "question": "Nǐ jiào shénme míngzi ? signifie…",
+              "type": "single_choice",
+              "options": [
+                "Comment tu t'appelles ?",
+                "Où habites-tu ?",
+                "Quelle heure est-il ?",
+                "As-tu faim ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "名字 míngzi veut dire « prénom / nom »."
+            },
+            {
+              "id": "q3",
+              "question": "什么 (shénme) signifie…",
+              "type": "single_choice",
+              "options": ["Quoi / quel", "Qui", "Où", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "什么 interroge sur la nature ou le choix d'une chose."
+            },
+            {
+              "id": "q4",
+              "question": "谁 (shéi / shuí) veut dire…",
+              "type": "single_choice",
+              "options": ["Qui", "Quoi", "Comment", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "谁 pose une question sur une personne."
+            },
+            {
+              "id": "q5",
+              "question": "名字 (míngzi) désigne…",
+              "type": "single_choice",
+              "options": [
+                "Le nom (donné à une personne)",
+                "La maison",
+                "La couleur",
+                "Le chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "名 et 字 ensemble forment le mot « nom »."
+            },
+            {
+              "id": "q6",
+              "question": "Pour répondre à « Comment tu t'appelles ? », on dit…",
+              "type": "single_choice",
+              "options": ["Wǒ jiào…", "Zài jiàn", "Bù shì", "Méiyǒu"],
+              "correctAnswers": [0],
+              "explanation": "On reprend la structure Wǒ jiào + nom."
+            },
+            {
+              "id": "q7",
+              "question": "Nǐ ne… à la fin d'une question familière indique…",
+              "type": "single_choice",
+              "options": [
+                "Une question oui/non (particule)",
+                "Le passé",
+                "Le futur lointain",
+                "L'impératif rude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 ma transforme souvent une phrase en question fermée."
+            },
+            {
+              "id": "q8",
+              "question": "Shéi est ton professeur de chinois ? en mandarin : …",
+              "type": "single_choice",
+              "options": [
+                "Nǐ de Zhōngwén lǎoshī shì shéi ?",
+                "Nǐ hǎo lǎoshī",
+                "Lǎoshī zài jiàn",
+                "Shéi hǎo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "的 marque la possession : « le professeur de chinois de toi »."
+            },
+            {
+              "id": "q9",
+              "question": "的 (de) entre deux noms exprime souvent…",
+              "type": "single_choice",
+              "options": [
+                "La possession ou l'appartenance",
+                "La négation",
+                "Le pluriel latin",
+                "Le passé composé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "结构 « nom + 的 + nom » lie un possesseur ou un attribut."
+            },
+            {
+              "id": "q10",
+              "question": "Après avoir demandé le nom, on dit poliment…",
+              "type": "single_choice",
+              "options": [
+                "Hěn gāoxìng rènshi nǐ",
+                "Duìbuqǐ",
+                "Bù kèqi",
+                "Méiyǒu wèntí"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier la rencontre par « ravi de te connaître » est naturel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Origine et nationalité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent du pays ou de la langue ?",
+              "type": "multiple_choice",
+              "options": [
+                "Wǒ shì Fǎguó rén",
+                "Wǒ shì Zhōngguó rén",
+                "Zài jiàn",
+                "Nǐ chī fàn le ma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "法国人 et 中国人 indiquent la nationalité ; les autres phrases ne le font pas."
+            },
+            {
+              "id": "q2",
+              "question": "Wǒ shì Fǎguó rén signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je suis français / Française",
+                "Je vais en France",
+                "Je parle chinois",
+                "Je suis professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "国 guó = pays ; 人 rén = personne."
+            },
+            {
+              "id": "q3",
+              "question": "中国 (Zhōngguó) signifie…",
+              "type": "single_choice",
+              "options": [
+                "La Chine",
+                "Le Japon",
+                "La France",
+                "Les États-Unis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中国 est le nom du pays en mandarin standard."
+            },
+            {
+              "id": "q4",
+              "question": "人 (rén) seul veut dire…",
+              "type": "single_choice",
+              "options": ["Personne / être humain", "Maison", "Eau", "Voiture"],
+              "correctAnswers": [0],
+              "explanation": "人 est le mot de base pour une personne."
+            },
+            {
+              "id": "q5",
+              "question": "中文 (Zhōngwén) désigne…",
+              "type": "single_choice",
+              "options": [
+                "La langue chinoise",
+                "La monnaie chinoise",
+                "La cuisine seulement",
+                "Un festival"
+              ],
+              "correctAnswers": [0],
+              "explanation": "文 wén renvoie à la langue et à l'écriture culturelle."
+            },
+            {
+              "id": "q6",
+              "question": "Nǐ shì nǎ guó rén ? demande…",
+              "type": "single_choice",
+              "options": [
+                "De quelle nationalité es-tu ?",
+                "Quelle heure est-il ?",
+                "Combien coûte-t-il ?",
+                "Où est la gare ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国 = quel pays ; 哪 guó rén = quelle personne de quel pays."
+            },
+            {
+              "id": "q7",
+              "question": "哪 (nǎ) sert à…",
+              "type": "single_choice",
+              "options": [
+                "Demander « quel / quelle »",
+                "Dire merci",
+                "Saluer le matin",
+                "Compter jusqu'à dix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪 interroge sur un choix parmi des options."
+            },
+            {
+              "id": "q8",
+              "question": "France en chinois s'écrit…",
+              "type": "single_choice",
+              "options": [
+                "法国 (Fǎguó)",
+                "英国 (Yīngguó)",
+                "德国 (Déguó)",
+                "美国 (Měiguó)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "法 Fǎ transcrit phonétiquement « Fa » pour la France."
+            },
+            {
+              "id": "q9",
+              "question": "Wǒ huì shuō yīdiǎnr Zhōngwén signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu chinois",
+                "Je ne parle pas chinois",
+                "Je suis chinois",
+                "J'apprends le pinyin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会 = savoir ; 一点儿 = un petit peu."
+            },
+            {
+              "id": "q10",
+              "question": "会 (huì) dans ce contexte exprime…",
+              "type": "single_choice",
+              "options": [
+                "Une compétence (savoir faire)",
+                "Une obligation",
+                "Une interdiction",
+                "Un adjectif de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会 indique qu'on maîtrise une activité comme parler une langue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politesse : merci et pardon",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des formules de politesse courantes ?",
+              "type": "multiple_choice",
+              "options": ["Xièxie", "Duìbuqǐ", "Xièxie nǐ", "Méi guānxi"],
+              "correctAnswers": [0, 1],
+              "explanation": "谢谢 remercie ; 对不起 s'excuse ; les deux sont essentiels en 5e."
+            },
+            {
+              "id": "q2",
+              "question": "谢谢 (xièxie) signifie…",
+              "type": "single_choice",
+              "options": ["Merci", "Bonjour", "Au revoir", "S'il te plaît"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 est la formule de remerciement la plus usuelle."
+            },
+            {
+              "id": "q3",
+              "question": "对不起 (duìbuqǐ) veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Pardon / désolé",
+                "De rien",
+                "Félicitations",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对不起 s'emploie pour s'excuser poliment."
+            },
+            {
+              "id": "q4",
+              "question": "请 (qǐng) introduit souvent…",
+              "type": "single_choice",
+              "options": [
+                "Une demande polie (s'il vous plaît)",
+                "Une insulte",
+                "Un au revoir",
+                "Un nom de famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请 adoucit l'ordre ou la requête."
+            },
+            {
+              "id": "q5",
+              "question": "Qǐng zuò signifie…",
+              "type": "single_choice",
+              "options": [
+                "Asseyez-vous / je t'en prie (siège)",
+                "Lève-toi",
+                "Ouvre la porte",
+                "Ferme la bouche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐 zuò = s'asseoir ; 请 le rend courtois."
+            },
+            {
+              "id": "q6",
+              "question": "Méi guānxi répond souvent à…",
+              "type": "single_choice",
+              "options": [
+                "Duìbuqǐ (ce n'est pas grave)",
+                "Xièxie (non merci)",
+                "Nǐ hǎo (salut)",
+                "Zài jiàn (revoir)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没关系 rassure : « pas de problème »."
+            },
+            {
+              "id": "q7",
+              "question": "Bù kèqi signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je t'en prie / de rien",
+                "Je suis en colère",
+                "Je suis fatigué",
+                "À demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不客气 répond à un remerciement."
+            },
+            {
+              "id": "q8",
+              "question": "Le ton de xiè dans 谢谢 est…",
+              "type": "single_choice",
+              "options": [
+                "Quatrième ton (xiè)",
+                "Premier ton",
+                "Deuxième ton",
+                "Ton neutre uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢 xiè se prononce au quatrième ton."
+            },
+            {
+              "id": "q9",
+              "question": "En classe, avant de parler, on peut dire…",
+              "type": "single_choice",
+              "options": ["Qǐng wèn", "Zài jiàn", "Duìbuqǐ ma", "Hǎo chī"],
+              "correctAnswers": [0],
+              "explanation": "请问 = « permettez de demander » pour poser une question."
+            },
+            {
+              "id": "q10",
+              "question": "问 (wèn) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Demander / poser une question",
+                "Manger",
+                "Dormir",
+                "Courir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "问 est le verbe de base pour interroger."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions servent à prendre congé ?",
+              "type": "multiple_choice",
+              "options": ["Zài jiàn", "Míngtiān jiàn", "Nǐ hǎo", "Wǒ jiào"],
+              "correctAnswers": [0, 1],
+              "explanation": "再见 et 明天见 closent ou fixent un prochain rendez-vous."
+            },
+            {
+              "id": "q2",
+              "question": "再见 (zàijiàn) signifie…",
+              "type": "single_choice",
+              "options": ["Au revoir", "Bonjour", "Merci", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "再 = encore ; 见 = voir → « à revoir »."
+            },
+            {
+              "id": "q3",
+              "question": "见 (jiàn) dans au revoir veut dire…",
+              "type": "single_choice",
+              "options": ["Voir / rencontrer", "Manger", "Écrire", "Acheter"],
+              "correctAnswers": [0],
+              "explanation": "见 exprime la rencontre ou la vision."
+            },
+            {
+              "id": "q4",
+              "question": "Míngtiān jiàn signifie…",
+              "type": "single_choice",
+              "options": [
+                "À demain",
+                "À l'année prochaine",
+                "Bonne nuit",
+                "Bon appétit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天 míngtiān = demain."
+            },
+            {
+              "id": "q5",
+              "question": "明天 (míngtiān) se décompose en…",
+              "type": "single_choice",
+              "options": [
+                "明 « clair » + 天 « jour »",
+                "见 + 好",
+                "再 + 请",
+                "不 + 见"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demain est littéralement le « jour clair » suivant."
+            },
+            {
+              "id": "q6",
+              "question": "Wǎn'ān correspond à…",
+              "type": "single_choice",
+              "options": [
+                "Bonne nuit",
+                "Bonjour",
+                "Bon après-midi",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晚安 souhaite une nuit paisible."
+            },
+            {
+              "id": "q7",
+              "question": "回 (huí) jiā signifie souvent…",
+              "type": "single_choice",
+              "options": [
+                "Rentrer à la maison",
+                "Aller à l'école",
+                "Prendre le bus",
+                "Faire du sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "回家 = retourner chez soi."
+            },
+            {
+              "id": "q8",
+              "question": "家 (jiā) signifie…",
+              "type": "single_choice",
+              "options": ["Maison / foyer / famille", "Route", "Pont", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "家 désigne le lieu où l'on vit ou la famille."
+            },
+            {
+              "id": "q9",
+              "question": "À la fin du cours, le professeur dit souvent…",
+              "type": "single_choice",
+              "options": [
+                "Tóngxuémen zàijiàn",
+                "Tóngxuémen nǐ hǎo",
+                "Lǎoshī duìbuqǐ",
+                "Xièxie lǎoshī hǎo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同学们再见 s'adresse à toute la classe."
+            },
+            {
+              "id": "q10",
+              "question": "同学 (tóngxué) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Camarade de classe",
+                "Frère cadet",
+                "Voisin",
+                "Médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同 = même ; 学 = étudier → celui qui étudie avec toi."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases demandent des nouvelles de quelqu'un ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nǐ hǎo ma ?",
+                "Nǐ zěnmeyàng ?",
+                "Nǐ jiào shénme míngzi ?",
+                "Zài jiàn"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "好吗 et 怎么样 demandent comment va la personne."
+            },
+            {
+              "id": "q2",
+              "question": "Nǐ hǎo ma ? signifie…",
+              "type": "single_choice",
+              "options": [
+                "Comment vas-tu ? / Ça va ?",
+                "Comment tu t'appelles ?",
+                "Où vas-tu ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 transforme la phrase en question sur l'état de la personne."
+            },
+            {
+              "id": "q3",
+              "question": "Une réponse positive fréquente est…",
+              "type": "single_choice",
+              "options": ["Wǒ hěn hǎo", "Wǒ bù jiào", "Wǒ bù shì", "Wǒ méiyǒu"],
+              "correctAnswers": [0],
+              "explanation": "很好 = « je vais très bien »."
+            },
+            {
+              "id": "q4",
+              "question": "很 (hěn) devant un adjectif…",
+              "type": "single_choice",
+              "options": [
+                "Renforce (très / bien)",
+                "Nie",
+                "Interroge",
+                "Passe au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很 marque un degré élevé avec les adjectifs."
+            },
+            {
+              "id": "q5",
+              "question": "怎么样 (zěnmeyàng) demande…",
+              "type": "single_choice",
+              "options": [
+                "Comment / qu'en est-il ?",
+                "Qui es-tu ?",
+                "Combien ?",
+                "Pourquoi pas ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "怎么样 est une question ouverte sur la situation."
+            },
+            {
+              "id": "q6",
+              "question": "Ma (吗) en fin de phrase indique…",
+              "type": "single_choice",
+              "options": [
+                "Une question oui/non",
+                "Le pluriel",
+                "Le féminin",
+                "Le superlatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 est la particule interrogative la plus simple."
+            },
+            {
+              "id": "q7",
+              "question": "Hái kěyǐ signifie…",
+              "type": "single_choice",
+              "options": [
+                "Ça va / passable",
+                "Très mal",
+                "Au revoir",
+                "Merci beaucoup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还可以 = « acceptable, pas mal »."
+            },
+            {
+              "id": "q8",
+              "question": "不太 (bú tài) devant hǎo donne…",
+              "type": "single_choice",
+              "options": [
+                "Pas très bien",
+                "Très bien",
+                "Extrêmement mal",
+                "Parfaitement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不太 atténue l'adjectif : pas trop…"
+            },
+            {
+              "id": "q9",
+              "question": "Et toi ? se dit souvent…",
+              "type": "single_choice",
+              "options": ["Nǐ ne ?", "Nǐ hǎo", "Nǐ shì", "Nǐ de"],
+              "correctAnswers": [0],
+              "explanation": "你呢 renvoie la question à l'interlocuteur."
+            },
+            {
+              "id": "q10",
+              "question": "呢 (ne) après un nom ou pronom sert à…",
+              "type": "single_choice",
+              "options": [
+                "Relancer la question (et… ?)",
+                "Terminer une histoire",
+                "Indiquer le passé",
+                "Former le conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "呢 reprend le thème pour demander la même chose à l'autre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Oui, non, être",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots expriment l'affirmation ou la négation ?",
+              "type": "multiple_choice",
+              "options": ["Shì (是)", "Bù shì (不是)", "Zài jiàn", "Qǐng"],
+              "correctAnswers": [0, 1],
+              "explanation": "是 affirme une identité ; 不是 la nie."
+            },
+            {
+              "id": "q2",
+              "question": "是 (shì) signifie…",
+              "type": "single_choice",
+              "options": ["Être (affirmation)", "Avoir", "Aller", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "是 lie le sujet à un nom ou un rôle."
+            },
+            {
+              "id": "q3",
+              "question": "不是 (bù shì) veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Ne pas être / ce n'est pas",
+                "Être aussi",
+                "Être peut-être",
+                "Être toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 nie le verbe 是."
+            },
+            {
+              "id": "q4",
+              "question": "对 (duì) dans une conversation informelle peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "Oui / c'est correct",
+                "Non jamais",
+                "Peut-être demain",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对 valide ce que dit l'autre."
+            },
+            {
+              "id": "q5",
+              "question": "不对 (bú duì) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Ce n'est pas correct",
+                "C'est parfait",
+                "Merci",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 nie 对 : pas juste."
+            },
+            {
+              "id": "q6",
+              "question": "Wǒ shì Fǎguó rén, nǐ ne ? — réponse logique : …",
+              "type": "single_choice",
+              "options": [
+                "Wǒ shì Zhōngguó rén",
+                "Zài jiàn",
+                "Duìbuqǐ ma",
+                "Qǐng zuò"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond sur sa propre nationalité."
+            },
+            {
+              "id": "q7",
+              "question": "也 (yě) signifie…",
+              "type": "single_choice",
+              "options": ["Aussi", "Jamais", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "也 place la même information sur un autre sujet."
+            },
+            {
+              "id": "q8",
+              "question": "Wǒ yě shì xuésheng signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je suis aussi élève",
+                "Je ne suis pas élève",
+                "Tu es élève",
+                "Il est professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "也 répète l'identité pour soi."
+            },
+            {
+              "id": "q9",
+              "question": "不 (bù) devant un verbe…",
+              "type": "single_choice",
+              "options": [
+                "Nie l'action ou l'état",
+                "Double l'action",
+                "Marque le passé",
+                "Forme le pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 est la négation standard devant les verbes."
+            },
+            {
+              "id": "q10",
+              "question": "Nǐ shì lǎoshī ma ? — réponse « oui » : …",
+              "type": "single_choice",
+              "options": ["Shì", "Bù", "Hǎo", "Zài"],
+              "correctAnswers": [0],
+              "explanation": "On répond par le verbe seul : 是."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Dialogue en classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles répliques forment un mini-dialogue de présentation ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nǐ hǎo ! Wǒ jiào…",
+                "Nǐ jiào shénme míngzi ? — Wǒ jiào…",
+                "Zài jiàn — Nǐ hǎo",
+                "Duìbuqǐ — Merci en français seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer puis échanger les noms est le dialogue type de 5e."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique : saluer, demander le nom, remercier…",
+              "type": "single_choice",
+              "options": [
+                "Nǐ hǎo → Nǐ jiào shénme míngzi ? → Xièxie",
+                "Zài jiàn → Wǒ shì → Bù shì",
+                "Duìbuqǐ → Míngtiān → Hǎo chī",
+                "Shéi → Zài → Jiàn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ouvre par 你好, on interroge le nom, on clôt poliment."
+            },
+            {
+              "id": "q3",
+              "question": "Le professeur demande silence : …",
+              "type": "single_choice",
+              "options": [
+                "Qǐng ānjìng",
+                "Qǐng chī",
+                "Nǐ hǎo ma",
+                "Míngtiān jiàn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请安静 = « silence, s'il vous plaît »."
+            },
+            {
+              "id": "q4",
+              "question": "安静 (ānjìng) signifie…",
+              "type": "single_choice",
+              "options": ["Calme / silence", "Bruit", "Course", "Fête"],
+              "correctAnswers": [0],
+              "explanation": "安 évoque la paix ; 静 le calme."
+            },
+            {
+              "id": "q5",
+              "question": "一起 (yīqǐ) dans « lisons ensemble » veut dire…",
+              "type": "single_choice",
+              "options": ["Ensemble", "Seul", "Hier", "Lentement"],
+              "correctAnswers": [0],
+              "explanation": "一起 marque l'action commune."
+            },
+            {
+              "id": "q6",
+              "question": "读 (dú) signifie…",
+              "type": "single_choice",
+              "options": ["Lire", "Écrire", "Écouter seulement", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "读 est le verbe lire à voix haute ou silencieusement."
+            },
+            {
+              "id": "q7",
+              "question": "听 (tīng) signifie…",
+              "type": "single_choice",
+              "options": ["Écouter", "Parler", "Courir", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "听 est essentiel avant de répéter les tons."
+            },
+            {
+              "id": "q8",
+              "question": "说 (shuō) signifie…",
+              "type": "single_choice",
+              "options": ["Parler / dire", "Manger", "Acheter", "Peindre"],
+              "correctAnswers": [0],
+              "explanation": "说 produit la langue à l'oral."
+            },
+            {
+              "id": "q9",
+              "question": "写 (xiě) signifie…",
+              "type": "single_choice",
+              "options": ["Écrire", "Lire", "Regarder la télé", "Jouer"],
+              "correctAnswers": [0],
+              "explanation": "写 concerne les caractères et le pinyin au cahier."
+            },
+            {
+              "id": "q10",
+              "question": "En 5e, réussir une présentation orale, c'est surtout…",
+              "type": "single_choice",
+              "options": [
+                "Prononcer clairement pinyin et tons",
+                "Lire uniquement en français",
+                "Ignorer les caractères pour toujours",
+                "Ne jamais saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objectif est une prise de parole simple mais audible en mandarin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Chiffres 1 à 5",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pinyin désignent des chiffres de un à trois ?",
+              "type": "multiple_choice",
+              "options": ["Yī", "Èr", "Sān", "Zài"],
+              "correctAnswers": [0, 1],
+              "explanation": "Yī, èr et sān sont 1, 2, 3 ; zài n'est pas un chiffre."
+            },
+            {
+              "id": "q2",
+              "question": "一 (yī) vaut…",
+              "type": "single_choice",
+              "options": ["1", "2", "3", "5"],
+              "correctAnswers": [0],
+              "explanation": "一 est le chiffre un au premier ton."
+            },
+            {
+              "id": "q3",
+              "question": "二 (èr) vaut…",
+              "type": "single_choice",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "二 se prononce èr au quatrième ton."
+            },
+            {
+              "id": "q4",
+              "question": "三 (sān) vaut…",
+              "type": "single_choice",
+              "options": ["3", "1", "7", "9"],
+              "correctAnswers": [0],
+              "explanation": "三 sān est au premier ton."
+            },
+            {
+              "id": "q5",
+              "question": "四 (sì) vaut…",
+              "type": "single_choice",
+              "options": ["4", "5", "10", "0"],
+              "correctAnswers": [0],
+              "explanation": "四 sì = quatre."
+            },
+            {
+              "id": "q6",
+              "question": "五 (wǔ) vaut…",
+              "type": "single_choice",
+              "options": ["5", "3", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "五 wǔ = cinq, troisième ton."
+            },
+            {
+              "id": "q7",
+              "question": "Lire « 123 » à voix haute en mandarin : …",
+              "type": "single_choice",
+              "options": ["Yī èr sān", "Sān èr yī", "Wǔ sì sān", "Nǐ hǎo ma"],
+              "correctAnswers": [0],
+              "explanation": "L'ordre des chiffres suit l'ordre arabe."
+            },
+            {
+              "id": "q8",
+              "question": "零 (líng) signifie…",
+              "type": "single_choice",
+              "options": ["Zéro", "Dix", "Cent", "Mille"],
+              "correctAnswers": [0],
+              "explanation": "零 désigne l'absence de quantité."
+            },
+            {
+              "id": "q9",
+              "question": "Plus (addition) se dit…",
+              "type": "single_choice",
+              "options": ["Jiā", "Jiàn", "Chī", "Hē"],
+              "correctAnswers": [0],
+              "explanation": "加 jiā = ajouter."
+            },
+            {
+              "id": "q10",
+              "question": "二 plus三 font…",
+              "type": "single_choice",
+              "options": ["五 (wǔ)", "六 (liù)", "一 (yī)", "四 (sì)"],
+              "correctAnswers": [0],
+              "explanation": "2 + 3 = 5 en arithmétique universelle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Chiffres 6 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels caractères représentent 6 et 10 ?",
+              "type": "multiple_choice",
+              "options": ["六 (liù)", "十 (shí)", "八 (bā)", "七 (qī)"],
+              "correctAnswers": [0, 1],
+              "explanation": "六 = 6 et 十 = 10 ; huit et sept sont d'autres valeurs."
+            },
+            {
+              "id": "q2",
+              "question": "六 (liù) vaut…",
+              "type": "single_choice",
+              "options": ["6", "9", "4", "1"],
+              "correctAnswers": [0],
+              "explanation": "六 liù = six."
+            },
+            {
+              "id": "q3",
+              "question": "七 (qī) vaut…",
+              "type": "single_choice",
+              "options": ["7", "8", "5", "2"],
+              "correctAnswers": [0],
+              "explanation": "七 qī = sept, premier ton."
+            },
+            {
+              "id": "q4",
+              "question": "八 (bā) vaut…",
+              "type": "single_choice",
+              "options": ["8", "6", "10", "3"],
+              "correctAnswers": [0],
+              "explanation": "八 bā = huit."
+            },
+            {
+              "id": "q5",
+              "question": "九 (jiǔ) vaut…",
+              "type": "single_choice",
+              "options": ["9", "7", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "九 jiǔ = neuf, troisième ton."
+            },
+            {
+              "id": "q6",
+              "question": "十 (shí) vaut…",
+              "type": "single_choice",
+              "options": ["10", "100", "15", "20"],
+              "correctAnswers": [0],
+              "explanation": "十 shí = dix."
+            },
+            {
+              "id": "q7",
+              "question": "Shí èr signifie…",
+              "type": "single_choice",
+              "options": ["12", "20", "102", "21"],
+              "correctAnswers": [0],
+              "explanation": "十 + 二 compose douze comme en logique décimale chinoise."
+            },
+            {
+              "id": "q8",
+              "question": "Combien de doigts sur deux mains ? en chinois : …",
+              "type": "single_choice",
+              "options": ["Shí", "Wǔ", "Bā", "Líng"],
+              "correctAnswers": [0],
+              "explanation": "Deux mains = dix doigts → 十."
+            },
+            {
+              "id": "q9",
+              "question": "第 (dì) devant un chiffre indique souvent…",
+              "type": "single_choice",
+              "options": [
+                "Un ordre (premier, deuxième…)",
+                "Une couleur",
+                "Un au revoir",
+                "Une boisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第 forme les numéraux ordinaux avec un chiffre."
+            },
+            {
+              "id": "q10",
+              "question": "Dì yī signifie…",
+              "type": "single_choice",
+              "options": ["Premier / première", "Dernier", "Dixième", "Zéro"],
+              "correctAnswers": [0],
+              "explanation": "第一 = numéro un dans une série."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des parents proches ?",
+              "type": "multiple_choice",
+              "options": ["Māma", "Bàba", "Lǎoshī", "Tóngxué"],
+              "correctAnswers": [0, 1],
+              "explanation": "妈妈 et 爸爸 sont mère et père ; professeur et camarade ne sont pas la famille nucléaire."
+            },
+            {
+              "id": "q2",
+              "question": "妈妈 (māma) signifie…",
+              "type": "single_choice",
+              "options": ["Maman", "Papa", "Grand-mère", "Oncle"],
+              "correctAnswers": [0],
+              "explanation": "妈 se répète en registre affectueux."
+            },
+            {
+              "id": "q3",
+              "question": "爸爸 (bàba) signifie…",
+              "type": "single_choice",
+              "options": ["Papa", "Frère", "Cousine", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "爸 bà = père."
+            },
+            {
+              "id": "q4",
+              "question": "哥哥 (gēge) désigne…",
+              "type": "single_choice",
+              "options": ["Grand frère", "Petite sœur", "Tante", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "哥 = frère aîné masculin."
+            },
+            {
+              "id": "q5",
+              "question": "妹妹 (mèimei) désigne…",
+              "type": "single_choice",
+              "options": ["Petite sœur", "Grand-père", "Professeur", "Chien"],
+              "correctAnswers": [0],
+              "explanation": "妹 = sœur cadette."
+            },
+            {
+              "id": "q6",
+              "question": "家 (jiā) peut aussi renvoyer à…",
+              "type": "single_choice",
+              "options": [
+                "La famille / le foyer",
+                "Uniquement un bâtiment vide",
+                "Un pays étranger",
+                "Un chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "家 regroupe les personnes qui vivent ensemble."
+            },
+            {
+              "id": "q7",
+              "question": "Wǒ de jiā yǒu sì kǒu rén signifie…",
+              "type": "single_choice",
+              "options": [
+                "Il y a quatre personnes dans ma famille",
+                "J'ai quatre maisons",
+                "Je suis seul",
+                "Ma famille est en Chine seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "四口人 = quatre bouches / quatre personnes."
+            },
+            {
+              "id": "q8",
+              "question": "口 (kǒu) compte ici…",
+              "type": "single_choice",
+              "options": [
+                "Des personnes (membres)",
+                "Des voitures",
+                "Des livres",
+                "Des heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "口人 est un classificateur familier pour les membres."
+            },
+            {
+              "id": "q9",
+              "question": "的 (de) dans 我的家…",
+              "type": "single_choice",
+              "options": [
+                "Marque « ma / mon »",
+                "Nie la phrase",
+                "Indique le futur",
+                "Remplace un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 + 的 + nom = possession."
+            },
+            {
+              "id": "q10",
+              "question": "有 (yǒu) dans la phrase famille signifie…",
+              "type": "single_choice",
+              "options": ["Avoir / il y a", "Être", "Aller", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "有 exprime l'existence ou la possession."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Couleurs de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des couleurs apprises en 5e ?",
+              "type": "multiple_choice",
+              "options": ["Hóngsè", "Lán sè", "Xièxie", "Xuésheng"],
+              "correctAnswers": [0, 1],
+              "explanation": "红色 et 蓝色 sont rouge et bleu ; merci et élève ne sont pas des couleurs."
+            },
+            {
+              "id": "q2",
+              "question": "红色 (hóngsè) signifie…",
+              "type": "single_choice",
+              "options": ["Rouge", "Vert", "Jaune", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "红 hóng = rouge ; 色 sè = couleur."
+            },
+            {
+              "id": "q3",
+              "question": "蓝色 (lán sè) signifie…",
+              "type": "single_choice",
+              "options": ["Bleu", "Blanc", "Gris", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "蓝 lán = bleu."
+            },
+            {
+              "id": "q4",
+              "question": "黄色 (huángsè) signifie…",
+              "type": "single_choice",
+              "options": ["Jaune", "Violet", "Rose", "Marron"],
+              "correctAnswers": [0],
+              "explanation": "黄 huáng = jaune."
+            },
+            {
+              "id": "q5",
+              "question": "绿色 (lǜsè) signifie…",
+              "type": "single_choice",
+              "options": ["Vert", "Rouge", "Bleu", "Argent"],
+              "correctAnswers": [0],
+              "explanation": "绿 lǜ = vert."
+            },
+            {
+              "id": "q6",
+              "question": "白色 (báisè) signifie…",
+              "type": "single_choice",
+              "options": ["Blanc", "Noir", "Bleu clair", "Rouge foncé"],
+              "correctAnswers": [0],
+              "explanation": "白 bái = blanc."
+            },
+            {
+              "id": "q7",
+              "question": "黑色 (hēisè) signifie…",
+              "type": "single_choice",
+              "options": ["Noir", "Blanc", "Vert", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "黑 hēi = noir."
+            },
+            {
+              "id": "q8",
+              "question": "色 (sè) signifie…",
+              "type": "single_choice",
+              "options": ["Couleur", "Nombre", "Professeur", "Maison"],
+              "correctAnswers": [0],
+              "explanation": "色 termine les noms de couleur."
+            },
+            {
+              "id": "q9",
+              "question": "Zhè shì hóngsè signifie…",
+              "type": "single_choice",
+              "options": [
+                "C'est rouge",
+                "C'est bleu",
+                "C'est un livre",
+                "C'est un professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这 = ceci ; 是 + couleur identifie."
+            },
+            {
+              "id": "q10",
+              "question": "这 (zhè) signifie…",
+              "type": "single_choice",
+              "options": ["Ce / cette / ceci", "Cela là-bas", "Qui", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "这 pointe quelque chose de proche."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Aujourd'hui et demain",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du temps calendaire ?",
+              "type": "multiple_choice",
+              "options": ["Jīntiān", "Míngtiān", "Zài jiàn", "Duìbuqǐ"],
+              "correctAnswers": [0, 1],
+              "explanation": "今天 et 明天 = aujourd'hui et demain."
+            },
+            {
+              "id": "q2",
+              "question": "今天 (jīntiān) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui",
+                "Hier",
+                "La semaine prochaine",
+                "L'année dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今 jīn = maintenant ; 天 = jour."
+            },
+            {
+              "id": "q3",
+              "question": "明天 (míngtiān) signifie…",
+              "type": "single_choice",
+              "options": ["Demain", "Aujourd'hui", "Ce matin", "Ce soir"],
+              "correctAnswers": [0],
+              "explanation": "明 + 天 = le jour suivant."
+            },
+            {
+              "id": "q4",
+              "question": "昨天 (zuótiān) signifie…",
+              "type": "single_choice",
+              "options": ["Hier", "Demain", "Mardi", "Janvier"],
+              "correctAnswers": [0],
+              "explanation": "昨 zuó marque le jour passé."
+            },
+            {
+              "id": "q5",
+              "question": "现在 (xiànzài) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Maintenant",
+                "Jamais",
+                "Toujours hier",
+                "Plus tard seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "现 + 在 = à l'instant présent."
+            },
+            {
+              "id": "q6",
+              "question": "天 (tiān) seul peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "Jour / ciel",
+                "Nuit uniquement",
+                "Heure précise",
+                "Minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "天 désigne le jour ou le ciel selon le contexte."
+            },
+            {
+              "id": "q7",
+              "question": "Jīntiān wǒ xué Zhōngwén signifie…",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui j'apprends le chinois",
+                "Demain je pars",
+                "Hier j'ai dormi",
+                "Je ne parle pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学 xué = apprendre / étudier."
+            },
+            {
+              "id": "q8",
+              "question": "学 (xué) signifie…",
+              "type": "single_choice",
+              "options": ["Apprendre / étudier", "Manger", "Vendre", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "学 est central à l'école."
+            },
+            {
+              "id": "q9",
+              "question": "每 (měi) devant tiān donne…",
+              "type": "single_choice",
+              "options": [
+                "Chaque jour",
+                "Un seul jour",
+                "Jamais de jour",
+                "Deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每天 = tous les jours."
+            },
+            {
+              "id": "q10",
+              "question": "Míngtiān jiàn ! rappelle…",
+              "type": "single_choice",
+              "options": [
+                "Un au revoir jusqu'à demain",
+                "Un bonjour matinal",
+                "Une question sur le nom",
+                "Un remerciement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "见 ici = se revoir demain."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent au vocabulaire scolaire ?",
+              "type": "multiple_choice",
+              "options": ["Xuéxiào", "Shū", "Fǎguó rén", "Hóngsè"],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 = école ; 书 = livre ; les autres ne sont pas des objets scolaires de base."
+            },
+            {
+              "id": "q2",
+              "question": "学校 (xuéxiào) signifie…",
+              "type": "single_choice",
+              "options": ["École", "Maison", "Gare", "Hôpital"],
+              "correctAnswers": [0],
+              "explanation": "学 + 校 = lieu d'études."
+            },
+            {
+              "id": "q3",
+              "question": "书 (shū) signifie…",
+              "type": "single_choice",
+              "options": ["Livre", "Stylo", "Table", "Fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "书 désigne le livre ou le cahier-texte."
+            },
+            {
+              "id": "q4",
+              "question": "笔 (bǐ) signifie…",
+              "type": "single_choice",
+              "options": ["Stylo / pinceau", "Chaise", "Porte", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "笔 écrit ou dessine."
+            },
+            {
+              "id": "q5",
+              "question": "桌子 (zhuōzi) signifie…",
+              "type": "single_choice",
+              "options": ["Table", "Lit", "Route", "Pont"],
+              "correctAnswers": [0],
+              "explanation": "桌子 est la table de classe."
+            },
+            {
+              "id": "q6",
+              "question": "椅子 (yǐzi) signifie…",
+              "type": "single_choice",
+              "options": ["Chaise", "Plafond", "Ciel", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "椅子 = siège avec dossier."
+            },
+            {
+              "id": "q7",
+              "question": "教室 (jiàoshì) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Salle de classe",
+                "Cantine seulement",
+                "Stade",
+                "Piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教 + 室 = pièce où l'on enseigne."
+            },
+            {
+              "id": "q8",
+              "question": "Wǒ zài jiàoshì signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je suis dans la salle de classe",
+                "Je suis professeur",
+                "Je suis à la maison",
+                "Je suis en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 indique la localisation."
+            },
+            {
+              "id": "q9",
+              "question": "在 (zài) marque souvent…",
+              "type": "single_choice",
+              "options": [
+                "Être situé quelque part",
+                "Avoir faim",
+                "Dire merci",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + lieu = se trouver à…"
+            },
+            {
+              "id": "q10",
+              "question": "课 (kè) dans 中文课 signifie…",
+              "type": "single_choice",
+              "options": ["Cours / leçon", "Repas", "Match", "Film"],
+              "correctAnswers": [0],
+              "explanation": "中文课 = cours de chinois."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Verbes utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes sont indispensables en 5e ?",
+              "type": "multiple_choice",
+              "options": ["Qù (aller)", "Lái (venir)", "Zài jiàn", "Māma"],
+              "correctAnswers": [0, 1],
+              "explanation": "去 et 来 décrivent le mouvement ; au revoir et maman ne sont pas des verbes de déplacement."
+            },
+            {
+              "id": "q2",
+              "question": "去 (qù) signifie…",
+              "type": "single_choice",
+              "options": ["Aller", "Venir", "Rester", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "去 exprime un aller vers un lieu."
+            },
+            {
+              "id": "q3",
+              "question": "来 (lái) signifie…",
+              "type": "single_choice",
+              "options": ["Venir", "Partir", "Manger", "Lire seulement"],
+              "correctAnswers": [0],
+              "explanation": "来 indique un mouvement vers ici."
+            },
+            {
+              "id": "q4",
+              "question": "看 (kàn) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Regarder / voir",
+                "Entendre",
+                "Sentir",
+                "Goûter uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看 est voir avec les yeux."
+            },
+            {
+              "id": "q5",
+              "question": "吃 (chī) signifie…",
+              "type": "single_choice",
+              "options": ["Manger", "Boire", "Courir", "Écrire"],
+              "correctAnswers": [0],
+              "explanation": "吃 = prendre un repas."
+            },
+            {
+              "id": "q6",
+              "question": "喝 (hē) signifie…",
+              "type": "single_choice",
+              "options": ["Boire", "Dormir", "Jouer", "Parler"],
+              "correctAnswers": [0],
+              "explanation": "喝 concerne les liquides."
+            },
+            {
+              "id": "q7",
+              "question": "Wǒ qù xuéxiào signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je vais à l'école",
+                "Je suis à la maison",
+                "Je suis professeur",
+                "Je m'appelle école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 + lieu = se rendre à…"
+            },
+            {
+              "id": "q8",
+              "question": "Wǒ lái zì Fǎguó signifie…",
+              "type": "single_choice",
+              "options": [
+                "Je viens de France",
+                "Je vais en Chine",
+                "Je suis chinois",
+                "Je parle anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "来自 = provenir de (origine)."
+            },
+            {
+              "id": "q9",
+              "question": "自 (zì) dans 来自…",
+              "type": "single_choice",
+              "options": ["De / depuis (origine)", "Vers", "Sans", "Contre"],
+              "correctAnswers": [0],
+              "explanation": "来自 marque le point de départ."
+            },
+            {
+              "id": "q10",
+              "question": "做 (zuò) peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "Faire / fabriquer",
+                "Dire au revoir",
+                "Être rouge",
+                "Compter zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "做 est un verbe général « faire »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Grand, petit, beaucoup",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs opposent taille ou quantité ?",
+              "type": "multiple_choice",
+              "options": ["Dà / xiǎo", "Duō / shǎo", "Hóng / lán", "Mā / bà"],
+              "correctAnswers": [0, 1],
+              "explanation": "大/小 = grand-petit ; 多/少 = beaucoup-peu."
+            },
+            {
+              "id": "q2",
+              "question": "大 (dà) signifie…",
+              "type": "single_choice",
+              "options": ["Grand", "Petit", "Moyen", "Rond"],
+              "correctAnswers": [0],
+              "explanation": "大 = grande taille."
+            },
+            {
+              "id": "q3",
+              "question": "小 (xiǎo) signifie…",
+              "type": "single_choice",
+              "options": ["Petit", "Grand", "Long", "Court"],
+              "correctAnswers": [0],
+              "explanation": "小 = petite taille."
+            },
+            {
+              "id": "q4",
+              "question": "多 (duō) signifie…",
+              "type": "single_choice",
+              "options": ["Beaucoup / nombreux", "Peu", "Zéro", "Un seul"],
+              "correctAnswers": [0],
+              "explanation": "多 marque l'abondance."
+            },
+            {
+              "id": "q5",
+              "question": "少 (shǎo) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Peu / en petit nombre",
+                "Beaucoup",
+                "Trop",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "少 indique une faible quantité."
+            },
+            {
+              "id": "q6",
+              "question": "Zhè běn shū hěn dà signifie…",
+              "type": "single_choice",
+              "options": [
+                "Ce livre est très grand",
+                "Ce livre est rouge",
+                "Ce livre est à moi",
+                "Ce livre est demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "本 classifie les livres ; 很大 = très grand."
+            },
+            {
+              "id": "q7",
+              "question": "本 (běn) devant shū sert de…",
+              "type": "single_choice",
+              "options": [
+                "Classificateur pour livres",
+                "Verbe manger",
+                "Couleur",
+                "Salutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一本书 = un livre (classificateur 本)."
+            },
+            {
+              "id": "q8",
+              "question": "很 (hěn) + adjectif produit…",
+              "type": "single_choice",
+              "options": [
+                "Un degré élevé (très…)",
+                "Une négation",
+                "Une question",
+                "Un chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很大 = très grand en usage courant."
+            },
+            {
+              "id": "q9",
+              "question": "人很多 signifie…",
+              "type": "single_choice",
+              "options": [
+                "Il y a beaucoup de monde",
+                "Il n'y a personne",
+                "Une personne seulement",
+                "Tout le monde dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很多 renforce 多 : beaucoup de gens."
+            },
+            {
+              "id": "q10",
+              "question": "比较 (bǐjiào) + adjectif suggère…",
+              "type": "single_choice",
+              "options": [
+                "Relativement / plutôt",
+                "Jamais",
+                "Toujours hier",
+                "Exactement zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比较 adoucit ou compare : « plutôt petit » par exemple."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ici et là",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots indiquent un lieu proche ou lointain ?",
+              "type": "multiple_choice",
+              "options": ["Zhèlǐ", "Nàlǐ", "Míngtiān", "Xièxie"],
+              "correctAnswers": [0, 1],
+              "explanation": "这里 = ici ; 那里 = là-bas."
+            },
+            {
+              "id": "q2",
+              "question": "这里 (zhèlǐ) signifie…",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "这 + 里 = à cet endroit."
+            },
+            {
+              "id": "q3",
+              "question": "那里 (nàlǐ) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Là-bas",
+                "Ici",
+                "Dehors seulement",
+                "Dedans seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "那 pointe un lieu plus éloigné."
+            },
+            {
+              "id": "q4",
+              "question": "哪 (nǎ) dans 在哪里？ sert à…",
+              "type": "single_choice",
+              "options": [
+                "Demander « où ? »",
+                "Dire merci",
+                "Compter",
+                "Saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪儿 / 哪里 interrogent le lieu."
+            },
+            {
+              "id": "q5",
+              "question": "在哪里？(Zài nǎlǐ？) signifie…",
+              "type": "single_choice",
+              "options": [
+                "Où est-ce ? / Où ?",
+                "Comment vas-tu ?",
+                "Quelle heure ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + 哪里 localise quelque chose."
+            },
+            {
+              "id": "q6",
+              "question": "里 (lǐ) peut marquer…",
+              "type": "single_choice",
+              "options": [
+                "L'intérieur / le dedans",
+                "Le ciel uniquement",
+                "Un chiffre",
+                "Un ton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "里 évoque l'intérieur d'un espace."
+            },
+            {
+              "id": "q7",
+              "question": "上 (shàng) et 下 (xià) forment…",
+              "type": "single_choice",
+              "options": [
+                "Haut / bas",
+                "Rouge / bleu",
+                "Mère / père",
+                "Aller / venir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上 = dessus ; 下 = dessous."
+            },
+            {
+              "id": "q8",
+              "question": "书在桌子上 signifie…",
+              "type": "single_choice",
+              "options": [
+                "Le livre est sur la table",
+                "Le livre mange",
+                "Le livre est rouge",
+                "Le livre parle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 + lieu situe l'objet."
+            },
+            {
+              "id": "q9",
+              "question": "上 (shàng) dans 上学 signifie…",
+              "type": "single_choice",
+              "options": [
+                "Aller à l'école (monter vers l'étude)",
+                "Descendre",
+                "Dormir",
+                "Nager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上学 = fréquenter l'école."
+            },
+            {
+              "id": "q10",
+              "question": "下 (xià) dans 下课 signifie…",
+              "type": "single_choice",
+              "options": [
+                "Fin du cours",
+                "Début du cours",
+                "Grand livre",
+                "Beaucoup de devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下课 = la classe se termine."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision des essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles associations pinyin-sens sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Shuō — parler",
+                "Tīng — écouter",
+                "Zài jiàn — bonjour",
+                "Yī — dix"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "说 et 听 sont parler et écouter ; 再见 n'est pas bonjour et yī vaut 1."
+            },
+            {
+              "id": "q2",
+              "question": "Combien vaut 五 + 五 ?",
+              "type": "single_choice",
+              "options": ["十 (shí)", "八 (bā)", "六 (liù)", "二 (èr)"],
+              "correctAnswers": [0],
+              "explanation": "5 + 5 = 10 → 十."
+            },
+            {
+              "id": "q3",
+              "question": "Wǒ à l'école : Wǒ zài ___",
+              "type": "single_choice",
+              "options": ["Xuéxiào", "Hóngsè", "Míngtiān", "Xièxie"],
+              "correctAnswers": [0],
+              "explanation": "在 + 学校 situe l'élève."
+            },
+            {
+              "id": "q4",
+              "question": "Couleur du ciel par beau temps, mot appris : …",
+              "type": "single_choice",
+              "options": [
+                "Lán sè",
+                "Hēisè",
+                "Báisè seulement",
+                "Hóngsè seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On décrit souvent le ciel en 蓝色."
+            },
+            {
+              "id": "q5",
+              "question": "Merci en caractères : …",
+              "type": "single_choice",
+              "options": ["谢谢", "你好", "再见", "老师"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 = xièxie."
+            },
+            {
+              "id": "q6",
+              "question": "Elève : …",
+              "type": "single_choice",
+              "options": [
+                "学生 (xuésheng)",
+                "先生 (xiānshēng)",
+                "医生 (yīshēng)",
+                "朋友 (péngyou)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 = personne qui étudie."
+            },
+            {
+              "id": "q7",
+              "question": "朋友 (péngyou) signifie…",
+              "type": "single_choice",
+              "options": ["Ami / amie", "Ennemi", "Frère", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "朋友 est l'ami proche."
+            },
+            {
+              "id": "q8",
+              "question": "Pour demander l'heure plus tard en 5e, on retient souvent…",
+              "type": "single_choice",
+              "options": ["现在几点？", "你叫什么名字？", "再见", "不对"],
+              "correctAnswers": [0],
+              "explanation": "几点 interroge l'heure (点 = heure, 几 = combien)."
+            },
+            {
+              "id": "q9",
+              "question": "点 (diǎn) dans l'heure signifie…",
+              "type": "single_choice",
+              "options": ["Heure (unité)", "Couleur", "Maison", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "三点 = trois heures."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif global de cette leçon 5e : …",
+              "type": "single_choice",
+              "options": [
+                "Saluer, se présenter et reconnaître des mots clés avec pinyin",
+                "Écrire un roman en caractères traditionnels",
+                "Ignorer les tons définitivement",
+                "Ne parler qu'en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 5e consolide pinyin, tons et vocabulaire de survie."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

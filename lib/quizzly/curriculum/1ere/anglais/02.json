@@ -1,0 +1,2143 @@
+{
+  "id": "1ere-anglais-02",
+  "year": "1ere",
+  "subject": "anglais",
+  "title": "Espace privé et espace public",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La maison et l'intime",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Pièces de la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent une pièce où l'on peut dormir ?",
+              "options": ["bedroom", "kitchen", "guest room", "garage"],
+              "correctAnswers": [0, 2],
+              "explanation": "Bedroom et guest room sont des chambres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « cuisine » en anglais ?",
+              "options": ["kitchen", "garden", "garage", "attic"],
+              "correctAnswers": [0],
+              "explanation": "Kitchen signifie cuisine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Living room » correspond à :",
+              "options": ["salon", "salle à manger", "buanderie", "couloir"],
+              "correctAnswers": [0],
+              "explanation": "Living room = salon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Attic » signifie :",
+              "options": ["grenier", "cave", "balcon", "porche"],
+              "correctAnswers": [0],
+              "explanation": "Attic = grenier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où garde-t-on souvent la voiture ?",
+              "options": ["garage", "pantry", "study", "hallway"],
+              "correctAnswers": [0],
+              "explanation": "Garage abrite la voiture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Dining room » est :",
+              "options": [
+                "salle à manger",
+                "salle de bain",
+                "terrasse",
+                "jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dining room = salle à manger."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot pour « salle de bain » est :",
+              "options": ["bathroom", "bedroom", "laundry room", "closet"],
+              "correctAnswers": [0],
+              "explanation": "Bathroom = salle de bain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Basement » correspond à :",
+              "options": ["sous-sol", "rez-de-chaussée", "toit", "veranda"],
+              "correctAnswers": [0],
+              "explanation": "Basement = sous-sol."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une pièce pour travailler chez soi :",
+              "options": ["study", "porch", "kitchen", "attic"],
+              "correctAnswers": [0],
+              "explanation": "Study = bureau à domicile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hallway » signifie :",
+              "options": ["couloir", "fenêtre", "porte", "escalier"],
+              "correctAnswers": [0],
+              "explanation": "Hallway = couloir."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Meubles et aménagement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des meubles pour s'asseoir ?",
+              "options": ["chair", "table", "sofa", "lamp"],
+              "correctAnswers": [0, 2],
+              "explanation": "Chair et sofa servent à s'asseoir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wardrobe » signifie :",
+              "options": ["armoire", "étagère", "tapis", "rideau"],
+              "correctAnswers": [0],
+              "explanation": "Wardrobe = armoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "On dort sur un/une :",
+              "options": ["bed", "desk", "shelf", "mirror"],
+              "correctAnswers": [0],
+              "explanation": "Bed = lit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Bookshelf » est :",
+              "options": [
+                "bibliothèque / étagère à livres",
+                "canapé",
+                "lampe",
+                "coussin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bookshelf = étagère à livres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Carpet » correspond à :",
+              "options": ["tapis", "mur", "plafond", "poignée"],
+              "correctAnswers": [0],
+              "explanation": "Carpet = tapis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Drawer » signifie :",
+              "options": ["tiroir", "porte", "clé", "interrupteur"],
+              "correctAnswers": [0],
+              "explanation": "Drawer = tiroir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Cushion » est :",
+              "options": ["coussin", "couverture", "oreiller", "drap"],
+              "correctAnswers": [0],
+              "explanation": "Cushion = coussin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mirror » signifie :",
+              "options": ["miroir", "horloge", "cadre", "vase"],
+              "correctAnswers": [0],
+              "explanation": "Mirror = miroir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Curtain » correspond à :",
+              "options": ["rideau", "store", "vitres", "balcon"],
+              "correctAnswers": [0],
+              "explanation": "Curtain = rideau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Desk » est :",
+              "options": ["bureau (meuble)", "chaise", "tabouret", "commode"],
+              "correctAnswers": [0],
+              "explanation": "Desk = bureau."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Objets du quotidien à la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets se trouvent souvent dans une salle de bain ?",
+              "options": ["toothbrush", "sofa", "towel", "oven"],
+              "correctAnswers": [0, 2],
+              "explanation": "Toothbrush et towel appartiennent à la salle de bain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Key » signifie :",
+              "options": ["clé", "serrure", "porte", "sonnette"],
+              "correctAnswers": [0],
+              "explanation": "Key = clé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Remote control » est :",
+              "options": ["télécommande", "téléphone", "radio", "antenne"],
+              "correctAnswers": [0],
+              "explanation": "Remote control = télécommande."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Fridge » correspond à :",
+              "options": [
+                "réfrigérateur",
+                "four",
+                "micro-ondes",
+                "lave-vaisselle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fridge = réfrigérateur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hoover » / « vacuum cleaner » désigne :",
+              "options": ["aspirateur", "fer à repasser", "seau", "balai"],
+              "correctAnswers": [0],
+              "explanation": "Vacuum cleaner = aspirateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Bin » signifie :",
+              "options": ["poubelle", "panier", "carton", "sac plastique"],
+              "correctAnswers": [0],
+              "explanation": "Bin = poubelle (UK)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pillow » est :",
+              "options": ["oreiller", "couette", "drap", "matelas"],
+              "correctAnswers": [0],
+              "explanation": "Pillow = oreiller."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Socket » correspond à :",
+              "options": [
+                "prise électrique",
+                "ampoule",
+                "câble",
+                "interrupteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socket = prise électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tap » (UK) signifie :",
+              "options": ["robinet", "évier", "baignoire", "douche"],
+              "correctAnswers": [0],
+              "explanation": "Tap = robinet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Light switch » est :",
+              "options": [
+                "interrupteur",
+                "lampe",
+                "ampoule",
+                "lumière du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Light switch = interrupteur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Activités domestiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent des tâches ménagères ?",
+              "options": [
+                "tidy up",
+                "sunbathe",
+                "do the washing-up",
+                "skateboard"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tidy up et do the washing-up sont des corvées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Make the bed » signifie :",
+              "options": [
+                "faire le lit",
+                "acheter un lit",
+                "démonter le lit",
+                "laver les draps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Make the bed = faire le lit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Take out the rubbish » est :",
+              "options": [
+                "sortir les poubelles",
+                "ranger la cuisine",
+                "passer l'aspirateur",
+                "nourrir le chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Take out the rubbish = sortir les poubelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Iron the clothes » correspond à :",
+              "options": [
+                "repasser le linge",
+                "laver le linge",
+                "plier le linge",
+                "sécher le linge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Iron the clothes = repasser."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Water the plants » signifie :",
+              "options": [
+                "arroser les plantes",
+                "planter des fleurs",
+                "couper l'herbe",
+                "ramasser des feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Water the plants = arroser les plantes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Set the table » est :",
+              "options": [
+                "mettre la table",
+                "débarrasser la table",
+                "acheter une table",
+                "peindre la table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Set the table = mettre la table."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Hang up the laundry » signifie :",
+              "options": [
+                "étendre le linge",
+                "laver à la main",
+                "donner des vêtements",
+                "coudre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hang up the laundry = étendre le linge."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Feed the pet » correspond à :",
+              "options": [
+                "nourrir l'animal",
+                "promener le chien",
+                "laver le chien",
+                "acheter de la nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feed the pet = nourrir l'animal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Relax at home » signifie :",
+              "options": [
+                "se détendre chez soi",
+                "quitter la maison",
+                "déménager",
+                "travailler tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relax at home = se détendre chez soi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Lock the door » est :",
+              "options": [
+                "fermer la porte à clé",
+                "ouvrir la porte",
+                "frapper à la porte",
+                "peindre la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lock the door = verrouiller la porte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Famille et sphère privée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des membres de la famille proche ?",
+              "options": ["mother", "neighbour", "father", "stranger"],
+              "correctAnswers": [0, 2],
+              "explanation": "Mother et father sont des parents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sibling » signifie :",
+              "options": ["frère ou sœur", "oncle", "cousin", "grand-parent"],
+              "correctAnswers": [0],
+              "explanation": "Sibling = frère ou sœur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Flatmate » (UK) correspond à :",
+              "options": ["colocataire", "voisin", "propriétaire", "invité"],
+              "correctAnswers": [0],
+              "explanation": "Flatmate = colocataire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Privacy » signifie :",
+              "options": [
+                "intimité / vie privée",
+                "curiosité",
+                "bruit",
+                "fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Privacy = vie privée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Household » est :",
+              "options": ["foyer / ménage", "immeuble", "quartier", "ville"],
+              "correctAnswers": [0],
+              "explanation": "Household = ménage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Relative » correspond à :",
+              "options": [
+                "parent / membre de la famille",
+                "ami",
+                "collègue",
+                "inconnu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relative = parenté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Landlord » signifie :",
+              "options": [
+                "propriétaire (locatif)",
+                "locataire",
+                "agent immobilier",
+                "voisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Landlord = propriétaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Guest » est :",
+              "options": ["invité", "hôte", "voyageur seul", "gardien"],
+              "correctAnswers": [0],
+              "explanation": "Guest = invité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Home sweet home » exprime :",
+              "options": [
+                "le confort du chez-soi",
+                "l'envie de voyager",
+                "la colère",
+                "la peur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression positive du foyer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Own room » signifie :",
+              "options": [
+                "chambre personnelle",
+                "salon partagé",
+                "cuisine ouverte",
+                "garage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Own room = chambre à soi."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Prépositions : chez soi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions conviennent avec « home » dans des expressions courantes ?",
+              "options": ["at home", "in home", "stay at home", "go to home"],
+              "correctAnswers": [0, 2],
+              "explanation": "At home et stay at home sont corrects ; on dit go home sans « to »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "She is ___ the kitchen.",
+              "options": ["in", "on", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "In the kitchen = dans la cuisine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "The cat is ___ the sofa.",
+              "options": ["on", "in", "at", "under"],
+              "correctAnswers": [0],
+              "explanation": "On the sofa = sur le canapé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "The shoes are ___ the bed.",
+              "options": ["under", "over", "in", "at"],
+              "correctAnswers": [0],
+              "explanation": "Under the bed = sous le lit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "We live ___ a flat.",
+              "options": ["in", "on", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "In a flat = dans un appartement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "He is ___ home today.",
+              "options": ["at", "in", "on", "to"],
+              "correctAnswers": [0],
+              "explanation": "At home = à la maison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "The picture is ___ the wall.",
+              "options": ["on", "in", "at", "into"],
+              "correctAnswers": [0],
+              "explanation": "On the wall = au mur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "They are ___ the garden.",
+              "options": ["in", "on", "at", "by"],
+              "correctAnswers": [0],
+              "explanation": "In the garden = dans le jardin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "I left my keys ___ the table.",
+              "options": ["on", "in", "at", "under"],
+              "correctAnswers": [0],
+              "explanation": "On the table = sur la table."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Come ___ ! (invitation à entrer)",
+              "options": ["in", "on", "at", "to"],
+              "correctAnswers": [0],
+              "explanation": "Come in = entrez."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "There is / There are",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont grammaticalement correctes ?",
+              "options": [
+                "There is a sofa",
+                "There are a sofa",
+                "There are two chairs",
+                "There is two chairs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Is + singulier ; are + pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "___ a bathroom upstairs.",
+              "options": ["There is", "There are", "It is", "They are"],
+              "correctAnswers": [0],
+              "explanation": "There is + singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "___ three bedrooms in our house.",
+              "options": ["There are", "There is", "It has", "There have"],
+              "correctAnswers": [0],
+              "explanation": "There are + pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Négation : There ___ any milk.",
+              "options": ["isn't", "aren't", "don't", "doesn't"],
+              "correctAnswers": [0],
+              "explanation": "Milk est indénombrable : isn't."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Question : ___ a garden?",
+              "options": ["Is there", "Are there", "Does there", "Do there"],
+              "correctAnswers": [0],
+              "explanation": "Is there + singulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "___ many books on the shelf.",
+              "options": ["There are", "There is", "It is", "There have"],
+              "correctAnswers": [0],
+              "explanation": "Many books = pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ isn't a lift in this building.",
+              "options": ["There", "It", "They", "Here"],
+              "correctAnswers": [0],
+              "explanation": "There isn't = il n'y a pas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "___ some apples in the fridge.",
+              "options": ["There are", "There is", "It is", "Have"],
+              "correctAnswers": [0],
+              "explanation": "Apples = pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse courte : Yes, ___ ___.",
+              "options": ["there is", "there are", "it is", "they are"],
+              "correctAnswers": [0],
+              "explanation": "Accord avec le sujet posé (singulier)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "___ a lot of noise last night.",
+              "options": ["There was", "There were", "It was", "They were"],
+              "correctAnswers": [0],
+              "explanation": "Noise indénombrable : was."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Present simple : routines à la maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases au present simple décrivent une habitude ?",
+              "options": [
+                "I usually cook dinner",
+                "I am cooking now",
+                "She watches TV every evening",
+                "They are watching TV"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Usually et every evening marquent l'habitude."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "He ___ the dishes after meals.",
+              "options": ["washes", "wash", "washing", "is wash"],
+              "correctAnswers": [0],
+              "explanation": "He + -s à la 3e personne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "We ___ breakfast at seven.",
+              "options": ["have", "has", "having", "are have"],
+              "correctAnswers": [0],
+              "explanation": "We + base verbale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "My sister ___ her room on Saturdays.",
+              "options": ["tidies", "tidy", "tidying", "is tidy"],
+              "correctAnswers": [0],
+              "explanation": "Tidies : y → ies."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Adverbe de fréquence : I ___ go to bed late.",
+              "options": ["never", "am", "going", "did"],
+              "correctAnswers": [0],
+              "explanation": "Never = jamais."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Do you ___ the lawn ?",
+              "options": ["mow", "mows", "mowed", "mowing"],
+              "correctAnswers": [0],
+              "explanation": "After do : base verbale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "She doesn't ___ TV in the morning.",
+              "options": ["watch", "watches", "watching", "watched"],
+              "correctAnswers": [0],
+              "explanation": "Doesn't + base."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "They ___ in a small house.",
+              "options": ["live", "lives", "living", "are live"],
+              "correctAnswers": [0],
+              "explanation": "They live."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "What time ___ you get up ?",
+              "options": ["do", "does", "are", "is"],
+              "correctAnswers": [0],
+              "explanation": "Do you… ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "He always ___ the door at night.",
+              "options": ["locks", "lock", "locking", "is lock"],
+              "correctAnswers": [0],
+              "explanation": "He locks."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Décrire son logement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs décrivent un logement agréable ?",
+              "options": ["cosy", "noisy", "spacious", "dangerous"],
+              "correctAnswers": [0, 2],
+              "explanation": "Cosy et spacious sont positifs pour un chez-soi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bright » pour une pièce signifie :",
+              "options": ["lumineuse", "sombre", "sale", "étroite"],
+              "correctAnswers": [0],
+              "explanation": "Bright = lumineux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tiny » correspond à :",
+              "options": ["minuscule", "énorme", "moderne", "ancien"],
+              "correctAnswers": [0],
+              "explanation": "Tiny = très petit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Furnished flat » est :",
+              "options": [
+                "appartement meublé",
+                "appartement vide",
+                "maison neuve",
+                "studio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Furnished = meublé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Detached house » signifie :",
+              "options": [
+                "maison individuelle",
+                "immeuble",
+                "caravane",
+                "chambre d'hôte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Detached = indépendante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Rent » (nom) est :",
+              "options": ["loyer", "achat", "emprunt", "taxe"],
+              "correctAnswers": [0],
+              "explanation": "Rent = loyer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Upstairs » correspond à :",
+              "options": ["à l'étage", "en bas", "dehors", "dedans"],
+              "correctAnswers": [0],
+              "explanation": "Upstairs = à l'étage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ground floor » signifie :",
+              "options": [
+                "rez-de-chaussée",
+                "dernier étage",
+                "sous-sol",
+                "toit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ground floor = RDC (UK)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Neighbourhood » est :",
+              "options": ["quartier", "campagne", "autoroute", "frontière"],
+              "correctAnswers": [0],
+              "explanation": "Neighbourhood = quartier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Homely » (UK) évoque :",
+              "options": [
+                "chaleureux, comme à la maison",
+                "froid et distant",
+                "bruyant",
+                "public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homely = accueillant (UK)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Intimité, confort et expressions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions renvoient au chez-soi ?",
+              "options": [
+                "feel at home",
+                "in public",
+                "make yourself at home",
+                "on stage"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Feel/make yourself at home = être chez soi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Stay in » signifie :",
+              "options": [
+                "rester à la maison",
+                "sortir",
+                "voyager",
+                "déménager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stay in = rester chez soi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Housewarming party » est :",
+              "options": [
+                "pendaison de crémaillère",
+                "anniversaire",
+                "mariage",
+                "réunion de travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Housewarming = crémaillère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Personal space » correspond à :",
+              "options": [
+                "espace personnel",
+                "place publique",
+                "parc",
+                "musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personal space = bulle intime."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Unplug » (figuré) peut signifier :",
+              "options": [
+                "se déconnecter / se reposer",
+                "brancher un appareil",
+                "crier",
+                "couper l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unplug = décrocher du stress."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Cozy » (US) ≈ :",
+              "options": ["cosy (UK)", "noisy", "empty", "formal"],
+              "correctAnswers": [0],
+              "explanation": "Cozy/Cosy = confortable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Keep out » sur une porte signifie :",
+              "options": ["interdit d'entrer", "entrez", "frappez", "merci"],
+              "correctAnswers": [0],
+              "explanation": "Keep out = défense d'entrer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Belongings » sont :",
+              "options": [
+                "affaires personnelles",
+                "meubles du propriétaire",
+                "objets publics",
+                "déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Belongings = biens personnels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Get comfortable » signifie :",
+              "options": [
+                "se mettre à l'aise",
+                "partir vite",
+                "se fâcher",
+                "travailler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Get comfortable = s'installer confortablement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Indoor » s'oppose à :",
+              "options": ["outdoor", "online", "abroad", "uptown"],
+              "correctAnswers": [0],
+              "explanation": "Indoor = à l'intérieur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "La vie publique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Lieux publics en ville",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux sont ouverts au public ?",
+              "options": ["library", "bedroom", "town hall", "private garage"],
+              "correctAnswers": [0, 2],
+              "explanation": "Library et town hall sont publics."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Town hall » signifie :",
+              "options": ["mairie", "tribunal", "prison", "usine"],
+              "correctAnswers": [0],
+              "explanation": "Town hall = mairie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Square » (place) correspond à :",
+              "options": [
+                "place publique",
+                "carrefour souterrain",
+                "parking",
+                "jardin privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Square = place."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Pedestrian zone » est :",
+              "options": [
+                "zone piétonne",
+                "autoroute",
+                "voie ferrée",
+                "piste cyclable privée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pedestrian zone = piétons seuls."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« High street » (UK) désigne :",
+              "options": [
+                "rue commerçante principale",
+                "autoroute",
+                "ruelle",
+                "périphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "High street = artère commerciale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Public park » signifie :",
+              "options": [
+                "parc public",
+                "jardin secret",
+                "cour d'école fermée",
+                "terrain privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Public park = parc ouvert à tous."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Museum » est :",
+              "options": ["musée", "bibliothèque", "cafétéria", "gare"],
+              "correctAnswers": [0],
+              "explanation": "Museum = musée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« City centre » correspond à :",
+              "options": ["centre-ville", "banlieue", "campagne", "frontière"],
+              "correctAnswers": [0],
+              "explanation": "City centre = centre-ville."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Pavement » (UK) signifie :",
+              "options": ["trottoir", "chaussée", "passage piéton", "pont"],
+              "correctAnswers": [0],
+              "explanation": "Pavement = trottoir (UK)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Crossroads » est :",
+              "options": ["carrefour", "rond-point", "impasse", "tunnel"],
+              "correctAnswers": [0],
+              "explanation": "Crossroads = carrefour."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Transports et déplacements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des moyens de transport public ?",
+              "options": ["bus", "bicycle only path", "train", "private jet"],
+              "correctAnswers": [0, 2],
+              "explanation": "Bus et train peuvent être publics."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Underground » (London) = :",
+              "options": ["métro", "autobus", "tramway", "ferry"],
+              "correctAnswers": [0],
+              "explanation": "The Underground = métro londonien."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Platform » à la gare signifie :",
+              "options": ["quai", "billet", "horaire", "consigne"],
+              "correctAnswers": [0],
+              "explanation": "Platform = quai."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Single ticket » est :",
+              "options": [
+                "aller simple",
+                "aller-retour",
+                "abonnement",
+                "amende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Single = trajet simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Rush hour » correspond à :",
+              "options": [
+                "heure de pointe",
+                "minuit",
+                "jour férié",
+                "vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rush hour = heure de pointe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Get off » (bus) signifie :",
+              "options": ["descendre", "monter", "conduire", "rater"],
+              "correctAnswers": [0],
+              "explanation": "Get off = descendre du véhicule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pedestrian crossing » est :",
+              "options": [
+                "passage piéton",
+                "piste cyclable",
+                "station-service",
+                "peage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pedestrian crossing = passage piéton."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Fare » signifie :",
+              "options": [
+                "tarif / prix du trajet",
+                "vitesse",
+                "retard",
+                "destination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fare = prix du transport."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Commute » correspond à :",
+              "options": [
+                "trajet domicile-travail",
+                "vacances",
+                "promenade",
+                "course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commute = trajet quotidien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Traffic jam » est :",
+              "options": ["embouteillage", "feu vert", "route libre", "panne"],
+              "correctAnswers": [0],
+              "explanation": "Traffic jam = embouteillage."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Commerces et services",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels endroits servent à acheter des biens courants ?",
+              "options": ["supermarket", "courtroom", "bakery", "prison"],
+              "correctAnswers": [0, 2],
+              "explanation": "Supermarket et bakery sont des commerces."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Chemist's » (UK) peut être :",
+              "options": ["pharmacie", "librairie", "boucherie", "banque"],
+              "correctAnswers": [0],
+              "explanation": "Chemist's = pharmacie (UK)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cashier » est :",
+              "options": [
+                "caissier",
+                "vendeur en rayon",
+                "livreur",
+                "directeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cashier = caissier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Receipt » signifie :",
+              "options": [
+                "ticket de caisse",
+                "publicité",
+                "emballage",
+                "réduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Receipt = reçu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Opening hours » correspond à :",
+              "options": [
+                "heures d'ouverture",
+                "soldes",
+                "fermeture annuelle",
+                "grève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opening hours = horaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Queue » (UK) signifie :",
+              "options": ["file d'attente", "couloir", "escalator", "sortie"],
+              "correctAnswers": [0],
+              "explanation": "Queue = file d'attente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Post office » est :",
+              "options": [
+                "bureau de poste",
+                "mairie",
+                "commissariat",
+                "hôpital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Post office = poste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Customer » correspond à :",
+              "options": ["client", "employé", "volontaire", "passant"],
+              "correctAnswers": [0],
+              "explanation": "Customer = client."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Refund » signifie :",
+              "options": [
+                "remboursement",
+                "achat",
+                "échange obligatoire",
+                "cadeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refund = remboursement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Shop assistant » est :",
+              "options": [
+                "vendeur en magasin",
+                "agent de sécurité",
+                "comptable",
+                "facteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Shop assistant = vendeur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Institutions et services publics",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels bâtiments relèvent du service public ?",
+              "options": [
+                "hospital",
+                "private villa",
+                "police station",
+                "bedroom"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hospital et police station sont publics."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Fire station » signifie :",
+              "options": ["caserne de pompiers", "prison", "école", "tribunal"],
+              "correctAnswers": [0],
+              "explanation": "Fire station = pompiers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Emergency » correspond à :",
+              "options": ["urgence", "rendez-vous", "loisir", "vacances"],
+              "correctAnswers": [0],
+              "explanation": "Emergency = urgence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Citizen » est :",
+              "options": [
+                "citoyen",
+                "touriste seul",
+                "étranger sans droits",
+                "enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citizen = citoyen."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Public service » signifie :",
+              "options": [
+                "service public",
+                "entreprise privée",
+                "club privé",
+                "famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Public service = service public."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Vote » (nom) correspond à :",
+              "options": ["vote", "loi", "impôt", "manifestation"],
+              "correctAnswers": [0],
+              "explanation": "Vote = suffrage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mayor » est :",
+              "options": ["maire", "ministre", "juge", "directeur d'école"],
+              "correctAnswers": [0],
+              "explanation": "Mayor = maire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Law » signifie :",
+              "options": ["loi", "contrat privé", "habitude", "mode"],
+              "correctAnswers": [0],
+              "explanation": "Law = loi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Register » (verb) officiel :",
+              "options": ["s'inscrire", "partir", "cacher", "rire"],
+              "correctAnswers": [0],
+              "explanation": "Register = s'enregistrer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tax » correspond à :",
+              "options": ["impôt", "salaire", "don", "amende seulement"],
+              "correctAnswers": [0],
+              "explanation": "Tax = impôt."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "École et espace scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux fait-on partie de la vie scolaire publique ?",
+              "options": ["classroom", "living room", "playground", "attic"],
+              "correctAnswers": [0, 2],
+              "explanation": "Classroom et playground sont à l'école."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Headteacher » (UK) signifie :",
+              "options": [
+                "directeur d'école",
+                "surveillant",
+                "élève",
+                "parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Headteacher = directeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Timetable » est :",
+              "options": [
+                "emploi du temps",
+                "carte",
+                "devoir maison",
+                "cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timetable = EDT."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Assembly hall » correspond à :",
+              "options": [
+                "salle de réunion / cantine",
+                "toilettes",
+                "parking",
+                "labo privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assembly hall = grande salle commune."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Break time » signifie :",
+              "options": ["récréation", "cours du soir", "vacances", "examen"],
+              "correctAnswers": [0],
+              "explanation": "Break time = récré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Uniform » est :",
+              "options": ["uniforme", "casier", "cartable", "cantine"],
+              "correctAnswers": [0],
+              "explanation": "Uniform = uniforme scolaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Canteen » (UK) signifie :",
+              "options": ["cantine", "bibliothèque", "gymnase", "infirmerie"],
+              "correctAnswers": [0],
+              "explanation": "Canteen = cantine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Detention » correspond à :",
+              "options": [
+                "retenue",
+                "félicitations",
+                "sortie scolaire",
+                "diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Detention = retenue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« School gate » est :",
+              "options": ["portail de l'école", "tableau", "classe", "couloir"],
+              "correctAnswers": [0],
+              "explanation": "School gate = portail."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Public school » (UK) historiquement :",
+              "options": [
+                "école privée sélective",
+                "école primaire gratuite",
+                "université",
+                "crèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En UK, public school = privée élitaire."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Vocabulaire civique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent à la vie collective ?",
+              "options": [
+                "community",
+                "loneliness at home",
+                "society",
+                "bedtime"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Community et society = collectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Demonstration » (manifestation) signifie :",
+              "options": ["manifestation", "fête privée", "dîner", "sieste"],
+              "correctAnswers": [0],
+              "explanation": "Demonstration = manifestation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Rights » correspond à :",
+              "options": [
+                "droits",
+                "devoirs seulement",
+                "privilèges illégaux",
+                "secrets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rights = droits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Duty » est :",
+              "options": ["devoir", "loisir", "cadeau", "erreur"],
+              "correctAnswers": [0],
+              "explanation": "Duty = devoir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Election » signifie :",
+              "options": ["élection", "nomination familiale", "jeu", "concert"],
+              "correctAnswers": [0],
+              "explanation": "Election = élection."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Pollution » (public issue) :",
+              "options": ["pollution", "propreté", "silence", "intimité"],
+              "correctAnswers": [0],
+              "explanation": "Pollution = pollution."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Volunteer » correspond à :",
+              "options": ["bénévole", "employé payé", "voleur", "juge"],
+              "correctAnswers": [0],
+              "explanation": "Volunteer = bénévole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Campaign » (politique) est :",
+              "options": ["campagne électorale", "promenade", "menu", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "Campaign = campagne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Rule » signifie :",
+              "options": ["règle", "exception", "secret", "chanson"],
+              "correctAnswers": [0],
+              "explanation": "Rule = règle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Public opinion » est :",
+              "options": [
+                "opinion publique",
+                "avis du voisin",
+                "pensée secrète",
+                "rêve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Public opinion = opinion publique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Demander son chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases servent à demander une direction ?",
+              "options": [
+                "Excuse me, where is the station?",
+                "I am fine, thanks",
+                "How do I get to the museum?",
+                "See you at home"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Excuse me… et How do I get… orientent en public."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Turn left » signifie :",
+              "options": [
+                "tournez à gauche",
+                "tournez à droite",
+                "allez tout droit",
+                "reculez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turn left = à gauche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Go straight on » correspond à :",
+              "options": [
+                "continuez tout droit",
+                "arrêtez-vous",
+                "montez",
+                "descendez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Go straight on = tout droit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Opposite » signifie :",
+              "options": ["en face", "à côté", "derrière", "loin"],
+              "correctAnswers": [0],
+              "explanation": "Opposite = en face."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Roundabout » est :",
+              "options": ["rond-point", "feu rouge", "tunnel", "pont"],
+              "correctAnswers": [0],
+              "explanation": "Roundabout = rond-point."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Block » (city) correspond à :",
+              "options": [
+                "îlot / pâté de maisons",
+                "étage",
+                "chambre",
+                "jardin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Block = pâté de maisons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Landmark » signifie :",
+              "options": [
+                "repère visible",
+                "carte pliable",
+                "ticket",
+                "ombrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Landmark = monument repère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Near » est l'opposé de :",
+              "options": ["far", "big", "open", "loud"],
+              "correctAnswers": [0],
+              "explanation": "Near ≠ far."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Cross the street » signifie :",
+              "options": [
+                "traverser la rue",
+                "longer le trottoir",
+                "entrer dans un magasin",
+                "prendre le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cross the street = traverser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Map » correspond à :",
+              "options": ["plan / carte", "boussole", "GPS seul", "adresse"],
+              "correctAnswers": [0],
+              "explanation": "Map = carte."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Present continuous en ville",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent une action en cours dans un lieu public ?",
+              "options": [
+                "People are waiting for the bus",
+                "She waits every day",
+                "It is raining now",
+                "He waited yesterday"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Are waiting et is raining = maintenant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "They ___ shopping in the high street.",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [0],
+              "explanation": "They are + -ing."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "She ___ a photo of the monument.",
+              "options": ["is taking", "take", "takes", "took"],
+              "correctAnswers": [0],
+              "explanation": "Is taking = en train de."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "I ___ for my friend outside the café.",
+              "options": ["am waiting", "wait", "waits", "waiting"],
+              "correctAnswers": [0],
+              "explanation": "Am waiting = attente en cours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "The children ___ in the park.",
+              "options": ["are playing", "play", "played", "plays"],
+              "correctAnswers": [0],
+              "explanation": "Are playing = jeu en cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "He ___ to music on the train.",
+              "options": ["is listening", "listen", "listens", "listened"],
+              "correctAnswers": [0],
+              "explanation": "Is listening = maintenant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "What ___ you doing?",
+              "options": ["are", "is", "am", "do"],
+              "correctAnswers": [0],
+              "explanation": "What are you doing?"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "It ___ . Take an umbrella.",
+              "options": ["is raining", "rains", "rained", "rain"],
+              "correctAnswers": [0],
+              "explanation": "Is raining = il pleut maintenant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "We ___ lunch at the canteen today.",
+              "options": ["are having", "have", "has", "had"],
+              "correctAnswers": [0],
+              "explanation": "Are having = en train de déjeuner."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Look! The parade ___ down the street.",
+              "options": ["is moving", "moves", "moved", "move"],
+              "correctAnswers": [0],
+              "explanation": "Look! → present continuous."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Politesse et interactions publiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules sont polies en public ?",
+              "options": ["Excuse me", "Shut up", "Please", "Get lost"],
+              "correctAnswers": [0, 2],
+              "explanation": "Excuse me et Please sont courtois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« After you » signifie :",
+              "options": ["après vous", "devant moi", "non merci", "au revoir"],
+              "correctAnswers": [0],
+              "explanation": "After you = céder le passage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Queue jumping » correspond à :",
+              "options": [
+                "passer devant dans la file",
+                "attendre patiemment",
+                "acheter un ticket",
+                "saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Queue jumping = incivilité en file."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Loud » en public est souvent :",
+              "options": [
+                "mal vu / bruyant",
+                "apprécié",
+                "obligatoire",
+                "silencieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loud = trop bruyant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Mind your manners » signifie :",
+              "options": [
+                "fais attention à ta politesse",
+                "cours vite",
+                "mange plus",
+                "parle fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mind your manners = sois poli."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Could you help me, please? » est :",
+              "options": ["demande polie", "ordre", "insulte", "blague"],
+              "correctAnswers": [0],
+              "explanation": "Could… please = formule douce."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Thank you for holding the door » répond à :",
+              "options": [
+                "un geste de courtoisie",
+                "une agression",
+                "un refus",
+                "un retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier tenir la porte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Public behaviour » est :",
+              "options": [
+                "comportement en public",
+                "vie privée",
+                "routine matinale",
+                "décoration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Public behaviour = conduite publique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sorry » sert surtout à :",
+              "options": ["s'excuser", "féliciter", "commander", "compter"],
+              "correctAnswers": [0],
+              "explanation": "Sorry = désolé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« You're welcome » répond à :",
+              "options": ["Thank you", "Hello", "Goodbye", "Help!"],
+              "correctAnswers": [0],
+              "explanation": "You're welcome = de rien."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Public vs privé : contrastes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes s'opposent à la sphère privée du foyer ?",
+              "options": [
+                "in public",
+                "at home",
+                "outdoors in town",
+                "in your bedroom"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "In public et outdoors in town = espace partagé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Go out » signifie :",
+              "options": [
+                "sortir (de chez soi)",
+                "rentrer",
+                "dormir",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Go out = sortir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Stay out late » correspond à :",
+              "options": [
+                "rentrer tard dehors",
+                "se coucher tôt",
+                "rester enfermé",
+                "nettoyer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stay out late = dehors tard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Crowded » décrit un lieu :",
+              "options": ["bondé", "vide", "silencieux", "privé"],
+              "correctAnswers": [0],
+              "explanation": "Crowded = très fréquenté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Remote work » peut se faire :",
+              "options": [
+                "depuis la maison",
+                "uniquement en mairie",
+                "sans internet",
+                "dans la rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remote work = télétravail à domicile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Open to the public » signifie :",
+              "options": [
+                "accessible à tous",
+                "réservé à la famille",
+                "fermé",
+                "secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Open to the public = ouvert à tous."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Behind closed doors » évoque :",
+              "options": [
+                "en privé, caché du public",
+                "sur la place du village",
+                "au micro",
+                "en direct TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Behind closed doors = en privé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Stranger » est :",
+              "options": [
+                "inconnu",
+                "colocataire",
+                "parent",
+                "invité habituel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stranger = personne inconnue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Social life » correspond à :",
+              "options": [
+                "vie sociale",
+                "vie domestique seule",
+                "sommeil",
+                "ménage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Social life = relations hors foyer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Keep it private » signifie :",
+              "options": [
+                "garder cela privé",
+                "crier dans la rue",
+                "publier en ligne",
+                "inviter tout le monde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Keep it private = ne pas divulguer."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2743 @@
+{
+  "id": "3e-technologie-02",
+  "year": "3e",
+  "subject": "technologie",
+  "title": "Projet technique",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Cahier des charges",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Rôle du cahier des charges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « projet technique » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « exigences » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « besoin utilisateur » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « besoin utilisateur » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « exigences » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « exigences » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « besoin utilisateur », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « besoin utilisateur » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « exigences », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « exigences » et « cahier des charges » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Analyser le besoin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « besoin » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « problème » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « observation » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « observation » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « problème » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « problème » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « observation », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « observation » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « problème », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « problème » et « enquête » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fonctions et usages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « fonction d'usage » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « service rendu » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « utilisateur » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « utilisateur » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « service rendu » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « service rendu » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « utilisateur », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « utilisateur » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « service rendu », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « service rendu » et « usage » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Contraintes du projet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « norme » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « sécurité » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « contrainte » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « contrainte » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « sécurité » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « sécurité » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « contrainte », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « contrainte » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « sécurité », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « sécurité » et « environnement » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Critères de performance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « comparaison » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « choix » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « performance » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « performance » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « choix » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « choix » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « performance », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « performance » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « choix », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « choix » et « critère » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Structurer le document",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « annexes » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « sommaire » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « clarté » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « clarté » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « sommaire » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « sommaire » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « clarté », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « clarté » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « sommaire », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « sommaire » et « rédaction » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Utilisateurs et contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « public cible » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « contexte » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « accessibilité » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « accessibilité » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « contexte » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « contexte » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « accessibilité », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « accessibilité » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « contexte », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « contexte » et « lieu d'usage » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Délais, budget et ressources",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « budget » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « matériaux » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « planning » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « planning » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « matériaux » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « matériaux » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « planning », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « planning » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « matériaux », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « matériaux » et « outils » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quantifier les exigences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « autonomie » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « précision » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « masse » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « masse » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « précision » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « précision » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « masse », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « masse » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « précision », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « précision » et « dimension » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Valider le cahier des charges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « version » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « cohérence » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « validation » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « validation » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « cohérence » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « cohérence » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « validation », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « validation » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « cohérence », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « cohérence » et « relecture » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Prototype",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Du cahier au prototype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « prototype » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « cahier des charges » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « idée » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « idée » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « cahier des charges » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « cahier des charges » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « idée », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « idée » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « cahier des charges », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « cahier des charges » et « solution » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Maquette et mock-up",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « volume » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « aspect » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « maquette » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « maquette » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « aspect » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « aspect » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « maquette », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « maquette » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « aspect », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « aspect » et « échelle » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Prototype d'essai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « fonctionnement » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « validation » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « test » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « test » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « validation » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « validation » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « test », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « test » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « validation », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « validation » et « essai » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matériaux du prototype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « recyclé » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « carton » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « bois » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « bois » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « carton » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « carton » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « bois », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « bois » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « carton », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « carton » et « impression 3D » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fabriquer rapidement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « découpe » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « assemblage » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « perçage » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « perçage » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « assemblage » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « assemblage » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « perçage », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « perçage » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « assemblage », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « assemblage » et « collage » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Protocole d'essai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « hypothèse » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « répétabilité » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « protocole » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « protocole » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « répétabilité » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « répétabilité » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « protocole », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « protocole » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « répétabilité », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « répétabilité » et « sécurité » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mesures et observations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « donnée » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « tableau » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « relevé » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « relevé » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « tableau » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « tableau » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « relevé », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « relevé » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « tableau », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « tableau » et « mesure » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Itérer après essai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « correction » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « amélioration » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « défaut » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « défaut » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « amélioration » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « amélioration » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « défaut », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « défaut » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « amélioration », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « amélioration » et « itération » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Présenter le prototype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « démonstration » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « jury » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « compte rendu » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « compte rendu » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « jury » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « jury » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « compte rendu », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « compte rendu » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « jury », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « jury » et « photos » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan prototype et essais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En technologie 3e, concernant « série » dans un projet technique, quelles affirmations sont correctes ?",
+              "options": [
+                "Elle guide les choix de conception et de réalisation",
+                "Elle peut être ignorée une fois le prototype terminé",
+                "Elle doit être cohérente avec le besoin identifié",
+                "Elle remplace toute mesure ou essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le projet technique relie besoin, cahier des charges, prototype et essais de façon cohérente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal de travailler sur « coût » avant de fabriquer ?",
+              "options": [
+                "Clarifier ce que le produit doit faire",
+                "Choisir une couleur au hasard",
+                "Éviter toute documentation",
+                "Supprimer les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un cahier des charges, « industrialisation » sert surtout à…",
+              "options": [
+                "Préciser une exigence mesurable ou vérifiable",
+                "Décorer la page de garde",
+                "Remplacer le prototype",
+                "Interdire les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype permet de tester « industrialisation » avant la version finale car…",
+              "options": [
+                "On vérifie le comportement réel à petite échelle",
+                "On évite toute erreur sans essai",
+                "On supprime le cahier des charges",
+                "On ne consulte plus l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors d'un essai, relever « coût » permet de…",
+              "options": [
+                "Comparer le résultat aux critères fixés",
+                "Ignorer les écarts constatés",
+                "Arrêter le projet sans analyse",
+                "Modifier le besoin sans justification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle pratique est attendue en 3e pour « coût » ?",
+              "options": [
+                "Documenter hypothèses, méthode et résultats",
+                "Cacher les échecs des tests",
+                "Ne jamais modifier le prototype",
+                "Mélanger besoin et solution sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un essai montre un écart sur « industrialisation », la démarche correcte est de…",
+              "options": [
+                "Analyser la cause et ajuster conception ou prototype",
+                "Effacer les mesures",
+                "Changer le cahier sans essai",
+                "Abandonner sans compte rendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lien entre cahier des charges et prototype pour « industrialisation » est que…",
+              "options": [
+                "Le prototype vérifie si les exigences sont atteignables",
+                "Le prototype remplace toute rédaction",
+                "Le cahier n'est utile qu'après essai",
+                "Les essais ne concernent pas les fonctions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour présenter un essai sur « coût », on montre surtout…",
+              "options": [
+                "Protocole, mesures et conclusion par rapport aux critères",
+                "Uniquement des opinions sans données",
+                "Des promesses non testées",
+                "Aucun lien avec le besoin initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En projet technique 3e, « coût » et « durabilité » restent alignés si…",
+              "options": [
+                "Chaque modification est tracée et justifiée par un essai ou une analyse",
+                "On change tout sans note",
+                "On oublie le public utilisateur",
+                "On évite les contraintes de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette démarche respecte l'enchaînement besoin, cahier des charges, prototype et essai en technologie."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

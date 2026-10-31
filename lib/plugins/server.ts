@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { Tool } from "ai";
+import { isProviderToolName } from "@/lib/mcp/provider-tool-id";
 import { PLUGIN_MANIFEST_LIST } from "./catalog";
 import { PLUGIN_DEFINITIONS } from "./server.generated";
 import { toolEffect } from "./tool-effect";
@@ -33,7 +34,7 @@ export function isKnownPluginToolId(toolId: string): boolean {
 }
 
 // Tous les hints de plugins, indexés par identifiant d'outil : fusionnés avec
-// TOOL_SYSTEM_HINTS au moment de construire l'addendum de prompt.
+// TOOL_SYSTEM_HINTS au moment de résoudre les outils annoncés au modèle.
 export function getPluginSystemHints(): Record<string, string> {
   const hints: Record<string, string> = {};
   for (const definition of PLUGIN_DEFINITION_LIST) {
@@ -93,6 +94,9 @@ export function createPluginTools(
     }
     const created = definition.createTools(deps);
     for (const manifestTool of served) {
+      if (!isProviderToolName(manifestTool.id)) {
+        continue;
+      }
       const implementation = created[manifestTool.id];
       if (!implementation) {
         throw new Error(

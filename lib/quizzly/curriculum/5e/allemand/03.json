@@ -1,0 +1,2263 @@
+{
+  "id": "5e-allemand-03",
+  "year": "5e",
+  "subject": "allemand",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Horaire de cours",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Montag: Deutsch 8–9 Uhr, Mathe 9–10 Uhr. Dienstag: Sport 10–11 Uhr. » Quels jours le texte cite-t-il ?",
+              "options": ["Montag", "Mittwoch", "Dienstag", "Sonntag"],
+              "correctAnswers": [0, 2],
+              "explanation": "Seuls Montag et Dienstag figurent dans l'horaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle heure a lieu Deutsch le lundi ?",
+              "options": ["7–8 h", "8–9 h", "9–10 h", "10–11 h"],
+              "correctAnswers": [1],
+              "explanation": "Deutsch est de 8 à 9 heures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après l'allemand le lundi vient…",
+              "options": ["Sport", "Mathe", "Kunst", "Pause"],
+              "correctAnswers": [1],
+              "explanation": "Mathe suit de 9 à 10 h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le sport est le…",
+              "options": ["Montag", "Dienstag", "Freitag", "Samstag"],
+              "correctAnswers": [1],
+              "explanation": "Sport est au Dienstag."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de matières distinctes apparaissent ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1],
+              "explanation": "Deutsch, Mathe, Sport : trois matières."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Uhr » ici veut dire…",
+              "options": ["horloge murale", "heure(s)", "cloche", "semaine"],
+              "correctAnswers": [1],
+              "explanation": "8–9 Uhr = de 8 h à 9 h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mittwoch est-il mentionné ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement l'après-midi",
+                "Comme jour férié"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mittwoch n'apparaît pas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le créneau le plus tardif est…",
+              "options": ["Deutsch", "Mathe", "Sport", "Französisch"],
+              "correctAnswers": [2],
+              "explanation": "Sport commence à 10 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Montag = …",
+              "options": ["mardi", "lundi", "mercredi", "jeudi"],
+              "correctAnswers": [1],
+              "explanation": "Montag est lundi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nature du document : …",
+              "options": [
+                "Stundenplan",
+                "Speisekarte",
+                "Wetterbericht",
+                "Märchen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créneaux par jour = emploi du temps."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Courriel du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ich kaufe Brot und Milch im Supermarkt. » Quels noms sont compléments directs (accusatif) ?",
+              "options": ["Brot", "Milch", "Supermarkt", "Ich"],
+              "correctAnswers": [0, 1],
+              "explanation": "kaufen + Akkusativ : Brot et Milch."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où Tom fait-il ses courses ?",
+              "options": [
+                "In der Schule",
+                "Im Supermarkt",
+                "Am Bahnhof",
+                "Im Park"
+              ],
+              "correctAnswers": [1],
+              "explanation": "im Supermarkt = au supermarché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Der Hund ist zu Hause. » Le chien est…",
+              "options": ["au magasin", "à la maison", "à l'école", "dehors"],
+              "correctAnswers": [1],
+              "explanation": "zu Hause = à la maison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hallo Lisa! » : le mail s'adresse à…",
+              "options": ["Lisa", "Tom", "der Hund", "der Supermarkt"],
+              "correctAnswers": [0],
+              "explanation": "Lisa est saluée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Viele Grüße » termine un message de façon…",
+              "options": ["agressive", "polie", "secrète", "scientifique"],
+              "correctAnswers": [1],
+              "explanation": "Formule de politesse en clôture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Der Hund » comme sujet est au…",
+              "options": [
+                "accusatif",
+                "nominatif",
+                "datif uniquement",
+                "génitif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet de ist : nominatif der."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ich kaufe = …",
+              "options": [
+                "je achète",
+                "tu achètes",
+                "il achète",
+                "nous achetons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ich + kaufe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que n'achète-t-on pas dans la phrase ?",
+              "options": [
+                "Brot",
+                "Milch",
+                "Fleisch",
+                "Les deux premiers sont achetés"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Fleisch n'est pas cité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« und » = …",
+              "options": ["ou", "et", "mais", "car"],
+              "correctAnswers": [1],
+              "explanation": "und lie deux objets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Genre de texte : …",
+              "options": [
+                "E-Mail informell",
+                "Gesetz",
+                "Rezept",
+                "Werbung Auto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation, nouvelles, formule : courriel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Annonce bibliothèque",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Die Bibliothek ist heute geschlossen. Morgen öffnet sie um 9 Uhr wieder. » Quelles infos sont correctes ?",
+              "options": [
+                "Fermée aujourd'hui",
+                "Rouvre demain à 9 h",
+                "Ouverte 24 h",
+                "Fermée pour toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "geschlossen heute ; morgen um 9 Uhr wieder."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "geschlossen = …",
+              "options": ["ouvert", "fermé", "neuf", "gratuit"],
+              "correctAnswers": [1],
+              "explanation": "geschlossen signifie fermé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Morgen = …",
+              "options": ["hier", "aujourd'hui", "demain", "bientôt seulement"],
+              "correctAnswers": [2],
+              "explanation": "Morgen = demain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« sie » renvoie à…",
+              "options": ["Bibliothek", "Uhr", "Achtung", "Leser"],
+              "correctAnswers": [0],
+              "explanation": "Die Bibliothek (f.) → sie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "wieder = …",
+              "options": ["jamais", "de nouveau", "trop", "vite"],
+              "correctAnswers": [1],
+              "explanation": "wieder = encore, de nouveau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "öffnet vient de…",
+              "options": ["öffnen", "schließen", "lesen", "laufen"],
+              "correctAnswers": [0],
+              "explanation": "öffnen = ouvrir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "heute = …",
+              "options": ["demain", "aujourd'hui", "hier", "chaque jour"],
+              "correctAnswers": [1],
+              "explanation": "heute = aujourd'hui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Achtung! sert à…",
+              "options": ["dormir", "alerter", "manger", "chanter"],
+              "correctAnswers": [1],
+              "explanation": "Achtung = attention."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Die Bibliothek est…",
+              "options": ["der", "die", "das", "den"],
+              "correctAnswers": [1],
+              "explanation": "die = féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où voit-on ce texte ?",
+              "options": ["Roman", "Affiche à l'école", "Atlas", "CD audio"],
+              "correctAnswers": [1],
+              "explanation": "Annonce pratique pour élèves."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Invitation samedi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Kommst du am Samstag zu meiner Party? Wir feiern ab 18 Uhr im Garten. » Quels détails de la fête sont donnés ?",
+              "options": [
+                "Samstag",
+                "18 Uhr",
+                "Montag matin",
+                "Im Klassenzimmer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jour samedi et heure 18 h ; pas lundi ni classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Kommst du tutoie…",
+              "options": [
+                "une personne",
+                "toute une ville",
+                "un objet",
+                "un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "du = tutoiement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ab 18 Uhr = …",
+              "options": [
+                "avant 18 h",
+                "à partir de 18 h",
+                "jusqu'à 18 h",
+                "sans heure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "ab = à partir de."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "feiern = …",
+              "options": ["fêter", "étudier", "pleurer", "courir"],
+              "correctAnswers": [0],
+              "explanation": "feiern = célébrer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "im Garten = …",
+              "options": [
+                "dans le jardin",
+                "dans la cuisine",
+                "à la gare",
+                "en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "im Garten = in dem Garten."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "zu meiner Party : meiner est au…",
+              "options": [
+                "datif",
+                "accusatif seul",
+                "nominatif",
+                "génitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu + Dativ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Samstag = …",
+              "options": ["vendredi", "samedi", "dimanche", "lundi"],
+              "correctAnswers": [1],
+              "explanation": "Samstag = samedi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Wir feiern : wir = …",
+              "options": ["je", "nous", "vous", "ils"],
+              "correctAnswers": [1],
+              "explanation": "wir = nous."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Party en allemand désigne…",
+              "options": [
+                "une fête",
+                "un devoir",
+                "un bus",
+                "une bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt pour fête."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "But du message : …",
+              "options": ["inviter", "punir", "vendre", "interdire"],
+              "correctAnswers": [0],
+              "explanation": "Kommst du ? = invitation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Ligne de bus 12",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Bus 12: Bahnhof 7:15, Markt 7:22, Schule 7:30. » Quelles heures sont indiquées ?",
+              "options": ["7:15", "7:22", "8:00", "7:30"],
+              "correctAnswers": [0, 3],
+              "explanation": "7:15 et 7:30 ; pas 8:00."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bahnhof = …",
+              "options": ["gare", "école", "marché", "parc"],
+              "correctAnswers": [0],
+              "explanation": "Bahnhof = gare."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Markt = …",
+              "options": ["marché / place", "métro", "piscine", "hôpital"],
+              "correctAnswers": [0],
+              "explanation": "Markt = marché."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Schule = …",
+              "options": ["école", "bus", "heure", "ticket"],
+              "correctAnswers": [0],
+              "explanation": "Schule = école."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Premier arrêt : …",
+              "options": ["Schule", "Markt", "Bahnhof", "Linie"],
+              "correctAnswers": [2],
+              "explanation": "Ordre : Bahnhof d'abord."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Linie 12 = …",
+              "options": ["numéro de ligne", "prix", "température", "classe"],
+              "correctAnswers": [0],
+              "explanation": "Linie = ligne de transport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De 7:22 à 7:30 : … minutes.",
+              "options": ["5", "8", "15", "30"],
+              "correctAnswers": [1],
+              "explanation": "Huit minutes entre Markt et Schule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ce tableau sert à…",
+              "options": [
+                "cuisiner",
+                "prendre le bus",
+                "faire la sieste",
+                "écrire une poésie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Horaires de passage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Arrivée à l'école : …",
+              "options": ["7:15", "7:22", "7:30", "7:45"],
+              "correctAnswers": [2],
+              "explanation": "Schule 7:30."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Document = …",
+              "options": [
+                "Fahrplan Ausschnitt",
+                "Liebesbrief",
+                "Kochbuch",
+                "Comic"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrait d'horaires de transport."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Consigne de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Liebe Klasse 5b, bringt morgen eure Sportkleidung mit! Wir machen einen Ausflug in den Park. » Que faut-il retenir ?",
+              "options": [
+                "Apporter tenue de sport",
+                "Excursion au parc",
+                "Examen écrit demain",
+                "Rester en classe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sportkleidung mitbringen et Ausflug in den Park."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "mitbringen est…",
+              "options": [
+                "verbe à particule",
+                "verbe sans sens",
+                "nom propre",
+                "adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit- se sépare en proposition principale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "eure = …",
+              "options": [
+                "votre (pluriel)",
+                "mon",
+                "son (m.)",
+                "leur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "eure Sportkleidung : votre aux élèves."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "in den Park : den Park est…",
+              "options": ["accusatif", "nominatif", "datif seul", "génitif"],
+              "correctAnswers": [0],
+              "explanation": "Direction : in + Akkusativ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "morgen = …",
+              "options": ["demain", "hier", "aujourd'hui", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "morgen = demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ausflug = …",
+              "options": ["excursion", "devoir", "colle", "vacances scolaires"],
+              "correctAnswers": [0],
+              "explanation": "Ausflug = sortie, excursion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sportkleidung = …",
+              "options": [
+                "tenue de sport",
+                "carte sportive",
+                "cours de gym uniquement théorique",
+                "ballon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vêtements pour le sport."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Wir machen : l'activité concerne…",
+              "options": [
+                "le groupe/classe",
+                "un seul chat",
+                "personne",
+                "le parc seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wir = nous."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Liebe Klasse = …",
+              "options": [
+                "Chère classe",
+                "Classe interdite",
+                "Bonne chance examen",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule chaleureuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Type : message …",
+              "options": [
+                "du professeur",
+                "publicitaire",
+                "météo",
+                "juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne à la 5b."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Menu cantine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Mittagessen: Suppe, Schnitzel mit Pommes, Obst. Getränk: Wasser oder Apfelsaft. » Quels plats/boissons sont proposés ?",
+              "options": ["Schnitzel", "Apfelsaft", "Pizza", "Kaffee"],
+              "correctAnswers": [0, 1],
+              "explanation": "Schnitzel et Apfelsaft figurent ; pas pizza ni café."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mittagessen = …",
+              "options": ["déjeuner", "petit-déjeuner", "dîner tard", "goûter"],
+              "correctAnswers": [0],
+              "explanation": "Mittagessen = repas de midi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Obst = …",
+              "options": ["fruits", "viande", "soupe", "pain"],
+              "correctAnswers": [0],
+              "explanation": "Obst = fruits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Getränk = …",
+              "options": ["boisson", "dessert chaud", "entrée", "fourchette"],
+              "correctAnswers": [0],
+              "explanation": "Getränk = boisson."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "mit Pommes = …",
+              "options": [
+                "avec frites",
+                "sans frites",
+                "avant les frites",
+                "frites seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mit = avec."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Suppe = …",
+              "options": ["soupe", "salade", "gâteau", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Suppe = soupe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "oder = …",
+              "options": ["ou", "et", "mais", "donc"],
+              "correctAnswers": [0],
+              "explanation": "Choix entre eau et jus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Wasser = …",
+              "options": ["eau", "jus", "lait", "thé"],
+              "correctAnswers": [0],
+              "explanation": "Wasser = eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Apfelsaft = …",
+              "options": [
+                "jus de pomme",
+                "jus d'orange",
+                "café",
+                "limonade cola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apfel = pomme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Document typique : …",
+              "options": [
+                "Mensa-Speiseplan",
+                "Fahrkarte",
+                "Zeugnis",
+                "Wörterbuch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menu de cantine scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "SMS météo sortie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Es regnet heute Nachmittag. Nimm deinen Regenschirm mit! Treffen wir uns trotzdem um 15 Uhr. » Quels conseils/actions apparaissent ?",
+              "options": [
+                "Prendre un parapluie",
+                "Rendez-vous 15 h",
+                "Annulation totale",
+                "Aller à la plage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Regenschirm mitnehmen et Treffen 15 Uhr trotzdem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Es regnet = …",
+              "options": ["Il pleut", "Il neige", "Il fait beau", "Il vente"],
+              "correctAnswers": [0],
+              "explanation": "regnen = pleuvoir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Regenschirm = …",
+              "options": ["parapluie", "manteau", "chapeau", "chaussures"],
+              "correctAnswers": [0],
+              "explanation": "Regen + Schirm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "mitnehmen : nimm … mit montre…",
+              "options": [
+                "particule mit en fin",
+                "verbe régulier sans particule",
+                "passé seulement",
+                "futur lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nimm deinen Regenschirm mit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "trotzdem = …",
+              "options": ["malgré tout", "jamais", "donc", "peut-être"],
+              "correctAnswers": [0],
+              "explanation": "On se voit quand même."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "heute Nachmittag = …",
+              "options": [
+                "cet après-midi",
+                "hier matin",
+                "demain soir",
+                "la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "heute Nachmittag = aujourd'hui après-midi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Treffen wir uns = …",
+              "options": [
+                "On se retrouve",
+                "On dort",
+                "On mange",
+                "On part seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich treffen = se retrouver."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "deinen Regenschirm : deinen est…",
+              "options": [
+                "accusatif masc.",
+                "nominatif",
+                "datif fem.",
+                "génitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet de nimm : Akkusativ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "um 15 Uhr = …",
+              "options": ["à 15 h", "avant 15 h", "après minuit", "sans heure"],
+              "correctAnswers": [0],
+              "explanation": "um + heure = à … heures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Format du texte : …",
+              "options": ["message court", "roman", "loi", "carte"],
+              "correctAnswers": [0],
+              "explanation": "Style SMS / message bref."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Affiche club de lecture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Leseclub: Jeden Donnerstag 16 Uhr in der Aula. Wir lesen ein Kapitel und sprechen Deutsch. Neue Mitglieder willkommen! » Quels faits sont vrais ?",
+              "options": [
+                "Chaque jeudi 16 h",
+                "Lieu : Aula",
+                "Uniquement le lundi",
+                "Interdit aux nouveaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jeden Donnerstag, in der Aula ; nouveaux bienvenus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Leseclub = …",
+              "options": [
+                "club de lecture",
+                "club de foot",
+                "club de cuisine",
+                "club de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lesen = lire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Donnerstag = …",
+              "options": ["jeudi", "mardi", "samedi", "mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Donnerstag = jeudi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aula = …",
+              "options": ["salle de fête / hall", "cuisine", "piscine", "gare"],
+              "correctAnswers": [0],
+              "explanation": "Grande salle scolaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Kapitel = …",
+              "options": [
+                "chapitre",
+                "livre entier",
+                "dictionnaire",
+                "affiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un chapitre à la fois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "sprechen Deutsch = …",
+              "options": [
+                "parler allemand",
+                "écrire français",
+                "dormir",
+                "courir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sprechen = parler."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Neue Mitglieder willkommen = …",
+              "options": [
+                "nouveaux bienvenus",
+                "fermé au public",
+                "réservé profs",
+                "payant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Invitation ouverte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jeden Donnerstag = …",
+              "options": [
+                "chaque jeudi",
+                "un jeudi seulement",
+                "jamais",
+                "le dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "jeden = chaque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "in der Aula : der Aula est…",
+              "options": [
+                "datif",
+                "accusatif direct objet",
+                "génitif seul",
+                "nominatif sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "in + Dativ (lieu où)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "But de l'affiche : …",
+              "options": [
+                "informer et attirer",
+                "vendre voiture",
+                "annuler cours",
+                "donner notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaire + bienvenue."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Petit article école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Unsere Schule beginnt um 8 Uhr. Die erste Pause ist um 10 Uhr. Nach der Pause haben wir Englisch. » Quels moments sont nommés ?",
+              "options": [
+                "Début 8 h",
+                "Pause 10 h",
+                "Fin à minuit",
+                "Cours de latin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "8 Uhr début et Pause 10 Uhr ; pas latin ni minuit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "beginnt = …",
+              "options": ["commence", "finit", " dort", "mange"],
+              "correctAnswers": [0],
+              "explanation": "beginnen = commencer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pause = …",
+              "options": [
+                "récréation / pause",
+                "punition",
+                "vacances",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause scolaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nach der Pause = …",
+              "options": [
+                "après la pause",
+                "avant la pause",
+                "pendant la nuit",
+                "sans cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nach = après."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Englisch = …",
+              "options": ["anglais (matière)", "allemand", "sport", "musique"],
+              "correctAnswers": [0],
+              "explanation": "Cours d'anglais."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Unsere Schule : unsere = …",
+              "options": ["notre", "votre", "leur", "mon"],
+              "correctAnswers": [0],
+              "explanation": "unsere = notre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "die erste Pause : erste = …",
+              "options": ["première", "dernière", "grande", "interdite"],
+              "correctAnswers": [0],
+              "explanation": "erste = premier/première."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "haben wir = …",
+              "options": [
+                "nous avons (comme cours)",
+                "ils ont",
+                "je suis",
+                "tu es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wir haben = nous avons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "um 8 Uhr = …",
+              "options": ["à 8 h", "huit jours", "huit mois", "huit élèves"],
+              "correctAnswers": [0],
+              "explanation": "Heure précise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Texte = …",
+              "options": [
+                "description courte du collège",
+                "conte de fées",
+                "recette",
+                "publicité parfum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infos sur la journée scolaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Berlin capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Berlin est la capitale de l'Allemagne. Quelles affirmations sont exactes pour un élève de 5e ?",
+              "options": [
+                "Berlin est une Großstadt",
+                "Le Bundestag siège à Berlin",
+                "Berlin est en Bavière",
+                "Berlin est la capitale de la Suisse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Berlin est grande ville et siège politique ; pas Bavière ni Suisse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bundestag = …",
+              "options": [
+                "Parlement fédéral",
+                "Gare centrale",
+                "Stade",
+                "Lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chambre des députés allemands."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Großstadt = …",
+              "options": ["grande ville", "petit village", "montagne", "lac"],
+              "correctAnswers": [0],
+              "explanation": "groß + Stadt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Capitale de l'Allemagne : …",
+              "options": ["München", "Berlin", "Hamburg", "Köln"],
+              "correctAnswers": [1],
+              "explanation": "Berlin depuis la réunification."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mur de Berlin est surtout associé à…",
+              "options": [
+                "division Est/Ouest",
+                "moyen âge chevaleresque",
+                "Grèce antique",
+                "Rome seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole de la Guerre froide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Brandenburger Tor se trouve à…",
+              "options": ["Berlin", "Wien", "Paris", "Rom"],
+              "correctAnswers": [0],
+              "explanation": "Porte de Brandebourg à Berlin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Spree est…",
+              "options": [
+                "une rivière à Berlin",
+                "un fromage",
+                "un bus",
+                "un président"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fleuve urbain berlinois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deutschland = …",
+              "options": ["Allemagne", "Autriche", "Pays-Bas", "Danemark"],
+              "correctAnswers": [0],
+              "explanation": "Nom du pays en allemand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Berlin se situe dans le nord-est du pays : vrai ou faux (choix le plus juste) ?",
+              "options": [
+                "Vrai, nord-est",
+                "Faux, sud-ouest extrême",
+                "Faux, au centre de l'Autriche",
+                "Faux, en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position approximative correcte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère culturel : Berlin est connue pour…",
+              "options": [
+                "histoire récente et institutions",
+                "uniquement plages tropicales",
+                "aucun musée",
+                "être capitale du Canada"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire, politique, culture."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fédéralisme allemand",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Allemagne compte 16 Bundesländer. Quels termes désignent des Länder réels ?",
+              "options": ["Bayern", "Berlin (Land)", "Paris", "Texas"],
+              "correctAnswers": [0, 1],
+              "explanation": "Bayern et Berlin sont des Länder ; Paris et Texas non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bundesland = …",
+              "options": ["Land fédéré", "Gare", "Fromage", "Fleuve"],
+              "correctAnswers": [0],
+              "explanation": "État régional allemand."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Capitale du Land Bayern : …",
+              "options": ["München", "Berlin", "Dresden", "Bremen"],
+              "correctAnswers": [0],
+              "explanation": "München = Munich, capitale bavaroise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bund = …",
+              "options": [
+                "fédération / État central",
+                "bus scolaire",
+                "devoir",
+                "sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau fédéral allemand."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le fédéralisme signifie que…",
+              "options": [
+                "pouvoirs partagés entre Bund et Länder",
+                "un seul maire pour l'Europe",
+                "pas d'écoles",
+                "pas de lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition des compétences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Baden-Württemberg se trouve plutôt…",
+              "options": [
+                "au sud-ouest",
+                "en Arctique",
+                "dans l'océan",
+                "en Asie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Land du sud-ouest allemand."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hamburg est à la fois ville et…",
+              "options": ["Land", "montagne", "Langue", "monnaie"],
+              "correctAnswers": [0],
+              "explanation": "Stadtstaat = city-state."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Drapeau allemand : couleurs …",
+              "options": [
+                "noir, rouge, or",
+                "bleu, blanc, rouge FR",
+                "vert seul",
+                "violet, rose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schwarz-Rot-Gold."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Landeshauptstadt = …",
+              "options": [
+                "capitale régionale du Land",
+                "capitale du monde",
+                "cuisine",
+                "bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauptstadt du Land."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi apprendre les Länder en 5e ?",
+              "options": [
+                "Comprendre diversité régionale",
+                "Oublier la géographie",
+                "Ne parler que dialecte",
+                "Ignorer la politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère de civilisation allemande."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "École en Allemagne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Au collège allemand typique : Gymnasium mène souvent à l'Abitur ; Gesamtschule mélange des parcours. Quels mots sont des types d'établissements ?",
+              "options": ["Gymnasium", "Gesamtschule", "Supermarkt", "Bahnhof"],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux formes scolaires ; pas magasin ni gare."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Schule = …",
+              "options": ["école", "hôpital", "piscine", "aéroport"],
+              "correctAnswers": [0],
+              "explanation": "École."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Klasse = …",
+              "options": ["classe (groupe)", "gare", "ville", "loi"],
+              "correctAnswers": [0],
+              "explanation": "Classe d'élèves."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lehrer / Lehrerin = …",
+              "options": [
+                "professeur",
+                "élève",
+                "directeur de gare",
+                "cuisinier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enseignant(e)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hausaufgaben = …",
+              "options": [
+                "devoirs à la maison",
+                "vacances",
+                "sport en salle",
+                "repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail à domicile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Zeugnis = …",
+              "options": [
+                "bulletin scolaire",
+                "carte métro",
+                "passeport",
+                "roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relevé de notes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "In Deutschland ist Schule Pflicht : l'école est…",
+              "options": [
+                "obligatoire",
+                "interdite",
+                "facultative à vie",
+                "uniquement le dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scolarité obligatoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pausenhof = …",
+              "options": [
+                "cour de récréation",
+                "salle des profs",
+                "cantine seule",
+                "piscine olympique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cour où l'on joue à la pause."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fach = …",
+              "options": ["matière scolaire", "vélo", "chien", "montagne"],
+              "correctAnswers": [0],
+              "explanation": "Discipline enseignée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère : l'école allemande varie selon le…",
+              "options": [
+                "Land (Bundesland)",
+                "phase lunaire",
+                "océan",
+                "langue latine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture éducative fédérale."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Cas nominatif et accusatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Der Junge kauft einen Apfel und liest ein Buch. Quels groupes sont à l'accusatif (objet direct) ?",
+              "options": ["einen Apfel", "ein Buch", "der Junge", "Und"],
+              "correctAnswers": [0, 1],
+              "explanation": "kaufen/lesen + Akkusativ : einen Apfel et ein Buch ; der Junge est sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ich sehe den Hund. den Hund est…",
+              "options": [
+                "accusatif",
+                "nominatif",
+                "datif",
+                "pluriel sans article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sehen + Akkusativ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Der Mann ist nett. Der Mann est…",
+              "options": [
+                "nominatif sujet",
+                "accusatif objet",
+                "datif",
+                "génitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet du verbe sein."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masculin accusatif : un → …",
+              "options": ["einen", "eine", "ein", "einem"],
+              "correctAnswers": [0],
+              "explanation": "ein Mann → einen Mann."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Féminin accusatif : die Frau reste…",
+              "options": ["die Frau", "den Frau", "der Frau", "das Frau"],
+              "correctAnswers": [0],
+              "explanation": "Pas de changement au féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neutre accusatif : das Buch reste…",
+              "options": ["das Buch", "den Buch", "dem Buch", "die Buch"],
+              "correctAnswers": [0],
+              "explanation": "Neutre identique nom/acc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Wir essen … Pizza (une).",
+              "options": [
+                "eine Pizza",
+                "einen Pizza",
+                "ein Pizza",
+                "einer Pizza"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pizza féminin : eine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Verbe souvent + Akk. : …",
+              "options": [
+                "haben / sehen / kaufen",
+                "schlafen seul sans objet",
+                "sein sans complément",
+                "regnen avec objet personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbes transitifs courants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "den before nom masculin indique souvent…",
+              "options": [
+                "accusatif défini",
+                "nominatif",
+                "datif",
+                "génitif fem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "der → den à l'accusatif masc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, repérer l'accusatif aide à…",
+              "options": [
+                "trouver le complément d'objet direct",
+                "conjuguer sein au passé composé français",
+                "compter les Länder",
+                "lire la météo en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien forme / fonction COD."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Verbes à particule",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ich stehe um 7 Uhr auf. Er kommt heute mit. Quelles particules sont détachées en fin de phrase ?",
+              "options": ["auf", "mit", "um", "ich"],
+              "correctAnswers": [0, 1],
+              "explanation": "aufstehen et mitkommen séparent la particule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "aufstehen = …",
+              "options": ["se lever", "s'asseoir", "dormir", "manger"],
+              "correctAnswers": [0],
+              "explanation": "stehen + auf."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "mitkommen = …",
+              "options": ["venir avec", "partir seul", "rester", "acheter"],
+              "correctAnswers": [0],
+              "explanation": "kommen + mit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "anfangen : particule = …",
+              "options": ["an", "mit", "auf", "zu"],
+              "correctAnswers": [0],
+              "explanation": "anfangen = commencer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Der Film fängt um 20 Uhr an. an est…",
+              "options": [
+                "en fin de proposition",
+                "au début collé au verbe",
+                "absent",
+                "devant ich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particule en Satzende."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "einkaufen = …",
+              "options": ["faire les courses", "cuisiner", "nager", "lire"],
+              "correctAnswers": [0],
+              "explanation": "kaufen + ein."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "fernsehen = …",
+              "options": [
+                "regarder la télé",
+                "jouer au foot",
+                "écrire",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sehen + fern."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "zuhören = …",
+              "options": [
+                "écouter attentivement",
+                "parler fort",
+                "courir",
+                "fermer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "hören + zu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Imperatif : Komm mit! montre…",
+              "options": [
+                "particule en fin",
+                "particule interdite",
+                "verbe anglais",
+                "accusatif plural obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre avec mit final."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère 5e : les verbes à particule sont…",
+              "options": [
+                "très fréquents à l'oral",
+                "inexistants en allemand",
+                "uniquement en latin",
+                "toujours séparables et longs de dix mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire quotidien allemand."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Jours fériés et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Weihnachten et Ostern sont importants. Nikolaus vient début décembre. Quels noms sont des fêtes/traditions ?",
+              "options": ["Weihnachten", "Ostern", "Montagmathe", "Buslinie"],
+              "correctAnswers": [0, 1],
+              "explanation": "Noël et Pâques ; pas matière ni bus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Weihnachten = …",
+              "options": ["Noël", "Pâques", "Halloween US seul", "Été"],
+              "correctAnswers": [0],
+              "explanation": "Fête de Noël."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ostern = …",
+              "options": ["Pâques", "Noël", "Carnaval seul", "Rentreé"],
+              "correctAnswers": [0],
+              "explanation": "Fête de Pâques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nikolaus = …",
+              "options": [
+                "Saint-Nicolas (6 décembre)",
+                "Premier mai",
+                "Chancelier",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition du 6 décembre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Karneval est surtout célèbre à…",
+              "options": [
+                "Köln / Rhénanie",
+                "Antarctique",
+                "Lune",
+                "Mer sans rive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carnaval rhénan."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tag der Deutschen Einheit = …",
+              "options": [
+                "fête nationale (3 octobre)",
+                "Noël",
+                "vacances d'été",
+                "examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité allemande."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Osterhase = …",
+              "options": ["lièvre de Pâques", "sapin", "bus", "prof"],
+              "correctAnswers": [0],
+              "explanation": "Symbole de Pâques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Advent = …",
+              "options": [
+                "période avant Noël",
+                "après Pâques",
+                "heure de cours",
+                "examen de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calendrier de l'Avent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En Allemagne, beaucoup de traditions sont…",
+              "options": [
+                "locales ou régionales",
+                "identiques partout au jour près",
+                "interdites",
+                "uniquement américaines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité des Länder."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère civilisation : fêtes servent à…",
+              "options": [
+                "comprendre calendrier et culture",
+                "éviter l'allemand",
+                "ne parler qu'anglais",
+                "ignorer l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte culturel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Transports et respect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "In der Bahn: Bitte Sitzplätze freihalten. Maske in manchen Zonen. Quels mots relèvent du transport / consignes ?",
+              "options": ["Bahn", "Sitzplätze", "Kuchenrezept", "Gedicht"],
+              "correctAnswers": [0, 1],
+              "explanation": "Train et places assises ; pas recette ni poème."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bahn = …",
+              "options": [
+                "train / rail",
+                "avion seul",
+                "bateau seul",
+                "vélo interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemin de fer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sitzplatz = …",
+              "options": [
+                "place assise",
+                "fenêtre cassée",
+                "ticket gratuit automatique",
+                "prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Siège."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bitte = …",
+              "options": ["s'il vous plaît", "au revoir", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Haltestelle = …",
+              "options": [
+                "arrêt (bus/tram)",
+                "gare internationale seule",
+                "école",
+                "cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point d'arrêt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fahrkarte = …",
+              "options": [
+                "ticket de transport",
+                "carte géographique",
+                "bulletin",
+                "roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Billet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "freihalten = …",
+              "options": ["laisser libre", "cacher", "manger", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "Garder libre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "U-Bahn = …",
+              "options": [
+                "métro",
+                "bus rural",
+                "avion",
+                "téléphérique alpin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Untergrundbahn."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repère : transports en commun sont…",
+              "options": [
+                "courants en ville",
+                "inconnus en Allemagne",
+                "interdits aux élèves",
+                "gratuits partout toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau dense urbain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Respect dans la Bahn : …",
+              "options": [
+                "parler doucement et céder place",
+                "crier",
+                "monter sans ticket toujours",
+                "jeter déchets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivre ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Alimentation et repères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Brötchen, Wurst, Käse sont courants. Vegetarier essen kein Fleisch. Quels mots sont aliments/régime ?",
+              "options": ["Brötchen", "Vegetarier", "Bundestag", "U-Bahn"],
+              "correctAnswers": [0, 1],
+              "explanation": "Petit pain et régime végétarien."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Brötchen = …",
+              "options": [
+                "petit pain",
+                "soupe",
+                "poisson cru seul",
+                "gâteau d'anniversaire obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pain rond petit déjeuner."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Wurst = …",
+              "options": ["saucisse", "eau", "fromage", "fruit"],
+              "correctAnswers": [0],
+              "explanation": "Charcuterie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Käse = …",
+              "options": ["fromage", "viande", "pain", "thé"],
+              "correctAnswers": [0],
+              "explanation": "Produit laitier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vegetarier isst kein Fleisch = …",
+              "options": [
+                "végétarien ne mange pas viande",
+                "tout le monde mange viande",
+                "interdit de pain",
+                "obligation de poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime sans viande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mensa = …",
+              "options": ["cantine", "gare", "bibliothèque", "stade"],
+              "correctAnswers": [0],
+              "explanation": "Repas scolaires/universitaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Frühstück = …",
+              "options": [
+                "petit-déjeuner",
+                "dîner",
+                "goûter minuit",
+                "vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Brotzeit en Bavière évoque…",
+              "options": [
+                "collation / repas simple",
+                "examen final",
+                "bus nocturne",
+                "mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition régionale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Apfel = …",
+              "options": ["pomme", "poire", "banane", "carotte"],
+              "correctAnswers": [0],
+              "explanation": "Fruit courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère : alimentation montre…",
+              "options": [
+                "habitudes régionales",
+                "absence de pain en Allemagne",
+                "uniquement fast-food US",
+                "pas de fromage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture culinaire variée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sport et clubs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fußball ist beliebt. Viele Kinder sind in einem Verein. Quels termes vont avec sport associatif ?",
+              "options": [
+                "Fußball",
+                "Verein",
+                "Bundeskanzleramt cuisine",
+                "Wörterbuch only"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Foot et club ; pas cuisine chancellerie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fußball = …",
+              "options": [
+                "football (soccer)",
+                "tennis seul",
+                "natation interdite",
+                "ski obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sport le plus populaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Verein = …",
+              "options": ["club associatif", "gare", "devoir", "fromage"],
+              "correctAnswers": [0],
+              "explanation": "Association sportive ou autre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Training = …",
+              "options": [
+                "entraînement",
+                "examen écrit",
+                "vacances",
+                "sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séance d'entraînement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mannschaft = …",
+              "options": ["équipe", "prof seul", "bus", "livre"],
+              "correctAnswers": [0],
+              "explanation": "Groupe de joueurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Schwimmen = …",
+              "options": ["nager", "courir", "lire", "peindre"],
+              "correctAnswers": [0],
+              "explanation": "Sport aquatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Turnen = …",
+              "options": ["gymnastique", "foot", "cuisine", "conduire"],
+              "correctAnswers": [0],
+              "explanation": "Activité en salle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "beliebt = …",
+              "options": ["populaire", "détesté", "cher", "invisible"],
+              "correctAnswers": [0],
+              "explanation": "Apprécié du public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sport in der Schule : oft …",
+              "options": [
+                "cours obligatoire",
+                "jamais",
+                "uniquement dimanche",
+                "sans prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sport scolaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère : Verein enseigne…",
+              "options": [
+                "vie associative et fair-play",
+                "à éviter l'allemand",
+                "politique uniquement",
+                "geographie lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socialisation par le sport."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Symboles et langue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deutsch ist die Amtssprache. Das Lied der Deutschen a une strophe officielle aujourd'hui. Quels éléments sont repères nationaux ?",
+              "options": [
+                "Amtssprache Deutsch",
+                "Hymne nationale",
+                "Langue officielle japonaise",
+                "Drapeau du Brésil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Langue et hymne allemands."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Amtssprache = …",
+              "options": [
+                "langue officielle",
+                "langue secrète",
+                "dialecte interdit",
+                "latin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue administrative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Einigkeit und Recht und Freiheit est dans…",
+              "options": [
+                "l'hymne",
+                "menu cantine",
+                "horaire bus",
+                "devoir maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paroles de l'hymne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bundesadler = …",
+              "options": ["aigle fédéral (symbole)", "poisson", "bus", "prof"],
+              "correctAnswers": [0],
+              "explanation": "Emblème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hallo / Guten Tag = …",
+              "options": ["salutations", "adieux seuls", "insultes", "nombres"],
+              "correctAnswers": [0],
+              "explanation": "Bonjour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Danke / Bitte montrent…",
+              "options": [
+                "politesse",
+                "colère",
+                "silence obligatoire",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Merci / s'il vous plaît."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ß ou ss en allemand = …",
+              "options": [
+                "son s dur spécial",
+                "voyelle",
+                "chiffre",
+                "accent français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eszett / double s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Umlaut ä change…",
+              "options": [
+                "la voyelle (e ouvert)",
+                "le genre du pays",
+                "l'heure",
+                "bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prononciation différente de a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e, apprendre la civilisation avec la langue…",
+              "options": [
+                "donne du sens aux textes",
+                "remplace la grammaire",
+                "inutile",
+                "interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture et communication."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce chapitre « Culture et documents » vise surtout…",
+              "options": [
+                "lire des docs simples et situer l'Allemagne",
+                "oublier Berlin",
+                "ne plus conjuguer",
+                "copier la 6e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif du titre du fichier."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

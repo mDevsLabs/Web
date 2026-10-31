@@ -1,0 +1,2678 @@
+{
+  "id": "6e-francais-03",
+  "year": "6e",
+  "subject": "francais",
+  "title": "Le genre et le point de vue",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Récit et description",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Reconnaître un récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices signalent surtout un récit ?",
+              "options": [
+                "Des verbes d'action au passé",
+                "Une énumération de couleurs",
+                "Une suite d'événements ordonnés",
+                "Une définition de mot"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le récit raconte des actions qui se succèdent dans le temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un récit relate principalement…",
+              "options": [
+                "Des faits qui arrivent",
+                "L'aspect d'un objet",
+                "La définition d'un terme",
+                "Une règle de grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit met en scène des événements."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il ouvrit la porte et entra. » est plutôt…",
+              "options": [
+                "Du récit",
+                "De la description",
+                "De l'argumentation",
+                "De la poésie obligée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions se enchaînent : c'est narratif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les personnages d'un récit sont surtout…",
+              "options": [
+                "Des êtres qui agissent",
+                "Des couleurs",
+                "Des chiffres",
+                "Des titres de chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils participent aux événements racontés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La chronologie d'un récit correspond à…",
+              "options": [
+                "L'ordre des événements",
+                "La taille des paragraphes",
+                "Le nombre de lignes",
+                "La police du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On suit ce qui se passe avant, pendant, après."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un conte de fées est un exemple de…",
+              "options": [
+                "Récit",
+                "Notice",
+                "Recette seule",
+                "Tableau de conjugaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il raconte une histoire avec des péripéties."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le passé simple sert souvent à…",
+              "options": [
+                "Raconter des actions ponctuelles",
+                "Décrire un paysage immobile",
+                "Donner un synonyme",
+                "Lister des ingrédients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il marque des actions achevées dans le récit littéraire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Soudain, le loup bondit. » introduit plutôt…",
+              "options": [
+                "Un événement",
+                "Une comparaison descriptive",
+                "Une citation",
+                "Un exercice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot « soudain » annonce une péripétie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La situation initiale présente…",
+              "options": [
+                "Le cadre et les personnages au départ",
+                "La dernière phrase",
+                "Le sommaire",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On découvre où et avec qui l'histoire commence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un journal intime raconte surtout…",
+              "options": [
+                "Des événements vécus",
+                "Un mode d'emploi",
+                "Un dictionnaire",
+                "Un plan de ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur y relate sa journée ou ses impressions."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Reconnaître une description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés caractérisent une description ?",
+              "options": [
+                "Verbes d'état et d'apparence",
+                "Enchaînement d'actions",
+                "Énumération de traits",
+                "Résolution d'un conflit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La description peint un personnage, un lieu ou un objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La forêt était sombre et silencieuse. » est…",
+              "options": [
+                "Une description",
+                "Un dialogue pur",
+                "Un ordre",
+                "Une question rhétorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On représente l'atmosphère du lieu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Décrire, c'est surtout…",
+              "options": [
+                "Montrer à quoi ressemble quelque chose",
+                "Raconter une suite d'actions",
+                "Prouver une thèse",
+                "Compter une histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fixe l'image ou les caractéristiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les adjectifs qualificatifs servent souvent à…",
+              "options": [
+                "Préciser les traits",
+                "Indiquer le temps",
+                "Marquer le dialogue",
+                "Changer de chapitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils enrichissent le portrait ou le paysage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ses yeux bleus brillaient. » décrit surtout…",
+              "options": [
+                "Un personnage",
+                "Une action rapide",
+                "Un argument",
+                "Une date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On insiste sur l'apparence du regard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'imparfait est fréquent en description car il…",
+              "options": [
+                "Exprime une durée ou un état",
+                "Marque toujours le futur",
+                "Remplace le dialogue",
+                "Supprime les adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il convient aux situations qui durent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une énumération dans un texte peut…",
+              "options": [
+                "Détailler plusieurs éléments d'un ensemble",
+                "Terminer obligatoirement l'histoire",
+                "Remplacer le titre",
+                "Indiquer l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle liste des traits ou des objets observés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Devant lui s'étendait une plaine immense. » décrit…",
+              "options": [
+                "Un paysage",
+                "Un combat",
+                "Un courrier",
+                "Un calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le narrateur ou le personnage voit l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une description statique…",
+              "options": [
+                "Peut s'interrompre le temps d'un tableau",
+                "Doit toujours durer une page",
+                "Interdit les adjectifs",
+                "Est toujours au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le récit peut s'arrêter pour « photographier » une scène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer (« comme », « tel ») en description sert à…",
+              "options": [
+                "Faire mieux imaginer",
+                "Raconter la fin",
+                "Changer de narrateur",
+                "Indiquer l'heure exacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comparaison aide le lecteur à visualiser."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Récit et description ensemble",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un roman, on trouve souvent…",
+              "options": [
+                "Des passages narratifs",
+                "Des passages descriptifs",
+                "Uniquement des listes de courses",
+                "Jamais de personnages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Récit et description se combinent dans la plupart des textes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Passer du récit à la description, c'est…",
+              "options": [
+                "Changer de fonction du texte",
+                "Effacer tous les verbes",
+                "Supprimer les personnages",
+                "Ne plus écrire en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On alterne action et représentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avant une bataille, un auteur peut décrire le champ de bataille pour…",
+              "options": [
+                "Préparer le lecteur",
+                "Éviter toute action",
+                "Remplacer le titre",
+                "Indiquer la pagination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décor rend l'événement plus vivid."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il courut » est plutôt récit ; « Il était essoufflé » est plutôt…",
+              "options": [
+                "Description d'état",
+                "Dialogue",
+                "Titre",
+                "Note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état complète l'action racontée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Repérer une description dans un récit aide à…",
+              "options": [
+                "Comprendre l'ambiance",
+                "Ignorer l'intrigue",
+                "Ne lire que la fin",
+                "Oublier les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décor et les portraits éclairent l'histoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un paragraphe descriptif peut apparaître…",
+              "options": [
+                "Au milieu du récit",
+                "Seulement sur la couverture",
+                "Uniquement en marge",
+                "Jamais après un dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'insère là où l'auteur le juge utile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les deux fonctions récit/description sont…",
+              "options": [
+                "Complémentaires",
+                "Identiques en tout point",
+                "Interdites en classe",
+                "Réservées aux poèmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'une fait avancer, l'autre précise l'univers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Souligner des adjectifs dans un passage aide à repérer…",
+              "options": [
+                "Une description",
+                "Uniquement le récit",
+                "La ponctuation seule",
+                "Le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les qualificatifs peignent traits et lieux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Souligner des verbes d'action aide à repérer…",
+              "options": ["Le récit", "Une notice", "Un index", "Un sommaire"],
+              "correctAnswers": [0],
+              "explanation": "Les actions constituent la trame narrative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un même texte peut être…",
+              "options": [
+                "Narratif et descriptif à la fois",
+                "Ni l'un ni l'autre",
+                "Uniquement une carte",
+                "Sans verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux registres coexistent naturellement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Verbes et temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Au récit narratif littéraire, quels temps sont fréquents ?",
+              "options": [
+                "Passé simple",
+                "Imparfait",
+                "Présent de vérité générale seul",
+                "Impératif partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passé simple pour les actions, imparfait pour la durée et la description."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Les oiseaux chantaient » à l'imparfait suggère…",
+              "options": [
+                "Une habitude ou un fond sonore",
+                "Une action brève unique",
+                "Un ordre",
+                "Un futur proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait peut décrire ce qui se répète ou dure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il cria » au passé simple marque…",
+              "options": [
+                "Une action ponctuelle",
+                "Une description longue",
+                "Une définition",
+                "Une énumération"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé simple situe un fait précis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les verbes d'état (être, sembler, paraître) servent surtout à…",
+              "options": ["Décrire", "Commander", "Interroger", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "Ils expriment une qualité ou un état."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il marchait » vs « Il marcha » : la première forme insiste sur…",
+              "options": [
+                "La durée",
+                "La brusquerie seule",
+                "Le futur",
+                "L'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait peut prolonger l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Au présent de narration, l'auteur…",
+              "options": [
+                "Rend le récit plus immédiat",
+                "Décrit toujours le passé lointain",
+                "Supprime les personnages",
+                "Écrit une recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent donne parfois un effet de vivacité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer « était », « avait », « semblait » oriente vers…",
+              "options": [
+                "Description ou arrière-plan",
+                "Uniquement le dialogue",
+                "La table des matières",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces formes décrivent souvent un état durable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un verbe de mouvement (courir, sauter) appartient surtout au…",
+              "options": [
+                "Récit d'action",
+                "Dictionnaire seul",
+                "Plan",
+                "Copyright"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fait progresser l'intrigue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Alterner passé simple et imparfait permet de…",
+              "options": [
+                "Distinguer action et fond",
+                "Supprimer le sujet",
+                "Ne plus conjuguer",
+                "Écrire sans ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un outil classique de l'écriture narrative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tout à coup » accompagne plutôt…",
+              "options": [
+                "Un rebondissement narratif",
+                "Une définition",
+                "Une adresse postale",
+                "Un exercice de calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe introduit un changement brusque."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Structure du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une intrigue simple comprend souvent…",
+              "options": [
+                "Une situation initiale",
+                "Des péripéties",
+                "Uniquement un index",
+                "Aucun personnage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On part d'une situation puis des événements la modifient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les péripéties sont…",
+              "options": [
+                "Les événements qui compliquent l'histoire",
+                "Les marges du livre",
+                "Les numéros de page",
+                "Les signatures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles créent suspense ou obstacles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le dénouement correspond à…",
+              "options": [
+                "La fin qui règle l'intrigue",
+                "Le premier paragraphe",
+                "La couverture",
+                "Le colophon seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On découvre comment se termine le conflit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un conflit narratif oppose souvent…",
+              "options": [
+                "Des personnages ou des forces",
+                "Deux couleurs de crayon",
+                "Deux polices",
+                "Deux pages blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le problème à résoudre anime le récit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le schéma situation → péripéties → dénouement sert à…",
+              "options": [
+                "Analyser un récit",
+                "Conjuguer les verbes",
+                "Compter les syllabes",
+                "Dessiner une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une grille de lecture en 6e."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un flash-back raconte…",
+              "options": [
+                "Un événement antérieur",
+                "Seulement le futur",
+                "La table des matières",
+                "Le prix du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On revient en arrière dans la chronologie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le suspense retient le lecteur en…",
+              "options": [
+                "Retardant une information",
+                "Supprimant le titre",
+                "Effaçant les personnages",
+                "Interdisant la lecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On veut savoir ce qui va se passer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un épilogue se place…",
+              "options": [
+                "Après le dénouement",
+                "Avant le titre",
+                "Dans la marge",
+                "Sur la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il prolonge parfois l'histoire terminée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le cadre spatio-temporel indique…",
+              "options": [
+                "Où et quand se déroule l'histoire",
+                "Le nombre de chapitres",
+                "La taille du livre",
+                "L'éditeur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu et époque situent le récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifier le nœud du récit, c'est repérer…",
+              "options": [
+                "Le moment de tension maximale",
+                "La première majuscule",
+                "Le ISBN",
+                "La couleur de l'encre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est souvent le tournant principal."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Décrire un personnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire un personnage, on peut utiliser…",
+              "options": [
+                "Traits physiques",
+                "Traits de caractère",
+                "Uniquement son nom",
+                "Le numéro de chapitre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Portrait extérieur et comportements complètent le personnage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il portait un manteau rapiécé » renseigne sur…",
+              "options": [
+                "Son apparence",
+                "La météo de demain",
+                "La grammaire",
+                "Le sommaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vêtement fait partie du portrait."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Montrer qu'un personnage est timide peut se faire par…",
+              "options": [
+                "Ses gestes et paroles",
+                "La couverture du livre",
+                "Le nombre de pages",
+                "L'ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportements et dialogues révèlent le caractère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un portrait peut être…",
+              "options": [
+                "Direct (l'auteur décrit)",
+                "Indirect (actions)",
+                "Absent de tout texte",
+                "Toujours en vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direct ou indirect, la description construit le personnage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les métaphores (« c'était un lion ») peuvent…",
+              "options": [
+                "Suggérer un trait de caractère",
+                "Remplacer le récit entier",
+                "Indiquer la pagination",
+                "Supprimer le dialogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comparaison ou métaphore caricature un trait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Décrire les cheveux, la taille, les yeux relève du portrait…",
+              "options": [
+                "Physique",
+                "Géographique",
+                "Mathématique",
+                "Musical obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont des éléments visibles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Elle répondait doucement » illustre plutôt…",
+              "options": [
+                "Un trait de comportement",
+                "Un plan de ville",
+                "Une recette",
+                "Un théorème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La manière de parler caractérise le personnage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un personnage décrit dès le début aide le lecteur à…",
+              "options": [
+                "Le reconnaître ensuite",
+                "Oublier l'intrigue",
+                "Ne pas lire la suite",
+                "Changer de livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le portrait fixe une image mentale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraster deux personnages (grand/petit, calme/agité) sert à…",
+              "options": [
+                "Les différencier",
+                "Effacer le récit",
+                "Supprimer le cadre",
+                "Remplacer le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition met en relief leurs traits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un récit, la description d'un personnage peut intervenir…",
+              "options": [
+                "Quand il apparaît ou change",
+                "Seulement à la fin",
+                "Jamais",
+                "Uniquement en titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur choisit le moment du portrait."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une description de lieu peut mentionner…",
+              "options": [
+                "La lumière",
+                "Les sons",
+                "Le prix du papier",
+                "Le numéro ISBN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vue et ouïe participent à l'atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ambiance d'un lieu (inquiétante, joyeuse) relève de…",
+              "options": [
+                "La description",
+                "La conjugaison seule",
+                "La marge",
+                "La reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectifs et détails créent l'atmosphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Au loin, la mer scintillait » situe plutôt…",
+              "options": [
+                "Un paysage",
+                "Un dialogue",
+                "Une adresse",
+                "Un exercice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit un élément du décor."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Décrire une chambre peut passer par…",
+              "options": [
+                "Les objets présents",
+                "Les actions futures seules",
+                "Le copyright",
+                "La date d'édition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meubles et détails construisent le lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les repères spatiaux (devant, derrière, à gauche) aident à…",
+              "options": [
+                "Se repérer dans le lieu",
+                "Conjuguer",
+                "Compter les pages",
+                "Changer d'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils organisent la scène dans l'espace."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un décor sombre prépare souvent…",
+              "options": [
+                "Une atmosphère inquiétante",
+                "Une recette",
+                "Un tableau de multiplication",
+                "Un plan de leçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière et couleurs influencent le ton."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La météo dans un récit peut…",
+              "options": [
+                "Renforcer l'ambiance",
+                "Remplacer les personnages",
+                "Supprimer le plot",
+                "Effacer le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie, vent ou soleil colorent la scène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une description de ville peut mêler…",
+              "options": [
+                "Bâtiments et bruits",
+                "Uniquement des noms propres",
+                "Aucun adjectif",
+                "Seulement des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture et vie quotidienne se décrivent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le lieu où se déroule l'action s'appelle aussi…",
+              "options": [
+                "Le cadre",
+                "Le colophon",
+                "Le verso seul",
+                "La tranche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre spatio-temporel = lieu + époque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer du récit à la description d'un lieu…",
+              "options": [
+                "Fait « entrer » le lecteur dans la scène",
+                "Empêche toute action",
+                "Supprime les dialogues",
+                "Change l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur visualise avant ou pendant l'action."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Dialogue et récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le dialogue dans un récit sert à…",
+              "options": [
+                "Faire parler les personnages",
+                "Faire avancer l'action",
+                "Remplacer tout le récit obligatoirement",
+                "Indiquer le ISBN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il anime la scène et révèle des informations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les tirets cadratins introduisent…",
+              "options": [
+                "Des répliques de dialogue",
+                "Un titre de chapitre",
+                "Une description seule",
+                "Une page blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En français, le dialogue est marqué par des tirets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les verbes de parole (dit, murmura) relèvent du…",
+              "options": ["Récit", "Dictionnaire seul", "Plan", "Copyright"],
+              "correctAnswers": [0],
+              "explanation": "Ils encadrent les paroles dans la narration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un dialogue peut remplacer une longue description quand…",
+              "options": [
+                "Les personnages se présentent eux-mêmes",
+                "Il n'y a pas de verbes",
+                "Le livre n'a pas de titre",
+                "On supprime la ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler, c'est aussi se caractériser."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« — Partez ! ordonna le roi. » mêle…",
+              "options": [
+                "Dialogue et récit",
+                "Description pure",
+                "Notice",
+                "Tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réplique plus verbe de parole et sujet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Alterner narration et dialogue rend le texte…",
+              "options": [
+                "Plus vivant",
+                "Sans intrigue",
+                "Sans personnages",
+                "Illisible obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rythme varie entre action, paroles et description."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une pièce de théâtre, le dialogue est…",
+              "options": [
+                "Central",
+                "Interdit",
+                "Réservé au narrateur seul",
+                "Toujours en italique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnages s'expriment presque uniquement par la parole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les paroles entre guillemets dans un récit au passé…",
+              "options": [
+                "Peuvent signaler un dialogue",
+                "Sont toujours une description",
+                "Remplacent le titre",
+                "Indiquent la marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guillemets ou tirets marquent la prise de parole."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le récit au discours indirect (« Il dit qu'il partait »)…",
+              "options": [
+                "Intègre la parole au récit",
+                "Supprime le narrateur",
+                "Est une description de lieu",
+                "Est un exercice de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rapporte les mots sans les citer tels quels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser un passage, c'est repérer récit, description et…",
+              "options": ["Dialogue", "ISBN", "Reliure", "Poids du livre"],
+              "correctAnswers": [0],
+              "explanation": "Les trois composantes coexistent souvent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Lecture active",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour distinguer récit et description, on peut…",
+              "options": [
+                "Repérer les verbes",
+                "Repérer les adjectifs",
+                "Compter uniquement les pages",
+                "Ignorer le texte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Verbes d'action vs traits descriptifs orientent la lecture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Surligner les connecteurs temporels (puis, ensuite) aide à…",
+              "options": [
+                "Suivre la chronologie",
+                "Décrire un paysage",
+                "Conjuguer au futur",
+                "Trouver l'ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils ordonnent les événements."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Reformuler un passage narratif, c'est…",
+              "options": [
+                "Le dire avec d'autres mots",
+                "Effacer l'histoire",
+                "Changer l'auteur",
+                "Supprimer les personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reformulation vérifie la compréhension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une carte mentale du récit peut inclure…",
+              "options": [
+                "Personnages et événements",
+                "Uniquement la couverture",
+                "Le prix",
+                "La marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle visualise la trame."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander « que se passe-t-il ? » convient surtout au…",
+              "options": [
+                "Récit",
+                "Dictionnaire",
+                "Plan de classe",
+                "Colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cherche l'action ou l'évolution."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander « à quoi ressemble… ? » convient surtout à…",
+              "options": ["La description", "L'index", "La date", "Le ISBN"],
+              "correctAnswers": [0],
+              "explanation": "On cherche traits visuels ou atmosphère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un paragraphe surtout descriptif contient peu de…",
+              "options": [
+                "Actions brèves successives",
+                "Adjectifs",
+                "Noms",
+                "Articles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu d'événements nouveaux, beaucoup de traits."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lire à voix haute un récit aide à…",
+              "options": [
+                "Sentir le rythme",
+                "Effacer le sens",
+                "Changer le genre",
+                "Supprimer le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rythme narrative devient audible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer deux versions d'un même événement (film/livre) travaille…",
+              "options": [
+                "Récit et choix descriptifs",
+                "Uniquement la couverture",
+                "Le grammage",
+                "La reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit ce qui est raconté ou montré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le genre narratif inclut roman, nouvelle, conte et parfois…",
+              "options": [
+                "Récit autobiographique",
+                "Table de multiplication",
+                "Plan de métro seul",
+                "Notice d'appareil seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout texte qui raconte une histoire entre dans le récit."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse récit et description",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le récit et la description…",
+              "options": [
+                "Ont des fonctions différentes",
+                "Peuvent se compléter",
+                "Sont toujours identiques",
+                "N'existent pas en français"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Raconter et décrire répondent à des objectifs distincts mais associés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire une scène de peur peut combiner…",
+              "options": [
+                "Actions et ambiance",
+                "Uniquement des chiffres",
+                "Aucun verbe",
+                "Seulement le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peur = ce qui arrive plus décor inquiétant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La description peut ralentir le rythme pour…",
+              "options": [
+                "Insister sur un moment",
+                "Supprimer l'intrigue",
+                "Effacer les personnages",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause descriptive = effet de zoom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un récit sans aucune description serait…",
+              "options": [
+                "Très sec mais possible",
+                "Impossible en français",
+                "Un dictionnaire",
+                "Une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action peut primer, mais les textes mêlent souvent les deux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En 6e, analyser un extrait, c'est nommer récit/description et…",
+              "options": [
+                "Justifier avec des exemples",
+                "Recopier la couverture",
+                "Ignorer les verbes",
+                "Ne lire que la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cite des mots du texte pour prouver."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Il avançait » + « La nuit était noire » = …",
+              "options": [
+                "Récit puis description",
+                "Description puis récit seulement",
+                "Ni l'un ni l'autre",
+                "Dialogue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action puis état du décor."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le lecteur imagine grâce aux…",
+              "options": [
+                "Descriptions",
+                "Numéros de page seuls",
+                "ISBN",
+                "Reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les détails construisent l'image mentale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lecteur suit l'histoire grâce au…",
+              "options": ["Récit", "Colophon", "Poids", "Format"],
+              "correctAnswers": [0],
+              "explanation": "La succession d'événements porte l'intrigue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un bon résumé raconte surtout…",
+              "options": [
+                "Les événements importants",
+                "Tous les adjectifs",
+                "La marge",
+                "La police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On condense l'intrigue, pas tous les détails descriptifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Maîtriser récit et description aide à…",
+              "options": [
+                "Comprendre et produire des textes",
+                "Oublier la lecture",
+                "Ne plus écrire",
+                "Éviter les histoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont des bases de l'expression en français."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le narrateur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qui raconte l'histoire ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le narrateur est…",
+              "options": [
+                "Celui qui raconte",
+                "Une voix dans le texte",
+                "Toujours le héros",
+                "Le lecteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le narrateur est la voix qui raconte l'histoire, distincte de l'auteur, du héros et du lecteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'auteur du livre et le narrateur…",
+              "options": [
+                "Peuvent être distincts",
+                "Sont toujours la même personne",
+                "N'existent pas",
+                "Sont le éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur invente ; le narrateur est une voix dans le texte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le narrateur choisit surtout…",
+              "options": [
+                "Ce qu'il dit et comment",
+                "Le prix du livre",
+                "La couverture",
+                "L'ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il sélectionne informations et style."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je me levai » indique un narrateur…",
+              "options": [
+                "Qui se met en « je »",
+                "Absent",
+                "Toujours omniscient",
+                "Lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première personne implique un narrateur-personnage ou témoin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il entra dans la salle » avec « il » pour le héros suggère…",
+              "options": [
+                "Narration à la 3e personne",
+                "Lettre",
+                "Recette",
+                "Notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On désigne le personnage à la troisième personne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Repérer les pronoms « je » / « il » sert à…",
+              "options": [
+                "Identifier le point de vue",
+                "Compter les pages",
+                "Conjuguer",
+                "Dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les personnes grammaticales signalent la narration."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le narrateur peut être…",
+              "options": [
+                "Personnage ou extérieur",
+                "Uniquement le lecteur",
+                "Toujours invisible et impossible",
+                "Le sommaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il participe ou observe de l'extérieur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sans narrateur explicite, un texte…",
+              "options": [
+                "Ne serait pas un récit ordinaire",
+                "Serait une carte",
+                "Serait un tableau",
+                "N'aurait pas de verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute narration suppose une voix qui raconte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le point de vue désigne…",
+              "options": [
+                "La position de celui qui raconte",
+                "La couleur de l'encre",
+                "Le grammage",
+                "La tranche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où « voit-on » l'histoire ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser le narrateur en 6e, c'est surtout…",
+              "options": [
+                "Repérer je/il et ce qu'il sait",
+                "Recopier le titre",
+                "Ignorer le texte",
+                "Lire la 4e de couverture seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne grammaticale et informations accessibles."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Narrateur-personnage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un narrateur-personnage…",
+              "options": [
+                "Fait partie de l'histoire",
+                "Utilise souvent « je »",
+                "Est toujours omniscient",
+                "Est le lecteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il vit l'aventure et se raconte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un journal intime, le narrateur est…",
+              "options": [
+                "Le personnage qui écrit",
+                "Un observateur extérieur",
+                "L'éditeur",
+                "Anonyme sans « je »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur du journal raconte sa vie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le narrateur-personnage connaît surtout…",
+              "options": [
+                "Ce qu'il voit et pense",
+                "Toutes les pensées de tous",
+                "L'avenir exact",
+                "Le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son savoir est limité à son expérience."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je ne savais pas qu'il mentait » montre…",
+              "options": [
+                "Les limites du narrateur",
+                "Une description de paysage",
+                "Un dialogue seul",
+                "Une recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il ignore une vérité que le lecteur peut deviner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Autobiographie : le « je » correspond…",
+              "options": [
+                "Au personnage-narrateur",
+                "Toujours au lecteur",
+                "Au imprimeur",
+                "Au sommaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On raconte sa propre vie (même si l'auteur filtre)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un narrateur enfant raconte avec…",
+              "options": [
+                "Son vocabulaire et ses doutes",
+                "Toujours le passé simple seul",
+                "Aucun sentiment",
+                "Le ton d'un dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard dépend de l'âge du personnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le narrateur-personnage peut exprimer…",
+              "options": [
+                "Ses émotions",
+                "Uniquement des chiffres",
+                "Le prix",
+                "La marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peur, joie, colère colorent le récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Je » narratif ne signifie pas toujours…",
+              "options": [
+                "Que l'auteur est le héros réel",
+                "Que quelqu'un raconte",
+                "Qu'il y a un récit",
+                "Qu'on conjugue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une fiction de voix, pas une identité réelle obligée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un témoin qui raconte ce qu'il a vu est…",
+              "options": [
+                "Narrateur-personnage",
+                "Narrateur omniscient pur",
+                "Lecteur",
+                "Couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il participe ou observe de l'intérieur du monde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avantage du « je » : le récit paraît…",
+              "options": [
+                "Proche et subjectif",
+                "Toujours objectif",
+                "Sans émotion",
+                "Une notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entre dans la peau du raconteur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Narrateur externe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un narrateur externe…",
+              "options": [
+                "N'est pas personnage de l'histoire",
+                "Utilise souvent « il/elle »",
+                "Est toujours en « je »",
+                "Est le lecteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voix extérieure à l'action, en troisième personne le plus souvent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Pierre ouvrit la porte » : le narrateur…",
+              "options": [
+                "Nomme Pierre de l'extérieur",
+                "Est Pierre",
+                "Est le lecteur",
+                "Est absent de toute phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troisième personne, narrateur non impliqué comme personnage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le narrateur externe peut décrire…",
+              "options": [
+                "Plusieurs personnages",
+                "Uniquement lui-même",
+                "Seulement la couverture",
+                "Le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il se déplace entre les figures du récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conte traditionnel : narrateur souvent…",
+              "options": [
+                "Externe",
+                "Toujours le héros en « je »",
+                "Lecteur",
+                "Imprimeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Il était une fois » : voix impersonnelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Narrateur externe ≠ auteur car…",
+              "options": [
+                "C'est une fonction dans le texte",
+                "Ils sont toujours identiques",
+                "L'auteur n'existe pas",
+                "Le narrateur édite le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur crée la voix narrative."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il peut rester…",
+              "options": [
+                "Neutre ou ironique",
+                "Toujours en poésie",
+                "Sans verbes",
+                "Sans personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le ton varie selon les œuvres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passer de « je » à « il » dans une œuvre change…",
+              "options": [
+                "Le point de vue",
+                "Le nombre de pages",
+                "La langue",
+                "Le grammage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On modifie la distance et le savoir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Narrateur externe omniscient sait…",
+              "options": [
+                "Plus que les personnages",
+                "Moins que tout le monde",
+                "Uniquement son prénom",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il peut tout dire sur passé, présent, pensées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Narrateur externe « sachant limité » ne connaît que…",
+              "options": [
+                "Ce qu'un personnage sait",
+                "L'avenir de tous",
+                "Le prix",
+                "La marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Focalisation sur un seul regard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer un narrateur externe : chercher…",
+              "options": [
+                "Il/elle + absence de « je » narratif",
+                "Uniquement des chiffres",
+                "Le colophon",
+                "La reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indices grammaticaux et position."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Point de vue interne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Point de vue interne : on accède…",
+              "options": [
+                "Aux pensées d'un personnage",
+                "À ce qu'il perçoit",
+                "Au ISBN",
+                "Au grammage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On voit avec les yeux et l'esprit d'un personnage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Elle tremblait : allait-il la découvrir ? » montre…",
+              "options": [
+                "Peur intérieure",
+                "Description de carte",
+                "Recette",
+                "Notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question mentale = intériorité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En « je », le point de vue est presque toujours…",
+              "options": [
+                "Interne",
+                "Externe omniscient",
+                "Absent",
+                "Editorial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je raconte ce que je vis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point de vue interne limite…",
+              "options": [
+                "Les informations du lecteur",
+                "Le nombre de lettres",
+                "La ponctuation",
+                "Le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne sait que ce que le personnage sait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Suspense facile avec point de vue interne car…",
+              "options": [
+                "Le personnage ignore des choses",
+                "Tout est dit d'un coup",
+                "Il n'y a pas de verbes",
+                "Le livre n'a pas de fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur partage l'ignorance ou la peur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les verbes de sentiment (craindre, espérer) renforcent…",
+              "options": [
+                "L'interne",
+                "La couverture",
+                "L'index",
+                "Le colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils expriment le ressenti du personnage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Point de vue interne en « il » reste possible si…",
+              "options": [
+                "On colore avec sa conscience",
+                "On supprime les personnages",
+                "On n'utilise que des noms propres",
+                "On efface le récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Focalisation interne sans « je »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lecteur « vit avec » le personnage : c'est l'effet…",
+              "options": [
+                "D'immersion",
+                "De dictionnaire",
+                "De table",
+                "De marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification au regard choisi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Interne empêche le narrateur de dire sans filtre…",
+              "options": [
+                "Les pensées des autres",
+                "Son propre prénom",
+                "Des actions visibles",
+                "Des dialogues entendus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sauf changement de point de vue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer l'interne : chercher pensées et…",
+              "options": [
+                "Perceptions sensorielles",
+                "ISBN",
+                "Reliure",
+                "Pagination seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir, entendre, ressentir comme le personnage."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Point de vue externe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Point de vue externe montre surtout…",
+              "options": [
+                "Actions visibles",
+                "Paroles entendues",
+                "Toutes les pensées sans limite",
+                "Le prix du livre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comme une caméra : gestes et dialogues, peu de pensées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il fronça les sourcils » sans pensée rapportée = regard…",
+              "options": ["Externe", "Interne total", "Poème", "Recette"],
+              "correctAnswers": [0],
+              "explanation": "On devine l'émotion sans lire la pensée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effet caméra : le narrateur…",
+              "options": [
+                "Observe sans entrer dans la tête",
+                "Est toujours le héros",
+                "Supprime les verbes",
+                "Lit le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description comportementale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point de vue externe peut créer…",
+              "options": [
+                "Du mystère",
+                "Une table de matières",
+                "Un exercice de maths",
+                "Une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On interprète les gestes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans accès aux pensées, le lecteur…",
+              "options": [
+                "Interprète les signes",
+                "Connaît tout",
+                "Ne lit pas",
+                "Voit le colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déduction à partir du visible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Scène de théâtre vue du public = analogie…",
+              "options": [
+                "Point de vue externe",
+                "Interne omniscient",
+                "Autobiographie",
+                "Notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit agir et parler, rarement penser."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Narrateur externe neutre évite…",
+              "options": [
+                "Les jugements personnels",
+                "Tout verbe",
+                "Tout nom",
+                "Toute ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il relate sans commenter (en principe)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il devint pâle » informe sans…",
+              "options": [
+                "Citer sa pensée",
+                "Utiliser un sujet",
+                "Avoir un verbe",
+                "Avoir un récit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe extérieur de peur ou choc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Externe strict limite le récit aux…",
+              "options": [
+                "Faits observables",
+                "Rêves de tous",
+                "ISBN",
+                "Marges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de voyage mental gratuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer interne/externe, c'est voir ce que le narrateur…",
+              "options": ["Ose dire au lecteur", "Imprime", "Relie", "Vend"],
+              "correctAnswers": [0],
+              "explanation": "Choix d'informations intérieures ou non."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Je et il/elle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Je » et « il » narratifs…",
+              "options": [
+                "Changent la distance au récit",
+                "Changent souvent le point de vue",
+                "Changent toujours l'intrigue réelle",
+                "Changent le ISBN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Personne grammaticale et focalisation varient."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Récit en « je » : distance lecteur/personnage…",
+              "options": [
+                "Plus faible",
+                "Plus grande",
+                "Inexistante",
+                "Interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subjectivité et proximité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Récit en « il » : distance peut être…",
+              "options": [
+                "Variable selon focalisation",
+                "Toujours nulle",
+                "Toujours celle d'un dictionnaire",
+                "Celle du colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il peut être interne ou externe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On ne confond pas « je » du narrateur et « je » du…",
+              "options": ["Dialogue", "Titre", "ISBN", "Reliure"],
+              "correctAnswers": [0],
+              "explanation": "Dans les guillemets, c'est un personnage qui parle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Passer un conte du « il » au « je » transforme…",
+              "options": [
+                "La voix qui raconte",
+                "Le nombre de chapitres obligé",
+                "La langue en anglais",
+                "Le grammage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même histoire, autre point de vue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nous » narratif inclut…",
+              "options": [
+                "Un groupe qui raconte",
+                "Le lecteur seul",
+                "L'éditeur",
+                "Le sommaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralité de personnages narrateurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En 6e, on retient surtout la distinction…",
+              "options": [
+                "Je vs il/elle narratif",
+                "Masculin vs féminin des noms",
+                "Singulier vs pluriel des prix",
+                "Couverture vs tranche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base du point de vue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Autobiographie utilise…",
+              "options": [
+                "Je",
+                "Il seulement",
+                "On administratif",
+                "Vous de politesse narratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit de soi à la première personne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Roman classique utilise souvent…",
+              "options": [
+                "Il/elle",
+                "Je exclusivement",
+                "Aucune personne",
+                "Chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troisième personne fréquente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer la personne du narrateur se fait en…",
+              "options": [
+                "Hors dialogues",
+                "Dans le ISBN",
+                "Sur la tranche",
+                "Dans la marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le narrateur parle en dehors des répliques."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Focalisation (initiation)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Focaliser, c'est choisir…",
+              "options": [
+                "Par qui on « voit »",
+                "Quelles infos on donne",
+                "Le prix",
+                "La reliure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Angle et contenu informatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Focalisation interne = on suit…",
+              "options": [
+                "Un personnage",
+                "Le dictionnaire",
+                "Le lecteur obligé",
+                "L'imprimeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un regard privilégié."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Focalisation externe = on filme…",
+              "options": [
+                "De l'extérieur",
+                "Toutes les têtes à la fois",
+                "Le ISBN",
+                "La marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de pensées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Changer de focalisation dans un roman…",
+              "options": [
+                "Est possible",
+                "Est interdit",
+                "Efface le titre",
+                "Supprime les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre chapitre, autre regard."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Focalisation zéro (tout savoir) correspond à…",
+              "options": [
+                "Narrateur omniscient",
+                "Narrateur muet",
+                "Absence de récit",
+                "Recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 6e on l'approche comme « il sait tout »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un même narrateur « il » peut être interne sur…",
+              "options": [
+                "Un seul personnage à la fois",
+                "Tous les objets",
+                "Le papier",
+                "Le grammage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Focalisation limitée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le lecteur ne voit pas tout si focalisation…",
+              "options": [
+                "Est limitée",
+                "Est omnisciente",
+                "Est externe seulement",
+                "Est un titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information filtrée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander « avec qui suis-je ? » sert à…",
+              "options": [
+                "Repérer la focalisation",
+                "Conjuguer",
+                "Compter",
+                "Dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question clé en lecture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Focalisation influence le…",
+              "options": ["Suspense", "Poids du livre", "ISBN", "Format"],
+              "correctAnswers": [0],
+              "explanation": "Savoir ou ignorer crée tension."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, focalisation se relie surtout à…",
+              "options": [
+                "Point de vue",
+                "Accord du participe passé seul",
+                "Orthographe",
+                "Marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire proche pour le collège."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Savoirs du narrateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un narrateur omniscient peut…",
+              "options": [
+                "Connaître le passé des personnages",
+                "Anticiper des événements",
+                "Lire le ISBN",
+                "Changer le grammage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vision large sur l'histoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Narrateur limité ignore…",
+              "options": [
+                "Ce que d'autres pensent en secret",
+                "Sa propre action",
+                "Son prénom",
+                "Les mots qu'il dit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frontière entre savoir et ignorance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Inconscient qu'il était suivi… » montre narrateur qui…",
+              "options": [
+                "En sait plus que le personnage",
+                "En sait moins que le lecteur",
+                "Ne raconte pas",
+                "Est le colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ironie dramatique possible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Retarder une info au lecteur, c'est jouer sur…",
+              "options": [
+                "Les savoirs narratifs",
+                "La couleur de couverture",
+                "Le grammage",
+                "La tranche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion du mystère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Narrateur en « je » connaît rarement…",
+              "options": [
+                "Les pensées des autres",
+                "Sa chambre",
+                "Son prénom",
+                "Ses propres actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sauf devinette ou confidence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Flash-back prouve que le narrateur…",
+              "options": [
+                "Maîtrise le temps du récit",
+                "Ne connaît que le présent",
+                "Ne peut pas décrire",
+                "Lit le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il remonte le fil des événements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Commentaire du narrateur (« malheureusement ») révèle…",
+              "options": [
+                "Un point de vue valorisé",
+                "Une absence de voix",
+                "Un exercice",
+                "Une carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence d'un juge narratif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Policier : narrateur qui cache le coupable utilise…",
+              "options": [
+                "Savoir limité ou masqué",
+                "Omniscience totale dès la page 1",
+                "Aucun récit",
+                "Uniquement des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intrigue basée sur l'information."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer ce que sait le héros et le lecteur crée…",
+              "options": [
+                "Ironie ou suspense",
+                "Une notice",
+                "Un tableau",
+                "Une marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décalage des savoirs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En analyse, noter « il sait / il ignore » décrit…",
+              "options": [
+                "Les savoirs narratifs",
+                "La pagination",
+                "Le prix",
+                "La reliure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grille simple en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Distance narrative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Distance narrative, c'est…",
+              "options": [
+                "Proximité ou éloignement du personnage",
+                "Ton plus froid ou plus chaud",
+                "Poids du livre",
+                "ISBN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Je rapproche ; il externe éloigne parfois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Narration en « je » = distance souvent…",
+              "options": [
+                "Faible",
+                "Maximale",
+                "Nulle pour le titre",
+                "Celle du colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subjectivité proche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Narration externe décrivant gestes sans émotion = distance…",
+              "options": ["Plus grande", "Nulle", "Impossible", "Du grammage"],
+              "correctAnswers": [0],
+              "explanation": "Regard froid."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ironie du narrateur augmente parfois…",
+              "options": [
+                "La distance",
+                "Le grammage",
+                "Le ISBN",
+                "La tranche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On surplombe le personnage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sympathie pour un héros rapproche…",
+              "options": [
+                "Lecteur et personnage",
+                "Couverture et marge",
+                "ISBN et prix",
+                "Plan et carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification émotionnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Style oral du narrateur (« bon », « voilà ») crée…",
+              "options": ["Proximité", "Notice", "Tableau", "Recette"],
+              "correctAnswers": [0],
+              "explanation": "Ton familier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vocabulaire soutenu du narrateur peut…",
+              "options": [
+                "Éloigner",
+                "Supprimer le récit",
+                "Effacer les personnages",
+                "Changer le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance stylistique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changer de distance dans un texte modifie…",
+              "options": [
+                "L'effet sur le lecteur",
+                "Le nombre de pages obligé",
+                "La langue",
+                "Le grammage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressenti de lecture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 6e, parler de distance, c'est surtout…",
+              "options": [
+                "Je proche vs il descriptif",
+                "Calculer le poids",
+                "Lire le colophon",
+                "Compter les marges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche simplifiée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distance ≠ point de vue mais les deux…",
+              "options": [
+                "Se combinent",
+                "S'ignorent toujours",
+                "Interdisent le récit",
+                "Remplacent la description"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse complète du narrateur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : narrateur et point de vue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Étudier le narrateur, c'est voir…",
+              "options": [
+                "Qui raconte",
+                "Sous quel angle",
+                "Le prix du papier",
+                "Le grammage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voix narrative et point de vue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Narrateur-personnage + « je » = configuration…",
+              "options": [
+                "Fréquente et proche",
+                "Impossible",
+                "Uniquement poétique",
+                "De notice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autobiographie, journal, aventure vécue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Narrateur externe + omniscience = il peut…",
+              "options": [
+                "Tout dire",
+                "Rien dire",
+                "Seulement décrire la couverture",
+                "Ignorer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir large."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Choisir son narrateur, c'est un choix…",
+              "options": [
+                "D'écriture",
+                "D'impression",
+                "De reliure",
+                "De ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur construit la voix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Relier narrateur et récit/description : le narrateur…",
+              "options": [
+                "Raconte et peut décrire",
+                "Ne fait que conjuguer",
+                "Ne fait que compter",
+                "Ne lit pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il maîtrise les deux registres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Analyser un extrait en 6e : étapes = personne, savoirs, …",
+              "options": ["Interne/externe", "Grammage", "Reliure", "Prix"],
+              "correctAnswers": [0],
+              "explanation": "Grille de lecture du chapitre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Point de vue unique du début à la fin = récit…",
+              "options": [
+                "Cohérent",
+                "Sans verbes",
+                "Sans personnages",
+                "Sans titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité narrative (sauf exceptions)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le lecteur construit le sens avec…",
+              "options": [
+                "Les indices du narrateur",
+                "Le colophon seul",
+                "La tranche",
+                "Le ISBN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coopération texte/lecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Maîtriser le narrateur aide à…",
+              "options": [
+                "Écrire et comprendre des histoires",
+                "Oublier la lecture",
+                "Ne plus raconter",
+                "Éviter les romans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence clé du cycle 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Genre et point de vue : le narrateur détermine en partie…",
+              "options": [
+                "Comment on vit le récit",
+                "Le poids du livre",
+                "La couleur de l'encre",
+                "Le format legal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expérience de lecture dépend de la voix."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

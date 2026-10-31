@@ -28,9 +28,13 @@ import {
   SelectColumn,
 } from "react-data-grid";
 import { toast } from "sonner";
-import useSWR, { mutate as globalMutate } from "swr";
+import useSWR from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
+import {
+  revalidateChatHistories,
+  useChatHistoryReset,
+} from "@/hooks/revalidate-chat-histories";
 import { confirmInApp } from "@/lib/ui/app-dialog";
 import "react-data-grid/lib/styles.css";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
@@ -264,6 +268,10 @@ function ProjectsPageInner() {
     isLoading: chatsLoading,
     error: chatsError,
   } = useSWRInfinite<{ chats: Chat[]; hasMore: boolean }>(getChatKey, fetcher);
+  const resetHistoryPage = useCallback(() => {
+    setSize(1);
+  }, [setSize]);
+  useChatHistoryReset(resetHistoryPage);
 
   const chats: Chat[] = useMemo(
     () =>
@@ -352,7 +360,7 @@ function ProjectsPageInner() {
     setDeleteProjectId(null);
     setDeleteWithChats(false);
     mutateProjects();
-    mutateChats();
+    await revalidateChatHistories();
   };
 
   const _toggleChatSelection = (id: string) => {
@@ -403,10 +411,7 @@ function ProjectsPageInner() {
     setSelectedChatIds(new Set());
     mutateChats();
     mutateProjects();
-    // Invalidate sidebar history
-    globalMutate(
-      (key) => typeof key === "string" && key.includes("/api/history")
-    );
+    await revalidateChatHistories();
   };
 
   const handleSingleAction = useCallback(
@@ -425,9 +430,7 @@ function ProjectsPageInner() {
         toast.success("Mis à jour");
         mutateChats();
         mutateProjects();
-        globalMutate(
-          (key) => typeof key === "string" && key.includes("/api/history")
-        );
+        await revalidateChatHistories();
       } catch {
         toast.error("Impossible de mettre à jour la discussion. Réessayez.");
       }
@@ -612,10 +615,10 @@ function ProjectsPageInner() {
                         next.delete(row.id);
                         return next;
                       });
+                      await revalidateChatHistories();
                     } else {
                       toast.error("Erreur lors de la suppression");
                     }
-                    mutateChats();
                   }}
                 >
                   <Trash2Icon className="size-3.5 mr-2" /> Supprimer
@@ -628,7 +631,7 @@ function ProjectsPageInner() {
       },
     ];
     return cols;
-  }, [projectMap, mutateChats, handleSingleAction]);
+  }, [projectMap, handleSingleAction]);
 
   const selectedRows = useMemo(() => {
     const s = new Set<string>();

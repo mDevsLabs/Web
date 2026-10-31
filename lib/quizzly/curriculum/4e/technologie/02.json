@@ -1,0 +1,2728 @@
+{
+  "id": "4e-technologie-02",
+  "year": "4e",
+  "subject": "technologie",
+  "title": "Design et innovation",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Besoin et usage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un besoin ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un projet de design, un besoin correspond à…",
+              "options": [
+                "Un manque ressenti par un utilisateur",
+                "Une mode sans lien avec l'usage",
+                "Une attente traduite en exigences",
+                "Un choix esthétique seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un besoin explicite est…",
+              "options": [
+                "Formulé clairement par l'utilisateur",
+                "Toujours secret",
+                "Identique à une mode",
+                "Sans lien avec l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'explicite peut être entendu ou lu dans une enquête."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prioriser les besoins sert à…",
+              "options": [
+                "Concentrer le design sur l'essentiel",
+                "Supprimer la sécurité",
+                "Éviter tout prototype",
+                "Ignorer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les attentes ne peuvent pas être traitées en premier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un besoin latent est…",
+              "options": [
+                "Ressenti sans être clairement exprimé",
+                "Toujours écrit au cahier",
+                "Une contrainte légale",
+                "Un défaut de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation aide à révéler les besoins latents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le besoin et la solution…",
+              "options": [
+                "Ne doivent pas être confondus dès le départ",
+                "Sont toujours identiques",
+                "Excluent tout essai",
+                "Remplacent le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On part du problème avant de figer la forme de l'objet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une enquête utilisateur peut…",
+              "options": [
+                "Identifier des besoins réels",
+                "Remplacer tous les essais",
+                "Supprimer les contraintes",
+                "Fixer la couleur sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler ou observer les usagers nourrit la conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un besoin environnemental concerne…",
+              "options": [
+                "L'impact et la durabilité attendus",
+                "Uniquement le logo",
+                "Le numéro de série",
+                "La forme sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éco-conception et recyclage entrent dans les attentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Reformuler le besoin en « l'utilisateur doit pouvoir… » aide à…",
+              "options": [
+                "Rester centré sur l'usage",
+                "Ignorer les contraintes",
+                "Supprimer le prototype",
+                "Éviter les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette tournure lie besoin et action concrète."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux publics différents peuvent avoir…",
+              "options": [
+                "Des besoins distincts pour un même objet",
+                "Toujours les mêmes besoins",
+                "Aucun besoin mesurable",
+                "Un cahier des charges vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design cible un ou plusieurs profils d'utilisateurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un besoin non satisfait dans le prototype se repère lors…",
+              "options": [
+                "Des essais",
+                "Du choix de l'emballage",
+                "De la publicité seule",
+                "Du nom de marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les essais confrontent solution et attentes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Usage et contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Analyser l'usage permet de…",
+              "options": [
+                "Adapter ergonomie et sécurité",
+                "Supprimer le prototype",
+                "Repérer gestes et contraintes",
+                "Ignorer le besoin"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Usage prévu signifie…",
+              "options": [
+                "Ce que le designer imagine",
+                "Ce que la loi interdit toujours",
+                "Un essai sans protocole",
+                "Un matériau au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il sert de référence avant les essais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Usage réel peut différer de l'usage prévu si…",
+              "options": [
+                "L'utilisateur détourne l'objet",
+                "Le prototype est parfait",
+                "Il n'y a pas de besoin",
+                "Le cahier des charges est complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les détournements signalent des risques ou des améliorations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La durée d'utilisation influence…",
+              "options": [
+                "Confort et fatigue",
+                "Uniquement le packaging",
+                "La gravité terrestre",
+                "Le numéro de modèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ergonomie et poids comptent pour un usage long."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet partagé entre plusieurs usagers demande…",
+              "options": [
+                "Des réglages ou une conception polyvalente",
+                "Aucune sécurité",
+                "Zéro entretien possible",
+                "Pas de cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tailles, réglages ou robustesse s'adaptent à plusieurs profils."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le bruit dans l'environnement d'usage affecte…",
+              "options": [
+                "Signaux sonores et concentration",
+                "La masse du prototype",
+                "Le type de vis uniquement",
+                "Le nom du fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alarmes et retours doivent rester perceptibles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Documenter un parcours utilisateur permet de…",
+              "options": [
+                "Visualiser les étapes d'usage",
+                "Supprimer les essais",
+                "Ignorer les contraintes",
+                "Remplacer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parcours relie actions, outils et points de friction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Adapter l'interface à l'usage mains libres signifie…",
+              "options": [
+                "Pouvoir agir sans bloquer les gestes essentiels",
+                "Supprimer toute sécurité",
+                "Interdire le prototype",
+                "Ne pas mesurer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poignées, commandes et fixation suivent le geste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'analyse d'usage étudie…",
+              "options": [
+                "Gestes, fréquence et contexte",
+                "Uniquement la couleur",
+                "Le cours de mathématiques",
+                "Le stock en magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre comment on s'en sert guide la forme et les matériaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un usage intensif impose souvent…",
+              "options": [
+                "Plus de robustesse",
+                "Moins de contraintes",
+                "Aucun essai",
+                "Un cahier des charges vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La durée et la fréquence d'utilisation influencent la conception."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Utilisateur et persona",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un besoin bien défini…",
+              "options": [
+                "Guide le cahier des charges",
+                "Remplace les essais",
+                "Oriente les fonctions à concevoir",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une enquête utilisateur peut…",
+              "options": [
+                "Identifier des besoins réels",
+                "Remplacer tous les essais",
+                "Supprimer les contraintes",
+                "Fixer la couleur sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler ou observer les usagers nourrit la conception."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un besoin environnemental concerne…",
+              "options": [
+                "L'impact et la durabilité attendus",
+                "Uniquement le logo",
+                "Le numéro de série",
+                "La forme sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éco-conception et recyclage entrent dans les attentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reformuler le besoin en « l'utilisateur doit pouvoir… » aide à…",
+              "options": [
+                "Rester centré sur l'usage",
+                "Ignorer les contraintes",
+                "Supprimer le prototype",
+                "Éviter les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette tournure lie besoin et action concrète."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux publics différents peuvent avoir…",
+              "options": [
+                "Des besoins distincts pour un même objet",
+                "Toujours les mêmes besoins",
+                "Aucun besoin mesurable",
+                "Un cahier des charges vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design cible un ou plusieurs profils d'utilisateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un besoin non satisfait dans le prototype se repère lors…",
+              "options": [
+                "Des essais",
+                "Du choix de l'emballage",
+                "De la publicité seule",
+                "Du nom de marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les essais confrontent solution et attentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un besoin exprime surtout…",
+              "options": [
+                "Un manque ou une attente utile",
+                "Une décoration sans fonction",
+                "Un brevet déposé",
+                "Un prix de vente fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le besoin décrit ce qui manque à l'utilisateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un besoin explicite est…",
+              "options": [
+                "Formulé clairement par l'utilisateur",
+                "Toujours secret",
+                "Identique à une mode",
+                "Sans lien avec l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'explicite peut être entendu ou lu dans une enquête."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prioriser les besoins sert à…",
+              "options": [
+                "Concentrer le design sur l'essentiel",
+                "Supprimer la sécurité",
+                "Éviter tout prototype",
+                "Ignorer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les attentes ne peuvent pas être traitées en premier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un besoin latent est…",
+              "options": [
+                "Ressenti sans être clairement exprimé",
+                "Toujours écrit au cahier",
+                "Une contrainte légale",
+                "Un défaut de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation aide à révéler les besoins latents."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fonctions attendues",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une bonne exigence est…",
+              "options": [
+                "Claire et vérifiable",
+                "Vague et non testable",
+                "Mesurable ou observable",
+                "Hors de tout essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Séparer contraintes « impératives » et « souhaitables » aide à…",
+              "options": [
+                "Arbitrer en cas de conflit",
+                "Supprimer le besoin",
+                "Éviter tout prototype",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On protège d'abord l'indispensable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une exigence mesurable utilise souvent…",
+              "options": [
+                "Des unités (masse, temps, force…)",
+                "Uniquement des adjectifs vagues",
+                "Aucun essai",
+                "Des émojis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer permet de valider objectivement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cahier des charges évolue parfois après…",
+              "options": [
+                "Un essai qui révèle un oubli",
+                "Le choix du prénom",
+                "La couleur du ciel",
+                "L'absence de besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retours d'essai mettent à jour les exigences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le cahier des charges liste surtout…",
+              "options": [
+                "Fonctions, contraintes et critères",
+                "Uniquement des dessins décoratifs",
+                "Les ventes du magasin",
+                "Le menu de la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il formalise ce que la solution doit respecter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une contrainte de masse maximale est…",
+              "options": [
+                "Une limite à ne pas dépasser",
+                "Un souhait sans importance",
+                "Un essai sans protocole",
+                "Un besoin implicite seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes bornent la conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un critère d'acceptation précise…",
+              "options": [
+                "Comment vérifier qu'une exigence est atteinte",
+                "La couleur du logo",
+                "Le prénom du designer",
+                "L'historique du lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque exigence peut être testée lors des essais."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fonction principale dans le cahier des charges est…",
+              "options": [
+                "La raison d'être prioritaire de l'objet",
+                "Un détail esthétique",
+                "Un matériau imposé au hasard",
+                "Un essai sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle guide les choix de conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une contrainte réglementaire…",
+              "options": [
+                "Doit être respectée légalement",
+                "Est optionnelle si le prototype est joli",
+                "Remplace le besoin",
+                "Supprime les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et sécurité font partie du cahier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le budget dans le cahier des charges limite…",
+              "options": [
+                "Coût matière et fabrication",
+                "Uniquement la couleur",
+                "Le nombre de lettres du nom",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faisabilité économique est une contrainte réelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Contraintes du projet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cahier des charges contient souvent…",
+              "options": [
+                "Fonctions et contraintes",
+                "Critères de validation",
+                "Uniquement des blagues",
+                "Rien sur l'usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le cahier des charges évolue parfois après…",
+              "options": [
+                "Un essai qui révèle un oubli",
+                "Le choix du prénom",
+                "La couleur du ciel",
+                "L'absence de besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retours d'essai mettent à jour les exigences."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le cahier des charges liste surtout…",
+              "options": [
+                "Fonctions, contraintes et critères",
+                "Uniquement des dessins décoratifs",
+                "Les ventes du magasin",
+                "Le menu de la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il formalise ce que la solution doit respecter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une contrainte de masse maximale est…",
+              "options": [
+                "Une limite à ne pas dépasser",
+                "Un souhait sans importance",
+                "Un essai sans protocole",
+                "Un besoin implicite seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes bornent la conception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un critère d'acceptation précise…",
+              "options": [
+                "Comment vérifier qu'une exigence est atteinte",
+                "La couleur du logo",
+                "Le prénom du designer",
+                "L'historique du lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque exigence peut être testée lors des essais."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fonction principale dans le cahier des charges est…",
+              "options": [
+                "La raison d'être prioritaire de l'objet",
+                "Un détail esthétique",
+                "Un matériau imposé au hasard",
+                "Un essai sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle guide les choix de conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une contrainte réglementaire…",
+              "options": [
+                "Doit être respectée légalement",
+                "Est optionnelle si le prototype est joli",
+                "Remplace le besoin",
+                "Supprime les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et sécurité font partie du cahier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le budget dans le cahier des charges limite…",
+              "options": [
+                "Coût matière et fabrication",
+                "Uniquement la couleur",
+                "Le nombre de lettres du nom",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faisabilité économique est une contrainte réelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un délai de livraison imposé est une contrainte de…",
+              "options": ["Temps", "Couleur", "Goût", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Le planning influence choix techniques et prototypes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Séparer contraintes « impératives » et « souhaitables » aide à…",
+              "options": [
+                "Arbitrer en cas de conflit",
+                "Supprimer le besoin",
+                "Éviter tout prototype",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On protège d'abord l'indispensable."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Cahier des charges : structure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une bonne exigence est…",
+              "options": [
+                "Claire et vérifiable",
+                "Vague et non testable",
+                "Mesurable ou observable",
+                "Hors de tout essai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une contrainte de masse maximale est…",
+              "options": [
+                "Une limite à ne pas dépasser",
+                "Un souhait sans importance",
+                "Un essai sans protocole",
+                "Un besoin implicite seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes bornent la conception."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un critère d'acceptation précise…",
+              "options": [
+                "Comment vérifier qu'une exigence est atteinte",
+                "La couleur du logo",
+                "Le prénom du designer",
+                "L'historique du lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque exigence peut être testée lors des essais."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La fonction principale dans le cahier des charges est…",
+              "options": [
+                "La raison d'être prioritaire de l'objet",
+                "Un détail esthétique",
+                "Un matériau imposé au hasard",
+                "Un essai sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle guide les choix de conception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une contrainte réglementaire…",
+              "options": [
+                "Doit être respectée légalement",
+                "Est optionnelle si le prototype est joli",
+                "Remplace le besoin",
+                "Supprime les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et sécurité font partie du cahier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le budget dans le cahier des charges limite…",
+              "options": [
+                "Coût matière et fabrication",
+                "Uniquement la couleur",
+                "Le nombre de lettres du nom",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faisabilité économique est une contrainte réelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un délai de livraison imposé est une contrainte de…",
+              "options": ["Temps", "Couleur", "Goût", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Le planning influence choix techniques et prototypes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Séparer contraintes « impératives » et « souhaitables » aide à…",
+              "options": [
+                "Arbitrer en cas de conflit",
+                "Supprimer le besoin",
+                "Éviter tout prototype",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On protège d'abord l'indispensable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une exigence mesurable utilise souvent…",
+              "options": [
+                "Des unités (masse, temps, force…)",
+                "Uniquement des adjectifs vagues",
+                "Aucun essai",
+                "Des émojis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer permet de valider objectivement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le cahier des charges évolue parfois après…",
+              "options": [
+                "Un essai qui révèle un oubli",
+                "Le choix du prénom",
+                "La couleur du ciel",
+                "L'absence de besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retours d'essai mettent à jour les exigences."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Critères mesurables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cahier des charges contient souvent…",
+              "options": [
+                "Fonctions et contraintes",
+                "Critères de validation",
+                "Uniquement des blagues",
+                "Rien sur l'usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fonction principale dans le cahier des charges est…",
+              "options": [
+                "La raison d'être prioritaire de l'objet",
+                "Un détail esthétique",
+                "Un matériau imposé au hasard",
+                "Un essai sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle guide les choix de conception."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une contrainte réglementaire…",
+              "options": [
+                "Doit être respectée légalement",
+                "Est optionnelle si le prototype est joli",
+                "Remplace le besoin",
+                "Supprime les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et sécurité font partie du cahier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le budget dans le cahier des charges limite…",
+              "options": [
+                "Coût matière et fabrication",
+                "Uniquement la couleur",
+                "Le nombre de lettres du nom",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faisabilité économique est une contrainte réelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un délai de livraison imposé est une contrainte de…",
+              "options": ["Temps", "Couleur", "Goût", "Musique"],
+              "correctAnswers": [0],
+              "explanation": "Le planning influence choix techniques et prototypes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Séparer contraintes « impératives » et « souhaitables » aide à…",
+              "options": [
+                "Arbitrer en cas de conflit",
+                "Supprimer le besoin",
+                "Éviter tout prototype",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On protège d'abord l'indispensable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une exigence mesurable utilise souvent…",
+              "options": [
+                "Des unités (masse, temps, force…)",
+                "Uniquement des adjectifs vagues",
+                "Aucun essai",
+                "Des émojis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer permet de valider objectivement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le cahier des charges évolue parfois après…",
+              "options": [
+                "Un essai qui révèle un oubli",
+                "Le choix du prénom",
+                "La couleur du ciel",
+                "L'absence de besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retours d'essai mettent à jour les exigences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le cahier des charges liste surtout…",
+              "options": [
+                "Fonctions, contraintes et critères",
+                "Uniquement des dessins décoratifs",
+                "Les ventes du magasin",
+                "Le menu de la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il formalise ce que la solution doit respecter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une contrainte de masse maximale est…",
+              "options": [
+                "Une limite à ne pas dépasser",
+                "Un souhait sans importance",
+                "Un essai sans protocole",
+                "Un besoin implicite seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes bornent la conception."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Ergonomie et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Analyser l'usage permet de…",
+              "options": [
+                "Adapter ergonomie et sécurité",
+                "Supprimer le prototype",
+                "Repérer gestes et contraintes",
+                "Ignorer le besoin"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La durée d'utilisation influence…",
+              "options": [
+                "Confort et fatigue",
+                "Uniquement le packaging",
+                "La gravité terrestre",
+                "Le numéro de modèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ergonomie et poids comptent pour un usage long."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet partagé entre plusieurs usagers demande…",
+              "options": [
+                "Des réglages ou une conception polyvalente",
+                "Aucune sécurité",
+                "Zéro entretien possible",
+                "Pas de cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tailles, réglages ou robustesse s'adaptent à plusieurs profils."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bruit dans l'environnement d'usage affecte…",
+              "options": [
+                "Signaux sonores et concentration",
+                "La masse du prototype",
+                "Le type de vis uniquement",
+                "Le nom du fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alarmes et retours doivent rester perceptibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Documenter un parcours utilisateur permet de…",
+              "options": [
+                "Visualiser les étapes d'usage",
+                "Supprimer les essais",
+                "Ignorer les contraintes",
+                "Remplacer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parcours relie actions, outils et points de friction."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Adapter l'interface à l'usage mains libres signifie…",
+              "options": [
+                "Pouvoir agir sans bloquer les gestes essentiels",
+                "Supprimer toute sécurité",
+                "Interdire le prototype",
+                "Ne pas mesurer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poignées, commandes et fixation suivent le geste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'analyse d'usage étudie…",
+              "options": [
+                "Gestes, fréquence et contexte",
+                "Uniquement la couleur",
+                "Le cours de mathématiques",
+                "Le stock en magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre comment on s'en sert guide la forme et les matériaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un usage intensif impose souvent…",
+              "options": [
+                "Plus de robustesse",
+                "Moins de contraintes",
+                "Aucun essai",
+                "Un cahier des charges vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La durée et la fréquence d'utilisation influencent la conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un lieu de stockage définit…",
+              "options": [
+                "Où l'objet vit quand il n'est pas utilisé",
+                "Le prix public",
+                "Le brevet",
+                "La couleur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encombrement et conditions de rangement sont des contraintes d'usage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Usage prévu signifie…",
+              "options": [
+                "Ce que le designer imagine",
+                "Ce que la loi interdit toujours",
+                "Un essai sans protocole",
+                "Un matériau au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il sert de référence avant les essais."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "De la collecte au cahier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cahier des charges contient souvent…",
+              "options": [
+                "Fonctions et contraintes",
+                "Critères de validation",
+                "Uniquement des blagues",
+                "Rien sur l'usage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Séparer contraintes « impératives » et « souhaitables » aide à…",
+              "options": [
+                "Arbitrer en cas de conflit",
+                "Supprimer le besoin",
+                "Éviter tout prototype",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On protège d'abord l'indispensable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une exigence mesurable utilise souvent…",
+              "options": [
+                "Des unités (masse, temps, force…)",
+                "Uniquement des adjectifs vagues",
+                "Aucun essai",
+                "Des émojis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurer permet de valider objectivement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cahier des charges évolue parfois après…",
+              "options": [
+                "Un essai qui révèle un oubli",
+                "Le choix du prénom",
+                "La couleur du ciel",
+                "L'absence de besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les retours d'essai mettent à jour les exigences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le cahier des charges liste surtout…",
+              "options": [
+                "Fonctions, contraintes et critères",
+                "Uniquement des dessins décoratifs",
+                "Les ventes du magasin",
+                "Le menu de la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il formalise ce que la solution doit respecter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une contrainte de masse maximale est…",
+              "options": [
+                "Une limite à ne pas dépasser",
+                "Un souhait sans importance",
+                "Un essai sans protocole",
+                "Un besoin implicite seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes bornent la conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un critère d'acceptation précise…",
+              "options": [
+                "Comment vérifier qu'une exigence est atteinte",
+                "La couleur du logo",
+                "Le prénom du designer",
+                "L'historique du lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque exigence peut être testée lors des essais."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fonction principale dans le cahier des charges est…",
+              "options": [
+                "La raison d'être prioritaire de l'objet",
+                "Un détail esthétique",
+                "Un matériau imposé au hasard",
+                "Un essai sans mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle guide les choix de conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une contrainte réglementaire…",
+              "options": [
+                "Doit être respectée légalement",
+                "Est optionnelle si le prototype est joli",
+                "Remplace le besoin",
+                "Supprime les essais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et sécurité font partie du cahier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le budget dans le cahier des charges limite…",
+              "options": [
+                "Coût matière et fabrication",
+                "Uniquement la couleur",
+                "Le nombre de lettres du nom",
+                "La gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faisabilité économique est une contrainte réelle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse besoin et usage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un projet de design, un besoin correspond à…",
+              "options": [
+                "Un manque ressenti par un utilisateur",
+                "Une mode sans lien avec l'usage",
+                "Une attente traduite en exigences",
+                "Un choix esthétique seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un besoin non satisfait dans le prototype se repère lors…",
+              "options": [
+                "Des essais",
+                "Du choix de l'emballage",
+                "De la publicité seule",
+                "Du nom de marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les essais confrontent solution et attentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un besoin exprime surtout…",
+              "options": [
+                "Un manque ou une attente utile",
+                "Une décoration sans fonction",
+                "Un brevet déposé",
+                "Un prix de vente fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le besoin décrit ce qui manque à l'utilisateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un besoin explicite est…",
+              "options": [
+                "Formulé clairement par l'utilisateur",
+                "Toujours secret",
+                "Identique à une mode",
+                "Sans lien avec l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'explicite peut être entendu ou lu dans une enquête."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prioriser les besoins sert à…",
+              "options": [
+                "Concentrer le design sur l'essentiel",
+                "Supprimer la sécurité",
+                "Éviter tout prototype",
+                "Ignorer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les attentes ne peuvent pas être traitées en premier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un besoin latent est…",
+              "options": [
+                "Ressenti sans être clairement exprimé",
+                "Toujours écrit au cahier",
+                "Une contrainte légale",
+                "Un défaut de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation aide à révéler les besoins latents."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le besoin et la solution…",
+              "options": [
+                "Ne doivent pas être confondus dès le départ",
+                "Sont toujours identiques",
+                "Excluent tout essai",
+                "Remplacent le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On part du problème avant de figer la forme de l'objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une enquête utilisateur peut…",
+              "options": [
+                "Identifier des besoins réels",
+                "Remplacer tous les essais",
+                "Supprimer les contraintes",
+                "Fixer la couleur sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parler ou observer les usagers nourrit la conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un besoin environnemental concerne…",
+              "options": [
+                "L'impact et la durabilité attendus",
+                "Uniquement le logo",
+                "Le numéro de série",
+                "La forme sans usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éco-conception et recyclage entrent dans les attentes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Reformuler le besoin en « l'utilisateur doit pouvoir… » aide à…",
+              "options": [
+                "Rester centré sur l'usage",
+                "Ignorer les contraintes",
+                "Supprimer le prototype",
+                "Éviter les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette tournure lie besoin et action concrète."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Prototype et essai",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Prototype : rôle et types",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un prototype permet de…",
+              "options": [
+                "Tester une solution",
+                "Communiquer une idée concrète",
+                "Supprimer le cahier des charges",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un prototype de forme (mock-up) montre surtout…",
+              "options": [
+                "Volumes et apparence",
+                "La production en usine",
+                "Le contrat commercial",
+                "Le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide dimensions et ergonomie visuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prototype fonctionnel permet de…",
+              "options": [
+                "Vérifier que ça marche comme prévu",
+                "Ignorer les essais",
+                "Supprimer les contraintes",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes, électronique ou logiciel sont testés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prototyper tôt permet de…",
+              "options": [
+                "Détecter des erreurs moins coûteuses",
+                "Lancer la série sans test",
+                "Ignorer l'usage",
+                "Supprimer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger sur maquette coûte moins qu'en production."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prototype papier ou carton est…",
+              "options": [
+                "Rapide et peu coûteux pour explorer",
+                "Toujours le produit final",
+                "Inutile pour le design",
+                "Interdit en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faible coût encourage l'itération."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Impression 3D en prototype aide surtout pour…",
+              "options": [
+                "Formes complexes et pièces uniques",
+                "Séries de millions sans essai",
+                "Remplacer toute analyse",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accélère une pièce testable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prototype non conforme au cahier des charges…",
+              "options": [
+                "Ne valide pas les exigences manquantes",
+                "Prouve tout automatiquement",
+                "Remplace les essais",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tracer ce qui est simulé ou absent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Itérer un prototype signifie…",
+              "options": [
+                "Améliorer après chaque retour d'essai",
+                "Ne jamais modifier",
+                "Supprimer le besoin",
+                "Ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque version intègre des corrections."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prototype de service (sans objet physique) peut être…",
+              "options": [
+                "Un parcours simulé sur maquette d'écran",
+                "Un marteau seul",
+                "Une contrainte légale",
+                "Un essai sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services se prototype aussi (parcours, interface)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer du prototype au produit final demande…",
+              "options": [
+                "Industrialisation et contrôle qualité",
+                "Aucun essai",
+                "Suppression du cahier des charges",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série exige matériaux, outils et répétabilité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Maquette et modèle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Types de prototypes utiles…",
+              "options": [
+                "Maquette de forme",
+                "Prototype fonctionnel",
+                "Production en série directe",
+                "Aucun test"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prototyper tôt permet de…",
+              "options": [
+                "Détecter des erreurs moins coûteuses",
+                "Lancer la série sans test",
+                "Ignorer l'usage",
+                "Supprimer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger sur maquette coûte moins qu'en production."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prototype papier ou carton est…",
+              "options": [
+                "Rapide et peu coûteux pour explorer",
+                "Toujours le produit final",
+                "Inutile pour le design",
+                "Interdit en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faible coût encourage l'itération."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Impression 3D en prototype aide surtout pour…",
+              "options": [
+                "Formes complexes et pièces uniques",
+                "Séries de millions sans essai",
+                "Remplacer toute analyse",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accélère une pièce testable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prototype non conforme au cahier des charges…",
+              "options": [
+                "Ne valide pas les exigences manquantes",
+                "Prouve tout automatiquement",
+                "Remplace les essais",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tracer ce qui est simulé ou absent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Itérer un prototype signifie…",
+              "options": [
+                "Améliorer après chaque retour d'essai",
+                "Ne jamais modifier",
+                "Supprimer le besoin",
+                "Ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque version intègre des corrections."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prototype de service (sans objet physique) peut être…",
+              "options": [
+                "Un parcours simulé sur maquette d'écran",
+                "Un marteau seul",
+                "Une contrainte légale",
+                "Un essai sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services se prototype aussi (parcours, interface)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Passer du prototype au produit final demande…",
+              "options": [
+                "Industrialisation et contrôle qualité",
+                "Aucun essai",
+                "Suppression du cahier des charges",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série exige matériaux, outils et répétabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prototype sert surtout à…",
+              "options": [
+                "Tester une solution avant la série",
+                "Remplacer le cahier des charges",
+                "Supprimer les besoins",
+                "Vendre sans essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il matérialise une idée pour l'évaluer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un prototype de forme (mock-up) montre surtout…",
+              "options": [
+                "Volumes et apparence",
+                "La production en usine",
+                "Le contrat commercial",
+                "Le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide dimensions et ergonomie visuelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Matériaux du prototype",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un prototype permet de…",
+              "options": [
+                "Tester une solution",
+                "Communiquer une idée concrète",
+                "Supprimer le cahier des charges",
+                "Ignorer les essais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Impression 3D en prototype aide surtout pour…",
+              "options": [
+                "Formes complexes et pièces uniques",
+                "Séries de millions sans essai",
+                "Remplacer toute analyse",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accélère une pièce testable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prototype non conforme au cahier des charges…",
+              "options": [
+                "Ne valide pas les exigences manquantes",
+                "Prouve tout automatiquement",
+                "Remplace les essais",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tracer ce qui est simulé ou absent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Itérer un prototype signifie…",
+              "options": [
+                "Améliorer après chaque retour d'essai",
+                "Ne jamais modifier",
+                "Supprimer le besoin",
+                "Ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque version intègre des corrections."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prototype de service (sans objet physique) peut être…",
+              "options": [
+                "Un parcours simulé sur maquette d'écran",
+                "Un marteau seul",
+                "Une contrainte légale",
+                "Un essai sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services se prototype aussi (parcours, interface)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Passer du prototype au produit final demande…",
+              "options": [
+                "Industrialisation et contrôle qualité",
+                "Aucun essai",
+                "Suppression du cahier des charges",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série exige matériaux, outils et répétabilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prototype sert surtout à…",
+              "options": [
+                "Tester une solution avant la série",
+                "Remplacer le cahier des charges",
+                "Supprimer les besoins",
+                "Vendre sans essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il matérialise une idée pour l'évaluer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un prototype de forme (mock-up) montre surtout…",
+              "options": [
+                "Volumes et apparence",
+                "La production en usine",
+                "Le contrat commercial",
+                "Le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide dimensions et ergonomie visuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prototype fonctionnel permet de…",
+              "options": [
+                "Vérifier que ça marche comme prévu",
+                "Ignorer les essais",
+                "Supprimer les contraintes",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes, électronique ou logiciel sont testés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prototyper tôt permet de…",
+              "options": [
+                "Détecter des erreurs moins coûteuses",
+                "Lancer la série sans test",
+                "Ignorer l'usage",
+                "Supprimer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger sur maquette coûte moins qu'en production."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Protocole d'essai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bon protocole d'essai précise…",
+              "options": [
+                "Étapes et conditions",
+                "Critères de réussite",
+                "Uniquement la décoration",
+                "Aucune variable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un essai de durabilité teste…",
+              "options": [
+                "Résistance dans le temps ou aux chocs",
+                "Uniquement l'emballage",
+                "Le prénom de l'utilisateur",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue, usure et chocs simulent la vie de l'objet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Noter les résultats d'essai sert à…",
+              "options": [
+                "Communiquer et itérer avec preuves",
+                "Oublier les mesures",
+                "Supprimer le prototype",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traces écrites ou photos documentent la décision."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un essai aveugle (sans influencer l'usager) limite…",
+              "options": [
+                "Les biais de réponse",
+                "Toute mesure",
+                "Le prototype",
+                "Le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de guider la réponse pour rester objectif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un essai en design vise à…",
+              "options": [
+                "Vérifier performances et usages",
+                "Décorer le prototype",
+                "Supprimer le besoin",
+                "Remplacer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confronte l'objet à des situations réelles ou simulées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un protocole d'essai décrit…",
+              "options": [
+                "Conditions, étapes et critères de réussite",
+                "Uniquement la couleur",
+                "Le prix du café",
+                "Le nom de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité et objectivité passent par un protocole."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une variable mesurée lors d'un essai peut être…",
+              "options": [
+                "Une force, un temps ou une température",
+                "Uniquement un avis sans critère",
+                "Le logo",
+                "Un hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mesures alimentent l'analyse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un essai utilisateur observe surtout…",
+              "options": [
+                "Comportements et difficultés",
+                "Uniquement la matière première",
+                "Le brevet",
+                "La météo lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir l'usager en action révèle des écarts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un essai en situation réelle (terrain)…",
+              "options": [
+                "Reproduit le contexte d'usage",
+                "Remplace tout protocole",
+                "Supprime les contraintes",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terrain complète le laboratoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un essai échoue, on…",
+              "options": [
+                "Analyse la cause et améliore le design",
+                "Supprime le besoin",
+                "Arrête tout document",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec d'essai est une information de conception."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mesures et observations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un essai de design sert à…",
+              "options": [
+                "Mesurer ou observer des performances",
+                "Comparer au cahier des charges",
+                "Supprimer le besoin",
+                "Éviter tout prototype"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un essai aveugle (sans influencer l'usager) limite…",
+              "options": [
+                "Les biais de réponse",
+                "Toute mesure",
+                "Le prototype",
+                "Le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de guider la réponse pour rester objectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un essai en design vise à…",
+              "options": [
+                "Vérifier performances et usages",
+                "Décorer le prototype",
+                "Supprimer le besoin",
+                "Remplacer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confronte l'objet à des situations réelles ou simulées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un protocole d'essai décrit…",
+              "options": [
+                "Conditions, étapes et critères de réussite",
+                "Uniquement la couleur",
+                "Le prix du café",
+                "Le nom de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité et objectivité passent par un protocole."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une variable mesurée lors d'un essai peut être…",
+              "options": [
+                "Une force, un temps ou une température",
+                "Uniquement un avis sans critère",
+                "Le logo",
+                "Un hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mesures alimentent l'analyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un essai utilisateur observe surtout…",
+              "options": [
+                "Comportements et difficultés",
+                "Uniquement la matière première",
+                "Le brevet",
+                "La météo lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir l'usager en action révèle des écarts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un essai en situation réelle (terrain)…",
+              "options": [
+                "Reproduit le contexte d'usage",
+                "Remplace tout protocole",
+                "Supprime les contraintes",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terrain complète le laboratoire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un essai échoue, on…",
+              "options": [
+                "Analyse la cause et améliore le design",
+                "Supprime le besoin",
+                "Arrête tout document",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec d'essai est une information de conception."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer essai et cahier des charges permet de…",
+              "options": [
+                "Valider ou non les exigences",
+                "Choisir une couleur au hasard",
+                "Supprimer le prototype",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque critère peut être coché ou refusé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un essai de durabilité teste…",
+              "options": [
+                "Résistance dans le temps ou aux chocs",
+                "Uniquement l'emballage",
+                "Le prénom de l'utilisateur",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue, usure et chocs simulent la vie de l'objet."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Essai utilisateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bon protocole d'essai précise…",
+              "options": [
+                "Étapes et conditions",
+                "Critères de réussite",
+                "Uniquement la décoration",
+                "Aucune variable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un protocole d'essai décrit…",
+              "options": [
+                "Conditions, étapes et critères de réussite",
+                "Uniquement la couleur",
+                "Le prix du café",
+                "Le nom de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité et objectivité passent par un protocole."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une variable mesurée lors d'un essai peut être…",
+              "options": [
+                "Une force, un temps ou une température",
+                "Uniquement un avis sans critère",
+                "Le logo",
+                "Un hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mesures alimentent l'analyse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un essai utilisateur observe surtout…",
+              "options": [
+                "Comportements et difficultés",
+                "Uniquement la matière première",
+                "Le brevet",
+                "La météo lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir l'usager en action révèle des écarts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un essai en situation réelle (terrain)…",
+              "options": [
+                "Reproduit le contexte d'usage",
+                "Remplace tout protocole",
+                "Supprime les contraintes",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terrain complète le laboratoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si un essai échoue, on…",
+              "options": [
+                "Analyse la cause et améliore le design",
+                "Supprime le besoin",
+                "Arrête tout document",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec d'essai est une information de conception."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comparer essai et cahier des charges permet de…",
+              "options": [
+                "Valider ou non les exigences",
+                "Choisir une couleur au hasard",
+                "Supprimer le prototype",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque critère peut être coché ou refusé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un essai de durabilité teste…",
+              "options": [
+                "Résistance dans le temps ou aux chocs",
+                "Uniquement l'emballage",
+                "Le prénom de l'utilisateur",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue, usure et chocs simulent la vie de l'objet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Noter les résultats d'essai sert à…",
+              "options": [
+                "Communiquer et itérer avec preuves",
+                "Oublier les mesures",
+                "Supprimer le prototype",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traces écrites ou photos documentent la décision."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un essai aveugle (sans influencer l'usager) limite…",
+              "options": [
+                "Les biais de réponse",
+                "Toute mesure",
+                "Le prototype",
+                "Le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de guider la réponse pour rester objectif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Analyser les résultats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un essai de design sert à…",
+              "options": [
+                "Mesurer ou observer des performances",
+                "Comparer au cahier des charges",
+                "Supprimer le besoin",
+                "Éviter tout prototype"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un essai utilisateur observe surtout…",
+              "options": [
+                "Comportements et difficultés",
+                "Uniquement la matière première",
+                "Le brevet",
+                "La météo lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir l'usager en action révèle des écarts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un essai en situation réelle (terrain)…",
+              "options": [
+                "Reproduit le contexte d'usage",
+                "Remplace tout protocole",
+                "Supprime les contraintes",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terrain complète le laboratoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si un essai échoue, on…",
+              "options": [
+                "Analyse la cause et améliore le design",
+                "Supprime le besoin",
+                "Arrête tout document",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec d'essai est une information de conception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer essai et cahier des charges permet de…",
+              "options": [
+                "Valider ou non les exigences",
+                "Choisir une couleur au hasard",
+                "Supprimer le prototype",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque critère peut être coché ou refusé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un essai de durabilité teste…",
+              "options": [
+                "Résistance dans le temps ou aux chocs",
+                "Uniquement l'emballage",
+                "Le prénom de l'utilisateur",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue, usure et chocs simulent la vie de l'objet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Noter les résultats d'essai sert à…",
+              "options": [
+                "Communiquer et itérer avec preuves",
+                "Oublier les mesures",
+                "Supprimer le prototype",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traces écrites ou photos documentent la décision."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un essai aveugle (sans influencer l'usager) limite…",
+              "options": [
+                "Les biais de réponse",
+                "Toute mesure",
+                "Le prototype",
+                "Le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de guider la réponse pour rester objectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un essai en design vise à…",
+              "options": [
+                "Vérifier performances et usages",
+                "Décorer le prototype",
+                "Supprimer le besoin",
+                "Remplacer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confronte l'objet à des situations réelles ou simulées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un protocole d'essai décrit…",
+              "options": [
+                "Conditions, étapes et critères de réussite",
+                "Uniquement la couleur",
+                "Le prix du café",
+                "Le nom de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité et objectivité passent par un protocole."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Itérer le design",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Types de prototypes utiles…",
+              "options": [
+                "Maquette de forme",
+                "Prototype fonctionnel",
+                "Production en série directe",
+                "Aucun test"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Impression 3D en prototype aide surtout pour…",
+              "options": [
+                "Formes complexes et pièces uniques",
+                "Séries de millions sans essai",
+                "Remplacer toute analyse",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accélère une pièce testable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prototype non conforme au cahier des charges…",
+              "options": [
+                "Ne valide pas les exigences manquantes",
+                "Prouve tout automatiquement",
+                "Remplace les essais",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tracer ce qui est simulé ou absent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Itérer un prototype signifie…",
+              "options": [
+                "Améliorer après chaque retour d'essai",
+                "Ne jamais modifier",
+                "Supprimer le besoin",
+                "Ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque version intègre des corrections."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prototype de service (sans objet physique) peut être…",
+              "options": [
+                "Un parcours simulé sur maquette d'écran",
+                "Un marteau seul",
+                "Une contrainte légale",
+                "Un essai sans protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services se prototype aussi (parcours, interface)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Passer du prototype au produit final demande…",
+              "options": [
+                "Industrialisation et contrôle qualité",
+                "Aucun essai",
+                "Suppression du cahier des charges",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série exige matériaux, outils et répétabilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prototype sert surtout à…",
+              "options": [
+                "Tester une solution avant la série",
+                "Remplacer le cahier des charges",
+                "Supprimer les besoins",
+                "Vendre sans essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il matérialise une idée pour l'évaluer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un prototype de forme (mock-up) montre surtout…",
+              "options": [
+                "Volumes et apparence",
+                "La production en usine",
+                "Le contrat commercial",
+                "Le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide dimensions et ergonomie visuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prototype fonctionnel permet de…",
+              "options": [
+                "Vérifier que ça marche comme prévu",
+                "Ignorer les essais",
+                "Supprimer les contraintes",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes, électronique ou logiciel sont testés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prototyper tôt permet de…",
+              "options": [
+                "Détecter des erreurs moins coûteuses",
+                "Lancer la série sans test",
+                "Ignorer l'usage",
+                "Supprimer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger sur maquette coûte moins qu'en production."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Validation avant production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un essai de design sert à…",
+              "options": [
+                "Mesurer ou observer des performances",
+                "Comparer au cahier des charges",
+                "Supprimer le besoin",
+                "Éviter tout prototype"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un essai de durabilité teste…",
+              "options": [
+                "Résistance dans le temps ou aux chocs",
+                "Uniquement l'emballage",
+                "Le prénom de l'utilisateur",
+                "La musique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fatigue, usure et chocs simulent la vie de l'objet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Noter les résultats d'essai sert à…",
+              "options": [
+                "Communiquer et itérer avec preuves",
+                "Oublier les mesures",
+                "Supprimer le prototype",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traces écrites ou photos documentent la décision."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un essai aveugle (sans influencer l'usager) limite…",
+              "options": [
+                "Les biais de réponse",
+                "Toute mesure",
+                "Le prototype",
+                "Le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On évite de guider la réponse pour rester objectif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un essai en design vise à…",
+              "options": [
+                "Vérifier performances et usages",
+                "Décorer le prototype",
+                "Supprimer le besoin",
+                "Remplacer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confronte l'objet à des situations réelles ou simulées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un protocole d'essai décrit…",
+              "options": [
+                "Conditions, étapes et critères de réussite",
+                "Uniquement la couleur",
+                "Le prix du café",
+                "Le nom de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité et objectivité passent par un protocole."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une variable mesurée lors d'un essai peut être…",
+              "options": [
+                "Une force, un temps ou une température",
+                "Uniquement un avis sans critère",
+                "Le logo",
+                "Un hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mesures alimentent l'analyse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un essai utilisateur observe surtout…",
+              "options": [
+                "Comportements et difficultés",
+                "Uniquement la matière première",
+                "Le brevet",
+                "La météo lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir l'usager en action révèle des écarts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un essai en situation réelle (terrain)…",
+              "options": [
+                "Reproduit le contexte d'usage",
+                "Remplace tout protocole",
+                "Supprime les contraintes",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terrain complète le laboratoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un essai échoue, on…",
+              "options": [
+                "Analyse la cause et améliore le design",
+                "Supprime le besoin",
+                "Arrête tout document",
+                "Ignore le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échec d'essai est une information de conception."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Du prototype au produit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Types de prototypes utiles…",
+              "options": [
+                "Maquette de forme",
+                "Prototype fonctionnel",
+                "Production en série directe",
+                "Aucun test"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces réponses décrivent des pratiques attendues en design et innovation en 4e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Passer du prototype au produit final demande…",
+              "options": [
+                "Industrialisation et contrôle qualité",
+                "Aucun essai",
+                "Suppression du cahier des charges",
+                "Ignorer l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série exige matériaux, outils et répétabilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un prototype sert surtout à…",
+              "options": [
+                "Tester une solution avant la série",
+                "Remplacer le cahier des charges",
+                "Supprimer les besoins",
+                "Vendre sans essai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il matérialise une idée pour l'évaluer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un prototype de forme (mock-up) montre surtout…",
+              "options": [
+                "Volumes et apparence",
+                "La production en usine",
+                "Le contrat commercial",
+                "Le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On valide dimensions et ergonomie visuelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prototype fonctionnel permet de…",
+              "options": [
+                "Vérifier que ça marche comme prévu",
+                "Ignorer les essais",
+                "Supprimer les contraintes",
+                "Éviter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes, électronique ou logiciel sont testés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prototyper tôt permet de…",
+              "options": [
+                "Détecter des erreurs moins coûteuses",
+                "Lancer la série sans test",
+                "Ignorer l'usage",
+                "Supprimer le besoin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corriger sur maquette coûte moins qu'en production."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prototype papier ou carton est…",
+              "options": [
+                "Rapide et peu coûteux pour explorer",
+                "Toujours le produit final",
+                "Inutile pour le design",
+                "Interdit en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faible coût encourage l'itération."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Impression 3D en prototype aide surtout pour…",
+              "options": [
+                "Formes complexes et pièces uniques",
+                "Séries de millions sans essai",
+                "Remplacer toute analyse",
+                "Supprimer le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accélère une pièce testable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un prototype non conforme au cahier des charges…",
+              "options": [
+                "Ne valide pas les exigences manquantes",
+                "Prouve tout automatiquement",
+                "Remplace les essais",
+                "Supprime les contraintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tracer ce qui est simulé ou absent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Itérer un prototype signifie…",
+              "options": [
+                "Améliorer après chaque retour d'essai",
+                "Ne jamais modifier",
+                "Supprimer le besoin",
+                "Ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque version intègre des corrections."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

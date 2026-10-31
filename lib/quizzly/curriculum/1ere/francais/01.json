@@ -1,0 +1,2693 @@
+{
+  "id": "1ere-francais-01",
+  "year": "1ere",
+  "subject": "francais",
+  "title": "La poésie du XIXe au XXIe siècle",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Formes et versification",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le vers et la strophe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement le vers en poésie française ?",
+              "options": [
+                "Le vers est une unité rythmique délimitée par des retours à la ligne",
+                "Tout vers compte obligatoirement douze syllabes",
+                "Le vers peut varier de longueur selon la forme poétique",
+                "Le vers se confond toujours avec la phrase grammaticale"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le vers est une unité métrique et visuelle, dont la longueur dépend du mètre choisi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une strophe ?",
+              "options": [
+                "Un groupe de vers formant une unité dans un poème",
+                "Une figure de style basée sur la répétition",
+                "Un type de rime unique au sonnet",
+                "La dernière ligne d'un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La strophe regroupe plusieurs vers selon un découpage régulier ou libre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un distique, combien de vers compose la strophe ?",
+              "options": ["Deux", "Quatre", "Six", "Huit"],
+              "correctAnswers": [0],
+              "explanation": "Le distique est une strophe de deux vers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le quatrain est une strophe de combien de vers ?",
+              "options": ["Quatre", "Trois", "Cinq", "Sept"],
+              "correctAnswers": [0],
+              "explanation": "Le quatrain, très fréquent au XIXe siècle, compte quatre vers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel poète du XIXe a popularisé le poème en strophes courtes lyriques ?",
+              "options": [
+                "Alfred de Musset",
+                "Victor Hugo uniquement pour le théâtre",
+                "Boileau au XVIIe siècle",
+                "La Fontaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musset exploite des strophes courtes au service d'une voix lyrique intime."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En poésie, l'enjambement désigne :",
+              "options": [
+                "Le débordement d'une phrase d'un vers au suivant",
+                "Une rime pauvre entre deux strophes",
+                "L'absence totale de ponctuation",
+                "Un vers de plus de douze syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enjambement brise la coincidence vers/phrase et modifie le rythme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un tercet comprend :",
+              "options": ["Trois vers", "Deux vers", "Quatre vers", "Six vers"],
+              "correctAnswers": [0],
+              "explanation": "Le tercet est une strophe de trois vers, central dans le sonnet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La strophe souvent appelée « strophe lyrique » à l'école correspond le plus souvent à :",
+              "options": [
+                "Un ensemble de vers réunis avant un blanc visuel",
+                "Un seul alexandrin",
+                "Un paragraphe en prose",
+                "Une citation en italique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visuellement, la strophe structure le poème par blocs de vers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le rejet consiste à :",
+              "options": [
+                "Placer un mot court en fin de vers pour le faire passer au vers suivant",
+                "Supprimer la rime finale",
+                "Répéter le même mot en début de vers",
+                "Allonger un vers à quinze syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rejet isole un mot en fin de ligne pour créer une tension rythmique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXe siècle, la strophe peut :",
+              "options": [
+                "Se libérer de toute régularité fixe",
+                "Disparaître au profit du roman uniquement",
+                "Devenir interdite en vers libre",
+                "Ne plus jamais contenir de retours à la ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les poètes modernes conservent ou fragmentent la strophe sans schéma obligatoire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'alexandrin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant l'alexandrin, quelles propositions sont exactes ?",
+              "options": [
+                "Il compte douze syllabes dans la tradition classique",
+                "Il est devenu un vers majeur au XVIIe siècle",
+                "Il ne peut jamais être utilisé au XXe siècle",
+                "La césure structure souvent le vers en deux hémistiches"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'alexandrin classique est un vers de douze syllabes articulé par une césure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de syllabes compte un alexandrin régulier ?",
+              "options": ["12", "10", "8", "14"],
+              "correctAnswers": [0],
+              "explanation": "L'alexandrin est défini par douze syllabes métriques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place le plus souvent la césure dans l'alexandrin classique ?",
+              "options": [
+                "Au milieu du vers, entre deux hémistiches de six syllabes",
+                "En début de vers uniquement",
+                "Après la dixième syllabe systématiquement",
+                "Il n'y a jamais de césure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La césure médiane scande l'alexandrin en 6|6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel auteur du XIXe utilise massivement l'alexandrin épique et lyrique ?",
+              "options": [
+                "Victor Hugo",
+                "Verlaine exclusivement en octosyllabe",
+                "Apollinaire uniquement en vers libre",
+                "Prévert sans vers mesuré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo magnifie l'alexandrin dans les recueils comme Les Contemplations."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un hémistiche est :",
+              "options": [
+                "Une moitié de vers, souvent six syllabes en alexandrin",
+                "Une rime riche",
+                "Un vers de huit syllabes",
+                "Une strophe de six vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alexandrin se compose fréquemment de deux hémistiches."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La césure « épique » ou césure forte marque surtout :",
+              "options": [
+                "Une pause accentuée au milieu du vers",
+                "L'absence de rime",
+                "Un changement de registre comique",
+                "La fin du poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La césure organise la respiration et la dramatisation du vers."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rimbaud, dans « Le Bateau ivre », compose majoritairement en :",
+              "options": [
+                "Alexandrins",
+                "Vers de cinq syllabes",
+                "Haïku",
+                "Prose uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce poème emblématique exploite la puissance de l'alexandrin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un alexandrin « césure déplacée » peut :",
+              "options": [
+                "Déplacer la pause pour créer un effet de surprise",
+                "Supprimer toutes les voyelles",
+                "Interdire les enjambements",
+                "Raccourcir le vers à huit syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jouer sur la césure modifie le rythme sans changer le mètre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'alexandrin rimé en couplets héroïques est typique de :",
+              "options": [
+                "La grande poésie narrative et épique",
+                "Le haïku français",
+                "La chanson de geste en prose",
+                "Le slam sans métrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux poèmes longs du XIXe s'appuient sur l'alexandrin rimé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, l'alexandrin :",
+              "options": [
+                "Reste une ressource possible parmi d'autres",
+                "Est interdit dans les concours",
+                "Ne peut plus rimer",
+                "A remplacé le vers libre partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les poètes contemporains alternent héritage métrique et expérimentation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les rimes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles définitions de rimes sont correctes ?",
+              "options": [
+                "La rime est une répétition de sons en fin de vers",
+                "Rime riche partage des sons identiques à partir de la voyelle tonique",
+                "Toute rime exige la même orthographe",
+                "Rime pauvre ne partage qu'une consonne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La rime se définit par des correspondances phoniques, évaluées de riche à pauvre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Des vers qui riment AABB forment :",
+              "options": [
+                "Rimes plates ou consécutives",
+                "Rimes croisées",
+                "Rimes embrassées",
+                "Rimes libres sans schéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AABB est le schéma des rimes plates."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le schéma ABAB est dit :",
+              "options": [
+                "Rimes croisées",
+                "Rimes plates",
+                "Rimes léonines",
+                "Rimes orales seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rimes croisées entrelacent les terminaisons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ABBA correspond aux rimes :",
+              "options": ["Embrassées", "Plates", "Croisées", "Assonances"],
+              "correctAnswers": [0],
+              "explanation": "Les rimes embrassées encadrent la strophe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une assonance, par rapport à la rime, :",
+              "options": [
+                "Répète surtout les voyelles sans consonne finale identique",
+                "Exige deux vers de longueurs différentes",
+                "Est une figure uniquement prose",
+                "Remplace le mètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assonance harmonise les voyelles sans rime consonantique complète."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un sonnet classique, le schéma de rimes du quatrain est souvent :",
+              "options": [
+                "ABBA ou ABAB selon les époques",
+                "AAAA toujours",
+                "Sans rime",
+                "Uniquement rime pauvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sonnet combine quatrains et tercets avec des schémas codifiés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verlaine, dans « Art poétique », prône parfois :",
+              "options": [
+                "Des rimes plus souples et une musicalité subtile",
+                "L'abolition de toute voyelle",
+                "Des rimes uniquement visuelles",
+                "Le retour au latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verlaine privilégie la nuance sonore plutôt que la rime éclatante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une rime léonine répète le son :",
+              "options": [
+                "Avant et après la voyelle tonique dans le vers",
+                "Uniquement en début de vers",
+                "Dans le titre seulement",
+                "Entre deux strophes en prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rime léonine double la résonance à l'intérieur du vers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La rime suffisante se situe entre :",
+              "options": [
+                "Rime riche et rime pauvre",
+                "Rime et absence de son",
+                "Prose et vers libre",
+                "Strophe et paragraphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle accorde des sons proches sans identité totale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En vers libre du XXe siècle, la rime :",
+              "options": [
+                "Peut disparaître ou devenir sporadique",
+                "Devient obligatoire",
+                "Ne s'entend plus à l'oral",
+                "Remplace la césure uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La modernité assouplit ou abandonne les schémas rimés fixes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le sonnet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le sonnet se caractérise par :",
+              "options": [
+                "Quatorze vers répartis en deux quatrains et deux tercets",
+                "Une forme fixe héritée de la poésie italienne",
+                "Toujours vingt vers en strophes de cinq",
+                "L'interdiction d'utiliser l'alexandrin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sonnet est une forme fixe de 14 vers, importée et adaptée en France."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de vers compte un sonnet ?",
+              "options": ["14", "12", "16", "10"],
+              "correctAnswers": [0],
+              "explanation": "La structure canonique totalise quatorze vers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les deux premières strophes d'un sonnet sont :",
+              "options": [
+                "Deux quatrains",
+                "Deux tercets",
+                "Un distique et un quatrain",
+                "Sept couplets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sonnet commence par 4+4 vers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La « volta » ou tornade désigne souvent :",
+              "options": [
+                "Le tournant entre quatrains et tercets",
+                "La rime finale du poème",
+                "Le titre en italique",
+                "La première strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage aux tercets peut marquer un changement d'argument ou de ton."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ronsard et les Pléiades ont :",
+              "options": [
+                "Renouvelé le sonnet à la Renaissance",
+                "Supprimé le sonnet en France",
+                "Écrit uniquement en prose",
+                "Interdit les tercets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Pléiade illustre l'âge d'or du sonnet en français."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Baudelaire, dans Les Fleurs du mal, utilise le sonnet pour :",
+              "options": [
+                "Condenser images et paradoxes en forme brève",
+                "Raconter des romans feuilleton",
+                "Écrire des pièces de théâtre",
+                "Publier des essais philosophiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sonnet baudelairien concentre la modernité lyrique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les tercets d'un sonnet classique regroupent :",
+              "options": ["6 vers (3+3)", "8 vers", "4 vers", "2 vers"],
+              "correctAnswers": [0],
+              "explanation": "La seconde partie du sonnet forme 3+3 vers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un sonnet en alexandrins a pour mètre principal :",
+              "options": [
+                "Douze syllabes par vers",
+                "Huit syllabes",
+                "Cinq syllabes",
+                "Vers libres sans compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alexandrin est fréquent dans les sonnets français."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Rimbaud a écrit des sonnets, par exemple :",
+              "options": [
+                "« Voyelles » ou « Ophélie » selon les recueils",
+                "Uniquement de la prose",
+                "Des pièces en alexandrins non rimés de cent vers",
+                "Des haïkus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rimbaud maîtrise la forme fixe avant de la transgresser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, le sonnet :",
+              "options": [
+                "Peut être détourné ou hybridé par les poètes",
+                "Est une forme morte interdite",
+                "Ne peut plus rimer",
+                "Doit toujours parler d'amour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contemporains réinvestissent le sonnet avec liberté."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Poème en prose et hybridations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le poème en prose se distingue par :",
+              "options": [
+                "L'absence de versification métrique régulière",
+                "Une visée poétique par le langage, les images et le rythme",
+                "La présence obligatoire de strophes de quatre alexandrins",
+                "Son appartenance au genre romanesque réaliste uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le poème en prose reste poésie sans mètre fixe, par la densité du langage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qui a théorisé et pratiqué le poème en prose au XIXe ?",
+              "options": [
+                "Charles Baudelaire (Le Spleen de Paris)",
+                "Molière",
+                "Corneille",
+                "Racine seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baudelaire explore la prose poétique dans ses petits poèmes en prose."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Un lobster, dans les métro… » illustre surtout :",
+              "options": [
+                "La surprise surréaliste en prose ou vers libre",
+                "Le sonnet classique",
+                "La tragédie racinienne",
+                "L'épopée homérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des images incongrues caractérisent la modernité poétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le poème en prose conserve souvent :",
+              "options": [
+                "Des effets de rythme, de répétition et de métaphore",
+                "Un compte syllabique strict",
+                "Des rimes obligatoires chaque ligne",
+                "Un argument théâtral en cinq actes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La musicalité peut exister sans vers mesurés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Apollinaire mêle dans Calligrammes :",
+              "options": [
+                "Vers libres, calligraphie visuelle et prose",
+                "Uniquement des alexandrins rimés",
+                "Des pièces en latin",
+                "Des dialogues de comédie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apollinaire hybride formes et typographie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La frontière poème en prose / prose d'art chez Mallarmé :",
+              "options": [
+                "Se joue dans l'attenuation du récit au profit du langage",
+                "N'existe pas",
+                "Repose sur des rimes plates",
+                "Exige un alexandrin par phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mallarmé pousse la densité du signifiant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un « poème en vers » diffère du poème en prose car :",
+              "options": [
+                "Il organise le texte en vers avec ou sans mètre fixe",
+                "Il est toujours en prose",
+                "Il n'utilise jamais de figures",
+                "Il est toujours comique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La linéarité versifiée structure la lecture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au XXe siècle, la prose poétique :",
+              "options": [
+                "S'étend aux récits fragmentés et aux textes brèves",
+                "Disparaît totalement",
+                "Devient uniquement journalistique",
+                "Remplace le théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernité et contemporain cultivent la brièveté dense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prévert mélange souvent :",
+              "options": [
+                "Registres familiers, strophes courtes et visées poétiques",
+                "Uniquement des sonnets alexandrins",
+                "De la tragédie classique",
+                "Des commentaires grammaticaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévert popularise une poésie accessible aux formes variées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser un poème en prose implique de repérer :",
+              "options": [
+                "Images, syntaxe, rythme et visées énonciatives",
+                "Seulement les rimes finales",
+                "Uniquement le nombre de syllabes",
+                "Les didascalies théâtrales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les critères poétiques dépassent la métrique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Vers libre et vers réguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le vers libre au XXe siècle :",
+              "options": [
+                "Abandonne le mètre fixe tout en restant poésie",
+                "Peut conserver des effets rythmiques oralisés",
+                "Oblige à compter douze syllabes",
+                "Interdit toute strophe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le vers libre libère la métrique sans renoncer au rythme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La « libération du vers » est associée notamment à :",
+              "options": [
+                "Symbolistes et modernes (Mallarmé, Apollinaire…)",
+                "Seulement au Moyen Âge",
+                "Boileau au XVIIe uniquement",
+                "Les fabliaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fin du XIXe prépare l'émancipation métrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un vers régulier de dix syllabes est un :",
+              "options": [
+                "Décasyllabe",
+                "Octosyllabe",
+                "Alexandrin",
+                "Pentasyllabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décasyllabe compte dix syllabes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'octosyllabe compte :",
+              "options": [
+                "Huit syllabes",
+                "Six syllabes",
+                "Douze syllabes",
+                "Quatorze syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'octosyllabe est fréquent dans la chanson et la narrative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verlaine alterne souvent :",
+              "options": [
+                "Vers impairs et pairs de longueurs différentes",
+                "Uniquement des alexandrins",
+                "De la prose sans poésie",
+                "Des vers latins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verlaine joue sur des mètres variés pour la musicalité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le vers libre, les retours à la ligne :",
+              "options": [
+                "Peuvent marquer une respiration ou une unité de sens",
+                "Sont aléatoires sans effet",
+                "Remplacent les lettres",
+                "Indiquent toujours une rime AABB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La coupe visuelle devient ressource stylistique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La poésie du slam au XXIe siècle :",
+              "options": [
+                "S'appuie sur l'oralité plutôt que sur un mètre fixe",
+                "Reprend exclusivement le sonnet",
+                "Interdit le rythme",
+                "Est identique au alexandrin classique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le slam privilégie la performance et le rythme parlé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un poème « en vers réguliers » signifie :",
+              "options": [
+                "Des vers de longueur métrique constante (ou strophe codifiée)",
+                "De la prose",
+                "Absence de ponctuation",
+                "Uniquement des rimes pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La régularité désigne la stabilité du mètre ou de la forme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hugo, dans sa production, :",
+              "options": [
+                "Alterne alexandrins et expérimentations rythmiques",
+                "N'écrit que des haïkus",
+                "Refuse toute rime",
+                "Écrit uniquement en prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo domine l'alexandrin tout en innovant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour comparer vers libre et alexandrin, on étudie :",
+              "options": [
+                "Organisation du rythme, effets de coupe et registre",
+                "Uniquement l'orthographe",
+                "Le nombre de pages",
+                "La date de naissance de l'auteur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La versification s'analyse par ses effets sur le lecteur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Césure, enjambement, rejet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La césure et l'enjambement :",
+              "options": [
+                "La césure marque une pause rhythmique dans le vers",
+                "L'enjambement fait déborder la phrase sur le vers suivant",
+                "La césure supprime toujours la rime",
+                "L'enjambement interdit toute ponctuation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Césure et enjambement articulent vers et syntaxe différemment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La contre-rejet place :",
+              "options": [
+                "Un mot en début de vers après une coupure",
+                "La rime au milieu",
+                "Le titre en fin de poème",
+                "Deux césures par vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rejet et contre-rejet encadrent un mot isolé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un vers où la phrase s'achève en fin de ligne sans débordement est :",
+              "options": [
+                "Un endroit",
+                "Un enjambement",
+                "Un distique obligatoire",
+                "Un sonnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'endroit coïncide pause syntaxique et fin de vers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Multiplier les enjambements peut créer :",
+              "options": [
+                "Un effet d'accélération ou d'urgence",
+                "Une ode didactique",
+                "Un registre uniquement comique",
+                "La suppression des images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débordement syntaxique dynamise la lecture."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La césure baignienne (nom historique) renvoie à :",
+              "options": [
+                "Des débats sur la place de la pause au théâtre et en vers",
+                "Un type de rime",
+                "Un poème en prose",
+                "Un registre épique uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La querelle de la césure structure la réflexion classique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Isoler « jamais » en fin de vers puis le reprendre est un effet de :",
+              "options": [
+                "Rejet / contre-rejet",
+                "Haïku",
+                "Rime léonine seule",
+                "Prose argumentée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mise en relief met en valeur le mot coupé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En alexandrin, une césure après la 4e syllabe est dite :",
+              "options": [
+                "Césure 4 (ou déplacée)",
+                "Césure épique obligatoire",
+                "Enjambement",
+                "Strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacer la césure perturbe le rythme 6|6 attendu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'enjambement favorise souvent :",
+              "options": [
+                "Le suspense entre deux vers",
+                "La fin du recueil",
+                "L'absence de sujet",
+                "La rime plate systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur attend la suite de la phrase au vers suivant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Rimbaud et Mallarmé utilisent ces coupes pour :",
+              "options": [
+                "Complexifier la musicalité et le sens",
+                "Simplifier en prose",
+                "Écrire des manuels",
+                "Supprimer les métaphores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modernes exploitent la linéarité du vers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer césure et enjambement sert à :",
+              "options": [
+                "Expliquer le rythme et la dramatisation du poème",
+                "Compter les pages",
+                "Identifier le genre romanesque",
+                "Traduire en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces marqueurs relient forme et interprétation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mètres et syllabes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En versification française, on compte :",
+              "options": [
+                "Des syllabes métriques selon des règles de prononciation poétique",
+                "Une voyelle ou diphtongue compte pour une syllabe dans le compte usuel",
+                "Le nombre de mots par vers définit le mètre",
+                "Les consonnes seules forment une syllabe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le mètre repose sur des syllabes poétiques, pas sur le décompte des mots."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un vers de douze syllabes est un :",
+              "options": [
+                "Alexandrin",
+                "Octosyllabe",
+                "Décasyllabe",
+                "Hexasyllabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Douze syllabes définissent l'alexandrin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La syllabe poétique « mute » devant une consonne suivante :",
+              "options": [
+                "Ne compte généralement pas dans le total du vers",
+                "Double toujours le mètre",
+                "Remplace la césure",
+                "Forme une strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les e muet en position faible sont elidés dans le compte classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un pentasyllabe compte :",
+              "options": [
+                "Cinq syllabes",
+                "Dix syllabes",
+                "Quinze syllabes",
+                "Une syllabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe « penta- » indique cinq syllabes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Compter les syllabes d'un vers sert à :",
+              "options": [
+                "Identifier le mètre et la forme",
+                "Déterminer l'auteur biographique",
+                "Traduire le poème",
+                "Compter les strophes seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La scansion confirme le type de vers employé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le décasyllabe medieval puis classique compte :",
+              "options": [
+                "Dix syllabes",
+                "Huit syllabes",
+                "Douze syllabes",
+                "Quatorze syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décasyllabe est un mètre de dix syllabes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Vieux » (une syllabe en poésie), on parle de :",
+              "options": [
+                "Synérèse ou compte d'une syllabe pour deux voyelles",
+                "Hiatus obligatoire",
+                "Rime léonine",
+                "Vers libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines voyelles se prononcent en une seule syllabe métrique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un poème entièrement en octosyllabes a pour mètre dominant :",
+              "options": [
+                "Huit syllabes par vers",
+                "Douze syllabes",
+                "Vers sans coupe",
+                "Prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'octosyllabe structure la linéarité du texte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La diérèse sépare en deux syllabes poétiques :",
+              "options": [
+                "Deux voyelles qui pourraient se lire en une",
+                "Deux strophes",
+                "Deux rimes pauvres",
+                "Deux auteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diérèse et synérèse ajustent le compte syllabique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXe siècle, sans mètre fixe, le compte syllabique :",
+              "options": [
+                "Peut devenir secondaire ou irrégulier",
+                "Reste obligatoire chaque vers",
+                "Interdit toute strophe",
+                "Remplace les figures de style"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vers libre n'impose plus un nombre constant de syllabes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Formes fixes et poèmes longs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les formes fixes incluent typiquement :",
+              "options": [
+                "Le sonnet",
+                "La ballade ou l'ode selon les époques",
+                "Le roman-fleuve sans vers",
+                "Le commentaire de texte en prose"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formes fixes désigne des schémas de strophes et de rimes codifiés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une ode lyrique au XIXe est souvent :",
+              "options": [
+                "Un poème strophes longues à visée célébration ou méditation",
+                "Un haïku",
+                "Une pièce en un acte",
+                "Un article de presse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ode élève le ton et s'étend en strophes régulières."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hugo, dans « Les Contemplations », mêle :",
+              "options": [
+                "Poèmes courts et cycles longs en alexandrins",
+                "Uniquement des sonnets",
+                "De la prose sans poésie",
+                "Des pièces en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recueil alterne intensités lyriques et développements épiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La ballade médiévale puis revisitée comporte souvent :",
+              "options": [
+                "Des strophes identiques et un envoi",
+                "Quatorze vers uniques",
+                "De la prose argumentée",
+                "Un acte de théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ballade repose sur des strophes et un refrain ou envoi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un poème en strophes régulières facilite :",
+              "options": [
+                "La mémorisation et la musicalité",
+                "L'absence de rythme",
+                "La suppression du lexique",
+                "Le registre administratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition formelle soutient la chanson et la lecture orale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lamartine, dans Le Lac, utilise surtout :",
+              "options": [
+                "Des strophes régulières à registre méditatif",
+                "Des calligrammes",
+                "De la prose",
+                "Un sonnet unique de deux vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poème mélodieux s'organise en strophes isométriques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une forme « fixe » signifie :",
+              "options": [
+                "Un nombre de vers et un schéma de rimes définis",
+                "Un sujet imposé par l'État",
+                "L'interdiction de métaphores",
+                "Un texte sans auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fixité concerne la architecture métrique et rimique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le poème long romantique peut :",
+              "options": [
+                "Déployer une épopée lyrique personalisée",
+                "Être limité à quatorze vers",
+                "Interdire l'alexandrin",
+                "Ne jamais rimer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le XIXe amplifie le lyrisme en séquences étendues."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le refrain dans une chanson poétique :",
+              "options": [
+                "Marque une reprise formelle et mémorable",
+                "Supprime la strophe",
+                "Est une figure de style unique",
+                "Remplace le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refrain structure l'oralité et la circularité du sens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier formes fixes et poèmes longs permet de :",
+              "options": [
+                "Relier tradition médiévale et renouveau romantique",
+                "Ignorer le XXe siècle",
+                "Ne lire que la prose",
+                "Oublier la versification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poésie française dialogue avec ses propres modèles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse versification XIXe-XXIe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "De la fin du XIXe au XXIe siècle, la versification :",
+              "options": [
+                "Ouvre le vers libre tout en conservant l'héritage classique",
+                "Permet des hybridations (prose, visuel, oral)",
+                "Supprime toute lecture du rythme",
+                "Interdit les alexandrins"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modernité et contemporain pluralisent les formes sans effacer l'héritage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour commenter un poème au bac, on commence par :",
+              "options": [
+                "Repérer vers, strophes, rimes et effets de coupe",
+                "Résumer la biographie de l'auteur seule",
+                "Traduire mot à mot",
+                "Compter les pages du recueil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grille formelle éclaire l'interprétation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Baudelaire, Verlaine, Rimbaud préparent :",
+              "options": [
+                "La modernité poétique du XXe siècle",
+                "Le retour exclusif au sonnet médiéval",
+                "La fin de toute métaphore",
+                "Le roman réaliste sans poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur rupture esthétique influence Apollinaire et les avant-gardes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un même recueil peut contenir :",
+              "options": [
+                "Sonnet, prose poétique et vers libre",
+                "Un seul mètre obligatoire",
+                "Uniquement des pièces de théâtre",
+                "Des commentaires grammaticaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les auteurs modernes composent des livres hétérogènes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La performance orale (slam, lecture) :",
+              "options": [
+                "Met en avant le rythme hors mètre fixe",
+                "Interdit tout public",
+                "Remplace l'analyse du texte",
+                "Exige l'alexandrin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le XXIe valorise la voix et la scène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relier forme et sens, c'est montrer comment :",
+              "options": [
+                "La versification produit des effets sur le lecteur",
+                "La biographie explique tout",
+                "La rime est décorative sans effet",
+                "Le titre suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme et fond s'articulent dans l'analyse littéraire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les Contemplations de Hugo illustrent :",
+              "options": [
+                "Alexandrins au service du deuil et de la mémoire",
+                "Uniquement des haïkus",
+                "De la prose journalistique",
+                "Des sonnets sans émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo lie forme classique et pathos romantique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calligrammes d'Apollinaire montre :",
+              "options": [
+                "Que la mise en page peut devenir signifiante",
+                "L'interdiction du vers libre",
+                "Un retour au latin",
+                "L'absence de poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La typographie devient partenaire du sens."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 1re, comparer deux poèmes de périodes différentes invite à :",
+              "options": [
+                "Contraster mètres, registres et figures",
+                "Ignorer la versification",
+                "Ne retenir que la date",
+                "Lire uniquement les rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La comparaison croise formes et visées poétiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La poésie du XIXe au XXIe se caractérise surtout par :",
+              "options": [
+                "Une cohabitation de normes classiques et d'expérimentations",
+                "L'uniformité du sonnet",
+                "La disparition de l'image",
+                "L'absence de lyrisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluralité des formes : héritage et rupture."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Registres et figures",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Registres lyrique, épique, satirique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le registre lyrique en poésie :",
+              "options": [
+                "Exprime sentiments et subjectivité",
+                "Met souvent en scène la voix du poète ou du « je »",
+                "Raconte uniquement des batailles historiques",
+                "Se limite au registre comique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le lyrique privilégie l'expression personnelle et affective."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le registre épique ou héroïque se reconnaît à :",
+              "options": [
+                "La grandeur des sujets, des gestes ou des destinées",
+                "L'ironie légère constante",
+                "L'absence de métaphore",
+                "Un ton uniquement familier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épique élève l'action et magnifie le récit poétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un poème satirique vise surtout à :",
+              "options": [
+                "Critiquer ou moquer avec vigueur",
+                "Célébrer sans distance",
+                "Raconter une épopée antique",
+                "Supprimer tout jugement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La satire expose les ridicules ou les vices."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lamartine, Le Lac, relève plutôt du registre :",
+              "options": [
+                "Lyrique",
+                "Épique guerrier",
+                "Satire mordante",
+                "Didactique scientifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méditation sur le temps et l'amour : ton lyrique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hugo mêle souvent lyrisme et registre :",
+              "options": [
+                "Épique ou visionnaire",
+                "Purement administratif",
+                "Exclusivement comique",
+                "Sans images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hugo amplifie le lyrisme jusqu'à l'épopée personnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Baudelaire peut glisser du lyrique au :",
+              "options": [
+                "Satirique ou ironique",
+                "Registre exclusivement épique antique",
+                "Manuel scolaire",
+                "Discours politique neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Fleurs du mal alternent élévation et mordant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le registre pathétique cherche à :",
+              "options": [
+                "Émouvoir fortement le lecteur",
+                "Décrire sans affect",
+                "Rire systématiquement",
+                "Lister des dates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pathétique suscite la pitié ou l'émotion intense."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Prévert utilise souvent un registre :",
+              "options": [
+                "Familier et engagé, parfois ironique",
+                "Exclusivement épique",
+                "Latin classique",
+                "Juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévert democratise la langue poétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repérer le registre aide à :",
+              "options": [
+                "Interpréter le ton et l'intention du poème",
+                "Compter les syllabes seulement",
+                "Ignorer les figures",
+                "Dater le manuscrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre et visée énonciative orientent la lecture."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un même poème peut combiner :",
+              "options": [
+                "Plusieurs registres (lyrique et satirique par exemple)",
+                "Un seul mot",
+                "Uniquement de la prose",
+                "Aucune figure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mélanges registriels enrichissent la complexité du texte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Champs lexicaux et tonalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le champ lexical :",
+              "options": [
+                "Regroupe des mots de sens voisin autour d'un thème",
+                "Colore la tonalité émotionnelle du poème",
+                "Désigne uniquement les rimes",
+                "Remplace la strophe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les champs lexicaux construisent thème et atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un champ lexical de la nuit peut suggérer :",
+              "options": [
+                "Mélancolie, mystère ou rêve",
+                "Uniquement la joie bruyante",
+                "L'absence de métaphore",
+                "Un registre didactique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots connotent une ambiance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La tonalité d'un poème désigne :",
+              "options": [
+                "L'atmosphère affective globale",
+                "Le nombre de vers",
+                "La date de publication",
+                "La taille de la police"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ton et tonalité guident la réception émotionnelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rimbaud, « Voyelles », colore la langue par :",
+              "options": [
+                "Des associations sensorielles et lexicales",
+                "Un récit historique",
+                "Des didascalies",
+                "Un dialogue théâtral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poème explore synesthésie et symbolique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un lexique de la mer dans un poème peut appuyer :",
+              "options": [
+                "Un registre onirique ou voyageur",
+                "Uniquement la satire urbaine",
+                "L'absence d'images",
+                "Un texte administratif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mer connote l'aventure, l'inconscient ou l'infini."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contraster deux champs lexicaux (vie/mort) produit :",
+              "options": [
+                "Un effet de tension ou de paradoxe",
+                "Une absence de sens",
+                "Une strophe obligatoire",
+                "Une rime plate imposée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition sémantique structure le sens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verlaine, « Il pleure dans mon cœur », installe une tonalité :",
+              "options": [
+                "Mélancolique et pluvieuse",
+                "Exclusivement comique",
+                "Épique triomphale",
+                "Didactique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie et cœur entrelacent tristesse intime."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un registre élégiaque se rapproche de :",
+              "options": [
+                "La plainte devant la perte ou la mort",
+                "La satire joyeuse",
+                "L'énumération scientifique",
+                "Le comique de situation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élégie célèbre ou pleure un disparu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repérer les connotations d'un mot, c'est :",
+              "options": [
+                "Lire au-delà du sens littéral",
+                "Ignorer le contexte",
+                "Compter les syllabes",
+                "Traduire en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La connotation nourrit l'interprétation poétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, les champs lexicaux urbains servent souvent à :",
+              "options": [
+                "Parler de société et d'identité",
+                "Supprimer la poésie",
+                "Interdire la métaphore",
+                "Écrire en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ville devient espace poétique contemporain."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Anaphore et gradation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Anaphore et gradation :",
+              "options": [
+                "L'anaphore répète un mot ou un groupe en tête de vers ou de phrase",
+                "La gradation organise une progression d'intensité",
+                "L'anaphore emploie obligatoirement « comme »",
+                "La gradation interdit toute répétition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Anaphore = répétition en tête ; gradation = progression croissante ou décroissante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Rien… Rien… Rien… » en début de vers illustre :",
+              "options": [
+                "Une anaphore",
+                "Une litote seule",
+                "Un rejet",
+                "Un sonnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reprise en tête est une anaphore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une gradation ascendante :",
+              "options": [
+                "Augmente l'intensité d'un terme au suivant",
+                "Diminue toujours l'intensité",
+                "Supprime la rime",
+                "Est une comparaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gradation monte ou descend en force."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hugo utilise parfois l'anaphore pour :",
+              "options": [
+                "Marteler une idée ou une émotion",
+                "Compter les strophes",
+                "Écrire en prose",
+                "Supprimer le lyrisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition insiste et amplifie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Anaphore et parallelismes de structure :",
+              "options": [
+                "Renforcent la musicalité et la clarté thématique",
+                "Interdisent toute émotion",
+                "Remplacent le mètre",
+                "Sont des erreurs de grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La symétrie formelle soutient le sens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une gradation descendante peut exprimer :",
+              "options": [
+                "Un affaiblissement ou un déclin",
+                "Uniquement la joie",
+                "L'épopée",
+                "La satire sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La descente graduelle suggère la perte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'analyse, repérer une anaphore permet de :",
+              "options": [
+                "Montrer l'insistance sur un motif",
+                "Déterminer l'âge de l'auteur",
+                "Compter les pages",
+                "Ignorer le registre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition oriente la lecture thématique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Plus… plus… plus… » structure souvent :",
+              "options": [
+                "Une gradation",
+                "Une litote",
+                "Un sonnet strict",
+                "Une didascalie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulation comparative intensifie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prévert aime les reprises simples qui rappellent :",
+              "options": [
+                "Chanson et anaphore légère",
+                "L'épopée homérique seule",
+                "Le discours juridique",
+                "La tragédie racinienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reprise facilite mémorisation et effet oral."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre anaphore et simple cooccurrence, c'est :",
+              "options": [
+                "Oublier la reprise structurée en tête d'unité",
+                "Mieux analyser le poème",
+                "Compter les rimes",
+                "Traduire le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphore exige une répétition en position initiale délibérée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Métaphore et comparaison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Métaphore et comparaison :",
+              "options": [
+                "Établissent un rapprochement entre deux réalités",
+                "La comparaison emploie souvent un outil (« comme », « tel »)",
+                "La métaphore fusionne les termes sans outil explicite",
+                "La métaphore exige toujours « comme »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comparaison explicite ; métaphore identifiant sans connecteur obligatoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La vie est un voyage » est une :",
+              "options": [
+                "Métaphore",
+                "Comparaison avec « comme »",
+                "Litote",
+                "Anaphore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'identification directe fait métaphore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Fragile comme une fleur » est une :",
+              "options": [
+                "Comparaison",
+                "Métaphore sans outil",
+                "Hyperbole seule",
+                "Apostrophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Comme » signale la comparaison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Baudelaire, « Correspondances », développe des métaphores :",
+              "options": [
+                "Synesthésiques entre sens et monde",
+                "Exclusivement historiques",
+                "Sans images",
+                "Juridiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parfums, couleurs et sons se répondent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une métaphore filée prolonge :",
+              "options": [
+                "Un même réseau imagé sur plusieurs vers",
+                "Une seule syllabe",
+                "Un sonnet obligatoire",
+                "La prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil métaphorique structure le poème."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La métaphore contribue au registre lyrique car elle :",
+              "options": [
+                "Enrichit l'expression des émotions",
+                "Supprime la subjectivité",
+                "Interdit la musicalité",
+                "Remplace la strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image condense et intensifie le ressenti."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une comparaison épique peut :",
+              "options": [
+                "Magnifier un héros ou un événement",
+                "Être réservée au registre comique",
+                "Interdire l'alexandrin",
+                "Supprimer les verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapprochement héroïque élève le sujet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Interpréter une métaphore, c'est :",
+              "options": [
+                "Expliciter les points communs entre les termes",
+                "Ignorer le contexte",
+                "Ne retenir que le dictionnaire",
+                "Compter les rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse déploie le sens du rapprochement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Rimbaud, « Je est un autre », joue sur :",
+              "options": [
+                "Une métaphore identitaire troublante",
+                "Une comparaison avec « comme »",
+                "Une énumération",
+                "Un rejet syllabique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule fusionne je et altérité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, les métaphores urbaines servent à :",
+              "options": [
+                "Nommer autrement la société et le quotidien",
+                "Supprimer la poésie",
+                "Interdire la comparaison",
+                "Écrire sans images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ville fournit un imaginaire contemporain."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Personnification et apostrophe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Personnification et apostrophe :",
+              "options": [
+                "La personnification donne des traits humains à un non-humain",
+                "L'apostrophe s'adresse directement à un être absent ou abstrait",
+                "L'apostrophe est une rime plate",
+                "La personnification supprime toute métaphore"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Personnifier anime ; apostropher interpelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ô temps ! suspends ton vol » (Lamartine) est une :",
+              "options": ["Apostrophe", "Litote", "Rime croisée", "Césure"],
+              "correctAnswers": [0],
+              "explanation": "Le « Ô » interpelle le temps personnifié."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« La mer gronde » illustre :",
+              "options": [
+                "Une personnification",
+                "Une comparaison explicite",
+                "Un sonnet",
+                "Une strophe de huit vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gronder est un trait humain appliqué à la mer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'apostrophe sert souvent à :",
+              "options": [
+                "Intensifier l'émotion lyrique",
+                "Décrire objectivement sans affect",
+                "Compter les syllabes",
+                "Rimer en AABB seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interpellation = effet pathétique ou lyrique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hugo personnifie parfois la nature pour :",
+              "options": [
+                "Dialoguer avec le cosmos romantique",
+                "Écrire un manuel",
+                "Supprimer les images",
+                "Satiriser sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le romantisme anime paysages et abstractions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Personnifier la Mort ou le Sommeil, c'est :",
+              "options": [
+                "Donner corps à une idée abstraite",
+                "Faire une comparaison avec « comme »",
+                "Créer un octosyllabe",
+                "Interdire la rime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abstraction devient personnage ou agent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Apostrophe au lecteur (« Toi qui lis ») :",
+              "options": [
+                "Crée complicité ou mise en cause",
+                "Est une erreur de grammaire",
+                "Remplace la strophe",
+                "Est propre au théâtre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lecteur est convoqué dans l'énonciation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Baudelaire s'adresse parfois au lecteur ou à la ville :",
+              "options": [
+                "Apostrophe et personnification mêlées",
+                "Uniquement de la prose",
+                "Sans figure",
+                "En latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paris et le passant deviennent interlocuteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distinguer apostrophe et dialogue, c'est :",
+              "options": [
+                "Voir si l'interlocuteur répond ou reste muet",
+                "Compter les vers",
+                "Ignorer le registre",
+                "Traduire mot à mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apostrophe est monologique vers l'autre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En commentaire, citer une apostrophe permet de :",
+              "options": [
+                "Montrer la visée lyrique ou exhortative",
+                "Prouver la date du poème",
+                "Compter les strophes",
+                "Éviter l'interprétation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interpellation révèle le ton et le destinataire."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Hyperbole et litote",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hyperbole et litote :",
+              "options": [
+                "L'hyperbole exagère",
+                "La litote dit moins pour suggérer plus",
+                "La litote exagère toujours",
+                "L'hyperbole est une rime"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Exagération vs atténuation ironique ou pudique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Un fleuve de larmes » est une :",
+              "options": ["Hyperbole", "Litote", "Anaphore seule", "Césure"],
+              "correctAnswers": [0],
+              "explanation": "L'excès quantitatif caractérise l'hyperbole."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ce n'est pas mauvais » pour dire « c'est bon » relève de :",
+              "options": [
+                "La litote",
+                "L'hyperbole",
+                "L'apostrophe",
+                "Le sonnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation atténue pour insister positivement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'hyperbole romantique sert à :",
+              "options": [
+                "Exprimer des passions démesurées",
+                "Refroidir le ton",
+                "Supprimer les images",
+                "Écrire en prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le romantisme amplifie affects et paysages."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La litote peut créer un effet :",
+              "options": [
+                "Ironique ou retenu",
+                "Exclusivement épique",
+                "Sans énonciation",
+                "Visuel seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dire moins suggère plus, parfois avec ironie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hugo, « Je mis un bonnet rouge au vieux dictionnaire » joue sur :",
+              "options": [
+                "Hyperbole visionnaire et registre révolutionnaire",
+                "Litote pure",
+                "Absence de figure",
+                "Sonnet médiéval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image exagère la rupture des codes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En satire, l'hyperbole :",
+              "options": [
+                "Caricature le ridicule",
+                "Atténue toujours",
+                "Supprime le comique",
+                "Interdit la rime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gonfler le trait rend la critique visible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Un peu fatigué » pour « épuisé » peut être :",
+              "options": [
+                "Une litote",
+                "Une hyperbole",
+                "Une strophe",
+                "Un alexandrin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Understatement = litote."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repérer hyperbole/litote oriente :",
+              "options": [
+                "Le ton (pathos, ironie, retenue)",
+                "Le nombre de syllabes",
+                "La biographie seule",
+                "La traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré et visée affective passent par ces figures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, l'hyperbole médiatique dans le slam :",
+              "options": [
+                "Amplifie l'oralité performative",
+                "Interdit la poésie",
+                "Remplace la métaphore",
+                "Supprime le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La scène favorise gestes et intensité verbale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Allitération et assonance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Allitération et assonance :",
+              "options": [
+                "L'allitération répète des consonnes",
+                "L'assonance répète des voyelles",
+                "L'assonance répète des consonnes identiques en fin de mot seulement",
+                "L'allitération remplace la rime"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Harmonies consonantiques vs vocaliques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Pour qui sont ces serpents… » (Racine cité) illustre surtout :",
+              "options": ["Allitération en [s]", "Litote", "Sonnet", "Prose"],
+              "correctAnswers": [0],
+              "explanation": "Répétition de consonnes créant un effet sifflant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Verlaine, « de la musique avant toute chose », privilégie :",
+              "options": [
+                "Sonorités et assonances subtiles",
+                "Hyperbole seule",
+                "Registre didactique",
+                "Absence de rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verlaine recherche la musicalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'assonance en « o » peut produire :",
+              "options": [
+                "Un effet grave ou mélancolique selon le contexte",
+                "Une strophe de six vers",
+                "Une rime croisée obligatoire",
+                "Un registre juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voyelles colorent la perception du poème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Allitérations et assonances servent à :",
+              "options": [
+                "Renforcer la musicalité du vers",
+                "Compter les pages",
+                "Dater le manuscrit",
+                "Supprimer le sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son accompagne le sens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rimbaud, « Voyelles », associe couleurs et :",
+              "options": [
+                "Voyelles (assonances symboliques)",
+                "Rimes plates uniquement",
+                "Prose",
+                "Didascalies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poème lie son et symbolique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une rime est différente d'une assonance car :",
+              "options": [
+                "La rime accorde consonnes et voyelles finales",
+                "L'assonance est toujours une rime riche",
+                "La rime n'a pas de son",
+                "L'assonance exige « comme »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rime = terminaison ; assonance = voyelles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En lecture à voix haute, allitérations :",
+              "options": [
+                "Se perçoivent à l'oreille",
+                "Disparaissent totalement",
+                "Remplacent le lexique",
+                "Interdisent la strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poésie est aussi corps et voix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hugo utilise parfois des répétitions sonores pour :",
+              "options": [
+                "Magnifier l'épique ou le pathétique",
+                "Écrire un dictionnaire",
+                "Supprimer les images",
+                "Satiriser sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sonorité soutient l'amplification romantique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au slam, les jeux de son :",
+              "options": [
+                "Renforcent le rythme percussif",
+                "Interdisent la poésie",
+                "Remplacent le sens",
+                "Suppriment l'oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Performance et sonorité vont de pair."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Symbolisme et imagerie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le symbolisme fin de siècle :",
+              "options": [
+                "Suggère plutôt que nommer clairement",
+                "Multiplie symboles et correspondances sensibles",
+                "Refuse toute image",
+                "Se limite au registre comique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mallarmé, Verlaine, Baudelaire inspirent la suggestion symbolique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un symbole en poésie :",
+              "options": [
+                "Condense un sens au-delà du littéral",
+                "Est toujours un drapeau",
+                "Remplace la grammaire",
+                "Interdit la métaphore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole ouvre plusieurs niveaux de lecture."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Baudelaire, fleurs et poison, illustre :",
+              "options": [
+                "Imagerie ambivalente (beauté et mal)",
+                "Registre uniquement didactique",
+                "Absence de figures",
+                "Sonnet obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Fleurs du mal jouent sur paradoxes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mallarmé vise :",
+              "options": [
+                "L'évocation du absolu par le langage",
+                "Le récit réaliste",
+                "La satire politique directe",
+                "Le manuel de versification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poème devient cérémonie du mystère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'imagerie nocturne symboliste évoque souvent :",
+              "options": [
+                "Rêve, inconscient, mystère",
+                "Bureaucratie",
+                "Comique pur",
+                "Liste de courses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nuit connote l'ailleurs intérieur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une couleur récurrente (rouge, noir) peut :",
+              "options": [
+                "Structurer un réseau symbolique",
+                "Compter les syllabes",
+                "Remplacer la rime",
+                "Supprimer le registre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs chromatiques orientent l'interprétation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rimbaud, « Saison en enfer », mêle :",
+              "options": [
+                "Autobiographie mythifiée et symboles",
+                "Prose administrative",
+                "Théâtre classique",
+                "Épopée homérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prose poétique chargée de symboles personnels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Interpréter un symbole, c'est :",
+              "options": [
+                "Proposer des significations plausibles ancrées dans le texte",
+                "Inventer sans citer",
+                "Ignorer les champs lexicaux",
+                "Compter les strophes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse argumente à partir d'indices."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Apollinaire, « Zone », accumule images modernes :",
+              "options": [
+                "Symboles d'une époque urbaine et fragmentée",
+                "Uniquement médiévaux",
+                "Sans émotion",
+                "En latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernité rythmique et imaginaire citadin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, symboles numériques ou urbains :",
+              "options": [
+                "Prolongent la tradition symboliste",
+                "Interdisent la poésie",
+                "Suppriment la métaphore",
+                "Remplacent le vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveaux objets, mêmes ressorts suggestifs."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ironie et double sens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'ironie poétique :",
+              "options": [
+                "Dit le contraire ou moins de ce qu'on pense pour critiquer",
+                "Peut créer un double sens",
+                "Est toujours une hyperbole",
+                "Supprime la subjectivité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ironie = écart entre surface et profondeur du propos."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Baudelaire, « Albatros », peut lire une ironie :",
+              "options": [
+                "Sur le poète moqué en terre mais beau en vol",
+                "Sur la grammaire",
+                "Sur l'absence de métaphore",
+                "Sur le sonnet uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parabole ironique du génie ridiculisé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ton ironique se combine parfois avec :",
+              "options": [
+                "Registre satirique",
+                "Registre uniquement épique",
+                "Absence de lexique",
+                "Prose juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Satire et ironie critiquent les apparences."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La litote peut servir l'ironie car :",
+              "options": [
+                "Elle atténue pour faire entendre l'inverse",
+                "Elle exagère toujours",
+                "Elle supprime le sens",
+                "Elle est une strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dire peu suggère beaucoup, parfois moqueur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prévert, « Les Feuilles mortes », mélange :",
+              "options": [
+                "Tendresse et distance ironique légère",
+                "Épopée",
+                "Didactique",
+                "Latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ton simple qui peut masquer la mélancolie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Double sens veillique (équivoque) :",
+              "options": [
+                "Un mot ou image lisible à deux niveaux",
+                "Deux auteurs",
+                "Deux strophes identiques",
+                "Deux rimes pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ambiguïté fertile en poésie moderne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Repérer l'ironie implique de :",
+              "options": [
+                "Contextualiser registre et visée",
+                "Ignorer le titre",
+                "Compter les syllabes",
+                "Traduire mot à mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ironie se déduit du contraste tonal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Verlaine peut être lu avec ironie douce quand :",
+              "options": [
+                "Il simplifie la langue pour déjouer le pompeux",
+                "Il écrit en latin",
+                "Il refuse toute émotion",
+                "Il n'utilise pas de vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musicalité et simplicité peuvent distancier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ironie et lyrisme peuvent coexister :",
+              "options": [
+                "Oui, dans une voix déchirée ou détachée",
+                "Non, jamais",
+                "Seulement en prose",
+                "Uniquement au théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernité = tonalités mixtes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En commentaire, signaler l'ironie permet de :",
+              "options": [
+                "Nuancer l'interprétation du « je » poétique",
+                "Éviter toute citation",
+                "Supprimer les figures",
+                "Ne parler que de rimes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le ton ironique modifie la prise au sérieux du énoncé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Voix poétique et énonciation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La voix poétique :",
+              "options": [
+                "Désigne l'instance qui parle dans le poème",
+                "Peut se confondre avec un « je » lyrique sans être l'auteur biographique",
+                "Est toujours omnisciente comme un narrateur de roman",
+                "Ignore les registres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Distinction auteur / locuteur poétique est essentielle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « je » lyrique exprime :",
+              "options": [
+                "Une subjectivité mise en scène",
+                "Toujours la biographie exacte",
+                "Uniquement la satire",
+                "L'absence d'émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le je poétique est une construction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rimbaud, « Je est un autre », remet en cause :",
+              "options": [
+                "L'identité stable du sujet poétique",
+                "Le compte syllabique",
+                "La rime",
+                "La strophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fragmentation du sujet chez Rimbaud."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Énonciation poétique étudie :",
+              "options": [
+                "Qui parle, à qui, avec quel ton",
+                "Seulement la date",
+                "Le prix du livre",
+                "La couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grille classique : destinateur, destinataire, visée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un poème à la deuxième personne (« tu ») :",
+              "options": [
+                "Installe une relation intime ou une apostrophe",
+                "Est toujours une lettre",
+                "Interdit la métaphore",
+                "Est un sonnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tu amant ou le tu lecteur structure le lyrisme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Baudelaire alterne je et il pour :",
+              "options": [
+                "Varier distances et masques",
+                "Écrire un roman",
+                "Supprimer les images",
+                "Compter les vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples voix dans les Fleurs du mal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La visée poétique peut être :",
+              "options": [
+                "Exprimer, célébrer, critiquer ou questionner",
+                "Uniquement rimer",
+                "Administrative",
+                "Sans langage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intention et registre se lisent ensemble."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au XXIe siècle, voix collectives (« nous ») servent à :",
+              "options": [
+                "Parler d'identité de groupe ou de société",
+                "Supprimer la poésie",
+                "Interdire le lyrisme",
+                "Écrire en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poésie engagée ou identitaire pluralise le sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relier figures et énonciation, c'est :",
+              "options": [
+                "Montrer comment le style sert la voix",
+                "Ignorer le registre",
+                "Ne compter que les rimes",
+                "Résumer la biographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figures et ton construisent la subjectivité du poème."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse 1re : analyser un poème XIXe-XXIe, c'est croiser :",
+              "options": [
+                "Formes, registres, figures et voix poétique",
+                "Uniquement la versification",
+                "Uniquement la biographie",
+                "Uniquement la date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse intègre forme et sens dans une même démarche."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

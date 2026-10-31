@@ -1,0 +1,2703 @@
+{
+  "id": "2nde-snt-02",
+  "year": "2nde",
+  "subject": "snt",
+  "title": "Les données structurées",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Données et métadonnées",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notion de donnée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments peuvent être considérés comme des données numériques ?",
+              "options": [
+                "La température mesurée par un capteur",
+                "L'opinion subjectively jugée sans enregistrement",
+                "Le nombre de visiteurs comptés sur un site",
+                "La couleur préférée imaginée sans trace"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une donnée est une information enregistrée ou mesurée, pas une simple pensée non tracée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une donnée brute est :",
+              "options": [
+                "Toujours prête à être affichée telle quelle",
+                "Une information collectée avant interprétation ou mise en forme",
+                "Uniquement un nombre entier",
+                "Toujours chiffrée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La donnée brute est capturée ou saisie avant traitement significatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le passage de l'analogique au numérique consiste à :",
+              "options": [
+                "Supprimer toute information",
+                "Encoder l'information en valeurs discrètes",
+                "Rendre l'information secrète",
+                "Effacer les métadonnées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La numérisation représente une information continue ou symbolique par des valeurs codées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un capteur dans un objet connecté sert surtout à :",
+              "options": [
+                "Afficher des publicités",
+                "Collecter des mesures de l'environnement",
+                "Chiffrer automatiquement Internet",
+                "Remplacer un tableur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les capteurs transforment des grandeurs physiques en signaux exploitables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La quantité de données produites augmente car :",
+              "options": [
+                "Les disques n'existent plus",
+                "Plus d'appareils et de services enregistrent des traces",
+                "Les réseaux sont interdits",
+                "Les métadonnées ont disparu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La multiplication des capteurs, logs et usages numériques accroît le volume."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une trace laissée en naviguant sur le Web est :",
+              "options": [
+                "Une donnée d'usage",
+                "Une loi physique",
+                "Un composant matériel",
+                "Un algorithme de tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les journaux de navigation et requêtes constituent des données d'activité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Distinguer donnée et information signifie que :",
+              "options": [
+                "Ce sont des synonymes stricts",
+                "L'information apporte du sens à des données",
+                "La donnée n'existe qu'en papier",
+                "L'information ne peut pas être stockée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les données deviennent information lorsqu'on leur donne un contexte et une interprétation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une photo numérique est avant tout :",
+              "options": [
+                "Une suite de bits représentant des pixels",
+                "Un tableur",
+                "Une formule Excel",
+                "Un câble réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une image numérique encode la couleur de chaque pixel sous forme binaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fiabilité d'une donnée dépend notamment :",
+              "options": [
+                "De la couleur du clavier",
+                "De la source et de la méthode de collecte",
+                "Du nom du fichier uniquement",
+                "De la taille de l'écran"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Provenance et protocole de mesure influencent la confiance accordée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structurer des données, c'est :",
+              "options": [
+                "Les organiser selon un modèle exploitable",
+                "Les effacer aléatoirement",
+                "Les rendre illisibles",
+                "Interdire leur copie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure facilite recherche, calcul et échange."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Types et formats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à des données structurées ?",
+              "options": [
+                "Un tableau avec colonnes nommées",
+                "Un paragraphe libre sans champs",
+                "Une base où chaque enregistrement a les mêmes attributs",
+                "Un dessin scanné non décrit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Structure = organisation prévisible en champs ou enregistrements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un texte non découpé en champs est plutôt :",
+              "options": [
+                "Semi-structuré",
+                "Non structuré",
+                "Toujours binaire",
+                "Toujours JSON"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans schéma explicite, le contenu est dit non structuré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le format CSV représente surtout :",
+              "options": [
+                "Des lignes et colonnes séparées par un délimiteur",
+                "Des pixels uniquement",
+                "Des instructions processeur",
+                "Des clés privées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV échange des tableaux sous forme textuelle tabulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "JSON est adapté pour :",
+              "options": [
+                "Décrire des objets avec paires clé-valeur",
+                "Compresser uniquement des vidéos",
+                "Remplacer le processeur",
+                "Imprimer en 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JSON modélise des structures hiérarchiques lisibles par les programmes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un fichier binaire diffère d'un texte car :",
+              "options": [
+                "Il n'est pas lisible directement en caractères",
+                "Il ne peut pas être stocké",
+                "Il n'a pas de taille",
+                "Il est toujours ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le binaire encode l'information hors alphabet humain direct."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'extension .xlsx indique typiquement :",
+              "options": [
+                "Un classeur tableur",
+                "Un exécutable système",
+                "Une page Web seule",
+                "Un certificat racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XLSX est le format standard des classeurs Microsoft Excel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Interoperabilité entre logiciels exige souvent :",
+              "options": [
+                "Des formats ouverts documentés",
+                "Le même écran",
+                "La même couleur de thème",
+                "L'absence de métadonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des standards de format permettent l'échange sans lock-in."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une image JPEG est plutôt :",
+              "options": [
+                "Compressée avec perte",
+                "Toujours sans perte",
+                "Un tableur",
+                "Un fichier CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JPEG réduit la taille en sacrifiant une partie du détail visuel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un fichier audio MP3 est :",
+              "options": [
+                "Des données numériques compressées",
+                "Une métadonnée seule",
+                "Un capteur",
+                "Une cellule Excel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'audio numérique encode des échantillons sonores."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir un format dépend surtout :",
+              "options": [
+                "De l'usage prévu et des outils compatibles",
+                "Du prénom de l'utilisateur",
+                "De la marque du clavier",
+                "De la vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage, taille, qualité et compatibilité guident le choix."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Métadonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des métadonnées d'une photo ?",
+              "options": [
+                "Date de prise de vue",
+                "Contenu émotionnel garanti de la scène",
+                "Modèle d'appareil",
+                "GPS de localisation si activé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les métadonnées décrivent la ressource, pas le sens subjectif de la scène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une métadonnée est :",
+              "options": [
+                "Une donnée qui décrit une autre donnée",
+                "Toujours secrète",
+                "Un virus",
+                "Un câble USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle documente contexte, origine ou propriétés du fichier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "EXIF sur une image peut contenir :",
+              "options": [
+                "Orientation et paramètres de prise de vue",
+                "Le salaire du photographe",
+                "Le code source du navigateur",
+                "La formule d'une cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EXIF stocke des informations techniques liées à la capture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les métadonnées facilitent :",
+              "options": [
+                "Recherche et classement",
+                "La casse du disque",
+                "La perte volontaire de fichiers",
+                "L'arrêt du réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles rendent les collections de fichiers exploitables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dublin Core sert à :",
+              "options": [
+                "Décrire des ressources documentaires",
+                "Compiler du C",
+                "Fabriquer des capteurs",
+                "Calculer une moyenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un jeu de champs standard pour cataloguer des documents."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Auteur et licence d'un fichier sont :",
+              "options": [
+                "Des métadonnées juridiques ou descriptives",
+                "Des pixels",
+                "Des formules",
+                "Des ports réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles précisent qui a produit l'œuvre et sous quelles conditions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Retirer les métadonnées d'une photo partagée peut :",
+              "options": [
+                "Réduire les fuites de localisation",
+                "Augmenter la résolution",
+                "Créer un tableur",
+                "Chiffrer le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines métadonnées révèlent lieu ou appareil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un tableur, le nom d'une feuille est :",
+              "options": [
+                "Une métadonnée de organisation",
+                "Une donnée mesurée du monde physique",
+                "Un capteur",
+                "Un protocole HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle aide à identifier le contenu sans être une mesure terrain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un catalogue de bibliothèque numérique utilise surtout :",
+              "options": [
+                "Des métadonnées bibliographiques",
+                "Uniquement des images brutes",
+                "Des câbles",
+                "Des registres CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre, auteur, ISBN etc. permettent l'indexation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Métadonnées et données peuvent :",
+              "options": [
+                "Coexister dans le même fichier",
+                "Jamais être séparées conceptuellement",
+                "Être identiques en tout cas",
+                "Interdire l'archivage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un même fichier porte contenu et description de ce contenu."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Qualité et biais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels critères relèvent de la qualité des données ?",
+              "options": [
+                "Exactitude",
+                "Couleur préférée du technicien",
+                "Complétude",
+                "Uniformité des formats"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Exactitude et complétude mesurent la fiabilité utile, pas les goûts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une donnée obsolète peut :",
+              "options": [
+                "Induire de mauvaises décisions",
+                "Améliorer toujours la précision",
+                "Chiffrer le réseau",
+                "Créer des métadonnées automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des informations périmées faussent l'analyse actuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un biais d'échantillon signifie :",
+              "options": [
+                "La population étudiée ne représente pas l'ensemble visé",
+                "Toutes les mesures sont parfaites",
+                "Le fichier est trop petit en octets",
+                "Le CSV est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un échantillon partial déforme les conclusions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une valeur aberrante est :",
+              "options": [
+                "Une mesure très éloignée du reste",
+                "Toujours la moyenne",
+                "Une métadonnée",
+                "Un en-tête CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle peut signaler une erreur ou un cas rare à examiner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nettoyer des données consiste souvent à :",
+              "options": [
+                "Corriger erreurs et doublons",
+                "Supprimer toutes les sources",
+                "Interdire le stockage",
+                "Effacer les en-têtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nettoyage améliore cohérence avant analyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La traçabilité des transformations permet :",
+              "options": [
+                "De comprendre comment une valeur a été obtenue",
+                "De cacher l'origine",
+                "D'effacer l'historique",
+                "De bloquer le tableur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Documenter les étapes renforce la confiance et la reproductibilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Anonymiser un jeu de données vise à :",
+              "options": [
+                "Protéger l'identité des personnes",
+                "Augmenter le biais volontairement",
+                "Rendre public les secrets médicaux nominatifs",
+                "Supprimer toute utilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retire ou transforme les identifiants directs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une donnée manquante se note parfois :",
+              "options": [
+                "Cellule vide ou code NA",
+                "Toujours zéro obligatoire",
+                "Un pixel noir",
+                "Une licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut distinguer absence de mesure et valeur nulle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recoupement de sources sert à :",
+              "options": [
+                "Vérifier la cohérence",
+                "Effacer les métadonnées",
+                "Casser le format",
+                "Interdire les graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer plusieurs origines détecte incohérences."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le principe « garbage in, garbage out » signifie :",
+              "options": [
+                "Des entrées mauvaises produisent des résultats mauvais",
+                "Tout calcul est toujours juste",
+                "Les tableurs ne calculent jamais",
+                "Les capteurs sont inutiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La qualité aval dépend de la qualité amont."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Encodage et caractères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels encodages permettent de représenter le français ?",
+              "options": [
+                "UTF-8",
+                "ASCII strict 7 bits seul pour tous les accents",
+                "ISO-8859-1 (Latin-1)",
+                "Binaire brut sans interprétation texte"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "UTF-8 et Latin-1 couvrent les caractères accentués ; ASCII seul est limité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "UTF-8 est privilégié sur le Web car :",
+              "options": [
+                "Il couvre quasiment tous les scripts avec compatibilité",
+                "Il n'utilise jamais d'octets",
+                "Il remplace les bases de données",
+                "Il est secret"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 est universel et largement supporté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un octet contient :",
+              "options": [
+                "8 bits",
+                "16 bits toujours",
+                "Un caractère garanti",
+                "Une image complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'octet est l'unité de 8 bits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Des caractères « � » affichés indiquent souvent :",
+              "options": [
+                "Un mauvais décodage de l'encodage",
+                "Un tri réussi",
+                "Une formule correcte",
+                "Un GPS actif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un signe de fichier lu avec le mauvais jeu de caractères."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le BOM dans un fichier texte :",
+              "options": [
+                "Peut signaler l'encodage au début",
+                "Chiffre le disque",
+                "Est un capteur",
+                "Est une fonction SOMME"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Byte Order Mark aide certains logiciels à reconnaître UTF."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir en binaire une lettre, c'est :",
+              "options": [
+                "La représenter par une suite de 0 et 1",
+                "La transformer en tableur",
+                "La géolocaliser",
+                "La compresser en JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout caractère a une valeur numérique encodée en bits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fichier .txt est :",
+              "options": [
+                "Du texte brut",
+                "Toujours une vidéo",
+                "Un exécutable",
+                "Un classeur Excel natif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TXT stocke des caractères sans mise en forme riche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La normalisation Unicode concerne :",
+              "options": [
+                "L'unification de représentations de caractères",
+                "Le tri des lignes CSV",
+                "Les graphiques circulaires",
+                "Les câbles Ethernet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains glyphes peuvent avoir plusieurs encodages équivalents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélanger encodages dans un même pipeline :",
+              "options": [
+                "Risque de corruption d'accents",
+                "Améliore toujours la qualité",
+                "Crée des métadonnées EXIF",
+                "Active le GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut harmoniser l'encodage bout en bout."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La taille d'un fichier texte dépend surtout :",
+              "options": [
+                "Du nombre de caractères et de l'encodage",
+                "De la couleur du texte",
+                "Du modèle de souris",
+                "De la licence Creative Commons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de contenu et certains encodages augmentent les octets."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Modèles tabulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un modèle relationnel simple, on trouve :",
+              "options": [
+                "Des tables",
+                "Des lignes appelées enregistrements",
+                "Uniquement des images sans structure",
+                "Des formules uniquement sans champs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tables et lignes structurées sont le cœur du modèle relationnel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une clé primaire sert à :",
+              "options": [
+                "Identifier uniquement chaque enregistrement",
+                "Colorier les cellules",
+                "Trier par couleur",
+                "Compresser en MP3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle garantit l'unicité d'une ligne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une relation entre tables se fait via :",
+              "options": [
+                "Des clés étrangères",
+                "Des pixels",
+                "Des hashtags seuls",
+                "Le ventilateur CPU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé étrangère référence un enregistrement d'une autre table."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un schéma de base décrit :",
+              "options": [
+                "Les tables et leurs attributs",
+                "La météo demain",
+                "Le prix de l'écran",
+                "La vitesse de la RAM seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma formalise la structure logique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Normaliser des données vise à :",
+              "options": [
+                "Réduire redondance et anomalies",
+                "Supprimer toutes les clés",
+                "Interdire les jointures",
+                "Effacer les métadonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La normalisation limite duplication et incohérences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une vue dans une base est :",
+              "options": [
+                "Une requête enregistrée présentée comme table",
+                "Un capteur",
+                "Un câble",
+                "Un fichier JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vue expose un sous-ensemble ou un calcul sans dupliquer tout."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "SQL sert principalement à :",
+              "options": [
+                "Interroger et manipuler des données structurées",
+                "Développer des photos",
+                "Chiffrer le clavier",
+                "Piloter un drone sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SQL est le langage standard des bases relationnelles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une jointure combine :",
+              "options": [
+                "Des lignes de tables liées par des clés",
+                "Des fichiers audio",
+                "Des pixels aléatoires",
+                "Des licences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle assemble des informations réparties sur plusieurs tables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un index accélère surtout :",
+              "options": [
+                "Les recherches et tris fréquents",
+                "La consommation d'encre",
+                "La prise de photo",
+                "La fonte du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'index est une structure auxiliaire pour l'accès rapide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Exporter une table en CSV permet :",
+              "options": [
+                "L'échange vers un tableur",
+                "La destruction des en-têtes obligatoire",
+                "L'arrêt du réseau",
+                "La perte des types toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV facilite l'import dans Excel ou LibreOffice."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Open data et jeux de données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'open data implique souvent :",
+              "options": [
+                "Des données réutilisables librement selon licence",
+                "Le secret total systématique",
+                "Des formats ouverts ou documentés",
+                "L'interdiction de citation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Open data combine accessibilité et conditions de réutilisation claires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "data.gouv.fr est :",
+              "options": [
+                "Le portail français des données publiques",
+                "Un réseau social privé",
+                "Un tableur local",
+                "Un capteur Arduino"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il centralise des jeux de données administratives ouvertes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une licence CC BY exige :",
+              "options": [
+                "De créditer l'auteur",
+                "De payer un abonnement obligatoire",
+                "De ne jamais modifier",
+                "De cacher la source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BY signifie attribution de la paternité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un jeu de données est :",
+              "options": [
+                "Un ensemble cohérent publié pour analyse",
+                "Une seule cellule Excel",
+                "Un câble réseau",
+                "Un pixel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il regroupe des enregistrements sur un thème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les métadonnées d'un jeu open data précisent :",
+              "options": [
+                "Producteur, date, granularité",
+                "La couleur des yeux du maire",
+                "Le modèle de clavier",
+                "La taille de la souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles documentent provenance et conditions d'usage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réutiliser des données publiques permet :",
+              "options": [
+                "Des applications citoyennes ou de recherche",
+                "D'effacer les sources",
+                "De violer la vie privée nominative",
+                "D'interdire les graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'open data alimente transparence et innovation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Granularité désigne :",
+              "options": [
+                "Le niveau de détail spatial ou temporel",
+                "La couleur du graphique",
+                "Le bruit du ventilateur",
+                "Le type de souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fine granularité = détail par commune ; grossière = région."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un API REST peut exposer :",
+              "options": [
+                "Des données structurées via HTTP",
+                "Uniquement du papier",
+                "Des capteurs analogiques",
+                "Des formules sans serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les API permettent aux programmes de récupérer des jeux à la demande."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La qualité d'un open data se juge aussi par :",
+              "options": [
+                "La documentation et la mise à jour",
+                "La marque du disque",
+                "La couleur du site",
+                "Le nombre de ventilateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans doc ni actualisation, la réutilisation est risquée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Données ouvertes et données personnelles :",
+              "options": [
+                "Ne doivent pas être confondues ; l'anonymisation compte",
+                "Sont toujours identiques",
+                "Interdisent toute statistique",
+                "Suppriment les licences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publier demande de respecter RGPD et agrégations."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Collecte et capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels dispositifs produisent des flux de données ?",
+              "options": [
+                "Station météo connectée",
+                "Compteur Linky",
+                "Mur peint sans mesure",
+                "Thermomètre numérique enregistreur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capteurs et compteurs connectés enregistrent des mesures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fréquence d'échantillonnage est :",
+              "options": [
+                "Le nombre de mesures par unité de temps",
+                "La couleur du graphique",
+                "La taille du logo",
+                "Le nom du fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus elle est haute, plus le signal est détaillé dans le temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un protocole MQTT est utilisé pour :",
+              "options": [
+                "Transporter des messages IoT légers",
+                "Éditer des photos",
+                "Compiler du Java",
+                "Imprimer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MQTT facilite la communication machine-to-machine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calibrer un capteur signifie :",
+              "options": [
+                "Ajuster pour des mesures fidèles",
+                "Effacer les données",
+                "Couper Internet",
+                "Changer la licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étalonnage aligne la lecture sur une référence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Du bruit dans une mesure est :",
+              "options": [
+                "Une variation parasite non désirée",
+                "Toujours une faute de syntaxe",
+                "Une métadonnée Dublin Core",
+                "Un en-tête CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bruit nuit à la précision."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Agréger des mesures consiste à :",
+              "options": [
+                "Les résumer (moyenne, max, somme)",
+                "Les rendre secrètes",
+                "Les effacer",
+                "Les pixeliser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agrégation produit des indicateurs à partir du détail."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une série temporelle ordonne des valeurs :",
+              "options": [
+                "Selon le temps",
+                "Par couleur",
+                "Par prénom",
+                "Sans ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axe temps est central pour capteurs et logs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Edge computing traite parfois :",
+              "options": [
+                "Les données près de la source",
+                "Uniquement dans un musée",
+                "Sans aucun appareil",
+                "Seulement sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traiter localement réduit latence et trafic."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un CSV de capteur contient typiquement :",
+              "options": [
+                "Horodatage et valeur mesurée",
+                "Uniquement des images",
+                "Des exécutables",
+                "Des clés privées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timestamp + mesure est un format courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Respect de la vie privée avec capteurs exige :",
+              "options": [
+                "Minimisation et information des personnes",
+                "Collecte illimitée cachée",
+                "Publication nominative systématique",
+                "Absence de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finalité, consentement et sécurité sont obligatoires."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sécurité et intégrité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Protéger l'intégrité des données, c'est :",
+              "options": [
+                "Empêcher des modifications non autorisées",
+                "Garantir que les valeurs n'ont pas été altérées",
+                "Interdire toute copie légitime",
+                "Supprimer les sauvegardes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intégrité = pas de altération frauduleuse ou accidentelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un hash cryptographique sert à :",
+              "options": [
+                "Vérifier qu'un fichier n'a pas changé",
+                "Compresser en JPEG",
+                "Trier des lignes",
+                "Colorier un graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une empreinte change si le contenu change."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une sauvegarde régulière limite :",
+              "options": [
+                "La perte en cas d'incident",
+                "La qualité des capteurs",
+                "La vitesse du processeur",
+                "Les métadonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les backups permettent la restauration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chiffrer des données au repos protège :",
+              "options": [
+                "Contre la lecture si le support est volé",
+                "Contre toute erreur de calcul",
+                "Contre les fautes de frappe",
+                "Contre les graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiffrement rend le contenu illisible sans clé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "HTTPS protège surtout :",
+              "options": [
+                "Les échanges en transit sur le réseau",
+                "Le disque dur local seul",
+                "La calibrage capteur",
+                "Le tri alphabétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TLS chiffre et authentifie la communication Web."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contrôle d'accès signifie :",
+              "options": [
+                "Seules les personnes autorisées lisent ou modifient",
+                "Tout le monde écrit partout",
+                "Les données sont publiques par défaut",
+                "Les logs sont interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permissions limitent qui fait quoi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un journal d'audit enregistre :",
+              "options": [
+                "Qui a fait quelle action et quand",
+                "La météo",
+                "La couleur des cellules",
+                "Le modèle de souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traçabilité des accès aide les enquêtes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "RGPD concerne surtout :",
+              "options": [
+                "Les données personnelles en Europe",
+                "Le format JPEG",
+                "Les formules Excel",
+                "Les câbles HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règlement sur protection et droits des personnes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phishing vise à :",
+              "options": [
+                "Voler identifiants par tromperie",
+                "Calibrer un capteur",
+                "Normaliser Unicode",
+                "Exporter en CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faux messages incitent à révéler des secrets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Principe de minimisation des données :",
+              "options": [
+                "Ne collecter que le nécessaire",
+                "Tout stocker sans limite",
+                "Publier tout nominativement",
+                "Ignorer la sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de données sensibles réduit les risques."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse unité 1",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour documenter un fichier scientifique, on combine :",
+              "options": [
+                "Données mesurées",
+                "Métadonnées descriptives",
+                "Couleur du bureau",
+                "Ignorance de la licence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mesures plus description assurent réutilisation correcte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Structurer avant d'analyser permet :",
+              "options": [
+                "Des calculs et tris fiables",
+                "D'effacer les sources",
+                "D'interdire les graphiques",
+                "De perdre les unités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure est le prérequis du traitement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un pipeline de données enchaîne :",
+              "options": [
+                "Collecte, stockage, traitement, visualisation",
+                "Uniquement l'impression",
+                "Seulement le gaming",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque étape transforme ou expose l'information."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Interoperabilité CSV/JSON/tableur signifie :",
+              "options": [
+                "Échanges possibles entre outils",
+                "Un seul logiciel autorisé",
+                "Pas de métadonnées",
+                "Pas d'encodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standards facilitent le flux entre applications."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La qualité se vérifie par :",
+              "options": [
+                "Contrôles, statistiques descriptives, recoupements",
+                "La couleur du logo",
+                "Le bruit du PC",
+                "Le prénom du fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthodes quantitatives détectent anomalies."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Open data citoyen sert à :",
+              "options": [
+                "Contrôler l'action publique avec des faits",
+                "Cacher les budgets",
+                "Supprimer les stats",
+                "Interdire les API"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence permet debat informé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Métadonnée de provenance indique :",
+              "options": [
+                "D'où vient la donnée",
+                "La moyenne arithmétique",
+                "Le tri croissant",
+                "La formule SOMME"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Provenance = source et chaîne de custody."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Donnée structurée facilite :",
+              "options": [
+                "Requêtes automatisées",
+                "Peinture analogique seule",
+                "Absence de schéma",
+                "Perte d'unités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champs nommés permettent filtres et jointures."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Avant publication, vérifier :",
+              "options": [
+                "Licence, anonymisation, exactitude",
+                "Seulement la police",
+                "Le modèle de tapis",
+                "La marque de café"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aspects légaux et qualitatifs évitent les dérives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'objectif de l'unité données et métadonnées est :",
+              "options": [
+                "Comprendre comment informer numériquement le monde",
+                "Apprendre à souder",
+                "Ignorer les formats",
+                "Refuser les capteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondations pour traiter et partager l'information."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Traitement et tableur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Interface du tableur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un classeur, on trouve typiquement :",
+              "options": [
+                "Des feuilles de calcul",
+                "Des cellules organisées en grille",
+                "Uniquement des vidéos intégrées",
+                "Des capteurs physiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Feuilles et cellules forment la structure de base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une cellule est identifiée par :",
+              "options": [
+                "Une colonne et une ligne",
+                "Uniquement une couleur",
+                "Un numéro de série USB",
+                "Un hash MD5 obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : B3 = colonne B, ligne 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La barre de formule sert à :",
+              "options": [
+                "Saisir ou éditer le contenu d'une cellule",
+                "Chiffrer le disque",
+                "Connecter un capteur",
+                "Envoyer un e-mail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On y voit formules et valeurs en détail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un classeur enregistré .ods est ouvert par :",
+              "options": [
+                "LibreOffice Calc entre autres",
+                "Uniquement un lecteur MP3",
+                "Un compilateur C",
+                "Un routeur Wi-Fi seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ODS est le format natif LibreOffice."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sélectionner une plage A1:C3 inclut :",
+              "options": [
+                "Neuf cellules en rectangle",
+                "Une seule cellule",
+                "Toute la colonne Z",
+                "Le disque entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3 colonnes × 3 lignes = 9 cellules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un nombre saisi comme texte :",
+              "options": [
+                "Peut empêcher certains calculs",
+                "Augmente toujours la somme",
+                "Chiffre automatiquement",
+                "Devient une image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type de cellule influence les fonctions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fusionner des cellules sert à :",
+              "options": [
+                "Afficher un titre sur plusieurs colonnes",
+                "Chiffrer les données",
+                "Créer une clé primaire SQL",
+                "Capturer du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion est surtout présentation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une feuille supplémentaire permet :",
+              "options": [
+                "Séparer des thèmes dans le même fichier",
+                "Effacer le réseau",
+                "Interdire les formules",
+                "Supprimer les lignes globalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation multi-onglets par sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le zoom change :",
+              "options": [
+                "L'affichage à l'écran sans la valeur stockée",
+                "La valeur numérique en mémoire",
+                "La licence du fichier",
+                "Le protocole MQTT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zoom est visuel seulement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enregistrer au format CSV depuis un tableur :",
+              "options": [
+                "Exporte souvent une feuille en texte tabulaire",
+                "Convertit en exécutable",
+                "Ajoute des capteurs",
+                "Supprime les virgules toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV perd souvent formules et multi-feuilles."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Références et recopie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles références existent en tableur ?",
+              "options": [
+                "Relative (A1)",
+                "Absolue ($A$1)",
+                "Uniquement des adresses IP",
+                "Références capteur MQTT"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Relatives bougent à la recopie ; absolues restent fixées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Recopier une formule vers le bas avec référence relative :",
+              "options": [
+                "Incrémente les numéros de ligne",
+                "Fixe toutes les cellules",
+                "Efface la feuille",
+                "Chiffre le fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A1 devient A2, A3… si la ligne change."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "$B$2 en recopie horizontale reste :",
+              "options": ["B2", "C2 toujours", "Z99", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Dollar fixe colonne et ligne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une plage nommée permet :",
+              "options": [
+                "D'utiliser un libellé à la place d'adresses",
+                "De supprimer Internet",
+                "D'interdire SOMME",
+                "De coder en binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms rendent les formules lisibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "F4 dans Excel alterne souvent :",
+              "options": [
+                "Types de référence",
+                "La langue du OS",
+                "Le câble HDMI",
+                "Le GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccourci pratique pour $ relatifs/absolus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Référencer Feuille2!D4 signifie :",
+              "options": [
+                "Cellule D4 d'une autre feuille",
+                "Une erreur système",
+                "Un capteur",
+                "Une licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préfixe de feuille pour lier onglets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Recopie incrémentale de 1,2,3 sans formule utilise :",
+              "options": [
+                "Poignée de recopie avec Ctrl ou série",
+                "Un câble réseau",
+                "Un hash",
+                "Un pixel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glisser la poignée étend une série."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur #REF! indique :",
+              "options": [
+                "Référence de cellule invalide",
+                "Succès total",
+                "Tri terminé",
+                "Graphique publié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cellule supprimée ou lien cassé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Coller valeurs seulement :",
+              "options": [
+                "Garde le résultat sans la formule",
+                "Garde toujours la formule",
+                "Efface tout",
+                "Connecte MQTT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour figer des calculs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Référence mixte $A1 fixe :",
+              "options": [
+                "La colonne A seulement",
+                "La ligne seulement",
+                "Rien",
+                "Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colonne absolue, ligne relative ou l'inverse selon cas."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Formules de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une formule valide peut contenir :",
+              "options": [
+                "Opérateurs + - * /",
+                "Références de cellules",
+                "Uniquement du texte libre sans =",
+                "Des images brutes non liées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formule commence par = et combine opérateurs et cellules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "=A1+B1 calcule :",
+              "options": [
+                "La somme des deux cellules",
+                "La concaténation texte forcée",
+                "Le tri",
+                "Le graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "+ additionne si valeurs numériques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Priorité des opérations suit :",
+              "options": [
+                "Parenthèses, *, /, +, -",
+                "Couleur, taille, police",
+                "GPS, MQTT, HTTP",
+                "Licence, auteur, date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en mathématiques classiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "=10/0 peut produire :",
+              "options": [
+                "Erreur #DIV/0!",
+                "Toujours zéro",
+                "Un graphique",
+                "Une photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Division par zéro est interdite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Arrondir avec ROUND(3,141;2) donne :",
+              "options": ["3,14", "3,1", "3,141592", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "Deux décimales selon syntaxe locale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Concaténer A1 et B1 texte :",
+              "options": [
+                "=& ou CONCAT/CONCATENER",
+                "SOMME uniquement",
+                "MOYENNE",
+                "TRI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opérateur & ou fonction de concaténation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une cellule affichant ##### :",
+              "options": [
+                "Est souvent trop étroite pour le nombre",
+                "Contient un virus",
+                "Est une métadonnée",
+                "Est un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élargir la colonne révèle la valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Copier une formule sans ajuster références exige :",
+              "options": [
+                "Références absolues ou collage spécial",
+                "Toujours relative seule",
+                "Supprimer la feuille",
+                "MQTT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sinon les adresses se décalent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "=2^3 vaut :",
+              "options": ["8", "6", "5", "9"],
+              "correctAnswers": [0],
+              "explanation": "Puissance : 2×2×2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Audit de formules sert à :",
+              "options": [
+                "Visualiser les dépendances entre cellules",
+                "Chiffrer",
+                "Capturer audio",
+                "Imprimer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flèches montrent précédents et dépendants."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fonctions agrégats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions agrègent des plages ?",
+              "options": ["SOMME", "MOYENNE", "CAPTEUR", "JPEG"],
+              "correctAnswers": [0, 1],
+              "explanation": "SOMME et MOYENNE réduisent plusieurs valeurs en une."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "=SOMME(A1:A5) ignore en général :",
+              "options": [
+                "Les cellules texte vides non numériques",
+                "Toutes les valeurs",
+                "Les nombres",
+                "Les feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Texte pur n'est pas additionné."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "MOYENNE de 2,4,6 vaut :",
+              "options": ["4", "6", "2", "12"],
+              "correctAnswers": [0],
+              "explanation": "(2+4+6)/3 = 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "MAX(A1:A10) renvoie :",
+              "options": [
+                "La plus grande valeur numérique",
+                "La plus petite",
+                "Le nombre de cellules",
+                "Une date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MAX extrait le maximum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "MIN et MAX ensemble servent à :",
+              "options": [
+                "Décrire étendue des valeurs",
+                "Chiffrer",
+                "Géolocaliser",
+                "Compiler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitude = max - min."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "NBVAL compte :",
+              "options": [
+                "Cellules non vides",
+                "Uniquement erreurs",
+                "Pixels",
+                "Octets disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compte tout contenu non vide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "NB.SI compte si :",
+              "options": [
+                "Critère rempli",
+                "Tou toujours zéro",
+                "Couleur rouge seule sans règle",
+                "GPS actif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptage conditionnel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "SOMME.SI additionne :",
+              "options": [
+                "Valeurs d'une plage respectant un critère",
+                "Toutes les images",
+                "Les licences",
+                "Les câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme filtrée par condition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "MÉDIANE résiste mieux que MOYENNE aux :",
+              "options": [
+                "Valeurs extrêmes",
+                "Cellules vides toujours",
+                "Graphiques",
+                "En-têtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Médiane = valeur centrale ordonnée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Utiliser des noms de plages dans SOMME :",
+              "options": [
+                "Rend la formule lisible",
+                "Interdit le calcul",
+                "Efface les données",
+                "Coupe le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. =SOMME(Ventes) au lieu de A2:A100."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Tri et filtres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Trier un tableau permet de :",
+              "options": [
+                "Ordonner lignes par clé",
+                "Faciliter lecture de tendances",
+                "Effacer les métadonnées",
+                "Couper Internet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ordre aide analyse visuelle et recherche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tri croissant sur des nombres :",
+              "options": [
+                "Place les plus petits en haut",
+                "Inverse les colonnes",
+                "Chiffre le disque",
+                "Supprime les formules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre ascendant standard."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un filtre automatique :",
+              "options": [
+                "Masque les lignes ne respectant pas critères",
+                "Supprime définitivement les données",
+                "Convertit en MP3",
+                "Ajoute un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données cachées restent dans le fichier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trier sans en-tête peut :",
+              "options": [
+                "Mélanger la première ligne de données",
+                "Améliorer toujours SQL",
+                "Créer une clé primaire",
+                "Publier open data"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cocher « mes données ont des en-têtes » évite l'erreur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filtre texte « contient » :",
+              "options": [
+                "Garde lignes où la cellule inclut la chaîne",
+                "Trie par couleur seule",
+                "Arrondit",
+                "Concatène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère partiel sur texte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plusieurs critères en filtres avancés :",
+              "options": [
+                "Combinent ET/OU sur colonnes",
+                "Interdisent MOYENNE",
+                "Effacent le disque",
+                "Chiffrent UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique booléenne sur champs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Supprimer doublons :",
+              "options": [
+                "Retire lignes identiques selon colonnes choisies",
+                "Trie automatiquement",
+                "Exporte JSON",
+                "Scanne EXIF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de nettoyage des enregistrements répétés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sous-total après filtre calcule :",
+              "options": [
+                "Sur lignes visibles seulement",
+                "Sur toutes lignes cachées incluses toujours",
+                "Sur le réseau",
+                "Sur GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SUBTOTAL ignore lignes filtrées selon code."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tri par couleur de cellule :",
+              "options": [
+                "Utilise mise en forme comme clé",
+                "Remplace les nombres",
+                "Est interdit",
+                "Est une métadonnée EXIF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en forme peut servir de marqueur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant tri, il est prudent de :",
+              "options": [
+                "Sauvegarder ou dupliquer la feuille",
+                "Couper l'alimentation",
+                "Effacer les en-têtes",
+                "Publier sans licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur de tri difficile à annuler sans backup."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Graphiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Des graphiques adaptés aux séries catégorielles :",
+              "options": [
+                "Histogramme en barres",
+                "Diagramme circulaire pour peu de parts",
+                "Carte sans données",
+                "Fichier binaire seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Barres et secteurs comparent des catégories."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un graphique linéaire convient surtout :",
+              "options": [
+                "Aux évolutions dans le temps",
+                "Aux fractions sans ordre",
+                "Au chiffrement",
+                "Au MQTT brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne montre tendance temporelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'axe des abscisses porte souvent :",
+              "options": [
+                "Catégories ou temps",
+                "Toujours les effectifs",
+                "Les licences",
+                "Les hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "X = indépendant ou labels."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un graphique trompeur peut :",
+              "options": [
+                "Couper l'axe Y pour exagérer",
+                "Toujours dire la vérité",
+                "Être une métadonnée",
+                "Remplacer CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvaise échelle déforme la perception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Légende d'un graphique :",
+              "options": [
+                "Identifie les séries",
+                "Chiffre le disque",
+                "Trie les lignes",
+                "Encode UTF-8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs et labels expliqués."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sélectionner plage avant graphique :",
+              "options": [
+                "Définit les données tracées",
+                "Oblige à effacer formules",
+                "Crée une clé SQL",
+                "Active GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source de données du diagramme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nuage de points montre :",
+              "options": [
+                "Relation entre deux variables quantitatives",
+                "Uniquement des textes",
+                "Des pixels JPEG",
+                "Des licences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque point = couple (x,y)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mettre à jour graphique si données changent :",
+              "options": [
+                "Les séries liées se rafraîchissent si plage dynamique",
+                "Rien ne bouge jamais",
+                "Le fichier devient MP3",
+                "Le capteur s'éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien vers plages conserve cohérence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Titre et axes clairs servent à :",
+              "options": [
+                "Communication honnête des résultats",
+                "Cacher les biais",
+                "Supprimer open data",
+                "Interdire MOYENNE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité et intégrité visuelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Exporter graphique en image :",
+              "options": [
+                "Permet insertion dans un document",
+                "Efface les données source",
+                "Chiffre le classeur",
+                "Remplace SOMME"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PNG ou SVG pour rapports."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Logique SI et conditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fonctions conditionnelles incluent :",
+              "options": ["SI", "ET", "CAPTEUR analogique", "EXIF seul"],
+              "correctAnswers": [0, 1],
+              "explanation": "SI teste ; ET combine plusieurs tests logiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "=SI(A1>10;\"OK\";\"KO\") renvoie OK si :",
+              "options": [
+                "A1 est strictement supérieur à 10",
+                "A1 vaut 5",
+                "A1 est texte",
+                "A1 est vide toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test logique vrai → deuxième argument."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "SI imbriqués servent à :",
+              "options": [
+                "Plusieurs cas de figure",
+                "Trier des photos",
+                "Chiffrer MQTT",
+                "Compiler C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne de tests pour catégories multiples."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "=ET(VRAI;FAUX) vaut :",
+              "options": ["FAUX", "VRAI", "Erreur", "3"],
+              "correctAnswers": [0],
+              "explanation": "ET exige que tous les arguments soient vrais."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "=OU(FAUX;VRAI) vaut :",
+              "options": ["VRAI", "FAUX", "0", "Erreur"],
+              "correctAnswers": [0],
+              "explanation": "OU vrai si au moins un argument vrai."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "SIERREUR capture :",
+              "options": [
+                "Erreurs de formule pour afficher alternative",
+                "Toutes les métadonnées",
+                "Le GPS",
+                "La licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Evite affichage #DIV/0! etc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "RECHERCHEV approximative demande :",
+              "options": [
+                "Table triée ou mode approprié",
+                "Disque formaté",
+                "Capteur calibré",
+                "JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V lookup cherche clé dans tableau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "SI.CONDITIONS (IFS) simplifie :",
+              "options": [
+                "Plusieurs conditions sans imbrication lourde",
+                "Le chiffrement",
+                "La photo EXIF",
+                "Le binaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste de tests/valeurs en une fonction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Formater conditionnellement une cellule :",
+              "options": [
+                "Change apparence si règle vraie",
+                "Change valeur stockée toujours",
+                "Supprime la formule",
+                "Coupe le réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visuel selon seuils ou formules."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester A1=\"Oui\" compare :",
+              "options": [
+                "Texte exact sensible à casse selon options",
+                "Uniquement nombres",
+                "Des pixels",
+                "Des octets binaires bruts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison textuelle en tableur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Tableaux et listes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un tableau structuré (table Excel) offre :",
+              "options": [
+                "En-têtes automatiques dans les formules",
+                "Extension automatique des plages",
+                "Suppression du CSV",
+                "Blocage d'Internet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les tables nomment colonnes et agrandissent les refs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir plage en tableau facilite :",
+              "options": [
+                "Filtres et total ligne",
+                "Chiffrement disque",
+                "Capture EXIF",
+                "MQTT publish"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Style tableau intègre outils."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Colonne calculée dans un tableau :",
+              "options": [
+                "Se recopie sur chaque ligne",
+                "Existe sur une seule ligne",
+                "Efface les données",
+                "Est un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule remplie pour tout l'ensemble."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Validation de données limite :",
+              "options": [
+                "Saisies à une liste ou plage",
+                "Taille du moniteur",
+                "Vitesse CPU",
+                "Couleur du thème OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Listes déroulantes et règles de saisie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Segment (slicer) sert à :",
+              "options": [
+                "Filtrer un tableau ou TCD visuellement",
+                "Compiler",
+                "Géolocaliser",
+                "Encoder UTF-16 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boutons de filtre interactifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Import CSV dans feuille :",
+              "options": [
+                "Parse colonnes selon délimiteur",
+                "Convertit en vidéo",
+                "Ajoute capteur",
+                "Supprime JSON"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assistant d'import mappe champs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Texte en colonnes :",
+              "options": [
+                "Découpe une chaîne selon séparateur",
+                "Fusionne cellules",
+                "Chiffre",
+                "Trie par GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Split type nom/prénom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PROPRE ou TRIM nettoient :",
+              "options": [
+                "Espaces superflus en texte",
+                "Les virus",
+                "Le disque",
+                "Les graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normalisation de chaînes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau croisé dynamique résume :",
+              "options": [
+                "Données par dimensions et agrégats",
+                "Photos brutes",
+                "Câbles",
+                "Licences seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TCD pivotte lignes/colonnes en synthèse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Actualiser TCD après source modifiée :",
+              "options": [
+                "Recalcule agrégats",
+                "Efface le classeur",
+                "Coupe l'électricité",
+                "Change l'encodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F5 ou actualisation met à jour."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Traitement de jeux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Étapes typiques de traitement :",
+              "options": [
+                "Import",
+                "Nettoyage",
+                "Publication sans aucune vérification",
+                "Visualisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Import et nettoyage précèdent analyse fiable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Colonne « Age » avec texte « dix » :",
+              "options": [
+                "Doit être convertie pour calcul",
+                "Est toujours prête",
+                "Est une métadonnée EXIF",
+                "Est un protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmoniser types avant stats."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Remplacer NA par moyenne impute :",
+              "options": [
+                "Une valeur estimée",
+                "Toujours une fraude",
+                "Un capteur",
+                "Un hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imputation comble manquants avec prudence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fusionner deux tables par clé commune :",
+              "options": [
+                "Type jointure VLOOKUP ou POWER QUERY",
+                "Effacer UTF-8",
+                "Couper MQTT",
+                "JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assemblage sur identifiant partagé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Power Query / Get & Transform sert à :",
+              "options": [
+                "ETL sans code lourd",
+                "Jouer à un FPS",
+                "Chiffrer clavier",
+                "Piloter drone sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extract Transform Load intégré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pivoter lignes en colonnes :",
+              "options": [
+                "Restructurer format large/long",
+                "Supprimer licence",
+                "Capturer photo",
+                "Trier ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unpivot/pivot pour modélisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dédupliquer avant stats évite :",
+              "options": [
+                "Compter deux fois même enregistrement",
+                "Améliorer GPS",
+                "Chiffrer HTTPS",
+                "Lire EXIF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doublons gonflent effectifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Exporter résultat en CSV pour :",
+              "options": [
+                "Partager vers autre logiciel",
+                "Effacer métadonnées obligatoire",
+                "Interdire MOYENNE",
+                "Bloquer open data"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV reste lingua franca tabulaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Documenter transformations dans classeur :",
+              "options": [
+                "Feuille readme ou commentaires",
+                "Rien",
+                "Supprimer formules",
+                "Cacher licence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité pour reproductibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contrôle cohérence : somme parts = 100% :",
+              "options": [
+                "Vérifie règle métier",
+                "Est toujours inutile",
+                "Remplace RGPD",
+                "Active capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tests métier détectent erreurs de saisie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse tableur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le tableur est adapté pour :",
+              "options": [
+                "Calculs sur données tabulaires",
+                "Prototypage d'analyses légères",
+                "Remplacer toute base massive temps réel",
+                "Piloter seul un satellite sans test"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableur brille sur volumes modestes et exploration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Limite d'un tableur :",
+              "options": [
+                "Performance sur très gros jeux",
+                "Impossibilité de faire SOMME",
+                "Absence de graphiques",
+                "Interdiction CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Millions de lignes demandent bases dédiées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Formule bien nommée améliore :",
+              "options": [
+                "Maintenance du fichier",
+                "Chiffrement AES",
+                "Capture EXIF",
+                "Protocole MQTT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité pour soi et les collègues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lien vers open data dans tableur :",
+              "options": [
+                "Import puis analyse locale",
+                "Violation automatique RGPD",
+                "Interdit de tri",
+                "Suppression métadonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter licence et anonymisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Graphique + table source =",
+              "options": [
+                "Visualisation ancrée dans données",
+                "Fichier binaire seul",
+                "Capteur",
+                "Hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagramme reflète plage liée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sauvegarder versions successives :",
+              "options": [
+                "Permet retour arrière",
+                "Efface formules",
+                "Coupe Internet",
+                "Interdit SI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historique limite pertes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Collaborer sur cloud avec tableur :",
+              "options": [
+                "Sync et conflits à gérer",
+                "Impossible toujours",
+                "Sans traçabilité",
+                "Sans droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Édition simultanée demande discipline."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Respecter unités dans colonnes :",
+              "options": [
+                "Évite sommes incohérentes",
+                "Est décoratif",
+                "Remplace MOYENNE",
+                "Supprime filtres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélanger km et m fausse agrégats."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objectif global traitement et tableur :",
+              "options": [
+                "Transformer données en information décisionnelle",
+                "Ignorer qualité",
+                "Refuser graphiques",
+                "Effacer métadonnées systématiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne complète de la saisie au sens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant examen, vérifier :",
+              "options": [
+                "Formules, types, graphiques honnêtes",
+                "Seulement la couleur",
+                "Le modèle de souris",
+                "La marque du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Checklist technique et déontologique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

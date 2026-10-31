@@ -1,0 +1,2558 @@
+{
+  "id": "3e-espagnol-01",
+  "year": "3e",
+  "subject": "espagnol",
+  "title": "Découvrir l'espagnol",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Premier jour au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tu accueilles un élève de seconde dans le couloir. Quelles formules conviennent pour saluer poliment ?",
+              "type": "multiple_choice",
+              "options": [
+                "Buenos días, ¿cómo te llamas?",
+                "Buenos días, ¿cómo se llama usted?",
+                "Hasta luego, chao",
+                "Encantado de conocerte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au lycée on peut tutoyer un camarade (te llamas) ou vouvoyer un inconnu plus âgé (se llama usted). Les deux salutations matinales sont correctes selon le registre."
+            },
+            {
+              "id": "q2",
+              "question": "Un professeur te demande ton nom. Quelle réponse est correcte ?",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Lucía y soy de Nantes.",
+                "Me gusta Lucía y estoy de Nantes.",
+                "Me llamo Lucía y estoy francés.",
+                "Me llamo Lucía y tengo Nantes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se présenter : me llamo + ser de pour la ville. Gustar et estar ne conviennent pas ici."
+            },
+            {
+              "id": "q3",
+              "question": "Il est 14 h au lycée. Comment salues-tu la secrétaire ?",
+              "type": "single_choice",
+              "options": [
+                "Buenas tardes.",
+                "Buenos días.",
+                "Buenas noches.",
+                "Buen provecho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après midi on dit buenas tardes jusqu’au soir."
+            },
+            {
+              "id": "q4",
+              "question": "Comment demander poliment l’âge d’un adulte (usted) ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos años tiene usted?",
+                "¿Cuántos años tienes?",
+                "¿Qué edad es usted?",
+                "¿Cuánto años tiene usted?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec usted : tiene. La structure correcte est cuántos años + tener."
+            },
+            {
+              "id": "q5",
+              "question": "Tu réponds : « Tengo quince años. » Que demandait-on ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿De dónde eres?",
+                "¿Cómo te llamas?",
+                "¿Qué hora es?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tengo quince años répond à une question sur l’âge."
+            },
+            {
+              "id": "q6",
+              "question": "Pour dire d’où tu viens (ville en France), tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Soy de Lyon.",
+                "Estoy de Lyon.",
+                "Me gusta Lyon.",
+                "Tengo Lyon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’origine géographique stable se exprime avec ser + de."
+            },
+            {
+              "id": "q7",
+              "question": "Après « Mucho gusto », tu peux répondre :",
+              "type": "single_choice",
+              "options": [
+                "Igualmente.",
+                "Gracias a ti.",
+                "De nada.",
+                "Por favor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Igualmente (= de même pour moi) est la réponse courante à mucho gusto."
+            },
+            {
+              "id": "q8",
+              "question": "Tu quittes le bureau du CPE. Quelle formule est adaptée ?",
+              "type": "single_choice",
+              "options": [
+                "Hasta luego, que tenga un buen día.",
+                "Buenos días, encantado.",
+                "¿Cómo te llamas?",
+                "Me llamo hasta luego."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prend congé poliment avec hasta luego et un souhait avec usted (tenga)."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿De dónde eres? » — Choisis la bonne réponse pour un élève de 3e :",
+              "type": "single_choice",
+              "options": [
+                "Soy de Burdeos, en Francia.",
+                "Estoy de Burdeos, en Francia.",
+                "Me gusta Burdeos, en Francia.",
+                "Ser de Burdeos, en Francia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eres (tú) + ser de pour indiquer ta provenance."
+            },
+            {
+              "id": "q10",
+              "question": "Pour présenter ton camarade à un professeur, tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Le presento a mi compañero, se llama Hugo.",
+                "Le presento a mi compañero, me llamo Hugo.",
+                "Le presento a mi compañero, estoy Hugo.",
+                "Le presento a mi compañero, tengo Hugo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présenter quelqu’un : se llama + prénom/nom de la personne présentée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tú y usted en el instituto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Avec le proviseur, quelles phrases utilisent correctement usted ?",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo se llama usted?",
+                "¿En qué clase está usted?",
+                "¿Cómo te llamas?",
+                "¿Dónde vives tú?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Usted exige la 3e personne du singulier (se llama, está). Te/tú s’adresse à un pair."
+            },
+            {
+              "id": "q2",
+              "question": "Tu parles à une élève de ta classe. Quelle question est correcte ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Cómo se llama usted?",
+                "¿Cómo se llama?",
+                "¿Cómo os llamáis usted?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre camarades on tutoie : ¿cómo te llamas?"
+            },
+            {
+              "id": "q3",
+              "question": "Le professeur dit : « Siéntese, por favor. » À qui parle-t-il ?",
+              "type": "single_choice",
+              "options": [
+                "À un élève qu’il vouvoie (usted).",
+                "À plusieurs élèves (vosotros).",
+                "À un ami proche (tú).",
+                "À un groupe informel (tú)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Siéntese est l’impératif de courtoisie pour usted."
+            },
+            {
+              "id": "q4",
+              "question": "Comment demander la classe de quelqu’un en le vouvoyant ?",
+              "type": "single_choice",
+              "options": [
+                "¿En qué curso está usted?",
+                "¿En qué curso estás tú?",
+                "¿En qué curso sois usted?",
+                "¿En qué curso eres usted?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classe (niveau) est une situation temporaire : estar + usted → está."
+            },
+            {
+              "id": "q5",
+              "question": "Tu écris un mail au prof d’espagnol. Quelle formule d’ouverture convient ?",
+              "type": "single_choice",
+              "options": [
+                "Estimado profesor:",
+                "Hola profe, ¿qué tal?",
+                "¿Qué pasa, profe?",
+                "Chao profe,"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estimado/a + titre est le registre formel adapté à usted."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿De dónde es usted? » — Quelle réponse correspond (professeur espagnol) ?",
+              "type": "single_choice",
+              "options": [
+                "Soy de Sevilla.",
+                "Estoy de Sevilla.",
+                "Me gusta Sevilla.",
+                "Tengo Sevilla."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’origine se dit avec ser, même avec usted (es en question, soy en réponse je)."
+            },
+            {
+              "id": "q7",
+              "question": "Deux élèves se tutoient. Quelle phrase entends-tu ?",
+              "type": "single_choice",
+              "options": [
+                "¿Tienes clase de matemáticas ahora?",
+                "¿Tiene usted clase de matemáticas ahora?",
+                "¿Tiene clase de matemáticas ahora?",
+                "¿Tenéis usted clase de matemáticas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tú → tienes. Usted → tiene."
+            },
+            {
+              "id": "q8",
+              "question": "Pour remercier poliment un adulte inconnu :",
+              "type": "single_choice",
+              "options": [
+                "Muchas gracias, señor.",
+                "Gracias, tía.",
+                "Nada, chao.",
+                "De nada, ¿qué tal?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muchas gracias + señor/señora convient au vouvoiement."
+            },
+            {
+              "id": "q9",
+              "question": "Tu présentes ta professeure à ta mère (vouvoiement). Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Esta es la señora García, mi profesora de español.",
+                "Esta es la señora García, me llamo García.",
+                "Esta es la señora García, estoy profesora.",
+                "Esta es la señora García, tengo español."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esta es + nom/titre présente une personne formellement."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase mélange incorrectement tú et usted ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo te llama usted?",
+                "¿Cómo se llama usted?",
+                "¿Cómo te llamas?",
+                "¿En qué instituto estudias?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne combine pas te (tú) avec usted : il faut se llama."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Presentarse en clase de español",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour te décrire au lycée, quelles infos utilisent ser correctement ?",
+              "type": "multiple_choice",
+              "options": [
+                "Soy estudiante de tercero.",
+                "Soy alta y simpática.",
+                "Estoy en el aula 204.",
+                "Estoy cansada hoy."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ser sert pour l’identité, le métier/niveau et les traits stables. Estar marque lieu ou état passager."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dire que tu as quinze ans ?",
+              "type": "single_choice",
+              "options": [
+                "Tengo quince años.",
+                "Soy quince años.",
+                "Estoy quince años.",
+                "Me gusta quince años."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’âge se exprime avec tener + años."
+            },
+            {
+              "id": "q3",
+              "question": "« Mi asignatura favorita es español. » Que parle-t-on ?",
+              "type": "single_choice",
+              "options": [
+                "D’une matière préférée.",
+                "D’un lieu du lycée.",
+                "D’une émotion du moment.",
+                "D’un plat préféré."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asignatura favorita = matière favorite ; es = ser pour identifier."
+            },
+            {
+              "id": "q4",
+              "question": "Tu expliques ton emploi du temps. Quelle phrase est correcte ?",
+              "type": "single_choice",
+              "options": [
+                "Los martes tengo clase de tecnología.",
+                "Los martes soy clase de tecnología.",
+                "Los martes estoy clase de tecnología.",
+                "Los martes me gusta clase de tecnología."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir cours : tener clase de + matière."
+            },
+            {
+              "id": "q5",
+              "question": "Pour dire que tu es français (nationalité) :",
+              "type": "single_choice",
+              "options": [
+                "Soy francés.",
+                "Estoy francés.",
+                "Me gusta francés.",
+                "Tengo francés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nationalité est une caractéristique identitaire : ser."
+            },
+            {
+              "id": "q6",
+              "question": "Comment demander la langue maternelle d’un camarade ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cuál es tu lengua materna?",
+                "¿Dónde es tu lengua materna?",
+                "¿Cómo estás tu lengua materna?",
+                "¿Qué hora es tu lengua materna?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuál es + nom pour demander une information identitaire."
+            },
+            {
+              "id": "q7",
+              "question": "Réponse à « ¿Cuál es tu número de teléfono? » :",
+              "type": "single_choice",
+              "options": [
+                "Es el cero seis, doce, treinta y cuatro, cincuenta y seis, setenta y ocho.",
+                "Estoy el cero seis, doce…",
+                "Soy el cero seis, doce…",
+                "Me gusta el cero seis, doce…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un numéro « est » une donnée fixe : es (ser)."
+            },
+            {
+              "id": "q8",
+              "question": "Tu parles de ton club au lycée :",
+              "type": "single_choice",
+              "options": [
+                "Pertenezco al club de teatro.",
+                "Estoy pertenezco al club de teatro.",
+                "Soy pertenezco al club de teatro.",
+                "Me gusta pertenezco al club de teatro."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pertenecer a = faire partie de ; conjugaison correcte : pertenezco."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué te gusta hacer en el recreo? » — Bonne réponse :",
+              "type": "single_choice",
+              "options": [
+                "Me gusta charlar con mis amigos.",
+                "Me gusta soy charlar con mis amigos.",
+                "Me gusta estoy charlar con mis amigos.",
+                "Me gusta tengo charlar con mis amigos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gustar + infinitif : me gusta charlar."
+            },
+            {
+              "id": "q10",
+              "question": "Pour conclure une présentation orale en classe :",
+              "type": "single_choice",
+              "options": [
+                "Gracias por escucharme.",
+                "Hasta luego, me llamo escuchar.",
+                "Buenos días, soy escuchar.",
+                "De nada por escucharme."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gracias por + infinitif clôt poliment une prise de parole."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Origen y nacionalidad",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases indiquent correctement une origine avec ser ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mis padres son de México.",
+                "Yo soy de Toulouse.",
+                "Hoy estoy de Toulouse.",
+                "Ellos son profesores."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ser de + lieu = provenance. « Estoy de » est incorrect pour l’origine ; « son profesores » parle du métier."
+            },
+            {
+              "id": "q2",
+              "question": "« Ella es alemana pero vive en España. » Que signifie alemana ?",
+              "type": "single_choice",
+              "options": [
+                "Nationalité / origine.",
+                "Humeur du jour.",
+                "Lieu où elle est maintenant.",
+                "Matière préférée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Es alemana = elle est allemande (nationalité avec ser)."
+            },
+            {
+              "id": "q3",
+              "question": "Demander la nationalité d’un correspondant (tú) :",
+              "type": "single_choice",
+              "options": [
+                "¿De qué nacionalidad eres?",
+                "¿De qué nacionalidad estás?",
+                "¿De qué nacionalidad tienes?",
+                "¿De qué nacionalidad gustas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité → ser → eres."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse correcte : « Somos de Marsella, en el sur de Francia. »",
+              "type": "single_choice",
+              "options": [
+                "Nous parlons de notre ville d’origine.",
+                "Nous décrivons notre émotion.",
+                "Nous disons où nous sommes assis.",
+                "Nous parlons de la météo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somos de + ville = origine géographique."
+            },
+            {
+              "id": "q5",
+              "question": "Choisis la phrase correcte sur la langue parlée à la maison :",
+              "type": "single_choice",
+              "options": [
+                "En casa hablamos francés y un poco de español.",
+                "En casa somos francés y un poco de español.",
+                "En casa estamos francés y un poco de español.",
+                "En casa gustamos francés y un poco de español."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hablar une langue : verbe hablar, pas ser/estar."
+            },
+            {
+              "id": "q6",
+              "question": "Un élève dit : « Mi madre es española y mi padre es francés. » Il parle de :",
+              "type": "single_choice",
+              "options": [
+                "Les nationalités de ses parents.",
+                "Le lieu du lycée.",
+                "Son ressenti actuel.",
+                "Son projet scolaire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Es + adjectif de nationalité pour les parents."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Dónde vives ahora? » — Réponse adaptée au lycée en France :",
+              "type": "single_choice",
+              "options": [
+                "Vivo en un pueblo cerca de Rennes.",
+                "Soy en un pueblo cerca de Rennes.",
+                "Estoy de un pueblo cerca de Rennes.",
+                "Me gusta un pueblo cerca de Rennes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résidence actuelle : vivir en + lieu."
+            },
+            {
+              "id": "q8",
+              "question": "Différencier origine et résidence : quelle paire est correcte ?",
+              "type": "single_choice",
+              "options": [
+                "Soy de Niza, pero vivo en París.",
+                "Estoy de Niza, pero soy en París.",
+                "Me gusta de Niza, pero tengo en París.",
+                "Ser de Niza, pero estar vivo en París."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ser de = origine ; vivir en = lieu de vie actuel."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire que ton correspondant est espagnol ( lui ) :",
+              "type": "single_choice",
+              "options": [
+                "Él es español.",
+                "Él está español.",
+                "Él tiene español.",
+                "Él gusta español."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité : ser → es español."
+            },
+            {
+              "id": "q10",
+              "question": "Complète : « Nosotros ___ del mismo instituto. »",
+              "type": "single_choice",
+              "options": ["somos", "estamos", "tenemos", "gustamos"],
+              "correctAnswers": [0],
+              "explanation": "Être du même établissement = appartenance identitaire → somos de."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Edad y datos personales",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent l’âge correctement ?",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Cuántos años tiene tu hermano?",
+                "¿Cómo años tienes?",
+                "¿Qué edad tienes?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cuántos años + tener (tienes / tiene). « Cómo años » est incorrect ; « qué edad » se dit plutôt ¿qué edad tienes? mais « cuántos años » est le standard appris."
+            },
+            {
+              "id": "q2",
+              "question": "Tu frère a treize ans. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Mi hermano tiene trece años.",
+                "Mi hermano es trece años.",
+                "Mi hermano está trece años.",
+                "Mi hermano gusta trece años."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge = tener + años."
+            },
+            {
+              "id": "q3",
+              "question": "« Cumplo años en septiembre. » Signifie :",
+              "type": "single_choice",
+              "options": [
+                "Mon anniversaire est en septembre.",
+                "Je fais du sport en septembre.",
+                "Je déménage en septembre.",
+                "Je suis en vacances en septembre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cumplir años = fêter son anniversaire."
+            },
+            {
+              "id": "q4",
+              "question": "Demander la date de naissance poliment (usted) :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuál es su fecha de nacimiento?",
+                "¿Cuál está su fecha de nacimiento?",
+                "¿Cuál tiene su fecha de nacimiento?",
+                "¿Cuál gusta su fecha de nacimiento?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une date « est » une donnée : cuál es (ser)."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « ¿Cuántos años tiene usted, señora? » (prof 42 ans) :",
+              "type": "single_choice",
+              "options": [
+                "Tengo cuarenta y dos años.",
+                "Tienes cuarenta y dos años.",
+                "Tiene cuarenta y dos años.",
+                "Tenemos cuarenta y dos años."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La personne répond à la 1re personne : tengo."
+            },
+            {
+              "id": "q6",
+              "question": "Comparer deux élèves : « Ana es mayor que Luis. »",
+              "type": "single_choice",
+              "options": [
+                "Ana est plus âgée que Luis.",
+                "Ana est plus grande que le bâtiment.",
+                "Ana est professeur de Luis.",
+                "Ana habite chez Luis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mayor que = plus âgé(e) que (comparaison d’âge)."
+            },
+            {
+              "id": "q7",
+              "question": "« Somos de la misma edad. » Vous êtes :",
+              "type": "single_choice",
+              "options": [
+                "Du même âge.",
+                "De la même ville.",
+                "Dans la même salle.",
+                "Du même club."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Edad = âge ; misma edad = même âge."
+            },
+            {
+              "id": "q8",
+              "question": "Phrase correcte pour un questionnaire du lycée :",
+              "type": "single_choice",
+              "options": [
+                "Tengo catorce años y estudio en tercero.",
+                "Soy catorce años y estudio en tercero.",
+                "Estoy catorce años y estudio en tercero.",
+                "Me gusta catorce años y estudio en tercero."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec tener ; estudio = fréquenter une classe."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Es usted mayor de edad? » s’adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Un adulte ou contexte administratif formel.",
+                "Un enfant de primaire.",
+                "Un animal.",
+                "Un objet."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mayor de edad = majeur ; question formelle avec usted."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle info ne se demande PAS avec « ¿Cuántos años…? »",
+              "type": "single_choice",
+              "options": [
+                "Le numéro de téléphone.",
+                "L’âge d’un ami.",
+                "Ton âge.",
+                "L’âge de ta sœur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuántos años = âge uniquement ; le téléphone se demande autrement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Saludos según la hora",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Il est 8 h au self du lycée. Quels saludos sont possibles ?",
+              "type": "multiple_choice",
+              "options": [
+                "Buenos días.",
+                "Buen día.",
+                "Buenas noches.",
+                "Buenas tardes."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le matin : buenos días ou buen día. Buenas tardes = après-midi ; buenas noches = soir/nuit."
+            },
+            {
+              "id": "q2",
+              "question": "Tu entres en cours à 17 h. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Buenas tardes, profe.",
+                "Buenos días, profe.",
+                "Buenas noches, profe.",
+                "Buen provecho, profe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "17 h = fin d’après-midi → buenas tardes."
+            },
+            {
+              "id": "q3",
+              "question": "« Buenas noches » convient quand :",
+              "type": "single_choice",
+              "options": [
+                "Tu quittes une réunion du soir.",
+                "Tu achètes un sandwich à midi.",
+                "Tu salues à 9 h du matin.",
+                "Tu demandes ton âge."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buenas noches s’utilise le soir, aussi pour dire au revoir."
+            },
+            {
+              "id": "q4",
+              "question": "Avant le déjeuner, au personnel de cantine (usted) :",
+              "type": "single_choice",
+              "options": [
+                "Buenos días, ¿me pone un menú, por favor?",
+                "Buenas noches, ¿me pone un menú?",
+                "Hasta luego, ¿me pone un menú?",
+                "Gracias, ¿me pone un menú?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matin ou midi : buenos días + demande polie."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « Buenas tardes, ¿cómo estás? »",
+              "type": "single_choice",
+              "options": [
+                "Bien, gracias. ¿Y tú?",
+                "Soy bien, gracias.",
+                "Tengo bien, gracias.",
+                "Me gusta bien, gracias."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répondre à cómo estás : bien + gracias ; ¿y tú? renvoie la question."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Qué tal? » est :",
+              "type": "single_choice",
+              "options": [
+                "Une salutation informelle entre pairs.",
+                "Un vouvoiement officiel.",
+                "Une question sur l’heure.",
+                "Une formule pour dormir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "¿Qué tal? = salut / comment ça va ?, registre familier entre jeunes."
+            },
+            {
+              "id": "q7",
+              "question": "Tu quittes le club à 19 h. Tu dis à tes amis :",
+              "type": "single_choice",
+              "options": [
+                "¡Hasta mañana!",
+                "¡Buenos días!",
+                "¡Encantado de conocerte!",
+                "¡Cuántos años tienes!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hasta mañana = à demain, adapté en quittant une activité."
+            },
+            {
+              "id": "q8",
+              "question": "Choisir la bonne association heure / saludo :",
+              "type": "single_choice",
+              "options": [
+                "22 h → Buenas noches.",
+                "13 h → Buenas noches.",
+                "7 h → Buenas tardes.",
+                "16 h → Buenos días."
+              ],
+              "correctAnswers": [0],
+              "explanation": "22 h = nuit → buenas noches."
+            },
+            {
+              "id": "q9",
+              "question": "« Hola » peut être suivi de :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué tal?",
+                "¿Cuántos años tiene usted formalmente seul?",
+                "Adiós formal de nuit.",
+                "Fecha de nacimiento."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hola, ¿qué tal? est une entrée en matière courante entre camarades."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur fréquente à éviter le matin au lycée :",
+              "type": "single_choice",
+              "options": [
+                "Dire buenas noches à 8 h.",
+                "Dire buenos días à 8 h.",
+                "Dire hola à 8 h.",
+                "Dire buen día à 8 h."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Buenas noches le matin est incohérent avec l’heure."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Cortesía en el instituto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses correspondent à « Gracias » ?",
+              "type": "multiple_choice",
+              "options": [
+                "De nada.",
+                "No hay de qué.",
+                "Por favor.",
+                "Perdón."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "De nada / no hay de qué = je t’en prie. Por favor = s’il te plaît ; perdón = pardon."
+            },
+            {
+              "id": "q2",
+              "question": "Tu bouscules quelqu’un dans l’escalier. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Perdón, no era mi intención.",
+                "Gracias, no era mi intención.",
+                "De nada, no era mi intención.",
+                "Hola, no era mi intención."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perdón / lo siento pour s’excuser."
+            },
+            {
+              "id": "q3",
+              "question": "Demander la permission de parler en classe :",
+              "type": "single_choice",
+              "options": [
+                "¿Puedo hablar, por favor?",
+                "¿Soy hablar, por favor?",
+                "¿Estoy hablar, por favor?",
+                "¿Gusto hablar, por favor?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poder + infinitif : ¿puedo hablar?"
+            },
+            {
+              "id": "q4",
+              "question": "Le prof dit « Silencio, por favor. » Tu dois :",
+              "type": "single_choice",
+              "options": [
+                "Te taire et écouter.",
+                "Parler plus fort.",
+                "Quitter la salle.",
+                "Chanter."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silencio = silence ; consigne de classe."
+            },
+            {
+              "id": "q5",
+              "question": "« Con permiso » s’utilise quand :",
+              "type": "single_choice",
+              "options": [
+                "Tu entres ou sors d’un bureau.",
+                "Tu dors en classe.",
+                "Tu manges le cours.",
+                "Tu présentes ton frère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Con permiso = avec votre permission, en entrant/sortant."
+            },
+            {
+              "id": "q6",
+              "question": "Répondre à « ¿Me ayudas con el proyecto? » positivement :",
+              "type": "single_choice",
+              "options": [
+                "Claro, te ayudo.",
+                "No hay de qué, te ayudo.",
+                "De nada, no ayudo.",
+                "Perdón, te ayudo siempre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Claro / claro que sí = d’accord pour aider."
+            },
+            {
+              "id": "q7",
+              "question": "Vouvoiement : « ¿Podría repetir, por favor? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Pourriez-vous répéter, s’il vous plaît ?",
+                "Répète tout de suite !",
+                "Je répète merci.",
+                "Au revoir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Podría = conditionnel de politesse avec usted implicite."
+            },
+            {
+              "id": "q8",
+              "question": "« Encantada » est dit par :",
+              "type": "single_choice",
+              "options": [
+                "Une fille qui rencontre quelqu’un.",
+                "Un professeur qui note un devoir.",
+                "Un tableau.",
+                "Une porte."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encantada (f.) / encantado (m.) = enchanté(e) lors d’une présentation."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase polie pour interrompre un adulte :",
+              "type": "single_choice",
+              "options": [
+                "Disculpe, ¿puedo hacer una pregunta?",
+                "Chao, ¿puedo hacer una pregunta?",
+                "Nada, ¿puedo hacer una pregunta?",
+                "Hola profe sin parar."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disculpe / disculpe usted = excusez-moi, formule douce."
+            },
+            {
+              "id": "q10",
+              "question": "Associer : « Por favor » →",
+              "type": "single_choice",
+              "options": [
+                "Demande courtoise.",
+                "Remerciement.",
+                "Au revoir définitif.",
+                "Nationalité."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Por favor accompagne une demande."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "En el club de español",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Au club, quelles phrases présentent correctement une activité ?",
+              "type": "multiple_choice",
+              "options": [
+                "Somos el club de español del instituto.",
+                "Nuestro proyecto es un mural bilingüe.",
+                "Estamos el club de español del instituto.",
+                "Nuestro proyecto gusta un mural."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Somos + groupe ; proyecto es + nom (ser). Estamos/gusta sont incorrects ici."
+            },
+            {
+              "id": "q2",
+              "question": "Inviter un camarade au club :",
+              "type": "single_choice",
+              "options": [
+                "¿Quieres venir al club el viernes?",
+                "¿Eres venir al club el viernes?",
+                "¿Estás venir al club el viernes?",
+                "¿Tienes venir al club el viernes?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Invitation : ¿quieres + infinitif?"
+            },
+            {
+              "id": "q3",
+              "question": "« Me llamo Carla y soy la presidenta del club. » Carla indique :",
+              "type": "single_choice",
+              "options": [
+                "Son nom et son rôle.",
+                "Sa matière préférée seulement.",
+                "La météo.",
+                "L’heure du train."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me llamo + soy la presidenta = identité et fonction."
+            },
+            {
+              "id": "q4",
+              "question": "Demander le nom du club à un visiteur (tú) :",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo se llama vuestro club?",
+                "¿Cómo te llama vuestro club?",
+                "¿Cómo se llama tu club yo?",
+                "¿Cómo estás vuestro club?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le club = il → se llama ; vuestro pour un groupe."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « ¿De qué trata el proyecto? »",
+              "type": "single_choice",
+              "options": [
+                "Trata de la vida en el instituto.",
+                "Es de la vida en el instituto trata.",
+                "Está de la vida trata.",
+                "Gusta de la vida trata."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tratar de = être consacré à / porter sur."
+            },
+            {
+              "id": "q6",
+              "question": "« Hoy estamos muy motivados. » motivados est avec estar car :",
+              "type": "single_choice",
+              "options": [
+                "C’est un état du moment.",
+                "C’est une nationalité.",
+                "C’est un nom propre.",
+                "C’est une date fixe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivation du jour = état temporaire → estar."
+            },
+            {
+              "id": "q7",
+              "question": "Présenter deux responsables :",
+              "type": "single_choice",
+              "options": [
+                "Ellos son el tesorero y la secretaria.",
+                "Ellos están el tesorero y la secretaria.",
+                "Ellos tienen el tesorero y la secretaria.",
+                "Ellos gustan el tesorero y la secretaria."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonctions/rôles → ser."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Cuántos miembros sois? » Bonne réponse :",
+              "type": "single_choice",
+              "options": [
+                "Somos veintitrés miembros.",
+                "Estamos veintitrés miembros.",
+                "Tenemos veintitrés miembros.",
+                "Gustamos veintitrés miembros."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre de membres du groupe → somos + nombre + miembros."
+            },
+            {
+              "id": "q9",
+              "question": "Remercier après un atelier :",
+              "type": "single_choice",
+              "options": [
+                "Gracias a todos por participar.",
+                "De nada por participar todos gracias.",
+                "Perdón por participar.",
+                "Buenos días por participar ayer noche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gracias a todos por + infinitif remercie les participants."
+            },
+            {
+              "id": "q10",
+              "question": "Au revoir après la réunion du club :",
+              "type": "single_choice",
+              "options": [
+                "Nos vemos el próximo martes.",
+                "Nos somos el próximo martes.",
+                "Nos gusta el próximo martes.",
+                "Nos llamo el próximo martes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nos vemos = on se voit (revoir), daté avec el próximo martes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Correspondencia escolar",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un mail à un correspondant, quelles phrases conviennent ?",
+              "type": "multiple_choice",
+              "options": [
+                "Me llamo Inès y soy alumna de tercero.",
+                "Vivo en Angers con mi familia.",
+                "Me llamo Inès y estoy alumna de tercero.",
+                "Vivo Angers sin preposición correcta."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Me llamo + ser alumna ; vivir en/con sont corrects. Estoy alumna et « vivo Angers » sans « en » sont faux."
+            },
+            {
+              "id": "q2",
+              "question": "Demander l’âge du correspondant (tú) :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Cuántos años tiene usted?",
+                "¿Cuántos años es?",
+                "¿Cuántos años gustas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correspondant pair → tú → tienes."
+            },
+            {
+              "id": "q3",
+              "question": "« Mi instituto es grande y moderno. » On décrit :",
+              "type": "single_choice",
+              "options": [
+                "Le lycée avec ser + adjectifs.",
+                "La météo actuelle.",
+                "Une émotion passagère.",
+                "Un plat."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractéristiques de l’établissement → ser + adjectifs."
+            },
+            {
+              "id": "q4",
+              "question": "Parler de tes loisirs préférés :",
+              "type": "single_choice",
+              "options": [
+                "Me gusta leer cómics en español.",
+                "Me gusta soy leer cómics.",
+                "Me gusta estoy leer cómics.",
+                "Me gusta tengo leer cómics."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me gusta + infinitif."
+            },
+            {
+              "id": "q5",
+              "question": "Question sur la famille :",
+              "type": "single_choice",
+              "options": [
+                "¿Tienes hermanos o hermanas?",
+                "¿Eres hermanos o hermanas?",
+                "¿Estás hermanos o hermanas?",
+                "¿Gustas hermanos o hermanas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir des frères/sœurs : tener hermanos."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse : « Sí, tengo un hermano menor. »",
+              "type": "single_choice",
+              "options": [
+                "Elle/Il confirme avoir un frère cadet.",
+                "Elle/Il est frère cadet.",
+                "Elle/Il habite frère cadet.",
+                "Elle/Il mange frère cadet."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tener un hermano menor = avoir un frère plus jeune."
+            },
+            {
+              "id": "q7",
+              "question": "Demander la ville du correspondant :",
+              "type": "single_choice",
+              "options": [
+                "¿En qué ciudad vives?",
+                "¿En qué ciudad eres?",
+                "¿En qué ciudad gustas?",
+                "¿En qué ciudad soy?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de résidence → vivir en qué ciudad."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Qué asignaturas te gustan? » — Exemple de réponse :",
+              "type": "single_choice",
+              "options": [
+                "Me gustan las ciencias y el español.",
+                "Me gusta las ciencias y el español.",
+                "Me gustan el ciencias y el español.",
+                "Me gusto las ciencias y el español."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel → me gustan + pluriel (las ciencias)."
+            },
+            {
+              "id": "q9",
+              "question": "Formule de fin de lettre entre élèves :",
+              "type": "single_choice",
+              "options": [
+                "Un abrazo de tu amiga Clara.",
+                "Un abrazo es tu amiga Clara.",
+                "Un abrazo estoy tu amiga Clara.",
+                "Un abrazo tengo tu amiga Clara."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule amicale : un abrazo de + identité."
+            },
+            {
+              "id": "q10",
+              "question": "Proposer un échange vidéo :",
+              "type": "single_choice",
+              "options": [
+                "¿Te apetece una videollamada el jueves?",
+                "¿Te apetece soy una videollamada?",
+                "¿Te apetece estoy una videollamada?",
+                "¿Te apetece gusta una videollamada?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "¿Te apetece? + nom/infinitif = te tente-t-il ?"
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Repaso: saludar y presentarse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour te présenter au lycée, quelles phrases sont entièrement correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Hola, me llamo Tomás y soy de Estrasburgo.",
+                "Buenas tardes, soy catorce años.",
+                "Buenas tardes, estoy catorce años.",
+                "Encantado, estudio en tercero de secundaria."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Me llamo, soy de et estudio en tercero sont corrects. L’âge exige tener, pas ser ni estar."
+            },
+            {
+              "id": "q2",
+              "question": "Choisis la question correcte pour un adulte inconnu :",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo se llama usted?",
+                "¿Cómo te llama usted?",
+                "¿Cómo os llama usted?",
+                "¿Cómo me llama usted?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usted → se llama."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse à « ¿De dónde eres? »",
+              "type": "single_choice",
+              "options": [
+                "Soy de Lille, en el norte de Francia.",
+                "Estoy de Lille, en el norte de Francia.",
+                "Me gusta Lille, en el norte de Francia.",
+                "Tengo Lille, en el norte de Francia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine : ser de."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Cómo estás hoy? » — Réponse logique :",
+              "type": "single_choice",
+              "options": [
+                "Un poco nervioso por el examen.",
+                "Soy nervioso por el examen siempre.",
+                "De nervioso por el examen.",
+                "Tengo nervioso por el examen identidad."
+              ],
+              "correctAnswers": [0],
+              "explanation": "État du jour → estar implicite ; nervioso = ressenti actuel."
+            },
+            {
+              "id": "q5",
+              "question": "Saluer une professeure à 10 h :",
+              "type": "single_choice",
+              "options": [
+                "Buenos días, señora López.",
+                "Buenas noches, señora López.",
+                "Adiós, señora López.",
+                "Gracias, señora López."
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 h = matinée → buenos días."
+            },
+            {
+              "id": "q6",
+              "question": "Présenter ton correspondant espagnol à la classe :",
+              "type": "single_choice",
+              "options": [
+                "Os presento a Pablo, mi correspondente de Zaragoza.",
+                "Os presento a Pablo, me llamo Zaragoza.",
+                "Os presento a Pablo, estoy Zaragoza.",
+                "Os presento a Pablo, tengo Zaragoza."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os presento a + nom ; mi correspondente de + ville."
+            },
+            {
+              "id": "q7",
+              "question": "Demander poliment de parler plus lentement (usted) :",
+              "type": "single_choice",
+              "options": [
+                "¿Puede hablar más despacio, por favor?",
+                "¿Puedes hablar más despacio usted?",
+                "¿Soy hablar más despacio?",
+                "¿Está hablar más despacio?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puede (usted) + infinitif : demande polie."
+            },
+            {
+              "id": "q8",
+              "question": "« Mucho gusto » répond-on souvent :",
+              "type": "single_choice",
+              "options": [
+                "Mucho gusto.",
+                "Buenas noches.",
+                "Cuántos años.",
+                "Por favor gracias."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réciproque : mucho gusto / el gusto es mío."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase avec tú correcte :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuál es tu correo electrónico?",
+                "¿Cuál es su correo tú?",
+                "¿Cuál está tu correo electrónico identidad?",
+                "¿Cuál tienes tu correo electrónico?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adresse mail = info fixe → cuál es (ser)."
+            },
+            {
+              "id": "q10",
+              "question": "Quitter le prof après un entretien :",
+              "type": "single_choice",
+              "options": [
+                "Muchas gracias por su tiempo. Hasta luego.",
+                "Muchas gracias por su tiempo. Buenos días otra vez.",
+                "De nada por su tiempo. Hasta luego.",
+                "Perdón por su tiempo. Hasta luego."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier + salutation de départ : muchas gracias + hasta luego."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ser: identidad en el instituto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent ser à bon escient au lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "Mi profe de historia es muy exigente.",
+                "Nosotros somos alumnos de tercero.",
+                "Hoy estamos en el laboratorio de ciencias.",
+                "Ellos están contentos con la nota."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ser + adjectif/profession/niveau décrit une identité ou trait stable. Estar marque lieu ou émotion du moment."
+            },
+            {
+              "id": "q2",
+              "question": "« El proyecto ___ importante para la clase. »",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Importance/caractéristique du projet → es (ser)."
+            },
+            {
+              "id": "q3",
+              "question": "Différencier : « Ana ___ inteligente » (trait)",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Trait de personnalité → ser."
+            },
+            {
+              "id": "q4",
+              "question": "« Estos apuntes ___ de matemáticas. »",
+              "type": "single_choice",
+              "options": ["son", "están", "tienen", "gustan"],
+              "correctAnswers": [0],
+              "explanation": "Appartenance / matière des notes → ser de."
+            },
+            {
+              "id": "q5",
+              "question": "La date du exposé : « La presentación ___ el viernes. »",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Date d’un événement planifié → ser."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Quién ___ la responsable del grupo? » — « Laura ___. »",
+              "type": "single_choice",
+              "options": [
+                "es / es",
+                "está / está",
+                "tiene / tiene",
+                "gusta / gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsable = rôle → ser."
+            },
+            {
+              "id": "q7",
+              "question": "Phrase correcte sur l’identité du lycée :",
+              "type": "single_choice",
+              "options": [
+                "Nuestro instituto es público y grande.",
+                "Nuestro instituto está público y grande.",
+                "Nuestro instituto tiene público y grande.",
+                "Nuestro instituto gusta público y grande."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Type d’établissement → ser + adjectifs."
+            },
+            {
+              "id": "q8",
+              "question": "« Yo ___ el portavoz del proyecto ecológico. »",
+              "type": "single_choice",
+              "options": ["soy", "estoy", "tengo", "gusto"],
+              "correctAnswers": [0],
+              "explanation": "Fonction dans le projet → soy."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué ___ la tarea? » — « Es un informe sobre energía. »",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Définir le devoir → ¿qué es?"
+            },
+            {
+              "id": "q10",
+              "question": "Erreur à corriger : « Somos en la clase de música. »",
+              "type": "single_choice",
+              "options": [
+                "Estamos en la clase de música.",
+                "Somos en la clase de música correcto.",
+                "Tenemos en la clase de música.",
+                "Gustamos en la clase de música."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu du cours → estar en, pas ser."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Estar: situación y emociones",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases exigent estar au lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "Los alumnos están en el patio.",
+                "María está cansada después del examen.",
+                "María es cansada siempre.",
+                "El director es en su despacho."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lieu (patio) et fatigue passagère → estar. « Es cansada siempre » devrait être ser ; « es en » est incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Dónde ___ el material del proyecto? » — « ___ en el armario. »",
+              "type": "single_choice",
+              "options": [
+                "está / Está",
+                "es / Es",
+                "tiene / Tiene",
+                "gusta / Gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localisation d’un objet → estar."
+            },
+            {
+              "id": "q3",
+              "question": "Avant un oral, tu es nerveux :",
+              "type": "single_choice",
+              "options": [
+                "Estoy un poco nervioso.",
+                "Soy un poco nervioso ahora.",
+                "Tengo un poco nervioso.",
+                "Gusto un poco nervioso."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émotion momentanée → estar."
+            },
+            {
+              "id": "q4",
+              "question": "« La biblioteca ___ cerrada hoy por obras. »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "État temporaire (fermée) → estar cerrada."
+            },
+            {
+              "id": "q5",
+              "question": "Demander où est la salle informatique :",
+              "type": "single_choice",
+              "options": [
+                "¿Dónde está el aula de informática?",
+                "¿Dónde es el aula de informática?",
+                "¿Dónde tiene el aula de informática?",
+                "¿Dónde gusta el aula de informática?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dónde está + lieu."
+            },
+            {
+              "id": "q6",
+              "question": "« Mis compañeros ___ de buen humor tras las vacaciones. »",
+              "type": "single_choice",
+              "options": ["están", "son", "tienen", "gustan"],
+              "correctAnswers": [0],
+              "explanation": "Humeur du moment → estar de buen humor."
+            },
+            {
+              "id": "q7",
+              "question": "Contraste ser/estar : « El examen ___ difícil, pero hoy ___ contento con mi nota. »",
+              "type": "single_choice",
+              "options": [
+                "es / estoy",
+                "está / soy",
+                "tiene / tengo",
+                "gusta / gusto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficulté intrinsèque es ; satisfaction actuelle estoy."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Cómo ___ vuestro progreso en el proyecto? » — « ___ bien, gracias. »",
+              "type": "single_choice",
+              "options": [
+                "está / Está",
+                "es / Es",
+                "tiene / Tiene",
+                "gusta / Gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancement actuel = situation → está."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle phrase décrit bien la préparation du cartel ?",
+              "type": "single_choice",
+              "options": [
+                "Estamos preparando el cartel esta tarde.",
+                "Somos preparando el cartel esta tarde.",
+                "Tenemos preparando el cartel esta tarde.",
+                "Gustamos preparando el cartel esta tarde."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action en cours → estar + gérondif."
+            },
+            {
+              "id": "q10",
+              "question": "Choisir estar :",
+              "type": "single_choice",
+              "options": [
+                "Las luces del aula están apagadas.",
+                "Las luces del aula son apagadas identidad.",
+                "Las luces del aula tienen apagadas.",
+                "Las luces del aula gustan apagadas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "État des lumières (éteintes) → estar apagadas."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Gustar: actividades del instituto",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases avec gustar sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Me gusta debatir en clase de civismo.",
+                "Nos gusta trabajar en equipo en el proyecto.",
+                "Me gusta soy debatir en clase.",
+                "Les gusta estamos trabajar."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Me gusta / nos gusta + infinitif. Mélanger ser/estar avec gustar est incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "« A mi compañero ___ mucho el rugby escolar. »",
+              "type": "single_choice",
+              "options": ["le gusta", "le gustan", "le gusto", "le gustamos"],
+              "correctAnswers": [0],
+              "explanation": "Rugby = singulier → le gusta."
+            },
+            {
+              "id": "q3",
+              "question": "« ___ las excursiones educativas. » (nous)",
+              "type": "single_choice",
+              "options": ["Nos gustan", "Nos gusta", "Me gustan", "Te gustan"],
+              "correctAnswers": [0],
+              "explanation": "Excursiones = pluriel → nos gustan."
+            },
+            {
+              "id": "q4",
+              "question": "Demander les goûts d’un camarade :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué te gusta hacer después de clase?",
+                "¿Qué te gusta eres después de clase?",
+                "¿Qué te gusta estás después de clase?",
+                "¿Qué te gusta tienes después de clase?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "¿Qué te gusta hacer? + infinitif."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse négative : « No me gusta madrugar para el autobús. »",
+              "type": "single_choice",
+              "options": [
+                "Exprimer un goût négatif.",
+                "Dire l’heure du bus.",
+                "Présenter son nom.",
+                "Demander l’âge."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No me gusta + infinitif."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Te gusta más la física o la química? » — « ___ la química. »",
+              "type": "single_choice",
+              "options": [
+                "Me gusta más",
+                "Me gustan más",
+                "Me gusto más",
+                "Me gustamos más"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférence entre deux matières singulières → me gusta más."
+            },
+            {
+              "id": "q7",
+              "question": "Phrase correcte sur le club de lecture :",
+              "type": "single_choice",
+              "options": [
+                "A muchos alumnos les gusta leer poesía.",
+                "A muchos alumnos les gusta soy leer poesía.",
+                "A muchos alumnos les gusta estoy leer poesía.",
+                "A muchos alumnos les gusta tengo leer poesía."
+              ],
+              "correctAnswers": [0],
+              "explanation": "A + personne + les gusta + infinitif."
+            },
+            {
+              "id": "q8",
+              "question": "« No nos ___ nada las filas en la cantina. »",
+              "type": "single_choice",
+              "options": ["gustan", "gusta", "gusto", "gustamos"],
+              "correctAnswers": [0],
+              "explanation": "Las filas = pluriel → gustan."
+            },
+            {
+              "id": "q9",
+              "question": "Traduction logique : « J’aime bien présenter en espagnol. »",
+              "type": "single_choice",
+              "options": [
+                "Me gusta presentar en español.",
+                "Me gusta soy presentar en español.",
+                "Me gusta estoy presentar en español.",
+                "Me gusta tengo presentar en español."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me gusta + infinitif presentar."
+            },
+            {
+              "id": "q10",
+              "question": "Question avec gustar pour le projet interdisciplinaire :",
+              "type": "single_choice",
+              "options": [
+                "¿Os gusta el tema del proyecto este año?",
+                "¿Os gusta sois el tema del proyecto?",
+                "¿Os gusta estáis el tema del proyecto?",
+                "¿Os gusta tenéis el tema del proyecto?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os gusta + nom (tema)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vocabulario del proyecto escolar",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un proyecto, quels mots espagnols désignent des éléments scolaires ?",
+              "type": "multiple_choice",
+              "options": [
+                "El cartel y el informe final.",
+                "La fecha límite de entrega.",
+                "El desayuno de la luna.",
+                "La nieve del profesor."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cartel (affiche), informe (rapport), fecha límite (date limite) appartiennent au lexique de projet."
+            },
+            {
+              "id": "q2",
+              "question": "« Tenemos que entregar el dossier el lunes. » Signifie :",
+              "type": "single_choice",
+              "options": [
+                "Nous devons rendre le dossier lundi.",
+                "Nous aimons le dossier lundi.",
+                "Nous sommes le dossier lundi.",
+                "Nous habitons le dossier lundi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tener que + infinitif = devoir."
+            },
+            {
+              "id": "q3",
+              "question": "Mot pour « répartition des tâches » :",
+              "type": "single_choice",
+              "options": [
+                "La repartición de tareas.",
+                "La repetición de tareas.",
+                "La refrigeración de tareas.",
+                "La reparación de tareas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repartición = répartition ; tareas = tâches."
+            },
+            {
+              "id": "q4",
+              "question": "« El grupo ___ investigando el consumo de agua. »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Action en cours → está + gérondif investigando."
+            },
+            {
+              "id": "q5",
+              "question": "Demander le thème du projet :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuál es el tema del proyecto?",
+                "¿Cuál está el tema del proyecto?",
+                "¿Cuál tiene el tema del proyecto?",
+                "¿Cuál gusta el tema del proyecto?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème = identification → cuál es."
+            },
+            {
+              "id": "q6",
+              "question": "« Necesitamos ___ para la presentación oral. »",
+              "type": "single_choice",
+              "options": [
+                "diapositivas",
+                "diapositiva es",
+                "diapositiva soy",
+                "diapositiva estar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diapositivas = diapositives (support oral)."
+            },
+            {
+              "id": "q7",
+              "question": "« El profesor ___ los criterios de evaluación. »",
+              "type": "single_choice",
+              "options": ["explica", "explico", "explican", "explicas"],
+              "correctAnswers": [0],
+              "explanation": "Sujet el profesor → explica (3e sing.)."
+            },
+            {
+              "id": "q8",
+              "question": "Vocabulaire : « la bibliografía » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Lister les sources consultées.",
+                "Décrire la cantine.",
+                "Saluer le directeur.",
+                "Donner son âge."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bibliografía = liste des références."
+            },
+            {
+              "id": "q9",
+              "question": "« Vamos a ___ un vídeo para la clase. »",
+              "type": "single_choice",
+              "options": ["grabar", "grabo", "grabas", "graba"],
+              "correctAnswers": [0],
+              "explanation": "Ir a + infinitif : vamos a grabar."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase sur la deadline :",
+              "type": "single_choice",
+              "options": [
+                "La entrega es dentro de dos semanas.",
+                "La entrega está dentro de dos identidad.",
+                "La entrega tiene dentro de dos soy.",
+                "La entrega gusta dentro de dos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date limite planifiée → es."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "El aula y el material",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels objets trouve-t-on dans l’aula ?",
+              "type": "multiple_choice",
+              "options": [
+                "El pizarra digital y los pupitres.",
+                "El estuche y el diccionario.",
+                "El avión y el océano.",
+                "La montaña y el cielo nocturno."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pizarra, pupitres, estuche, diccionario = vocabulaire de classe."
+            },
+            {
+              "id": "q2",
+              "question": "Demander un stylo en classe :",
+              "type": "single_choice",
+              "options": [
+                "¿Me prestas un bolígrafo, por favor?",
+                "¿Me prestas un bolígrafo soy?",
+                "¿Me prestas un bolígrafo estoy?",
+                "¿Me prestas un bolígrafo tengo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prêter : ¿me prestas? + objet."
+            },
+            {
+              "id": "q3",
+              "question": "« No ___ mi cuaderno de español. » (perdu)",
+              "type": "single_choice",
+              "options": [
+                "encuentro",
+                "encuentro soy",
+                "soy encuentro",
+                "estoy encuentro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas trouver → no encuentro (trouver)."
+            },
+            {
+              "id": "q4",
+              "question": "« La profe ___ en la pizarra las consignas. »",
+              "type": "single_choice",
+              "options": ["escribe", "escribo", "escribimos", "escribes"],
+              "correctAnswers": [0],
+              "explanation": "La profe → escribe."
+            },
+            {
+              "id": "q5",
+              "question": "Où range-t-on les affiches du projet ?",
+              "type": "single_choice",
+              "options": [
+                "En el pasillo del instituto.",
+                "En el desayuno del instituto.",
+                "En el sueño del instituto.",
+                "En el cumpleaños del instituto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasillo = couloir, lieu plausible pour exposer."
+            },
+            {
+              "id": "q6",
+              "question": "« Necesitamos tijeras y ___ para el collage. »",
+              "type": "single_choice",
+              "options": ["cola", "cola soy", "cola estoy", "cola tengo"],
+              "correctAnswers": [0],
+              "explanation": "Cola = colle ; tijeras = ciseaux."
+            },
+            {
+              "id": "q7",
+              "question": "Demander de répéter une consigne (tú) :",
+              "type": "single_choice",
+              "options": [
+                "¿Puedes repetir la consigna?",
+                "¿Puedes repetir la consigna soy?",
+                "¿Eres repetir la consigna?",
+                "¿Estás repetir la consigna?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poder + infinitif : ¿puedes repetir?"
+            },
+            {
+              "id": "q8",
+              "question": "« El ordenador ___ averiado. »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "État de panne → está averiado."
+            },
+            {
+              "id": "q9",
+              "question": "Vocabulaire : « el recreo » c’est :",
+              "type": "single_choice",
+              "options": [
+                "La pause entre les cours.",
+                "Le devoir maison.",
+                "L’examen final.",
+                "La cantine du soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recreo = récréation / pause."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase range correctement les cartes du groupe ?",
+              "type": "single_choice",
+              "options": [
+                "Guardamos los mapas en la carpeta del grupo.",
+                "Somos los mapas en la carpeta del grupo.",
+                "Estamos los mapas identidad en la carpeta.",
+                "Gustamos los mapas en la carpeta."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guardar = ranger ; carpeta = dossier."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Gustar y materias",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent correctement des matières ?",
+              "type": "multiple_choice",
+              "options": [
+                "Me encantan las artes plásticas.",
+                "No me gusta nada la estadística.",
+                "Me gusta son las matemáticas.",
+                "Te gusta estoy la historia."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Me encantan / no me gusta nada + matière. Mélanges ser/estar incorrects."
+            },
+            {
+              "id": "q2",
+              "question": "« A la profe ___ enseñar español. »",
+              "type": "single_choice",
+              "options": ["le gusta", "le gustan", "le gusto", "le gustamos"],
+              "correctAnswers": [0],
+              "explanation": "Enseñar = infinitif singulier → le gusta."
+            },
+            {
+              "id": "q3",
+              "question": "Tu adores la musique au lycée :",
+              "type": "single_choice",
+              "options": [
+                "Me encanta la educación musical.",
+                "Me encanta soy la educación musical.",
+                "Me encanta estoy la educación musical.",
+                "Me encanta tengo la educación musical."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me encanta + singulier (équivalent fort de gustar)."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿A vosotros ___ los trabajos en grupo? » — « Sí, ___ mucho. »",
+              "type": "single_choice",
+              "options": [
+                "os gustan / nos gustan",
+                "os gusta / nos gusta",
+                "os gusto / me gusto",
+                "os gustamos / nos gustamos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trabajos = pluriel → gustan."
+            },
+            {
+              "id": "q5",
+              "question": "Matière la moins aimée :",
+              "type": "single_choice",
+              "options": [
+                "La que menos me gusta es tecnología.",
+                "La que menos me gusta soy tecnología.",
+                "La que menos me gusta estoy tecnología.",
+                "La que menos me gusta tengo tecnología."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La que menos me gusta es + nom."
+            },
+            {
+              "id": "q6",
+              "question": "« No ___ las pruebas sorpresa de vocabulario. » (nous)",
+              "type": "single_choice",
+              "options": ["nos gustan", "nos gusta", "me gustan", "te gustan"],
+              "correctAnswers": [0],
+              "explanation": "Pruebas = pluriel → nos gustan."
+            },
+            {
+              "id": "q7",
+              "question": "Question au prof sur les goûts de la classe :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué actividades les gustan más a los alumnos?",
+                "¿Qué actividades les gusta más a los alumnos siempre singular?",
+                "¿Qué actividades les gusto más?",
+                "¿Qué actividades les gustamos más?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actividades = pluriel → les gustan."
+            },
+            {
+              "id": "q8",
+              "question": "« Me gusta ___ documentales en clase de geografía. »",
+              "type": "single_choice",
+              "options": ["ver", "ver soy", "soy ver", "estoy ver"],
+              "correctAnswers": [0],
+              "explanation": "Gustar + infinitif ver."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse : « Prefiero lengua extranjera a matemáticas. »",
+              "type": "single_choice",
+              "options": [
+                "Exprimer une préférence entre matières.",
+                "Demander la date.",
+                "Saluer le directeur.",
+                "Dire son numéro de téléphone."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preferir = préférer une matière à une autre."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase incorrecte :",
+              "type": "single_choice",
+              "options": [
+                "Me gusta las clases de laboratorio.",
+                "Me gustan las clases de laboratorio.",
+                "Me encantan las clases de laboratorio.",
+                "No me gustan las clases de laboratorio."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clases = pluriel → me gustan, pas me gusta."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Ser para describir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles descriptions avec ser sont correctes pour un lycée ?",
+              "type": "multiple_choice",
+              "options": [
+                "El edificio es antiguo pero acogedor.",
+                "Las clases son amplias y luminosas.",
+                "Los alumnos están amplios siempre.",
+                "El horario es en la pared estar."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Caractéristiques du bâtiment et des salles → ser + adjectifs."
+            },
+            {
+              "id": "q2",
+              "question": "« Mi tutor ___ muy paciente con el grupo. »",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Trait de personnalité stable → es paciente."
+            },
+            {
+              "id": "q3",
+              "question": "« El horario de tercero ___ exigente este año. » (caractéristique)",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Description du programme → es exigente."
+            },
+            {
+              "id": "q4",
+              "question": "Nationalité + métier futur au lycée pro :",
+              "type": "single_choice",
+              "options": [
+                "Soy francés y quiero ser ingeniero.",
+                "Estoy francés y quiero ser ingeniero.",
+                "Me gusta francés y quiero ser ingeniero.",
+                "Tengo francés y quiero ser ingeniero."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité ser ; profession visée ser ingeniero."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿Cómo ___ tu instituto? » — « ___ pequeño pero muy unido. »",
+              "type": "single_choice",
+              "options": [
+                "es / Es",
+                "está / Está",
+                "tiene / Tiene",
+                "gusta / Gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description générale de l’établissement → es."
+            },
+            {
+              "id": "q6",
+              "question": "« La profe de EF ___ muy deportista. »",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Profil sportif = trait → es deportista."
+            },
+            {
+              "id": "q7",
+              "question": "Contraste : « El examen ___ largo, pero hoy ___ tranquilo. »",
+              "type": "single_choice",
+              "options": [
+                "es / estoy",
+                "está / soy",
+                "tiene / tengo",
+                "gusta / gusto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée intrinsèque es ; état personnel estoy tranquilo."
+            },
+            {
+              "id": "q8",
+              "question": "« Estos resultados ___ buenos para el proyecto. » (qualité)",
+              "type": "single_choice",
+              "options": ["son", "están", "tienen", "gustan"],
+              "correctAnswers": [0],
+              "explanation": "Qualité jugée → son buenos."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase : « Somos un grupo muy creativo. »",
+              "type": "single_choice",
+              "options": [
+                "Décrit l’identité du groupe.",
+                "Indique un lieu temporaire.",
+                "Exprime une faim passagère.",
+                "Demande l’heure."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somos + adjectif = identité du groupe."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur : « El proyecto está interesante siempre. » Meilleure version :",
+              "type": "single_choice",
+              "options": [
+                "El proyecto es interesante.",
+                "El proyecto es interesante está mal.",
+                "El proyecto tiene interesante.",
+                "El proyecto gusta interesante."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractéristique durable → es interesante."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Estar en situaciones escolares",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Situations où estar est obligatoire :",
+              "type": "multiple_choice",
+              "options": [
+                "Estoy en la sala de reuniones con mi equipo.",
+                "Estamos satisfechos con la nota.",
+                "Somos satisfechos con la nota siempre.",
+                "El profe es en clase ahora mal."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lieu de réunion et satisfaction momentanée → estar."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Dónde ___ la reunión del consejo de clase? »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Localisation → está."
+            },
+            {
+              "id": "q3",
+              "question": "Pendant un contrôle : « Estoy ___ en silencio. »",
+              "type": "single_choice",
+              "options": ["trabajando", "trabajo", "trabajas", "trabajan"],
+              "correctAnswers": [0],
+              "explanation": "Estoy trabajando = en train de travailler."
+            },
+            {
+              "id": "q4",
+              "question": "« La profe ___ ausente hoy. »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Absence temporaire → está ausente."
+            },
+            {
+              "id": "q5",
+              "question": "« Los datos ___ listos para el informe. » (état actuel)",
+              "type": "single_choice",
+              "options": ["están", "son", "tienen", "gustan"],
+              "correctAnswers": [0],
+              "explanation": "Prêts maintenant → están listos."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse à « ¿Cómo estáis con el plazo? »",
+              "type": "single_choice",
+              "options": [
+                "Estamos un poco estresados.",
+                "Somos un poco estresados identidad.",
+                "Tenemos un poco estresados.",
+                "Gustamos un poco estresados."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress du moment → estar estresados."
+            },
+            {
+              "id": "q7",
+              "question": "« El aula ___ vacía después del último curso. »",
+              "type": "single_choice",
+              "options": ["está", "es", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "État vide temporaire → está vacía."
+            },
+            {
+              "id": "q8",
+              "question": "Demander si un camarade est malade :",
+              "type": "single_choice",
+              "options": [
+                "¿Estás enfermo hoy?",
+                "¿Eres enfermo hoy identidad?",
+                "¿Tienes enfermo hoy?",
+                "¿Gustas enfermo hoy?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maladie passagère → estar enfermo."
+            },
+            {
+              "id": "q9",
+              "question": "« Mis padres ___ preocupados por las notas. » (maintenant)",
+              "type": "single_choice",
+              "options": ["están", "son", "tienen", "gustan"],
+              "correctAnswers": [0],
+              "explanation": "Inquiétude actuelle → están preocupados."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase dit que l'on est d'accord pour le mural ?",
+              "type": "single_choice",
+              "options": [
+                "Estoy de acuerdo con tu idea para el mural.",
+                "Soy de acuerdo con tu idea para el mural.",
+                "Tengo de acuerdo con tu idea para el mural.",
+                "Gusto de acuerdo con tu idea para el mural."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estar de acuerdo = être d’accord."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Frases útiles en tercero",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases sont utiles pendant un travail de groupe ?",
+              "type": "multiple_choice",
+              "options": [
+                "¿Podemos repartir las tareas ahora?",
+                "No entiendo esta parte del enunciado.",
+                "Me llamo enunciado repartir.",
+                "Soy repartir tareas ahora mal."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repartir tareas et demander clarification sont des phrases clés en projet."
+            },
+            {
+              "id": "q2",
+              "question": "Demander l’avis du prof (usted) :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué le parece nuestro borrador?",
+                "¿Qué le parece nuestro borrador tú?",
+                "¿Qué te parece usted borrador formal?",
+                "¿Qué soy parece nuestro borrador?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "¿Qué le parece? = qu’en pensez-vous ? (usted)."
+            },
+            {
+              "id": "q3",
+              "question": "« Vamos a ___ conclusiones en la última página. »",
+              "type": "single_choice",
+              "options": ["redactar", "redacto", "redactas", "redactan"],
+              "correctAnswers": [0],
+              "explanation": "Ir a + infinitif redactar."
+            },
+            {
+              "id": "q4",
+              "question": "Proposer une pause :",
+              "type": "single_choice",
+              "options": [
+                "¿Hacemos una pausa de cinco minutos?",
+                "¿Somos una pausa de cinco minutos?",
+                "¿Estamos una pausa de cinco minutos?",
+                "¿Gustamos una pausa de cinco minutos?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "¿Hacemos? = faisons-nous ?"
+            },
+            {
+              "id": "q5",
+              "question": "« Necesito ___ en la biblioteca esta tarde. »",
+              "type": "single_choice",
+              "options": ["estudiar", "estudio", "estudias", "estudian"],
+              "correctAnswers": [0],
+              "explanation": "Necesitar + infinitif estudiar."
+            },
+            {
+              "id": "q6",
+              "question": "Signaler un problème au prof :",
+              "type": "single_choice",
+              "options": [
+                "Profe, no funciona el proyector.",
+                "Profe, no funciona soy el proyector.",
+                "Profe, no soy funciona el proyector.",
+                "Profe, no estoy funciona el proyector."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No funciona = ne fonctionne pas."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Puedo ___ una foto del cartel terminado? »",
+              "type": "single_choice",
+              "options": ["hacer", "hago", "haces", "hacen"],
+              "correctAnswers": [0],
+              "explanation": "Poder + infinitif hacer."
+            },
+            {
+              "id": "q8",
+              "question": "Encourager l’équipe :",
+              "type": "single_choice",
+              "options": [
+                "¡Ánimo, equipo, lo conseguiremos!",
+                "¡Ánimo, equipo, lo somos!",
+                "¡Ánimo, equipo, lo estamos identidad!",
+                "¡Ánimo, equipo, lo gustamos!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lo conseguiremos = nous y arriverons."
+            },
+            {
+              "id": "q9",
+              "question": "« La próxima semana ___ la exposición en el hall. » (lieu événement)",
+              "type": "single_choice",
+              "options": ["es", "está", "tiene", "gusta"],
+              "correctAnswers": [0],
+              "explanation": "Date/lieu planifié de l’expo → es en el hall (événement prévu)."
+            },
+            {
+              "id": "q10",
+              "question": "Clore une séance de travail :",
+              "type": "single_choice",
+              "options": [
+                "Quedamos en continuar mañana a primera hora.",
+                "Quedamos en continuar soy mañana.",
+                "Quedamos en continuar estoy mañana.",
+                "Quedamos en continuar tengo mañana."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quedar en + infinitif = convenir de continuer."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Síntesis: ser, estar y gustar",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases mélangent correctement ser, estar et gustar ?",
+              "type": "multiple_choice",
+              "options": [
+                "Soy alumno y estoy contento con mi nota.",
+                "Me gusta el proyecto porque es útil.",
+                "Me gusta el proyecto porque está útil identidad.",
+                "Soy contento siempre con estar alumno."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Soy alumno (ser) + estoy contento (état) ; me gusta + es útil (caractéristique). Les autres mélange incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "Compléter : « El taller de español ___ los miércoles y ___ muy dinámico. »",
+              "type": "single_choice",
+              "options": [
+                "es / es",
+                "está / está",
+                "tiene / tiene",
+                "gusta / gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour habituel et caractéristique → es … es."
+            },
+            {
+              "id": "q3",
+              "question": "« Hoy ___ en el laboratorio y ___ las experiencias. »",
+              "type": "single_choice",
+              "options": [
+                "estamos / nos gustan",
+                "somos / nos gustan",
+                "estamos / nos gusta",
+                "somos / nos gusta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu estar ; experiencias pluriel → nos gustan."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « ¿Eres de aquí? » pour un élève d’échange :",
+              "type": "single_choice",
+              "options": [
+                "No, soy de Francia, pero estoy aquí un mes.",
+                "No, estoy de Francia, pero soy aquí un mes.",
+                "No, me gusta de Francia, pero tengo aquí un mes.",
+                "No, tengo de Francia, pero gusta aquí un mes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine ser de ; séjour temporaire estar aquí."
+            },
+            {
+              "id": "q5",
+              "question": "« A mi madre ___ que estudie idiomas. »",
+              "type": "single_choice",
+              "options": ["le gusta", "le gustan", "le gusto", "le gustamos"],
+              "correctAnswers": [0],
+              "explanation": "Studier langues = proposition singulière → le gusta que + subjonctif (estudie)."
+            },
+            {
+              "id": "q6",
+              "question": "Choisir la bonne paire :",
+              "type": "single_choice",
+              "options": [
+                "El director está ocupado / El director es muy serio.",
+                "El director es ocupado / El director está muy serio.",
+                "El director tiene ocupado / El director gusta serio.",
+                "El director gusta ocupado / El director tiene serio."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occupé maintenant estar ; trait serio ser."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Qué te gusta ___ del instituto? »",
+              "type": "single_choice",
+              "options": ["más", "más soy", "más estoy", "más tengo"],
+              "correctAnswers": [0],
+              "explanation": "¿Qué te gusta más? = qu’est-ce que tu préfères ?"
+            },
+            {
+              "id": "q8",
+              "question": "Phrase sur le ressenti après oral :",
+              "type": "single_choice",
+              "options": [
+                "Estoy aliviado porque la presentación es mañana terminada.",
+                "Estoy aliviado porque la presentación fue bien.",
+                "Soy aliviado porque la presentación es bien identidad.",
+                "Tengo aliviado porque la presentación gusta bien."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Soulagement actuel estoy aliviado ; bilan passé fue bien."
+            },
+            {
+              "id": "q9",
+              "question": "Demander si le groupe aime le thème (vosotros) :",
+              "type": "single_choice",
+              "options": [
+                "¿Os gusta el enfoque del proyecto?",
+                "¿Os gusta sois el enfoque del proyecto?",
+                "¿Os gusta estáis el enfoque del proyecto?",
+                "¿Os gusta tenéis el enfoque del proyecto?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os gusta + nom singulier enfoque."
+            },
+            {
+              "id": "q10",
+              "question": "Récapitulatif : quelle phrase est fausse ?",
+              "type": "single_choice",
+              "options": [
+                "Me gustan los debates en clase de español.",
+                "Estoy en tercero y soy francés.",
+                "Soy enfermo hoy, no puedo ir.",
+                "El proyecto es ambicioso pero estamos motivados."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Maladie passagère : estar enfermo, pas soy enfermo."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

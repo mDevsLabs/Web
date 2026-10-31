@@ -1,0 +1,2398 @@
+{
+  "id": "3e-anglais-01",
+  "year": "3e",
+  "subject": "anglais",
+  "title": "Le monde du travail",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Métiers",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Noms de métiers courants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent des métiers liés à la santé ?",
+              "options": ["doctor", "teacher", "nurse", "driver"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Doctor » et « nurse » sont des professions médicales ; « teacher » enseigne et « driver » conduit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « boulanger » en anglais ?",
+              "options": ["baker", "banker", "builder", "butcher"],
+              "correctAnswers": [0],
+              "explanation": "Un boulanger est un « baker » ; « banker » est un banquier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle traduction correspond à « firefighter » ?",
+              "options": ["Pompier", "Policier", "Pilote", "Plombier"],
+              "correctAnswers": [0],
+              "explanation": "« Firefighter » signifie pompier ; « policier » se dit « police officer »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un « chef » (cuisinier en chef) se dit :",
+              "options": ["chef", "chief", "cook", "waiter"],
+              "correctAnswers": [0],
+              "explanation": "En anglais, le chef de cuisine est aussi appelé « chef » ; « cook » est un cuisinier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « engineer » ?",
+              "options": [
+                "Ingénieur",
+                "Infirmier",
+                "Instituteur",
+                "Interprète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Engineer » = ingénieur ; ne pas confondre avec « nurse » (infirmier)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduire « avocat » (profession juridique) ?",
+              "options": ["lawyer", "layer", "leader", "lender"],
+              "correctAnswers": [0],
+              "explanation": "Un avocat est un « lawyer » ou « solicitor » au Royaume-Uni."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Dentist » désigne :",
+              "options": [
+                "Un dentiste",
+                "Un danseur",
+                "Un détaillant",
+                "Un designer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dentist » vient de « teeth » (dents) : c’est un dentiste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mot pour « journaliste » est :",
+              "options": ["journalist", "journey", "journal", "judge"],
+              "correctAnswers": [0],
+              "explanation": "« Journalist » = journaliste ; « judge » = juge."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un « mechanic » répare surtout :",
+              "options": [
+                "Des véhicules",
+                "Des maisons",
+                "Des ordinateurs",
+                "Des livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un « mechanic » est un mécanicien, souvent pour voitures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Architect » signifie :",
+              "options": ["Architecte", "Archiviste", "Artiste", "Agent"],
+              "correctAnswers": [0],
+              "explanation": "« Architect » designe des bâtiments ; c’est un architecte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Lieux de travail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où peut travailler un « teacher » ?",
+              "options": ["school", "hospital", "office", "restaurant"],
+              "correctAnswers": [0, 2],
+              "explanation": "Un professeur travaille surtout à l’« school », parfois aussi en « office » administratif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un médecin travaille généralement à l’…",
+              "options": ["hospital", "hotel", "house", "harbour"],
+              "correctAnswers": [0],
+              "explanation": "« Hospital » = hôpital, lieu typique pour un « doctor »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Bakery » est :",
+              "options": [
+                "Une boulangerie",
+                "Une banque",
+                "Une bibliothèque",
+                "Une boutique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bakery » = boulangerie, où travaille un « baker »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un « waiter » travaille dans un …",
+              "options": ["restaurant", "factory", "farm", "garage"],
+              "correctAnswers": [0],
+              "explanation": "Le serveur (« waiter ») sert les clients au « restaurant »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Office » désigne souvent :",
+              "options": ["Un bureau", "Une usine", "Une école", "Un hôpital"],
+              "correctAnswers": [0],
+              "explanation": "« Office » = bureau, lieu de travail administratif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un agriculteur travaille à la …",
+              "options": ["farm", "firm", "fair", "ferry"],
+              "correctAnswers": [0],
+              "explanation": "« Farmer » → « farm » (ferme)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Factory » signifie :",
+              "options": ["Usine", "Factorie (maths)", "Famille", "Faculté"],
+              "correctAnswers": [0],
+              "explanation": "Une « factory » est une usine de production."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un « shop assistant » travaille dans un …",
+              "options": ["shop", "ship", "shed", "shrine"],
+              "correctAnswers": [0],
+              "explanation": "« Shop assistant » = vendeur en magasin (« shop »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Construction site » est :",
+              "options": [
+                "Un chantier",
+                "Un cinéma",
+                "Un centre commercial",
+                "Un camp"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ouvriers du bâtiment travaillent sur un « construction site »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une « library » est un lieu où travaille un …",
+              "options": ["librarian", "lawyer", "lender", "leader"],
+              "correctAnswers": [0],
+              "explanation": "« Librarian » = bibliothécaire, à la « library »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "He / She works as…",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctes pour dire le métier de quelqu’un ?",
+              "options": [
+                "She works as a nurse.",
+                "She work as a nurse.",
+                "He is a teacher.",
+                "He are a teacher."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec he/she/on, le verbe prend un -s : « works » ; « He is a teacher » est aussi correct."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « My father _____ as a chef. »",
+              "options": ["works", "work", "working", "worked"],
+              "correctAnswers": [0],
+              "explanation": "« My father » = he → present simple : « works »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« They _____ doctors. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [0],
+              "explanation": "Avec « they », on utilise « are »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduction correcte : « Il est pompier. »",
+              "options": [
+                "He is a firefighter.",
+                "He are a firefighter.",
+                "He is firefighter.",
+                "He a firefighter."
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, on ajoute l’article « a » devant le métier au singulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« She works in a hospital. She is a … »",
+              "options": ["nurse", "teacher", "baker", "driver"],
+              "correctAnswers": [0],
+              "explanation": "À l’hôpital, « nurse » (infirmière) est le métier le plus logique ici."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est fausse ?",
+              "options": [
+                "I am a student.",
+                "We are engineers.",
+                "She work as a lawyer.",
+                "He works as a pilot."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Il faut « She works », pas « She work »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« What does your mother do? » — « She … a dentist. »",
+              "options": ["is", "does", "do", "are"],
+              "correctAnswers": [0],
+              "explanation": "On répond souvent « She is a dentist » pour indiquer le métier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« He doesn’t _____ in an office. »",
+              "options": ["work", "works", "working", "worker"],
+              "correctAnswers": [0],
+              "explanation": "Après « doesn’t », le verbe est à la base : « work »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« My sister and I _____ shop assistants. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [0],
+              "explanation": "Sujet pluriel (« my sister and I ») → « are »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Works » convient avec :",
+              "options": ["he", "they", "we", "I"],
+              "correctAnswers": [0],
+              "explanation": "Seul « he » (ou she/it) prend « works » au present simple affirmatif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Outils et uniformes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets sont associés à des métiers précis ?",
+              "options": [
+                "stethoscope — doctor",
+                "whisk — baker",
+                "hammer — teacher",
+                "keyboard — programmer"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le stéthoscope va avec le médecin ; le clavier avec le programmeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un « uniform » est :",
+              "options": [
+                "Une tenue de travail",
+                "Un outil",
+                "Un véhicule",
+                "Un diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Uniform » = uniforme porté au travail."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un pompier porte souvent un …",
+              "options": ["helmet", "apron", "tie", "gown"],
+              "correctAnswers": [0],
+              "explanation": "« Helmet » = casque, protection pour les pompiers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Apron » est porté surtout par un …",
+              "options": ["chef", "pilot", "sailor", "soldier"],
+              "correctAnswers": [0],
+              "explanation": "Le tablier (« apron ») protège le « chef » en cuisine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un chirurgien porte des …",
+              "options": [
+                "gloves",
+                "gloves only at home",
+                "boots for skiing",
+                "sandals"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gloves » = gants, hygiène en milieu médical."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Toolbox » contient des outils pour un …",
+              "options": ["mechanic", "musician", "magician", "manager"],
+              "correctAnswers": [0],
+              "explanation": "« Toolbox » = boîte à outils, typique du mécanicien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un policier peut porter un …",
+              "options": ["badge", "basket", "balloon", "blanket"],
+              "correctAnswers": [0],
+              "explanation": "« Badge » = insigne de police."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Scissors » sont utiles pour un …",
+              "options": ["hairdresser", "driver", "farmer", "fisherman"],
+              "correctAnswers": [0],
+              "explanation": "Le coiffeur (« hairdresser ») utilise des « scissors »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Laptop » est un outil fréquent pour un …",
+              "options": ["web designer", "waiter", "welder", "window cleaner"],
+              "correctAnswers": [0],
+              "explanation": "Un concepteur web travaille sur un « laptop »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Microphone » est central pour un …",
+              "options": ["singer", "surgeon", "surfer", "sailor"],
+              "correctAnswers": [0],
+              "explanation": "Un chanteur (« singer ») utilise un « microphone »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Métiers et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent bien une activité professionnelle ?",
+              "options": [
+                "teach — teacher",
+                "drive — driver",
+                "sleep — doctor",
+                "eat — nurse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Teach » va avec « teacher » ; « drive » avec « driver »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un « baker » … bread every morning.",
+              "options": ["bakes", "bake", "baking", "baked"],
+              "correctAnswers": [0],
+              "explanation": "He/she → « bakes » au present simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un « photographer » … pictures.",
+              "options": ["takes", "take", "taking", "took"],
+              "correctAnswers": [0],
+              "explanation": "« Take pictures » = prendre des photos ; he → « takes »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Repair cars » décrit un …",
+              "options": ["mechanic", "musician", "magician", "mailman"],
+              "correctAnswers": [0],
+              "explanation": "Réparer des voitures = travail de « mechanic »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un « vet » … animals.",
+              "options": ["helps", "help", "helping", "helped"],
+              "correctAnswers": [0],
+              "explanation": "« Vet » = vétérinaire ; he/she « helps » animals."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Deliver letters » : métier = …",
+              "options": ["postman", "policeman", "politician", "poet"],
+              "correctAnswers": [0],
+              "explanation": "Le facteur (« postman ») livre le courrier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un « gardener » … plants and flowers.",
+              "options": ["grows", "grow", "growing", "grew"],
+              "correctAnswers": [0],
+              "explanation": "« Grow » = faire pousser ; he → « grows »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Write articles » convient à un …",
+              "options": ["journalist", "judge", "janitor", "jeweller"],
+              "correctAnswers": [0],
+              "explanation": "Le journaliste rédige des articles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un « pilot » … an aeroplane.",
+              "options": ["flies", "fly", "flying", "flew"],
+              "correctAnswers": [0],
+              "explanation": "« Fly » au present : he « flies »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Sell products » : …",
+              "options": ["sales assistant", "scientist", "sculptor", "singer"],
+              "correctAnswers": [0],
+              "explanation": "Un vendeur (« sales assistant ») vend des produits."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Questions sur le métier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions servent à demander le métier de quelqu’un ?",
+              "options": [
+                "What do you do?",
+                "What's your job?",
+                "How old are you?",
+                "Where do you live?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« What do you do? » et « What's your job? » interrogent la profession."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponse à « What does he do? » — Il est médecin :",
+              "options": [
+                "He's a doctor.",
+                "He do a doctor.",
+                "He does a doctor.",
+                "He's doctor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond « He's a doctor » avec l’article « a »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Where do you work? » demande …",
+              "options": [
+                "le lieu de travail",
+                "le salaire",
+                "l’âge",
+                "la nationalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Where » = où → lieu de travail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Who works in this shop? » — « … does. »",
+              "options": ["She", "Her", "Hers", "Herself"],
+              "correctAnswers": [0],
+              "explanation": "Sujet de la phrase : pronom sujet « She »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour demander le métier de ta mère :",
+              "options": [
+                "What does your mother do?",
+                "What your mother does?",
+                "What is do your mother?",
+                "What do your mother?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Present simple interrogatif : do/does + sujet + base verbale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Does she work as a nurse? » — Oui :",
+              "options": [
+                "Yes, she does.",
+                "Yes, she do.",
+                "Yes, she is.",
+                "Yes, she works does."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse courte avec « does » car la question utilise « Does »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« What is your dream job? » = …",
+              "options": [
+                "Quel métier rêves-tu de faire ?",
+                "Quel est ton travail actuel ?",
+                "Combien gagnes-tu ?",
+                "Où travailles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dream job » = métier idéal, pas forcément l’emploi actuel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« How long have you worked here? » parle de …",
+              "options": ["la durée", "le lieu", "le métier", "le patron"],
+              "correctAnswers": [0],
+              "explanation": "« How long » = depuis combien de temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Are you a student or a worker? » — étudiant :",
+              "options": [
+                "I'm a student.",
+                "I'm worker.",
+                "I a student.",
+                "I'm an student."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Student » commence par une consonne : « a student »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Who is the boss? » cherche …",
+              "options": [
+                "le responsable",
+                "l’horaire",
+                "le salaire",
+                "l’uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Boss » = patron, chef d’équipe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Métiers du service",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels métiers sont des métiers de service (face au public) ?",
+              "options": ["waiter", "cashier", "miner", "astronaut"],
+              "correctAnswers": [0, 1],
+              "explanation": "Serveur et caissier accueillent des clients ; mineur et astronaute moins « service » au sens courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cashier » = …",
+              "options": ["Caissier", "Cuisinier", "Chauffeur", "Charpentier"],
+              "correctAnswers": [0],
+              "explanation": "« Cashier » encaisse à la caisse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un « receptionist » accueille à l’…",
+              "options": ["reception", "restaurant kitchen", "runway", "roof"],
+              "correctAnswers": [0],
+              "explanation": "« Receptionist » = réceptionniste à la « reception »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tour guide » …",
+              "options": [
+                "shows tourists around",
+                "drives a bus only at night",
+                "cooks for tourists",
+                "sells aeroplanes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un guide touristique fait visiter une ville ou un site."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Customer service » aide les …",
+              "options": ["customers", "cooks", "cats", "captains"],
+              "correctAnswers": [0],
+              "explanation": "« Customer » = client ; le service client les assiste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un « hairdresser » coupe les …",
+              "options": ["hair", "grass", "paper", "cake"],
+              "correctAnswers": [0],
+              "explanation": "« Hair » = cheveux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Flight attendant » travaille sur un …",
+              "options": [
+                "plane",
+                "train only underground",
+                "boat in a lake",
+                "bike"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnel de cabine = « flight attendant » en avion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Babysitter » s’occupe de …",
+              "options": ["children", "chickens", "cheques", "chimneys"],
+              "correctAnswers": [0],
+              "explanation": "Garde d’enfants = « babysitter »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un « cleaner » … offices and schools.",
+              "options": ["cleans", "clean", "cleaning", "cleaned"],
+              "correctAnswers": [0],
+              "explanation": "Agent d’entretien : he/she « cleans »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Delivery driver » … packages.",
+              "options": ["delivers", "deliver", "delivering", "delivered"],
+              "correctAnswers": [0],
+              "explanation": "Livreur : « delivers packages »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Métiers et compétences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles compétences en anglais sont des « skills » utiles au travail ?",
+              "options": [
+                "communication",
+                "teamwork",
+                "sleeping all day",
+                "ignoring emails"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Communication » et « teamwork » sont des compétences professionnelles valorisées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Skill » signifie …",
+              "options": ["compétence", "salaire", "horaire", "contrat"],
+              "correctAnswers": [0],
+              "explanation": "Une « skill » est une aptitude ou compétence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un bon « team player » …",
+              "options": [
+                "works well with others",
+                "works alone always",
+                "never talks",
+                "arrives late"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Team player » = joueur d’équipe, collabore bien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Organised » décrit quelqu’un qui …",
+              "options": [
+                "plans well",
+                "loses everything",
+                "forgets meetings",
+                "breaks tools"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Organised » = organisé, méthodique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un traducteur, important : …",
+              "options": ["languages", "ladders", "lamps", "landscapes"],
+              "correctAnswers": [0],
+              "explanation": "Maîtriser des « languages » (langues) est essentiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Creative » convient à un …",
+              "options": [
+                "graphic designer",
+                "accountant only numbers",
+                "guard",
+                "gatekeeper"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un graphiste a besoin de créativité (« creative »)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Patient » est crucial pour un …",
+              "options": [
+                "teacher",
+                "racing driver in a hurry",
+                "auction shouter",
+                "alarm tester"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un enseignant doit être « patient » avec les élèves."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Strong » peut décrire un …",
+              "options": [
+                "builder",
+                "poet's typing only",
+                "librarian whispering",
+                "night guard sleeping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maçon / ouvrier : force physique (« strong »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Good with computers » aide un …",
+              "options": [
+                "IT technician",
+                "fisherman at sea",
+                "farmer with horses",
+                "florist only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technicien informatique = « IT technician »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Responsible » signifie …",
+              "options": [
+                "responsable / fiable",
+                "riche",
+                "rapide uniquement",
+                "retraité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Responsible » = qui assume ses tâches."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Horaires et routine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais parlent du temps de travail ?",
+              "options": [
+                "shift",
+                "overtime",
+                "breakfast only at home",
+                "holiday as a verb always"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Shift » = poste/horaire ; « overtime » = heures supplémentaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Full-time » = …",
+              "options": [
+                "temps plein",
+                "temps partiel",
+                "sans emploi",
+                "stage court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Full-time » opposé à « part-time »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Part-time » signifie …",
+              "options": [
+                "temps partiel",
+                "nuit uniquement",
+                "week-end seulement",
+                "sans contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail à mi-temps = « part-time job »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« She starts work at 8 a.m. » — « a.m. » = …",
+              "options": ["matin", "soir", "minuit", "après-midi seulement"],
+              "correctAnswers": [0],
+              "explanation": "« a.m. » = ante meridiem, le matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Night shift » = …",
+              "options": [
+                "travail de nuit",
+                "pause déjeuner",
+                "vacances",
+                "formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équipe ou horaire de nuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Lunch break » est …",
+              "options": [
+                "la pause déjeuner",
+                "le salaire",
+                "le licenciement",
+                "l’embauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause pour le déjeuner au travail."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« He finishes at 5 p.m. » — « p.m. » = …",
+              "options": [
+                "après-midi / soir",
+                "matin",
+                "midi exact",
+                "nuit 2 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« p.m. » = post meridiem, après midi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Day off » = …",
+              "options": [
+                "jour de repos",
+                "jour de paye",
+                "premier jour",
+                "dernier client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour sans travail = « day off »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Work from home » signifie …",
+              "options": [
+                "télétravailler",
+                "dormir au bureau",
+                "manger au restaurant",
+                "voyager sans ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travailler depuis la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Schedule » peut être …",
+              "options": [
+                "un planning",
+                "un salaire",
+                "un uniforme",
+                "un métier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Schedule » = emploi du temps professionnel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision métiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Associe correctement métier et lieu :",
+              "options": [
+                "lawyer — court",
+                "farmer — farm",
+                "doctor — runway",
+                "pilot — bakery"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avocat au tribunal (« court ») ; agriculteur à la « farm »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Plumber » répare les …",
+              "options": [
+                "pipes",
+                "pipes of a piano only",
+                "papers",
+                "parrots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plombier = tuyauterie (« pipes »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Electrician » works with …",
+              "options": [
+                "electricity",
+                "elephants",
+                "elevators only as tourists",
+                "emails only"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Électricien = « electricity »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Scientist » often works in a …",
+              "options": [
+                "laboratory",
+                "library only for novels",
+                "laundry",
+                "lawn as a gardener"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laboratoire = « laboratory »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction : « Elle travaille comme infirmière. »",
+              "options": [
+                "She works as a nurse.",
+                "She work as nurse.",
+                "She works as nurse without a.",
+                "She working as a nurse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure correcte avec « works as a » + article."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Salary » = …",
+              "options": ["salaire", "sale", "seller", "salad"],
+              "correctAnswers": [0],
+              "explanation": "Ne pas confondre avec « sale » (soldes)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Colleague » est …",
+              "options": ["un collègue", "un client", "un chef", "un contrat"],
+              "correctAnswers": [0],
+              "explanation": "Personne avec qui on travaille dans la même entreprise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Unemployed » signifie …",
+              "options": [
+                "sans emploi",
+                " très occupé",
+                " en vacances payées",
+                " à la retraite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Unemployed » = au chômage, sans travail."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Retired » décrit une personne …",
+              "options": [
+                "à la retraite",
+                "en stage",
+                "en apprentissage",
+                "en interview"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Retired » = retraité(e)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« What would you like to be? » demande …",
+              "options": [
+                "le métier souhaité",
+                "l’adresse",
+                "le numéro de téléphone",
+                "la taille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur le métier qu’on aimerait exercer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Chercher un emploi",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Offres d'emploi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes anglais apparaissent souvent dans une annonce ?",
+              "options": ["job offer", "vacancy", "birthday party", "homework"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Job offer » et « vacancy » (poste vacant) sont typiques des annonces."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Apply for a job » signifie …",
+              "options": [
+                "postuler à un emploi",
+                "quitter un emploi",
+                "refuser une offre",
+                "dormir au travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Apply for » = candidater pour un poste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Wanted » sur une annonce indique …",
+              "options": [
+                "on recherche quelqu’un",
+                "interdit d’entrer",
+                "magasin fermé",
+                "soldes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wanted: shop assistant » = poste à pourvoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Position available » = …",
+              "options": [
+                "poste disponible",
+                "poste supprimé",
+                "grève",
+                "congé maladie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Available » = libre, disponible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Requirements » liste les …",
+              "options": [
+                "exigences du poste",
+                "vacances",
+                "blagues",
+                "horaires de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences ou diplômes demandés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Experience required » demande …",
+              "options": [
+                "de l’expérience",
+                "un passeport uniquement",
+                "un animal",
+                "zero contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Experience » = expérience professionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Internship » est …",
+              "options": [
+                "un stage",
+                "un salaire maximum",
+                "une retraite",
+                "un licenciement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stage en entreprise = « internship »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Deadline » pour candidater = …",
+              "options": [
+                "date limite",
+                "salle d’attente",
+                "début de contrat",
+                "fin de carrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dernière date pour envoyer sa candidature."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Contact us at … » invite à …",
+              "options": [
+                "prendre contact",
+                "ne pas répondre",
+                "supprimer l’annonce",
+                "changer de métier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées pour joindre l’employeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hiring now » signifie …",
+              "options": [
+                "recrutement en cours",
+                "fermeture définitive",
+                "pause café",
+                "transfert à l’étranger obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’entreprise embauche actuellement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "CV et lettre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels documents envoie-t-on en anglais pour postuler ?",
+              "options": [
+                "CV / resume",
+                "cover letter",
+                "shopping list",
+                "birth certificate always required"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Curriculum vitae (« CV » ou « resume ») et lettre de motivation (« cover letter »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cover letter » = …",
+              "options": [
+                "lettre de motivation",
+                "enveloppe vide",
+                "contrat signé",
+                "facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lettre qui accompagne le CV."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un CV, « Education » parle de …",
+              "options": [
+                "formation scolaire",
+                "loisirs uniquement",
+                "recettes",
+                "vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours scolaire et diplômes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Work experience » liste …",
+              "options": [
+                "les emplois passés",
+                "les films vus",
+                "les sports",
+                "les animaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expériences professionnelles antérieures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« References » sont …",
+              "options": [
+                "personnes qui recommandent",
+                " références bibliographiques de romans",
+                "horaires",
+                "uniformes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contacts professionnels qui attestent de vos compétences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Dear Sir or Madam » est une formule …",
+              "options": ["formelle", "entre amis", "insultante", "sportive"],
+              "correctAnswers": [0],
+              "explanation": "Salutation formelle quand on ne connaît pas le nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Yours faithfully » clôt souvent une lettre …",
+              "options": ["formelle (UK)", "SMS", "blague", "sans signature"],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse britannique en forme neutre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« I am writing to apply for … » introduit …",
+              "options": [
+                "sa candidature",
+                "sa démission",
+                "une plainte alimentaire",
+                "un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase standard de lettre de motivation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Attach my CV » signifie …",
+              "options": [
+                "joindre mon CV",
+                "jeter mon CV",
+                "imprimer sans envoyer",
+                "oublier le CV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Attach » = pièce jointe à un e-mail."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Personal details » incluent souvent …",
+              "options": [
+                "nom et coordonnées",
+                "secrets de cuisine",
+                "codes de jeux",
+                "mots de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informations d’identité et contact."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Entretien d'embauche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent la phase de recrutement en face à face ?",
+              "options": [
+                "job interview",
+                "meeting with HR",
+                "football match",
+                "school trip"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Job interview » et entretien avec les RH (« HR ») sont liés à l’embauche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Tell me about yourself » demande …",
+              "options": [
+                "une présentation personnelle",
+                "votre film préféré seulement",
+                "votre adresse IP",
+                "un calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question classique pour se présenter brièvement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Strengths and weaknesses » = …",
+              "options": [
+                "forces et faiblesses",
+                "salaire et bonus",
+                "ville et pays",
+                "chaussures et chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points forts et points à améliorer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Arriver à l’heure montre que vous êtes …",
+              "options": ["punctual", "punctual never used", "lazy", "lost"],
+              "correctAnswers": [0],
+              "explanation": "« Punctual » = ponctuel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Dress code » concerne …",
+              "options": [
+                "tenue vestimentaire",
+                "code postal",
+                "langage Python",
+                "menu cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles ou attentes sur la façon de s’habiller."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Why do you want this job? » explore …",
+              "options": [
+                "votre motivation",
+                "votre couleur préférée",
+                "votre série TV",
+                "votre chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’employeur teste l’intérêt pour le poste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Thank you for your time » est …",
+              "options": [
+                "poli en fin d’entretien",
+                "impoli",
+                "une question",
+                "un refus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciement courtois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Interviewer » est …",
+              "options": [
+                "la personne qui mène l’entretien",
+                "le candidat",
+                "le gardien",
+                "le client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recruteur ou responsable qui pose les questions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Nervous » avant un entretien = …",
+              "options": [
+                "stressé",
+                "heureux de partir en vacances",
+                "endormi",
+                "furieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressentir du trac = « nervous »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Good luck! » signifie …",
+              "options": [
+                "Bonne chance !",
+                "Au revoir pour toujours",
+                "Vous êtes embauché",
+                "Refusé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d’encouragement avant un entretien."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Compétences et qualités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs valorisent un candidat en anglais ?",
+              "options": ["motivated", "reliable", "lazy", "rude"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Motivated » et « reliable » (fiable) sont positifs pour un employeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hard-working » = …",
+              "options": ["travailleur", "paresseux", "bruyant", "triste"],
+              "correctAnswers": [0],
+              "explanation": "Travaille dur = « hard-working »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Fluent in English » indique …",
+              "options": [
+                "bonne maîtrise de l’anglais",
+                "débutant",
+                "ne parle pas",
+                "parle uniquement français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fluent » = courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Problem-solving » est une …",
+              "options": [
+                "capacité à résoudre des problèmes",
+                "maladie",
+                "vacance",
+                "uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence recherchée dans beaucoup de postes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Flexible » pour les horaires = …",
+              "options": [
+                " adaptable",
+                " refuse tout changement",
+                " dort au bureau",
+                " part sans prévenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut ajuster ses horaires si besoin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Leadership » suggère …",
+              "options": [
+                "capacité à diriger",
+                " peur de parler",
+                " fuite des responsabilités",
+                " silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité de meneur d’équipe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Attention to detail » = …",
+              "options": [
+                "souci du détail",
+                " négligence",
+                " vitesse sans soin",
+                " oubli des consignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision dans le travail."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« I am a fast learner » = …",
+              "options": [
+                "J’apprends vite",
+                " Je refuse d’apprendre",
+                " Je cours vite",
+                " Je dors vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile quand on découvre un nouveau poste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Honest » = …",
+              "options": ["honnête", " timide", " bruyant", " en colère"],
+              "correctAnswers": [0],
+              "explanation": "Qualité éthique importante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Enthusiastic about … » montre …",
+              "options": [
+                "de l’enthousiasme",
+                " de l’ennui",
+                " de la peur",
+                " du sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passion ou intérêt vif pour le domaine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Verbes de candidature",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont utilisés dans une démarche de recherche d’emploi ?",
+              "options": ["apply", "search", "ignore offers", "hide CV"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Apply » (postuler) et « search » (chercher) décrivent la démarche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I applied yesterday. » — « applied » est …",
+              "options": [
+                "passé de apply",
+                " présent",
+                " futur",
+                " infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preterite / past simple de « apply »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« She is looking for a job. » = …",
+              "options": [
+                "Elle cherche un emploi",
+                " Elle a un emploi",
+                " Elle refuse de travailler",
+                " Elle est en retraite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Look for » = chercher."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Send your application by email. » — « send » = …",
+              "options": ["envoyer", " recevoir", " supprimer", " cacher"],
+              "correctAnswers": [0],
+              "explanation": "Instruction d’envoi de candidature."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« They hired me! » — « hired » = …",
+              "options": [
+                "embauché",
+                " licencié",
+                " ignoré",
+                " transféré sans poste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hire » = recruter / embaucher."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Reject » une candidature = …",
+              "options": [
+                "refuser",
+                " accepter",
+                " célébrer",
+                " augmenter le salaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’employeur dit non au candidat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Register on a job website » = …",
+              "options": [
+                "s’inscrire sur un site emploi",
+                " acheter un vélo",
+                " supprimer son compte mail",
+                " jouer en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créer un compte pour voir les offres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Upload your CV » demande de …",
+              "options": [
+                "téléverser le CV",
+                " imprimer sans envoyer",
+                " déchirer le CV",
+                " oublier le fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Upload » = envoyer un fichier vers un site."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Follow up » après candidature = …",
+              "options": [
+                "relancer poliment",
+                " insulte le recruteur",
+                " change de pays",
+                " supprime l’offre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recontacter pour montrer son intérêt."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Accept the offer » = …",
+              "options": [
+                "accepter l’offre",
+                " refuser",
+                " négocier uniquement les vacances",
+                " quitter sans réponse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dire oui au contrat proposé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Contrat et conditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent les conditions d’emploi ?",
+              "options": ["contract", "salary", "birthday cake", "video game"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Contract » (contrat) et « salary » (salaire) font partie des conditions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sign the contract » = …",
+              "options": [
+                "signer le contrat",
+                " manger le contrat",
+                " perdre le contrat",
+                " ignorer le contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formaliser l’accord avec sa signature."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Probation period » = …",
+              "options": [
+                "période d’essai",
+                " retraite",
+                " grève",
+                " promotion automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phase de test en début de contrat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Benefits » peuvent inclure …",
+              "options": [
+                "avantages (mutuelle, etc.)",
+                " punitions",
+                " amendes",
+                " retards obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avantages sociaux en plus du salaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Minimum wage » = …",
+              "options": [
+                "salaire minimum",
+                " salaire maximum",
+                " cadeau",
+                " amende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plancher légal de rémunération."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Paid holidays » = …",
+              "options": [
+                "congés payés",
+                " jours sans salaire",
+                " heures sup non payées",
+                " week-end obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vacances rémunérées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Notice period » avant départ = …",
+              "options": [
+                "préavis",
+                " surprise party",
+                " entretien sportif",
+                " examen scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Délai à respecter avant de quitter le poste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Permanent contract » vs temporaire suggère …",
+              "options": [
+                "CDI (durée indéterminée)",
+                " job d’un jour sans suite",
+                " stage scolaire",
+                " bénévolat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrat stable, non limité dans le temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Overtime pay » = …",
+              "options": [
+                "rémunération des heures sup",
+                " réduction de salaire",
+                " absence payée",
+                " ticket restaurant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paiement pour « overtime »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Working conditions » décrivent …",
+              "options": [
+                "l’environnement et règles de travail",
+                " la météo du week-end",
+                " les scores sportifs",
+                " les films du mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaires, lieu, sécurité, ambiance, etc."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Réseau et recherche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils aident à chercher un emploi en anglais ?",
+              "options": [
+                "networking",
+                "job board",
+                "hide from employers",
+                "never update profile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Networking » (réseau pro) et « job board » (site d’offres) sont utiles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« LinkedIn profile » sert à …",
+              "options": [
+                "présenter son parcours pro en ligne",
+                " jouer à des jeux",
+                " commander pizza",
+                " réserver hôtel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau social professionnel courant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Recommendation » d’un ancien boss = …",
+              "options": ["recommandation", " punition", " blague", " amende"],
+              "correctAnswers": [0],
+              "explanation": "Avis positif sur vos compétences."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Job fair » = …",
+              "options": [
+                "salon de l’emploi",
+                " fête foraine",
+                " match de foot",
+                " examen de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rencontre candidats / employeurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Word of mouth » pour un poste = …",
+              "options": [
+                "bouche-à-oreille",
+                " cri dans la rue",
+                " spam",
+                " silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On apprend l’offre via son entourage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Recruitment agency » = …",
+              "options": [
+                "agence de recrutement",
+                " agence de voyage",
+                " banque alimentaire",
+                " bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intermédiaire entre entreprises et candidats."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Update your CV » = …",
+              "options": [
+                "mettre à jour le CV",
+                " supprimer toutes les dates",
+                " mentir systématiquement",
+                " ne jamais changer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajouter nouvelles compétences et expériences."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Career goal » = …",
+              "options": [
+                "objectif de carrière",
+                " objectif sportif",
+                " recette",
+                " météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce que vous visez professionnellement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Self-employed » = …",
+              "options": [
+                "travailleur indépendant",
+                " sans aucun revenu",
+                " fonctionnaire obligatoire",
+                " élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travaille pour son propre compte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Remote job » = …",
+              "options": [
+                "emploi à distance",
+                " emploi sous-marin",
+                " emploi sans ordinateur jamais",
+                " emploi sans contact humain interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail possible depuis un autre lieu que le bureau."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Phrases utiles au téléphone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont polies pour un appel employeur ?",
+              "options": [
+                "May I speak to HR, please?",
+                "I'd like to ask about the job offer.",
+                "Give me a job now!",
+                "Hang up silently."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules courtoises pour joindre les RH ou poser une question sur l’offre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hello, my name is … » sert à …",
+              "options": [
+                "se présenter",
+                " raccrocher",
+                " crier",
+                " mentir sur son nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Introduction standard au téléphone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Could you repeat that, please? » = …",
+              "options": [
+                "Pouvez-vous répéter ?",
+                " Je refuse d’écouter",
+                " Au revoir",
+                " Je suis embauché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande polie si on n’a pas compris."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« I'm calling about the vacancy. » indique …",
+              "options": [
+                "le sujet de l’appel (poste vacant)",
+                " une commande pizza",
+                " une plainte météo",
+                " un devoir de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On précise qu’on réagit à une annonce."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« When is the interview? » demande …",
+              "options": [
+                "la date de l’entretien",
+                " le menu cantine",
+                " le score du match",
+                " la couleur du mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Planifier le rendez-vous d’embauche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I'll be there on time. » promet …",
+              "options": [
+                "la ponctualité",
+                " un retard",
+                " une absence",
+                " un départ immédiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« On time » = à l’heure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Could I leave my number? » = …",
+              "options": [
+                "Puis-je laisser mon numéro ?",
+                " Donnez-moi votre maison",
+                " Je n’ai pas de téléphone",
+                " Ignorez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour être rappelé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Thank you for calling back. » remercie …",
+              "options": [
+                "pour le rappel",
+                " pour un insulte",
+                " pour un silence",
+                " pour une blague"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand l’employeur rappelle le candidat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sorry, wrong number. » = …",
+              "options": [
+                "Désolé, mauvais numéro",
+                " Merci pour l’emploi",
+                " Je suis le directeur",
+                " Raccrochez moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur de numérotation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Goodbye » en fin d’appel = …",
+              "options": ["Au revoir", " Bonjour", " Oui embauché", " Silence"],
+              "correctAnswers": [0],
+              "explanation": "Formule de clôture standard."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Erreurs à éviter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles erreurs nuisent à une candidature en anglais ?",
+              "options": [
+                "spelling mistakes in the CV",
+                "arriving late to the interview",
+                "polite thank-you email",
+                "clear contact details"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fautes d’orthographe et retard à l’entretien font très mauvaise impression."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Envoyer le même CV sans lire l’offre montre un manque de …",
+              "options": ["attention", " couleur", " musique", " sport"],
+              "correctAnswers": [0],
+              "explanation": "Il faut adapter sa candidature au poste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parler mal de son ancien employeur paraît …",
+              "options": [
+                "unprofessional",
+                " très professionnel",
+                " obligatoire",
+                " recommandé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Unprofessional » = peu professionnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oublier l’objet de l’e-mail rend le message …",
+              "options": [
+                "confus",
+                " parfait",
+                " payé",
+                " signé automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’objet (« subject line ») doit mentionner le poste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Lie on your CV » est …",
+              "options": [
+                "déconseillé et risqué",
+                " toujours récompensé",
+                " obligatoire",
+                " une blague officielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mentir sur le CV peut mener au licenciement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tenue trop décontractée à l’entretien peut …",
+              "options": [
+                "donner une mauvaise image",
+                " garantir le poste",
+                " remplacer le CV",
+                " payer le salaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter le « dress code » attendu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ne pas préparer de questions pour l’employeur semble …",
+              "options": [
+                "peu intéressé",
+                " très motivé",
+                " indispensable",
+                " interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poser des questions montre votre motivation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Utiliser une adresse e-mail ridicule (@funnyjoke) est …",
+              "options": ["immature", " professionnel", " exigé", " secret"],
+              "correctAnswers": [0],
+              "explanation": "Préférer une adresse simple (nom.prénom)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre agressivement à un refus est …",
+              "options": ["inappropriate", " encouraged", " paid", " required"],
+              "correctAnswers": [0],
+              "explanation": "Rester courtois même si on n’est pas retenu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Proofread » son CV signifie …",
+              "options": [
+                "le relire pour corriger",
+                " le déchirer",
+                " le publier sans lire",
+                " le traduire en emoji"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relecture pour éviter les fautes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision chercher un emploi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au vocabulaire « job search » ?",
+              "options": [
+                "application",
+                "qualification",
+                "sunscreen",
+                "snowboard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Application » (candidature) et « qualification » (diplôme/compétence certifiée)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Job seeker » = …",
+              "options": [
+                "demandeur d’emploi",
+                " patron",
+                " retraité obligatoire",
+                " client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne qui cherche un travail."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Shortlisted » signifie …",
+              "options": [
+                " présélectionné",
+                " refusé",
+                " en vacances",
+                " en grève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fait partie de la liste restreinte de candidats."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Job description » détaille …",
+              "options": [
+                "les tâches du poste",
+                " la météo",
+                " le menu",
+                " les scores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiche de poste avec missions et exigences."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I have an interview next Monday. » — « interview » = …",
+              "options": [
+                "entretien",
+                " vacances",
+                " examen scolaire",
+                " match"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entretien d’embauche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Congratulations, you got the job! » — réponse polie :",
+              "options": [
+                "Thank you very much!",
+                " Go away!",
+                " No speak English",
+                " I hate work"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remercier montre de la politesse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Unfortunately, we chose another candidate. » = …",
+              "options": [
+                "refus de candidature",
+                " embauche",
+                " promotion",
+                " augmentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Message standard de rejet poli."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Training » au travail = …",
+              "options": ["formation", " punition", " retraite", " grève"],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage des tâches en entreprise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« First day at work » = …",
+              "options": [
+                "premier jour de travail",
+                " dernier jour",
+                " jour férié",
+                " jour sans contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Début effectif dans le poste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Good luck with your job search! » souhaite …",
+              "options": [
+                "bonne chance dans la recherche",
+                " échec",
+                " retraite immédiate",
+                " silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encouragement amical pour trouver un emploi."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

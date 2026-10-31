@@ -1,0 +1,2743 @@
+{
+  "id": "terminale-philosophie-03",
+  "year": "terminale",
+  "subject": "philosophie",
+  "title": "La morale",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Devoir et bonheur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'impératif catégorique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Selon Kant, quelles caractéristiques définissent l'impératif catégorique ?",
+              "options": [
+                "Il s'impose inconditionnellement, indépendamment de nos inclinations",
+                "Il vise toujours le bonheur sensible le plus élevé",
+                "Il doit pouvoir être universalisé sans contradiction",
+                "Il dépend des conséquences heureuses de l'action"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'impératif catégorique exprime le devoir pur et se teste par l'universalisation de la maxime."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Kant distingue principalement :",
+              "options": [
+                "Loi civile et loi naturelle",
+                "Impératif catégorique et impératif hypothétique",
+                "Vertu et vice esthétique",
+                "Bonheur public et privé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le catégorique commande sans condition ; l'hypothétique lie un moyen à une fin contingentielle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Agir « par devoir » signifie :",
+              "options": [
+                "Suivre la tradition",
+                "Respecter la loi morale par respect pour la loi",
+                "Maximiser le plaisir",
+                "Obéir à la majorité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La moralité repose sur la maxime adoptée par devoir, non sur la seule inclination."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La formule de l'humanité exige :",
+              "options": [
+                "D'utiliser autrui comme simple outil",
+                "De traiter la personne comme fin et jamais seulement comme moyen",
+                "De viser le profit",
+                "D'ignorer la dignité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La personne rationnelle possède une dignité inconditionnelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le bonheur chez Kant, dans le cadre moral :",
+              "options": [
+                "Est la fin suprême de la morale",
+                "N'est pas garanti par la seule vertu",
+                "Remplace le devoir",
+                "Est le critère d'universalisation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Kant sépare devoir et bonheur sensible tout en reconnaissant une fin légitime du bonheur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Action conforme au devoir mais motivée seulement par inclination :",
+              "options": [
+                "A pleine valeur morale",
+                "Est légale mais sans mérite moral strict",
+                "Est toujours immorale",
+                "Vaut plus que le devoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Kant distingue légalité externe et moralité de la maxime."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'autonomie de la volonté implique :",
+              "options": [
+                "Obéir au prince",
+                "Auto-légiférer la loi morale par la raison",
+                "Suivre l'instinct",
+                "Viser le plaisir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Autonomie : la volonté se donne à elle-même la loi universelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mensonge kantien est condamné surtout car il :",
+              "options": [
+                "Réduit le PIB",
+                "Corrompt la maxime et la confiance entre personnes",
+                "Est interdit seulement par la religion",
+                "Diminue le bonheur calculable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le devoir de vérité prime sur le calcul utilitariste des conséquences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La bonne volonté est :",
+              "options": [
+                "Utile socialement",
+                "La seule chose bonne sans limitation",
+                "Poursuite du plaisir",
+                "Simple habitude"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seule la bonne volonté est bonne sans qualification dans la Fondation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Universaliser une maxime, c'est :",
+              "options": [
+                "Vérifier si l'on peut vouloir que tous agissent ainsi",
+                "Compter les bénéficiaires",
+                "Copier le droit positif",
+                "Imiter un héros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test de universalisation sans contradiction de volonté ou de conception."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Devoir et inclinations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits Kant associe-t-il aux inclinations ?",
+              "options": [
+                "Elles relèvent du côté sensible",
+                "Elles fondent le devoir pur",
+                "Elles orientent vers des fins contingentielles",
+                "Elles rendent la morale impossible"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Inclinations et devoir appartiennent à deux registres : pathologique et rationnel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'hétéronomie, c'est :",
+              "options": [
+                "Se donner sa propre loi",
+                "Obéir à une loi extérieure à la raison pratique",
+                "Agir sans maxime",
+                "Refuser le devoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Morale du bonheur, tradition ou empirisme des mœurs = hétéronomie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Conflit devoir/bonheur lorsque :",
+              "options": [
+                "Ils coïncident toujours",
+                "Le devoir exige une action coûteuse",
+                "Le droit est absent",
+                "La raison théorique faiblit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Kant admet une tension possible entre loi morale et bonheur sensible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aimer autrui par inclination seule :",
+              "options": [
+                "Remplace le devoir",
+                "Peut accompagner le devoir sans le constituer moralement",
+                "Est toujours immoral",
+                "Est supérieur au devoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La valeur morale repose sur le respect du devoir, pas sur la seule émotion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La maxime d'une action est :",
+              "options": [
+                "La loi civile",
+                "Le principe subjectif de l'action",
+                "Le résultat",
+                "L'opinion publique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Kant juge la moralité à partir de la maxime intériorisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Kant critique la morale du bonheur car :",
+              "options": [
+                "Le bonheur est indéfinissable et ne fonde pas une loi universelle",
+                "Personne ne le désire",
+                "Il est toujours immoral",
+                "Seul le plaisir compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bonheur varie : une éthique eudémoniste reste empirique et hétéronome."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Devoir strict (ex. ne pas mentir) :",
+              "options": [
+                "Admet des exceptions utilitaristes",
+                "N'admet pas de latitude",
+                "Dépend du consulat",
+                "N'existe pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Kant distingue devoirs stricts et devoirs larges (vertu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La loi morale pour la volonté autonome est :",
+              "options": [
+                "Contrainte naturelle",
+                "Auto-contrainte rationnelle",
+                "Habitude",
+                "Peur du châtiment"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'autonomie transforme la contrainte en auto-législation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter la loi seulement par peur du gendarme :",
+              "options": [
+                "Est pleinement moral",
+                "Peut être légal sans moralité intérieure",
+                "Réalise l'autonomie",
+                "Supprime le devoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Légalité externe ≠ adoption autonome de la maxime."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Pathologique » chez Kant désigne :",
+              "options": [
+                "Maladie mentale seule",
+                "Ce qui dépend de la sensibilité et des inclinations",
+                "Le rationnel pur",
+                "L'universel nécessaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "S'oppose au registre pratique rationnel du devoir."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Aristote et l'éthique des vertus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans l'Éthique à Nicomaque, quelles thèses aristotéliciennes sont centrales ?",
+              "options": [
+                "Le bien suprême pour l'homme est le bonheur (eudaimonia)",
+                "La vertu est une habitude acquise par la pratique",
+                "Le devoir kantien prime sur toute fin",
+                "Le plaisir corporel est le seul bien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aristote lie bonheur, activité selon la vertu et formation des habitudes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eudaimonia désigne surtout :",
+              "options": [
+                "Plaisir momentané",
+                "Bonheur comme réalisation de la vie bonne",
+                "Absence de souffrance",
+                "Richesse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bonheur = actualisation des capacités humaines selon la vertu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La vertu morale est, pour Aristote :",
+              "options": [
+                "Un don inné seulement",
+                "Un juste milieu entre excès et défaut",
+                "Une règle universelle abstraite",
+                "Un refoulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vertu = mesure relative à nous, déterminée par le phronimos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La phronesis (prudence) est :",
+              "options": [
+                "Ruse immorale",
+                "Intelligence pratique orientant l'action vertueuse",
+                "Science théorique",
+                "Instinct"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle discerne le bon agir dans des situations concrètes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On devient juste en :",
+              "options": [
+                "Lisant des lois",
+                "Pratiquant des actes justes",
+                "Évitant toute action",
+                "Calculant le plaisir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'habitude forge le caractère : ethos par éthos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le bonheur aristotélicien requiert :",
+              "options": [
+                "Une vie entière",
+                "Un instant de plaisir",
+                "L'isolement",
+                "Le renoncement à la politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Un jour ne suffit pas » : eudaimonia juge la vie dans sa durée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'amitié vertueuse est :",
+              "options": [
+                "Utile seulement",
+                "Nécessaire au bonheur et à la vie bonne",
+                "Contraire à la vertu",
+                "Pure convention"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aristote valorise l'amitié basée sur le bien mutuel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fonction (ergon) de l'homme est liée à :",
+              "options": [
+                "La raison",
+                "La seule nutrition",
+                "Le sommeil",
+                "Le hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homme réalise son bien en vivant selon la raison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une action involontaire :",
+              "options": [
+                "Est toujours vertueuse",
+                "Diminue ou supprime la responsabilité morale",
+                "Est identique au devoir",
+                "Prouve le déterminisme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contrainte ou ignorance excusable modifient le blâme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Aristote distingue vertus :",
+              "options": [
+                "D'intellect et de caractère",
+                "Religieuses et laïques",
+                "Kantiques et utilitaristes",
+                "Naturelles et impossibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vertus morales (caractère) et dianoétiques (intellect)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Bonheur, plaisir et désir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles positions opposent des conceptions du bonheur ?",
+              "options": [
+                "Hédonisme : bonheur = somme de plaisirs",
+                "Eudémonisme : bonheur = vie accomplie selon la vertu",
+                "Stoïcisme : bonheur = conformité à la nature rationnelle",
+                "Bonheur = simple conformité au devoir sans fin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hédonisme et eudémonisme divergent sur le rôle du plaisir et de la vertu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Épicure distingue plaisirs :",
+              "options": [
+                "Identiques",
+                "Naturels/nécessaires et vains",
+                "Interdits et permis",
+                "Kantiques et aristotéliciens"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ataraxie : privilégier des désirs simples, craindre moins la souffrance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le stoïcien vise surtout :",
+              "options": [
+                "Maximiser les plaisirs",
+                "Vivre conformément à la raison universelle",
+                "Fuir toute société",
+                "Nier la vertu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Acceptation rationnelle du destin : apatheia ordonnée, non insensibilité absolue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Critique de l'hédonisme grossier :",
+              "options": [
+                "Il ignore que certains plaisirs mènent à la souffrance",
+                "Il est trop exigeant",
+                "Il est identique à Kant",
+                "Il refuse la raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plaisirs immédiats peuvent détruire le bonheur à long terme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le désir, en éthique, interroge :",
+              "options": [
+                "Seulement la biologie",
+                "La fin visée et la mesure de l'action",
+                "La vitesse",
+                "La couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Morale = rapport entre désirs, fins et normes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Schopenhauer voit le désir comme :",
+              "options": [
+                "Source de bonheur durable",
+                "Moteur de souffrance insatiable",
+                "Illusion cartésienne",
+                "Devoir pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Volonté de vivre : oscillation entre manque et ennui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le bonheur peut-il être devoir ?",
+              "options": [
+                "Oui pour Kant comme fin suprême de la morale",
+                "Kant sépare devoir et bonheur comme fin morale",
+                "Non jamais",
+                "Oui uniquement pour les stoïciens"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le devoir ne se réduit pas à la recherche du bonheur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plaisir « éduqué » (Mill) signifie :",
+              "options": [
+                "Plaisir interdit",
+                "Préférer des plaisirs supérieurs qualitatifs",
+                "Plaisir animal seulement",
+                "Absence de jugement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mieux vaut être Socrate insatisfait qu'un fool satisfait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Renoncer au bonheur pour le devoir illustre :",
+              "options": [
+                "Utilitarisme",
+                "Possible tension entre bonheur et obligation",
+                "Hédonisme",
+                "Epicurisme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemples moraux de sacrifice au nom du droit ou de la justice."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonheur et sens de la vie :",
+              "options": [
+                "La morale peut interroger si bonheur = sens",
+                "Ils sont toujours identiques",
+                "La philosophie les ignore",
+                "Seul le plaisir compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question existentielle : fin du bonheur vs devoir, vérité, justice."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Utilitarisme et conséquentialisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'utilitarisme classique affirme que :",
+              "options": [
+                "Une action est bonne si elle maximise le bonheur (utilité)",
+                "Elle vise le plus grand bonheur du plus grand nombre",
+                "Le devoir est indépendant des conséquences",
+                "La vertu est inutile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bentham/Mill : principe d'utilité — plus grand bonheur du plus grand nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bentham mesure le plaisir par :",
+              "options": [
+                "Dignité kantienne",
+                "Felicific calculus (intensité, durée, etc.)",
+                "Cogito",
+                "Vertu aristotélicienne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quantification hédoniste des conséquences."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mill distingue :",
+              "options": [
+                "Act utilitarianism et rule utilitarianism (règles)",
+                "Devoir et vertu seulement",
+                "Liberté et nécessité",
+                "Conscient et inconscient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat interne : optimiser chaque acte ou suivre des règles utiles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Critique de l'utilitarisme :",
+              "options": [
+                "Il peut sacrifier une minorité au profit de la majorité",
+                "Il ignore toute conséquence",
+                "Il est identique à Kant",
+                "Il refuse le bonheur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dilemmes : justice vs somme de plaisirs (ex. scapegoat)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conséquentialisme :",
+              "options": [
+                "Juge l'action par ses effets",
+                "Juge seulement la maxime",
+                "Ignore les fins",
+                "Repose sur la religion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille d'éthiques orientées vers les conséquences (utilitarisme, etc.)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Kant critique l'éthique des fins (bonheur) car elle est :",
+              "options": [
+                "Trop rigide",
+                "Empirique et hétéronome",
+                "Trop mathématique",
+                "Stoïcienne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une loi morale ne peut reposer sur des inclinations contingentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'utilitarisme de règles vise à :",
+              "options": [
+                "Éviter certains calculs case-by-case dangereux",
+                "Nier toute règle",
+                "Copier Kant",
+                "Supprimer le plaisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles secondaires (droits, veracity) stabilisent la pratique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Principe du « plus grand bonheur » :",
+              "options": [
+                "Maximisation agrégée du bien-être",
+                "Minimisation du devoir",
+                "Fin de la liberté",
+                "Obligation de mentir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Norme conséquentialiste classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une objection à Bentham :",
+              "options": [
+                "Réduction du bien à des plaisirs mesurables",
+                "Refus de toute mesure",
+                "Excès de vertu",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualia, justice, droits individuels résistent à la pure quantification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Utilitarisme vs déontologie :",
+              "options": [
+                "Fin (conséquences) vs devoir (maxime)",
+                "Identiques",
+                "Ignorent l'action",
+                "Nient la raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand clivage de la philosophie morale moderne."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Morale, religion et laïcité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles thèses concernent morale et religion ?",
+              "options": [
+                "La morale peut s'autonomiser vis-à-vis de la théologie",
+                "Toute morale laïque est impossible",
+                "Certaines traditions lient vertu et commandement divin",
+                "Kant fonde la morale sur la révélation seule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Débat : autonomie de la raison pratique vs fondements religieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Kant sépare morale et religion en montrant que :",
+              "options": [
+                "La loi morale précède la croyance en Dieu comme condition de la moralité",
+                "Dieu est inutile",
+                "La religion remplace le devoir",
+                "Seul le pape juge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dieu intervient postérieurement (postulat) pour unifier vertu et bonheur espéré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'Euthyphron (Platon) pose la question :",
+              "options": [
+                "Dieu aime le bien car il est bon, ou le bien est bon car Dieu le veut ?",
+                "Existence du mal",
+                "Liberté politique",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dilemme sur l'autonomie ou la dépendance du bien vis-à-vis de Dieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Morale laïque signifie souvent :",
+              "options": [
+                "Fondements accessibles à la raison et au débat public",
+                "Absence de toute norme",
+                "Hostilité aux croyances privées",
+                "Remplacement du droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes justifiables sans appel exclusif à l'autorité révélée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le commandement divin peut fonder :",
+              "options": [
+                "Une éthique de l'obéissance hétéronome si elle ignore l'autonomie",
+                "Toujours la déontologie kantienne",
+                "L'utilitarisme",
+                "Le nihilisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque hétéronomie : obéir par crainte ou récompense, non par devoir autonome."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Spinoza rapproche vertu et :",
+              "options": [
+                "Connaissance du vrai bien (puissance d'agir)",
+                "Obéissance aveugle",
+                "Plaisir immédiat",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique : comprendre les affects pour augmenter la puissance de vivre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La conscience morale laïque peut reposer sur :",
+              "options": [
+                "Dignité, droits, justice, solidarité",
+                "Seulement sur le texte sacré",
+                "L'absence de liberté",
+                "Le calcul économique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire républicain et philosophique des droits de l'homme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tolérance et morale :",
+              "options": [
+                "Respect de l'autre peut être devoir moral indépendamment de la foi",
+                "Identiques à l'indifférence",
+                "Interdisent le débat",
+                "Nient le droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivre ensemble suppose des normes partagées minimales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Critique du « bien » imposé au nom de Dieu :",
+              "options": [
+                "Peut justifier l'intolérance ou la violence",
+                "Est impossible",
+                "Vient de Bentham seulement",
+                "N'a pas d'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fanatisme : certitude morale absolue sans examen rationnel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Autonomie morale (Kant) vs foi :",
+              "options": [
+                "La foi peut coexister mais ne remplace pas la loi rationnelle",
+                "S'excluent toujours",
+                "Sont identiques",
+                "Rendent le devoir inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Religion dans les limites de la raison seule."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Justice, équité et devoir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées relèvent de la justice morale ?",
+              "options": [
+                "Donner à chacun ce qui lui est dû",
+                "Traiter des cas égaux de manière égale",
+                "Ignorer les droits individuels",
+                "Maximiser seulement le plaisir du plus fort"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Justice distributive et formelle : équité, droits, impartialité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rawls (à connaître au lycée) propose :",
+              "options": [
+                "Voile d'ignorance pour choisir des principes justes",
+                "Utilitarisme pur",
+                "Cogito",
+                "Refus de toute égalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrat social : libertés égales et inégalités avantageuses pour les plus défavorisés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Devoir de justice vs charité :",
+              "options": [
+                "Justice = dû ; charité = don gratuit",
+                "Identiques",
+                "Justice = plaisir",
+                "Charité = loi kantienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction classique : droits stricts vs générosité superérogatoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Impartialité morale exige :",
+              "options": [
+                "Considérer les intérêts de chacun sans privilège egoïste",
+                "Favoriser toujours sa famille",
+                "Nier les différences",
+                "Refuser la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de vue universel ou contratuel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un devoir perfectif (Kant) :",
+              "options": [
+                "Doit être accompli sans exception (ex. ne pas commettre injustice)",
+                "Admet une latitude",
+                "Est purement esthétique",
+                "Est utilitariste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devoirs de justice vs devoirs de vertu (imperfectifs)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'équité corrige :",
+              "options": [
+                "Application rigide d'une règle injuste dans un cas particulier",
+                "Toute règle",
+                "Le devoir",
+                "La liberté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Epikeia : l'esprit de la loi vs la lettre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Droits de l'homme et morale :",
+              "options": [
+                "Fondent des devoirs correspondants (respect, non-violation)",
+                "Sont sans lien",
+                "Remplacent le devoir",
+                "Sont purement économiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corrélation droits/devoirs dans la philosophie des droits."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Injustice structurelle :",
+              "options": [
+                "Patterns systémiques, pas seulement actes individuels",
+                "N'existe pas",
+                "Est toujours involontaire donc amorale",
+                "Est identique au devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat contemporain : responsabilité collective et réformes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mentir pour « bonne cause » utilitariste :",
+              "options": [
+                "Kant le rejette ; utilitariste peut l'accepter",
+                "Tous l'acceptent",
+                "Personne ne discute",
+                "Est devoir strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clivage déontologie/conséquentialisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le juste milieu aristotélicien en justice :",
+              "options": [
+                "Ni trop ni trop peu (distribution proportionnée)",
+                "Maximiser le profit",
+                "Obéir au plus fort",
+                "Ignorer la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vertu de justice = mesure dans l'attribution."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Déontologie et conséquences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une éthique déontologique :",
+              "options": [
+                "Priorise le respect du devoir ou des droits",
+                "Refuse de sacrifier des personnes au seul calcul utilitaire",
+                "Ignore les maximes",
+                "Nie la dignité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kant, droits de l'homme : certaines choses ne doivent pas être faites même pour un « bon » résultat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dilemme du tramway (thought experiment) sert à :",
+              "options": [
+                "Tester intuitions utilitaristes vs déontologiques",
+                "Prouver le cogito",
+                "Nier la morale",
+                "Définir la vertu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sacrifier un pour en sauver plusieurs ? Débat conséquentialiste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ends justify the means » critique :",
+              "options": [
+                "Risque de violer des devoirs fondamentaux",
+                "Est thèse kantienne",
+                "Est stoïcienne",
+                "N'a pas de sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrumentalisation des personnes rejetée par Kant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Devoir de ne pas tuer innocent :",
+              "options": [
+                "Peut être absolu (déontologie) ou pondéré (conséquentialisme)",
+                "N'existe pas",
+                "Est esthétique",
+                "Est religieux seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guerre, légitime défense : zones de désaccord moral."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Double effet (doctrine) distingue :",
+              "options": [
+                "Intention directe du mal vs effet secondaire prévu mais non voulu comme fin",
+                "Deux plaisirs",
+                "Deux vertus",
+                "Cogito et doute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition catholique ; débat sur intention et responsabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conséquentialisme agent-relative :",
+              "options": [
+                "Certaines obligations peuvent dépendre de liens particuliers",
+                "Est identique à Kant",
+                "Ignore les conséquences",
+                "Est impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuances : devoirs envers proches vs impartialité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Kant refuse le suicide injustifié car :",
+              "options": [
+                "Violation du devoir envers soi comme personne rationnelle",
+                "Utilitarisme",
+                "Plaisir",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devoir envers soi-même dans la Doctrine de la vertu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éthique de la vertu vs déontologie :",
+              "options": [
+                "Vertu : caractère ; déontologie : règle ou devoir",
+                "Identiques",
+                "Ignorent l'action",
+                "Nient le bonheur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Troisième voie aristotélicienne face aux clivages modernes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Superérogation :",
+              "options": [
+                "Actes au-delà du devoir strict (héroïsme)",
+                "Devoir minimal",
+                "Obligation légale",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non exigé mais moralmente louable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix moral mature :",
+              "options": [
+                "Articuler devoir, conséquences et vertu",
+                "Ignorer les conséquences",
+                "Suivre l'impulsion",
+                "Refuser la raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse terminale : penser les tensions, pas les nier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vertu, habitudes et éducation morale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Former la vertu implique :",
+              "options": [
+                "Répétition d'actes et éducation des émotions",
+                "Modèles exemplaires et discernement pratique",
+                "Refus de tout modèle",
+                "Identité avec le plaisir immédiat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aristote, éthique analytique contemporaine : habitudes et sensibilité morale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un vice est :",
+              "options": [
+                "Disposition stable à mal agir",
+                "Erreur unique",
+                "Vertu",
+                "Devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excès ou défaut habituel par rapport au juste milieu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Exemple de vertu : courage est :",
+              "options": [
+                "Milieu entre lâcheté et témérité",
+                "Maximiser la peur",
+                "Fuir tout risque",
+                "Obéir sans réfléchir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vertu cardinale : affronter ce qu'il faut, comme il faut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éducation morale à l'école vise :",
+              "options": [
+                "Autonomie du jugement et capacité de critique",
+                "Endoctrinement sans débat",
+                "Absence de normes",
+                "Plaisir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enseignement moral et civique : réfléchir aux valeurs républicaines."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Exemplarité du phronimos :",
+              "options": [
+                "Modèle de discernement pratique",
+                "Modèle esthétique seulement",
+                "Loi écrite",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Celui qui voit correctement la situation morale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Émotions morales (honte, indignation) :",
+              "options": [
+                "Peuvent éduquer la sensibilité si elles sont réfléchies",
+                "Doivent être éliminées",
+                "Remplacent le devoir",
+                "Sont toujours irrationnelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hume, éthique de la care : place des sentiments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Kant : vertu est :",
+              "options": [
+                "Force de la volonté à faire son devoir malgré les inclinations",
+                "Simple plaisir",
+                "Habitude sans raison",
+                "Vertu cardinale antique seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doctrine de la vertu : devoirs imparfaits, force morale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Moralisme désigne souvent :",
+              "options": [
+                "Affichage de vertu sans sincérité ou sans action",
+                "Vertu authentique",
+                "Devoir kantien",
+                "Prudence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique sociologique et éthique de l'hypocrisie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Progression morale :",
+              "options": [
+                "Possible mais jamais achevée (Aristote, Kant)",
+                "Impossible",
+                "Instantanée",
+                "Purement génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effort continu ; pas de sainteté garantie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonheur et vertu chez Aristote :",
+              "options": [
+                "Le bonheur inclut l'activité vertueuse",
+                "S'opposent toujours",
+                "Sont le cogito",
+                "Ignorent la politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eudaimonia = vivre et agir bien, pas plaisir passif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : devoir et bonheur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples conceptualisent le chapitre devoir/bonheur ?",
+              "options": [
+                "Devoir kantien vs bonheur sensible",
+                "Eudaimonia vs hédonisme",
+                "Liberté vs nécessité physique",
+                "Cogito vs inconscient"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Terminale : articuler déontologie, eudémonisme et critiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Peut-on être vertueux sans être heureux ?",
+              "options": [
+                "Oui (ex. Kant, souffrance du juste)",
+                "Non jamais",
+                "Impossible à penser",
+                "Interdit par la loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension tragique : intégrité vs malheur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le summum bonum kantien (vertu + bonheur proportionné) est :",
+              "options": [
+                "Idéal régulateur, postulat de l'immortalité et de Dieu",
+                "Plaisir immédiat",
+                "Utilitarisme",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raison pratique unifie moralement vertu et bonheur espéré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Morale du bonheur public (utilitarisme) :",
+              "options": [
+                "Oriente la politique vers le bien-être collectif",
+                "Supprime le devoir individuel",
+                "Est purement esthétique",
+                "Nie la justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien éthique/politique : législations sociales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Choix professionnel éthique :",
+              "options": [
+                "Articuler sens, devoir, conditions de bonheur",
+                "Plaisir seul",
+                "Salaire seul",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question existentielle concrète des lycéens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hypocrisie :",
+              "options": [
+                "Désaccord entre maxime professed et conduite",
+                "Vertu parfaite",
+                "Devoir pur",
+                "Phronesis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décalage morale : apparence vs réalité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Renonciation au bonheur immédiat pour un idéal :",
+              "options": [
+                "Illustre primauté possible du devoir ou de la vertu",
+                "Prouve l'inutilité de la morale",
+                "Est toujours stupide",
+                "Est interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples historiques : résistance, loyauté, justice."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question « Que faire ? » en morale :",
+              "options": [
+                "Demande normes, fins et situation",
+                "Est purement scientifique",
+                "N'a pas de réponse",
+                "Est le cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Praxis : passer de la théorie à l'action."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Relativisme moral :",
+              "options": [
+                "Affirme que les normes dépendent des cultures (à critiquer)",
+                "Est thèse kantienne",
+                "Prouve l'universalité",
+                "Est identique au devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat : universalisme des droits vs diversité des mœurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan u1 : la morale du bonheur et la morale du devoir :",
+              "options": [
+                "S'opposent partiellement mais s'éclairent mutuellement",
+                "Sont identiques",
+                "Excluent la vertu",
+                "Nient la liberté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme terminale : penser la complémentarité et les tensions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Liberté et responsabilité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Sartre : liberté et facticité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Chez Sartre, l'existentialisme affirme que :",
+              "options": [
+                "L'existence précède l'essence",
+                "L'homme est libre et condamné à être libre",
+                "L'essence est fixée par Dieu",
+                "La liberté est illusion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de nature humaine prédéfinie : on se fait par choix, dans une situation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La facticité désigne :",
+              "options": [
+                "Ce qui me est donné (corps, passé, situation)",
+                "Ma pure essence",
+                "Le déterminisme absolu",
+                "Le cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je ne choisis pas mon point de départ, mais je choisis ce que j'en fais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Condamné à être libre » signifie :",
+              "options": [
+                "Impossibilité d'échapper à la responsabilité du choix",
+                "Peine de prison",
+                "Déterminisme",
+                "Refus du devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même fuir, c'est choisir ; pas de refuge dans l'inconscient ou l'autorité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Angoisse existentielle :",
+              "options": [
+                "Conscience de choisir pour tous en me choisissant",
+                "Peur animale seule",
+                "Absence de liberté",
+                "Bonheur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projeter un mode de vie, c'est légitimer une image de l'homme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Projet sartrien :",
+              "options": [
+                "Totalisation orientée du vécu vers une fin",
+                "Instinct fixe",
+                "Devoir kantien seul",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté concrète : toujours située, toujours en devenir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Liberté ≠ caprice car :",
+              "options": [
+                "Elle s'engage et assume",
+                "Elle n'existe pas",
+                "Elle est toujours totale",
+                "Elle nie la situation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix a des conséquences et un sens pour autrui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'autrui (Huis-clos) :",
+              "options": [
+                "Autrui est le fondement de ma liberté (regard, reconnaissance)",
+                "N'existe pas",
+                "Est objet seulement",
+                "Supprime le devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialectique du regard : conflit et interdépendance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Responsabilité existentielle :",
+              "options": [
+                "Je suis ce que je fais de ma situation",
+                "Je suis produit du milieu sans choix",
+                "Seul le génie compte",
+                "La morale est inutile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'alibi : mauvaise foi = fuir la liberté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Engagement politique sartrien :",
+              "options": [
+                "Liberté concrète des opprimés",
+                "Indifférence",
+                "Utilitarisme seul",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Existentialisme est humanisme : agir pour la liberté d'autrui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Critique de Sartre : liberté absolue ?",
+              "options": [
+                "Débat : situation limite-t-elle le choix ?",
+                "Personne ne critique",
+                "Identique au stoïcisme",
+                "Nie la facticité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marxisme, féminisme, structuralisme questionnent l'emphase sur le sujet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Mauvaise foi et authenticité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La mauvaise foi chez Sartre :",
+              "options": [
+                "Se mentir à soi-même pour fuir la liberté",
+                "Jouer un rôle en niant qu'on le choisit",
+                "Est authenticité",
+                "Est devoir kantien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Garçon de café, femme au rendez-vous : figer en chose ou en pure passivité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Authenticité :",
+              "options": [
+                "Assumer lucidement sa liberté et ses choix",
+                "Suivre la mode",
+                "Obéir sans réfléchir",
+                "Nier autrui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivre sans alibi : reconnaître qu'on choisit sa conduite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je n'ai pas le choix » en mauvaise foi :",
+              "options": [
+                "Cache un choix déjà fait",
+                "Prouve le déterminisme",
+                "Est toujours vrai",
+                "Est cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langage de contrainte peut masquer une décision."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rôle social (fonctionnaire, étudiant) :",
+              "options": [
+                "Peut être vécu en mauvaise foi ou en projet assumé",
+                "Supprime la liberté",
+                "Est essence fixe",
+                "Est vertu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On joue un rôle mais on choisit comment l'incarner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Psychoanalyse vs Sartre :",
+              "options": [
+                "Sartre refuse l'inconscient qui excuserait totalement",
+                "Sartre nie tout inconscient",
+                "Identiques",
+                "Freud = existentialiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de « ça » qui détermine sans reste de liberté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mauvaise foi et morale :",
+              "options": [
+                "Éthique de l'honnêteté existentielle",
+                "Nihilisme",
+                "Utilitarisme",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité commence par vérité sur soi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Exemple : « Je suis timide, je ne peux pas parler » :",
+              "options": [
+                "Peut figer un choix passé en nature",
+                "Prouve l'absence de liberté",
+                "Est phronesis",
+                "Est devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractère peut devenir excuse si non repensé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Authenticité ≠ égoïsme car :",
+              "options": [
+                "Implique reconnaissance de la liberté d'autrui",
+                "Ignore les autres",
+                "Est plaisir",
+                "Est hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humanisme existentialiste : liberté universelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Honte existentielle :",
+              "options": [
+                "Découverte d'une liberté qu'on voudrait nier",
+                "Vertu",
+                "Devoir strict",
+                "Plaisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction face à la responsabilité radicale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éducation à l'autonomie :",
+              "options": [
+                "Combattre mauvaise foi par réflexion",
+                "Imposer un rôle",
+                "Refuser le débat",
+                "Copier l'autorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pédagogie philosophique : lucidité sur les choix."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Déterminisme et libre arbitre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le déterminisme affirme que :",
+              "options": [
+                "Tout événement a une cause",
+                "La liberté compatibiliste redéfinit libre action",
+                "Rien n'a de cause",
+                "Kant nie toute causalité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Déterminisme physique/social vs compatibilisme (Hume)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Liberté indéterministe (libertarianisme) :",
+              "options": [
+                "Choix sans détermination causale complète",
+                "Identique au fatalisme",
+                "Nie la science",
+                "Est stoïcisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position forte : origination des actes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Compatibilisme :",
+              "options": [
+                "Libre = agir selon sa volonté sans contrainte externe",
+                "Libre = sans causes",
+                "Impossible",
+                "Refus de la morale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté politique/morale compatible avec causalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Spinoza : liberté est :",
+              "options": [
+                "Connaissance de la nécessité",
+                "Caprice",
+                "Illusion totale",
+                "Obéissance au prince"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Servitude = ignorance des causes ; liberté = puissance rationnelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fatalisme :",
+              "options": [
+                "Tout arrivera quoi qu'on fasse (attitude)",
+                "Identique au déterminisme scientifique",
+                "Thèse kantienne",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction : fatalisme psychologique vs déterminisme causal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si tout est déterminé, la responsabilité :",
+              "options": [
+                "Est remise en question (débat)",
+                "Disparaît sans débat",
+                "Est prouvée",
+                "Est utilitariste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sanction, blâme : encore justifiés (compatibilistes) ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Déterminisme social (Marx, Durkheim) :",
+              "options": [
+                "Structures influencent fortement les choix",
+                "Nient toute liberté",
+                "Prouvent le cogito",
+                "Sont identiques à Sartre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté située : classe, normes, éducation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Expérience de Libet (neurosciences) :",
+              "options": [
+                "Interroge le timing de la décision consciente",
+                "Prouve Dieu",
+                "Nie le cerveau",
+                "Résout le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat : préparation neuronale vs sentiment de liberté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Kant : liberté pratique est :",
+              "options": [
+                "Postulat de la raison pratique (causalité intelligible)",
+                "Illusion",
+                "Hédonisme",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté transcendantale : condition du devoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix moral sans liberté serait :",
+              "options": [
+                "Incohérent (obligation suppose capacité d'agir autrement)",
+                "Trivial",
+                "Cogito",
+                "Épicurien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilité présuppose liberté au sens pratique."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Spinoza : servitude et puissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Spinoza pense la liberté comme :",
+              "options": [
+                "Compréhension adéquate des causes",
+                "Puissance d'agir augmentée",
+                "Caprice sans cause",
+                "Obéissance religieuse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Éthique : liberté = connaissance des affects et des causes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Servitude passionnelle :",
+              "options": [
+                "Subir les affects sans les comprendre",
+                "Vertu parfaite",
+                "Devoir kantien",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homo servitus : ignorant pourquoi il désire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Conatus :",
+              "options": [
+                "Effort pour persévérer dans son être",
+                "Refus de vivre",
+                "Devoir",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondement dynamique du désir chez Spinoza."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Liberté politique spinoziste :",
+              "options": [
+                "État raisonnable protégeant la paix et la liberté de penser",
+                "Tyrannie",
+                "Anarchie",
+                "Théocratie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traité théologico-politique : liberté de philosopher."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Déterminisme spinozien :",
+              "options": [
+                "Ordre de la nature = ordre de causes infini",
+                "Hasard réel",
+                "Dualisme cartésien",
+                "Inconscient freudien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deus sive Natura : pas de transcendance voluntariste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Responsabilité :",
+              "options": [
+                "Agir avec connaissance vs passion aveugle",
+                "N'existe pas",
+                "Est toujours collective",
+                "Est utilitariste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus on comprend, plus on est libre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Joie spinoziste :",
+              "options": [
+                "Passage à une perfection plus grande",
+                "Plaisir animal seulement",
+                "Devoir",
+                "Peur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affect de transition vers plus de puissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Critique du libre arbitre indifférent :",
+              "options": [
+                "Volonté sans cause serait absurde",
+                "Prouve le caprice",
+                "Est kantienne",
+                "Est sartrienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de liberté du type « balance » sans détermination."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Éthique des affects :",
+              "options": [
+                "Analyser haine, colère pour les transformer",
+                "Les refouler",
+                "Les nier",
+                "Les maximiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Via intellectus : active les affects."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Spinoza vs Sartre :",
+              "options": [
+                "Liberté comme connaissance vs liberté comme choix radical",
+                "Identiques",
+                "Ignorent la morale",
+                "Nient la politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux modèles majeurs au programme."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Kant : liberté pratique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Liberté pratique kantienne :",
+              "options": [
+                "Capacité d'initier une action selon une loi rationnelle",
+                "Causalité intelligible du noumène",
+                "Plaisir immédiat",
+                "Hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liberté transcendantale fonde le devoir et la responsabilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phénomène/noumène :",
+              "options": [
+                "Liberté appartient au noumène (postulat)",
+                "Tout est phénomène",
+                "Identiques",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne prouve pas la liberté théoriquement mais on la postule pratiquement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans liberté pratique :",
+              "options": [
+                "Pas de devoir ni de mérite",
+                "Tout devoir disparaît sans débat",
+                "Utilitarisme seul",
+                "Vertu seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tu peux, car tu dois » suppose liberté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Responsabilité kantienne :",
+              "options": [
+                "Imputable à la personne rationnelle libre",
+                "N'existe pas",
+                "Collective seulement",
+                "Est plaisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne = sujet de maximes autonomes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Liberté et loi morale :",
+              "options": [
+                "Loi de l'autonomie = loi de la liberté",
+                "S'opposent",
+                "Loi = contrainte externe seule",
+                "Nient le devoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se donner la loi universelle = être libre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Critique de la raison pratique :",
+              "options": [
+                "Établit postulats (liberté, immortalité, Dieu)",
+                "Nie la morale",
+                "Est utilitariste",
+                "Freudienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Second Critique : fondement du devoir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Acte libre vs acte mécanique :",
+              "options": [
+                "Maxime adoptée vs pure causalité naturelle",
+                "Identiques",
+                "Toujours mécaniques",
+                "Toujours caprice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction pratique, non expérimentale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Liberté politique (Kant, République) :",
+              "options": [
+                "République, droits, fédération des peuples",
+                "Despotisme",
+                "Anarchie",
+                "Utilitarisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit cosmopolitique et paix perpétuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contrainte civile et liberté :",
+              "options": [
+                "Obéir à des lois qu'on se donne (idéal)",
+                "Toute loi est servitude",
+                "Refus du droit",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie politique : législateur universel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Articuler Kant/Sartre :",
+              "options": [
+                "Devoir autonome vs liberté existentielle",
+                "Identiques",
+                "Ignorent la responsabilité",
+                "Nient la situation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux lectures de l'autonomie moderne."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Responsabilité morale et juridique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Responsabilité morale :",
+              "options": [
+                "Blâme ou louange pour actes imputables",
+                "Peut exister sans sanction légale",
+                "Est toujours identique au crime",
+                "Ignore l'intention"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Domaine moral plus large que le juridique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Responsabilité pénale exige souvent :",
+              "options": [
+                "Fait, légalité, imputabilité",
+                "Seulement intention",
+                "Seulement conséquence",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit : éléments constitutifs de l'infraction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Imputabilité :",
+              "options": [
+                "Capacité d'être tenu pour auteur",
+                "Innocence",
+                "Hasard",
+                "Vertu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minorité, trouble mental : limites discutées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Responsabilité collective :",
+              "options": [
+                "Groupe peut être tenu responsable (entreprise, État)",
+                "Impossible",
+                "Remplace la liberté",
+                "Est cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution, génocide : débats sur culpabilité collective."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Intention et responsabilité :",
+              "options": [
+                "Dol vs faute ; intention modifie le blâme",
+                "Intention irrelevante toujours",
+                "Seule conséquence compte",
+                "Devoir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction homicide involontaire / meurtre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Obéissance à ordre injuste :",
+              "options": [
+                "N'excuse pas toujours (procès Nuremberg)",
+                "Toujours excuse",
+                "Devoir absolu",
+                "Utilitarisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conscience morale vs ordre supérieur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Responsabilité prospectiva :",
+              "options": [
+                "Devoir d'agir pour éviter des maux futurs",
+                "Seulement punir le passé",
+                "N'existe pas",
+                "Est esthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écologie, IA : responsabilité envers l'avenir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Causalité et responsabilité :",
+              "options": [
+                "Faut lien entre action et dommage",
+                "Identiques au hasard",
+                "Nient la liberté",
+                "Prouvent le déterminisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribution causale nécessaire au blâme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pardon et responsabilité :",
+              "options": [
+                "Reconnaître le tort peut ouvrir au pardon",
+                "Supprime le devoir",
+                "Est impossible",
+                "Est utilitariste seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique du pardon : reconnaissance et réparation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Droit et morale :",
+              "options": [
+                "Se recouvrent partiellement ; loi ≠ tout le devoir",
+                "Identiques",
+                "Sans lien",
+                "Morale = code pénal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Légal n'est pas toujours moral (ex. lois injustes historiques)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Promesse, engagement et parole",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Promettre engage :",
+              "options": [
+                "Responsabilité future envers autrui",
+                "Confiance et parole donnée",
+                "Rien si l'on change d'avis sans motif",
+                "Seulement le droit pénal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Éthique de la parole : fidélité, contrat moral."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Kant sur promesse mensongère :",
+              "options": [
+                "Maxime d'emprunter sans payer universalisable ? Non",
+                "Toujours permise",
+                "Utilitariste",
+                "Esthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple classique d'impossibilité d'universaliser la fausseté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Engagement existentiel :",
+              "options": [
+                "Projet long terme assumé",
+                "Hasard",
+                "Devoir sans choix",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fidélité à une cause, une relation, un métier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contrat (Rousseau, philosophie du droit) :",
+              "options": [
+                "Engagement volontaire fondant obligation",
+                "Pure contrainte",
+                "Illusion",
+                "Inconscient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volonté générale et liberté civile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parole donnée sans contrat écrit :",
+              "options": [
+                "Peut avoir force morale",
+                "Sans valeur",
+                "Illegal toujours",
+                "Utilitariste seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confiance interpersonnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rupture d'engagement :",
+              "options": [
+                "Requiert justification morale",
+                "Toujours indifférente",
+                "Interdite par la nature",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loyauté vs liberté de réviser ses projets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Promesse à soi-même :",
+              "options": [
+                "Auto-engagement (résolution, vertu)",
+                "Impossible",
+                "Sans responsabilité",
+                "Juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intégrité : cohérence entre parole et acte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mauvaise foi et promesse :",
+              "options": [
+                "Promettre sans intention d'exécuter",
+                "Vertu",
+                "Phronesis",
+                "Devoir perfectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manipulation ou auto-illusion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Engagement civique :",
+              "options": [
+                "Responsabilité du citoyen envers la communauté",
+                "Refus de la liberté",
+                "Plaisir",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vote, débat, respect des droits d'autrui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parole et violence :",
+              "options": [
+                "Discours peut engager responsabilité (incitation, haine)",
+                "Sans effet moral",
+                "Toujours libre sans limite",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté d'expression et devoirs de vérité/respect."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Liberté politique et civique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Liberté politique inclut :",
+              "options": [
+                "Droits fondamentaux et participation",
+                "Respect des libertés d'autrui dans la cité",
+                "Absence de toute loi",
+                "Soumission aveugle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liberté n'est pas licence : cadre juridique protecteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rousseau : obéir à la loi qu'on s'est donnée :",
+              "options": [
+                "Est être libre (autonomie civique)",
+                "Est servitude",
+                "Est utilitarisme",
+                "Est cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté civile vs liberté naturelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Liberté négative (Isaiah Berlin) :",
+              "options": [
+                "Absence d'ingérence",
+                "Autonomie rationnelle seule",
+                "Devoir kantien",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction liberté négative / positive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Liberté positive :",
+              "options": [
+                "Capacité réelle d'agir (autonomie, ressources)",
+                "N'importe quelle contrainte",
+                "Refus du droit",
+                "Plaisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pauvreté, ignorance limitent la liberté effective."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "État de droit :",
+              "options": [
+                "Pouvoirs limités, droits garantis",
+                "Arbitraire",
+                "Théocratie",
+                "Anarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité juridique condition de liberté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Liberté vs égalité :",
+              "options": [
+                "Tension démocratique à concilier",
+                "Identiques toujours",
+                "Sans rapport",
+                "Nient la morale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fraternité, solidarité : articulation des valeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Despotisme :",
+              "options": [
+                "Gouvernement où le peuple n'est pas législateur",
+                "Liberté parfaite",
+                "République kantienne",
+                "Phronesis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kant : république vs despotisme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Liberté de conscience :",
+              "options": [
+                "Droit de croire ou ne pas croire",
+                "Obligation religieuse",
+                "Utilitarisme",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laïcité et pluralisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Responsabilité du citoyen :",
+              "options": [
+                "S'informer, voter, respecter autrui",
+                "Absence d'engagement",
+                "Plaisir seul",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté politique implique devoirs civiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Liberté sans responsabilité :",
+              "options": [
+                "Devient arbitraire ou égoïste",
+                "Idéal complet",
+                "Kantien pur",
+                "Stoïcien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corrélation liberté/responsabilité au cœur de u2."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Technique, écologie et responsabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Responsabilité contemporaine concerne :",
+              "options": [
+                "Dommages environnementaux long terme",
+                "Choix technologiques (IA, biotech)",
+                "Uniquement actes individuels instantanés",
+                "Rejet de toute causalité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Éthique appliquée : générations futures, incertitude."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jonas : principe responsabilité :",
+              "options": [
+                "Agir pour ne pas compromettre l'humanité future",
+                "Utilitarisme du passé",
+                "Cogito",
+                "Nihilisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Une éthique pour la nature technologique »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Liberté de disposer de la nature ?",
+              "options": [
+                "Débat : domination vs stewardship",
+                "Absolue sans limite",
+                "Interdite",
+                "Esthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écologie morale : limites de la puissance technique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Incertitude scientifique et agir :",
+              "options": [
+                "Principe de précaution (responsabilité malgré doute)",
+                "Attendre certitude absolue",
+                "Refuser toute action",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décider sous risque : éthique des catastrophes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Responsabilité des algorithmes :",
+              "options": [
+                "Choix humains de conception et déploiement",
+                "Pure machine",
+                "Sans auteur",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IA : imputabilité des développeurs et institutions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Liberté individuelle vs bien commun :",
+              "options": [
+                "Articulation nécessaire (sanitaire, climat)",
+                "Opposition sans solution",
+                "Identiques",
+                "Morale impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pandémie, transition écologique : débats publics."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Consommation et responsabilité :",
+              "options": [
+                "Choix d'achat ont conséquences morales",
+                "Sans impact",
+                "Purement esthétiques",
+                "Juridiques seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éthique du consumérisme : travail, environnement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Générations futures :",
+              "options": [
+                "Objets possibles de devoirs (Jonas, Rawls)",
+                "N'existent pas moralement",
+                "Sans lien",
+                "Utilitarisme interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrat social étendu dans le temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Technique neutre ?",
+              "options": [
+                "Débat : la technique porte valeurs et risques",
+                "Toujours neutre",
+                "Toujours maligne",
+                "Hors morale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Philosophie des techniques : Heidegger, Ellul, Jonas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Liberté responsable :",
+              "options": [
+                "Pouvoir agir en connaissance des conséquences",
+                "Caprice",
+                "Refus de la science",
+                "Devoir sans choix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie éclairée à l'ère technoscientifique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : liberté et responsabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Liberté et responsabilité :",
+              "options": [
+                "Corrélation : imputer suppose capacité de choisir",
+                "Assumer les conséquences de ses actes",
+                "S'opposent toujours",
+                "Ignorent le devoir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Thème central de l'unité 2 et du chapitre La morale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Autonomie (Kant/Sartre) :",
+              "options": [
+                "Se donner ses lois ou assumer ses choix",
+                "Obéissance aveugle",
+                "Déterminisme",
+                "Plaisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modernité morale : subjectivité et devoir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Alibi (« c'est la société ») :",
+              "options": [
+                "Peut diluer mais pas abolir toute responsabilité (débat)",
+                "Prouve l'absence de liberté",
+                "Est toujours vrai",
+                "Est cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure vs agence : synthèse terminale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éthique du care :",
+              "options": [
+                "Responsabilité relationnelle et attention à autrui",
+                "Refus de justice",
+                "Utilitarisme seul",
+                "Nihilisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gilligan, Held : complément aux éthiques du contrat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Liberté sans autrui :",
+              "options": [
+                "Incomplète ( reconnaissance, droits)",
+                "Parfaite",
+                "Impossible à discuter",
+                "Cogito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morale intersubjective : liberté des uns finit où commence celle des autres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maturité morale :",
+              "options": [
+                "Assumer liberté, devoir et conséquences",
+                "Suivre l'impulsion",
+                "Refuser la réflexion",
+                "Obéir sans question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif pédagogique du cours de philosophie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Déterminisme et sanction pénale :",
+              "options": [
+                "Compatibilistes : dissuasion et justice encore sensées",
+                "Sanction impossible",
+                "Devoir seul",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat pratique même si liberté métaphysique contestée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Liberté et bonheur (lien u1/u2) :",
+              "options": [
+                "Liberté choisie peut servir ou sacrifier le bonheur",
+                "Sans lien",
+                "Identiques",
+                "Opposés sans nuance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Articulation des deux unités du chapitre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question « Suis-je libre ? » :",
+              "options": [
+                "Ouvre déterminisme, existentialisme, Kant",
+                "Sans intérêt",
+                "Purement scientifique",
+                "Réponse unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problematic terminale : pluralité des doctrines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan chapitre La morale :",
+              "options": [
+                "Penser devoir, bonheur, liberté et responsabilité ensemble",
+                "Les séparer rigidement",
+                "Ignorer la politique",
+                "Refuser le débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse attendue en dissertation et en grand oral."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

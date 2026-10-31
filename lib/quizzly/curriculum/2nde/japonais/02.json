@@ -1,0 +1,2193 @@
+{
+  "id": "2nde-japonais-02",
+  "year": "2nde",
+  "subject": "japonais",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "question": "Quels mots désignent « mère » et « père » en japonais courant (parlé à la maison) ?",
+              "type": "multiple_choice",
+              "options": [
+                "はは (haha)",
+                "ちち (chichi)",
+                "おかあさん (okaasan)",
+                "おとうさん (otousan)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "はは et ちち sont les termes neutres pour « ma mère » et « mon père » ; おかあさん / おとうさん sont polis ou utilisés pour parler des parents d'autrui."
+            },
+            {
+              "question": "Comment écrit-on « frère aîné » en rōmaji ?",
+              "type": "single_choice",
+              "options": ["ani", "otouto", "onii-san", "imouto"],
+              "correctAnswers": [0],
+              "explanation": "兄 se lit ani (frère aîné). otouto = frère cadet, onii-san = forme polie, imouto = sœur cadette."
+            },
+            {
+              "question": "Que signifie かぞく (kazoku) ?",
+              "type": "single_choice",
+              "options": ["famille", "maison", "parent", "enfant"],
+              "correctAnswers": [0],
+              "explanation": "家族 kazoku = la famille (ensemble des proches)."
+            },
+            {
+              "question": "Quel hiragana correspond au son « ko » ?",
+              "type": "single_choice",
+              "options": ["こ", "き", "く", "け"],
+              "correctAnswers": [0],
+              "explanation": "La ligne K : か ka, き ki, く ku, け ke, こ ko."
+            },
+            {
+              "question": "Comment dit-on « grand-mère (côté maternel) » en japonais neutre ?",
+              "type": "single_choice",
+              "options": [
+                "そぼ (sobo)",
+                "ばば (baba)",
+                "おばあさん (obaasan)",
+                "ちち (chichi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "祖母 sobo = ma grand-mère (ligne maternelle en registre neutre)."
+            },
+            {
+              "question": "Que veut dire いもうと (imouto) ?",
+              "type": "single_choice",
+              "options": ["sœur cadette", "sœur aînée", "cousin", "fille"],
+              "correctAnswers": [0],
+              "explanation": "妹 imouto = petite sœur (cadette)."
+            },
+            {
+              "question": "Quelle lecture en rōmaji pour あに (frère aîné) ?",
+              "type": "single_choice",
+              "options": ["ani", "ane", "onii", "otoko"],
+              "correctAnswers": [0],
+              "explanation": "兄 s'écrit あに et se romanise ani."
+            },
+            {
+              "question": "Dans おとうと (otouto), que signifie le mot ?",
+              "type": "single_choice",
+              "options": ["frère cadet", "oncle", "cousin", "fils"],
+              "correctAnswers": [0],
+              "explanation": "弟 otouto = frère cadet."
+            },
+            {
+              "question": "Quel mot japonais correspond à « enfant » (général) ?",
+              "type": "single_choice",
+              "options": [
+                "こども (kodomo)",
+                "かぞく (kazoku)",
+                "がくせい (gakusei)",
+                "せんせい (sensei)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "子供 kodomo = enfant."
+            },
+            {
+              "question": "Comment écrit-on « sœur aînée » en hiragana (lecture courante du kanji 姉) ?",
+              "type": "single_choice",
+              "options": ["あね", "いもうと", "おねえさん", "はは"],
+              "correctAnswers": [0],
+              "explanation": "姉 en registre neutre se lit あね (ane)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "À la maison",
+          "questions": [
+            {
+              "question": "Quels termes désignent des pièces ou lieux de la maison en japonais ?",
+              "type": "multiple_choice",
+              "options": [
+                "いえ (ie)",
+                "へや (heya)",
+                "だいがく (daigaku)",
+                "にほん (nihon)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "いえ = maison ; へや = chambre/pièce. daigaku = université, nihon = Japon."
+            },
+            {
+              "question": "Que signifie いえ (ie) ?",
+              "type": "single_choice",
+              "options": ["maison / chez soi", "école", "parc", "magasin"],
+              "correctAnswers": [0],
+              "explanation": "家 ie = maison, foyer."
+            },
+            {
+              "question": "Comment dit-on « chambre » ?",
+              "type": "single_choice",
+              "options": [
+                "へや (heya)",
+                "みせ (mise)",
+                "えき (eki)",
+                "がっこう (gakkou)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "部屋 heya = pièce, chambre."
+            },
+            {
+              "question": "Quel rōmaji pour キッチン emprunté courant « cuisine » ?",
+              "type": "single_choice",
+              "options": ["kicchin", "kyoushitsu", "toire", "ima"],
+              "correctAnswers": [0],
+              "explanation": "キッチン kicchin (emprunt) = cuisine moderne."
+            },
+            {
+              "question": "Que veut dire いま (ima) dans le contexte maison ?",
+              "type": "single_choice",
+              "options": [
+                "salon / pièce à vivre",
+                "maintenant",
+                "demain",
+                "porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "居間 ima = salon. Attention : いま se prononce pareil pour « maintenant » (kanji 今) selon le contexte."
+            },
+            {
+              "question": "Lecture hiragana de « e » (devant) en まえ (devant) ?",
+              "type": "single_choice",
+              "options": ["え", "あ", "お", "い"],
+              "correctAnswers": [0],
+              "explanation": "前 mae : ま + え = devant."
+            },
+            {
+              "question": "Comment dit-on « salle de bains / bain » souvent entendu ?",
+              "type": "single_choice",
+              "options": [
+                "おふろ (ofuro)",
+                "べんきょう (benkyou)",
+                "ごはん (gohan)",
+                "でんわ (denwa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "お風呂 ofuro = bain japonais."
+            },
+            {
+              "question": "Signification de うち (uchi) ?",
+              "type": "single_choice",
+              "options": [
+                "chez moi / ma maison (familier)",
+                "dehors",
+                "école",
+                "gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "うち uchi = chez nous, ma maison (registre familier)."
+            },
+            {
+              "question": "Quel mot pour « jardin » ?",
+              "type": "single_choice",
+              "options": [
+                "にわ (niwa)",
+                "うみ (umi)",
+                "やま (yama)",
+                "みち (michi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "庭 niwa = jardin."
+            },
+            {
+              "question": "Rōmaji de トイレ (toilettes) ?",
+              "type": "single_choice",
+              "options": ["toire", "tori", "tokoro", "tomodachi"],
+              "correctAnswers": [0],
+              "explanation": "トイレ toire = toilettes (emprunt)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "L'école",
+          "questions": [
+            {
+              "question": "Quels mots sont liés à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "がっこう (gakkou)",
+                "せんせい (sensei)",
+                "レストラン (resutoran)",
+                "うみ (umi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "学校 gakkou = école ; 先生 sensei = professeur. Les autres ne sont pas scolaires."
+            },
+            {
+              "question": "Que signifie がくせい (gakusei) ?",
+              "type": "single_choice",
+              "options": [
+                "élève / étudiant",
+                "professeur",
+                "directeur",
+                "classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学生 gakusei = élève, étudiant."
+            },
+            {
+              "question": "Comment dit-on « cours / leçon » ?",
+              "type": "single_choice",
+              "options": [
+                "じゅぎょう (jugyou)",
+                "しごと (shigoto)",
+                "りょこう (ryokou)",
+                "スポーツ (supootsu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "授業 jugyou = cours."
+            },
+            {
+              "question": "Quel hiragana pour « ga » dans がっこう ?",
+              "type": "single_choice",
+              "options": ["が", "か", "ぎ", "ぐ"],
+              "correctAnswers": [0],
+              "explanation": "学校 : が (ga) avec dakuten."
+            },
+            {
+              "question": "Signification de きょうしつ (kyoushitsu) ?",
+              "type": "single_choice",
+              "options": [
+                "salle de classe",
+                "bibliothèque",
+                "cantine",
+                "cour de récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教室 kyoushitsu = salle de classe."
+            },
+            {
+              "question": "Rōmaji de べんきょう (étudier) ?",
+              "type": "single_choice",
+              "options": ["benkyou", "benri", "bento", "byouin"],
+              "correctAnswers": [0],
+              "explanation": "勉強 benkyou = étude, révisions."
+            },
+            {
+              "question": "Que veut dire テスト (tesuto) ?",
+              "type": "single_choice",
+              "options": ["contrôle / test", "texte", "temps", "thé"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt anglais test = contrôle."
+            },
+            {
+              "question": "Comment dit-on « devoirs (scolaires) » ?",
+              "type": "single_choice",
+              "options": [
+                "しゅくだい (shukudai)",
+                "しごと (shigoto)",
+                "おかね (okane)",
+                "てがみ (tegami)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "宿題 shukudai = devoirs."
+            },
+            {
+              "question": "Sens de ともだち (tomodachi) ?",
+              "type": "single_choice",
+              "options": ["ami(e)", "professeur", "frère", "voisin"],
+              "correctAnswers": [0],
+              "explanation": "友達 tomodachi = ami."
+            },
+            {
+              "question": "Quelle matière : すうがく (suugaku) ?",
+              "type": "single_choice",
+              "options": ["mathématiques", "japonais", "anglais", "sport"],
+              "correctAnswers": [0],
+              "explanation": "数学 suugaku = maths."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Horaires scolaires",
+          "questions": [
+            {
+              "question": "Quels mots expriment des moments de la journée scolaire ?",
+              "type": "multiple_choice",
+              "options": [
+                "あさ (asa)",
+                "ひる (hiru)",
+                "よる (yoru)",
+                "にほん (nihon)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "朝 asa = matin ; 昼 hiru = midi/journée. 夜 yoru = soir ; 日本 = Japon."
+            },
+            {
+              "question": "Comment dit-on « lundi » en japonais ?",
+              "type": "single_choice",
+              "options": [
+                "げつようび (getsuyoubi)",
+                "かようび (kayoubi)",
+                "もくようび (mokuyoubi)",
+                "にちようび (nichiyoubi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "月曜日 getsuyoubi = lundi (jour de la lune)."
+            },
+            {
+              "question": "Que signifie きょう (kyou) ?",
+              "type": "single_choice",
+              "options": ["aujourd'hui", "hier", "demain", "semaine"],
+              "correctAnswers": [0],
+              "explanation": "今日 kyou = aujourd'hui."
+            },
+            {
+              "question": "Rōmaji de まいにち (tous les jours) ?",
+              "type": "single_choice",
+              "options": ["mainichi", "maiasa", "mada", "motto"],
+              "correctAnswers": [0],
+              "explanation": "毎日 mainichi = chaque jour."
+            },
+            {
+              "question": "Sens de じかん (jikan) ?",
+              "type": "single_choice",
+              "options": [
+                "heure / temps",
+                "minute seulement",
+                "semaine",
+                "mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "時間 jikan = temps, heure(s)."
+            },
+            {
+              "question": "Comment dit-on « 8 heures » (forme simple) ?",
+              "type": "single_choice",
+              "options": [
+                "はちじ (hachiji)",
+                "はちにん (hachinin)",
+                "やっつ (yattsu)",
+                "はちがつ (hachigatsu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "八時 hachiji = 8 h."
+            },
+            {
+              "question": "Quel jour : 金曜日 (kinyoubi) ?",
+              "type": "single_choice",
+              "options": ["vendredi", "jeudi", "samedi", "mercredi"],
+              "correctAnswers": [0],
+              "explanation": "金曜日 = vendredi (jour de l'or/métal)."
+            },
+            {
+              "question": "Hiragana du chiffre 9 lu « ku » seul ?",
+              "type": "single_choice",
+              "options": ["きゅう / く (contexte)", "き", "こ", "け"],
+              "correctAnswers": [0],
+              "explanation": "Neuf : 九 → ku ou kyuu selon comptage ; en 9 objets on dit きゅう often."
+            },
+            {
+              "question": "Signification de はじまる (hajimaru) ?",
+              "type": "single_choice",
+              "options": ["commencer", "finir", "ouvrir (un livre)", "fermer"],
+              "correctAnswers": [0],
+              "explanation": "始まる hajimaru = commencer (intransitif)."
+            },
+            {
+              "question": "Que veut dire おわる (owaru) ?",
+              "type": "single_choice",
+              "options": ["se terminer / finir", "dormir", "manger", "jouer"],
+              "correctAnswers": [0],
+              "explanation": "終わる owaru = finir."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Loisirs et sport",
+          "questions": [
+            {
+              "question": "Quels mots concernent les loisirs ?",
+              "type": "multiple_choice",
+              "options": [
+                "スポーツ (supootsu)",
+                "おんがく (ongaku)",
+                "びょういん (byouin)",
+                "ぎんこう (ginkou)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sport et musique = loisirs ; hôpital et banque non."
+            },
+            {
+              "question": "Comment dit-on « lire » ?",
+              "type": "single_choice",
+              "options": [
+                "よむ (yomu)",
+                "かく (kaku)",
+                "きく (kiku)",
+                "みる (miru)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "読む yomu = lire."
+            },
+            {
+              "question": "Sens de うた (uta) ?",
+              "type": "single_choice",
+              "options": ["chanson", "photo", "film", "jeu vidéo"],
+              "correctAnswers": [0],
+              "explanation": "歌 uta = chanson."
+            },
+            {
+              "question": "Rōmaji de サッカー ?",
+              "type": "single_choice",
+              "options": ["sakkaa", "sake", "sakura", "sabishii"],
+              "correctAnswers": [0],
+              "explanation": "サッカー sakkaa = football."
+            },
+            {
+              "question": "Que signifie えいが (eiga) ?",
+              "type": "single_choice",
+              "options": [
+                "cinéma / film",
+                "image fixe",
+                " télévision",
+                " théâtre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "映画 eiga = film."
+            },
+            {
+              "question": "Comment dit-on « jouer (s'amuser) » ?",
+              "type": "single_choice",
+              "options": [
+                "あそぶ (asobu)",
+                "はたらく (hataraku)",
+                "ねる (neru)",
+                "あるく (aruku)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "遊ぶ asobu = jouer, s'amuser."
+            },
+            {
+              "question": "Signification de テニス (tenisu) ?",
+              "type": "single_choice",
+              "options": ["tennis", "natation", "basket", "judo"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt tennis."
+            },
+            {
+              "question": "Quel verbe : « écouter (musique) » ?",
+              "type": "single_choice",
+              "options": [
+                "きく (kiku)",
+                "みる (miru)",
+                "のむ (nomu)",
+                "たべる (taberu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "聞く kiku = écouter."
+            },
+            {
+              "question": "Que veut dire しゅみ (shumi) ?",
+              "type": "single_choice",
+              "options": [
+                "passe-temps / hobby",
+                "travail",
+                "devoir",
+                "maladie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "趣味 shumi = hobby."
+            },
+            {
+              "question": "Rōmaji de ピアノ ?",
+              "type": "single_choice",
+              "options": ["piano", "piza", "pikku", "panda"],
+              "correctAnswers": [0],
+              "explanation": "ピアノ piano = piano."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sorties entre amis",
+          "questions": [
+            {
+              "question": "Quels lieux de sortie sont courants en 2nde ?",
+              "type": "multiple_choice",
+              "options": [
+                "こうえん (kouen)",
+                "カフェ (kafe)",
+                "だいがく (daigaku)",
+                "びょういん (byouin)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parc et café = sorties ; université/hôpital moins « loisir » immédiat."
+            },
+            {
+              "question": "Comment dit-on « parc » ?",
+              "type": "single_choice",
+              "options": [
+                "こうえん (kouen)",
+                "えき (eki)",
+                "みせ (mise)",
+                "うみ (umi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "公園 kouen = parc."
+            },
+            {
+              "question": "Sens de いっしょに (issho ni) ?",
+              "type": "single_choice",
+              "options": ["ensemble", "seul", "avant", "après"],
+              "correctAnswers": [0],
+              "explanation": "一緒に issho ni = ensemble."
+            },
+            {
+              "question": "Rōmaji de 買い物 (shopping) ?",
+              "type": "single_choice",
+              "options": ["kaimono", "kaisha", "kaeru", "kawaii"],
+              "correctAnswers": [0],
+              "explanation": "買い物 kaimono = courses, shopping."
+            },
+            {
+              "question": "Que signifie たのしい (tanoshii) ?",
+              "type": "single_choice",
+              "options": [
+                "amusant / agréable",
+                "triste",
+                "difficile",
+                "dangereux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "楽しい tanoshii = amusant, joyeux."
+            },
+            {
+              "question": "Comment inviter : « On y va ? » (forme simple) ?",
+              "type": "single_choice",
+              "options": [
+                "いこう (ikou)",
+                "いく (iku)",
+                "きた (kita)",
+                "きます (kimasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "行こう ikou = allons-y ! (invitation familière)."
+            },
+            {
+              "question": "Signification de えき (eki) ?",
+              "type": "single_choice",
+              "options": ["gare", "aéroport", "port", "arrêt de bus seulement"],
+              "correctAnswers": [0],
+              "explanation": "駅 eki = gare."
+            },
+            {
+              "question": "Quel mot pour « photo (appareil) » emprunté ?",
+              "type": "single_choice",
+              "options": [
+                "カメラ (kamera)",
+                "ラジオ (rajo)",
+                "パソコン (pasokon)",
+                "テレビ (terebi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "カメラ kamera = appareil photo."
+            },
+            {
+              "question": "Que veut dire まつ (matsu) au présent ?",
+              "type": "single_choice",
+              "options": ["attendre", "rencontrer", "quitter", "oublier"],
+              "correctAnswers": [0],
+              "explanation": "待つ matsu = attendre."
+            },
+            {
+              "question": "Rōmaji de 会う (rencontrer) ?",
+              "type": "single_choice",
+              "options": ["au", "iu", "ou", "ae"],
+              "correctAnswers": [0],
+              "explanation": "会う au = rencontrer quelqu'un."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Repas et goûters",
+          "questions": [
+            {
+              "question": "Quels mots concernent manger au quotidien ?",
+              "type": "multiple_choice",
+              "options": [
+                "ごはん (gohan)",
+                "みず (mizu)",
+                "でんわ (denwa)",
+                "くつ (kutsu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ごはん = riz/repas ; 水 mizu = eau. Téléphone et chaussures non."
+            },
+            {
+              "question": "Comment dit-on « manger » ?",
+              "type": "single_choice",
+              "options": [
+                "たべる (taberu)",
+                "のむ (nomu)",
+                "ねる (neru)",
+                "はなす (hanasu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食べる taberu = manger."
+            },
+            {
+              "question": "Sens de あさごはん (asagohan) ?",
+              "type": "single_choice",
+              "options": [
+                "petit-déjeuner",
+                "déjeuner",
+                "dîner",
+                "goûter seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朝ごはん = repas du matin."
+            },
+            {
+              "question": "Rōmaji de おちゃ (thé) ?",
+              "type": "single_choice",
+              "options": ["ocha", "ocha vs otya", "osake", "onigiri"],
+              "correctAnswers": [0],
+              "explanation": "お茶 ocha = thé (souvent romanisé ocha)."
+            },
+            {
+              "question": "Que signifie おにぎり (onigiri) ?",
+              "type": "single_choice",
+              "options": ["boulette de riz", "soupe", "salade", "pâtes"],
+              "correctAnswers": [0],
+              "explanation": "おにぎり = riz en boule."
+            },
+            {
+              "question": "Comment dit-on « boire » ?",
+              "type": "single_choice",
+              "options": [
+                "のむ (nomu)",
+                "みる (miru)",
+                "かう (kau)",
+                "つくる (tsukuru)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "飲む nomu = boire."
+            },
+            {
+              "question": "Signification de おいしい (oishii) ?",
+              "type": "single_choice",
+              "options": ["délicieux", "cher", "froid", "épicé seulement"],
+              "correctAnswers": [0],
+              "explanation": "美味しい oishii = bon, délicieux."
+            },
+            {
+              "question": "Quel mot : « lait » emprunté ?",
+              "type": "single_choice",
+              "options": [
+                "ミルク (miruku)",
+                "ミート (miito)",
+                "メロン (meron)",
+                "マンガ (manga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ミルク miruku = lait."
+            },
+            {
+              "question": "Que veut dire レストラン (resutoran) ?",
+              "type": "single_choice",
+              "options": [
+                "restaurant",
+                "supermarché",
+                "cuisine maison",
+                "cantine scolaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt restaurant."
+            },
+            {
+              "question": "Hiragana de « su » dans すし (sushi lu souvent sushi) ?",
+              "type": "single_choice",
+              "options": ["す", "し", "さ", "せ"],
+              "correctAnswers": [0],
+              "explanation": "寿司 : す + し ; le premier caractère est す."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Hiragana du quotidien",
+          "questions": [
+            {
+              "question": "Quels hiragana sont des voyelles de base ?",
+              "type": "multiple_choice",
+              "options": ["あ", "い", "つ", "ん"],
+              "correctAnswers": [0, 1],
+              "explanation": "あ a et い i sont voyelles ; つ tsu, ん n sont consonnes."
+            },
+            {
+              "question": "Quelle lecture pour ふ ?",
+              "type": "single_choice",
+              "options": ["fu", "hu (ancien)", "pu", "bu"],
+              "correctAnswers": [0],
+              "explanation": "ふ se romanise fu en Hepburn moderne."
+            },
+            {
+              "question": "Combien de caractères dans la ligne « sa » (さしすせそ) ?",
+              "type": "single_choice",
+              "options": ["5", "4", "10", "3"],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne kana de base a 5 sons."
+            },
+            {
+              "question": "Rōmaji de め ?",
+              "type": "single_choice",
+              "options": ["me", "ma", "mi", "mo"],
+              "correctAnswers": [0],
+              "explanation": "め = me (ligne ma)."
+            },
+            {
+              "question": "Quel caractère pour « wo » particule (rare) ?",
+              "type": "single_choice",
+              "options": ["を", "お", "わ", "ゔ"],
+              "correctAnswers": [0],
+              "explanation": "を wo marque souvent l'objet (prononcé o)."
+            },
+            {
+              "question": "Lecture de っ (petit tsu) dans がっこう ?",
+              "type": "single_choice",
+              "options": [
+                "double consonne (pause)",
+                "tsu long",
+                "u muet",
+                "ignore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le petit っ indique une consonne geminée : gakkou."
+            },
+            {
+              "question": "Quel hiragana : « ri » n'existe pas ; on écrit ?",
+              "type": "single_choice",
+              "options": ["り (ra line)", "りい", "いり", "ル"],
+              "correctAnswers": [0],
+              "explanation": "り se romanise ri en Hepburn (ra line)."
+            },
+            {
+              "question": "Son de じ (ji) vient de quelle ligne modifiée ?",
+              "type": "single_choice",
+              "options": [
+                "sa + dakuten",
+                "ta + dakuten",
+                "ka + dakuten",
+                "ha + dakuten"
+              ],
+              "correctAnswers": [0],
+              "explanation": "し + deux points = じ ji."
+            },
+            {
+              "question": "Rōmaji de ちいさい (petit) ?",
+              "type": "single_choice",
+              "options": ["chiisai", "chiisa", "tiisai", "shii sai"],
+              "correctAnswers": [0],
+              "explanation": "小さい chiisai = petit."
+            },
+            {
+              "question": "Que représente ん ?",
+              "type": "single_choice",
+              "options": [
+                "nasale en fin de syllabe",
+                "voyelle",
+                "double voyelle",
+                "ponctuation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ん = n nasal syllabique unique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases simples sur la famille",
+          "questions": [
+            {
+              "question": "Quelles traductions sont correctes pour présenter sa famille ?",
+              "type": "multiple_choice",
+              "options": [
+                "かぞくは よにん です (Kazoku wa yonin desu)",
+                "わたしは がくせい です (Watashi wa gakusei desu)",
+                "これは ペン です",
+                "にほんごは むずかしい です"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phrase sur la taille de la famille et statut d'élève ; les autres sont vraies mais pas « famille »."
+            },
+            {
+              "question": "Comment dire « Il y a quatre personnes dans ma famille » (modèle simple) ?",
+              "type": "single_choice",
+              "options": [
+                "かぞくは よにん です",
+                "かぞくは みっつ です",
+                "いえは よにん です",
+                "ともだちは よにん です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "四人 yonin = quatre personnes ; 家族は…です."
+            },
+            {
+              "question": "Particule de thème dans わたしは がくせい です ?",
+              "type": "single_choice",
+              "options": ["は (wa)", "が (ga)", "を (o)", "に (ni)"],
+              "correctAnswers": [0],
+              "explanation": "は marque le thème de la phrase."
+            },
+            {
+              "question": "Sens de これ (kore) ?",
+              "type": "single_choice",
+              "options": [
+                "ceci (près de moi)",
+                "cela (près de vous)",
+                "cela là-bas",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これ = chose proche du locuteur."
+            },
+            {
+              "question": "Rōmaji de 兄弟 (frères et sœurs) lu kyoudai ?",
+              "type": "single_choice",
+              "options": ["kyoudai", "kyoudai vs shimai", "kazoku", "kodomo"],
+              "correctAnswers": [0],
+              "explanation": "兄弟 kyoudai = frères (parfois fratrie)."
+            },
+            {
+              "question": "Comment dire « mon père » poliment à un ami ?",
+              "type": "single_choice",
+              "options": [
+                "ちち (humble) vs おとうさん (your father polite)",
+                "はは",
+                "あに",
+                "Sensei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour « mon père » on dit ちち ; おとうさん = votre père ou poli général."
+            },
+            {
+              "question": "Fin de phrase polie : です signifie ?",
+              "type": "single_choice",
+              "options": ["être (poli)", "passé", "négation", "question seule"],
+              "correctAnswers": [0],
+              "explanation": "です = copule polie."
+            },
+            {
+              "question": "Que veut dire だれ (dare) ?",
+              "type": "single_choice",
+              "options": ["qui ?", "où ?", "quoi ?", "quand ?"],
+              "correctAnswers": [0],
+              "explanation": "誰 dare = qui."
+            },
+            {
+              "question": "Négation polie de です ?",
+              "type": "single_choice",
+              "options": [
+                "ではありません / じゃありません",
+                "ですね",
+                "でした",
+                "ましょう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme négative polie standard."
+            },
+            {
+              "question": "Mot pour « sœur » en général (forme polie courante) ?",
+              "type": "single_choice",
+              "options": [
+                "おねえさん / いもうと selon âge",
+                "おにいさん",
+                "おかあさん",
+                "おじいさん"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aînée お姉さん, cadette 妹 ; poli selon contexte."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision unité 1",
+          "questions": [
+            {
+              "question": "Quels mots appartiennent au thème « école et loisirs » ?",
+              "type": "multiple_choice",
+              "options": [
+                "べんきょう (benkyou)",
+                "あそぶ (asobu)",
+                "ぎんこう (ginkou)",
+                "くすり (kusuri)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étudier et jouer ; banque et médicament hors thème."
+            },
+            {
+              "question": "Traduction de « professeur » ?",
+              "type": "single_choice",
+              "options": [
+                "せんせい (sensei)",
+                "がくせい (gakusei)",
+                "いしゃ (isha)",
+                "かいしゃいん (kaishain)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先生 sensei = professeur, maître."
+            },
+            {
+              "question": "Rōmaji de 友達 ?",
+              "type": "single_choice",
+              "options": ["tomodachi", "tomodati", "tomo dachi", "domachi"],
+              "correctAnswers": [0],
+              "explanation": "友達 tomodachi."
+            },
+            {
+              "question": "Hiragana : 学校 se lit ?",
+              "type": "single_choice",
+              "options": ["がっこう", "がくこう", "がっこ", "がこう"],
+              "correctAnswers": [0],
+              "explanation": "がっこう gakkou avec gemination."
+            },
+            {
+              "question": "Sens de 毎週 (maishuu) ?",
+              "type": "single_choice",
+              "options": [
+                "chaque semaine",
+                "chaque mois",
+                "chaque année",
+                "chaque jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "毎週 = toutes les semaines."
+            },
+            {
+              "question": "Verbe « regarder la télé » composé courant ?",
+              "type": "single_choice",
+              "options": [
+                "テレビを みる",
+                "テレビを きく",
+                "テレビを たべる",
+                "テレビを のむ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "見る miru = regarder."
+            },
+            {
+              "question": "Que signifie 元気 (genki) ?",
+              "type": "single_choice",
+              "options": ["en forme / va bien", "fatigué", "malade", "fâché"],
+              "correctAnswers": [0],
+              "explanation": "元気 genki = bien, en forme."
+            },
+            {
+              "question": "Comment dire « j'aime le sport » (modèle ～が すき) ?",
+              "type": "single_choice",
+              "options": [
+                "スポーツが すき です",
+                "スポーツを すき です",
+                "スポーツは たべます",
+                "スポーツに のみます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "好き prend が pour l'objet aimé."
+            },
+            {
+              "question": "Chiffre 3 + compteur personnes さん = ?",
+              "type": "single_choice",
+              "options": [
+                "さんにん (sannin)",
+                "さんじ (sanji)",
+                "みっつ (mittsu)",
+                "さんにち (sannichi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三人 sannin = trois personnes."
+            },
+            {
+              "question": "Salutation après les vacances : おげんき ですか signifie ?",
+              "type": "single_choice",
+              "options": [
+                "Comment allez-vous ? / Ça va ?",
+                "Bonjour (matin)",
+                "Au revoir",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "お元気ですか = demande de nouvelles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Adjectifs en -i",
+          "questions": [
+            {
+              "question": "Quels adjectifs en -i décrivent une personne ou une chose ?",
+              "type": "multiple_choice",
+              "options": [
+                "たかい (takai)",
+                "ひくい (hikui)",
+                "がっこう (gakkou)",
+                "でんわ (denwa)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "高い grand/cher, 低い bas ; école et téléphone ne sont pas adjectifs."
+            },
+            {
+              "question": "Comment dit-on « grand (taille) » avec un adjectif -i ?",
+              "type": "single_choice",
+              "options": [
+                "たかい (takai)",
+                "ひくい (hikui)",
+                "ちいさい (chiisai)",
+                "ながい (nagai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "高い = haut/grand ; 低い = bas."
+            },
+            {
+              "question": "Sens de あたらしい (atarashii) ?",
+              "type": "single_choice",
+              "options": ["nouveau", "vieux", "sale", "lourd"],
+              "correctAnswers": [0],
+              "explanation": "新しい = neuf, nouveau."
+            },
+            {
+              "question": "Rōmaji de 古い (vieux) ?",
+              "type": "single_choice",
+              "options": ["furui", "furusato", "fujii", "fuku"],
+              "correctAnswers": [0],
+              "explanation": "古い furui = vieux."
+            },
+            {
+              "question": "Opposé de あつい (atsui = chaud) pour le froid ?",
+              "type": "single_choice",
+              "options": [
+                "さむい (samui)",
+                "あたたかい (atatakai)",
+                "あかるい (akarui)",
+                "あまい (amai)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "寒い samui = froid (météo)."
+            },
+            {
+              "question": "Que veut dire むずかしい (muzukashii) ?",
+              "type": "single_choice",
+              "options": ["difficile", "facile", "rapide", "silencieux"],
+              "correctAnswers": [0],
+              "explanation": "難しい = difficile."
+            },
+            {
+              "question": "Adjectif « facile » ?",
+              "type": "single_choice",
+              "options": [
+                "やさしい (yasashii)",
+                "きれい (kirei)",
+                "しずか (shizuka)",
+                "にぎやか (nigiyaka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "優しい/易しい yasashii = facile (易) ou gentil selon kanji ; en 2nde souvent 易しい."
+            },
+            {
+              "question": "Forme négative de たかい ?",
+              "type": "single_choice",
+              "options": [
+                "たかくない",
+                "たかいない",
+                "たかくありません seulement",
+                "たかいじゃ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -i : racine + くない."
+            },
+            {
+              "question": "Sens de おもしろい (omoshiroi) ?",
+              "type": "single_choice",
+              "options": [
+                "intéressant / drôle",
+                "ennuyeux",
+                "douloureux",
+                "sale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "面白い = intéressant."
+            },
+            {
+              "question": "Hiragana final typique des adjectifs -i ?",
+              "type": "single_choice",
+              "options": ["い", "な", "だ", "する"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs en -i se terminent par い (ex. たのしい)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Adjectifs en -na",
+          "questions": [
+            {
+              "question": "Quels mots sont des adjectifs en -na (dictionnaire) ?",
+              "type": "multiple_choice",
+              "options": [
+                "きれい (kirei)",
+                "しずか (shizuka)",
+                "たべる (taberu)",
+                "いく (iku)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "きれい et 静か shizuka ; manger et aller sont verbes."
+            },
+            {
+              "question": "Avant un nom, きれい devient ?",
+              "type": "single_choice",
+              "options": [
+                "きれいな + nom",
+                "きれいの + nom",
+                "きれいに + nom",
+                "きれいだ + nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -na : ～な + nom."
+            },
+            {
+              "question": "Sens de げんき (genki) devant un nom ?",
+              "type": "single_choice",
+              "options": [
+                "元気な = en forme",
+                "元気に = adverbe",
+                "元気の",
+                "元気い"
+              ],
+              "correctAnswers": [0],
+              "explanation": "元気な子供 = enfant en forme."
+            },
+            {
+              "question": "Rōmaji de にぎやか (animé) ?",
+              "type": "single_choice",
+              "options": [
+                "nigiyaka",
+                "nigi yaka",
+                "nigiyaka na seulement",
+                "nigiyaki"
+              ],
+              "correctAnswers": [0],
+              "explanation": "賑やか nigiyaka = animé, bruyant (positif)."
+            },
+            {
+              "question": "Phrase : この へやは しずか です signifie ?",
+              "type": "single_choice",
+              "options": [
+                "Cette chambre est calme",
+                "Cette chambre est sale",
+                "Cette chambre est grande",
+                "Cette chambre est chère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "静か = calme, silencieux."
+            },
+            {
+              "question": "Adjectif -na pour « célèbre » ?",
+              "type": "single_choice",
+              "options": [
+                "ゆうめい (yuumei)",
+                "ゆうき (yuuki)",
+                "ゆめ (yume)",
+                "ゆうがた (yuugata)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有名 yuumei = célèbre."
+            },
+            {
+              "question": "Négation polie de きれいです ?",
+              "type": "single_choice",
+              "options": [
+                "きれいではありません",
+                "きれいくないです",
+                "きれいない",
+                "きれいじゃ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na-adj : ～ではありません."
+            },
+            {
+              "question": "Signification de べんり (benri) ?",
+              "type": "single_choice",
+              "options": ["pratique / commode", "dangereux", "cher", "lent"],
+              "correctAnswers": [0],
+              "explanation": "便利 = pratique."
+            },
+            {
+              "question": "Modificateur adverbial de しずか ?",
+              "type": "single_choice",
+              "options": [
+                "しずかに (shizuka ni)",
+                "しずかな",
+                "しずかだ",
+                "しずかの"
+              ],
+              "correctAnswers": [0],
+              "explanation": "～に pour l'adverbe : parler calmement."
+            },
+            {
+              "question": "Antonyme approximatif de にぎやか ?",
+              "type": "single_choice",
+              "options": ["しずか", "たのしい", "あたらしい", "ゆうめい"],
+              "correctAnswers": [0],
+              "explanation": "Calme vs animé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "question": "Quelles phrases décrivent une personne en 2nde ?",
+              "type": "multiple_choice",
+              "options": [
+                "かれは せが たかい です",
+                "かのじょは やさしい です",
+                "これは ペン です",
+                "あした いきます"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Taille et caractère ; stylo et futur ne décrivent pas un portrait."
+            },
+            {
+              "question": "Comment dire « il est grand (taille) » ?",
+              "type": "single_choice",
+              "options": [
+                "かれは せが たかい です",
+                "かれは せが ひくい です",
+                "かれは めが あおい です",
+                "かれは 12さい です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "背が高い = être grand."
+            },
+            {
+              "question": "Mot pour « cheveux » ?",
+              "type": "single_choice",
+              "options": [
+                "かみ (kami)",
+                "め (me)",
+                "はな (hana)",
+                "くち (kuchi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "髪 kami = cheveux."
+            },
+            {
+              "question": "Couleur « bleu/vert » souvent あおい pour les yeux ?",
+              "type": "single_choice",
+              "options": [
+                "あおい (aoi)",
+                "あかい (akai)",
+                "しろい (shiroi)",
+                "くろい (kuroi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "青い aoi couvre bleu et parfois vert clair selon contexte."
+            },
+            {
+              "question": "Rōmaji : 彼女は 親切 です (gentille) ?",
+              "type": "single_choice",
+              "options": [
+                "Kanojo wa shinsetsu desu",
+                "Kare wa shinsetsu",
+                "Kanojo shinsetsu",
+                "Shinsetsu kanojo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "親切 shinsetsu = gentil, kind."
+            },
+            {
+              "question": "Âge : 15さい se lit ?",
+              "type": "single_choice",
+              "options": [
+                "juugosai",
+                "juugosai (15 + sai)",
+                "juugo nin",
+                "juugosai desu pattern"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十五歳 juugosai = 15 ans."
+            },
+            {
+              "question": "Signification de かっこいい (kakkoii) ?",
+              "type": "single_choice",
+              "options": [
+                "cool / beau (style)",
+                "mignon seulement",
+                "effrayant",
+                "triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "格好いい = cool."
+            },
+            {
+              "question": "Comment dire « cheveux longs » ?",
+              "type": "single_choice",
+              "options": [
+                "かみが ながい",
+                "かみが みじかい",
+                "かみが あかい",
+                "かみが たかい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "長い nagai = long."
+            },
+            {
+              "question": "Pronom « elle » neutre courant ?",
+              "type": "single_choice",
+              "options": [
+                "かのじょ (kanojo)",
+                "かれ (kare)",
+                "あなた (anata)",
+                "わたし (watashi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "彼女 kanojo = elle."
+            },
+            {
+              "question": "Mot 性格 (seikaku) ?",
+              "type": "single_choice",
+              "options": ["personnalité / caractère", "taille", "poids", "âge"],
+              "correctAnswers": [0],
+              "explanation": "性格 = caractère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "question": "Quels adjectifs décrivent un lieu ?",
+              "type": "multiple_choice",
+              "options": [
+                "にぎやか (nigiyaka)",
+                "しずか (shizuka)",
+                "たべる (taberu)",
+                "いち (ichi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Animé et calme ; manger et chiffre un non."
+            },
+            {
+              "question": "Phrase : この まちは ゆうめい です ?",
+              "type": "single_choice",
+              "options": [
+                "Cette ville est célèbre",
+                "Cette ville est petite",
+                "Cette ville est ancienne",
+                "Cette ville est loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有名 = célèbre."
+            },
+            {
+              "question": "Comment dire « il y a beaucoup de magasins » (modèle simple) ?",
+              "type": "single_choice",
+              "options": [
+                "みせが たくさん あります",
+                "みせを たくさん たべます",
+                "みせが すき です",
+                "みせに いきます seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "たくさん arimasu = il y a beaucoup."
+            },
+            {
+              "question": "Sens de とおい (tooi) ?",
+              "type": "single_choice",
+              "options": ["loin", "proche", "large", "étroit"],
+              "correctAnswers": [0],
+              "explanation": "遠い = loin."
+            },
+            {
+              "question": "Opposé de とおい ?",
+              "type": "single_choice",
+              "options": [
+                "ちかい (chikai)",
+                "ながい (nagai)",
+                "ひくい (hikui)",
+                "ふるい (furui)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "近い chikai = proche."
+            },
+            {
+              "question": "Rōmaji de 便利な 場所 (lieu pratique) ?",
+              "type": "single_choice",
+              "options": [
+                "benri na basho",
+                "benri basho",
+                "benri no basho",
+                "benri de basho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "便利な場所 benri na basho."
+            },
+            {
+              "question": "Mot 景色 (keshiki) ?",
+              "type": "single_choice",
+              "options": ["paysage / vue", "carte", "météo", "bruit"],
+              "correctAnswers": [0],
+              "explanation": "景色 = paysage."
+            },
+            {
+              "question": "Il y a … : structure avec あります pour lieu ?",
+              "type": "single_choice",
+              "options": [
+                "[lieu]に [chose]が あります",
+                "[lieu]を [chose]が",
+                "[chose]に [lieu]を",
+                "[lieu]が [chose]を"
+              ],
+              "correctAnswers": [0],
+              "explanation": "場所に物がある."
+            },
+            {
+              "question": "Adjectif « large / spacieux » courant ?",
+              "type": "single_choice",
+              "options": [
+                "ひろい (hiroi)",
+                "せまい (semai)",
+                "ふとい (futoi)",
+                "ほそい (hosoi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "広い = large ; 狭い = étroit."
+            },
+            {
+              "question": "Comment dire « la mer est belle » (modèle きれい) ?",
+              "type": "single_choice",
+              "options": [
+                "うみは きれい です",
+                "うみを きれい です",
+                "うみが きれい たべます",
+                "うみに きれい います"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thème + は + adjectif + です."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Passé en -masu (raconté simple)",
+          "questions": [
+            {
+              "question": "Quelles formes sont au passé poli en -ました ?",
+              "type": "multiple_choice",
+              "options": [
+                "いきました (ikimashita)",
+                "たべました (tabemashita)",
+                "いきます (ikimasu)",
+                "たべる (taberu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passé poli ; présent/futur et dictionnaire non."
+            },
+            {
+              "question": "Passé de みます (miru) poli ?",
+              "type": "single_choice",
+              "options": [
+                "みました (mimashita)",
+                "みます (mimasu)",
+                "みません (mimasen)",
+                "みましょう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "～ました = passé poli."
+            },
+            {
+              "question": "Traduction : きのう えいがを みました ?",
+              "type": "single_choice",
+              "options": [
+                "Hier j'ai regardé un film",
+                "Demain je regarderai",
+                "Je regarde souvent",
+                "Je n'ai pas regardé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨日 + objet を + verbe passé."
+            },
+            {
+              "question": "Mot きのう (kinou) ?",
+              "type": "single_choice",
+              "options": [
+                "hier",
+                "aujourd'hui",
+                "demain",
+                "la semaine dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨日 = hier."
+            },
+            {
+              "question": "Rōmaji de 買いました ?",
+              "type": "single_choice",
+              "options": ["kaimashita", "kaimasu", "kau", "katte"],
+              "correctAnswers": [0],
+              "explanation": "買う → 買いました kaimashita."
+            },
+            {
+              "question": "Passé négatif poli de 行きます ?",
+              "type": "single_choice",
+              "options": [
+                "行きませんでした",
+                "行きません",
+                "行きました",
+                "行かない"
+              ],
+              "correctAnswers": [0],
+              "explanation": "～ませんでした = passé négatif."
+            },
+            {
+              "question": "Expression temporelle « samedi dernier » simple ?",
+              "type": "single_choice",
+              "options": ["せんしゅうの 土曜日", "あした", "まいにち", "いま"],
+              "correctAnswers": [0],
+              "explanation": "先週の土曜日 ou contexte 先週."
+            },
+            {
+              "question": "Verbe « rencontrer » passé poli ?",
+              "type": "single_choice",
+              "options": [
+                "会いました (aimashita)",
+                "会います",
+                "会う",
+                "会って"
+              ],
+              "correctAnswers": [0],
+              "explanation": "会う → 会いました."
+            },
+            {
+              "question": "Phrase : とても たのしかった です (adjectif passé) signifie ?",
+              "type": "single_choice",
+              "options": [
+                "C'était très amusant",
+                "Ce sera amusant",
+                "Ce n'est pas amusant",
+                "C'est amusant maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "～かったです = passé pour adjectif -i."
+            },
+            {
+              "question": "Ordre logique pour raconter : d'abord souvent ?",
+              "type": "single_choice",
+              "options": [
+                "marqueur de temps puis action",
+                "action sans temps",
+                "nom seulement",
+                "question d'abord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きのう、…ました structure narrative simple."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Enchaîner des événements",
+          "questions": [
+            {
+              "question": "Quels connecteurs enchaînent des actions au passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "それから (sorekara)",
+                "そして (soshite)",
+                "でも (demo)",
+                "は (wa)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ensuite / et puis ; でも = mais ; は = thème."
+            },
+            {
+              "question": "Sens de それから ?",
+              "type": "single_choice",
+              "options": ["après ça / ensuite", "avant", "pendant", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "それから = then, after that."
+            },
+            {
+              "question": "Traduction : 公園で あそびました。それから ごはんを たべました。?",
+              "type": "single_choice",
+              "options": [
+                "J'ai joué au parc, puis j'ai mangé",
+                "Je joue au parc et mange",
+                "Je n'ai pas joué",
+                "Je mangerai au parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions passées enchaînées."
+            },
+            {
+              "question": "Particule de lieu d'action : 公園__ あそびました ?",
+              "type": "single_choice",
+              "options": ["で (de)", "に (ni)", "を (o)", "が (ga)"],
+              "correctAnswers": [0],
+              "explanation": "で marque le lieu où l'action a lieu."
+            },
+            {
+              "question": "Rōmaji de 最初に (saisho ni) ?",
+              "type": "single_choice",
+              "options": ["saisho ni", "saigo ni", "saa", "soshite"],
+              "correctAnswers": [0],
+              "explanation": "最初に = d'abord."
+            },
+            {
+              "question": "Mot pour « enfin / à la fin » ?",
+              "type": "single_choice",
+              "options": ["最後に (saigo ni)", "最初に", "いつも", "ときどき"],
+              "correctAnswers": [0],
+              "explanation": "最後に = enfin."
+            },
+            {
+              "question": "Connecteur « mais » ?",
+              "type": "single_choice",
+              "options": [
+                "でも (demo)",
+                "だから (dakara)",
+                "それから",
+                "そして"
+              ],
+              "correctAnswers": [0],
+              "explanation": "でも = cependant."
+            },
+            {
+              "question": "だから exprime ?",
+              "type": "single_choice",
+              "options": [
+                "donc / c'est pourquoi",
+                "mais",
+                "ou",
+                "si (condition)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だから = therefore."
+            },
+            {
+              "question": "Fréquence « parfois » ?",
+              "type": "single_choice",
+              "options": [
+                "ときどき (tokidoki)",
+                "いつも (itsumo)",
+                "ぜんぜん (zenzen)",
+                "まいにち"
+              ],
+              "correctAnswers": [0],
+              "explanation": "時々 = parfois."
+            },
+            {
+              "question": "En rōmaji : そして うちに 帰りました ?",
+              "type": "single_choice",
+              "options": [
+                "Soshite uchi ni kaerimashita",
+                "Sorekara kaeru",
+                "Demo kaerimashita",
+                "Saisho kaeru"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et puis je suis rentré(e) à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Météo et sensations",
+          "questions": [
+            {
+              "question": "Quels mots servent à décrire la météo ?",
+              "type": "multiple_choice",
+              "options": [
+                "はれ (hare)",
+                "あめ (ame)",
+                "くつ (kutsu)",
+                "ほん (hon)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Beau temps et pluie ; chaussures et livre non."
+            },
+            {
+              "question": "Comment dit-on « il pleut » (modèle simple) ?",
+              "type": "single_choice",
+              "options": [
+                "あめが ふっています",
+                "あめを たべます",
+                "あめが すき",
+                "あめに いきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "雨が降っています = il pleut."
+            },
+            {
+              "question": "Sens de あつい (atsui) pour la température ?",
+              "type": "single_choice",
+              "options": ["chaud", "froid", "venteux", "nuageux"],
+              "correctAnswers": [0],
+              "explanation": "暑い = chaud (été)."
+            },
+            {
+              "question": "Rōmaji de 雪 (yuki) ?",
+              "type": "single_choice",
+              "options": ["yuki", "yuku", "yukkuri", "yume"],
+              "correctAnswers": [0],
+              "explanation": "雪 yuki = neige."
+            },
+            {
+              "question": "Phrase : きょうは さむい です ?",
+              "type": "single_choice",
+              "options": [
+                "Il fait froid aujourd'hui",
+                "Il fait chaud",
+                "Il pleut",
+                "Il neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "寒い = froid."
+            },
+            {
+              "question": "Mot 風 (kaze) ?",
+              "type": "single_choice",
+              "options": ["vent", "pluie", "soleil", "nuage"],
+              "correctAnswers": [0],
+              "explanation": "風 = vent."
+            },
+            {
+              "question": "Comment dire « ciel clair » (soleil) ?",
+              "type": "single_choice",
+              "options": ["はれ (hare)", "くもり (kumori)", "あめ", "ゆき"],
+              "correctAnswers": [0],
+              "explanation": "晴れ = beau temps."
+            },
+            {
+              "question": "Nuageux : くもり です ?",
+              "type": "single_choice",
+              "options": [
+                "Il fait nuageux",
+                "Il pleut fort",
+                "Orage",
+                "Vent fort seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "曇り = couvert."
+            },
+            {
+              "question": "Saison « été » ?",
+              "type": "single_choice",
+              "options": [
+                "なつ (natsu)",
+                "ふゆ (fuyu)",
+                "はる (haru)",
+                "あき (aki)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "夏 natsu = été."
+            },
+            {
+              "question": "Raconter : 冬は さむかった です signifie ?",
+              "type": "single_choice",
+              "options": [
+                "L'hiver était froid",
+                "L'hiver est chaud",
+                "L'été était froid",
+                "Il neige maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé adjectif 寒かった."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Raconter sa journée",
+          "questions": [
+            {
+              "question": "Quels éléments structurent le récit d'une journée ?",
+              "type": "multiple_choice",
+              "options": [
+                "あさ (asa)",
+                "よる (yoru)",
+                "ペン (pen)",
+                "いち (ichi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matin et soir cadrent le récit ; stylo et chiffre un moins centraux."
+            },
+            {
+              "question": "Traduction : 朝 7時に 起きました ?",
+              "type": "single_choice",
+              "options": [
+                "Je me suis levé(e) à 7 h du matin",
+                "Je me couche à 7 h",
+                "Je mange à 7 h",
+                "Je pars à 19 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "起きる = se lever ; に pour l'heure."
+            },
+            {
+              "question": "Verbe « se coucher » poli présent ?",
+              "type": "single_choice",
+              "options": [
+                "ねます (nemasu)",
+                "おきます (okimasu)",
+                "はたらきます",
+                "およぎます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "寝ます = dormir/se coucher."
+            },
+            {
+              "question": "Rōmaji de 学校へ 行きました ?",
+              "type": "single_choice",
+              "options": [
+                "Gakkou e ikimashita",
+                "Gakkou de ikimashita",
+                "Gakkou o ikimashita",
+                "Gakkou ni tabemashita"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction : へ (e) + aller."
+            },
+            {
+              "question": "Mot 昼ごはん (hirugohan) ?",
+              "type": "single_choice",
+              "options": ["déjeuner", "petit-déjeuner", "dîner", "collation"],
+              "correctAnswers": [0],
+              "explanation": "昼ごはん = repas de midi."
+            },
+            {
+              "question": "Après l'école souvent : 放課後 (houkago) ?",
+              "type": "single_choice",
+              "options": [
+                "après les cours",
+                "avant les cours",
+                "pendant le cours",
+                "vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "放課後 = après la classe."
+            },
+            {
+              "question": "Phrase : 夜 友達と 話しました ?",
+              "type": "single_choice",
+              "options": [
+                "Le soir j'ai parlé avec un ami",
+                "Le matin j'ai écouté",
+                "Hier j'ai couru",
+                "Demain je parlerai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "話す passé ; と = avec."
+            },
+            {
+              "question": "Particule avec interlocuteur : 友達__ ?",
+              "type": "single_choice",
+              "options": ["と (to)", "を (o)", "が (ga) seul", "で (de) seul"],
+              "correctAnswers": [0],
+              "explanation": "Avec quelqu'un : と."
+            },
+            {
+              "question": "Expression « tous les matins » ?",
+              "type": "single_choice",
+              "options": [
+                "まいあさ (maiasa)",
+                "まいばん (maiban)",
+                "きのう",
+                "ときどき"
+              ],
+              "correctAnswers": [0],
+              "explanation": "毎朝 = chaque matin."
+            },
+            {
+              "question": "Fin de récit poli : たのしかった です ?",
+              "type": "single_choice",
+              "options": [
+                "C'était agréable (conclusion)",
+                "Ce sera agréable",
+                "Ce n'est pas agréable",
+                "Question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impression passée sur la journée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Questions pour relancer le récit",
+          "questions": [
+            {
+              "question": "Quels mots interrogatifs relancent un récit ?",
+              "type": "multiple_choice",
+              "options": [
+                "いつ (itsu)",
+                "どこ (doko)",
+                "ペン (pen)",
+                "です (desu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand et où ; stylo et copule ne sont pas interrogatifs."
+            },
+            {
+              "question": "Comment demander « Quand ? » ?",
+              "type": "single_choice",
+              "options": [
+                "いつ (itsu)",
+                "なに (nani)",
+                "だれ (dare)",
+                "どう (dou)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いつ = quand."
+            },
+            {
+              "question": "Réponse à どこで あそびましたか : 公園__ ?",
+              "type": "single_choice",
+              "options": ["で (de)", "を (o)", "が (ga)", "は (wa) seul"],
+              "correctAnswers": [0],
+              "explanation": "公園で = au parc."
+            },
+            {
+              "question": "Sens de どうでしたか (dou deshita ka) ?",
+              "type": "single_choice",
+              "options": [
+                "Comment c'était ?",
+                "Où c'était ?",
+                "Qui c'était ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande une évaluation passée."
+            },
+            {
+              "question": "Rōmaji de 何を しましたか ?",
+              "type": "single_choice",
+              "options": [
+                "Nani o shimashita ka",
+                "Doko o shimashita",
+                "Itsu desu ka",
+                "Dare desu ka"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qu'as-tu fait ?"
+            },
+            {
+              "question": "Mot なぜ / どうして (pourquoi) niveau 2nde ?",
+              "type": "single_choice",
+              "options": [
+                "どうして (doushite)",
+                "いつ",
+                "どれ",
+                "どちら seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どうして = pourquoi (courant oral)."
+            },
+            {
+              "question": "Particule finale de question polie ?",
+              "type": "single_choice",
+              "options": [
+                "か (ka)",
+                "ね (ne) seule",
+                "よ (yo) seule",
+                "の (no) seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…ですか / …ましたか."
+            },
+            {
+              "question": "Répondre « avec ma sœur » : 妹__ ?",
+              "type": "single_choice",
+              "options": ["と (to)", "を (o)", "に (ni) seul", "で (de)"],
+              "correctAnswers": [0],
+              "explanation": "妹と = avec ma petite sœur."
+            },
+            {
+              "question": "Combien de temps : どのくらい (donokurai) approxime ?",
+              "type": "single_choice",
+              "options": [
+                "combien de temps / durée",
+                "quelle heure exacte",
+                "quel jour",
+                "quel lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どのくらい = environ combien (durée)."
+            },
+            {
+              "question": "Relance : それから 何を しましたか signifie ?",
+              "type": "single_choice",
+              "options": [
+                "Et après, qu'as-tu fait ?",
+                "Où es-tu né ?",
+                "Quel âge as-tu ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement narratif interrogatif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision décrire et raconter",
+          "questions": [
+            {
+              "question": "Quelles compétences résument l'unité 2 ?",
+              "type": "multiple_choice",
+              "options": [
+                "adjectifs い/な",
+                "passé ～ました",
+                "compter jusqu'à 100 seulement sans phrase",
+                "hiragana seul sans sens"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Description + récit au passé poli."
+            },
+            {
+              "question": "Phrase correcte : « Tokyo est une grande ville » (modèle) ?",
+              "type": "single_choice",
+              "options": [
+                "とうきょうは 大きな まち です",
+                "とうきょうを 大きい です",
+                "とうきょうが たべます",
+                "とうきょうに い adj"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大きな (na) + 町 ; は thème."
+            },
+            {
+              "question": "Passé de 楽しいです (c'était amusant) ?",
+              "type": "single_choice",
+              "options": [
+                "楽しかった です",
+                "楽しいでした",
+                "楽しかった ます",
+                "楽しい ました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif -i : ～かったです."
+            },
+            {
+              "question": "Rōmaji : 先週 京都へ 行きました ?",
+              "type": "single_choice",
+              "options": [
+                "Senshuu Kyouto e ikimashita",
+                "Kinou Tokyo de",
+                "Ashita ikimasu",
+                "Mainichi tabemasu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La semaine dernière, aller à Kyoto."
+            },
+            {
+              "question": "Connecteur pour additionner deux faits passés ?",
+              "type": "single_choice",
+              "options": ["そして / それから", "でも seul", "は", "の"],
+              "correctAnswers": [0],
+              "explanation": "Et / ensuite."
+            },
+            {
+              "question": "Décrire le temps : 曇りでした ?",
+              "type": "single_choice",
+              "options": [
+                "Il faisait nuageux",
+                "Il pleut",
+                "Il fait beau",
+                "Il neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "曇り passé avec でした (nom)."
+            },
+            {
+              "question": "Adjectif -na passé poli de 静か ?",
+              "type": "single_choice",
+              "options": [
+                "静かでした",
+                "静かかった",
+                "静かくなかった seule",
+                "静かだした"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na-adj : ～でした."
+            },
+            {
+              "question": "Récit : d'abord 勉強して、それから サッカーを しました structure ?",
+              "type": "single_choice",
+              "options": [
+                "te-forme enchaînée puis action finale",
+                "un seul verbe",
+                "adjectif seul",
+                "nom seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…して、それから …しました (niveau introductif)."
+            },
+            {
+              "question": "Mot 思い出 (omoide) ?",
+              "type": "single_choice",
+              "options": ["souvenir", "projets", "devoir", "carte"],
+              "correctAnswers": [0],
+              "explanation": "思い出 = souvenir mémorable."
+            },
+            {
+              "question": "Pour conclure un petit récit oral poli :",
+              "type": "single_choice",
+              "options": [
+                "とても よかった です",
+                "おはよう ございます",
+                "さようなら",
+                "ありがとう ございます seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression de satisfaction sur l'expérience racontée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

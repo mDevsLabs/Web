@@ -1,0 +1,2313 @@
+{
+  "id": "4e-turc-01",
+  "year": "4e",
+  "subject": "turc",
+  "title": "Découvrir le turc",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour et bonsoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions turques conviennent pour saluer quelqu'un le matin ?",
+              "type": "multiple_choice",
+              "options": ["Günaydın", "Merhaba", "İyi geceler", "Hoşça kal"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Günaydın » est le bonjour du matin ; « Merhaba » fonctionne à toute heure."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « bonsoir » en turc ?",
+              "type": "single_choice",
+              "options": ["İyi akşamlar", "Günaydın", "Merhaba", "Görüşürüz"],
+              "correctAnswers": [0],
+              "explanation": "« İyi akşamlar » = bonsoir."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « Hoş geldin » ?",
+              "type": "single_choice",
+              "options": ["Bienvenue", "Au revoir", "Merci", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Formule d'accueil : bienvenue."
+            },
+            {
+              "id": "q4",
+              "question": "La réponse habituelle à « Hoş geldin » est :",
+              "type": "single_choice",
+              "options": ["Hoş bulduk", "Merhaba", "Evet", "Hayır"],
+              "correctAnswers": [0],
+              "explanation": "« Hoş bulduk » accompagne l'entrée chez quelqu'un."
+            },
+            {
+              "id": "q5",
+              "question": "« Görüşürüz » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "À bientôt",
+                "Bonjour",
+                "Bonne nuit",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On se revoit bientôt."
+            },
+            {
+              "id": "q6",
+              "question": "Quand dit-on « İyi geceler » ?",
+              "type": "single_choice",
+              "options": [
+                "Avant de dormir",
+                "À midi",
+                "En arrivant",
+                "Au réveil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne nuit."
+            },
+            {
+              "id": "q7",
+              "question": "« Hoşça kal » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Celui qui reste (au revoir)",
+                "Celui qui part seulement",
+                "Un bébé",
+                "Un professeur uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu restes, reste bien — formule d'au revoir."
+            },
+            {
+              "id": "q8",
+              "question": "« Nasılsın ? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Comment vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "D'où es-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question informelle sur le bien-être."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse polie à « Nasılsın ? » :",
+              "type": "single_choice",
+              "options": [
+                "İyiyim, teşekkürler",
+                "Benim adım Ali",
+                "On beş yaşındayım",
+                "Türkiye'denim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je vais bien, merci."
+            },
+            {
+              "id": "q10",
+              "question": "« Merhaba, nasılsın ? » en français :",
+              "type": "single_choice",
+              "options": [
+                "Bonjour, comment vas-tu ?",
+                "Au revoir",
+                "Bonne nuit",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation + question."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Se présenter : le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases turques donnent ton prénom ?",
+              "type": "multiple_choice",
+              "options": [
+                "Benim adım Elif",
+                "Adım Kerem",
+                "Kaç yaşındasın ?",
+                "Nerelisin ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux structures « benim adım » et « adım » présentent le nom."
+            },
+            {
+              "id": "q2",
+              "question": "« Benim adım Zeynep » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Zeynep",
+                "Zeynep est ma sœur",
+                "Zeynep a dix ans",
+                "Zeynep est professeure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation du prénom."
+            },
+            {
+              "id": "q3",
+              "question": "« Adın ne ? » =",
+              "type": "single_choice",
+              "options": [
+                "Comment t'appelles-tu ?",
+                "Où vas-tu ?",
+                "Tu as faim ?",
+                "Tu es prêt ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question informelle sur le nom."
+            },
+            {
+              "id": "q4",
+              "question": "« Adınız ne ? » est plus :",
+              "type": "single_choice",
+              "options": [
+                "Poli (vouvoiement)",
+                "Familier",
+                "Une blague",
+                "Une question sur l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe de politesse « -nız »."
+            },
+            {
+              "id": "q5",
+              "question": "« Ben » veut dire :",
+              "type": "single_choice",
+              "options": ["Je", "Tu", "Il", "Ils"],
+              "correctAnswers": [0],
+              "explanation": "Pronom je."
+            },
+            {
+              "id": "q6",
+              "question": "« Adım Can » : Can est —",
+              "type": "single_choice",
+              "options": ["Un prénom", "Un nombre", "Une ville", "Une couleur"],
+              "correctAnswers": [0],
+              "explanation": "Mon nom est Can."
+            },
+            {
+              "id": "q7",
+              "question": "« Memnun oldum » après les noms :",
+              "type": "single_choice",
+              "options": ["Enchanté(e)", "Désolé", "Au revoir", "Peut-être"],
+              "correctAnswers": [0],
+              "explanation": "Politesse après présentation."
+            },
+            {
+              "id": "q8",
+              "question": "« Tanıştığıma memnun oldum » ≈",
+              "type": "single_choice",
+              "options": [
+                "Ravi(e) de te rencontrer",
+                "Bonne nuit",
+                "À demain",
+                "Je ne sais pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule plus complète."
+            },
+            {
+              "id": "q9",
+              "question": "« Bu benim arkadaşım Emre » =",
+              "type": "single_choice",
+              "options": [
+                "Voici mon ami Emre",
+                "Emre est médecin",
+                "Emre dort",
+                "Emre part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présenter un ami."
+            },
+            {
+              "id": "q10",
+              "question": "« Sen ? » après ton nom demande :",
+              "type": "single_choice",
+              "options": ["Et toi ?", "Pourquoi ?", "Quand ?", "Combien ?"],
+              "correctAnswers": [0],
+              "explanation": "Renvoi de la question."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "L'âge avec les nombres",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots turcs désignent les nombres 5 et 10 ?",
+              "type": "multiple_choice",
+              "options": ["Beş", "On", "Dört", "Yedi"],
+              "correctAnswers": [0, 1],
+              "explanation": "Beş = 5, On = 10."
+            },
+            {
+              "id": "q2",
+              "question": "« On dört yaşındayım » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai quatorze ans",
+                "J'ai quarante ans",
+                "J'ai quatre ans",
+                "J'ai dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dört = 14."
+            },
+            {
+              "id": "q3",
+              "question": "« Kaç yaşındasın ? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Quel âge as-tu ?",
+                "Quelle heure ?",
+                "Combien coûte ?",
+                "Où es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur l'âge."
+            },
+            {
+              "id": "q4",
+              "question": "« On beş » vaut :",
+              "type": "single_choice",
+              "options": ["15", "51", "5", "105"],
+              "correctAnswers": [0],
+              "explanation": "Dix + cinq."
+            },
+            {
+              "id": "q5",
+              "question": "« Üç » =",
+              "type": "single_choice",
+              "options": ["3", "8", "13", "30"],
+              "correctAnswers": [0],
+              "explanation": "Trois."
+            },
+            {
+              "id": "q6",
+              "question": "« On üç yaşındayım » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai treize ans",
+                "J'ai trente ans",
+                "J'ai trois ans",
+                "J'ai onze ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On üç = 13."
+            },
+            {
+              "id": "q7",
+              "question": "« Yirmi » =",
+              "type": "single_choice",
+              "options": ["20", "12", "2", "22"],
+              "correctAnswers": [0],
+              "explanation": "Vingt."
+            },
+            {
+              "id": "q8",
+              "question": "Seize ans en turc :",
+              "type": "single_choice",
+              "options": [
+                "On altı yaşındayım",
+                "Altı on yaşındayım",
+                "On altı adım",
+                "Yaşım altı"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On altı = 16."
+            },
+            {
+              "id": "q9",
+              "question": "« Sekiz » en français :",
+              "type": "single_choice",
+              "options": ["Huit", "Six", "Sept", "Neuf"],
+              "correctAnswers": [0],
+              "explanation": "Sekiz = 8."
+            },
+            {
+              "id": "q10",
+              "question": "La structure pour l'âge est :",
+              "type": "single_choice",
+              "options": [
+                "Nombre + yaşındayım",
+                "Adım + yaş",
+                "Ben + kaç",
+                "Nereli + yaşım"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. : on beş yaşındayım."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Origine et lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent d'où tu viens ?",
+              "type": "multiple_choice",
+              "options": [
+                "Nerelisin ?",
+                "Neredensin ?",
+                "Adın ne ?",
+                "Kaç yaşındasın ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux formes interrogent l'origine ou le lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« Ben İstanbul'luyum » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis d'Istanbul",
+                "Je vais à Istanbul",
+                "Istanbul est grande",
+                "J'aime Istanbul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suffixe -lı/-li = originaire de."
+            },
+            {
+              "id": "q3",
+              "question": "« Türkiye'denim » =",
+              "type": "single_choice",
+              "options": [
+                "Je viens de Turquie",
+                "Je suis en Turquie aujourd'hui",
+                "La Turquie est loin",
+                "Je parle turc mal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De Turquie (origine)."
+            },
+            {
+              "id": "q4",
+              "question": "« Sen nerelisin ? » après ta réponse demande :",
+              "type": "single_choice",
+              "options": [
+                "Et toi, d'où es-tu ?",
+                "Tu as quel âge ?",
+                "Tu t'appelles comment ?",
+                "Tu es prof ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sen = tu."
+            },
+            {
+              "id": "q5",
+              "question": "« Ankara » est :",
+              "type": "single_choice",
+              "options": [
+                "La capitale de la Turquie",
+                "Un prénom turc courant",
+                "Un nombre",
+                "Une salutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville capitale."
+            },
+            {
+              "id": "q6",
+              "question": "« Fransa'dan geliyorum » ≈",
+              "type": "single_choice",
+              "options": [
+                "Je viens de France",
+                "Je vais en France",
+                "Je suis français (toujours)",
+                "Je déteste la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geliyorum = je viens."
+            },
+            {
+              "id": "q7",
+              "question": "« Nerede oturuyorsun ? » =",
+              "type": "single_choice",
+              "options": [
+                "Où habites-tu ?",
+                "Où travailles-tu ?",
+                "Où manges-tu ?",
+                "Où dors-tu ? (lit seulement)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oturuyorsun = tu habites / tu vis."
+            },
+            {
+              "id": "q8",
+              "question": "« İzmir'de yaşıyorum » =",
+              "type": "single_choice",
+              "options": [
+                "J'habite à Izmir",
+                "Je suis né hier",
+                "Izmir est en France",
+                "Je vis à Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yaşıyorum = j'habite."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « je suis turc » (garçon) :",
+              "type": "single_choice",
+              "options": ["Türk'üm", "Türk'üsün", "Türkiye'de", "Türkçe"],
+              "correctAnswers": [0],
+              "explanation": "Türk'üm = je suis Turc."
+            },
+            {
+              "id": "q10",
+              "question": "« Nerelisin ? — Antalya'lıyım » : la réponse indique —",
+              "type": "single_choice",
+              "options": [
+                "Une origine à Antalya",
+                "Un plat",
+                "Un nombre",
+                "Une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antalya'lıyım = je suis d'Antalya."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Merci et s'il vous plaît",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots turcs expriment la gratitude ?",
+              "type": "multiple_choice",
+              "options": ["Teşekkürler", "Teşekkür ederim", "Lütfen", "Pardon"],
+              "correctAnswers": [0, 1],
+              "explanation": "Teşekkürler (merci) et teşekkür ederim (je te remercie)."
+            },
+            {
+              "id": "q2",
+              "question": "« Lütfen » veut dire :",
+              "type": "single_choice",
+              "options": ["S'il te plaît", "Merci", "Non", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Politesse pour une demande."
+            },
+            {
+              "id": "q3",
+              "question": "« Rica ederim » répond souvent à :",
+              "type": "single_choice",
+              "options": ["Teşekkürler", "Merhaba", "Günaydın", "Hayır"],
+              "correctAnswers": [0],
+              "explanation": "De rien / je t'en prie."
+            },
+            {
+              "id": "q4",
+              "question": "« Affedersin » ou « Pardon » en turc courant :",
+              "type": "single_choice",
+              "options": ["Pardon / excuse-moi", "Bravo", "Silence", "Vite"],
+              "correctAnswers": [0],
+              "explanation": "Excuse pour interrompre ou erreur."
+            },
+            {
+              "id": "q5",
+              "question": "« Özür dilerim » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis désolé(e)",
+                "Je suis content(e)",
+                "J'ai faim",
+                "Je comprends"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excuses plus formelles."
+            },
+            {
+              "id": "q6",
+              "question": "Après « Teşekkür ederim », on peut dire :",
+              "type": "single_choice",
+              "options": ["Rica ederim", "Hoş geldin", "Kaç ?", "Nereli ?"],
+              "correctAnswers": [0],
+              "explanation": "Réponse polie standard."
+            },
+            {
+              "id": "q7",
+              "question": "« Lütfen, tekrar söyler misin ? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Peux-tu répéter, s'il te plaît ?",
+                "Ferme la porte",
+                "Donne-moi de l'eau",
+                "Viens ici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile en classe de langue."
+            },
+            {
+              "id": "q8",
+              "question": "« Sağ ol » (familier) ≈",
+              "type": "single_choice",
+              "options": [
+                "Merci (à un ami)",
+                "Bonjour",
+                "Au revoir définitif",
+                "Non merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciement informel."
+            },
+            {
+              "id": "q9",
+              "question": "« Bir su, lütfen » =",
+              "type": "single_choice",
+              "options": [
+                "Un verre d'eau, s'il te plaît",
+                "Deux pains",
+                "Ferme la fenêtre",
+                "Où est la salle ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bir = un ; su = eau."
+            },
+            {
+              "id": "q10",
+              "question": "En classe, pour remercier le prof :",
+              "type": "single_choice",
+              "options": [
+                "Teşekkür ederim",
+                "Hayır",
+                "Görüşürüz seulement",
+                "Nerelisin ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule polie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Oui, non et d'accord",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots turcs signifient « oui » dans des contextes courants ?",
+              "type": "multiple_choice",
+              "options": ["Evet", "Tamam", "Hayır", "Belki"],
+              "correctAnswers": [0, 1],
+              "explanation": "Evet = oui ; tamam = d'accord / OK (souvent équivalent à oui)."
+            },
+            {
+              "id": "q2",
+              "question": "« Hayır » =",
+              "type": "single_choice",
+              "options": ["Non", "Oui", "Peut-être", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Négation simple."
+            },
+            {
+              "id": "q3",
+              "question": "« Tamam » dans un dialogue :",
+              "type": "single_choice",
+              "options": ["D'accord / OK", "Jamais", "Au revoir", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Acceptation."
+            },
+            {
+              "id": "q4",
+              "question": "« Anladım » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai compris",
+                "Je n'ai pas compris",
+                "Je dors",
+                "Je pars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile en cours de turc."
+            },
+            {
+              "id": "q5",
+              "question": "« Anlamadım » =",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas compris",
+                "J'ai très faim",
+                "Je suis d'accord",
+                "Oui merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander une explication."
+            },
+            {
+              "id": "q6",
+              "question": "Réponse à « Türkçe konuşuyor musun ? » si tu parles un peu :",
+              "type": "single_choice",
+              "options": ["Evet, biraz", "Hayır, hiç", "Günaydın", "On beş"],
+              "correctAnswers": [0],
+              "explanation": "Oui, un peu."
+            },
+            {
+              "id": "q7",
+              "question": "« Belki » =",
+              "type": "single_choice",
+              "options": ["Peut-être", "Toujours", "Jamais", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Incertitude."
+            },
+            {
+              "id": "q8",
+              "question": "« Tabii » (familier) ≈",
+              "type": "single_choice",
+              "options": ["Bien sûr", "Non", "Pardon", "Bonne nuit"],
+              "correctAnswers": [0],
+              "explanation": "Accord enthousiaste."
+            },
+            {
+              "id": "q9",
+              "question": "« Hayır, teşekkürler » =",
+              "type": "single_choice",
+              "options": [
+                "Non, merci",
+                "Oui, merci",
+                "Non, bonjour",
+                "Oui, au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus poli."
+            },
+            {
+              "id": "q10",
+              "question": "Le prof demande « Hazır mısın ? » (Prêt ?). Tu es prêt :",
+              "type": "single_choice",
+              "options": [
+                "Evet, hazırım",
+                "Hayır, adım",
+                "Nerelisin",
+                "İyi geceler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hazırım = je suis prêt."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dialogues à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases ouvrent bien une conversation en turc entre camarades ?",
+              "type": "multiple_choice",
+              "options": [
+                "Merhaba!",
+                "Nasılsın?",
+                "İyi geceler (à 8 h)",
+                "Hoşça kal (en entrant)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + comment vas-tu conviennent en journée."
+            },
+            {
+              "id": "q2",
+              "question": "« Günaydın öğretmenim » =",
+              "type": "single_choice",
+              "options": [
+                "Bonjour professeur",
+                "Au revoir professeur",
+                "Merci professeur",
+                "Pardon professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Öğretmenim = mon professeur (poli)."
+            },
+            {
+              "id": "q3",
+              "question": "« Sınıfa girebilir miyim ? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Puis-je entrer en classe ?",
+                "Puis-je sortir ?",
+                "Où est la cantine ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sınıf = classe."
+            },
+            {
+              "id": "q4",
+              "question": "« Otur lütfen » en turc (impératif poli au prof) serait plutôt le prof qui dit :",
+              "type": "single_choice",
+              "options": [
+                "Oturun lütfen (asseyez-vous)",
+                "Merhaba",
+                "Kaç ?",
+                "Nereli ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oturun = asseyez-vous (pluriel de politesse)."
+            },
+            {
+              "id": "q5",
+              "question": "« Defterim nerede ? » =",
+              "type": "single_choice",
+              "options": [
+                "Où est mon cahier ?",
+                "Où est le prof ?",
+                "Où est la Turquie ?",
+                "Où es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Defter = cahier ; -im = mon."
+            },
+            {
+              "id": "q6",
+              "question": "« Ders başlıyor » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Le cours commence",
+                "Le cours est fini",
+                "C'est la récréation",
+                "C'est les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ders = cours/leçon."
+            },
+            {
+              "id": "q7",
+              "question": "« Teneffüs » =",
+              "type": "single_choice",
+              "options": [
+                "La récréation",
+                "Le devoir",
+                "L'examen",
+                "Le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause entre les cours."
+            },
+            {
+              "id": "q8",
+              "question": "« Arkadaşım hasta » =",
+              "type": "single_choice",
+              "options": [
+                "Mon ami est malade",
+                "Mon ami est prof",
+                "Mon ami est en Turquie",
+                "Mon ami a quinze ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hasta = malade."
+            },
+            {
+              "id": "q9",
+              "question": "« Bugün hava güzel » =",
+              "type": "single_choice",
+              "options": [
+                "Il fait beau aujourd'hui",
+                "Il pleut",
+                "Il neige",
+                "Il fait nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Small talk fréquent."
+            },
+            {
+              "id": "q10",
+              "question": "En quittant le prof à 17 h :",
+              "type": "single_choice",
+              "options": [
+                "İyi akşamlar, hoşça kalın",
+                "Günaydın",
+                "İyi geceler (pour dormir)",
+                "Hoş geldin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonsoir + au revoir poli."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pronoms simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels pronoms turcs correspondent à « je » et « tu » (informel) ?",
+              "type": "multiple_choice",
+              "options": ["Ben", "Sen", "O (il/elle)", "Biz"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ben = je, sen = tu."
+            },
+            {
+              "id": "q2",
+              "question": "« Biz » =",
+              "type": "single_choice",
+              "options": ["Nous", "Vous", "Ils", "Je"],
+              "correctAnswers": [0],
+              "explanation": "Première personne pluriel."
+            },
+            {
+              "id": "q3",
+              "question": "« Onlar » =",
+              "type": "single_choice",
+              "options": ["Ils / elles", "Tu", "Moi", "Toi"],
+              "correctAnswers": [0],
+              "explanation": "Troisième personne pluriel."
+            },
+            {
+              "id": "q4",
+              "question": "« Siz » est utilisé pour :",
+              "type": "single_choice",
+              "options": [
+                "Vous (poli ou pluriel)",
+                "Je seulement",
+                "Un animal",
+                "Une chose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse ou plusieurs personnes."
+            },
+            {
+              "id": "q5",
+              "question": "« O » peut vouloir dire :",
+              "type": "single_choice",
+              "options": ["Il ou elle", "Nous", "Eux", "Moi"],
+              "correctAnswers": [0],
+              "explanation": "Pas de genre grammatical distinct en turc courant."
+            },
+            {
+              "id": "q6",
+              "question": "« Ben öğrenciyim » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis élève",
+                "Tu es élève",
+                "Il est prof",
+                "Nous sommes fatigués"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Öğrenci = élève."
+            },
+            {
+              "id": "q7",
+              "question": "« Sen çok iyisin » ≈",
+              "type": "single_choice",
+              "options": [
+                "Tu es très bien / gentil",
+                "Tu es malade",
+                "Tu es prof",
+                "Tu es en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compliment amical."
+            },
+            {
+              "id": "q8",
+              "question": "« Biz sınıftayız » =",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes en classe",
+                "Nous sommes à la maison",
+                "Nous dormons",
+                "Nous partons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sınıf = classe."
+            },
+            {
+              "id": "q9",
+              "question": "« Onlar Türkçe öğreniyor » =",
+              "type": "single_choice",
+              "options": [
+                "Ils apprennent le turc",
+                "Ils mangent",
+                "Ils dorment",
+                "Ils jouent au foot seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Öğreniyor = apprend (présent)."
+            },
+            {
+              "id": "q10",
+              "question": "Pour dire « et toi ? » on utilise souvent :",
+              "type": "single_choice",
+              "options": ["Sen?", "Ben?", "O?", "Biz?"],
+              "correctAnswers": [0],
+              "explanation": "Sen seul renvoie la question."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Petites phrases utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions disent « à demain » ou « à lundi » (idée de revoir) ?",
+              "type": "multiple_choice",
+              "options": [
+                "Yarın görüşürüz",
+                "Görüşürüz",
+                "İyi geceler",
+                "Hoş geldin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Yarın = demain ; görüşürüz = on se voit."
+            },
+            {
+              "id": "q2",
+              "question": "« Yarın » =",
+              "type": "single_choice",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire temps basique."
+            },
+            {
+              "id": "q3",
+              "question": "« Bugün » =",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Demain", "Lundi", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Bugün = ce jour."
+            },
+            {
+              "id": "q4",
+              "question": "« Saat kaç ? » =",
+              "type": "single_choice",
+              "options": [
+                "Quelle heure est-il ?",
+                "Quel jour ?",
+                "Quel âge ?",
+                "Quelle ville ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saat = heure."
+            },
+            {
+              "id": "q5",
+              "question": "« Geç kaldım » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis en retard",
+                "Je suis en avance",
+                "Je suis malade",
+                "Je suis prêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile à l'école."
+            },
+            {
+              "id": "q6",
+              "question": "« İyi dersler » =",
+              "type": "single_choice",
+              "options": [
+                "Bon cours / bonne leçon",
+                "Bonne nuit",
+                "Bon appétit",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait en entrant en cours."
+            },
+            {
+              "id": "q7",
+              "question": "« Kolay gelsin » s'adresse à quelqu'un qui :",
+              "type": "single_choice",
+              "options": [
+                "Travaille / étudie (bon courage)",
+                "Dort",
+                "Part en vacances",
+                "Mange seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression d'encouragement."
+            },
+            {
+              "id": "q8",
+              "question": "« Afiyet olsun » =",
+              "type": "single_choice",
+              "options": [
+                "Bon appétit",
+                "Bonne nuit",
+                "Félicitations",
+                "Bonne chance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après ou avant un repas."
+            },
+            {
+              "id": "q9",
+              "question": "« Güle güle » (quand TU pars) le prof reste :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir (à celui qui reste)",
+                "Bonjour",
+                "Merci",
+                "Oui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire avec hoşça kal quand c'est toi qui pars."
+            },
+            {
+              "id": "q10",
+              "question": "« İyi hafta sonları » =",
+              "type": "single_choice",
+              "options": [
+                "Bon week-end",
+                "Bonne année",
+                "Bonjour",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hafta sonu = week-end."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses complètent « Merhaba, benim adım … » ET « … yaşındayım » comme présentation ?",
+              "type": "multiple_choice",
+              "options": [
+                "Un prénom turc (ex. Deniz)",
+                "Un nombre d'âge (ex. on dört)",
+                "Sadece hayır",
+                "Sadece görüşürüz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom + âge sont deux infos clés de présentation."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique : saluer, nom, âge, origine — en turc on peut dire :",
+              "type": "single_choice",
+              "options": [
+                "Merhaba, benim adım …, … yaşındayım, …'lıyım",
+                "Hayır, hayır, hayır",
+                "İyi geceler d'abord à 9 h",
+                "Hoşça kal en entrant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement typique en 4e."
+            },
+            {
+              "id": "q3",
+              "question": "« Nasılsın? — İyiyim, sen? — … » tu vas bien aussi :",
+              "type": "single_choice",
+              "options": [
+                "Ben de iyiyim",
+                "Ben hasta adım",
+                "On beş nereli",
+                "Günaydın gece"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ben de = moi aussi."
+            },
+            {
+              "id": "q4",
+              "question": "« Tanıştığımıza memnun oldum » après un dialogue =",
+              "type": "single_choice",
+              "options": [
+                "Ravi de vous rencontrer (nous)",
+                "Au revoir définitif",
+                "Je ne parle pas turc",
+                "Deux heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse de fin de rencontre."
+            },
+            {
+              "id": "q5",
+              "question": "Choisir la bonne salutation à 22 h avant de dormir :",
+              "type": "single_choice",
+              "options": [
+                "İyi geceler",
+                "Günaydın",
+                "Teneffüs",
+                "Ders başlıyor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne nuit."
+            },
+            {
+              "id": "q6",
+              "question": "« Teşekkürler — … » :",
+              "type": "single_choice",
+              "options": [
+                "Rica ederim",
+                "Merhaba",
+                "Kaç yaşındasın",
+                "Nerelisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire merci / de rien."
+            },
+            {
+              "id": "q7",
+              "question": "« Adın ne? — … — Sen? » :",
+              "type": "single_choice",
+              "options": [
+                "Adım … puis tu demandes son nom",
+                "Hayır",
+                "On",
+                "İstanbul seulement sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange de prénoms."
+            },
+            {
+              "id": "q8",
+              "question": "« Nerelisin? — Fransa'dan geliyorum » indique :",
+              "type": "single_choice",
+              "options": [
+                "Origine française",
+                "Tu es en classe",
+                "Tu as faim",
+                "Tu dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse à d'où tu viens."
+            },
+            {
+              "id": "q9",
+              "question": "Pour un prof, plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Nasılsınız? / Adınız ne?",
+                "Nasılsın? seulement sans contexte",
+                "Hayır öğretmen",
+                "Görüşürüz en commençant le cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formes en -nız/-siniz plus polies."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase complète niveau 4e :",
+              "type": "single_choice",
+              "options": [
+                "Merhaba, benim adım Aylin, on dört yaşındayım, İzmir'liyim",
+                "Hayır defter Türkiye uyku",
+                "Geceler günaydın kaç",
+                "Hoş bulduk adım yaş"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut + nom + âge + origine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Famille proche : noms",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots turcs désignent « mère » et « père » ?",
+              "type": "multiple_choice",
+              "options": ["Anne", "Baba", "Kardeş", "Amca"],
+              "correctAnswers": [0, 1],
+              "explanation": "Anne = mère, baba = père."
+            },
+            {
+              "id": "q2",
+              "question": "« Anne » =",
+              "type": "single_choice",
+              "options": ["Mère", "Père", "Sœur", "Oncle"],
+              "correctAnswers": [0],
+              "explanation": "Mot très proche du français « anne »."
+            },
+            {
+              "id": "q3",
+              "question": "« Baba » =",
+              "type": "single_choice",
+              "options": ["Père", "Grand-mère", "Cousin", "Fils"],
+              "correctAnswers": [0],
+              "explanation": "Père."
+            },
+            {
+              "id": "q4",
+              "question": "« Kardeş » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Frère ou sœur",
+                "Seulement frère",
+                "Seulement parent",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frère/sœur sans préciser le genre."
+            },
+            {
+              "id": "q5",
+              "question": "« Abla » =",
+              "type": "single_choice",
+              "options": ["Grande sœur", "Petit frère", "Père", "Tante"],
+              "correctAnswers": [0],
+              "explanation": "Sœur aînée (ou fille plus âgée)."
+            },
+            {
+              "id": "q6",
+              "question": "« Abi » =",
+              "type": "single_choice",
+              "options": ["Grand frère", "Grand-mère", "Bébé", "Cahier"],
+              "correctAnswers": [0],
+              "explanation": "Frère aîné (ou garçon plus âgé)."
+            },
+            {
+              "id": "q7",
+              "question": "« Anneannem » =",
+              "type": "single_choice",
+              "options": [
+                "Ma grand-mère (côté mère)",
+                "Mon grand-père",
+                "Ma tante",
+                "Mon oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anne + annem = ma grand-mère maternelle."
+            },
+            {
+              "id": "q8",
+              "question": "« Dedem » =",
+              "type": "single_choice",
+              "options": ["Mon grand-père", "Ma mère", "Mon frère", "Ma sœur"],
+              "correctAnswers": [0],
+              "explanation": "Dede = grand-père ; -m = mon."
+            },
+            {
+              "id": "q9",
+              "question": "« Aile » =",
+              "type": "single_choice",
+              "options": ["Famille", "École", "Classe", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "Groupe familial."
+            },
+            {
+              "id": "q10",
+              "question": "« Bu benim annem » =",
+              "type": "single_choice",
+              "options": [
+                "Voici ma mère",
+                "Voici mon père",
+                "Voici mon prof",
+                "Voici mon cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bu = voici ; annem = ma mère."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Famille : mon, ma",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots ont le suffixe « mon/ma » (-m) en turc ?",
+              "type": "multiple_choice",
+              "options": ["Annem", "Babam", "Anne (sans suffixe)", "Nerelisin"],
+              "correctAnswers": [0, 1],
+              "explanation": "Annem = ma mère, babam = mon père."
+            },
+            {
+              "id": "q2",
+              "question": "« Babam » =",
+              "type": "single_choice",
+              "options": ["Mon père", "Ton père", "Son père", "Notre père"],
+              "correctAnswers": [0],
+              "explanation": "Suffixe 1re personne -m."
+            },
+            {
+              "id": "q3",
+              "question": "« Kardeşim » =",
+              "type": "single_choice",
+              "options": [
+                "Mon frère ou ma sœur",
+                "Mon prof",
+                "Ma classe",
+                "Mon stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kardeş + im."
+            },
+            {
+              "id": "q4",
+              "question": "« Ablam » =",
+              "type": "single_choice",
+              "options": [
+                "Ma grande sœur",
+                "Mon grand frère",
+                "Ma mère",
+                "Mon père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif sur abla."
+            },
+            {
+              "id": "q5",
+              "question": "« Abim » =",
+              "type": "single_choice",
+              "options": [
+                "Mon grand frère",
+                "Ma grand-mère",
+                "Mon oncle",
+                "Ma tante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abi + m."
+            },
+            {
+              "id": "q6",
+              "question": "« Ailem büyük » ≈",
+              "type": "single_choice",
+              "options": [
+                "Ma famille est grande (nombreuse)",
+                "Ma famille est petite",
+                "Je n'ai pas de famille",
+                "Ma famille est en France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Büyük = grand/grande."
+            },
+            {
+              "id": "q7",
+              "question": "« Kaç kardeşin var? » =",
+              "type": "single_choice",
+              "options": [
+                "Combien de frères et sœurs as-tu ?",
+                "Où est ton frère ?",
+                "Ton frère s'appelle comment ?",
+                "Ton frère a quel âge ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Var = il y a / tu as."
+            },
+            {
+              "id": "q8",
+              "question": "« Bir kız kardeşim var » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai une sœur",
+                "J'ai un frère",
+                "J'ai deux mères",
+                "Je n'ai personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kız kardeş = sœur."
+            },
+            {
+              "id": "q9",
+              "question": "« Erkek kardeş » =",
+              "type": "single_choice",
+              "options": ["Frère (garçon)", "Sœur", "Père", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Erkek = masculin."
+            },
+            {
+              "id": "q10",
+              "question": "Présenter sa mère :",
+              "type": "single_choice",
+              "options": [
+                "Bu annem",
+                "Bu babam",
+                "Bu öğretmenim",
+                "Bu defterim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bu annem = voici ma mère."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Dans la classe : objets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des objets scolaires en turc ?",
+              "type": "multiple_choice",
+              "options": ["Defter", "Kalem", "Anne", "Baba"],
+              "correctAnswers": [0, 1],
+              "explanation": "Defter = cahier, kalem = stylo/crayon."
+            },
+            {
+              "id": "q2",
+              "question": "« Defter » =",
+              "type": "single_choice",
+              "options": ["Cahier", "Table", "Porte", "Fenêtre"],
+              "correctAnswers": [0],
+              "explanation": "Objet de classe basique."
+            },
+            {
+              "id": "q3",
+              "question": "« Kalem » =",
+              "type": "single_choice",
+              "options": ["Stylo / crayon", "Gomme", "Règle", "Cartable"],
+              "correctAnswers": [0],
+              "explanation": "Instrument d'écriture."
+            },
+            {
+              "id": "q4",
+              "question": "« Kitap » =",
+              "type": "single_choice",
+              "options": ["Livre", "Cahier", "Tableau", "Chaise"],
+              "correctAnswers": [0],
+              "explanation": "Proche de « kitap » arabe/emprunt."
+            },
+            {
+              "id": "q5",
+              "question": "« Silgi » =",
+              "type": "single_choice",
+              "options": ["Gomme", "Ciseaux", "Colle", "Peinture"],
+              "correctAnswers": [0],
+              "explanation": "Effacer au crayon."
+            },
+            {
+              "id": "q6",
+              "question": "« Çanta » =",
+              "type": "single_choice",
+              "options": ["Sac / cartable", "Chapeau", "Chaussure", "Manteau"],
+              "correctAnswers": [0],
+              "explanation": "Sac d'école courant."
+            },
+            {
+              "id": "q7",
+              "question": "« Tahta » =",
+              "type": "single_choice",
+              "options": ["Tableau (noir/blanc)", "Porte", "Sol", "Plafond"],
+              "correctAnswers": [0],
+              "explanation": "Devant la classe."
+            },
+            {
+              "id": "q8",
+              "question": "« Masa » =",
+              "type": "single_choice",
+              "options": ["Table / bureau", "Chaise", "Fenêtre", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "Proche du français « mezzanine » non — ici table."
+            },
+            {
+              "id": "q9",
+              "question": "« Sandalye » =",
+              "type": "single_choice",
+              "options": ["Chaise", "Table", "Lampe", "Horloge"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt recognizable."
+            },
+            {
+              "id": "q10",
+              "question": "« Kalemliğim » =",
+              "type": "single_choice",
+              "options": ["Ma trousse", "Mon prof", "Ma sœur", "Ma ville"],
+              "correctAnswers": [0],
+              "explanation": "Kalem + liğ = étui ; -im = ma."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Personnes à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des personnes à l'école ?",
+              "type": "multiple_choice",
+              "options": [
+                "Öğrenci",
+                "Öğretmen",
+                "Dedem (contexte école)",
+                "Tahta (objet)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Élève et enseignant."
+            },
+            {
+              "id": "q2",
+              "question": "« Öğrenci » =",
+              "type": "single_choice",
+              "options": ["Élève", "Directeur", "Cantine", "Cour"],
+              "correctAnswers": [0],
+              "explanation": "Personne qui apprend."
+            },
+            {
+              "id": "q3",
+              "question": "« Öğretmen » =",
+              "type": "single_choice",
+              "options": [
+                "Professeur / enseignant",
+                "Élève",
+                "Parent",
+                "Frère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle enseignant."
+            },
+            {
+              "id": "q4",
+              "question": "« Öğretmenim » =",
+              "type": "single_choice",
+              "options": [
+                "Mon professeur",
+                "Mon élève",
+                "Mon cahier",
+                "Ma classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessif."
+            },
+            {
+              "id": "q5",
+              "question": "« Sınıf » =",
+              "type": "single_choice",
+              "options": [
+                "Classe (salle ou niveau)",
+                "Cantine",
+                "Gymnase",
+                "Bibliothèque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupe ou pièce."
+            },
+            {
+              "id": "q6",
+              "question": "« Sınıf arkadaşım » =",
+              "type": "single_choice",
+              "options": [
+                "Mon camarade de classe",
+                "Mon prof",
+                "Mon frère",
+                "Mon grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arkadaş = ami/camarade."
+            },
+            {
+              "id": "q7",
+              "question": "« Okul » =",
+              "type": "single_choice",
+              "options": ["École", "Maison", "Parc", "Magasin"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'apprentissage."
+            },
+            {
+              "id": "q8",
+              "question": "« Okula gidiyorum » =",
+              "type": "single_choice",
+              "options": [
+                "Je vais à l'école",
+                "Je quitte l'école",
+                "Je dors",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gidiyorum = je vais."
+            },
+            {
+              "id": "q9",
+              "question": "« Ders » =",
+              "type": "single_choice",
+              "options": [
+                "Cours / leçon",
+                "Récréation",
+                "Devoir maison",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période de cours."
+            },
+            {
+              "id": "q10",
+              "question": "« Ödev » =",
+              "type": "single_choice",
+              "options": ["Devoir (maison)", "Stylo", "Gomme", "Salut"],
+              "correctAnswers": [0],
+              "explanation": "Travail à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Nombres en situation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres turcs valent 1 et 2 ?",
+              "type": "multiple_choice",
+              "options": ["Bir", "İki", "On", "Yirmi"],
+              "correctAnswers": [0, 1],
+              "explanation": "Bir = 1, iki = 2."
+            },
+            {
+              "id": "q2",
+              "question": "« Üç kitap » =",
+              "type": "single_choice",
+              "options": [
+                "Trois livres",
+                "Trois cahiers",
+                "Trois profs",
+                "Trente livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre + nom."
+            },
+            {
+              "id": "q3",
+              "question": "« Dört » =",
+              "type": "single_choice",
+              "options": ["4", "6", "14", "40"],
+              "correctAnswers": [0],
+              "explanation": "Quatre."
+            },
+            {
+              "id": "q4",
+              "question": "« Beş kalem » =",
+              "type": "single_choice",
+              "options": [
+                "Cinq stylos",
+                "Deux stylos",
+                "Cinq cahiers",
+                "Dix stylos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beş = 5."
+            },
+            {
+              "id": "q5",
+              "question": "« Altı » =",
+              "type": "single_choice",
+              "options": ["6", "7", "16", "60"],
+              "correctAnswers": [0],
+              "explanation": "Six."
+            },
+            {
+              "id": "q6",
+              "question": "« Yedi öğrenci » =",
+              "type": "single_choice",
+              "options": [
+                "Sept élèves",
+                "Deux élèves",
+                "Sept profs",
+                "On élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yedi = 7."
+            },
+            {
+              "id": "q7",
+              "question": "« Dokuz » =",
+              "type": "single_choice",
+              "options": ["9", "8", "19", "90"],
+              "correctAnswers": [0],
+              "explanation": "Neuf."
+            },
+            {
+              "id": "q8",
+              "question": "« On arkadaş » ≈",
+              "type": "single_choice",
+              "options": [
+                "Dix amis / camarades",
+                "Un ami",
+                "Cent amis",
+                "Deux amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On = 10."
+            },
+            {
+              "id": "q9",
+              "question": "« Kaç? » seul demande souvent :",
+              "type": "single_choice",
+              "options": ["Combien ?", "Où ?", "Qui ?", "Pourquoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Mot interrogatif combien."
+            },
+            {
+              "id": "q10",
+              "question": "« Sınıfta yirmi öğrenci var » =",
+              "type": "single_choice",
+              "options": [
+                "Il y a vingt élèves en classe",
+                "Il y a deux élèves",
+                "Il n'y a personne",
+                "Il y a vingt profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Var = il y a."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Couleurs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles couleurs turques sont « kırmızı » et « mavi » ?",
+              "type": "multiple_choice",
+              "options": ["Rouge", "Bleu", "Vert", "Jaune"],
+              "correctAnswers": [0, 1],
+              "explanation": "Kırmızı = rouge, mavi = bleu."
+            },
+            {
+              "id": "q2",
+              "question": "« Kırmızı » =",
+              "type": "single_choice",
+              "options": ["Rouge", "Noir", "Blanc", "Gris"],
+              "correctAnswers": [0],
+              "explanation": "Couleur de base."
+            },
+            {
+              "id": "q3",
+              "question": "« Mavi defter » =",
+              "type": "single_choice",
+              "options": [
+                "Cahier bleu",
+                "Cahier rouge",
+                "Stylo bleu",
+                "Table bleue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif avant ou après selon contexte ; ici couleur + nom."
+            },
+            {
+              "id": "q4",
+              "question": "« Yeşil » =",
+              "type": "single_choice",
+              "options": ["Vert", "Bleu", "Rose", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Vert."
+            },
+            {
+              "id": "q5",
+              "question": "« Sarı » =",
+              "type": "single_choice",
+              "options": ["Jaune", "Noir", "Violet", "Marron"],
+              "correctAnswers": [0],
+              "explanation": "Jaune."
+            },
+            {
+              "id": "q6",
+              "question": "« Siyah » =",
+              "type": "single_choice",
+              "options": ["Noir", "Blanc", "Rouge", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Noir."
+            },
+            {
+              "id": "q7",
+              "question": "« Beyaz » =",
+              "type": "single_choice",
+              "options": ["Blanc", "Noir", "Gris", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "Blanc."
+            },
+            {
+              "id": "q8",
+              "question": "« Turuncu kalem » =",
+              "type": "single_choice",
+              "options": [
+                "Stylo orange",
+                "Gomme orange",
+                "Chaise orange",
+                "Prof orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turuncu = orange."
+            },
+            {
+              "id": "q9",
+              "question": "« Pembe » =",
+              "type": "single_choice",
+              "options": ["Rose", "Bleu", "Vert", "Noir"],
+              "correctAnswers": [0],
+              "explanation": "Rose."
+            },
+            {
+              "id": "q10",
+              "question": "« Hangi renk? » =",
+              "type": "single_choice",
+              "options": [
+                "Quelle couleur ?",
+                "Quelle heure ?",
+                "Quel nom ?",
+                "Quelle ville ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renk = couleur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lieux et « ici / là »",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots indiquent « ici » et « là-bas » ?",
+              "type": "multiple_choice",
+              "options": ["Burada", "Orada", "Nerede", "Nerelisin"],
+              "correctAnswers": [0, 1],
+              "explanation": "Burada = ici, orada = là-bas."
+            },
+            {
+              "id": "q2",
+              "question": "« Burada » =",
+              "type": "single_choice",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Lieu proche."
+            },
+            {
+              "id": "q3",
+              "question": "« Orada » =",
+              "type": "single_choice",
+              "options": ["Là-bas", "Ici", "Dehors", "Dedans"],
+              "correctAnswers": [0],
+              "explanation": "Lieu éloigné."
+            },
+            {
+              "id": "q4",
+              "question": "« Nerede? » =",
+              "type": "single_choice",
+              "options": ["Où ?", "Quand ?", "Comment ?", "Pourquoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Question de lieu."
+            },
+            {
+              "id": "q5",
+              "question": "« Kalem nerede? » =",
+              "type": "single_choice",
+              "options": [
+                "Où est le stylo ?",
+                "Où est le prof ?",
+                "Où es-tu ?",
+                "Où est la Turquie ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet perdu en classe."
+            },
+            {
+              "id": "q6",
+              "question": "« Ev » =",
+              "type": "single_choice",
+              "options": ["Maison", "École", "Classe", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Domicile."
+            },
+            {
+              "id": "q7",
+              "question": "« Evde » =",
+              "type": "single_choice",
+              "options": ["À la maison", "À l'école", "En classe", "Dehors"],
+              "correctAnswers": [0],
+              "explanation": "Suffixe locatif -de."
+            },
+            {
+              "id": "q8",
+              "question": "« Okulda » =",
+              "type": "single_choice",
+              "options": [
+                "À l'école",
+                "À la maison",
+                "En Turquie",
+                "En France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Okul + da."
+            },
+            {
+              "id": "q9",
+              "question": "« Sınıfta » =",
+              "type": "single_choice",
+              "options": [
+                "En classe",
+                "Dans la cour",
+                "Dans la rue",
+                "Dans la voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu cours."
+            },
+            {
+              "id": "q10",
+              "question": "« Tuvalet nerede? » (en établissement) =",
+              "type": "single_choice",
+              "options": [
+                "Où sont les toilettes ?",
+                "Où est la cantine ?",
+                "Où est le prof ?",
+                "Où est mon frère ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pratique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Verbes très simples",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes turcs correspondent à « être » (état) et « avoir » (il y a) dans des phrases simples ?",
+              "type": "multiple_choice",
+              "options": [
+                "…-im / …-sin (suffixes je/tu sur nom)",
+                "Var (il y a / j'ai)",
+                "Gitmek seulement",
+                "Uyumak seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Öğrenciyim = je suis élève ; kardeşim var = j'ai un frère/sœur."
+            },
+            {
+              "id": "q2",
+              "question": "« Okuyorum » =",
+              "type": "single_choice",
+              "options": [
+                "Je lis / j'étudie",
+                "Je dors",
+                "Je mange",
+                "Je cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Okumak = lire."
+            },
+            {
+              "id": "q3",
+              "question": "« Yazıyorum » =",
+              "type": "single_choice",
+              "options": ["J'écris", "Je efface", "Je parle", "Je chante"],
+              "correctAnswers": [0],
+              "explanation": "Yazmak = écrire."
+            },
+            {
+              "id": "q4",
+              "question": "« Dinliyorum » =",
+              "type": "single_choice",
+              "options": [
+                "J'écoute",
+                "Je regarde la télé seulement",
+                "Je crie",
+                "Je dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En classe : écouter le prof."
+            },
+            {
+              "id": "q5",
+              "question": "« Konuşuyorum » =",
+              "type": "single_choice",
+              "options": ["Je parle", "Je mange", "Je nage", "Je dessine"],
+              "correctAnswers": [0],
+              "explanation": "Konuşmak = parler."
+            },
+            {
+              "id": "q6",
+              "question": "« Türkçe konuşuyorum » =",
+              "type": "single_choice",
+              "options": [
+                "Je parle turc",
+                "Je parle français",
+                "Je ne parle pas",
+                "Je dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue + parler."
+            },
+            {
+              "id": "q7",
+              "question": "« Geliyorum » =",
+              "type": "single_choice",
+              "options": ["Je viens", "Je pars", "Je reste", "Je tombe"],
+              "correctAnswers": [0],
+              "explanation": "Gelmek = venir."
+            },
+            {
+              "id": "q8",
+              "question": "« Gidiyorum » =",
+              "type": "single_choice",
+              "options": [
+                "Je vais / je pars",
+                "Je viens",
+                "Je suis assis",
+                "Je ris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gitmek = aller."
+            },
+            {
+              "id": "q9",
+              "question": "« Seviyorum » (ex. ailemi) ≈",
+              "type": "single_choice",
+              "options": [
+                "J'aime / j'apprécie",
+                "Je déteste",
+                "Je oublie",
+                "Je perds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sevmek = aimer."
+            },
+            {
+              "id": "q10",
+              "question": "« Öğreniyorum » =",
+              "type": "single_choice",
+              "options": ["J'apprends", "J'enseigne", "Je dors", "Je mange"],
+              "correctAnswers": [0],
+              "explanation": "En cours de turc."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mots de la journée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots parlent du moment de la journée ?",
+              "type": "multiple_choice",
+              "options": ["Sabah", "Akşam", "Defter", "Kalem"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sabah = matin, akşam = soir."
+            },
+            {
+              "id": "q2",
+              "question": "« Sabah » =",
+              "type": "single_choice",
+              "options": ["Matin", "Soir", "Nuit", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "Günaydın le sabah."
+            },
+            {
+              "id": "q3",
+              "question": "« Akşam » =",
+              "type": "single_choice",
+              "options": ["Soir", "Matin", "Après-midi", "Nuit profonde"],
+              "correctAnswers": [0],
+              "explanation": "İyi akşamlar."
+            },
+            {
+              "id": "q4",
+              "question": "« Öğle » =",
+              "type": "single_choice",
+              "options": ["Midi", "Minuit", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "Repas ou moment de midi."
+            },
+            {
+              "id": "q5",
+              "question": "« Gece » =",
+              "type": "single_choice",
+              "options": ["Nuit", "Jour", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "İyi geceler."
+            },
+            {
+              "id": "q6",
+              "question": "« Her gün » =",
+              "type": "single_choice",
+              "options": ["Chaque jour", "Jamais", "Une fois", "Deux jours"],
+              "correctAnswers": [0],
+              "explanation": "Routine scolaire."
+            },
+            {
+              "id": "q7",
+              "question": "« Pazartesi » =",
+              "type": "single_choice",
+              "options": ["Lundi", "Dimanche", "Vendredi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour ouvré en Turquie."
+            },
+            {
+              "id": "q8",
+              "question": "« Cuma » =",
+              "type": "single_choice",
+              "options": ["Vendredi", "Lundi", "Samedi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Jour de la semaine."
+            },
+            {
+              "id": "q9",
+              "question": "« Hafta » =",
+              "type": "single_choice",
+              "options": ["Semaine", "Mois", "Année", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "Planning scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "« Bugün pazartesi » =",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui c'est lundi",
+                "Demain c'est lundi",
+                "Hier c'était lundi",
+                "C'est vendredi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bugün + jour."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels groupes mélangent famille ET école correctement ?",
+              "type": "multiple_choice",
+              "options": [
+                "Annem, babam, kardeşim",
+                "Öğretmen, öğrenci, sınıf",
+                "Sadece renkler sans sens",
+                "Sadece salutations sans nom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vocabulaire u2 : proches et établissement."
+            },
+            {
+              "id": "q2",
+              "question": "Phrase : « Annem ve babam okulda değil, evde » ≈",
+              "type": "single_choice",
+              "options": [
+                "Mes parents ne sont pas à l'école, ils sont à la maison",
+                "Mes parents sont profs",
+                "Je suis seul à l'école",
+                "Je n'ai pas de parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ve = et ; değil = ne … pas."
+            },
+            {
+              "id": "q3",
+              "question": "« İki kardeşim var: bir abim, bir ablam » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai deux frères/sœurs : un grand frère et une grande sœur",
+                "J'ai dix frères",
+                "Je n'ai personne",
+                "J'ai deux profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bir = un/une."
+            },
+            {
+              "id": "q4",
+              "question": "Objets dans le sac : defter, kalem, silgi — ce sont :",
+              "type": "single_choice",
+              "options": [
+                "Cahier, stylo, gomme",
+                "Père, mère, frère",
+                "Lundi, mardi, mercredi",
+                "Rouge, bleu, vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trousse scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "« Sınıfım küçük » =",
+              "type": "single_choice",
+              "options": [
+                "Ma classe est petite",
+                "Ma classe est énorme",
+                "Mon frère est petit",
+                "Mon stylo est petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sınıfım = ma classe."
+            },
+            {
+              "id": "q6",
+              "question": "Compter en turc : bir, iki, üç, dört, beş =",
+              "type": "single_choice",
+              "options": [
+                "1, 2, 3, 4, 5",
+                "5, 4, 3, 2, 1",
+                "10, 20, 30",
+                "Tous identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre croissant standard."
+            },
+            {
+              "id": "q7",
+              "question": "« Mavi çanta, kırmızı defter » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Un sac bleu et un cahier rouge",
+                "Un prof bleu",
+                "Une maison rouge",
+                "Une nuit bleue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur + nom."
+            },
+            {
+              "id": "q8",
+              "question": "« Öğretmenim çok iyi » =",
+              "type": "single_choice",
+              "options": [
+                "Mon prof est très bien / compétent",
+                "Mon prof est malade",
+                "Mon prof est en retard",
+                "Je n'ai pas de prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compliment simple."
+            },
+            {
+              "id": "q9",
+              "question": "Question lieu + réponse : « Kitap nerede? — … »",
+              "type": "single_choice",
+              "options": [
+                "Masada / Burada",
+                "Günaydın",
+                "On beş yaşındayım",
+                "Memnun oldum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse de lieu."
+            },
+            {
+              "id": "q10",
+              "question": "Mini-dialogue niveau 4e complet :",
+              "type": "single_choice",
+              "options": [
+                "Merhaba! Benim adım Can. On dört yaşındayım. Bir abim var. Türkçe öğreniyorum.",
+                "Hayır defter anne gece öğretmen iki",
+                "Görüşürüz sabah pazartesi kalem baba",
+                "Nerelisin lütfen teşekkürler masa dede"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut, nom, âge, famille, apprentissage."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2263 @@
+{
+  "id": "4e-allemand-01",
+  "year": "4e",
+  "subject": "allemand",
+  "title": "Découvrir l'allemand",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Bonjour et au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses conviennent après « Guten Tag » ?",
+              "type": "multiple_choice",
+              "options": ["Guten Tag", "Guten Morgen", "Tschüss", "Gute Nacht"],
+              "correctAnswers": [0, 1],
+              "explanation": "On peut saluer en retour avec « Guten Tag » ou « Guten Morgen » selon le moment."
+            },
+            {
+              "id": "q2",
+              "question": "« Tschüss » signifie surtout…",
+              "type": "single_choice",
+              "options": ["au revoir familier", "bonjour", "merci", "oui"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir courant entre proches."
+            },
+            {
+              "id": "q3",
+              "question": "« Guten Abend » = …",
+              "type": "single_choice",
+              "options": ["Bonsoir", "Bonne nuit", "Bonjour", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "Salutation du soir."
+            },
+            {
+              "id": "q4",
+              "question": "Le matin, on dit…",
+              "type": "single_choice",
+              "options": ["Guten Morgen", "Gute Nacht", "Tschüss", "Bitte"],
+              "correctAnswers": [0],
+              "explanation": "« Guten Morgen » le matin."
+            },
+            {
+              "id": "q5",
+              "question": "« Auf Wiedersehen » est…",
+              "type": "single_choice",
+              "options": ["formel", "une insulte", "un prénom", "un nombre"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir poli."
+            },
+            {
+              "id": "q6",
+              "question": "« Hallo » sert à…",
+              "type": "single_choice",
+              "options": ["saluer", "dormir", "compter", "colorier"],
+              "correctAnswers": [0],
+              "explanation": "Salutation simple."
+            },
+            {
+              "id": "q7",
+              "question": "Avant de dormir : …",
+              "type": "single_choice",
+              "options": ["Gute Nacht", "Guten Tag", "Hallo", "Danke"],
+              "correctAnswers": [0],
+              "explanation": "Bonne nuit."
+            },
+            {
+              "id": "q8",
+              "question": "« Bis morgen » = …",
+              "type": "single_choice",
+              "options": ["À demain", "À jamais", "Bon appétit", "Excusez-moi"],
+              "correctAnswers": [0],
+              "explanation": "« Morgen » = demain."
+            },
+            {
+              "id": "q9",
+              "question": "Ce n'est pas une salutation : …",
+              "type": "single_choice",
+              "options": ["Danke", "Hallo", "Guten Tag", "Guten Morgen"],
+              "correctAnswers": [0],
+              "explanation": "« Danke » remercie."
+            },
+            {
+              "id": "q10",
+              "question": "Le prof dit « Guten Tag ». Tu réponds…",
+              "type": "single_choice",
+              "options": ["Guten Tag", "Tschüss", "Ich heiße Tag", "Das Buch"],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la salutation."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Comment tu t'appelles ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions demandent le prénom ?",
+              "type": "multiple_choice",
+              "options": [
+                "Wie heißt du?",
+                "Wie heißen Sie?",
+                "Woher kommst du?",
+                "Wie alt bist du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wie heißt du? » et « Wie heißen Sie? » concernent le nom."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich heiße Maya » = …",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Maya",
+                "Maya est une ville",
+                "Voici Maya",
+                "Maya dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation avec « heißen »."
+            },
+            {
+              "id": "q3",
+              "question": "« Mein Name ist Jonas » = …",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle Jonas",
+                "Jonas est prof",
+                "Au revoir",
+                "Jonas est bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variante de présentation."
+            },
+            {
+              "id": "q4",
+              "question": "« heißen » veut dire…",
+              "type": "single_choice",
+              "options": ["s'appeler", "habiter", "manger", "courir"],
+              "correctAnswers": [0],
+              "explanation": "Verbe de la présentation."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « Wie heißt du? » :",
+              "type": "single_choice",
+              "options": [
+                "Ich heiße Emil",
+                "Ich komme Emil",
+                "Emil ist der",
+                "Guten Abend"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On donne son prénom."
+            },
+            {
+              "id": "q6",
+              "question": "« Und du? » = …",
+              "type": "single_choice",
+              "options": ["Et toi ?", "Et vous ?", "Merci", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Renvoi au tutoiement."
+            },
+            {
+              "id": "q7",
+              "question": "Formule polie pour le nom :",
+              "type": "single_choice",
+              "options": [
+                "Wie heißen Sie?",
+                "Wie heißt du?",
+                "Was ist das?",
+                "Wo ist die Tür?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sie » vouvoie."
+            },
+            {
+              "id": "q8",
+              "question": "« Das ist meine Freundin Lina » présente…",
+              "type": "single_choice",
+              "options": ["une amie", "un stylo", "une couleur", "un chiffre"],
+              "correctAnswers": [0],
+              "explanation": "« Das ist … » = voici …"
+            },
+            {
+              "id": "q9",
+              "question": "« Freut mich » = …",
+              "type": "single_choice",
+              "options": ["Enchanté", "Faim", "Colère", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Politesse à la rencontre."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich bin Schülerin » indique…",
+              "type": "single_choice",
+              "options": ["élève (fille)", "professeur", "ville", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "« Schülerin » = élève."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "D'où viens-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases d'origine sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich komme aus Nantes",
+                "Ich komme aus Österreich",
+                "Ich heiße aus Köln",
+                "Ich bin aus müde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ich komme aus » + lieu ; pas avec « heißen »."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich komme aus Freiburg » = …",
+              "type": "single_choice",
+              "options": [
+                "Je viens de Fribourg",
+                "Je vais à Fribourg",
+                "Fribourg est un prénom",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Provenance."
+            },
+            {
+              "id": "q3",
+              "question": "« D'où viens-tu ? » :",
+              "type": "single_choice",
+              "options": [
+                "Woher kommst du?",
+                "Wo wohnst du?",
+                "Wie heißt du?",
+                "Was ist das?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Woher » = d'où."
+            },
+            {
+              "id": "q4",
+              "question": "« Ich wohne in Lille » parle de…",
+              "type": "single_choice",
+              "options": ["habitation", "prénom", "couleur", "article"],
+              "correctAnswers": [0],
+              "explanation": "« Wohnen in »."
+            },
+            {
+              "id": "q5",
+              "question": "Politesse : « D'où venez-vous ? »",
+              "type": "single_choice",
+              "options": [
+                "Woher kommen Sie?",
+                "Woher kommst du?",
+                "Wie heißen Sie?",
+                "Guten Tag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Kommen Sie »."
+            },
+            {
+              "id": "q6",
+              "question": "« Deutschland » = …",
+              "type": "single_choice",
+              "options": ["l'Allemagne", "Berlin", "un verbe", "merci"],
+              "correctAnswers": [0],
+              "explanation": "Nom du pays."
+            },
+            {
+              "id": "q7",
+              "question": "Avec « wohnen » + ville : …",
+              "type": "single_choice",
+              "options": ["in", "aus", "der", "das"],
+              "correctAnswers": [0],
+              "explanation": "Ich wohne in …"
+            },
+            {
+              "id": "q8",
+              "question": "« Ich bin aus der Schweiz » peut signifier…",
+              "type": "single_choice",
+              "options": ["origine suisse", "fatigue", "stylo", "table"],
+              "correctAnswers": [0],
+              "explanation": "Nationalité ou origine."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse à « Wo wohnst du? » :",
+              "type": "single_choice",
+              "options": [
+                "Ich wohne in Bonn",
+                "Ich heiße Bonn",
+                "Bonn ist rot",
+                "Tschüss"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de vie."
+            },
+            {
+              "id": "q10",
+              "question": "« Und du, woher kommst du? » …",
+              "type": "single_choice",
+              "options": [
+                "repasse la question",
+                "dit au revoir",
+                "demande l'heure",
+                "nomme un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement naturel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Du et Sie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent le vouvoiement ?",
+              "type": "multiple_choice",
+              "options": [
+                "Wie heißen Sie?",
+                "Woher kommen Sie?",
+                "Wie heißt du?",
+                "Woher kommst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sie » et verbes associés marquent la politesse."
+            },
+            {
+              "id": "q2",
+              "question": "Avec un adulte inconnu : …",
+              "type": "single_choice",
+              "options": ["Sie", "du", "ihr", "wir"],
+              "correctAnswers": [0],
+              "explanation": "Vouvoiement attendu."
+            },
+            {
+              "id": "q3",
+              "question": "« Kommst du mit? » s'adresse à…",
+              "type": "single_choice",
+              "options": [
+                "un camarade",
+                "un directeur vouvoyé",
+                "inconnu en costume",
+                "personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tutoiement."
+            },
+            {
+              "id": "q4",
+              "question": "« Wie heißen Sie? » : forme verbale…",
+              "type": "single_choice",
+              "options": ["heißen (Sie)", "heißt (du)", "komme", "bin ich"],
+              "correctAnswers": [0],
+              "explanation": "« Sie » → heißen."
+            },
+            {
+              "id": "q5",
+              "question": "« Wie geht es Ihnen? » contient…",
+              "type": "single_choice",
+              "options": ["Ihnen (politesse)", "dir", "du", "euch"],
+              "correctAnswers": [0],
+              "explanation": "Complément formel."
+            },
+            {
+              "id": "q6",
+              "question": "« Wie geht es dir? » pour…",
+              "type": "single_choice",
+              "options": ["un ami", "juge vouvoyé", "inconnu", "objet"],
+              "correctAnswers": [0],
+              "explanation": "Tutoiement."
+            },
+            {
+              "id": "q7",
+              "question": "« Ihr » = …",
+              "type": "single_choice",
+              "options": [
+                "vous (plusieurs, tutoiés)",
+                "vous (poli)",
+                "je",
+                "il"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel familier."
+            },
+            {
+              "id": "q8",
+              "question": "Version polie de « Wohnst du in Köln? »",
+              "type": "single_choice",
+              "options": [
+                "Wohnen Sie in Köln?",
+                "Wohnst Sie in Köln?",
+                "Wohnt du in Köln?",
+                "Wohnen du in Köln?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wohnen Sie …? »"
+            },
+            {
+              "id": "q9",
+              "question": "En classe, « Entschuldigung » sert surtout à…",
+              "type": "single_choice",
+              "options": [
+                "excuser / interpeller",
+                "remercier",
+                "saluer le matin",
+                "compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q10",
+              "question": "« Sprechen Sie Deutsch? » demande…",
+              "type": "single_choice",
+              "options": [
+                "si la personne parle allemand (poli)",
+                "ton âge",
+                "ta couleur",
+                "un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question formelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Bonnes réponses à « Wie geht's? » ?",
+              "type": "multiple_choice",
+              "options": [
+                "Gut, danke",
+                "Es geht",
+                "Ich heiße Paul",
+                "Mir geht es schlecht"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gut, danke » et « Es geht » décrivent comment on va."
+            },
+            {
+              "id": "q2",
+              "question": "« Wie geht es dir? » = …",
+              "type": "single_choice",
+              "options": [
+                "Comment vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "Où habites-tu ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question sur le moral."
+            },
+            {
+              "id": "q3",
+              "question": "« Sehr gut » = …",
+              "type": "single_choice",
+              "options": ["Très bien", "Très mal", "Peut-être", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Renforce « gut »."
+            },
+            {
+              "id": "q4",
+              "question": "Si tu es fatigué : …",
+              "type": "single_choice",
+              "options": [
+                "Ich bin müde",
+                "Ich bin der Tisch",
+                "Ich bin rot",
+                "Ich bin aus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Müde » = fatigué."
+            },
+            {
+              "id": "q5",
+              "question": "« Und dir? » = …",
+              "type": "single_choice",
+              "options": ["Et toi ?", "Et vous ?", "Merci", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Renvoi de question."
+            },
+            {
+              "id": "q6",
+              "question": "Politesse : « Comment allez-vous ? »",
+              "type": "single_choice",
+              "options": [
+                "Wie geht es Ihnen?",
+                "Wie geht es dir?",
+                "Wie alt sind Sie?",
+                "Woher kommen Sie?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ihnen » avec « Sie »."
+            },
+            {
+              "id": "q7",
+              "question": "« Mir geht es gut » utilise…",
+              "type": "single_choice",
+              "options": [
+                "mir (à moi)",
+                "mich toujours",
+                "un passé",
+                "un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression figée."
+            },
+            {
+              "id": "q8",
+              "question": "« Super! » exprime…",
+              "type": "single_choice",
+              "options": ["enthousiasme", "colère", "faim", "sommeil"],
+              "correctAnswers": [0],
+              "explanation": "Très bien / génial."
+            },
+            {
+              "id": "q9",
+              "question": "« Alles klar? » demande…",
+              "type": "single_choice",
+              "options": [
+                "si tout est OK / compris",
+                "ton prénom",
+                "ta ville",
+                "un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout va bien ?"
+            },
+            {
+              "id": "q10",
+              "question": "« Nicht so gut » + explication : …",
+              "type": "single_choice",
+              "options": [
+                "Ich habe Kopfschmerzen",
+                "Ich heiße Kopf",
+                "Guten Appetit",
+                "Der Stift"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mal à la tête."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Politesse de base",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots remercient en allemand ?",
+              "type": "multiple_choice",
+              "options": ["Danke", "Vielen Dank", "Bitte", "Tschüss"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Danke » et « vielen Dank » ; « bitte » répond ou demande."
+            },
+            {
+              "id": "q2",
+              "question": "On te passe le cahier. Tu dis…",
+              "type": "single_choice",
+              "options": ["Danke", "Guten Morgen", "Der Heft", "Wie heißt du?"],
+              "correctAnswers": [0],
+              "explanation": "Remercier."
+            },
+            {
+              "id": "q3",
+              "question": "Selon la phrase, « bitte » peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "s'il vous plaît / de rien",
+                "au revoir",
+                "bonne nuit",
+                "non"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double emploi courant."
+            },
+            {
+              "id": "q4",
+              "question": "« Entschuldigung, … » commence par…",
+              "type": "single_choice",
+              "options": ["excuse", "insulte", "au revoir", "félicitations"],
+              "correctAnswers": [0],
+              "explanation": "Adoucit une demande."
+            },
+            {
+              "id": "q5",
+              "question": "« Gern geschehen » = …",
+              "type": "single_choice",
+              "options": ["De rien", "Bon appétit", "Bonne nuit", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Réponse à « danke »."
+            },
+            {
+              "id": "q6",
+              "question": "Refuser poliment : …",
+              "type": "single_choice",
+              "options": [
+                "Nein, danke",
+                "Ja, tschüss",
+                "Bitte, hallo",
+                "Danke, der"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non merci."
+            },
+            {
+              "id": "q7",
+              "question": "« Könntest du helfen? » = …",
+              "type": "single_choice",
+              "options": [
+                "Pourrais-tu aider ?",
+                "Au revoir",
+                "Je m'appelle",
+                "Il est tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande amicale."
+            },
+            {
+              "id": "q8",
+              "question": "Avant le repas : …",
+              "type": "single_choice",
+              "options": [
+                "Guten Appetit",
+                "Gute Nacht",
+                "Auf Wiedersehen",
+                "Woher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bon appétit."
+            },
+            {
+              "id": "q9",
+              "question": "« Kein Problem » = …",
+              "type": "single_choice",
+              "options": ["Pas de problème", "Gros souci", "Merci", "Bonjour"],
+              "correctAnswers": [0],
+              "explanation": "Rassure l'interlocuteur."
+            },
+            {
+              "id": "q10",
+              "question": "Après « Danke schön » : …",
+              "type": "single_choice",
+              "options": [
+                "Bitte schön",
+                "Guten Morgen",
+                "Ich komme aus",
+                "Die Farbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse polie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quel âge as-tu ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases correctes pour l'âge ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich bin vierzehn Jahre alt",
+                "Ich bin fünfzehn",
+                "Ich heiße alt",
+                "Ich komme aus vierzehn"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ich bin … Jahre alt » ou « ich bin fünfzehn »."
+            },
+            {
+              "id": "q2",
+              "question": "« Wie alt bist du? » demande…",
+              "type": "single_choice",
+              "options": ["l'âge", "le prénom", "la ville", "la couleur"],
+              "correctAnswers": [0],
+              "explanation": "Question d'âge."
+            },
+            {
+              "id": "q3",
+              "question": "« Ich bin dreizehn Jahre alt » : …",
+              "type": "single_choice",
+              "options": ["13 ans", "30 ans", "3 ans", "31 ans"],
+              "correctAnswers": [0],
+              "explanation": "« Dreizehn » = 13."
+            },
+            {
+              "id": "q4",
+              "question": "Politesse : l'âge",
+              "type": "single_choice",
+              "options": [
+                "Wie alt sind Sie?",
+                "Wie alt bist du?",
+                "Wie heißen alt?",
+                "Wo alt?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sind Sie »."
+            },
+            {
+              "id": "q5",
+              "question": "« Jahre » = …",
+              "type": "single_choice",
+              "options": ["ans", "jours", "mois", "heures"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel de « Jahr »."
+            },
+            {
+              "id": "q6",
+              "question": "En allemand, l'âge se dit avec…",
+              "type": "single_choice",
+              "options": ["sein (être)", "haben (avoir)", "kommen", "heißen"],
+              "correctAnswers": [0],
+              "explanation": "« Ich bin … alt »."
+            },
+            {
+              "id": "q7",
+              "question": "« Sechzehn » = …",
+              "type": "single_choice",
+              "options": ["16", "60", "6", "26"],
+              "correctAnswers": [0],
+              "explanation": "Ne pas confondre avec « sechzig »."
+            },
+            {
+              "id": "q8",
+              "question": "Réponse réaliste en 4e : …",
+              "type": "single_choice",
+              "options": [
+                "Ich bin vierzehn",
+                "Ich bin ein Tisch",
+                "Ich bin grün",
+                "Ich bin aus danke"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge collégien typique."
+            },
+            {
+              "id": "q9",
+              "question": "« Er ist zwölf » parle de…",
+              "type": "single_choice",
+              "options": [
+                "l'âge d'un garçon",
+                "une couleur",
+                "une ville",
+                "un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il a douze ans."
+            },
+            {
+              "id": "q10",
+              "question": "« Und du? Wie alt bist du? » …",
+              "type": "single_choice",
+              "options": [
+                "repasse la question d'âge",
+                "salut",
+                "au revoir",
+                "article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Phrases utiles en classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases utiles quand tu ne comprends pas ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich verstehe nicht",
+                "Kannst du das wiederholen?",
+                "Ich bin der Hund",
+                "Guten Appetit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demander de répéter ou avouer qu'on ne comprend pas."
+            },
+            {
+              "id": "q2",
+              "question": "La phrase « Ich verstehe nicht » veut dire…",
+              "type": "single_choice",
+              "options": [
+                "Je ne comprends pas",
+                "Je comprends tout",
+                "Je suis prof",
+                "J'ai fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Verstehen »."
+            },
+            {
+              "id": "q3",
+              "question": "« Langsamer, bitte! » = …",
+              "type": "single_choice",
+              "options": [
+                "Plus lentement",
+                "Plus fort",
+                "Ferme la porte",
+                "Chante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Langsam » = lent."
+            },
+            {
+              "id": "q4",
+              "question": "« Das Klassenzimmer » = …",
+              "type": "single_choice",
+              "options": ["salle de classe", "stylo", "devoir", "professeur"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de cours."
+            },
+            {
+              "id": "q5",
+              "question": "« Schüler / Schülerin » = …",
+              "type": "single_choice",
+              "options": ["élève", "directeur", "table", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "Membre de la classe."
+            },
+            {
+              "id": "q6",
+              "question": "« Die Hausaufgaben » = …",
+              "type": "single_choice",
+              "options": ["devoirs", "jeux", "vacances", "chaussures"],
+              "correctAnswers": [0],
+              "explanation": "Travail à la maison."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich habe eine Frage » = …",
+              "type": "single_choice",
+              "options": [
+                "J'ai une question",
+                "J'ai mal",
+                "J'ai faim",
+                "J'ai dormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participer au cours."
+            },
+            {
+              "id": "q8",
+              "question": "« Der Lehrer / die Lehrerin » = …",
+              "type": "single_choice",
+              "options": ["professeur", "élève", "fenêtre", "cahier"],
+              "correctAnswers": [0],
+              "explanation": "Enseignant(e)."
+            },
+            {
+              "id": "q9",
+              "question": "« Wir lernen Deutsch » = …",
+              "type": "single_choice",
+              "options": [
+                "Nous apprenons l'allemand",
+                "Nous dormons",
+                "Nous mangeons",
+                "Nous courons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lernen »."
+            },
+            {
+              "id": "q10",
+              "question": "« Kann ich …? » sert à…",
+              "type": "single_choice",
+              "options": [
+                "demander la permission",
+                "saluer",
+                "compter seul",
+                "nommer der"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Est-ce que je peux … ?"
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dialogue entre élèves",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels débuts de dialogue sont cohérents ?",
+              "type": "multiple_choice",
+              "options": [
+                "Hallo! Wie heißt du?",
+                "Guten Tag! Ich heiße …",
+                "Tschüss! Guten Morgen!",
+                "Danke! Der die das"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer puis demander ou donner le prénom."
+            },
+            {
+              "id": "q2",
+              "question": "Première rencontre : …",
+              "type": "single_choice",
+              "options": [
+                "Hallo, ich heiße …",
+                "Gute Nacht",
+                "Das ist der Stift",
+                "Zwanzig"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation + prénom."
+            },
+            {
+              "id": "q3",
+              "question": "Après « Ich heiße Felix », tu demandes la ville…",
+              "type": "single_choice",
+              "options": [
+                "Woher kommst du?",
+                "Wie alt ist das?",
+                "Was ist rot?",
+                "Wie heißt der Tisch?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poursuivre la présentation."
+            },
+            {
+              "id": "q4",
+              "question": "« Freut mich, Felix » = …",
+              "type": "single_choice",
+              "options": [
+                "Enchanté Felix",
+                "Au revoir",
+                "Felix est grand",
+                "Voici Felix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q5",
+              "question": "Finir poliment : …",
+              "type": "single_choice",
+              "options": [
+                "Tschüss, bis morgen!",
+                "Guten Morgen!",
+                "Wie heißt du?",
+                "Die Lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + à demain."
+            },
+            {
+              "id": "q6",
+              "question": "« Bist du neu in der Schule? » demande…",
+              "type": "single_choice",
+              "options": [
+                "si tu es nouveau",
+                "ton âge",
+                "ta couleur",
+                "l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Neu » = nouveau."
+            },
+            {
+              "id": "q7",
+              "question": "« Ja, ich bin neu » = …",
+              "type": "single_choice",
+              "options": [
+                "Oui, je suis nouveau",
+                "Non merci",
+                "J'ai faim",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmation."
+            },
+            {
+              "id": "q8",
+              "question": "« In welcher Klasse bist du? » = …",
+              "type": "single_choice",
+              "options": [
+                "Dans quelle classe es-tu ?",
+                "Quelle couleur ?",
+                "Quel stylo ?",
+                "Quelle porte ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau scolaire."
+            },
+            {
+              "id": "q9",
+              "question": "« Lass uns Deutsch sprechen! » propose…",
+              "type": "single_choice",
+              "options": ["parler allemand", "manger", "dormir", "partir"],
+              "correctAnswers": [0],
+              "explanation": "« Sprechen »."
+            },
+            {
+              "id": "q10",
+              "question": "« Das war's, danke » en classe = …",
+              "type": "single_choice",
+              "options": [
+                "C'est tout, merci",
+                "Bonjour",
+                "Je suis la table",
+                "Rouge bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conclure une prise de parole."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une présentation complète en 4e inclut…",
+              "type": "multiple_choice",
+              "options": [
+                "une salutation",
+                "ich heiße + prénom",
+                "seulement un nombre sans verbe",
+                "uniquement der/die/das"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer et dire son prénom sont essentiels."
+            },
+            {
+              "id": "q2",
+              "question": "Bon enchaînement : …",
+              "type": "single_choice",
+              "options": [
+                "Guten Tag, ich heiße …, ich komme aus …",
+                "Tschüss, ich bin alt",
+                "Danke, der …",
+                "Hallo, die ist …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle appris en u1."
+            },
+            {
+              "id": "q3",
+              "question": "Erreur à éviter : …",
+              "type": "single_choice",
+              "options": [
+                "Ich heiße aus Paris",
+                "Ich komme aus Paris",
+                "Ich wohne in Paris",
+                "Ich bin aus Frankreich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas « aus » après « heißen »."
+            },
+            {
+              "id": "q4",
+              "question": "« Woher kommen Sie? » montre…",
+              "type": "single_choice",
+              "options": [
+                "vouvoiement",
+                "tutoiement",
+                "pluriel d'objets",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sie » poli."
+            },
+            {
+              "id": "q5",
+              "question": "« Gut, und dir? » répond à…",
+              "type": "single_choice",
+              "options": [
+                "Wie geht es dir?",
+                "Wie heißt du?",
+                "Tschüss",
+                "Wo ist das?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échange social."
+            },
+            {
+              "id": "q6",
+              "question": "Remercier : …",
+              "type": "single_choice",
+              "options": ["Vielen Dank", "Gute Nacht", "Woher", "Das Fenster"],
+              "correctAnswers": [0],
+              "explanation": "Merci beaucoup."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich spreche ein bisschen Deutsch » = …",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu allemand",
+                "Je parle couramment",
+                "Je ne parle pas",
+                "Je parle latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ein bisschen »."
+            },
+            {
+              "id": "q8",
+              "question": "Au téléphone : « Hallo, hier ist … » = …",
+              "type": "single_choice",
+              "options": [
+                "Bonjour, c'est … (ici …)",
+                "Bonne nuit",
+                "Couleur",
+                "Vingt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule téléphonique."
+            },
+            {
+              "id": "q9",
+              "question": "« Und du? » après ton prénom invite…",
+              "type": "single_choice",
+              "options": [
+                "l'autre à se présenter",
+                "à partir",
+                "à compter",
+                "à nommer un article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renvoi de question."
+            },
+            {
+              "id": "q10",
+              "question": "Après les salutations, on peut ajouter…",
+              "type": "single_choice",
+              "options": [
+                "Wie alt bist du? / Woher kommst du?",
+                "nur Tschüss",
+                "seulement die Farbe",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approfondir la connaissance mutuelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Der, die, das",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des articles définis ?",
+              "type": "multiple_choice",
+              "options": ["der", "die", "ein", "kein"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Der » et « die » sont définis ; « ein/kein » sont indéfinis/négatifs."
+            },
+            {
+              "id": "q2",
+              "question": "« Der Tisch » : genre…",
+              "type": "single_choice",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [0],
+              "explanation": "« Der » = masculin."
+            },
+            {
+              "id": "q3",
+              "question": "« Die Tür » : « Tür » est…",
+              "type": "single_choice",
+              "options": ["féminin", "masculin", "neutre", "sans nom"],
+              "correctAnswers": [0],
+              "explanation": "« Die Tür » = la porte."
+            },
+            {
+              "id": "q4",
+              "question": "« Das Fenster » = …",
+              "type": "single_choice",
+              "options": ["la fenêtre", "la porte", "le stylo", "la gomme"],
+              "correctAnswers": [0],
+              "explanation": "Neutre « das »."
+            },
+            {
+              "id": "q5",
+              "question": "Pluriel défini : …",
+              "type": "single_choice",
+              "options": ["die", "der", "das", "den"],
+              "correctAnswers": [0],
+              "explanation": "« Die » pour tous les pluriels définis."
+            },
+            {
+              "id": "q6",
+              "question": "« Der Stuhl » = …",
+              "type": "single_choice",
+              "options": ["la chaise", "le cahier", "la lampe", "l'élève"],
+              "correctAnswers": [0],
+              "explanation": "Mobilier masculin."
+            },
+            {
+              "id": "q7",
+              "question": "« Das Buch » : genre…",
+              "type": "single_choice",
+              "options": ["neutre", "masculin", "féminin", "aucun"],
+              "correctAnswers": [0],
+              "explanation": "« Das Buch »."
+            },
+            {
+              "id": "q8",
+              "question": "Article de « Lampe » : …",
+              "type": "single_choice",
+              "options": ["die Lampe", "der Lampe", "das Lampe", "den Lampe"],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q9",
+              "question": "« Die Schule » = …",
+              "type": "single_choice",
+              "options": ["l'école", "le stylo", "le prof", "la cour seule"],
+              "correctAnswers": [0],
+              "explanation": "Nom féminin."
+            },
+            {
+              "id": "q10",
+              "question": "En 4e, on apprend le nom avec…",
+              "type": "single_choice",
+              "options": [
+                "son article (der/die/das)",
+                "sans article",
+                "en anglais seulement",
+                "pluriel d'abord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mémoriser article + nom."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Objets de la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont du matériel scolaire ?",
+              "type": "multiple_choice",
+              "options": ["der Stift", "das Heft", "der Montag", "die Farbe"],
+              "correctAnswers": [0, 1],
+              "explanation": "Stylo et cahier ; « Montag » = lundi ; « Farbe » = couleur."
+            },
+            {
+              "id": "q2",
+              "question": "« Der Radiergummi » = …",
+              "type": "single_choice",
+              "options": ["gomme", "règle", "sac", "porte"],
+              "correctAnswers": [0],
+              "explanation": "Effacer au crayon."
+            },
+            {
+              "id": "q3",
+              "question": "« Die Tafel » = …",
+              "type": "single_choice",
+              "options": ["tableau", "fenêtre", "plafond", "chaise"],
+              "correctAnswers": [0],
+              "explanation": "Devant la classe."
+            },
+            {
+              "id": "q4",
+              "question": "« Das Lineal » = …",
+              "type": "single_choice",
+              "options": ["règle", "livre", "lampe", "crayon"],
+              "correctAnswers": [0],
+              "explanation": "Neutre."
+            },
+            {
+              "id": "q5",
+              "question": "« Der Rucksack » = …",
+              "type": "single_choice",
+              "options": ["sac à dos", "stylo", "prof", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Cartable/sacs."
+            },
+            {
+              "id": "q6",
+              "question": "« Wo ist mein Stift? » = …",
+              "type": "single_choice",
+              "options": [
+                "Où est mon stylo ?",
+                "Comment t'appelles-tu ?",
+                "Quelle couleur ?",
+                "Quel âge ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wo ist …? »"
+            },
+            {
+              "id": "q7",
+              "question": "« Das ist mein Heft » = …",
+              "type": "single_choice",
+              "options": [
+                "C'est mon cahier",
+                "Ta gomme",
+                "Leur école",
+                "Notre prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mein » = mon."
+            },
+            {
+              "id": "q8",
+              "question": "« Die Schere » = …",
+              "type": "single_choice",
+              "options": ["ciseaux", "craie", "cloche", "porte"],
+              "correctAnswers": [0],
+              "explanation": "Outil féminin."
+            },
+            {
+              "id": "q9",
+              "question": "« Auf dem Tisch » = …",
+              "type": "single_choice",
+              "options": [
+                "sur la table",
+                "sous la chaise",
+                "dans le sac",
+                "devant l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Auf » = sur."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich brauche einen Stift » = …",
+              "type": "single_choice",
+              "options": [
+                "J'ai besoin d'un stylo",
+                "Je déteste le stylo",
+                "Le stylo est rouge",
+                "Voici le stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Brauchen »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Nombres 0 à 20",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres sont entre 0 et 20 ?",
+              "type": "multiple_choice",
+              "options": ["sieben", "elf", "achtzig", "dreihundert"],
+              "correctAnswers": [0, 1],
+              "explanation": "7 et 11 ; 80 et 300 dépassent 20."
+            },
+            {
+              "id": "q2",
+              "question": "« null » = …",
+              "type": "single_choice",
+              "options": ["0", "1", "10", "20"],
+              "correctAnswers": [0],
+              "explanation": "Zéro."
+            },
+            {
+              "id": "q3",
+              "question": "Le nombre « fünf » correspond à…",
+              "type": "single_choice",
+              "options": ["5", "15", "50", "4"],
+              "correctAnswers": [0],
+              "explanation": "Cinq."
+            },
+            {
+              "id": "q4",
+              "question": "« zwölf » = …",
+              "type": "single_choice",
+              "options": ["12", "20", "2", "22"],
+              "correctAnswers": [0],
+              "explanation": "Douze."
+            },
+            {
+              "id": "q5",
+              "question": "« zwanzig » = …",
+              "type": "single_choice",
+              "options": ["20", "12", "2", "200"],
+              "correctAnswers": [0],
+              "explanation": "Limite de cette leçon."
+            },
+            {
+              "id": "q6",
+              "question": "« vierzehn » = …",
+              "type": "single_choice",
+              "options": ["14", "40", "4", "24"],
+              "correctAnswers": [0],
+              "explanation": "Quatorze, âge fréquent."
+            },
+            {
+              "id": "q7",
+              "question": "« neunzehn » = …",
+              "type": "single_choice",
+              "options": ["19", "90", "9", "29"],
+              "correctAnswers": [0],
+              "explanation": "Dix-neuf."
+            },
+            {
+              "id": "q8",
+              "question": "« Wie viel ist sechs plus acht? » → en allemand la réponse est…",
+              "type": "single_choice",
+              "options": ["vierzehn", "zwanzig", "sieben", "drei"],
+              "correctAnswers": [0],
+              "explanation": "6 + 8 = 14."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich bin sechzehn » = …",
+              "type": "single_choice",
+              "options": [
+                "J'ai seize ans",
+                "J'ai soixante ans",
+                "Seize stylos",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec « sein »."
+            },
+            {
+              "id": "q10",
+              "question": "« drei » = …",
+              "type": "single_choice",
+              "options": ["3", "13", "30", "33"],
+              "correctAnswers": [0],
+              "explanation": "Trois."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Couleurs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des couleurs allemandes ?",
+              "type": "multiple_choice",
+              "options": ["rot", "blau", "der Stift", "montag"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et bleu ; « Stift » et « Montag » ne sont pas des couleurs."
+            },
+            {
+              "id": "q2",
+              "question": "« grün » = …",
+              "type": "single_choice",
+              "options": ["vert", "gris", "jaune", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Vert."
+            },
+            {
+              "id": "q3",
+              "question": "La couleur « gelb » se traduit par…",
+              "type": "single_choice",
+              "options": ["jaune", "bleu", "blanc", "rouge"],
+              "correctAnswers": [0],
+              "explanation": "Jaune."
+            },
+            {
+              "id": "q4",
+              "question": "« schwarz » = …",
+              "type": "single_choice",
+              "options": ["noir", "blanc", "rose", "orange"],
+              "correctAnswers": [0],
+              "explanation": "Noir."
+            },
+            {
+              "id": "q5",
+              "question": "« weiß » = …",
+              "type": "single_choice",
+              "options": ["blanc", "noir", "vert", "violet"],
+              "correctAnswers": [0],
+              "explanation": "Blanc (ß)."
+            },
+            {
+              "id": "q6",
+              "question": "« Die Farbe ist rot » = …",
+              "type": "single_choice",
+              "options": [
+                "La couleur est rouge",
+                "Le stylo est grand",
+                "La porte est ouverte",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Farbe » = couleur."
+            },
+            {
+              "id": "q7",
+              "question": "« orange » en allemand pour la couleur…",
+              "type": "single_choice",
+              "options": ["orange", "grün", "lila", "braun"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt identique."
+            },
+            {
+              "id": "q8",
+              "question": "La couleur « braun » se traduit par…",
+              "type": "single_choice",
+              "options": ["marron", "bleu", "gris", "rouge"],
+              "correctAnswers": [0],
+              "explanation": "Marron."
+            },
+            {
+              "id": "q9",
+              "question": "« Mein Heft ist blau » = …",
+              "type": "single_choice",
+              "options": [
+                "Mon cahier est bleu",
+                "Mon cahier est un stylo",
+                "Bleu est un prénom",
+                "Je suis bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décrire un objet."
+            },
+            {
+              "id": "q10",
+              "question": "« Welche Farbe magst du? » demande…",
+              "type": "single_choice",
+              "options": [
+                "quelle couleur tu aimes",
+                "ton âge",
+                "ta ville",
+                "ton prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Welche Farbe »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dans la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots appartiennent à la salle de classe ?",
+              "type": "multiple_choice",
+              "options": [
+                "die Tür",
+                "das Fenster",
+                "der Freitag",
+                "ich komme aus"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Porte et fenêtre ; vendredi et phrase d'origine ne décrivent pas un objet de classe."
+            },
+            {
+              "id": "q2",
+              "question": "« Die Wand » = …",
+              "type": "single_choice",
+              "options": ["le mur", "le sol", "le plafond", "le cartable"],
+              "correctAnswers": [0],
+              "explanation": "Paroi de la salle."
+            },
+            {
+              "id": "q3",
+              "question": "« Der Boden » = …",
+              "type": "single_choice",
+              "options": ["le sol", "le mur", "le ciel", "le stylo"],
+              "correctAnswers": [0],
+              "explanation": "On marche dessus."
+            },
+            {
+              "id": "q4",
+              "question": "« Das Licht » = …",
+              "type": "single_choice",
+              "options": ["la lumière", "la porte", "la gomme", "le nombre"],
+              "correctAnswers": [0],
+              "explanation": "Éclairage."
+            },
+            {
+              "id": "q5",
+              "question": "« Der Computer » dans une salle moderne = …",
+              "type": "single_choice",
+              "options": ["ordinateur", "chaise", "crayon", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "Matériel numérique."
+            },
+            {
+              "id": "q6",
+              "question": "« Setz dich! » (prof) = …",
+              "type": "single_choice",
+              "options": ["Assieds-toi", "Lève-toi", "Pars", "Mange"],
+              "correctAnswers": [0],
+              "explanation": "Consigne courante."
+            },
+            {
+              "id": "q7",
+              "question": "« Mach die Tür zu » = …",
+              "type": "single_choice",
+              "options": [
+                "Ferme la porte",
+                "Ouvre la fenêtre",
+                "Bonjour",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Zu » = fermé."
+            },
+            {
+              "id": "q8",
+              "question": "« Hier ist dein Platz » = …",
+              "type": "single_choice",
+              "options": [
+                "Voici ta place",
+                "Voici ton stylo",
+                "Au revoir",
+                "Quelle couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Platz » = place assise."
+            },
+            {
+              "id": "q9",
+              "question": "« Die Klasse » peut signifier…",
+              "type": "single_choice",
+              "options": [
+                "le groupe d'élèves / la salle",
+                "uniquement un stylo",
+                "un jour",
+                "un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double sens fréquent."
+            },
+            {
+              "id": "q10",
+              "question": "« Wir sind zu zweit » = …",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes deux (par groupe)",
+                "Nous sommes vingt",
+                "Deux couleurs",
+                "Deux portes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail en binôme."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Articles et objets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles paires article + nom sont correctes ?",
+              "type": "multiple_choice",
+              "options": ["das Heft", "der Stift", "die Tisch", "das Tür"],
+              "correctAnswers": [0, 1],
+              "explanation": "Heft neutre, Stift masculin ; « Tisch » = der, « Tür » = die."
+            },
+            {
+              "id": "q2",
+              "question": "« der » devant « Bleistift » : …",
+              "type": "single_choice",
+              "options": [
+                "der Bleistift",
+                "die Bleistift",
+                "das Bleistift",
+                "den Bleistift"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crayon papier masculin."
+            },
+            {
+              "id": "q3",
+              "question": "« die Mappe » = …",
+              "type": "single_choice",
+              "options": ["classeur / pochette", "chaise", "mur", "nombre"],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q4",
+              "question": "« das Mäppchen » souvent = …",
+              "type": "single_choice",
+              "options": [
+                "petit cartable",
+                "grande fenêtre",
+                "professeur",
+                "couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diminutif neutre."
+            },
+            {
+              "id": "q5",
+              "question": "« Ist das dein Stift? » = …",
+              "type": "single_choice",
+              "options": [
+                "Est-ce ton stylo ?",
+                "Où est le stylo ?",
+                "Stylo rouge",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dein » = ton."
+            },
+            {
+              "id": "q6",
+              "question": "« Nein, das ist nicht mein Stift » = …",
+              "type": "single_choice",
+              "options": [
+                "Non, ce n'est pas mon stylo",
+                "Oui c'est le mien",
+                "Stylo bleu",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation avec « nicht »."
+            },
+            {
+              "id": "q7",
+              "question": "Pluriel : « die Stifte » = …",
+              "type": "single_choice",
+              "options": ["les stylos", "le stylo", "un stylo", "sans stylo"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel avec « die »."
+            },
+            {
+              "id": "q8",
+              "question": "« ein Heft » vs « das Heft » : …",
+              "type": "single_choice",
+              "options": [
+                "un cahier / le cahier",
+                "deux cahiers",
+                "aucun cahier",
+                "couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indéfini vs défini."
+            },
+            {
+              "id": "q9",
+              "question": "« Wo sind die Bücher? » = …",
+              "type": "single_choice",
+              "options": [
+                "Où sont les livres ?",
+                "Combien de livres ?",
+                "Livre rouge",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel « die Bücher »."
+            },
+            {
+              "id": "q10",
+              "question": "Astuce : deviner l'article sans apprendre…",
+              "type": "single_choice",
+              "options": [
+                "est risqué en allemand",
+                "marche toujours",
+                "inutile en 4e",
+                "interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut mémoriser chaque nom."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Compter et l'âge",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres sont pairs entre 1 et 20 ?",
+              "type": "multiple_choice",
+              "options": ["acht", "zehn", "sieben", "neun"],
+              "correctAnswers": [0, 1],
+              "explanation": "8 et 10 sont pairs ; 7 et 9 sont impairs."
+            },
+            {
+              "id": "q2",
+              "question": "« eins » = …",
+              "type": "single_choice",
+              "options": ["1", "11", "10", "21"],
+              "correctAnswers": [0],
+              "explanation": "Un."
+            },
+            {
+              "id": "q3",
+              "question": "« zwei » = …",
+              "type": "single_choice",
+              "options": ["2", "12", "20", "22"],
+              "correctAnswers": [0],
+              "explanation": "Deux."
+            },
+            {
+              "id": "q4",
+              "question": "« zehn » = …",
+              "type": "single_choice",
+              "options": ["10", "1", "20", "30"],
+              "correctAnswers": [0],
+              "explanation": "Dix."
+            },
+            {
+              "id": "q5",
+              "question": "« fünfzehn » = …",
+              "type": "single_choice",
+              "options": ["15", "50", "5", "51"],
+              "correctAnswers": [0],
+              "explanation": "Quinze."
+            },
+            {
+              "id": "q6",
+              "question": "« Sie ist acht » (fille) = …",
+              "type": "single_choice",
+              "options": [
+                "Elle a huit ans",
+                "Elle a huit stylos",
+                "Huit couleurs",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec « sein »."
+            },
+            {
+              "id": "q7",
+              "question": "« Wir sind fünf in der Gruppe » = …",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes cinq dans le groupe",
+                "Cinq couleurs",
+                "Cinq portes",
+                "Cinq profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter des personnes."
+            },
+            {
+              "id": "q8",
+              "question": "« Wie viele Hefte hast du? » demande…",
+              "type": "single_choice",
+              "options": [
+                "combien de cahiers",
+                "quelle couleur",
+                "ton prénom",
+                "ta ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Wie viele » = combien."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich habe zwei Stifte » = …",
+              "type": "single_choice",
+              "options": [
+                "J'ai deux stylos",
+                "J'ai deux profs",
+                "Deux portes",
+                "Je suis deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Haben » pour possession."
+            },
+            {
+              "id": "q10",
+              "question": "« null, eins, zwei, drei » est…",
+              "type": "single_choice",
+              "options": [
+                "compter en allemand",
+                "saluer",
+                "se présenter",
+                "nommer der"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suite numérique de base."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Couleurs et objets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases décrivent correctement un objet coloré ?",
+              "type": "multiple_choice",
+              "options": [
+                "Der Stift ist rot",
+                "Das Heft ist grün",
+                "Die Farbe heiße Paul",
+                "Ich komme aus blau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Adjectif de couleur après « sein » ; pas avec « heißen » ou « kommen aus »."
+            },
+            {
+              "id": "q2",
+              "question": "« lila » = …",
+              "type": "single_choice",
+              "options": ["violet", "vert", "gris", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Couleur violette."
+            },
+            {
+              "id": "q3",
+              "question": "« grau » = …",
+              "type": "single_choice",
+              "options": ["gris", "vert", "blanc", "rouge"],
+              "correctAnswers": [0],
+              "explanation": "Gris."
+            },
+            {
+              "id": "q4",
+              "question": "« Der Radiergummi ist weiß » = …",
+              "type": "single_choice",
+              "options": [
+                "La gomme est blanche",
+                "Le stylo est bleu",
+                "La porte est rouge",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description simple."
+            },
+            {
+              "id": "q5",
+              "question": "« Die Tür ist braun » : « Tür » est…",
+              "type": "single_choice",
+              "options": [
+                "féminin (die)",
+                "masculin (der)",
+                "neutre (das)",
+                "pluriel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article « die »."
+            },
+            {
+              "id": "q6",
+              "question": "« Welche Farbe hat dein Rucksack? » = …",
+              "type": "single_choice",
+              "options": [
+                "Quelle couleur a ton sac ?",
+                "Où est ton sac ?",
+                "Combien de sacs ?",
+                "Ton prénom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Welche Farbe » + possession « dein »."
+            },
+            {
+              "id": "q7",
+              "question": "« schwarz und weiß » = …",
+              "type": "single_choice",
+              "options": [
+                "noir et blanc",
+                "rouge et bleu",
+                "vert et jaune",
+                "deux stylos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conjonction « und »."
+            },
+            {
+              "id": "q8",
+              "question": "« Das Lineal ist gelb » = …",
+              "type": "single_choice",
+              "options": [
+                "La règle est jaune",
+                "Le cahier est vert",
+                "La lampe est éteinte",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre « das Lineal »."
+            },
+            {
+              "id": "q9",
+              "question": "« rot, blau, grün » sont…",
+              "type": "single_choice",
+              "options": [
+                "trois couleurs",
+                "trois prénoms",
+                "trois salutations",
+                "trois articles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire couleur."
+            },
+            {
+              "id": "q10",
+              "question": "« Mein Lieblingsfarbe ist blau » (avec petite erreur courante) — la couleur préférée se dit plutôt…",
+              "type": "single_choice",
+              "options": [
+                "Meine Lieblingsfarbe ist blau",
+                "Mein Lieblingsfarbe ist der",
+                "Ich heiße blau",
+                "Blau komme aus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Farbe » est féminin : « meine Lieblingsfarbe »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vocabulaire classe et chiffres",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots mélange classe et nombres utiles en 4e ?",
+              "type": "multiple_choice",
+              "options": ["der Lehrer", "fünfzehn", "Guten Tag", "ich heiße"],
+              "correctAnswers": [0, 1],
+              "explanation": "Professeur et nombre 15 ; salut et présentation ne sont pas le focus de ce quiz."
+            },
+            {
+              "id": "q2",
+              "question": "« die Lehrerin » = …",
+              "type": "single_choice",
+              "options": ["la professeure", "l'élève", "la fenêtre", "le mur"],
+              "correctAnswers": [0],
+              "explanation": "Féminin enseignante."
+            },
+            {
+              "id": "q3",
+              "question": "« achtzehn » = …",
+              "type": "single_choice",
+              "options": ["18", "80", "8", "28"],
+              "correctAnswers": [0],
+              "explanation": "Dix-huit."
+            },
+            {
+              "id": "q4",
+              "question": "« der Freitag » = …",
+              "type": "single_choice",
+              "options": ["vendredi", "lundi", "stylo", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "Jour de la semaine (repère calendrier en classe)."
+            },
+            {
+              "id": "q5",
+              "question": "« Heute haben wir Deutsch » = …",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui nous avons allemand",
+                "Demain maths",
+                "Bonsoir",
+                "Deux stylos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Heute » = aujourd'hui."
+            },
+            {
+              "id": "q6",
+              "question": "« der Unterricht » = …",
+              "type": "single_choice",
+              "options": ["le cours", "la cour", "le cartable", "la gomme"],
+              "correctAnswers": [0],
+              "explanation": "Moment de classe."
+            },
+            {
+              "id": "q7",
+              "question": "« siebzehn » = …",
+              "type": "single_choice",
+              "options": ["17", "70", "7", "27"],
+              "correctAnswers": [0],
+              "explanation": "Dix-sept."
+            },
+            {
+              "id": "q8",
+              "question": "« Das ist Nummer fünf » = …",
+              "type": "single_choice",
+              "options": [
+                "C'est le numéro cinq",
+                "C'est rouge",
+                "C'est la porte",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nummer » en exercices."
+            },
+            {
+              "id": "q9",
+              "question": "« Zählen wir bis zwanzig! » = …",
+              "type": "single_choice",
+              "options": [
+                "Comptons jusqu'à vingt",
+                "Saluons",
+                "Fermons la porte",
+                "Mangeons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Zählen » = compter."
+            },
+            {
+              "id": "q10",
+              "question": "« der Mittwoch » = …",
+              "type": "single_choice",
+              "options": ["mercredi", "mardi", "chaise", "bleu"],
+              "correctAnswers": [0],
+              "explanation": "Milieu de semaine."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour réviser u2, quelles associations sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "das Fenster — fenêtre",
+                "der Stift — stylo",
+                "die Buch — livre",
+                "das Tür — porte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fenêtre et stylo ; livre = « das Buch », porte = « die Tür »."
+            },
+            {
+              "id": "q2",
+              "question": "Phrase complète : « Mon cahier vert »",
+              "type": "single_choice",
+              "options": [
+                "Mein Heft ist grün",
+                "Mein grün ist Heft",
+                "Ich heiße grün Heft",
+                "Der Heft komme aus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre : sujet + « ist » + couleur."
+            },
+            {
+              "id": "q3",
+              "question": "« Ich habe der Stift » est…",
+              "type": "single_choice",
+              "options": [
+                "incorrect (ein/den Stift)",
+                "parfait",
+                "une salutation",
+                "un nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après « haben » on apprend « einen Stift »."
+            },
+            {
+              "id": "q4",
+              "question": "« null bis zwanzig » couvre…",
+              "type": "single_choice",
+              "options": ["0 à 20", "0 à 100", "1 à 10", "couleurs seules"],
+              "correctAnswers": [0],
+              "explanation": "Plage de la leçon nombres."
+            },
+            {
+              "id": "q5",
+              "question": "Trois articles définis singuliers : …",
+              "type": "single_choice",
+              "options": [
+                "der, die, das",
+                "ein, eine, ein",
+                "und, oder, aber",
+                "rot, blau, grün"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base de la grammaire allemande."
+            },
+            {
+              "id": "q6",
+              "question": "« Wo ist das Lineal? — Es ist auf dem Tisch » : « Es » remplace…",
+              "type": "single_choice",
+              "options": [
+                "das Lineal (neutre)",
+                "der Stift",
+                "die Schule",
+                "rot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Es » pour neutre singulier."
+            },
+            {
+              "id": "q7",
+              "question": "« Die Stühle sind blau » = …",
+              "type": "single_choice",
+              "options": [
+                "Les chaises sont bleues",
+                "La chaise est bleue",
+                "Le stylo est bleu",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel « die Stühle »."
+            },
+            {
+              "id": "q8",
+              "question": "Lier présentation et u2 : « Ich heiße … und ich habe einen blauen Rucksack »",
+              "type": "single_choice",
+              "options": [
+                "prénom + possession + couleur",
+                "seulement der die das",
+                "sans verbe",
+                "au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On combine u1 et vocabulaire."
+            },
+            {
+              "id": "q9",
+              "question": "« Guten Tag, ich bin vierzehn und mein Stift ist schwarz » contient…",
+              "type": "single_choice",
+              "options": [
+                "salutation, âge, couleur d'objet",
+                "uniquement nombres",
+                "sans allemand",
+                "que des articles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révision globale chapitre 1."
+            },
+            {
+              "id": "q10",
+              "question": "Règle d'or en 4e pour les noms allemands : …",
+              "type": "single_choice",
+              "options": [
+                "apprendre l'article avec le mot",
+                "ignorer les couleurs",
+                "ne jamais compter",
+                "tout dire en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indispensable pour der/die/das."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

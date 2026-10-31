@@ -55,10 +55,18 @@ export function FilesScreen() {
           mimeType: "application/pdf",
           headers: { Authorization: `Bearer ${api.token}` },
         });
-        const payload = JSON.parse(result.body);
-        if (result.status < 200 || result.status >= 300)
-          throw new Error(payload.error || "Could not import this PDF.");
-        artifact = payload;
+        if (result.status < 200 || result.status >= 300) {
+          let message = "Could not import this PDF.";
+          try {
+            const failed = JSON.parse(result.body) as { error?: string };
+            if (failed.error) message = failed.error;
+          } catch {
+            const text = result.body.trim();
+            if (text) message = text.slice(0, 200);
+          }
+          throw new Error(message);
+        }
+        artifact = JSON.parse(result.body) as Artifact;
       }
       await refresh();
       open({ type: "file", file: artifact });

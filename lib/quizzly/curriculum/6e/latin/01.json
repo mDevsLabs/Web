@@ -1,0 +1,2083 @@
+{
+  "id": "6e-latin-01",
+  "year": "6e",
+  "subject": "latin",
+  "title": "Découvrir le latin",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Premiers mots latins",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions correspondent au mot latin « salve » ?",
+              "options": [
+                "Bonjour (à une personne)",
+                "Au revoir",
+                "Merci",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "« Salve » sert à saluer une seule personne, le matin comme le soir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « bonjour » à plusieurs personnes en latin ?",
+              "options": ["Salve", "Salvete", "Vale", "Valete"],
+              "correctAnswers": [1],
+              "explanation": "Le -te final indique le pluriel : salvete = bonjour à vous tous."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « vale » ?",
+              "options": [
+                "Bonjour",
+                "Au revoir (à une personne)",
+                "Merci",
+                "Oui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vale » est la formule d’adieu adressée à une seule personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle formule utilise-t-on pour dire au revoir à plusieurs ?",
+              "options": ["Salve", "Salvete", "Vale", "Valete"],
+              "correctAnswers": [3],
+              "explanation": "« Valete » reprend la même racine que « vale » avec la marque du pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le latin « salve » s’adresse à combien de personnes ?",
+              "options": [
+                "Une seule",
+                "Deux exactement",
+                "Trois ou plus",
+                "Personne en particulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme du singulier vise un interlocuteur unique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot latin signifie « oui » ?",
+              "options": ["Non", "Ita", "Minime", "Fortasse"],
+              "correctAnswers": [1],
+              "explanation": "« Ita » ou « ita vero » confirme une affirmation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment répond-on « non » en latin courant ?",
+              "options": ["Ita", "Minime", "Salve", "Gratias"],
+              "correctAnswers": [1],
+              "explanation": "« Minime » signifie « pas du tout » ou « non »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Gratias » correspond à :",
+              "options": ["Bonjour", "Pardon", "Merci", "S’il vous plaît"],
+              "correctAnswers": [2],
+              "explanation": "On complète souvent par « tibi » ou « vobis » : merci à toi / à vous."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle paire est correcte (salutation / adieu) ?",
+              "options": [
+                "Salve / Vale",
+                "Vale / Salve",
+                "Salvete / Salve",
+                "Valete / Vale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve ouvre la conversation, vale la clôt pour une personne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le latin est la langue des anciens :",
+              "options": ["Grecs", "Romains", "Égyptiens", "Vikings"],
+              "correctAnswers": [1],
+              "explanation": "Rome a diffusé le latin dans une grande partie de l’Europe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Bonjour et au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des formules de départ ?",
+              "options": ["Vale", "Valete", "Salve", "Salvete"],
+              "correctAnswers": [0, 1],
+              "explanation": "Vale et valete viennent du verbe « être en bonne santé », sens « adieu »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un élève salue son professeur seul : il dit",
+              "options": [
+                "Salvete, magister",
+                "Salve, magister",
+                "Valete, magister",
+                "Vale, magistra"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magister est masculin singulier ; le salut est au singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Devant toute la classe, on dit plutôt :",
+              "options": ["Salve", "Salvete", "Vale", "Ita"],
+              "correctAnswers": [1],
+              "explanation": "Plusieurs élèves = pluriel salvete."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Magistra » désigne :",
+              "options": [
+                "Un élève",
+                "Une maîtresse",
+                "Un directeur",
+                "Un ami"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le suffixe -a marque souvent le féminin en latin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction de « Salve, discipule » :",
+              "options": [
+                "Au revoir, professeur",
+                "Bonjour, élève (à un garçon)",
+                "Merci, maîtresse",
+                "Bonjour, élèves"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Discipulus au vocatif devient discipule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le vocatif sert à :",
+              "options": [
+                "Nommer une chose",
+                "Interpelller quelqu’un",
+                "Indiquer le passé",
+                "Compter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On appelle ainsi le cas de l’appel direct."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Vale, amice » s’adresse à :",
+              "options": [
+                "Une amie",
+                "Un ami (masculin)",
+                "Des amis",
+                "Une maîtresse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Amicus → amice au vocatif masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour une amie, on dirait « Vale, ___ » :",
+              "options": ["amice", "amica", "amici", "amicus"],
+              "correctAnswers": [1],
+              "explanation": "Amica est le vocatif féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Salve et vale partagent la même racine liée à :",
+              "options": [
+                "La guerre",
+                "La santé / le salut",
+                "La mer",
+                "La nourriture"
+              ],
+              "correctAnswers": [1],
+              "explanation": "D’où l’idée de « être bien » pour saluer et prendre congé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe de 6e, on retient surtout :",
+              "options": [
+                "Quatre déclinaisons complètes",
+                "Salve / salvete et vale / valete",
+                "Tous les temps du verbe",
+                "La métrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les formules de politesse sont la base de la communication latine."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comment ça va ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses peuvent signifier « ça va bien » ?",
+              "options": ["Bene", "Male", "Optime", "Nihil"],
+              "correctAnswers": [0, 2],
+              "explanation": "Bene = bien ; optime = très bien."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Quomodo te habes ? » demande :",
+              "options": [
+                "Comment tu t’appelles",
+                "Comment tu vas",
+                "Où tu habites",
+                "Quelle heure est-il"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Littéralement « comment te comportes-tu ? »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse simple si tout va bien :",
+              "options": ["Male", "Bene, gratias", "Vale", "Non"],
+              "correctAnswers": [1],
+              "explanation": "On remercie souvent en même temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Male » indique :",
+              "options": ["Très bien", "Mal", "Peut-être", "Bonjour"],
+              "correctAnswers": [1],
+              "explanation": "Adverbe opposé à bene."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Et tu ? » en latin familier :",
+              "options": ["Et tu?", "Et vos?", "Et ego?", "Et ille?"],
+              "correctAnswers": [0],
+              "explanation": "On reprend le pronom tu pour renvoyer la question."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Sum laetus » (masculin) exprime :",
+              "options": [
+                "Je suis triste",
+                "Je suis content",
+                "J’ai faim",
+                "Je pars"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Laetus = joyeux, content."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une fille dirait « je suis contente » :",
+              "options": [
+                "Sum laetus",
+                "Sum laeta",
+                "Sum magnus",
+                "Sum parvus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L’adjectif s’accorde : laeta au féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Gratias tibi ago » signifie :",
+              "options": [
+                "Je te demande pardon",
+                "Je te remercie",
+                "Je te salue",
+                "Je t’appelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ago gratias = rendre grâce, remercier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour plusieurs interlocuteurs : « Quomodo ___ habetis ? »",
+              "options": ["tu", "vos", "ego", "is"],
+              "correctAnswers": [1],
+              "explanation": "Vos = vous (pluriel)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Non sum tristis » veut dire :",
+              "options": [
+                "Je suis triste",
+                "Je ne suis pas triste",
+                "Tu es triste",
+                "Ils sont tristes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Non nie le verbe sum."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Je me présente",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots signifient « je » et « tu » ?",
+              "options": ["Ego", "Tu", "Is", "Ea"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ego = je ; tu = tu (2e personne singulier)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ego sum Marcus » :",
+              "options": [
+                "Tu es Marcus",
+                "Je suis Marcus",
+                "Il est Marcus",
+                "Nous sommes Marcus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sum = je suis avec ego."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Quis es tu ? » demande :",
+              "options": [
+                "Où es-tu",
+                "Qui es-tu",
+                "Comment es-tu",
+                "Pourquoi es-tu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quis = qui ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Nomen meum est Julia » :",
+              "options": [
+                "Mon ami s’appelle Julia",
+                "Mon nom est Julia",
+                "Ta sœur est Julia",
+                "Julia est grande"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nomen meum = mon nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le verbe « être » à la 1re personne :",
+              "options": ["Es", "Sum", "Est", "Sunt"],
+              "correctAnswers": [1],
+              "explanation": "Ego sum = je suis."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Tu es » se dit :",
+              "options": ["Sum", "Es", "Est", "Sunt"],
+              "correctAnswers": [1],
+              "explanation": "Es s’emploie avec tu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Discipulus sum » :",
+              "options": [
+                "Je suis professeur",
+                "Je suis élève",
+                "Tu es élève",
+                "Il est élève"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Discipulus = élève (masculin)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une élève dit : « Discipula ___ »",
+              "options": ["sum", "es", "est", "sunt"],
+              "correctAnswers": [0],
+              "explanation": "Discipula + sum = je suis une élève."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Unde es ? » signifie :",
+              "options": [
+                "D’où viens-tu ?",
+                "Où vas-tu ?",
+                "Quand viens-tu ?",
+                "Pourquoi viens-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unde = d’où."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Romanus sum » indique :",
+              "options": [
+                "Je suis romain",
+                "Tu es romaine",
+                "Ils sont romains",
+                "Rome est grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Romanus s’accorde avec ego masculin."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Tu ou vous ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms sont à la 2e personne ?",
+              "options": ["Tu", "Vos", "Ego", "Nos"],
+              "correctAnswers": [0, 1],
+              "explanation": "Tu = singulier ; vos = pluriel ou politesse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Vos estis discipuli » :",
+              "options": [
+                "Tu es élève",
+                "Vous êtes élèves",
+                "Ils sont élèves",
+                "Je suis élève"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estis = vous êtes ; discipuli = élèves (masculin pluriel)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Saluer plusieurs amis :",
+              "options": [
+                "Salve, amice",
+                "Salvete, amici",
+                "Vale, amica",
+                "Gratias, amice"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Amici = amis ; vocatif amici ; salvete au pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Es » accompagne toujours :",
+              "options": ["Ego", "Tu", "Is", "Ea"],
+              "correctAnswers": [1],
+              "explanation": "Tu es = deuxième personne singulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Estis » est la forme :",
+              "options": ["Je suis", "Tu es", "Il est", "Vous êtes"],
+              "correctAnswers": [3],
+              "explanation": "Terminaison -tis = 2e personne pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nous en latin :",
+              "options": ["Vos", "Nos", "Ego", "Tu"],
+              "correctAnswers": [1],
+              "explanation": "Nos = nous."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nos sumus » signifie :",
+              "options": ["Vous êtes", "Nous sommes", "Ils sont", "Je suis"],
+              "correctAnswers": [1],
+              "explanation": "Sumus = nous sommes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander le nom à un groupe : « Quae sunt nomina ___ ? »",
+              "options": ["tua", "vestra", "mea", "eius"],
+              "correctAnswers": [1],
+              "explanation": "Vestra = vos (pluriel), possessif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Tibi » signifie :",
+              "options": ["À moi", "À toi", "À lui", "À vous (pl.)"],
+              "correctAnswers": [1],
+              "explanation": "Datif de tu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Vobis » est le datif de :",
+              "options": ["Tu", "Vos", "Ego", "Is"],
+              "correctAnswers": [1],
+              "explanation": "Vobis = à vous (pluriel)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Formules de politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont polies en latin ?",
+              "options": ["Gratias ago", "Obsecro", "St!", "Quis es?"],
+              "correctAnswers": [0, 1],
+              "explanation": "Remercier et supplier (s’il vous plaît) sont courtois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ignosce mihi » demande :",
+              "options": ["Merci", "Pardon", "Bonjour", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "Ignoscere = pardonner."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Répondre à « Gratias tibi » :",
+              "options": ["Vale", "A te quoque", "Male", "Quis es"],
+              "correctAnswers": [1],
+              "explanation": "« Toi aussi » ou « de rien » par équivalence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Precor » ou « amabo te » sert à :",
+              "options": [
+                "Insulter",
+                "Demander poliment",
+                "Partir",
+                "Compteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formules de prière légère = s’il te plaît."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avant de entrer, un Romain pouvait dire :",
+              "options": ["Vale", "Licet intrare?", "Male", "Sum"],
+              "correctAnswers": [1],
+              "explanation": "Demander la permission d’entrer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Bene sit tibi » souhaite :",
+              "options": [
+                "Malheur",
+                "Que cela te soit favorable",
+                "Silence",
+                "Départ"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule de bon augure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Salve, domine » s’adresse à :",
+              "options": [
+                "Un enfant",
+                "Un maître / seigneur",
+                "Une déesse",
+                "Un soldat seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dominus = maître, seigneur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Domina » est :",
+              "options": [
+                "Masculin",
+                "Féminin (maîtresse)",
+                "Neutre",
+                "Pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contrepartie féminine de dominus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Remercier plusieurs personnes : « Gratias ___ ago »",
+              "options": ["tibi", "vobis", "mihi", "ei"],
+              "correctAnswers": [1],
+              "explanation": "Vobis = à vous."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une politesse oubliee en classe peut se corriger par :",
+              "options": ["Vale", "Ignosce", "Male", "Ita vero"],
+              "correctAnswers": [1],
+              "explanation": "Demander pardon est toujours approprié."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Matin et soir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots évoquent le jour en latin ?",
+              "options": ["Dies", "Lux", "Nox", "Umbra"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dies = jour ; lux = lumière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Nox » signifie :",
+              "options": ["Jour", "Nuit", "Midi", "Matin"],
+              "correctAnswers": [1],
+              "explanation": "Nox, noctis = nuit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Bonne nuit » peut se rendre par :",
+              "options": ["Salve", "Bona nox", "Bene", "Quis es"],
+              "correctAnswers": [1],
+              "explanation": "Expression pédagogique courante en 6e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Mane » indique :",
+              "options": ["Le soir", "Le matin", "L’hiver", "L’été"],
+              "correctAnswers": [1],
+              "explanation": "Adverbe de temps = le matin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vesperi » correspond à :",
+              "options": ["Le matin", "Le soir", "La nuit", "Midi"],
+              "correctAnswers": [1],
+              "explanation": "Vesper = soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Au lever, on peut dire « Salve » car :",
+              "options": [
+                "C’est une malédiction",
+                "C’est une salutation",
+                "C’est un adieu",
+                "C’est un nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salve reste neutre dans le moment de la journée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sol » désigne :",
+              "options": ["La lune", "Le soleil", "Une étoile", "Un nuage"],
+              "correctAnswers": [1],
+              "explanation": "Sol, solis = soleil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Luna » est :",
+              "options": ["Le soleil", "La lune", "Le ciel", "La terre"],
+              "correctAnswers": [1],
+              "explanation": "Luna, lunae = lune."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En quittant le soir, on dit plutôt :",
+              "options": ["Salvete", "Vale / Valete", "Quis es", "Sum laetus"],
+              "correctAnswers": [1],
+              "explanation": "Vale marque le départ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hodie » signifie :",
+              "options": ["Hier", "Aujourd’hui", "Demain", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Hodie = ce jour-ci."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Demander le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent le « nom » ?",
+              "options": ["Nomen", "Nomina", "Vox", "Lex"],
+              "correctAnswers": [0, 1],
+              "explanation": "Nomen (sing.) ; nomina (plur.)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Quod est nomen tuum ? » :",
+              "options": [
+                "Quel est ton nom ?",
+                "Où habites-tu ?",
+                "Quel âge as-tu ?",
+                "Es-tu élève ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nomen tuum = ton nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Meum nomen est Lucius » :",
+              "options": [
+                "Ton nom est Lucius",
+                "Mon nom est Lucius",
+                "Son nom est Lucius",
+                "Leur nom est Lucius"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Meum = mon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nomen est un nom :",
+              "options": [
+                "Masculin de la 2e décl.",
+                "Neutre de la 3e décl.",
+                "Féminin de la 1re",
+                "Invariable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nomen, nominis (neutre)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Au pluriel, « les noms » :",
+              "options": ["Nomen", "Nomina", "Nominis", "Nomine"],
+              "correctAnswers": [1],
+              "explanation": "Nomina = nominatif pluriel neutre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prénom romain masculin typique :",
+              "options": ["Julia", "Marcus", "Roma", "Via"],
+              "correctAnswers": [1],
+              "explanation": "Marcus est un prénom classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prénom féminin typique :",
+              "options": ["Lucius", "Gaius", "Claudia", "Forum"],
+              "correctAnswers": [2],
+              "explanation": "Claudia est féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cognomen » désigne souvent :",
+              "options": [
+                "Le prénom seul",
+                "Un nom de famille / surnom",
+                "Un verbe",
+                "Une ville"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Troisième partie du nom romain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre à « Quis es ? » :",
+              "options": ["Bene", "Ego sum…", "Vale", "Male"],
+              "correctAnswers": [1],
+              "explanation": "On se nomme avec ego sum + nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tuum » signifie :",
+              "options": ["Mon", "Ton", "Son", "Notre"],
+              "correctAnswers": [1],
+              "explanation": "Possessif de tu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Répondre aux salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses possibles à « Salve » ?",
+              "options": ["Salve", "Salvete", "Vale", "Gratias"],
+              "correctAnswers": [0, 1],
+              "explanation": "On renvoie la salutation au singulier ou pluriel selon le cas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On te dit « Vale » : tu réponds",
+              "options": ["Salve", "Tu quoque vale", "Quis es", "Nomen meum"],
+              "correctAnswers": [1],
+              "explanation": "« Toi aussi, adieu » est naturel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Quomodo te habes ? » → « ___ »",
+              "options": ["Sum Marcus", "Bene", "Vale", "Nomen"],
+              "correctAnswers": [1],
+              "explanation": "On répond par l’état (bien / mal)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si on te remercie « Gratias tibi », tu peux dire :",
+              "options": ["Male", "Libenter", "Non sum", "Unde es"],
+              "correctAnswers": [1],
+              "explanation": "Libenter = volontiers / avec plaisir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Et tu ? » après une réponse :",
+              "options": ["Et tu?", "Et ego?", "Et ille?", "Et nos?"],
+              "correctAnswers": [0],
+              "explanation": "Renvoi direct au partenaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelqu’un dit « Ignosce » : tu réponds",
+              "options": ["Non", "Ita, ignosco", "Vale", "Quis"],
+              "correctAnswers": [1],
+              "explanation": "Accepter d’excuser."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Laetus sum te videre » exprime :",
+              "options": ["Tristesse", "Joie de te voir", "Faim", "Colère"],
+              "correctAnswers": [1],
+              "explanation": "Videre = voir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Salutation + nom : ordre logique",
+              "options": [
+                "Nomen, salve",
+                "Salve, nomen",
+                "Salve + vocatif ou présentation",
+                "Vale seul"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Salve puis identification."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À « Salvete, discipuli » les élèves répondent",
+              "options": ["Salve", "Salvete, magister", "Vale", "Male"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel des deux côtés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Silence grossier : mieux vaut dire au moins",
+              "options": [
+                "Rien",
+                "Salve ou Vale selon le moment",
+                "Quis",
+                "Lex"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les formules ouvrent la communication."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — Saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Associe les paires singulier / pluriel correctes :",
+              "options": [
+                "Salve / Salvete",
+                "Vale / Valete",
+                "Tu / Vos",
+                "Ego / Nos"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutations et adieux suivent le nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présentation complète :",
+              "options": [
+                "Vale, sum bene",
+                "Salve, ego sum Claudia",
+                "Male, nox",
+                "Lex, dies"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salut + ego sum + prénom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Verbe être : je / tu / il",
+              "options": [
+                "Sum, es, est",
+                "Es, sum, sunt",
+                "Est, es, sum",
+                "Sunt, est, es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triple fondamental de esse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Merci à une personne :",
+              "options": [
+                "Gratias tibi",
+                "Gratias vobis",
+                "Vale mihi",
+                "Salve ei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tibi = à toi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Discipula sum » : genre de l’élève",
+              "options": ["Masculin", "Féminin", "Neutre", "Pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Discipula = élève fille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Question « Qui es-tu ? »",
+              "options": [
+                "Unde es?",
+                "Quis es tu?",
+                "Quomodo?",
+                "Quid est nomen?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quis = qui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Adieu à la classe entière :",
+              "options": ["Vale", "Valete", "Salve", "Ita"],
+              "correctAnswers": [1],
+              "explanation": "Valete = pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Non » ferme :",
+              "options": ["Ita", "Minime", "Bene", "Salve"],
+              "correctAnswers": [1],
+              "explanation": "Minime nie poliment."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Magister / magistra =",
+              "options": [
+                "Élève / élève",
+                "Professeur / professeure",
+                "Ami / amie",
+                "Roi / reine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vocabulaire de classe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de l’unité 1 :",
+              "options": [
+                "Conjuguer amare au passé",
+                "Saluer et se présenter en latin simple",
+                "Lire Virgile intégral",
+                "Decliner domus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Base communicative pour la 6e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Pronoms personnels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms sont à la 1re personne du singulier ?",
+              "options": ["Ego", "Me", "Tu", "Te"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ego = je ; me = me (accusatif)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Tu » en latin :",
+              "options": ["Ego", "Tu", "Is", "Ea"],
+              "correctAnswers": [1],
+              "explanation": "Tu = deuxième personne singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il » (masculin) :",
+              "options": ["Ea", "Is", "Id", "Eae"],
+              "correctAnswers": [1],
+              "explanation": "Is, ea, id = il, elle, cela."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Elle » :",
+              "options": ["Is", "Ea", "Id", "Ei"],
+              "correctAnswers": [1],
+              "explanation": "Ea = elle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous » :",
+              "options": ["Vos", "Nos", "Ego", "Sunt"],
+              "correctAnswers": [1],
+              "explanation": "Nos = nous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Vous » (pluriel) :",
+              "options": ["Tu", "Vos", "Me", "Te"],
+              "correctAnswers": [1],
+              "explanation": "Vos distingue du tu singulier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Eos » désigne (masculin pluriel) :",
+              "options": ["Elles", "Eux", "Nous", "Vous"],
+              "correctAnswers": [1],
+              "explanation": "Accusatif pluriel masculin de is."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Eae » est le nominatif pluriel féminin de :",
+              "options": ["Is", "Ea", "Id", "Ego"],
+              "correctAnswers": [1],
+              "explanation": "Eae = elles (sujet)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Id » (neutre) peut signifier :",
+              "options": ["Elle", "Cela / ce", "Ils", "Toi"],
+              "correctAnswers": [1],
+              "explanation": "Id = cela (neutre)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre des personnes en conjugaison :",
+              "options": [
+                "Tu, ego, is",
+                "Ego, tu, is/nos, vos, ei",
+                "Is seulement",
+                "Vos, nos"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ordre traditionnel des paradigmes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le verbe esse (être)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes correctes de « être » au présent (1re et 2e personne du singulier) :",
+              "options": ["Sum", "Es", "Sunt", "Amat"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sum et es appartiennent à esse ; amat = aimer (autre verbe)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il est » :",
+              "options": ["Sum", "Es", "Est", "Sunt"],
+              "correctAnswers": [2],
+              "explanation": "Est = 3e personne singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Nous sommes » :",
+              "options": ["Sumus", "Estis", "Sunt", "Sum"],
+              "correctAnswers": [0],
+              "explanation": "Sumus avec nos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Vous êtes » :",
+              "options": ["Sumus", "Estis", "Est", "Es"],
+              "correctAnswers": [1],
+              "explanation": "Estis = 2e pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ils sont » :",
+              "options": ["Est", "Sunt", "Sum", "Es"],
+              "correctAnswers": [1],
+              "explanation": "Sunt = 3e pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Roma est magna » :",
+              "options": [
+                "Rome est grande",
+                "Rome était grande",
+                "Rome sera grande",
+                "Rome n’est pas grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent d’état avec est."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Infinitif de « être » :",
+              "options": ["Esse", "Est", "Sum", "Sunt"],
+              "correctAnswers": [0],
+              "explanation": "Esse = être (infinitif)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ego sum discipulus » contient deux mots : sujet et",
+              "options": ["Objet direct", "Verbe", "Adverbe", "Préposition"],
+              "correctAnswers": [1],
+              "explanation": "Sum est le verbe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Négation « je ne suis pas » :",
+              "options": ["Non sum", "Sum non", "Ne sum", "Sumne"],
+              "correctAnswers": [0],
+              "explanation": "Non précède souvent le verbe en latin simple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Esne tu discipula ? » est :",
+              "options": [
+                "Une exclamation",
+                "Une question",
+                "Un adieu",
+                "Un remerciement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "-ne indique une question oui/non."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Noms masculins en -us",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont masculins typiques en -us ?",
+              "options": ["Amicus", "Discipulus", "Puella", "Via"],
+              "correctAnswers": [0, 1],
+              "explanation": "Amicus et discipulus ; puella est féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Amicus » signifie :",
+              "options": ["Amie", "Ami", "Amour", "Âme"],
+              "correctAnswers": [1],
+              "explanation": "Masculin en -us."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluriel nominatif de « amicus » :",
+              "options": ["Amici", "Amica", "Amicorum", "Amico"],
+              "correctAnswers": [0],
+              "explanation": "Amici = des amis (sujets)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Dominus » :",
+              "options": ["Maîtresse", "Maître", "Domaine", "Dame"],
+              "correctAnswers": [1],
+              "explanation": "Masculin = seigneur, maître."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Filius » signifie :",
+              "options": ["Fille", "Fils", "Frère", "Père"],
+              "correctAnswers": [1],
+              "explanation": "Filius = fils."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vocatif de « amice » vient de :",
+              "options": ["Amicus", "Amici", "Amica", "Amicum"],
+              "correctAnswers": [0],
+              "explanation": "Amicus → amice au vocatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Liber » (masculin) peut signifier :",
+              "options": [
+                "Livre",
+                "Libre (adj.)",
+                "Les deux selon le contexte",
+                "Mer"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Homonymie fréquente en vocabulaire 6e."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Agricola » est masculin malgré -a car :",
+              "options": [
+                "C’est une exception sémantique (paysan)",
+                "C’est neutre",
+                "C’est toujours féminin",
+                "C’est un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains noms en -a sont masculins."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Discipuli sunt » :",
+              "options": [
+                "L’élève est",
+                "Les élèves sont",
+                "L’élève n’est pas",
+                "Tu es élève"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel discipuli + sunt."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Genre du mot « templum » :",
+              "options": ["Masculin", "Féminin", "Neutre", "Pluriel seulement"],
+              "correctAnswers": [2],
+              "explanation": "Templum = temple (neutre en -um)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Noms féminins en -a",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont féminins en -a ?",
+              "options": ["Puella", "Via", "Amicus", "Puer"],
+              "correctAnswers": [0, 1],
+              "explanation": "Puella = fille ; via = route (féminin)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puella » signifie :",
+              "options": ["Garçon", "Fille", "Peur", "Poule"],
+              "correctAnswers": [1],
+              "explanation": "Vocabulaire de base."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluriel de « puella » (nominatif) :",
+              "options": ["Puellae", "Puellas", "Puellarum", "Puellis"],
+              "correctAnswers": [0],
+              "explanation": "Puellae = les filles (sujet)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Terra » :",
+              "options": ["Terre", "Mer", "Ciel", "Feu"],
+              "correctAnswers": [0],
+              "explanation": "Terra, terrae = terre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Aqua » signifie :",
+              "options": ["Air", "Eau", "Feu", "Pierre"],
+              "correctAnswers": [1],
+              "explanation": "Aqua, aquae = eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Insula » :",
+              "options": ["Péninsule", "Île", "Montagne", "Forêt"],
+              "correctAnswers": [1],
+              "explanation": "Insula, insulae = île."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Roma » est :",
+              "options": ["Masculin", "Féminin", "Neutre", "Verbe"],
+              "correctAnswers": [1],
+              "explanation": "Roma = Rome (ville féminine)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puella parva est » :",
+              "options": [
+                "La fille est petite",
+                "Le garçon est petit",
+                "Les filles sont grandes",
+                "La fille n’est pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parva s’accorde au féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accusatif singulier de « puella » :",
+              "options": ["Puella", "Puellae", "Puellam", "Puellarum"],
+              "correctAnswers": [2],
+              "explanation": "Puellam = la fille (COD)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Via longa est » :",
+              "options": [
+                "La route est longue",
+                "La fille est longue",
+                "Le livre est long",
+                "La nuit est longue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Via = route."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Première déclinaison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Terminaisons typiques au nominatif singulier (1re décl.) :",
+              "options": ["-a", "-ae (pluriel)", "-us", "-um"],
+              "correctAnswers": [0, 1],
+              "explanation": "-a au singulier ; -ae au nominatif pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Genre dominant de la 1re déclinaison :",
+              "options": ["Masculin", "Féminin", "Neutre seulement", "Aucun"],
+              "correctAnswers": [1],
+              "explanation": "La plupart des noms en -a sont féminins."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Génitif singulier de « puella » :",
+              "options": ["Puellae", "Puellam", "Puella", "Puellis"],
+              "correctAnswers": [0],
+              "explanation": "Puellae = de la fille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Aquae » peut être :",
+              "options": [
+                "Eau (gén.) ou eaux (nom.)",
+                "Verbe",
+                "Adverbe",
+                "Préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homonymie de forme selon le cas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Datif singulier « à la fille » :",
+              "options": ["Puellae", "Puellam", "Puella", "Puellis"],
+              "correctAnswers": [0],
+              "explanation": "Puellae = datif ou génitif selon contexte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ablatif singulier de « via » :",
+              "options": ["Via", "Viae", "Viā (via)", "Viis"],
+              "correctAnswers": [2],
+              "explanation": "Via à l’ablatif = par / sur la route."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Filiae » (nom. plur.) signifie :",
+              "options": ["Fils", "Filles", "Pères", "Mères"],
+              "correctAnswers": [1],
+              "explanation": "Filha → filiae."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Thème de la 1re déclinaison en -a : on retrouve -a- en :",
+              "options": [
+                "Plusieurs cas",
+                "Nul cas",
+                "Verbes seulement",
+                "Prépositions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyelle thématique -a- dans le paradigme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« In insula » utilise « insula » au :",
+              "options": ["Nominatif", "Accusatif", "Ablatif", "Vocatif"],
+              "correctAnswers": [2],
+              "explanation": "In + ablatif = lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, la 1re déclinaison sert surtout à :",
+              "options": [
+                "Reconnaître fille, eau, terre, route",
+                "Conjuguer esse",
+                "Compter jusqu’à mille",
+                "Lire l’Énéide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire féminin fréquent."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Deuxième déclinaison (bases)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nominatifs singuliers typiques (2e décl.) :",
+              "options": [
+                "-us (m.)",
+                "-um (n.)",
+                "-a (f. 1re décl.)",
+                "-i (plur. m.)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Masculin -us, neutre -um."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Génitif singulier de « amicus » :",
+              "options": ["Amici", "Amico", "Amicum", "Amice"],
+              "correctAnswers": [0],
+              "explanation": "Amici = de l’ami."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Neutre « templum » : nominatif pluriel",
+              "options": ["Templa", "Templi", "Templorum", "Templis"],
+              "correctAnswers": [0],
+              "explanation": "Neutres : nominatif = accusatif, -a au pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accusatif singulier « amicum » :",
+              "options": ["L’ami (COD)", "Des amis", "De l’ami", "Par l’ami"],
+              "correctAnswers": [0],
+              "explanation": "Amicum = COD masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« In foro » : le mot « forum » est au",
+              "options": ["Nominatif", "Ablatif", "Génitif", "Vocatif"],
+              "correctAnswers": [1],
+              "explanation": "Lieu = ablatif après in."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Forum » signifie :",
+              "options": ["Forum / place publique", "Forêt", "Fort", "Forme"],
+              "correctAnswers": [0],
+              "explanation": "Centre civique romain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vocatif de « domine » vient de :",
+              "options": ["Dominus", "Domini", "Dominorum", "Dominis"],
+              "correctAnswers": [0],
+              "explanation": "Dominus → domine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puer » (garçon) : 2e décl. ; pluriel nom. :",
+              "options": ["Pueri", "Puera", "Pueros", "Puerorum"],
+              "correctAnswers": [0],
+              "explanation": "Pueri = les garçons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Neutre « bellum » (guerre) : acc. sing.",
+              "options": ["Bellum", "Belli", "Bello", "Bella"],
+              "correctAnswers": [0],
+              "explanation": "Neutre : acc. = nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence clé 1re / 2e décl. en 6e :",
+              "options": [
+                "-a vs -us/-um",
+                "Verbes vs noms",
+                "Grec vs latin",
+                "Pluriel absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère visuel des terminaisons."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Adjectifs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs s’accordent en genre avec puella ?",
+              "options": ["Parva", "Magna", "Parvus", "Magnus"],
+              "correctAnswers": [0, 1],
+              "explanation": "Parva, magna au féminin ; parvus/magnus au masculin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Magnus » avec « puer » :",
+              "options": ["Magna", "Magnus", "Magnum", "Magnae"],
+              "correctAnswers": [1],
+              "explanation": "Masculin nominatif = magnus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Parva puella » :",
+              "options": [
+                "Petite fille",
+                "Grand garçon",
+                "Longue route",
+                "Petit garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parva + puella féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Bonus » signifie :",
+              "options": ["Mauvais", "Bon", "Beau", "Grand"],
+              "correctAnswers": [1],
+              "explanation": "Bonus, bona, bonum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Féminin de « bonus » :",
+              "options": ["Bonus", "Bona", "Bonum", "Boni"],
+              "correctAnswers": [1],
+              "explanation": "Bona = bonne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Malus » :",
+              "options": ["Bon", "Mauvais", "Petit", "Nouveau"],
+              "correctAnswers": [1],
+              "explanation": "Opposé de bonus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nova via » :",
+              "options": [
+                "Nouvelle route",
+                "Vieille fille",
+                "Nouveau livre seul",
+                "Grande eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nova accordé avec via (f.)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Laetus puer » :",
+              "options": [
+                "Garçon joyeux",
+                "Fille triste",
+                "Maître colère",
+                "Eau claire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laetus masculin + puer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adjectif + nom : en latin l’accord porte sur",
+              "options": [
+                "Genre, nombre, cas",
+                "Seulement le sens",
+                "Rien",
+                "L’ordre alphabétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle fondamentale de l’accord."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Roma est magna » : magna s’accorde avec",
+              "options": ["Roma (f.)", "Est", "Magna seule", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Attribut au nominatif féminin."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Prépositions de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Prépositions latines courantes en 6e :",
+              "options": ["In", "Ad", "Sub", "Esse"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "In, ad, sub ; esse est un verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« In » + ablatif indique souvent :",
+              "options": [
+                "Lieu dans / sur",
+                "Direction vers",
+                "Temps seulement",
+                "Cause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In insula = dans l’île."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ad » + accusatif :",
+              "options": ["Mouvement vers", "Repos dans", "Origine", "Manière"],
+              "correctAnswers": [0],
+              "explanation": "Ad Romam = vers Rome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cum » + ablatif signifie :",
+              "options": ["Avec", "Sans", "Contre", "Sous"],
+              "correctAnswers": [0],
+              "explanation": "Cum amico = avec un ami."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Sub » :",
+              "options": ["Sous", "Sur", "Devant", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "Sub arbor = sous l’arbre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ex » / « e » + ablatif :",
+              "options": ["De / depuis", "Vers", "Dans", "Avec"],
+              "correctAnswers": [0],
+              "explanation": "Ex Italia = d’Italie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pro » + ablatif peut signifier :",
+              "options": [
+                "Pour / devant",
+                "Contre seulement",
+                "Sans",
+                "Sous terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens multiple ; en 6e : « pour »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ante » + accusatif :",
+              "options": ["Avant / devant", "Après", "Loin", "Près de"],
+              "correctAnswers": [0],
+              "explanation": "Ante templum = devant le temple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« In via » : cas de « via »",
+              "options": ["Ablatif", "Nominatif", "Génitif", "Vocatif"],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif pour le lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Apprendre les prépositions sert à :",
+              "options": [
+                "Construire des phrases de lieu",
+                "Conjuguer le passé",
+                "Lire les chiffres",
+                "Traduire l’grec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères spatiaux essentiels."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Nombres et mots utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Chiffres romains corrects :",
+              "options": ["I", "V", "X", "Z"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "I=1, V=5, X=10 ; Z n’existe pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« III » vaut :",
+              "options": ["2", "3", "4", "8"],
+              "correctAnswers": [1],
+              "explanation": "Trois unités I."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« IV » vaut :",
+              "options": ["4", "6", "9", "11"],
+              "correctAnswers": [0],
+              "explanation": "Soustraction I avant V."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Unus, duo, tres =",
+              "options": ["1, 2, 3", "3, 2, 1", "10, 20, 30", "5, 6, 7"],
+              "correctAnswers": [0],
+              "explanation": "Cardinaux latins de base."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Multus » :",
+              "options": ["Peu", "Beaucoup", "Un", "Deux"],
+              "correctAnswers": [1],
+              "explanation": "Multus, multa, multum."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Pauci » (plur.) évoque :",
+              "options": [
+                "Peu (de personnes/choses)",
+                "Beaucoup",
+                "Tous",
+                "Aucun verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pauci = quelques-uns."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Et » signifie :",
+              "options": ["Et", "Ou", "Mais", "Car"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction de coordination."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Sed » :",
+              "options": ["Mais", "Et", "Donc", "Si"],
+              "correctAnswers": [0],
+              "explanation": "Opposition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Quis ? » / « Quid ? » demandent :",
+              "options": [
+                "Qui ? / Quoi ?",
+                "Où ? / Quand ?",
+                "Comment ? / Pourquoi ?",
+                "Combien ? / Quel ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mots interrogatifs de base."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ubi ? » signifie :",
+              "options": ["Où ?", "Qui ?", "Quand ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif de lieu."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision — Mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples nom/adjectif sont accordés ?",
+              "options": [
+                "Magna Roma",
+                "Parvus puella",
+                "Parva puella",
+                "Magnus puella"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Magna Roma et parva puella sont accordés ; parvus puella et magnus puella ne le sont pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Puella sum magnus",
+                "Puella magna est",
+                "Est magna puella sum",
+                "Magna est sum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Puella magna est — ordre flexible mais accord bon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ils sont amis : « ___ amici sunt »",
+              "options": ["Ego", "Tu", "Ei", "Me"],
+              "correctAnswers": [2],
+              "explanation": "Ei = ils (sujet)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lieu : « In ___ » (Rome, ablatif)",
+              "options": ["Roma", "Romae", "Romam", "Romanus"],
+              "correctAnswers": [0],
+              "explanation": "In Roma — en 6e on retient Roma au lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1re décl. : génitif de « aqua »",
+              "options": ["Aquae", "Aquam", "Aqua", "Aquis"],
+              "correctAnswers": [0],
+              "explanation": "Aquae = de l’eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2e décl. neutre pluriel de « donum » (cadeau) :",
+              "options": ["Dona", "Doni", "Donorum", "Donis"],
+              "correctAnswers": [0],
+              "explanation": "Dona = cadeaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Non est malus » :",
+              "options": [
+                "Il n’est pas mauvais",
+                "Il est mauvais",
+                "Elle est bonne",
+                "Nous sommes mauvais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non + est + malus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pronom « me » apparaît dans :",
+              "options": ["Me videt", "Ego sum", "Tu es", "Sunt ei"],
+              "correctAnswers": [0],
+              "explanation": "Me = me (COD)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vocabulaire : « arbor »",
+              "options": ["Arbre", "Eau", "Guerre", "Porte"],
+              "correctAnswers": [0],
+              "explanation": "Arbor, arboris (3e) — mot utile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de l’unité 2 :",
+              "options": [
+                "Maîtriser le subjonctif",
+                "Reconnaître pronom, esse, noms -a/-us, adjectifs, prépositions",
+                "Traduire Cicéron",
+                "Omettre les accords"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Socle lexical et morphologique léger en 6e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

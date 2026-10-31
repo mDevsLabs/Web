@@ -1,0 +1,2203 @@
+{
+  "id": "terminale-italien-01",
+  "year": "terminale",
+  "subject": "italien",
+  "title": "Découvrir l'italien",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Formules de base",
+          "questions": [
+            {
+              "question": "Quelles expressions conviennent pour saluer quelqu'un le matin en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Buongiorno",
+                "Buonanotte",
+                "Ciao",
+                "Buon pomeriggio"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Buongiorno » est la salutation formelle du matin ; « Ciao » est informel mais très courant à toute heure entre proches."
+            },
+            {
+              "question": "Comment dit-on « Bonsoir » en italien ?",
+              "type": "single_choice",
+              "options": ["Buonasera", "Buongiorno", "Buonanotte", "Salve"],
+              "correctAnswers": [0],
+              "explanation": "« Buonasera » s'utilise à partir de la fin d'après-midi jusqu'au soir, avant le coucher."
+            },
+            {
+              "question": "Que signifie « Arrivederci » ?",
+              "type": "single_choice",
+              "options": ["Au revoir", "Bonjour", "Merci", "S'il vous plaît"],
+              "correctAnswers": [0],
+              "explanation": "« Arrivederci » est une formule de politesse pour prendre congé, plus soignée que « Ciao »."
+            },
+            {
+              "question": "Quelle réponse correspond à « Come stai ? » (tu) ?",
+              "type": "single_choice",
+              "options": [
+                "Sto bene, grazie",
+                "Mi chiamo Marco",
+                "Ho vent'anni",
+                "Sono italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Come stai ? » demande l'état de santé ou le moral ; on répond souvent « Sto bene, grazie »."
+            },
+            {
+              "question": "Comment se présente-t-on en disant son prénom ?",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo Lucia",
+                "Come stai?",
+                "Dove abiti?",
+                "Quanti anni hai?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mi chiamo » + prénom est la structure standard pour indiquer son nom."
+            },
+            {
+              "question": "Que veut dire « Piacere » dans une présentation ?",
+              "type": "single_choice",
+              "options": ["Enchanté(e)", "Désolé(e)", "Au revoir", "Bienvenue"],
+              "correctAnswers": [0],
+              "explanation": "On dit « Piacere » ou « Piacere di conoscerti » en rencontrant quelqu'un pour la première fois."
+            },
+            {
+              "question": "Quelle formule est appropriée avec une personne inconnue en contexte formel ?",
+              "type": "single_choice",
+              "options": [
+                "Lei come si chiama?",
+                "Tu come ti chiami?",
+                "Ciao bello!",
+                "Ehi ragazzo!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vouvoiement « Lei » et « si chiama » conviennent à un registre formel ou respectueux."
+            },
+            {
+              "question": "Comment demander « Comment vous appelez-vous ? » (vouvoiement) ?",
+              "type": "single_choice",
+              "options": [
+                "Come si chiama?",
+                "Come ti chiami?",
+                "Come sta?",
+                "Dove va?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Come si chiama ? » avec « si » renvoie au pronom de politesse « Lei »."
+            },
+            {
+              "question": "Que signifie « Scusi » ?",
+              "type": "single_choice",
+              "options": [
+                "Excusez-moi / Pardon",
+                "Merci",
+                "Bonjour",
+                "Félicitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Scusi » (vouvoiement) ou « Scusa » (tu) sert à s'excuser ou à attirer poliment l'attention."
+            },
+            {
+              "question": "Quelle phrase exprime « Je suis français / française » ?",
+              "type": "single_choice",
+              "options": [
+                "Sono francese",
+                "Parlo francese",
+                "Vado in Francia",
+                "Mi piace la Francia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sono » + adjectif de nationalité indique l'origine ou la nationalité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Tu ou Lei",
+          "questions": [
+            {
+              "question": "Dans quels contextes emploie-t-on généralement « tu » (tu/ti) en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Entre amis du même âge",
+                "Avec un professeur en classe",
+                "Avec un inconnu âgé en rue",
+                "Entre membres d'une même famille proche"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le « tu » est naturel entre pairs, amis et famille ; le vouvoiement reste la norme avec des inconnus ou en contexte professionnel."
+            },
+            {
+              "question": "Quel pronom sujet correspond au vouvoiement ?",
+              "type": "single_choice",
+              "options": ["Lei", "Tu", "Voi", "Loro"],
+              "correctAnswers": [0],
+              "explanation": "« Lei » (majuscule en politesse) est le pronom de la troisième personne utilisé pour vouvoyer."
+            },
+            {
+              "question": "Comment conjuguer « chiamarsi » à la forme « tu » ?",
+              "type": "single_choice",
+              "options": [
+                "ti chiami",
+                "si chiama",
+                "ci chiamiamo",
+                "vi chiamate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Chiamarsi » au présent : mi chiamo, ti chiami, si chiama…"
+            },
+            {
+              "question": "« Come ti chiami ? » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une seule personne familière",
+                "Plusieurs personnes",
+                "Une personne vouvoyée",
+                "Un groupe formel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ti » marque la deuxième personne du singulier informelle."
+            },
+            {
+              "question": "Quelle salutation est neutre et polie avec un inconnu ?",
+              "type": "single_choice",
+              "options": ["Salve", "Ciao ciao", "Ehi", "A dopo bello"],
+              "correctAnswers": [0],
+              "explanation": "« Salve » est un peu plus formel que « Ciao » sans être aussi marqué que « Buongiorno »."
+            },
+            {
+              "question": "Comment dire « enchanté » au féminin ?",
+              "type": "single_choice",
+              "options": [
+                "Piacere (invariable dans l'usage courant)",
+                "Piacera",
+                "Piaceraia",
+                "Piacuto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la rencontre, « Piacere » reste la formule usuelle pour tous les genres."
+            },
+            {
+              "question": "« Vi presento Marco » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vous présente Marco",
+                "Je te présente Marco",
+                "Marco me présente",
+                "Marco part"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vi » est le pronom complément « vous » (pluriel) ; « presento » = je présente."
+            },
+            {
+              "question": "Réponse adaptée à « Grazie mille » :",
+              "type": "single_choice",
+              "options": ["Prego", "Scusi", "Arrivederci", "Buonanotte"],
+              "correctAnswers": [0],
+              "explanation": "« Prego » répond à un remerciement, comme « de rien » ou « je vous en prie »."
+            },
+            {
+              "question": "« A presto » équivaut à :",
+              "type": "single_choice",
+              "options": ["À bientôt", "À demain", "Bonne nuit", "Bon appétit"],
+              "correctAnswers": [0],
+              "explanation": "On l'emploie en prenant congé quand on espère revoir la personne prochainement."
+            },
+            {
+              "question": "Pour demander l'âge à quelqu'un (tu), on dit :",
+              "type": "single_choice",
+              "options": [
+                "Quanti anni hai?",
+                "Quanti anni ha?",
+                "Quanti anni avete?",
+                "Quanti anni hanno?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hai » correspond à « tu as » ; « ha » serait vouvoiement ou il/elle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Nationalités et origines",
+          "questions": [
+            {
+              "question": "Quels adjectifs de nationalité sont corrects en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "italiano / italiana",
+                "francese",
+                "spagnolo / spagnola",
+                "francés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les nationalités s'accordent en genre ; « francese » est invariable au singulier ; « francés » n'est pas italien."
+            },
+            {
+              "question": "« Sono di Parigi » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis de Paris",
+                "Je vais à Paris",
+                "J'aime Paris",
+                "Je parle parisien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Di » + ville indique la provenance."
+            },
+            {
+              "question": "Comment dire « J'habite à Rome » ?",
+              "type": "single_choice",
+              "options": [
+                "Abito a Roma",
+                "Vengo da Roma",
+                "Sono Roma",
+                "Studio Roma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Abitare a » + ville pour le lieu de résidence."
+            },
+            {
+              "question": "« Di dove sei? » demande :",
+              "type": "single_choice",
+              "options": [
+                "D'où es-tu ?",
+                "Où vas-tu ?",
+                "Où habites-tu ?",
+                "D'où viens-tu en ce moment ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question courante sur l'origine géographique ou la nationalité."
+            },
+            {
+              "question": "Féminin de « italiano » :",
+              "type": "single_choice",
+              "options": ["italiana", "italiane", "italiani", "italianissima"],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs en -o passent au féminin en -a au singulier."
+            },
+            {
+              "question": "« Parlo un po' di italiano » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu italien",
+                "Je parle bien italien",
+                "Je ne parle pas italien",
+                "J'étudie l'italien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Un po' di » = un peu de."
+            },
+            {
+              "question": "Pluriel de « sono studente » (nous) :",
+              "type": "single_choice",
+              "options": [
+                "Siamo studenti",
+                "Sono studenti",
+                "Siete studenti",
+                "Eravamo studenti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Siamo » = nous sommes ; l'adjectif prend la terminaison masculine plurielle -i."
+            },
+            {
+              "question": "« Lui è inglese » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Sa nationalité (il est anglais)",
+                "Sa langue uniquement",
+                "Son voyage",
+                "Son école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Essere » + adjectif de nationalité."
+            },
+            {
+              "question": "Comment présenter son métier : « Je suis étudiant » ?",
+              "type": "single_choice",
+              "options": [
+                "Sono uno studente / una studentessa",
+                "Ho uno studente",
+                "Faccio studente",
+                "Studio studente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sono » + article + nom de profession ou « studente/studentessa »."
+            },
+            {
+              "question": "« Vengo dalla Francia » utilise « dalla » car :",
+              "type": "single_choice",
+              "options": [
+                "La France est féminine (la Francia)",
+                "C'est une ville",
+                "C'est un pays masculin",
+                "C'est une erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Venire da » + article contracté : dalla Francia, dal Portogallo, dagli Stati Uniti."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Politesse et formules",
+          "questions": [
+            {
+              "question": "Quelles expressions relèvent de la politesse quotidienne ?",
+              "type": "multiple_choice",
+              "options": ["Per favore", "Grazie", "Vaffanculo", "Prego"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Per favore » et « Grazie » sont indispensables ; « Prego » aussi en réponse ; le troisième terme est une insulte à éviter."
+            },
+            {
+              "question": "« Mi scusi » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une personne vouvoyée",
+                "Un ami proche",
+                "Un enfant uniquement",
+                "Plusieurs amis seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme formelle de « scusami » (excuse-moi)."
+            },
+            {
+              "question": "Comment dire « s'il vous plaît » ?",
+              "type": "single_choice",
+              "options": ["Per favore", "Per caso", "Per sempre", "Per niente"],
+              "correctAnswers": [0],
+              "explanation": "« Per favore » est la formule standard."
+            },
+            {
+              "question": "« Auguri ! » s'utilise pour :",
+              "type": "single_choice",
+              "options": [
+                "Souhaiter bon anniversaire ou féliciter",
+                "Dire bonjour le matin",
+                "Commander au restaurant",
+                "Demander son chemin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Auguri » couvre anniversaires, fêtes, réussites."
+            },
+            {
+              "question": "Réponse à « Mi dispiace » (je suis désolé) peut être :",
+              "type": "single_choice",
+              "options": [
+                "Non fa niente",
+                "Grazie mille",
+                "Buon appetito",
+                "A domani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Non fa niente » = ce n'est rien / pas de souci."
+            },
+            {
+              "question": "« Benvenuto / Benvenuta » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Bienvenue",
+                "Bon voyage",
+                "Bon courage",
+                "Bonne chance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre : benvenuto (m.), benvenuta (f.)."
+            },
+            {
+              "question": "Avant un repas, on dit souvent :",
+              "type": "single_choice",
+              "options": [
+                "Buon appetito",
+                "Buona fortuna",
+                "Buon viaggio",
+                "Buona notte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule culturelle italienne très répandue."
+            },
+            {
+              "question": "« Congratulazioni » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Félicitations",
+                "Condoléances",
+                "Invitation",
+                "Permission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour célébrer une réussite ou un événement heureux."
+            },
+            {
+              "question": "Pour attirer l'attention poliment (tu) :",
+              "type": "single_choice",
+              "options": ["Scusa", "Scusi", "Signora", "Arrivederci"],
+              "correctAnswers": [0],
+              "explanation": "« Scusa » = excuse-moi (informel)."
+            },
+            {
+              "question": "« Permesso ? » peut servir à :",
+              "type": "single_choice",
+              "options": [
+                "Demander la permission de passer ou entrer",
+                "Refuser une offre",
+                "Saluer le soir",
+                "Se présenter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant dans les foules ou avant d'entrer chez quelqu'un."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Questions personnelles",
+          "questions": [
+            {
+              "question": "Quelles questions portent sur l'identité ou la situation personnelle ?",
+              "type": "multiple_choice",
+              "options": [
+                "Che lavoro fai?",
+                "Che ore sono?",
+                "Quanti anni hai?",
+                "Dove abiti?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Métier et âge concernent la personne ; l'heure est une question différente ; l'habitation aussi mais ici les deux premières paires avec l'âge sont les plus typiques de « présentation »."
+            },
+            {
+              "question": "« Che lavoro fai? » =",
+              "type": "single_choice",
+              "options": [
+                "Quel travail fais-tu ?",
+                "Quel temps fait-il ?",
+                "Quelle heure est-il ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lavoro » = travail, emploi."
+            },
+            {
+              "question": "Répondre à « Dove abiti? » :",
+              "type": "single_choice",
+              "options": [
+                "Abito a Milano",
+                "Sono Milano",
+                "Vado Milano",
+                "Parlo milanese"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « abito a » + ville."
+            },
+            {
+              "question": "« Come ti senti? » demande plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Comment te sens-tu (physiquement/moralement) ?",
+                "Comment t'appelles-tu ?",
+                "Où es-tu ?",
+                "Que fais-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proche de « come stai » mais parfois plus centré sur l'état du moment."
+            },
+            {
+              "question": "« Sei sposato? » (à un homme) signifie :",
+              "type": "single_choice",
+              "options": [
+                "Es-tu marié ?",
+                "Es-tu fatigué ?",
+                "Es-tu prêt ?",
+                "Es-tu seul ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sposato/a » = marié(e)."
+            },
+            {
+              "question": "Pour dire « J'ai seize ans » :",
+              "type": "single_choice",
+              "options": [
+                "Ho sedici anni",
+                "Sono sedici anni",
+                "Ho sedici",
+                "Sono sedici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien l'âge s'exprime avec « avere » : ho … anni."
+            },
+            {
+              "question": "« Studi all'università? » =",
+              "type": "single_choice",
+              "options": [
+                "Tu étudies à l'université ?",
+                "Tu travailles ?",
+                "Tu voyages ?",
+                "Tu habites seul ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Studiare » = étudier ; « all'università » = à l'université."
+            },
+            {
+              "question": "Question avec vouvoiement pour l'adresse :",
+              "type": "single_choice",
+              "options": [
+                "Dove abita?",
+                "Dove abiti?",
+                "Dove abitiamo?",
+                "Dove abitate?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Abita » = forme Lei / il-elle."
+            },
+            {
+              "question": "« Cosa fai nella vita? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Que fais-tu dans la vie (profession/activité) ?",
+                "Que manges-tu ?",
+                "Où vas-tu ?",
+                "Quelle est ta couleur préférée ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question ouverte sur la situation professionnelle ou le parcours."
+            },
+            {
+              "question": "« Nato a Napoli » (pour un homme) indique :",
+              "type": "single_choice",
+              "options": [
+                "Lieu de naissance",
+                "Lieu de vacances",
+                "Nationalité seule",
+                "Adresse actuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participe passé de « nascere » : né à…"
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Au téléphone et à l'écrit",
+          "questions": [
+            {
+              "question": "Quelles formules conviennent au téléphone en italien ?",
+              "type": "multiple_choice",
+              "options": [
+                "Pronto?",
+                "Chi parla?",
+                "Arrivederci subito",
+                "Buongiorno, sono…"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "« Pronto ? » en décrochant ; se présenter avec « Buongiorno, sono… » est standard."
+            },
+            {
+              "question": "« Pronto » au téléphone signifie :",
+              "type": "single_choice",
+              "options": [
+                "Allô / Je vous écoute",
+                "Au revoir",
+                "Un instant",
+                "Répétez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot usuel pour répondre à un appel."
+            },
+            {
+              "question": "« Posso parlare con Marco? » =",
+              "type": "single_choice",
+              "options": [
+                "Puis-je parler à Marco ?",
+                "Marco parle italien",
+                "Marco arrive",
+                "Marco est occupé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Potere » + infinitif pour demander la permission."
+            },
+            {
+              "question": "Dire « Un moment, s'il vous plaît » :",
+              "type": "single_choice",
+              "options": [
+                "Un attimo, per favore",
+                "Un anno, per favore",
+                "Un attico, per favore",
+                "Un amico, per favore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Attimo » = instant."
+            },
+            {
+              "question": "« Ti richiamo dopo » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je te rappelle plus tard",
+                "Je t'appelle maintenant",
+                "Tu m'appelles",
+                "N'appelle pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Richiamare » = rappeler (téléphone)."
+            },
+            {
+              "question": "Formule de clôture d'e-mail formelle :",
+              "type": "single_choice",
+              "options": [
+                "Cordiali saluti",
+                "Ciao ciao",
+                "A domani",
+                "Buon appetito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équivalent de « cordialement »."
+            },
+            {
+              "question": "« Gentile Signora Rossi » convient pour :",
+              "type": "single_choice",
+              "options": [
+                "Une lettre ou e-mail formel",
+                "Un SMS entre amis",
+                "Une blague",
+                "Une commande orale au bar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d'appel polie avec titre et nom."
+            },
+            {
+              "question": "« Lascia un messaggio » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Laisser un message",
+                "Lire un message",
+                "Effacer un message",
+                "Envoyer un colis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répondeur ou demande standard."
+            },
+            {
+              "question": "« Numero sbagliato » =",
+              "type": "single_choice",
+              "options": [
+                "Mauvais numéro",
+                "Numéro secret",
+                "Numéro interdit",
+                "Numéro gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression utile en cas d'erreur de composition."
+            },
+            {
+              "question": "« Non capisco, può ripetere? » (vouvoiement) =",
+              "type": "single_choice",
+              "options": [
+                "Je ne comprends pas, pouvez-vous répéter ?",
+                "Je comprends tout",
+                "Parlez plus vite",
+                "Raccrochez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Capire » = comprendre ; « ripetere » = répéter."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Réponses et réactions",
+          "questions": [
+            {
+              "question": "Quelles réponses expriment un accord ou un état positif ?",
+              "type": "multiple_choice",
+              "options": ["Certo", "Va bene", "Assolutamente no", "D'accordo"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Certo », « Va bene » et « D'accordo » marquent l'accord ; « Assolutamente no » est un refus."
+            },
+            {
+              "question": "« Non lo so » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je ne sais pas",
+                "Je ne veux pas",
+                "Je ne vois pas",
+                "Je n'ai pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sapere » à la forme négative."
+            },
+            {
+              "question": "Pour dire « oui, bien sûr » :",
+              "type": "single_choice",
+              "options": ["Sì, certo", "No, certo", "Sì, male", "Forse no"],
+              "correctAnswers": [0],
+              "explanation": "« Certo » renforce l'affirmation."
+            },
+            {
+              "question": "« Forse » =",
+              "type": "single_choice",
+              "options": ["Peut-être", "Jamais", "Toujours", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de doute ou possibilité."
+            },
+            {
+              "question": "« Che bello! » exprime :",
+              "type": "single_choice",
+              "options": [
+                "Enthousiasme / C'est super !",
+                "Tristesse",
+                "Colère",
+                "Ennui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exclamation positive fréquente."
+            },
+            {
+              "question": "Refus poli :",
+              "type": "single_choice",
+              "options": [
+                "Mi dispiace, non posso",
+                "Vai via",
+                "Taci",
+                "Subito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mi dispiace » adoucit le refus."
+            },
+            {
+              "question": "« Hai ragione » =",
+              "type": "single_choice",
+              "options": [
+                "Tu as raison",
+                "Tu as tort",
+                "Tu as faim",
+                "Tu as peur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Avere ragione » = avoir raison."
+            },
+            {
+              "question": "« Non sono d'accordo » =",
+              "type": "single_choice",
+              "options": [
+                "Je ne suis pas d'accord",
+                "Je suis d'accord",
+                "Je suis fatigué",
+                "Je suis content"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression standard de désaccord."
+            },
+            {
+              "question": "« Davvero? » en réaction à une nouvelle :",
+              "type": "single_choice",
+              "options": [
+                "Vraiment ? / Sérieusement ?",
+                "Bonjour",
+                "Merci",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marque surprise ou demande de confirmation."
+            },
+            {
+              "question": "« Va bene così » signifie :",
+              "type": "single_choice",
+              "options": [
+                "C'est bon comme ça",
+                "Ça ne va pas",
+                "Encore une fois",
+                "Plus tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acceptation de la situation telle quelle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Présentations en groupe",
+          "questions": [
+            {
+              "question": "Quels pronoms désignent le « nous » sujet en italien ?",
+              "type": "multiple_choice",
+              "options": ["Noi", "Ci", "Voi", "Loro"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Noi » est pronom sujet ; « ci » apparaît aussi comme pronom complément « nous » (ci conosciamo)."
+            },
+            {
+              "question": "« Loro sono i miei amici » =",
+              "type": "single_choice",
+              "options": [
+                "Ce sont mes amis",
+                "C'est mon ami",
+                "Ils partent",
+                "Ils étudient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Loro » = ils/elles ; « i miei amici » = mes amis (m.pl.)."
+            },
+            {
+              "question": "« Piacere di conoservi » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs personnes (vous)",
+                "Une seule personne (tu)",
+                "Une personne (Lei seule)",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voi » pluriel : conoservi."
+            },
+            {
+              "question": "« Questa è Anna » présente :",
+              "type": "single_choice",
+              "options": [
+                "Anna (féminin, près de moi)",
+                "Anna (loin)",
+                "Un objet",
+                "Une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Questa » = celle-ci (f.) pour une personne."
+            },
+            {
+              "question": "« Tutti quanti » suggère :",
+              "type": "single_choice",
+              "options": [
+                "Tout le monde / tous sans exception",
+                "Personne",
+                "Un seul",
+                "Deux personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforcement de « tutti »."
+            },
+            {
+              "question": "Inviter : « Venite con noi? » =",
+              "type": "single_choice",
+              "options": [
+                "Vous venez avec nous ? (plusieurs)",
+                "Tu viens ?",
+                "Ils viennent ?",
+                "Partez !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impératif / présent « voi » : venite."
+            },
+            {
+              "question": "« Ci conosciamo? » =",
+              "type": "single_choice",
+              "options": [
+                "On se connaît ?",
+                "Tu me connais ?",
+                "Ils se connaissent ?",
+                "Je ne connais personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe pronominal « conoscersi » à la première personne du pluriel."
+            },
+            {
+              "question": "« Siamo in classe » indique :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes en classe",
+                "Ils sont en classe",
+                "Tu es en classe",
+                "Je suis professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Siamo » = nous sommes."
+            },
+            {
+              "question": "Présenter deux personnes : « Vi presento… » implique :",
+              "type": "single_choice",
+              "options": [
+                "Je vous (pl.) présente quelqu'un",
+                "Je te présente",
+                "Ils vous présentent",
+                "Présentez-vous seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vi » = à vous (pluriel)."
+            },
+            {
+              "question": "« Piacere, io sono il prof » est :",
+              "type": "single_choice",
+              "options": [
+                "Une présentation informelle du professeur",
+                "Une question",
+                "Un au revoir",
+                "Une insulte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « piacere + io sono + rôle »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Culture et registre",
+          "questions": [
+            {
+              "question": "Quels comportements sont valorisés dans un premier contact en Italie ?",
+              "type": "multiple_choice",
+              "options": [
+                "Regarder la personne en saluant",
+                "Ignorer totalement l'interlocuteur",
+                "Utiliser « grazie » et « prego »",
+                "Crier pour se faire entendre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le contact visuel et la politesse verbale facilitent la communication ; ignorer ou crier est mal perçu."
+            },
+            {
+              "question": "« Baci » ( bises ) en Italie :",
+              "type": "single_choice",
+              "options": [
+                "Varient selon région et lien social",
+                "Sont toujours exactement trois partout",
+                "Sont interdits",
+                "Remplacent tout salut verbal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pratique culturelle variable ; en contexte scolaire formel, poignée de main ou salut verbal suffit."
+            },
+            {
+              "question": "Tutoyer un professeur inconnu le premier jour est en général :",
+              "type": "single_choice",
+              "options": [
+                "Déconseillé ; on vouvoie",
+                "Obligatoire",
+                "Interdit de vouvoyer",
+                "Identique partout sans nuance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre formel protège la relation hiérarchique ou scolaire."
+            },
+            {
+              "question": "« Buona giornata » =",
+              "type": "single_choice",
+              "options": [
+                "Bonne journée (en partant)",
+                "Bonjour (en arrivant)",
+                "Bonne nuit",
+                "Bon week-end uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait en prenant congé dans la journée."
+            },
+            {
+              "question": "« A domani » convient si :",
+              "type": "single_choice",
+              "options": [
+                "On se revoit le lendemain",
+                "On ne se revoit jamais",
+                "C'est minuit",
+                "On est en vacances longues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littéralement « à demain »."
+            },
+            {
+              "question": "En classe, lever la main et dire « Professore… » :",
+              "type": "single_choice",
+              "options": [
+                "Montre respect et demande la parole",
+                "Est une insulte",
+                "Remplace les devoirs",
+                "Signifie « je pars »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention scolaire italienne courante."
+            },
+            {
+              "question": "« Mi chiamo » vs « Mi chiamano » :",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle / On m'appelle",
+                "J'appelle / Tu t'appelles",
+                "Nous appelons",
+                "Ils partent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix active réfléchie vs passive « on m'appelle »."
+            },
+            {
+              "question": "« Ciao » avec un client en boutique (inconnu) est :",
+              "type": "single_choice",
+              "options": [
+                "Parfois entendu mais « buongiorno » est plus sûr",
+                "Toujours grossier sans exception",
+                "Interdit par la loi",
+                "Réservé aux enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre commercial favorise souvent les formules de politesse standard."
+            },
+            {
+              "question": "« Piacere mio » répond à :",
+              "type": "single_choice",
+              "options": [
+                "Piacere (l'autre a dit « piacere »)",
+                "Grazie",
+                "Scusi",
+                "Buonanotte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse symétrique à une présentation."
+            },
+            {
+              "question": "Comprendre « Lei » avec majuscule dans un courrier :",
+              "type": "single_choice",
+              "options": [
+                "Marque le vouvoiement de politesse",
+                "Indique une femme nommée Lei",
+                "Signifie « ils »",
+                "Est une faute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention typographique pour le vouvoiement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse présentations",
+          "questions": [
+            {
+              "question": "Quelles phrases forment une mini-présentation cohérente ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ciao, mi chiamo Sara, ho diciotto anni e abito a Torino",
+                "Buonanotte, mi chiamo…",
+                "Arrivederci, sono Marco",
+                "Salve, piacere, parlo italiano e francese"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Salut + nom + âge + ville ou salut + plaisir + langues sont logiques ; mélanger au revoir ou bonne nuit avec présentation est incohérent."
+            },
+            {
+              "question": "Ordre logique d'une présentation orale :",
+              "type": "single_choice",
+              "options": [
+                "Salutation → nom → infos personnelles → politesse finale",
+                "Au revoir → nom → insulte",
+                "Nom seul sans salut",
+                "Question d'âge avant salut obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure progressive attendue au oral comme à l'écrit."
+            },
+            {
+              "question": "Traduire : « Enchanté, je m'appelle Paul et je suis belge » :",
+              "type": "single_choice",
+              "options": [
+                "Piacere, mi chiamo Paul e sono belga",
+                "Grazie, mi chiamo Paul e sono belga",
+                "Scusi, mi chiamo Paul",
+                "Arrivederci Paul belga"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Belga » s'accorde : belga (f.) ou belgo (m.) selon le locuteur."
+            },
+            {
+              "question": "« E tu? » après « Mi chiamo Luca » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Relancer la question vers l'interlocuteur",
+                "Dire au revoir",
+                "Corriger une faute",
+                "Changer de sujet vers la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tour de rôle conversationnel classique."
+            },
+            {
+              "question": "« Molto lieto » est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Registre soutenu (ravi de vous connaître)",
+                "Argot jeune",
+                "Insulte",
+                "Formule de nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variante formelle de « piacere »."
+            },
+            {
+              "question": "Récap : « Come si chiama? » attend :",
+              "type": "single_choice",
+              "options": [
+                "Mi chiamo… / Si chiamo… (Lei)",
+                "Sto bene",
+                "Abito a… seul",
+                "Ho fame"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse directe au nom."
+            },
+            {
+              "question": "« Parli italiano? » — réponse affirmative :",
+              "type": "single_choice",
+              "options": [
+                "Sì, un po'",
+                "No, grazie mille",
+                "Forse domani",
+                "A presto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Un po' » = un peu."
+            },
+            {
+              "question": "Clore une rencontre :",
+              "type": "single_choice",
+              "options": [
+                "È stato un piacere, a presto",
+                "Buongiorno di nuovo",
+                "Mi chiamo…",
+                "Quanti anni hai?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de plaisir passé + au revoir."
+            },
+            {
+              "question": "Erreur fréquente des francophones :",
+              "type": "single_choice",
+              "options": [
+                "Dire « io sono » pour l'âge au lieu de « ho … anni »",
+                "Utiliser « grazie »",
+                "Dire « ciao »",
+                "Employer « prego »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'âge se construit avec « avere », pas « essere »."
+            },
+            {
+              "question": "Objectif du chapitre « Saluer et se présenter » :",
+              "type": "single_choice",
+              "options": [
+                "Interagir poliment et se décrire brièvement en italien",
+                "Conjuguer tous les temps passés",
+                "Lire Dante intégralement",
+                "Maîtriser la cuisine italienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence A1-A2 de contact et identité, base du niveau terminale en découverte."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Nombres et quantités",
+          "questions": [
+            {
+              "question": "Quels nombres sont correctement orthographiés en italien ?",
+              "type": "multiple_choice",
+              "options": ["venti", "trenta", "vingt", "quarante"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Venti » et « trenta » sont italiens ; « vingt » et « quarante » sont français."
+            },
+            {
+              "question": "« Quindici » =",
+              "type": "single_choice",
+              "options": ["15", "50", "5", "16"],
+              "correctAnswers": [0],
+              "explanation": "Quindici = quinze."
+            },
+            {
+              "question": "« Cento » =",
+              "type": "single_choice",
+              "options": ["100", "1000", "10", "200"],
+              "correctAnswers": [0],
+              "explanation": "Cento = cent."
+            },
+            {
+              "question": "« Mille » =",
+              "type": "single_choice",
+              "options": ["1000", "100", "1 000 000", "10000"],
+              "correctAnswers": [0],
+              "explanation": "Invariable au singulier : mille."
+            },
+            {
+              "question": "« Due persone » =",
+              "type": "single_choice",
+              "options": [
+                "Deux personnes",
+                "Dix personnes",
+                "Deux maisons",
+                "Deux livres seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Due » = deux ; « persone » = personnes."
+            },
+            {
+              "question": "« Molto / molta » exprime :",
+              "type": "single_choice",
+              "options": [
+                "Beaucoup (accord possible)",
+                "Peu",
+                "Jamais",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adverbe ou adjectif selon contexte."
+            },
+            {
+              "question": "« Poco » =",
+              "type": "single_choice",
+              "options": ["Peu", "Plus", "Trop", "Assez"],
+              "correctAnswers": [0],
+              "explanation": "Opposé approximatif de « molto »."
+            },
+            {
+              "question": "« Primo, secondo, terzo » sont :",
+              "type": "single_choice",
+              "options": [
+                "Ordinaux",
+                "Couleurs",
+                "Verbes",
+                "Jours de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier, second, troisième."
+            },
+            {
+              "question": "« Mezzo » dans « mezzo litro » =",
+              "type": "single_choice",
+              "options": ["Demi", "Double", "Quart", "Entier"],
+              "correctAnswers": [0],
+              "explanation": "Demi-litre."
+            },
+            {
+              "question": "« Quanto costa? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Combien ça coûte ?",
+                "Quelle heure ?",
+                "Quel âge ?",
+                "Où ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Costare » = coûter."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Temps et calendrier",
+          "questions": [
+            {
+              "question": "Quels mots désignent des jours ou des moments ?",
+              "type": "multiple_choice",
+              "options": ["lunedì", "martedì", "mattina", "penna"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lundi, mardi et « mattina » (matin) relèvent du temps ; « penna » = stylo."
+            },
+            {
+              "question": "« Oggi » =",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps présent."
+            },
+            {
+              "question": "« Domani » =",
+              "type": "single_choice",
+              "options": ["Demain", "Hier", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "Opposé courant de « ieri »."
+            },
+            {
+              "question": "« Ieri » =",
+              "type": "single_choice",
+              "options": ["Hier", "Aujourd'hui", "Année", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "Passé proche."
+            },
+            {
+              "question": "« Settimana » =",
+              "type": "single_choice",
+              "options": ["Semaine", "Week-end seulement", "Mois", "Siècle"],
+              "correctAnswers": [0],
+              "explanation": "Période de sept jours."
+            },
+            {
+              "question": "« Che ore sono? » =",
+              "type": "single_choice",
+              "options": [
+                "Quelle heure est-il ?",
+                "Quel jour ?",
+                "Quelle année ?",
+                "Combien de temps ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question standard pour l'heure."
+            },
+            {
+              "question": "« Mezzogiorno » =",
+              "type": "single_choice",
+              "options": ["Midi", "Minuit", "Matin", "Après-midi tard"],
+              "correctAnswers": [0],
+              "explanation": "Milieu de journée."
+            },
+            {
+              "question": "« Primavera » =",
+              "type": "single_choice",
+              "options": ["Printemps", "Été", "Automne", "Hiver"],
+              "correctAnswers": [0],
+              "explanation": "Une des quatre stagioni."
+            },
+            {
+              "question": "« Ogni giorno » =",
+              "type": "single_choice",
+              "options": [
+                "Chaque jour",
+                "Un jour",
+                "Jamais le jour",
+                "Deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence quotidienne."
+            },
+            {
+              "question": "« Adesso » =",
+              "type": "single_choice",
+              "options": [
+                "Maintenant",
+                "Avant",
+                "Après",
+                "Tôt le matin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonyme courant de « ora » dans ce sens."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Famille et personnes",
+          "questions": [
+            {
+              "question": "Quels termes désignent des membres de la famille proche ?",
+              "type": "multiple_choice",
+              "options": ["madre", "padre", "fratello", "tavolo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mère, père et frère sont familiaux ; « tavolo » = table."
+            },
+            {
+              "question": "« Nonna » =",
+              "type": "single_choice",
+              "options": ["Grand-mère", "Grand-père", "Tante", "Cousine"],
+              "correctAnswers": [0],
+              "explanation": "Ligne maternelle ou paternelle : grand-mère."
+            },
+            {
+              "question": "« Marito » =",
+              "type": "single_choice",
+              "options": ["Mari", "Femme (épouse)", "Fils", "Oncle"],
+              "correctAnswers": [0],
+              "explanation": "Époux."
+            },
+            {
+              "question": "« Moglie » =",
+              "type": "single_choice",
+              "options": ["Épouse / femme", "Mère", "Sœur", "Amie"],
+              "correctAnswers": [0],
+              "explanation": "Partenaire mariée ou épouse."
+            },
+            {
+              "question": "« Bambino / bambina » =",
+              "type": "single_choice",
+              "options": [
+                "Enfant (garçon / fille)",
+                "Bébé strictement nouveau-né seulement",
+                "Adulte",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme général pour enfant."
+            },
+            {
+              "question": "« Amico / amica » =",
+              "type": "single_choice",
+              "options": [
+                "Ami / amie",
+                "Ennemi",
+                "Voisin obligatoire",
+                "Collègue uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation affective amicale."
+            },
+            {
+              "question": "« Vicino » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Voisin ou proche (adj.)",
+                "Loin",
+                "Étranger",
+                "Chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom ou adjectif selon contexte."
+            },
+            {
+              "question": "« Persona » =",
+              "type": "single_choice",
+              "options": ["Personne", "Pièce", "Pays", "Problème"],
+              "correctAnswers": [0],
+              "explanation": "Nom féminin très fréquent."
+            },
+            {
+              "question": "« Uomo / donna » =",
+              "type": "single_choice",
+              "options": [
+                "Homme / femme",
+                "Garçon / fille seulement",
+                "Oncle / tante",
+                "Enfant / bébé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adulte ou genre humain."
+            },
+            {
+              "question": "« La mia famiglia è grande » =",
+              "type": "single_choice",
+              "options": [
+                "Ma famille est grande",
+                "Ma famille part",
+                "Ma famille est italienne seulement",
+                "Je n'ai pas de famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Grande » = nombreuse ou littéralement grande selon contexte."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Maison et école",
+          "questions": [
+            {
+              "question": "Quels mots appartiennent au lexique de la maison ou de l'école ?",
+              "type": "multiple_choice",
+              "options": ["casa", "scuola", "aula", "mare"],
+              "correctAnswers": [0, 1],
+              "explanation": "Maison et école ; « aula » aussi (salle de classe) ; « mare » = mer (autre thème)."
+            },
+            {
+              "question": "« Stanza » =",
+              "type": "single_choice",
+              "options": ["Pièce (chambre)", "Rue", "Pont", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "Espace d'une habitation."
+            },
+            {
+              "question": "« Cucina » =",
+              "type": "single_choice",
+              "options": ["Cuisine", "Salle de bain", "Jardin", "Garage"],
+              "correctAnswers": [0],
+              "explanation": "Pièce pour cuisiner."
+            },
+            {
+              "question": "« Bagno » =",
+              "type": "single_choice",
+              "options": ["Salle de bain", "Balcon", "Couloir", "Toit"],
+              "correctAnswers": [0],
+              "explanation": "Peut aussi désigner les toilettes publiques selon contexte."
+            },
+            {
+              "question": "« Libro » =",
+              "type": "single_choice",
+              "options": ["Livre", "Cahier uniquement", "Carte", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "Support de lecture."
+            },
+            {
+              "question": "« Quaderno » =",
+              "type": "single_choice",
+              "options": ["Cahier", "Table", "Porte", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "Fourniture scolaire."
+            },
+            {
+              "question": "« Lezione » =",
+              "type": "single_choice",
+              "options": [
+                "Leçon / cours",
+                "Devoir maison",
+                "Vacances",
+                "Cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séance d'enseignement."
+            },
+            {
+              "question": "« Compiti » =",
+              "type": "single_choice",
+              "options": [
+                "Devoirs",
+                "Jeux",
+                "Repas",
+                "Notes (musique) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail à faire chez soi."
+            },
+            {
+              "question": "« Porta » =",
+              "type": "single_choice",
+              "options": ["Porte", "Fenêtre", "Mur", "Escalier"],
+              "correctAnswers": [0],
+              "explanation": "Entrée ou sortie d'une pièce."
+            },
+            {
+              "question": "« Finestra » =",
+              "type": "single_choice",
+              "options": ["Fenêtre", "Porte", "Plafond", "Sol"],
+              "correctAnswers": [0],
+              "explanation": "Ouverture vitrée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Nourriture et boisson",
+          "questions": [
+            {
+              "question": "Quels aliments ou boissons sont des mots italiens courants ?",
+              "type": "multiple_choice",
+              "options": ["acqua", "pane", "fromage", "formaggio"],
+              "correctAnswers": [0, 1],
+              "explanation": "Eau et pain ; « formaggio » est l'italien pour fromage (le mot français ne compte pas)."
+            },
+            {
+              "question": "« Formaggio » =",
+              "type": "single_choice",
+              "options": ["Fromage", "Fruit", "Viande", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Produit laitier."
+            },
+            {
+              "question": "« Caffè » =",
+              "type": "single_choice",
+              "options": ["Café", "Thé", "Jus", "Lait seul"],
+              "correctAnswers": [0],
+              "explanation": "Boisson emblématique en Italie."
+            },
+            {
+              "question": "« Latte » =",
+              "type": "single_choice",
+              "options": ["Lait", "Beurre", "Crème glacée seulement", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Attention : « latte » en italien = lait (pas la boisson « latte » anglaise)."
+            },
+            {
+              "question": "« Pasta » =",
+              "type": "single_choice",
+              "options": [
+                "Pâtes",
+                "Gâteau",
+                "Salade seule",
+                "Soupe uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aliment de base italien."
+            },
+            {
+              "question": "« Frutta » =",
+              "type": "single_choice",
+              "options": ["Fruits (ensemble)", "Légumes", "Viande", "Pain"],
+              "correctAnswers": [0],
+              "explanation": "Catégorie alimentaire."
+            },
+            {
+              "question": "« Ho fame » =",
+              "type": "single_choice",
+              "options": [
+                "J'ai faim",
+                "J'ai soif",
+                "Je suis fatigué",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fame » = faim ; verbe « avere »."
+            },
+            {
+              "question": "« Ho sete » =",
+              "type": "single_choice",
+              "options": ["J'ai soif", "J'ai faim", "J'ai chaud", "J'ai froid"],
+              "correctAnswers": [0],
+              "explanation": "« Sete » = soif."
+            },
+            {
+              "question": "« Colazione » =",
+              "type": "single_choice",
+              "options": [
+                "Petit-déjeuner",
+                "Dîner",
+                "Goûter anglais",
+                "Souper tard seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier repas de la journée."
+            },
+            {
+              "question": "« Pranzo » =",
+              "type": "single_choice",
+              "options": [
+                "Déjeuner / repas de midi",
+                "Petit-déjeuner",
+                "Snack minuit",
+                "Boisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas principal souvent vers midi en Italie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Ville et déplacement",
+          "questions": [
+            {
+              "question": "Quels termes concernent la ville ou se déplacer ?",
+              "type": "multiple_choice",
+              "options": ["strada", "piazza", "autobus", "zucchero"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rue, place et bus ; « zucchero » = sucre."
+            },
+            {
+              "question": "« Città » =",
+              "type": "single_choice",
+              "options": [
+                "Ville",
+                "Campagne seule",
+                "Mer",
+                "Montagne uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centre urbain."
+            },
+            {
+              "question": "« Stazione » =",
+              "type": "single_choice",
+              "options": ["Gare", "Aéroport seulement", "Hôpital", "École"],
+              "correctAnswers": [0],
+              "explanation": "Gare ferroviaire ou terminus de transport."
+            },
+            {
+              "question": "« Biglietto » =",
+              "type": "single_choice",
+              "options": [
+                "Ticket / billet",
+                "Valise",
+                "Carte d'identité",
+                "Passeport seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour bus, train, musée…"
+            },
+            {
+              "question": "« A destra / a sinistra » =",
+              "type": "single_choice",
+              "options": [
+                "À droite / à gauche",
+                "Tout droit",
+                "En arrière",
+                "En haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indications directionnelles."
+            },
+            {
+              "question": "« Dritto » (direction) =",
+              "type": "single_choice",
+              "options": ["Tout droit", "À droite", "Tournez", "Arrêtez"],
+              "correctAnswers": [0],
+              "explanation": "Continuer sans tourner."
+            },
+            {
+              "question": "« Vicino a » =",
+              "type": "single_choice",
+              "options": [
+                "Près de",
+                "Loin de",
+                "En face uniquement",
+                "Derrière seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité spatiale."
+            },
+            {
+              "question": "« Dove si trova…? » =",
+              "type": "single_choice",
+              "options": [
+                "Où se trouve… ?",
+                "Quand part… ?",
+                "Pourquoi… ?",
+                "Combien… ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander un lieu."
+            },
+            {
+              "question": "« Macchina » =",
+              "type": "single_choice",
+              "options": ["Voiture", "Vélo", "Train", "Bateau"],
+              "correctAnswers": [0],
+              "explanation": "Automobile courante."
+            },
+            {
+              "question": "« A piedi » =",
+              "type": "single_choice",
+              "options": [
+                "À pied",
+                "En voiture",
+                "En avion",
+                "En métro seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mode de déplacement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Couleurs et descriptions",
+          "questions": [
+            {
+              "question": "Quelles couleurs sont correctes en italien ?",
+              "type": "multiple_choice",
+              "options": ["rosso", "blu", "rouge", "verde"],
+              "correctAnswers": [0, 3],
+              "explanation": "Rosso et verde sont italiens ; « bleu » se dit surtout « blu » en italien moderne ; « rouge » est français."
+            },
+            {
+              "question": "« Nero / bianco » =",
+              "type": "single_choice",
+              "options": [
+                "Noir / blanc",
+                "Bleu / jaune",
+                "Vert / rouge",
+                "Gris / rose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs de base."
+            },
+            {
+              "question": "« Giallo » =",
+              "type": "single_choice",
+              "options": ["Jaune", "Vert", "Orange", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Couleur primaire secondaire."
+            },
+            {
+              "question": "« Grande / piccolo » =",
+              "type": "single_choice",
+              "options": [
+                "Grand / petit",
+                "Beau / laid",
+                "Chaud / froid",
+                "Vieux / jeune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectifs de taille."
+            },
+            {
+              "question": "« Bello / bella » =",
+              "type": "single_choice",
+              "options": ["Beau / belle", "Mauvais", "Lent", "Cher"],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre."
+            },
+            {
+              "question": "« Nuovo / vecchio » =",
+              "type": "single_choice",
+              "options": [
+                "Nouveau / vieux",
+                "Propre / sale",
+                "Ouvert / fermé",
+                "Plein / vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition d'âge ou d'état."
+            },
+            {
+              "question": "« Facile / difficile » =",
+              "type": "single_choice",
+              "options": [
+                "Facile / difficile",
+                "Rapide / lent",
+                "Cher / bon marché",
+                "Proche / loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré de complexité."
+            },
+            {
+              "question": "« Caldo / freddo » =",
+              "type": "single_choice",
+              "options": [
+                "Chaud / froid",
+                "Sec / humide",
+                "Lourd / léger",
+                "Sucré / salé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Température ou sensation."
+            },
+            {
+              "question": "« Stanco / stanca » =",
+              "type": "single_choice",
+              "options": [
+                "Fatigué(e)",
+                "Content(e)",
+                "Malade",
+                "Pressé(e) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État physique."
+            },
+            {
+              "question": "« È una casa rossa » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Une maison rouge",
+                "Une maison grande seulement",
+                "Une maison à Rome",
+                "Une maison vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif « rossa » accordé au féminin."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Verbes fréquents",
+          "questions": [
+            {
+              "question": "Quels infinitifs sont des verbes italiens essentiels ?",
+              "type": "multiple_choice",
+              "options": ["essere", "avere", "parler", "parlare"],
+              "correctAnswers": [0, 1],
+              "explanation": "Être et avoir ; « parlare » est l'infinitif italien (parler est français)."
+            },
+            {
+              "question": "« Andare » =",
+              "type": "single_choice",
+              "options": [
+                "Aller",
+                "Venir",
+                "Rester",
+                "Partir seulement en passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe de mouvement aller."
+            },
+            {
+              "question": "« Venire » =",
+              "type": "single_choice",
+              "options": ["Venir", "Aller", "Monter", "Descendre"],
+              "correctAnswers": [0],
+              "explanation": "Mouvement vers le locuteur."
+            },
+            {
+              "question": "« Fare » (io faccio) =",
+              "type": "single_choice",
+              "options": ["Faire", "Dire", "Voir", "Savoir"],
+              "correctAnswers": [0],
+              "explanation": "Verbe très polyvalent (faire, préparer…)."
+            },
+            {
+              "question": "« Dire » (io dico) =",
+              "type": "single_choice",
+              "options": ["Dire", "Écrire", "Lire", "Écouter"],
+              "correctAnswers": [0],
+              "explanation": "Communiquer oralement."
+            },
+            {
+              "question": "« Mangiare » =",
+              "type": "single_choice",
+              "options": ["Manger", "Boire", "Dormir", "Courir"],
+              "correctAnswers": [0],
+              "explanation": "Verbe du repas."
+            },
+            {
+              "question": "« Bere » =",
+              "type": "single_choice",
+              "options": ["Boire", "Manger", "Parler", "Acheter"],
+              "correctAnswers": [0],
+              "explanation": "Consommer une boisson."
+            },
+            {
+              "question": "« Studiare » =",
+              "type": "single_choice",
+              "options": [
+                "Étudier",
+                "Enseigner",
+                "Jouer",
+                "Travailler (toujours identique)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage scolaire."
+            },
+            {
+              "question": "« Lavorare » =",
+              "type": "single_choice",
+              "options": ["Travailler", "Se reposer", "Voyager", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Activité professionnelle."
+            },
+            {
+              "question": "« Capire » =",
+              "type": "single_choice",
+              "options": ["Comprendre", "Croire", "Oublier", "Chercher"],
+              "correctAnswers": [0],
+              "explanation": "Compréhension intellectuelle ou linguistique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Questions et mots-outils",
+          "questions": [
+            {
+              "question": "Quels mots interrogatifs ou outils sont italiens ?",
+              "type": "multiple_choice",
+              "options": ["chi", "cosa", "quand", "quando"],
+              "correctAnswers": [0, 1],
+              "explanation": "Qui et quoi ; « quando » = quand (quand est français)."
+            },
+            {
+              "question": "« Chi » =",
+              "type": "single_choice",
+              "options": ["Qui", "Quoi", "Où", "Pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif personne."
+            },
+            {
+              "question": "« Cosa / che cosa » =",
+              "type": "single_choice",
+              "options": ["Quoi / que", "Qui", "Quand", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif chose ou action."
+            },
+            {
+              "question": "« Dove » =",
+              "type": "single_choice",
+              "options": ["Où", "Comment", "Pourquoi", "Lequel"],
+              "correctAnswers": [0],
+              "explanation": "Lieu."
+            },
+            {
+              "question": "« Quando » =",
+              "type": "single_choice",
+              "options": ["Quand", "Où", "Qui", "Quoi"],
+              "correctAnswers": [0],
+              "explanation": "Temps."
+            },
+            {
+              "question": "« Perché » =",
+              "type": "single_choice",
+              "options": [
+                "Pourquoi",
+                "Parce que seulement",
+                "Comment",
+                "Combien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut aussi introduire une explication « parce que » selon intonation."
+            },
+            {
+              "question": "« Come » =",
+              "type": "single_choice",
+              "options": ["Comment", "Combien", "Quel", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Manière ou état (come stai)."
+            },
+            {
+              "question": "« Quanto / quanta » =",
+              "type": "single_choice",
+              "options": [
+                "Combien / quelle quantité",
+                "Quel nom",
+                "Quelle heure",
+                "Quelle couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité ou prix."
+            },
+            {
+              "question": "« E » =",
+              "type": "single_choice",
+              "options": ["Et", "Ou", "Mais", "Donc"],
+              "correctAnswers": [0],
+              "explanation": "Conjonction coordinante."
+            },
+            {
+              "question": "« Ma » =",
+              "type": "single_choice",
+              "options": ["Mais", "Et", "Car", "Si (oui)"],
+              "correctAnswers": [0],
+              "explanation": "Opposition."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse vocabulaire",
+          "questions": [
+            {
+              "question": "Quelles phrases utilisent correctement le vocabulaire essentiel ?",
+              "type": "multiple_choice",
+              "options": [
+                "Vado a scuola ogni mattina",
+                "Ho sete, bevo acqua",
+                "Sono formaggio",
+                "La mia casa è in centro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aller à l'école et boire de l'eau sont corrects ; « essere formaggio » est absurde ; la phrase sur la maison est aussi correcte mais ici les deux premières illustrent verbes + nom essentiel."
+            },
+            {
+              "question": "Traduire « J'ai vingt ans et j'habite dans une petite ville » :",
+              "type": "single_choice",
+              "options": [
+                "Ho vent'anni e abito in una piccola città",
+                "Sono vent'anni e piccolo città",
+                "Ho venti e casa piccola",
+                "Abito vent'anni ho città"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ho vent'anni » + « abito in » + adjectif accordé."
+            },
+            {
+              "question": "« Mi piace la pasta » =",
+              "type": "single_choice",
+              "options": [
+                "J'aime les pâtes",
+                "Je mange la pasta",
+                "Je cuisine",
+                "Je déteste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « piacere » + nom."
+            },
+            {
+              "question": "Associer : « rosso » →",
+              "type": "single_choice",
+              "options": ["couleur", "boisson", "verbe", "jour"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif de couleur."
+            },
+            {
+              "question": "« Oggi fa caldo » =",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui il fait chaud",
+                "Hier il neige",
+                "Demain pluie",
+                "Il est minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Fare » pour la météo + « caldo »."
+            },
+            {
+              "question": "Demander le prix d'un café :",
+              "type": "single_choice",
+              "options": [
+                "Quanto costa un caffè?",
+                "Dove è un caffè?",
+                "Chi è caffè?",
+                "Quando caffè?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Quanto costa » pour le prix."
+            },
+            {
+              "question": "« Non ho tempo » =",
+              "type": "single_choice",
+              "options": [
+                "Je n'ai pas le temps",
+                "Je n'ai pas d'argent",
+                "Je n'ai pas faim",
+                "Je ne comprends pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tempo » = temps."
+            },
+            {
+              "question": "Vocabulaire scolaire : « esame » =",
+              "type": "single_choice",
+              "options": [
+                "Examen",
+                "Exercice minute",
+                "Cloche",
+                "Cour de récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épreuve formelle."
+            },
+            {
+              "question": "Antonyme de « facile » :",
+              "type": "single_choice",
+              "options": ["difficile", "veloce", "caro", "nuovo"],
+              "correctAnswers": [0],
+              "explanation": "Opposition directe."
+            },
+            {
+              "question": "Objectif « Les mots essentiels » pour la terminale :",
+              "type": "single_choice",
+              "options": [
+                "Consolider un socle lexical pour communiquer au quotidien",
+                "Oublier la grammaire",
+                "Ne lire que de la poésie médiévale",
+                "Travailler sans vocabulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lexique de base soutient toutes les compétences orales et écrites."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

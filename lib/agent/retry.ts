@@ -62,11 +62,17 @@ export function decideToolRetry(params: {
   if (params.attempt >= params.policy.maxAttempts) {
     return { reason: "max_attempts", retry: false };
   }
-  const delayMs = computeRetryDelayMs(
+  const backoffMs = computeRetryDelayMs(
     params.policy,
     params.attempt + 1,
     params.random
   );
+  // Un Retry-After du service impose d'attendre au moins ce délai : rejouer
+  // plus tôt reproduirait le 429. Le backoff reste le plancher si l'en-tête
+  // est plus court.
+  const headerDelay = params.error.retryAfterMs;
+  const delayMs =
+    headerDelay === undefined ? backoffMs : Math.max(backoffMs, headerDelay);
   if (params.remainingMs !== undefined && delayMs >= params.remainingMs) {
     return { reason: "delay_exceeds_budget", retry: false };
   }

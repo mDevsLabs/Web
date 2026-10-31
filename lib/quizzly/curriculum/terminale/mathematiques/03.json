@@ -1,0 +1,2153 @@
+{
+  "id": "terminale-mathematiques-03",
+  "year": "terminale",
+  "subject": "mathematiques",
+  "title": "Probabilités",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lois discrètes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Loi de Bernoulli",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une épreuve de Bernoulli de paramètre p :",
+              "options": [
+                "Deux issues succès/échec",
+                "P(succès) = p",
+                "P(succès) = 1-p",
+                "p peut valoir 2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux issues exclusives avec P(succès)=p∈[0;1]."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "X ~ B(p) : E(X) vaut",
+              "options": ["1-p", "p", "p(1-p)", "p²"],
+              "correctAnswers": [1],
+              "explanation": "Espérance d'une Bernoulli."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "X ~ B(p) : V(X) vaut",
+              "options": ["p", "1-p", "p(1-p)", "p²"],
+              "correctAnswers": [2],
+              "explanation": "Var(pX)=p(1-p) pour X~B(1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "p = 0,3 : P(échec) vaut",
+              "options": ["0,3", "0,7", "0,09", "1"],
+              "correctAnswers": [1],
+              "explanation": "P(échec)=1-p."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Indicateur de succès vaut 1 si succès. E(I) =",
+              "options": ["0", "p", "1-p", "p²"],
+              "correctAnswers": [1],
+              "explanation": "I suit B(p)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux Bernoulli indépendantes même p : P(deux succès) =",
+              "options": ["2p", "p²", "1-p", "2p(1-p)"],
+              "correctAnswers": [1],
+              "explanation": "Produit des probabilités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jeu équitable : p vaut",
+              "options": ["0", "0,5", "1", "2"],
+              "correctAnswers": [1],
+              "explanation": "Succès et échec équiprobables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "X ~ B(p), X² = X car",
+              "options": ["X ∈ {0;1}", "X continue", "p = 0", "V(X)=0"],
+              "correctAnswers": [0],
+              "explanation": "0²=0 et 1²=1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "n épreuves Bernoulli i.i.d. B(p) : nombre de succès suit",
+              "options": ["B(n,p)", "B(p)", "P(λ)", "G(p)"],
+              "correctAnswers": [0],
+              "explanation": "Définition binomiale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P(succès)=0 ⟹ X vaut",
+              "options": ["Toujours 1", "Toujours 0", "Aléatoire", "Indéfinie"],
+              "correctAnswers": [1],
+              "explanation": "Succès impossible."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Loi binomiale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "X ~ B(n,p) :",
+              "options": [
+                "X = nombre de succès en n épreuves Bernoulli",
+                "P(X=k)=C(n,k)p^k(1-p)^{n-k}",
+                "X peut valoir n+1",
+                "n est entier ≥ 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi des succès en n essais indépendants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "B(10;0,4) : E(X) =",
+              "options": ["4", "2,4", "6", "10"],
+              "correctAnswers": [0],
+              "explanation": "E= np."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "B(n,p) : V(X) =",
+              "options": ["np", "np(1-p)", "p(1-p)", "n²p"],
+              "correctAnswers": [1],
+              "explanation": "Variance binomiale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "B(5;0,5) : P(X=2) utilise",
+              "options": [
+                "C(5,2)(0,5)⁵",
+                "5×0,5²",
+                "0,5²×0,5³",
+                "C(5,2)(0,5)²(0,5)³"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Formule binomiale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "X ~ B(n,p), P(X=k) max souvent près de",
+              "options": ["0", "np", "n", "n(1-p)"],
+              "correctAnswers": [1],
+              "explanation": "Mode proche de np."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(X ≥ 1) = 1 - P(X=0) car",
+              "options": [
+                "Complémentaire",
+                "Symétrie",
+                "Indépendance",
+                "Bayes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement contraire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "B(1;p) coïncide avec",
+              "options": ["Poisson", "Bernoulli", "Géométrique", "Uniforme"],
+              "correctAnswers": [1],
+              "explanation": "Un seul essai."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "n=100, p=0,02 : approcher par",
+              "options": ["B(100;0,02) seule", "P(2)", "G(0,02)", "Uniforme"],
+              "correctAnswers": [1],
+              "explanation": "n grand, p petit : Poisson λ=np."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Σ P(X=k) pour k=0..n vaut",
+              "options": ["0", "1", "n", "p"],
+              "correctAnswers": [1],
+              "explanation": "Somme des probabilités."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écart-type de B(n,p) vaut",
+              "options": ["np", "√(np(1-p))", "np(1-p)", "√p"],
+              "correctAnswers": [1],
+              "explanation": "σ = √V."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Espérance discrète",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "X discrète :",
+              "options": [
+                "E(X)=Σ x_i P(X=x_i)",
+                "Σ P(X=x_i)=1",
+                "E(X)=Σ x_i sans pondération",
+                "V(X)=E(X)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Espérance pondérée et loi normalisée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "E(aX+b) =",
+              "options": ["aE(X)+b", "E(X)+b", "aE(X)", "ab"],
+              "correctAnswers": [0],
+              "explanation": "Linéarité de l'espérance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "X ∈ {1;2;3}, P(1)=0,2, P(2)=0,5, P(3)=0,3 : E(X)=",
+              "options": ["2", "2,1", "1,8", "6"],
+              "correctAnswers": [1],
+              "explanation": "1×0,2+2×0,5+3×0,3=2,1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "V(X) = E(X²) - [E(X)]² est",
+              "options": ["Toujours négative", "≥ 0", "≤ 0", "Indéfinie"],
+              "correctAnswers": [1],
+              "explanation": "Variance non négative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "V(aX+b) =",
+              "options": ["aV(X)+b", "a²V(X)", "aV(X)", "V(X)+b²"],
+              "correctAnswers": [1],
+              "explanation": "Translation n'affecte pas V."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "X et Y indépendantes : E(XY) =",
+              "options": ["E(X)+E(Y)", "E(X)E(Y)", "0", "E(X²)"],
+              "correctAnswers": [1],
+              "explanation": "Produit des espérances."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "X constante c : V(X) =",
+              "options": ["c", "c²", "0", "1"],
+              "correctAnswers": [2],
+              "explanation": "Pas de dispersion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écart-type σ(X) =",
+              "options": ["V(X)", "√V(X)", "E(X)", "|E(X)|"],
+              "correctAnswers": [1],
+              "explanation": "Racine de la variance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "E(X+Y) = E(X)+E(Y) même si",
+              "options": [
+                "X,Y indépendantes seulement",
+                "Sans condition d'indépendance",
+                "X=Y",
+                "V(X)=0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Linéarité toujours vraie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Loi équiprobable sur {1,…,n} : E(X) =",
+              "options": ["1", "(n+1)/2", "n/2", "n"],
+              "correctAnswers": [1],
+              "explanation": "Moyenne des entiers 1..n."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Loi géométrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "X ~ G(p) (1er succès) :",
+              "options": [
+                "X ∈ ℕ*",
+                "P(X=k)=(1-p)^{k-1}p",
+                "P(X=k)=p^k",
+                "E(X)=1/p"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "k essais jusqu'au premier succès."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "G(p) : E(X) =",
+              "options": ["p", "1/p", "1-p", "p(1-p)"],
+              "correctAnswers": [1],
+              "explanation": "Espérance géométrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "G(0,2) : P(X=1) =",
+              "options": ["0,8", "0,2", "0,04", "1"],
+              "correctAnswers": [1],
+              "explanation": "Succès dès le 1er essai."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "G(p) : P(X>3) =",
+              "options": ["(1-p)³", "(1-p)²p", "1-(1-p)³", "3(1-p)"],
+              "correctAnswers": [0],
+              "explanation": "3 échecs consécutifs avant succès."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans mémoire : P(X>5|X>2) =",
+              "options": ["P(X>3)", "P(X>5)", "P(X=3)", "0"],
+              "correctAnswers": [0],
+              "explanation": "Propriété géométrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "p=0,5 : E(X) =",
+              "options": ["0,5", "1", "2", "4"],
+              "correctAnswers": [2],
+              "explanation": "1/0,5=2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "V(X) pour G(p) vaut",
+              "options": ["(1-p)/p²", "1/p", "p(1-p)", "1/p²"],
+              "correctAnswers": [0],
+              "explanation": "Formule de cours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nombre d'échecs avant 1er succès suit",
+              "options": ["G(p) décalée", "B(n,p)", "P(λ)", "Bernoulli"],
+              "correctAnswers": [0],
+              "explanation": "X-1 compte les échecs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(X ≥ 2) = 1 -",
+              "options": ["P(X=1)", "p", "(1-p)", "p²"],
+              "correctAnswers": [0],
+              "explanation": "Complément de X=1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "G(p) modélise",
+              "options": [
+                "Somme de n Bernoulli",
+                "Attente du 1er succès",
+                "Rare événements",
+                "Choix équiprobable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Schéma de Bernoulli jusqu'au succès."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Loi de Poisson",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "X ~ P(λ) :",
+              "options": ["λ > 0", "P(X=k)=e^{-λ}λ^k/k!", "E(X)=λ", "V(X)=λ²"],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi des événements rares."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P(λ) : V(X) =",
+              "options": ["λ", "√λ", "λ²", "1/λ"],
+              "correctAnswers": [0],
+              "explanation": "Variance égale à λ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "λ=3 : P(X=0) =",
+              "options": ["e^{-3}", "3e^{-3}", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "e^{-λ}."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Approximer B(1000;0,003) par",
+              "options": ["P(3)", "G(0,003)", "B(3;0,5)", "Uniforme"],
+              "correctAnswers": [0],
+              "explanation": "λ=np=3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Somme de deux P(λ₁), P(λ₂) indépendantes :",
+              "options": ["P(λ₁+λ₂)", "P(λ₁λ₂)", "B(n,p)", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Stabilité Poisson."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(X=1) pour P(λ) vaut",
+              "options": ["λe^{-λ}", "e^{-λ}", "λ²/2", "1-e^{-λ}"],
+              "correctAnswers": [0],
+              "explanation": "k=1 dans la formule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "λ=4 : E(X) =",
+              "options": ["2", "4", "16", "e⁴"],
+              "correctAnswers": [1],
+              "explanation": "E=λ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Poisson compte souvent",
+              "options": [
+                "Durée entre événements",
+                "Nombre d'événements sur un intervalle",
+                "Proportion de succès",
+                "Premier succès"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comptage d'occurrences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(X ≤ 1) = P(X=0)+",
+              "options": ["P(X=2)", "P(X=1)", "1", "λ"],
+              "correctAnswers": [1],
+              "explanation": "Somme des deux premières valeurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "λ très grand : P(λ) proche de",
+              "options": [
+                "Bernoulli",
+                "Normale (culture)",
+                "Uniforme",
+                "Géométrique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Approximation gaussienne usuelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Calculs binomiale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "B(6;0,5) :",
+              "options": ["E(X)=3", "V(X)=1,5", "P(X=6)=(0,5)⁶", "P(X=0)=0"],
+              "correctAnswers": [0, 2],
+              "explanation": "np=3, probabilité de 6 succès."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "C(8,2) vaut",
+              "options": ["16", "28", "56", "8"],
+              "correctAnswers": [1],
+              "explanation": "8×7/2=28."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "B(4;0,5) : P(X=4) =",
+              "options": ["1/16", "1/4", "1/2", "4/16"],
+              "correctAnswers": [0],
+              "explanation": "(0,5)⁴=1/16."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(X ≤ 2) = P(X=0)+P(X=1)+",
+              "options": ["P(X=3)", "P(X=2)", "1", "P(X=4)"],
+              "correctAnswers": [1],
+              "explanation": "Somme jusqu'à 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 lancers, p=0,1 : E(succès) =",
+              "options": ["1", "10", "0,1", "9"],
+              "correctAnswers": [0],
+              "explanation": "np=1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(X ≥ n) pour B(n;p) vaut",
+              "options": ["p^n", "1", "0", "(1-p)^n"],
+              "correctAnswers": [0],
+              "explanation": "Tous succès."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symétrie p=0,5 : P(X=k) = P(X=)",
+              "options": ["k+1", "n-k", "0", "n"],
+              "correctAnswers": [1],
+              "explanation": "Loi symétrique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculatrice : P(X ≤ k) utilise souvent",
+              "options": [
+                "F répartition binomiale cumulée",
+                "Dérivée",
+                "Intégrale",
+                "Logarithme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction Bcd ou équivalent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "n=20, p=0,25 : V(X) =",
+              "options": ["5", "3,75", "15", "20"],
+              "correctAnswers": [1],
+              "explanation": "20×0,25×0,75=3,75."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au moins un succès : P(X≥1) =",
+              "options": ["1-(1-p)^n", "p^n", "np", "1-p"],
+              "correctAnswers": [0],
+              "explanation": "Complément de 0 succès."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Variables aléatoires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Loi de X discrète :",
+              "options": [
+                "Donne P(X=x_i) pour chaque valeur",
+                "Somme des probabilités = 1",
+                "Probabilités négatives autorisées",
+                "Valeurs toujours entières"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi de probabilité discrète."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "F(x)=P(X≤x) est la",
+              "options": [
+                "Densité",
+                "Fonction de répartition",
+                "Espérance",
+                "Variance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Définition F."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "X discrète, F saut en x=a : hauteur =",
+              "options": ["P(X=a)", "P(X≤a)", "1", "F(a-1)"],
+              "correctAnswers": [0],
+              "explanation": "Saut = masse en a."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(a<X≤b) = F(b)-",
+              "options": ["F(a)", "F(b-1)", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Différence de F."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "F est",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Périodique",
+                "Négative"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Probabilités cumulées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "lim_{x→+∞} F(x) =",
+              "options": ["0", "1", "+∞", "E(X)"],
+              "correctAnswers": [1],
+              "explanation": "Toute la masse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "X prend 0,1 avec proba 0,4,0,6 : F(0,5) =",
+              "options": ["0,4", "0,6", "1", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "P(X≤0,5)=P(X=0)=0,4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Support de X =",
+              "options": [
+                "Ensemble des valeurs possibles",
+                "E(X)",
+                "V(X)",
+                "[0;1]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs atteintes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(X=k)=0 pour tout k ⟹",
+              "options": [
+                "X constante impossible",
+                "Loi mal définie",
+                "X continue",
+                "E(X)=0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Somme nulle interdite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau loi : ligne P(X=x_i) doit",
+              "options": [
+                "Sommer à 1",
+                "Sommer à 0",
+                "Être croissante",
+                "Valoir 0,5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normalisation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparaison de lois",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lois discrètes usuelles Terminale :",
+              "options": [
+                "Binomiale",
+                "Poisson",
+                "Normale centrée réduite seule (sans densité ici)",
+                "Loi uniforme continue sur [0;1]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Programme lois discrètes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Paramètre de B(n,p) :",
+              "options": ["λ", "n et p", "μ et σ", "k"],
+              "correctAnswers": [1],
+              "explanation": "Deux paramètres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "G(p) vs B(n,p) :",
+              "options": [
+                "Même modèle",
+                "G compte essais jusqu'au succès",
+                "B compte 1er succès",
+                "Identiques si n=1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Schémas différents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "E et V de Poisson :",
+              "options": ["E=λ, V=λ", "E=V=λ²", "E=1/λ", "V=0"],
+              "correctAnswers": [0],
+              "explanation": "Même paramètre λ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bernoulli est cas particulier de",
+              "options": ["B(1;p)", "P(1)", "G(p)", "Uniforme"],
+              "correctAnswers": [0],
+              "explanation": "n=1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nombre de défauts sur 100 pièces, p=0,01 : loi naturelle",
+              "options": [
+                "P(1)",
+                "B(100;0,01)",
+                "G(0,01)",
+                "Les deux B et P possibles"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Binomiale exacte, Poisson approx."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "X ~ B(n,p), n grand, np modéré : approcher par",
+              "options": ["P(np)", "G(p)", "Constante", "Uniforme {0,…,n}"],
+              "correctAnswers": [0],
+              "explanation": "Convergence Poisson."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "σ(X) pour B(n,p) croît avec n si p fixe car",
+              "options": ["V=np(1-p)", "E=0", "p→1", "Loi symétrique"],
+              "correctAnswers": [0],
+              "explanation": "Variance croît."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(X=k)=0 pour k>n si X ~",
+              "options": ["G(p)", "B(n,p)", "P(λ)", "Bernoulli"],
+              "correctAnswers": [1],
+              "explanation": "Maximum n succès."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choix de loi : d'abord identifier",
+              "options": [
+                "Schéma expérimental",
+                "Couleur du graphique",
+                "Signe de p",
+                "Unité de λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modélisation du phénomène."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes lois discrètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "5 questions QCM, 4 choix, une bonne, réponses au hasard :",
+              "options": [
+                "Nombre de bonnes réponses ~ B(5;0,25)",
+                "p=0,25",
+                "p=0,5",
+                "E=5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "5 essais indépendants, p=1/4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dé ci-dessus, E(bonnes) =",
+              "options": ["1,25", "5", "0,25", "2,5"],
+              "correctAnswers": [0],
+              "explanation": "np=5×0,25."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lancer dé jusqu'au 6 : X = rang du 6 suit",
+              "options": ["G(1/6)", "B(n;1/6)", "P(1)", "Uniforme"],
+              "correctAnswers": [0],
+              "explanation": "p=1/6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "G(1/6) : E(lancers) =",
+              "options": ["6", "1/6", "36", "1"],
+              "correctAnswers": [0],
+              "explanation": "1/p=6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 appels, λ=2 appels/heure (Poisson) sur intervalle : paramètre",
+              "options": ["λ=2", "n=10", "p=0,2", "μ=0"],
+              "correctAnswers": [0],
+              "explanation": "λ donné par énoncé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(0 appels) = e^{-2} si",
+              "options": ["X ~ P(2)", "X ~ B(2;0,5)", "X ~ G(0,5)", "X=2"],
+              "correctAnswers": [0],
+              "explanation": "Poisson k=0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pièce truquée P(P)=0,6, 8 lancers : P(exactement 5 P) utilise",
+              "options": ["B(8;0,6)", "P(4,8)", "G(0,6)", "Bernoulli"],
+              "correctAnswers": [0],
+              "explanation": "Binomiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Interpréter np pour B(n,p) :",
+              "options": [
+                "Nombre moyen de succès",
+                "Variance",
+                "P(X=0)",
+                "Écart-type"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espérance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(X=0) pour B(n,p) vaut",
+              "options": ["(1-p)^n", "p^n", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Que des échecs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier modèle binomial : essais doivent être",
+              "options": [
+                "Indépendants et même p",
+                "Dépendants",
+                "De p différents",
+                "Continus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèses du schéma."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse lois discrètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules exactes :",
+              "options": [
+                "E(B(n,p))=np",
+                "V(P(λ))=λ",
+                "E(G(p))=1/p",
+                "V(Bernoulli)=p"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rappels de cours."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "σ(B(100;0,25)) =",
+              "options": ["25", "4,33", "18,75", "100"],
+              "correctAnswers": [1],
+              "explanation": "√(100×0,25×0,75)≈4,33."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Loi sans paramètre n entier fixé :",
+              "options": ["B(n,p)", "G(p)", "P(λ)", "Bernoulli"],
+              "correctAnswers": [1],
+              "explanation": "G support ℕ*."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(X=k) pour k ∉ support vaut",
+              "options": ["1", "0", "1/k", "λ"],
+              "correctAnswers": [1],
+              "explanation": "Impossible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Linéarité : E(2X-3) =",
+              "options": ["2E(X)-3", "2E(X)", "E(X)-3", "6"],
+              "correctAnswers": [0],
+              "explanation": "aE(X)+b."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "X ~ P(5), P(X=5) contient le facteur",
+              "options": ["5!/5!", "e^{-5}", "5⁵", "Tous"],
+              "correctAnswers": [3],
+              "explanation": "Formule complète."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "B(n,0) : X vaut toujours",
+              "options": ["n", "0", "1", "Aléatoire"],
+              "correctAnswers": [1],
+              "explanation": "Succès impossible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "B(n,1) : X vaut toujours",
+              "options": ["0", "n", "1", "np"],
+              "correctAnswers": [1],
+              "explanation": "Tous succès."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique barres loi discrète : hauteur en k =",
+              "options": ["P(X=k)", "F(k)", "E(X)", "k"],
+              "correctAnswers": [0],
+              "explanation": "Diagramme en bâtons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif chapitre lois discrètes :",
+              "options": [
+                "Modéliser et calculer P, E, V",
+                "Dériver des fonctions",
+                "Intégrer sur ℝ",
+                "Résoudre des équations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Probabilités discrètes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Indépendance",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Probabilité conditionnelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Probabilité conditionnelle :",
+              "options": [
+                "P(A|B)=P(A∩B)/P(B) si P(B)>0",
+                "P(A∩B)=P(B)P(A|B)",
+                "P(A|B)=P(A)+P(B)",
+                "P(A|B)=P(B|A)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Définition et formule des composés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P(B)=0 : P(A|B) est",
+              "options": ["0", "Indéfinie", "1", "P(A)"],
+              "correctAnswers": [1],
+              "explanation": "Division impossible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P(A∩B)=P(B)P(A|B) est",
+              "options": [
+                "Probabilités totales",
+                "Formule des composés",
+                "Bayes",
+                "Indépendance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaîne conditionnelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dé équitable, A=pair, B=≥5 : P(A|B) pour {5,6} =",
+              "options": ["1/2", "1/3", "2/3", "1"],
+              "correctAnswers": [0],
+              "explanation": "5 impair, 6 pair : 1 pair sur 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P(A|Ω) =",
+              "options": ["0", "P(A)", "1", "P(Ω)"],
+              "correctAnswers": [1],
+              "explanation": "Conditionner par certain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A⊂B, P(B)>0 : P(A|B) =",
+              "options": ["P(A)/P(B)", "1", "P(B)/P(A)", "0"],
+              "correctAnswers": [0],
+              "explanation": "A∩B=A."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P(A'|B) =",
+              "options": ["1-P(A|B)", "P(A|B)", "P(A')", "0"],
+              "correctAnswers": [0],
+              "explanation": "Complémentaire conditionnel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Urne 3R 2B, tirer 1 : P(R|premier=R) sans remise 2e =",
+              "options": ["3/5", "2/4", "1/2", "3/4"],
+              "correctAnswers": [1],
+              "explanation": "Reste 2R 2B."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Formule composée à 2 : P(A∩B)=",
+              "options": [
+                "P(A)P(B|A)",
+                "P(A)+P(B)",
+                "P(A|B) seule",
+                "P(B)/P(A)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditionner par A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P(A|B)≠P(A) suggère",
+              "options": ["Indépendance", "Dépendance", "Impossible", "P(B)=0"],
+              "correctAnswers": [1],
+              "explanation": "B influence A."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Probabilités totales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Système complet d'événements B_i :",
+              "options": [
+                "B_i disjoints",
+                "Union = Ω",
+                "P(B_i)>0",
+                "P(B_i)=1 pour tout i"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Partition de l'univers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Formule totale : P(A)=",
+              "options": [
+                "Σ P(A∩B_i)",
+                "Σ P(B_i)P(A|B_i)",
+                "P(A|B)",
+                "P(A)+P(B)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Somme sur la partition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux urnes U1(2R,1B), U2(1R,2B), choix équiprobable urne puis 1 boule : P(R) =",
+              "options": ["1/2", "3/6", "1/3+1/3", "5/9"],
+              "correctAnswers": [0],
+              "explanation": "1/2×2/3+1/2×1/3=1/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Arbre : probabilité chemin =",
+              "options": [
+                "Somme des probas",
+                "Produit le long du chemin",
+                "Max",
+                "1"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Multiplication des étapes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P(A)=P(A|B)P(B)+P(A|B')P(B') utilise",
+              "options": ["Bayes", "Totales à 2", "Indépendance", "Poisson"],
+              "correctAnswers": [1],
+              "explanation": "Partition {B,B'}."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Test médical : P(M+) = P(M+|M)P(M)+",
+              "options": ["P(M+|M')P(M')", "P(M)", "1", "P(M') seul"],
+              "correctAnswers": [0],
+              "explanation": "Totales sur malade/sain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Partition nécessaire car",
+              "options": [
+                "Couvre tous les cas",
+                "P(A)=0",
+                "Indépendance",
+                "λ>0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun cas oublié."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P(B_i)P(A|B_i) =",
+              "options": ["P(A∩B_i)", "P(A)", "P(B_i|A)", "P(A|B_i) seul"],
+              "correctAnswers": [0],
+              "explanation": "Formule composée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 machines M1,M2,M3 produisent 50%,30%,20% : P(défaut) somme",
+              "options": [
+                "P(D|M_i)P(M_i)",
+                "P(M_i) seuls",
+                "Max P(D|M_i)",
+                "0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Totales pondérées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente : oublier",
+              "options": [
+                "P(B_i) dans la somme",
+                "P(A|B_i)",
+                "Les deux",
+                "Aucun"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Pondération et conditionnel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Formule de Bayes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formule de Bayes :",
+              "options": [
+                "P(B_j|A)=P(A|B_j)P(B_j)/P(A)",
+                "P(B_j|A)=P(A∩B_j)/P(A)",
+                "P(B_j|A)=P(A)/P(B_j)",
+                "P(B_j|A)=P(A|B_j) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux écritures équivalentes du posterior."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P(A) au dénominateur vient de",
+              "options": [
+                "Formule totale",
+                "Indépendance",
+                "Bernoulli",
+                "Dérivée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normalisation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sensibilité 95%, spécificité 90%, prévalence 1% : P(M|M+) nécessite",
+              "options": ["Bayes", "Poisson", "Géométrie", "Dérivation"],
+              "correctAnswers": [0],
+              "explanation": "Cause à partir d'effet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(B|A)P(A) = P(A|B)P(B) est",
+              "options": [
+                "Bayes produit",
+                "Probabilité conjointe symétrie",
+                "Totales",
+                "Variance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux écritures de P(A∩B)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Partition B_i : P(B_j|A) somme sur j vaut",
+              "options": ["0", "1", "P(A)", "∞"],
+              "correctAnswers": [1],
+              "explanation": "Probabilités conditionnelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(B|A) grand si",
+              "options": [
+                "P(A|B)P(B) grand vs P(A)",
+                "P(B)=0",
+                "P(A)=0",
+                "Indépendance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numérateur vs dénominateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "A priori P(B) en Bayes s'appelle",
+              "options": [
+                "Probabilité prior",
+                "Posterior seule",
+                "Vraisemblance",
+                "Variance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant observation A."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P(A|B_j) est la",
+              "options": [
+                "Vraisemblance de A sachant B_j",
+                "Prior",
+                "Uniforme",
+                "Espérance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terme vraisemblance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux causes B1,B2 : P(B1|A)+P(B2|A)=",
+              "options": ["1 si partition", "0", "P(A)", "2"],
+              "correctAnswers": [0],
+              "explanation": "Somme des causes sachant A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bayes inutile si",
+              "options": [
+                "On cherche P(B|A) direct",
+                "P(A)=0",
+                "Partition connue",
+                "P(A|B) connu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dénominateur nul."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Indépendance d'événements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "A et B indépendants ⟺",
+              "options": [
+                "P(A∩B)=P(A)P(B)",
+                "P(A|B)=P(A) si P(B)>0",
+                "P(A)=P(B)",
+                "A et B disjoints"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Équivalences usuelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "A,B disjoints, P(A)>0 : indépendants ?",
+              "options": [
+                "Toujours",
+                "Seulement si P(A)P(B)=0",
+                "Jamais si probas >0",
+                "Oui si P(B)=1"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Disjoints et probas >0 ⟹ dépendants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux lancers dé indépendants : P(6 et 6) =",
+              "options": ["1/6", "1/36", "1/12", "2/36"],
+              "correctAnswers": [1],
+              "explanation": "1/6×1/6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A indépendant de B ⟹ A indépendant de B'",
+              "options": ["Vrai", "Faux", "Seulement si P(B)=0,5", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Stabilité complémentaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P(A)=0,4, P(B)=0,5, indépendants : P(A∩B)=",
+              "options": ["0,9", "0,2", "0,1", "0,45"],
+              "correctAnswers": [1],
+              "explanation": "0,4×0,5=0,2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tirage avec remise : deux tirages",
+              "options": [
+                "Indépendants",
+                "Toujours disjoints",
+                "Impossible",
+                "Dépendants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi identique, pas d'effet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans remise : deux tirages",
+              "options": [
+                "Généralement dépendants",
+                "Toujours indépendants",
+                "Probas nulles",
+                "Bayes interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composition change."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "A,B,C mutuellement indépendants : il faut",
+              "options": [
+                "Toutes paires et triple",
+                "Paires seulement",
+                "P(A)=P(B)",
+                "Disjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance mutuelle stricte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P(A∪B) si A,B indépendants, P(A)=P(B)=p :",
+              "options": ["2p", "p²", "2p-p²", "1-p²"],
+              "correctAnswers": [2],
+              "explanation": "P(A)+P(B)-P(A)P(B)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre indépendance et incompatibilité est",
+              "options": [
+                "Erreur classique",
+                "Toujours vrai",
+                "Sans importance",
+                "Équivalent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notions distinctes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Indépendance de VA",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "X,Y indépendantes ⟺",
+              "options": [
+                "P(X=a,Y=b)=P(X=a)P(Y=b)",
+                "E(XY)=E(X)E(Y) si moments existent",
+                "V(X+Y)=V(X)+V(Y) toujours sans hypothèse",
+                "X=Y"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi jointe = produit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "X,Y indépendantes : V(X+Y) =",
+              "options": ["V(X)+V(Y)", "V(X)V(Y)", "[V(X)+V(Y)]²", "0"],
+              "correctAnswers": [0],
+              "explanation": "Covariance nulle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux Bernoulli indépendantes : somme S",
+              "options": [
+                "B(2,p) si même p",
+                "Toujours Poisson",
+                "G(p)",
+                "Constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux essais Bernoulli."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "X,Y indép. : P(X=k|Y=m) =",
+              "options": ["P(X=k)", "P(Y=m)", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "Y n'informe pas X."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lancer 2 dés, X face1, Y face2 : X et Y",
+              "options": [
+                "Indépendantes",
+                "Égales",
+                "Disjointes",
+                "Dépendantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expériences séparées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "X,Y indép. : Cov(X,Y) =",
+              "options": ["0", "E(X)E(Y)", "1", "V(X)"],
+              "correctAnswers": [0],
+              "explanation": "Pas de liaison linéaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si X fonction de Y seule :",
+              "options": ["Dépendance", "Indépendance", "Bernoulli", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Lien fonctionnel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "n variables i.i.d. : même loi et",
+              "options": [
+                "Indépendantes",
+                "Égales sûrement",
+                "Disjointes",
+                "Variance 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition i.i.d."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "X~B(n,p), Y~B(m,p) indép. : X+Y ~",
+              "options": ["B(n+m,p)", "P(np+mp)", "G(p)", "Bernoulli"],
+              "correctAnswers": [0],
+              "explanation": "Stabilité binomiale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "V(XY) = V(X)V(Y) si indép. ?",
+              "options": [
+                "Faux en général",
+                "Toujours vrai",
+                "Vrai si X,Y Bernoulli",
+                "Égal E(XY)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de formule produit simple."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Arbres et schémas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Arbre de probabilités :",
+              "options": [
+                "Somme des probas sortant d'un nœud = 1",
+                "Proba chemin = produit des branches",
+                "Branches d'un même nœud peuvent se chevaucher",
+                "Racine a proba 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Règles de lecture d'arbre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux étapes, 2 issues chaque : nombre de chemins",
+              "options": ["2", "4", "3", "8"],
+              "correctAnswers": [1],
+              "explanation": "2×2=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P(événement) = somme des chemins qui",
+              "options": [
+                "Réalisent l'événement",
+                "Commencent pareil",
+                "Finissent pareil",
+                "Ont proba 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union disjointe de chemins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1er tirage P(R)=0,6, 2e sans remise P(R|R)=0,5 : P(RR) =",
+              "options": ["0,3", "0,6", "1,1", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "0,6×0,5=0,3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Conditionnel sur branche =",
+              "options": [
+                "Proba sur branche suivante",
+                "Somme totale",
+                "Prior",
+                "Variance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étiquette de branche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Arbre équivalent à",
+              "options": [
+                "Formule composée / totales",
+                "Dérivée",
+                "Intégrale",
+                "Limites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même calcul."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 étapes binaires indép. p=0,5 : P(3 succès) =",
+              "options": ["1/8", "3/8", "1/2", "1"],
+              "correctAnswers": [0],
+              "explanation": "(1/2)³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lire P(A) sur arbre partition :",
+              "options": [
+                "Regrouper chemins favorables",
+                "Un seul chemin",
+                "Multiplier toutes branches",
+                "Ignorer conditionnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des probabilités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Branche impossibile : proba",
+              "options": ["0", "1", "1/2", "Indéfinie"],
+              "correctAnswers": [0],
+              "explanation": "Pas empruntée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma de Bernoulli = arbre",
+              "options": [
+                "Répété même structure",
+                "Une branche",
+                "Sans conditionnel",
+                "Continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essais identiques."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tableaux double entrée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau effectifs / probas conjointes :",
+              "options": [
+                "Ligne = une valeur de X",
+                "Somme totale = 1 (probas)",
+                "Diagonale = toujours indépendance",
+                "Marginales sur bords"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lecture jointe et marges."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P(X=a) marginal =",
+              "options": [
+                "Somme sur Y de P(X=a,Y=y)",
+                "P(X=a,Y=a)",
+                "Produit",
+                "Max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme sur l'autre variable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Indépendance tableau : chaque cellule =",
+              "options": ["Produit marginales", "Somme marginales", "0", "1/n"],
+              "correctAnswers": [0],
+              "explanation": "P(X,Y)=P(X)P(Y)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(A|B) depuis tableau : cellule (A,B) /",
+              "options": ["P(B) marginal", "P(A)", "1", "Total"],
+              "correctAnswers": [0],
+              "explanation": "Conditionnel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectif 100, f(A∩B)=20 : P(A∩B) si équiprobable individus",
+              "options": ["0,2", "20", "0,02", "1"],
+              "correctAnswers": [0],
+              "explanation": "20/100."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ligne constante proportionnelle ⟹",
+              "options": [
+                "X indép. de Y ?",
+                "Toujours dépendance",
+                "Variance 0",
+                "Bayes faux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester P(Y|X) constant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fréquence conditionnelle f(A|B) =",
+              "options": ["f(A∩B)/f(B)", "f(A)+f(B)", "f(A)f(B)", "1"],
+              "correctAnswers": [0],
+              "explanation": "Analogue empirique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Compléter tableau : dernière cellule par",
+              "options": ["1 - autres (probas)", "0", "Max", "Produit"],
+              "correctAnswers": [0],
+              "explanation": "Total 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux caractères sur population : tableau aide",
+              "options": [
+                "Liens et conditionnels",
+                "Dérivées",
+                "Limites",
+                "Intégrales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statistique bivariée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellule nulle signifie",
+              "options": [
+                "Événement impossible",
+                "Indépendance",
+                "P=1",
+                "Erreur toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proba conjointe nulle."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Applications Bayes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Test rare maladie (1%), sensibilité 99%, spécificité 95% :",
+              "options": [
+                "P(M|M+) n'est pas ≈ 99%",
+                "P(M'|M-) élevée",
+                "P(M+) peut être faible",
+                "P(M)=0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Faux positifs pèsent si maladie rare."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "P(M+) = P(M+)P(M)+P(M+|M')P(M') est",
+              "options": ["Totale", "Bayes", "Bernoulli", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Sur M et M'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après test positif, probabilité maladie",
+              "options": [
+                "Augmente vs prior",
+                "Diminue toujours",
+                "Reste 1%",
+                "Vaut sensibilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise à jour."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Spécificité = P(M'|",
+              "options": ["M')", "M)", "M+)", "Ω)"],
+              "correctAnswers": [0],
+              "explanation": "Vrai négatif si sain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sensibilité = P(M+|",
+              "options": ["M)", "M')", "M+)", "M-)"],
+              "correctAnswers": [0],
+              "explanation": "Vrai positif si malade."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3 urnes, choix au hasard, Bayes pour urne saché tirage R :",
+              "options": ["P(U_i|R)", "P(R) seul", "P(U_i) seul", "E(X)"],
+              "correctAnswers": [0],
+              "explanation": "Cause urne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P(M|M+) < P(M+|M) quand",
+              "options": [
+                "Maladie rare souvent",
+                "Toujours",
+                "Jamais",
+                "P(M)=1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base rate fallacy."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Données : calculer P(A) d'abord par",
+              "options": ["Totales", "Dérivation", "Poisson", "Géométrie"],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur Bayes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux tests indépendants conditionnellement à M : modèle",
+              "options": [
+                "Produit vraisemblances",
+                "Somme sans pondération",
+                "Bernoulli seul",
+                "Uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance conditionnelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interpréter P(B|A) :",
+              "options": [
+                "Cause probable sachant effet",
+                "Effet sachant cause",
+                "Prior",
+                "Variance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture Bayes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Corrélation et indépendance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indépendance et corrélation :",
+              "options": [
+                "Indép. ⟹ corrélation nulle (linéaire)",
+                "Corrélation nulle ⟹ indépendance toujours",
+                "Indép. ⟹ Cov=0",
+                "Cov≠0 ⟹ dépendance"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Indépendance implique Cov=0, pas réciproque."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "X,Y indép. : coefficient corrélation ρ =",
+              "options": ["0", "1", "-1", "Indéfini"],
+              "correctAnswers": [0],
+              "explanation": "Pas de liaison linéaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Y=X², X centré symétrique : Cov(X,Y) peut être",
+              "options": [
+                "0 avec X,Y dépendants",
+                "Toujours >0",
+                "Indépendance",
+                "1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non-linéaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cov(X,Y)=E(XY)-",
+              "options": ["E(X)E(Y)", "E(X)+E(Y)", "V(X)", "0"],
+              "correctAnswers": [0],
+              "explanation": "Définition covariance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ρ=1 signifie",
+              "options": [
+                "Relation affine croissante (cas idéal)",
+                "Indépendance",
+                "Disjoint",
+                "ρ impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corrélation linéaire parfaite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Indépendance ⟹ P(A|B)=P(A) si",
+              "options": ["P(B)>0", "P(B)=0", "A=B", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Définition équivalente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Échantillon : indépendance supposée pour",
+              "options": [
+                "Inférence sur moyennes",
+                "Dérivées",
+                "Limites",
+                "Angles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèse statistique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "V(X+Y)=V(X)+V(Y)+2Cov : si indép. devient",
+              "options": ["V(X)+V(Y)", "V(X)-V(Y)", "0", "2V(X)"],
+              "correctAnswers": [0],
+              "explanation": "Cov=0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Confondre « pas de corrélation » et « indépendants » :",
+              "options": [
+                "Piège Terminale",
+                "Toujours équivalent",
+                "Sans conséquence",
+                "Loi binomiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cas Y=g(X) non linéaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif indépendance :",
+              "options": [
+                "Simplifier P(A∩B) et lois jointes",
+                "Calculer dérivées",
+                "Intégrer",
+                "Tracer tangentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Factorisation des probas."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse indépendance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Outils du chapitre :",
+              "options": [
+                "Conditionnelle P(A|B)",
+                "Totales et Bayes",
+                "Indépendance P(A∩B)=P(A)P(B)",
+                "Dérivée f''"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Panorama probabilités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre calcul classique Bayes :",
+              "options": [
+                "Totales pour P(A) puis Bayes",
+                "Bayes avant totales",
+                "Poisson d'abord",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A,B indép. ⟺ P(B|A)=",
+              "options": ["P(B)", "P(A)", "P(A|B)", "0"],
+              "correctAnswers": [0],
+              "explanation": "Conditionnel = marginal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(A∩B∩C) si indépendance mutuelle =",
+              "options": ["P(A)P(B)P(C)", "P(A)+P(B)+P(C)", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Produit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Schéma binomial : essais",
+              "options": [
+                "Indépendants, p constant",
+                "Dépendants",
+                "p change",
+                "Sans répétition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèses Bernoulli."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P(A|B) et P(B|A) liés par",
+              "options": [
+                "P(A∩B)=P(A|B)P(B)",
+                "Indépendance seule",
+                "V(X)",
+                "λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule composée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Partition + totales permet",
+              "options": [
+                "P(A) sans connaître chemin",
+                "E(X) toujours",
+                "Dériver",
+                "Intégrer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenne sur causes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur : multiplier P(A|B) et P(A|B') pour P(A)",
+              "options": ["Faux, il faut pondérer", "Vrai", "Bayes", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Totales = somme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indépendance VA ⟹ loi conjointe",
+              "options": [
+                "Produit des marginales",
+                "Somme",
+                "Max",
+                "Uniforme seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Factorisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Probabilités Terminale : enchaînement type",
+              "options": [
+                "Modéliser, conditionner, Bayes si besoin",
+                "Dériver",
+                "Convexité",
+                "Limites seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode problème."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

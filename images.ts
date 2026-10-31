@@ -1255,8 +1255,6 @@ export function registerImageRoutes(app: Hono) {
 
   app.get("/v1/models/images", handleGetImageModels);
   app.get("/models/images", handleGetImageModels);
-  app.get("/v1/models/image", handleGetImageModels);
-  app.get("/models/image", handleGetImageModels);
   app.get("/v1/images/models", handleGetImageModels);
   app.get("/images/models", handleGetImageModels);
 
@@ -1295,8 +1293,6 @@ export function registerImageRoutes(app: Hono) {
 
   app.get("/v1/models/images/:id", handleGetSingleImageModel);
   app.get("/models/images/:id", handleGetSingleImageModel);
-  app.get("/v1/models/image/:id", handleGetSingleImageModel);
-  app.get("/models/image/:id", handleGetSingleImageModel);
 
   // ─────────────────────────────────────────────
   // GET /v1/images/usage & /images/usage
@@ -2419,8 +2415,6 @@ export function registerImageRoutes(app: Hono) {
 
   app.get("/v1/images/tasks/:id", handleFetchImageTask);
   app.get("/images/tasks/:id", handleFetchImageTask);
-  app.get("/v1/tasks/:id", handleFetchImageTask);
-  app.get("/tasks/:id", handleFetchImageTask);
 
   // Routes OpenAI & Anthropic SDK
   app.post("/v1/images/generations", handleImageGeneration);

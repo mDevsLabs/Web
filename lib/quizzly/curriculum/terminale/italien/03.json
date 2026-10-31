@@ -1,0 +1,2588 @@
+{
+  "id": "terminale-italien-03",
+  "year": "terminale",
+  "subject": "italien",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Annonces et affiches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Divieto di fumare », quelles informations sont explicites ?",
+              "options": [
+                "Interdiction de fumer",
+                "Obligation de porter un masque",
+                "Dimension sanitaire ou préventive",
+                "Horaires d'ouverture"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'affiche interdit de fumer ; elle relève de la réglementation pour la santé publique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « Ingresso libero » ?",
+              "options": [
+                "Entrée payante",
+                "Entrée gratuite",
+                "Entrée réservée",
+                "Entrée interdite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Libero » indique un accès sans paiement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Aperto tutti i giorni dalle 9 alle 19 » précise surtout :",
+              "options": ["Le prix", "Les horaires", "Le public", "La durée"],
+              "correctAnswers": [1],
+              "explanation": "« Aperto » et « dalle… alle… » indiquent jours et heures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « intero / ridotto », « ridotto » est :",
+              "options": [
+                "Plein tarif",
+                "Tarif réduit",
+                "Billet groupé",
+                "Gratuité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ridotto » s'oppose à « intero »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Prenotazione obbligatoria » exige :",
+              "options": [
+                "Payer sur place",
+                "Réserver",
+                "Venir en groupe",
+                "Un passeport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La réservation est obligatoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Vietato l'accesso ai cani » concerne :",
+              "options": ["Enfants", "Chiens", "Vélos", "Sacs"],
+              "correctAnswers": [1],
+              "explanation": "« Cani » = chiens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Uscita di emergenza » :",
+              "options": ["Entrée", "Sortie de secours", "Consigne", "Accueil"],
+              "correctAnswers": [1],
+              "explanation": "Sortie prévue en cas d'urgence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Spettacolo annullato per maltempo » :",
+              "options": [
+                "Reporté",
+                "Annulé pour intempéries",
+                "Complet",
+                "Gratuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Annullato » + « maltempo »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Posti limitati » :",
+              "options": [
+                "Places limitées",
+                "Prix élevés",
+                "Durée courte",
+                "Langue étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre de places restreint."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Numero verde » renvoie souvent à :",
+              "options": [
+                "Ligne payante",
+                "Ligne d'info gratuite",
+                "E-mail",
+                "Code QR"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Numéro d'appel gratuit pour renseignements."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Petites annonces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Affittasi monolocale arredato, spese incluse » : quoi est certain ?",
+              "options": [
+                "Location meublée",
+                "Vente",
+                "Charges comprises",
+                "Hôtel"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Affittasi » = location ; « arredato » = meublé ; « spese incluse » = charges comprises."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cercasi cameriera con esperienza » :",
+              "options": [
+                "Offre d'emploi",
+                "Annonce immobilière",
+                "Recette",
+                "Horoscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cercasi » + métier = recrutement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Vendesi bicicletta usata » :",
+              "options": ["Location", "Vente d'occasion", "Vol", "Réparation"],
+              "correctAnswers": [1],
+              "explanation": "« Vendesi » + « usata »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Subito disponibile » :",
+              "options": ["Plus tard", "Tout de suite", "Jamais", "Sur RDV"],
+              "correctAnswers": [1],
+              "explanation": "« Subito » = immédiatement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Trattabile » (prix) :",
+              "options": ["Fixe", "Négociable", "Illégal", "Secret"],
+              "correctAnswers": [1],
+              "explanation": "Le prix se discute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Si richiede referenze » :",
+              "options": [
+                "Photos",
+                "Recommandations",
+                "Diplôme seul",
+                "Passeport seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Referenze » = références."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Non fumatori » exclut :",
+              "options": ["Fumeurs", "Animaux", "Enfants", "Étudiants"],
+              "correctAnswers": [0],
+              "explanation": "On demande des non-fumeurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tel. » :",
+              "options": ["Télévision", "Téléphone", "Télégramme", "Fax seul"],
+              "correctAnswers": [1],
+              "explanation": "Contact téléphonique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mansarda con terrazzo » :",
+              "options": [
+                "Garage",
+                "Sous-sol",
+                "Combles avec terrasse",
+                "Cave"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Mansarda » + « terrazzo »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Solo per studenti » :",
+              "options": ["Retraités", "Étudiants", "Familles", "Touristes"],
+              "correctAnswers": [1],
+              "explanation": "Public limité aux étudiants."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Avis et consignes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Si prega di non toccare le opere » : quelles règles ?",
+              "options": [
+                "Ne pas toucher les œuvres",
+                "Photographier sans flash",
+                "Respect du patrimoine exposé",
+                "Parler fort"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Consigne de non-contact pour protéger les œuvres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Vietato scattare foto » :",
+              "options": [
+                "Photos interdites",
+                "Photos obligatoires",
+                "Flash seul",
+                "Vidéo autorisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interdiction de prendre des photos."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Silenzio » en salle de concert :",
+              "options": ["Applaudir", "Se taire", "Chanter", "Sortir"],
+              "correctAnswers": [1],
+              "explanation": "Demande de silence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Deposito bagagli » :",
+              "options": [
+                "Vente bagages",
+                "Consigne",
+                "Perdu trouvé",
+                "Douane"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Service de consigne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Attenzione: pavimento bagnato » :",
+              "options": ["Sol glissant", "Travaux", "Grève", "Fermeture"],
+              "correctAnswers": [0],
+              "explanation": "Sol mouillé : prudence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Presentarsi allo sportello con documento » :",
+              "options": [
+                "Sans pièce",
+                "Avec pièce d'identité",
+                "Avec ticket seul",
+                "Par e-mail"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Document d'identité requis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Orario estivo » :",
+              "options": [
+                "Horaires d'été",
+                "Horaires d'hiver",
+                "Fermeture",
+                "Grève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plage horaire saison estivale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Chiuso per ferie » :",
+              "options": [
+                "Ouvert",
+                "Fermé pour vacances",
+                "Grève",
+                "Rénovation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fermeture pour congés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Max 2 persone » :",
+              "options": [
+                "Deux personnes max",
+                "Deux heures",
+                "Deux étages",
+                "Deux billets min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite de personnes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« In caso di emergenza seguire le indicazioni » :",
+              "options": [
+                "Ignorer",
+                "Suivre les consignes",
+                "Courir n'importe où",
+                "Appeler un ami"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Procédure de sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Transports et horaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Il treno delle 18:05 è in ritardo di 20 minuti » : quoi est sûr ?",
+              "options": [
+                "Retard de 20 minutes",
+                "Train supprimé",
+                "Départ prévu 18h05",
+                "Grève générale"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Train de 18h05 avec retard annoncé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Binario 3 » :",
+              "options": ["Quai 3", "Bus 3", "Métro 3", "Taxi 3"],
+              "correctAnswers": [0],
+              "explanation": "Voie ou quai en gare."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Biglietto non valido » :",
+              "options": [
+                "Billet valide",
+                "Billet invalide",
+                "Gratuit",
+                "Réduit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le billet n'est pas accepté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Corrispondenza per Roma » :",
+              "options": [
+                "Correspondance pour Rome",
+                "Terminus Rome",
+                "Rome fermée",
+                "Bus seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liaison à Rome."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Validità 90 minuti » :",
+              "options": ["90 min de validité", "90 km", "90 €", "90 jours"],
+              "correctAnswers": [0],
+              "explanation": "Durée d'utilisation du titre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Fermata successiva: Duomo » :",
+              "options": [
+                "Arrêt précédent",
+                "Prochain arrêt Duomo",
+                "Fin de ligne",
+                "Grève"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prochaine station annoncée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Servizio sospeso » :",
+              "options": [
+                "Service suspendu",
+                "Service renforcé",
+                "Gratuit",
+                "Nocturne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interruption du service."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Posti in piedi » :",
+              "options": [
+                "Places assises",
+                "Places debout",
+                "Réservées",
+                "VIP"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Voyage debout."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Biglietteria automatica » :",
+              "options": [
+                "Guichet humain",
+                "Distributeur",
+                "Contrôleur",
+                "Chef de gare"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Achat automatisé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ultimo treno » :",
+              "options": [
+                "Premier train",
+                "Dernier train",
+                "Train rapide",
+                "Train annulé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dernier départ de la journée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Courrier administratif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Gentile signora, Le comunichiamo l'esito positivo della domanda » :",
+              "options": [
+                "Réponse favorable",
+                "Refus",
+                "Formule de politesse",
+                "Demande de paiement immédiat"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Esito positivo » = acceptation ; « Gentile » = formule courtoise."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Allegato: modulo da compilare » :",
+              "options": [
+                "Pièce jointe à remplir",
+                "Facture payée",
+                "Photo",
+                "Carte d'identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulaire joint."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Termine ultimo: 15/03 » :",
+              "options": [
+                "Date limite",
+                "Date de naissance",
+                "Fête",
+                "Ouverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échéance impérative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Distinti saluti » en clôture :",
+              "options": [
+                "Insulte",
+                "Formule de politesse",
+                "Question",
+                "Ordre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salutations distinguées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« In riferimento alla Sua lettera del… » :",
+              "options": [
+                "Sans lien",
+                "En référence à votre courrier",
+                "Spam",
+                "Publicité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Renvoi à un message antérieur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Si prega di inviare la documentazione » :",
+              "options": [
+                "Jeter les papiers",
+                "Envoyer les documents",
+                "Brûler le dossier",
+                "Ne rien faire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Demande d'envoi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Esito negativo » :",
+              "options": ["Accepté", "Refusé", "En attente", "Gratuit"],
+              "correctAnswers": [1],
+              "explanation": "Résultat défavorable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ufficio relazioni con il pubblico » :",
+              "options": [
+                "Cuisine",
+                "Accueil du public",
+                "Entrepôt",
+                "Salle sport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Service d'information citoyenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Codice pratica » :",
+              "options": [
+                "Numéro de dossier",
+                "Code postal",
+                "Mot de passe Wi-Fi",
+                "Plat du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant administratif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Si ricorda che » :",
+              "options": ["On oublie", "On rappelle que", "On nie", "On part"],
+              "correctAnswers": [1],
+              "explanation": "Rappel d'une obligation ou info."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Presse brève",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Titre : « Alluvione in Emilia: centinaia di sfollati »",
+              "options": [
+                "Évacuations massives",
+                "Sécheresse",
+                "Catastrophe hydrique",
+                "Victoire sportive"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Alluvione » = inondation ; « sfollati » = personnes évacuées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il governo approva la manovra finanziaria » :",
+              "options": [
+                "Loi de finances",
+                "Match de foot",
+                "Recette",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Manovra finanziaria » = budget."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Sciopero dei trasporti » :",
+              "options": [
+                "Grève transports",
+                "Promo billets",
+                "Nouvelle ligne",
+                "Fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sciopero » = grève."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Record di caldo » :",
+              "options": ["Froid record", "Chaleur record", "Pluie", "Neige"],
+              "correctAnswers": [1],
+              "explanation": "« Caldo » = chaleur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vittoria ai rigori » (sport) :",
+              "options": [
+                "Défaite",
+                "Victoire aux tirs au but",
+                "Match nul",
+                "Annulation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Rigori » = penalties."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Inchiesta su corruzione » :",
+              "options": ["Enquête corruption", "Concert", "Mode", "Cuisine"],
+              "correctAnswers": [0],
+              "explanation": "« Corruzione » = corruption."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Turismo in crescita » :",
+              "options": [
+                "Baisse tourisme",
+                "Hausse tourisme",
+                "Grève hôtelière",
+                "Fermeture frontières"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« In crescita » = en hausse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Restauro del duomo » :",
+              "options": [
+                "Destruction",
+                "Restauration de la cathédrale",
+                "Vente",
+                "Déménagement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Travaux de conservation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bilancio positivo per l'export » :",
+              "options": [
+                "Export en baisse",
+                "Export favorable",
+                "Import nul",
+                "Grève douanière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Bilancio positivo » = résultat favorable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Nuove misure anti-Covid » :",
+              "options": [
+                "Mesures sanitaires",
+                "Recette médicale",
+                "Film",
+                "Sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispositions de santé publique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Menus et commerce",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Menu del giorno: primo, secondo, acqua, caffè — 15 € »",
+              "options": [
+                "Formule du jour à 15 €",
+                "Un seul plat",
+                "Boissons alcool incluses",
+                "Entrée + plat + eau + café"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Menu complet du jour au prix indiqué."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Coperto 2 € » :",
+              "options": [
+                "Pourboire",
+                "Couvert (service table)",
+                "Parking",
+                "Ticket"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Frais de couvert en restaurant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Senza glutine » :",
+              "options": ["Avec gluten", "Sans gluten", "Épicé", "Végétarien"],
+              "correctAnswers": [1],
+              "explanation": "Adapté intolérance gluten."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Chiuso il lunedì » :",
+              "options": [
+                "Ouvert lundi",
+                "Fermé lundi",
+                "Ouvert dimanche",
+                "24h/24"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Jour de fermeture hebdomadaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Saldi fino al 50% » :",
+              "options": [
+                "Soldes jusqu'à -50%",
+                "Prix doublés",
+                "Fermeture",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Saldi » = soldes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Prodotto tipico locale » :",
+              "options": ["Import", "Spécialité locale", "Périmé", "Interdit"],
+              "correctAnswers": [1],
+              "explanation": "Produit caractéristique du territoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Asporto » :",
+              "options": [
+                "Sur place",
+                "À emporter",
+                "Livraison gratuite",
+                "Réservation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plats à emporter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Carta dei vini » :",
+              "options": [
+                "Carte des vins",
+                "Carte bancaire",
+                "Menu enfants",
+                "Plan de ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste des vins."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Pagamento con carta accettato » :",
+              "options": [
+                "Espèces seules",
+                "CB acceptée",
+                "Chèque refusé toujours",
+                "Gratuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Paiement par carte possible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Su prenotazione » (restaurant) :",
+              "options": [
+                "Sans réservation",
+                "Sur réservation",
+                "Buffet libre",
+                "Fast-food"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Table à réserver."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "École et formation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Open day università: visite guidate e presentazione corsi »",
+              "options": [
+                "Journée portes ouvertes",
+                "Examens finaux",
+                "Visites et présentation des filières",
+                "Grève étudiante"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Événement de découverte de l'université."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Iscrizioni entro il 30 settembre » :",
+              "options": [
+                "Inscriptions avant le 30 sept.",
+                "Vacances",
+                "Rentrée des classes uniquement",
+                "Diplôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date limite d'inscription."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tassa di iscrizione » :",
+              "options": ["Frais d'inscription", "Amende", "Bourse", "Loyer"],
+              "correctAnswers": [0],
+              "explanation": "Montant pour s'inscrire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Esame di maturità » :",
+              "options": [
+                "Examen du bac",
+                "Permis de conduire",
+                "Concours médical seul",
+                "Test de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Examen de fin de lycée en Italie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Corso di laurea triennale » :",
+              "options": ["Licence (3 ans)", "Doctorat", "CAP", "Primaire"],
+              "correctAnswers": [0],
+              "explanation": "Premier cycle universitaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Lezione annullata » :",
+              "options": [
+                "Cours annulé",
+                "Cours obligatoire",
+                "Examen",
+                "Fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Annullata » = annulée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Aula magna » :",
+              "options": [
+                "Petite salle",
+                "Grande amphithéâtre",
+                "Cantine",
+                "Parking"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salle principale de cérémonies."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tesi di laurea » :",
+              "options": [
+                "Mémoire de fin d'études",
+                "Ticket de métro",
+                "Carte étudiante",
+                "Emploi du temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail de synthèse universitaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Borsa di studio » :",
+              "options": [
+                "Sac à dos",
+                "Bourse d'études",
+                "Amende",
+                "Stage payé obligé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aide financière aux études."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Frequenza obbligatoria » :",
+              "options": [
+                "Présence obligatoire",
+                "Absence libre",
+                "Cours en ligne seul",
+                "Vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assiduité requise."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Santé et services",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Pronto soccorso: attesa media 45 minuti »",
+              "options": [
+                "Urgences hospitalières",
+                "Pharmacie",
+                "Temps d'attente annoncé",
+                "Consultation gratuite systématique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Service d'urgence avec délai moyen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Farmacia di turno » :",
+              "options": [
+                "Pharmacie de garde",
+                "Pharmacie fermée",
+                "Hôpital",
+                "Laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pharmacie ouverte en rotation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ticket sanitario » :",
+              "options": [
+                "Participation aux frais SSN",
+                "Billet de train",
+                "Carte d'embarquement",
+                "Menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quote-part patient italienne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Medico di base » :",
+              "options": [
+                "Chirurgien",
+                "Médecin généraliste",
+                "Dentiste seul",
+                "Vétérinaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Médecin traitant de secteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ricetta elettronica » :",
+              "options": [
+                "Ordonnance dématérialisée",
+                "Facture restaurant",
+                "Carte d'identité",
+                "CV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prescription informatisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Visita specialistica » :",
+              "options": [
+                "Consultation spécialisée",
+                "Visite touristique",
+                "Contrôle bus",
+                "Examen scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendez-vous chez un spécialiste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Numero 118 » (Italie) :",
+              "options": [
+                "Pompiers/urgence médicale",
+                "Police seule",
+                "Météo",
+                "Renseignements tourisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numéro d'urgence sanitaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Esame del sangue a digiuno » :",
+              "options": [
+                "À jeun",
+                "Après festin",
+                "En marchant",
+                "La nuit interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« A digiuno » = sans avoir mangé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ambulatorio » :",
+              "options": ["Service de consultation", "Stade", "Musée", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "Cabinet ou clinique ambulatoire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tessera sanitaria » :",
+              "options": [
+                "Carte vitale italienne",
+                "Carte bibliothèque",
+                "Abonnement métro",
+                "Passeport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carte d'assurance maladie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse documentaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lire « Divieto » et « Obbligatorio » dans le même règlement :",
+              "options": [
+                "Interdiction et obligation coexistent",
+                "Texte purement narratif",
+                "Vocabulaire prescriptif",
+                "Texte poétique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Termes normatifs typiques des consignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un horaire « dalle 8 alle 13 » dure :",
+              "options": ["5 heures", "8 heures", "13 minutes", "1 heure"],
+              "correctAnswers": [0],
+              "explanation": "De 8 h à 13 h = 5 h."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« €/mese » dans une annonce :",
+              "options": [
+                "Prix par mois",
+                "Prix par jour",
+                "Prix à l'heure",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mese » = mois."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cfr. allegato » renvoie :",
+              "options": [
+                "Voir pièce jointe",
+                "Ignorer le texte",
+                "Supprimer le dossier",
+                "Traduire en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Confronta » = comparer/voir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Salvo imprevisti » :",
+              "options": [
+                "Sauf imprévus",
+                "Sans exception",
+                "Définitivement",
+                "Illégalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clause de réserve."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Document avec logo PA et « URP » :",
+              "options": [
+                "Administration publique",
+                "Boutique mode",
+                "Club sportif privé",
+                "Film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institution officielle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« I » en chiffres romains sur un monument :",
+              "options": ["1", "5", "10", "100"],
+              "correctAnswers": [0],
+              "explanation": "I = un."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« NB: » en note :",
+              "options": [
+                "Nota bene",
+                "Non bis",
+                "Nulla bene",
+                "Nova biblioteca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention / remarquez."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inférer le ton de « La ringraziamo per la collaborazione » :",
+              "options": [
+                "Remerciement formel",
+                "Menace",
+                "Blague",
+                "Ordre brutal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse administrative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif principal de la lecture documentaire au bac :",
+              "options": [
+                "Comprendre infos explicites et implicites",
+                "Recopier sans comprendre",
+                "Ignorer le contexte",
+                "Traduire mot à mot seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compréhension fine du sens et du registre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Unité et identité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Italia unita (1861) associe :",
+              "options": [
+                "Processus d'unification politique",
+                "Chute de l'Empire romain en 476",
+                "Risorgimento",
+                "Création de l'UE"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "1861 : royaume d'Italie unifié après le Risorgimento."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Capitale actuelle de l'Italie :",
+              "options": ["Milan", "Rome", "Florence", "Turin"],
+              "correctAnswers": [1],
+              "explanation": "Roma est la capitale depuis 1871."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tricolore » désigne :",
+              "options": [
+                "Drapeau vert-blanc-rouge",
+                "Hymne seul",
+                "Monnaie",
+                "Carte régionale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Drapeau national italien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fête nationale : 2 giugno commémore :",
+              "options": [
+                "République (1946)",
+                "Unité (1861)",
+                "Libération (1945)",
+                "Traité de Rome (1957)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Referendum instituant la République."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hymne :",
+              "options": [
+                "Fratelli d'Italia",
+                "La Marseillaise",
+                "God Save the King",
+                "Ciao bella"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hymne officiel depuis 1946."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Langue officielle :",
+              "options": ["Italien", "Latin seul", "Français", "Allemand"],
+              "correctAnswers": [0],
+              "explanation": "L'italiano est langue de l'État."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Monnaie depuis 2002 :",
+              "options": ["Lire", "Euro", "Dollar", "Franc"],
+              "correctAnswers": [1],
+              "explanation": "Adoption de l'euro."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Forme d'État actuelle :",
+              "options": [
+                "Monarchie",
+                "République parlementaire",
+                "Dictature",
+                "Empire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "République depuis 1946."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cavour, Garibaldi, Mazzini relèvent du :",
+              "options": [
+                "Risorgimento",
+                "Futurisme",
+                "Baroque seul",
+                "Renaissance florentine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figures clés de l'unification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bel paese » évoque souvent :",
+              "options": [
+                "Fierté du paysage et patrimoine",
+                "Désert",
+                "Pôle Nord",
+                "Guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression affective pour l'Italie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Géographie humaine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le « Mezzogiorno » renvoie à :",
+              "options": [
+                "Sud de l'Italie péninsulaire",
+                "Alpes",
+                "Sud et enjeux économiques historiques",
+                "Sicile seule au sens strict"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sud italien avec écarts de développement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Triangolo industriale » associe :",
+              "options": [
+                "Milano-Torino-Genova",
+                "Rome-Naples",
+                "Venise seule",
+                "Palerme-Cagliari"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cœur industriel du Nord."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Îles majeures :",
+              "options": [
+                "Sicile et Sardaigne",
+                "Corse et Malte",
+                "Crète",
+                "Ibiza"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux grandes îles régions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Volcan emblématique près de Naples :",
+              "options": ["Vésuve", "Mont Blanc", "Kilauea", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Vésuve domine la baie de Naples."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Po :",
+              "options": ["Fleuve du Nord", "Montagne", "Désert", "Lac"],
+              "correctAnswers": [0],
+              "explanation": "Principal fleuve italien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "San Marino et Vatican :",
+              "options": [
+                "Micro-États enclavés",
+                "Régions françaises",
+                "Ports grecs",
+                "Départements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "États souverains sur le territoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rome, Florence, Venise illustrent :",
+              "options": [
+                "Patrimoine et villes d'art",
+                "Zones industrielles seules",
+                "Steppes",
+                "Pôles pétroliers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Villes musées et monuments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Séismes en Italie :",
+              "options": [
+                "Risque géologique fréquent",
+                "Impossible",
+                "Absents du Sud",
+                "Uniquement en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apennins et zones à risque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Frontière alpine avec la France :",
+              "options": [
+                "Mont Blanc / cols alpins",
+                "Pyrénées",
+                "Rhine seul",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alpes marquent la frontière nord-ouest."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vieillissement et faible natalité :",
+              "options": [
+                "Défis démographiques actuels",
+                "Inexistants",
+                "Typiques du XIXe seul",
+                "Uniquement au Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendances démographiques contemporaines."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Antiquité et héritage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rome antique a légué :",
+              "options": [
+                "Droit et urbanisme",
+                "Langue latine",
+                "Rien à l'Europe",
+                "Théâtre grec exclusivement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Empire et République : droit, latin, infrastructures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Senatus Populusque Romanus » (SPQR) :",
+              "options": [
+                "Sénat et peuple romain",
+                "Société secrète",
+                "Monnaie grecque",
+                "Temple égyptien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule emblématique de Rome."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Colisée servait surtout :",
+              "options": [
+                "Spectacles publics",
+                "Banque",
+                "Mairie moderne",
+                "Aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amphithéâtre flavien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pompéi :",
+              "options": [
+                "Ville ensevelie par le Vésuve",
+                "Capitale actuelle",
+                "Île grecque",
+                "Fort médiéval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archéologie exceptionnelle (79 ap. J.-C.)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Virgile, auteur de l'« Énéide » :",
+              "options": [
+                "Poète latin",
+                "Peintre baroque",
+                "Roi savoyard",
+                "Explorateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique de la littérature latine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Voie Appia :",
+              "options": ["Route romaine", "Rivière", "Palais", "Statue"],
+              "correctAnswers": [0],
+              "explanation": "Artère routière antique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chute Empire romain d'Occident (475/476) :",
+              "options": [
+                "Fin d'une ère politique",
+                "Début Risorgimento",
+                "Unité 1861",
+                "République 1946"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère chronologique majeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Panthéon (Rome) :",
+              "options": [
+                "Temple puis église, coupole",
+                "Stade moderne",
+                "Gare",
+                "Usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture romaine célèbre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Latin vulgaire a contribué à :",
+              "options": [
+                "Naissance des langues romanes",
+                "Le sanskrit",
+                "Le russe",
+                "Le japonais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dont l'italien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mosaïques de Ravenne :",
+              "options": [
+                "Art paléochrétien/byzantin",
+                "Street art",
+                "Pop art",
+                "Cubisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine UNESCO."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Renaissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Florence au Quattrocento :",
+              "options": [
+                "Berceau de la Renaissance",
+                "Capitale actuelle de l'Italie",
+                "Mécénat des Médicis",
+                "Centre du fascisme uniquement"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Florence : arts, humanisme et famille Médicis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Léonard de Vinci, repère :",
+              "options": [
+                "Artiste et savant",
+                "Empereur romain",
+                "Dictateur XXe",
+                "Chanteur pop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peintre, inventeur, humaniste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Michel-Ange : David, Chapelle Sixtine :",
+              "options": [
+                "Sculpture et fresques",
+                "Romans seuls",
+                "Opéra",
+                "Cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Génie de la Renaissance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Humanisme valorise :",
+              "options": [
+                "L'homme, les lettres antiques",
+                "Le rejet de l'Antiquité",
+                "La guerre seule",
+                "L'analphabétisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour aux sources classiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mécénat des Médicis à Florence :",
+              "options": [
+                "Soutien aux arts",
+                "Interdit de peindre",
+                "Exil des artistes",
+                "Destruction musées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille protectrice des créateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Uffizi » :",
+              "options": ["Musée florentin", "Stade", "Port", "Prison"],
+              "correctAnswers": [0],
+              "explanation": "Grande galerie d'art."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Perspective en peinture :",
+              "options": [
+                "Innovation Renaissance",
+                "Technique égyptienne seule",
+                "Abstraction XXe",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brunelleschi, Alberti…"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Machiavel, « Il Principe » :",
+              "options": [
+                "Traité politique",
+                "Poème épique",
+                "Cookbook",
+                "Opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion sur le pouvoir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Venise à la Renaissance :",
+              "options": [
+                "Commerce et art",
+                "Désert",
+                "Sans peinture",
+                "Capitale 1861"
+              ],
+              "correctAnswers": [0],
+              "explanation": "République marchande et grands peintres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raphaël :",
+              "options": [
+                "Peintre des Stanze vaticanes",
+                "Sculpteur baroque seul",
+                "Compositeur",
+                "Architecte gothique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Master de la Haute Renaissance."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "XXe siècle et société",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Libération italienne (1945) et République (1946) :",
+              "options": [
+                "Fin du régime fasciste",
+                "Unité du Risorgimento",
+                "Naissance de la République",
+                "Adhésion euro immédiate"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Après Mussolini : libération puis référendum monarchie/république."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mussolini et le fascisme :",
+              "options": [
+                "Régime autoritaire 1922-1943",
+                "Renaissance",
+                "République actuelle",
+                "Empire romain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dictature du Partito Nazionale Fascista."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Anni di piombo » évoque :",
+              "options": [
+                "Violence politique des années 1970",
+                "Renaissance",
+                "Guerre mondiale I seule",
+                "Tourisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terrorisme et tensions des années de plomb."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traité de Rome (1957) :",
+              "options": [
+                "Origine CEE/Europe",
+                "Unité italienne",
+                "Fin fascisme",
+                "Bac 2020"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondation européenne signée à Rome."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Dolce vita » (cinéma) renvoie à :",
+              "options": [
+                "Rome des années 60",
+                "Moyen Âge",
+                "Alpes",
+                "Antiquité seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fellini et modernité romaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neoréalisme italien :",
+              "options": [
+                "Cinéma d'après-guerre",
+                "Opéra baroque",
+                "Futurisme peinture seule",
+                "Comédie US"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rossellini, De Sica…"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Femmes et droit de vote (1946) :",
+              "options": [
+                "Suffrage lors du référendum",
+                "Jamais voté",
+                "1911",
+                "2000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier vote des femmes en 1946."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Immigration récente en Italie :",
+              "options": [
+                "Enjeu sociétal majeur",
+                "Inexistante",
+                "Uniquement XIXe",
+                "Interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité et débats contemporains."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Made in Italy » symbolise :",
+              "options": [
+                "Excellence artisanale et design",
+                "Agriculture seule",
+                "Guerre",
+                "Silence médiatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mode, gastronomie, industrie créative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Constitution italienne (1948) :",
+              "options": [
+                "Texte fondamental républicain",
+                "Loi scolaire seule",
+                "Traité NATO",
+                "Hymne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre juridique de la République."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Littérature et pensée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dante, « Divina Commedia » :",
+              "options": [
+                "Œuvre fondatrice en italien",
+                "Texte en langue toscane",
+                "Journal sportif",
+                "Manuel de cuisine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dante consacre l'italien littéraire ; la Comédie est écrite en florentin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Petrarque :",
+              "options": [
+                "Poète du Canzoniere",
+                "Sculpteur",
+                "General",
+                "Chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humaniste et lyrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Boccace, « Decameron » :",
+              "options": [
+                "Recueil de nouvelles",
+                "Épopée",
+                "Tragédie grecque",
+                "Opéra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récits de la peste florentine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Leopardi, XIXe :",
+              "options": [
+                "Poète pessimiste romantique",
+                "Peintre futuriste",
+                "Dictateur",
+                "Jockey"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Canti » et mélancolie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Manzoni, « I promessi sposi » :",
+              "options": [
+                "Roman historique national",
+                "Poème épique",
+                "Journal",
+                "Pièce grecque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique du roman italien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pirandello :",
+              "options": [
+                "Théâtre et relativité identitaire",
+                "Opéra seul",
+                "Peinture",
+                "Architecture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nobel 1934 ; « Six personnages… »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calvino, XXe :",
+              "options": [
+                "Auteur du Baron perché",
+                "Empereur romain",
+                "Chanteur",
+                "Pape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littérature contemporaine inventive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Umberto Eco, « Le Nom de la rose » :",
+              "options": [
+                "Roman médiéval et énigme",
+                "Cookbook",
+                "Hymne",
+                "BD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succès mondial ; sémiotique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Gramsci :",
+              "options": [
+                "Penseur marxiste des Quaderni",
+                "Peintre",
+                "Roi",
+                "Explorateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion sur hégémonie culturelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nobel de littérature italien :",
+              "options": [
+                "Plusieurs lauréats (Dario Fo, etc.)",
+                "Aucun jamais",
+                "Uniquement Dante vivant",
+                "Uniquement français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italie présente au palmarès Nobel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Arts et patrimoine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Patrimoine UNESCO en Italie :",
+              "options": [
+                "Nombreux sites classés",
+                "Aucun site",
+                "Diversité régionale du patrimoine",
+                "Uniquement plages"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'Italie compte de très nombreux sites répartis sur tout le territoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Opéra italien :",
+              "options": ["Verdi, Puccini", "Jazz US seul", "K-pop", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "La Scala, tradition lyrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Baroque romain (Bernini) :",
+              "options": [
+                "Sculpture et architecture dynamiques",
+                "Gothique",
+                "Art rupestre",
+                "Minimalisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Place Saint-Pierre, fontaines."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Futurisme (Marinetti) :",
+              "options": [
+                "Mouvement avant-gardiste XXe",
+                "Renaissance",
+                "Néoclassicisme seul",
+                "Romantisme anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse, modernité, manifeste 1909."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Venise Biennale :",
+              "options": [
+                "Exposition internationale d'art",
+                "Marché poisson",
+                "Match rugby",
+                "Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendez-vous artistique majeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cinéma : Palme/César — Italie :",
+              "options": [
+                "Mostra de Venise, Oscars italiens",
+                "Aucun festival",
+                "Hollywood seul",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mostra et David di Donatello."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design italien (Années 60) :",
+              "options": [
+                "Mobilier et industrie créative",
+                "Aucun design",
+                "Copie seule",
+                "Guerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alessi, Olivetti, Memphis…"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pompei et Herculanum :",
+              "options": [
+                "Sites archéologiques UNESCO",
+                "Stades",
+                "Usines",
+                "Ports actifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation exceptionnelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Basilique Saint-Marc (Venise) :",
+              "options": [
+                "Byzantin et mosaïques",
+                "Gothique pur",
+                "Sans art",
+                "Moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orient et Occident."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Restaurer le patrimoine en Italie :",
+              "options": [
+                "Enjeu économique et identitaire",
+                "Interdit",
+                "Sans intérêt",
+                "Unique privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tourisme et mémoire collective."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Gastronomie et territoires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Slow Food » né en Italie :",
+              "options": [
+                "Défense du bon manger local",
+                "Fast-food industriel",
+                "Mouvement né à Bra (Piémont)",
+                "Rejet de toute agriculture"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mouvement pour alimentation durable et identités locales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmigiano Reggiano :",
+              "options": ["Fromage DOP", "Poisson", "Pâtes sèches", "Vin"],
+              "correctAnswers": [0],
+              "explanation": "Produit protégé d'Emilie-Romagne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Neapolitan pizza (tradition) :",
+              "options": [
+                "Patrimoine UNESCO (art des pizzaioli)",
+                "Plat inventé en France",
+                "Sans tomate",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pizza napoletana reconnue culture immatérielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Risotto alla milanese :",
+              "options": [
+                "Spécialité lombarde au safran",
+                "Dessert sicilien",
+                "Soupe grecque",
+                "Fromage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Riz crémeux jaune typique de Milan."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chianti :",
+              "options": [
+                "Vin de Toscane",
+                "Fromage",
+                "Huile seule",
+                "Eau minérale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone viticole célèbre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prosciutto di Parma :",
+              "options": ["Jambon cru", "Pâtes", "Glace", "Café"],
+              "correctAnswers": [0],
+              "explanation": "Charcuterie emblématique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aperitivo italien :",
+              "options": [
+                "Rituel social avant le repas",
+                "Petit-déjeuner seul",
+                "Dîner de Noël",
+                "Jeûne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spritz, prosecco, amuse-bouches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "DOP / IGP :",
+              "options": [
+                "Labels de qualité européens",
+                "Marques de voiture",
+                "Partis politiques",
+                "Stades"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection des produits typiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Limoncello :",
+              "options": ["Liqueur de citron (Sud)", "Fromage", "Pâtes", "Thé"],
+              "correctAnswers": [0],
+              "explanation": "Spécialité côtière, surtout Campanie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repas italien type :",
+              "options": [
+                "Primo, secondo, contorno",
+                "Un seul plat toujours",
+                "Sans légumes jamais",
+                "Sans pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure classique du déjeuner/dîner."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Médias et citoyenneté",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Presse italienne (repères) :",
+              "options": [
+                "Corriere della Sera, Repubblica",
+                "Un seul journal d'État",
+                "Presse écrite encore influente",
+                "Aucun débat public"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Grands quotidiens nationaux et pluralisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "RAI :",
+              "options": [
+                "Service public audiovisuel",
+                "Club de foot",
+                "Banque",
+                "Université"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radiotelevisione italiana."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sanremo (Festival) :",
+              "options": [
+                "Concours de chanson",
+                "Opéra",
+                "Élection présidentielle",
+                "Marathon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rendez-vous musical médiatique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Codice fiscale :",
+              "options": [
+                "Numéro fiscal personnel",
+                "Code postal",
+                "Plaque voiture",
+                "Hymne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant administratif obligatoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Voter en Italie (18 ans) :",
+              "options": [
+                "Droit de vote actif",
+                "Interdit",
+                "50 ans minimum",
+                "Réservé hommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citoyenneté démocratique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parlement bicaméral :",
+              "options": [
+                "Chambre et Sénat",
+                "Une seule chambre",
+                "Monarchie",
+                "Conseil municipal seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Camera dei deputati et Senato."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Président de la République :",
+              "options": [
+                "Chef de l'État",
+                "Chef du gouvernement seul",
+                "Maire de Rome",
+                "Pape"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle d'arbitrage et représentation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Régions (autonomie) :",
+              "options": [
+                "Compétences partagées avec l'État",
+                "Inexistantes",
+                "Uniquement Rome",
+                "Étrangères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vallée d'Aoste, Sicile, etc. : statuts particuliers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fake news : « bufala » / désinfo :",
+              "options": [
+                "Enjeu des médias sociaux",
+                "Absent d'Italie",
+                "Loi du silence",
+                "Uniquement TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérification des sources en terminale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Jeunesse et engagement (Greta, Fridays) aussi en Italie :",
+              "options": [
+                "Mobilisation écologique",
+                "Interdit",
+                "Sans écho",
+                "Antique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats climat et citoyenneté."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse civilisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Relier Risorgimento, République et UE :",
+              "options": [
+                "Construction politique progressive",
+                "Même date unique",
+                "Étape européenne après-guerre",
+                "Uniquement art"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "1861, 1946, 1957 : étapes distinctes d'un ancrage national puis européen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bel Paese » et tourisme :",
+              "options": [
+                "Atouts culturels et paysagers",
+                "Désert total",
+                "Sans monuments",
+                "Fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image internationale de l'Italie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dialectes vs italien standard :",
+              "options": [
+                "Coexistence régionale",
+                "Un seul dialecte",
+                "Italien interdit",
+                "Latin parlé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toscane et médias unifient, dialectes vivants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mafia et antimafia (repère) :",
+              "options": [
+                "Enjeu de société et de droit",
+                "Légende seule",
+                "Absent du Sud",
+                "Thème scolaire interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat citoyen et œuvres (Saviano…)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Football et identité (calcio) :",
+              "options": [
+                "Passion nationale (Squadra Azzurra)",
+                "Sport inconnu",
+                "Interdit",
+                "US seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Euro, Mondial, rivalités de clubs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Église catholique et laïcité :",
+              "options": [
+                "Relations historiques avec l'État",
+                "État théocratique actuel",
+                "Religion absente",
+                "Islam officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lateran, débats bioéthique et société."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Innovation (Start-up, Milan) :",
+              "options": [
+                "Économie contemporaine diversifiée",
+                "Uniquement agriculture",
+                "Sans universités",
+                "Fermée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nord dynamique, recherche et design."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer document et repère culturel :",
+              "options": [
+                "Contextualiser date et auteur",
+                "Ignorer l'histoire",
+                "Traduire sans lire",
+                "Copier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence terminale : croiser texte et culture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Italophonie dans le monde :",
+              "options": [
+                "Communautés et enseignement L2",
+                "Inexistante",
+                "Latin seul",
+                "Un pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue de culture, immigration, Swiss Ticino."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « Culture et documents » :",
+              "options": [
+                "Comprendre l'Italie par textes et repères",
+                "Apprendre seulement des dates",
+                "Oublier la langue",
+                "Reciter sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture active et civilisation au programme de terminale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

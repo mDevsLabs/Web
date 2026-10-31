@@ -1,0 +1,2743 @@
+{
+  "id": "4e-svt-02",
+  "year": "4e",
+  "subject": "svt",
+  "title": "La tectonique des plaques",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Séismes et volcans",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un séisme ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un séisme est provoqué par :",
+              "options": [
+                "Une rupture brutale des roches en profondeur",
+                "Le déplacement soudain le long d'une faille",
+                "La pluie sur les pentes",
+                "Le vent dans les montagnes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un séisme résulte d'une rupture de roches et d'un déplacement le long d'une faille qui libère de l'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le point en surface où les secousses sont le plus fortes s'appelle :",
+              "options": [
+                "L'épicentre",
+                "Le foyer",
+                "La dorsale",
+                "Le cratère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épicentre est la projection à la surface du point de rupture en profondeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le foyer (ou hypocentre) d'un séisme se situe :",
+              "options": [
+                "En profondeur dans la croûte ou le manteau",
+                "Toujours au centre exact de la Terre",
+                "Uniquement dans l'océan",
+                "Dans la stratosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le foyer est le point de rupture situé sous la surface terrestre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les ondes sismiques se propagent :",
+              "options": [
+                "Dans les roches de la Terre",
+                "Uniquement dans l'air",
+                "Seulement dans l'eau en surface",
+                "Dans le vide interplanétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes sismiques sont des vibrations qui se transmettent à travers les roches."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un sismographe sert à :",
+              "options": [
+                "Enregistrer les mouvements du sol",
+                "Mesurer la température du magma",
+                "Prédire l'heure exacte du prochain séisme",
+                "Compter les volcans actifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sismographe enregistre les secousses du sol produites par un séisme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La magnitude d'un séisme mesure :",
+              "options": [
+                "L'énergie libérée à la source",
+                "Les dégâts observés sur les bâtiments",
+                "La durée du vent",
+                "La hauteur des vagues uniquement en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La magnitude quantifie l'énergie libérée lors de la rupture, indépendamment des dégâts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'échelle de Mercalli évalue surtout :",
+              "options": [
+                "Les effets et dégâts ressentis",
+                "La profondeur du foyer en kilomètres",
+                "La vitesse du vent",
+                "L'âge des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intensité de Mercalli décrit ce que ressentent les personnes et les dégâts observés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En France métropolitaine, la sismicité modérée concerne surtout :",
+              "options": [
+                "Les Alpes, le Jura et le Sud-Est",
+                "Uniquement la Bretagne",
+                "Seulement Paris",
+                "Toute la France de façon identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines régions comme les Alpes et le Sud-Est présentent une sismicité plus notable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après un grand séisme, des répliques peuvent survenir car :",
+              "options": [
+                "La croûte se réajuste encore le long de la faille",
+                "La Lune attire plus fortement la Terre",
+                "Les volcans créent toujours des séismes identiques",
+                "Les océans disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les répliques correspondent à des ajustements de contraintes après la rupture principale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour limiter les risques sismiques, on peut :",
+              "options": [
+                "Construire des bâtiments parasismiques",
+                "Empêcher totalement les séismes",
+                "Vider les océans",
+                "Arrêter le mouvement des plaques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut pas empêcher les séismes, mais on peut réduire les dégâts par des constructions adaptées."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Ondes sismiques P et S",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les ondes sismiques comprennent notamment :",
+              "options": [
+                "Les ondes P (compression)",
+                "Les ondes S (cisaillement)",
+                "Les ondes sonores de la foudre uniquement",
+                "Les rayons X du Soleil"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les ondes P et S sont les deux grandes familles d'ondes enregistrées lors d'un séisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les ondes P se propagent :",
+              "options": [
+                "Dans les solides, les liquides et les gaz",
+                "Uniquement dans le vide",
+                "Seulement dans l'air",
+                "Nulle part dans la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes P sont des ondes de compression qui traversent tous les états de la matière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les ondes S :",
+              "options": [
+                "Ne se propagent pas dans les liquides",
+                "Sont plus rapides que les ondes P partout",
+                "Ne existent pas dans la croûte",
+                "Ne sont jamais enregistrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liquides ne transmettent pas les ondes S, ce qui a aidé à modéliser l'intérieur de la Terre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les ondes P arrivent en général avant les ondes S car :",
+              "options": [
+                "Elles sont plus rapides",
+                "Elles sont plus lentes",
+                "Elles ne voyagent pas dans la croûte",
+                "Les sismographes les ignorent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence de temps d'arrivée entre P et S permet de localiser l'épicentre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réseau de sismomètres permet de :",
+              "options": [
+                "Localiser l'épicentre et estimer la magnitude",
+                "Mesurer la salinité des océans",
+                "Compter les poissons",
+                "Prévoir la météo à un an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs stations enregistrent les mêmes ondes pour trianguler la source."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les secousses les plus destructrices pour les bâtiments sont souvent :",
+              "options": [
+                "Les ondes de surface",
+                "Les rayons gamma",
+                "Les marées hautes",
+                "La rosée du matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes de surface arrivent après P et S et peuvent provoquer de forts dommages."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La profondeur du foyer influence :",
+              "options": [
+                "L'intensité ressentie en surface",
+                "La couleur du magma",
+                "Le nombre de planètes",
+                "La rotation de la Terre sur un an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un foyer très profond atténue souvent les secousses en surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un séisme sous-marin peut provoquer :",
+              "options": [
+                "Un tsunami",
+                "Une éclipse",
+                "Une aurore boréale",
+                "Un ouragan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déplacement du fond océanique peut déplacer une grande masse d'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'énergie d'un séisme se libère surtout sous forme de :",
+              "options": [
+                "Ondes sismiques et chaleur",
+                "Lumière visible uniquement",
+                "Neige",
+                "Oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rupture transforme l'énergie stockée en vibrations et en chaleur le long de la faille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les séismes les plus fréquents se produisent près de :",
+              "options": [
+                "Les zones de contact entre plaques",
+                "Le pôle Nord uniquement",
+                "Les déserts sans faille",
+                "Les lacs gelés seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les limites de plaques concentrent les contraintes et les ruptures."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Magnitude et échelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire un séisme, on utilise souvent :",
+              "options": [
+                "La magnitude (échelle de Richter ou moment)",
+                "L'intensité ressentie (Mercalli)",
+                "La couleur du ciel",
+                "Le nombre de nuages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Magnitude et intensité sont deux grandeurs complémentaires pour caractéiser un séisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une magnitude plus élevée signifie en général :",
+              "options": [
+                "Plus d'énergie libérée",
+                "Moins d'énergie libérée",
+                "Aucune énergie",
+                "Un séisme impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque unité de magnitude correspond à une forte augmentation de l'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux séismes de même magnitude peuvent causer des dégâts différents car :",
+              "options": [
+                "La profondeur, le sol et les bâtiments varient",
+                "La magnitude change avec les dégâts",
+                "Les séismes n'ont pas de magnitude",
+                "Seul le vent compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intensité ressentie et les dégâts dépendent aussi du contexte local."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le séisme de magnitude 9 au Japon en 2011 a montré que :",
+              "options": [
+                "De très grands séismes peuvent survenir aux limites de plaques",
+                "Les séismes n'existent pas au Japon",
+                "La magnitude ne dépasse jamais 5",
+                "Les tsunamis sont impossibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les subductions peuvent produire des séismes très énergétiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un séisme de faible magnitude peut être ressenti localement si :",
+              "options": [
+                "Il est peu profond et proche des habitations",
+                "Il est au centre de la Terre",
+                "Il dure une année",
+                "Il n'y a pas de roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un foyer peu profond et proche amplifie les secousses en surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'échelle de moment magnétique (Mw) est utilisée car :",
+              "options": [
+                "Elle convient mieux aux très grands séismes",
+                "Elle mesure la pluie",
+                "Elle remplace la gravité",
+                "Elle indique la couleur du magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mw est adaptée aux séismes les plus puissants, au-delà des limites de Richter."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En classe, on distingue magnitude et intensité car :",
+              "options": [
+                "La magnitude est liée à la source, l'intensité aux effets",
+                "Ce sont deux mots pour la même chose",
+                "L'intensité mesure la vitesse des ondes P",
+                "La magnitude mesure les dégâts uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magnitude = énergie à la source ; intensité = ce qui est ressenti et détruit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un séisme peut être enregistré à des milliers de kilomètres car :",
+              "options": [
+                "Les ondes sismiques parcourent la planète",
+                "Les ondes ne quittent jamais la ville",
+                "Seuls les volcans transmettent les secousses",
+                "La Terre est creuse et vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les réseaux mondiaux détectent les grands séismes partout sur Terre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prévoir la date exacte d'un séisme est aujourd'hui :",
+              "options": [
+                "Impossible de façon fiable",
+                "Routine et exacte à la minute",
+                "Facile avec un thermomètre",
+                "Réservé aux marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cartographie les risques et surveille, mais on ne prédit pas le moment précis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La carte de sismicité mondiale montre que :",
+              "options": [
+                "Les séismes suivent surtout les zones de plaques",
+                "Les séismes sont uniformes partout",
+                "Il n'y a jamais de séismes en mer",
+                "Les séismes n'existent qu'en montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ceintures sismiques coïncident avec les limites lithosphériques."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Risques et prévention sismique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Face au risque sismique, on peut :",
+              "options": [
+                "Établir des normes parasismiques",
+                "Former la population aux gestes de protection",
+                "Supprimer toutes les failles",
+                "Arrêter la rotation terrestre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prévention et comportement adapté réduisent les victimes et les dégâts."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pendant un séisme, en intérieur, il est recommandé de :",
+              "options": [
+                "Se protéger sous une table solide",
+                "Courir dans les escaliers",
+                "S'approcher des vitres",
+                "Utiliser l'ascenseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Se mettre à l'abri limite le risque de chute d'objets ou d'effondrement local."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un plan de prévention des risques (PPR) sert à :",
+              "options": [
+                "Identifier les zones à risque et réglementer l'urbanisme",
+                "Empêcher les pluies",
+                "Créer des volcans",
+                "Mesurer la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PPR guide l'aménagement pour limiter l'exposition aux aléas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les liquéfactions du sol lors d'un séisme surviennent quand :",
+              "options": [
+                "Des sables saturés d'eau perdent leur cohésion",
+                "La roche devient toujours métal",
+                "Il neige",
+                "Le magma refroidit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vibrations peuvent fluidifier certains sols saturés, affaiblissant les fondations."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un bâtiment parasismique est conçu pour :",
+              "options": [
+                "Absorber ou dissiper l'énergie des secousses",
+                "Être plus lourd sans fondations",
+                "Ne jamais bouger du tout",
+                "Flotter dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structures flexibles, joints et fondations adaptées limitent l'effondrement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les séismes industriels peuvent être liés à :",
+              "options": [
+                "La réinjection de fluides en profondeur",
+                "La respiration des plantes",
+                "Les marées lunaires seules",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines activités humaines modifient les contraintes dans la croûte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après un séisme, couper le gaz et l'électricité si possible permet de :",
+              "options": [
+                "Limiter incendies et explosions",
+                "Augmenter les répliques",
+                "Créer un tsunami",
+                "Mesurer la magnitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fuites après secousses sont une source majeure de danger secondaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La surveillance sismique continue vise surtout à :",
+              "options": [
+                "Détecter et analyser rapidement les séismes",
+                "Prédire l'heure à la seconde",
+                "Stopper les plaques",
+                "Vider les magmas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alerte, cartographie et recherche reposent sur des données en temps réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un séisme en zone peu habituée peut surprendre car :",
+              "options": [
+                "Les populations ne sont pas toujours préparées",
+                "Les séismes n'y produisent jamais d'ondes",
+                "La magnitude y est toujours nulle",
+                "Les failles n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préparation et les normes varient selon l'histoire sismique locale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les cartes de zonage sismique indiquent :",
+              "options": [
+                "Des niveaux de aléa attendus par région",
+                "La couleur des volcans",
+                "Le nombre d'étoiles visibles",
+                "La vitesse des ondes S uniquement en labo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles aident à dimensionner les constructions selon le risque."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Volcanisme : notions de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un volcan est lié à :",
+              "options": [
+                "La remontée de magma",
+                "Des ouvertures vers la surface terrestre",
+                "Uniquement à la pluie froide",
+                "Exclusivement aux astéroïdes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le magma monte et peut sortir par chimneys et cratères."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le magma est :",
+              "options": [
+                "Un mélange de roche fondue, gaz et cristaux",
+                "De l'eau pure",
+                "Uniquement du charbon solide",
+                "De l'air froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant éruption, le magma stocke gaz qui influencent l'explosivité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La lave est :",
+              "options": [
+                "Du magma arrivé à la surface",
+                "Toujours de la glace",
+                "Un nuage de poussière stellaire",
+                "De l'eau salée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On appelle lave le magma extrudé qui coule ou est projeté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La majorité des volcans actifs se situe :",
+              "options": [
+                "Le long des limites de plaques",
+                "Uniquement au pôle Sud",
+                "Seulement en plein centre des continents sans faille",
+                "Dans la stratosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ceinture de feu du Pacifique et dorsales concentrent le volcanisme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un volcan peut être endormi puis se réveiller car :",
+              "options": [
+                "Le flux de magma et les contraintes évoluent",
+                "Il change de planète",
+                "La Lune le chauffe toujours",
+                "Il n'a jamais eu de magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité dépend de l'approvisionnement en magma et de la pression des gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les gaz volcaniques contiennent surtout :",
+              "options": [
+                "De la vapeur d'eau, du CO₂, du SO₂",
+                "Uniquement de l'oxygène pur",
+                "Seulement de l'hélium solaire",
+                "Aucune molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces gaz influencent le climat local et l'explosivité des éruptions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un volcan sous-marin peut :",
+              "options": [
+                "Former des îles si l'éruption dépasse le niveau de la mer",
+                "Exister seulement dans l'espace",
+                "Ne jamais produire de roche",
+                "Refroidir le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empilement de laves et cendres peut émerger (ex. archipels volcaniques)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La viscosité du magma influence :",
+              "options": [
+                "Le type d'éruption (effusive ou explosive)",
+                "La couleur des océans uniquement",
+                "Le nombre de satellites",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un magma visqueux retient les gaz et favorise les explosions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les téphras désignent :",
+              "options": [
+                "Les projections solides (cendres, lapilli, blocs)",
+                "Uniquement la lave fluide",
+                "Les poissons des abysses",
+                "Les nuages cirrus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout matériau solide éjecté s'appelle téphra."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer la déformation d'un volcan permet de :",
+              "options": [
+                "Détecter une montée de magma",
+                "Mesurer la salinité de la pluie",
+                "Compter les étoiles filantes",
+                "Empêcher toute éruption"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gonflement et séismes volcaniques sont des signes de réveil."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Types d'éruptions volcaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une éruption effusive se caractérise par :",
+              "options": [
+                "Des coulées de lave relativement fluide",
+                "Peu d'explosions majeures",
+                "Absence totale de magma",
+                "Uniquement de la glace"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les basaltes peu visqueux forment souvent des coulées étendues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une éruption explosive est favorisée par :",
+              "options": [
+                "Un magma visqueux riche en gaz",
+                "Un magma très fluide sans gaz",
+                "L'absence de roche",
+                "Le vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz pressurisés dans un magma visqueux fragmentent la roche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un nuée ardente (pyroclastique) est :",
+              "options": [
+                "Un mélange chaud de gaz et cendres qui descend les flancs",
+                "Une pluie froide",
+                "Un tsunami",
+                "Un glacier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuées ardentes sont extrêmement dangereuses et très rapides."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un volcan en forme de cône aux pentes raides est souvent :",
+              "options": [
+                "Un stratovolcan",
+                "Un volcan bouclier uniquement",
+                "Un cratère d'impact",
+                "Un delta de rivière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stratovolcans alternent cendres et laves visqueuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les volcans bouclier, comme certaines îles océaniques, produisent surtout :",
+              "options": [
+                "De longues coulées basaltiques",
+                "Uniquement des blocs de glace",
+                "Aucune roche",
+                "De la roche métamorphique sans magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur magma fluide construit des edifices très étalés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une éruption phréatique se produit quand :",
+              "options": [
+                "L'eau entre en contact avec le magma chaud",
+                "Il n'y a jamais de chaleur",
+                "Le volcan est sous la glace uniquement au pôle",
+                "Le magma est remplacé par du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation brutale de l'eau peut exploser sans nouveau magma ascendant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les cendres volcaniques émises haut dans l'atmosphère peuvent :",
+              "options": [
+                "Gêner le trafic aérien et modifier le climat local",
+                "Créer des étoiles",
+                "Arrêter la rotation terrestre",
+                "Supprimer la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cendres fines restent en suspension et sont corrosives pour les moteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un lac de cratère peut se former quand :",
+              "options": [
+                "Le cratère est comblé par l'eau de pluie",
+                "Le volcan devient une étoile",
+                "La lave devient gaz permanent",
+                "Il n'y a jamais de précipitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après éruption, un cratère peut s'emplir d'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le VEI (indice d'explosivité volcanique) classe surtout :",
+              "options": [
+                "Le volume de produits émis et l'explosivité",
+                "La couleur des fleurs",
+                "La vitesse des ondes P",
+                "Le nombre de poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il résume l'ampleur d'une éruption sur une échelle ouverte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une éruption sous-glaciaire peut produire :",
+              "options": [
+                "Des explosions de vapeur et des coulées fragmentées",
+                "Uniquement du marbre",
+                "Aucun contact eau-chaleur",
+                "Des failles transformantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonte rapide de glace interagit avec le magma."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Anatomie d'un volcan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un édifice volcanique comprend souvent :",
+              "options": [
+                "Une cheminée (conduit)",
+                "Un ou plusieurs cratères",
+                "Uniquement des racines de plantes",
+                "Un noyau métallique externe au globe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le magma remonte par le conduit et peut sortir par le cratère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La chambre magmatique est :",
+              "options": [
+                "Une zone de stockage de magma en profondeur",
+                "Le sommet atmosphérique",
+                "Un satellite",
+                "Un fossile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le magma s'accumule avant certaines éruptions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un dôme de lave se forme quand :",
+              "options": [
+                "Une lave visqueuse s'empile près du cratère",
+                "De l'eau pure monte",
+                "Il n'y a pas de roche",
+                "Le vent sculpte le sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faible fluidité fait progresser lentement le dôme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les coulées de lave refroidissent et forment :",
+              "options": [
+                "Des roches volcaniques effusives",
+                "Du sel gemme",
+                "Uniquement du charbon",
+                "De l'air liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basalte, andésite ou rhyolite selon la composition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un caldeira est :",
+              "options": [
+                "Une grande dépression après effondrement ou explosion",
+                "Un petit ruisseau",
+                "Une dorsale océanique",
+                "Un type de nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évacuation du magma peut faire s'effondrer le sommet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les fumerolles libèrent :",
+              "options": [
+                "Des gaz chauds et de la vapeur d'eau",
+                "Uniquement de la glace",
+                "Des ondes S",
+                "Des poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles traduisent une activité hydrothermale résiduelle ou active."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les coulées de boue volcanique (lahars) naissent quand :",
+              "options": [
+                "Cendres et eau se mélangent sur les flancs",
+                "Il n'y a jamais d'eau",
+                "Le magma devient argile sans eau",
+                "Les plaques s'arrêtent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluies ou fonte de glace sur des dépôts frais produisent des lahars."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volcan sous-marin possède :",
+              "options": [
+                "Un conduit vers le fond océanique",
+                "Aucune roche",
+                "Un cratère toujours au-dessus des nuages",
+                "Uniquement du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éruption se produit sous la pression de la colonne d'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La roche volcanique claire (rhyolite) indique souvent :",
+              "options": [
+                "Un magma riche en silice, plus visqueux",
+                "Un magma sans silice",
+                "De la roche sédimentaire",
+                "Du calcaire corallien uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de silice augmente la viscosité et l'explosivité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier les coulées anciennes permet de :",
+              "options": [
+                "Reconstituer l'histoire eruptive du volcan",
+                "Prédire le loto",
+                "Mesurer la masse de Jupiter",
+                "Supprimer les séismes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dépôts successifs renseignent sur fréquence et style eruptif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Surveillance et dangers volcaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour surveiller un volcan, on mesure :",
+              "options": [
+                "Les séismes de faible énergie",
+                "La déformation du sol (GPS, inclinomètres)",
+                "La couleur des yeux humains",
+                "Le nombre de comètes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sismicité et déformation signalent les mouvements de magma."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une alerte volcanique vise à :",
+              "options": [
+                "Évacuer ou protéger les populations exposées",
+                "Augmenter l'éruption",
+                "Vider le magma à la main",
+                "Couper les plaques tectoniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les niveaux d'alerte guident les autorités et les habitants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le gaz le plus mortel localement lors de certaines éruptions est parfois :",
+              "options": [
+                "Le CO₂ densifié dans les creux",
+                "L'hélium des ballons",
+                "L'azote pur du ciel",
+                "L'oxygène de la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des gaz lourds peuvent s'accumuler et étouffer en bas de relief."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les coulées de lave menacent surtout :",
+              "options": [
+                "Les zones situées en aval du volcan",
+                "Les régions sans relief",
+                "L'espace interstellaire",
+                "Les couches de la stratosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lave descend par gravité le long des pentes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les cendres fines peuvent :",
+              "options": [
+                "Effondrer des toits et irriter les poumons",
+                "Être bénéfiques sans limite",
+                "Disparaître en une seconde",
+                "Ne jamais voyager dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poids des cendres humectées endommage les bâtiments."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le volcanisme de point chaud (ex. Hawaï) est lié à :",
+              "options": [
+                "Un panache mantellique remontant sous une plaque",
+                "Une faille transformante seule",
+                "La pluie acide uniquement",
+                "L'impact d'une comète récente obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque se déplace au-dessus d'une source mantellique fixe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un volcan dit « endormi » signifie :",
+              "options": [
+                "Qu'il n'a pas érupté récemment mais peut se réveiller",
+                "Qu'il n'a jamais existé",
+                "Qu'il est sur une autre planète",
+                "Qu'il ne contient pas de roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Endormi ≠ éteint : l'activité peut reprendre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La température du magma est typiquement :",
+              "options": [
+                "De l'ordre de plusieurs centaines à plus de 1000 °C",
+                "Proche du zéro absolu",
+                "Identique à la température de la peau",
+                "Inférieure à celle de la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le magma est très chaud, bien au-dessus de la fusion des roches silicatées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les volcans en zone de subduction produisent souvent :",
+              "options": [
+                "Des magmas plus visqueux et explosifs",
+                "Uniquement du basalte très fluide sans gaz",
+                "Aucune roche",
+                "Seulement du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion avec eau de la plaque plongeante favorise des magmas andésitiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limiter l'urbanisation sur les flancs d'un volcan actif sert à :",
+              "options": [
+                "Réduire l'exposition aux coulées et projections",
+                "Augmenter les lahars volontairement",
+                "Empêcher toute mesure scientifique",
+                "Créer plus de magma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aménagement du territoire fait partie de la prévention."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Liens séismes et volcanisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Séismes et volcans sont associés car :",
+              "options": [
+                "Ils se concentrent aux limites de plaques",
+                "Les mouvements de roches libèrent énergie",
+                "Ils n'ont jamais de lien",
+                "Ils existent seulement dans le vide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tectonique des plaques explique la majorité des séismes et du volcanisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les séismes volcaniques sont en général :",
+              "options": [
+                "Plus localisés et moins énergétiques que les grands séismes tectoniques",
+                "Toujours de magnitude 9",
+                "Absents près des volcans",
+                "Identiques aux ondes radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils traduisent fracturation du roc par le magma ou les gaz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une éruption peut être précédée de :",
+              "options": [
+                "Essaims de petits séismes et gonflement du sol",
+                "Absence totale de signes",
+                "Uniquement de la neige",
+                "La disparition de la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La montée de magma déforme et fissure l'edifice."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La ceinture de feu du Pacifique combine :",
+              "options": [
+                "Fortes séismicité et nombreux volcans",
+                "Aucun séisme",
+                "Uniquement des déserts froids",
+                "Zéro activité géologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subductions et collisions y concentrent les phénomènes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un séisme peut déclencher un tsunami si :",
+              "options": [
+                "Il déplace verticalement une grande surface du fond marin",
+                "Il se produit dans l'air",
+                "Il est toujours de magnitude 1",
+                "Il n'y a pas d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déplacement du plancher océanique pulse la masse d'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les volcans de dorsale océanique sont liés à :",
+              "options": [
+                "Des limites divergentes",
+                "Des limites transformantes seules",
+                "L'absence de magma",
+                "La fusion sans chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lithosphère s'écarte et le magma remonte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un tremblement ressenti sans éruption immédiate peut signifier :",
+              "options": [
+                "Mouvement tectonique sans remontée de magma",
+                "Fin définitive de toute sismicité",
+                "Disparition de la croûte",
+                "Changement d'orbite terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les séismes proches d'un volcan ne mènent pas à une éruption."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La lave qui entre en contact avec l'eau de mer peut :",
+              "options": [
+                "Fragmenter brutalement et produire des explosions",
+                "Devenir glace instantanément sans vapeur",
+                "Ne jamais réagir",
+                "Créer de l'oxygène pur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le choc thermique vaporise l'eau et fragmente la lave."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les îles volcaniques en chaîne (ex. Hawaii) illustrent :",
+              "options": [
+                "Le déplacement d'une plaque sur un point chaud",
+                "Une plaque immobile sans volcan",
+                "Un seul séisme mondial",
+                "L'absence de roche volcanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque île correspond à une ancienne position du point chaud."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre les plaques aide à expliquer pourquoi :",
+              "options": [
+                "Japon et Indonésie cumulent séismes et éruptions",
+                "Les Alpes n'ont jamais eu de séismes",
+                "Les océans n'ont pas de dorsales",
+                "La Terre n'a pas de manteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les zones de subduction concentrent les deux risques."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse séismes et volcans",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour se protéger des aléas géologiques, il faut :",
+              "options": [
+                "Connaître les risques locaux",
+                "Suivre les consignes des autorités",
+                "Ignorer toute information",
+                "Construire sans normes partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Information et préparation réduisent la vulnérabilité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La tectonique des plaques explique que la Terre est :",
+              "options": [
+                "Dynamique avec croûte en mouvement",
+                "Totalement figée",
+                "Sans manteau",
+                "Uniquement gazeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lithosphère est découpée en plaques qui se déplacent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un séisme et une éruption peuvent survenir dans la même région car :",
+              "options": [
+                "Les mêmes zones concentrent contraintes et magma",
+                "Ils sont indépendants de la géologie",
+                "Le vent les provoque",
+                "La Lune les interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les limites de plaques regroupent les deux phénomènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les scientifiques modélisent les risques pour :",
+              "options": [
+                "Guider l'aménagement et l'alerte",
+                "Empêcher la science",
+                "Créer des séismes",
+                "Supprimer les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartes, scénarios et surveillance servent la société."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le magma provient surtout du :",
+              "options": [
+                "Manteau (et parfois fusion de croûte)",
+                "Noyau externe liquide entier",
+                "Espace interstellaire",
+                "Ozone de la stratosphère seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion partielle du manteau alimente la plupart des volcans."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les tsunamis et lahars sont des exemples de :",
+              "options": [
+                "Risques secondaires après séisme ou éruption",
+                "Phénomènes météo uniquement",
+                "Ondes P",
+                "Fossiles marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils amplifient parfois les catastrophes initiales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En SVT, on relie observations et modèle car :",
+              "options": [
+                "Les données terrain valident la tectonique des plaques",
+                "Les modèles remplacent toute mesure",
+                "Les mesures sont inutiles",
+                "La théorie des plaques est refusée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sismologie, géologie et volcanologie confirment le modèle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un volcan éteint est :",
+              "options": [
+                "Considéré sans éruption future probable",
+                "Toujours en éruption lave",
+                "Situé sur le Soleil",
+                "Défini par l'absence de roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classification selon l'historique récent et le magma disponible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La profondeur des séismes de subduction peut atteindre :",
+              "options": [
+                "Plusieurs centaines de kilomètres",
+                "Zéro mètre seulement",
+                "Le centre exact du noyau solide",
+                "L'orbite lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque plongeante produit des séismes profonds."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'étude des séismes et volcans en 4e prépare à comprendre :",
+              "options": [
+                "Les grands cycles géologiques de la Terre",
+                "Uniquement la météo du jour",
+                "La classification des insectes",
+                "Les tableaux périodiques des étoiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces phénomènes illustrent l'activité interne de notre planète."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les plaques lithosphériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Lithosphère et asthénosphère",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La lithosphère comprend :",
+              "options": [
+                "La croûte terrestre",
+                "Une partie rigide supérieure du manteau",
+                "Le noyau externe liquide entier",
+                "L'atmosphère uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La lithosphère est l'enveloppe rigide croûte + manteau supérieur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'asthénosphère se situe :",
+              "options": [
+                "Sous la lithosphère, partiellement ductile",
+                "Dans le noyau solide",
+                "Dans l'espace",
+                "Uniquement dans les nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle permet un glissement relatif des plaques lithosphériques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La lithosphère est découpée en :",
+              "options": [
+                "Plaques tectoniques",
+                "Un seul bloc immobile",
+                "Gouttes de pluie",
+                "Satellites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une douzaine de grandes plaques et de plus petites entrent en contact."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La croûte océanique est en moyenne :",
+              "options": [
+                "Plus fine et plus dense que la croûte continentale",
+                "Plus épaisse et moins dense que la croûte continentale",
+                "Identique partout en épaisseur",
+                "Absente sous les océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basalte océanique versus granites continentaux plus épais."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La chaleur interne de la Terre provient surtout de :",
+              "options": [
+                "La radioactivité des roches et d'un reliquat de formation",
+                "La lumière du Soleil dans le noyau",
+                "Les éclairs",
+                "La marée uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette chaleur entretient la convection mantellique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les plaques se déplacent typiquement de :",
+              "options": [
+                "Quelques centimètres par an",
+                "Plusieurs kilomètres par seconde",
+                "Zéro sur des millions d'années",
+                "La vitesse du son dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse comparable à la pousse des ongles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La mesure GPS des continents montre :",
+              "options": [
+                "Des déplacements réels des plaques",
+                "Aucun mouvement",
+                "Que la Terre est plate",
+                "Que les plaques n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Géodésie confirme les vitesses du modèle tectonique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le manteau est principalement composé de :",
+              "options": [
+                "Silicates rocheux",
+                "Métal fer pur liquide seul",
+                "Gaz noble uniquement",
+                "Eau pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roche chaude sous haute pression, pas magma partout."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La rigidité de la lithosphère permet :",
+              "options": [
+                "De stocker des contraintes élastiques libérées en séismes",
+                "D'empêcher toute fracture",
+                "De flotter dans l'espace",
+                "De supprimer la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roches se déforment puis cassent le long des failles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La théorie de la tectonique des plaques unifie l'explication de :",
+              "options": [
+                "Séismes, volcans et formation des chaînes",
+                "Uniquement la météo",
+                "Seulement la photosynthèse",
+                "Les orbites des comètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le modèle central de la géologie moderne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les grandes plaques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les grandes plaques on compte :",
+              "options": [
+                "La plaque pacifique",
+                "La plaque eurasiatique",
+                "La plaque lunaire",
+                "La plaque solaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pacifique, Nazca, Amérique du Sud, Afrique, Eurasie, etc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La plaque africaine se sépare lentement de :",
+              "options": [
+                "La plaque sud-américaine au niveau de l'Atlantique",
+                "La Lune",
+                "Une plaque inventée",
+                "Le pôle Nord magnétique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Atlantique s'ouvre depuis l'époque des dinosaures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La plaque de Nazca plonge sous :",
+              "options": [
+                "La plaque sud-américaine",
+                "La plaque européenne uniquement au pôle",
+                "Aucune autre plaque",
+                "La stratosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subduction le long de la côte ouest sud-américaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les limites de plaques sont repérables grâce à :",
+              "options": [
+                "Séismes, volcans et alignements topographiques",
+                "Uniquement la couleur des fleurs",
+                "Le vent seul",
+                "Les marées sans géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ceintures sismiques et chaînes marquent les contacts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La plaque indo-australienne inclut :",
+              "options": [
+                "L'Inde et une partie de l'Australie",
+                "Seulement l'Antarctique",
+                "Mars",
+                "L'océan sans croûte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collision Inde-Himalaya en est un exemple célèbre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La croûte continentale peut être fragmentée car :",
+              "options": [
+                "Les plaques se séparent et recombinent",
+                "Elle ne bouge jamais",
+                "Elle est toujours sous l'eau",
+                "Elle n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continents dérivants illustrent ces morceaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La plaque antarctique est entourée de :",
+              "options": [
+                "Dorsales et zones de divergence océanique",
+                "Uniquement des déserts chauds",
+                "Aucune limite",
+                "Seulement des failles sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'océan Austral s'ouvre autour de l'Antarctique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les microplaques sont :",
+              "options": [
+                "Des fragments plus petits entre grandes plaques",
+                "Des poussières cosmiques",
+                "Des nuages",
+                "Des poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples en Méditerranée ou autour de l'Anatolie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La carte des plaques aide à expliquer :",
+              "options": [
+                "Pourquoi l'Italie et la Grèce sont sismiques",
+                "Pourquoi il neige parfois",
+                "Le nombre d'étoiles",
+                "La photosynthèse marine seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Microplaques et subductions en Méditerranée orientale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wegener a proposé la dérive des continents en s'appuyant sur :",
+              "options": [
+                "Formes des côtes et fossiles communs",
+                "Uniquement la météo",
+                "Des mesures GPS modernes",
+                "Des roches lunaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les preuves s'accumulent depuis avec paléomagnétisme et sonar."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mouvements des plaques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les plaques peuvent :",
+              "options": [
+                "S'éloigner l'une de l'autre",
+                "Entrer en collision",
+                "Rester immobiles sur des milliards d'années sans contact",
+                "Glisser latéralement l'une contre l'autre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Divergence, convergence et failles transformantes décrivent les mouvements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La convection mantellique entraîne :",
+              "options": [
+                "Remontées et descentes de matière chaude/froide",
+                "Absence de chaleur",
+                "Un manteau figé",
+                "Disparition du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courants lents dans le manteau participent à la tectonique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La force de poussée des dorsales provient de :",
+              "options": [
+                "L'élévation du magma chaud",
+                "Le vent océanique",
+                "La gravité lunaire seule",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle lithosphère chaude plus légère pousse latéralement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La traction par subduction signifie que :",
+              "options": [
+                "Une plaque dense plonge et entraîne le bord",
+                "La plaque monte dans le ciel",
+                "Il n'y a pas de gravité",
+                "Le magma disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plaque océanique froide et dense peut s'enfoncer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les déplacements se mesurent aussi par :",
+              "options": [
+                "Paléomagnétisme des fonds océaniques",
+                "Couleur des yeux",
+                "Nombre de nuages",
+                "Taille des feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bandes magnétiques symétriques enregistrent les inversions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux plaques qui convergent peuvent former :",
+              "options": [
+                "Une chaîne de montagnes",
+                "Un océan toujours plus large sans fin",
+                "Un trou vers l'espace",
+                "Uniquement du sable sans roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La collision continent-continent soulève la croûte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une limite transformante implique :",
+              "options": [
+                "Glissement horizontal sans création ni destruction nette",
+                "Ouverture d'un océan",
+                "Subduction obligatoire",
+                "Fusion du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : faille de San Andreas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La vitesse des plaques varie car :",
+              "options": [
+                "Forces et résistances changent selon les bords",
+                "Toutes vont à la même vitesse exacte",
+                "Elles suivent le vent",
+                "Elles n'ont pas de limites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque pacifique est l'une des plus rapides."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur des millions d'années, les continents :",
+              "options": [
+                "Changent de position et de configuration",
+                "Restent identiques",
+                "Disparaissent dans le Soleil",
+                "Devienent gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pangea puis dispersion en est l'exemple classique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le mouvement des plaques explique l'ouverture de :",
+              "options": [
+                "L'océan Atlantique",
+                "La Lune",
+                "Les anneaux de Saturne",
+                "Uniquement les lacs glaciaires sans géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amériques et Europe-Afrique s'écartent depuis ~180 Ma."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Dorsales et fonds océaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une dorsale océanique est :",
+              "options": [
+                "Une chaîne sous-marine au milieu de l'océan",
+                "Un lieu de création de nouvelle croûte",
+                "Un cratère lunaire",
+                "Un glacier alpin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le magma remonte et refroidit en basalte le long de la dorsale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'âge de la croûte océanique augmente quand on s'éloigne :",
+              "options": [
+                "De la dorsale",
+                "Du pôle Nord",
+                "De la Lune",
+                "Des nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie des âges de part et d'autre de l'axe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les bandes magnétiques des fonds océaniques prouvent :",
+              "options": [
+                "Inversions du champ magnétique terrestre",
+                "Absence de magnétisme",
+                "Que la Terre n'a pas de noyau",
+                "Que les océans n'ont pas de croûte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basaltes enregistrent le champ au moment de leur refroidissement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les fumeurs noirs se trouvent souvent :",
+              "options": [
+                "Près des dorsales",
+                "Dans le noyau",
+                "Dans la stratosphère",
+                "Sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau de mer chauffée circule et dépose des minéraux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La croûte la plus ancienne océanique a environ :",
+              "options": [
+                "Quelques centaines de millions d'années",
+                "L'âge de l'Univers entier",
+                "Zéro an partout",
+                "4,5 milliards partout sous l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est recyclée par subduction, contrairement à une partie du continent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La dorsale médio-atlantique sépare :",
+              "options": [
+                "L'Amérique du nord de l'Europe",
+                "L'Afrique de l'Asie sans océan",
+                "Mars et Terre",
+                "Deux lunes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Islande est une portion émergée de cette dorsale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le plancher océanique s'enfonce car :",
+              "options": [
+                "Il refroidit, densifie et peut subduire",
+                "Il devient toujours plus léger",
+                "Il flotte dans l'air",
+                "Il n'est jamais dense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lithosphère océanique vieillissante est propice à la plongée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les sédiments sur le plancher océanique s'épaississent :",
+              "options": [
+                "Loin de la dorsale vers les continents ou fosses",
+                "Uniquement sur la crête dorsale nue",
+                "Jamais",
+                "Dans le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps plus long pour accumuler poussières et organismes calcaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'écho sonar a permis de :",
+              "options": [
+                "Cartographier les reliefs sous-marins",
+                "Mesurer la masse du Soleil",
+                "Voir les atomes",
+                "Compter les étoiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découverte des dorsales au XXe siècle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La divergence en dorsale produit surtout :",
+              "options": [
+                "Du basalte",
+                "Du calcaire corallien continental",
+                "De la glace",
+                "Du pétrole sans roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magma mantellique pauvre en silice."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Failles et séismes tectoniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une faille est :",
+              "options": [
+                "Une fracture le long de laquelle des blocs se déplacent",
+                "Toujours visible à l'œil nu en ville",
+                "Uniquement un nuage",
+                "Un type de poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les failles concentrent déplacements et séismes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une faille normale apparaît surtout en :",
+              "options": [
+                "Extension (divergence)",
+                "Collision intense uniquement",
+                "Espace vide",
+                "Noyau solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloc supérieur descend le long du plan de faille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une faille inverse est liée à :",
+              "options": [
+                "Compression",
+                "Extension seule",
+                "Absence de contraintes",
+                "Vent chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blocs se chevauchent lors de la compression."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une faille décrochante correspond à :",
+              "options": [
+                "Mouvement horizontal",
+                "Mouvement vertical uniquement",
+                "Aucun mouvement",
+                "Mouvement vers le centre de la Terre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Typique des limites transformantes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le rejet d'une faille mesure :",
+              "options": [
+                "Le décalage cumulé entre deux blocs",
+                "La couleur du magma",
+                "La salinité",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandes failles montrent des kilomètres de décalage sur le long terme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les séismes de subduction ont souvent :",
+              "options": [
+                "Des foyers profonds",
+                "Uniquement des foyers en surface",
+                "Aucun lien avec les plaques",
+                "Lieu sur le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque plongeante produit des séismes jusqu'à grande profondeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En France, la faille du Jura est liée à :",
+              "options": [
+                "Compression alpine",
+                "Divergence atlantique directe",
+                "Subduction pacifique",
+                "Impact météoritique récent obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne du Jura se forme au front de l'orogène alpin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un séisme libère l'énergie stockée par :",
+              "options": [
+                "Déformation élastique des roches",
+                "Rotation de la Lune",
+                "Photosynthèse",
+                "Marée haute seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roches se plient puis rupture brutale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cartographier les failles actives sert à :",
+              "options": [
+                "Estimer le risque sismique local",
+                "Prédire la pluie",
+                "Compter les oiseaux",
+                "Mesurer la lumière solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proximité d'une faille active augmente l'aléa."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le tsunami du 26 décembre 2004 est lié à :",
+              "options": [
+                "Un grand séisme de subduction",
+                "Une éruption sans séisme",
+                "Un ouragan",
+                "Une marée sans secousse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rupture le long de la fosse des Sunda."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Limites convergentes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une limite convergente peut produire :",
+              "options": [
+                "Subduction d'une plaque océanique",
+                "Collision de deux continents",
+                "Ouverture instantanée d'un océan sans fin",
+                "Disparition de toute roche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Océan-continent ou océan-océan subduisent ; continent-continent s'élève."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une fosse océanique profonde indique souvent :",
+              "options": [
+                "Une zone de subduction",
+                "Une dorsale",
+                "Un désert",
+                "Un glacier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plaque plongeante creuse une dépression."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'Himalaya résulte de :",
+              "options": [
+                "Collision Inde-Eurasie",
+                "Divergence atlantique",
+                "Point chaud hawaïen",
+                "Impact d'astéroïde récent obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Continents ne subduisent pas facilement, ils s'épaississent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les Andes sont un exemple de :",
+              "options": [
+                "Volcanisme de subduction",
+                "Dorsale médio-océanique",
+                "Faille transformante seule",
+                "Cratère d'impact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nazca plonge sous l'Amérique du Sud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau emportée en subduction :",
+              "options": [
+                "Favorise la fusion du manteau et le magma",
+                "Empêche toute éruption",
+                "Ne joue aucun rôle",
+                "Crée de l'oxygène pur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volatiles abaissent le point de fusion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un arc volcanique se forme :",
+              "options": [
+                "Au-dessus de la zone de Benioff",
+                "Sur la dorsale",
+                "Au centre du noyau",
+                "Dans la haute atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volcans alignés parallèlement à la fosse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La compression alpine en Europe est liée à :",
+              "options": [
+                "Collision Afrique-Eurasie",
+                "Ouverture du Pacifique",
+                "Divergence pure en Méditerrée sans contact",
+                "Mouvement des plaques lunaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alpes et chaînes voisines en héritent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lors d'une collision continent-continent :",
+              "options": [
+                "Peu de subduction profonde de croûte légère",
+                "Disparition totale des deux continents",
+                "Création d'une dorsale",
+                "Fusion du noyau externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériau continental boue mais s'épaissit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le Japon est une zone de :",
+              "options": [
+                "Convergence avec subduction",
+                "Divergence pure sans séismes",
+                "Absence de volcanisme",
+                "Plaque unique immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs plaques interagissent autour de l'archipel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les métamorphisme et plissement intenses apparaissent surtout en :",
+              "options": [
+                "Zones de collision",
+                "Milieu de dorsale",
+                "Espace interplanétaire",
+                "Surface lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression profonde transforme les roches."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Limites divergentes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En divergence, on observe :",
+              "options": [
+                "Écartement de la lithosphère",
+                "Remontée de magma",
+                "Fermeture d'un océan sans magma",
+                "Glissement horizontal seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nouvelle croûte se forme entre les plaques qui s'écartent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La vallée du Rift est un exemple de :",
+              "options": [
+                "Divergence continentale naissante",
+                "Subduction profonde",
+                "Transformante seule",
+                "Impact météoritique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Afrique orientale s'ouvre lentement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'Islande est située :",
+              "options": [
+                "Sur la dorsale atlantique émergée",
+                "Sur une faille transformante sans volcan",
+                "Sur la Lune",
+                "Au centre du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hotspot et divergence combinent volcanisme intense."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La mer Rouge s'ouvre car :",
+              "options": [
+                "Arabie et Afrique divergent",
+                "Deux continents convergent",
+                "Il n'y a pas de plaques",
+                "Le vent creuse le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeune océan entre deux plaques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les séismes en dorsale sont en général :",
+              "options": [
+                "Peu profonds",
+                "Toujours à 700 km",
+                "Absents",
+                "Uniquement dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ruptures dans la croûte néogène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une divergence océanique crée :",
+              "options": [
+                "Nouveau plancher océanique",
+                "Himalaya instantané",
+                "Caldeira sans roche",
+                "Noyau solide supplémentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus continu le long des dorsales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la divergence continue en continent, on peut obtenir :",
+              "options": [
+                "Un nouvel océan (à très long terme)",
+                "Fusion des continents sans eau",
+                "Disparition du manteau",
+                "Arrêt de la rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle Afrique-Amérique passé pour l'Atlantique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les basaltes de dorsale contiennent souvent :",
+              "options": [
+                "Peu de silice",
+                "Beaucoup de quartz pur seul",
+                "Uniquement du sel",
+                "De la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magmas mantelliques basiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La divergence explique pourquoi l'Atlantique :",
+              "options": [
+                "S'élargit encore aujourd'hui",
+                "Se referme totalement chaque année",
+                "N'a jamais existé",
+                "Est plus petit que la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesures géodésiques confirment l'écartement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les fosses continentales en rift contiennent parfois :",
+              "options": [
+                "Lacs profonds et séismes",
+                "Uniquement du magma au centre de la Terre",
+                "Aucune roche",
+                "Des dorsales sans extension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : lakes du Rift africain."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Limites transformantes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une limite transformante se caractérise par :",
+              "options": [
+                "Glissement horizontal des plaques",
+                "Séismes le long de failles décrochantes",
+                "Création massive de croûte océanique sans glissement",
+                "Subduction profonde systématique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matériau ni créé ni détruit nettement sur la faille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La faille de San Andreas sépare :",
+              "options": [
+                "Plaque pacifique et plaque nord-américaine",
+                "Plaque africaine et antarctique",
+                "Lune et Terre",
+                "Deux océans sans croûte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement dextre le long de la Californie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les transformantes relient souvent :",
+              "options": [
+                "Segments de dorsales",
+                "Deux continents en collision directe",
+                "Le noyau et l'atmosphère",
+                "Uniquement des lacs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles découpent la dorsale en sections décalées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Los Angeles et San Francisco se rapprochent lentement car :",
+              "options": [
+                "La pacifique glisse vers le nord-ouest",
+                "Les plaques fusionnent",
+                "Il n'y a pas de faille",
+                "La Terre s'arrête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse relative de quelques cm/an."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un séisme transformant peut être :",
+              "options": [
+                "Superficiel le long de la faille",
+                "Toujours à 600 km de profondeur",
+                "Sans ondes sismiques",
+                "Uniquement sous-marin sans secousse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rupture dans la croûte brittle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peu de volcanisme se produit en transformante car :",
+              "options": [
+                "Peu de magma remonte le long du plan vertical",
+                "Il y a trop de magma",
+                "Les volcans n'existent pas sur Terre",
+                "La faille est dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement horizontal domine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En Méditerranée, certaines failles transformantes accommodent :",
+              "options": [
+                "Mouvements entre microplaques",
+                "Ouverture du Pacifique",
+                "Collision Inde seule",
+                "Divergence lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone complexe entre Afrique, Eurasie et Anatolie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cartographier une transformante aide à estimer :",
+              "options": [
+                "Où de futurs séismes peuvent rompre",
+                "La couleur exacte du magma",
+                "Le nombre d'oiseaux",
+                "La salinité des nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segments non rompus depuis longtemps sont surveillés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le déplacement le long d'une transformante est décrit comme :",
+              "options": [
+                "Cisaillement",
+                "Subduction verticale pure",
+                "Fusion du noyau",
+                "Expansion sans faille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces horizontales dominent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les trois types de limites de plaques sont :",
+              "options": [
+                "Divergentes, convergentes, transformantes",
+                "Marines, aériennes, lunaires",
+                "Chaudes, froides, liquides seules",
+                "Pluie, vent, neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classification fondamentale du programme."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cycle de Wilson et évolution océans",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cycle de Wilson décrit :",
+              "options": [
+                "Ouverture et fermeture d'un océan",
+                "Formation et destruction de lithosphère océanique",
+                "Rotation de la Lune autour du Soleil seule",
+                "Cycle de l'eau sans géologie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "De la rift à la subduction puis collision."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Téthys ancienne a :",
+              "options": [
+                "Disparu par convergence",
+                "Élargi sans fin",
+                "Jamais existé",
+                "Été une étoile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Océan fermé entre continents du futur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'Atlantique jeune est en phase de :",
+              "options": [
+                "Ouverture",
+                "Fermeture complète imminente",
+                "Absence d'eau",
+                "Collision Himalaya"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encore en divergence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le Pacifique se rétrécit car :",
+              "options": [
+                "Subductions dominent sur ses bords",
+                "Il n'y a pas de plaques",
+                "Il est figé",
+                "Il est sur Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ceinture de subduction autour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pangea était :",
+              "options": [
+                "Un supercontinent réunissant la plupart des terres",
+                "Un océan actuel",
+                "Une étoile",
+                "Un satellite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assemblage il y a environ 300 Ma."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les montagnes de collision peuvent s'éroder puis :",
+              "options": [
+                "Laisser des sédiments répartis",
+                "Disparaître sans trace",
+                "Devenir magma instantanément",
+                "Former une dorsale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle rocheux recycle matériaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Méditerranée est parfois vue comme :",
+              "options": [
+                "Reste d'un océan en fermeture",
+                "Dorsale atlantique",
+                "Point chaud seul",
+                "Cratère lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression entre Afrique et Eurasie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Recyclage de la lithosphère océanique signifie :",
+              "options": [
+                "Subduction puis réintégration mantellique",
+                "Stockage permanent en surface",
+                "Envoi dans l'espace",
+                "Transformation en gaz atmosphérique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plaque plonge et se chauffe en profondeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fossiles identiques sur continents séparés soutiennent :",
+              "options": [
+                "Qu'ils étaient jadis réunis",
+                "Qu'ils volent",
+                "Qu'il n'y a jamais eu d'océan",
+                "Que les plaques n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : Mesosaurus entre Afrique et Amérique du Sud."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À l'échelle géologique, la surface terrestre :",
+              "options": [
+                "Se réorganise continuellement",
+                "Ne change jamais",
+                "Disparaît chaque jour",
+                "Devient une étoile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tectonique des plaques est un processus actif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse tectonique des plaques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La tectonique des plaques repose sur :",
+              "options": [
+                "Plaques rigides en mouvement",
+                "Interactions aux limites",
+                "Absence de manteau",
+                "Fixité totale de la croûte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mouvements et contacts expliquent séismes et volcans."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La lithosphère océanique finit le plus souvent par :",
+              "options": [
+                "Subduction",
+                "Flotter éternellement sans changer",
+                "Devenir atmosphère",
+                "Aller sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recyclage mantellique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les Alpes en France témoignent de :",
+              "options": [
+                "Collision tectonique passée et présente",
+                "Divergence atlantique directe",
+                "Absence de séismes",
+                "Volcanisme hawaïen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orogène alpin encore actif modérément."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "GPS et sismologie ensemble permettent de :",
+              "options": [
+                "Valider vitesses et zones à risque",
+                "Arrêter les plaques",
+                "Supprimer les volcans",
+                "Mesurer uniquement la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche multidisciplinaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un point chaud sous une plaque crée :",
+              "options": [
+                "Une chaîne volcanique si la plaque bouge",
+                "Une dorsale obligatoire",
+                "Uniquement des séismes profonds",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hotspot + translation de plaque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La croûte continentale ancienne existe car :",
+              "options": [
+                "Elle est moins dense et difficile à subduire",
+                "Elle est plus dense que l'océanique",
+                "Elle n'existe pas",
+                "Elle fond à chaque pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouée granitique relative au manteau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comprendre les plaques en 4e aide à interpréter :",
+              "options": [
+                "Cartes de séismes et répartition des volcans",
+                "Uniquement la météo locale",
+                "Classification des champignons",
+                "Orbites planétaires seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien direct avec le chapitre séismes-volcans."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La profondeur croissante des séismes sous une fosse indique :",
+              "options": [
+                "Plaque plongeante inclinée",
+                "Dorsale émergée",
+                "Absence de subduction",
+                "Cratère météoritique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan de Benioff caractéristique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'avenir géologique de l'Atlantique, à très long terme, pourrait être :",
+              "options": [
+                "Fermeture si subductions s'organisent autour",
+                "Disparition de la Terre",
+                "Arrêt instantané des mouvements demain",
+                "Transformation en étoile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèses basées sur cycles de Wilson."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le modèle des plaques est accepté car :",
+              "options": [
+                "Il explique de nombreuses observations indépendantes",
+                "Il ignore toutes les données",
+                "Il est basé sur la seule mythologie",
+                "Il refuse la mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sismologie, paléomagnétisme, géodésie et géologie concordent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

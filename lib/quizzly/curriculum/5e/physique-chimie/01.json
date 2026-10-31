@@ -1,0 +1,2568 @@
+{
+  "id": "5e-physique-chimie-01",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "Organisation de la matière",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "États de la matière",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les trois états de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois états courants de la matière à l'école ?",
+              "options": ["Solide", "Plasma", "Liquide", "Gaz"],
+              "correctAnswers": [0, 2],
+              "explanation": "À notre échelle, la matière se présente surtout sous forme solide, liquide ou gazeuse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel état l'eau prend-elle la forme du récipient qui la contient ?",
+              "options": ["Solide", "Liquide", "Gaz", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "Un liquide n'a pas de forme propre : il épouse celle de son récipient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un solide a-t-il une forme propre ?",
+              "options": [
+                "Oui, en général",
+                "Non, jamais",
+                "Seulement à froid",
+                "Seulement en poudre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un solide conserve en général une forme propre tant qu'on ne le casse pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'air que nous respirons est surtout :",
+              "options": ["Un liquide", "Un solide", "Un gaz", "Un métal"],
+              "correctAnswers": [2],
+              "explanation": "L'air est un mélange de gaz, principalement azote et dioxygène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La glace est l'eau à l'état :",
+              "options": ["Liquide", "Gazeux", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "La glace correspond à l'eau solidifiée à basse température."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La vapeur d'eau visible au-dessus d'une casserole est surtout de l'eau à l'état :",
+              "options": [
+                "Solide",
+                "Liquide sous forme de gouttelettes",
+                "Métal",
+                "Plasma"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La « vapeur » blanche contient surtout de fines gouttelettes d'eau liquide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un gaz occupe-t-il tout l'espace disponible ?",
+              "options": [
+                "Non, il reste en bas",
+                "Oui, il se répartit dans le volume",
+                "Non, il garde une forme fixe",
+                "Seulement à l'intérieur d'un solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gaz se dilate et remplit tout le volume du récipient."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le fer à température ambiante est à l'état :",
+              "options": ["Liquide", "Gazeux", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Le fer est un métal solide à température ambiante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'huile dans une bouteille est à l'état :",
+              "options": ["Gazeux", "Solide", "Liquide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "L'huile coule et prend la forme du fond du récipient : c'est un liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un corps peut-il changer d'état ?",
+              "options": [
+                "Non, jamais",
+                "Oui, par chauffage ou refroidissement",
+                "Seulement les métaux",
+                "Seulement l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La plupart des corps passent d'un état à un autre si la température change."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Propriétés des solides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent souvent un solide ?",
+              "options": [
+                "Forme propre",
+                "Volume propre",
+                "Occupe tout l'espace comme un gaz",
+                "Coule partout comme un liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un solide a en général une forme et un volume bien définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une pierre est un exemple de matière à l'état :",
+              "options": ["Liquide", "Gazeux", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Une pierre est rigide et conserve sa forme : c'est un solide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Peut-on comprimer facilement un bloc de bois ?",
+              "options": [
+                "Oui, beaucoup",
+                "Non, très difficilement",
+                "Oui, comme de l'air",
+                "Seulement à chaud"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les solides sont peu compressibles dans les conditions usuelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le sucre en morceaux est à l'état :",
+              "options": ["Gazeux", "Liquide", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Les morceaux de sucre sont un solide cristallin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un solide a-t-il un volume propre ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en fusion",
+                "Uniquement s'il flotte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme un liquide, un solide occupe un volume défini."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La craie sur le tableau est principalement à l'état :",
+              "options": ["Liquide", "Solide", "Gazeux", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "La craie est un solide friable utilisé pour écrire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si on casse un solide, chaque morceau reste :",
+              "options": ["Un liquide", "Un gaz", "Un solide", "Un plasma"],
+              "correctAnswers": [2],
+              "explanation": "Fragmenter un solide donne encore des morceaux solides."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le plastique d'une règle est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Une règle en plastique est rigide : état solide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compare à un gaz, un solide est :",
+              "options": [
+                "Plus compressible",
+                "Moins compressible",
+                "Toujours invisible",
+                "Toujours liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les particules d'un solide sont proches et peu mobiles, donc peu compressibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La neige au sol est de l'eau à l'état :",
+              "options": ["Liquide", "Gazeux", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "La neige est constituée de cristaux de glace, donc d'eau solide."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propriétés des liquides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent un liquide ?",
+              "options": [
+                "Volume propre",
+                "Forme propre fixe",
+                "Surface libre horizontale au repos",
+                "Se compresse comme l'air"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un liquide a un volume défini et une surface libre plane au repos."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau dans un verre prend la forme :",
+              "options": [
+                "D'une sphère fixe",
+                "Du fond et des parois du verre",
+                "Du cube uniquement",
+                "De l'atmosphère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le liquide épouse la forme intérieure de son récipient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un liquide coule-t-il sous l'effet de la pesanteur ?",
+              "options": [
+                "Non, jamais",
+                "Oui",
+                "Seulement s'il est chaud",
+                "Seulement s'il est coloré"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les liquides coulent et se déplacent vers le bas dans un récipient."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mercure à température ambiante est un :",
+              "options": ["Solide", "Liquide métallique", "Gaz", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "Le mercure est un métal liquide à température ambiante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'écoulement d'un liquide dans un entonnoir montre qu'il :",
+              "options": [
+                "Est solide",
+                "N'a pas de forme propre",
+                "Est un gaz",
+                "N'a pas de volume"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'écoulement prouve l'absence de forme propre du liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À surface libre, l'eau dans un récipient forme :",
+              "options": [
+                "Une bosse",
+                "Un plan horizontal",
+                "Un cône pointé vers le haut",
+                "Aucune surface"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au repos, la surface libre d'un liquide est horizontale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le lait est à l'état :",
+              "options": ["Gazeux", "Solide", "Liquide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Le lait coule et remplit partiellement un récipient : liquide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un liquide est-il facilement compressible à la main dans une bouteille fermée ?",
+              "options": [
+                "Oui, comme l'air",
+                "Non, peu compressible",
+                "Toujours impossible à contenir",
+                "Seulement s'il est gazeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les liquides sont beaucoup moins compressibles que les gaz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si on verse de l'eau d'un grand récipient dans un petit, son volume :",
+              "options": [
+                "Disparaît",
+                "Double",
+                "Reste le même",
+                "Devient nul"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le volume d'un liquide ne dépend pas de la forme du récipient."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'essence dans le réservoir d'une voiture est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux pur", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "L'essence est un liquide inflammable stocké dans un réservoir."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Propriétés des gaz",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés sont typiques d'un gaz ?",
+              "options": [
+                "Pas de forme propre",
+                "Pas de volume propre fixe",
+                "Surface libre horizontale comme un liquide",
+                "Toujours visible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un gaz n'a ni forme ni volume propres : il remplit l'espace disponible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le dioxygène de l'air est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Le dioxygène est un gaz présent dans l'air ambiant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si on ouvre un flacon de parfum, l'odeur se répand car le parfum est :",
+              "options": [
+                "Un solide",
+                "Un liquide puis des molécules en gaz",
+                "Un métal",
+                "Un liquide immobile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des molécules volatiles passent à l'état gazeux et se diffusent dans l'air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un gaz est-il compressible ?",
+              "options": [
+                "Non",
+                "Oui, relativement facilement",
+                "Seulement à froid",
+                "Seulement sous l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les gaz se compriment car leurs particules sont très espacées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le gaz contenu dans une bouteille de soda sous pression occupe :",
+              "options": [
+                "Tout le volume de la bouteille",
+                "Un coin fixe",
+                "Aucun espace",
+                "Seulement le fond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gaz se mélange et remplit l'espace au-dessus du liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'hélium dans un ballon est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "L'hélium gonflant les ballons est un gaz plus léger que l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand on chauffe l'air dans une bouteille fermée, la pression augmente car le gaz :",
+              "options": [
+                "Devient solide",
+                "Se dilate et pousse plus fort",
+                "Disparaît",
+                "Devient liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En chauffant, les particules de gaz se déplacent plus vite et exercent plus de pression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le gaz carbonique (CO₂) à température ambiante est :",
+              "options": ["Un solide", "Un liquide pur", "Un gaz", "Un métal"],
+              "correctAnswers": [2],
+              "explanation": "Le CO₂ est un gaz ; on le voit sous forme solide uniquement à très basse température ( glace carbonique )."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un gaz invisible peut-il exister ?",
+              "options": [
+                "Non",
+                "Oui, comme une grande partie de l'air",
+                "Seulement en laboratoire",
+                "Jamais à température ambiante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'azote et l'oxygène de l'air sont des gaz invisibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si on agrandit le récipient contenant un gaz, sa pression en général :",
+              "options": [
+                "Augmente",
+                "Diminue",
+                "Reste identique",
+                "Devient nulle instantanément"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus le volume est grand, plus les particules frappent moins souvent les parois : pression plus faible."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fusion et solidification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements d'état impliquent solide et liquide ?",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Condensation seule",
+                "Sublimation seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fusion passe de solide à liquide ; la solidification l'inverse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fusion de la glace en eau liquide se produit en :",
+              "options": [
+                "Refroidissant",
+                "Chauffant au-dessus de 0 °C (à pression normale)",
+                "Compressant l'air",
+                "Filtrant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La glace fond au-dessus de 0 °C à pression atmosphérique normale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La solidification est le passage :",
+              "options": [
+                "Liquide → gaz",
+                "Gaz → liquide",
+                "Liquide → solide",
+                "Solide → gaz"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Solidifier, c'est passer du liquide au solide, par refroidissement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand l'eau liquide devient glace, on observe :",
+              "options": [
+                "Une fusion",
+                "Une solidification",
+                "Une vaporisation",
+                "Une dissolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La formation de glace est une solidification de l'eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pendant la fusion pure à température constante, la température du corps :",
+              "options": [
+                "Monte sans s'arrêter",
+                "Reste constante jusqu'à la fin",
+                "Descend toujours",
+                "Devient négative instantanément"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'échelle scolaire, la fusion d'un corps pur se fait à température constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le beurre qui durcit au réfrigérateur subit :",
+              "options": [
+                "Une fusion",
+                "Une solidification",
+                "Une sublimation",
+                "Une distillation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En refroidissant, le beurre fondu ou mou redevient plus solide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fonte d'un morceau de chocolat au soleil est :",
+              "options": [
+                "Une solidification",
+                "Une fusion",
+                "Une condensation",
+                "Une filtration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le chocolat passe de solide à liquide : fusion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau qui gèle dans un congélateur subit :",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Vaporisation",
+                "Dissolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Geler correspond à la solidification de l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le point de fusion de la glace pure à pression normale est :",
+              "options": ["100 °C", "0 °C", "50 °C", "−10 °C"],
+              "correctAnswers": [1],
+              "explanation": "L'eau pure gèle à 0 °C et fond à 0 °C à pression atmosphérique normale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La fusion nécessite en général :",
+              "options": [
+                "Un apport de chaleur",
+                "Un refroidissement fort",
+                "Une filtration",
+                "Une décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut fournir de l'énergie pour passer du solide au liquide."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Vaporisation et condensation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels changements concernent liquide et gaz ?",
+              "options": [
+                "Vaporisation",
+                "Condensation",
+                "Fusion",
+                "Solidification"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vaporisation : liquide → gaz ; condensation : gaz → liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ébullition de l'eau à 100 °C (à pression normale) est une :",
+              "options": [
+                "Solidification",
+                "Vaporisation",
+                "Fusion",
+                "Dissolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À 100 °C, l'eau bout : elle passe en grande partie à l'état gazeux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les gouttes sur une vitre froide proviennent de :",
+              "options": [
+                "Fusion",
+                "Condensation de vapeur d'eau",
+                "Sublimation du verre",
+                "Filtration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La vapeur d'eau de l'air se liquéfie sur la surface froide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La condensation est le passage :",
+              "options": [
+                "Solide → liquide",
+                "Liquide → solide",
+                "Gaz → liquide",
+                "Solide → gaz"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Condenser, c'est transformer un gaz en liquide, souvent en refroidissant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'évaporation du linge mou au soleil est une :",
+              "options": [
+                "Vaporisation lente",
+                "Solidification",
+                "Distillation",
+                "Décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau s'évapore à la surface du tissu sans forcément bouillir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le brouillard près du sol contient surtout de l'eau :",
+              "options": [
+                "Solide",
+                "Sous forme de fines gouttelettes liquides",
+                "Métallique",
+                "Plasma"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le brouillard est un mélange d'air et de microgouttelettes d'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chauffer de l'eau dans une casserole provoque tôt ou tard :",
+              "options": [
+                "Seulement une fusion",
+                "Une vaporisation",
+                "Une solidification",
+                "Une sublimation du fer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En chauffant, l'eau finit par s'évaporer ou bouillir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Refroidir la vapeur d'eau produit :",
+              "options": [
+                "De la glace directement toujours",
+                "De l'eau liquide par condensation",
+                "Du sel",
+                "Du fer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En refroidissant le gaz aqueux, on obtient de l'eau liquide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le point d'ébullition de l'eau pure à pression normale est :",
+              "options": ["0 °C", "50 °C", "100 °C", "200 °C"],
+              "correctAnswers": [2],
+              "explanation": "À pression atmosphérique normale, l'eau pure bout à 100 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'évaporation peut avoir lieu :",
+              "options": [
+                "Seulement à 100 °C",
+                "À toute température en surface",
+                "Seulement à −20 °C",
+                "Jamais pour l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'évaporation se produit à la surface du liquide à diverses températures."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sublimation et dépôt",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La sublimation et le dépôt solide concernent surtout :",
+              "options": [
+                "Passage direct solide ↔ gaz",
+                "Exemple : glace carbonique qui passe en gaz",
+                "Passage liquide ↔ gaz uniquement",
+                "Dissolution du sel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sublimation : solide → gaz ; dépôt solide ( resublimation inverse ) : gaz → solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La glace carbonique (CO₂ solide) qui « fume » sans fondre illustre :",
+              "options": [
+                "Une fusion",
+                "Une sublimation",
+                "Une dissolution",
+                "Une décantation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CO₂ solide passe directement en gaz : sublimation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La neige qui disparaît par temps froid sec sans flaques peut subir :",
+              "options": [
+                "Seulement fusion",
+                "Sublimation partielle",
+                "Distillation",
+                "Filtration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La glace peut passer directement en vapeur d'eau : sublimation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le dépôt de givre sur une vitre très froide provient de :",
+              "options": [
+                "Liquide → solide",
+                "Gaz → solide",
+                "Solide → liquide",
+                "Liquide → gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La vapeur d'eau se dépose directement en cristaux de glace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La sublimation est le passage :",
+              "options": [
+                "Liquide → gaz",
+                "Solide → gaz",
+                "Gaz → liquide",
+                "Liquide → solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sublimer, c'est passer du solide au gaz sans passer par le liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le givre sur l'herbe le matin est de l'eau à l'état :",
+              "options": ["Liquide", "Gazeux", "Solide", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "Le givre est de la glace formée par dépôt solide de vapeur d'eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un parfum solide dans un placard qui sent sans fondre peut :",
+              "options": [
+                "Se sublimer",
+                "Se solidifier",
+                "Se filtrer",
+                "Se décant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines substances solides volatiles se subliment lentement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le dépôt solide inverse de la sublimation s'appelle aussi :",
+              "options": [
+                "Ébullition",
+                "Condensation vers un solide",
+                "Resublimation ou dépôt solide",
+                "Dissolution"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Quand un gaz devient directement solide, on parle de dépôt solide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La sublimation du naphtaline ( boule anti-mite ) montre :",
+              "options": [
+                "Solide → liquide",
+                "Solide → gaz",
+                "Gaz → liquide",
+                "Liquide → solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le naphtaline diminue en se transformant en gaz perceptible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour observer une sublimation, il faut en général :",
+              "options": [
+                "Un corps qui passe direct de solide à gaz",
+                "Toujours 100 °C",
+                "Un mélange hétérogène",
+                "Une filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sublimation évite l'état liquide intermédiaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Température et changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou grandeurs servent à étudier les changements d'état ?",
+              "options": [
+                "Thermomètre",
+                "Température",
+                "Règle de mesure de masse uniquement",
+                "Compas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On mesure la température avec un thermomètre pour suivre les changements d'état."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pendant l'ébullition de l'eau pure, la température :",
+              "options": [
+                "Monte sans limite",
+                "Reste à 100 °C jusqu'à disparition du liquide",
+                "Tombe à 0 °C",
+                "Est aléatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À pression normale, l'eau bout à température constante 100 °C."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chauffer un solide avant fusion fait en général :",
+              "options": [
+                "Baisser sa température",
+                "Augmenter sa température",
+                "Le filtrer",
+                "Le dissoudre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'apport de chaleur augmente la température jusqu'au point de fusion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Refroidir un gaz peut provoquer :",
+              "options": [
+                "Condensation",
+                "Fusion du fer",
+                "Dissolution du sable",
+                "Décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En refroidissant, un gaz peut redevenir liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau qui bout dans une casserole reste à 100 °C car :",
+              "options": [
+                "Elle est un mélange hétérogène",
+                "C'est le comportement d'un corps pur à pression normale",
+                "Le thermomètre est cassé",
+                "Elle contient du sable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un corps pur change d'état à température constante à pression donnée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Geler de l'eau à 0 °C correspond à :",
+              "options": [
+                "Vaporisation",
+                "Solidification à température de fusion",
+                "Distillation",
+                "Dissolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À 0 °C, l'eau pure peut commencer à se solidifier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un thermomètre mesure :",
+              "options": [
+                "La masse",
+                "La température",
+                "Le volume d'un gaz seul",
+                "La couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le thermomètre indique la température en degrés Celsius en classe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si on arrête de chauffer de l'eau en ébullition, l'ébullition :",
+              "options": [
+                "Continue sans chaleur",
+                "Cesse quand l'apport de chaleur s'arrête",
+                "Devient fusion",
+                "Devient filtration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La vaporisation nécessite un apport énergétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fonte de la glace à 0 °C montre que la température :",
+              "options": [
+                "Peut rester constante pendant le changement d'état",
+                "Doit toujours monter",
+                "Est toujours 100 °C",
+                "N'a aucun lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant la fusion, la température d'un corps pur reste au point de fusion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plus on chauffe un métal solide avant fusion, plus sa température :",
+              "options": [
+                "Diminue",
+                "Augmente (avant le palier de fusion)",
+                "Reste −10 °C",
+                "Devient celle de l'air"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avant d'atteindre le point de fusion, le solide se réchauffe."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modèle particulaire des états",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le modèle particulaire, on dit que la matière est formée de :",
+              "options": [
+                "Particules très petites",
+                "Particules invisibles à l'œil nu",
+                "Un bloc continu sans vide",
+                "Couleurs seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La matière est constituée de particules ( atomes, molécules ) invisibles à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un solide, les particules sont en général :",
+              "options": [
+                "Très éloignées et libres",
+                "Proches et organisées",
+                "Absentes",
+                "Toujours liquides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les particules d'un solide vibrent sur place, proches les unes des autres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un liquide, les particules peuvent :",
+              "options": [
+                "Se déplacer les unes par rapport aux autres",
+                "Ne jamais bouger",
+                "Disparaître",
+                "Être visibles à l'œil nu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules d'un liquide glissent les unes sur les autres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un gaz, les particules sont :",
+              "options": [
+                "Très espacées et très mobiles",
+                "Fixes en réseau",
+                "Collées sans mouvement",
+                "Toujours liquides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules gazeuses se déplacent rapidement et sont loin les unes des autres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chauffer un corps fait en général bouger ses particules :",
+              "options": [
+                "Moins vite",
+                "Plus vite",
+                "Pas du tout",
+                "Seulement à l'extérieur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La chaleur augmente l'agitation des particules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La compressibilité des gaz s'explique car :",
+              "options": [
+                "Il y a beaucoup d'espace entre particules",
+                "Les particules sont soudées",
+                "Il n'y a pas de particules",
+                "Le gaz est un solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut rapprocher les particules de gaz en réduisant le volume."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Passer de solide à liquide correspond à des particules qui :",
+              "options": [
+                "S'organisent en réseau strict",
+                "Gagnent de la liberté de mouvement",
+                "Disparaissent",
+                "Devient de l'air pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En fusion, le réseau se défait partiellement et les particules coulent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'odeur qui se propage montre que des particules :",
+              "options": [
+                "Ne se déplacent jamais",
+                "Se déplacent dans l'air",
+                "Sont visibles",
+                "Restent dans le flacon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des particules odorantes se diffusent dans l'air jusqu'à notre nez."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les particules sont visibles à l'œil nu ?",
+              "options": [
+                "Oui, toujours",
+                "Non, elles sont trop petites",
+                "Seulement les gaz",
+                "Seulement l'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le modèle particulaire décrit une échelle microscopique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Refroidir un gaz peut rapprocher ses particules jusqu'à former :",
+              "options": [
+                "Un liquide",
+                "Un plasma obligatoire",
+                "Un mélange hétérogène de sable",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perdant de l'énergie, les particules se rapprochent et forment un liquide."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — États de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples sont des changements d'état de l'eau ?",
+              "options": [
+                "Fusion de la glace",
+                "Vaporisation",
+                "Dissolution du sel dans l'eau",
+                "Filtration"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fusion et vaporisation transforment l'état de l'eau sans changer sa nature chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau, la glace et la vapeur d'eau sont :",
+              "options": [
+                "Trois substances différentes",
+                "La même substance à des états différents",
+                "Un mélange hétérogène",
+                "Des métaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est toujours de l'eau ( H₂O ) sous trois états physiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À pression normale, l'ordre des températures de changement pour l'eau pure est :",
+              "options": [
+                "Fusion 0 °C, ébullition 100 °C",
+                "Fusion 100 °C, ébullition 0 °C",
+                "Tout à 50 °C",
+                "Sans température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pure fond à 0 °C et bout à 100 °C à pression atmosphérique normale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le fer fondu à très haute température est à l'état :",
+              "options": [
+                "Solide",
+                "Liquide",
+                "Gazeux à température ambiante",
+                "Plasma en classe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au-dessus de son point de fusion, le fer devient liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un corps pur qui passe de gaz à liquide subit :",
+              "options": [
+                "Condensation",
+                "Fusion",
+                "Dissolution",
+                "Décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condensation transforme un gaz en liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le propane dans une bouteille de camping est stocké sous forme :",
+              "options": [
+                "Liquide pressurisée",
+                "Solide de pierre",
+                "Plasma",
+                "Poudre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous pression, le propane reste liquide dans la bouteille."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La matière de l'Univers existe surtout sous forme de :",
+              "options": [
+                "Solide uniquement",
+                "Plasma uniquement en classe",
+                "Solide, liquide ou gaz selon conditions",
+                "Couleur"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En cours élémentaire, on étudie surtout solide, liquide et gaz."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La solidification libère ou utilise de l'énergie ( chaleur ) par rapport à l'environnement :",
+              "options": [
+                "Libère de la chaleur ( exothermique )",
+                "Ne change rien",
+                "Crée de la lumière",
+                "Filtre l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se solidifiant, un liquide cède de l'énergie à l'environnement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour faire fondre de la glace, il faut :",
+              "options": [
+                "Apporter de la chaleur",
+                "Refroidir à −50 °C",
+                "Filtrer",
+                "Décant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion demande un apport énergétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un changement d'état modifie :",
+              "options": [
+                "L'état physique",
+                "La nature chimique de la substance pure",
+                "Le numéro atomique",
+                "La couleur obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changer d'état est une transformation physique, pas chimique pour une substance pure."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Mélanges",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Corps pur et mélange",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions décrivent un mélange ?",
+              "options": [
+                "Plusieurs substances réunies",
+                "Une seule substance chimique pure",
+                "Peut être séparé par des méthodes physiques",
+                "Ne peut jamais être séparé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un mélange combine plusieurs constituents séparables par des procédés physiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau distillée ( pure ) est un :",
+              "options": [
+                "Mélange",
+                "Corps pur",
+                "Alliage",
+                "Mélange hétérogène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau pure est un corps pur, constitué d'une seule substance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'air est :",
+              "options": [
+                "Un corps pur",
+                "Un mélange de gaz",
+                "Un solide",
+                "Un liquide pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air contient surtout azote, oxygène et d'autres gaz : c'est un mélange."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'eau salée obtenue en dissolvant du sel est :",
+              "options": [
+                "Un corps pur",
+                "Un mélange homogène",
+                "Un métal",
+                "Un solide pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sel et eau forment une solution, mélange homogène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le lait commercial ( sans adjonction ) est considéré en classe comme :",
+              "options": [
+                "Corps pur",
+                "Mélange",
+                "Élément chimique",
+                "Gaz pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le lait contient eau, matières grasses, protéines : c'est un mélange complexe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le fer métallique pur est :",
+              "options": [
+                "Un mélange",
+                "Un corps pur ( substance )",
+                "Une solution",
+                "De l'air"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le fer est une substance simple, corps pur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau + huile dans un verre forment :",
+              "options": [
+                "Un corps pur",
+                "Un mélange",
+                "Un élément",
+                "Un composé indissociable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux liquides non miscibles forment un mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Séparer les composants d'un mélange par filtration est une transformation :",
+              "options": ["Chimique", "Physique", "Nucléaire", "Biologique"],
+              "correctAnswers": [1],
+              "explanation": "Filtrer ne change pas la nature des substances, seulement leur répartition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le dioxygène pur ( O₂ ) est :",
+              "options": [
+                "Un mélange",
+                "Un corps pur",
+                "Une solution salée",
+                "Un alliage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène est une substance simple, corps pur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un granité ( glace + sirop ) est :",
+              "options": ["Corps pur", "Mélange", "Élément", "Gaz"],
+              "correctAnswers": [1],
+              "explanation": "Plusieurs parties distinctes ou dissoutes : c'est un mélange."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Mélanges homogènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mélange homogène se reconnaît car :",
+              "options": [
+                "On ne voit qu'une seule phase à l'œil nu",
+                "La composition paraît uniforme",
+                "On distingue des morceaux visibles",
+                "Il est toujours solide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Homogène : aspect uniforme, pas de séparation visible à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau sucrée bien mélangée est :",
+              "options": ["Hétérogène", "Homogène", "Corps pur", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "Sucre dissous : solution uniforme, mélange homogène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'air est un mélange :",
+              "options": [
+                "Hétérogène visible",
+                "Homogène de gaz",
+                "Liquide pur",
+                "Solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les gaz de l'air sont mélangés uniformément : homogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une solution salée est :",
+              "options": [
+                "Homogène",
+                "Hétérogène avec grains visibles",
+                "Corps pur",
+                "Alliage solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sel dissous : une phase liquide uniforme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau + sirop de menthe bien agité ( sans bulles visibles ) forme souvent :",
+              "options": [
+                "Mélange homogène",
+                "Mélange hétérogène",
+                "Corps pur",
+                "Gaz seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le sirop est bien dissous ou mélangé, le liquide paraît uniforme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Brassage homogène signifie :",
+              "options": [
+                "Répartition uniforme",
+                "Présence de gros morceaux",
+                "Séparation en deux liquides",
+                "Disparition de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homogénéiser, c'est rendre le mélange uniforme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sel dans l'eau forme une :",
+              "options": [
+                "Solution",
+                "Suspension de gros cristaux visibles",
+                "Alliage",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dissolution du sel : solution aqueuse homogène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mélange homogène peut être :",
+              "options": [
+                "Liquide uniquement",
+                "Gazeux ou liquide selon cas",
+                "Toujours solide",
+                "Jamais gazeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Air ( gaz ) et eau salée ( liquide ) sont homogènes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si on ne voit pas de particules ni de couches, le mélange est probablement :",
+              "options": ["Homogène", "Hétérogène", "Élément pur", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "L'uniformité visuelle suggère un mélange homogène."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau gazeuse ( si le CO₂ est dissous uniformément ) est :",
+              "options": [
+                "Homogène",
+                "Hétérogène de morceaux",
+                "Corps pur",
+                "Solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz dissous dans l'eau : solution homogène à l'échelle macroscopique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mélanges hétérogènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mélange hétérogène présente souvent :",
+              "options": [
+                "Plusieurs phases visibles",
+                "Aspect uniforme",
+                "Grains ou gouttelettes distincts",
+                "Une seule substance pure"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Hétérogène : on distingue au moins deux parties différentes à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eau + huile non émulsionnée est :",
+              "options": [
+                "Homogène",
+                "Hétérogène",
+                "Corps pur",
+                "Solution salée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux couches liquides visibles : mélange hétérogène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Eau trouble avec du sable en suspension est :",
+              "options": ["Homogène", "Hétérogène", "Gaz pur", "Corps pur"],
+              "correctAnswers": [1],
+              "explanation": "Grains de sable visibles ou déposés : hétérogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une vinaigrette non émulsionnée est :",
+              "options": ["Homogène", "Hétérogène", "Élément", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "Gouttelettes d'huile dans le vinaigre : deux phases."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Granité avec morceaux de glace visibles est :",
+              "options": ["Homogène", "Hétérogène", "Corps pur", "Gaz"],
+              "correctAnswers": [1],
+              "explanation": "Glace et sirop distinguables : hétérogène."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le lait non homogénéisé avec crème flottante montre :",
+              "options": [
+                "Homogénéité parfaite",
+                "Hétérogénéité",
+                "Corps pur",
+                "Plasma"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Couche de crème visible : mélange hétérogène."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Confiture avec morceaux de fruit est :",
+              "options": ["Homogène", "Hétérogène", "Eau pure", "Oxygène pur"],
+              "correctAnswers": [1],
+              "explanation": "Morceaux de fruit visibles dans la pâte : hétérogène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pierre contenant des veines de quartz et de feldspath est :",
+              "options": [
+                "Corps pur",
+                "Mélange hétérogène de minéraux",
+                "Gaz",
+                "Solution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plusieurs minéraux distinguables : mélange hétérogène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Laisser reposer une suspension de terre dans l'eau forme :",
+              "options": [
+                "Un mélange hétérogène avec dépôt",
+                "Un corps pur",
+                "Un gaz",
+                "Une solution homogène stable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particules se déposent : phases solide et liquide distinctes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtrer un mélange hétérogène solide-liquide permet souvent de :",
+              "options": [
+                "Séparer les phases",
+                "Créer un corps pur chimiquement",
+                "Fusionner les gaz",
+                "Dissoudre le fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La filtration sépare un solide insoluble du liquide."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lors d'une dissolution réussie du sel dans l'eau :",
+              "options": [
+                "Le sel disparaît à l'œil nu",
+                "Le sel reste en gros morceaux",
+                "On obtient une solution",
+                "L'eau devient un corps pur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le soluté se disperse : solution homogène, sel invisible à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le solvant dans l'eau salée est :",
+              "options": ["Le sel", "L'eau", "L'air", "Le sable"],
+              "correctAnswers": [1],
+              "explanation": "Le solvant est le liquide qui dissout : ici l'eau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le soluté dans l'eau salée est :",
+              "options": ["L'eau", "Le sel", "Le verre", "L'huile"],
+              "correctAnswers": [1],
+              "explanation": "Le soluté est la substance dissoute : le sel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dissoudre du sucre dans de l'eau chaude est généralement :",
+              "options": [
+                "Plus rapide qu'à froid",
+                "Impossible",
+                "Une fusion",
+                "Une filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température plus élevée accélère souvent la dissolution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remuer aide à dissoudre car :",
+              "options": [
+                "On mélange le soluté avec le solvant",
+                "On refroidit à 0 °C",
+                "On solidifie",
+                "On distille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation favorise le contact soluté-solvant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sable dans l'eau ne se dissout pas : on parle de :",
+              "options": [
+                "Solution",
+                "Dispersion hétérogène / suspension",
+                "Corps pur",
+                "Gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sable reste insoluble : suspension hétérogène."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une dissolution est une transformation :",
+              "options": [
+                "Physique",
+                "Chimique obligatoire",
+                "Nucléaire",
+                "Biologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel reste du sel, l'eau reste de l'eau : transformation physique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau de mer contient du sel :",
+              "options": [
+                "Dissous",
+                "Absents",
+                "Uniquement sous forme de roche",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sels sont dissous dans l'eau de mer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si plus de sel ne se dissout plus, la solution est :",
+              "options": ["Saturée", "Vide", "Gazeuse pure", "Filtrée"],
+              "correctAnswers": [0],
+              "explanation": "À saturation, le solvant ne peut plus dissoudre de soluté supplémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Récupérer le sel de l'eau salée par évaporation utilise :",
+              "options": [
+                "Changement d'état du solvant",
+                "Fusion du sel",
+                "Sublimation du fer",
+                "Décantation de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En évaporant l'eau, le sel solide reste."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Solubilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La solubilité dépend notamment de :",
+              "options": [
+                "La nature du soluté et du solvant",
+                "La température ( souvent )",
+                "La couleur des yeux",
+                "Le compas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Solubilité = capacité à dissoudre, liée aux substances et à la température."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On dit qu'un soluté est insoluble dans l'eau si :",
+              "options": [
+                "Il ne se dissout pas",
+                "Il disparaît totalement",
+                "Il bout à 100 °C",
+                "Il devient gaz pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insoluble : ne forme pas de solution homogène durable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le sel ( chlorure de sodium ) dans l'eau est :",
+              "options": ["Soluble", "Insoluble", "Un gaz", "Un métal fondu"],
+              "correctAnswers": [0],
+              "explanation": "Le sel se dissout bien dans l'eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'huile dans l'eau est :",
+              "options": [
+                "Très soluble",
+                "Insoluble ( non miscible )",
+                "Identique à l'eau",
+                "Un solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Huile et eau forment deux phases : non miscibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Augmenter la température dissout souvent plus de sucre dans l'eau car :",
+              "options": [
+                "La solubilité du sucre augmente",
+                "L'eau devient gaz",
+                "Le sucre devient fer",
+                "La solubilité diminue toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour beaucoup de solides, la solubilité augmente avec la température."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une solution saturée contient :",
+              "options": [
+                "Autant de soluté dissous que possible à cette température",
+                "Aucun soluté",
+                "Uniquement du gaz",
+                "Uniquement du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saturation = maximum de soluté dissous à l'équilibre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Refroidir une solution saturée chaude de sucre peut faire :",
+              "options": [
+                "Précipiter du sucre",
+                "Dissoudre le verre",
+                "Créer de l'oxygène pur",
+                "Filtrer l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la solubilité baisse, l'excès cristallise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Miscible signifie :",
+              "options": [
+                "Deux liquides se mélangent homogénément",
+                "Deux solides fusionnent",
+                "Un gaz devient solide",
+                "Impossible de mélanger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau et éthanol par exemple sont miscibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le gypse dans l'eau est plutôt :",
+              "options": [
+                "Peu soluble",
+                "Très soluble comme le sel",
+                "Un gaz",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gypse se dissout lentement et en faible quantité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester la solubilité consiste à observer si :",
+              "options": [
+                "Le soluté se dissout dans le solvant",
+                "Le solvant bout",
+                "Le mélange devient magnetique",
+                "Le soluté fond toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vérifie la formation ou non d'une solution homogène."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Séparer les mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes séparent des mélanges sans changer la nature des substances ?",
+              "options": ["Filtration", "Décantation", "Combustion", "Rouille"],
+              "correctAnswers": [0, 1],
+              "explanation": "Filtration et décantation sont des séparations physiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Séparer des cailloux de l'eau convient par :",
+              "options": [
+                "Filtration",
+                "Distillation du caillou",
+                "Fusion",
+                "Dissolution du caillou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solide insoluble est retenu par un filtre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Récupérer l'eau pure d'une eau salée utilise souvent :",
+              "options": [
+                "Distillation",
+                "Ajout de sable",
+                "Filtration seule",
+                "Mélange avec huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distiller vaporise l'eau et laisse le sel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Décantation sert à :",
+              "options": [
+                "Séparer des liquides ou laisser déposer un solide",
+                "Dissoudre le fer",
+                "Brûler le mélange",
+                "Geler instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On laisse reposer pour séparer les phases par densité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Séparer le fer des copeaux de bois avec un aimant est :",
+              "options": [
+                "Séparation magnétique",
+                "Dissolution",
+                "Distillation",
+                "Ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aimant attire le fer, pas le bois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Évaporer l'eau d'une peinture aqueuse laisse :",
+              "options": [
+                "Le soluté solide ( pigments, liant )",
+                "Rien",
+                "De l'air pur",
+                "Du pétrole liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le solvant part en vaporisation, le reste demeure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On ne peut pas filtrer une solution homogène de sel pour :",
+              "options": [
+                "Retirer le sel dissous",
+                "Retirer des impuretés insolubles",
+                "Séparer du sable",
+                "Clarifier une suspension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel dissous passe à travers le filtre avec l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tri manuel des déchets est une :",
+              "options": [
+                "Séparation physique",
+                "Réaction chimique",
+                "Fusion nucléaire",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On sépare par nature sans transformer chimiquement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Centrifuger accélère :",
+              "options": [
+                "La séparation par densité",
+                "La combustion",
+                "La rouille",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotation pousse les phases plus denses vers le fond."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir une méthode de séparation dépend :",
+              "options": [
+                "Des propriétés des constituents",
+                "De la couleur du laboratoire",
+                "Du jour de la semaine",
+                "Du modèle de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solubilité, taille, densité, magnétisme guident le choix."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Filtration et décantation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Filtration et décantation conviennent surtout à :",
+              "options": [
+                "Mélanges hétérogènes",
+                "Séparer un solide insoluble d'un liquide",
+                "Créer un corps pur chimique",
+                "Fusionner deux gaz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces techniques séparent des phases distinctes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le filtre retient :",
+              "options": [
+                "Les particules solides insolubles",
+                "Les ions dissous",
+                "Les gaz de l'air",
+                "La lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le papier filtre bloque les particules trop grosses."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le liquide qui traverse le filtre s'appelle :",
+              "options": [
+                "Filtrat",
+                "Résidu sec uniquement",
+                "Distillat",
+                "Sublimat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtrat est la phase liquide passée au filtre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La décantation laisse reposer un mélange pour :",
+              "options": [
+                "Séparer par densité",
+                "Dissoudre le fer",
+                "Chauffer à 200 °C",
+                "Brûler l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phase la plus dense se dépose au fond."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau boueuse : le sable au fond après repos illustre :",
+              "options": [
+                "Décantation",
+                "Distillation",
+                "Sublimation",
+                "Combustion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les grains de sable se déposent par décantation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour clarifier une suspension, on peut enchaîner :",
+              "options": [
+                "Décantation puis filtration",
+                "Fusion puis sublimation",
+                "Rouille puis combustion",
+                "Distillation du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décantation grossière puis filtration affinent la séparation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Huile + eau : récupérer l'huile à la surface utilise :",
+              "options": [
+                "Décantation / écrémage",
+                "Filtration du sel dissous",
+                "Aimant",
+                "Distillation du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'huile, moins dense, flotte : on peut la séparer après repos."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un entonnoir avec papier filtre sert à :",
+              "options": [
+                "Filtrer",
+                "Distiller",
+                "Mesurer la température",
+                "Peser la masse molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montage classique de filtration en laboratoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le résidu sur le filtre contient :",
+              "options": [
+                "Le solide retenu",
+                "L'eau distillée pure",
+                "Le gaz carbonique pur",
+                "Le plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce qui ne passe pas reste sur le filtre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtrer de l'air n'est pas le même procédé que filtrer :",
+              "options": [
+                "Une suspension liquide",
+                "Un liquide avec solide insoluble",
+                "De l'eau avec sable",
+                "Une boue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrer un gaz demande un dispositif adapté ; en classe on filtre surtout liquide-solide."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Distillation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La distillation permet de :",
+              "options": [
+                "Séparer un solvant volatile d'un soluté",
+                "Récupérer une eau plus pure d'une solution",
+                "Dissoudre le sable",
+                "Aimanter le cuivre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On vaporise le solvant puis on le condense : distillat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le liquide recueilli après condensation du vapeur est le :",
+              "options": ["Distillat", "Résidu salé", "Filtrat", "Givre"],
+              "correctAnswers": [0],
+              "explanation": "Le distillat est le liquide condensé récupéré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'eau salée distillée, le sel reste :",
+              "options": [
+                "Dans le ballon",
+                "Dans le distillat",
+                "Dans l'air",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel non volatile reste après vaporisation de l'eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La distillation repose sur un changement d'état :",
+              "options": [
+                "Vaporisation puis condensation",
+                "Fusion seule",
+                "Sublimation du sel",
+                "Solidification de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cycle liquide → gaz → liquide pour séparer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau distillée est presque :",
+              "options": [
+                "Sans sels dissous",
+                "Très salée",
+                "De l'huile",
+                "Du fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sels ne passent pas dans le distillat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chauffer le ballon sert à :",
+              "options": [
+                "Vaporiser le solvant",
+                "Filtrer",
+                "Décant",
+                "Magnetiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur vaporise le composant le plus volatile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le réfrigérant à eau froide sert à :",
+              "options": [
+                "Condenser la vapeur",
+                "Dissoudre le sel",
+                "Brûler le mélange",
+                "Solidifier l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur se liquéfie dans le condenseur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Distillation ≠ simple filtration car :",
+              "options": [
+                "Elle change d'état pour séparer",
+                "Elle ne sépare jamais",
+                "Elle crée un nouveau élément",
+                "Elle ne concerne que les solides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distillation utilise vaporisation/condensation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Récupérer l'eau d'une encre diluée par distillation laisse dans le ballon :",
+              "options": [
+                "Les colorants moins volatils",
+                "De l'air pur",
+                "Du diamant",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les substances non volatiles restent en résidu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La distillation est une transformation :",
+              "options": [
+                "Physique",
+                "Chimique obligatoire",
+                "Biologique",
+                "Nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les substances restent les mêmes, seulement séparées."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Eau et solutions du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de solutions aqueuses homogènes :",
+              "options": [
+                "Eau salée",
+                "Eau sucrée",
+                "Eau + sable",
+                "Eau + huile non mixée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sel et sucre dissous donnent des solutions uniformes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau du robinet contient souvent :",
+              "options": [
+                "Des sels et ions dissous",
+                "Rien du tout",
+                "Uniquement du pétrole",
+                "Du fer solide en morceaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau du robinet est une solution diluée de divers ions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les pastilles effervescentes dans l'eau libèrent du gaz :",
+              "options": [
+                "Oui, mélange homogène puis bulles",
+                "Non, corps pur",
+                "Uniquement du fer",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction de dissolution avec dégagement de gaz ( CO₂ souvent )."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sirop dilué dans l'eau est :",
+              "options": [
+                "Solution sucrée",
+                "Mélange hétérogène de cailloux",
+                "Corps pur",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sucre dissous dans l'eau : solution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau de pluie non polluée est presque :",
+              "options": [
+                "Pure mais peut contenir du CO₂ dissous",
+                "Huile",
+                "Sel gemme",
+                "Fer fondu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie = eau avec parfois gaz dissous et poussières traces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Désherber à l'eau salée très concentrée tue les plantes car :",
+              "options": [
+                "Fort taux de sel dissous",
+                "L'eau devient pure",
+                "Il n'y a plus de liquide",
+                "L'air disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excès de sel dissous empêche la plante de fonctionner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Glaçons dans un verre d'eau forment :",
+              "options": [
+                "Mélange hétérogène",
+                "Solution homogène",
+                "Corps pur unique",
+                "Gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glace solide + eau liquide : deux phases visibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour obtenir de l'eau moins calcaire à la maison on peut utiliser :",
+              "options": [
+                "Adoucisseur ( échange d'ions )",
+                "Filtration seule des ions dissous",
+                "Ajout de sable",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ions Ca²⁺ et Mg²⁺ sont responsables de la dureté ; l'adoucisseur les remplace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'eau gazeuse contient du CO₂ :",
+              "options": [
+                "Dissous et sous pression",
+                "Sous forme de pierre",
+                "Absents",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gaz est dissous dans l'eau sous pression."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Boire de l'eau, c'est ingérer :",
+              "options": [
+                "Un solvant souvent avec solutés",
+                "Un métal pur",
+                "Un gaz seul",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau potable est surtout solvant avec sels et minéraux en faible quantité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — Mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Classer correctement :",
+              "options": [
+                "Air : mélange homogène",
+                "Eau + sable : hétérogène",
+                "Eau distillée : corps pur",
+                "Sel dissous : hétérogène visible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Air homogène, eau+sable hétérogène ; sel dissous est homogène à l'œil nu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour séparer eau et huile après repos :",
+              "options": [
+                "Décantation",
+                "Distillation du sel",
+                "Aimant",
+                "Fusion de l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux liquides non miscibles se séparent par décantation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour récupérer le sel d'une eau salée :",
+              "options": [
+                "Évaporation ou distillation",
+                "Filtration simple",
+                "Aimant",
+                "Ajout d'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retirer l'eau laisse le sel cristallisé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un mélange peut contenir :",
+              "options": [
+                "Plusieurs phases ou une phase uniforme",
+                "Un seul atome",
+                "Uniquement du plasma",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homogène ou hétérogène, un mélange combine plusieurs constituents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dissoudre du sel est :",
+              "options": [
+                "Formation d'une solution",
+                "Changement d'élément chimique",
+                "Fusion du fer",
+                "Sublimation obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel reste du sel, dispersé dans l'eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Filtration ne retire pas du filtrat :",
+              "options": [
+                "Le sel dissous",
+                "Le sable",
+                "Les impuretés insolubles",
+                "Les particules grosses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ions et molécules dissoutes traversent le filtre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'eau est dite « solvant universel » car :",
+              "options": [
+                "Elle dissout de nombreux solutés",
+                "Elle dissout tout sans limite",
+                "Elle est un gaz",
+                "Elle est un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de substances ioniques ou polaires se dissolvent dans l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélange homogène ≠ corps pur car :",
+              "options": [
+                "Il contient plusieurs substances",
+                "Il est invisible",
+                "Il est toujours gazeux",
+                "Il ne contient pas de molécules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une solution reste un mélange même si uniforme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La technique adaptée dépend des propriétés :",
+              "options": [
+                "Oui ( solubilité, densité, taille… )",
+                "Non, toujours distillation",
+                "Non, toujours combustion",
+                "Uniquement de la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On choisit filtration, décantation, distillation, etc. selon le cas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Séparer un mélange sans créer de nouvelle substance est :",
+              "options": [
+                "Séparation physique",
+                "Réaction chimique",
+                "Transmutation",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les méthodes du chapitre conservent l'identité des substances."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
