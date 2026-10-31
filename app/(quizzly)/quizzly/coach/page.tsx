@@ -1,5 +1,7 @@
 import { CoachQuizzly } from "@/components/quizzly/coach";
 
+export const instant = false;
+
 function lireParam(valeur: string | string[] | undefined): string | null {
   if (typeof valeur === "string" && valeur.length > 0) {
     return valeur;

@@ -4,6 +4,8 @@ import { QuizzlyShell } from "@/components/quizzly/shell";
 import { requireUser } from "@/lib/auth/require-user";
 import { EconomyProvider } from "@/lib/resources/economy";
 
+export const instant = false;
+
 export const metadata = {
   description: "Révisez le collège et le lycée, un quiz à la fois.",
   title: "Quizzly | mAI",

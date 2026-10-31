@@ -1,5 +1,7 @@
 import { QuizPlayer } from "@/components/quizzly/quiz-player";
 
+export const instant = false;
+
 export default async function QuizPage({
   params,
 }: {
