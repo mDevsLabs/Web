@@ -5,6 +5,11 @@ import { z } from "zod";
 import { defineTool, toRegisteredTool } from "@/lib/agent/tools/define-tool";
 import { toolFailure, toolSuccess } from "@/lib/agent/types";
 import {
+  customPluginAddendum,
+  customPluginAgentDescription,
+  customPluginChatDescription,
+} from "@/lib/mcp/provider-tool-id";
+import {
   listUserPlugins,
   readUserOauthResource,
 } from "@/lib/plugins/user-plugin-store";
@@ -33,15 +38,13 @@ export async function customPluginChatTools(userId: string) {
   if (plugins.length === 0) {
     return { addendum: "", ids: [] as string[], tools: {} };
   }
-  const names = plugins
-    .map((plugin) => `${plugin.name} (${plugin.id})`)
-    .join(", ");
+  const labels = plugins.map((plugin) => `${plugin.name} (${plugin.id})`);
   return {
-    addendum: `Plugins OAuth personnels, lecture seule : ${names}. Utilise readCustomPlugin avec le pluginId et un chemin GET relatif à l'URL d'API du plugin.`,
+    addendum: customPluginAddendum(labels),
     ids: ["readCustomPlugin"],
     tools: {
       readCustomPlugin: tool({
-        description: `Lit en GET une ressource d'un plugin OAuth personnel. Plugins disponibles : ${names}.`,
+        description: customPluginChatDescription(labels),
         execute: async ({ path, pluginId, query }) =>
           readUserOauthResource({ path, pluginId, query, userId }),
         inputSchema,
@@ -55,9 +58,7 @@ export async function listCustomPluginAgentTools(userId: string) {
   if (plugins.length === 0) {
     return [];
   }
-  const names = plugins
-    .map((plugin) => `${plugin.name} (${plugin.id})`)
-    .join(", ");
+  const labels = plugins.map((plugin) => `${plugin.name} (${plugin.id})`);
   const agentTool = defineTool<z.infer<typeof inputSchema>>({
     availability: {
       categories: ["plugins"],
@@ -65,7 +66,7 @@ export async function listCustomPluginAgentTools(userId: string) {
       tiers: "all",
     },
     category: "plugins",
-    description: `Lecture GET d'un plugin OAuth personnel. Plugins : ${names}.`,
+    description: customPluginAgentDescription(labels),
     execute: async (input) => {
       const output = await readUserOauthResource({
         path: input.path,

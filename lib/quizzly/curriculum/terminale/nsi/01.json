@@ -1,0 +1,2528 @@
+{
+  "id": "terminale-nsi-01",
+  "year": "terminale",
+  "subject": "nsi",
+  "title": "Structures de données",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Listes et arbres",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement une liste chaînée en NSI ?",
+              "options": [
+                "Chaque élément possède une référence vers le suivant",
+                "L'accès à l'élément d'indice i est en O(1)",
+                "L'insertion en tête est en O(1) si l'on a la référence de tête",
+                "La mémoire est toujours contiguë comme pour un tableau"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une liste chaînée lie les nœuds par des pointeurs ; l'accès par indice est linéaire et la mémoire n'est pas contiguë."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Complexité temporelle moyenne de la recherche d'une valeur dans une liste chaînée de n éléments ?",
+              "options": ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+              "correctAnswers": [2],
+              "explanation": "Sans index, il faut parcourir jusqu'à n nœuds dans le pire cas."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Dans une pile (LIFO), quelle opération retire l'élément le plus récemment empilé ?",
+              "options": ["enqueue", "push", "pop", "peek"],
+              "correctAnswers": [2],
+              "explanation": "pop retire le sommet ; push empile ; peek lit sans retirer."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Une file (FIFO) traite les éléments dans quel ordre ?",
+              "options": [
+                "Dernier entré, premier sorti",
+                "Premier entré, premier sorti",
+                "Ordre aléatoire",
+                "Ordre de priorité uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "FIFO : le premier enfilé est le premier défilé."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "Tableau dynamique : avantage principal par rapport à une liste chaînée pour l'accès aléatoire ?",
+              "options": [
+                "Insertion en tête en O(1)",
+                "Accès par indice en O(1)",
+                "Pas de réallocation mémoire",
+                "Absence de fragmentation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le tableau offre un accès direct par indice en temps constant."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "En Python, quel type natif se comporte le plus comme une pile avec append/pop en fin ?",
+              "options": [
+                "list utilisée avec append et pop()",
+                "tuple",
+                "dict",
+                "set"
+              ],
+              "correctAnswers": [0],
+              "explanation": "list.append et list.pop() en fin implémentent une pile efficacement."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Suppression d'un nœud au milieu d'une liste chaînée simple (références connues) : complexité ?",
+              "options": [
+                "O(1) après localisation du nœud",
+                "O(n) même avec la référence du nœud à supprimer",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recoller les pointeurs est O(1) une fois le nœud atteint ; la recherche peut coûter O(n)."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Liste doublement chaînée : opération rendue plus simple qu'en liste simple ?",
+              "options": [
+                "Parcours uniquement vers l'avant",
+                "Suppression d'un nœud connu sans parcourir depuis la tête",
+                "Réduction de la mémoire par élément",
+                "Tri en place garanti O(n)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le prédécesseur est accessible directement via prev."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Capacité fixe d'un tableau statique : conséquence si l'on dépasse la taille ?",
+              "options": [
+                "Redimensionnement automatique transparent",
+                "Débordement ou erreur selon l'implémentation",
+                "Conversion automatique en liste chaînée",
+                "Complexité O(1) garantie pour tout ajout"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un tableau statique a une taille fixe ; un dépassement doit être géré explicitement."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "Structure adaptée pour annuler les dernières actions (historique) ?",
+              "options": ["File", "Pile", "Graphe complet", "Table de hachage"],
+              "correctAnswers": [1],
+              "explanation": "Une pile modélise naturellement undo : dernier action annulé en premier."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés caractérisent un arbre binaire ?",
+              "options": [
+                "Chaque nœud a au plus deux fils",
+                "Le nombre de nœuds est toujours pair",
+                "Il existe exactement un chemin de la racine à chaque nœud",
+                "Tous les nœuds ont deux fils"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Arbre binaire : au plus deux enfants ; connexité depuis une racine unique."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "Hauteur d'un arbre (définition courante en NSI) :",
+              "options": [
+                "Nombre total de nœuds",
+                "Longueur du plus long chemin racine–feuille",
+                "Nombre de feuilles",
+                "Profondeur de la racine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La hauteur mesure le plus long chemin du sommet vers une feuille."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "Parcours préfixe (préordre) d'un arbre binaire : ordre de visite ?",
+              "options": [
+                "Gauche, racine, droite",
+                "Racine, gauche, droite",
+                "Gauche, droite, racine",
+                "Niveau par niveau uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Préordre : racine puis sous-arbre gauche puis droit."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "Parcours infixe d'un ABR (BST) donne les clés :",
+              "options": [
+                "Dans un ordre aléatoire",
+                "Triées par ordre croissant",
+                "Triées par ordre décroissant",
+                "Par niveaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Infixe sur un ABR parcourt les clés en ordre croissant."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "Nombre maximum de nœuds dans un arbre binaire de hauteur h (h≥0, racine seule h=0) ?",
+              "options": ["h", "2h", "2^(h+1)−1", "h²"],
+              "correctAnswers": [2],
+              "explanation": "Arbre binaire parfait de hauteur h : 2^(h+1)−1 nœuds au maximum."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "Représentation par tableau d'un arbre binaire complet : fils gauche de l'indice i ?",
+              "options": ["2i", "2i+1", "i+1", "i/2"],
+              "correctAnswers": [1],
+              "explanation": "Convention : racine en 0, gauche 2i+1, droit 2i+2."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "Feuille dans un arbre :",
+              "options": [
+                "Nœud sans parent",
+                "Nœud sans enfant",
+                "Racine de profondeur 0",
+                "Nœud de degré 2 obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une feuille n'a pas de descendants."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Parcours en largeur (BFS) sur un arbre utilise typiquement :",
+              "options": [
+                "Une pile",
+                "Une file",
+                "Un tas min",
+                "Un dictionnaire seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "BFS explore niveau par niveau avec une file."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "Arbre binaire de recherche : insertion d'une clé suit :",
+              "options": [
+                "Un parcours en largeur",
+                "Un parcours depuis la racine en comparant les clés",
+                "Un tri fusion",
+                "Un mélange aléatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On descend à gauche ou à droite selon la comparaison avec chaque nœud."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "Complexité pire cas recherche dans un ABR dégénéré (filiforme) de n nœuds ?",
+              "options": ["O(log n)", "O(n)", "O(1)", "O(n log n)"],
+              "correctAnswers": [1],
+              "explanation": "Un ABR déséquilibré se comporte comme une liste : O(n)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Quels parcours produisent une liste de nœuds sans omission (chaque nœud une fois) ?",
+              "options": [
+                "Préordre",
+                "Inordre",
+                "Postordre",
+                "Ordre aléatoire des identifiants"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Préordre et postordre visitent chaque nœud exactement une fois ; l'inordre aussi sur un arbre quelconque."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "Postordre (suffixe) : ordre de visite ?",
+              "options": [
+                "Racine, gauche, droite",
+                "Gauche, racine, droite",
+                "Gauche, droite, racine",
+                "Droite, gauche, racine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Postordre traite la racine après les deux sous-arbres."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "Arbre binaire parfait :",
+              "options": [
+                "Tous les niveaux sont remplis sauf peut-être le dernier, rempli à gauche",
+                "Au plus un nœud par niveau",
+                "Toutes les feuilles à la même profondeur et chaque nœud interne a 2 fils",
+                "Aucune feuille"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Parfait : feuilles alignées, nœuds internes de degré 2."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "Profondeur d'un nœud (racine profondeur 0) :",
+              "options": [
+                "Nombre de descendants",
+                "Nombre d'arêtes depuis la racine",
+                "Hauteur du sous-arbre",
+                "Indice dans un tableau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Profondeur = longueur du chemin racine–nœud."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "Taille d'un arbre :",
+              "options": [
+                "Hauteur + 1",
+                "Nombre de nœuds",
+                "Nombre de feuilles × 2",
+                "Degré maximum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La taille compte tous les nœuds."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "Implémentation récursive d'un parcours : risque principal sur grand arbre ?",
+              "options": [
+                "Erreur de syntaxe",
+                "Dépassement de pile (stack overflow)",
+                "Impossibilité de parcourir les feuilles",
+                "Complexité O(1)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Trop de niveaux peut épuiser la pile d'appels."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "ABR : suppression d'un nœud avec deux fils se fait souvent en remplaçant par :",
+              "options": [
+                "Une feuille quelconque",
+                "Le successeur infixe (minimum du sous-arbre droit)",
+                "Le parent direct",
+                "Un nœud aléatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le successeur infixe préserve la propriété de recherche."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "Arbre n-aire : généralisation où chaque nœud a au plus :",
+              "options": [
+                "2 enfants",
+                "n enfants (n fixé par le modèle)",
+                "n² enfants",
+                "Un seul enfant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Arbre n-aire : borne sur le nombre d'enfants par nœud."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "Expression arithmétique en arbre : parcours utile pour évaluation machine (postfixe) ?",
+              "options": [
+                "Inordre seul",
+                "Préordre seul",
+                "Postordre",
+                "Aucun"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Postordre correspond à la notation polonaise inverse."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "Représentation chaînée d'un nœud binaire contient classiquement :",
+              "options": [
+                "Uniquement la clé",
+                "Clé, référence fils gauche, référence fils droit",
+                "Clé et tableau de tous les descendants",
+                "Parent obligatoire uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Structure classique : valeur + deux pointeurs enfants."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Un tas (heap) binaire min a quelles propriétés ?",
+              "options": [
+                "La clé de chaque nœud est ≤ à celles de ses fils",
+                "C'est toujours un ABR",
+                "La racine contient le minimum",
+                "Tous les niveaux sont complets sauf peut-être le dernier à gauche"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tas min : propriété de tas + minimum à la racine ; forme souvent quasi-complete."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "Insertion dans un tas binaire (tableau) : après ajout en feuille, on applique :",
+              "options": [
+                "Rotation AVL",
+                "Remontée (sift-up)",
+                "Tri rapide",
+                "Parcours infixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On restaure la propriété de tas en échangeant avec le parent."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "extract-min sur un tas : après retrait de la racine, étape clé ?",
+              "options": [
+                "Remplacer par une feuille et descendre (sift-down)",
+                "Trier tout le tableau",
+                "Reconstruire un ABR",
+                "Parcours BFS"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le dernier élément va à la racine puis descend pour restaurer le tas."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "Tas vs ABR pour obtenir le minimum global :",
+              "options": [
+                "ABR toujours plus rapide",
+                "Tas : O(1) pour lire le min à la racine",
+                "Les deux interdisent le minimum",
+                "File FIFO suffit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans un tas min, la racine est le minimum."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "Tri par tas (heapsort) : complexité pire cas ?",
+              "options": ["O(n)", "O(n log n)", "O(n²)", "O(log n)"],
+              "correctAnswers": [1],
+              "explanation": "Heapsort est en O(n log n) dans tous les cas."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "File de priorité implémentée avec un tas : opération coûteuse typique ?",
+              "options": [
+                "Consulter le max si tas max",
+                "Insertion et extraction en O(log n)",
+                "Accès aléatoire O(1)",
+                "Parcours trié O(1)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Insert/extract restaurer le tas en O(log n)."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Arbre AVL : objectif principal ?",
+              "options": [
+                "Minimiser la hauteur en maintenant un facteur d'équilibre",
+                "Être un tas",
+                "Avoir le plus de feuilles",
+                "Supprimer la récursion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AVL équilibre via rotations pour garantir O(log n)."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "Facteur d'équilibre d'un nœud AVL (définition courante) :",
+              "options": [
+                "Nombre de fils",
+                "Hauteur sous-arbre droit − hauteur sous-arbre gauche",
+                "Profondeur du nœud",
+                "Nombre de rotations"
+              ],
+              "correctAnswers": [1],
+              "explanation": "|facteur| ≤ 1 pour un nœud AVL valide."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "Rotation simple droite sur un nœud déséquilibré sert à :",
+              "options": [
+                "Convertir en graphe",
+                "Rééquilibrer après insertion gauche-gauche",
+                "Trier un tableau",
+                "Parcourir en largeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rotations corrigent les déséquilibres localisés."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "ABR équilibré (AVL ou rouge-noir) : recherche en :",
+              "options": ["O(n)", "O(log n)", "O(1)", "O(n²)"],
+              "correctAnswers": [1],
+              "explanation": "Hauteur logarithmique ⇒ recherche logarithmique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Quelles structures sont des listes linéaires ?",
+              "options": [
+                "Pile",
+                "File",
+                "Arbre binaire complet",
+                "Liste chaînée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pile et file sont des listes linéaires à accès restreint ; un arbre n'est pas linéaire."
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Deque (double-ended queue) permet :",
+              "options": [
+                "Insertions/suppressions aux deux extrémités",
+                "Uniquement en tête",
+                "Uniquement en queue",
+                "Accès O(1) au milieu par indice sans parcours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deque généralise file et pile aux deux bouts."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "Liste chaînée vs tableau pour insertions fréquentes au milieu (après recherche) :",
+              "options": [
+                "Tableau toujours meilleur",
+                "Chaînée : recollage O(1) sans décalage",
+                "Chaînée interdit l'insertion",
+                "Tableau sans décalage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tableau impose O(n) décalages ; chaînée O(1) pour recoller."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "Sentinelle (dummy head) dans une liste chaînée simplifie :",
+              "options": [
+                "Le tri O(n log n)",
+                "Les cas limites en tête sans test null",
+                "La conversion en graphe",
+                "La hauteur de l'arbre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tête fictive uniformise insertions/suppressions en tête."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "Complexité espace d'une liste chaînée de n éléments (références incluses) :",
+              "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+              "correctAnswers": [1],
+              "explanation": "Un nœud par élément : mémoire linéaire."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Parcours récursif infixe sur ABR de n nœuds : complexité temps ?",
+              "options": ["O(log n)", "O(n)", "O(n²)", "O(1)"],
+              "correctAnswers": [1],
+              "explanation": "Chaque nœud visité une fois : O(n)."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "Arbre binaire complet stocké en tableau : avantage ?",
+              "options": [
+                "Pas de pointeurs explicites pour les enfants",
+                "Suppression O(1) garantie",
+                "Toujours un ABR",
+                "Pas de mémoire perdue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indices calculés : représentation compacte si arbre complet."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "Suffixe d'un mot stocké dans un arbre de suffixes sert en :",
+              "options": [
+                "Tri par tas uniquement",
+                "Recherche de motifs / compression (concept)",
+                "Parcours FIFO",
+                "Matrice d'adjacence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Arbres de suffixes/prefixes modélisent des ensembles de chaînes."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Pile d'appels lors d'un DFS récursif sur arbre : rôle ?",
+              "options": [
+                "Stocker les arêtes du graphe",
+                "Mémoriser le chemin de retour implicite via la récursion",
+                "Remplacer la racine",
+                "Trier les clés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La récursion utilise la pile système pour le retour."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Choix liste chaînée pour un polynôme creux (peu de termes) :",
+              "options": [
+                "Gaspille la mémoire",
+                "Évite un tableau dense de degré élevé",
+                "Interdit l'addition",
+                "Force O(n²)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne stocke que les monômes non nuls."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Opérations typiques sur un ABR ?",
+              "options": [
+                "Recherche",
+                "Insertion",
+                "Rotation systématique à chaque lecture",
+                "Suppression"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Recherche et insertion sont fondamentales ; la rotation n'est pas systématique à chaque lecture."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "Successeur infixe d'un nœud avec fils droit non vide :",
+              "options": [
+                "Le parent",
+                "Le minimum du sous-arbre droit",
+                "Le maximum du sous-arbre gauche",
+                "La racine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Descendre à droite puis tout à gauche."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "Arbre binaire de hauteur n−1 avec n nœuds est :",
+              "options": [
+                "Complet",
+                "Équilibré AVL",
+                "Filiforme (dégénéré)",
+                "Parfait"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Chaîne lineaire : hauteur maximale pour n nœuds."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "Nombre de feuilles L et nœuds internes I dans un arbre binaire non vide : relation (nœuds internes = non feuilles sauf définition stricte) ?",
+              "options": [
+                "L = I toujours",
+                "L ≤ I + 1 (arbre binaire)",
+                "L = n/2 exact",
+                "L = log n"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En binaire, feuilles ≤ internes + 1."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "Parcours par niveaux nécessite en plus de la file :",
+              "options": [
+                "Rien d'autre conceptuellement",
+                "Un tas max obligatoire",
+                "Un tri fusion",
+                "Matrice d'adjacence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "File + comptage par niveau suffisent."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "Clé dupliquée dans un ABR strict (pas de doublons) : insertion ?",
+              "options": [
+                "Toujours à gauche",
+                "Rejetée ou placée selon convention documentée",
+                "Toujours à droite",
+                "Ignore silencieusement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut une règle explicite (refus ou multiensemble)."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "Mémoire d'un arbre binaire de n nœuds en représentation chaînée :",
+              "options": ["O(log n)", "O(n)", "O(1)", "O(n log n)"],
+              "correctAnswers": [1],
+              "explanation": "n nœuds alloués : O(n)."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "Preorder sur arbre d'expression : correspond à :",
+              "options": [
+                "Notation polonaise prefixe",
+                "Infixe",
+                "Postfixe",
+                "Tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Racine avant sous-arbres = notation prefixe."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "Iterateur sur ABR pour parcours croissant sans récursion :",
+              "options": [
+                "Pile pour simuler infixe",
+                "File seule",
+                "Tri bulle",
+                "Matrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infixe itératif descend à gauche puis empile."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "Fusion de deux ABR équilibrés de tailles n et m : naïf en chaînant filiforme donne :",
+              "options": [
+                "O(log(n+m))",
+                "O(n+m) recherche mais hauteur peut être O(n+m)",
+                "O(1)",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans rééquilibrage, hauteur peut devenir linéaire."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Quels énoncés sur les files d'attente sont vrais ?",
+              "options": [
+                "enqueue ajoute en queue",
+                "dequeue retire en tête",
+                "LIFO s'applique à une file standard",
+                "Utiles pour BFS sur arbre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "enqueue/dequeue définissent une file FIFO ; LIFO décrit une pile."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "BFS sur arbre binaire : ordre de visite des nœuds ?",
+              "options": [
+                "Infixe",
+                "Par profondeur croissante (niveau par niveau)",
+                "Postordre aléatoire",
+                "Tri des clés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "BFS explore niveau 0, puis 1, etc."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "DFS préordre itératif sur arbre utilise souvent :",
+              "options": ["File", "Pile", "Tas min", "Table de hachage"],
+              "correctAnswers": [1],
+              "explanation": "Empiler les fils simule la récursion préordre."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "Liste chaînée circulaire avec sentinelle : avantage pour une file ?",
+              "options": [
+                "Pas de fin : parcours infini obligatoire",
+                "Insertion en queue en O(1) si pointeur queue",
+                "Accès O(1) au k-ième",
+                "Tri automatique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Queue pointe sur le dernier ; enqueue O(1)."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "Tableau redimensionné par doublement : coût amorti d'un append ?",
+              "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
+              "correctAnswers": [1],
+              "explanation": "Analyse amortie : insertions rares coûteuses."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "Arbre binaire : degré d'un nœud signifie :",
+              "options": [
+                "Profondeur",
+                "Nombre d'enfants",
+                "Hauteur du sous-arbre",
+                "Taille totale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Degré = nombre de fils directs."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "Tas max : propriété clé à la racine ?",
+              "options": [
+                "Minimum global",
+                "Maximum global",
+                "Médiane",
+                "Somme des fils"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tas max : racine = plus grande clé."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "Construire un tas à partir de n éléments (heapify bottom-up) :",
+              "options": ["O(n)", "O(n log n)", "O(n²)", "O(1)"],
+              "correctAnswers": [0],
+              "explanation": "Heapify linéaire est un résultat classique."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "ABR aléatoire (insertions aléatoires) : hauteur attendue ?",
+              "options": ["O(n)", "O(log n)", "O(1)", "O(√n) toujours pire"],
+              "correctAnswers": [1],
+              "explanation": "Ordre aléatoire tend vers hauteur logarithmique."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "Structure pour implémenter undo/redo avec branches ?",
+              "options": [
+                "Deux piles ou liste double",
+                "Graphe non orienté seul",
+                "Matrice",
+                "Uniquement tuple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux piles ou historique double-ended modélise redo."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Rotations dans un arbre équilibré servent à :",
+              "options": [
+                "Restaurer la propriété d'équilibre",
+                "Changer l'ordre infixe des clés",
+                "Réduire la hauteur localement",
+                "Trier un tableau externe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rotations préservent l'ordre BST et réduisent le déséquilibre."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "Arbre rouge-noir : contrainte sur la longueur des chemins noirs ?",
+              "options": [
+                "Tous chemins racine-feuille ont même nombre de nœuds noirs",
+                "Aucun nœud rouge",
+                "Pas de racine",
+                "Hauteur exactement log n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propriété des chemins noirs égaux (définition standard)."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "Comparaison AVL vs rouge-noir :",
+              "options": [
+                "AVL peut être plus strict (plus d'équilibre)",
+                "Rouge-noir interdit O(log n)",
+                "AVL sans rotations",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AVL tolère moins de déséquilibre ; plus de rotations possibles."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "Liste chaînée : détection de cycle (exercice classique) utilise :",
+              "options": [
+                "Deux pointeurs lents/rapides (Floyd)",
+                "Tri fusion",
+                "Dijkstra",
+                "Matrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tortue et lièvre détectent un cycle."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "Inversion d'une liste chaînée en place : complexité ?",
+              "options": [
+                "O(1)",
+                "O(n) temps, O(1) espace extra",
+                "O(n²)",
+                "O(log n)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un passage, trois pointeurs : O(n) temps, O(1) auxiliaire."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "Arbre : somme des profondeurs des feuilles liée à :",
+              "options": [
+                "Coût moyen de recherche si distribution uniforme sur feuilles",
+                "Tri par tas",
+                "Euler",
+                "PageRank"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profondeur moyenne relate au coût de recherche."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "Tas et tri par sélection : point commun ?",
+              "options": [
+                "Extraire répétitivement le min/max",
+                "BFS",
+                "Matrice d'adjacence",
+                "File FIFO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection du min successif ; tas optimise les extractions."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "Nœud d'un arbre général (non binaire) : liste d'enfants en Python peut être :",
+              "options": [
+                "list de références",
+                "int seul",
+                "set interdit",
+                "float"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste (ou tuple) de sous-arbres est courant."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "Copy d'un arbre binaire : complexité ?",
+              "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+              "correctAnswers": [1],
+              "explanation": "Visiter chaque nœud une fois."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "Égalité de deux arbres binaires : critère structurel standard ?",
+              "options": [
+                "Même clé à la racine seule",
+                "Même forme et mêmes clés aux positions correspondantes",
+                "Même hauteur seule",
+                "Même nombre de feuilles seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Isomorphisme étiqueté : structure + étiquettes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur la récursivité et les arbres sont correctes ?",
+              "options": [
+                "DFS sur arbre s'exprime naturellement en récursif",
+                "Toute fonction sur arbre doit être iterative",
+                "Cas de base : sous-arbre vide ou feuille",
+                "La pile d'appels remplace parfois une pile explicite"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "DFS récursif est naturel ; le cas de base est l'arbre vide ou une feuille."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "Hauteur minimale d'un arbre binaire à n nœuds ?",
+              "options": ["0", "⌊log₂ n⌋", "n−1", "n"],
+              "correctAnswers": [1],
+              "explanation": "Arbre le plus plat type complet : hauteur ~ log n."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "Liste chaînée triée : recherche :",
+              "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+              "correctAnswers": [2],
+              "explanation": "Pas d'accès direct : parcours linéaire."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "Insert en tête liste chaînée :",
+              "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
+              "correctAnswers": [1],
+              "explanation": "Créer nœud et recoller la tête : constant."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "Arbre binaire : nombre max de nœuds au niveau d (racine niveau 0) ?",
+              "options": ["d", "2d", "2^d", "d²"],
+              "correctAnswers": [2],
+              "explanation": "Niveau d contient au plus 2^d nœuds."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "Tas représenté en array index 0..n−1 : parent de i>0 ?",
+              "options": ["i−1", "⌊(i−1)/2⌋", "2i", "i/2"],
+              "correctAnswers": [1],
+              "explanation": "Parent de i est (i−1)//2 en indexation 0."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "ABR : recherche récursive cas base échec ?",
+              "options": [
+                "Racine atteinte avec clé différente et enfant manquant",
+                "Toujours succès",
+                "File vide",
+                "Cycle détecté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "None ou feuille sans correspondance : échec."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "Motivation des arbres équilibrés en NSI terminale ?",
+              "options": [
+                "Garantir performances logarithmiques pires cas",
+                "Supprimer la récursion",
+                "Éviter toute mémoire",
+                "Remplacer les graphes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter dégénérescence lineaire des ABR naïfs."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "Pile utilisée pour vérifier parenthèses équilibrées : principe ?",
+              "options": [
+                "Empiler ouvrantes, dépiler sur fermantes",
+                "FIFO",
+                "Tri",
+                "Hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correspondance LIFO des paires."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "Concaténer deux listes chaînées (tête+queue connues) en O(1) :",
+              "options": [
+                "Impossible",
+                "Relier queue de A à tête de B",
+                "Trier d'abord",
+                "Copier en tableau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un recollage de pointeur suffit."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Complexités usuelles (n éléments) correctes ?",
+              "options": [
+                "Recherche liste chaînée O(n)",
+                "Recherche ABR équilibré O(log n)",
+                "Accès indice tableau O(1)",
+                "Recherche tas non trié O(1) pour clé arbitraire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Liste chaînée et ABR équilibré ont ces complexités ; le tas ne permet pas une recherche arbitraire en O(1)."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Choix structure pour historique navigation web (retour/avant) ?",
+              "options": [
+                "Deux piles ou liste avec pointeur courant",
+                "Tas seul",
+                "Graphe eulerien",
+                "Set"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle back/forward classique à deux piles."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "Arbre binaire : lien parent optionnel sert à :",
+              "options": [
+                "Parcours infixe uniquement",
+                "Remonter sans pile (ex. successeur)",
+                "Tri O(1)",
+                "BFS sans file"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parent facilite certaines opérations iteratives."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Liste chaînée : accès au dernier élément sans pointeur queue ?",
+              "options": ["O(1)", "O(n)", "O(log n)", "O(1) amorti"],
+              "correctAnswers": [1],
+              "explanation": "Parcours complet depuis la tête."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "Tas vs tri rapide pour obtenir k plus petits parmi n :",
+              "options": [
+                "Tas de taille k peut être O(n log k)",
+                "Toujours O(n²)",
+                "Impossible",
+                "O(1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintien d'un tas k-éléments est efficace."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Arbre vide : hauteur conventionnelle souvent ?",
+              "options": [
+                "0 ou −1 selon convention (à préciser)",
+                "n",
+                "1",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux conventions existent ; l'important est la cohérence."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "File implémentée par deux piles (amorti) : idée ?",
+              "options": [
+                "Entrée sur une pile, sortie sur l'autre avec transfert",
+                "Une seule pile",
+                "Tas min",
+                "Graphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure de Amortized queue via deux piles."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "ABR construit par insertions ordonnées croissantes : forme ?",
+              "options": ["Équilibrée", "Filiforme à droite", "Complet", "Tas"],
+              "correctAnswers": [1],
+              "explanation": "Chaque clé va tout à droite : chaîne."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "Parcours infixe itératif : état de la pile contient typiquement :",
+              "options": [
+                "Nœuds dont le sous-arbre gauche est traité ou à traiter",
+                "Arêtes de graphe",
+                "Clés triées finales",
+                "Uniquement feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empiler chemin gauche puis dépiler et aller à droite."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Objectif pédagogique NSI terminale sur listes et arbres ?",
+              "options": [
+                "Maîtriser modèles, coûts et choix de représentation",
+                "Mémoriser uniquement syntaxe Python",
+                "Ignorer la complexité",
+                "Remplacer algorithmique par hardware"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre abstractions et coûts pour choisir la structure."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Graphes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Un graphe G=(V,E) en NSI :",
+              "options": [
+                "V est un ensemble de sommets",
+                "E est un ensemble d'arêtes (ou d'arcs)",
+                "Toujours orienté",
+                "Peut être pondéré"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Graphe = sommets + arêtes ; orienté ou non, pondéré ou non."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Graphe orienté : arc (u,v) permet :",
+              "options": [
+                "Traversée u→v seulement dans ce sens",
+                "Traversée dans les deux sens automatiquement",
+                "Interdit les cycles",
+                "Force |V|=|E|"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orientation impose le sens de parcours."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Degré d'un sommet en graphe non orienté :",
+              "options": [
+                "Nombre d'arêtes incidentes",
+                "Nombre de sommets",
+                "Somme des poids",
+                "Profondeur BFS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré = arêtes touchant le sommet (boucle compte double en convention standard)."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Matrice d'adjacence pour n sommets : taille ?",
+              "options": ["n", "n²", "2n", "log n"],
+              "correctAnswers": [1],
+              "explanation": "Une case par paire ordonnée (ou non selon modèle)."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Liste d'adjacence : avantage pour graphe creux ?",
+              "options": [
+                "Moins de mémoire que n²",
+                "Accès O(1) à tous les voisins sans liste",
+                "Interdit BFS",
+                "Force graphe complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stocke seulement les arêtes existantes."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Graphe complet non orienté à n sommets : nombre d'arêtes (sans boucle) ?",
+              "options": ["n", "n(n−1)/2", "n²", "2n"],
+              "correctAnswers": [1],
+              "explanation": "Chaque paire une arête : C(n,2)."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Chemin simple :",
+              "options": [
+                "Revisite des sommets autorisée",
+                "Aucun sommet répété (sauf peut-être extrémités selon définition)",
+                "Doit être eulerien",
+                "Poids nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Simple = pas de répétition de sommets sur le chemin."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Graphe connexe (non orienté) :",
+              "options": [
+                "Un seul sommet",
+                "Chemin entre toute paire de sommets",
+                "Pas d'arêtes",
+                "Acyclique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Connexité : une composante connectée couvrant tous les sommets."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Détecter une arête entre u et v avec matrice d'adjacence :",
+              "options": ["O(1)", "O(n)", "O(n²)", "O(log n)"],
+              "correctAnswers": [0],
+              "explanation": "Consultation M[u][v] constante."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Sommet isolé :",
+              "options": [
+                "Degré 0",
+                "Degré n−1",
+                "Racine d'arbre",
+                "Toujours dans un cycle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucune arête incidente."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "BFS depuis une source s :",
+              "options": [
+                "Explore par couches de distance",
+                "Utilise une file",
+                "Trouve toujours un chemin de poids minimum",
+                "Marque les sommets visités"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "BFS explore par couches avec une file ; il ne garantit pas le poids minimum sur graphe pondéré général."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "Complexité BFS avec liste d'adjacence, n sommets m arêtes ?",
+              "options": ["O(n+m)", "O(n²)", "O(n log m)", "O(m²)"],
+              "correctAnswers": [0],
+              "explanation": "Chaque sommet et arête traités une fois."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "DFS : structure auxiliaire typique en récursif ?",
+              "options": ["File", "Pile d'appels", "Tas", "Matrice seule"],
+              "correctAnswers": [1],
+              "explanation": "Récursion ou pile explicite."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Arbre BFS (arborescence) dans un graphe non orienté connexe :",
+              "options": [
+                "Contient un cycle",
+                "n−1 arêtes pour n sommets",
+                "Contient tous les cycles",
+                "Orienté obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Arbre couvrant : n−1 arêtes."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Couleur/grise/noire en DFS sert à :",
+              "options": [
+                "Décorer l'UI",
+                "Distinguer non visité, en cours, terminé",
+                "Trier les arêtes",
+                "Calculer PageRank"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Marquage pour cycles et fin de traitement."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Plus court chemin en nombre d'arêtes (non pondéré) :",
+              "options": [
+                "Dijkstra obligatoire",
+                "BFS",
+                "Tri topologique",
+                "Kruskal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "BFS donne distances minimales en arêtes."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Graphe orienté : fortement connexe si :",
+              "options": [
+                "Chemin u→v pour toute paire",
+                "Ignore l'orientation",
+                "Un seul cycle",
+                "Matrice diagonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexité forte respecte le sens des arcs."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Composante connexe :",
+              "options": [
+                "Sous-ensemble maximal de sommets mutuellement accessibles",
+                "Un sommet seul toujours",
+                "Ensemble d'arêtes seulement",
+                "Tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maximal pour la relation d'accessibilité."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Parcours DFS sur graphe avec cycle : risque sans marquage ?",
+              "options": [
+                "Terminaison garantie",
+                "Boucle infinie possible",
+                "O(1) mémoire",
+                "Pas de revisite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Revisiter sans marquer peut ne pas terminer."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Distance BFS d'un sommet v depuis s :",
+              "options": [
+                "Nombre d'arêtes du plus court chemin s→v (non pondéré)",
+                "Poids minimum",
+                "Degré de v",
+                "Nombre de cycles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BFS niveau = distance en arêtes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Graphe acyclique orienté (DAG) :",
+              "options": [
+                "Pas de cycle orienté",
+                "Admet un tri topologique",
+                "Toujement non connexe",
+                "Identique à un arbre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "DAG ⇒ ordonnancement topologique possible ; un arbre est un DAG particulier."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Tri topologique : ordre des sommets tel que :",
+              "options": [
+                "Toute arête u→v : u avant v",
+                "Toute arête u→v : v avant u",
+                "Aléatoire",
+                "Par degré décroissant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respect des precedences des arcs."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Algorithme de Kahn pour tri topologique utilise :",
+              "options": [
+                "File des sommets de degré entrant 0",
+                "Tas max seul",
+                "DFS postordre uniquement",
+                "Dijkstra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retirer sources, diminuer degrés entrants."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Cycle orienté empêche :",
+              "options": [
+                "BFS",
+                "Un tri topologique complet",
+                "Stocker le graphe",
+                "Avoir des sommets"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cycle ⇒ impossible d'ordonner strictement."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "DFS postordre inversé sur DAG donne souvent :",
+              "options": [
+                "Tri topologique",
+                "Plus court chemin",
+                "Arbre couvrant min",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique : postorder reverse."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Application DAG en NSI :",
+              "options": [
+                "Planification de tâches avec dépendances",
+                "Compression JPEG seule",
+                "Hash bcrypt",
+                "Tri bulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dependances = arcs ; ordre d'exécution."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Degré entrant d'un sommet :",
+              "options": [
+                "Arcs qui arrivent",
+                "Arcs qui partent",
+                "Somme des poids sortants",
+                "Hauteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "in-degree compte les prédecesseurs."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Graphe non orienté acyclique connexe à n sommets :",
+              "options": [
+                "n−1 arêtes (est un arbre)",
+                "n arêtes minimum",
+                "n² arêtes",
+                "Cycle obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexe acyclique = arbre."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Detect cycle orienté avec DFS :",
+              "options": [
+                "Arête retour vers ancêtre gris",
+                "Sommet noir revisite",
+                "BFS seul",
+                "Matrice nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Back edge vers sommet en cours (gris)."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Complexité tri topologique (liste adj.) ?",
+              "options": ["O(n+m)", "O(n²)", "O(n log n) seulement", "O(1)"],
+              "correctAnswers": [0],
+              "explanation": "Linéaire en n+m."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Dijkstra (poids ≥ 0) :",
+              "options": [
+                "Calcule distances minimales depuis une source",
+                "Utilise une file de priorité",
+                "Fonctionne avec poids négatifs arbitraires",
+                "Relaxation des arêtes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dijkstra calcule les distances minimales avec une file de priorité ; Bellman-Ford traite les poids négatifs."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Relaxation d'une arête (u,v,p) : si dist[u]+p < dist[v] alors :",
+              "options": [
+                "dist[v] ← dist[u]+p",
+                "Supprimer v",
+                "dist[u] ← 0",
+                "Ignorer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise à jour du plus court chemin connu vers v."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Dijkstra avec tas binaire : complexité typique ?",
+              "options": ["O((n+m) log n)", "O(n²) seulement", "O(1)", "O(m²)"],
+              "correctAnswers": [0],
+              "explanation": "Extractions/insertions logarithmiques."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Poids d'arête négatif sans cycle négatif : algorithme adapté ?",
+              "options": [
+                "Dijkstra sans modification",
+                "Bellman-Ford",
+                "BFS seul",
+                "Tri topologique seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bellman-Ford gère les poids négatifs (avec limite cycles)."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Chemin le plus court : sous-structure optimale signifie :",
+              "options": [
+                "Sous-chemin d'un optimal est optimal",
+                "Toujours unique",
+                "Ignore les poids",
+                "Eulerien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propriété fondamentale des plus courts chemins."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Graphe non pondéré : Dijkstra avec poids 1 équivaut à :",
+              "options": [
+                "BFS pour distances en arêtes",
+                "DFS",
+                "Kruskal",
+                "PageRank"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BFS suffit si toutes arêtes poids égal."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Sommet extrait définitivement du tas dans Dijkstra (poids ≥0) :",
+              "options": [
+                "Distance finale minimale correcte",
+                "Distance toujours fausse",
+                "Non visité",
+                "Degré 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Invariant : plus petite distance provisoire devient optimale."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Reconstruction chemin après Dijkstra :",
+              "options": [
+                "Table des prédécesseurs",
+                "Matrice seule",
+                "Tri",
+                "Hash sans parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remonter pred depuis la cible."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "All-pairs shortest paths naïf répétant Dijkstra :",
+              "options": [
+                "O(n³) avec matrice et Dijkstra O(n²)",
+                "O(n)",
+                "O(1)",
+                "O(log n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n sources × coût Dijkstra dense ~ O(n³)."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Arête de poids 0 dans Dijkstra :",
+              "options": [
+                "Autorisée",
+                "Interdit toujours",
+                "Rend Dijkstra incorrect systématiquement",
+                "Remplace par −1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids nul OK si non négatif."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Arbre couvrant minimal (ACM) d'un graphe connexe pondéré :",
+              "options": [
+                "Connecte tous les sommets",
+                "n−1 arêtes",
+                "Maximise le poids total",
+                "Sans cycle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un ACM connecte tous les sommets avec exactement n−1 arêtes sans cycle."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Algorithme de Kruskal : idée ?",
+              "options": [
+                "Trier arêtes par poids croissant, ajouter si pas de cycle",
+                "BFS depuis racine",
+                "Dijkstra",
+                "PageRank"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union-find détecte cycles."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Prim construit ACM en :",
+              "options": [
+                "Étendant une zone connectée depuis une graine",
+                "Tri topologique",
+                "Euler",
+                "Hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prim greedy sur frontière de l'arbre."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Structure pour Kruskal efficace :",
+              "options": [
+                "Union-Find (DSU)",
+                "File FIFO seule",
+                "Pile seule",
+                "Dict vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union-Find teste composantes."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "Graphe non connexe : ACM ?",
+              "options": [
+                "Une forêt couvrante minimale par composante",
+                "Impossible",
+                "Un seul arbre global",
+                "Cycle obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foret couvrante minimale."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Nombre d'arêtes d'un arbre à n sommets ?",
+              "options": ["n", "n−1", "n+1", "2n"],
+              "correctAnswers": [1],
+              "explanation": "Propriété fondamentale des arbres."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Arête de coupe dans ACM (propriété de coupes) :",
+              "options": [
+                "Arête légère traversant une coupe est dans un ACM",
+                "Toute arête lourde est dans ACM",
+                "Ignore les poids",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème de la coupe pour greedy."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Complexité Kruskal : tri + quasi O(m α(n)) ?",
+              "options": [
+                "O(m log m) dominant souvent",
+                "O(1)",
+                "O(n³)",
+                "O(log log n) seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri des arêtes domine souvent."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Prim avec tas sur graphe dense :",
+              "options": [
+                "O(m log n) typique",
+                "O(1)",
+                "O(n+m) BFS",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Similar to Dijkstra structure."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "ACM unique si :",
+              "options": [
+                "Tous poids distincts",
+                "Toujours multiple",
+                "Jamais",
+                "Cycles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids distincts ⇒ ACM unique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Chemin eulerien :",
+              "options": [
+                "Emprunte chaque arête exactement une fois",
+                "Existe ssi degrés pairs (non orienté, connexe)",
+                "Identique à hamiltonien",
+                "Peut être trouvé avec algorithme de Hierholzer (orienté variantes)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Euler arêtes ; Hamilton sommets ; conditions de degrés pour eulerien non orienté connexe."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Chemin hamiltonien :",
+              "options": [
+                "Visite chaque sommet une fois",
+                "Visite chaque arête",
+                "Toujours polynomial",
+                "Trivial en complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hamilton : sommets ; NP-complet en général."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Graphe eulerien non orienté connexe : tous sommets degré ?",
+              "options": ["Pair", "Impair", "0", "n−1"],
+              "correctAnswers": [0],
+              "explanation": "Théorème d'Euler."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Problème du voyageur de commerce (TSP) :",
+              "options": [
+                "Cycle hamiltonien de poids minimum",
+                "Arbre couvrant",
+                "Tri topologique",
+                "BFS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TSP = tour optimal visitant chaque ville."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Graphe biparti : sommets partitionnés en deux ensembles :",
+              "options": [
+                "Arêtes seulement entre ensembles",
+                "Arêtes seulement intra-ensemble",
+                "Pas d'arêtes",
+                "Orienté seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux couleurs sans arête monochromatique."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Test biparti en O(n+m) :",
+              "options": [
+                "BFS/DFS 2-coloration",
+                "Dijkstra",
+                "Kruskal",
+                "Tri fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colorer voisins avec couleur opposée."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Cycle impair dans un graphe non orienté implique :",
+              "options": ["Non biparti", "Eulerien", "DAG", "Arbre"],
+              "correctAnswers": [0],
+              "explanation": "Cycle longueur impaire interdit 2-partition."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Matching dans graphe biparti (intro NSI) :",
+              "options": [
+                "Ensemble d'arêtes sans sommet commun",
+                "Tous les sommets degré 1",
+                "ACM",
+                "Tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appariement : arêtes disjointes en sommets."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Graphe planaire (notion) :",
+              "options": [
+                "Drawable sans croisement d'arêtes",
+                "Toujours complet",
+                "Toujours orienté",
+                "Sans sommets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plongement dans le plan sans croisements."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Formule d'Euler pour graphe planaire connexe : v−e+f=2 signifie :",
+              "options": [
+                "f faces incluant face externe",
+                "e=n−1 toujours",
+                "Pas de cycles",
+                "v=e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation sommets-arêtes-faces."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Représentations de graphes :",
+              "options": [
+                "Matrice : test arête O(1)",
+                "Liste : parcours voisins O(degré)",
+                "Liste toujours n² mémoire",
+                "Matrice coûteuse si m<<n²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La matrice teste une arête en O(1) ; la liste parcourt les voisins en O(degré)."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Graphe pondéré : poids stockés où en liste d'adjacence ?",
+              "options": [
+                "Avec chaque voisin (v,poids)",
+                "Uniquement matrice diagonale",
+                "Dehors du graphe",
+                "Degré seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tuples (voisin, poids) par arc."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Symétrie matrice adjacence non orienté non pondéré :",
+              "options": [
+                "M[i][j]=M[j][i]",
+                "Triangulaire strict",
+                "Diagonale nulle seulement si pas de boucle",
+                "Identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non orienté ⇒ matrice symétrique."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Convertir liste→matrice : complexité ?",
+              "options": ["O(n²+m)", "O(1)", "O(log n)", "O(m²)"],
+              "correctAnswers": [0],
+              "explanation": "Remplir n² ou au moins parcourir m arêtes."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Graphe orienté : liste d'adjacence sortante de u liste :",
+              "options": [
+                "Successeurs de u",
+                "Prédécesseurs seulement",
+                "Tous sommets",
+                "Arêtes non incidentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjacency out-list."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Multi-graphe :",
+              "options": [
+                "Plusieurs arêtes entre mêmes sommets possible",
+                "Interdit",
+                "Sans sommets",
+                "Matrice 1×1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arêtes parallèles autorisées."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Graphe simple :",
+              "options": [
+                "Pas de boucle ni arête multiple (définition courante)",
+                "Complet",
+                "Orienté",
+                "Pondéré nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simple = au plus une arête non boucle entre paire."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Densité m relative à n² suggère :",
+              "options": [
+                "m proche n² → matrice peut être OK",
+                "m=n → toujours liste nulle",
+                "m=0 → complet",
+                "n=m toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphes denses favorisent matrice."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Liste d'adjacence inverse (prédécesseurs) utile pour :",
+              "options": [
+                "Calcul degré entrant rapide par sommet",
+                "BFS non orienté seulement",
+                "Tri bulle",
+                "JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès prédécesseurs en graphe orienté."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "En Python, graphe comme dict de listes : clés =",
+              "options": [
+                "Sommets",
+                "Arêtes seulement",
+                "Poids globaux",
+                "Indices matrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mapping sommet → voisins."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "PageRank (idée NSI) :",
+              "options": [
+                "Score de importance par liens entrants",
+                "Itération sur graphe orienté",
+                "Toujours O(1)",
+                "Modèle de random walk sur le web"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "PageRank attribue un score via les liens sur un graphe orienté, modélisé comme surfer aléatoire."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Stationnaire / factor damping en PageRank sert à :",
+              "options": [
+                "Garantir convergence et téléportation",
+                "Supprimer tous arcs",
+                "Tri topologique",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Damping évite pièges et assurer unique solution."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Graphe orienté : sommet sans arc entrant :",
+              "options": [
+                "Source si seulement sortants ? (attention) — souvent source = sans entrant",
+                "Sink sans sortant",
+                "Isolé",
+                "Cycle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source : in-degree 0 ; puits : out-degree 0."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Clique :",
+              "options": [
+                "Ensemble où chaque paire est adjacent",
+                "Chemin eulerien",
+                "Arbre",
+                "DAG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-graphe complet."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Graphe complémentaire : arête présente ssi",
+              "options": [
+                "Absente dans G (sur mêmes sommets, simple)",
+                "Identique à G",
+                "Orienté inverse",
+                "Poids doublé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaire inverse les arêtes."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Distance dans graphe non connexe :",
+              "options": [
+                "Infini si pas de chemin",
+                "0",
+                "Toujours n−1",
+                "Euler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de chemin ⇒ distance infinie conventionnelle."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Plus long chemin simple :",
+              "options": [
+                "NP-difficile en général",
+                "Égal BFS",
+                "O(n+m)",
+                "Tri topologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste avec plus court chemin polynomial."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Graphe orienté acyclique : plus long chemin se calcule via :",
+              "options": [
+                "Tri topologique + DP sur sommets",
+                "BFS seul",
+                "Kruskal",
+                "Hash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relaxation dans ordre topologique."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "Matrice d'adjacence powers (A^k) compte :",
+              "options": [
+                "Chemins de longueur k entre sommets (selon définition chemins)",
+                "Cycles euleriens seulement",
+                "Degrés",
+                "Tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entry (i,j) compte walks length k souvent."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Modéliser réseau social (amitiés symétriques) :",
+              "options": [
+                "Graphe non orienté",
+                "DAG",
+                "Arbre strict",
+                "Matrice identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amitié mutuelle = non orienté."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Bellman-Ford :",
+              "options": [
+                "Détecte cycles de poids total négatif",
+                "n−1 relaxations sur toutes arêtes",
+                "Remplace Dijkstra si poids négatifs",
+                "Toujours plus rapide que Dijkstra"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bellman-Ford relaxe n−1 fois et détecte les cycles de poids total négatif."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Cycle de poids négatif : conséquence plus courts chemins ?",
+              "options": [
+                "Non définis (−∞)",
+                "Uniques",
+                "Euler",
+                "Hamilton trivial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut diminuer indéfiniment le coût."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Floyd-Warshall :",
+              "options": [
+                "All-pairs O(n³)",
+                "Single-source seulement",
+                "BFS",
+                "Prim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programmation dynamique triple boucle."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Graphe non orienté : BFS marque aussi :",
+              "options": [
+                "Distances en nombre d'arêtes",
+                "Poids Dijkstra sans demande",
+                "Tri topologique",
+                "ACM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BFS sur non orienté = distances non pondérées."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Union-Find path compression : objectif ?",
+              "options": ["Amortir find quasi constant", "Tri", "Euler", "DAG"],
+              "correctAnswers": [0],
+              "explanation": "Aplatit arbres pour find rapide."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Graphe orienté : matrice d'adjacence A[i][j]=1 signifie :",
+              "options": ["Arc i→j", "Arc j→i", "Pas d'arc", "Sommet isolé"],
+              "correctAnswers": [0],
+              "explanation": "Ligne i colonne j : arc de i vers j."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Coloration de graphe : nombre chromatique minimal :",
+              "options": [
+                "Couleurs adjacentes différentes",
+                "Euler",
+                "PageRank",
+                "BFS seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coloration propre des sommets."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Graphe régulier de degré k :",
+              "options": [
+                "Chaque sommet degré k",
+                "k=n",
+                "Sans arêtes",
+                "Orienté seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Degré constant k."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Certificat de non-connexité :",
+              "options": [
+                "Deux sommets sans chemin",
+                "Cycle eulerien",
+                "Tri échoué",
+                "Matrice identité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exhiber composantes séparées."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Complexité DFS récursif liste adj. :",
+              "options": ["O(n+m)", "O(n²)", "O(1)", "O(m log n)"],
+              "correctAnswers": [0],
+              "explanation": "Linéaire comme BFS."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Choisir algorithme (graphe connexe, poids ≥0) :",
+              "options": [
+                "Plus court chemin source unique : Dijkstra",
+                "Non pondéré : BFS suffit",
+                "ACM : Kruskal ou Prim",
+                "Tri topologique sur graphe avec cycle orienté"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dijkstra et BFS (non pondéré) couvrent les cas classiques ; un cycle orienté interdit un tri topologique complet."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Graphe complet orienté sans boucles : arcs ?",
+              "options": ["n(n−1)", "n−1", "n²", "1"],
+              "correctAnswers": [0],
+              "explanation": "Toute paire ordonnée distincte."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Impasse en labyrinthe modélisée par graphe : sommets =",
+              "options": [
+                "Carrefours/cases, arêtes = passages",
+                "Uniquement murs",
+                "Tri",
+                "Poids négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modélisation grille → graphe."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "GPS routier simplifié : sommets et arêtes pondérées modélisent :",
+              "options": [
+                "Carrefours et routes avec distances/temps",
+                "Uniquement BFS non pondéré",
+                "Arbre seul",
+                "DAG seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau routier pondéré."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Internet BGP (notion) vs graphe :",
+              "options": [
+                "Routes entre AS modélisables par graphe orienté pondéré",
+                "Sans sommets",
+                "Euler seulement",
+                "Matrice 2×2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Topologie AS = graphe."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Vérifier si graphe connexe :",
+              "options": [
+                "Un BFS/DFS depuis un sommet atteint n sommets",
+                "Tri topologique",
+                "Dijkstra",
+                "Kruskal seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accessibilité depuis une source couvre tout si connexe."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Graphe biparti complet K_{a,b} : arêtes ?",
+              "options": ["a×b", "a+b", "max(a,b)", "a²"],
+              "correctAnswers": [0],
+              "explanation": "Chaque sommet d'une part relié à l'autre."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Stocker graphe dynamique avec many edge updates :",
+              "options": [
+                "Choix dépend fréquence opérations (liste vs matrice)",
+                "Toujours matrice",
+                "Impossible",
+                "Sans structure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trade-off mise à jour vs requête."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "NSI terminale : graphes servent surtout à :",
+              "options": [
+                "Modéliser relations et concevoir algorithmes",
+                "Remplacer les listes",
+                "Éviter la complexité",
+                "Uniquement dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modélisation + parcours + optimisation."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Invariant commun BFS/DFS :",
+              "options": [
+                "Marquage des sommets visités pour éviter revisites inutiles",
+                "Tri des arêtes obligatoire",
+                "Matrice n² obligatoire",
+                "Poids négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "visited garantit travail contrôlé."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

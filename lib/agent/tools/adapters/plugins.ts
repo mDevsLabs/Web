@@ -11,6 +11,10 @@ import {
 } from "@/lib/agent/types";
 import { getPluginInstallationsByUserId } from "@/lib/db/queries";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
+import {
+  isProviderToolName,
+  pluginAgentToolDescription,
+} from "@/lib/mcp/provider-tool-id";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import {
   createPluginTools,
@@ -116,6 +120,7 @@ export function listPluginAgentTools(
         | Tool
         | undefined;
       if (!implementation?.execute || !implementation.inputSchema) return [];
+      if (!isProviderToolName(manifestTool.id)) return [];
       const name = `${definition.manifest.name} · ${manifestTool.label}`;
       const agentTool = defineTool<unknown>({
         availability: {
@@ -124,7 +129,11 @@ export function listPluginAgentTools(
           tiers: pluginTiers(definition.manifest.minTier),
         },
         category: "plugins",
-        description: `${definition.manifest.name} — ${manifestTool.description} ${manifestTool.systemHint}`,
+        description: pluginAgentToolDescription({
+          description: manifestTool.description,
+          name: definition.manifest.name,
+          systemHint: manifestTool.systemHint,
+        }),
         execute: async (input, context) => {
           const output: unknown = await implementation.execute!(
             input as never,

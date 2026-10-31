@@ -14,10 +14,9 @@ import { isEncryptionConfigured } from "@/lib/mcp/encryption";
 /**
  * Connexion par jeton personnel.
  *
- * Discord et Notion passent par un consentement OAuth ; Vercel, non : son OAuth
- * public ne donne aujourd'hui que l'identité, les permissions d'accès aux
- * projets étant réservées à une bêta privée. L'utilisateur colle donc un jeton
- * créé chez Vercel.
+ * Vercel, Discord et Notion se connectent par un jeton collé par l'utilisateur.
+ * L'OAuth public de Vercel ne donne aujourd'hui que l'identité. Discord exige
+ * un jeton de bot, Notion un jeton d'intégration interne.
  *
  * Trois règles, dans cet ordre :
  *

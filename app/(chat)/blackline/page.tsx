@@ -14,6 +14,8 @@ import type { Metadata } from "next";
 import { BlacklineHost } from "@/components/blackline/blackline-host";
 import { requireUser } from "@/lib/auth/require-user";
 import { getBlacklineSettings } from "@/lib/blackline/queries";
+import { lireNomAffiche } from "@/lib/quizzly/display-name";
+import { superposerIndicatif } from "@/lib/quizzly/name";
 
 export const metadata: Metadata = {
   description:
@@ -33,6 +35,8 @@ export default async function BlacklinePage() {
   if (session) {
     try {
       settings = await getBlacklineSettings(session.userId);
+      const nom = await lireNomAffiche(session.user);
+      settings = superposerIndicatif(settings, nom.displayName);
     } catch (error) {
       console.error("GET /blackline : réglages illisibles", error);
     }

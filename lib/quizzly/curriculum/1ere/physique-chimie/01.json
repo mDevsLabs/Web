@@ -1,0 +1,2198 @@
+{
+  "id": "1ere-physique-chimie-01",
+  "year": "1ere",
+  "subject": "physique-chimie",
+  "title": "Constitution et transformations",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Quantité de matière",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "La mole",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Quelles affirmations définissent correctement la mole au lycée ?",
+              "options": [
+                "Unité SI de quantité de matière",
+                "Compte environ 6,02×10²³ entités par mole",
+                "Unité de masse des atomes",
+                "Volume fixe pour tout corps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La mole mesure n ; une mole contient NA entités."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "prompt": "Symbole de la quantité de matière :",
+              "options": ["m", "n", "M", "N"],
+              "correctAnswers": [1],
+              "explanation": "n s'exprime en mole."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "prompt": "Une mole d'atomes contient environ :",
+              "options": [
+                "6,02×10²³ atomes",
+                "12 atomes",
+                "1 atome",
+                "6,02×10²³ moles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NA ≈ 6,02×10²³ mol⁻¹."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "prompt": "0,5 mol de molécules, N ≈",
+              "options": ["3,01×10²³", "6,02×10²³", "0,5", "1"],
+              "correctAnswers": [0],
+              "explanation": "N = n × NA."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "prompt": "Unité SI de n :",
+              "options": ["mol", "g", "L", "mol⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "La mole est l'unité de n."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "prompt": "2 mol de CO₂, n(O) =",
+              "options": ["4 mol", "2 mol", "1 mol", "6 mol"],
+              "correctAnswers": [0],
+              "explanation": "Deux atomes O par molécule."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "prompt": "La mole s'applique à :",
+              "options": [
+                "Atomes, ions, molécules, électrons",
+                "Uniquement aux gaz",
+                "Uniquement aux métaux",
+                "Uniquement l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute espèce élémentaire chimique."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "prompt": "N = 6,02×10²³, n =",
+              "options": ["1 mol", "0,1 mol", "2 mol", "6 mol"],
+              "correctAnswers": [0],
+              "explanation": "Un Avogadro d'entités vaut 1 mol."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "prompt": "NA unité :",
+              "options": ["mol⁻¹", "mol", "L", "g"],
+              "correctAnswers": [0],
+              "explanation": "Entités par mole."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "prompt": "1 mol de NaCl solide compte des entités :",
+              "options": [
+                "Formule NaCl",
+                "Molécules O₂",
+                "Atomes H",
+                "Ions libres en gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solide ionique : formule unitaire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Masse molaire atomique",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "prompt": "Masse molaire atomique M :",
+              "options": [
+                "En g·mol⁻¹",
+                "Lue sur le tableau périodique",
+                "Toujours sans décimales",
+                "Identique au numéro de masse A pour un isotope pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "M tabulaire = moyenne isotopique en g·mol⁻¹."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "prompt": "M(C) ≈ 12 g·mol⁻¹ signifie :",
+              "options": [
+                "1 mol d'atomes C ≈ 12 g",
+                "1 atome pèse 12 g",
+                "12 mol pèsent 1 g",
+                "12 g = 12 mol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien masse et n."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "prompt": "n = m/M, m = 56 g, M = 56 g·mol⁻¹, n =",
+              "options": ["1 mol", "0,5 mol", "56 mol", "2 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = 56/56 = 1 mol."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "prompt": "M(Fe) ≈ 55,8 g·mol⁻¹, n = 0,5 mol, m ≈",
+              "options": ["27,9 g", "55,8 g", "111,6 g", "0,5 g"],
+              "correctAnswers": [0],
+              "explanation": "m = nM."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "prompt": "Z désigne :",
+              "options": [
+                "Protons dans le noyau",
+                "Neutrons seuls",
+                "Moles",
+                "Volume molaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numéro atomique."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "prompt": "2,0 g de He (M ≈ 4,0 g·mol⁻¹), n =",
+              "options": ["0,5 mol", "2 mol", "8 mol", "0,25 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = 2/4 = 0,5 mol."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "prompt": "Isotopes : même Z, M tabulaire :",
+              "options": [
+                "Moyenne pondérée",
+                "Toujours entier",
+                "Nulle",
+                "En mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abondance naturelle."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "prompt": "10 g NaOH (M ≈ 40 g·mol⁻¹), n =",
+              "options": ["0,25 mol", "4 mol", "400 mol", "40 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = 10/40."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "prompt": "Si m double (M constant), n :",
+              "options": ["Double", "Divise par 2", "Constante", "Quadruple"],
+              "correctAnswers": [0],
+              "explanation": "n ∝ m."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "prompt": "Cohérence : m en g et M en :",
+              "options": [
+                "g·mol⁻¹",
+                "kg·mol⁻¹ sans conversion",
+                "L·mol⁻¹",
+                "Pa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unités compatibles."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Masse molaire moléculaire",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "prompt": "M(H₂O) se obtient en :",
+              "options": [
+                "Sommant les M atomiques",
+                "Utilisant la formule H₂O",
+                "Multipliant par NA",
+                "Mesurant le pH"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "M = Σ M atomes de la formule."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "prompt": "M(H₂O) ≈",
+              "options": [
+                "18 g·mol⁻¹",
+                "16 g·mol⁻¹",
+                "2 g·mol⁻¹",
+                "34 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2+16 = 18."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "prompt": "M(CO₂) ≈",
+              "options": [
+                "44 g·mol⁻¹",
+                "28 g·mol⁻¹",
+                "12 g·mol⁻¹",
+                "32 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "12+32 = 44."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "prompt": "M(O₂) ≈",
+              "options": [
+                "32 g·mol⁻¹",
+                "16 g·mol⁻¹",
+                "48 g·mol⁻¹",
+                "8 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2×16."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "prompt": "2 mol CO₂, m ≈",
+              "options": ["88 g", "44 g", "22 g", "12 g"],
+              "correctAnswers": [0],
+              "explanation": "2×44 g."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "prompt": "M(CH₄) ≈",
+              "options": [
+                "16 g·mol⁻¹",
+                "12 g·mol⁻¹",
+                "32 g·mol⁻¹",
+                "14 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "12+4."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "prompt": "M(CaCO₃) ≈ 100 g·mol⁻¹, m = 10 g, n =",
+              "options": ["0,10 mol", "1 mol", "10 mol", "100 mol"],
+              "correctAnswers": [0],
+              "explanation": "n = m/M."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "prompt": "Ion SO₄²⁻, M(SO₄) ≈",
+              "options": [
+                "96 g·mol⁻¹",
+                "32 g·mol⁻¹",
+                "48 g·mol⁻¹",
+                "64 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "32+64 ; charge n'entre pas dans M."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "prompt": "3 mol H₂O, m ≈",
+              "options": ["54 g", "18 g", "36 g", "3 g"],
+              "correctAnswers": [0],
+              "explanation": "3×18 g."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "prompt": "C₆H₁₂O₆, M ≈",
+              "options": [
+                "180 g·mol⁻¹",
+                "100 g·mol⁻¹",
+                "60 g·mol⁻¹",
+                "342 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6×12+12+96."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Relation masse-quantité",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "prompt": "Relations valides (M ≠ 0) :",
+              "options": ["n = m/M", "m = nM", "M = m/n", "n = M/m"],
+              "correctAnswers": [0, 1],
+              "explanation": "n = m/M ⇔ m = nM."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "prompt": "n = 3 mol, M = 58,5 g·mol⁻¹, m =",
+              "options": ["175,5 g", "19,5 g", "58,5 g", "3 g"],
+              "correctAnswers": [0],
+              "explanation": "m = nM."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "prompt": "5,6 g Fe (M ≈ 56), n =",
+              "options": ["0,1 mol", "1 mol", "10 mol", "56 mol"],
+              "correctAnswers": [0],
+              "explanation": "5,6/56."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "prompt": "1,8 g eau, n ≈",
+              "options": ["0,1 mol", "1 mol", "18 mol", "0,01 mol"],
+              "correctAnswers": [0],
+              "explanation": "1,8/18."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "prompt": "0,02 mol S (M ≈ 32), m =",
+              "options": ["0,64 g", "32 g", "16 g", "640 g"],
+              "correctAnswers": [0],
+              "explanation": "0,02×32."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "prompt": "m = 24 g, n = 2 mol, M =",
+              "options": [
+                "12 g·mol⁻¹",
+                "48 g·mol⁻¹",
+                "24 g·mol⁻¹",
+                "6 g·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "M = m/n."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "prompt": "Convertir 250 mg en g :",
+              "options": ["0,250 g", "250 g", "25 g", "0,025 g"],
+              "correctAnswers": [0],
+              "explanation": "÷1000."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "prompt": "Grandeurs pour n = m/M :",
+              "options": ["m et M", "Vm seul", "pH", "ξ"],
+              "correctAnswers": [0],
+              "explanation": "Masse et masse molaire."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "prompt": "4,9 g H₂SO₄ (M ≈ 98), n =",
+              "options": ["0,050 mol", "0,50 mol", "98 mol", "4,9 mol"],
+              "correctAnswers": [0],
+              "explanation": "4,9/98."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "prompt": "m en g et M en kg·mol⁻¹ sans conversion :",
+              "options": [
+                "Incohérent",
+                "Toujours valide",
+                "Interdit en TP",
+                "Obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homogénéiser les unités."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Gaz et volume molaire",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "prompt": "Gaz (Vm ≈ 24 L·mol⁻¹ à 25 °C, 1 bar) :",
+              "options": [
+                "n = V/Vm",
+                "V = nVm",
+                "1 mol de tout gaz a le même Vm à T,P fixées",
+                "n = V×Vm"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Loi d'Avogadro ; n = V/Vm."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "prompt": "2 mol gaz, V ≈ (Vm = 24 L·mol⁻¹) :",
+              "options": ["48 L", "12 L", "24 L", "2 L"],
+              "correctAnswers": [0],
+              "explanation": "V = nVm."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "prompt": "V = 6 L, Vm = 24 L·mol⁻¹, n =",
+              "options": ["0,25 mol", "4 mol", "144 mol", "6 mol"],
+              "correctAnswers": [0],
+              "explanation": "6/24."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "prompt": "STP (0 °C, 1 atm), Vm ≈",
+              "options": [
+                "22,4 L·mol⁻¹",
+                "24 L·mol⁻¹",
+                "1 L·mol⁻¹",
+                "11,2 L·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditions standard historiques."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "prompt": "n = 0,5 mol, Vm = 24, V =",
+              "options": ["12 L", "48 L", "0,5 L", "24 L"],
+              "correctAnswers": [0],
+              "explanation": "0,5×24."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "prompt": "48 L O₂, n ≈ (Vm = 24) :",
+              "options": ["2 mol", "1 mol", "0,5 mol", "48 mol"],
+              "correctAnswers": [0],
+              "explanation": "48/24."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "prompt": "Vm unité :",
+              "options": ["L·mol⁻¹", "mol·L⁻¹", "L", "mol"],
+              "correctAnswers": [0],
+              "explanation": "Volume par mole."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "prompt": "6000 mL =",
+              "options": ["6 L", "60 L", "0,6 L", "600 L"],
+              "correctAnswers": [0],
+              "explanation": "÷1000."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "prompt": "V (gaz) dépend surtout de :",
+              "options": ["n, T, P", "Couleur", "M seule", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Équation d'état."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "prompt": "1 mol N₂ et 1 mol H₂ même T,P : V",
+              "options": [
+                "Identique",
+                "Double pour H₂",
+                "Nul pour N₂",
+                "Triple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même Vm."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Concentration molaire",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "prompt": "Concentration molaire c :",
+              "options": [
+                "c = n/Vsolution",
+                "Unité mol·L⁻¹",
+                "c = m/V sans M",
+                "Doubler V (n fixe) double c"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "c intensive ; V solution en L."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "prompt": "0,20 mol dans 0,50 L, c =",
+              "options": [
+                "0,40 mol·L⁻¹",
+                "0,10 mol·L⁻¹",
+                "1,0 mol·L⁻¹",
+                "0,25 mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,2/0,5."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "prompt": "c = 2,0 mol·L⁻¹, V = 0,25 L, n =",
+              "options": ["0,50 mol", "8 mol", "0,125 mol", "2 mol"],
+              "correctAnswers": [0],
+              "explanation": "cV."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "prompt": "1,0 L à c = 0,10 mol·L⁻¹, n =",
+              "options": ["0,10 mol", "1,0 mol", "10 mol", "0,01 mol"],
+              "correctAnswers": [0],
+              "explanation": "cV."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "prompt": "c = 0,50 mol·L⁻¹, n = 0,20 mol, V =",
+              "options": ["0,40 L", "0,10 L", "2,5 L", "1,0 L"],
+              "correctAnswers": [0],
+              "explanation": "V = n/c."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "prompt": "500 mL, c = 1,0 mol·L⁻¹, n =",
+              "options": ["0,50 mol", "1,0 mol", "500 mol", "0,002 mol"],
+              "correctAnswers": [0],
+              "explanation": "V = 0,5 L."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "prompt": "n constant, V×2, c :",
+              "options": ["÷2", "×2", "Constante", "×4"],
+              "correctAnswers": [0],
+              "explanation": "c ∝ 1/V."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "prompt": "V dans c = n/V :",
+              "options": [
+                "Volume total solution",
+                "Solvant seul",
+                "Soluté pur",
+                "Gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume final jaugé."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "prompt": "0,010 mol·L⁻¹ =",
+              "options": [
+                "10 mmol·L⁻¹",
+                "10 mol·L⁻¹",
+                "0,10 mol·L⁻¹",
+                "1 mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "millimoles."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "prompt": "c massique g·L⁻¹ vs c molaire :",
+              "options": [
+                "Reliées par M",
+                "Identiques",
+                "Sans lien",
+                "c molaire en g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n = m/M."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Dilution",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "prompt": "Dilution :",
+              "options": [
+                "n soluté conservée",
+                "c₁V₁ = c₂V₂",
+                "On détruit le soluté",
+                "V final < V initial toujours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ajout de solvant ; n inchangé."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "prompt": "c₁ = 2,0, V₁ = 50 mL, c₂ = 0,50, V₂ =",
+              "options": ["200 mL", "25 mL", "100 mL", "400 mL"],
+              "correctAnswers": [0],
+              "explanation": "2×50/0,5."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "prompt": "Dilution ×10, c finale :",
+              "options": ["c/10", "c×10", "0", "c"],
+              "correctAnswers": [0],
+              "explanation": "Volume ×10."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "prompt": "V₁ = 10 mL c₁ = 1,0, V₂ = 100 mL, c₂ =",
+              "options": [
+                "0,10 mol·L⁻¹",
+                "10 mol·L⁻¹",
+                "1,0 mol·L⁻¹",
+                "0,01 mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1×10/100."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "prompt": "Mère 6,0 mol·L⁻¹ → 250 mL à 0,60, V₁ =",
+              "options": ["25 mL", "2,5 mL", "250 mL", "60 mL"],
+              "correctAnswers": [0],
+              "explanation": "0,6×250/6."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "prompt": "Après dilution n soluté :",
+              "options": ["Constante", "×10", "0", "÷10"],
+              "correctAnswers": [0],
+              "explanation": "Pas de perte de soluté."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "prompt": "Diluer signifie :",
+              "options": [
+                "Ajouter solvant",
+                "Évaporer",
+                "Précipiter",
+                "Décomposer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diminuer c."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "prompt": "×5 de 20 mL, volume final :",
+              "options": ["100 mL", "25 mL", "4 mL", "20 mL"],
+              "correctAnswers": [0],
+              "explanation": "5×20."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "prompt": "c₂ < c₁ après dilution :",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Acides seulement",
+                "Bases seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "c diminue."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "prompt": "Volume final précis en dilution :",
+              "options": [
+                "Fiole jaugée",
+                "Bécher seul",
+                "Thermomètre",
+                "Spatule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume défini."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Solutions",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "prompt": "Solution aqueuse NaCl :",
+              "options": [
+                "Eau = solvant",
+                "NaCl = soluté",
+                "NaCl reste molécule intacte",
+                "c sans volume"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dissociation en ions."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "prompt": "KCl dissous : espèces majeures",
+              "options": ["K⁺ et Cl⁻", "KCl(g)", "K et Cl", "K₂Cl"],
+              "correctAnswers": [0],
+              "explanation": "Électrolyte."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "prompt": "0,10 mol NaCl, n(Na⁺) =",
+              "options": ["0,10 mol", "0,20 mol", "0,05 mol", "0 mol"],
+              "correctAnswers": [0],
+              "explanation": "1:1."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "prompt": "c = 0,20 mol·L⁻¹ CaCl₂, [Cl⁻] =",
+              "options": [
+                "0,40 mol·L⁻¹",
+                "0,20 mol·L⁻¹",
+                "0,10 mol·L⁻¹",
+                "0,80 mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 Cl⁻."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "prompt": "(aq) signifie :",
+              "options": [
+                "En solution aqueuse",
+                "Gaz",
+                "Solide",
+                "Liquide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole d'état."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "prompt": "Saturation :",
+              "options": [
+                "c max à T donnée",
+                "c = 0",
+                "Pas de solide",
+                "Réaction totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre solide-solution."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "prompt": "0,050 mol Na₂SO₄, n(SO₄²⁻) =",
+              "options": ["0,050 mol", "0,100 mol", "0,025 mol", "0,150 mol"],
+              "correctAnswers": [0],
+              "explanation": "1 sulfate."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "prompt": "Solution ionique :",
+              "options": [
+                "Conductrice",
+                "Isolante toujours",
+                "Sans ions",
+                "Sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ions mobiles."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "prompt": "Sucre en eau :",
+              "options": [
+                "Molécules neutres",
+                "Ions H⁺ obligatoires",
+                "O²⁻ libre",
+                "Pas de dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d'ionisation forte."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "prompt": "Précipitation :",
+              "options": ["Solide insoluble", "Gaz toujours", "Dilution", "Vm"],
+              "correctAnswers": [0],
+              "explanation": "Séparation solide."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Conversions",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "prompt": "Conversions courantes :",
+              "options": [
+                "L ↔ mL",
+                "n ↔ N via NA",
+                "mol ↔ L pour solide sans M",
+                "g ↔ kg"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NA et unités ; solide : n = m/M."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "prompt": "2,5 L = … mL",
+              "options": ["2500", "250", "25", "0,0025"],
+              "correctAnswers": [0],
+              "explanation": "×1000."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "prompt": "0,002 mol, N ≈",
+              "options": ["1,2×10²¹", "6×10²³", "0,002", "3×10²⁰"],
+              "correctAnswers": [0],
+              "explanation": "×NA."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "prompt": "Ordre NA :",
+              "options": ["10²³", "10⁻²³", "10³", "10⁶"],
+              "correctAnswers": [0],
+              "explanation": "≈6×10²³."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "prompt": "1 mol C₂H₆, n(H) =",
+              "options": ["6 mol", "2 mol", "1 mol", "8 mol"],
+              "correctAnswers": [0],
+              "explanation": "6 H par molécule."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "prompt": "m → n passe par :",
+              "options": ["M", "Vm", "ξ", "pH"],
+              "correctAnswers": [0],
+              "explanation": "n = m/M."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "prompt": "150 g Ca(OH)₂ (M≈74), n ≈",
+              "options": ["2,0 mol", "0,5 mol", "74 mol", "1,0 mol"],
+              "correctAnswers": [0],
+              "explanation": "150/74."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "prompt": "1 mol CO₂, m ≈",
+              "options": ["44 g", "24 g", "1 g", "22,4 g"],
+              "correctAnswers": [0],
+              "explanation": "m = nM."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "prompt": "0,20 mol dans 2,0 L, c =",
+              "options": [
+                "0,10 mol·L⁻¹",
+                "0,40 mol·L⁻¹",
+                "4,0 mol·L⁻¹",
+                "1,0 mol·L⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,2/2."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "prompt": "n/V unité :",
+              "options": ["mol·L⁻¹", "L·mol", "g·L⁻¹", "mol·g⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "c."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse u1",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "prompt": "Préparer 1 L solution :",
+              "options": [
+                "Calculer n = cV",
+                "Peser m = nM",
+                "Ignorer M",
+                "Confondre solvant et solution"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étapes stœchiométriques puis dissolution."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "prompt": "1 L NaCl 0,50 mol·L⁻¹, m ≈ (M=58,5) :",
+              "options": ["29 g", "58,5 g", "0,50 g", "117 g"],
+              "correctAnswers": [0],
+              "explanation": "0,5 mol."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "prompt": "V=12 L, n=0,5, Vm =",
+              "options": [
+                "24 L·mol⁻¹",
+                "12 L·mol⁻¹",
+                "6 L·mol⁻¹",
+                "48 L·mol⁻¹"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V/n."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "prompt": "Relie entités et moles :",
+              "options": ["NA", "Vm", "c", "ξ"],
+              "correctAnswers": [0],
+              "explanation": "N = nNA."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "prompt": "0,10 mol + 0,30 mol (sans réaction), n tot =",
+              "options": ["0,40 mol", "0,20 mol", "0,10 mol", "3 mol"],
+              "correctAnswers": [0],
+              "explanation": "Somme."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "prompt": "Dilution n fixe, c :",
+              "options": ["Diminue", "Augmente", "NA change", "M change"],
+              "correctAnswers": [0],
+              "explanation": "Plus de solvant."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "prompt": "n = 1 mol, M = 32 g·mol⁻¹, m =",
+              "options": ["32 g", "16 g", "1 g", "64 g"],
+              "correctAnswers": [0],
+              "explanation": "nM."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "prompt": "3 mol H₂, V ≈ (Vm=24) :",
+              "options": ["72 L", "24 L", "8 L", "3 L"],
+              "correctAnswers": [0],
+              "explanation": "3×24."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "prompt": "c = 0,25 mol·L⁻¹, V = 2 L, n =",
+              "options": ["0,50 mol", "0,125 mol", "2 mol", "1 mol"],
+              "correctAnswers": [0],
+              "explanation": "cV."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "prompt": "Grandeurs clés u1 :",
+              "options": [
+                "n, m, M, c, V, Vm",
+                "Seulement pH",
+                "Seulement ξ",
+                "Seulement vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantité de matière."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Suivi d'une transformation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Transformation chimique",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "prompt": "Transformation chimique :",
+              "options": [
+                "Consomme réactifs, forme produits",
+                "Réorganise les atomes",
+                "Change Z des noyaux",
+                "Se décrit par une équation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chimie ≠ nucléaire."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "prompt": "Flèche → :",
+              "options": [
+                "Sens étudié",
+                "Réversible forcée",
+                "Égalité",
+                "État (s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens de la réaction."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "prompt": "Lavoisier (système fermé) :",
+              "options": [
+                "Masse totale constante",
+                "Masse disparaît",
+                "Gaz seulement",
+                "Liquides seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conservation."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "prompt": "Coefficients servent à :",
+              "options": [
+                "Équilibrer atomes",
+                "Changer formules",
+                "Température",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stœchiométrie."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "prompt": "2 H₂ + O₂ → 2 H₂O, n(H₂)/n(H₂O) formé =",
+              "options": ["1:1", "2:1", "1:2", "4:1"],
+              "correctAnswers": [0],
+              "explanation": "Coefficients 2:2."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "prompt": "(g) =",
+              "options": ["Gaz", "Solide", "Aqueux", "Liquide"],
+              "correctAnswers": [0],
+              "explanation": "État gaz."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "prompt": "CH₄ combustion complète produits :",
+              "options": ["CO₂ et H₂O", "C seul", "CH₄", "O₂"],
+              "correctAnswers": [0],
+              "explanation": "Réaction usuelle."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "prompt": "Réactifs :",
+              "options": ["À gauche", "À droite", "Absents", "Produits"],
+              "correctAnswers": [0],
+              "explanation": "Convention."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "prompt": "Transformation totale (modèle) :",
+              "options": [
+                "Limitant épuisé",
+                "Pas de produits",
+                "ξ = 0",
+                "Vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avance jusqu'au limitant."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "prompt": "C₃H₈ + O₂ → CO₂ + H₂O, coeff O₂ :",
+              "options": ["5", "3", "8", "2"],
+              "correctAnswers": [0],
+              "explanation": "C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Avancement",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "prompt": "Avancement ξ :",
+              "options": [
+                "En mol",
+                "Suit l'état de la réaction",
+                "Toujours infini",
+                "Sans lien avec les coefficients"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ξ mesure l'avancée stœchiométrique."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "prompt": "a A + b B → c C, réactif A : n(A) =",
+              "options": ["n₀(A) − aξ", "n₀(A) + aξ", "aξ", "n₀(A)"],
+              "correctAnswers": [0],
+              "explanation": "Consommation."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "prompt": "ξ = 0 :",
+              "options": ["État initial", "Fin", "Limitant nul", "Équilibre"],
+              "correctAnswers": [0],
+              "explanation": "Départ."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "prompt": "Produit C, n₀=0, c=2, ξ=1 mol, n(C) =",
+              "options": ["2 mol", "1 mol", "0 mol", "4 mol"],
+              "correctAnswers": [0],
+              "explanation": "cξ."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "prompt": "Unité ξ :",
+              "options": ["mol", "L", "mol·L⁻¹", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Mole de réaction."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "prompt": "ξ augmente (sens flèche), produits :",
+              "options": [
+                "Augmentent",
+                "Diminuent",
+                "Constant",
+                "Disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation nette."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "prompt": "2 Al + 3 Cl₂ → 2 AlCl₃, ξ=1, n(Cl₂) consommé :",
+              "options": ["3 mol", "2 mol", "1 mol", "6 mol"],
+              "correctAnswers": [0],
+              "explanation": "Coeff 3."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "prompt": "ξ_max :",
+              "options": ["Avancement maximal", "Toujours 0", "Vm", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Limitant."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "prompt": "n(réactif) < 0 signifie :",
+              "options": ["ξ trop grand", "Normal", "Produit", "Erreur unité"],
+              "correctAnswers": [0],
+              "explanation": "Non atteint physiquement."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "prompt": "ξ relie :",
+              "options": ["Coefficients et n", "Z", "Vm", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Tableau d'avancement."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tableau d'avancement",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "prompt": "Tableau d'avancement :",
+              "options": [
+                "Ligne état initial",
+                "Ligne état final en ξ",
+                "Ignore coefficients",
+                "Remplace l'équation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "EI et EF(ξ)."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "prompt": "Produit n₀=0 : n =",
+              "options": ["+coefficient×ξ", "n₀ − ξ", "0", "n₀ + ξ sans coeff"],
+              "correctAnswers": [0],
+              "explanation": "Gain stœchiométrique."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "prompt": "H₂ + Cl₂ → 2 HCl, n₀(H₂)=4, n₀(Cl₂)=2 : ξ_max =",
+              "options": ["2 mol", "4 mol", "1 mol", "3 mol"],
+              "correctAnswers": [0],
+              "explanation": "Cl₂ limitant : 2−ξ=0."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "prompt": "ξ_max = min des ξ qui annulent :",
+              "options": ["Un réactif", "Un produit", "T", "P"],
+              "correctAnswers": [0],
+              "explanation": "Premier épuisé."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "prompt": "À ξ_max, limitant : n =",
+              "options": ["0", "Max", "Infini", "Égal excès"],
+              "correctAnswers": [0],
+              "explanation": "Consommé."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "prompt": "Excès en fin : n",
+              "options": ["> 0", "= 0", "< 0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Reste."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "prompt": "H₂ + Cl₂ → 2 HCl, ξ=2, n(HCl) =",
+              "options": ["4 mol", "2 mol", "0 mol", "1 mol"],
+              "correctAnswers": [0],
+              "explanation": "2×ξ."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "prompt": "Tableau sert à :",
+              "options": [
+                "Quantités finales",
+                "Transmutation",
+                "Vm",
+                "Dilution seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi stœchiométrique."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "prompt": "Réactif : n = n₀ −",
+              "options": ["aξ", "a/ξ", "ξ seul", "cξ"],
+              "correctAnswers": [0],
+              "explanation": "Coeff a."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "prompt": "EI : produits absents, n₀ =",
+              "options": ["0", "1", "ξ", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Départ usuel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Réactif limitant",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "prompt": "Réactif limitant :",
+              "options": [
+                "S'épuise en premier",
+                "Fixe ξ_max",
+                "Toujours le plus léger",
+                "Min des ξ annulant un réactif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comparer en moles avec coefficients."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "prompt": "N₂ + 3 H₂ → 2 NH₃, n₀(N₂)=1, n₀(H₂)=2 : limitant",
+              "options": ["H₂", "N₂", "NH₃", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Il faut 3 mol H₂ pour 1 mol N₂."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "prompt": "Même réaction, n₀(N₂)=1, n₀(H₂)=4 : limitant",
+              "options": ["N₂", "H₂", "Les deux", "NH₃"],
+              "correctAnswers": [0],
+              "explanation": "H₂ en excès."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "prompt": "2 H₂ + O₂ → 2 H₂O, n₀(H₂)=4, n₀(O₂)=3 : ξ_max =",
+              "options": ["2 mol", "2,5 mol", "3 mol", "4 mol"],
+              "correctAnswers": [0],
+              "explanation": "H₂ : 4−2ξ=0 → ξ=2 ; O₂ : 3−ξ=0 → ξ=3."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "prompt": "Mélange stœchiométrique exact : réactifs en fin (modèle total)",
+              "options": ["Tous n=0", "Tous excès", "Pas de produits", "ξ=0"],
+              "correctAnswers": [0],
+              "explanation": "Proportions exactes."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "prompt": "Limitant ≠ toujours plus petite masse car :",
+              "options": [
+                "Compte coefficients et M",
+                "Masse invisible",
+                "Pas de M",
+                "Uniquement volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n = m/M."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "prompt": "Fe + S → FeS, n₀(Fe)=1, n₀(S)=1, ξ_max =",
+              "options": ["1 mol", "2 mol", "0 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "1:1."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "prompt": "Après réaction totale, excès : n",
+              "options": ["> 0", "= 0", "< 0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Reste non consommé."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "prompt": "Identifier limitant :",
+              "options": [
+                "Minimum des ξ_max par réactif",
+                "Couleur",
+                "pH seul",
+                "Masse totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode du minimum."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "prompt": "Avec réactifs initiaux, ξ_max est en général :",
+              "options": ["> 0", "= 0", "< 0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "La réaction peut avancer."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Quantités finales",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "prompt": "À ξ = ξ_max :",
+              "options": [
+                "Limitant n=0",
+                "n(produit) = n₀ + cξ_max",
+                "ξ illimité",
+                "Réactifs augmentent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules du tableau au maximum."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "prompt": "H₂ + Cl₂ → 2 HCl, n₀(H₂)=1, n₀(Cl₂)=1, ξ_max=1, n(HCl) =",
+              "options": ["2 mol", "1 mol", "0 mol", "4 mol"],
+              "correctAnswers": [0],
+              "explanation": "2×1."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "prompt": "Même EI, n(H₂) final :",
+              "options": ["0 mol", "1 mol", "2 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "Limitant 1:1."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "prompt": "CaCO₃ → CaO + CO₂, n₀=2 mol, ξ_max=2, n(CO₂) =",
+              "options": ["2 mol", "1 mol", "4 mol", "0 mol"],
+              "correctAnswers": [0],
+              "explanation": "Coeff 1."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "prompt": "ξ = 0,5 mol, 2 A → B, n₀(A)=3, n(A) =",
+              "options": ["2 mol", "3 mol", "1 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "3 − 2×0,5 = 2."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "prompt": "Produit n₀=0, coeff 3, ξ=2, n =",
+              "options": ["6 mol", "3 mol", "2 mol", "5 mol"],
+              "correctAnswers": [0],
+              "explanation": "3ξ."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "prompt": "O₂ en excès après combustion limitée par le carburant :",
+              "options": ["Possible", "Impossible", "Interdit", "ξ=0"],
+              "correctAnswers": [0],
+              "explanation": "O₂ souvent en surplus."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "prompt": "Bilan masse (fermé) :",
+              "options": ["Constante", "Diminue", "Double", "NA"],
+              "correctAnswers": [0],
+              "explanation": "Lavoisier."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "prompt": "Somme des n de toutes espèces :",
+              "options": [
+                "Non conservée",
+                "Toujours conservée",
+                "Égale NA",
+                "Égale Vm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces transformées."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "prompt": "Avant tableau, convertir masse en :",
+              "options": ["n via M", "pH", "Vm seul", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "n = m/M."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Rendement",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "prompt": "Rendement η :",
+              "options": [
+                "η = n_obtenue / n_théorique",
+                "0 ≤ η ≤ 1 souvent",
+                "Toujours 100 %",
+                "Ignore le limitant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rapport pratique sur max théorique."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "prompt": "Théorique 4 mol, obtenu 3 mol, η =",
+              "options": ["0,75", "1,33", "0,25", "1,0"],
+              "correctAnswers": [0],
+              "explanation": "3/4."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "prompt": "η = 100 % :",
+              "options": [
+                "n_obtenue = n_théorique",
+                "Pas de produit",
+                "ξ = 0",
+                "Limitant excès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transformation totale idéale."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "prompt": "n_théorique vient de :",
+              "options": ["ξ_max et coefficients", "pH", "Vm", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Tableau au limitant."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "prompt": "η = 50 %, théorique 10 mol, obtenu :",
+              "options": ["5 mol", "20 mol", "10 mol", "0 mol"],
+              "correctAnswers": [0],
+              "explanation": "0,5×10."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "prompt": "η < 100 % peut venir de :",
+              "options": [
+                "Réaction incomplète, pertes",
+                "Lavoisier faux",
+                "NA change",
+                "M change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Causes réelles."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "prompt": "η est :",
+              "options": ["Sans unité", "En mol", "En g", "En L"],
+              "correctAnswers": [0],
+              "explanation": "Rapport adimensionnel."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "prompt": "Obtenu > théorique :",
+              "options": [
+                "Erreur mesure ou calcul",
+                "Normal",
+                "Loi Lavoisier fausse",
+                "ξ négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incohérence à revisiter."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "prompt": "Calcul η nécessite :",
+              "options": [
+                "n obtenue et n théorique",
+                "Seulement volume eau",
+                "Z",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux quantités comparables."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "prompt": "η = 0 :",
+              "options": [
+                "Aucun produit collecté",
+                "Réaction parfaite",
+                "ξ_max infini",
+                "Limitant absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de produit récupéré."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Titrage et équivalence",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "prompt": "Équivalence (titrage acide-base 1:1) :",
+              "options": [
+                "Proportions stœchiométriques",
+                "n(H⁺) = n(OH⁻)",
+                "Toujours pH = 7",
+                "Volume arbitraire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Stœchiométrie ; pH dépend des espèces."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "prompt": "n = c × V (V en L) :",
+              "options": ["Vrai", "Faux", "V en mL sans conversion", "c en g"],
+              "correctAnswers": [0],
+              "explanation": "c en mol·L⁻¹."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "prompt": "c = 0,10 mol·L⁻¹, V = 20,0 mL, n =",
+              "options": ["0,0020 mol", "0,020 mol", "2,0 mol", "0,10 mol"],
+              "correctAnswers": [0],
+              "explanation": "0,10×0,020."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "prompt": "HCl + NaOH → NaCl + H₂O, à l'équivalence (1:1) :",
+              "options": [
+                "n(HCl) = n(NaOH)",
+                "n(H⁺) = 2 n(OH⁻)",
+                "n = 0",
+                "c = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monoprotique/monobasique."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "prompt": "V_eq = 15,0 mL titrant c=0,20 mol·L⁻¹, n titrant versé =",
+              "options": ["0,0030 mol", "0,30 mol", "3,0 mol", "0,020 mol"],
+              "correctAnswers": [0],
+              "explanation": "0,20×0,015."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "prompt": "Titrage implique :",
+              "options": [
+                "Transformation chimique",
+                "Transmutation",
+                "Dilution seule",
+                "Changement Z"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction de titrage."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "prompt": "Indicateur ou pH-mètre :",
+              "options": [
+                "Repère l'équivalence",
+                "Mesure M",
+                "Calcule NA",
+                "Donne Vm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point équivalent."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "prompt": "Avant équivalence (acide en excès) :",
+              "options": [
+                "Neutralisation incomplète",
+                "Tout neutralisé",
+                "ξ_max dépassé",
+                "Pas de réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancement partiel."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "prompt": "Trouver c inconnu :",
+              "options": [
+                "n à l'équivalence et V échantillon",
+                "Vm seul",
+                "Couleur seule",
+                "M solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stœchiométrie."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "prompt": "20,0 mL en litres :",
+              "options": ["0,020 L", "20 L", "0,20 L", "0,002 L"],
+              "correctAnswers": [0],
+              "explanation": "÷1000."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Vitesse et transformation",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "prompt": "Vitesse volumique v :",
+              "options": [
+                "v = (1/V) × dξ/dt",
+                "Unité mol·L⁻¹·s⁻¹",
+                "Égale toujours η",
+                "Sans temps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Suivi temporel de ξ."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "prompt": "Augmenter T en général :",
+              "options": [
+                "Augmente v",
+                "Diminue v",
+                "N'affecte pas v",
+                "Change ξ_max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinétique plus rapide."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "prompt": "Transformation lente :",
+              "options": [
+                "ξ varie lentement",
+                "ξ_max = 0",
+                "Pas de produits",
+                "NA petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée observable."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "prompt": "Transformation rapide :",
+              "options": [
+                "ξ atteint ξ_max vite",
+                "Sans limitant",
+                "Sans équation",
+                "Sans réactifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple précipitation."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "prompt": "Catalyseur :",
+              "options": [
+                "Accélère, non consommé net",
+                "Augmente ξ_max théorique",
+                "Change l'équation",
+                "Crée des atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Route cinétique."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "prompt": "v et ξ_max :",
+              "options": [
+                "Indépendants",
+                "Identiques",
+                "v = ξ_max",
+                "v remplace n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermique vs cinétique."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "prompt": "Suivi conductimétrique :",
+              "options": [
+                "Conductivité et ions",
+                "Masse seule",
+                "Z",
+                "Ignore réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple titrage."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "prompt": "Transformation totale (programme) :",
+              "options": [
+                "Limitant épuisé",
+                "Équilibre partiel",
+                "ξ = 0",
+                "Sans produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle première."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "prompt": "dξ/dt > 0 :",
+              "options": [
+                "Réaction avance",
+                "Réaction bloquée",
+                "ξ négatif",
+                "Sans temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avancement croît."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "prompt": "Concentration réactifs ↑ souvent :",
+              "options": ["v augmente", "v diminue", "v nulle", "ξ_max double"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence de collisions."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Stœchiométrie appliquée",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "prompt": "2 Na + Cl₂ → 2 NaCl :",
+              "options": [
+                "2 mol Na consomment 1 mol Cl₂",
+                "2 mol NaCl pour 2 mol Na",
+                "1 mol Na donne 2 mol NaCl",
+                "Transmutation du Na"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coefficients 2:1:2."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "prompt": "2 Na + Cl₂ → 2 NaCl, n₀(Na)=4 mol, n₀(Cl₂)=2 mol, ξ_max =",
+              "options": ["2 mol", "4 mol", "1 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "Na : 4−2ξ=0 → ξ=2 ; Cl₂ : 2−ξ=0 → ξ=2."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "prompt": "Même EI, n(NaCl) final à ξ_max =",
+              "options": ["4 mol", "2 mol", "8 mol", "0 mol"],
+              "correctAnswers": [0],
+              "explanation": "2×ξ_max = 4 mol."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "prompt": "Zn + 2 HCl → ZnCl₂ + H₂, n₀(Zn)=0,5, n₀(HCl)=1, ξ_max =",
+              "options": ["0,5 mol", "1 mol", "2 mol", "0,25 mol"],
+              "correctAnswers": [0],
+              "explanation": "HCl : 1−2ξ=0 → ξ=0,5 ; Zn : 0,5−ξ=0 → ξ=0,5."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "prompt": "Même réaction, n(H₂) produit à ξ_max =",
+              "options": ["0,5 mol", "1 mol", "2 mol", "0 mol"],
+              "correctAnswers": [0],
+              "explanation": "Coeff 1 pour H₂."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "prompt": "Équation non équilibrée :",
+              "options": [
+                "Ne respecte pas conservation atomes",
+                "Toujours valide",
+                "Meilleure",
+                "Sans coefficients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut équilibrer."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "prompt": "Passage m → n pour réactif solide :",
+              "options": ["n = m/M", "n = cV", "n = V/Vm", "n = pH"],
+              "correctAnswers": [0],
+              "explanation": "Quantité de matière."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "prompt": "Réactif gaz avec V et Vm :",
+              "options": ["n = V/Vm", "n = Vm/V", "n = cV", "n = m seul"],
+              "correctAnswers": [0],
+              "explanation": "Lien volume et n."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "prompt": "Produit gaz collecté V=4,8 L, Vm=24, n =",
+              "options": ["0,20 mol", "2 mol", "4,8 mol", "0,48 mol"],
+              "correctAnswers": [0],
+              "explanation": "4,8/24 = 0,2."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "prompt": "Stœchiométrie sert à :",
+              "options": [
+                "Prévoir quantités",
+                "Changer Z",
+                "Mesurer NA",
+                "Ignorer limitant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calcul des n finales."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse u2",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "prompt": "Suivi d'une transformation :",
+              "options": [
+                "Équation équilibrée",
+                "Tableau d'avancement",
+                "Ignorer réactif limitant",
+                "ξ en mol"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Outils de première."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "prompt": "Réactif limitant détermine :",
+              "options": ["ξ_max", "NA", "Vm", "M du solvant"],
+              "correctAnswers": [0],
+              "explanation": "Avancement maximal."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "prompt": "η = 0,80, théorique 5,0 mol, obtenu =",
+              "options": ["4,0 mol", "6,25 mol", "5,0 mol", "0,80 mol"],
+              "correctAnswers": [0],
+              "explanation": "0,80×5."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "prompt": "Titrage : à l'équivalence, quantités de réactifs titrant/titré :",
+              "options": [
+                "Stœchiométriques",
+                "Nulles",
+                "Égales en volume toujours",
+                "Sans mol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportions de l'équation."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "prompt": "Transformation chimique vs physique :",
+              "options": [
+                "Nouvelles espèces chimiques",
+                "Seulement changement d'état",
+                "Transmutation",
+                "Sans atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réorganisation atomique."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "prompt": "ξ = 1 mol, A + B → C, n(C) créé (n₀=0, coeff 1) =",
+              "options": ["1 mol", "0 mol", "2 mol", "0,5 mol"],
+              "correctAnswers": [0],
+              "explanation": "1×ξ."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "prompt": "Conservation des atomes :",
+              "options": [
+                "Coefficients équilibrés",
+                "Change formules",
+                "Crée atomes",
+                "Ignore produits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan atomique."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "prompt": "v diminue souvent au cours du temps car :",
+              "options": [
+                "Concentration réactifs diminue",
+                "ξ_max diminue",
+                "NA change",
+                "M change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinétique d'ordre usuel."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "prompt": "Lien u1 et u2 :",
+              "options": [
+                "n via m/M ou cV ou V/Vm puis tableau",
+                "Sans mole",
+                "Sans équation",
+                "Seulement vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quantifier puis suivre ξ."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "prompt": "Objectif du chapitre :",
+              "options": [
+                "Quantifier et suivre une transformation",
+                "Étudier le noyau",
+                "Ignorer stœchiométrie",
+                "Remplacer Lavoisier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constitution et transformations."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

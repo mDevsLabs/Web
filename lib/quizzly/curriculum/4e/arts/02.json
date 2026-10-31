@@ -1,0 +1,2753 @@
+{
+  "id": "4e-arts-02",
+  "year": "4e",
+  "subject": "arts",
+  "title": "Éducation musicale — les instruments",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Familles d'instruments",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Les quatre grandes familles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions désignent des familles d'instruments au collège ?",
+              "options": [
+                "Cordes",
+                "Cuivres",
+                "Couleurs du tableau",
+                "Formes géométriques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On distingue surtout cordes, bois, cuivres et percussions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le violon appartient à la famille…",
+              "options": [
+                "des cordes",
+                "des cuivres",
+                "des percussions seules",
+                "des bois à anche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son naît d'une corde vibrante frottée ou pincée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La trompette est un instrument…",
+              "options": [
+                "à vent en cuivre",
+                "à cordes pincées",
+                "à clavier",
+                "à percussion frottée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lèvres excitent une colonne d'air dans un tube métallique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La flûte traversière est rangée parmi les…",
+              "options": ["bois", "cuivres", "cordes", "claviers uniquement"],
+              "correctAnswers": [0],
+              "explanation": "Le mode de production du son prime sur le matériau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le tambour est surtout…",
+              "options": [
+                "une percussion",
+                "un cuivre",
+                "une corde frottée",
+                "un bois à anche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On frappe une membrane ou une peau pour jouer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le piano est rapproché des cordes car…",
+              "options": [
+                "des marteaux frappent des cordes",
+                "il souffle comme un cor",
+                "il n'a pas de cordes",
+                "il est toujours électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le timbre vient de cordes mises en vibration."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le saxophone possède…",
+              "options": [
+                "une anche simple",
+                "des cordes en nylon",
+                "un archet",
+                "un clavier de type orgue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anche fait vibrer la colonne d'air : c'est un bois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le violoncelle se joue…",
+              "options": [
+                "avec un archet, assis",
+                "uniquement à la bouche",
+                "avec des baguettes",
+                "sans contact avec les cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il se tient entre les jambes et se frotte à l'archet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les timbales d'orchestre sont…",
+              "options": [
+                "des percussions accordables",
+                "des cuivres transposants",
+                "des cordes pincées",
+                "des claviers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On les accorde et on les frappe avec des mailloches."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Classer les instruments par familles sert à…",
+              "options": [
+                "mieux les repérer à l'écoute",
+                "supprimer le timbre",
+                "interdire le chant",
+                "remplacer la partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classification aide à décrire et à écouter la musique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Cordes frottées et pincées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments sont des cordes frottées à l'archet ?",
+              "options": [
+                "Violon et alto",
+                "Violoncelle et contrebasse",
+                "Guitare folk",
+                "Flûte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quatuor et orchestre utilisent ces quatre cordes frottées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La guitare classique se joue surtout…",
+              "options": [
+                "en pinçant les cordes",
+                "avec un archet",
+                "en soufflant",
+                "en frappant une peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les doigts ou un plectre pincent les cordes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'archet possède des crins tendus pour…",
+              "options": [
+                "frotter les cordes",
+                "accorder le piano",
+                "battre la caisse claire",
+                "souffler dans le cor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La friction entretient la vibration de la corde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La contrebasse est la plus…",
+              "options": [
+                "grave des cordes frottées",
+                "aiguë des bois",
+                "forte des percussions",
+                "petite des cuivres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ses cordes longues produisent des sons très graves."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le harpiste pinçant les cordes produit un son…",
+              "options": [
+                "de la famille des cordes pincées",
+                "des cuivres",
+                "des bois",
+                "sans timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La harpe appartient aux cordes pincées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'alto se tient…",
+              "options": [
+                "à l'épaule comme le violon",
+                "entre les jambes comme le cello",
+                "debout comme la contrebasse",
+                "sur un pupitre comme le piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est plus grand que le violon mais se tient pareil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur un violon, les chevilles servent à…",
+              "options": [
+                "tendre les cordes",
+                "frapper le tambour",
+                "ouvrir la flûte",
+                "muter la trompette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tendre ou détendre modifie la hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le pizzicato demande au violoniste de…",
+              "options": [
+                "pincer la corde au lieu d'archetter",
+                "souffler dans l'instrument",
+                "frapper le corps du violon",
+                "appuyer sur des pistons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une technique de cordes pincées sur un instrument frotté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le violoncelle est noté le plus souvent…",
+              "options": [
+                "en clé de fa",
+                "en clé de sol aiguë seule",
+                "en clé de percussion",
+                "sans portée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé de fa 4e ligne est standard pour le cello."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les cordes en boyau ou en métal changent surtout…",
+              "options": [
+                "le timbre et la résonance",
+                "la famille de l'instrument",
+                "le nombre de cordes obligatoire",
+                "la taille de l'orchestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le matériau influence la couleur du son."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Les bois",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments appartiennent à la famille des bois ?",
+              "options": [
+                "Hautbois et clarinette",
+                "Flûte et basson",
+                "Trompette et cor",
+                "Caisse claire seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Flûte, hautbois, clarinette et basson forment le cœur des bois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La flûte traversière n'a pas d'anche : le son vient…",
+              "options": [
+                "de l'air soufflé sur un biseau",
+                "d'une corde frappée",
+                "d'un piston cuivré",
+                "d'une peau tendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le musicien dirige un jet d'air contre un bord tranchant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le hautbois utilise…",
+              "options": [
+                "une anche double",
+                "des cordes en acier",
+                "une mailloche",
+                "un clavier de piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux lamelles de roseau battent l'air."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La clarinette a une anche…",
+              "options": [
+                "simple",
+                "double obligatoirement",
+                "en métal frotté",
+                "absente toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule lamelle sur un bec en ebonite ou bois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le basson est le plus…",
+              "options": [
+                "grave des bois usuels",
+                "aigu des cuivres",
+                "petit des cordes",
+                "fort des percussions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son tube plié et sa anche double produisent un registre bas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un piccolo est…",
+              "options": [
+                "une petite flûte très aiguë",
+                "un grand cor",
+                "une contrebasse",
+                "un piano droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il sonne une octave au-dessus de la flûte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le cor anglais est en réalité…",
+              "options": [
+                "un hautbois transpositeur",
+                "un cuivre à pistons",
+                "une percussion",
+                "une guitare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Malgré son nom, c'est un bois à anche double."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un saxophone, l'anche est en…",
+              "options": [
+                "roseau (anche simple)",
+                "corde de violon",
+                "peau de tambour",
+                "laiton sans vibration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme la clarinette, il utilise une anche simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les bois peuvent être en métal sans devenir des cuivres car…",
+              "options": [
+                "c'est le mode de vibration qui compte",
+                "le métal interdit le son",
+                "seul le bois peut jouer",
+                "la flûte n'existe pas en métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classification repose sur comment le son est produit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'orchestre, la section des bois est souvent…",
+              "options": [
+                "derrière les cordes, devant les cuivres",
+                "derrière la scène uniquement",
+                "remplacée par la batterie",
+                "sans flûte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disposition classique place bois et cuivres au centre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Les cuivres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments sont des cuivres à pistons ou coulisses ?",
+              "options": [
+                "Trompette et trombone",
+                "Cor et tuba",
+                "Flûte et hautbois",
+                "Violon et alto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cor, trompette, trombone et tuba forment la section cuivres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur la trompette, les lèvres…",
+              "options": [
+                "font buzzer dans un embouchure",
+                "pincent une corde",
+                "frappent une cymbale",
+                "appuient sur des touches de piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vibration labiale excite la colonne d'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le trombone change de hauteur surtout avec…",
+              "options": [
+                "sa coulisse",
+                "des cordes",
+                "une anche double",
+                "un archet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allonger le tube abaisse la hauteur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cor d'harmonie se tient souvent…",
+              "options": [
+                "main droite dans la cloche",
+                "entre les jambes",
+                "sur un pupitre de batterie",
+                "sans embouchure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La main modifie le timbre et quelques hauteurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le tuba est le cuivre le plus…",
+              "options": [
+                "grave",
+                "aigu",
+                "silencieux par définition",
+                "petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son long tube et son large diamètre produisent des sons bas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les pistons sur une trompette servent à…",
+              "options": [
+                "allonger le tube et transposer",
+                "couper les cordes",
+                "ouvrir la caisse claire",
+                "tenir la partiton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque piston ajoute de la longueur au parcours de l'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un cuivre « muet » ou avec sourdine devient…",
+              "options": [
+                "plus étouffé et coloré",
+                "identique sans changement",
+                "une percussion",
+                "un clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sourdine filtre et colore le timbre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La section de cuivres apporte souvent…",
+              "options": [
+                "de la puissance et des fanfares",
+                "uniquement des silences",
+                "le pizzicato",
+                "l'accord de piano seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cuivres brillent dans les tutti et les thèmes héroïques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le bugle ressemble à une trompette mais…",
+              "options": [
+                "n'a pas de pistons",
+                "a six cordes",
+                "se joue à l'archet",
+                "est un bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les hauteurs de la série naturelle sont faciles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour entrer dans un cuivre, le musicien doit…",
+              "options": [
+                "former correctement l'embouchure",
+                "humidifier une anche",
+                "tendre un archet",
+                "accorder des timbales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'embouchure canalise l'air et contrôle la hauteur."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Les percussions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments sont des percussions ?",
+              "options": [
+                "Caisse claire et cymbales",
+                "Xylophone et marimba",
+                "Violon seul",
+                "Clarinette seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Frapper, secouer ou gratter un corps sonore définit la percussion."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La caisse claire possède des…",
+              "options": [
+                "snares sous la caisse",
+                "cordes frottées",
+                "pistons",
+                "anches doubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les snares vibrent et donnent le timbre sec caractéristique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le xylophone produit des hauteurs parce que…",
+              "options": [
+                "des lames de longueurs différentes vibrent",
+                "on souffle dedans",
+                "des cordes sont pincées",
+                "un archet frotté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une percussion mélodique à hauteur définie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les cymbales se jouent en…",
+              "options": [
+                "les frappant ou les frottant",
+                "soufflant dedans",
+                "archetant",
+                "pinçant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baguettes ou clash produisent des sons métalliques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La grosse caisse donne surtout…",
+              "options": [
+                "des impacts graves",
+                "des notes aiguës de flûte",
+                "des accords de guitare",
+                "des silences obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son large diamètre accentue les basses fréquences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le triangle est…",
+              "options": [
+                "une petite percussion métallique",
+                "un cuivre à pistons",
+                "un bois grave",
+                "une corde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un métal suspendu frappé par une baguette fine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les timbales peuvent être…",
+              "options": [
+                "accordées avant le concert",
+                "jouées uniquement à l'archet",
+                "des bois transpositeurs",
+                "sans peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un pédalier ou des vis règlent la hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La marimba ressemble au xylophone mais…",
+              "options": [
+                "a un timbre plus chaud et des résonateurs",
+                "n'a aucune hauteur",
+                "se joue à l'embouchure",
+                "remplace le violon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tubes sous les lames amplifient et colorent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un tambour de basque se joue en…",
+              "options": [
+                "secouant ou frappant la peau",
+                "soufflant",
+                "frottant des crins",
+                "appuyant sur des pistons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une percussion à main très répandue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les percussions rythmiques soutiennent surtout…",
+              "options": [
+                "le tempo et la pulsation",
+                "uniquement la mélodie aiguë",
+                "la partition du cor seul",
+                "l'accord de piano obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles cadrent le temps pour l'ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Claviers et hybrides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments possèdent un clavier ?",
+              "options": [
+                "Piano et orgue",
+                "Clavecin et accordéon",
+                "Trompette nue",
+                "Violon seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs familles incluent des claviers, dont cordes et vents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le clavecin pinçait les cordes avec…",
+              "options": [
+                "des plectres",
+                "un archet",
+                "des mailloches",
+                "une anche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanique historique proche de la cithare."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'orgue produit le son en…",
+              "options": [
+                "faisant passer l'air dans des tuyaux",
+                "frappant des peaux",
+                "frottant des cordes",
+                "pinçant du nylon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un instrument à vent actionné par clavier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'accordéon combine…",
+              "options": [
+                "clavier et soufflet",
+                "archet et cordes",
+                "timbales seules",
+                "cuivres sans embouchure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le soufflet alimente des anche des deux côtés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le synthétiseur moderne peut imiter…",
+              "options": [
+                "plusieurs timbres d'instruments",
+                "uniquement le silence",
+                "seulement la voix humaine interdite",
+                "aucune percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électronique reproduit ou invente des couleurs sonores."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le piano à queue diffère du piano droit surtout par…",
+              "options": [
+                "la forme de la caisse et la projection",
+                "l'absence de cordes",
+                "des pistons cuivres",
+                "des peaux de tambour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table d'harmonie et la taille influencent le timbre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur piano, la pédale forte (droite)…",
+              "options": [
+                "soulève les étouffoirs",
+                "coupe toutes les cordes",
+                "accorde les timbales",
+                "ouvre la sourdine du cor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les notes résonnent plus longtemps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le célésta ressemble au piano mais…",
+              "options": [
+                "frappe des lames métalliques",
+                "souffle dans des tuyaux",
+                "archette des cordes",
+                "n'a pas de clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son timbre cristallin illustre « La Dance de la fée Dragée »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le clavier ne définit pas une seule famille car…",
+              "options": [
+                "il commande cordes, vents ou électronique",
+                "tous les claviers sont identiques",
+                "il remplace l'orchestre",
+                "il interdit le chant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une interface, pas une famille acoustique unique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Au collège, reconnaître piano/orgue/clavecin aide à…",
+              "options": [
+                "situer l'époque et le style",
+                "supprimer le timbre",
+                "interdire les cordes",
+                "effacer la pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque clavier évoque des répertoires différents."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Instruments du monde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments viennent de traditions non occidentales courantes en classe ?",
+              "options": [
+                "Djembé et tabla",
+                "Kora et balafon",
+                "Trompette symphonique seule",
+                "Violon baroque seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Afrique et autres continents enrichissent l'écoute comparée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le djembé est une percussion…",
+              "options": [
+                "africaine à main",
+                "européenne à archet",
+                "à anche double",
+                "à pistons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On frappe la peau avec les mains."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La kora est une harpe-luth…",
+              "options": [
+                "africaine",
+                "uniquement antarctique",
+                "sans cordes",
+                "à vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des cordes pincées sur un calabash résonnent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le sitar, en Inde, est…",
+              "options": [
+                "une corde pincée",
+                "un cuivre",
+                "une caisse claire",
+                "un orgue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frettes courbes et cordes sympathiques colorent le timbre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le shamisen, au Japon, se joue avec…",
+              "options": [
+                "un plectre large",
+                "un archet occidental",
+                "des pistons",
+                "des mailloches de timbales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois cordes pincées avec un bachi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le didgeridoo australien est un…",
+              "options": [
+                "tube à vent soufflé",
+                "clavier",
+                "archet",
+                "xylophone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le souffle continu et les vocalises créent le timbre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le balafon ressemble au xylophone africain : c'est…",
+              "options": [
+                "des lames frappées",
+                "des cordes frottées",
+                "des cuivres",
+                "un piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Percussion mélodique à lames de bois."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écouter des instruments du monde permet de…",
+              "options": [
+                "comparer timbres et rôles culturels",
+                "négiger toute famille",
+                "interdire l'orchestre",
+                "supprimer la pulsation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diversité montre que les familles se croisent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La guitare flamenco espagnole est…",
+              "options": [
+                "une corde pincée",
+                "un bois à anche",
+                "une timbale",
+                "un cor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Percussion du plateau et pinces rapides caractérisent le style."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un oud proche-oriental est…",
+              "options": [
+                "à cordes pincées sans manche fretté",
+                "un cuivre à coulisse",
+                "une flûte traversière",
+                "un synthétiseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps arrondi et cordes en double filent le timbre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Reconnaître à l'écoute",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices aident à repérer une famille à l'oreille ?",
+              "options": [
+                "Attaque du son et sustain",
+                "Couleur (timbre) générale",
+                "Couleur des chaussures",
+                "Taille de la salle uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Attaque, durée et couleur orientent l'identification."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un son très brillant avec attaque nette peut être…",
+              "options": [
+                "une trompette",
+                "une contrebasse pizzicato seule",
+                "un gong long",
+                "un orgue très grave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cuivres aigus perforent souvent le mix."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un timbre nasal et réedy évoque plutôt…",
+              "options": [
+                "les bois à anche",
+                "la caisse claire seule",
+                "le piano fortissimo",
+                "le triangle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hautbois et clarinette ont cette couleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cordes legato à l'archet sonnent…",
+              "options": [
+                "continues et chantantes",
+                "comme des cymbales",
+                "comme un tambour sec",
+                "sans hauteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'archet peut lier les notes longuement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Percussions courtes et sèches suggèrent…",
+              "options": [
+                "caisse claire ou wood-block",
+                "tuba tenuto",
+                "violon solo lyrique",
+                "orgue lent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de résonance après l'impact."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour s'entraîner, on peut…",
+              "options": [
+                "écouter des extraits par famille",
+                "ignorer les instruments",
+                "ne jouer qu'une note",
+                "confondre timbre et volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écoute ciblée renforce la mémoire timbrale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Confondre flûte et violon aigu arrive car…",
+              "options": [
+                "le timbre peut se rapprocher dans certains registres",
+                "ils sont identiques",
+                "ils n'ont pas de hauteur",
+                "ils sont toujours graves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut alors écouter l'attaque et la vibration."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un tutti d'orchestre masque parfois…",
+              "options": [
+                "un instrument solo",
+                "le tempo",
+                "la partition",
+                "le silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où l'importance d'écouter des passages solo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le registre grave aide à repérer…",
+              "options": [
+                "contrebasse, basson, tuba",
+                "piccolo seul",
+                "triangle aigu",
+                "flûte piccolo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs familles partagent les sons bas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décrire un timbre avec des mots (clair, rond, métallique)…",
+              "options": [
+                "structure l'écoute",
+                "remplace la musique",
+                "supprime la famille",
+                "interdit le quatuor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vocabulaire fixe ce qu'on perçoit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Vocabulaire et rôles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes décrivent des rôles d'instruments ?",
+              "options": [
+                "Solo et accompagnement",
+                "Mélodie et basse",
+                "Couleur et rythme",
+                "Addition et soustraction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un même instrument peut mener ou soutenir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La mélodie est souvent confiée à…",
+              "options": [
+                "violon, flûte ou voix",
+                "grosse caisse seule",
+                "cymbale suspendue seule",
+                "silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des lignes aiguës ou chantantes portent le thème."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La basse harmonique est tenue par…",
+              "options": [
+                "contrebasse, cello, basson, tuba",
+                "piccolo seul",
+                "triangle",
+                "cymbales seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs familles ancrent l'harmonie grave."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un « soliste » est…",
+              "options": [
+                "un musicien mis en avant",
+                "le chef d'orchestre toujours",
+                "le page-turner",
+                "le fabricant d'anches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il joue une partie exposée devant l'ensemble."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'« accompagnement » soutient…",
+              "options": [
+                "la mélodie ou le soliste",
+                "uniquement le silence",
+                "la lumière de scène",
+                "le programme papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonie, rythme ou both selon la piece."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Section » en orchestre désigne…",
+              "options": [
+                "un groupe du même instrument",
+                "un seul musicien",
+                "la salle de concert",
+                "la partition du public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : section de huit violons I."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tessiture » indique…",
+              "options": [
+                "le registre habituel d'un instrument",
+                "le volume maximum",
+                "le prix du billet",
+                "la couleur des lumières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instrument est à l'aise dans une zone de hauteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un instrument « transpositeur »…",
+              "options": [
+                "sonne différemment de la note écrite",
+                "ne produit aucun son",
+                "remplace le chef",
+                "est toujours une percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarinette, trompette et cor lisent des transpositions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le « tutti » signifie…",
+              "options": [
+                "tout l'ensemble joue",
+                "personne ne joue",
+                "solo obligatoire",
+                "fin du concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet plein et puissant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître le vocabulaire aide à…",
+              "options": [
+                "lire une partition commentée",
+                "ignorer le timbre",
+                "supprimer les familles",
+                "interdire l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les indications guident rôles et nuances."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse — familles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les familles sont vraies ?",
+              "options": [
+                "Quatre familles principales structurent l'orchestre",
+                "Le timbre aide à les distinguer",
+                "Les familles n'existent qu'en maths",
+                "Le piano n'a jamais de cordes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cordes, bois, cuivres, percussions plus le rôle du clavier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le quatuor à cordes utilise…",
+              "options": [
+                "deux violons, alto, violoncelle",
+                "quatre flûtes",
+                "trompette et tuba seuls",
+                "batterie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation emblématique de musique de chambre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les percussions mélodiques incluent…",
+              "options": ["xylophone et marimba", "tuba", "hautbois", "violon"],
+              "correctAnswers": [0],
+              "explanation": "Des hauteurs précises malgré la frappe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les bois sans anche incluent…",
+              "options": [
+                "flûte et piccolo",
+                "clarinette",
+                "saxophone",
+                "basson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la flûte (et piccolo) souffle sans anche ici."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les cuivres changent de hauteur avec…",
+              "options": [
+                "embouchure, coulisse ou pistons",
+                "archet seul",
+                "pincement seul",
+                "snares"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur du tube et lèvres contrôlent la hauteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Identifier une famille est une étape avant…",
+              "options": [
+                "nommer l'instrument précis",
+                "refuser d'écouter",
+                "supprimer le chef",
+                "jeter la partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On affine ensuite violon vs alto, etc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le timbre dépend aussi du…",
+              "options": [
+                "mode de jeu (pizzicato, sourdine…)",
+                "matériau et facture",
+                "nombre de pages",
+                "type de chaises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technique et construction colorent le son."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En 4e, l'objectif principal est de…",
+              "options": [
+                "écouter et nommer avec précision",
+                "memoriser toutes les marques",
+                "jouer sans écouter",
+                "confondre volume et timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oreille et le vocabulaire progressent ensemble."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un orchestre symphonique mélange…",
+              "options": [
+                "toutes les familles",
+                "uniquement les cuivres",
+                "aucune corde",
+                "seulement voix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif large pour couleurs et dynamiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réviser familles + timbre prépare…",
+              "options": [
+                "l'étude des formations",
+                "l'oubli du rythme",
+                "la suppression du chant",
+                "l'absence d'orchestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place ensuite les familles dans quatuor et orchestre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Timbre et formation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce que le timbre ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le timbre, c'est aussi appelé…",
+              "options": [
+                "la couleur du son",
+                "la qualité ou texture du son",
+                "le volume seul",
+                "la vitesse du chef"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On parle de couleur ou de qualité sonore pour décrire ce qui différencie deux instruments."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux notes identiques jouées au piano et à la flûte diffèrent par…",
+              "options": [
+                "le timbre",
+                "la hauteur forcément",
+                "l'absence de son",
+                "le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même hauteur, couleur différente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le timbre permet de…",
+              "options": [
+                "reconnaître un instrument",
+                "supprimer la mélodie",
+                "interdire l'harmonie",
+                "effacer le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la « carte d'identité » sonore."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un son « rond » évoque plutôt…",
+              "options": [
+                "cor ou violoncelle",
+                "caisse claire sèche",
+                "piccolo seul aigu",
+                "wood-block sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registres médiums-graves peuvent sonner chaleureux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un son « métallique » peut venir de…",
+              "options": [
+                "cymbales ou trompette",
+                "archet legato",
+                "orgue très doux",
+                "chant chuchoté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métal vibre avec des harmoniques brillantes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les harmoniques participent au timbre car…",
+              "options": [
+                "elles colorent le son fondamental",
+                "elles suppriment la hauteur",
+                "elles remplacent le tempo",
+                "elles coupent la mélodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instrument a un « spectre » propre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jouer piano (soft) change surtout…",
+              "options": [
+                "l'intensité, pas la hauteur",
+                "la famille de l'instrument",
+                "le nombre de cordes",
+                "la taille du quatuor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuances dynamiques modifient l'énergie perçue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une sourdine sur trompette modifie…",
+              "options": [
+                "le timbre et le volume",
+                "uniquement la partition",
+                "le nombre de pistons",
+                "la famille en cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage = couleur plus sourde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décrire le timbre avec des adjectifs aide…",
+              "options": [
+                "à communiquer ce qu'on entend",
+                "à effacer l'écoute",
+                "à supprimer les familles",
+                "à interdire l'orchestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire sensoriel partagé en classe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre timbre et volume est une erreur car…",
+              "options": [
+                "fort/piano ne change pas l'instrument",
+                "volume = couleur obligatoire",
+                "timbre n'existe pas",
+                "tous les sons sont identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut jouer doucement avec une couleur nette."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "L'orchestre symphonique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un orchestre symphonique comprend surtout…",
+              "options": [
+                "cordes, bois, cuivres, percussions",
+                "de nombreux timbres combinés",
+                "uniquement batterie",
+                "quatre flûtes seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les quatre familles y sont représentées à grande échelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les cordes forment…",
+              "options": [
+                "la plus grande section",
+                "la plus petite toujours",
+                "aucun musicien",
+                "uniquement le solo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dizaines de violons, altos, cellos, contrebasses."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le chef d'orchestre…",
+              "options": [
+                "bat la mesure et guide",
+                "fabrique les instruments",
+                "remplace toutes les cordes",
+                "joue chaque solo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il synchronise et shape l'interprétation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les pupitres servent à…",
+              "options": [
+                "lire la partition",
+                "manger",
+                "accorder les timbales seules",
+                "couper les cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Support de la musique écrite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un concerto met en avant…",
+              "options": [
+                "un soliste avec orchestre",
+                "silence total",
+                "percussions seules",
+                "aucune cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue entre virtuose et ensemble."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La symphonie est…",
+              "options": [
+                "une grande œuvre orchestrale",
+                "un solo de triangle",
+                "une chanson pop obligatoire",
+                "un cours de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme majeure du répertoire classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'effectif symphonique permet…",
+              "options": [
+                "des nuances de timbre riches",
+                "un seul timbre",
+                "aucune dynamique",
+                "pas de tutti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaisons infinies de couleurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les contrebasses sont disposées…",
+              "options": [
+                "souvent au fond de scène",
+                "sur le plafond",
+                "hors scène toujours",
+                "sans cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anclage grave derrière les violons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les percussions arrivent souvent…",
+              "options": [
+                "pour accents et couleur",
+                "jamais en symphonie",
+                "à la place des cordes",
+                "sans partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbales, cymbales, etc. ponctuent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écouter une symphonie entraîne à…",
+              "options": [
+                "suivre les familles et le timbre",
+                "ignorer l'orchestre",
+                "confondre solo et tutti",
+                "supprimer le chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérer qui joue quand et comment."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Sections et placement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur scène, quelles sections sont voisines classiquement ?",
+              "options": [
+                "Violons I à gauche du chef",
+                "Violons II en face des I",
+                "Trompettes au fond sans cuivres",
+                "Aucune cordes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Disposition en arc favorise l'équilibre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les bois sont placés…",
+              "options": [
+                "près du centre, derrière les cordes avant",
+                "dans le public",
+                "sans flûte",
+                "uniquement à l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux vers le public et blend."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les cuivres puissants sont…",
+              "options": [
+                "derrière les bois",
+                "sous le sol",
+                "absents",
+                "toujours devant le chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour ne pas couvrir totalement les cordes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les percussions se tiennent…",
+              "options": [
+                "à l'arrière",
+                "devant le premier violon",
+                "sans instruments",
+                "dans la loge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès aux timbales et grosse caisse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux sections de violons permettent…",
+              "options": [
+                "dialogue et épaisseur",
+                "monophonie forcée",
+                "silence",
+                "suppression des altos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effets antiphoniques et doublures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le premier violon est souvent…",
+              "options": [
+                "le leader des cordes",
+                "le batteur",
+                "le tubiste",
+                "le harpiste obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination interne de la section."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un déséquilibre timbral peut venir d'un…",
+              "options": [
+                "mauvais placement ou trop de cuivres",
+                "pupitre trop blanc",
+                "chaise en bois",
+                "programme imprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acoustique de scène compte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le chef face aux musiciens transmet…",
+              "options": [
+                "entrées et nuances",
+                "les billets",
+                "les cordes neuves",
+                "le timbre par magie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestes codifiés pour l'ensemble."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduire l'effectif donne…",
+              "options": [
+                "un orchestre de chambre",
+                "symphonie maximale",
+                "quatuor automatique",
+                "aucun cuivre jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de musiciens, son plus intime."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître le placement aide l'élève à…",
+              "options": [
+                "visualiser qui joue",
+                "ignorer le son",
+                "supprimer le timbre",
+                "interdire l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien vue/oreille en concert."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Le quatuor à cordes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le quatuor à cordes standard comprend…",
+              "options": [
+                "2 violons, alto, violoncelle",
+                "quatre musiciens sans chef",
+                "4 trompettes",
+                "batterie et trois flûtes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quatre cordes en musique de chambre, dirigées par le premier violon."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un quatuor, le violoncelle tient souvent…",
+              "options": [
+                "la basse harmonique",
+                "uniquement le silence",
+                "la partie de timbales",
+                "les pistons de trompette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne grave qui soutient l'harmonie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le premier violon peut…",
+              "options": [
+                "jouer la mélodie principale",
+                "accorder la grosse caisse",
+                "remplacer le chef d'orchestre symphonique",
+                "jouer sans archet interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il mène et expose souvent le thème."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'alto dans le quatuor…",
+              "options": [
+                "comble le registre médium",
+                "remplace la batterie",
+                "est un cuivre",
+                "n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tessiture entre violon et cello."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Musique de chambre signifie…",
+              "options": [
+                "petit ensemble, salle intime",
+                "orchestre de cent musiciens",
+                "solo de triangle",
+                "aucun timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue serré entre peu de musiciens."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Haydn et Mozart ont écrit…",
+              "options": [
+                "des quatuors célèbres",
+                "uniquement de la batterie",
+                "sans cordes",
+                "pour orgue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répertoire fondateur du quatuor classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans chef, le quatuor s'accorde…",
+              "options": [
+                "en écoutant le premier violon",
+                "en ignorant le tempo",
+                "sans regard",
+                "uniquement par écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination visuelle et auditive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le timbre du quatuor est…",
+              "options": [
+                "homogène mais nuancé",
+                "identique à une symphonie complète",
+                "sans cordes",
+                "pure percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre couleurs proches mais distinctes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un quatuor avec piano s'appelle…",
+              "options": [
+                "quatuor avec piano (formation élargie)",
+                "symphonie",
+                "orchestre complet",
+                "fanfare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute le piano aux cordes ou remplace une partie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écouter un quatuor entraîne à…",
+              "options": [
+                "distinguer quatre lignes timbrées",
+                "confondre toutes les familles",
+                "ignorer le cello",
+                "supprimer l'alto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonne école pour l'écoute fine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Autres formations de chambre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formations sont de la musique de chambre ?",
+              "options": [
+                "Trio avec piano",
+                "Quintette à vent",
+                "Orchestre symphonique complet",
+                "Fanfare de cent cuivres seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Petits groupes sans la masse symphonique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un trio piano-violon-violoncelle compte…",
+              "options": [
+                "trois musiciens",
+                "dix musiciens",
+                "aucun clavier",
+                "quatre cuivres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique formation avec piano."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un quintette à vent réunit souvent…",
+              "options": [
+                "flûte, hautbois, clarinette, basson, cor",
+                "cinq violons seuls",
+                "batterie seule",
+                "orgue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard de l'harmonie à vent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une sonate solo plus accompagnement peut être…",
+              "options": [
+                "violon et piano",
+                "tuba seul sans partenaire",
+                "silence",
+                "deux chefs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soliste avec partenaire réduit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ensemble de chambre favorise…",
+              "options": [
+                "l'écoute mutuelle",
+                "le bruit maximal",
+                "l'absence de timbre",
+                "aucune nuance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque geste sonore est audible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un duo deux violons est…",
+              "options": [
+                "deux cordes frottées",
+                "deux timbales",
+                "deux orgues géants",
+                "deux chefs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue aigu entre violons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le cor dans le quintette à vent apporte…",
+              "options": [
+                "rondesse et liaison harmonique",
+                "snares de caisse claire",
+                "archet",
+                "clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont timbral entre bois et cuivres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chambre vs symphonique : la chambre est…",
+              "options": [
+                "plus intime et légère",
+                "toujours plus bruyante",
+                "sans timbres",
+                "sans partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif réduit, détails audibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Composer pour quatuor demande de…",
+              "options": [
+                "équilibrer quatre voix",
+                "ignorer le cello",
+                "supprimer l'alto",
+                "n'utiliser qu'une note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instrument a un rôle polyphonique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Reconnaître une formation aide à…",
+              "options": [
+                "anticiper le timbre global",
+                "effacer les familles",
+                "interdire l'orchestre",
+                "confondre solo et tutti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On imagine l'effectif avant d'écouter."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Chef, partition et nuance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une partition, quelles indications concernent le timbre ?",
+              "options": [
+                "Sourdine (con sordino)",
+                "Nuances ff ou pp",
+                "Numéro de page du cahier",
+                "Couleur des chaussures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Accessoires et dynamiques colorent l'exécution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ff » signifie…",
+              "options": [
+                "fortissimo, très fort",
+                "pianissimo",
+                "silence",
+                "fin de piece"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication de volume intense."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« pp » signifie…",
+              "options": [
+                "pianissimo, très doux",
+                "fortissimo",
+                "accélérer",
+                "couper les cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeu très soft."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le chef lève la baguette pour…",
+              "options": [
+                "donner le départ",
+                "accorder le piano seul",
+                "remplacer les partitions",
+                "couper le timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal visuel d'entrée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Legato » demande…",
+              "options": [
+                "des notes liées",
+                "des coups secs",
+                "silence total",
+                "pizzicato obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne fluide et connectée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Staccato » demande…",
+              "options": [
+                "des notes courtes et détachées",
+                "tenir des heures",
+                "jouer sans embouchure",
+                "frapper la grosse caisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attaque brève, peu de liaison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une indication « solo » sur une part…",
+              "options": [
+                "met en avant ce musicien",
+                "interdit de jouer",
+                "supprime le timbre",
+                "remplace le chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage exposé individuellement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les coups d'archet synchronisés viennent…",
+              "options": [
+                "du chef et du premier violon",
+                "du public",
+                "du programme",
+                "des lumières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination gestuelle des cordes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire les noms d'instruments en marge permet…",
+              "options": [
+                "savoir qui joue quelle couleur",
+                "ignorer le timbre",
+                "supprimer les familles",
+                "jouer sans écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérage visuel des timbres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nuances et articulations modifient…",
+              "options": [
+                "la couleur perçue du timbre",
+                "uniquement la hauteur obligatoire",
+                "la famille de l'instrument",
+                "le nombre de musiciens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même instrument, expressions différentes."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Voix et ensembles mixtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels ensembles mélangent voix et instruments ?",
+              "options": [
+                "Chœur avec orchestre",
+                "Lied voix et piano",
+                "Quatuor à cordes seul",
+                "Caisse claire solo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La voix humaine est un timbre à part entière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le timbre de la voix change avec…",
+              "options": [
+                "registre (soprano, ténor…)",
+                "matériau de flute",
+                "nombre de pistons",
+                "snares"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque type de voix a sa couleur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un chœur avec orchestre est dirigé…",
+              "options": [
+                "par le chef d'orchestre",
+                "sans partition",
+                "uniquement par le public",
+                "par le tuba seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination voix et familles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La voix peut imiter…",
+              "options": [
+                "des instruments par le timbre",
+                "un silence absolu",
+                "une partition vide",
+                "des chaises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Techniques vocales variées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Soprano désigne…",
+              "options": [
+                "voix aiguë féminine ou enfant",
+                "contrebasse",
+                "tuba",
+                "timbales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre le plus haut courant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Basse (voix) se rapproche timbrement de…",
+              "options": [
+                "registres graves d'instruments",
+                "piccolo seul",
+                "triangle",
+                "flûte piccolo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne grave vocale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mélanger voix et quatuor donne…",
+              "options": [
+                "quintette vocal-instrumental élargi",
+                "symphonie complète",
+                "batterie seule",
+                "sans timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur humaine plus cordes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le « blend » chœur signifie…",
+              "options": [
+                "fusionner les timbres vocaux",
+                "jouer fort seul",
+                "ignorer l'harmonie",
+                "supprimer les cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son uni plutôt que voix isolées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Orchestre et chœur au tutti produisent…",
+              "options": [
+                "une masse sonore puissante",
+                "silence",
+                "un seul timbre",
+                "aucune famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet monumental en fin d'œuvre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer voix et flûte aiguë entraîne…",
+              "options": [
+                "à distinguer timbres proches",
+                "à confondre volume et couleur",
+                "à ignorer la mélodie",
+                "à supprimer le quatuor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercice fin d'écoute."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Jazz et formations populaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formations typiques du jazz ?",
+              "options": [
+                "Trio piano-contrebasse-batterie",
+                "Big band avec sections",
+                "Quatuor baroque sans cordes",
+                "Symphonie romantique seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Du petit combo au grand jazz band."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La section rythmique jazz comprend…",
+              "options": [
+                "piano, basse, batterie (souvent)",
+                "quatre flûtes",
+                "orgue seul",
+                "timbales symphoniques seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pulsation et harmonie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une big band sépare…",
+              "options": [
+                "sections de saxos, trombones, trompettes",
+                "uniquement cordes frottées",
+                "orgue seul",
+                "sans timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sections de vents plus rythme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le saxophone en jazz colore…",
+              "options": [
+                "improvisations au timbre reed",
+                "silence obligatoire",
+                "partition de violon seul",
+                "cuivres sans embouchure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boîte à outils jazz emblématique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La contrebasse jazz se joue souvent…",
+              "options": [
+                "pizzicato",
+                "avec archet symphonique obligatoire",
+                "à l'embouchure",
+                "sans cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pinces rythmiques sur les cordes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un combo rock type peut inclure…",
+              "options": [
+                "guitare, basse, batterie, voix",
+                "quatuor à cordes classique seul",
+                "orgue baroque seul",
+                "aucune percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formation pop/rock courante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La guitare électrique change le timbre via…",
+              "options": [
+                "micros et amplificateur",
+                "anche double",
+                "archet",
+                "snares"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Captation et saturation électroniques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Improviser en jazz modifie…",
+              "options": [
+                "ligne mélodique et couleur expressive",
+                "la famille de l'instrument",
+                "le nombre de cordes",
+                "la partition fixe seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté timbrale et rythmique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fanfare de cuivres met en avant…",
+              "options": [
+                "timbres métalliques brillants",
+                "pizzicato",
+                "clavecin",
+                "harpe seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble de cuivres et percussions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer jazz et symphonie montre…",
+              "options": [
+                "des formations et timbres différents",
+                "identité totale",
+                "absence de rythme",
+                "pas de cordes jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contextes culturels distincts."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Écoute comparée et culture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour comparer timbres, on peut…",
+              "options": [
+                "écouter le même thème par deux instruments",
+                "ignorer les familles",
+                "noter des adjectifs de couleur",
+                "confondre tempo et couleur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Alterner extraits et décrire ce qu'on entend affûte l'oreille."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un extrait symphonique puis un quatuor montre…",
+              "options": [
+                "des masses timbrales différentes",
+                "le même effectif",
+                "aucune corde",
+                "pas de chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orchestre large vs quatre cordes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La musique film utilise l'orchestre pour…",
+              "options": [
+                "colorer les émotions",
+                "supprimer le timbre",
+                "interdire les cordes",
+                "effacer la mélodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbres evoquent tension, joie, etc."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Musique du monde + orchestre occidental…",
+              "options": [
+                "mélange des couleurs culturelles",
+                "interdit tout timbre",
+                "supprime les familles",
+                "n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créations contemporaines croisent les sonorités."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En classe, une fiche d'écoute peut demander…",
+              "options": [
+                "nommer famille et timbre",
+                "ignorer l'instrument",
+                "confondre volume et hauteur",
+                "ne rien noter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structurer l'écoute par écrit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un concert live permet…",
+              "options": [
+                "voir et entendre l'instrument",
+                "supprimer la couleur",
+                "interdire le quatuor",
+                "effacer la symphonie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien visuel entre geste et timbre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enregistrement studio peut…",
+              "options": [
+                "modifier légèrement la couleur perçue",
+                "changer la famille réelle",
+                "supprimer les cordes",
+                "interdire l'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Micros et mix influencent le rendu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réutiliser le vocabulaire (aigu, rond, sec)…",
+              "options": [
+                "unifie les discussions en classe",
+                "remplace la musique",
+                "supprime l'orchestre",
+                "interdit le jazz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mots communs pour décrire les timbres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Culture musicale en 4e inclut…",
+              "options": [
+                "orchestre, quatuor, écoute active",
+                "uniquement silence",
+                "aucune formation",
+                "refus du timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panorama d'ensembles et de couleurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer de familles à formations, on…",
+              "options": [
+                "assemble les timbres en groupes",
+                "efface les instruments",
+                "supprime le chef",
+                "interdit le chant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les familles se combinent selon le genre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse — timbre et formations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées résument le chapitre ?",
+              "options": [
+                "Timbre = couleur du son",
+                "Formations = qui joue ensemble",
+                "Timbre = volume seul",
+                "Quatuor = cinq cuivres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couleur individuelle et arrangement collectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'orchestre symphonique offre…",
+              "options": [
+                "la plus grande palette timbrale",
+                "un seul instrument",
+                "aucune percussion",
+                "pas de cordes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes familles réunies."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le quatuor à cordes illustre…",
+              "options": [
+                "dialogue intime entre quatre timbres proches",
+                "fanfare de cuivres",
+                "big band complète",
+                "orgue seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musique de chambre par excellence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reconnaître le timbre aide à…",
+              "options": [
+                "suivre un solo dans le tutti",
+                "ignorer la formation",
+                "supprimer les nuance",
+                "confondre familles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérer qui parle dans la masse sonore."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le chef harmonise…",
+              "options": [
+                "timbres et dynamiques de l'ensemble",
+                "uniquement les lumières",
+                "le prix des billets",
+                "les chaises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre global en concert."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Musique de chambre vs symphonie : la symphonie est…",
+              "options": [
+                "plus massive",
+                "toujours plus petite",
+                "sans cuivres",
+                "sans timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif et volume potentiel plus grands."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jazz trio et quatuor classique…",
+              "options": [
+                "sont des formations différentes",
+                "identiques en timbres",
+                "sans rythme",
+                "sans cordes jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contextes et couleurs distincts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour réviser, l'élève peut…",
+              "options": [
+                "associer instrument, famille, timbre",
+                "oublier les formations",
+                "confondre tout",
+                "ne pas écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triple lien fondamental du cours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une symphonie de Beethoven met en jeu…",
+              "options": [
+                "orchestre symphonique complet",
+                "un triangle seul",
+                "quatuor seul obligatoire",
+                "aucun timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répertoire orchestral majeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Maîtriser familles, timbre et formations permet…",
+              "options": [
+                "d'écouter la musique avec précision",
+                "de supprimer l'oreille",
+                "d'interdire l'orchestre",
+                "de confondre solo et chef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif du module d'éducation musicale en 4e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

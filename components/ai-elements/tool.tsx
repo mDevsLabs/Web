@@ -10,6 +10,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { PluginToolLogo } from "@/lib/integrations/logo";
+import { mcpHashedToolLabel } from "@/lib/mcp/provider-tool-label";
 import { getPluginByToolId } from "@/lib/plugins/catalog";
 import { cn } from "@/lib/utils";
 import { CheckCircleIcon, ChevronDownIcon, CircleIcon, ClockIcon, WrenchIcon, XCircleIcon } from "@mdevs/icons";
@@ -101,7 +102,14 @@ export const ToolHeader = ({
   ...props
 }: ToolHeaderProps) => {
   const rawKey = type === "dynamic-tool" ? (toolName ?? "") : type.replace(/^tool-/, "");
-  const friendlyName = TOOL_FRIENDLY_NAMES[rawKey] || (rawKey.startsWith("mcp_") ? `MCP : ${rawKey.replace(/^mcp_/, "").replace(/_/g, " ")}` : rawKey);
+  const hashedMcp = rawKey.startsWith("mcp_") ? mcpHashedToolLabel(rawKey) : null;
+  const friendlyName =
+    TOOL_FRIENDLY_NAMES[rawKey] ||
+    (hashedMcp
+      ? `MCP : ${hashedMcp.methodLabel.replace(/_/g, " ")}`
+      : rawKey.startsWith("mcp_")
+        ? `MCP : ${rawKey.replace(/^mcp_/, "").replace(/_/g, " ")}`
+        : rawKey);
   // Un outil de connecteur porte un nom français dans son manifeste : s'en
   // servir évite d'afficher `searchDriveFiles` brut, et c'est ce nom-là qui
   // dit à l'utilisateur quelle application vient de répondre.

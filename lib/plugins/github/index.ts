@@ -29,6 +29,7 @@ const GITHUB_BASE = "https://api.github.com";
 
 const GITHUB_HEADERS = {
   Accept: "application/vnd.github+json",
+  "User-Agent": "mAI-Web/1.0",
   "X-GitHub-Api-Version": "2022-11-28",
 };
 

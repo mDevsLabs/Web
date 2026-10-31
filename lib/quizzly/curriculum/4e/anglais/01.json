@@ -1,0 +1,2403 @@
+{
+  "id": "4e-anglais-01",
+  "year": "4e",
+  "subject": "anglais",
+  "title": "Voyages et découvertes",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Préparer un voyage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Mots du voyage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots anglais désignent des moyens de transport pour voyager ?",
+              "options": ["train", "apple", "plane", "chair"],
+              "correctAnswers": [0, 2],
+              "explanation": "Train et plane sont des transports ; apple et chair ne servent pas à se déplacer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « passeport » en anglais ?",
+              "options": ["passport", "password", "postcard", "platform"],
+              "correctAnswers": [0],
+              "explanation": "Passport = passeport ; password = mot de passe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « ticket » ?",
+              "options": ["billet", "valise", "carte", "clé"],
+              "correctAnswers": [0],
+              "explanation": "Un ticket est un billet (train, avion, musée…)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Suitcase » correspond à :",
+              "options": [
+                "valise",
+                "costume",
+                "costume de bain",
+                "suite hôtelière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suitcase = valise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduire « aéroport » ?",
+              "options": ["airport", "airplane", "airmail", "airline"],
+              "correctAnswers": [0],
+              "explanation": "Airport = aéroport ; airplane = avion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Map » veut dire :",
+              "options": [
+                "carte",
+                "carte postale",
+                "carte bancaire",
+                "planning"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Map = carte (géographique)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot « holiday » signifie :",
+              "options": ["vacances / fête", "journée", "hôtel", "horaire"],
+              "correctAnswers": [0],
+              "explanation": "Holiday = vacances (UK) ou jour férié."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Booking » désigne souvent :",
+              "options": ["réservation", "livre", "embarquement", "bagage"],
+              "correctAnswers": [0],
+              "explanation": "Booking = réservation (hôtel, vol…)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que veut dire « luggage » ?",
+              "options": ["bagages", "baguette", "legume", "language"],
+              "correctAnswers": [0],
+              "explanation": "Luggage = bagages (UK) ; baggage aux USA."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Travel » est :",
+              "options": [
+                "voyager",
+                "travailler",
+                "traverser seulement à pied",
+                "retarder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travel = voyager / le voyage."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "À l'aéroport",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes entend-on à l'aéroport en anglais ?",
+              "options": ["gate", "boarding pass", "kitchen", "garden"],
+              "correctAnswers": [0, 1],
+              "explanation": "Gate = porte d'embarquement ; boarding pass = carte d'embarquement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Check-in » signifie :",
+              "options": [
+                "enregistrement",
+                "checkout hôtel",
+                "contrôle des bagages uniquement",
+                "atterrissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Check-in = s'enregistrer (vol ou hôtel)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Departure » veut dire :",
+              "options": ["départ", "arrivée", "retard", "douane"],
+              "correctAnswers": [0],
+              "explanation": "Departure = départ ; arrival = arrivée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « arrivée » ?",
+              "options": ["arrival", "arrive", "arriving", "river"],
+              "correctAnswers": [0],
+              "explanation": "Arrival (nom) = arrivée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Customs » correspond à :",
+              "options": [
+                "douane",
+                "clients",
+                "coutumes alimentaires",
+                "customiser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Customs = douane (contrôle)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un « flight » est :",
+              "options": [
+                "un vol",
+                "un vol d'oiseau uniquement",
+                "un fight",
+                "un fluide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flight = vol (avion)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Delayed » sur un écran signifie :",
+              "options": [
+                "retardé",
+                "supprimé",
+                "embarquement immédiat",
+                "annulé définitivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Delayed = en retard."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Terminal » à l'aéroport, c'est :",
+              "options": [
+                "un bâtiment / aile",
+                "une fin de contrat",
+                "un bus",
+                "un terme grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminal = terminal (T1, T2…)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Security check » :",
+              "options": [
+                "contrôle de sécurité",
+                "achat duty-free",
+                "remise des clés",
+                "visite médicale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Security check = contrôle de sécurité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Boarding » signifie :",
+              "options": [
+                "embarquement",
+                "planche de surf",
+                "pension complète",
+                "border le pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boarding = embarquement à bord de l'avion."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Hôtel et chambre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés à l'hébergement ?",
+              "options": ["hotel", "room", "stadium", "library"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hotel et room (chambre) concernent l'hébergement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Reception » à l'hôtel :",
+              "options": [
+                "réception",
+                "réception TV",
+                "recette de cuisine",
+                "réception scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reception = la réception de l'hôtel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Single room » :",
+              "options": [
+                "chambre simple",
+                "chambre double",
+                "suite",
+                " dortoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Single room = chambre pour une personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Double room » :",
+              "options": [
+                "chambre double",
+                "deux hôtels",
+                "pièce twice",
+                "chambre sans fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double room = chambre à deux lits ou grand lit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Key » ou « key card » sert à :",
+              "options": [
+                "ouvrir la chambre",
+                "appeler un taxi",
+                "payer le petit-déjeuner",
+                "réserver un vol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Key / key card = clé (carte) de chambre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Breakfast » :",
+              "options": [
+                "petit-déjeuner",
+                "déjeuner",
+                "dîner",
+                "collation du soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Breakfast = petit-déjeuner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Reservation » :",
+              "options": [
+                "réservation",
+                "révision",
+                "réserve naturelle",
+                "preservation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reservation = réservation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Lift » (UK) ou « elevator » (US) :",
+              "options": [
+                "ascenseur",
+                "remontée mécanique",
+                "camion",
+                " élévation salariale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lift / elevator = ascenseur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Check out » à l'hôtel :",
+              "options": [
+                "régler et quitter l'hôtel",
+                "s'enregistrer à l'arrivée",
+                "commander room service",
+                "changer de chambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Check out = quitter l'hôtel et payer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Bathroom » dans une chambre :",
+              "options": [
+                "salle de bain",
+                "salle à manger",
+                "balcon",
+                "cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bathroom = salle de bain."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Transports en ville",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels transports urbains sont courants en anglais ?",
+              "options": ["bus", "subway", "helicopter only at school", "desk"],
+              "correctAnswers": [0, 1],
+              "explanation": "Bus et subway (métro US) sont des transports en ville."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Underground » (London) =",
+              "options": [
+                "métro",
+                "route souterraine pour voitures",
+                "cave",
+                "mine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "The Underground = le métro londonien."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Taxi » ou « cab » :",
+              "options": ["taxi", "cabane", "cabinet médical", "caravane"],
+              "correctAnswers": [0],
+              "explanation": "Taxi / cab = taxi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Station » :",
+              "options": [
+                "gare / station",
+                "stationnement seulement",
+                "statue",
+                "nation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Station = gare (train, métro, bus)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Platform » (train) :",
+              "options": ["quai", "plateforme internet", "scène", "plan"],
+              "correctAnswers": [0],
+              "explanation": "Platform = quai (gare)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ferry » :",
+              "options": ["bac / ferry", "fée", "ferraille", "fête"],
+              "correctAnswers": [0],
+              "explanation": "Ferry = bac (bateau)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Bicycle » / « bike » :",
+              "options": ["vélo", "moto", "bique", "billard"],
+              "correctAnswers": [0],
+              "explanation": "Bicycle / bike = vélo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« On foot » signifie :",
+              "options": [
+                "à pied",
+                "sur le pied de quelqu'un",
+                "au football",
+                "en avion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On foot = à pied."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Car rental » :",
+              "options": [
+                "location de voiture",
+                "location de caravane",
+                "vente de cartes",
+                "course automobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Car rental = location de voiture."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Timetable » :",
+              "options": [
+                "horaire",
+                "tableau horaire scolaire uniquement",
+                "montre",
+                "temps libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timetable = horaire (transports)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Demander son chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions servent à orienter quelqu'un ?",
+              "options": [
+                "turn left",
+                "go straight on",
+                "sing loudly",
+                "sleep early"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Turn left = tourner à gauche ; go straight on = continuer tout droit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Turn right » :",
+              "options": [
+                "tourner à droite",
+                "tourner à gauche",
+                "fa demi-tour",
+                "monter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turn right = tourner à droite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Next to » :",
+              "options": [
+                "à côté de",
+                "loin de",
+                "dessous",
+                "devant uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Next to = à côté de."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Opposite » :",
+              "options": [
+                "en face de",
+                "identique",
+                "opposé politique",
+                " à l'intérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposite = en face de."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Where is the station? » demande :",
+              "options": [
+                "où est la gare",
+                "quand part le train",
+                "combien coûte le billet",
+                "pourquoi le retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Where is… ? = Où est… ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Bridge » :",
+              "options": ["pont", "plage", "bordure", "fridge"],
+              "correctAnswers": [0],
+              "explanation": "Bridge = pont."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Corner » (street) :",
+              "options": [
+                "coin de rue",
+                "corne d'animal",
+                "cornet de glace",
+                "corps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "At the corner = au coin de la rue."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cross the road » :",
+              "options": [
+                "traverser la route",
+                "couper le pain",
+                "franchir un examen",
+                "passer la frontière sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cross the road = traverser la route."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Near » :",
+              "options": ["près de", "loin de", "jamais", "nord"],
+              "correctAnswers": [0],
+              "explanation": "Near = près de ; far = loin de."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Excuse me, how can I get to…? » sert à :",
+              "options": [
+                "demander comment aller quelque part",
+                "s'excuser d'être en retard",
+                "acheter un plan",
+                "se présenter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How can I get to… ? = Comment aller à… ?"
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Météo et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots décrivent le temps qu'il fait ?",
+              "options": ["sunny", "rainy", "hungry", "sleepy"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sunny = ensoleillé ; rainy = pluvieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« It's cold » :",
+              "options": [
+                "Il fait froid",
+                "Il fait chaud",
+                "Il pleut",
+                "Il neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cold = froid."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« It's hot » :",
+              "options": [
+                "Il fait chaud",
+                "Il fait froid",
+                "Il vente",
+                "Il grêle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hot = chaud."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Winter » :",
+              "options": ["hiver", "printemps", "automne", "été"],
+              "correctAnswers": [0],
+              "explanation": "Winter = hiver ; summer = été."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Spring » :",
+              "options": ["printemps", "source d'eau", "ressort", "saut"],
+              "correctAnswers": [0],
+              "explanation": "Spring = printemps (saison)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Autumn » / « fall » (US) :",
+              "options": [
+                "automne",
+                "aube",
+                "augmentation",
+                "chute d'un objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autumn / fall = automne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Umbrella » :",
+              "options": [
+                "parapluie",
+                "ombrelle de plage seulement",
+                "uniforme",
+                "unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Umbrella = parapluie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Weather forecast » :",
+              "options": [
+                "prévisions météo",
+                "forecast financier",
+                "forme physique",
+                "forêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weather forecast = prévisions météo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Snow » :",
+              "options": ["neige", "soleil", "sable", "smog"],
+              "correctAnswers": [0],
+              "explanation": "Snow = neige."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour préparer un voyage, « check the weather » veut dire :",
+              "options": [
+                "vérifier la météo",
+                "vérifier l'heure",
+                "vérifier le passeport",
+                "vérifier le wifi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Check the weather = consulter la météo avant de partir."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dans la valise",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets emporte-t-on souvent en voyage ?",
+              "options": ["toothbrush", "swimsuit", "blackboard", "tractor"],
+              "correctAnswers": [0, 1],
+              "explanation": "Toothbrush = brosse à dents ; swimsuit = maillot de bain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Sunglasses » :",
+              "options": [
+                "lunettes de soleil",
+                "verres de fenêtre",
+                "lunettes de vue uniquement",
+                "soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sunglasses = lunettes de soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Charger » (téléphone) en anglais courant :",
+              "options": [
+                "charge the phone",
+                "load the phone",
+                "fill the phone",
+                "full the phone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit charge the phone pour recharger."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Adapter » (prise) :",
+              "options": [
+                "adapter / travel adapter",
+                "adopter",
+                "adapteur uniquement français",
+                "add"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travel adapter = adaptateur de prise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Money » / « cash » :",
+              "options": [
+                "argent liquide",
+                "monnaie uniquement virtuelle",
+                "many",
+                "honey"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cash = argent liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Credit card » :",
+              "options": [
+                "carte bancaire",
+                "carte de crédit scolaire",
+                "carte d'identité",
+                "carte postale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Credit card = carte bancaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Camera » :",
+              "options": ["appareil photo", "chambre", "camion", "camp"],
+              "correctAnswers": [0],
+              "explanation": "Camera = appareil photo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Guidebook » :",
+              "options": [
+                "guide touristique",
+                "livre scolaire",
+                "book guide = guide des livres",
+                "guilde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guidebook = guide (touristique)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Pack your bag » :",
+              "options": [
+                "faire sa valise",
+                "défaire sa valise",
+                "perdre sa valise",
+                "envoyer sa valise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pack your bag = préparer / remplir sa valise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Don't forget » :",
+              "options": [
+                "n'oublie pas",
+                "n'oublie jamais personne",
+                "oublie",
+                "forget me"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Don't forget = n'oublie pas (impératif négatif)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Phrases utiles avant le départ",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont polies en anglais ?",
+              "options": ["Please", "Thank you", "Give me now", "Shut up"],
+              "correctAnswers": [0, 1],
+              "explanation": "Please et Thank you sont courtois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« How much is it? » :",
+              "options": [
+                "Combien ça coûte ?",
+                "Combien de temps ?",
+                "Quelle heure ?",
+                "Où est-ce ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How much is it? = Combien ça coûte ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I would like… » (poli) :",
+              "options": [
+                "Je voudrais…",
+                "Je déteste…",
+                "Je peux…",
+                "Je dois…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I would like = formule polie pour commander ou demander."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Can you help me? » :",
+              "options": [
+                "Pouvez-vous m'aider ?",
+                "Pouvez-vous me suivre ?",
+                "Pouvez-vous me payer ?",
+                "Pouvez-vous me punir ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Can you help me? = demande d'aide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I don't understand » :",
+              "options": [
+                "Je ne comprends pas",
+                "Je ne suis pas d'accord",
+                "Je ne parle pas",
+                "Je ne voyage pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I don't understand = je ne comprends pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Speak slowly, please » :",
+              "options": [
+                "Parlez lentement, s'il vous plaît",
+                "Parlez fort",
+                "Parlez anglais",
+                "Ne parlez pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Slowly = lentement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« We're going to London » (présent pour projet) :",
+              "options": [
+                "Nous allons à Londres (projet)",
+                "Nous sommes allés à Londres",
+                "Nous étions à Londres",
+                "Nous allions à Londres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Be going to = projet / intention de voyage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« When does the train leave? » :",
+              "options": [
+                "Quand le train part-il ?",
+                "Où est le train ?",
+                "Pourquoi le train",
+                "Qui conduit le train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "When does… leave? = à quelle heure part… ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Have a nice trip! » :",
+              "options": [
+                "Bon voyage !",
+                "Bon appétit !",
+                "Bonne nuit !",
+                "Bon anniversaire !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have a nice trip = bon voyage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Safe travels » signifie :",
+              "options": [
+                "Bon voyage (sois prudent)",
+                "Voyage dangereux",
+                "Voyage annulé",
+                "Voyage gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Safe travels = formule pour souhaiter un voyage en sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prétérit : préparer puis partir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont au prétérit simple (verbe régulier) ?",
+              "options": ["visited", "played", "visit", "playing"],
+              "correctAnswers": [0, 1],
+              "explanation": "Visited et played terminent par -ed : prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prétérit de « pack » (faire sa valise) :",
+              "options": ["packed", "packs", "packing", "pack"],
+              "correctAnswers": [0],
+              "explanation": "Verbe régulier : pack → packed."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Last year we travelled to Spain » : le voyage est :",
+              "options": [
+                "dans le passé",
+                "maintenant",
+                "dans le futur",
+                "impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Last year + prétérit = action passée terminée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prétérit de « go » :",
+              "options": ["went", "goed", "gone", "goes"],
+              "correctAnswers": [0],
+              "explanation": "Go est irrégulier : go → went."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« They booked a hotel » : « booked » =",
+              "options": [
+                "ont réservé",
+                "réservent",
+                "vont réserver",
+                "réservaient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Booked = prétérit de book (régulier)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Marqueur temporel souvent avec prétérit :",
+              "options": ["yesterday", "tomorrow", "every day", "now"],
+              "correctAnswers": [0],
+              "explanation": "Yesterday (hier) accompagne le prétérit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prétérit de « buy » (acheter un billet) :",
+              "options": ["bought", "buyed", "buys", "buying"],
+              "correctAnswers": [0],
+              "explanation": "Buy → bought (irrégulier)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She didn't pack her suitcase » est :",
+              "options": [
+                "négatif au prétérit",
+                "affirmatif présent",
+                "question au présent",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't + base verbale = négatif au prétérit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prétérit de « arrive » :",
+              "options": ["arrived", "arrove", "arriving", "arrives"],
+              "correctAnswers": [0],
+              "explanation": "Arrive → arrived (régulier)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« We missed the bus » signifie :",
+              "options": [
+                "Nous avons raté le bus",
+                "Nous ratons le bus",
+                "Nous raterons le bus",
+                "Nous aimons le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Missed = prétérit de miss (rater/manquer)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : préparer un voyage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels documents peut-on need pour voyager à l'étranger ?",
+              "options": [
+                "passport",
+                "visa (sometimes)",
+                "recipe",
+                "comic book only"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Passport obligatoire ; visa parfois selon le pays."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Foreign country » :",
+              "options": [
+                "pays étranger",
+                "pays voisin obligatoire",
+                "forêt",
+                "four country"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Foreign country = pays étranger."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Currency » :",
+              "options": ["monnaie", "current", "curriculum", "carrency"],
+              "correctAnswers": [0],
+              "explanation": "Currency = monnaie (euro, pound…)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Exchange rate » :",
+              "options": [
+                "taux de change",
+                "taux de transport",
+                "change de valise",
+                "échange de cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exchange rate = taux de change."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Tourist » :",
+              "options": ["touriste", "terroriste", "terrasse", "tournesol"],
+              "correctAnswers": [0],
+              "explanation": "Tourist = touriste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Sightseeing » :",
+              "options": [
+                "visiter les lieux",
+                "voir mal",
+                "site web",
+                "citer des sites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sightseeing = tourisme / visites."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Trip » :",
+              "options": [
+                "voyage / excursion",
+                "trébucher seulement",
+                "triple",
+                "troupe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trip = voyage ou excursion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Journey » met l'accent sur :",
+              "options": ["le trajet", "le prix", "la météo", "la langue"],
+              "correctAnswers": [0],
+              "explanation": "Journey = trajet (souvent plus long)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Abroad » :",
+              "options": [
+                "à l'étranger",
+                "abord d'un bateau",
+                "broad",
+                "board"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abroad = à l'étranger."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dire « l'année dernière » en anglais :",
+              "options": ["last year", "next year", "this year", "year last"],
+              "correctAnswers": [0],
+              "explanation": "Last year = l'année dernière (souvent avec prétérit)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Raconter un séjour",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Où et quand",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels repères temporels vont avec le prétérit ?",
+              "options": [
+                "last summer",
+                "two days ago",
+                "next week",
+                "in 2030"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Last summer et two days ago situent une action passée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I went to Paris last month » : où ?",
+              "options": ["Paris", "London", "Rome", "Berlin"],
+              "correctAnswers": [0],
+              "explanation": "Went to Paris = je suis allé(e) à Paris."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Two weeks ago » :",
+              "options": [
+                "il y a deux semaines",
+                "dans deux semaines",
+                "pendant deux semaines",
+                "deux semaines exactement en juin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ago = il y a (dans le passé)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« In July » avec verbe au prétérit :",
+              "options": [
+                "en juillet (passé)",
+                "en juillet (futur)",
+                "chaque juillet",
+                "jamais en juillet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In July + prétérit = action passée ce mois-là."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prétérit de « stay » (rester) :",
+              "options": ["stayed", "staid", "stays", "staying"],
+              "correctAnswers": [0],
+              "explanation": "Stay → stayed (régulier)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We were in Italy » : « were » est prétérit de :",
+              "options": ["be", "have", "go", "do"],
+              "correctAnswers": [0],
+              "explanation": "Were = prétérit de be (we/you/they)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« She was on holiday » :",
+              "options": [
+                "Elle était en vacances",
+                "Elle est en vacances",
+                "Elle sera en vacances",
+                "Elle va en vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was/were + description au passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« For three days » indique :",
+              "options": ["durée", "heure précise", "lieu", "cause"],
+              "correctAnswers": [0],
+              "explanation": "For three days = pendant trois jours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« From Monday to Friday » :",
+              "options": [
+                "du lundi au vendredi",
+                "uniquement lundi",
+                "chaque vendredi",
+                "avant lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "From… to… = de… à…"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Once » dans un récit :",
+              "options": ["une fois", "oncle", "once = onze", "immédiatement"],
+              "correctAnswers": [0],
+              "explanation": "Once = une fois (dans le passé)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Verbes irréguliers du séjour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paises présent / prétérit sont correctes ?",
+              "options": [
+                "see → saw",
+                "take → took",
+                "see → seen",
+                "take → taked"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "See → saw et take → took sont irréguliers corrects."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prétérit de « eat » :",
+              "options": ["ate", "eated", "eaten", "eating"],
+              "correctAnswers": [0],
+              "explanation": "Eat → ate (eaten = participe passé)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prétérit de « drink » :",
+              "options": ["drank", "drinked", "drunk", "drinks"],
+              "correctAnswers": [0],
+              "explanation": "Drink → drank."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prétérit de « have » (possession / repas) :",
+              "options": ["had", "haved", "has", "having"],
+              "correctAnswers": [0],
+              "explanation": "Have → had."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Prétérit de « come » :",
+              "options": ["came", "comed", "come", "comes"],
+              "correctAnswers": [0],
+              "explanation": "Come → came."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prétérit de « leave » (quitter) :",
+              "options": ["left", "leaved", "leave", "leaving"],
+              "correctAnswers": [0],
+              "explanation": "Leave → left."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prétérit de « tell » (raconter) :",
+              "options": ["told", "telled", "tell", "telling"],
+              "correctAnswers": [0],
+              "explanation": "Tell → told."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Prétérit de « swim » :",
+              "options": ["swam", "swimmed", "swum", "swims"],
+              "correctAnswers": [0],
+              "explanation": "Swim → swam (swum = participe)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prétérit de « fly » :",
+              "options": ["flew", "flyed", "flown", "flies"],
+              "correctAnswers": [0],
+              "explanation": "Fly → flew."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« They took many photos » : took = prétérit de :",
+              "options": ["take", "talk", "make", "teach"],
+              "correctAnswers": [0],
+              "explanation": "Take → took (prendre / emmener)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Was et Were",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes de be au prétérit sont correctes ?",
+              "options": [
+                "I was tired",
+                "They were happy",
+                "I were tired",
+                "He were late"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Was avec I/he/she/it ; were avec you/we/they."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« He ___ at the beach » (passé) :",
+              "options": ["was", "were", "is", "are"],
+              "correctAnswers": [0],
+              "explanation": "He was = il était."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« We ___ in a small hotel » :",
+              "options": ["were", "was", "are", "is"],
+              "correctAnswers": [0],
+              "explanation": "We were = nous étions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Négatif : « It wasn't rainy » =",
+              "options": [
+                "Il ne pleuvait pas / il n'a pas plu",
+                "Il pleut",
+                "Il pleuvra",
+                "Il pleut toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wasn't = was not au prétérit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Were you tired? » réponse courte oui :",
+              "options": [
+                "Yes, I was",
+                "Yes, I were",
+                "Yes, I am",
+                "Yes, I did"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reprend was/were dans la réponse courte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« The weather was great » :",
+              "options": [
+                "Le temps était super",
+                "Le temps est super",
+                "Le temps sera super",
+                "Le temps est mauvais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was = prétérit de is (état passé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« There were many tourists » :",
+              "options": [
+                "Il y avait beaucoup de touristes",
+                "Il y a beaucoup de touristes",
+                "Il y aura",
+                "Il n'y a pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "There were = there was au pluriel passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She wasn't at home, she was abroad » :",
+              "options": [
+                "Elle n'était pas chez elle, elle était à l'étranger",
+                "Elle est à la maison",
+                "Elle part demain",
+                "Elle habite abroad"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double description au passé avec was/wasn't."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« It was cold but sunny » :",
+              "options": [
+                "Il faisait froid mais ensoleillé",
+                "Il fait froid",
+                "Il fera froid",
+                "Il ne fait jamais soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was + adjectif pour la météo passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente à éviter : « They was » → correct :",
+              "options": ["They were", "They are", "They is", "They be"],
+              "correctAnswers": [0],
+              "explanation": "They prend were au prétérit, jamais was."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Did et base verbale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Après « did », quelle forme verbale est correcte ?",
+              "options": [
+                "you enjoy",
+                "you enjoyed",
+                "you enjoying",
+                "you enjoys"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Did + sujet + base verbale (sans -ed)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Did you visit the museum? » :",
+              "options": [
+                "As-tu visité le musée ?",
+                "Visites-tu le musée ?",
+                "Visiteras-tu",
+                "Tu visitais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Did… ? = question au prétérit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : « Yes, I ___ » :",
+              "options": ["did", "do", "visited", "was"],
+              "correctAnswers": [0],
+              "explanation": "Réponse courte : Yes, I did."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« He didn't enjoy the flight » :",
+              "options": [
+                "Il n'a pas aimé le vol",
+                "Il aime le vol",
+                "Il aimera",
+                "Il aimait toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't + base verbale = négatif prétérit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Incorrect : « Did she went? » → correct :",
+              "options": [
+                "Did she go?",
+                "Did she goes?",
+                "Does she go?",
+                "She did went?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de prétérit après did : Did she go?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« What did you do on holiday? » :",
+              "options": [
+                "Qu'as-tu fait pendant les vacances ?",
+                "Que fais-tu ?",
+                "Que feras-tu ?",
+                "Que faisais-tu chaque matin habituellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "What did you do? = action passée précise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Did they stay long? » « stay » reste :",
+              "options": ["stay (base)", "stayed", "staying", "stays"],
+              "correctAnswers": [0],
+              "explanation": "Did they stay = base verbale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Didn't you see the Eiffel Tower? » :",
+              "options": [
+                "N'as-tu pas vu la tour Eiffel ?",
+                "Vois-tu",
+                "Verras-tu",
+                "Tu voyais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't + sujet + base = négatif interrogatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Did remplace le prétérit dans :",
+              "options": [
+                "questions et négations",
+                "affirmations seules",
+                "futur",
+                "present continuous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auxiliaire did pour ? et négation ; affirmatif = verbe seul au prétérit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« We didn't go to the beach » : go reste :",
+              "options": ["go", "went", "gone", "going"],
+              "correctAnswers": [0],
+              "explanation": "Didn't + go (pas went)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Activités en vacances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent des activités de séjour au prétérit ?",
+              "options": [
+                "visited",
+                "walked",
+                "will visit tomorrow only",
+                "am visiting now"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Visited et walked racontent ce qui s'est passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I swam in the sea » :",
+              "options": [
+                "J'ai nagé dans la mer",
+                "Je nage",
+                "Je nagerai",
+                "Je nageais toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Swam = prétérit de swim."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« We walked in the mountains » :",
+              "options": [
+                "Nous avons marché en montagne",
+                "Nous marchons",
+                "Nous marcherons",
+                "Nous marchions chaque jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Walked = prétérit régulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« They visited a castle » :",
+              "options": [
+                "Ils ont visité un château",
+                "Ils visitent",
+                "Ils visiteront",
+                "Ils visitaient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visited = action passée terminée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« She bought souvenirs » :",
+              "options": [
+                "Elle a acheté des souvenirs",
+                "Elle achète",
+                "Elle achètera",
+                "Elle achetait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bought = prétérit de buy."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« We tried local food » : tried =",
+              "options": [
+                "avons essayé",
+                "essayons",
+                "essayerons",
+                "essayions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Try → tried (régulier)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« He watched the sunset » :",
+              "options": [
+                "Il a regardé le coucher de soleil",
+                "Il regarde",
+                "Il regardera",
+                "Il regardait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Watched = prétérit de watch."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« They played volleyball on the beach » :",
+              "options": [
+                "Ils ont joué au volley sur la plage",
+                "Ils jouent",
+                "Ils joueront",
+                "Ils jouaient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Played = prétérit régulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« I met new friends » : met = prétérit de :",
+              "options": ["meet", "make", "mean", "meat"],
+              "correctAnswers": [0],
+              "explanation": "Meet → met (rencontrer)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« We relaxed by the pool » :",
+              "options": [
+                "Nous nous sommes détendus au bord de la piscine",
+                "Nous nous détendons",
+                "Nous nous détendrons",
+                "Nous détendions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relaxed = prétérit de relax."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Négation au prétérit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont au prétérit négatif ?",
+              "options": [
+                "I didn't go",
+                "She wasn't happy",
+                "I don't go",
+                "He isn't happy"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Didn't et wasn't/weren't marquent le passé négatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« We didn't see the show » :",
+              "options": [
+                "Nous n'avons pas vu le spectacle",
+                "Nous voyons",
+                "Nous verrons",
+                "Nous ne voyons pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't + see (base)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« He didn't eat fish » :",
+              "options": [
+                "Il n'a pas mangé de poisson",
+                "Il ne mange pas de poisson (habitude)",
+                "Il ne mangera pas",
+                "Il mangeait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte vacances = action passée négative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« They weren't at the hotel » :",
+              "options": [
+                "Ils n'étaient pas à l'hôtel",
+                "Ils ne sont pas",
+                "Ils ne seront pas",
+                "Ils n'ont pas hôtel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weren't = were not."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« It didn't rain » :",
+              "options": [
+                "Il n'a pas plu",
+                "Il ne pleut pas",
+                "Il ne pleuvra pas",
+                "Il pleuvait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't rain = pas de pluie (passé)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I wasn't scared » :",
+              "options": [
+                "Je n'avais pas peur",
+                "Je n'ai pas peur",
+                "Je n'aurai pas peur",
+                "Je suis effrayé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wasn't + adjectif = état passé négatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« We didn't travel by plane » :",
+              "options": [
+                "Nous n'avons pas voyagé en avion",
+                "Nous ne voyageons pas en avion",
+                "Nous ne voyagerons pas",
+                "Nous voyagions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't travel = prétérit négatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Forme correcte :",
+              "options": [
+                "She didn't like the city",
+                "She didn't liked the city",
+                "She didn't likes the city",
+                "She not liked"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't + like (base)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« There wasn't any wifi » :",
+              "options": [
+                "Il n'y avait pas de wifi",
+                "Il n'y a pas de wifi",
+                "Il n'y aura pas",
+                "Il y avait du wifi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "There wasn't = absence passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Nobody came to the party » (vacances) :",
+              "options": [
+                "Personne n'est venu à la fête",
+                "Personne ne vient",
+                "Personne ne viendra",
+                "Tout le monde est venu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Came = prétérit de come ; nobody = négation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Questions sur le séjour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs introduisent une question sur un séjour passé ?",
+              "options": [
+                "Where did you go?",
+                "When did you arrive?",
+                "Will you go?",
+                "Do you going?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Where et When + did interrogent le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« How long did you stay? » :",
+              "options": [
+                "Combien de temps es-tu resté ?",
+                "Comment es-tu resté ?",
+                "Où es-tu resté ?",
+                "Pourquoi restes-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How long = combien de temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Who did you travel with? » :",
+              "options": [
+                "Avec qui as-tu voyagé ?",
+                "Qui voyage ?",
+                "Qui voyagera ?",
+                "Pourquoi voyager ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Who… with? = avec qui ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Why did you choose this hotel? » :",
+              "options": [
+                "Pourquoi as-tu choisi cet hôtel ?",
+                "Pourquoi choisis-tu",
+                "Pourquoi choisiras-tu",
+                "Comment choisir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Why did… ? = pourquoi (passé)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« What did you see? » :",
+              "options": [
+                "Qu'as-tu vu ?",
+                "Que vois-tu ?",
+                "Que verras-tu ?",
+                "Que voyais-tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "What did you see = chose vue (passé)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Was the food good? » réponse non :",
+              "options": [
+                "No, it wasn't",
+                "No, it isn't",
+                "No, it didn't",
+                "No, it weren't"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question avec was → réponse was/wasn't."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Were the beaches clean? » :",
+              "options": [
+                "Les plages étaient-elles propres ?",
+                "Les plages sont-elles propres ?",
+                "Les plages seront-elles propres ?",
+                "Les plages sont sales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Were + pluriel au passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« How was your trip? » :",
+              "options": [
+                "Comment était ton voyage ?",
+                "Comment est ton voyage ?",
+                "Comment sera ton voyage ?",
+                "Où est ton voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "How was… ? = demande d'avis sur le passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Did you have fun? » fun =",
+              "options": [
+                "t'amuser / passer du bon temps",
+                "funérailles",
+                "fond",
+                "faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Have fun = s'amuser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Which city did you prefer? » :",
+              "options": [
+                "Quelle ville as-tu préférée ?",
+                "Quelle ville préfères-tu ?",
+                "Quelle ville préféreras-tu ?",
+                "Où est la ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Which + did = choix dans le passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Raconter chronologiquement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs ordonnent un récit au passé ?",
+              "options": ["First", "Then", "Tomorrow", "Every morning usually"],
+              "correctAnswers": [0, 1],
+              "explanation": "First (d'abord) et Then (ensuite) structurent le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« After that, we took the train » : After that =",
+              "options": [
+                "Après cela",
+                "Avant cela",
+                "Pendant cela",
+                "Sans cela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "After that = ensuite / après."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Finally, we arrived home » : Finally =",
+              "options": [
+                "Enfin / pour finir",
+                "Finalement jamais",
+                "Au début",
+                "Parfois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finally = dernière étape du récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« In the morning, we visited the market » :",
+              "options": [
+                "Le matin, nous avons visité le marché",
+                "Le soir",
+                "Demain matin",
+                "Chaque matin (habitude)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In the morning + prétérit = un matin du séjour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Later, it started to rain » (récit) : started =",
+              "options": ["a commencé", "commence", "commencera", "commençait"],
+              "correctAnswers": [0],
+              "explanation": "Start → started (régulier)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Before dinner, we walked on the beach » :",
+              "options": [
+                "Avant le dîner, nous avons marché sur la plage",
+                "Après le dîner seulement",
+                "Pendant le dîner",
+                "Sans dîner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Before + moment + prétérit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« On the first day » :",
+              "options": [
+                "Le premier jour",
+                "Le dernier jour",
+                "Un jour au hasard",
+                "Chaque jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On the first day = repère dans le récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Suddenly, we lost our map » : Suddenly =",
+              "options": ["Soudain", "Lentement", "Souvent", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Suddenly = soudain (tournant du récit)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« At the end of the trip » :",
+              "options": [
+                "À la fin du voyage",
+                "Au début",
+                "Pendant le voyage uniquement",
+                "Avant le voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "At the end = conclusion du séjour."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaînement : First… Then… Finally… sert à :",
+              "options": [
+                "organiser un récit oral ou écrit",
+                "parler du futur",
+                "faire une question",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces adverbes guident l'écouteur dans le temps."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Récit complet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Last summer I went to Greece. I stayed two weeks », quels mots sont au prétérit ?",
+              "options": ["went", "stayed", "summer only", "Greece"],
+              "correctAnswers": [0, 1],
+              "explanation": "Went et stayed sont des verbes au prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« The hotel was near the sea and the staff were friendly » :",
+              "options": [
+                "L'hôtel était près de la mer et le personnel était sympa",
+                "L'hôtel est près de la mer",
+                "Le personnel est méchant",
+                "Pas de mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was/were décrivent le séjour passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Every day we got up early » : got = prétérit de :",
+              "options": ["get", "go", "gotten only present", "give"],
+              "correctAnswers": [0],
+              "explanation": "Get → got (obtenir / se lever : get up → got up)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« One day, we got lost but a local helped us » : helped =",
+              "options": ["a aidé", "aide", "aidera", "aidait"],
+              "correctAnswers": [0],
+              "explanation": "Help → helped (régulier)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I will never forget this trip » mélange :",
+              "options": [
+                "futur (will) avec souvenir d'un passé",
+                "présent seul",
+                "prétérit seul",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Will forget = promesse / sentiment après récit au prétérit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« It was the best holiday ever » :",
+              "options": [
+                "C'étaient les meilleures vacances de ma vie",
+                "Ce sont les meilleures",
+                "Ce seront",
+                "Ce ne sont pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was + superlatif pour conclure le récit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« We didn't want to leave » : want reste :",
+              "options": ["want", "wanted", "wanting", "wants"],
+              "correctAnswers": [0],
+              "explanation": "Didn't + want."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« When we came back, we were tired but happy » : came =",
+              "options": [
+                "sommes revenus",
+                "revenons",
+                "reviendrons",
+                "revenions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Come → came ; back = retour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« I told my friends about my adventures » : told = prétérit de :",
+              "options": ["tell", "talk", "say", "speak"],
+              "correctAnswers": [0],
+              "explanation": "Tell → told (raconter)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour commencer un récit de séjour :",
+              "options": [
+                "Last year / On my last trip…",
+                "Tomorrow I…",
+                "Every day I…",
+                "Right now I…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ancre le récit dans le passé avec last / on my trip."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : prétérit et séjour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations utilisent correctement le prétérit simple ?",
+              "options": [
+                "She saw the Big Ben",
+                "They did their homework yesterday",
+                "She sees yesterday",
+                "They do yesterday"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saw et did + yesterday sont des formes passées correctes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prétérit de « write » (carte postale) :",
+              "options": ["wrote", "writed", "written", "writes"],
+              "correctAnswers": [0],
+              "explanation": "Write → wrote."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« We sent postcards to our family » : sent =",
+              "options": [
+                "prétérit de send",
+                "présent",
+                "futur",
+                "participe seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Send → sent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Did he speak English on holiday? » speak →",
+              "options": ["speak (après did)", "spoke", "spoken", "speaks"],
+              "correctAnswers": [0],
+              "explanation": "Did he speak = base verbale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« The trip was amazing » :",
+              "options": [
+                "Le voyage était génial",
+                "Le voyage est génial",
+                "Le voyage sera génial",
+                "Le voyage n'était pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was = opinion passée sur le séjour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« They found a beautiful beach » : found = prétérit de :",
+              "options": ["find", "founder", "fund", "fine"],
+              "correctAnswers": [0],
+              "explanation": "Find → found."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« I didn't forget anything » :",
+              "options": [
+                "Je n'ai rien oublié",
+                "J'oublie tout",
+                "J'oublierai",
+                "J'oubliais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Didn't forget = négatif passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Were you afraid of the plane? » afraid =",
+              "options": [
+                "effrayé / avoir peur",
+                "fier",
+                "afraid only name",
+                "after"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Afraid = avoir peur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« He rode a bike every afternoon » (séjour passé) : rode =",
+              "options": ["prétérit de ride", "présent", "futur", "infinitif"],
+              "correctAnswers": [0],
+              "explanation": "Ride → rode."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif 4e : raconter un séjour, on utilise surtout :",
+              "options": [
+                "prétérit simple + repères (last year, ago…)",
+                "present perfect avancé",
+                "will + base seul",
+                "modal can't passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme 4e privilégie le prétérit simple pour les récits de vacances."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

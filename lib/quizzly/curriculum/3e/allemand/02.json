@@ -1,0 +1,2013 @@
+{
+  "id": "3e-allemand-02",
+  "year": "3e",
+  "subject": "allemand",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ma famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze passen zur Familie? (Choisis les deux phrases correctes sur la famille.)",
+              "type": "multiple_choice",
+              "options": [
+                "Meine Schwester ist fünfzehn Jahre alt.",
+                "Ich esse gern Pizza am Montag.",
+                "Mein Bruder spielt Fußball.",
+                "Der Hund ist sehr schnell."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les phrases sur la sœur et le frère parlent de la famille. Pizza et le chien ne décrivent pas la famille."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „die Eltern“?",
+              "type": "single_choice",
+              "options": [
+                "les grands-parents",
+                "les parents",
+                "les cousins",
+                "les voisins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "„Die Eltern“ = le père et la mère, donc les parents."
+            },
+            {
+              "id": "q3",
+              "question": "Ergänze: Ich habe einen ___ und eine Schwester.",
+              "type": "single_choice",
+              "options": ["Bruder", "Brüder", "Bruders", "Brüdern"],
+              "correctAnswers": [0],
+              "explanation": "Après „einen“ on met l’accusatif masculin : Bruder."
+            },
+            {
+              "id": "q4",
+              "question": "Wie sagt man „mon oncle“ auf Deutsch?",
+              "type": "single_choice",
+              "options": ["die Tante", "der Onkel", "der Cousin", "die Oma"],
+              "correctAnswers": [1],
+              "explanation": "Onkel = oncle (masculin). Tante = tante."
+            },
+            {
+              "id": "q5",
+              "question": "Meine ___ wohnt in Berlin.",
+              "type": "single_choice",
+              "options": ["Großmutter", "Großvater", "Onkel", "Bruder"],
+              "correctAnswers": [0],
+              "explanation": "„Meine“ est féminin : Großmutter (grand-mère) convient."
+            },
+            {
+              "id": "q6",
+              "question": "Was ist das Gegenteil von „jung“?",
+              "type": "single_choice",
+              "options": ["klein", "alt", "nett", "laut"],
+              "correctAnswers": [1],
+              "explanation": "jung = jeune, alt = vieux/vieille."
+            },
+            {
+              "id": "q7",
+              "question": "Wir ___ am Wochenende unsere Großeltern besucht.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "„besuchen“ se conjugue avec haben au Perfekt : Wir haben … besucht."
+            },
+            {
+              "id": "q8",
+              "question": "„Ich helfe meiner Mutter.“ – Wem hilft er/sie?",
+              "type": "single_choice",
+              "options": [
+                "dem Vater",
+                "der Mutter",
+                "dem Bruder",
+                "der Schwester"
+              ],
+              "correctAnswers": [1],
+              "explanation": "„meiner Mutter“ est au datif : il/elle aide sa mère."
+            },
+            {
+              "id": "q9",
+              "question": "Wie viele Personen: Eltern, zwei Kinder?",
+              "type": "single_choice",
+              "options": ["drei", "vier", "fünf", "sechs"],
+              "correctAnswers": [1],
+              "explanation": "2 parents + 2 enfants = 4 Personen."
+            },
+            {
+              "id": "q10",
+              "question": "Das ist ___ Familie.",
+              "type": "single_choice",
+              "options": ["mein", "meine", "meiner", "meinem"],
+              "correctAnswers": [1],
+              "explanation": "Familie est féminin : meine Familie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Au collège",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Wörter gehören zur Schule? (Deux réponses correctes.)",
+              "type": "multiple_choice",
+              "options": [
+                "das Klassenzimmer",
+                "der Supermarkt",
+                "die Hausaufgaben",
+                "der Strand"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Klassenzimmer et Hausaufgaben concernent le collège. Supermarkt et Strand, non."
+            },
+            {
+              "id": "q2",
+              "question": "Um wie viel Uhr beginnt oft die erste Stunde?",
+              "type": "single_choice",
+              "options": [
+                "um sieben Uhr",
+                "um acht Uhr",
+                "um Mitternacht",
+                "um zwei Uhr nachts"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En Allemagne, le cours commence souvent vers 8 h (um acht Uhr)."
+            },
+            {
+              "id": "q3",
+              "question": "Was bedeutet „die Pause“?",
+              "type": "single_choice",
+              "options": [
+                "le devoir",
+                "la récréation",
+                "l’examen",
+                "le professeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pause = récréation / pause."
+            },
+            {
+              "id": "q4",
+              "question": "Ich ___ gestern Mathe gelernt.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "ist", "hat"],
+              "correctAnswers": [1],
+              "explanation": "lernen → Perfekt avec haben : ich habe gelernt."
+            },
+            {
+              "id": "q5",
+              "question": "Der ___ erklärt die Grammatik.",
+              "type": "single_choice",
+              "options": ["Schüler", "Lehrer", "Hausmeister", "Koch"],
+              "correctAnswers": [1],
+              "explanation": "Lehrer = professeur."
+            },
+            {
+              "id": "q6",
+              "question": "Wir haben heute ___ Deutschschularbeit geschrieben.",
+              "type": "single_choice",
+              "options": ["ein", "eine", "einen", "einer"],
+              "correctAnswers": [1],
+              "explanation": "Schularbeit est féminin : eine Schularbeit."
+            },
+            {
+              "id": "q7",
+              "question": "Was machst du in der Mensa?",
+              "type": "single_choice",
+              "options": [
+                "Ich schlafe.",
+                "Ich esse.",
+                "Ich schwimme.",
+                "Ich fliege."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mensa = cantine, on y mange."
+            },
+            {
+              "id": "q8",
+              "question": "Mein Lieblingsfach ist ___",
+              "type": "single_choice",
+              "options": ["Sport", "der Sport", "dem Sport", "des Sports"],
+              "correctAnswers": [0],
+              "explanation": "Après „ist“, on peut dire „Sport“ ou „das Fach Sport“ ; ici Sport seul est correct."
+            },
+            {
+              "id": "q9",
+              "question": "Die Schule ___ um halb vier.",
+              "type": "single_choice",
+              "options": ["beginnt", "beginnen", "begann", "begonnen"],
+              "correctAnswers": [0],
+              "explanation": "Présent : die Schule beginnt (3e personne singulier)."
+            },
+            {
+              "id": "q10",
+              "question": "Ich bin pünktlich ___ der Schule angekommen.",
+              "type": "single_choice",
+              "options": ["in", "an", "auf", "zu"],
+              "correctAnswers": [0],
+              "explanation": "ankommen in + lieu : in der Schule."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Stage en entreprise",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze passen zum Praktikum? (Deux bonnes réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Ich mache ein Praktikum in einer Bäckerei.",
+                "Ich bin gestern ins Kino gegangen.",
+                "Mein Betreuer zeigt mir die Arbeit.",
+                "Ich spiele den ganzen Tag Videospiele."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Praktikum et Betreuer (tuteur) concernent le stage. Cinéma et jeux, non."
+            },
+            {
+              "id": "q2",
+              "question": "Was ist ein „Praktikum“?",
+              "type": "single_choice",
+              "options": [
+                "une punition",
+                "un stage",
+                "une vacance",
+                "un examen"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Praktikum = stage en entreprise."
+            },
+            {
+              "id": "q3",
+              "question": "Ich ___ um sieben Uhr zur Firma gefahren.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [1],
+              "explanation": "fahren → Perfekt avec sein : ich bin gefahren."
+            },
+            {
+              "id": "q4",
+              "question": "„Der Chef“ bedeutet …",
+              "type": "single_choice",
+              "options": [
+                "l’élève",
+                "le patron / le chef",
+                "le cousin",
+                "le médecin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chef = patron, responsable."
+            },
+            {
+              "id": "q5",
+              "question": "Am ersten Tag habe ich die Kollegen ___",
+              "type": "single_choice",
+              "options": [
+                "kennengelernt",
+                "gegessen",
+                "geschwommen",
+                "gesungen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kennenlernen = faire connaissance ; kennengelernt au Perfekt."
+            },
+            {
+              "id": "q6",
+              "question": "Wie lange dauert oft ein Schülerpraktikum?",
+              "type": "single_choice",
+              "options": [
+                "eine Stunde",
+                "ein bis zwei Wochen",
+                "ein Jahr",
+                "zehn Minuten"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au collège, un stage dure souvent une à deux semaines."
+            },
+            {
+              "id": "q7",
+              "question": "Ich muss jeden Morgen ___ Arbeitskleidung anziehen.",
+              "type": "single_choice",
+              "options": ["meine", "mein", "meinen", "meinem"],
+              "correctAnswers": [0],
+              "explanation": "Arbeitskleidung est féminin : meine."
+            },
+            {
+              "id": "q8",
+              "question": "Was bedeutet „pünktlich“?",
+              "type": "single_choice",
+              "options": ["en retard", "à l’heure", "fatigué", "content"],
+              "correctAnswers": [1],
+              "explanation": "pünktlich = à l’heure, ponctuel."
+            },
+            {
+              "id": "q9",
+              "question": "Gestern ___ ich acht Stunden gearbeitet.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "bist", "hat"],
+              "correctAnswers": [1],
+              "explanation": "arbeiten → haben : ich habe gearbeitet."
+            },
+            {
+              "id": "q10",
+              "question": "Die Firma liegt ___ der Hauptstraße.",
+              "type": "single_choice",
+              "options": ["in", "an", "auf", "unter"],
+              "correctAnswers": [1],
+              "explanation": "an der Straße = sur / le long de la rue (adresse)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Loisirs du soir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Aktivitäten sind Freizeit? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Gitarre spielen",
+                "Mathehausaufgaben im Unterricht schreiben",
+                "mit Freunden chatten",
+                "den Lehrer korrigieren"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Musique et discuter avec des amis = loisirs. Devoir en cours et corriger le prof, non."
+            },
+            {
+              "id": "q2",
+              "question": "Am Abend ___ ich oft ein Buch gelesen.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "ist", "sind"],
+              "correctAnswers": [1],
+              "explanation": "lesen → haben : ich habe gelesen."
+            },
+            {
+              "id": "q3",
+              "question": "Was bedeutet „sich entspannen“?",
+              "type": "single_choice",
+              "options": [
+                "se dépêcher",
+                "se détendre",
+                "se disputier",
+                "se lever"
+              ],
+              "correctAnswers": [1],
+              "explanation": "sich entspannen = se détendre."
+            },
+            {
+              "id": "q4",
+              "question": "Mein Hobby ist ___",
+              "type": "single_choice",
+              "options": [
+                "zeichnen",
+                "das Zeichnen",
+                "gezeichnet",
+                "zeichnest"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hobby ist + infinitif : zeichnen (dessiner)."
+            },
+            {
+              "id": "q5",
+              "question": "Wir ___ gestern Abend Computerspiele gespielt.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "bin", "ist"],
+              "correctAnswers": [1],
+              "explanation": "spielen → haben : wir haben gespielt."
+            },
+            {
+              "id": "q6",
+              "question": "Um wie viel Uhr isst du normalerweise zu Abend?",
+              "type": "single_choice",
+              "options": [
+                "um sechs Uhr morgens",
+                "um sieben oder acht Uhr abends",
+                "um Mitternacht in der Schule",
+                "nie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le dîner (Abendessen) est le soir, souvent vers 18–20 h."
+            },
+            {
+              "id": "q7",
+              "question": "Ich höre gern ___",
+              "type": "single_choice",
+              "options": ["Musik", "der Musik", "die Musik zu", "Musiken"],
+              "correctAnswers": [0],
+              "explanation": "Musik hören : accusatif, Musik sans article est courant."
+            },
+            {
+              "id": "q8",
+              "question": "Was machst du lieber: ins Kino gehen oder fernsehen?",
+              "type": "single_choice",
+              "options": [
+                "Beides kann Freizeit sein.",
+                "Nur schlafen ist Freizeit.",
+                "Schularbeit ist Freizeit.",
+                "Essen ist kein Hobby."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinéma et télévision sont des loisirs possibles."
+            },
+            {
+              "id": "q9",
+              "question": "Er ___ schon eine Stunde lang getanzt.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "tanzen → haben : er hat getanzt."
+            },
+            {
+              "id": "q10",
+              "question": "Nach dem Essen räume ich oft ___ Tisch ab.",
+              "type": "single_choice",
+              "options": ["den", "der", "dem", "des"],
+              "correctAnswers": [0],
+              "explanation": "den Tisch abräumen : accusatif masculin den."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Lire l'heure",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Angaben sind Uhrzeiten? (Deux bonnes réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Es ist halb drei.",
+                "Ich bin müde.",
+                "Um viertel nach fünf treffe ich dich.",
+                "Das Wetter ist schön."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "halb drei et viertel nach fünf indiquent l’heure."
+            },
+            {
+              "id": "q2",
+              "question": "„Es ist halb acht.“ – Quelle heure est-il?",
+              "type": "single_choice",
+              "options": ["7 h 30", "8 h 30", "7 h 00", "8 h 00"],
+              "correctAnswers": [0],
+              "explanation": "En allemand, halb acht = 7 h 30 (halfway to eight)."
+            },
+            {
+              "id": "q3",
+              "question": "Wie sagt man 15 h 15?",
+              "type": "single_choice",
+              "options": [
+                "viertel vor vier",
+                "viertel nach drei",
+                "halb vier",
+                "drei Uhr"
+              ],
+              "correctAnswers": [1],
+              "explanation": "15 h 15 = viertel nach drei (quart après trois)."
+            },
+            {
+              "id": "q4",
+              "question": "Der Zug fährt ___ zehn Uhr.",
+              "type": "single_choice",
+              "options": ["um", "am", "im", "zur"],
+              "correctAnswers": [0],
+              "explanation": "um + heure : um zehn Uhr."
+            },
+            {
+              "id": "q5",
+              "question": "Ich bin ___ acht Uhr aufgestanden.",
+              "type": "single_choice",
+              "options": ["um", "in", "an", "zu"],
+              "correctAnswers": [0],
+              "explanation": "um acht Uhr = à huit heures (moment précis)."
+            },
+            {
+              "id": "q6",
+              "question": "„Es ist fünf vor zwölf.“ – Il est …",
+              "type": "single_choice",
+              "options": ["11 h 55", "12 h 05", "11 h 05", "12 h 55"],
+              "correctAnswers": [0],
+              "explanation": "fünf vor zwölf = cinq minutes avant midi = 11 h 55."
+            },
+            {
+              "id": "q7",
+              "question": "Wann beginnt dein Deutschkurs? – ___ neun Uhr.",
+              "type": "single_choice",
+              "options": ["Um", "Im", "Am", "Zur"],
+              "correctAnswers": [0],
+              "explanation": "On répond : Um neun Uhr."
+            },
+            {
+              "id": "q8",
+              "question": "Ich habe ___ einer Stunde Hausaufgaben gemacht.",
+              "type": "single_choice",
+              "options": ["in", "für", "seit", "während"],
+              "correctAnswers": [0],
+              "explanation": "in einer Stunde = en une heure (durée écoulée)."
+            },
+            {
+              "id": "q9",
+              "question": "Es ist zwanzig ___ vier.",
+              "type": "single_choice",
+              "options": ["vor", "nach", "halb", "um"],
+              "correctAnswers": [1],
+              "explanation": "zwanzig nach vier = 16 h 20."
+            },
+            {
+              "id": "q10",
+              "question": "Gestern ___ ich zu spät nach Hause gekommen.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [1],
+              "explanation": "kommen → sein : ich bin gekommen."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Perfekt avec haben",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze benutzen „haben“ im Perfekt? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Ich habe Fußball gespielt.",
+                "Ich bin nach Hause gegangen.",
+                "Wir haben Pizza gegessen.",
+                "Sie ist eingeschlafen."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "spielen et essen → haben. gehen et einschlafen → sein."
+            },
+            {
+              "id": "q2",
+              "question": "Ergänze: Du ___ gestern viel gelernt.",
+              "type": "single_choice",
+              "options": ["hast", "bist", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "du + haben → hast ; lernen avec haben."
+            },
+            {
+              "id": "q3",
+              "question": "Partizip II von „machen“?",
+              "type": "single_choice",
+              "options": ["gemacht", "gemach", "macht", "gemachtet"],
+              "correctAnswers": [0],
+              "explanation": "machen → gemacht."
+            },
+            {
+              "id": "q4",
+              "question": "Er ___ ein Geschenk gekauft.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "kaufen → haben : er hat gekauft."
+            },
+            {
+              "id": "q5",
+              "question": "Wir ___ den Film gesehen.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sehen → haben : wir haben gesehen."
+            },
+            {
+              "id": "q6",
+              "question": "Was passt? Ich habe …",
+              "type": "single_choice",
+              "options": [
+                "geschwommen.",
+                "geschrieben.",
+                "gegangen.",
+                "gefahren."
+              ],
+              "correctAnswers": [1],
+              "explanation": "schreiben → haben + geschrieben. Les autres verbes souvent avec sein."
+            },
+            {
+              "id": "q7",
+              "question": "Sie (sing.) ___ die Küche geputzt.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "haben", "sind"],
+              "correctAnswers": [0],
+              "explanation": "putzen → haben : sie hat geputzt."
+            },
+            {
+              "id": "q8",
+              "question": "Partizip II von „hören“?",
+              "type": "single_choice",
+              "options": ["gehört", "gehören", "hörte", "gehör"],
+              "correctAnswers": [0],
+              "explanation": "hören → gehört."
+            },
+            {
+              "id": "q9",
+              "question": "Ihr ___ lange Musik gehört.",
+              "type": "single_choice",
+              "options": ["habt", "seid", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "ihr + haben → habt."
+            },
+            {
+              "id": "q10",
+              "question": "Gestern ___ ich meine Freunde angerufen.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "anrufen → haben : ich habe angerufen."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Perfekt avec sein",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Verben im Perfekt brauchen „sein“? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["gehen", "essen", "fahren", "kochen"],
+              "correctAnswers": [0, 2],
+              "explanation": "gehen et fahren (déplacement) → sein. essen et kochen → haben."
+            },
+            {
+              "id": "q2",
+              "question": "Ich ___ ins Schwimmbad gegangen.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "bist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "gehen → sein : ich bin gegangen."
+            },
+            {
+              "id": "q3",
+              "question": "Partizip II von „kommen“?",
+              "type": "single_choice",
+              "options": ["gekommen", "kommen", "kam", "gekommt"],
+              "correctAnswers": [0],
+              "explanation": "kommen → gekommen."
+            },
+            {
+              "id": "q4",
+              "question": "Wir ___ mit dem Bus zur Schule gefahren.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "ist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "fahren (se déplacer) → sein : wir sind gefahren."
+            },
+            {
+              "id": "q5",
+              "question": "Er ___ gestern krank gewesen.",
+              "type": "single_choice",
+              "options": ["ist", "hat", "war", "hattest"],
+              "correctAnswers": [0],
+              "explanation": "Perfekt de sein : ist … gewesen."
+            },
+            {
+              "id": "q6",
+              "question": "Du ___ zu spät angekommen.",
+              "type": "single_choice",
+              "options": ["bist", "hast", "bin", "habe"],
+              "correctAnswers": [0],
+              "explanation": "ankommen → sein : du bist angekommen."
+            },
+            {
+              "id": "q7",
+              "question": "Sie (Pl.) ___ nach Frankreich geflogen.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "ist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "fliegen (déplacement) → sein : sie sind geflogen."
+            },
+            {
+              "id": "q8",
+              "question": "Was passt nicht?",
+              "type": "single_choice",
+              "options": [
+                "Ich bin gelaufen.",
+                "Ich bin geschwommen.",
+                "Ich bin gegessen.",
+                "Ich bin gereist."
+              ],
+              "correctAnswers": [2],
+              "explanation": "essen → ich habe gegessen, pas sein."
+            },
+            {
+              "id": "q9",
+              "question": "Partizip II von „bleiben“?",
+              "type": "single_choice",
+              "options": ["geblieben", "bleiben", "blieb", "gebleibt"],
+              "correctAnswers": [0],
+              "explanation": "bleiben → geblieben (avec sein)."
+            },
+            {
+              "id": "q10",
+              "question": "Ihr ___ in den Park gelaufen.",
+              "type": "single_choice",
+              "options": ["seid", "habt", "bin", "hat"],
+              "correctAnswers": [0],
+              "explanation": "laufen (déplacement) → sein : ihr seid gelaufen."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sport et club",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze handeln vom Sport? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Ich trainiere zweimal pro Woche.",
+                "Ich habe gestern Mathe gemacht.",
+                "Unser Team hat gewonnen.",
+                "Ich kaufe Milch im Laden."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "trainieren et gewinnen concernent le sport."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „das Training“?",
+              "type": "single_choice",
+              "options": [
+                "l’entraînement",
+                "le train",
+                "le thé",
+                "le travail scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Training = entraînement sportif."
+            },
+            {
+              "id": "q3",
+              "question": "Ich ___ gestern eine Stunde Basketball gespielt.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "spielen → haben."
+            },
+            {
+              "id": "q4",
+              "question": "Der ___ ist sehr fair.",
+              "type": "single_choice",
+              "options": [
+                "Schiedsrichter",
+                "Schülerbuch",
+                "Schreibtisch",
+                "Schokolade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schiedsrichter = arbitre."
+            },
+            {
+              "id": "q5",
+              "question": "Wir sind zum ___ gelaufen.",
+              "type": "single_choice",
+              "options": ["Stadion", "Stadios", "Stadionen", "Stadione"],
+              "correctAnswers": [0],
+              "explanation": "zum Stadion (datif après zu + dem)."
+            },
+            {
+              "id": "q6",
+              "question": "Nach dem Match ___ wir müde nach Hause gefahren.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "bin", "hat"],
+              "correctAnswers": [0],
+              "explanation": "fahren → sein : wir sind gefahren."
+            },
+            {
+              "id": "q7",
+              "question": "Mein Verein heißt „Blau-Weiß“. – Was ist ein „Verein“?",
+              "type": "single_choice",
+              "options": ["un club", "un verre", "un vélo", "un voisin"],
+              "correctAnswers": [0],
+              "explanation": "Verein = club (sportif ou autre)."
+            },
+            {
+              "id": "q8",
+              "question": "Ich habe mich für ___ Mannschaft entschieden.",
+              "type": "single_choice",
+              "options": ["die", "der", "den", "dem"],
+              "correctAnswers": [0],
+              "explanation": "die Mannschaft (féminin) : sich entscheiden für + accusatif die."
+            },
+            {
+              "id": "q9",
+              "question": "Am Samstag ___ wir ein Turnier gewonnen.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "gewinnen → haben : wir haben gewonnen."
+            },
+            {
+              "id": "q10",
+              "question": "Sport ist ___ wichtig.",
+              "type": "single_choice",
+              "options": ["mir", "mich", "meiner", "mich sehr"],
+              "correctAnswers": [0],
+              "explanation": "mir ist wichtig = c’est important pour moi (datif)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Week-end en famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Pläne passen zum Wochenende mit der Familie? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Wir besuchen unsere Oma.",
+                "Ich schreibe allein die Schularbeit für nächste Woche in der Pause.",
+                "Wir machen einen Spaziergang im Park.",
+                "Der Lehrer gibt uns eine Note."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Visite à grand-mère et promenade = week-end familial."
+            },
+            {
+              "id": "q2",
+              "question": "Am Samstag ___ wir früh aufgestanden.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "bin", "hat"],
+              "correctAnswers": [0],
+              "explanation": "aufstehen → sein : wir sind aufgestanden."
+            },
+            {
+              "id": "q3",
+              "question": "Was bedeutet „der Spaziergang“?",
+              "type": "single_choice",
+              "options": ["la promenade", "le repas", "le bus", "le devoir"],
+              "correctAnswers": [0],
+              "explanation": "Spaziergang = promenade."
+            },
+            {
+              "id": "q4",
+              "question": "Mein Vater ___ das Auto gewaschen.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "waschen → haben : hat gewaschen."
+            },
+            {
+              "id": "q5",
+              "question": "Wir ___ zusammen Kuchen gebacken.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "backen → haben : wir haben gebacken."
+            },
+            {
+              "id": "q6",
+              "question": "Sonntags essen wir oft ___ Großeltern.",
+              "type": "single_choice",
+              "options": ["bei den", "mit der", "zu dem", "an die"],
+              "correctAnswers": [0],
+              "explanation": "bei den Großeltern = chez les grands-parents."
+            },
+            {
+              "id": "q7",
+              "question": "Ich ___ meiner Schwester beim Aufräumen geholfen.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "helfen → haben au Perfekt : ich habe geholfen."
+            },
+            {
+              "id": "q8",
+              "question": "Das Wetter war ___, deshalb sind wir zu Hause geblieben.",
+              "type": "single_choice",
+              "options": ["schlecht", "schlechte", "schlechter", "schlechtes"],
+              "correctAnswers": [0],
+              "explanation": "war + adjectif prédicatif : schlecht (invariable ici)."
+            },
+            {
+              "id": "q9",
+              "question": "Wann ist „das Wochenende“?",
+              "type": "single_choice",
+              "options": [
+                "Samstag und Sonntag",
+                "Montag und Dienstag",
+                "nur Freitagabend in der Schule",
+                "jeden Unterrichtstag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Week-end = samedi et dimanche."
+            },
+            {
+              "id": "q10",
+              "question": "Wir ___ einen Film im Wohnzimmer gesehen.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sehen → haben : wir haben gesehen."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision unité 1",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Wörter passen zum Thema „Quotidien 3e“? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Praktikum",
+                "Imperativ Plural nur für Mathe",
+                "Freizeit",
+                "Plusquamperfekt der Futur II"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Stage et loisirs font partie du thème ; les autres sont hors niveau ou hors sujet."
+            },
+            {
+              "id": "q2",
+              "question": "Ich ___ um halb sieben aufgestanden und ___ gefrühstückt.",
+              "type": "single_choice",
+              "options": ["bin … habe", "habe … bin", "ist … hat", "bin … bin"],
+              "correctAnswers": [0],
+              "explanation": "aufstehen → sein ; frühstücken → haben."
+            },
+            {
+              "id": "q3",
+              "question": "Meine Cousine ___ in eine andere Stadt gezogen.",
+              "type": "single_choice",
+              "options": ["ist", "hat", "bin", "habe"],
+              "correctAnswers": [0],
+              "explanation": "ziehen (déménager) → sein : ist gezogen."
+            },
+            {
+              "id": "q4",
+              "question": "Was bedeutet „die Klassenfahrt“?",
+              "type": "single_choice",
+              "options": [
+                "voyage scolaire de classe",
+                "course de maths",
+                "récréation",
+                "cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Klassenfahrt = sortie / voyage scolaire en classe."
+            },
+            {
+              "id": "q5",
+              "question": "Gestern ___ ich bis zehn Uhr Hausaufgaben gemacht.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "machen → haben : ich habe gemacht."
+            },
+            {
+              "id": "q6",
+              "question": "Er erzählt ___ seiner Familie vom Praktikum.",
+              "type": "single_choice",
+              "options": ["von", "auf", "unter", "ohne"],
+              "correctAnswers": [0],
+              "explanation": "erzählen von + datif : parler de."
+            },
+            {
+              "id": "q7",
+              "question": "Wir treffen uns ___ viertel vor acht vor der Schule.",
+              "type": "single_choice",
+              "options": ["um", "in", "an", "zu"],
+              "correctAnswers": [0],
+              "explanation": "um + heure pour le rendez-vous."
+            },
+            {
+              "id": "q8",
+              "question": "Nach dem Training ___ ich geduscht.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "duschen → haben : ich habe geduscht."
+            },
+            {
+              "id": "q9",
+              "question": "Das ist mein ___ Hobby.",
+              "type": "single_choice",
+              "options": ["liebstes", "liebste", "liebster", "liebsten"],
+              "correctAnswers": [0],
+              "explanation": "Hobby est neutre : mein liebstes Hobby."
+            },
+            {
+              "id": "q10",
+              "question": "Am Montag ___ wir wieder zur Schule gegangen.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "bin", "hat"],
+              "correctAnswers": [0],
+              "explanation": "gehen → sein : wir sind gegangen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Adjektive beschreiben Aussehen? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["groß", "pünktlich zur Schule", "blond", "gestern"],
+              "correctAnswers": [0, 2],
+              "explanation": "groß et blond décrivent l’apparence. pünktlich et gestern, non."
+            },
+            {
+              "id": "q2",
+              "question": "Er hat ___ Haare und trägt eine Brille.",
+              "type": "single_choice",
+              "options": ["kurze", "kurzer", "kurzem", "kurzen"],
+              "correctAnswers": [0],
+              "explanation": "Haare (pluriel) : kurze Haare."
+            },
+            {
+              "id": "q3",
+              "question": "Was bedeutet „freundlich“?",
+              "type": "single_choice",
+              "options": [
+                "méchant",
+                "sympathique / amical",
+                "triste",
+                "bruyant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "freundlich = amical, sympathique."
+            },
+            {
+              "id": "q4",
+              "question": "Sie ___ sehr sportlich aus.",
+              "type": "single_choice",
+              "options": ["sieht", "sehen", "sah", "gesehen"],
+              "correctAnswers": [0],
+              "explanation": "Présent : sie sieht aus (3e pers.)."
+            },
+            {
+              "id": "q5",
+              "question": "Mein Nachbar ist ___ als ich.",
+              "type": "single_choice",
+              "options": ["älter", "alt", "am alt", "alte"],
+              "correctAnswers": [0],
+              "explanation": "Comparatif : älter als = plus vieux que."
+            },
+            {
+              "id": "q6",
+              "question": "Das Mädchen ___ rotes T-Shirt trägt, ist meine Klassenkameradin.",
+              "type": "single_choice",
+              "options": ["das", "der", "die", "den"],
+              "correctAnswers": [0],
+              "explanation": "Relatif pour Mädchen (neutre) : das."
+            },
+            {
+              "id": "q7",
+              "question": "Er ___ immer nett zu neuen Schülern gewesen.",
+              "type": "single_choice",
+              "options": ["ist", "hat", "war", "wird"],
+              "correctAnswers": [0],
+              "explanation": "Perfekt sein : ist … gewesen."
+            },
+            {
+              "id": "q8",
+              "question": "Was passt? Sie hat …",
+              "type": "single_choice",
+              "options": [
+                "grüne Augen.",
+                "grün Augen.",
+                "grünen Augen.",
+                "grüner Augen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accusatif pluriel : grüne Augen."
+            },
+            {
+              "id": "q9",
+              "question": "Mein Betreuer im Praktikum war sehr ___",
+              "type": "single_choice",
+              "options": ["geduldig", "geduldige", "geduldiger", "geduldigen"],
+              "correctAnswers": [0],
+              "explanation": "Prédicat après war : geduldig (patient)."
+            },
+            {
+              "id": "q10",
+              "question": "Ich finde meine Lehrerin ___",
+              "type": "single_choice",
+              "options": [
+                "hilfsbereit",
+                "hilfsbereite",
+                "hilfsbereiten",
+                "hilfsbereiter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "finden + adjectif prédicatif : hilfsbereit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Décrire un lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze beschreiben einen Ort? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Die Firma ist modern und hell.",
+                "Ich habe Hunger.",
+                "Das Klassenzimmer ist im ersten Stock.",
+                "Gestern war Montag."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Descriptions de l’entreprise et de la salle de classe."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „in der Nähe“?",
+              "type": "single_choice",
+              "options": ["loin", "à proximité", "à l’intérieur", "en haut"],
+              "correctAnswers": [1],
+              "explanation": "in der Nähe = à proximité, près de."
+            },
+            {
+              "id": "q3",
+              "question": "Die Bäckerei liegt ___ dem Marktplatz.",
+              "type": "single_choice",
+              "options": ["an", "in", "auf", "unter"],
+              "correctAnswers": [0],
+              "explanation": "an dem Marktplatz = sur / à la place du marché."
+            },
+            {
+              "id": "q4",
+              "question": "Hier ___ es sehr ruhig.",
+              "type": "single_choice",
+              "options": ["ist", "sind", "hat", "haben"],
+              "correctAnswers": [0],
+              "explanation": "es ist ruhig : il y règne le calme."
+            },
+            {
+              "id": "q5",
+              "question": "Im Park ___ viele Bäume.",
+              "type": "single_choice",
+              "options": ["gibt es", "ist", "sind", "habe"],
+              "correctAnswers": [0],
+              "explanation": "es gibt = il y a : gibt es viele Bäume."
+            },
+            {
+              "id": "q6",
+              "question": "Das Schwimmbad ist ___ weit von meinem Haus.",
+              "type": "single_choice",
+              "options": ["nicht", "kein", "keine", "nichts"],
+              "correctAnswers": [0],
+              "explanation": "nicht weit = pas loin."
+            },
+            {
+              "id": "q7",
+              "question": "Wir ___ gestern das neue Sportzentrum besichtigt.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "besichtigen → haben : wir haben besichtigt."
+            },
+            {
+              "id": "q8",
+              "question": "Links ___ die Bibliothek, rechts der Eingang.",
+              "type": "single_choice",
+              "options": ["ist", "sind", "hat", "haben"],
+              "correctAnswers": [0],
+              "explanation": "Bibliothek singulier : ist."
+            },
+            {
+              "id": "q9",
+              "question": "Was bedeutet „der Eingang“?",
+              "type": "single_choice",
+              "options": ["la sortie", "l’entrée", "la fenêtre", "le toit"],
+              "correctAnswers": [1],
+              "explanation": "Eingang = entrée. Ausgang = sortie."
+            },
+            {
+              "id": "q10",
+              "question": "Die Schule ist ___ groß ___ unsere alte Schule.",
+              "type": "single_choice",
+              "options": ["so … wie", "als … als", "wie … als", "so … als"],
+              "correctAnswers": [0],
+              "explanation": "so groß wie = aussi grande que."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Raconter au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze sind im Perfekt? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Ich habe gestern viel erzählt.",
+                "Ich erzähle jeden Tag.",
+                "Wir sind spät nach Hause gekommen.",
+                "Morgen gehe ich zur Schule."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "habe erzählt et sind gekommen = passé composé allemand (Perfekt)."
+            },
+            {
+              "id": "q2",
+              "question": "Wann? – ___",
+              "type": "single_choice",
+              "options": ["Gestern.", "Morgen.", "Immer.", "Oft."],
+              "correctAnswers": [0],
+              "explanation": "Gestern = hier, marqueur de passé avec Perfekt."
+            },
+            {
+              "id": "q3",
+              "question": "Zuerst ___ ich meine Hausaufgaben gemacht, dann ___ ich ferngesehen.",
+              "type": "single_choice",
+              "options": [
+                "habe … habe",
+                "bin … bin",
+                "habe … bin",
+                "bin … habe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "machen et fernsehen → haben."
+            },
+            {
+              "id": "q4",
+              "question": "Er ___ nichts davon gewusst.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "wissen → haben : hat gewusst."
+            },
+            {
+              "id": "q5",
+              "question": "Was bedeutet „plötzlich“?",
+              "type": "single_choice",
+              "options": ["doucement", "soudain", "souvent", "jamais"],
+              "correctAnswers": [1],
+              "explanation": "plötzlich = soudain."
+            },
+            {
+              "id": "q6",
+              "question": "Alles ___ schnell passiert.",
+              "type": "single_choice",
+              "options": ["ist", "hat", "sind", "haben"],
+              "correctAnswers": [0],
+              "explanation": "passieren → sein : ist passiert."
+            },
+            {
+              "id": "q7",
+              "question": "Ich ___ die ganze Geschichte meiner Mutter erzählt.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "erzählen → haben."
+            },
+            {
+              "id": "q8",
+              "question": "Danach ___ wir müde ins Bett gegangen.",
+              "type": "single_choice",
+              "options": ["sind", "haben", "bin", "hat"],
+              "correctAnswers": [0],
+              "explanation": "gehen → sein : sind gegangen."
+            },
+            {
+              "id": "q9",
+              "question": "Letzte Woche ___ unser Team ein wichtiges Spiel verloren.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "verlieren → haben : hat verloren."
+            },
+            {
+              "id": "q10",
+              "question": "Am Ende ___ alle gelacht.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "lachen → haben : haben gelacht."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ordre des événements",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Wörter zeigen die Reihenfolge? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["zuerst", "vielleicht", "dann", "leider"],
+              "correctAnswers": [0, 2],
+              "explanation": "zuerst (d’abord) et dann (ensuite) ordonnent le récit."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „schließlich“?",
+              "type": "single_choice",
+              "options": ["d’abord", "ensuite", "finalement", "jamais"],
+              "correctAnswers": [2],
+              "explanation": "schließlich = finalement, pour conclure."
+            },
+            {
+              "id": "q3",
+              "question": "___ habe ich gefrühstückt, ___ bin ich zur Schule gefahren.",
+              "type": "single_choice",
+              "options": [
+                "Zuerst … danach",
+                "Danach … zuerst",
+                "Nie … immer",
+                "Heute … morgen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D’abord petit-déjeuner, ensuite trajet : Zuerst … danach."
+            },
+            {
+              "id": "q4",
+              "question": "Nach der Schule ___ ich meine Freundin getroffen.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "treffen → haben : habe getroffen."
+            },
+            {
+              "id": "q5",
+              "question": "Bevor ich schlief, ___ ich noch gelesen.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "lesen → haben : habe gelesen."
+            },
+            {
+              "id": "q6",
+              "question": "Was bedeutet „bevor“?",
+              "type": "single_choice",
+              "options": ["après", "avant", "pendant", "contre"],
+              "correctAnswers": [1],
+              "explanation": "bevor = avant (conjugaison à l’infinitif ou au verbe)."
+            },
+            {
+              "id": "q7",
+              "question": "Während des Praktikums ___ ich viel gelernt.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "lernen → haben."
+            },
+            {
+              "id": "q8",
+              "question": "Zum Schluss ___ wir dem Chef gedankt.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "danken → haben : haben gedankt."
+            },
+            {
+              "id": "q9",
+              "question": "Erst ___ wir gegessen, ___ sind wir spazieren gegangen.",
+              "type": "single_choice",
+              "options": [
+                "haben … dann",
+                "sind … dann",
+                "haben … danach",
+                "sind … danach"
+              ],
+              "correctAnswers": [2],
+              "explanation": "essen → haben ; gehen → sein. Erst haben … danach sind …"
+            },
+            {
+              "id": "q10",
+              "question": "Was passt am besten? Die Geschichte war ___",
+              "type": "single_choice",
+              "options": [
+                "langweilig und kurz zugleich unmöglich",
+                "interessant und gut strukturiert",
+                "nur ein Wort",
+                "ohne Wörter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour raconter, une histoire intéressante et bien structurée convient."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Exprimer des émotions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze drücken Gefühle aus? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Ich war stolz auf mein Praktikum.",
+                "Es regnet.",
+                "Ich habe mich über das Geschenk gefreut.",
+                "Der Tisch ist aus Holz."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "stolz et sich freuen = émotions. Pluie et matériau, non."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „sich ärgern“?",
+              "type": "single_choice",
+              "options": [
+                "se réjouir",
+                "s’énerver / être contrarié",
+                "dormir",
+                "courir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "sich ärgern = être contrarié, s’énerver."
+            },
+            {
+              "id": "q3",
+              "question": "Ich ___ mich auf die Klassenfahrt gefreut.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sich freuen → haben : habe mich gefreut."
+            },
+            {
+              "id": "q4",
+              "question": "Er war ___ , weil wir verloren haben.",
+              "type": "single_choice",
+              "options": [
+                "enttäuscht",
+                "enttäuschte",
+                "enttäuschtem",
+                "enttäuschter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat : enttäuscht (déçu)."
+            },
+            {
+              "id": "q5",
+              "question": "Was bedeutet „glücklich“?",
+              "type": "single_choice",
+              "options": ["triste", "heureux", "fatigué", "en colère"],
+              "correctAnswers": [1],
+              "explanation": "glücklich = heureux."
+            },
+            {
+              "id": "q6",
+              "question": "Nach dem Test ___ ich erleichtert.",
+              "type": "single_choice",
+              "options": ["war", "hatte", "bin", "habe"],
+              "correctAnswers": [0],
+              "explanation": "Prétérit/état : ich war erleichtert (soulagé)."
+            },
+            {
+              "id": "q7",
+              "question": "Sie ___ Angst vor der Präsentation gehabt.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "Angst haben → haben : hat Angst gehabt."
+            },
+            {
+              "id": "q8",
+              "question": "Ich finde es ___, vor der Klasse zu sprechen.",
+              "type": "single_choice",
+              "options": ["nervös", "nervöse", "nervösen", "nervöser"],
+              "correctAnswers": [0],
+              "explanation": "es ist/finde es + adjectif : nervös."
+            },
+            {
+              "id": "q9",
+              "question": "Wir ___ uns über den Sieg gefreut.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sich freuen → haben."
+            },
+            {
+              "id": "q10",
+              "question": "Mein Betreuer war ___ mit meiner Arbeit.",
+              "type": "single_choice",
+              "options": [
+                "zufrieden",
+                "zufriedene",
+                "zufriedenen",
+                "zufriedener"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zufrieden mit = satisfait de."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Invitations et projets",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze sind Einladungen oder Vorschläge? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Kommst du am Samstag mit ins Kino?",
+                "Gestern habe ich geschlafen.",
+                "Lass uns zusammen lernen!",
+                "Die Uhr ist kaputt."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Kommst du … ? et Lass uns … = invitation / proposition."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „Hast du Lust auf …?“",
+              "type": "single_choice",
+              "options": [
+                "As-tu envie de … ?",
+                "As-tu peur de … ?",
+                "Dois-tu … ?",
+                "Oublies-tu … ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lust auf + accusatif = envie de."
+            },
+            {
+              "id": "q3",
+              "question": "Tut mir leid, ich ___ leider keine Zeit.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "Zeit haben → haben : ich habe keine Zeit."
+            },
+            {
+              "id": "q4",
+              "question": "Wollen wir uns um acht Uhr ___?",
+              "type": "single_choice",
+              "options": ["treffen", "getroffen", "traf", "triffst"],
+              "correctAnswers": [0],
+              "explanation": "wollen + infinitif : uns treffen."
+            },
+            {
+              "id": "q5",
+              "question": "Ja, gern! – Das ist eine ___ Antwort.",
+              "type": "single_choice",
+              "options": ["positive", "positiv", "positives", "positiven"],
+              "correctAnswers": [0],
+              "explanation": "eine positive Antwort (féminin accusatif)."
+            },
+            {
+              "id": "q6",
+              "question": "Ich ___ schon Pläne für Sonntag gemacht.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "machen → haben : habe gemacht."
+            },
+            {
+              "id": "q7",
+              "question": "Was bedeutet „leider“?",
+              "type": "single_choice",
+              "options": [
+                "heureusement",
+                "malheureusement",
+                "souvent",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "leider = malheureusement."
+            },
+            {
+              "id": "q8",
+              "question": "Können wir uns ___ dem Sportplatz treffen?",
+              "type": "single_choice",
+              "options": ["vor", "in", "auf", "unter"],
+              "correctAnswers": [0],
+              "explanation": "vor + datif = devant le terrain de sport."
+            },
+            {
+              "id": "q9",
+              "question": "Er ___ mich eingeladen, bei ihm zu üben.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "einladen → haben : hat eingeladen."
+            },
+            {
+              "id": "q10",
+              "question": "Super Idee! – „Super“ zeigt …",
+              "type": "single_choice",
+              "options": ["Enthusiasmus", "Peur", "Colère", "Ennui"],
+              "correctAnswers": [0],
+              "explanation": "Super! = enthousiasme, accord positif."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Météo et activités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze verbinden Wetter und Aktivität? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Weil es regnet, bleiben wir zu Hause.",
+                "Ich bin zwei Meter groß.",
+                "Bei Sonne gehen wir schwimmen.",
+                "Das Buch hat 200 Seiten."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pluie → rester ; soleil → nager : lien météo / activité."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „Es schneit.“?",
+              "type": "single_choice",
+              "options": [
+                "Il pleut.",
+                "Il neige.",
+                "Il fait chaud.",
+                "Il vente."
+              ],
+              "correctAnswers": [1],
+              "explanation": "schneien = neiger."
+            },
+            {
+              "id": "q3",
+              "question": "Gestern ___ das Wetter sehr schön.",
+              "type": "single_choice",
+              "options": ["war", "hatte", "ist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "Wetter war schön : Präteritum/état avec sein."
+            },
+            {
+              "id": "q4",
+              "question": "Bei Regen ___ wir im Haus Brettspiele gespielt.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "spielen → haben."
+            },
+            {
+              "id": "q5",
+              "question": "Im Sommer ___ ich oft Fahrrad gefahren.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "bist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "fahren (vélo) → sein : bin gefahren."
+            },
+            {
+              "id": "q6",
+              "question": "Was passt? Es ist …",
+              "type": "single_choice",
+              "options": [
+                "kalt und windig.",
+                "kalt und windig sein.",
+                "kalt gewesen.",
+                "kalt haben."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Description météo au présent : Es ist kalt und windig."
+            },
+            {
+              "id": "q7",
+              "question": "Weil es ___ war, haben wir das Picknick abgesagt.",
+              "type": "single_choice",
+              "options": ["gewittert", "gewitterte", "Gewitter", "gewittern"],
+              "correctAnswers": [0],
+              "explanation": "es hat gewittert / es ist gewittert ; ici Partizip : gewittert (orage)."
+            },
+            {
+              "id": "q8",
+              "question": "Bei ___ Wetter gehe ich lieber ins Schwimmbad.",
+              "type": "single_choice",
+              "options": ["schönem", "schönen", "schöne", "schöner"],
+              "correctAnswers": [0],
+              "explanation": "bei + datif : schönem Wetter."
+            },
+            {
+              "id": "q9",
+              "question": "Wir ___ einen langen Spaziergang im Schnee gemacht.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "machen → haben : Spaziergang machen."
+            },
+            {
+              "id": "q10",
+              "question": "Morgen soll es ___ werden.",
+              "type": "single_choice",
+              "options": ["wärmer", "warm", "am warm", "wärme"],
+              "correctAnswers": [0],
+              "explanation": "Comparatif : wärmer werden = devenir plus chaud."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparer deux journées",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Sätze vergleichen? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Montag war stressiger als Freitag.",
+                "Ich heiße Anna.",
+                "Im Praktikum war ich früher dran als zu Hause.",
+                "Das ist ein Bleistift."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "stressiger als et früher dran = comparaisons."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „als“ im Vergleich?",
+              "type": "single_choice",
+              "options": ["aussi … que", "que (comparatif)", "avec", "sans"],
+              "correctAnswers": [1],
+              "explanation": "comparatif + als = que (plus … que)."
+            },
+            {
+              "id": "q3",
+              "question": "Gestern ___ ich müder als heute.",
+              "type": "single_choice",
+              "options": ["war", "hatte", "bin", "habe"],
+              "correctAnswers": [0],
+              "explanation": "müde sein : ich war müder."
+            },
+            {
+              "id": "q4",
+              "question": "In der Schule ___ ich mehr gelernt als am Wochenende.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "lernen → haben."
+            },
+            {
+              "id": "q5",
+              "question": "Der Unterricht war ___ interessant ___ gestern.",
+              "type": "single_choice",
+              "options": ["so … wie", "als … als", "wie … als", "so … als"],
+              "correctAnswers": [0],
+              "explanation": "so interessant wie = aussi intéressant que."
+            },
+            {
+              "id": "q6",
+              "question": "Am Samstag ___ ich länger geschlafen als am Montag.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "schlafen → haben : habe geschlafen."
+            },
+            {
+              "id": "q7",
+              "question": "Was ist das Gegenteil von „früh“?",
+              "type": "single_choice",
+              "options": ["spät", "bald", "lange", "kurz"],
+              "correctAnswers": [0],
+              "explanation": "früh = tôt, spät = tard."
+            },
+            {
+              "id": "q8",
+              "question": "Im Praktikum war der Tag ___ lang ___ ein Schultag.",
+              "type": "single_choice",
+              "options": ["so … wie", "als … als", "wie … als", "so … als"],
+              "correctAnswers": [0],
+              "explanation": "so lang wie = aussi long que."
+            },
+            {
+              "id": "q9",
+              "question": "Wir ___ mehr gelacht als letzte Woche.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "lachen → haben."
+            },
+            {
+              "id": "q10",
+              "question": "Heute bin ich ___ pünktlich ___ gestern.",
+              "type": "single_choice",
+              "options": [
+                "genauso … wie",
+                "als … als",
+                "so … als",
+                "wie … als"
+              ],
+              "correctAnswers": [0],
+              "explanation": "genauso pünktlich wie = tout aussi ponctuel que."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Rédiger un petit récit",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Elemente gehören in eine kurze Erzählung? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Einleitung (Wer? Wann? Wo?)",
+                "Nur eine einzige Zahl ohne Kontext",
+                "Hauptteil mit Ereignissen",
+                "Liste aller Irregularverben ohne Satz"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Intro (qui, quand, où) et développement avec événements."
+            },
+            {
+              "id": "q2",
+              "question": "Was bedeutet „Eines Tages“?",
+              "type": "single_choice",
+              "options": ["Un jour", "Chaque jour", "Hier", "Demain matin"],
+              "correctAnswers": [0],
+              "explanation": "Eines Tages = un jour (début de récit)."
+            },
+            {
+              "id": "q3",
+              "question": "Ich ___ in einer kleinen Stadt aufgewachsen.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "bist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "aufwachsen → sein : bin aufgewachsen."
+            },
+            {
+              "id": "q4",
+              "question": "Plötzlich ___ das Telefon geklingelt.",
+              "type": "single_choice",
+              "options": ["hat", "ist", "habe", "bin"],
+              "correctAnswers": [0],
+              "explanation": "klingeln → haben : hat geklingelt."
+            },
+            {
+              "id": "q5",
+              "question": "Am Ende des Tages ___ ich froh nach Hause gekommen.",
+              "type": "single_choice",
+              "options": ["bin", "habe", "bist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "kommen → sein : bin gekommen."
+            },
+            {
+              "id": "q6",
+              "question": "Was passt für einen Schluss?",
+              "type": "single_choice",
+              "options": [
+                "Das war ein unvergesslicher Tag.",
+                "Der Tisch ist braun.",
+                "2 + 2 = 4.",
+                "Guten Morgen, Unterricht beginnt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une phrase de conclusion évalue l’expérience racontée."
+            },
+            {
+              "id": "q7",
+              "question": "Während der Klassenfahrt ___ wir viele Fotos gemacht.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "machen → haben : Fotos machen."
+            },
+            {
+              "id": "q8",
+              "question": "Meine Freunde und ich ___ uns gut unterhalten.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "hat", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sich unterhalten → haben : haben uns unterhalten."
+            },
+            {
+              "id": "q9",
+              "question": "Was bedeutet „unvergesslich“?",
+              "type": "single_choice",
+              "options": ["oubliable", "inoubliable", "ennuyeux", "court"],
+              "correctAnswers": [1],
+              "explanation": "unvergesslich = inoubliable."
+            },
+            {
+              "id": "q10",
+              "question": "Ich erzähle die Geschichte ___ der Vergangenheitsform Perfekt.",
+              "type": "single_choice",
+              "options": ["in", "auf", "mit", "ohne"],
+              "correctAnswers": [0],
+              "explanation": "in der Vergangenheitsform = dans le temps du passé (Perfekt)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision unité 2",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Welche Satzteile helfen beim Erzählen? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "dann",
+                "der Artikel bestimmt ohne Verb",
+                "plötzlich",
+                "nur ein Substantiv"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "dann et plötzlich structurent un récit."
+            },
+            {
+              "id": "q2",
+              "question": "Er ___ sehr müde ausgesehen, weil er spät ins Bett gegangen ___",
+              "type": "single_choice",
+              "options": ["hat … ist", "ist … ist", "hat … hat", "ist … hat"],
+              "correctAnswers": [0],
+              "explanation": "aussehen → haben ; ins Bett gehen → sein : hat ausgesehen … ist gegangen."
+            },
+            {
+              "id": "q3",
+              "question": "Die Stadt, ___ ich wohne, ist ruhig.",
+              "type": "single_choice",
+              "options": ["in der", "in dem", "in den", "in das"],
+              "correctAnswers": [0],
+              "explanation": "Stadt féminin : in der (wohnen in + datif)."
+            },
+            {
+              "id": "q4",
+              "question": "Was bedeutet „erzählen“?",
+              "type": "single_choice",
+              "options": ["raconter", "écouter", "fermer", "courir"],
+              "correctAnswers": [0],
+              "explanation": "erzählen = raconter."
+            },
+            {
+              "id": "q5",
+              "question": "Wir ___ dem Lehrer von unserem Projekt berichtet.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "berichten → haben : haben berichtet."
+            },
+            {
+              "id": "q6",
+              "question": "Im Text steht: „Zuerst … Danach … Schließlich …“ – Das ist …",
+              "type": "single_choice",
+              "options": [
+                "eine klare Struktur",
+                "ein Wörterbuch",
+                "eine Uhrzeit",
+                "ein Matheproblem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connecteurs temporels = structure claire du récit."
+            },
+            {
+              "id": "q7",
+              "question": "Ich war ___ , dass mein Freund gekommen ist.",
+              "type": "single_choice",
+              "options": ["froh", "frohe", "frohen", "froher"],
+              "correctAnswers": [0],
+              "explanation": "ich war froh : adjectif prédicatif invariable en -e ici."
+            },
+            {
+              "id": "q8",
+              "question": "Gestern ___ wir uns vor dem Kino getroffen.",
+              "type": "single_choice",
+              "options": ["haben", "sind", "bin", "ist"],
+              "correctAnswers": [0],
+              "explanation": "sich treffen → haben : haben uns getroffen."
+            },
+            {
+              "id": "q9",
+              "question": "Sein Praktikum war ___ spannend ___ erwartet.",
+              "type": "single_choice",
+              "options": ["so … wie", "als … als", "wie … als", "so … als"],
+              "correctAnswers": [0],
+              "explanation": "so spannend wie erwartet = aussi passionnant qu’attendu."
+            },
+            {
+              "id": "q10",
+              "question": "Am Schluss ___ ich alles in mein Tagebuch geschrieben.",
+              "type": "single_choice",
+              "options": ["habe", "bin", "bist", "ist"],
+              "correctAnswers": [0],
+              "explanation": "schreiben → haben : ich habe geschrieben."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -186,6 +186,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // pdfkit lit ses métriques de police sur le disque. Le bundler les perd :
+  // on le laisse à Node, comme une dépendance native.
+  serverExternalPackages: ["pdfkit"],
   ...(basePath
     ? {
         assetPrefix: "/demo-assets",
@@ -220,9 +223,9 @@ const nextConfig: NextConfig = {
     // 70, `framer-motion` et `radix-ui` par une vingtaine chacun — c'est le
     // premier coût de compilation à froid du mode dev.
     //
-    // `lucide-react` et `recharts` sont absents ici car Next.js les optimise déjà
-    // par défaut (node_modules/next/dist/docs/…/optimizePackageImports.md) : les
-    // lister ne ferait qu'ajouter une clé trompeuse.
+    // `recharts` est absent ici car Next.js l'optimise déjà par défaut
+    // (node_modules/next/dist/docs/…/optimizePackageImports.md) : le lister
+    // ne ferait qu'ajouter une clé trompeuse.
     //
     // `@mdevs/ui` est volontairement exclu : son manifeste déclare
     // `sideEffects: ["**/*.css"]`, et la transformation en imports profonds peut

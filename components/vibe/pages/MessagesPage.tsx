@@ -6,7 +6,11 @@
  */
 
 import { MailIcon as Mail } from "@mdevs/icons";
-import { Drama, Expand, PenLine, Scissors, Wand2 } from "lucide-react";
+import { PencilLineIcon } from "@mdevs/icons/editing/pencil-line";
+import { Wand2Icon } from "@mdevs/icons/editing/wand-2";
+import { DramaIcon } from "@mdevs/icons/misc/drama";
+import { ExpandIcon } from "@mdevs/icons/misc/expand";
+import { ScissorsIcon } from "@mdevs/icons/misc/scissors";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useConfirmDialog } from "@/components/vibe/common/ConfirmDialog";
@@ -1709,27 +1713,27 @@ export const MessagesPage: React.FC<{
     icon: React.ReactNode;
   }[] = [
     {
-      icon: <Scissors className="w-3.5 h-3.5" />,
+      icon: <ScissorsIcon className="h-3.5 w-3.5" />,
       key: "shorten",
       label: "Réduire",
     },
     {
-      icon: <Expand className="w-3.5 h-3.5" />,
+      icon: <ExpandIcon className="h-3.5 w-3.5" />,
       key: "extend",
       label: "Allonger",
     },
     {
-      icon: <Drama className="w-3.5 h-3.5" />,
+      icon: <DramaIcon className="h-3.5 w-3.5" />,
       key: "tone",
       label: "Changer le ton",
     },
     {
-      icon: <Wand2 className="w-3.5 h-3.5" />,
+      icon: <Wand2Icon className="h-3.5 w-3.5" />,
       key: "improve",
       label: "Améliorer",
     },
     {
-      icon: <PenLine className="w-3.5 h-3.5" />,
+      icon: <PencilLineIcon className="h-3.5 w-3.5" />,
       key: "custom",
       label: "Personnalisé…",
     },

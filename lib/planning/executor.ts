@@ -2,13 +2,16 @@ import "server-only";
 
 import { generateText } from "ai";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { fetchModelsForUser } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
-import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import { dateTime } from "@/lib/ai/tools/datetime";
+import { mergeToolHints } from "@/lib/ai/tools/hints";
+import { readUrl } from "@/lib/ai/tools/read-url";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { loadMcpContext } from "@/lib/chat/mcp";
+import { guardNativeChatTools } from "@/lib/chat/native-tool-guard";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   claimScheduledMessage,
@@ -31,6 +34,16 @@ import { getPersistedTier } from "@/lib/db/users";
 import { createIntegrationSecretResolver } from "@/lib/integrations/tokens";
 import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 import {
+  announcePlanningTools,
+  createPlanningLoopControls,
+  mergePlanningTools,
+  planningAssistantParts,
+  planningExecutionOutcome,
+  planningModelToolParams,
+  planningToolsSupported,
+  toPlanningModelMessages,
+} from "@/lib/planning/generation";
+import {
   buildScheduleFromRecord,
   computeNextOccurrence,
   type PlanningRecurrence,
@@ -39,10 +52,9 @@ import {
 import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
 import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import { getPluginManifest } from "@/lib/plugins/catalog";
-import { createPluginTools } from "@/lib/plugins/server";
+import { createPluginTools, getPluginSystemHints } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { customPluginChatTools } from "@/lib/plugins/user-plugin-tools";
-import { toolKindFor } from "@/lib/prompts/capabilities";
 import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import {
   composePersonalInstructions,
@@ -220,8 +232,13 @@ export async function executeScheduledMessage(scheduledId: string) {
       ],
     });
 
-    // Récupérer la clé API si disponible
+    // Récupérer la clé API si disponible. Le catalogue part en parallèle :
+    // le tick n'a pas de cookie, et Flint n'est pas dans la liste embarquée.
     const userApiKey = await getUserApiKey(userId);
+    const catalogModelsPromise = fetchModelsForUser({
+      apiKey: userApiKey,
+      userId,
+    });
 
     // Instructions de l'agent
     let agentInstructions: string | null = null;
@@ -406,71 +423,107 @@ export async function executeScheduledMessage(scheduledId: string) {
       )
     );
 
-    // Outils serveur disponibles
-    const nativeTools: Record<string, any> = {
+    // Outils natifs du mode Automatique. `readUrl` suit `webSearch` : le hint
+    // demande de lire la page retenue. La garde renvoie le contrat d'erreur
+    // Agent au modèle, sans détail interne.
+    const nativeTools = guardNativeChatTools({
       calculator,
       codeExecution,
       dateTime,
+      readUrl,
       webSearch,
-    };
-    const availableTools: Record<string, any> = {
-      ...(wantsNativeTools ? nativeTools : {}),
-      ...pluginTools,
-      ...customPlugins.tools,
-      ...executableMcpTools,
-    };
+    });
+    const mergedTools = mergePlanningTools({
+      custom: customPlugins.tools,
+      mcp: wantsMcp ? executableMcpTools : {},
+      native: {
+        ...(wantsNativeTools ? nativeTools : {}),
+      },
+      plugin: pluginTools,
+    });
+    if (mergedTools.collisions.length > 0) {
+      console.warn(
+        JSON.stringify({
+          collisions: mergedTools.collisions,
+          event: "planning_tool_collision",
+        })
+      );
+    }
 
-    const activeTools = Array.from(
+    const catalogModels = await catalogModelsPromise;
+    const toolsSupported = planningToolsSupported({
+      modelId: effectiveModel,
+      models: catalogModels,
+    });
+    if (!toolsSupported && toolMode !== "none") {
+      console.info(
+        `[planning] outils omis model=${effectiveModel} reason=capabilities.tools`
+      );
+    }
+
+    const candidateIds = Array.from(
       new Set([
         ...(wantsNativeTools ? Object.keys(nativeTools) : []),
         ...agentSkillToolIds,
         ...customPlugins.ids,
         ...(wantsMcp ? Object.keys(executableMcpTools) : []),
       ])
-    ).filter((toolId) => Boolean(availableTools[toolId]));
-
-    // Générer la réponse
-    const result = await generateText({
-      // Une sélection vide signifie « aucun outil». Passer `undefined` au SDK
-      // réactiverait toutes les entrées de `tools`, y compris les plugins.
-      activeTools: activeTools as any,
-      instructions: buildChatSystemPrompt({
-        addendum: personalBlock,
-        artifactsAvailable: activeTools.length > 0,
-        capabilities: {
-          attachments: 0,
-          memory: null,
-          plan: null,
-          reasoning: false,
-          tools: activeTools.map((toolId) => ({
-            description:
-              TOOL_SYSTEM_HINTS[toolId] ?? "Outil disponible pour cette tâche.",
-            id: toolId,
-            kind: toolKindFor({ id: toolId }),
-            label: toolId,
-          })),
-          toolsSupported: activeTools.length > 0,
-        },
-        requestHints: null,
-      }),
-      messages: [
-        ...existingDbMsgs.map((m) => ({
-          content:
-            (m.parts as any[])
-              ?.filter((p) => p.type === "text")
-              .map((p) => p.text)
-              .join("\n") || "",
-          role: m.role as "user" | "assistant",
+    ).filter((toolId) => Boolean(mergedTools.tools[toolId]));
+    const announced = toolsSupported
+      ? announcePlanningTools({
+          hints: mergeToolHints(getPluginSystemHints()),
+          owners: mergedTools.owners,
+          toolIds: candidateIds,
+          tools: mergedTools.tools,
+        })
+      : [];
+    const modelTools = planningModelToolParams({
+      activeIds: announced.map((tool) => tool.id),
+      tools: mergedTools.tools,
+      toolsSupported: announced.length > 0,
+    });
+    const instructions = buildChatSystemPrompt({
+      addendum: personalBlock,
+      artifactsAvailable: announced.length > 0,
+      capabilities: {
+        attachments: 0,
+        memory: null,
+        plan: null,
+        reasoning: false,
+        tools: announced.map((tool) => ({
+          description: tool.description,
+          id: tool.id,
+          kind: tool.kind,
+          label: tool.id,
         })),
-        { content: item.prompt, role: "user" },
-      ],
-      model: modelInstance,
-      ...(effectiveTemp === undefined ? {} : { temperature: effectiveTemp }),
-      stopWhen: (step: any) => (step.steps?.length ?? 0) >= 6,
-      tools: availableTools,
+        toolsSupported: announced.length > 0,
+      },
+      requestHints: null,
     });
 
-    // Enregistrer le message assistant
+    // Générer la réponse. Une sélection vide omet `tools` et `activeTools` :
+    // `activeTools` absent réactiverait tout le plateau.
+    const result = await generateText({
+      ...(modelTools as {
+        activeTools?: string[];
+        tools?: Record<string, any>;
+      }),
+      instructions,
+      ...createPlanningLoopControls({
+        instructions,
+        supportsTools: announced.length > 0,
+      }),
+      messages: await toPlanningModelMessages({
+        messages: existingDbMsgs,
+        prompt: item.prompt,
+      }),
+      model: modelInstance,
+      ...(effectiveTemp === undefined ? {} : { temperature: effectiveTemp }),
+    });
+
+    const outcome = planningExecutionOutcome(result.text);
+
+    // Enregistrer le message assistant, appels d'outils compris.
     await saveMessages({
       messages: [
         {
@@ -478,18 +531,20 @@ export async function executeScheduledMessage(scheduledId: string) {
           chatId: targetChatId,
           createdAt: new Date(),
           id: assistantMessageId,
-          parts: [
-            {
-              text: result.text || "Message exécuté avec succès.",
-              type: "text",
-            },
-          ],
+          parts: planningAssistantParts({
+            steps: result.steps.map((step) => ({
+              toolCalls: step.toolCalls,
+              toolResults: step.toolResults,
+            })),
+            text: outcome.text,
+          }),
           role: "assistant",
         },
       ],
     });
 
-    // Décompte tokens
+    // Décompte tokens, y compris quand la synthèse a échoué : les appels
+    // d'outils ont déjà été consommés.
     const usage = result.usage;
     const inputTokens =
       (usage as any)?.promptTokens ?? (usage as any)?.inputTokens ?? 0;
@@ -513,6 +568,27 @@ export async function executeScheduledMessage(scheduledId: string) {
         totalTokens,
         userId,
       });
+    }
+
+    if (outcome.status === "failed") {
+      await setScheduledMessageStatus({
+        id: item.id,
+        lastError: outcome.lastError,
+        resultChatId: targetChatId,
+        status: "failed",
+      });
+      await createNotification({
+        body: `Échec de l'envoi planifié « ${item.title}»: ${outcome.lastError}`,
+        link: `/chat/${targetChatId}`,
+        title: " Échec du message planifié",
+        type: "ai_response",
+        userId,
+      }).catch(() => {});
+      return {
+        chatId: targetChatId,
+        status: "failed",
+        success: false,
+      };
     }
 
     // Marquer la planification comme complétée

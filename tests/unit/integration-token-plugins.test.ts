@@ -23,13 +23,15 @@ const TOKEN_IDS = [
   "npm",
   "sonarcloud",
   "supabase",
+  "discord",
+  "notion",
   "twilio",
   "upstash",
   "zapier",
 ] as const;
 
 describe("connecteurs à jeton", () => {
-  it("enregistre les quinze services en mode jeton, avec un jeton de mention unique", () => {
+  it("enregistre les connecteurs à jeton, avec un jeton de mention unique", () => {
     const mentions = INTEGRATION_PROVIDERS.map((item) => item.mentionToken);
     expect(new Set(mentions).size).toBe(mentions.length);
     for (const token of mentions) {

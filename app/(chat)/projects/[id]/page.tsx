@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { ProjectIcon } from "@/components/chat/project-icon";
+import { ProjectPages } from "@/components/pages/project-pages";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -467,6 +468,8 @@ export default function ProjectDetailPage() {
           </div>
         )}
       </div>
+
+      <ProjectPages projectId={id} />
 
       {/* Partage & membres — gestion propriétaire */}
       {isOwner ? (

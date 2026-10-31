@@ -1,0 +1,2173 @@
+{
+  "id": "5e-mathematiques-03",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Statistiques",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Effectifs et fréquences",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vocabulaire des statistiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent l'ensemble étudié et le nombre par catégorie ?",
+              "options": ["Population", "Effectif", "Fréquence", "Moyenne"],
+              "correctAnswers": [0, 1],
+              "explanation": "La population est l'ensemble étudié ; l'effectif compte les individus d'une modalité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "28 élèves dans une classe. Effectif total ?",
+              "options": ["28", "14", "56", "7"],
+              "correctAnswers": [0],
+              "explanation": "Le total compte tous les individus : 28."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Foot, basket, natation dans « sport préféré » :",
+              "options": [
+                "Modalités",
+                "Fréquences",
+                "Pourcentages",
+                "Moyennes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les valeurs possibles de la variable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couleur des yeux en enquête : variable",
+              "options": [
+                "Qualitative",
+                "Quantitative continue",
+                "Décimale",
+                "Géométrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une couleur n'est pas une mesure numérique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectif 5 sur total 25. Fréquence ?",
+              "options": ["5/25", "25/5", "5/20", "1/5"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence = effectif ÷ effectif total."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Simplifie 6/30.",
+              "options": ["1/5", "1/6", "2/5", "3/10"],
+              "correctAnswers": [0],
+              "explanation": "6/30 = 1/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "25 % s'écrit aussi",
+              "options": ["25/100", "25/25", "100/25", "1/25"],
+              "correctAnswers": [0],
+              "explanation": "Un pourcentage est un nombre sur 100."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nombre de frères et sœurs (0,1,2,3) :",
+              "options": [
+                "Quantitative discrète",
+                "Qualitative",
+                "Continue",
+                "Non variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compte des entiers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Somme des effectifs de toutes les modalités =",
+              "options": [
+                "Effectif total",
+                "Toujours 100",
+                "Toujours 1",
+                "La modalité max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque individu est compté une fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3/20 en pourcentage ?",
+              "options": ["15 %", "30 %", "3 %", "20 %"],
+              "correctAnswers": [0],
+              "explanation": "3/20 = 15/100 = 15 %."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Lire un tableau d'effectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau correct :",
+              "options": [
+                "Effectifs entiers ≥ 0",
+                "Somme = effectif total",
+                "Une fréquence peut valoir 2",
+                "Total = somme des effectifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les effectifs sont entiers et leur somme vaut le total."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bus 12, vélo 8, marche 5. Total ?",
+              "options": ["25", "20", "24", "13"],
+              "correctAnswers": [0],
+              "explanation": "12+8+5=25."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "40 livres dont 15 BD. Effectif BD ?",
+              "options": ["15", "25", "40", "0,375"],
+              "correctAnswers": [0],
+              "explanation": "L'effectif est le nombre de BD : 15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A=7,B=11,C=4 total 22. D pour total 30 ?",
+              "options": ["8", "6", "7", "9"],
+              "correctAnswers": [0],
+              "explanation": "30−22=8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Score 10 pts : 3 fois ; 20 pts : 5 fois. Lancers ?",
+              "options": ["8", "15", "3", "5"],
+              "correctAnswers": [0],
+              "explanation": "3+5=8."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rouge 9, bleu 6, vert 9. Max ?",
+              "options": ["Rouge et vert", "Bleu", "Toutes égales", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "9 > 6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "30 élèves, 18 filles. Garçons ?",
+              "options": ["12", "18", "48", "15"],
+              "correctAnswers": [0],
+              "explanation": "30−18=12."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectif 0 pour une modalité signifie",
+              "options": [
+                "Personne dans cette catégorie",
+                "Erreur",
+                "100 %",
+                "Total nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun individu n'a cette modalité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "A:5,B:10,C:8,D:2. Total ?",
+              "options": ["25", "20", "15", "24"],
+              "correctAnswers": [0],
+              "explanation": "5+10+8+2=25."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Effectifs 14 et 16. Total ?",
+              "options": ["30", "28", "2", "14"],
+              "correctAnswers": [0],
+              "explanation": "14+16=30."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Effectifs cumulés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Effectifs cumulés croissants :",
+              "options": [
+                "Non décroissants",
+                "Dernier = effectif total",
+                "Toujours nuls",
+                "Premier = 0 obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On additionne ; le dernier cumul vaut le total."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs 4, 6, 10. 2e cumul ?",
+              "options": ["10", "6", "4", "20"],
+              "correctAnswers": [0],
+              "explanation": "4+6=10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cumuls 5, 12, 20. 3e effectif simple ?",
+              "options": ["8", "20", "12", "7"],
+              "correctAnswers": [0],
+              "explanation": "20−12=8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Effectifs 3 et 7. 2e cumul ?",
+              "options": ["10", "7", "3", "4"],
+              "correctAnswers": [0],
+              "explanation": "3+7=10."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dernier cumul 50. Effectif total ?",
+              "options": ["50", "100", "25", "Inconnu"],
+              "correctAnswers": [0],
+              "explanation": "Le cumul final regroupe toute la série."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quatre effectifs 2. 4e cumul ?",
+              "options": ["8", "6", "4", "2"],
+              "correctAnswers": [0],
+              "explanation": "4×2=8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cumul après B : 15 ; après A : 9. Effectif B ?",
+              "options": ["6", "15", "9", "24"],
+              "correctAnswers": [0],
+              "explanation": "15−9=6."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Combien jusqu'à la modalité k » se lit avec",
+              "options": [
+                "Effectif cumulé à k",
+                "Fréquence seule",
+                "Moyenne",
+                "Minimum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cumul donne le total partiel ordonné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectifs 1, 4, 5. 3e cumul ?",
+              "options": ["10", "5", "9", "6"],
+              "correctAnswers": [0],
+              "explanation": "1+4+5=10."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cumuls strictement croissants ⇒",
+              "options": [
+                "Chaque effectif simple > 0",
+                "Tous effectifs nuls",
+                "Total 0",
+                "Fréquences négatives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque étape ajoute au moins 1."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fréquences en fraction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fréquence d'une modalité :",
+              "options": [
+                "effectif / total",
+                "Somme des f = 1 (série complète)",
+                "total / effectif",
+                "Toujours > 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f = n/N et Σf = 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "8 sur 32. Fréquence ?",
+              "options": ["1/4", "1/8", "2/8", "4/32"],
+              "correctAnswers": [0],
+              "explanation": "8/32=1/4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "6 sur 24. Fréquence ?",
+              "options": ["1/4", "1/6", "6/24", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "6/24=1/4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1/5 + 2/5 =",
+              "options": ["3/5", "2/5", "1/5", "5/5"],
+              "correctAnswers": [0],
+              "explanation": "Même dénominateur : 3/5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 sur 50. Fréquence ?",
+              "options": ["1/5", "1/10", "5/10", "2/5"],
+              "correctAnswers": [0],
+              "explanation": "10/50=1/5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3 modalités égales. Fréquence chacune ?",
+              "options": ["1/3", "1/2", "3", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "1÷3=1/3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fréquence 7/20, total 60. Effectif ?",
+              "options": ["21", "7", "20", "42"],
+              "correctAnswers": [0],
+              "explanation": "(7/20)×60=21."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fréquence impossible :",
+              "options": ["5/4", "1/2", "3/10", "0/1"],
+              "correctAnswers": [0],
+              "explanation": "Une fréquence ne dépasse pas 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "12/36 =",
+              "options": ["1/3", "2/3", "1/2", "3/12"],
+              "correctAnswers": [0],
+              "explanation": "12/36=1/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0,2 + 0,3 =",
+              "options": ["0,5", "0,6", "1", "0,05"],
+              "correctAnswers": [0],
+              "explanation": "Somme 0,5."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fréquences et pourcentages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions exactes :",
+              "options": [
+                "50 % = 1/2",
+                "25 % = 1/4",
+                "10 % = 1/5",
+                "100 % = 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "50 % et 25 % ; 10 % vaut 1/10, pas 1/5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "20 % de 150 =",
+              "options": ["30", "20", "75", "300"],
+              "correctAnswers": [0],
+              "explanation": "0,2×150=30."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/4 en % ?",
+              "options": ["25 %", "40 %", "14 %", "250 %"],
+              "correctAnswers": [0],
+              "explanation": "1/4=25/100."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "40 sur 80 en % ?",
+              "options": ["50 %", "40 %", "80 %", "25 %"],
+              "correctAnswers": [0],
+              "explanation": "40/80=1/2=50 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquence 0,35 en % ?",
+              "options": ["35 %", "3,5 %", "0,35 %", "350 %"],
+              "correctAnswers": [0],
+              "explanation": "×100 → 35 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Total 200, 15 %. Effectif ?",
+              "options": ["30", "15", "200", "3000"],
+              "correctAnswers": [0],
+              "explanation": "0,15×200=30."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Somme de toutes les fréquences en % ?",
+              "options": ["100 %", "1 %", "50 %", "200 %"],
+              "correctAnswers": [0],
+              "explanation": "Toute la population : 100 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3/5 en % ?",
+              "options": ["60 %", "35 %", "53 %", "30 %"],
+              "correctAnswers": [0],
+              "explanation": "3/5=60/100."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Effectif 45, total 60. % ?",
+              "options": ["75 %", "45 %", "60 %", "80 %"],
+              "correctAnswers": [0],
+              "explanation": "45/60=3/4=75 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "10 % + 40 % =",
+              "options": ["50 %", "14 %", "400 %", "0,5 %"],
+              "correctAnswers": [0],
+              "explanation": "50 % au total pour ces deux parts."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Retrouver un effectif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Effectif à partir de f et N :",
+              "options": ["n = f × N", "f = n / N", "n = N / f", "n = f / N"],
+              "correctAnswers": [0, 1],
+              "explanation": "On multiplie f par N ; la fréquence vaut n/N."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "25 % de 80 =",
+              "options": ["20", "25", "32", "200"],
+              "correctAnswers": [0],
+              "explanation": "0,25×80=20."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fraction 1/8, total 56. Effectif ?",
+              "options": ["7", "8", "48", "448"],
+              "correctAnswers": [0],
+              "explanation": "56/8=7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fréquence 0,2, total 45. Effectif ?",
+              "options": ["9", "0,2", "225", "4,5"],
+              "correctAnswers": [0],
+              "explanation": "0,2×45=9."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "60 % de 50 =",
+              "options": ["30", "60", "3000", "5"],
+              "correctAnswers": [0],
+              "explanation": "0,6×50=30."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3/4 de 28 =",
+              "options": ["21", "7", "12", "24"],
+              "correctAnswers": [0],
+              "explanation": "28×3/4=21."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectif 12, total 48. Fréquence ?",
+              "options": ["1/4", "1/3", "1/2", "12/48"],
+              "correctAnswers": [0],
+              "explanation": "12/48=1/4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Total 120, fréquence 1/6. Effectif ?",
+              "options": ["20", "6", "720", "12"],
+              "correctAnswers": [0],
+              "explanation": "120/6=20."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "50 % de 34 =",
+              "options": ["17", "68", "34", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "17."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fréquence 0,15, total 200. Effectif ?",
+              "options": ["30", "15", "3000", "1,33"],
+              "correctAnswers": [0],
+              "explanation": "0,15×200=30."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tableaux et double entrée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau double entrée :",
+              "options": [
+                "Croise deux variables",
+                "Cellule = sous-groupe",
+                "Une seule variable",
+                "Pas d'effectifs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux critères croisés ; chaque case a un effectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Filles sport 8, garçons sport 12. Sport total ?",
+              "options": ["20", "8", "12", "4"],
+              "correctAnswers": [0],
+              "explanation": "8+12=20."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif total filles 25, filles sans sport 17. Filles sport ?",
+              "options": ["8", "17", "25", "42"],
+              "correctAnswers": [0],
+              "explanation": "25−17=8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lecture cellule : 6 élèves foot en 4e. Signification ?",
+              "options": [
+                "6 élèves de 4e préfèrent le foot",
+                "6 matchs",
+                "6 %",
+                "6 classes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif du croisement 4e × foot."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Total général 40, marge ligne 15. Reste pour l'autre ligne ?",
+              "options": ["25", "15", "55", "Non calculable"],
+              "correctAnswers": [0],
+              "explanation": "40−15=25 si deux lignes seulement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux modalités × trois modalités : nombre de cellules ?",
+              "options": ["6", "5", "9", "3"],
+              "correctAnswers": [0],
+              "explanation": "2×3=6."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Somme des effectifs du tableau =",
+              "options": ["Effectif total", "100", "1", "Plus petite cellule"],
+              "correctAnswers": [0],
+              "explanation": "Chaque individu est dans une cellule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus grande cellule 14 sur 50. Fréquence ?",
+              "options": ["14/50", "50/14", "14/100", "36/50"],
+              "correctAnswers": [0],
+              "explanation": "14÷50."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marge colonne : somme d'une",
+              "options": [
+                "Colonne",
+                "Ligne seulement",
+                "Diagonale",
+                "Fréquence max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Total d'une colonne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cellule 0 :",
+              "options": [
+                "Aucun dans ce croisement",
+                "Erreur",
+                "100 %",
+                "Total nul obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison absente."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Moyenne arithmétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Moyenne d'une série :",
+              "options": [
+                "Somme des valeurs / effectif total",
+                "Somme des valeurs ÷ n",
+                "Toujours une modalité",
+                "Égal au maximum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Moyenne = somme des valeurs divisée par le nombre de valeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Notes 10, 12, 14, 14. Moyenne ?",
+              "options": ["12,5", "12", "13", "14"],
+              "correctAnswers": [0],
+              "explanation": "(10+12+14+14)/4=12,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Moyenne 15 pour 5 nombres. Somme ?",
+              "options": ["75", "3", "20", "15"],
+              "correctAnswers": [0],
+              "explanation": "15×5=75."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4, 6, 8, 10. Moyenne ?",
+              "options": ["7", "8", "6", "9"],
+              "correctAnswers": [0],
+              "explanation": "28/4=7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Moyenne entière 6 pour 3 valeurs. Somme ?",
+              "options": ["18", "6", "9", "3"],
+              "correctAnswers": [0],
+              "explanation": "6×3=18."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Série 5,5,5,5. Moyenne ?",
+              "options": ["5", "20", "4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Toutes égales à 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ajouter une valeur > moyenne : moyenne",
+              "options": ["Augmente", "Diminue", "Inchangée", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "La moyenne monte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Temps 12 min, 18 min, 15 min. Moyenne ?",
+              "options": ["15 min", "12 min", "18 min", "45 min"],
+              "correctAnswers": [0],
+              "explanation": "45/3=15."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Moyenne 8, une valeur 10. Deux autres somme 14. OK ?",
+              "options": ["Oui (3 valeurs)", "Non", "Moyenne 10", "Effectif 2"],
+              "correctAnswers": [0],
+              "explanation": "(10+14)/3=8."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Moyenne ≠ médiane toujours ?",
+              "options": [
+                "Faux",
+                "Vrai",
+                "Jamais de moyenne",
+                "Médiane interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles peuvent coïncider ou non."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comparer effectifs et fréquences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer deux classes :",
+              "options": [
+                "On peut comparer fréquences si effectifs totaux différents",
+                "Effectifs seuls suffisent toujours",
+                "Pourcentages permettent comparer",
+                "Totaux identiques : effectifs comparables"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fréquences ou % normalisent ; effectifs bruts si mêmes totaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Classe A : 6/30 rouge. Classe B : 4/20 rouge. Même fréquence ?",
+              "options": ["Oui (1/5)", "Non", "A plus grande", "B plus grande"],
+              "correctAnswers": [0],
+              "explanation": "6/30=4/20=1/5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus grand effectif 18 sur 60. Fréquence ?",
+              "options": ["30 %", "18 %", "60 %", "3/18"],
+              "correctAnswers": [0],
+              "explanation": "18/60=30 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fréquence A 0,4 total 50 ; B 0,4 total 80. Effectifs ?",
+              "options": ["20 et 32", "20 et 20", "50 et 80", "Identiques"],
+              "correctAnswers": [0],
+              "explanation": "0,4×50=20 ; 0,4×80=32."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Modalité la plus fréquente :",
+              "options": [
+                "Plus grande fréquence",
+                "Plus petit effectif",
+                "Moyenne",
+                "Cumul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mode = fréquence max."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "50 % vs effectif 40 sur 100 :",
+              "options": [
+                "Équivalents",
+                "50 % plus grand",
+                "40 % seulement",
+                "Incomparables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "50 % = 50/100 ; ici 40/100 < 50 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux fréquences 0,25 et 0,35. Écart ?",
+              "options": ["0,10", "0,60", "1", "0,25"],
+              "correctAnswers": [0],
+              "explanation": "0,35−0,25=0,10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Effectif double, total double : fréquence",
+              "options": ["Inchangée", "Doublée", "Divisée par 2", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "n/N constant si proportion identique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3/10 et 30 % :",
+              "options": [
+                "Égaux",
+                "3/10 plus grand",
+                "30 % plus grand",
+                "Non comparables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3/10=30/100."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Série la plus homogène : fréquences",
+              "options": [
+                "Proches entre modalités",
+                "Une à 100 %",
+                "Toutes nulles",
+                "Toutes différentes de 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition équilibrée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes effectifs et fréquences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Enquête 40 élèves, foot 16 :",
+              "options": [
+                "Fréquence foot = 16/40",
+                "Foot = 16 % obligatoirement",
+                "Effectif total 40",
+                "Total 56 élèves"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "16/40=2/5 ; l'effectif total de la série est 40."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "16/40 simplifié ?",
+              "options": ["2/5", "4/10", "16/40", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "2/5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Reste sans foot ? effectif",
+              "options": ["24", "16", "40", "56"],
+              "correctAnswers": [0],
+              "explanation": "40−16=24."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fréquence 35 % sur 80. Effectif ?",
+              "options": ["28", "35", "80", "2800"],
+              "correctAnswers": [0],
+              "explanation": "0,35×80=28."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "A+B effectifs 10 et 15, total 50. Fréquence C ?",
+              "options": ["50 %", "25 %", "30 %", "40 %"],
+              "correctAnswers": [0],
+              "explanation": "C=25 ; 25/50=50 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cumuls 10,25,40. 2e effectif ?",
+              "options": ["15", "25", "10", "40"],
+              "correctAnswers": [0],
+              "explanation": "25−10=15."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Moyenne ages 11,12,13,14.",
+              "options": ["12,5", "12", "13", "14"],
+              "correctAnswers": [0],
+              "explanation": "50/4=12,5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau total 36, cellule 9. Fréquence cellule ?",
+              "options": ["1/4", "9/36", "4/9", "36/9"],
+              "correctAnswers": [0],
+              "explanation": "9/36=1/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,12 + 0,38 + 0,50 =",
+              "options": ["1", "0,9", "100", "0,12"],
+              "correctAnswers": [0],
+              "explanation": "Somme = 1 (série complète)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "25 % + 25 % + 50 % =",
+              "options": ["100 %", "75 %", "50 %", "125 %"],
+              "correctAnswers": [0],
+              "explanation": "Répartition complète."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diagrammes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Diagramme en bâtons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Diagramme en bâtons :",
+              "options": [
+                "Une barre par modalité",
+                "Hauteur ∝ effectif",
+                "Cercles empilés",
+                "Axe temps obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Barres verticales proportionnelles aux effectifs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Axe horizontal montre souvent",
+              "options": ["Modalités", "Fréquences en %", "Aire", "Durées"],
+              "correctAnswers": [0],
+              "explanation": "Catégories en abscisse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif 20, max 40. Barre à mi-hauteur ?",
+              "options": ["Oui", "Non", "Double", "Quart"],
+              "correctAnswers": [0],
+              "explanation": "20/40=1/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barres de largeurs égales :",
+              "options": [
+                "Facilite la comparaison",
+                "Interdit",
+                "Remplace l'effectif",
+                "Cache les données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Largeur fixe, hauteur porte l'info."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lecture barre entre 15 et 20 :",
+              "options": [
+                "Estimation possible",
+                "Exact sans échelle",
+                "Toujours 17",
+                "Fréquence seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lit graphiquement avec l'échelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Titre du diagramme sert à",
+              "options": [
+                "Indiquer le sujet",
+                "Remplacer la légende",
+                "Donner l'effectif total",
+                "Cacher l'unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte de la série."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Unité sur l'axe vertical :",
+              "options": [
+                "Effectifs (ou fréquences)",
+                "Degrés",
+                "Mètres",
+                "Secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeur représentée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux barres même hauteur :",
+              "options": [
+                "Même effectif",
+                "Même modalité",
+                "Erreur",
+                "Fréquence 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteurs égales ⇒ effectifs égaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Diagramme en bâtons adapté pour",
+              "options": [
+                "Peu de modalités qualitatives",
+                "Série temporelle longue",
+                "Parts d'un tout en %",
+                "Coordonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de catégories discrètes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Barre la plus haute : modalité",
+              "options": [
+                "La plus fréquente",
+                "La plus rare",
+                "Moyenne",
+                "Cumulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif maximal."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Diagramme circulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Diagramme circulaire :",
+              "options": [
+                "Parts d'un tout",
+                "Angles ∝ fréquences",
+                "Barres verticales",
+                "Axe des abscisses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Disque partagé en secteurs proportionnels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fréquence 25 %. Angle du secteur ?",
+              "options": ["90°", "25°", "360°", "45°"],
+              "correctAnswers": [0],
+              "explanation": "25 % de 360° = 90°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "50 % sur le disque :",
+              "options": ["Demi-disque", "Quart", "Tiers", "Angle 50°"],
+              "correctAnswers": [0],
+              "explanation": "Moitié du cercle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Somme des angles des secteurs =",
+              "options": ["360°", "100°", "180°", "Effectif total"],
+              "correctAnswers": [0],
+              "explanation": "Cercle complet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquence 1/3. Angle ?",
+              "options": ["120°", "60°", "90°", "30°"],
+              "correctAnswers": [0],
+              "explanation": "360/3=120°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Petit secteur signifie",
+              "options": [
+                "Faible effectif",
+                "Grande fréquence",
+                "Erreur d'échelle",
+                "Moyenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part faible du total."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Diagramme circulaire peu adapté si",
+              "options": [
+                "Trop de modalités fines",
+                "2 ou 3 parts",
+                "Fréquences en %",
+                "Total connu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de secteurs illisibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "10 % du disque : angle",
+              "options": ["36°", "10°", "90°", "3,6°"],
+              "correctAnswers": [0],
+              "explanation": "0,1×360=36°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Légende indique",
+              "options": [
+                "Modalités et couleurs",
+                "Effectif total seul",
+                "Unité m",
+                "Périmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relie couleur et catégorie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux secteurs égaux : fréquences",
+              "options": ["Égales", "Somme 100 %", "Nulles", "Doublées"],
+              "correctAnswers": [0],
+              "explanation": "Même angle ⇒ même fréquence."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Lire un diagramme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour lire un diagramme :",
+              "options": [
+                "Repérer l'échelle",
+                "Lire titre et unités",
+                "Ignorer les axes",
+                "Confondre effectif et modalité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échelle et unités sont indispensables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Graduation 0, 5, 10, 15. Distance 5 → 10 :",
+              "options": ["5 unités", "10", "15", "2,5"],
+              "correctAnswers": [0],
+              "explanation": "Un intervalle vaut 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Barre au-dessus de 12 sur échelle 0-20 : effectif ≈",
+              "options": ["12", "20", "6", "15"],
+              "correctAnswers": [0],
+              "explanation": "Lecture directe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fréquence 40 % lue sur secteur : effectif total 50 ⇒",
+              "options": ["20", "40", "12,5", "80"],
+              "correctAnswers": [0],
+              "explanation": "0,4×50=20."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diagramme sans unité :",
+              "options": [
+                "Lecture ambiguë",
+                "Interdit en maths",
+                "Toujours cm",
+                "Fréquence nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne sait pas ce que mesure la hauteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectif total = somme des",
+              "options": [
+                "Effectifs lus",
+                "Angles seuls",
+                "Titres",
+                "Couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Addition des barres ou des parts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Barre manquante (effectif 0) :",
+              "options": [
+                "Peut ne pas apparaître",
+                "Hauteur maximale",
+                "Angle 360°",
+                "Erreur grave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif nul : pas de barre ou hauteur 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux barres : plus haute ⇒",
+              "options": [
+                "Plus grand effectif",
+                "Plus petite fréquence",
+                "Même modalité",
+                "Cumul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interprétation directe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle mal choisie (trop grande) :",
+              "options": [
+                "Différences masquées",
+                "Barres identiques visuellement",
+                "Effectifs faux",
+                "Angles > 360°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variations peu visibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lecture fidèle exige un",
+              "options": [
+                "Diagramme à l'échelle",
+                "Cercle sans centre",
+                "Tableau sans total",
+                "Graphique sans titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité respectée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Choisir le bon diagramme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Représenter des parts d'un tout :",
+              "options": [
+                "Diagramme circulaire",
+                "Secteurs en %",
+                "Nuage de points seul",
+                "Barres sans total"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Secteurs montrent la répartition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comparer 5 sports préférés :",
+              "options": [
+                "Bâtons",
+                "Circulaire seul",
+                "Carte géo",
+                "Histogramme continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barres pour catégories."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Évolution mensuelle sur 2 ans :",
+              "options": [
+                "Courbe ou bâtons ordonnés",
+                "Secteurs",
+                "Un seul secteur",
+                "Pas de graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variable ordonnée dans le temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "15 modalités très proches : éviter",
+              "options": [
+                "Circulaire surchargé",
+                "Tableau",
+                "Bâtons",
+                "Les deux graphiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de secteurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquences en pourcentage sur 4 choix :",
+              "options": [
+                "Circulaire ou bâtons",
+                "Segment de droite seul",
+                "Triangle",
+                "Aire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre parts d'un tout."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effectifs entiers par couleur :",
+              "options": [
+                "Bâtons",
+                "Courbe de température",
+                "Plan",
+                "Fréquence cumulée seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualitatif discret."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Double série même modalités :",
+              "options": [
+                "Bâtons juxtaposés",
+                "Un secteur unique",
+                "Sans légende",
+                "Sans échelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupes de barres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Données non numériques : diagramme",
+              "options": [
+                "Qualitatif adapté",
+                "Circulaire de longueurs",
+                "Axe en m²",
+                "Histogramme de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variables qualitatives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Total inconnu : difficile",
+              "options": [
+                "Secteurs en % seuls sans effectifs",
+                "Bâtons avec effectifs",
+                "Tableau",
+                "Les deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "% sans total limite l'effectif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif « part du budget » :",
+              "options": ["Circulaire", "Nuage", "Barre unique", "Coordonnées"],
+              "correctAnswers": [0],
+              "explanation": "Parts d'un tout."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Construire un diagramme en bâtons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Étapes bâtons :",
+              "options": [
+                "Choisir échelle",
+                "Tracer barres proportionnelles",
+                "Angles = effectifs",
+                "Oublier les modalités"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échelle puis hauteurs proportionnelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs 4, 8, 12. Échelle 0-12 : hauteurs",
+              "options": ["4,8,12 unités", "Toutes 12", "3,6,9", "1,2,3"],
+              "correctAnswers": [0],
+              "explanation": "Hauteur = effectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Effectif max 25. Échelle verticale max utile",
+              "options": ["25 ou 30", "5", "100", "1"],
+              "correctAnswers": [0],
+              "explanation": "Couvrir le max."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Barre effectif 0 :",
+              "options": [
+                "Hauteur nulle",
+                "Hauteur moyenne",
+                "Absente ou nulle",
+                "Angle 90°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de hauteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fréquences 0,2 ; 0,5 ; 0,3 en bâtons : hauteurs ratio",
+              "options": [
+                "2:5:3",
+                "5:2:3",
+                "1:1:1",
+                "20:50:30 si même échelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnel aux fréquences."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graduations régulières :",
+              "options": [
+                "Facilitent la lecture",
+                "Interdites",
+                "Remplacent les effectifs",
+                "= modalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture plus facile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couleurs différentes par barre :",
+              "options": [
+                "Légende utile",
+                "Obligatoire en 5e",
+                "Remplace effectifs",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinguer si besoin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Largeur des barres :",
+              "options": [
+                "Constante",
+                "= effectif",
+                "= fréquence×360",
+                "= total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Largeur fixe usuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après construction, vérifier",
+              "options": [
+                "Somme effectifs = total",
+                "Hauteurs cohérentes",
+                "Angles 360",
+                "Périmètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence des données."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Échelle 1 cm = 2 élèves, effectif 10 : hauteur",
+              "options": ["5 cm", "10 cm", "2 cm", "20 cm"],
+              "correctAnswers": [0],
+              "explanation": "10/2=5 cm."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Angles et secteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions angle-fréquence (cercle entier) :",
+              "options": [
+                "10 % → 36°",
+                "25 % → 90°",
+                "100 % → 360°",
+                "50 % → 90°"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "10 % et 100 % donnent 36° et 360° ; 50 % vaut 180°."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fréquence 0,75. Angle ?",
+              "options": ["270°", "75°", "180°", "90°"],
+              "correctAnswers": [0],
+              "explanation": "0,75×360=270°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Angle 60°. Fréquence ?",
+              "options": ["1/6", "1/3", "60/360 simplifié", "1/60"],
+              "correctAnswers": [0],
+              "explanation": "60/360=1/6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trois secteurs 120° chacun :",
+              "options": [
+                "Fréquences égales",
+                "Total 120°",
+                "Un seul 100 %",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "360/3=120° chacun."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "20 % reste après deux secteurs de 30 % et 50 % :",
+              "options": ["0 %", "20 %", "100 %", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "30+50+20=100 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Secteur 90° sur quart de cercle : fréquence",
+              "options": ["25 %", "90 %", "1/90", "50 %"],
+              "correctAnswers": [0],
+              "explanation": "90/360=1/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Construire secteur 40 % : angle",
+              "options": ["144°", "40°", "360°", "72°"],
+              "correctAnswers": [0],
+              "explanation": "0,4×360=144°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Somme angles 350° :",
+              "options": [
+                "Données incomplètes ou erreur",
+                "Correct",
+                "100 %",
+                "Fréquence 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il manque 10° pour 360°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fréquence 1/12. Angle ?",
+              "options": ["30°", "12°", "360°", "60°"],
+              "correctAnswers": [0],
+              "explanation": "360/12=30°."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux secteurs 180° chacun :",
+              "options": [
+                "Deux moitiés égales",
+                "Erreur",
+                "Trois modalités",
+                "Total 720°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux 50 % si seulement deux."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Histogrammes et barres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En 5e, barres d'effectifs :",
+              "options": [
+                "Hauteur ∝ effectif",
+                "Classes sur l'axe",
+                "Confondre avec secteurs",
+                "Barres toujours horizontales seules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Effectif représenté par la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Classe 10-20 avec 6 élèves : barre hauteur 6 si échelle",
+              "options": [
+                "1 unité = 1 élève",
+                "1 unité = 10",
+                "Angle 6°",
+                "Largeur 6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6 unités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Histogramme vs bâtons (5e) : vocabulaire",
+              "options": [
+                "Barres pour effectifs par catégorie",
+                "Secteurs pour mêmes données parfois",
+                "Barres = angles",
+                "Identiques toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barres = effectifs par modalité/classe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Classes adjacentes sans trou :",
+              "options": [
+                "Barres jointives possibles",
+                "Secteurs obligatoires",
+                "Pas d'échelle",
+                "Effectif total inconnu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classes contiguës."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Effectif max 18, échelle max 20 : barre 18",
+              "options": ["Proche du sommet", "Au milieu", "Nulle", "Double"],
+              "correctAnswers": [0],
+              "explanation": "18/20 de la hauteur max."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire classe 0-5 effectif 8 :",
+              "options": ["8 élèves dans 0-5", "5 élèves", "8 %", "0 élève"],
+              "correctAnswers": [0],
+              "explanation": "Effectif de la classe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Somme des effectifs des classes =",
+              "options": ["Total", "360", "100 %", "Moyenne"],
+              "correctAnswers": [0],
+              "explanation": "Tous les individus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Classe la plus haute barre :",
+              "options": [
+                "Classe la plus peuplée",
+                "Classe médiane",
+                "Erreur",
+                "Angle max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif maximal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fréquence classe = effectif classe /",
+              "options": ["Total", "Angle", "Largeur seule", "Titre"],
+              "correctAnswers": [0],
+              "explanation": "n/N."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5 classes, effectifs 3,7,10,5,5. Total ?",
+              "options": ["30", "25", "20", "35"],
+              "correctAnswers": [0],
+              "explanation": "3+7+10+5+5=30."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Interpréter un diagramme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Interprétation correcte :",
+              "options": [
+                "Comparer hauteurs ou secteurs",
+                "Relier au contexte",
+                "Ignorer l'effectif total",
+                "Lire titre"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Titre et comparaisons visuelles avec contexte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Barre deux fois plus haute : effectif",
+              "options": [
+                "Environ double",
+                "Identique",
+                "Divisé par 2",
+                "Somme 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Secteur le plus grand : modalité",
+              "options": ["Majoritaire", "Minoritaire", "Moyenne", "Cumul"],
+              "correctAnswers": [0],
+              "explanation": "Plus grande part."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Message « majorité absolue » : fréquence >",
+              "options": ["50 %", "25 %", "100 %", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "Plus de la moitié."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diagramme montre foot > basket :",
+              "options": [
+                "Effectif foot plus grand",
+                "Foot = basket",
+                "Total nul",
+                "Fréquence foot nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barre ou secteur plus grand."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répartition quasi uniforme : secteurs",
+              "options": [
+                "De tailles proches",
+                "Un seul grand",
+                "Tous 0°",
+                "Un à 360°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parts similaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effectif total 100, barre 25 : fréquence",
+              "options": ["25 %", "25 élèves", "0,25 %", "75 %"],
+              "correctAnswers": [0],
+              "explanation": "25/100=25 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conclusion hâtive sans échelle :",
+              "options": [
+                "Risquée",
+                "Toujours vraie",
+                "Interdite légalement",
+                "Meilleure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture peut être fausse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux diagrammes même échelle : comparaison",
+              "options": [
+                "Valide entre classes",
+                "Impossible",
+                "Angles seuls",
+                "Sans titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même référence verticale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Storytelling : diagramme doit",
+              "options": [
+                "Correspondre au tableau",
+                "Inventer des effectifs",
+                "Omettre total",
+                "Mélanger unités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graphique fidèle aux données."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comparer deux séries",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer deux diagrammes :",
+              "options": [
+                "Même échelle si possible",
+                "Mêmes modalités",
+                "Unités compatibles",
+                "Ignorer les totaux"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Échelle et unités communes ; totaux peuvent différer si on compare %."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Classe 1 total 30, classe 2 total 60. Comparer foot :",
+              "options": [
+                "Fréquences ou %",
+                "Effectifs bruts seuls",
+                "Angles",
+                "Titres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normaliser par fréquence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Barres côte à côte même modalité :",
+              "options": [
+                "Comparaison directe",
+                "Secteurs superposés",
+                "Sans légende",
+                "Effectif total égal requis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juxtaposition."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Série A 50 % rouge, série B 40 % rouge :",
+              "options": [
+                "A a plus de rouge en proportion",
+                "B a plus",
+                "Égal",
+                "Total inconnu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "50 % > 40 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Même effectif, totaux différents : fréquences",
+              "options": ["Diffèrent", "Égales", "Toujours 100 %", "Nulles"],
+              "correctAnswers": [0],
+              "explanation": "n/N change si N change."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Superposer deux secteurs de classes :",
+              "options": [
+                "Peu lisible ; préférer bâtons ou %",
+                "Toujours idéal",
+                "Interdit",
+                "Sans légende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux disques ou barres groupées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Écart visuel faible peut cacher",
+              "options": [
+                "Petite différence d'effectif",
+                "Erreur nulle",
+                "Total double",
+                "Angle 360"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle zoomée ou non."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau + deux diagrammes :",
+              "options": [
+                "Vérification croisée",
+                "Redondance inutile",
+                "Interdit",
+                "Remplace calculs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double lecture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fréquence cumulée : diagramme",
+              "options": [
+                "Autre outil (courbe/cumul)",
+                "Secteur simple",
+                "Barre unique",
+                "Sans total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cumul ≠ répartition simple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Conclusion « plus d'élèves préfèrent X en 5eA » : lire",
+              "options": [
+                "Barre ou secteur X plus grand en 5eA",
+                "Titre seul",
+                "Couleur",
+                "Axe horizontal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modalité X domine en A."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse diagrammes et statistiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "De la série au graphique :",
+              "options": [
+                "Tableau d'effectifs d'abord",
+                "Choisir diagramme adapté",
+                "Tracer à l'échelle",
+                "Angles sans fréquence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableau puis choix et construction à l'échelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Effectifs 5,15,10. Fréquence 15 ?",
+              "options": ["50 %", "15 %", "1/15", "30 %"],
+              "correctAnswers": [0],
+              "explanation": "15/30=50 %."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "50 % sur circulaire : angle",
+              "options": ["180°", "50°", "90°", "360°"],
+              "correctAnswers": [0],
+              "explanation": "Demi-cercle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bâtons effectifs 5,15,10 : barre max",
+              "options": ["15", "10", "5", "30"],
+              "correctAnswers": [0],
+              "explanation": "Modalité à 15."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Total 30, secteur 120°. Effectif ?",
+              "options": ["10", "30", "120", "12"],
+              "correctAnswers": [0],
+              "explanation": "120/360=1/3 ; 30/3=10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fréquence 0,1 + 0,4 + 0,5 =",
+              "options": ["1", "0,9", "100", "10"],
+              "correctAnswers": [0],
+              "explanation": "Série complète."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mauvais choix : 12 mois d'effectifs avec",
+              "options": [
+                "12 secteurs serrés",
+                "Courbe ou bâtons ordonnés",
+                "Tableau",
+                "Bâtons mensuels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "12 secteurs illisibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lecture barre 8, total 40 : % ?",
+              "options": ["20 %", "8 %", "40 %", "32 %"],
+              "correctAnswers": [0],
+              "explanation": "8/40=20 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Moyenne 10,12,14 représentée :",
+              "options": [
+                "Pas par diagramme circulaire seul",
+                "Secteur unique",
+                "Angle 10",
+                "Barre sans effectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moyenne ≠ répartition de modalités."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Check-list : titre, unités, échelle, total",
+              "options": ["Oui", "Non", "Unités inutiles", "Total secret"],
+              "correctAnswers": [0],
+              "explanation": "Bonne présentation statistique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,16 +1,29 @@
 import { streamText } from "ai";
-import { DEFAULT_CHAT_MODEL, formatModelName } from "@/lib/ai/models";
+import {
+  DEFAULT_CHAT_MODEL,
+  formatModelName,
+  resolveModelMaxOutput,
+} from "@/lib/ai/models";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import {
+  normalizeReasoningLevel,
+  resolveReasoningProviderOptions,
+} from "@/lib/ai/registry/reasoning";
 import { isModelAllowedForTier } from "@/lib/ai/registry/tiers";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { buildMemoryContext, joinMemoryBlocks } from "@/lib/chat/memory";
 import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries/chats";
 import { updateSearchQuerySummary } from "@/lib/db/queries/search-history";
 import { getUserPreferences } from "@/lib/db/queries/users";
+import {
+  blocsCompteSynthese,
+  promptSyntheseAvecCompte,
+} from "@/lib/search/summary-personal";
 import {
   collectSummarySources,
   createThinkSplitter,
@@ -18,7 +31,7 @@ import {
   stripThinkTags,
 } from "@/lib/search/summary-stream";
 
-export const maxDuration = 45;
+export const maxDuration = 300;
 
 export interface SummaryTarget {
   snippet?: string;
@@ -67,13 +80,22 @@ export async function POST(request: Request) {
 
     // Résolution de l'utilisateur et de son modèle
     const session = await requireUser();
+    const [preferences, memoryContext] = session
+      ? await Promise.all([
+          getUserPreferences(session.userId).catch(() => null),
+          buildMemoryContext({
+            effectiveAgentId: null,
+            effectiveProjectId: null,
+            isGhostMode: false,
+            tier: session.user.tier,
+            userId: session.userId,
+          }),
+        ])
+      : [null, null];
     let modelId = requestedModelId || DEFAULT_CHAT_MODEL;
 
-    if (!requestedModelId && session) {
-      const prefs = await getUserPreferences(session.userId);
-      if (prefs?.defaultChatModel) {
-        modelId = prefs.defaultChatModel;
-      }
+    if (!requestedModelId && preferences?.defaultChatModel) {
+      modelId = preferences.defaultChatModel;
     }
 
     /**
@@ -97,10 +119,7 @@ export async function POST(request: Request) {
         session?.user.tier ?? "free"
       );
       if (!existe || !autorise) {
-        const prefs = session
-          ? await getUserPreferences(session.userId).catch(() => null)
-          : null;
-        const prefere = prefs?.defaultChatModel;
+        const prefere = preferences?.defaultChatModel;
         const repli =
           prefere &&
           isModelAllowedForTier(prefere, session?.user.tier ?? "free")
@@ -212,15 +231,22 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
       userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse complète de ces informations en français.`;
     }
 
+    const personal = blocsCompteSynthese({
+      instructions: preferences?.customInstructions ?? null,
+      instructionsEnabled: Boolean(preferences?.enabled),
+      memory: memoryContext ? joinMemoryBlocks(memoryContext) : null,
+    });
+    systemPrompt = promptSyntheseAvecCompte(systemPrompt, personal);
+
     // Préparation des messages pour streamText
     const initialSources = collectSummarySources({
       initial: searchResults,
       target,
     });
     const streamOptions: any = {
-      maxOutputTokens: 3000,
+      maxOutputTokens: resolveModelMaxOutput(modelId),
       model,
-      onFinish: async ({ text, usage }: { text: string; usage: any }) => {
+      onFinish: async ({ usage }: { text: string; usage: any }) => {
         // Décompte précis des tokens
         const inputTokens = usage?.inputTokens ?? usage?.promptTokens ?? 0;
         const outputTokens =
@@ -285,12 +311,13 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
           }
         }
 
-        // 3. Mise à jour de l'historique pour le résumé global
-        const answer = stripThinkTags(text);
-        if (!target && searchId && answer && session?.userId) {
-          await updateSearchQuerySummary(searchId, session.userId, answer);
-        }
+        // La synthèse et la réflexion sont écrites après la lecture du flux :
+        // `onFinish` peut partir avant que les derniers deltas de réflexion
+        // aient été accumulés.
       },
+      providerOptions: resolveReasoningProviderOptions(
+        normalizeReasoningLevel(preferences?.reasoningLevel)
+      ),
       stopWhen: ({ steps }: any) => steps.length >= 4,
       system: systemPrompt,
       tools: {
@@ -321,6 +348,15 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         send({ sources: initialSources, type: "sources" });
         const splitter = createThinkSplitter();
         let sinkSawReasoning = false;
+        let reasoningText = "";
+        let answerText = "";
+        const noterReflexion = (delta: string) => {
+          if (!delta) {
+            return;
+          }
+          reasoningText += delta;
+          send({ delta, type: "reasoning-delta" });
+        };
         // Avant l'appel modèle : le collecteur peut émettre dès le premier
         // chunk, avant que le flux texte ne soit lu.
         reasoningSink.onDelta = (text) => {
@@ -328,7 +364,7 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
             return;
           }
           sinkSawReasoning = true;
-          send({ delta: text, type: "reasoning-delta" });
+          noterReflexion(text);
         };
         const result = streamText(streamOptions);
         const emitPieces = (pieces: ReturnType<typeof splitter.push>) => {
@@ -338,10 +374,11 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
             }
             if (piece.kind === "reasoning") {
               if (!sinkSawReasoning) {
-                send({ delta: piece.delta, type: "reasoning-delta" });
+                noterReflexion(piece.delta);
               }
               continue;
             }
+            answerText += piece.delta;
             send({ delta: piece.delta, type: "text-delta" });
           }
         };
@@ -349,13 +386,22 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
           for await (const part of result.fullStream) {
             if (part.type === "reasoning-delta" && part.text) {
               if (!sinkSawReasoning) {
-                send({ delta: part.text, type: "reasoning-delta" });
+                noterReflexion(part.text);
               }
             } else if (part.type === "text-delta" && part.text) {
               emitPieces(splitter.push(part.text));
             }
           }
           emitPieces(splitter.flush());
+          const answer = stripThinkTags(answerText);
+          if (!target && searchId && answer && session?.userId) {
+            await updateSearchQuerySummary(
+              searchId,
+              session.userId,
+              answer,
+              reasoningText
+            );
+          }
           const steps = await Promise.resolve(result.steps).catch(() => []);
           const finalSources = collectSummarySources({
             initial: searchResults,

@@ -64,7 +64,7 @@ function extractMeta(html: string): { title?: string; description?: string } {
 
 export const readUrl = tool({
   description:
-    "Extraire et lire le contenu textuel propre d'une page Web ou d'une documentation technique à partir de son URL. Supprime les éléments parasites (scripts, styles, menus) et renvoie le texte structuré pour analyse.",
+    "Extraire et lire le contenu textuel propre d'une page Web ou d'une documentation technique à partir de son URL, en particulier la page retenue après webSearch quand l'extrait de recherche ne suffit pas. Lire cette page avant de répondre. Supprime les éléments parasites (scripts, styles, menus) et renvoie le texte structuré pour analyse.",
   execute: async (input) => {
     const rawUrl = input.url.trim();
     if (!rawUrl) {

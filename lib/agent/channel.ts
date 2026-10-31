@@ -17,7 +17,7 @@ export const AGENT_CHANNEL_NOTICES: Record<AgentChannel, string> = {
   alpha:
     "Agent évolue rapidement et certaines fonctionnalités peuvent changer.",
   beta: "Agent est en cours de stabilisation : certaines fonctionnalités peuvent encore évoluer.",
-  stable: "Agent est stable et prêt pour un usage quotidien.",
+  stable: "",
 };
 
 export const AGENT_HOME_TITLE = "Sur quoi travaille-t-on ?";

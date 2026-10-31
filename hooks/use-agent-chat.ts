@@ -18,6 +18,7 @@ import type {
   ToolExecutionRecord,
 } from "@/lib/agent/types";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { clearInFlightChat, markInFlightChat } from "@/lib/chat/in-flight";
 import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -404,8 +405,9 @@ export function useAgentChat({
   useEffect(() => {
     if (status === "ready" || status === "error") {
       setWaitingStatus(undefined);
+      clearInFlightChat(chatId);
     }
-  }, [status, setWaitingStatus]);
+  }, [chatId, status, setWaitingStatus]);
 
   const sendTask = useCallback(
     ({
@@ -430,7 +432,10 @@ export function useAgentChat({
         // Avant le pushState : dès que l'URL devient /chat/<id>, isNewChat
         // passe à false et la clé /api/messages s'active. Le repère interdit
         // à cette réponse d'écraser l'état du flux qu'on lance ici.
+        // Le même identifiant est marqué « en vol » pour que le changement
+        // d'adresse ne coupe pas la génération.
         locallyCreatedChatIdRef.current = chatId;
+        markInFlightChat(chatId);
         window.history.pushState({}, "", apiEndpoints.chatPath(chatId));
       }
       const request = sendMessage(

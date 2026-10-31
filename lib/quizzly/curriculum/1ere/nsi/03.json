@@ -1,0 +1,2743 @@
+{
+  "id": "1ere-nsi-03",
+  "year": "1ere",
+  "subject": "nsi",
+  "title": "Interactions homme-machine",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Événements",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Notion d'événement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent un événement DOM ?",
+              "options": [
+                "Signal déclenché par le navigateur ou l'utilisateur",
+                "Instruction assembleur obligatoire",
+                "Peut porter des données dans l'objet Event",
+                "Est toujours synchrone avec le réseau"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un événement DOM est une notification avec un objet Event."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Écouteurs et DOM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels types sont des événements utilisateur courants ?",
+              "options": ["click", "input", "CREATE INDEX", "submit"],
+              "correctAnswers": [0, 3],
+              "explanation": "click et submit sont des interactions classiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Propagation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La propagation comprend :",
+              "options": [
+                "Phase capture",
+                "Phase cible",
+                "Phase bubbling",
+                "Phase compilation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Capture descend, bubbling remonte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Souris et clavier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Événements pointeur/souris :",
+              "options": ["click", "mousemove", "keydown", "dblclick"],
+              "correctAnswers": [0, 3],
+              "explanation": "mousemove et dblclick concernent le pointeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Formulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Événements formulaire :",
+              "options": ["submit", "change", "input", "DROP TABLE"],
+              "correctAnswers": [0, 2],
+              "explanation": "submit, change et input liés aux contrôles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Événements personnalisés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un événement custom :",
+              "options": [
+                "Définir CustomEvent",
+                "Appeler dispatchEvent",
+                "Écrire du SQL",
+                "Utiliser innerHTML seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Création puis dispatch sur un nœud."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Boucle événementielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Boucle événementielle :",
+              "options": [
+                "Traite une file d'événements",
+                "Peut intercaler des tâches",
+                "Ignore les timers",
+                "N'existe qu'en batch"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le runtime traite événements et callbacks."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Tactile et mobile",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Événements tactiles (touch) :",
+              "options": ["touchstart", "touchmove", "keyup", "touchend"],
+              "correctAnswers": [0, 3],
+              "explanation": "touchstart et touchend font partie de la série tactile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Sync et async",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Événements liés au chargement :",
+              "options": [
+                "load",
+                "DOMContentLoaded",
+                "ALTER USER",
+                "error (ressource)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "load et DOMContentLoaded marquent l'avancement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse événements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonnes pratiques listeners :",
+              "options": [
+                "Retirer les listeners inutiles",
+                "Éviter trop de handlers lourds",
+                "Dupliquer sans limite sur chaque pixel",
+                "Confondre target et currentTarget"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Performance et clarté du modèle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un événement est",
+              "options": [
+                "Un signal qu'il s'est passé quelque chose",
+                "Une constante immuable",
+                "Un fichier binaire",
+                "Une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe le système d'une occurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "addEventListener sert à",
+              "options": [
+                "Enregistrer un gestionnaire sur un élément",
+                "Compiler du C",
+                "Créer une table SQL",
+                "Chiffrer HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lie une fonction à un type d'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "preventDefault()",
+              "options": [
+                "Bloque l'action native du navigateur",
+                "Supprime le DOM",
+                "Change le CPU",
+                "Efface le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. empêcher l'envoi immédiat d'un formulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La phase bubbling",
+              "options": [
+                "Fait remonter l'événement vers les ancêtres",
+                "Empêche toute propagation",
+                "N'existe qu'en Python",
+                "Remplace le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la cible, propagation vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "event.target indique",
+              "options": [
+                "L'élément à l'origine de l'événement",
+                "Toujours window",
+                "Le serveur distant",
+                "Le stylesheet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cible réelle de l'événement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "keydown correspond à",
+              "options": [
+                "Une touche enfoncée",
+                "Une image chargée",
+                "Un scroll terminé",
+                "Une fermeture de socket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "stopPropagation()",
+              "options": [
+                "Arrête la propagation vers d'autres nœuds",
+                "Stoppe Node.js",
+                "Coupe Internet",
+                "Vide la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile pour isoler un gestionnaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La délégation d'événements",
+              "options": [
+                "Écoute sur un parent pour des enfants dynamiques",
+                "Délègue au CPU",
+                "Supprime addEventListener",
+                "Est interdite en JS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gère des listes modifiées sans re-bind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CustomEvent permet",
+              "options": [
+                "De créer et émettre un événement applicatif",
+                "De créer une classe SQL",
+                "D'encoder du JPEG",
+                "De compiler HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplé à dispatchEvent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interfaces",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "IHM et GUI",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une bonne IHM :",
+              "options": [
+                "Est cohérente",
+                "Donne des retours clairs",
+                "Cache toute erreur sans message",
+                "Respecte les conventions"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cohérence et feedback améliorent l'usage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Ergonomie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dispositifs d'entrée :",
+              "options": [
+                "Clavier",
+                "Souris",
+                "Écran seul sans capteur",
+                "Microphone"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Clavier et souris sont des entrées classiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Accessibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Principes ergonomiques :",
+              "options": [
+                "Limiter la charge cognitive",
+                "Prévenir les erreurs",
+                "Multiplier les étapes inutiles",
+                "Rendre réversible quand possible"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Réversibilité et prévention d'erreurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Composants d'interface",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accessibilité :",
+              "options": [
+                "Texte alternatif pour images",
+                "Navigation clavier",
+                "Interdire le zoom",
+                "Contraste lisible"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Alt, clavier et contraste sont essentiels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Retour utilisateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Composants courants :",
+              "options": [
+                "Bouton",
+                "Menu déroulant",
+                "Trigger SQL",
+                "Case à cocher"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Bouton, select, checkbox."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Interfaces adaptatives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Retours visuels :",
+              "options": [
+                "État survol (hover)",
+                "Indicateur de chargement",
+                "Silence total systématique",
+                "Message de succès"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Hover, spinner, confirmation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Modèle mental",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mobile first / adaptatif :",
+              "options": [
+                "Grilles flexibles",
+                "Media queries CSS",
+                "Une seule image géante partout",
+                "Touch targets suffisants"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Flex, media queries, zones tactiles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Couleur et lisibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affordance :",
+              "options": [
+                "Indique comment utiliser un élément",
+                "Est un protocole réseau",
+                "Peut s'appuyer sur la forme ou le libellé",
+                "Interdit les icônes"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Forme et libellé suggèrent l'action possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Navigation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Navigation :",
+              "options": [
+                "Fil d'Ariane",
+                "Menu principal",
+                "Requête DELETE sans filtre",
+                "Plan du site"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Menus et repères orientent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse interfaces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Test utilisateur :",
+              "options": [
+                "Observe des usages réels",
+                "Améliore l'interface",
+                "Remplace toute spécification",
+                "Se fait parfois en protocole think aloud"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Tests révèlent problèmes réels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "GUI signifie",
+              "options": [
+                "Graphical User Interface",
+                "General Unix Index",
+                "Global User ID",
+                "Groupe UDP Interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ergonomie vise",
+              "options": [
+                "Efficacité, efficience et satisfaction",
+                "Uniquement la beauté décorative",
+                "La vitesse du disque",
+                "Le nombre de lignes de code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utilisabilité du système."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "WCAG traite",
+              "options": [
+                "L'accessibilité numérique",
+                "Le stockage binaire",
+                "Le routage IP",
+                "La compression LZ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recommandations d'accessibilité web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un widget est",
+              "options": [
+                "Un composant d'interface réutilisable",
+                "Un virus",
+                "Une clé SSH",
+                "Un segment réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bouton, liste, case à cocher…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Feedback utilisateur",
+              "options": [
+                "Confirme qu'une action a été prise",
+                "Doit être absent pour aller vite",
+                "Remplace les tests",
+                "Est réservé au CLI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages, états, animations légères."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Design responsive",
+              "options": [
+                "Adapte l'affichage à la taille d'écran",
+                "Fixe une résolution unique",
+                "Supprime le HTML",
+                "Interdit le CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en page flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Modèle mental",
+              "options": [
+                "Représentation que l'utilisateur se fait du système",
+                "Schéma SQL",
+                "Table de routage",
+                "Format WAV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide prévisions et erreurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste suffisant",
+              "options": [
+                "Améliore la lisibilité",
+                "Rend le texte invisible",
+                "Remplace les titres",
+                "Est optionnel pour tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Important pour malvoyants et luminosité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Wireframe",
+              "options": [
+                "Esquisse de structure d'écran",
+                "Code machine",
+                "Paquet TCP",
+                "Index B-tree"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prototype basse fidélité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

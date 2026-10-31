@@ -1,0 +1,1998 @@
+{
+  "id": "3e-mathematiques-02",
+  "year": "3e",
+  "subject": "mathematiques",
+  "title": "Fonctions et théorème de Thalès",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Notion de fonction",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vocabulaire des fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles décrivent correctement une fonction f ?",
+              "options": [
+                "À chaque nombre x de l'ensemble de départ, f associe un unique nombre f(x).",
+                "Un même x peut avoir plusieurs images f(x) différentes.",
+                "L'image de 3 par f est la valeur f(3).",
+                "f(2) = 5 signifie que 2 est l'image de 5."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une fonction associe une seule image à chaque antécédent ; f(3) est bien l'image de 3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si f(x) = 2x − 1, quelle est l'image de 4 ?",
+              "options": ["7", "8", "3", "9"],
+              "correctAnswers": [0],
+              "explanation": "f(4) = 2×4 − 1 = 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans f : x ↦ 5x + 2, quel est l'antécédent de 17 ?",
+              "options": ["3", "5", "87", "15"],
+              "correctAnswers": [0],
+              "explanation": "5x + 2 = 17 donne x = 3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une fonction linéaire est une fonction f telle que f(x) = …",
+              "options": [
+                "ax + b avec b ≠ 0",
+                "ax avec a constante",
+                "x²",
+                "1/x"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une fonction linéaire s'écrit f(x) = ax (produit en croix, droite passant par l'origine)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x) = −3x + 6. Que vaut f(0) ?",
+              "options": ["6", "−3", "0", "3"],
+              "correctAnswers": [0],
+              "explanation": "f(0) = −3×0 + 6 = 6 : c'est l'ordonnée à l'origine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le graphique d'une fonction associe à chaque abscisse x …",
+              "options": [
+                "plusieurs ordonnées possibles",
+                "une unique ordonnée f(x)",
+                "toujours y = 0",
+                "l'inverse de x"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un point du graphique a pour coordonnées (x ; f(x)), une seule ordonnée par x."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si f(−2) = 8, que peut-on dire ?",
+              "options": [
+                "L'image de −2 est 8.",
+                "L'antécédent de −2 est 8.",
+                "f(8) = −2.",
+                "−2 est l'image de 8."
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(−2) = 8 signifie que 8 est l'image de l'antécédent −2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "g(x) = x/4. Quelle est l'image de 12 ?",
+              "options": ["3", "48", "4", "8"],
+              "correctAnswers": [0],
+              "explanation": "g(12) = 12/4 = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une fonction affine non linéaire vérifie f(x) = ax + b avec …",
+              "options": ["a = 0", "b = 0", "b ≠ 0", "a = b = 0"],
+              "correctAnswers": [2],
+              "explanation": "Affine avec b ≠ 0 : la droite ne passe pas par l'origine (ce n'est pas une fonction linéaire)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "h(x) = 1,5x. Quelle est l'image de 10 ?",
+              "options": ["15", "11,5", "1,5", "20"],
+              "correctAnswers": [0],
+              "explanation": "h(10) = 1,5 × 10 = 15."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Calcul d'images",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x) = 3x + 1, quelles valeurs sont correctes ?",
+              "options": ["f(2) = 7", "f(0) = 0", "f(1) = 4", "f(3) = 9"],
+              "correctAnswers": [0, 2],
+              "explanation": "f(2)=7 et f(1)=4 ; f(0)=1 et f(3)=10, donc les propositions 2 et 4 sont fausses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x) = −2x + 5. Image de 3 ?",
+              "options": ["−1", "11", "1", "−6"],
+              "correctAnswers": [0],
+              "explanation": "f(3) = −6 + 5 = −1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x) = x² − 1 (sur les entiers). f(4) = ?",
+              "options": ["15", "16", "17", "8"],
+              "correctAnswers": [0],
+              "explanation": "4² − 1 = 16 − 1 = 15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x) = 0,5x + 3. f(6) = ?",
+              "options": ["6", "9", "3", "12"],
+              "correctAnswers": [0],
+              "explanation": "0,5×6 + 3 = 3 + 3 = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x) = 4 − x. f(−1) = ?",
+              "options": ["5", "3", "−5", "4"],
+              "correctAnswers": [0],
+              "explanation": "f(−1) = 4 − (−1) = 5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x) = 7x. f(−2) = ?",
+              "options": ["−14", "14", "−9", "5"],
+              "correctAnswers": [0],
+              "explanation": "7 × (−2) = −14."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x) = 2(x + 3). f(5) = ?",
+              "options": ["16", "10", "13", "8"],
+              "correctAnswers": [0],
+              "explanation": "2 × (5 + 3) = 2 × 8 = 16."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x) = −x + 10. f(10) = ?",
+              "options": ["0", "20", "−10", "10"],
+              "correctAnswers": [0],
+              "explanation": "−10 + 10 = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x) = 3x − 4. f(1/3) = ?",
+              "options": ["−3", "0", "−1", "1"],
+              "correctAnswers": [0],
+              "explanation": "3×(1/3) − 4 = 1 − 4 = −3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x) = 100 − 2x. f(25) = ?",
+              "options": ["50", "75", "25", "0"],
+              "correctAnswers": [0],
+              "explanation": "100 − 50 = 50."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Recherche d'antécédents",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x)=2x+3, quelles affirmations sont vraies ?",
+              "options": [
+                "L'antécédent de 11 est 4.",
+                "L'image de 4 est 11.",
+                "f(5)=11.",
+                "L'antécédent de 11 est 7."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2×4+3=11 et f(4)=11 ; f(5)=13 et 7 n'est pas solution de 2x+3=11."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=5x−2. Antécédent de 18 ?",
+              "options": ["4", "3,6", "20", "16"],
+              "correctAnswers": [0],
+              "explanation": "5x−2=18 ⇒ x=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=−x+8. Antécédent de 2 ?",
+              "options": ["6", "10", "−6", "4"],
+              "correctAnswers": [0],
+              "explanation": "−x+8=2 ⇒ x=6."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=x/3. Antécédent de 5 ?",
+              "options": ["15", "8", "5/3", "1,67"],
+              "correctAnswers": [0],
+              "explanation": "x/3=5 ⇒ x=15."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=4x. Antécédent de 0 ?",
+              "options": ["0", "4", "1", "−4"],
+              "correctAnswers": [0],
+              "explanation": "4x=0 ⇒ x=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=3x+9. Antécédent de 0 ?",
+              "options": ["−3", "3", "9", "−9"],
+              "correctAnswers": [0],
+              "explanation": "3x+9=0 ⇒ x=−3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=1,2x. Antécédent de 6 ?",
+              "options": ["5", "7,2", "4,8", "6"],
+              "correctAnswers": [0],
+              "explanation": "1,2x=6 ⇒ x=5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=10−x. Antécédent de 3 ?",
+              "options": ["7", "13", "−7", "10"],
+              "correctAnswers": [0],
+              "explanation": "10−x=3 ⇒ x=7."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=2(x−1). Antécédent de 8 ?",
+              "options": ["5", "4", "3", "6"],
+              "correctAnswers": [0],
+              "explanation": "2(x−1)=8 ⇒ x−1=4 ⇒ x=5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=−4x+20. Antécédent de 0 ?",
+              "options": ["5", "−5", "20", "4"],
+              "correctAnswers": [0],
+              "explanation": "−4x+20=0 ⇒ x=5."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fonctions linéaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lesquelles sont des fonctions linéaires ?",
+              "options": ["f(x)=−3x", "g(x)=2x+1", "h(x)=0,5x", "k(x)=7"],
+              "correctAnswers": [0, 2],
+              "explanation": "Une fonction linéaire s'écrit f(x)=ax ; g est affine et k est constante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=4x passe par quels points ?",
+              "options": [
+                "(0;0) et (1;4)",
+                "(0;4) et (1;0)",
+                "(1;1) seulement",
+                "(4;0) seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(0)=0 et f(1)=4 : droite par l'origine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Coefficient directeur de f(x)=−2x ?",
+              "options": ["−2", "2", "−2x", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dans ax, a=−2 est le coefficient directeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=3x et g(x)=x/2. f(6)−g(6)= ?",
+              "options": ["15", "18", "12", "3"],
+              "correctAnswers": [0],
+              "explanation": "18−3=15."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une fonction linéaire modélise une situation …",
+              "options": [
+                "de proportionnalité",
+                "avec un forfait fixe",
+                "quadratique",
+                "inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité ⇔ fonction linéaire f(x)=ax."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=−0,5x. f(−8)= ?",
+              "options": ["4", "−4", "4,5", "−3,5"],
+              "correctAnswers": [0],
+              "explanation": "−0,5×(−8)=4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pente de la droite d'équation y=7x ?",
+              "options": ["7", "0", "1", "7x"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient de x est 7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=ax avec f(3)=12. a= ?",
+              "options": ["4", "36", "9", "3"],
+              "correctAnswers": [0],
+              "explanation": "3a=12 ⇒ a=4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=−x. La droite est …",
+              "options": [
+                "décroissante",
+                "croissante",
+                "horizontale",
+                "constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficient −1<0 : fonction décroissante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=2,5x. f(4)= ?",
+              "options": ["10", "6,5", "8", "9"],
+              "correctAnswers": [0],
+              "explanation": "2,5×4=10."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fonctions affines",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x)=−2x+5, quelles affirmations sont exactes ?",
+              "options": [
+                "L'ordonnée à l'origine est 5.",
+                "Le coefficient directeur est −2.",
+                "f est linéaire.",
+                "f(0)=−2."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f(0)=5 et la pente est −2 ; ce n'est pas une fonction linéaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=x+3. f(−3)= ?",
+              "options": ["0", "6", "−3", "3"],
+              "correctAnswers": [0],
+              "explanation": "−3+3=0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Droite passant par (0;−1) et de pente 4 : f(x)= ?",
+              "options": ["4x−1", "4x+1", "x+4", "−x+4"],
+              "correctAnswers": [0],
+              "explanation": "f(x)=4x+b avec f(0)=−1 donne b=−1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=3x−6. Où la droite coupe-t-elle l'axe des abscisses ?",
+              "options": ["x=2", "x=−2", "x=6", "x=0"],
+              "correctAnswers": [0],
+              "explanation": "3x−6=0 ⇒ x=2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=−x+10. f(10)= ?",
+              "options": ["0", "20", "−10", "10"],
+              "correctAnswers": [0],
+              "explanation": "−10+10=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux droites affines parallèles ont …",
+              "options": [
+                "le même coefficient directeur",
+                "la même ordonnée à l'origine",
+                "toujours a=0",
+                "des pentes opposées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallélisme ⇔ mêmes pentes (coefficients directeurs)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=0,75x+2. Augmenter x de 4 augmente f(x) de …",
+              "options": ["3", "4", "2,75", "0,75"],
+              "correctAnswers": [0],
+              "explanation": "0,75×4=3 (variation linéaire en x)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=5−2x. Image de x=−1 ?",
+              "options": ["7", "3", "−7", "5"],
+              "correctAnswers": [0],
+              "explanation": "5−2×(−1)=7."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=ax+1 avec f(2)=9. a= ?",
+              "options": ["4", "5", "8", "2"],
+              "correctAnswers": [0],
+              "explanation": "2a+1=9 ⇒ a=4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=−3x+12. Antécédent de 0 ?",
+              "options": ["4", "−4", "12", "3"],
+              "correctAnswers": [0],
+              "explanation": "−3x+12=0 ⇒ x=4."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Tableaux de valeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f(x)=x−2. Quels couples (x;f(x)) sont corrects ?",
+              "options": ["(0;−2)", "(2;0)", "(−2;0)", "(3;0)"],
+              "correctAnswers": [0, 1],
+              "explanation": "f(0)=−2 et f(2)=0 ; f(−2)=−4 et f(3)=1≠0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(1)=5, f(2)=8, f(3)=11. Quelle formule convient ?",
+              "options": ["f(x)=3x+2", "f(x)=2x+3", "f(x)=3x+5", "f(x)=x+7"],
+              "correctAnswers": [0],
+              "explanation": "Pente 3 et f(1)=3+2=5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=2x+1. Que vaut f(−1) ?",
+              "options": ["−1", "1", "0", "−3"],
+              "correctAnswers": [0],
+              "explanation": "2×(−1)+1=−1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si f(0)=4 et f(4)=0 pour f(x)=ax+b, alors …",
+              "options": [
+                "b=4 et a=−1",
+                "b=0 et a=1",
+                "a=4 et b=0",
+                "a=0 et b=4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "b=4 et 4a+4=0 ⇒ a=−1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=−5x+10. f(1)+f(3)= ?",
+              "options": ["0", "10", "−10", "5"],
+              "correctAnswers": [0],
+              "explanation": "5+(−5)=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau : x=−1→7, x=0→4, x=1→1. f(x)= ?",
+              "options": ["−3x+4", "3x+4", "−3x−4", "x−3"],
+              "correctAnswers": [0],
+              "explanation": "Diminution de 3 quand x augmente de 1 : f(x)=−3x+4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=4x−3. Quelle valeur manque pour x=2 ?",
+              "options": ["5", "8", "1", "11"],
+              "correctAnswers": [0],
+              "explanation": "4×2−3=5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=x/2+1. f(6)= ?",
+              "options": ["4", "3", "7", "5"],
+              "correctAnswers": [0],
+              "explanation": "3+1=4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une fonction affine a un tableau qui varie de …",
+              "options": [
+                "quantité fixe quand x augmente de 1",
+                "façon imprévisible",
+                "zéro toujours",
+                "carré de x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pente a donne une variation constante Δf=a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=6−x. f(6)= ?",
+              "options": ["0", "12", "6", "−6"],
+              "correctAnswers": [0],
+              "explanation": "6−6=0."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Lecture graphique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur le graphique de f, le point A(2;5) signifie …",
+              "options": [
+                "f(2)=5",
+                "L'antécédent de 5 est 2",
+                "f(5)=2",
+                "2 est l'image de 5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Abscisse 2 et ordonnée 5 : f(2)=5 et 2 est antécédent de 5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La courbe coupe l'axe des ordonnées en (0;3). Donc …",
+              "options": ["f(0)=3", "f(3)=0", "pente 3", "f(x)=3x"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse 0, ordonnée 3 : image de 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graphique d'une fonction linéaire : forme …",
+              "options": [
+                "droite passant par l'origine",
+                "parabole",
+                "cercle",
+                "droite horizontale seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(x)=ax : droite par (0;0)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si f est croissante sur un intervalle, alors quand x augmente …",
+              "options": [
+                "f(x) augmente",
+                "f(x) diminue",
+                "f(x) reste nulle",
+                "f(x) disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance : plus grand x ⇒ plus grande image."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lecture : f(1)=−2 et f(3)=2. Coefficient directeur ?",
+              "options": ["2", "−2", "4", "1"],
+              "correctAnswers": [0],
+              "explanation": "(2−(−2))/(3−1)=4/2=2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un graphique avec deux ordonnées pour x=1 …",
+              "options": [
+                "ne peut pas représenter une fonction",
+                "est toujours affine",
+                "est une droite",
+                "est linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule image par antécédent est requise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=−4. Le graphique est …",
+              "options": [
+                "une droite horizontale y=−4",
+                "une droite verticale",
+                "une droite passant par O",
+                "une hyperbole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction constante : horizontale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur [0;4], f(2) est le maximum. f(2) vaut …",
+              "options": [
+                "la plus grande ordonnée atteinte",
+                "0",
+                "2",
+                "la pente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maximum sur l'intervalle = plus grande valeur de f."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Antécédent de 0 par lecture : intersection avec …",
+              "options": [
+                "l'axe des abscisses",
+                "l'axe des ordonnées",
+                "l'origine seule",
+                "y=1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(x)=0 ⇔ point (x;0) sur l'axe des x."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pente négative : droite …",
+              "options": [
+                "descend quand x augmente",
+                "monte quand x augmente",
+                "est horizontale",
+                "est verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a<0 : y diminue quand x croît."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Situations de proportionnalité directe depuis 0 : lesquelles ?",
+              "options": [
+                "3 kg pour 6 € ⇒ 5 kg pour 10 €",
+                "Forfait 2 € + 1 €/km",
+                "Doublement des kg double le prix",
+                "Prix fixe 15 € quel que soit le poids"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Même prix au kilo et règle « double la masse » ; forfait et prix fixe ne sont pas proportionnels à la masse depuis 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 cahiers coûtent 10 €. Prix de 7 cahiers ?",
+              "options": ["17,50 €", "14 €", "28 €", "70 €"],
+              "correctAnswers": [0],
+              "explanation": "2,50 €/cahier ×7=17,50 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=1,8x modélise un prix en € pour x kg. f(5)= ?",
+              "options": ["9 €", "6,3 €", "1,8 €", "13 €"],
+              "correctAnswers": [0],
+              "explanation": "1,8×5=9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Graphique proportionnel : courbe …",
+              "options": [
+                "droite par l'origine",
+                "parabole",
+                "droite décalée",
+                "cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité ⇔ droite passant par O."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Coefficient de proportionnalité 0,25 : f(12)= ?",
+              "options": ["3", "48", "0,25", "12,25"],
+              "correctAnswers": [0],
+              "explanation": "0,25×12=3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "150 km en 2 h. Distance en 5 h (même vitesse) ?",
+              "options": ["375 km", "300 km", "750 km", "350 km"],
+              "correctAnswers": [0],
+              "explanation": "75 km/h ×5=375 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tableau x:2→5, x:6→15. C'est proportionnel car …",
+              "options": ["5/2=15/6", "5+2=15+6", "5−2=15−6", "2×5=6×15"],
+              "correctAnswers": [0],
+              "explanation": "Quotient constant 2,5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Recette pour 4 personnes : 300 g de farine. Pour 10 personnes ?",
+              "options": ["750 g", "600 g", "120 g", "3000 g"],
+              "correctAnswers": [0],
+              "explanation": "75 g/personne ×10=750 g."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=ax, f(7)=21. f(3)= ?",
+              "options": ["9", "7", "3", "63"],
+              "correctAnswers": [0],
+              "explanation": "a=3 donc f(3)=9."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Non proportionnel : …",
+              "options": [
+                "loyer fixe + charges au m³",
+                "prix au gramme",
+                "distance ∝ temps (vitesse fixe)",
+                "conversion monnaie au taux fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part fixe + variable : pas une seule proportionnalité depuis 0."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes sur les fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Taxi : 3 € de prise en charge + 1,2 €/km. Quelles formules sont correctes ?",
+              "options": ["f(d)=1,2d+3", "f(0)=3", "f(d)=3d+1,2", "f(10)=12"],
+              "correctAnswers": [0, 1],
+              "explanation": "Coût affine ; f(10)=15 € donc f(10)=12 est faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(d)=0,08d+2 (d en km, f en €). Coût pour 25 km ?",
+              "options": ["4 €", "2 €", "6 €", "25 €"],
+              "correctAnswers": [0],
+              "explanation": "2+0,08×25=2+2=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Température F=1,8C+32. F pour C=20 ?",
+              "options": ["68", "52", "36", "20"],
+              "correctAnswers": [0],
+              "explanation": "36+32=68 °F."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=50x+100 (x en heures). f(0)= ?",
+              "options": ["100", "50", "0", "150"],
+              "correctAnswers": [0],
+              "explanation": "Forfait initial 100."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=−2x+30. Quand f(x)=0 ?",
+              "options": ["x=15", "x=−15", "x=30", "x=0"],
+              "correctAnswers": [0],
+              "explanation": "−2x+30=0 ⇒ x=15."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux forfaits : A=10+0,5x, B=4+x. Égalité pour x= ?",
+              "options": ["12", "6", "8", "10"],
+              "correctAnswers": [0],
+              "explanation": "10+0,5x=4+x ⇒ 6=0,5x ⇒ x=12."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=3x−5. Quelle image est négative ?",
+              "options": ["f(1)", "f(2)", "f(3)", "f(5)"],
+              "correctAnswers": [0],
+              "explanation": "f(1)=−2<0 ; les autres sont ≥0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réservoir : f(t)=200−5t (t en min). f(20)= ?",
+              "options": ["100", "300", "0", "20"],
+              "correctAnswers": [0],
+              "explanation": "200−100=100 litres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=12x (x en m, f en €). Antécédent de 48 € ?",
+              "options": ["4 m", "576 m", "12 m", "48 m"],
+              "correctAnswers": [0],
+              "explanation": "12x=48 ⇒ x=4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=x+15. Augmenter x de 3 change f(x) de …",
+              "options": ["3", "15", "18", "0"],
+              "correctAnswers": [0],
+              "explanation": "Pente 1 : +3 en x ⇒ +3 en f."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai pour f(x)=−x+4 ?",
+              "options": [
+                "f(4)=0",
+                "Coefficient directeur −1",
+                "f est croissante",
+                "f(0)=4"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "f(4)=0 et f(0)=4 ; pente −1 donc décroissante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image de −5 par f(x)=2x+7 ?",
+              "options": ["−3", "3", "−10", "12"],
+              "correctAnswers": [0],
+              "explanation": "−10+7=−3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Antécédent de 20 par f(x)=5x ?",
+              "options": ["4", "100", "5", "25"],
+              "correctAnswers": [0],
+              "explanation": "5x=20 ⇒ x=4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fonction est affine mais non linéaire ?",
+              "options": ["f(x)=x−1", "f(x)=3x", "f(x)=0", "f(x)=−2x"],
+              "correctAnswers": [0],
+              "explanation": "x−1 a une ordonnée à l'origine −1≠0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=1−3x. f(−2)= ?",
+              "options": ["7", "−5", "5", "−7"],
+              "correctAnswers": [0],
+              "explanation": "1+6=7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si f(1)=2 et f(3)=6 pour f(x)=ax, alors a= ?",
+              "options": ["2", "4", "3", "1"],
+              "correctAnswers": [0],
+              "explanation": "a×1=2 ⇒ a=2 (cohérent avec f(3)=6)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nombre d'antécédents de 10 pour f(x)=2x+10 ?",
+              "options": ["1", "0", "2", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "2x+10=10 ⇒ x=0 : unique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=0,4x+1. f(25)= ?",
+              "options": ["11", "10", "26", "1"],
+              "correctAnswers": [0],
+              "explanation": "10+1=11."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans f:x↦3x−2, le symbole ↦ signifie …",
+              "options": [
+                "à x on associe 3x−2",
+                "x est l'image",
+                "f est constante",
+                "x=3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notation fonction : x est l'antécédent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=−6x+18. Zéro de f ?",
+              "options": ["x=3", "x=−3", "x=18", "x=0"],
+              "correctAnswers": [0],
+              "explanation": "−6x+18=0 ⇒ x=3."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Théorème de Thalès",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Configuration de Thalès",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Thalès s'applique si …",
+              "options": [
+                "(DE)∥(BC) dans triangle ABC avec D∈[AB], E∈[AC]",
+                "Les rapports AD/AB et AE/AC sont égaux",
+                "D,E,G alignés quelconques",
+                "Un seul triangle sans parallèles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parallélisme DE∥BC ⇒ égalité des rapports sur les côtés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans ABC, DE∥BC. AD=2, AB=6. Rapport AD/AB ?",
+              "options": ["1/3", "2/3", "1/2", "3"],
+              "correctAnswers": [0],
+              "explanation": "2/6=1/3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DE∥BC, AD/AB=AE/AC. C'est …",
+              "options": ["Thalès", "Pythagore", "Cosinus", "Symétrie"],
+              "correctAnswers": [0],
+              "explanation": "Égalité de rapports : configuration de Thalès."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Points D sur [AB], E sur [AC], DE∥BC. Triangles ADE et ABC sont …",
+              "options": [
+                "en configuration de Thalès",
+                "isométriques toujours",
+                "sans lien",
+                "rectangles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit triangle coupé par une parallèle à la base."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si DE∥BC alors AD/DB = ?",
+              "options": ["AE/EC", "AB/AC", "DE/BC inverse", "1"],
+              "correctAnswers": [0],
+              "explanation": "Thalès donne aussi AD/DB=AE/EC."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "AB=8, AD=2, DE∥BC. AD/AB= ?",
+              "options": ["1/4", "1/2", "2/8 simplifié 1/4", "4"],
+              "correctAnswers": [0],
+              "explanation": "2/8=1/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Segment parallèle à un côté d'un triangle coupe les deux autres côtés …",
+              "options": [
+                "proportionnellement",
+                "en leurs milieux toujours",
+                "perpendiculairement",
+                "aléatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propriété centrale de Thalès."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "DE∥BC implique DE/BC = ?",
+              "options": ["AD/AB", "AB/AD", "AC/AE", "BC/DE seulement"],
+              "correctAnswers": [0],
+              "explanation": "Rapport des parallèles = rapport sur les côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour utiliser Thalès il faut identifier …",
+              "options": [
+                "deux droites parallèles coupées",
+                "un angle droit seul",
+                "un cercle",
+                "une médiatrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallélisme est la condition clé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "AB=5, AD=1, DE∥BC. AD/AB= ?",
+              "options": ["1/5", "5", "1/4", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "1/5."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Égalité de rapports",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "DE∥BC, AB=12, AD=4, AC=15, AE=5. Quelles égalités de Thalès sont vraies ?",
+              "options": ["AD/AB=AE/AC", "AD/AB=1/3", "AE/AC=1/2", "DE/BC=1/2"],
+              "correctAnswers": [0, 1],
+              "explanation": "4/12=5/15=1/3 ; AE/AC=1/3 et DE/BC=1/3, pas 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "AD/AB=3/4 et AB=20. AD= ?",
+              "options": ["15", "12", "5", "16"],
+              "correctAnswers": [0],
+              "explanation": "(3/4)×20=15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AE/AC=1/2, AC=14. AE= ?",
+              "options": ["7", "28", "7/2", "12"],
+              "correctAnswers": [0],
+              "explanation": "14/2=7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "AD=3, DB=6. AD/AB= ?",
+              "options": ["1/3", "1/2", "3/6", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "AB=9, 3/9=1/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DE/BC=2/5. Signifie …",
+              "options": [
+                "DE est 2/5 de BC",
+                "BC=2/5 de DE",
+                "DE=BC",
+                "DE perpendiculaire à BC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapport des longueurs parallèles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "AD/AB=AE/AC=0,25. AE si AC=40 ?",
+              "options": ["10", "160", "30", "0,25"],
+              "correctAnswers": [0],
+              "explanation": "0,25×40=10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AB=7, AD=2,1, DE∥BC. AD/AB= ?",
+              "options": ["0,3", "0,7", "3", "2,1"],
+              "correctAnswers": [0],
+              "explanation": "2,1/7=0,3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si AD/DB=2 alors AD/AB= ?",
+              "options": ["2/3", "2", "1/2", "3/2"],
+              "correctAnswers": [0],
+              "explanation": "AD/(AD+DB)=2/(2+1)=2/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "AC=9, AE=3, DE∥BC. AE/AC= ?",
+              "options": ["1/3", "3", "1/9", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "3/9=1/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rapports égaux AD/AB=AE/AC impliquent …",
+              "options": [
+                "DE∥BC (réciproque si alignement)",
+                "DE perpendiculaire",
+                "AB=AC",
+                "angles droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réciproque de Thalès dans la configuration triangle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calcul de longueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "DE∥BC, AD=3, AB=9, BC=12. Quelles affirmations sont vraies ?",
+              "options": ["AD/AB=1/3", "DE=4 cm", "DE=6 cm", "DE/BC=1/2"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rapport 1/3 donne DE=4 ; DE=6 correspondrait à AD/AB=1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "DE∥BC, AE=4, AC=10, BC=15. DE= ?",
+              "options": ["6", "4", "10", "25"],
+              "correctAnswers": [0],
+              "explanation": "AE/AC=0,4 ⇒ DE=0,4×15=6."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AD/AB=DE/BC, AB=8, AD=2, DE=3. BC= ?",
+              "options": ["12", "6", "24", "1,5"],
+              "correctAnswers": [0],
+              "explanation": "2/8=3/BC ⇒ BC=12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "DE∥BC, DE=5, BC=20. AD/AB= ?",
+              "options": ["1/4", "4", "1/5", "5/20 seulement sans simplifier"],
+              "correctAnswers": [0],
+              "explanation": "5/20=1/4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AB=15, AD=5, DE∥BC, BC=18. DE= ?",
+              "options": ["6", "54", "3", "9"],
+              "correctAnswers": [0],
+              "explanation": "5/15=1/3 ⇒ DE=6."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "AC=12, AE=9, DE∥BC, DE=6. BC= ?",
+              "options": ["8", "4,5", "18", "72"],
+              "correctAnswers": [0],
+              "explanation": "9/12=3/4 ⇒ BC=6×4/3=8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AD=4, DB=8, DE∥BC, BC=9. DE= ?",
+              "options": ["3", "6", "12", "1"],
+              "correctAnswers": [0],
+              "explanation": "AD/AB=4/12=1/3 ⇒ DE=3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "DE∥BC, AD/AB=0,6, BC=25. DE= ?",
+              "options": ["15", "0,6", "41,67", "10"],
+              "correctAnswers": [0],
+              "explanation": "0,6×25=15."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "AB=10, AD=7, DE∥BC, DE=14. BC= ?",
+              "options": ["20", "14", "7", "10"],
+              "correctAnswers": [0],
+              "explanation": "7/10=14/BC ⇒ BC=20."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Petit triangle ADE, DE=2,5 cm, grand BC=10 cm. DE/BC= ?",
+              "options": ["1/4", "4", "2,5", "0,25 cm"],
+              "correctAnswers": [0],
+              "explanation": "2,5/10=1/4."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Thalès dans un triangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Triangle ABC, M∈[AB], N∈[AC], MN∥BC. Vrai ?",
+              "options": [
+                "AM/AB=AN/AC",
+                "MN/BC=AM/AB",
+                "MN perpendiculaire à BC",
+                "AB=AC"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Configuration classique avec parallèle à la base."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "AM=2, AB=5, MN∥BC, BC=20. MN= ?",
+              "options": ["8", "10", "4", "50"],
+              "correctAnswers": [0],
+              "explanation": "2/5×20=8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AN=3, NC=6, MN∥BC. AN/AC= ?",
+              "options": ["1/3", "1/2", "3/6", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "AC=9, 3/9=1/3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "MN∥BC, MN=7, BC=21. AM/AB= ?",
+              "options": ["1/3", "3", "7/21 non simplifié", "21/7"],
+              "correctAnswers": [0],
+              "explanation": "7/21=1/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AB=6, AM=4, MN∥BC, MN=10. BC= ?",
+              "options": ["15", "6", "4", "12"],
+              "correctAnswers": [0],
+              "explanation": "4/6=10/BC ⇒ BC=15."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "M milieu de [AB], MN∥BC. Alors …",
+              "options": ["N est milieu de [AC]", "MN=BC", "AB=0", "MN⊥BC"],
+              "correctAnswers": [0],
+              "explanation": "Parallèle au milieu : milieu sur l'autre côté."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AC=8, AN=2, MN∥BC, BC=12. MN= ?",
+              "options": ["3", "6", "24", "4"],
+              "correctAnswers": [0],
+              "explanation": "2/8=1/4 ⇒ MN=3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "AM/MB=AN/NC équivaut à …",
+              "options": [
+                "MN∥BC (réciproque)",
+                "MN=BC",
+                "triangle rectangle",
+                "Thalès interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Égalité des rapports sur les côtés ⇒ parallélisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "AB=14, AM=3,5, MN∥BC. Rapport AM/AB ?",
+              "options": ["1/4", "1/2", "3,5", "4"],
+              "correctAnswers": [0],
+              "explanation": "3,5/14=1/4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "MN∥BC, BC=16, MN=4. AM vaut …",
+              "options": ["1/4 de AB", "1/2 de AB", "AB entier", "0"],
+              "correctAnswers": [0],
+              "explanation": "Rapport 1/4 sur les parallèles."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Droites parallèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux droites d et d' coupées par s1 et s2. Thalès (papillon) si …",
+              "options": [
+                "d∥d'",
+                "Les segments correspondants sont proportionnels",
+                "d⊥d' obligatoire",
+                "Un seul transversal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parallèles + proportionnalité des segments définissent la configuration."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "d∥d', AM=3, MB=6 sur d, A'M'=2 sur d'. MB= ?",
+              "options": ["4", "6", "1", "9"],
+              "correctAnswers": [0],
+              "explanation": "AM/A'M'=MB/M'B' avec A'M'=2, M'B'=4 si proportion 3:6=2:4 — actually need clearer problem. AM=3, MB=6, on parallel A'M'=2, find M'B': 3/2=6/x ⇒ x=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Segments AM=4, MB=2, A'M'=6. M'B'= ? (d∥d')",
+              "options": ["3", "12", "2", "8"],
+              "correctAnswers": [0],
+              "explanation": "4/6=2/M'B' ⇒ M'B'=3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Thalès « papillon » : les droites …",
+              "options": [
+                " sont parallèles",
+                " se coupent en un point du triangle",
+                " sont médiatrices",
+                " sont des hauteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux parallèles coupées par deux transversales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AM/MB=A'M'/M'B' avec d∥d'. Si AM=5, MB=5, A'M'=7 alors M'B'= ?",
+              "options": ["7", "5", "35", "1"],
+              "correctAnswers": [0],
+              "explanation": "5/5=7/M'B' ⇒ M'B'=7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Proportion 2/3=4/x. x= ?",
+              "options": ["6", "8", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "Produit en croix : 2x=12."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AM=1,5, MB=4,5. AM/AB= ?",
+              "options": ["1/4", "1/3", "3/4", "4,5"],
+              "correctAnswers": [0],
+              "explanation": "AB=6, 1,5/6=1/4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si d∦d', Thalès direct sur parallèles …",
+              "options": [
+                "ne s'applique pas",
+                "s'applique toujours",
+                "donne AB=CD",
+                "remplace Pythagore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallélisme requis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "AM=8, A'M'=12, MB=6. M'B'= ? (d∥d')",
+              "options": ["9", "16", "4", "72"],
+              "correctAnswers": [0],
+              "explanation": "8/12=6/M'B' ⇒ M'B'=9."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rapport AM/AB=3/5 implique AM/ MB= ?",
+              "options": ["3/2", "5/3", "3/5", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "AM/MB=3/(5−3)=3/2."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Agrandissement et réduction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Agrandissement de coefficient 2 : …",
+              "options": [
+                "Les longueurs sont multipliées par 2",
+                "Les aires sont multipliées par 4",
+                "Les angles changent",
+                "Le rapport de longueurs est 1/2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "k=2 pour les longueurs, k²=4 pour les aires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Figure réduite, rapport 1/3. Côté 15 cm devient …",
+              "options": ["5 cm", "45 cm", "3 cm", "1/3 cm"],
+              "correctAnswers": [0],
+              "explanation": "15×1/3=5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "DE∥BC, AD/AB=2/3. Aire ratio (petit/grand) si similarité ?",
+              "options": ["4/9", "2/3", "8/27", "1/9"],
+              "correctAnswers": [0],
+              "explanation": "(2/3)²=4/9 pour les aires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carte échelle 1/25 000. 4 cm sur carte = … en réalité",
+              "options": ["1 km", "100 m", "4 km", "250 m"],
+              "correctAnswers": [0],
+              "explanation": "4×25 000 cm=100 000 cm=1 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réduction k=0,5. Segment 18 cm →",
+              "options": ["9 cm", "36 cm", "0,5 cm", "4,5 cm"],
+              "correctAnswers": [0],
+              "explanation": "18×0,5=9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Triangles semblables, rapport 3/4. Petit côté 6, grand ?",
+              "options": ["8", "4,5", "18", "24"],
+              "correctAnswers": [0],
+              "explanation": "6×4/3=8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DE∥BC, AD/AB=5/8, DE=10. BC= ?",
+              "options": ["16", "6,25", "25", "8"],
+              "correctAnswers": [0],
+              "explanation": "10/BC=5/8 ⇒ BC=16."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Agrandissement ×1,5. 12 cm →",
+              "options": ["18 cm", "8 cm", "13,5 cm", "6 cm"],
+              "correctAnswers": [0],
+              "explanation": "12×1,5=18."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échelle 1/200. 3 m réels = … sur plan",
+              "options": ["1,5 cm", "6 cm", "600 cm", "0,015 cm"],
+              "correctAnswers": [0],
+              "explanation": "300/200=1,5 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rapport longueurs 2/5. Petit côté 14, grand ?",
+              "options": ["35", "5,6", "28", "70"],
+              "correctAnswers": [0],
+              "explanation": "14×5/2=35."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Problèmes concrets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ombre : personne 1,60 m, ombre 2 m ; arbre ombre 7,5 m. Quelles conclusions sont correctes ?",
+              "options": [
+                "Hauteur de l'arbre : 6 m",
+                "Rapport hauteur/ombre identique",
+                "Hauteur de l'arbre : 5 m",
+                "Ombre de l'arbre : 6 m"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1,6/2=h/7,5 ⇒ h=6 m ; les rayons parallèles donnent le même rapport."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1,60 m → ombre 2 m. Ombre 5 m correspond à hauteur ?",
+              "options": ["4 m", "3,2 m", "6,25 m", "2,5 m"],
+              "correctAnswers": [0],
+              "explanation": "Proportion 1,6/2=h/5 ⇒ h=4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Échelle 1/50. Pièce 4 m sur plan : …",
+              "options": ["8 cm", "20 cm", "2 cm", "80 cm"],
+              "correctAnswers": [0],
+              "explanation": "400/50=8 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux bâtiments parallèles vus en perspective : même rapport hauteur/distance ⇒ Thalès car …",
+              "options": [
+                "rayons parallèles (soleil)",
+                "angles droits",
+                "cercles",
+                "symétrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons solaires parallèles : configuration de Thalès."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux bâtiments alignés, même angle solaire : immeuble 12 m, ombre 8 m ; antenne ombre 2 m. Hauteur antenne ?",
+              "options": ["3 m", "6 m", "4 m", "24 m"],
+              "correctAnswers": [0],
+              "explanation": "12/8=h/2 ⇒ h=3 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Route monte, poteau vertical 2 m, ombre 3 m. Pente ? (rapport vertical/horizontal ombre)",
+              "options": ["2/3", "3/2", "1/2", "5 m"],
+              "correctAnswers": [0],
+              "explanation": "Tan géométrique via similarité : 2/3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Modèle réduit voiture échelle 1/43. Réelle 4,3 m, modèle ?",
+              "options": ["10 cm", "43 cm", "1 m", "4,3 cm"],
+              "correctAnswers": [0],
+              "explanation": "430/43=10 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Largeur rivière : alignement parallèle, AM=30 m, MB=20 m, MN=24 m parallèle. Largeur ?",
+              "options": ["40 m", "24 m", "50 m", "12 m"],
+              "correctAnswers": [0],
+              "explanation": "30/(30+20)=24/BC ⇒ BC=40."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Photocopie 125 %. Segment 8 cm devient ?",
+              "options": ["10 cm", "6,4 cm", "125 cm", "9,25 cm"],
+              "correctAnswers": [0],
+              "explanation": "8×1,25=10."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Même configuration Thalès, rapport 0,75. Grand côté 20, petit ?",
+              "options": ["15", "26,67", "5", "16"],
+              "correctAnswers": [0],
+              "explanation": "20×0,75=15."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réciproque et contraposée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "D∈[AB], E∈[AC]. Si AD/AB=AE/AC alors …",
+              "options": [
+                "(DE)∥(BC)",
+                "DE/BC=AD/AB",
+                "DE=BC",
+                "Triangle équilatéral"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réciproque : parallélisme, puis Thalès donne le rapport des longueurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contraposée utile : si DE n'est pas parallèle à BC alors …",
+              "options": [
+                "AD/AB≠AE/AC (dans la config.)",
+                "AD/AB=AE/AC",
+                "DE=BC",
+                "angles égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nier la conclusion équivaut à nier l'égalité des rapports."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AM/MB=AN/NC avec M∈[AB], N∈[AC]. On conclut …",
+              "options": ["MN∥BC", "MN⊥BC", "AB=AC", "BC=0"],
+              "correctAnswers": [0],
+              "explanation": "Réciproque de Thalès sur le triangle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "AD/AB=2/5 et AE/AC=3/5. DE et BC …",
+              "options": [
+                "ne sont pas parallèles",
+                "sont parallèles",
+                "sont égales",
+                "perpendiculaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapports différents ⇒ pas de parallélisme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour prouver DE∥BC par réciproque, il faut montrer …",
+              "options": ["AD/AB=AE/AC", "AD=AE", "AB=AC", "DE=BC"],
+              "correctAnswers": [0],
+              "explanation": "Égalité des rapports sur les deux côtés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si (DE)∦(BC), que peut-on affirmer ?",
+              "options": [
+                "AD/AB et AE/AC ne sont pas égaux",
+                "Ils sont égaux",
+                "DE=0",
+                "Thalès faux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraposée du théorème direct."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "AM=3, MB=2, AN=4,5, NC=3. MN et BC …",
+              "options": [
+                "parallèles",
+                "non parallèles",
+                "confondues",
+                "perpendiculaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3/2=4,5/3=1,5 : rapports égaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "AD/DB=AE/EC implique …",
+              "options": [
+                "DE∥BC",
+                "AD=AE",
+                "AB=AC",
+                "DB=EC seulement sans parallèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autre forme équivalente de Thalès."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vérifier parallélisme : calculer …",
+              "options": [
+                "AD/AB et AE/AC",
+                "aire du triangle",
+                "périmètre",
+                "somme des angles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparer les deux rapports."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "AM/AB=1/2=AN/AC. MN∥BC car …",
+              "options": [
+                "réciproque de Thalès",
+                "Pythagore",
+                "hasard",
+                "angles droits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapports égaux à 1/2 ⇒ parallèle à la base."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vérifier une configuration",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Configuration valide pour Thalès ?",
+              "options": [
+                "D sur [AB], E sur [AC], DE∥BC",
+                "D,E sur prolongements avec parallélisme",
+                "D au hasard sans lien avec AB",
+                "DE∥BC mais D∉[AB]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Segment parallèle à la base ou papillon avec parallèles ; D hors [AB] casse la config. triangle standard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "AB=10, AD=4, AC=8, AE=3,2. DE∥BC ?",
+              "options": ["Oui", "Non", "Impossible", "AB=AC"],
+              "correctAnswers": [0],
+              "explanation": "4/10=0,4 et 3,2/8=0,4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AD/AB=0,35, AE/AC=0,35. Conclusion ?",
+              "options": ["DE∥BC", "DE⊥BC", "Non parallèles", "AB=0"],
+              "correctAnswers": [0],
+              "explanation": "Rapports égaux ⇒ parallélisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Erreur fréquente : utiliser AD/AC au lieu de …",
+              "options": ["AD/AB", "DE/BC", "AB/BC", "AE/AB"],
+              "correctAnswers": [0],
+              "explanation": "Même côté pour numérateur et dénominateur du triangle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AB=6, AD=2, AC=9, AE=4. Parallèles ?",
+              "options": ["Non", "Oui", "Toujours", "DE=BC"],
+              "correctAnswers": [0],
+              "explanation": "2/6=1/3 mais 4/9≠1/3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre de résolution : 1) repérer parallèles 2) …",
+              "options": [
+                "écrire les rapports",
+                "calculer l'aire d'abord",
+                "Pythagore",
+                "trigonométrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode : parallèles puis égalité de rapports."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DE∥BC, AB=12, AD=8. AE/AC= ?",
+              "options": ["2/3", "8/12 simplifié", "3/2", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "8/12=2/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Figure papillon : segments sur une transversale 2 et 3, sur l'autre 4 et x, d∥d'. x= ?",
+              "options": ["6", "8", "1,5", "12"],
+              "correctAnswers": [0],
+              "explanation": "2/4=3/x ⇒ x=6."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "DE et BC correspondants, DE=9, BC=6. Rapport petit/grand ?",
+              "options": ["3/2", "2/3", "1/2", "9/6 non simplifié"],
+              "correctAnswers": [1],
+              "explanation": "Plus petit sur plus grand : 6/9=2/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Toutes les longueurs en cm, rapports sans unité car …",
+              "options": [
+                "rapport de deux longueurs",
+                "unités différentes",
+                "Thalès interdit",
+                "aire constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un rapport est adimensionnel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan Thalès",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "DE∥BC, AD=6, AB=10, BC=15. Vrai ?",
+              "options": ["AE/AC=3/5", "DE=9", "AD/AB=2/3", "DE=6"],
+              "correctAnswers": [0, 1],
+              "explanation": "6/10=3/5 ; DE=9 car 3/5×15=9."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "AD/AB=DE/BC. AD=5, AB=20, DE=4. BC= ?",
+              "options": ["16", "5", "80", "1"],
+              "correctAnswers": [0],
+              "explanation": "5/20=4/BC ⇒ BC=16."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "MN∥BC, AM=1, AB=4, BC=28. MN= ?",
+              "options": ["7", "4", "112", "1"],
+              "correctAnswers": [0],
+              "explanation": "1/4×28=7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échelle 1/100. 250 cm réels = … plan",
+              "options": ["2,5 cm", "25 cm", "2500 cm", "0,25 cm"],
+              "correctAnswers": [0],
+              "explanation": "250/100=2,5 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "AM/MB=AN/NC=2. MN∥BC ?",
+              "options": ["Oui", "Non", "Seulement si AB=AC", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Rapports égaux sur les deux côtés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "DE∥BC, DE=6, BC=18. AD/AB= ?",
+              "options": ["1/3", "3", "1/2", "2/3"],
+              "correctAnswers": [0],
+              "explanation": "6/18=1/3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Personne 1,50 m, ombre 2 m ; poteau ombre 6 m. Poteau ?",
+              "options": ["4,5 m", "5 m", "3 m", "9 m"],
+              "correctAnswers": [0],
+              "explanation": "1,5/2=h/6 ⇒ h=4,5 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "AD=7, AB=14, DE∥BC, AE=5. AC= ?",
+              "options": ["10", "7", "5", "14"],
+              "correctAnswers": [0],
+              "explanation": "7/14=5/AC ⇒ AC=10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réduction k=2/5. Grand 30 cm → petit ?",
+              "options": ["12 cm", "75 cm", "6 cm", "25 cm"],
+              "correctAnswers": [0],
+              "explanation": "30×2/5=12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Thalès sert surtout à …",
+              "options": [
+                "trouver des longueurs avec des parallèles",
+                "calculer des volumes seuls",
+                "résoudre x²=4",
+                "mesurer des angles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité induite par le parallélisme."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

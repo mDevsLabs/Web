@@ -27,6 +27,7 @@ import { isTouchDevice } from './input.ts';
 import { installLandscapeGuard } from './landscape.ts';
 import { loadingProgress, nextPaint } from './preload.ts';
 import { clearRoot, setRoot, toggleRootClass } from './root.ts';
+import { disposeArsenalViewer } from './ui/weapon-viewer.ts';
 import { loadProfile, loadSettings, flushProfileSave } from './storage.ts';
 import { preloadMenuPages } from './ui/page-loader.ts';
 import { UI } from './ui.ts';
@@ -67,6 +68,7 @@ export function unmountBlackline(): void {
   mountGeneration += 1;
   const instance = mounted;
   mounted = null;
+  disposeArsenalViewer();
   if (!instance) {
     clearRoot();
     return;
@@ -268,6 +270,7 @@ export async function mountBlackline(
     // Le moteur est monté : il devient l'instance libérable par l'hôte.
     mounted = {
       dispose: () => {
+        disposeArsenalViewer();
         game.dispose();
         ui.game = null;
         updateOrientation.dispose();

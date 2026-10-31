@@ -1,0 +1,2843 @@
+{
+  "id": "1ere-physique-chimie-03",
+  "year": "1ere",
+  "subject": "physique-chimie",
+  "title": "Ondes et signaux",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lunette et diffraction",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Lunette astronomique — bases",
+          "questions": [
+            {
+              "id": "u1-q01-n01",
+              "type": "multiple_choice",
+              "text": "Une lunette afocale permet surtout de :",
+              "question": "Une lunette afocale permet surtout de :",
+              "options": [
+                "Agrandir l'angle apparent",
+                "Raccourcir la distance réelle",
+                "Collecter plus de lumière",
+                "Annuler la diffraction"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Grossissement angulaire et gain de flux."
+            },
+            {
+              "id": "u1-q01-n02",
+              "type": "single_choice",
+              "text": "L'image intermédiaire de l'objectif est au :",
+              "question": "L'image intermédiaire de l'objectif est au :",
+              "options": [
+                "Foyer image de l'objectif",
+                "Foyer objet de l'oculaire",
+                "Centre de l'oculaire",
+                "Sommet du tube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons parallèles convergent au foyer image."
+            },
+            {
+              "id": "u1-q01-n03",
+              "type": "single_choice",
+              "text": "L'oculaire sert surtout à :",
+              "question": "L'oculaire sert surtout à :",
+              "options": [
+                "Agrandir l'image intermédiaire",
+                "Collecter la lumière lointaine",
+                "Disperser le spectre",
+                "Mesurer une masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loupe sur l'image réelle de l'objectif."
+            },
+            {
+              "id": "u1-q01-n04",
+              "type": "single_choice",
+              "text": "Rayons d'un astre lointain :",
+              "question": "Rayons d'un astre lointain :",
+              "options": [
+                "Quasi parallèles à l'axe",
+                "Toujours divergents",
+                "Issus du foyer objet",
+                "Horizontaux au sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle objet à l'infini."
+            },
+            {
+              "id": "u1-q01-n05",
+              "type": "single_choice",
+              "text": "G ≈ f_obj/f_ocu lorsque :",
+              "question": "G ≈ f_obj/f_ocu lorsque :",
+              "options": [
+                "La lunette est afocale",
+                "L'oculaire est divergent",
+                "Le tube est fermé",
+                "L'objectif est plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Configuration afocale standard."
+            },
+            {
+              "id": "u1-q01-n06",
+              "type": "single_choice",
+              "text": "Grand diamètre d'objectif :",
+              "question": "Grand diamètre d'objectif :",
+              "options": [
+                "Plus de flux lumineux",
+                "Suppression totale de diffraction",
+                "Chute libre",
+                "Grossissement nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surface collectrice proportionnelle au carré de D."
+            },
+            {
+              "id": "u1-q01-n07",
+              "type": "single_choice",
+              "text": "Image finale pour l'œil en afocal :",
+              "question": "Image finale pour l'œil en afocal :",
+              "options": [
+                "À l'infini",
+                "À 25 cm fixe",
+                "Sur l'objectif",
+                "Sans lentille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons sortants parallèles."
+            },
+            {
+              "id": "u1-q01-n08",
+              "type": "single_choice",
+              "text": "Image intermédiaire typique :",
+              "question": "Image intermédiaire typique :",
+              "options": [
+                "Réelle et renversée",
+                "Virtuelle et droite",
+                "Au foyer objet",
+                "Sans inversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lentille convergente, objet lointain."
+            },
+            {
+              "id": "u1-q01-n09",
+              "type": "single_choice",
+              "text": "Foyers confondus en afocal :",
+              "question": "Foyers confondus en afocal :",
+              "options": [
+                "Foyer image obj = foyer objet ocu",
+                "Foyers opposés",
+                "Oculaire absent",
+                "Objectif plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condition de réglage afocale."
+            },
+            {
+              "id": "u1-q01-n10",
+              "type": "single_choice",
+              "text": "Nébuleuse faible : priorité :",
+              "question": "Nébuleuse faible : priorité :",
+              "options": [
+                "Grand diamètre d'objectif",
+                "Prisme seul",
+                "Laser",
+                "Petit miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capter suffisamment de photons."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Foyers et grossissement",
+          "questions": [
+            {
+              "id": "u1-q02-n01",
+              "type": "multiple_choice",
+              "text": "Pour une lentille convergente, on trace :",
+              "question": "Pour une lentille convergente, on trace :",
+              "options": [
+                "Rayon par le centre optique",
+                "Rayon parallèle à l'axe vers le foyer image",
+                "Rayon toujours réfléchi",
+                "Rayon sans règle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Construction géométrique classique."
+            },
+            {
+              "id": "u1-q02-n02",
+              "type": "single_choice",
+              "text": "La distance focale f mesure :",
+              "question": "La distance focale f mesure :",
+              "options": [
+                "Distance centre optique–foyer image",
+                "Longueur du tube",
+                "Diamètre pupillaire",
+                "Temps de pose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractérise la convergence."
+            },
+            {
+              "id": "u1-q02-n03",
+              "type": "single_choice",
+              "text": "f_obj = 1000 mm, f_ocu = 25 mm donnent G ≈",
+              "question": "f_obj = 1000 mm, f_ocu = 25 mm donnent G ≈",
+              "options": ["40", "0,025", "1025", "25"],
+              "correctAnswers": [0],
+              "explanation": "Rapport des focales."
+            },
+            {
+              "id": "u1-q02-n04",
+              "type": "single_choice",
+              "text": "À f_obj fixe, diminuer f_ocu :",
+              "question": "À f_obj fixe, diminuer f_ocu :",
+              "options": ["Augmente G", "Diminue G", "Annule λ", "Fixe G à 1"],
+              "correctAnswers": [0],
+              "explanation": "G = f_obj/f_ocu."
+            },
+            {
+              "id": "u1-q02-n05",
+              "type": "single_choice",
+              "text": "Foyers objet et image d'une lentille mince :",
+              "question": "Foyers objet et image d'une lentille mince :",
+              "options": [
+                "Symétriques par rapport au centre",
+                "Toujours confondus",
+                "Absents",
+                "Au tube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie optique."
+            },
+            {
+              "id": "u1-q02-n06",
+              "type": "single_choice",
+              "text": "Diaphragmer l'objectif :",
+              "question": "Diaphragmer l'objectif :",
+              "options": [
+                "Limite les aberrations mais accentue la diffraction",
+                "Supprime toute diffraction",
+                "Double f",
+                "Empêche toute image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis netteté et tache diffractée."
+            },
+            {
+              "id": "u1-q02-n07",
+              "type": "single_choice",
+              "text": "Vergence C (dioptries) :",
+              "question": "Vergence C (dioptries) :",
+              "options": ["C = 1/f avec f en m", "C = f", "C = f²", "C = 0"],
+              "correctAnswers": [0],
+              "explanation": "Inverse de la focale en mètres."
+            },
+            {
+              "id": "u1-q02-n08",
+              "type": "single_choice",
+              "text": "Deux lentilles identiques en contact :",
+              "question": "Deux lentilles identiques en contact :",
+              "options": [
+                "Focale deux fois plus courte",
+                "Focale identique",
+                "Focale infinie",
+                "Focale divergente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vergences additives."
+            },
+            {
+              "id": "u1-q02-n09",
+              "type": "single_choice",
+              "text": "L'axe optique :",
+              "question": "L'axe optique :",
+              "options": [
+                "Passe par les centres optiques",
+                "Bord du tube seulement",
+                "Centre de la Terre",
+                "Plan focal image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie du système."
+            },
+            {
+              "id": "u1-q02-n10",
+              "type": "single_choice",
+              "text": "Objet céleste à l'infini :",
+              "question": "Objet céleste à l'infini :",
+              "options": [
+                "Faisceau parallèle entrant",
+                "Point au foyer objet",
+                "Source sans lumière",
+                "Faisceau divergent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approximation astronomique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Diffraction — principes",
+          "questions": [
+            {
+              "id": "u1-q03-n01",
+              "type": "multiple_choice",
+              "text": "La diffraction devient marquée si :",
+              "question": "La diffraction devient marquée si :",
+              "options": [
+                "L'ouverture est comparable à λ",
+                "Un obstacle contraint le front d'onde",
+                "λ vaut zéro",
+                "Il n'y a pas de propagation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échelle de l'ouverture proche de λ."
+            },
+            {
+              "id": "u1-q03-n02",
+              "type": "single_choice",
+              "text": "La diffraction montre que :",
+              "question": "La diffraction montre que :",
+              "options": [
+                "La lumière ne reste pas toujours un seul rayon rectiligne",
+                "Elle n'a pas de longueur d'onde",
+                "Elle est uniquement corpusculaire",
+                "Elle ne transporte pas d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étalement angulaire après une ouverture étroite."
+            },
+            {
+              "id": "u1-q03-n03",
+              "type": "single_choice",
+              "text": "À ouverture fixe, augmenter λ :",
+              "question": "À ouverture fixe, augmenter λ :",
+              "options": [
+                "Accentue la diffraction",
+                "La supprime",
+                "N'a aucun effet",
+                "Divise G par 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart angulaire typique proportionnel à λ/a."
+            },
+            {
+              "id": "u1-q03-n04",
+              "type": "single_choice",
+              "text": "Pour une lunette, la diffraction :",
+              "question": "Pour une lunette, la diffraction :",
+              "options": [
+                "Limite la résolution",
+                "Change c",
+                "Augmente la masse",
+                "Supprime le grossissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux points proches se confondent."
+            },
+            {
+              "id": "u1-q03-n05",
+              "type": "single_choice",
+              "text": "Une fente très fine produit :",
+              "question": "Une fente très fine produit :",
+              "options": [
+                "Une figure diffractée",
+                "Une ombre géométrique parfaite seule",
+                "Un écho",
+                "Une réaction chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maxima et minima de diffraction."
+            },
+            {
+              "id": "u1-q03-n06",
+              "type": "single_choice",
+              "text": "La diffraction concerne :",
+              "question": "La diffraction concerne :",
+              "options": [
+                "Les ondes en général",
+                "Uniquement le son",
+                "Ni lumière ni son",
+                "Les solides seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénomène général des ondes."
+            },
+            {
+              "id": "u1-q03-n07",
+              "type": "single_choice",
+              "text": "Réduire fortement D :",
+              "question": "Réduire fortement D :",
+              "options": [
+                "Élargit la tache diffractée",
+                "Supprime λ",
+                "Annule G",
+                "Rend l'image parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "θ_min proportionnel à λ/D."
+            },
+            {
+              "id": "u1-q03-n08",
+              "type": "single_choice",
+              "text": "L'optique géométrique seule :",
+              "question": "L'optique géométrique seule :",
+              "options": [
+                "Ne suffit pas pour la netteté fine",
+                "Remplace Maxwell",
+                "Ignore les lentilles",
+                "Mesure le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution ondulatoire."
+            },
+            {
+              "id": "u1-q03-n09",
+              "type": "single_choice",
+              "text": "Ordre de grandeur λ visible :",
+              "question": "Ordre de grandeur λ visible :",
+              "options": ["400 nm à 700 nm", "1 m", "1 mm", "1 km"],
+              "correctAnswers": [0],
+              "explanation": "Domaine visible."
+            },
+            {
+              "id": "u1-q03-n10",
+              "type": "single_choice",
+              "text": "Diffraction et interférences :",
+              "question": "Diffraction et interférences :",
+              "options": [
+                "Relèvent de la superposition d'ondes",
+                "Sans lien",
+                "Chimie seule",
+                "Interdisent les lunettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même cadre ondulatoire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Tache d'Airy et résolution",
+          "questions": [
+            {
+              "id": "u1-q04-n01",
+              "type": "multiple_choice",
+              "text": "Tache d'Airy et résolution :",
+              "question": "Tache d'Airy et résolution :",
+              "options": [
+                "Figure diffractée circulaire",
+                "Image géométrique parfaite",
+                "Limite la séparation de deux points",
+                "Signal sonore pur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tache + critère de résolution."
+            },
+            {
+              "id": "u1-q04-n02",
+              "type": "single_choice",
+              "text": "Deux points résolus si :",
+              "question": "Deux points résolus si :",
+              "options": [
+                "Séparation angulaire au-delà de la limite",
+                "Même couleur",
+                "Même distance en km",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère de Rayleigh."
+            },
+            {
+              "id": "u1-q04-n03",
+              "type": "single_choice",
+              "text": "Augmenter D à λ fixe :",
+              "question": "Augmenter D à λ fixe :",
+              "options": [
+                "Améliore la résolution",
+                "Empire la résolution",
+                "Sans effet",
+                "Annule G"
+              ],
+              "correctAnswers": [0],
+              "explanation": "θ_min ∝ λ/D."
+            },
+            {
+              "id": "u1-q04-n04",
+              "type": "single_choice",
+              "text": "À D fixe, λ plus petite :",
+              "question": "À D fixe, λ plus petite :",
+              "options": [
+                "Meilleure résolution",
+                "Pire résolution",
+                "D inutile",
+                "Franges absentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bleu mieux que rouge."
+            },
+            {
+              "id": "u1-q04-n05",
+              "type": "single_choice",
+              "text": "Profil de la tache d'Airy :",
+              "question": "Profil de la tache d'Airy :",
+              "options": [
+                "Max central et anneaux faibles",
+                "Carré uniforme",
+                "Noir total au centre",
+                "Une seule frange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction de Bessel."
+            },
+            {
+              "id": "u1-q04-n06",
+              "type": "single_choice",
+              "text": "Étoiles non résolues :",
+              "question": "Étoiles non résolues :",
+              "options": [
+                "Une tache unique",
+                "Deux couleurs",
+                "Rien",
+                "Un prisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convolution des taches."
+            },
+            {
+              "id": "u1-q04-n07",
+              "type": "single_choice",
+              "text": "Tache plus large si :",
+              "question": "Tache plus large si :",
+              "options": ["D petit", "D grand", "λ nulle", "Tube long"],
+              "correctAnswers": [0],
+              "explanation": "Diffraction dominante."
+            },
+            {
+              "id": "u1-q04-n08",
+              "type": "single_choice",
+              "text": "Résolution lunette ∝ :",
+              "question": "Résolution lunette ∝ :",
+              "options": ["λ/D", "D/λ", "G seul", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Formule d'ordre de grandeur."
+            },
+            {
+              "id": "u1-q04-n09",
+              "type": "single_choice",
+              "text": "Rayleigh :",
+              "question": "Rayleigh :",
+              "options": [
+                "Premier minimum au centre du pic voisin",
+                "Au Soleil",
+                "Sans critère",
+                "Au foyer objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition standard."
+            },
+            {
+              "id": "u1-q04-n10",
+              "type": "single_choice",
+              "text": "D grand en astrophoto :",
+              "question": "D grand en astrophoto :",
+              "options": [
+                "Détails plus fins",
+                "Flou systématique",
+                "Pas de photons",
+                "Son plus fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution et rapport signal/bruit."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Interférences — Young",
+          "questions": [
+            {
+              "id": "u1-q05-n01",
+              "type": "multiple_choice",
+              "text": "Young démontre :",
+              "question": "Young démontre :",
+              "options": [
+                "Des franges d'interférence",
+                "L'absence d'ondes",
+                "Le comportement ondulatoire de la lumière",
+                "La loi de Newton seule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Franges = superposition cohérente."
+            },
+            {
+              "id": "u1-q05-n02",
+              "type": "single_choice",
+              "text": "Deux fentes cohérentes :",
+              "question": "Deux fentes cohérentes :",
+              "options": [
+                "Franges claires et sombres",
+                "Ombre unique",
+                "Écho",
+                "Arc-en-ciel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constructive et destructive."
+            },
+            {
+              "id": "u1-q05-n03",
+              "type": "single_choice",
+              "text": "Frange brillante si δ =",
+              "question": "Frange brillante si δ =",
+              "options": ["kλ", "kλ/2", "λ/4 seule", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Différence de marche entière."
+            },
+            {
+              "id": "u1-q05-n04",
+              "type": "single_choice",
+              "text": "Frange sombre si δ =",
+              "question": "Frange sombre si δ =",
+              "options": ["(k+½)λ", "kλ", "0 seule", "2π"],
+              "correctAnswers": [0],
+              "explanation": "Déphasage demi-onde."
+            },
+            {
+              "id": "u1-q05-n05",
+              "type": "single_choice",
+              "text": "Interfrange i augmente si :",
+              "question": "Interfrange i augmente si :",
+              "options": [
+                "Écran plus loin",
+                "Écran collé",
+                "λ tend vers 0",
+                "Fentes fusionnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "i ∝ D/a en géométrie usuelle."
+            },
+            {
+              "id": "u1-q05-n06",
+              "type": "single_choice",
+              "text": "Cohérence :",
+              "question": "Cohérence :",
+              "options": [
+                "Phase stable dans le temps",
+                "Même marque",
+                "Même masse",
+                "Couleur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source ou fentes couplées."
+            },
+            {
+              "id": "u1-q05-n07",
+              "type": "single_choice",
+              "text": "λ plus grande :",
+              "question": "λ plus grande :",
+              "options": [
+                "Franges plus espacées",
+                "Plus serrées",
+                "Absentes",
+                "Carrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "i proportionnel à λ."
+            },
+            {
+              "id": "u1-q05-n08",
+              "type": "single_choice",
+              "text": "Lumière blanche :",
+              "question": "Lumière blanche :",
+              "options": [
+                "Franges colorées",
+                "Teinte unique",
+                "Rien",
+                "Son pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque λ a son interfrange."
+            },
+            {
+              "id": "u1-q05-n09",
+              "type": "single_choice",
+              "text": "Interférence requiert :",
+              "question": "Interférence requiert :",
+              "options": [
+                "Superposition d'ondes",
+                "Deux masses",
+                "Champ B seul",
+                "Gravité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de superposition."
+            },
+            {
+              "id": "u1-q05-n10",
+              "type": "single_choice",
+              "text": "Fentes plus rapprochées :",
+              "question": "Fentes plus rapprochées :",
+              "options": [
+                "i plus grand",
+                "i plus petit",
+                "Sans effet",
+                "G nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "i ∝ 1/a."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Interférences et intensité",
+          "questions": [
+            {
+              "id": "u1-q06-n01",
+              "type": "multiple_choice",
+              "text": "Interférence constructive :",
+              "question": "Interférence constructive :",
+              "options": [
+                "Intensité renforcée",
+                "Intensité nulle systématique",
+                "Déphasage π",
+                "Amplitudes en phase"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Addition en phase."
+            },
+            {
+              "id": "u1-q06-n02",
+              "type": "single_choice",
+              "text": "Interférence destructive :",
+              "question": "Interférence destructive :",
+              "options": [
+                "Intensité faible ou nulle",
+                "Intensité maximale",
+                "Sans déphasage",
+                "Double flux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitudes opposées."
+            },
+            {
+              "id": "u1-q06-n03",
+              "type": "single_choice",
+              "text": "Intensité en un point :",
+              "question": "Intensité en un point :",
+              "options": [
+                "Dépend de la superposition",
+                "De la masse molaire",
+                "Du pH",
+                "De la vitesse du mobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des ondes."
+            },
+            {
+              "id": "u1-q06-n04",
+              "type": "single_choice",
+              "text": "Deux ondes en phase :",
+              "question": "Deux ondes en phase :",
+              "options": [
+                "Renforcent l'intensité",
+                "S'annulent toujours",
+                "Changent λ",
+                "Inversent G"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constructive."
+            },
+            {
+              "id": "u1-q06-n05",
+              "type": "single_choice",
+              "text": "Déphasage π :",
+              "question": "Déphasage π :",
+              "options": [
+                "Destructive au centre",
+                "Constructive maximale",
+                "Sans effet",
+                "Double λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition de phase."
+            },
+            {
+              "id": "u1-q06-n06",
+              "type": "single_choice",
+              "text": "Franges sombres Young :",
+              "question": "Franges sombres Young :",
+              "options": ["δ = (k+½)λ", "δ = kλ", "Sans lumière", "Son seul"],
+              "correctAnswers": [0],
+              "explanation": "Condition destructive."
+            },
+            {
+              "id": "u1-q06-n07",
+              "type": "single_choice",
+              "text": "Cohérence limitée :",
+              "question": "Cohérence limitée :",
+              "options": [
+                "Franges moins nettes",
+                "λ nulle",
+                "Sans lumière",
+                "G infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source étendue ou incohérente."
+            },
+            {
+              "id": "u1-q06-n08",
+              "type": "single_choice",
+              "text": "Mesurer λ par Young :",
+              "question": "Mesurer λ par Young :",
+              "options": [
+                "Utilise a, D et i",
+                "Pèse la lentille",
+                "Mesure le son",
+                "Lit la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "λ = a·i/D."
+            },
+            {
+              "id": "u1-q06-n09",
+              "type": "single_choice",
+              "text": "Superposition cohérente :",
+              "question": "Superposition cohérente :",
+              "options": [
+                "Peut créer des zones sombres",
+                "Interdit toute ombre",
+                "Supprime λ",
+                "Crée un laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Destructive possible."
+            },
+            {
+              "id": "u1-q06-n10",
+              "type": "single_choice",
+              "text": "Contraste des franges :",
+              "question": "Contraste des franges :",
+              "options": [
+                "Dépend des amplitudes",
+                "De la couleur du tube",
+                "De la masse terrestre",
+                "Du volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitudes comparables ⇒ contraste élevé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Longueur d'onde et couleur",
+          "questions": [
+            {
+              "id": "u1-q07-n01",
+              "type": "multiple_choice",
+              "text": "Dans le visible :",
+              "question": "Dans le visible :",
+              "options": [
+                "λ courte vers bleu",
+                "λ longue vers rouge",
+                "λ mesure la masse",
+                "λ vaut 1 m"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Spectre violet à rouge."
+            },
+            {
+              "id": "u1-q07-n02",
+              "type": "single_choice",
+              "text": "c = λ f implique :",
+              "question": "c = λ f implique :",
+              "options": ["f = c/λ", "f = λ/c", "f = cλ", "f = 0"],
+              "correctAnswers": [0],
+              "explanation": "Lien fréquence–longueur d'onde."
+            },
+            {
+              "id": "u1-q07-n03",
+              "type": "single_choice",
+              "text": "λ = 600 nm, c ≈ 3×10⁸ m·s⁻¹ ⇒ f ≈",
+              "question": "λ = 600 nm, c ≈ 3×10⁸ m·s⁻¹ ⇒ f ≈",
+              "options": ["5×10¹⁴ Hz", "600 Hz", "340 Hz", "0 Hz"],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur du rouge."
+            },
+            {
+              "id": "u1-q07-n04",
+              "type": "single_choice",
+              "text": "Lumière monochromatique :",
+              "question": "Lumière monochromatique :",
+              "options": [
+                "Une λ dominante",
+                "Toutes λ égales",
+                "Sans fréquence",
+                "Son pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur étroite."
+            },
+            {
+              "id": "u1-q07-n05",
+              "type": "single_choice",
+              "text": "Prisme :",
+              "question": "Prisme :",
+              "options": [
+                "Dispersion selon λ",
+                "λ identiques",
+                "Sans réfraction",
+                "c = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice dépend de λ."
+            },
+            {
+              "id": "u1-q07-n06",
+              "type": "single_choice",
+              "text": "Filtre rouge :",
+              "question": "Filtre rouge :",
+              "options": [
+                "Transmet λ longues",
+                "λ courtes seules",
+                "Aucune lumière",
+                "Ultrasons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption sélective."
+            },
+            {
+              "id": "u1-q07-n07",
+              "type": "single_choice",
+              "text": "Laser rouge typique λ ≈",
+              "question": "Laser rouge typique λ ≈",
+              "options": ["650 nm", "650 m", "650 km", "650 mm"],
+              "correctAnswers": [0],
+              "explanation": "Nanomètres."
+            },
+            {
+              "id": "u1-q07-n08",
+              "type": "single_choice",
+              "text": "Young bleu vs rouge :",
+              "question": "Young bleu vs rouge :",
+              "options": [
+                "Fringes plus serrées pour le bleu",
+                "Identiques",
+                "Bleu absent",
+                "Rouge seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "i ∝ λ."
+            },
+            {
+              "id": "u1-q07-n09",
+              "type": "single_choice",
+              "text": "Couleur perçue :",
+              "question": "Couleur perçue :",
+              "options": [
+                "Liée au spectre",
+                "À la masse",
+                "Sans lien avec f",
+                "Toujours blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre et œil."
+            },
+            {
+              "id": "u1-q07-n10",
+              "type": "single_choice",
+              "text": "Mesurer λ en classe :",
+              "question": "Mesurer λ en classe :",
+              "options": [
+                "Young avec i, a, D",
+                "Peser la lentille",
+                "Mesurer pH",
+                "Lire v du mobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule géométrique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Champ et réglages",
+          "questions": [
+            {
+              "id": "u1-q08-n01",
+              "type": "multiple_choice",
+              "text": "Champ de vue lunette :",
+              "question": "Champ de vue lunette :",
+              "options": [
+                "Zone du ciel visible",
+                "Distance réelle en km",
+                "Masse objectif",
+                "Diamètre angulaire du champ"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Champ angulaire, pas distance réelle."
+            },
+            {
+              "id": "u1-q08-n02",
+              "type": "single_choice",
+              "text": "Oculaire focale courte :",
+              "question": "Oculaire focale courte :",
+              "options": [
+                "Augmente G",
+                "Diminue G",
+                "Change λ",
+                "Ferme le tube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "G = f_obj/f_ocu."
+            },
+            {
+              "id": "u1-q08-n03",
+              "type": "single_choice",
+              "text": "Réticule :",
+              "question": "Réticule :",
+              "options": [
+                "Pointer et mesurer des angles",
+                "Disperser λ",
+                "Créer un laser",
+                "Mesurer pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères angulaires."
+            },
+            {
+              "id": "u1-q08-n04",
+              "type": "single_choice",
+              "text": "Mise au point afocale :",
+              "question": "Mise au point afocale :",
+              "options": [
+                "Confondre les foyers",
+                "Coller l'œil à l'objectif",
+                "Retirer l'oculaire",
+                "Fermer le diaphragme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglage standard."
+            },
+            {
+              "id": "u1-q08-n05",
+              "type": "single_choice",
+              "text": "Vision détendue :",
+              "question": "Vision détendue :",
+              "options": [
+                "Accommodation minimale",
+                "Maximale",
+                "Œil fermé",
+                "Sans rétine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image à l'infini."
+            },
+            {
+              "id": "u1-q08-n06",
+              "type": "single_choice",
+              "text": "Viseur faible G :",
+              "question": "Viseur faible G :",
+              "options": [
+                "Facilite la recherche",
+                "Remplace l'objectif",
+                "Mesure le son",
+                "Supprime λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand champ avant fort grossissement."
+            },
+            {
+              "id": "u1-q08-n07",
+              "type": "single_choice",
+              "text": "Aligner l'axe :",
+              "question": "Aligner l'axe :",
+              "options": [
+                "Centrer objectif et oculaire",
+                "Incliner au hasard",
+                "Masquer l'objectif",
+                "Retirer l'oculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie du système."
+            },
+            {
+              "id": "u1-q08-n08",
+              "type": "single_choice",
+              "text": "Image renversée :",
+              "question": "Image renversée :",
+              "options": [
+                "Normale pour l'objectif",
+                "Erreur systématique",
+                "Impossible",
+                "Due au son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inversion géométrique."
+            },
+            {
+              "id": "u1-q08-n09",
+              "type": "single_choice",
+              "text": "Filtre Hα :",
+              "question": "Filtre Hα :",
+              "options": [
+                "Isoler une raie rouge solaire",
+                "Mesurer la masse",
+                "Créer un écho",
+                "Diviser c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Astrophotographie solaire."
+            },
+            {
+              "id": "u1-q08-n10",
+              "type": "single_choice",
+              "text": "Tube trop court :",
+              "question": "Tube trop court :",
+              "options": [
+                "Impossible d'être afocale",
+                "G infini",
+                "λ nulle",
+                "Sans image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance minimale entre lentilles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Limite optique et pratique",
+          "questions": [
+            {
+              "id": "u1-q09-n01",
+              "type": "multiple_choice",
+              "text": "Netteté limitée par :",
+              "question": "Netteté limitée par :",
+              "options": [
+                "Diffraction et aberrations",
+                "Masse de Jupiter",
+                "pH",
+                "Vitesse du son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diffraction et défauts géométriques."
+            },
+            {
+              "id": "u1-q09-n02",
+              "type": "single_choice",
+              "text": "Aberration chromatique :",
+              "question": "Aberration chromatique :",
+              "options": [
+                "Focalisation selon λ",
+                "Absence de couleur",
+                "λ unique",
+                "Son grave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice dispersif."
+            },
+            {
+              "id": "u1-q09-n03",
+              "type": "single_choice",
+              "text": "Miroir parabolique :",
+              "question": "Miroir parabolique :",
+              "options": [
+                "Limite l'aberration sphérique",
+                "Supprime toute diffraction",
+                "Change c",
+                "Change le timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stigmatisme à l'infini."
+            },
+            {
+              "id": "u1-q09-n04",
+              "type": "single_choice",
+              "text": "Fort G sans D :",
+              "question": "Fort G sans D :",
+              "options": [
+                "N'améliore pas la résolution",
+                "Résout toujours mieux",
+                "Supprime diffraction",
+                "Change λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grossir ≠ résoudre."
+            },
+            {
+              "id": "u1-q09-n05",
+              "type": "single_choice",
+              "text": "Seeing :",
+              "question": "Seeing :",
+              "options": [
+                "Turbulence atmosphérique",
+                "Couleur oculaire",
+                "Masse lunaire",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agitation de l'image."
+            },
+            {
+              "id": "u1-q09-n06",
+              "type": "single_choice",
+              "text": "Observer au zénith :",
+              "question": "Observer au zénith :",
+              "options": [
+                "Moins d'air turbulent",
+                "Impossible",
+                "Sans étoiles",
+                "λ nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemin optique réduit."
+            },
+            {
+              "id": "u1-q09-n07",
+              "type": "single_choice",
+              "text": "Filtre lunaire :",
+              "question": "Filtre lunaire :",
+              "options": [
+                "Atténue l'éblouissement",
+                "Amplifie λ",
+                "Crée un laser",
+                "Mesure f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confort visuel."
+            },
+            {
+              "id": "u1-q09-n08",
+              "type": "single_choice",
+              "text": "Monture équatoriale :",
+              "question": "Monture équatoriale :",
+              "options": [
+                "Compense rotation terrestre",
+                "Supprime G",
+                "Remplace l'objectif",
+                "Mesure le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi des astres."
+            },
+            {
+              "id": "u1-q09-n09",
+              "type": "single_choice",
+              "text": "Capteur CCD :",
+              "question": "Capteur CCD :",
+              "options": [
+                "Intégration longue du flux",
+                "Remplace λ",
+                "Supprime diffraction",
+                "Émet du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Astrophoto sensible."
+            },
+            {
+              "id": "u1-q09-n10",
+              "type": "single_choice",
+              "text": "Entretien optique :",
+              "question": "Entretien optique :",
+              "options": [
+                "Éviter rayures et poussière",
+                "Utiliser du sable",
+                "Sans importance",
+                "Nettoyage abrasif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualité préservée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse lunette et diffraction",
+          "questions": [
+            {
+              "id": "u1-q10-n01",
+              "type": "multiple_choice",
+              "text": "Synthèse lunette afocale :",
+              "question": "Synthèse lunette afocale :",
+              "options": [
+                "Image à l'infini pour l'œil",
+                "Combine collecte et grossissement",
+                "Résout sans limite",
+                "Transforme lumière en son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Confort visuel, flux et G."
+            },
+            {
+              "id": "u1-q10-n02",
+              "type": "single_choice",
+              "text": "Diffraction impose :",
+              "question": "Diffraction impose :",
+              "options": [
+                "Une tache minimale",
+                "λ nulle",
+                "G = 0",
+                "Sans photons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite de résolution."
+            },
+            {
+              "id": "u1-q10-n03",
+              "type": "single_choice",
+              "text": "G et résolution :",
+              "question": "G et résolution :",
+              "options": [
+                "Indépendants",
+                "Toujours égaux",
+                "Sans lien avec D",
+                "Identiques au son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fort G n'améliore pas θ_min."
+            },
+            {
+              "id": "u1-q10-n04",
+              "type": "single_choice",
+              "text": "Young et lunette :",
+              "question": "Young et lunette :",
+              "options": [
+                "Optique ondulatoire",
+                "Sans lien",
+                "Chimie seule",
+                "Mécanique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ondes et instruments."
+            },
+            {
+              "id": "u1-q10-n05",
+              "type": "single_choice",
+              "text": "λ dans θ ∝ λ/D :",
+              "question": "λ dans θ ∝ λ/D :",
+              "options": [
+                "Plus petite ⇒ mieux résoudre",
+                "Plus grande ⇒ mieux",
+                "Sans effet",
+                "Annule D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur."
+            },
+            {
+              "id": "u1-q10-n06",
+              "type": "single_choice",
+              "text": "D 200 mm vs 50 mm :",
+              "question": "D 200 mm vs 50 mm :",
+              "options": [
+                "Meilleure résolution et flux",
+                "Pire toujours",
+                "Identique",
+                "Son plus fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux ∝ D²."
+            },
+            {
+              "id": "u1-q10-n07",
+              "type": "single_choice",
+              "text": "Franges floues :",
+              "question": "Franges floues :",
+              "options": [
+                "Source moins cohérente",
+                "λ nulle",
+                "Sans lumière",
+                "G infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence limitée."
+            },
+            {
+              "id": "u1-q10-n08",
+              "type": "single_choice",
+              "text": "Choix oculaire :",
+              "question": "Choix oculaire :",
+              "options": [
+                "Compromis G et confort",
+                "Sans effet",
+                "Change c",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ et luminosité."
+            },
+            {
+              "id": "u1-q10-n09",
+              "type": "single_choice",
+              "text": "θ_min ordre de grandeur :",
+              "question": "θ_min ordre de grandeur :",
+              "options": ["1,22 λ/D", "λ D", "D/λ", "G seul"],
+              "correctAnswers": [0],
+              "explanation": "Tache d'Airy."
+            },
+            {
+              "id": "u1-q10-n10",
+              "type": "single_choice",
+              "text": "Objectif du chapitre :",
+              "question": "Objectif du chapitre :",
+              "options": [
+                "Lunette, diffraction, interférences",
+                "Étudier les suites",
+                "Factoriser",
+                "Mesurer pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ondes et signaux lumineux."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Sons et musique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Propagation du son",
+          "questions": [
+            {
+              "id": "u2-q01-n01",
+              "type": "multiple_choice",
+              "text": "Onde sonore dans l'air :",
+              "question": "Onde sonore dans l'air :",
+              "options": [
+                "Nécessite un milieu matériel",
+                "Se propage dans le vide",
+                "Transporte énergie sans matière",
+                "Est une onde électromagnétique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Onde mécanique ; énergie sans transport global de matière."
+            },
+            {
+              "id": "u2-q01-n02",
+              "type": "single_choice",
+              "text": "c son dans l'air (ordre) :",
+              "question": "c son dans l'air (ordre) :",
+              "options": ["340 m·s⁻¹", "3×10⁸ m·s⁻¹", "340 km·s⁻¹", "1 m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "Ordre de grandeur à température ambiante."
+            },
+            {
+              "id": "u2-q01-n03",
+              "type": "single_choice",
+              "text": "Dans l'eau ou l'acier, c son :",
+              "question": "Dans l'eau ou l'acier, c son :",
+              "options": [
+                "En général plus élevée",
+                "Toujours nulle",
+                "Inférieure à 1 m·s⁻¹",
+                "Comme dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu plus raide ⇒ c plus grande."
+            },
+            {
+              "id": "u2-q01-n04",
+              "type": "single_choice",
+              "text": "f et T :",
+              "question": "f et T :",
+              "options": ["f = 1/T", "f = T", "f = T²", "f = 0"],
+              "correctAnswers": [0],
+              "explanation": "Relation inverse."
+            },
+            {
+              "id": "u2-q01-n05",
+              "type": "single_choice",
+              "text": "Dans un milieu : c =",
+              "question": "Dans un milieu : c =",
+              "options": ["λ f", "λ/f", "f/λ", "λ + f"],
+              "correctAnswers": [0],
+              "explanation": "Lien fondamental."
+            },
+            {
+              "id": "u2-q01-n06",
+              "type": "single_choice",
+              "text": "Son aigu :",
+              "question": "Son aigu :",
+              "options": [
+                "Grande fréquence",
+                "Petite fréquence",
+                "λ infinie",
+                "Amplitude nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur liée à f."
+            },
+            {
+              "id": "u2-q01-n07",
+              "type": "single_choice",
+              "text": "Grande amplitude :",
+              "question": "Grande amplitude :",
+              "options": [
+                "Son plus intense à distance fixe",
+                "Fréquence plus haute",
+                "λ toujours plus petite",
+                "c plus grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau lié à l'énergie."
+            },
+            {
+              "id": "u2-q01-n08",
+              "type": "single_choice",
+              "text": "Le son ne se propage pas :",
+              "question": "Le son ne se propage pas :",
+              "options": [
+                "Dans le vide",
+                "Dans l'air",
+                "Dans l'eau",
+                "Dans un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de milieu ⇒ pas d'onde mécanique."
+            },
+            {
+              "id": "u2-q01-n09",
+              "type": "single_choice",
+              "text": "Membrane de haut-parleur :",
+              "question": "Membrane de haut-parleur :",
+              "options": [
+                "Compressions et rarefactions",
+                "Lumière seule",
+                "λ visible",
+                "Supprime f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source mécanique."
+            },
+            {
+              "id": "u2-q01-n10",
+              "type": "single_choice",
+              "text": "Écho :",
+              "question": "Écho :",
+              "options": [
+                "Onde réfléchie",
+                "Disparition totale",
+                "c = 0",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement d'onde."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Fréquence et période",
+          "questions": [
+            {
+              "id": "u2-q02-n01",
+              "type": "multiple_choice",
+              "text": "Fréquence et période :",
+              "question": "Fréquence et période :",
+              "options": [
+                "f et T sont inverses (f = 1/T)",
+                "Doubler f divise T par 2",
+                "T mesure le niveau en décibels",
+                "f se mesure en m·s⁻¹"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Relations fondamentales entre f et T."
+            },
+            {
+              "id": "u2-q02-n02",
+              "type": "single_choice",
+              "text": "f = 440 Hz ⇒ T ≈",
+              "question": "f = 440 Hz ⇒ T ≈",
+              "options": ["2,3 ms", "440 s", "0 Hz", "220 s"],
+              "correctAnswers": [0],
+              "explanation": "T = 1/f."
+            },
+            {
+              "id": "u2-q02-n03",
+              "type": "single_choice",
+              "text": "Doubler f :",
+              "question": "Doubler f :",
+              "options": [
+                "T divisée par 2",
+                "T double",
+                "c double",
+                "λ infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relation inverse."
+            },
+            {
+              "id": "u2-q02-n04",
+              "type": "single_choice",
+              "text": "440 Hz et 880 Hz :",
+              "question": "440 Hz et 880 Hz :",
+              "options": [
+                "Intervalle d'octave",
+                "Même note",
+                "Silence",
+                "λ identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapport 2:1."
+            },
+            {
+              "id": "u2-q02-n05",
+              "type": "single_choice",
+              "text": "Unité SI de f :",
+              "question": "Unité SI de f :",
+              "options": ["hertz (Hz)", "décibel", "newton", "joule"],
+              "correctAnswers": [0],
+              "explanation": "s⁻¹."
+            },
+            {
+              "id": "u2-q02-n06",
+              "type": "single_choice",
+              "text": "Son grave :",
+              "question": "Son grave :",
+              "options": [
+                "Basse fréquence",
+                "Haute fréquence",
+                "Amplitude nulle",
+                "c nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur basse."
+            },
+            {
+              "id": "u2-q02-n07",
+              "type": "single_choice",
+              "text": "λ = 0,5 m, f = 680 Hz ⇒ c ≈",
+              "question": "λ = 0,5 m, f = 680 Hz ⇒ c ≈",
+              "options": ["340 m·s⁻¹", "680 m·s⁻¹", "170 m·s⁻¹", "3×10⁸ m·s⁻¹"],
+              "correctAnswers": [0],
+              "explanation": "c = λf."
+            },
+            {
+              "id": "u2-q02-n08",
+              "type": "single_choice",
+              "text": "Ultrason > 20 kHz :",
+              "question": "Ultrason > 20 kHz :",
+              "options": [
+                "Au-dessus de l'audible",
+                "Grave",
+                "Silence",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite ~20 kHz."
+            },
+            {
+              "id": "u2-q02-n09",
+              "type": "single_choice",
+              "text": "Infrason < 20 Hz :",
+              "question": "Infrason < 20 Hz :",
+              "options": ["Sous l'audible", "Aigu", "λ nulle", "Laser"],
+              "correctAnswers": [0],
+              "explanation": "Limite basse."
+            },
+            {
+              "id": "u2-q02-n10",
+              "type": "single_choice",
+              "text": "Octave supérieure :",
+              "question": "Octave supérieure :",
+              "options": ["f × 2", "f / 2", "f + 1", "f = 0"],
+              "correctAnswers": [0],
+              "explanation": "Définition musique ; l'oscilloscope permet de mesurer T."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Hauteur et intensité",
+          "questions": [
+            {
+              "id": "u2-q03-n01",
+              "type": "multiple_choice",
+              "text": "Hauteur et niveau sonore :",
+              "question": "Hauteur et niveau sonore :",
+              "options": [
+                "La hauteur dépend surtout de f",
+                "L'intensité dépend surtout de l'amplitude",
+                "La couleur fixe la hauteur",
+                "Le pH fixe la hauteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hauteur (f) et niveau (amplitude) se distinguent."
+            },
+            {
+              "id": "u2-q03-n02",
+              "type": "single_choice",
+              "text": "Double f à amplitude fixe :",
+              "question": "Double f à amplitude fixe :",
+              "options": [
+                "Son plus aigu",
+                "Son plus grave",
+                "Silence",
+                "Changement de timbre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur monte avec f."
+            },
+            {
+              "id": "u2-q03-n03",
+              "type": "single_choice",
+              "text": "Double amplitude à f fixe :",
+              "question": "Double amplitude à f fixe :",
+              "options": [
+                "Son plus fort",
+                "Son plus aigu",
+                "Fréquence double",
+                "Son dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité augmente."
+            },
+            {
+              "id": "u2-q03-n04",
+              "type": "single_choice",
+              "text": "La note La4 :",
+              "question": "La note La4 :",
+              "options": ["440 Hz", "340 Hz", "440 m·s⁻¹", "440 N"],
+              "correctAnswers": [0],
+              "explanation": "Référence musicale usuelle."
+            },
+            {
+              "id": "u2-q03-n05",
+              "type": "single_choice",
+              "text": "Grave vs aigu :",
+              "question": "Grave vs aigu :",
+              "options": [
+                "f plus basse vs plus haute",
+                "Amplitude nulle vs grande",
+                "Son dans vide vs air",
+                "λ visible vs IR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire hauteur."
+            },
+            {
+              "id": "u2-q03-n06",
+              "type": "single_choice",
+              "text": "Sifflet vs grosse caisse :",
+              "question": "Sifflet vs grosse caisse :",
+              "options": [
+                "Hautes f vs basses f typiquement",
+                "Même hauteur toujours",
+                "Sans onde",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruments différents."
+            },
+            {
+              "id": "u2-q03-n07",
+              "type": "single_choice",
+              "text": "Intensité à distance :",
+              "question": "Intensité à distance :",
+              "options": [
+                "Diminue en s'éloignant",
+                "Augmente toujours",
+                "Sans lien",
+                "Devient lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation avec la distance."
+            },
+            {
+              "id": "u2-q03-n08",
+              "type": "single_choice",
+              "text": "Seuil d'audibilité :",
+              "question": "Seuil d'audibilité :",
+              "options": [
+                "Intensité très faible",
+                "Fréquence nulle",
+                "Son dans le vide",
+                "Amplitude infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite basse de perception."
+            },
+            {
+              "id": "u2-q03-n09",
+              "type": "single_choice",
+              "text": "Graphique amplitude-temps :",
+              "question": "Graphique amplitude-temps :",
+              "options": [
+                "Montre le signal sonore",
+                "Donne f sans analyse",
+                "Remplace l'oreille",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme temporelle du son."
+            },
+            {
+              "id": "u2-q03-n10",
+              "type": "single_choice",
+              "text": "Hauteur et période :",
+              "question": "Hauteur et période :",
+              "options": [
+                "f = 1/T fixe la hauteur",
+                "T = f",
+                "Sans lien",
+                "T mesure le pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien inverse f–T."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Niveau sonore et décibels",
+          "questions": [
+            {
+              "id": "u2-q04-n01",
+              "type": "multiple_choice",
+              "text": "Niveau sonore et décibels :",
+              "question": "Niveau sonore et décibels :",
+              "options": [
+                "Échelle logarithmique",
+                "Compare des intensités",
+                "Mesure la hauteur en Hz",
+                "Remplace l'amplitude"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "dB comparent des niveaux d'intensité."
+            },
+            {
+              "id": "u2-q04-n02",
+              "type": "single_choice",
+              "text": "+10 dB environ :",
+              "question": "+10 dB environ :",
+              "options": [
+                "Intensité × 10",
+                "Fréquence × 10",
+                "Silence",
+                "Hauteur × 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi logarithmique usuelle en classe."
+            },
+            {
+              "id": "u2-q04-n03",
+              "type": "single_choice",
+              "text": "0 dB (référence) :",
+              "question": "0 dB (référence) :",
+              "options": [
+                "Seuil d'audibilité conventionnel",
+                "Son le plus fort",
+                "Fréquence nulle",
+                "Unité de force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence choisie."
+            },
+            {
+              "id": "u2-q04-n04",
+              "type": "single_choice",
+              "text": "Protection auditive :",
+              "question": "Protection auditive :",
+              "options": [
+                "Limite l'exposition sonore",
+                "Augmente f",
+                "Crée le vide",
+                "Mesure λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé et sécurité."
+            },
+            {
+              "id": "u2-q04-n05",
+              "type": "single_choice",
+              "text": "Son très intense :",
+              "question": "Son très intense :",
+              "options": [
+                "Peut endommager l'oreille",
+                "Augmente toujours la hauteur",
+                "Supprime T",
+                "Crée la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque auditif."
+            },
+            {
+              "id": "u2-q04-n06",
+              "type": "single_choice",
+              "text": "Décibel et amplitude :",
+              "question": "Décibel et amplitude :",
+              "options": [
+                "Niveau lié au logarithme d'intensité",
+                "Linéaire avec f",
+                "Égal à T",
+                "Mesure masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeurs différentes."
+            },
+            {
+              "id": "u2-q04-n07",
+              "type": "single_choice",
+              "text": "Même note, plus fort :",
+              "question": "Même note, plus fort :",
+              "options": [
+                "Amplitude plus grande",
+                "Fréquence double",
+                "Son dans le vide",
+                "T nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité, pas hauteur."
+            },
+            {
+              "id": "u2-q04-n08",
+              "type": "single_choice",
+              "text": "Sonomètre :",
+              "question": "Sonomètre :",
+              "options": [
+                "Mesure le niveau sonore",
+                "Mesure la masse",
+                "Remplace l'oscilloscope",
+                "Lit λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de mesure."
+            },
+            {
+              "id": "u2-q04-n09",
+              "type": "single_choice",
+              "text": "Chuchotement vs concert :",
+              "question": "Chuchotement vs concert :",
+              "options": [
+                "Niveaux dB très différents",
+                "Même hauteur obligatoire",
+                "Sans onde",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples d'échelles."
+            },
+            {
+              "id": "u2-q04-n10",
+              "type": "single_choice",
+              "text": "Niveau et distance :",
+              "question": "Niveau et distance :",
+              "options": [
+                "Diminue en s'éloignant",
+                "Augmente toujours",
+                "Sans effet",
+                "Fixe f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation et échelle dB pour quantifier l'intensité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Timbre et harmoniques",
+          "questions": [
+            {
+              "id": "u2-q05-n01",
+              "type": "multiple_choice",
+              "text": "Timbre et harmoniques :",
+              "question": "Timbre et harmoniques :",
+              "options": [
+                "Le timbre dépend du spectre",
+                "Deux instruments peuvent jouer la même note",
+                "Timbre = hauteur seule",
+                "Timbre vaut 340 Hz"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Harmoniques distinguent les sources à f fondamentale égale."
+            },
+            {
+              "id": "u2-q05-n02",
+              "type": "single_choice",
+              "text": "Fondamentale :",
+              "question": "Fondamentale :",
+              "options": [
+                "Composante de plus basse fréquence",
+                "Toujours absente",
+                "Égale au décibel",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définit surtout la hauteur."
+            },
+            {
+              "id": "u2-q05-n03",
+              "type": "single_choice",
+              "text": "Harmonique 2 :",
+              "question": "Harmonique 2 :",
+              "options": [
+                "Fréquence double de la fondamentale",
+                "Moitié de la fondamentale",
+                "Fréquence nulle",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série harmonique."
+            },
+            {
+              "id": "u2-q05-n04",
+              "type": "single_choice",
+              "text": "Même note, piano vs violon :",
+              "question": "Même note, piano vs violon :",
+              "options": [
+                "Timbres différents",
+                "Timbres identiques",
+                "Sans fréquence",
+                "Sans onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectres différents."
+            },
+            {
+              "id": "u2-q05-n05",
+              "type": "single_choice",
+              "text": "Spectre d'un son :",
+              "question": "Spectre d'un son :",
+              "options": [
+                "Répartition des amplitudes en f",
+                "Couleur visible",
+                "Masse molaire",
+                "Carte géographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyse fréquentielle."
+            },
+            {
+              "id": "u2-q05-n06",
+              "type": "single_choice",
+              "text": "Filtre passe-bas sur un signal :",
+              "question": "Filtre passe-bas sur un signal :",
+              "options": [
+                "Atténue les hautes f",
+                "Double la hauteur",
+                "Crée le vide",
+                "Mesure λ visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage fréquentiel."
+            },
+            {
+              "id": "u2-q05-n07",
+              "type": "single_choice",
+              "text": "Caisse claire vs grosse caisse :",
+              "question": "Caisse claire vs grosse caisse :",
+              "options": [
+                "Plus d'énergie aiguë vs grave",
+                "Même spectre",
+                "Sans vibration",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbres percussifs."
+            },
+            {
+              "id": "u2-q05-n08",
+              "type": "single_choice",
+              "text": "Vibrations multiples :",
+              "question": "Vibrations multiples :",
+              "options": [
+                "Superposition de modes",
+                "Une seule fréquence interdite",
+                "Sans harmoniques",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruments réels."
+            },
+            {
+              "id": "u2-q05-n09",
+              "type": "single_choice",
+              "text": "Son carré vs sinus :",
+              "question": "Son carré vs sinus :",
+              "options": [
+                "Spectre riche en harmoniques vs pur",
+                "Identiques",
+                "Sans fréquence",
+                "Ultraviolet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formes d'onde différentes."
+            },
+            {
+              "id": "u2-q05-n10",
+              "type": "single_choice",
+              "text": "Reconnaître une voix :",
+              "question": "Reconnaître une voix :",
+              "options": [
+                "Grâce au timbre",
+                "Grâce à la couleur",
+                "Sans oreille",
+                "Par la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empreinte spectrale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Notes et octaves",
+          "questions": [
+            {
+              "id": "u2-q06-n01",
+              "type": "multiple_choice",
+              "text": "Notes et fréquences :",
+              "question": "Notes et fréquences :",
+              "options": [
+                "Chaque note correspond à une f",
+                "Une octave double la f",
+                "Les notes n'ont pas de f",
+                "Notes mesurées en pascal"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gamme et rapport 2:1."
+            },
+            {
+              "id": "u2-q06-n02",
+              "type": "single_choice",
+              "text": "Octave :",
+              "question": "Octave :",
+              "options": ["f₂ = 2 f₁", "f₂ = f₁/2", "f₂ = f₁ + 1", "f₂ = 0"],
+              "correctAnswers": [0],
+              "explanation": "Définition musicale."
+            },
+            {
+              "id": "u2-q06-n03",
+              "type": "single_choice",
+              "text": "Do vs Do aigu (octave) :",
+              "question": "Do vs Do aigu (octave) :",
+              "options": [
+                "Même nom, f doublée",
+                "Notes identiques en f",
+                "Silence",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classification musicale."
+            },
+            {
+              "id": "u2-q06-n04",
+              "type": "single_choice",
+              "text": "Gamme tempérée :",
+              "question": "Gamme tempérée :",
+              "options": [
+                "Fréquences définies par des ratios",
+                "Sans mathématiques",
+                "Uniquement lumière",
+                "Sans son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien musique–physique."
+            },
+            {
+              "id": "u2-q06-n05",
+              "type": "single_choice",
+              "text": "Accord consonant :",
+              "question": "Accord consonant :",
+              "options": [
+                "Rapports simples de fréquences",
+                "Fréquences aléatoires",
+                "Sans onde",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonie."
+            },
+            {
+              "id": "u2-q06-n06",
+              "type": "single_choice",
+              "text": "Diapason La4 :",
+              "question": "Diapason La4 :",
+              "options": ["440 Hz", "340 m·s⁻¹", "440 N", "440 nm"],
+              "correctAnswers": [0],
+              "explanation": "Référence."
+            },
+            {
+              "id": "u2-q06-n07",
+              "type": "single_choice",
+              "text": "Intervalle quinte (ordre) :",
+              "question": "Intervalle quinte (ordre) :",
+              "options": [
+                "Rapport ~3/2",
+                "Rapport 2",
+                "Rapport 1/2",
+                "Rapport 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture musicale et f."
+            },
+            {
+              "id": "u2-q06-n08",
+              "type": "single_choice",
+              "text": "Plus aigu = note :",
+              "question": "Plus aigu = note :",
+              "options": [
+                "Plus haute f",
+                "Plus grande amplitude",
+                "Plus basse f",
+                "Sans T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire."
+            },
+            {
+              "id": "u2-q06-n09",
+              "type": "single_choice",
+              "text": "Partition vs oscillogramme :",
+              "question": "Partition vs oscillogramme :",
+              "options": [
+                "Notation vs signal temporel",
+                "Identiques",
+                "Sans son",
+                "Mesure masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentations différentes."
+            },
+            {
+              "id": "u2-q06-n10",
+              "type": "single_choice",
+              "text": "Objectif notes :",
+              "question": "Objectif notes :",
+              "options": [
+                "Relier musique et fréquences",
+                "Supprimer le son",
+                "Mesurer λ lumière",
+                "Étudier pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme sons et musique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Spectre sonore",
+          "questions": [
+            {
+              "id": "u2-q07-n01",
+              "type": "multiple_choice",
+              "text": "Analyse spectrale :",
+              "question": "Analyse spectrale :",
+              "options": [
+                "Décompose le signal en fréquences",
+                "Montre les composantes fréquentielles",
+                "Mesure la masse",
+                "Crée le vide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "FFT ou analyse révèle le spectre."
+            },
+            {
+              "id": "u2-q07-n02",
+              "type": "single_choice",
+              "text": "Spectre pur sinus :",
+              "question": "Spectre pur sinus :",
+              "options": [
+                "Une seule raie",
+                "Infinité de raies",
+                "Sans fréquence",
+                "Lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son monofréquentiel."
+            },
+            {
+              "id": "u2-q07-n03",
+              "type": "single_choice",
+              "text": "Spectre riche :",
+              "question": "Spectre riche :",
+              "options": [
+                "Plusieurs raies harmoniques",
+                "Une seule raie",
+                "Sans amplitude",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruments réels."
+            },
+            {
+              "id": "u2-q07-n04",
+              "type": "single_choice",
+              "text": "Amplitude d'une raie :",
+              "question": "Amplitude d'une raie :",
+              "options": [
+                "Liée au niveau de cette f",
+                "Égale à la hauteur",
+                "Mesure c",
+                "Remplace T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contribution partielle."
+            },
+            {
+              "id": "u2-q07-n05",
+              "type": "single_choice",
+              "text": "Son grave :",
+              "question": "Son grave :",
+              "options": [
+                "Raies vers basses f",
+                "Uniquement ultrasons",
+                "Sans fondamentale",
+                "λ visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spectre décalé."
+            },
+            {
+              "id": "u2-q07-n06",
+              "type": "single_choice",
+              "text": "Clic vs continu :",
+              "question": "Clic vs continu :",
+              "options": [
+                "Spectre large vs raies fines",
+                "Identiques",
+                "Sans onde",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée temporelle influence le spectre."
+            },
+            {
+              "id": "u2-q07-n07",
+              "type": "single_choice",
+              "text": "Microphone + logiciel :",
+              "question": "Microphone + logiciel :",
+              "options": [
+                "Acquisition puis spectre",
+                "Mesure pH",
+                "Remplace l'air",
+                "Supprime f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne de mesure."
+            },
+            {
+              "id": "u2-q07-n08",
+              "type": "single_choice",
+              "text": "Spectre et timbre :",
+              "question": "Spectre et timbre :",
+              "options": [
+                "Empreinte fréquentielle",
+                "Couleur",
+                "Masse",
+                "Carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identification des sources."
+            },
+            {
+              "id": "u2-q07-n09",
+              "type": "single_choice",
+              "text": "Filtre numérique :",
+              "question": "Filtre numérique :",
+              "options": [
+                "Modifie le spectre",
+                "Double c",
+                "Crée vide",
+                "Mesure kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traitement du signal."
+            },
+            {
+              "id": "u2-q07-n10",
+              "type": "single_choice",
+              "text": "Objectif spectre :",
+              "question": "Objectif spectre :",
+              "options": [
+                "Visualiser le contenu fréquentiel",
+                "Remplacer l'oreille",
+                "Supprimer musique",
+                "Étudier pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil d'analyse."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Numérisation du son",
+          "questions": [
+            {
+              "id": "u2-q08-n01",
+              "type": "multiple_choice",
+              "text": "Numérisation du son :",
+              "question": "Numérisation du son :",
+              "options": [
+                "Échantillonnage et quantification",
+                "Stocke le signal en valeurs numériques",
+                "Remplace l'air",
+                "Supprime les fréquences"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conversion analogique–numérique."
+            },
+            {
+              "id": "u2-q08-n02",
+              "type": "single_choice",
+              "text": "Fréquence d'échantillonnage :",
+              "question": "Fréquence d'échantillonnage :",
+              "options": [
+                "Doit être suffisante pour le signal",
+                "Égale toujours 440 Hz",
+                "N'a aucun rôle",
+                "Remplace f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère de Shannon en classe."
+            },
+            {
+              "id": "u2-q08-n03",
+              "type": "single_choice",
+              "text": "Échantillonner trop lentement :",
+              "question": "Échantillonner trop lentement :",
+              "options": [
+                "Perte d'information (alias)",
+                "Améliore le timbre",
+                "Crée le vide",
+                "Double c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous-échantillonnage."
+            },
+            {
+              "id": "u2-q08-n04",
+              "type": "single_choice",
+              "text": "Quantification :",
+              "question": "Quantification :",
+              "options": [
+                "Amplitude discrétisée en bits",
+                "Fréquence discrète",
+                "Supprime le son",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveaux finis."
+            },
+            {
+              "id": "u2-q08-n05",
+              "type": "single_choice",
+              "text": "Fichier audio numérique :",
+              "question": "Fichier audio numérique :",
+              "options": [
+                "Suite d'échantillons",
+                "Image JPEG",
+                "Sans données",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stockage informatique."
+            },
+            {
+              "id": "u2-q08-n06",
+              "type": "single_choice",
+              "text": "Chaîne sonore moderne :",
+              "question": "Chaîne sonore moderne :",
+              "options": [
+                "Capteur, ADC, traitement, DAC",
+                "Sans conversion",
+                "Uniquement analogique",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parcours typique."
+            },
+            {
+              "id": "u2-q08-n07",
+              "type": "single_choice",
+              "text": "Bit depth plus élevé :",
+              "question": "Bit depth plus élevé :",
+              "options": [
+                "Meilleure fidélité d'amplitude",
+                "Double la hauteur",
+                "Supprime harmoniques",
+                "Crée vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution dynamique."
+            },
+            {
+              "id": "u2-q08-n08",
+              "type": "single_choice",
+              "text": "CD audio (ordre) :",
+              "question": "CD audio (ordre) :",
+              "options": [
+                "44,1 kHz, 16 bits",
+                "440 Hz seulement",
+                "340 m·s⁻¹",
+                "1 bit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère culturel du numérique."
+            },
+            {
+              "id": "u2-q08-n09",
+              "type": "single_choice",
+              "text": "Compression MP3 :",
+              "question": "Compression MP3 :",
+              "options": [
+                "Réduit taille en gardant l'audible",
+                "Supprime toute f",
+                "Crée vide",
+                "Mesure masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Codec avec perte."
+            },
+            {
+              "id": "u2-q08-n10",
+              "type": "single_choice",
+              "text": "Objectif numérisation :",
+              "question": "Objectif numérisation :",
+              "options": [
+                "Enregistrer et traiter le son",
+                "Remplacer l'oreille",
+                "Supprimer musique",
+                "Étudier pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informatique du signal."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Fusion harmonique",
+          "questions": [
+            {
+              "id": "u2-q09-n01",
+              "type": "multiple_choice",
+              "text": "Fusion harmonique :",
+              "question": "Fusion harmonique :",
+              "options": [
+                "L'oreille peut suivre une fondamentale manquante",
+                "La hauteur suit le plus grand harmonique",
+                "Sans harmoniques",
+                "Lumière seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phénomène de perception (première)."
+            },
+            {
+              "id": "u2-q09-n02",
+              "type": "single_choice",
+              "text": "Harmoniques seuls sans fondamentale :",
+              "question": "Harmoniques seuls sans fondamentale :",
+              "options": [
+                "Hauteur perçue proche de la fondamentale",
+                "Silence total",
+                "Fréquence nulle",
+                "Son dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet de fusion en classe."
+            },
+            {
+              "id": "u2-q09-n03",
+              "type": "single_choice",
+              "text": "Casque basse fréquence :",
+              "question": "Casque basse fréquence :",
+              "options": [
+                "Petits haut-parleurs + fusion harmonique",
+                "Sans onde",
+                "Lumière",
+                "Mesure pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple technologique."
+            },
+            {
+              "id": "u2-q09-n04",
+              "type": "single_choice",
+              "text": "Spectre avec raies 800, 1200 Hz :",
+              "question": "Spectre avec raies 800, 1200 Hz :",
+              "options": [
+                "Peut suggérer fondamentale 400 Hz",
+                "4000 Hz obligatoire",
+                "Sans hauteur",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiples communs."
+            },
+            {
+              "id": "u2-q09-n05",
+              "type": "single_choice",
+              "text": "Fusion vs timbre :",
+              "question": "Fusion vs timbre :",
+              "options": [
+                "Phénomène de hauteur perçue",
+                "Identique au décibel",
+                "Mesure masse",
+                "Remplace c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinct du niveau."
+            },
+            {
+              "id": "u2-q09-n06",
+              "type": "single_choice",
+              "text": "Onde sinus pure :",
+              "question": "Onde sinus pure :",
+              "options": [
+                "Pas de fusion nécessaire",
+                "Infinité d'harmoniques",
+                "Sans f",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule fréquence."
+            },
+            {
+              "id": "u2-q09-n07",
+              "type": "single_choice",
+              "text": "Musique électronique :",
+              "question": "Musique électronique :",
+              "options": [
+                "Peut exploiter harmoniques et filtres",
+                "Sans spectre",
+                "Uniquement lumière",
+                "Sans ADC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse de timbres."
+            },
+            {
+              "id": "u2-q09-n08",
+              "type": "single_choice",
+              "text": "Limite de l'audible :",
+              "question": "Limite de l'audible :",
+              "options": [
+                "Affecte harmoniques perçues",
+                "Supprime c",
+                "Crée vide",
+                "Mesure kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bande 20 Hz–20 kHz."
+            },
+            {
+              "id": "u2-q09-n09",
+              "type": "single_choice",
+              "text": "Fusion et octave :",
+              "question": "Fusion et octave :",
+              "options": [
+                "Rapport 2 entre harmoniques consécutifs",
+                "Rapport 3",
+                "Sans lien",
+                "Rapport 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Série harmonique."
+            },
+            {
+              "id": "u2-q09-n10",
+              "type": "single_choice",
+              "text": "Objectif fusion :",
+              "question": "Objectif fusion :",
+              "options": [
+                "Expliquer la perception de hauteur",
+                "Remplacer Young",
+                "Mesurer λ lumière",
+                "Étudier Newton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien oreille–spectre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse sons et musique",
+          "questions": [
+            {
+              "id": "u2-q10-n01",
+              "type": "multiple_choice",
+              "text": "Synthèse chapitre sons :",
+              "question": "Synthèse chapitre sons :",
+              "options": [
+                "Son = onde mécanique",
+                "Musique = structure de fréquences",
+                "Son = lumière",
+                "Musique sans math"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ondes, hauteur, timbre, numérique."
+            },
+            {
+              "id": "u2-q10-n02",
+              "type": "single_choice",
+              "text": "Lunette vs oreille :",
+              "question": "Lunette vs oreille :",
+              "options": [
+                "Optique vs acoustique",
+                "Même phénomène exact",
+                "Sans ondes",
+                "Chimie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux domaines du chapitre."
+            },
+            {
+              "id": "u2-q10-n03",
+              "type": "single_choice",
+              "text": "Paramètres d'un son :",
+              "question": "Paramètres d'un son :",
+              "options": [
+                "f, amplitude, spectre",
+                "Couleur, masse, pH",
+                "Uniquement décibels",
+                "Sans période"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeurs clés."
+            },
+            {
+              "id": "u2-q10-n04",
+              "type": "single_choice",
+              "text": "Concert vs silence :",
+              "question": "Concert vs silence :",
+              "options": [
+                "Niveau sonore très différent",
+                "Même spectre",
+                "Sans milieu",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité et sécurité."
+            },
+            {
+              "id": "u2-q10-n05",
+              "type": "single_choice",
+              "text": "Enregistrement numérique :",
+              "question": "Enregistrement numérique :",
+              "options": [
+                "Échantillons + quantification",
+                "Analogique seulement",
+                "Sans données",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne moderne."
+            },
+            {
+              "id": "u2-q10-n06",
+              "type": "single_choice",
+              "text": "Diffraction lumière vs son :",
+              "question": "Diffraction lumière vs son :",
+              "options": [
+                "Ondes mais λ et c différents",
+                "Identiques",
+                "Sans lien",
+                "Son dans le vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison ondulatoire."
+            },
+            {
+              "id": "u2-q10-n07",
+              "type": "single_choice",
+              "text": "Young et musique :",
+              "question": "Young et musique :",
+              "options": [
+                "Interférences vs harmoniques",
+                "Même expérience",
+                "Sans fréquences",
+                "Lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ondes lumière vs spectre son."
+            },
+            {
+              "id": "u2-q10-n08",
+              "type": "single_choice",
+              "text": "Objectif global chapitre :",
+              "question": "Objectif global chapitre :",
+              "options": [
+                "Ondes et signaux lumineux et sonores",
+                "Mécanique Newton",
+                "Stœchiométrie",
+                "Géologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme première PC."
+            },
+            {
+              "id": "u2-q10-n09",
+              "type": "single_choice",
+              "text": "Travail préparatoire :",
+              "question": "Travail préparatoire :",
+              "options": [
+                "Oscilloscope et spectre",
+                "Sans mesure",
+                "Lumière seule",
+                "Sans milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences expérimentales."
+            },
+            {
+              "id": "u2-q10-n10",
+              "type": "single_choice",
+              "text": "Question finale :",
+              "question": "Question finale :",
+              "options": [
+                "L'oreille analyse temps et fréquences",
+                "Oreille mesure masse",
+                "Son sans onde",
+                "Musique sans f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse perception."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

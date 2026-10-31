@@ -1,0 +1,2243 @@
+{
+  "id": "6e-francais-02",
+  "year": "6e",
+  "subject": "francais",
+  "title": "La phrase et ses classes de mots",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Classes de mots",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Le chat dort sur le canapé », quels mots sont des noms ?",
+              "options": ["chat", "dort", "sur", "canapé"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Chat » et « canapé » désignent des êtres ou des choses : ce sont des noms."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot est un nom commun dans « Marie lit un roman » ?",
+              "options": ["Marie", "lit", "un", "roman"],
+              "correctAnswers": [3],
+              "explanation": "« Roman » est un nom commun ; « Marie » est un nom propre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Paris » est surtout un :",
+              "options": ["verbe", "nom propre", "adverbe", "déterminant"],
+              "correctAnswers": [1],
+              "explanation": "Un nom propre désigne une personne, un lieu ou une chose unique avec une majuscule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le nom « fleur » est au féminin. Quel est le féminin de « lion » ?",
+              "options": ["lione", "lionne", "lionsse", "lionette"],
+              "correctAnswers": [1],
+              "explanation": "Le féminin de « lion » s’écrit « lionne »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est un nom dans « Nous visitons la Bretagne » ?",
+              "options": ["Nous", "visitons", "la", "Bretagne"],
+              "correctAnswers": [3],
+              "explanation": "« Bretagne » est un nom propre de région."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le pluriel de « cheval » est :",
+              "options": ["chevals", "chevaux", "chevales", "chevaulx"],
+              "correctAnswers": [1],
+              "explanation": "Le pluriel irrégulier de « cheval » est « chevaux »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « des idées claires », « idées » est :",
+              "options": ["un verbe", "un nom", "un adjectif", "un pronom"],
+              "correctAnswers": [1],
+              "explanation": "« Idées » désigne une notion, c’est un nom commun au pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot n’est pas un nom ?",
+              "options": ["table", "rapidement", "école", "forêt"],
+              "correctAnswers": [1],
+              "explanation": "« Rapidement » modifie un verbe : c’est un adverbe, pas un nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un nom commun désigne :",
+              "options": [
+                "une seule personne précise",
+                "une catégorie d’êtres ou de choses",
+                "une action",
+                "une manière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le nom commun s’applique à toute une catégorie, par exemple « chien »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « la maison blanche », combien y a-t-il de noms ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [1],
+              "explanation": "Seul « maison » est un nom ; « blanche » est un adjectif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Le déterminant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des déterminants dans « Ces deux petits livres sont neufs » ?",
+              "options": ["Ces", "deux", "petits", "neufs"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ces » est un déterminant démonstratif et « deux » un déterminant numéral."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « une pomme rouge », « une » est :",
+              "options": ["un nom", "un déterminant", "un verbe", "un adverbe"],
+              "correctAnswers": [1],
+              "explanation": "« Une » accompagne le nom « pomme » : c’est un déterminant indéfini."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mon » dans « mon frère » est un déterminant :",
+              "options": ["numéral", "possessif", "interrogatif", "adverbial"],
+              "correctAnswers": [1],
+              "explanation": "« Mon » indique à qui appartient le nom : déterminant possessif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot est un déterminant ?",
+              "options": ["belle", "le", "court", "manger"],
+              "correctAnswers": [1],
+              "explanation": "« Le » est l’article défini, une forme de déterminant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Quel » dans « Quel âge as-tu ? » est un déterminant :",
+              "options": [
+                "démonstratif",
+                "interrogatif",
+                "partitif",
+                "possessif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Quel » introduit une question sur le nom « âge »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « du pain », « du » est :",
+              "options": [
+                "un pronom",
+                "un déterminant partitif",
+                "un adjectif",
+                "un nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Du » = de + le, article partitif devant un nom masculin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un déterminant se place en général :",
+              "options": [
+                "après le nom",
+                "avant le nom",
+                "à la fin de la phrase",
+                "seul sans nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En français, le déterminant précède le nom qu’il accompagne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cette » dans « cette robe » est :",
+              "options": [
+                "un adjectif",
+                "un déterminant démonstratif",
+                "un verbe",
+                "un nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Cette » montre de quelle robe on parle : déterminant démonstratif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot n’est pas un déterminant dans « mes trois amis » ?",
+              "options": [
+                "mes",
+                "trois",
+                "amis",
+                "aucun des trois n’est déterminant"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Amis » est le nom ; « mes » et « trois » sont des déterminants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Les » dans « les élèves » est :",
+              "options": [
+                "un pronom personnel",
+                "un déterminant (article défini)",
+                "un adverbe",
+                "une conjonction"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Les » est l’article défini pluriel, donc un déterminant."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "L'adjectif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des adjectifs dans « Une longue route sinueuse » ?",
+              "options": ["Une", "longue", "route", "sinueuse"],
+              "correctAnswers": [1, 3],
+              "explanation": "« Longue » et « sinueuse » qualifient le nom « route »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Bleu » dans « ciel bleu » est :",
+              "options": [
+                "un nom",
+                "un adjectif",
+                "un verbe",
+                "un déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Bleu » exprime une qualité du nom « ciel »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L’adjectif qualificatif s’accorde en genre et en nombre avec :",
+              "options": [
+                "le verbe",
+                "le nom qu’il qualifie",
+                "le sujet seulement",
+                "le déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On dit « une fleur blanche » et « des fleurs blanches »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le féminin de « heureux » ?",
+              "options": ["heureuse", "heureuxe", "heureusse", "heureux"],
+              "correctAnswers": [0],
+              "explanation": "On forme le féminin en ajoutant -e : « heureuse »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « des chaises vertes », « vertes » est :",
+              "options": [
+                "un adverbe",
+                "un adjectif pluriel",
+                "un nom",
+                "un pronom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vertes » s’accorde avec « chaises » au féminin pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot n’est pas un adjectif ?",
+              "options": ["grand", "petit", "lentement", "joli"],
+              "correctAnswers": [2],
+              "explanation": "« Lentement » modifie un verbe : c’est un adverbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Premier » dans « le premier jour » est :",
+              "options": [
+                "un adjectif numéral ordinal",
+                "un nom",
+                "un verbe",
+                "un déterminant seulement sans valeur adjective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Premier » indique le rang et qualifie « jour »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pluriel de « un animal mignon » :",
+              "options": [
+                "des animaux mignon",
+                "des animaux mignons",
+                "des animal mignons",
+                "des animaux mignones"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nom et adjectif prennent la marque du pluriel : « mignons »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un adjectif épithète est placé :",
+              "options": [
+                "toujours avant le nom",
+                "juste à côté du nom",
+                "en début de phrase",
+                "après le verbe seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L’épithète est collé au nom, avant ou après selon l’adjectif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Elle semble fatiguée », « fatiguée » est un adjectif :",
+              "options": ["épithète", "attribut", "adverbial", "déterminant"],
+              "correctAnswers": [1],
+              "explanation": "Après « semble », l’adjectif complète le sujet : c’est l’attribut."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Le verbe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des verbes dans « Nous chantons et nous dansons » ?",
+              "options": ["Nous", "chantons", "et", "dansons"],
+              "correctAnswers": [1, 3],
+              "explanation": "« Chantons » et « dansons » expriment des actions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le verbe indique le plus souvent :",
+              "options": [
+                "une chose",
+                "une action ou un état",
+                "une couleur",
+                "un nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le verbe conjugué dit ce que fait ou ce qu’est le sujet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Il pleut », « pleut » est à la :",
+              "options": [
+                "1re personne",
+                "2e personne",
+                "3e personne du singulier",
+                "2e personne du pluriel"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Avec le sujet « il », le verbe est à la 3e personne du singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Finir » est un verbe du :",
+              "options": [
+                "1er groupe (-er)",
+                "2e groupe (-ir)",
+                "3e groupe",
+                "groupe des adjectifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les infinitifs en -ir du 2e groupe se conjuguent comme « finir »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est un verbe conjugué ?",
+              "options": ["maison", "belle", "mangeons", "très"],
+              "correctAnswers": [2],
+              "explanation": "« Mangeons » est la forme conjuguée du verbe « manger »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L’infinitif de « nous parlons » est :",
+              "options": ["parlons", "parler", "parlé", "parle"],
+              "correctAnswers": [1],
+              "explanation": "L’infinitif est la forme du dictionnaire : « parler »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Être » et « avoir » sont des verbes :",
+              "options": [
+                "du 1er groupe",
+                "auxiliaires",
+                "adjectifs",
+                "déterminants"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ils servent à former les temps composés avec un participe passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au présent, « tu » avec « chanter » donne :",
+              "options": [
+                "tu chante",
+                "tu chantes",
+                "tu chantez",
+                "tu chantons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au présent de l’indicatif, on dit « tu chantes »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Les oiseaux volent haut », le verbe est :",
+              "options": ["Les", "oiseaux", "volent", "haut"],
+              "correctAnswers": [2],
+              "explanation": "« Volent » indique l’action des oiseaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un verbe d’état comme « être » sert parfois à :",
+              "options": [
+                "compter",
+                "décrire une qualité du sujet",
+                "remplacer un nom",
+                "marquer le pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec un attribut, il exprime un état : « Il est grand »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Le pronom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des pronoms dans « Il me les donne » ?",
+              "options": ["Il", "me", "les", "donne"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Il » remplace une personne ; « me » remplace « à moi »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Elle » dans « Elle arrive » est :",
+              "options": [
+                "un nom",
+                "un pronom personnel",
+                "un adjectif",
+                "un déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Elle » tient la place d’un nom de personne féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Celui-ci » est un pronom :",
+              "options": [
+                "possessif",
+                "démonstratif",
+                "interrogatif",
+                "relatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il désigne quelque chose de proche sans le nommer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « C’est mon livre », « mon » est :",
+              "options": [
+                "un pronom",
+                "un déterminant possessif",
+                "un verbe",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Devant le nom « livre », « mon » est déterminant, pas pronom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Qui » dans « Qui parle ? » est un pronom :",
+              "options": ["interrogatif", "indéfini", "reflexif", "adverbial"],
+              "correctAnswers": [0],
+              "explanation": "« Qui » pose une question sur une personne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le mien » remplace :",
+              "options": [
+                "un verbe",
+                "un nom avec idée de possession",
+                "une préposition",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Le mien » = mon + nom déjà mentionné."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot est un pronom personnel sujet ?",
+              "options": ["nous", "notre", "nos", "nôtres"],
+              "correctAnswers": [0],
+              "explanation": "« Nous » peut être sujet ; « notre » est un déterminant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« En » dans « J’en veux » est un pronom :",
+              "options": [
+                "relatif",
+                "adverbial de quantité",
+                "démonstratif",
+                "possessif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« En » reprend un nom introduit par « de »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un pronom remplace ou complète :",
+              "options": [
+                "uniquement un verbe",
+                "un nom ou un groupe nominal",
+                "seulement une phrase",
+                "un adjectif seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C’est la fonction principale du pronom en grammaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Tu me vois », « me » est pronom :",
+              "options": [
+                "sujet",
+                "complément (COD)",
+                "adjectif",
+                "conjonction"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Me » = complément d’objet direct de « vois »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "L'adverbe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des adverbes dans « Il parle doucement et clairement » ?",
+              "options": ["Il", "doucement", "et", "clairement"],
+              "correctAnswers": [1, 3],
+              "explanation": "« Doucement » et « clairement » modifient le verbe « parle »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L’adverbe modifie le plus souvent :",
+              "options": [
+                "un nom seul",
+                "un verbe, un adjectif ou un autre adverbe",
+                "un déterminant",
+                "une ponctuation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemple : « très » modifie « bien », qui modifie un verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Demain » dans « Nous partons demain » est :",
+              "options": [
+                "un nom",
+                "un adverbe de temps",
+                "un adjectif",
+                "un pronom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il précise le moment de l’action."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On forme souvent l’adverbe en ajoutant -ment à :",
+              "options": [
+                "l’infinitif",
+                "le féminin singulier de l’adjectif",
+                "le pluriel du nom",
+                "le déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Lent » → « lente » → « lentement »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ici » est un adverbe de :",
+              "options": ["manière", "lieu", "temps", "quantité"],
+              "correctAnswers": [1],
+              "explanation": "« Ici » indique un endroit proche du locuteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est un adverbe ?",
+              "options": ["beaucoup", "beaucoup de", "beau", "beaux"],
+              "correctAnswers": [0],
+              "explanation": "« Beaucoup » seul modifie un verbe ; « beaucoup de » introduit un nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Très » dans « très content » modifie :",
+              "options": [
+                "un verbe",
+                "un adjectif",
+                "un nom",
+                "un déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Très » intensifie l’adjectif « content »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ne … pas » dans « Je ne sais pas » marque :",
+              "options": [
+                "le pluriel",
+                "la négation (adverbe)",
+                "le genre",
+                "le temps passé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Pas » est l’adverbe de négation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Toujours » est un adverbe de :",
+              "options": ["fréquence", "couleur", "nombre", "possession"],
+              "correctAnswers": [0],
+              "explanation": "Il indique que l’action se répète ou dure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Il court vite », « vite » est :",
+              "options": [
+                "un adjectif",
+                "un adverbe de manière",
+                "un nom",
+                "un pronom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vite » précise comment il court."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Reconnaître les classes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Les petits chats noirs dorment », quels mots sont des adjectifs ?",
+              "options": ["Les", "petits", "chats", "noirs"],
+              "correctAnswers": [1, 3],
+              "explanation": "« Petits » et « noirs » qualifient « chats »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nature du mot « rapidement » :",
+              "options": ["nom", "adverbe", "verbe", "déterminant"],
+              "correctAnswers": [1],
+              "explanation": "Il termine en -ment et modifie un verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « cette idée », la classe de « cette » est :",
+              "options": ["adjectif", "déterminant", "pronom", "nom"],
+              "correctAnswers": [1],
+              "explanation": "« Cette » accompagne le nom « idée »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sauter » à l’infinitif est :",
+              "options": [
+                "un verbe",
+                "un nom",
+                "un adverbe",
+                "une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L’infinitif est la forme nominale du verbe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est un nom ?",
+              "options": ["liberté", "libre", "librement", "libérer"],
+              "correctAnswers": [0],
+              "explanation": "« Liberté » désigne une notion abstraite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Vous » dans « Vous lisez » est :",
+              "options": [
+                "un déterminant",
+                "un pronom personnel",
+                "un adjectif",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vous » représente la personne qui lit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Classe de « le » devant un nom :",
+              "options": [
+                "conjonction",
+                "déterminant",
+                "interjection",
+                "participe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Le » est l’article défini masculin singulier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « une mer calme », « calme » est :",
+              "options": [
+                "un adverbe",
+                "un adjectif",
+                "un verbe conjugué",
+                "un pronom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il qualifie le nom « mer »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot invariable « mais » est une :",
+              "options": [
+                "classe de mot à part (conjonction de coordination)",
+                "adverbe de manière",
+                "pronom",
+                "nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mais » relie deux parties de phrase."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de classes de mots principales étudie-t-on en 6e (nom, déterminant, adjectif, verbe, pronom, adverbe) ?",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [2],
+              "explanation": "Le programme de 6e retient six grandes classes lexicales."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Classes et accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots s’accordent avec « filles » dans « de petites filles attentives » ?",
+              "options": ["de", "petites", "filles", "attentives"],
+              "correctAnswers": [1, 3],
+              "explanation": "Les adjectifs « petites » et « attentives » sont au féminin pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Des » dans « des roses » est :",
+              "options": [
+                "un adjectif",
+                "un déterminant",
+                "un verbe",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C’est l’article indéfini pluriel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le verbe s’accorde avec :",
+              "options": [
+                "le complément",
+                "son sujet",
+                "l’adverbe",
+                "le déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemple : « Les oiseaux chantent » — verbe au pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nature de « leurs » dans « leurs jouets » :",
+              "options": [
+                "pronom personnel sujet",
+                "déterminant possessif",
+                "adverbe",
+                "nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il précède le nom « jouets »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Aux » dans « aux enfants » vient de :",
+              "options": ["à + les", "de + les", "à + le", "pour + les"],
+              "correctAnswers": [0],
+              "explanation": "« Aux » est la contraction de la préposition « à » et de « les »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est invariable ?",
+              "options": ["jolies", "très", "heureux", "grandes"],
+              "correctAnswers": [1],
+              "explanation": "« Très » ne change jamais de forme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « il mange une pomme », « une » est :",
+              "options": ["pronom", "déterminant", "adjectif", "conjonction"],
+              "correctAnswers": [1],
+              "explanation": "Article indéfini féminin singulier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Content » devient « contents » parce que le nom est :",
+              "options": ["féminin", "masculin pluriel", "singulier", "propre"],
+              "correctAnswers": [1],
+              "explanation": "L’adjectif prend la marque du pluriel masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Classe de « hier » :",
+              "options": [
+                "nom de temps",
+                "adverbe de temps",
+                "adjectif",
+                "déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Hier » situe l’action dans le passé proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Paul et Marie rient », « rient » est :",
+              "options": ["nom", "verbe", "adjectif", "pronom"],
+              "correctAnswers": [1],
+              "explanation": "C’est le verbe conjugué avec le sujet « Paul et Marie »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases et nature des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Ce garçon intelligent répond poliment », quels mots sont des noms ou adjectifs ?",
+              "options": ["Ce", "garçon", "intelligent", "poliment"],
+              "correctAnswers": [1, 2],
+              "explanation": "« Garçon » est un nom, « intelligent » un adjectif ; « poliment » est adverbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ce » dans « ce matin » (sens temps) fonctionne plutôt comme :",
+              "options": [
+                "adverbe de temps",
+                "déterminant devant nom",
+                "verbe",
+                "pronom sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l’expression « ce matin », on analyse souvent « ce » avec l’adverbe de date."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nature de « donc » en début d’explication :",
+              "options": [
+                "adverbe (connecteur logique)",
+                "nom",
+                "déterminant",
+                "verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Donc » enchaîne une conséquence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot « Parisien » avec majuscule en « un Parisien » est :",
+              "options": [
+                "un nom (habitant)",
+                "un verbe",
+                "une préposition",
+                "un adverbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il désigne une personne habitant Paris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« La » dans « la fille » :",
+              "options": ["pronom COD", "déterminant", "adjectif", "nom"],
+              "correctAnswers": [1],
+              "explanation": "Article défini féminin singulier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est un verbe à l’infinitif ?",
+              "options": ["écrivons", "écrire", "écrit", "écrivait"],
+              "correctAnswers": [1],
+              "explanation": "« Écrire » est la forme infinitive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Plusieurs » devant « élèves » est :",
+              "options": [
+                "un adverbe",
+                "un déterminant indéfini",
+                "un nom",
+                "un verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il précise la quantité devant le nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « tu es sympa », « sympa » est :",
+              "options": [
+                "adjectif (attribut)",
+                "adverbe",
+                "nom propre",
+                "déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il décrit le sujet après le verbe d’état « es »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« On » est :",
+              "options": [
+                "un pronom indéfini",
+                "un déterminant",
+                "une conjonction",
+                "un adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« On » remplace une personne indéterminée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifier la nature : « bruyamment »",
+              "options": ["adjectif", "adverbe", "nom", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Forme en -ment issue de « bruyant »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — classes de mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Mes deux sœurs chantent bien », quels mots sont des déterminants ?",
+              "options": ["Mes", "deux", "sœurs", "bien"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Mes » est possessif et « deux » numéral."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Classe de « bonheur » :",
+              "options": ["verbe", "nom", "adverbe", "pronom"],
+              "correctAnswers": [1],
+              "explanation": "Nom masculin abstrait."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Elles » remplace un groupe féminin : c’est un :",
+              "options": ["adjectif", "pronom", "déterminant", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Pronom personnel sujet féminin pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Doux » qualifie un nom :",
+              "options": ["adjectif", "adverbe", "verbe", "interjection"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif qualificatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe conjugué dans « nous finissons » :",
+              "options": ["nous", "finissons", "finir", "fini"],
+              "correctAnswers": [1],
+              "explanation": "Forme conjuguée au présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Souvent » indique une fréquence :",
+              "options": ["adverbe", "nom", "déterminant", "pronom relatif"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de fréquence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Quelques » devant « minutes » :",
+              "options": [
+                "déterminant",
+                "verbe",
+                "adjectif épithète seul",
+                "nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déterminant indéfini de quantité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mot qui n’est ni nom ni verbe ni adjectif : « devant » (lieu)",
+              "options": [
+                "adverbe ou préposition selon emploi",
+                "toujours un nom",
+                "toujours un verbe",
+                "déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Devant » peut être préposition ou adverbe de lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « le ciel est bleu », « bleu » est :",
+              "options": ["adjectif attribut", "adverbe", "nom", "déterminant"],
+              "correctAnswers": [0],
+              "explanation": "Attribut du sujet après « est »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La nature d’un mot est :",
+              "options": [
+                "sa fonction dans la phrase",
+                "sa catégorie grammaticale",
+                "son nombre de syllabes",
+                "son orthographe seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On distingue nature (classe) et fonction (rôle syntaxique)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les fonctions dans la phrase",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le sujet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur le sujet du verbe sont vraies ?",
+              "options": [
+                "Il indique qui ou ce qui fait l’action ou l’état",
+                "Il s’accorde en personne et en nombre avec le verbe",
+                "Il est toujours un adverbe",
+                "C’est le mot qui complète le verbe avec « à »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sujet commande l’accord du verbe et désigne l’auteur de l’action."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sujet dans « La pluie tombe » :",
+              "options": ["La", "pluie", "La pluie", "tombe"],
+              "correctAnswers": [2],
+              "explanation": "« La pluie » est le groupe sujet du verbe « tombe »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour trouver le sujet, on pose la question :",
+              "options": [
+                "Quoi ? / Qui est-ce qui ?",
+                "Où ? / Quand ?",
+                "À qui ? / À quoi ?",
+                "Comment ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette question « Qu’est-ce qui … ? » mène au sujet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Mes parents cuisinent », le sujet est :",
+              "options": ["Mes", "parents", "Mes parents", "cuisinent"],
+              "correctAnswers": [2],
+              "explanation": "Le sujet complet inclut le déterminant : « Mes parents »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il » dans « Il pleut » est :",
+              "options": [
+                "un sujet (pronom)",
+                "un COD",
+                "un adverbe",
+                "un attribut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Il » est le sujet impersonnel du verbe « pleut »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sujet de « Les enfants rient » :",
+              "options": [
+                "Les enfants",
+                "rient",
+                "Les",
+                "enfants seulement sans déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Les enfants » fait l’action de rire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sujet peut être :",
+              "options": [
+                "un seul mot ou un groupe de mots",
+                "toujours un verbe",
+                "jamais un pronom",
+                "obligatoirement deux mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : « Marie » ou « Le petit chien »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Toi et moi partons », le sujet est :",
+              "options": ["Toi", "moi", "Toi et moi", "partons"],
+              "correctAnswers": [2],
+              "explanation": "Deux pronoms coordonnés forment un sujet pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord : « La fille … contente » (verbe contenter au présent) :",
+              "options": ["contente", "contentent", "contentes", "contenter"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet singulier « La fille », on dit « contente »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le sujet est absent dans :",
+              "options": [
+                "Impératif « Ferme la porte ! » (tu sous-entendu)",
+                "Phrase « Le soleil brille »",
+                "Phrase « Nous lisons »",
+                "Phrase « Un oiseau chante »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l’impératif, le sujet « tu » est sous-entendu, pas écrit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Le verbe dans la phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent bien le verbe (fonction) ?",
+              "options": [
+                "Il exprime l’action ou l’état",
+                "On le repère en posant « Que fait-il ? » au sujet",
+                "Il remplace toujours le nom",
+                "Il est identique à la nature « verbe » seulement par hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En syntaxe, le verbe est le noyau du prédicat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Verbe dans « Le chat dort paisiblement » :",
+              "options": ["Le", "chat", "dort", "paisiblement"],
+              "correctAnswers": [2],
+              "explanation": "« Dort » est le verbe conjugué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Elle est médecin », le verbe est :",
+              "options": ["Elle", "est", "médecin", "est médecin"],
+              "correctAnswers": [1],
+              "explanation": "« Est » est le verbe d’état."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Question pour trouver le verbe :",
+              "options": [
+                "Que fait le sujet ?",
+                "Quelle couleur ?",
+                "Combien ?",
+                "Pourquoi le nom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On interroge l’action ou l’état du sujet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous avons fini » : verbe au sens grammatical du groupe verbal principal :",
+              "options": ["avons fini", "avons", "fini", "Nous"],
+              "correctAnswers": [0],
+              "explanation": "En 6e, le verbe est souvent l’ensemble auxiliaire + participe ou la forme conjuguée principale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase sans verbe conjugué (incorrecte en français standard) :",
+              "options": [
+                "« Un bel après-midi. »",
+                "« Il sourit. »",
+                "« Elles partent. »",
+                "« Nous écoutons. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une phrase affirmative a besoin d’un verbe conjugué."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Tu chantes bien », « chantes » est verbe et « bien » est :",
+              "options": [
+                "sujet",
+                "complément circonstanciel de manière",
+                "COD",
+                "déterminant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Bien » précise comment tu chantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Verbe à la 3e personne du pluriel :",
+              "options": [
+                "ils mangent",
+                "tu manges",
+                "je mange",
+                "nous mangeons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mangent » s’accorde avec « ils »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Semble » dans « Il semble fatigué » est :",
+              "options": ["verbe d’état", "nom", "adjectif", "conjonction"],
+              "correctAnswers": [0],
+              "explanation": "Il introduit un attribut du sujet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le verbe peut être suivi d’un :",
+              "options": [
+                "complément (COD, COI, etc.)",
+                "sujet obligatoire après lui",
+                "article seul",
+                "point seul sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de verbes transitifs exigent un complément."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Le complément d'objet direct",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles concernant le COD sont correctes ?",
+              "options": [
+                "On le trouve avec « quoi ? » après le verbe",
+                "Il complète le verbe sans préposition",
+                "Il est toujours un adverbe",
+                "Il remplace le sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le COD dépend directement du verbe transitif direct."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "COD dans « Paul mange une pomme » :",
+              "options": ["Paul", "mange", "une pomme", "une"],
+              "correctAnswers": [2],
+              "explanation": "Paul mange quoi ? → une pomme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le » dans « Je le vois » remplace le COD : « le » est :",
+              "options": ["pronom COD", "sujet", "COI", "adverbe"],
+              "correctAnswers": [0],
+              "explanation": "« Le » reprend un nom masculin singulier objet direct."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe « lire » dans « Marie lit un roman » : complément ?",
+              "options": ["Marie", "lit", "un roman", "aucun"],
+              "correctAnswers": [2],
+              "explanation": "Marie lit quoi ? → un roman."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase sans COD possible :",
+              "options": [
+                "« L’oiseau vole. »",
+                "« Il prend son sac. »",
+                "« Elle prépare le dîner. »",
+                "« Nous regardons le film. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Voler » est intransitif ici : pas de COD."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "COD de « Ils entendent un bruit » :",
+              "options": ["Ils", "entendent", "un bruit", "bruit seul"],
+              "correctAnswers": [2],
+              "explanation": "Ils entendent quoi ? → un bruit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On remplace le COD par « le » ou « la » quand il désigne :",
+              "options": [
+                "une chose ou une personne objet de l’action",
+                "le sujet",
+                "un lieu après « à »",
+                "un temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pronoms COD reprennent le nom objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu aimes les crêpes » — COD :",
+              "options": ["Tu", "aimes", "les crêpes", "les"],
+              "correctAnswers": [2],
+              "explanation": "Tu aimes quoi ? → les crêpes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le COD ne suit jamais directement :",
+              "options": [
+                "un verbe transitif direct",
+                "une préposition « à » pour former un COI",
+                "le verbe « manger »",
+                "le verbe « voir »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après « à », on parle plutôt de COI."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Elle écrit une lettre », « une lettre » est :",
+              "options": ["COD", "sujet", "attribut", "CC de lieu"],
+              "correctAnswers": [0],
+              "explanation": "Elle écrit quoi ? → une lettre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Le complément d'objet indirect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sur le COI sont vraies ?",
+              "options": [
+                "Il est introduit souvent par la préposition « à »",
+                "On le repère avec « à qui ? / à quoi ? »",
+                "Il est identique au sujet",
+                "Il ne complète jamais un verbe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le COI est lié au verbe via « à » (ou parfois « de »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "COI dans « Elle parle à son frère » :",
+              "options": ["Elle", "parle", "à son frère", "son"],
+              "correctAnswers": [2],
+              "explanation": "Elle parle à qui ? → à son frère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Lui » dans « Je lui téléphone » est :",
+              "options": ["pronom COI", "COD", "sujet", "adverbe"],
+              "correctAnswers": [0],
+              "explanation": "« Lui » remplace « à + personne »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe « penser » dans « Il pense à ses vacances » : complément ?",
+              "options": [
+                "Il",
+                "pense",
+                "à ses vacances",
+                "ses vacances sans à"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Penser à quoi ? → à ses vacances."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Différence : « donner un livre » (COD) / « donner un livre à Paul » — « à Paul » est :",
+              "options": ["COI", "COD", "sujet", "attribut"],
+              "correctAnswers": [0],
+              "explanation": "On donne le livre à qui ? → COI."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "COI de « Nous obéissons à la maîtresse » :",
+              "options": [
+                "Nous",
+                "obéissons",
+                "à la maîtresse",
+                "la maîtresse sans à"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Obéir à qui ? → à la maîtresse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Me » dans « Il me répond » (répondre à quelqu’un) est :",
+              "options": ["COI (à moi)", "COD", "sujet", "déterminant"],
+              "correctAnswers": [0],
+              "explanation": "Répondre à qui ? → à moi → « me »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase avec COI :",
+              "options": [
+                "« Il joue au ballon. » (à + le → au)",
+                "« Il mange une pomme. »",
+                "« Le ciel est bleu. »",
+                "« Nous dormons. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Jouer à » construit un COI."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question pour COI :",
+              "options": [
+                "À qui ? / À quoi ?",
+                "Qui ?",
+                "Quand ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition « à » apparaît dans la question."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Tu te fies à tes amis », « à tes amis » est :",
+              "options": ["COI", "COD", "CC de temps", "sujet"],
+              "correctAnswers": [0],
+              "explanation": "Se fier à qui ? → à tes amis."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Compléments circonstanciels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels compléments sont des CC de lieu ou de temps possibles ?",
+              "options": [
+                "dans la cour",
+                "demain matin",
+                "le sujet",
+                "un COD sans préposition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les CC circonstancient l’action sans être COD/COI obligatoires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CC de lieu dans « Il joue dans le parc » :",
+              "options": ["Il", "joue", "dans le parc", "le parc seul"],
+              "correctAnswers": [2],
+              "explanation": "Où joue-t-il ? → dans le parc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CC de temps dans « Nous partons à huit heures » :",
+              "options": ["Nous", "partons", "à huit heures", "heures"],
+              "correctAnswers": [2],
+              "explanation": "Quand partons-nous ? → à huit heures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier » dans « Hier, il a plu » est surtout :",
+              "options": ["CC de temps", "COD", "sujet", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Il situe l’événement dans le temps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "CC de manière dans « Elle parle doucement » :",
+              "options": ["Elle", "parle", "doucement", "parle doucement"],
+              "correctAnswers": [2],
+              "explanation": "Comment parle-t-elle ? → doucement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un CC peut souvent être :",
+              "options": [
+                "supprimé sans rendre la phrase incorrecte",
+                "obligatoire comme le sujet",
+                "toujours un pronom sujet",
+                "toujours le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les CC ajoutent des précisions facultatives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Devant la maison » dans « Il attend devant la maison » :",
+              "options": ["CC de lieu", "COD", "attribut", "sujet"],
+              "correctAnswers": [0],
+              "explanation": "Où attend-il ? → devant la maison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question pour un CC de manière :",
+              "options": ["Comment ?", "Qui ?", "Quoi ?", "À qui ?"],
+              "correctAnswers": [0],
+              "explanation": "On précise la façon dont l’action se déroule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Très vite » modifie « il court » : fonction du groupe ?",
+              "options": ["CC de manière", "sujet", "COD", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Comment court-il ? → très vite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "CC de cause possible :",
+              "options": [
+                "« à cause de la pluie »",
+                "« le chat »",
+                "« mange »",
+                "« lui » (COI)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il explique pourquoi quelque chose se produit."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "L'attribut du sujet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent un attribut du sujet ?",
+              "options": [
+                "« Cette robe est rouge. »",
+                "« Il devient grand. »",
+                "« Il mange une pomme. »",
+                "« Il va à l’école. »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Après un verbe d’état ou de transformation, l’attribut décrit le sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Attribut dans « Marie est gentille » :",
+              "options": ["Marie", "est", "gentille", "est gentille"],
+              "correctAnswers": [2],
+              "explanation": "« Gentille » qualifie Marie via le verbe « est »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L’attribut s’accorde avec :",
+              "options": [
+                "le sujet",
+                "le COD",
+                "le verbe seulement",
+                "un adverbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Elle est heureuse » — féminin singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe d’état fréquent avec attribut :",
+              "options": ["être", "manger", "courir", "prendre"],
+              "correctAnswers": [0],
+              "explanation": "« Être » lie le sujet à une qualité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Paul semble fatigué » — attribut :",
+              "options": ["Paul", "semble", "fatigué", "semble fatigué"],
+              "correctAnswers": [2],
+              "explanation": "« Fatigué » décrit l’état de Paul."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Différence : COD « Il mange une pomme » / attribut « Il est malade » — « malade » est :",
+              "options": ["attribut", "COD", "COI", "CC de lieu"],
+              "correctAnswers": [0],
+              "explanation": "« Malade » ne répond pas à « manger quoi ? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Attribut possible avec « devenir » :",
+              "options": [
+                "« Il devient professeur. »",
+                "« Il professeur devient. »",
+                "« Professeur il mange. »",
+                "« Il mange professeur. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Professeur » complète le sujet après « devient »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Les fleurs sentent bon » — « bon » est :",
+              "options": [
+                "attribut",
+                "COD",
+                "adverbe seulement sans lien au sujet",
+                "sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec « sentir » (état), « bon » qualifie le sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On ne confond pas attribut et :",
+              "options": [
+                "épithète (adjectif collé au nom sans verbe d’état)",
+                "verbe conjugué",
+                "sujet",
+                "point final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Une fleur rouge » : « rouge » est épithète, pas attribut."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ils restent calmes » — « calmes » est :",
+              "options": ["attribut du sujet", "COD", "COI", "CC de temps"],
+              "correctAnswers": [0],
+              "explanation": "« Rester » est un verbe d’état avec attribut."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Phrase simple : sujet et verbe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une phrase simple minimale correcte contient :",
+              "options": [
+                "un sujet",
+                "un verbe conjugué",
+                "obligatoirement un COD",
+                "obligatoirement deux verbes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet + verbe suffisent : « Le chien aboie. »"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Noyau verbal dans « Les oiseaux chantent » :",
+              "options": ["chantent", "Les oiseaux", "oiseaux", "Les"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe conjugué est le centre du prédicat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il neige » : sujet ?",
+              "options": [
+                "Il (impersonnel)",
+                "neige",
+                "Il neige",
+                "aucun sujet écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom « il » est sujet impersonnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ordre le plus fréquent en français affirmatif :",
+              "options": [
+                "Sujet – Verbe – Compléments",
+                "Verbe – Sujet – Compléments",
+                "Complément – Verbe – Sujet",
+                "Verbe seul toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : « Le chat dort sur le tapis. »"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Bravos, les filles ! », le sujet est :",
+              "options": ["les filles", "Bravos", "les", "filles seulement"],
+              "correctAnswers": [0],
+              "explanation": "On peut interpréger « les filles » comme sujet d’un verbe sous-entendu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accord sujet–verbe : « La cloche … sonné » (passé composé, cloche sing.) :",
+              "options": ["a", "ont", "as", "avons"],
+              "correctAnswers": [0],
+              "explanation": "Auxiliaire « a » au singulier avec « La cloche »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Groupe sujet élargi : « Le vieux chien du voisin » — verbe « aboie » : sujet ?",
+              "options": [
+                "Le vieux chien du voisin",
+                "chien",
+                "voisin",
+                "aboie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout le groupe nominal est sujet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase où sujet = pronom « on » :",
+              "options": [
+                "« On étudie la leçon. »",
+                "« Étudie la leçon. »",
+                "« La leçon étudie. »",
+                "« Étudier leçon. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« On » remplace une personne indéfinie sujet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le prédicat comprend surtout :",
+              "options": [
+                "le verbe et ses compléments",
+                "le sujet seul",
+                "la ponctuation",
+                "le titre du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout ce qui n’est pas sujet appartient au prédicat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Tu ris » contient combien de fonctions principales (sujet + verbe) ?",
+              "options": ["2", "4", "0", "1 seulement"],
+              "correctAnswers": [0],
+              "explanation": "Sujet « tu » et verbe « ris »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Analyser une phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Mon cousin lit un BD chez lui », quelles analyses sont correctes ?",
+              "options": [
+                "« Mon cousin » est le sujet",
+                "« un BD » est COD",
+                "« lit » est le sujet",
+                "« chez lui » est attribut du sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet « Mon cousin », COD « un BD » ; « chez lui » est un CC de lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Analyse : « Les élèves écoutent la maîtresse » — « la maîtresse » :",
+              "options": ["COD", "COI", "sujet", "attribut"],
+              "correctAnswers": [0],
+              "explanation": "Écouter qui/quoi ? → la maîtresse (COD)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il téléphone à sa mère » — « à sa mère » :",
+              "options": ["COI", "COD", "sujet", "CC de temps"],
+              "correctAnswers": [0],
+              "explanation": "Téléphoner à qui ? → COI."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sujet de « Des nuages gris couvrent le ciel » :",
+              "options": ["Des nuages gris", "couvrent", "le ciel", "gris"],
+              "correctAnswers": [0],
+              "explanation": "Qui couvre ? → Des nuages gris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous marchons lentement » — « lentement » :",
+              "options": ["CC de manière", "COD", "sujet", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Comment marchons-nous ? → lentement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Cette soupe est salée » — « salée » :",
+              "options": ["attribut", "COD", "épithète", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Attribut après « est »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verbe dans « Ils habitent près de la rivière » :",
+              "options": ["habitent", "Ils", "près", "rivière"],
+              "correctAnswers": [0],
+              "explanation": "« Habitent » est conjugué."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ce matin, le train arrive » — « Ce matin » :",
+              "options": ["CC de temps", "sujet", "COD", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Quand arrive le train ? → ce matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "COD de « J’achète des fruits » :",
+              "options": [
+                "des fruits",
+                "J’",
+                "achète",
+                "fruits sans déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "J’achète quoi ? → des fruits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fonction de « très » dans « Il est très grand » :",
+              "options": [
+                "modificateur de l’attribut (adverbe)",
+                "sujet",
+                "COD",
+                "COI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Très » intensifie l’adjectif attribut « grand »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Compléments du verbe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels compléments sont des compléments d’objet (introduits sans être des CC) ?",
+              "options": ["COD", "COI", "CC de lieu", "CC de temps"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le COD et le COI sont des compléments d’objet liés directement au verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Elle offre un cadeau à son amie » — COD :",
+              "options": ["un cadeau", "à son amie", "Elle", "offre"],
+              "correctAnswers": [0],
+              "explanation": "Offrir quoi ? → un cadeau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même phrase — COI :",
+              "options": ["à son amie", "un cadeau", "Elle", "son"],
+              "correctAnswers": [0],
+              "explanation": "Offrir à qui ? → à son amie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe intransitif (sans COD) :",
+              "options": ["dormir", "manger", "lire", "prendre"],
+              "correctAnswers": [0],
+              "explanation": "« Dormir » ne prend pas de COD."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il réfléchit longtemps » — « longtemps » :",
+              "options": ["CC de temps", "COD", "COI", "sujet"],
+              "correctAnswers": [0],
+              "explanation": "Pendant combien de temps ? → longtemps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complément essentiel vs circonstanciel : le COD est :",
+              "options": [
+                "souvent essentiel au sens",
+                "toujours un adverbe",
+                "jamais lié au verbe",
+                "le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans COD, « manger » perd son objet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nous vous aidons » — « vous » :",
+              "options": ["COD", "COI", "CC", "sujet"],
+              "correctAnswers": [0],
+              "explanation": "Aider qui ? → vous (COD)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il arrive demain à Paris » contient CC de :",
+              "options": [
+                "temps et lieu",
+                "COD double",
+                "deux sujets",
+                "attribut double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demain (temps), à Paris (lieu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase avec COD et CC :",
+              "options": [
+                "« Il lit son livre dans sa chambre. »",
+                "« Il est grand. »",
+                "« Dormir. »",
+                "« Le livre. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COD « son livre », CC de lieu « dans sa chambre »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour classer un complément, on commence par :",
+              "options": [
+                "poser la question adaptée (quoi, à qui, où, quand…)",
+                "compter les syllabes",
+                "chercher une majuscule",
+                "ignorer le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les questions grammaticales identifient la fonction."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires sujet / verbe sont correctes ?",
+              "options": [
+                "« Le vent » / « souffle »",
+                "« Les filles » / « dansent »",
+                "« Mange » / « Paul »",
+                "« Sur » / « la table »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet puis verbe conjugué : le vent souffle, les filles dansent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Analyse complète : « Tu prends des notes en classe » — sujet :",
+              "options": ["Tu", "prends", "des notes", "en classe"],
+              "correctAnswers": [0],
+              "explanation": "Qui prend ? → Tu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même phrase — COD :",
+              "options": ["des notes", "en classe", "Tu", "prends"],
+              "correctAnswers": [0],
+              "explanation": "Tu prends quoi ? → des notes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Même phrase — « en classe » :",
+              "options": ["CC de lieu", "COD", "COI", "attribut"],
+              "correctAnswers": [0],
+              "explanation": "Où prends-tu des notes ? → en classe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ils sont prêts » — « prêts » :",
+              "options": ["attribut", "COD", "COI", "CC de manière"],
+              "correctAnswers": [0],
+              "explanation": "État du sujet après « sont »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Elle se promène au parc » — « au parc » :",
+              "options": ["CC de lieu", "COD", "sujet", "COI"],
+              "correctAnswers": [0],
+              "explanation": "Où se promène-t-elle ? → au parc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nature ≠ fonction : « manger » peut être verbe (nature) et :",
+              "options": [
+                "verbe (fonction dans la phrase)",
+                "toujours sujet",
+                "toujours nom",
+                "déterminant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La même nature « verbe » remplit la fonction de verbe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mon frère me téléphone » — « me » :",
+              "options": ["COI", "COD", "sujet", "CC"],
+              "correctAnswers": [0],
+              "explanation": "Téléphoner à qui ? → à moi → « me »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase avec sujet, verbe, COD, COI :",
+              "options": [
+                "« Il envoie une lettre à Julie. »",
+                "« Il dort. »",
+                "« Bleu ciel. »",
+                "« Julie. »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COD « une lettre », COI « à Julie »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de l’analyse en 6e :",
+              "options": [
+                "distinguer nature et fonction pour comprendre la phrase",
+                "mémoriser sans exemples",
+                "supprimer les compléments",
+                "ne jamais accorder le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nature = classe du mot ; fonction = rôle dans la phrase."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

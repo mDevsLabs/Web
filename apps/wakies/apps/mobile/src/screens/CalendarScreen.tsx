@@ -116,7 +116,7 @@ export function CalendarScreen() {
     return () => {
       active = false;
     };
-  }, [api, calendarId, date, all, zone, w, retry]);
+  }, [api, calendarId, date, all, zone, retry]);
 
   function newEvent() {
     open({

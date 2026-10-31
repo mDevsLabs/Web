@@ -1,0 +1,2728 @@
+{
+  "id": "2nde-ses-01",
+  "year": "2nde",
+  "subject": "ses",
+  "title": "Comment les sciences sociales raisonnent-elles ?",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Économie, sociologie, science politique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce que l'économie ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces énoncés, lesquels décrivent l'objet de l'économie ?",
+              "options": [
+                "Étude de la production et de la consommation des biens",
+                "Analyse exclusive des croyances religieuses",
+                "Étude des choix face à la rareté",
+                "Description du seul droit pénal"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'économie porte sur l'allocation des ressources rares et les activités productives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La rareté signifie que",
+              "options": [
+                "Ressources illimitées",
+                "Besoins supérieurs aux ressources",
+                "Seule l'eau manque",
+                "L'État supprime les choix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La rareté impose d'arbitrer entre usages."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un agent économique est",
+              "options": [
+                "Uniquement une banque",
+                "Toute entité prenant des décisions économiques",
+                "Seulement un salarié",
+                "Un juge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ménages, entreprises et État en sont."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le PIB mesure",
+              "options": [
+                "Le bonheur",
+                "La production de biens et services sur un territoire",
+                "Le patrimoine total",
+                "Les exportations seules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Agrégat de la production intérieure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'économie de marché repose sur",
+              "options": [
+                "Planification totale",
+                "Prix, offre et demande",
+                "Interdiction des échanges",
+                "Hasard"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les signaux-prix coordonnent une partie des choix."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La microéconomie étudie",
+              "options": [
+                "L'inflation nationale",
+                "Agents et marchés pris individuellement",
+                "Les traités",
+                "Les rites"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Analyse localisée des comportements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La macroéconomie étudie",
+              "options": [
+                "Un consommateur",
+                "Chômage, croissance et inflation globaux",
+                "Un ministre",
+                "La phonétique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Agrégats à l'échelle d'un pays."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un bien public se caractérise souvent par",
+              "options": [
+                "Rivalité forte",
+                "Non-rivalité et exclusion difficile",
+                "Monopole privé",
+                "Interdiction collective"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemple : défense ou éclairage public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Offre et demande expliquent",
+              "options": [
+                "Les votes",
+                "La formation du prix d'équilibre",
+                "Les mythes",
+                "La météo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Interaction classique sur un marché."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'économie se distingue de l'opinion car",
+              "options": [
+                "Elle argumente avec faits et modèles",
+                "Elle ignore les données",
+                "Elle interdit le débat",
+                "Elle n'explique rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarche argumentée et vérifiable."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les acteurs et les marchés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels acteurs figurent dans le circuit économique simplifié ?",
+              "options": [
+                "Les ménages",
+                "Les comités olympiques",
+                "Les entreprises",
+                "Les observatoires stellaires"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ménages et entreprises échangent travail, revenus et biens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les ménages apportent surtout",
+              "options": [
+                "Des monopoles",
+                "Travail et demande",
+                "Des arrêts de cour",
+                "Des frontières"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Force de travail et consommation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'État redistribue via",
+              "options": [
+                "Seule la culture",
+                "Impôts et dépenses publiques",
+                "Suppression de la monnaie",
+                "Interdiction d'épargner"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Budget et sphère publique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La concurrence suppose",
+              "options": [
+                "Un vendeur",
+                "Plusieurs offreurs et demandeurs",
+                "Absence de prix",
+                "Barrières permanentes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluralité d'agents sur le marché."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un monopole, c'est",
+              "options": [
+                "Nombreux producteurs",
+                "Un seul vendeur",
+                "Aucun acheteur",
+                "Prix nuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Offre unique sur le marché."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le salaire est le prix du",
+              "options": ["Capital", "Travail", "Terrain", "Risque météo"],
+              "correctAnswers": [1],
+              "explanation": "Rémunération de la force de travail."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'épargne peut financer",
+              "options": [
+                "Rien",
+                "L'investissement productif",
+                "Seulement les importations",
+                "Uniquement le luxe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Intermédiation financière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le commerce international",
+              "options": [
+                "Interdit les échanges",
+                "Repose sur spécialisation et échanges",
+                "Supprime la monnaie",
+                "Ignore les pays"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Flux mondiaux de biens et services."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Externalité négative",
+              "options": [
+                "Coût imposé à des tiers",
+                "Profit pour tous",
+                "Baisse mécanique des prix",
+                "Fin de l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution type."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Régulation publique vise parfois",
+              "options": [
+                "Corriger défaillances de marché",
+                "Interdire toute production",
+                "Supprimer statistiques",
+                "Éliminer innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Externalités, monopoles, protection."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La sociologie et son objet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés concernent la sociologie ?",
+              "options": [
+                "Étude des faits sociaux",
+                "Étude des atomes",
+                "Analyse des groupes et normes",
+                "Mesure exclusive du PIB"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Objet : vie collective, régularités et institutions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un fait social pour Durkheim",
+              "options": [
+                "N'existe que dans une tête",
+                "Existe au-delà de l'individu isolé",
+                "Est biologique",
+                "Est une opinion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Réalité sociale propre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Socialisation",
+              "options": [
+                "Isolement",
+                "Apprentissage des normes et rôles",
+                "Fin de la famille",
+                "Calcul marchand"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Intégration au groupe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une norme sociale",
+              "options": [
+                "Loi physique",
+                "Règle attendue dans une société",
+                "Mythe seul",
+                "Toujours écrite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Guide conduites et sanctions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un groupe social",
+              "options": [
+                "Partage appartenance ou interactions",
+                "Toujours officiel",
+                "Confondu avec l'État",
+                "Sans hiérarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille, classe, équipe…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sociologie vs opinion",
+              "options": [
+                "Systématise observation et concepts",
+                "Repose sur préjugés",
+                "Ignore comparaisons",
+                "Sans méthode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Explications argumentées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Anomie",
+              "options": [
+                "Excès de cohésion",
+                "Affaiblissement des normes",
+                "Loi économique",
+                "Type de sondage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dérèglement social durkheimien."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Division du travail social",
+              "options": [
+                "Organise tâches entre acteurs",
+                "Supprime spécialisation",
+                "Hors sociologie",
+                "Interdit échanges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interdépendances."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Institution",
+              "options": [
+                "Bâtiment seulement",
+                "Cadre durable d'actions",
+                "Sans effet",
+                "Toujours informelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Famille, école, État…"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Inégalités",
+              "options": [
+                "Objet transversal en SES",
+                "Hors sciences sociales",
+                "Physique seule",
+                "Droit privé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs disciplines les abordent."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Durkheim et les faits sociaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Durkheim caractérise les faits sociaux par",
+              "options": [
+                "Contrainte extérieure",
+                "Illusions sans effet",
+                "Généralité observable",
+                "Pure subjectivité"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Contrainte et répétition à l'échelle collective."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Méthode durkheimienne",
+              "options": [
+                "Introspection seule",
+                "Observation comparée et statistiques",
+                "Chimie de laboratoire",
+                "Sans définition"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Empirisme des faits sociaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Suicide (Durkheim)",
+              "options": [
+                "Purement individuel",
+                "Variations liées à l'intégration sociale",
+                "Sans données",
+                "Impossible à étudier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Taux liés au lien social."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contrainte sociale",
+              "options": [
+                "Faits sociaux orientent nos actions",
+                "Individu toujours libre de tout",
+                "Seul le marché compte",
+                "Loi absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes et usages."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Généralité",
+              "options": [
+                "Un seul cas",
+                "Au-delà de l'individu",
+                "Toujours universel sans exception",
+                "Fiction"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Échelle du groupe ou société."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Extériorité",
+              "options": [
+                "Faits sociaux nous précèdent",
+                "Tout est biologie",
+                "État absent",
+                "Marché seul externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue, lois, coutumes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Critique du culte de l'individu",
+              "options": [
+                "Oublier causes sociales",
+                "Rejeter toute collectivité",
+                "Promouvoir PIB seul",
+                "Interdire enquêtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Importance du social."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Solidarité mécanique",
+              "options": [
+                "Sociétés peu différenciées",
+                "Sociétés industrielles complexes",
+                "Sans normes",
+                "Monopole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressemblance des rôles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Solidarité organique",
+              "options": [
+                "Interdépendance de fonctions différenciées",
+                "Absence de règles",
+                "Concept politique seul",
+                "Hors travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité des tâches."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repérer un fait social",
+              "options": [
+                "Dépasse-t-il l'individu isolé ?",
+                "Ignorer statistiques",
+                "Confondre avec opinion",
+                "Refuser comparaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régularité et contrainte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Weber et la compréhension",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Weber insiste sur",
+              "options": [
+                "Compréhension (Verstehen) des actions",
+                "Atomes seuls",
+                "Sens donné par les acteurs",
+                "Rejet de toute interprétation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Action sociale orientée et signifiante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Action sociale weberienne",
+              "options": [
+                "Réflexe biologique",
+                "Orientée vers autrui avec sens",
+                "Hors société",
+                "Toujours rationnelle économiquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Visée et signification."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Type idéal",
+              "options": [
+                "Mesure température",
+                "Modèle conceptuel heuristique",
+                "Copie exacte du réel",
+                "Interdit comparaison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Outil d'analyse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Types de domination",
+              "options": [
+                "Traditionnelle, charismatique, légale-rationnelle",
+                "Uniquement économique",
+                "Seulement religieuse",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pouvoir et obéissance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bureaucratie weberienne",
+              "options": [
+                "Organisation rationnelle impersonnelle",
+                "Chaos administratif",
+                "Sans règles",
+                "Mythe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles, fonctions, hiérarchie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Protestantisme et capitalisme",
+              "options": [
+                "Lien culture et économie",
+                "Loi physique",
+                "Sondage électoral",
+                "Théorie biologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens des conduites économiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Neutralité axiologique",
+              "options": [
+                "Distinguer faits et jugements de valeur",
+                "Interdire recherche",
+                "Obliger prise de parti",
+                "Supprimer éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté des valeurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comprendre une action",
+              "options": [
+                "Retrouver la logique de l'acteur",
+                "Compter seulement actes",
+                "Ignorer motivations",
+                "Réduire au biologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interprétation du sens."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Weber complète Durkheim en",
+              "options": [
+                "Insistant sur subjectivité et sens",
+                "Niant toute contrainte",
+                "Rejetant méthode",
+                "Interdisant comparaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches complémentaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Science sociale weberienne",
+              "options": [
+                "Causalité et compréhension",
+                "Rejet causalité",
+                "Journalisme seul",
+                "Ignore institutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double exigence."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Science politique et pouvoir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La science politique étudie",
+              "options": [
+                "Pouvoir et gouvernement",
+                "Réactions chimiques",
+                "Politiques publiques et institutions",
+                "Composition des étoiles"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "État, institutions et politiques publiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pouvoir politique",
+              "options": [
+                "Oriente choix collectifs",
+                "Se limite au marché",
+                "Absent en démocratie",
+                "Toujours illégitime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décisions contraignantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Régime politique",
+              "options": [
+                "Règles institutionnelles du pouvoir",
+                "Climat",
+                "Chômage",
+                "Mode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démocratie, autoritarisme…"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Séparation des pouvoirs",
+              "options": [
+                "Limiter concentration",
+                "Fusionner exécutif et judiciaire",
+                "Supprimer Parlement",
+                "Interdire élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montesquieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Souveraineté populaire",
+              "options": [
+                "Peuple source de légitimité",
+                "Marché décide seul",
+                "Juges gouvernent",
+                "Hérédité obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondement démocratique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Élection",
+              "options": [
+                "Désigne représentants ou tranche",
+                "Mesure PIB",
+                "Fixe tous les prix",
+                "Remplace loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétition politique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Opinion publique",
+              "options": [
+                "Avis sur affaires publiques",
+                "Identique au vote",
+                "Sans médias",
+                "Toujours stable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sondages et débats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Partis politiques",
+              "options": [
+                "Programmes et mobilisation",
+                "Interdits en démocratie",
+                "Hors science politique",
+                "Remplacent État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure compétition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Politique publique",
+              "options": [
+                "Action de l'État sur un problème",
+                "Stratégie d'entreprise",
+                "Loi gravité",
+                "Rituel privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé, école, emploi…"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Science politique et citoyenneté",
+              "options": [
+                "Comprendre institutions et débats",
+                "Remplace vote",
+                "Interdit critique",
+                "Ignore droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Participation éclairée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "État, institutions et démocratie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'État moderne exerce souvent",
+              "options": [
+                "Monopole légitime de la contrainte",
+                "Toutes décisions privées",
+                "Fonctions régaliennes et redistributives",
+                "Aucun rôle"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sécurité, justice, monnaie, politiques sociales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Démocratie représentative",
+              "options": [
+                "Peuple choisit mandataires",
+                "Sans libertés",
+                "Sans règles",
+                "Sans débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élections et contrôle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Constitution",
+              "options": [
+                "Norme supérieure des institutions",
+                "Brochure partisane",
+                "Texte économique",
+                "Catalogue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre des pouvoirs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contrôle parlementaire",
+              "options": [
+                "Questions, commissions, confiance",
+                "Interdit",
+                "Remplace élections",
+                "Supprime justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surveillance exécutif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Droit de vote",
+              "options": [
+                "Participation à la désignation",
+                "Identique à l'impôt",
+                "Exclut débat",
+                "Sans légitimité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pilier électoral."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "État-providence",
+              "options": [
+                "Protection sociale et services",
+                "Sans impôts",
+                "Sans école publique",
+                "Antonyme régulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compense risques sociaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Décentralisation",
+              "options": [
+                "Compétences aux collectivités",
+                "Supprime règles",
+                "Fusion pouvoirs",
+                "Interdit maires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communes, départements, régions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Union européenne",
+              "options": [
+                "Organisation politique et économique",
+                "État unitaire unique",
+                "Entreprise privée",
+                "Club sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutions et marché intérieur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Légitimité politique",
+              "options": [
+                "Acceptation du droit de gouverner",
+                "Taux croissance",
+                "Taille territoire",
+                "Nombre langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condition de l'ordre politique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Citoyenneté",
+              "options": [
+                "Droits et devoirs civiques",
+                "Seulement consommer",
+                "Sans loi",
+                "Exclusion débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vote, expression, règles communes."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Articuler économie, sociologie et politique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les trois disciplines SES",
+              "options": [
+                "Étudient la vie en société",
+                "Sont identiques",
+                "Se complètent sur marché, groupes, pouvoir",
+                "Ignorent institutions"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Angles distincts sur le social."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chômage",
+              "options": [
+                "Économique, social et politique",
+                "Biologie seule",
+                "Sans données",
+                "Droit privé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet transversal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Inégalités scolaires",
+              "options": [
+                "Sociologie et politiques publiques",
+                "Météo",
+                "Comptabilité seule",
+                "Hors SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origines et actions publiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marché du travail",
+              "options": [
+                "Relie salaires et statuts sociaux",
+                "Hors sciences sociales",
+                "Sans État",
+                "Sans normes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraintes multiples."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Socialisation politique",
+              "options": [
+                "Apprentissage opinions et rôles civiques",
+                "Calcul PIB",
+                "Offre seule",
+                "Chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Famille, école, médias."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Globalisation",
+              "options": [
+                "Économique et politique",
+                "Cuisine seule",
+                "Sans effet social",
+                "Juridique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échanges et gouvernance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Interdisciplinarité",
+              "options": [
+                "Plusieurs disciplines sur un objet",
+                "Interdit méthode",
+                "Remplace spécialisation",
+                "Sans concepts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problèmes multidimensionnels."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pauvreté",
+              "options": [
+                "Approches et outils variés",
+                "Une seule définition obligatoire",
+                "Économie seule",
+                "Sans politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Questions disciplinaires distinctes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Frontières disciplinaires",
+              "options": [
+                "Organisent sans enfermer",
+                "Interdisent échange",
+                "Empêchent données",
+                "Suppriment débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utiles mais poreuses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raisonner en SES",
+              "options": [
+                "Articuler concepts, faits, disciplines",
+                "Accumuler opinions",
+                "Ignorer institutions",
+                "Rejeter chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pensée argumentée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Méthodes en sciences sociales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Méthodes en SES incluent",
+              "options": [
+                "Enquêtes statistiques et entretiens",
+                "Entretiens et observation",
+                "Observation seule sans analyse",
+                "Accélérateur de particules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quantitatif et qualitatif selon l'objet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Donnée quantitative",
+              "options": [
+                "Exprimée en nombres",
+                "Toujours subjective",
+                "Interdite",
+                "Rumeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaisons et agrégats."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Donnée qualitative",
+              "options": [
+                "Riche en sens",
+                "Inutile",
+                "Remplace toute statistique",
+                "Sans méthode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motivations et contextes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Échantillon",
+              "options": [
+                "Sous-ensemble visé de la population",
+                "Liste courses",
+                "Loi constitutionnelle",
+                "Graphique boursier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Généralisation prudente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Questionnaire",
+              "options": [
+                "Collecte standardisée",
+                "Remplace analyse",
+                "Toujours frauduleux",
+                "Économie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponses comparables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entretien semi-directif",
+              "options": [
+                "Conversation guidée souple",
+                "Interrogatoire",
+                "Calcul PIB",
+                "Vote assis levé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profondeur interpretative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Document de travail",
+              "options": [
+                "Texte officiel, article, statistique",
+                "Roman seulement",
+                "Exclut chiffres",
+                "Interdit citation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources variées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangulation",
+              "options": [
+                "Croiser sources ou méthodes",
+                "Mesurer triangles",
+                "Supprimer hypothèses",
+                "Ignorer biais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédibilité renforcée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Statistiques officielles",
+              "options": [
+                "Protocoles publics (INSEE…)",
+                "Toujours parfaites",
+                "Hors SES",
+                "Identiques sondages privés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture critique requise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir une méthode",
+              "options": [
+                "Selon question de recherche",
+                "Hasard seul",
+                "Interdiction sujet",
+                "Goût uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problématique guide outils."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes communs aux trois disciplines",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Thèmes transversaux SES",
+              "options": [
+                "Inégalités et chômage",
+                "Pouvoir et légitimité",
+                "Composition des étoiles",
+                "Structure des atomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mobilisent économie, sociologie, politique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Croissance économique",
+              "options": [
+                "Augmentation durable production",
+                "Diminution échanges",
+                "Fin monnaie",
+                "Littérature seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesurée notamment par PIB."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mobilité sociale",
+              "options": [
+                "Passage entre positions sociales",
+                "Déplacement géographique seul",
+                "Inflation",
+                "Scrutin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Égalité des chances."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Participation électorale",
+              "options": [
+                "Proportion d'inscrits votant",
+                "Prix pain",
+                "Taille familles",
+                "Exportations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Engagement politique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Justice sociale",
+              "options": [
+                "Répartition équitable ressources",
+                "Loi demande seule",
+                "Hors SES",
+                "Religion seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impôts, services, droits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Identité sociale",
+              "options": [
+                "Appartenance à un groupe",
+                "Numéro sécu seul",
+                "Loi physique",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genre, classe, nation…"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Conflit social",
+              "options": [
+                "Opposition d'intérêts ou valeurs",
+                "Sans règles",
+                "Toujours pathologique",
+                "Hors politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grèves, débats publics."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mondialisation échanges",
+              "options": [
+                "Intensification flux mondiaux",
+                "Fin cultures",
+                "Sans politique",
+                "Biologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emplois et régulations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transition écologique",
+              "options": [
+                "Défi économique, social, politique",
+                "Hors SES",
+                "Individuel seul",
+                "Sans État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marchés, inégalités, politiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sciences sociales",
+              "options": [
+                "Relient faits, théories, enjeux citoyens",
+                "Récitent clichés",
+                "Rejettent débat",
+                "Ignorent méthodes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre le monde commun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le raisonnement scientifique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Du sens commun à la science sociale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Science sociale vs sens commun",
+              "options": [
+                "Vérifie et systématise",
+                "Repose sur préjugés non examinés",
+                "Utilise concepts et méthodes",
+                "Interdit observation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le sens commun se questionne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sens commun",
+              "options": [
+                "Savoirs quotidiens parfois vrais parfois faux",
+                "Toujours scientifique",
+                "Sans culture",
+                "Identique partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de départ critique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Préjugé",
+              "options": [
+                "Jugement avant examen",
+                "Théorie validée",
+                "Méthode statistique",
+                "Loi électorale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fausse analyse si non critiqué."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Stéréotype",
+              "options": [
+                "Image simplifiée d'un groupe",
+                "PIB",
+                "Sondage",
+                "Institution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Généralisation rigide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Concept scientifique",
+              "options": [
+                "Outil défini pour analyser",
+                "Opinion",
+                "Titre journal",
+                "Hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socialisation, pouvoir, marché…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Théorie",
+              "options": [
+                "Explications cohérentes",
+                "Rumeur",
+                "Liste prix",
+                "Photo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide hypothèses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fait empirique",
+              "options": [
+                "Constat observé",
+                "Valeur sans preuve",
+                "Opinion",
+                "Mythe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données et observations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Critique du sens commun",
+              "options": [
+                "Évite l'évidence sans preuve",
+                "Interdit débat",
+                "Supprime chiffres",
+                "Remplace démocratie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Opinion publique",
+              "options": [
+                "Avis sans protocole scientifique",
+                "Toujours fausse",
+                "Inexistante",
+                "Remplace élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informe mais ne suffit pas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer à la science sociale",
+              "options": [
+                "Questions et preuves",
+                "Répéter clichés",
+                "Ignorer méthodes",
+                "Refuser données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doute méthodique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Problématique et hypothèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Problématique de recherche",
+              "options": [
+                "Question centrale",
+                "Liste opinions",
+                "Oriente choix des données",
+                "Remplace toujours hypothèse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Cadre ce qu'on cherche à comprendre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hypothèse",
+              "options": [
+                "Proposition testable",
+                "Vérité définitive",
+                "Titre cours",
+                "Résultat final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confrontée aux faits."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Problématique vague",
+              "options": [
+                "Empêche données pertinentes",
+                "Garantit réussite",
+                "Remplace méthode",
+                "Est idéale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précision nécessaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reformuler question",
+              "options": [
+                "Affine objet d'étude",
+                "Inutile",
+                "Interdit enquête",
+                "Supprime théorie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étape clé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hypothèse nulle",
+              "options": [
+                "Absence d'effet à tester",
+                "Toujours vraie",
+                "Préjugé",
+                "Remplace débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courante en statistique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Variables",
+              "options": [
+                "Propriétés qui varient",
+                "Textes fixes",
+                "Lois seules",
+                "Mythes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrent dans explications."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relation supposée",
+              "options": [
+                "Lien à examiner",
+                "Opinion sans test",
+                "Citation décorative",
+                "Carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. éducation et revenu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Operationaliser",
+              "options": [
+                "Définir mesure du concept",
+                "Ignorer données",
+                "Changer sujet",
+                "Supprimer problématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept observable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bonne problématique 2nde",
+              "options": [
+                "Claire, limitée, argumentable",
+                "Doit tout expliquer",
+                "Évite concepts",
+                "Ignore disciplines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enquête réaliste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester hypothèse",
+              "options": [
+                "Compare prévision et faits",
+                "Confirme toujours idée",
+                "Interdit révision",
+                "Remplace citoyenneté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut être infirmée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Concepts, variables et indicateurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indicateur",
+              "options": [
+                "Mesure approchée d'un concept",
+                "Toujours parfait",
+                "Sert au quantitatif",
+                "Remplace réflexion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ex. taux de chômage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Concept de pouvoir",
+              "options": [
+                "Capacité d'imposer sa volonté",
+                "Température",
+                "Recette",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources et légitimité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Variable dépendante",
+              "options": [
+                "Effet étudié",
+                "Cause fixe",
+                "Loi nature",
+                "Institution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce qu'on explique parfois."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Variable indépendante",
+              "options": [
+                "Facteur explicatif supposé",
+                "Toujours temps",
+                "Hasard",
+                "Texte sacré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cause potentielle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Indicateur composite",
+              "options": [
+                "Agrège plusieurs mesures",
+                "Opinion",
+                "Interdit chiffres",
+                "Remplace vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IDH par exemple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Définition opérationnelle",
+              "options": [
+                "Comment repérer le concept",
+                "Slogan",
+                "Ignore données",
+                "Fixe prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reproductibilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Concept vs indicateur",
+              "options": [
+                "Confusion fausse interprétation",
+                "Toujours souhaitable",
+                "Sans effet",
+                "Améliore validité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur partiel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PCS",
+              "options": [
+                "Classe emplois pour inégalités",
+                "Mesure pluie",
+                "Remplace loi",
+                "Parti politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statistiques françaises."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Seuil de pauvreté",
+              "options": [
+                "Indicateur monétaire relatif",
+                "Opinion",
+                "Loi électorale",
+                "Mythe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaisons sociales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Définir concept",
+              "options": [
+                "Clarifie débat",
+                "Empêche critique",
+                "Supprime données",
+                "Interdit qualitatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base du raisonnement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Observer et décrire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Observer en sciences sociales",
+              "options": [
+                "Directe ou par documents",
+                "Ignore contexte",
+                "Peut utiliser grilles",
+                "Identique à deviner"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Description rigoureuse d'abord."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Observation participante",
+              "options": [
+                "Chercheur dans le milieu",
+                "Labo physique",
+                "Sondage seul",
+                "Vote électronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Qualitatif classique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Observation non participante",
+              "options": [
+                "Chercheur extérieur",
+                "Interdit notes",
+                "Remplace stats",
+                "Anti-science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance relative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Description",
+              "options": [
+                "Traits pertinents du réel social",
+                "Inutile",
+                "Remplace argument",
+                "Ignore faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base analyse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Source primaire",
+              "options": [
+                "Produite au moment étudié",
+                "Manuel seulement",
+                "Wikipedia seul",
+                "Opinion sans date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archives, témoignages."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Source secondaire",
+              "options": [
+                "Synthèse ou interprétation",
+                "Remplace archives",
+                "Toujours fausse",
+                "Inexistante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manuels, articles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Biais d'observation",
+              "options": [
+                "Déformation du regard",
+                "Loi math",
+                "Preuve définitive",
+                "Indicateur INSEE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À limiter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Terrain",
+              "options": [
+                "Milieu de collecte",
+                "Graphique boursier",
+                "Constitution seule",
+                "Hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "École, entreprise…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compte rendu terrain",
+              "options": [
+                "Documente observations",
+                "Remplace analyse",
+                "Roman obligatoire",
+                "Ignore contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traçabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décrire avant expliquer",
+              "options": [
+                "Évite interprétations hâtives",
+                "Interdit théorie",
+                "Supprime chiffres",
+                "Opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre logique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Corrélation et causalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Corrélation et causalité",
+              "options": [
+                "Variables évoluent ensemble",
+                "Une variable peut en influencer une autre",
+                "Corrélation prouve toujours la cause",
+                "Causalité exige prudence méthodologique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Co-variation n'implique pas cause directe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corrélation",
+              "options": [
+                "Association statistique",
+                "Preuve manipulation",
+                "Loi morale",
+                "Vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallélisme sans cause assurée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lien causal",
+              "options": [
+                "A contribue à produire B",
+                "Hasard décoratif",
+                "Toujours visible",
+                "Interdit SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes et tests."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Variable confondante",
+              "options": [
+                "Troisième facteur biaise lien",
+                "Indicateur parfait",
+                "Loi électorale",
+                "Graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simule causalité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Post hoc",
+              "options": [
+                "Confondre succession et cause",
+                "Méthode valide",
+                "Théorème éco",
+                "Weber"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur logique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Expérience naturelle",
+              "options": [
+                "Comparaison de cas réels",
+                "Chimie seule",
+                "Opinion",
+                "Mythe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quasi-expérimentation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Multicausalité",
+              "options": [
+                "Plusieurs causes sociales",
+                "Une cause suffit",
+                "Interdit stats",
+                "Hors SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Contrefactuel",
+              "options": [
+                "Sans la cause, que se serait-il passé ?",
+                "PIB",
+                "Scrutin",
+                "Recensement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion causale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre temporel",
+              "options": [
+                "Aide discussion causalité",
+                "Prouve toujours cause",
+                "Remplace enquête",
+                "Préjugé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile mais insuffisant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Établir causalité",
+              "options": [
+                "Théorie et preuves",
+                "Une anecdote",
+                "Ignorer alternatives",
+                "Confondre avec corrélation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prudence requise."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Enquête et quantitatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Enquête quantitative",
+              "options": [
+                "Questionnaires standardisés",
+                "Généralisations prudentes",
+                "Ignore chiffres",
+                "Remplace réflexion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échantillon et variables numériques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Recensement",
+              "options": [
+                "Toute la population",
+                "Petit échantillon",
+                "Interdit France",
+                "Remplace sondages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Population entière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sondage",
+              "options": [
+                "Enquête sur échantillon",
+                "Sans marge d'erreur possible",
+                "Opinion expert",
+                "Loi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode courante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marge d'erreur",
+              "options": [
+                "Incertitude autour estimation",
+                "Preuve arnaque",
+                "Hors SES",
+                "Croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liée à taille échantillon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Question fermée",
+              "options": [
+                "Réponses prédéfinies",
+                "Discours libre",
+                "Sans codification",
+                "Illégale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traitement statistique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Question ouverte",
+              "options": [
+                "Texte libre",
+                "Interdite",
+                "Inutile",
+                "Remplace vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut être codifiée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Taux de retour",
+              "options": [
+                "Part des répondants",
+                "PIB/hab",
+                "Nombre partis",
+                "Température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menace représentativité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau croisé",
+              "options": [
+                "Croise deux variables",
+                "Roman",
+                "Carte IGN",
+                "Loi fiscale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture de liens."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourcentage",
+              "options": [
+                "Comparaison relative",
+                "Remplace effectifs",
+                "Opinion",
+                "Interdit SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention petits n."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Analyser quantitatif",
+              "options": [
+                "Calculer, comparer, visualiser",
+                "Lire titre seulement",
+                "Ignorer protocole",
+                "Toujours confondre cause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stats descriptives."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Entretien et qualitatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Qualitatif en SES",
+              "options": [
+                "Entretiens et observations",
+                "Analyse de discours",
+                "Accélérateur de particules",
+                "Mesure du PIB seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sens et contextes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Entretien directif",
+              "options": [
+                "Questions cadrées",
+                "Sans guide",
+                "Illégal",
+                "Remplace Parlement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de marge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Entretien non directif",
+              "options": [
+                "Interviewé développe",
+                "Liste fermée",
+                "PIB",
+                "Scrutin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression spontanée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Guide d'entretien",
+              "options": [
+                "Thèmes ou questions",
+                "Constitution",
+                "Recette",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préparation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription",
+              "options": [
+                "Oral en texte",
+                "Graphique",
+                "Loi finances",
+                "Carte électorale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base analyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Analyse thématique",
+              "options": [
+                "Regroupe par thèmes",
+                "Compte mots sans sens",
+                "Interdit citation",
+                "Remplace éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Codification."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Échantillon convenance",
+              "options": [
+                "Accessible non aléatoire",
+                "Recensement",
+                "Tirage parfait",
+                "Vote obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exploration limitée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Profondeur vs amplitude",
+              "options": [
+                "Quali creuse peu de cas",
+                "Quali vise 10 000 personnes",
+                "Quanti ignore nombres",
+                "Identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiques complémentaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Citation en dissertation",
+              "options": [
+                "Illustre avec prudence",
+                "Remplace problématique",
+                "Remplit toute copie",
+                "Interdit critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À commenter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qualitatif",
+              "options": [
+                "Vécu et significations",
+                "PIB seul",
+                "Supprime débat",
+                "Remplace toute stat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète chiffres."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Validité, fiabilité, représentativité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Critères de qualité",
+              "options": [
+                "Validité : mesure le bon concept",
+                "Fiabilité : stabilité des mesures",
+                "Représentativité de l'échantillon",
+                "Validité garantit toujours la causalité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Trois critères distincts (validité, fiabilité, représentativité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fiabilité",
+              "options": [
+                "Reproductibilité cohérente",
+                "Vérité morale",
+                "Taux change",
+                "Scrutin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesures stables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Validité interne",
+              "options": [
+                "Cohérence test causalité",
+                "Taille pays",
+                "Opinion média",
+                "Logo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet dû à la cause ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Validité externe",
+              "options": [
+                "Généralisation autres contextes",
+                "Secret données",
+                "Loi pénale",
+                "Hashtag"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résultats ailleurs ?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Représentativité",
+              "options": [
+                "Échantillon reflète population",
+                "Toujours parfaite",
+                "Interdit quotas",
+                "Éco seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sondages."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Biais échantillon",
+              "options": [
+                "Sous-représentation groupes",
+                "Théorème prouvé",
+                "Institution",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menace généralisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effet Hawthorne",
+              "options": [
+                "Comportement modifié par observation",
+                "Loi marché",
+                "Article loi",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence chercheur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangulation",
+              "options": ["Renforce validité", "Fraude", "Préjugé", "Censure"],
+              "correctAnswers": [0],
+              "explanation": "Convergence rassure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marge d'erreur liée",
+              "options": [
+                "Taille échantillon et protocole",
+                "Climat",
+                "Partis",
+                "Couleur graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit n = plus incertitude."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Critiquer étude",
+              "options": [
+                "Validité, fiabilité, biais",
+                "Accepter sans lire",
+                "Ignorer méthode",
+                "Slogan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Objectivité, subjectivité et biais",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Objectivité en SES",
+              "options": [
+                "Idéal d'impartialité",
+                "Rejet total valeurs",
+                "Subjectivité sans contrôle",
+                "Distinction faits et jugements"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Protocole et transparence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Subjectivité",
+              "options": [
+                "Point de vue chercheur ou acteur",
+                "Toujours interdite",
+                "Mensonge",
+                "Loi fiscale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Significations weberiennes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Neutralité axiologique",
+              "options": [
+                "Séparer analyse et position",
+                "Interdire éthique",
+                "Obliger parti",
+                "Supprimer débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expliciter choix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Biais confirmation",
+              "options": [
+                "Favorise idée initiale",
+                "Méthode officielle",
+                "Loi électorale",
+                "INSEE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menace rigueur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Désirabilité sociale",
+              "options": [
+                "Réponses socialement acceptables",
+                "PIB",
+                "Scrutin",
+                "Carte routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquent en enquête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réflexivité",
+              "options": [
+                "Examiner présupposés",
+                "Rejeter méthode",
+                "Sans preuve",
+                "Acclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite distorsions."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Controverses SES",
+              "options": [
+                "Normales et débat argumenté",
+                "Échec science",
+                "Interdites classe",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désaccords théoriques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Paradigme",
+              "options": ["Cadre de pensée", "Excel", "Météo", "Recette"],
+              "correctAnswers": [0],
+              "explanation": "Oriente questions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Débat public vs recherche",
+              "options": [
+                "Recherche exige preuves",
+                "Identiques rigueur",
+                "Recherche ignore faits",
+                "Débat interdit chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limiter biais",
+              "options": [
+                "Protocole, transparence, relecture",
+                "Cacher sources",
+                "Une anecdote",
+                "Refuser critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation collective."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Éthique et déontologie de la recherche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éthique recherche",
+              "options": [
+                "Consentement éclairé et anonymisation",
+                "Respect de la vie privée",
+                "Plagiat encouragé",
+                "Falsification des données"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Protège personnes et intégrité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Consentement éclairé",
+              "options": [
+                "Informé et libre",
+                "Contrainte obligatoire",
+                "Secret total participant",
+                "Interdit enquête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base légale et morale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Anonymat",
+              "options": [
+                "Protège identité",
+                "Interdit publication",
+                "Remplace analyse",
+                "Sans risque optionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Données sensibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plagiat",
+              "options": [
+                "Appropriation sans citation",
+                "Méthode recommandée",
+                "Indicateur",
+                "Vote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faute grave."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Citer sources",
+              "options": [
+                "Traçabilité emprunts",
+                "Inutile dissertation",
+                "Interdit SES",
+                "Remplace argument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honneur intellectuel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comité d'éthique",
+              "options": [
+                "Évalue protocoles sensibles",
+                "Fixe prix",
+                "Organise élections",
+                "Mesure PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recherche intrusive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Secret professionnel enquête",
+              "options": [
+                "Protège confidentialité",
+                "Encourage fraude",
+                "Supprime consentement",
+                "Interdit analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entretiens sensibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Intégrité scientifique",
+              "options": [
+                "Pas falsification ni fabrication",
+                "Optionnelle",
+                "Lobbying",
+                "Hors SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crédibilité discipline."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Responsabilité chercheur",
+              "options": [
+                "Envers participants et société",
+                "Inexistante",
+                "Profit seul",
+                "Média seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usages des résultats."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raisonner scientifiquement",
+              "options": [
+                "Méthodes, faits et éthique",
+                "Clichés",
+                "Ignorer débat",
+                "Refuser preuves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

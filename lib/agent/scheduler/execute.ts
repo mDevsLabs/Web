@@ -64,6 +64,7 @@ import {
   saveChat,
   saveMessages,
 } from "@/lib/db/queries";
+import { getUserPreferences } from "@/lib/db/queries/users";
 import { getPersistedTier } from "@/lib/db/users";
 import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import { describeTools } from "@/lib/prompts/capabilities";
@@ -451,20 +452,29 @@ export async function executeScheduledRun(params: {
     });
   }
 
-  // 8. Contexte projet puis contexte du modèle : mêmes builders que l'API.
-  const projectContext = await loadAgentProjectContext({
-    modelId: resolvedModelId,
-    projectId: schedule.projectId,
-    userEmail: "",
-    userId,
-  });
-  const memoryContext = await buildMemoryContext({
-    effectiveAgentId: schedule.agentId,
-    effectiveProjectId: schedule.projectId,
-    isGhostMode: false,
-    tier,
-    userId,
-  });
+  // 8. Contexte projet, mémoire et instructions du compte : mêmes sources
+  // que l'API interactive. Un run planifié sans ces instructions ignorait
+  // le vouvoiement ou le ton demandé dans les préférences.
+  const [projectContext, memoryContext, prefs] = await Promise.all([
+    loadAgentProjectContext({
+      modelId: resolvedModelId,
+      projectId: schedule.projectId,
+      userEmail: "",
+      userId,
+    }),
+    buildMemoryContext({
+      effectiveAgentId: schedule.agentId,
+      effectiveProjectId: schedule.projectId,
+      isGhostMode: false,
+      tier,
+      userId,
+    }),
+    getUserPreferences(userId).catch(() => null),
+  ]);
+  const instructionsCompte =
+    prefs?.enabled && prefs.customInstructions.trim().length > 0
+      ? prefs.customInstructions
+      : null;
   const agentContext = await buildAgentContext({
     assistantInstructions: null,
     attachments: [],
@@ -488,7 +498,7 @@ export async function executeScheduledRun(params: {
     tools: describeTools(enabledTools),
     toolsSupported: resolvedModelEntry.capabilities.tools,
     userId,
-    userInstructions: null,
+    userInstructions: instructionsCompte,
   });
 
   await updateAgentRunStatus({
@@ -526,6 +536,7 @@ export async function executeScheduledRun(params: {
     shouldRenameAfterFirst: false,
     startedAt: Date.now(),
     startStepIndex: activeRun?.stepCount ?? 0,
+    supportsToolChoice: resolvedModelEntry.capabilities.toolChoice,
     task,
     // Une tâche planifiée n'a pas d'utilisateur devant l'écran pour activer une
     // option : la liste de tâches n'est jamais rendue pour ces runs.

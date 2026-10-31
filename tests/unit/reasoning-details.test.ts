@@ -237,4 +237,15 @@ describe("La collecte est bornée", () => {
     sink.reset();
     expect(sink.details).toEqual([]);
   });
+
+  it("livre tout le content après une réflexion plus longue que le plafond", async () => {
+    const sink = createReasoningDetailsSink();
+    const huge = "r".repeat(300 * 1024);
+    const payload = [
+      `data: {"choices":[{"delta":{"reasoning":"${huge}"}}]}\n`,
+      'data: {"choices":[{"delta":{"content":"Bonjour le reste de la phrase."}}]}\n',
+    ];
+    const response = sink.attach(sseResponse(payload));
+    expect(await response.text()).toBe(payload.join(""));
+  });
 });

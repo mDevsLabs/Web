@@ -4,6 +4,7 @@ import { lookAngles } from '../input.ts';
 import { matches,pressed } from '../keybindings.ts';
 import { landscapeBlocked } from '../landscape.ts';
 import { clamp } from '../math.ts';
+import { root } from '../root.ts';
 import { JUMP_SPEED } from '../traversal.ts';
 export { interactLadder } from './ladder-controller.ts';
 import { crosshairEnemy } from './camera.ts';
@@ -61,7 +62,7 @@ export function lockMouse(this:Game):void{
 export function pause(this:Game,unlock=true):void{if(this.state==='menu'||this.state==='ending')return;this.keys.clear();this.mouseDown=false;this.aimDown=false;this.jumpBuffer=0;this.fireBuffer=0;this.fallbackPointer=null;this.setState('paused');if(unlock&&this.locked)document.exitPointerLock();}
 export function resume(this:Game):void{if(this.state!=='paused'||landscapeBlocked(this.mobile))return;this.touch.reset();this.lastFrame=performance.now();this.setState(this.player.alive?'playing':'dead');try{this.audio.init();}catch{this.hooks.event('notice',{text:'Audio indisponible : la partie continue sans son.'});}if(!this.mobile)this.lockMouse();}
 export function menu(this:Game):void{this.setState('menu');if(this.locked)document.exitPointerLock();this.clearActors();this.world.setObjectivesVisible(false);this.keys.clear();this.mouseDown=false;this.aimDown=false;this.camera.fov=this.settings.fov;this.camera.updateProjectionMatrix();}
-export function fullscreen(this:Game):void{if(document.fullscreenElement)void document.exitFullscreen();else if(typeof document.documentElement.requestFullscreen==='function')void document.documentElement.requestFullscreen().catch(()=>this.hooks.event('notice',{text:'Le plein écran est indisponible dans cet affichage.'}));else this.hooks.event('notice',{text:'Le plein écran n’est pas disponible dans ce navigateur. Le jeu reste accessible en paysage.'});}
+export function fullscreen(this:Game):void{if(document.fullscreenElement)void document.exitFullscreen();else if(typeof root().requestFullscreen==='function')void root().requestFullscreen().catch(()=>this.hooks.event('notice',{text:'Le plein écran est indisponible dans cet affichage.'}));else this.hooks.event('notice',{text:'Le plein écran n’est pas disponible dans ce navigateur. Le jeu reste accessible en paysage.'});}
 export function lookTouch(this:Game,dx:number,dy:number):void{if(this.state!=='playing')return;const assist=this.settings.mobileAimAssist!==false&&crosshairEnemy.call(this,.15)? .6:1;const aim=aimSensitivity(this.camera.fov,this.settings.fov)*assist*(this.aimDown?(this.settings.adsSensitivity??1):1),angles=lookAngles(this.player.yaw,this.player.pitch,dx,dy,this.settings.touchSensitivity,this.settings.invertY,aim);this.player.yaw=angles.yaw;this.player.pitch=angles.pitch;this.mouseX=dx;this.mouseY=dy;}
 export function touchAction(this:Game,action:TouchAction):void{
     if(action==='pause'){this.pause();return;}if(action==='score'&&(this.state==='playing'||this.state==='dead')){this.touch.scoreboard=!this.touch.scoreboard;return;}if(this.state!=='playing'||!this.player.alive)return;

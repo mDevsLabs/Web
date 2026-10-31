@@ -20,6 +20,7 @@ export const APP_KEYS = [
   "vibe",
   "code",
   "blackline",
+  "quizzly",
   "cli",
 ] as const;
 export type AppKey = (typeof APP_KEYS)[number];
@@ -79,6 +80,13 @@ export const APP_CATALOG: Record<AppKey, AppCatalogEntry> = {
     path: "/",
     pathPrefix: "/",
   },
+  quizzly: {
+    description: "Révisez le collège et le lycée, un quiz à la fois",
+    key: "quizzly",
+    label: "Quizzly",
+    path: "/quizzly",
+    pathPrefix: "/quizzly",
+  },
   site: {
     description: "Site web d'mAI avec la plateforme mAI et modèles",
     key: "site",
@@ -102,6 +110,7 @@ export const APP_ORDER: AppCatalogEntry[] = [
   APP_CATALOG.vibe,
   APP_CATALOG.code,
   APP_CATALOG.blackline,
+  APP_CATALOG.quizzly,
 ];
 
 /**
@@ -118,14 +127,15 @@ export type AppMenuEntry =
 
 /**
  * Ordre d'affichage du MENU des applications : mAI, Site, Vibe, Coder, CLI,
- * Blackline.
+ * Blackline, Quizzly.
  *
  * Le CLI est une entrée de menu, pas une application web : il ouvre le
  * terminal local de l'application de bureau, et il n'a pas de route.
  *
  * Blackline passe APRÈS lui. Le jeu est une distraction — c'est exactement ce
  * pour quoi il a été retiré de la liste de navigation de la barre latérale,
- * où il était redondant avec le menu des applications.
+ * où il était redondant avec le menu des applications. Quizzly suit Blackline :
+ * même menu, pas la barre latérale du chat.
  */
 export const APP_MENU_ORDER: AppMenuEntry[] = [
   { entry: APP_CATALOG.mai, kind: "app" },
@@ -134,6 +144,7 @@ export const APP_MENU_ORDER: AppMenuEntry[] = [
   { entry: APP_CATALOG.code, kind: "app" },
   { kind: "cli" },
   { entry: APP_CATALOG.blackline, kind: "app" },
+  { entry: APP_CATALOG.quizzly, kind: "app" },
 ];
 
 // Fail-safe maison : un tier illisible vaut « free » — une préférence d'app

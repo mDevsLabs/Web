@@ -1,0 +1,2583 @@
+{
+  "id": "5e-physique-chimie-02",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "Mouvements et interactions",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Décrire un mouvement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'une trajectoire ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés décrivent correctement une trajectoire ?",
+              "options": [
+                "Ensemble des positions successives d'un objet",
+                "Ligne tracée par l'objet dans l'espace",
+                "La vitesse instantanée de l'objet",
+                "La distance parcourue sans direction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La trajectoire est le chemin suivi ; ce n'est ni la vitesse ni une simple longueur sans direction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une trajectoire rectiligne est :",
+              "options": [
+                "Une ligne droite",
+                "Un cercle",
+                "Une courbe quelconque",
+                "Un segment de vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne signifie que le mouvement se fait le long d'une ligne droite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La trajectoire d'un point à l'extrémité d'une roue de vélo qui avance est en général :",
+              "options": [
+                "Circulaire par rapport au sol",
+                "Rectiligne par rapport au sol",
+                "Toujours immobile",
+                "Impossible à décrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par rapport au sol, ce point décrit une cycloïde, une trajectoire curviligne ; localement on la qualifie souvent de circulaire lors de la rotation pure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour décrire une trajectoire, on a besoin de :",
+              "options": [
+                "Un référentiel",
+                "Uniquement d'une montre",
+                "D'une balance",
+                "D'un thermomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trajectoire dépend du référentiel choisi pour observer le mouvement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un mouvement circulaire a une trajectoire :",
+              "options": [
+                "En forme de cercle ou d'arc de cercle",
+                "Toujours rectiligne",
+                "Sans dimension",
+                "Indépendante du temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulaire : l'objet reste à distance constante d'un centre sur un cercle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La trajectoire d'un satellite en orbite circulaire autour de la Terre est, dans le référentiel géocentrique :",
+              "options": [
+                "Circulaire (ou quasi circulaire)",
+                "Rectiligne",
+                "Un point fixe",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un référentiel lié au centre de la Terre, l'orbite circulaire est un cercle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet immobile par rapport à un référentiel a une trajectoire :",
+              "options": [
+                "Réduite à un point",
+                "Toujours circulaire",
+                "Impossible à tracer",
+                "De longueur infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans changement de position, la trajectoire est un point fixe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trajectoire curviligne signifie :",
+              "options": [
+                "La trajectoire n'est ni une droite ni un cercle parfait en général",
+                "La vitesse est nulle",
+                "L'objet ne se déplace pas",
+                "La distance est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curviligne : le chemin est une courbe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour tracer une trajectoire on enregistre les :",
+              "options": [
+                "Positions successives de l'objet",
+                "Masses successives",
+                "Températures",
+                "Couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les positions au fil du temps permettent de reconstituer le chemin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux observateurs dans des référentiels différents peuvent voir :",
+              "options": [
+                "Des trajectoires différentes pour le même objet",
+                "Toujours la même trajectoire obligatoirement",
+                "Aucun mouvement possible",
+                "Uniquement des trajectoires rectilignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement est relatif au référentiel choisi."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Mouvement rectiligne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement rectiligne uniforme se caractérise par :",
+              "options": [
+                "Une trajectoire rectiligne",
+                "Une vitesse constante en valeur",
+                "Une vitesse qui double à chaque seconde",
+                "Une trajectoire circulaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "MRU : ligne droite et vitesse constante (direction et sens fixes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un train roule à vitesse constante sur voie droite : le mouvement est :",
+              "options": [
+                "Rectiligne uniforme",
+                "Circulaire",
+                "Rectiligne accéléré",
+                "Immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voie droite et vitesse constante ⇒ MRU."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En MRU, la distance parcourue d est liée à la vitesse v et au temps t par :",
+              "options": ["d = v × t", "d = v / t", "d = v + t", "d = v − t"],
+              "correctAnswers": [0],
+              "explanation": "Distance = vitesse × durée lorsque v est constante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet en MRU parcourt 30 m en 10 s. Sa vitesse vaut :",
+              "options": ["3 m/s", "300 m/s", "0,3 m/s", "30 m/s"],
+              "correctAnswers": [0],
+              "explanation": "v = d/t = 30/10 = 3 m/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mouvement rectiligne varié correspond à :",
+              "options": [
+                "Une trajectoire droite avec vitesse qui change",
+                "Un cercle à vitesse constante",
+                "Un objet immobile",
+                "Une vitesse toujours nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne varié : ligne droite mais vitesse non constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'unité SI de vitesse est :",
+              "options": ["m/s", "km/h uniquement", "m/s²", "newton"],
+              "correctAnswers": [0],
+              "explanation": "Le mètre par seconde est l'unité SI de vitesse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "36 km/h équivaut à :",
+              "options": ["10 m/s", "36 m/s", "1 m/s", "100 m/s"],
+              "correctAnswers": [0],
+              "explanation": "36 km/h = 36000 m/3600 s = 10 m/s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un graphique d = f(t) en MRU, la droite a une pente égale à :",
+              "options": [
+                "La vitesse",
+                "L'accélération",
+                "La masse",
+                "Le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente Δd/Δt = vitesse constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un piéton marche en ligne droite à 1,5 m/s pendant 20 s. Distance :",
+              "options": ["30 m", "15 m", "1,5 m", "200 m"],
+              "correctAnswers": [0],
+              "explanation": "d = 1,5 × 20 = 30 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Freiner sur une route droite donne un mouvement :",
+              "options": [
+                "Rectiligne varié (ralenti)",
+                "Circulaire uniforme",
+                "Rectiligne uniforme",
+                "Sans trajectoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trajectoire droite mais vitesse diminue : rectiligne varié."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Vitesse et durée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La vitesse moyenne se calcule avec :",
+              "options": [
+                "Distance parcourue",
+                "Durée du parcours",
+                "Masse de l'objet",
+                "Couleur de l'objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "v_moy = distance / durée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "v = d/t : si d = 100 m et t = 25 s, v =",
+              "options": ["4 m/s", "25 m/s", "100 m/s", "0,25 m/s"],
+              "correctAnswers": [0],
+              "explanation": "100/25 = 4 m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus la vitesse est grande, pour une même distance :",
+              "options": [
+                "La durée est plus courte",
+                "La durée est plus longue",
+                "La durée ne change pas",
+                "La distance diminue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À distance fixe, t = d/v : v plus grand ⇒ t plus petit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un cycliste parcourt 12 km en 30 min. Vitesse moyenne :",
+              "options": ["24 km/h", "12 km/h", "360 km/h", "6 km/h"],
+              "correctAnswers": [0],
+              "explanation": "12 km en 0,5 h ⇒ 24 km/h."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La vitesse est une grandeur :",
+              "options": [
+                "Qui combine distance et temps",
+                "Qui se mesure en kilogrammes",
+                "Sans unité",
+                "Identique à la trajectoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse = rapport distance/temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "90 km/h en m/s vaut environ :",
+              "options": ["25 m/s", "90 m/s", "9 m/s", "250 m/s"],
+              "correctAnswers": [0],
+              "explanation": "90/3,6 = 25 m/s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour convertir m/s en km/h, on multiplie par :",
+              "options": ["3,6", "10", "100", "0,36"],
+              "correctAnswers": [0],
+              "explanation": "1 m/s = 3,6 km/h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mobile à 5 m/s pendant 12 s parcourt :",
+              "options": ["60 m", "5 m", "12 m", "0,42 m"],
+              "correctAnswers": [0],
+              "explanation": "d = 5 × 12 = 60 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vitesse instantanée :",
+              "options": [
+                "Vitesse à un instant précis",
+                "Toujours égale à la vitesse moyenne",
+                "Mesurée en mètres",
+                "Sans direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instantanée = vitesse à un moment donné du mouvement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le compteur de vitesse d'une voiture indique en général :",
+              "options": [
+                "La vitesse instantanée",
+                "La masse",
+                "La distance totale parcourue depuis la création",
+                "La température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compteur affiche la vitesse au moment de la lecture."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Référentiel et mouvement relatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un référentiel est défini par :",
+              "options": [
+                "Un origine (point de repère)",
+                "Des axes pour situer les objets",
+                "La couleur du ciel",
+                "La masse de la Terre uniquement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Référentiel = origine + système d'axes pour mesurer positions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un passager assis dans un train en marche est :",
+              "options": [
+                "Immobile dans le référentiel du train",
+                "Immobile dans le référentiel du sol",
+                "Toujours en MRU par rapport au Soleil",
+                "Sans référentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par rapport au train, sa position ne change pas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Terre est souvent prise comme référentiel pour :",
+              "options": [
+                "Décrire le mouvement d'une voiture sur route",
+                "Mesurer la masse atomique",
+                "Décrire uniquement les étoiles lointaines",
+                "Remplacer le mètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au quotidien on utilise un référentiel lié au sol terrestre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mouvement est dit relatif car :",
+              "options": [
+                "Il dépend du référentiel choisi",
+                "Il ne dépend jamais de l'observateur",
+                "Tous les objets sont immobiles",
+                "La vitesse est toujours nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même objet, descriptions différentes selon le référentiel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le référentiel géocentrique, la Lune :",
+              "options": [
+                "Tourne autour de la Terre",
+                "Est fixe au centre",
+                "Ne se déplace jamais",
+                "A une trajectoire rectiligne seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune est en orbite autour de la Terre dans ce référentiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet peut être en mouvement dans un référentiel et immobile dans un autre :",
+              "options": ["Vrai", "Faux", "Impossible", "Interdit par la loi"],
+              "correctAnswers": [0],
+              "explanation": "Exemple : passager immobile dans le train, en mouvement par rapport au sol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour étudier le mouvement d'un skieur, on choisit souvent comme référentiel :",
+              "options": [
+                "La piste (sol)",
+                "La Lune uniquement",
+                "Le skieur lui-même pour tout",
+                "Aucun repère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sol de la piste sert de repère pour la vitesse du skieur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changer de référentiel peut changer :",
+              "options": [
+                "La trajectoire observée",
+                "La masse de l'objet",
+                "Le nombre d'atomes",
+                "La charge électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trajectoire et vitesse dépendent du référentiel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un référentiel héliocentrique a son origine :",
+              "options": [
+                "Au centre du Soleil",
+                "Au centre de la Terre obligatoirement",
+                "Sur la Lune",
+                "Dans une voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héliocentrique : origine au Soleil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans préciser le référentiel, dire « l'objet est rapide » est :",
+              "options": [
+                "Incomplet",
+                "Toujours suffisant",
+                "Une erreur de masse",
+                "Une mesure de force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut préciser par rapport à quoi le mouvement est décrit."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mouvement circulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement circulaire uniforme présente :",
+              "options": [
+                "Une trajectoire circulaire",
+                "Une vitesse constante en valeur le long du cercle",
+                "Une trajectoire toujours rectiligne",
+                "Une vitesse nulle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "MCU : cercle et norme de vitesse constante (direction change)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Terre autour du Soleil (approximation) a une trajectoire :",
+              "options": [
+                "Quasi circulaire ou elliptique",
+                "Rectiligne",
+                "Un point",
+                "Carrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite terrestre est proche d'un cercle ou d'une ellipse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En MCU, la direction de la vitesse :",
+              "options": [
+                "Change tout le temps (tangente au cercle)",
+                "Reste toujours identique",
+                "Est nulle",
+                "Est radiale vers le centre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse est tangente à la trajectoire circulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une chaîne de manège tourne : les nacelles par rapport au centre du manège :",
+              "options": [
+                "Décrivent un mouvement circulaire",
+                "Restent immobiles",
+                "Vont en ligne droite",
+                "N'ont pas de trajectoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotation autour d'un axe : trajectoire circulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le centre du cercle de trajectoire est :",
+              "options": [
+                "Équidistant de tous les points de la trajectoire",
+                "Toujours sur la trajectoire",
+                "Immobile dans tout référentiel",
+                "La vitesse de l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayon constant : distance au centre invariante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un tour complet du cercle correspond à :",
+              "options": [
+                "Une période (durée d'un tour)",
+                "La masse",
+                "La vitesse en m/s²",
+                "Un référentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période T = temps pour un tour complet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Lune autour de la Terre en approximation circulaire :",
+              "options": [
+                "Est en mouvement circulaire dans le référentiel terrestre",
+                "Est immobile",
+                "Va en ligne droite",
+                "N'a pas de vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite lunaire modélisée souvent par un cercle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur une piste circulaire d'athlétisme, un coureur qui reste dans la même voie courbe :",
+              "options": [
+                "A une trajectoire curviligne/circulaire localement",
+                "A une trajectoire rectiligne partout",
+                "Ne se déplace pas",
+                "A une vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les virages sont des portions de cercle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En MCU, la vitesse en valeur peut rester constante alors que la vitesse change car :",
+              "options": [
+                "La direction de la vitesse change",
+                "La masse change",
+                "Le temps s'arrête",
+                "La distance est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse = vecteur : direction change sur le cercle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un satellite géostationnaire vu depuis la Terre semble :",
+              "options": [
+                "Immobile dans le ciel",
+                "Très rapide en ligne droite",
+                "Toujours au sol",
+                "Sans orbite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période égale à celle de la rotation terrestre : position fixe au zenith."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Distance et déplacement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La distance parcourue :",
+              "options": [
+                "S'additionne le long du chemin",
+                "Peut être plus grande que le déplacement",
+                "Est toujours nulle si on revient au départ",
+                "Est identique au déplacement dans tous les cas"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Distance = longueur du chemin ; déplacement = segment départ→arrivée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un aller-retour au même point : le déplacement vaut :",
+              "options": [
+                "0",
+                "Le double de la distance",
+                "La distance parcourue",
+                "Infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même position finale et initiale : déplacement nul."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distance parcourue se mesure en :",
+              "options": ["mètres (m)", "m/s", "newtons", "secondes seules"],
+              "correctAnswers": [0],
+              "explanation": "Distance = longueur, unité SI le mètre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un demi-tour de piste circulaire, la distance parcourue vaut :",
+              "options": [
+                "π × rayon (demi-circonférence)",
+                "0",
+                "2 × rayon",
+                "rayon seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demi-cercle : d = πr."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le déplacement indique :",
+              "options": [
+                "Où se trouve l'objet par rapport au départ (segment orienté)",
+                "La température",
+                "La masse",
+                "Le temps écoulé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacement = changement de position vectoriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour calculer une vitesse moyenne on utilise en général :",
+              "options": [
+                "La distance totale parcourue",
+                "Uniquement le déplacement si le chemin est courbe",
+                "La masse",
+                "La force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v_moy = distance parcourue / durée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un randonneur fait un circuit fermé de 10 km : distance =",
+              "options": ["10 km", "0 km", "5 km", "1 km"],
+              "correctAnswers": [0],
+              "explanation": "Distance = longueur du chemin parcouru, 10 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Même circuit fermé : déplacement final =",
+              "options": ["0 km", "10 km", "20 km", "5 km"],
+              "correctAnswers": [0],
+              "explanation": "Retour au point de départ : déplacement nul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En ligne droite de A à B sans détour, distance et déplacement (en valeur) :",
+              "options": [
+                "Sont égaux",
+                "Distance toujours nulle",
+                "Déplacement toujours plus grand",
+                "Sans rapport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemin rectiligne sans retour : même longueur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le GPS indique souvent la distance restante le long de la route, c'est :",
+              "options": [
+                "Une distance à parcourir",
+                "Un déplacement en ligne droite uniquement",
+                "Une masse",
+                "Une force"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Itinéraire routier : longueur du chemin prévu."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Graphiques et chronophotographie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une chronophotographie permet de :",
+              "options": [
+                "Voir plusieurs positions à des instants réguliers",
+                "Reconstituer la trajectoire",
+                "Mesurer directement la masse",
+                "Remplacer le référentiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Images successives montrent le chemin et le rythme du mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En MRU, les points d'une chronophoto sont :",
+              "options": [
+                "Équidistant les uns des autres",
+                "De plus en plus serrés",
+                "Tous au même endroit",
+                "Aléatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse constante : même distance entre images à intervalle égal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graphique position-temps en MRU :",
+              "options": [
+                "Droite croissante",
+                "Horizontale",
+                "Décroissante toujours",
+                "Cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x(t) = x0 + v t : droite de pente v."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si les points se rapprochent sur une chrono (intervalle fixe), la vitesse :",
+              "options": [
+                "Diminue",
+                "Augmente",
+                "Reste constante",
+                "Est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de distance entre positions successives ⇒ ralentissement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'axe horizontal d'un graphique d = f(t) représente souvent :",
+              "options": ["Le temps", "La masse", "La force", "La température"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse = temps t en secondes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'axe vertical d = f(t) représente :",
+              "options": [
+                "La distance (ou position)",
+                "La vitesse uniquement",
+                "Le volume",
+                "La pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée = distance parcourue ou position."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une droite horizontale sur x(t) signifie :",
+              "options": [
+                "Objet immobile",
+                "MRU très rapide",
+                "Chute libre",
+                "Mouvement circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position constante : pas de mouvement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un mouvement accéléré le long d'une droite, les points chrono :",
+              "options": [
+                "S'écartent de plus en plus",
+                "Restent équidistants",
+                "Disparaissent",
+                "Forment un cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse croissante : espacements plus grands."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La pente d'une droite sur un graphique d-t est négative si :",
+              "options": [
+                "L'objet revient vers l'origine (distance diminue)",
+                "L'objet accélère toujours",
+                "Le temps recule",
+                "La masse augmente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance qui diminue : pente négative."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enregistrer la position toutes les 0,1 s sert à :",
+              "options": [
+                "Calculer une vitesse moyenne sur chaque intervalle",
+                "Mesurer le poids",
+                "Changer le référentiel",
+                "Connaitre la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Δd/Δt sur petits intervalles approche la vitesse."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Chronométrage et unités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Unités SI utiles pour le mouvement :",
+              "options": [
+                "mètre (m)",
+                "seconde (s)",
+                "kilogramme pour la vitesse",
+                "newton pour la distance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Longueur en m, durée en s ; vitesse en m/s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 km =",
+              "options": ["1000 m", "100 m", "10 m", "10000 m"],
+              "correctAnswers": [0],
+              "explanation": "Préfixe kilo = 1000."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 h =",
+              "options": ["3600 s", "60 s", "100 s", "6000 s"],
+              "correctAnswers": [0],
+              "explanation": "60 min × 60 s = 3600 s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un chronomètre sert à mesurer :",
+              "options": ["Une durée", "Une masse", "Une force", "Un volume"],
+              "correctAnswers": [0],
+              "explanation": "Chronomètre = intervalle de temps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Doublement de la vitesse pour même distance : la durée :",
+              "options": [
+                "Est divisée par 2",
+                "Double",
+                "Reste identique",
+                "Devient nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = d/v : v ×2 ⇒ t /2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 min en secondes vaut :",
+              "options": ["300 s", "50 s", "500 s", "5 s"],
+              "correctAnswers": [0],
+              "explanation": "5 × 60 = 300 s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La précision d'une mesure de vitesse dépend de :",
+              "options": [
+                "La précision sur d et t",
+                "Uniquement la couleur",
+                "La marque de l'objet",
+                "Le référentiel lunaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreurs sur distance et temps se propagent à v."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "km/h est une unité de :",
+              "options": ["Vitesse", "Distance", "Temps", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Kilomètres par heure = vitesse courante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,5 h correspond à :",
+              "options": ["30 min", "5 min", "50 min", "15 min"],
+              "correctAnswers": [0],
+              "explanation": "0,5 × 60 min = 30 min."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour comparer deux vitesses, elles doivent être exprimées :",
+              "options": [
+                "Dans la même unité",
+                "Toujours en km/h seulement",
+                "Sans unité",
+                "En newtons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comparaison cohérente après conversion d'unités."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Situations du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de mouvement rectiligne approximatif :",
+              "options": [
+                "Ascenseur dans sa cage",
+                "Bille lancée verticalement (montée)",
+                "Satellite en orbite",
+                "Point fixe sur un mur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ascenseur et montée verticale suivent une ligne droite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un avion en croisière à altitude constante en ligne droite :",
+              "options": [
+                "MRU approximatif",
+                "Toujours immobile par rapport au sol",
+                "Mouvement circulaire autour du passager",
+                "Sans trajectoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trajectoire quasi rectiligne et vitesse stable en croisière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un piéton qui s'arrête au feu rouge après avoir marché :",
+              "options": [
+                "A eu un mouvement puis devient immobile",
+                "A toujours été en MCU",
+                "N'a jamais eu de vitesse",
+                "Change de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phase mobile puis repos par rapport au sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La vitesse limite 50 km/h indique :",
+              "options": [
+                "Vitesse maximale autorisée",
+                "Distance obligatoire",
+                "Masse max",
+                "Durée du trajet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panneau = plafond de vitesse sur la voie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un coureur sur tapis roulant qui marche à contresens peut sembler :",
+              "options": [
+                "Immobile dans le référentiel du tapis si vitesses compensées",
+                "Toujours très rapide pour le sol",
+                "Sans référentiel",
+                "En orbite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compensation des vitesses selon le référentiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les phases de la Lune vues depuis la Terre ne changent pas parce que la Lune :",
+              "options": [
+                "Tourne autour de la Terre (orbite)",
+                "Est collée au Soleil",
+                "N'a pas de mouvement",
+                "A une trajectoire rectiligne vers le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite lunaire modifie l'angle Soleil-Lune-Terre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un train qui accélère en quittant la gare :",
+              "options": [
+                "Mouvement rectiligne varié (accéléré)",
+                "MCU",
+                "Immobile",
+                "Chute libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voie droite et vitesse qui augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour estimer la vitesse d'un véhicule, on peut utiliser :",
+              "options": [
+                "Distance et temps mesurés",
+                "Uniquement la couleur",
+                "La masse seule",
+                "La température de l'air seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v = d/t reste la base du calcul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet lâché sans vitesse initiale verticalement :",
+              "options": [
+                "Tombe avec trajectoire rectiligne verticale (réf. sol)",
+                "Va en cercle",
+                "Reste en l'air",
+                "Monte indéfiniment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute verticale : trajectoire droite vers le sol."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le vent par rapport au sol modifie la vitesse ressentie d'un cycliste car :",
+              "options": [
+                "Vitesse relative dépend du référentiel et du vent",
+                "La masse du vélo change",
+                "Le temps s'arrête",
+                "La trajectoire devient obligatoirement circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent de face ou de dos change la vitesse par rapport au sol."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — décrire un mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire complètement un mouvement on précise :",
+              "options": [
+                "Le référentiel",
+                "La trajectoire et l'évolution de la vitesse",
+                "Uniquement la couleur",
+                "La saveur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Référentiel + trajectoire + vitesse caractérisent le mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "MRU : vitesse",
+              "options": [
+                "Constante",
+                "Nulle toujours",
+                "Infinie",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniforme = vitesse constante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Formule v = d/t s'applique surtout à :",
+              "options": [
+                "Vitesse moyenne sur un intervalle",
+                "Masse",
+                "Force",
+                "Température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapport distance totale sur durée totale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mouvement circulaire : trajectoire",
+              "options": [
+                "Cercle ou arc",
+                "Toujours une droite",
+                "Un point",
+                "Sans forme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du mouvement circulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Immobile dans un référentiel signifie :",
+              "options": [
+                "Position invariante",
+                "Vitesse infinie",
+                "Trajectoire circulaire",
+                "Masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de changement de position."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3,6 km/h en m/s :",
+              "options": ["1 m/s", "3,6 m/s", "10 m/s", "0,1 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Diviser par 3,6 : 3,6/3,6 = 1 m/s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chronophoto avec points alignés et équidistants :",
+              "options": ["MRU", "Repos", "Chute libre complexe", "Orbite"],
+              "correctAnswers": [0],
+              "explanation": "Alignement + équidistance ⇒ vitesse constante en ligne droite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mouvement est relatif signifie :",
+              "options": [
+                "Dépend du référentiel",
+                "Identique pour tous",
+                "Sans trajectoire",
+                "Toujours circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix du référentiel change la description."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distance sur un parcours courbe ≥ déplacement (en valeur) car :",
+              "options": [
+                "Le chemin peut être plus long que le segment direct",
+                "Loi de la gravité",
+                "Unités différentes",
+                "Toujours égal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détours augmentent la longueur parcourue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité SI de vitesse :",
+              "options": ["m/s", "km seul", "N", "J"],
+              "correctAnswers": [0],
+              "explanation": "Mètre par seconde."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Actions mécaniques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'une action mécanique ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une action mécanique peut :",
+              "options": [
+                "Modifier le mouvement d'un objet",
+                "Déformer un objet",
+                "Changer la couleur sans contact",
+                "Augmenter le nombre de protons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Action mécanique = effet sur mouvement ou forme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une force est :",
+              "options": [
+                "Une action mécanique modélisée en newtons",
+                "Une unité de temps",
+                "Une trajectoire",
+                "Une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En physique, on modélise l'action par une force (N)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'unité SI de force est :",
+              "options": ["newton (N)", "joule", "m/s", "kg seul"],
+              "correctAnswers": [0],
+              "explanation": "1 N = 1 kg·m/s²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Repousser une porte avec la main est une action :",
+              "options": [
+                "De contact",
+                "Uniquement à distance",
+                "Sans effet",
+                "Électrique seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Main et porte sont en contact."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La gravité Terre-Lune agit :",
+              "options": [
+                "À distance",
+                "Seulement au contact",
+                "Sans direction",
+                "Uniquement sur les métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gravitation : interaction à distance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un ressort comprimé exerce une action :",
+              "options": [
+                "De contact sur l'objet qui le comprime",
+                "Gravitationnelle lointaine",
+                "Sans point d'application",
+                "Uniquement magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact au point de poussée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une action mécanique est caractérisée par :",
+              "options": [
+                "Direction, sens et intensité (force)",
+                "Couleur et goût",
+                "Numéro atomique",
+                "Volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force = grandeur vectorielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Immobiliser un ballon avec les mains :",
+              "options": [
+                "Action de contact",
+                "Action à distance seule",
+                "Aucune action",
+                "Action chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact mains-ballon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aimant et clou en fer sans se toucher :",
+              "options": [
+                "Action à distance (magnétique)",
+                "Pas d'action",
+                "Contact obligatoire",
+                "Uniquement gravitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ magnétique agit à distance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le poids est une action :",
+              "options": [
+                "Gravitationnelle à distance",
+                "De frottement",
+                "Normale du sol",
+                "Toujours horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids = action de la Terre sur l'objet."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Actions de contact",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples d'actions de contact :",
+              "options": [
+                "Frottement sol-chaussure",
+                "Poussée d'une main sur un mur",
+                "Gravité Terre-Lune",
+                "Attraction entre deux aimants sans contact"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contact : surfaces ou corps se touchent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La réaction normale du sol sur une table posée est :",
+              "options": [
+                "Une action de contact verticale",
+                "Gravitation lunaire",
+                "Action à distance sans support",
+                "Toujours horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact table-sol : force perpendiculaire à la surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Freiner à vélo avec les freins :",
+              "options": [
+                "Frottement de contact patins/jante",
+                "Gravité seule",
+                "Magnétisme Terre",
+                "Poids nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freinage par contact et frottement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tension d'une corde tirée est transmise par :",
+              "options": [
+                "Contact le long de la corde",
+                "Gravité uniquement",
+                "Aucun contact",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde en tension : contact entre fibres et accrochage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Appuyer sur une éponge la déforme : action de contact qui :",
+              "options": [
+                "Modifie la forme",
+                "Change le numéro atomique",
+                "Crée un vide",
+                "Annule la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déformation élastique ou plastique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le frottement s'oppose en général à :",
+              "options": [
+                "Glissement relatif entre surfaces en contact",
+                "La masse",
+                "La lumière",
+                "La gravitation entre planètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement : résistance au glissement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nager : l'eau pousse le nageur par :",
+              "options": [
+                "Contact avec les mains et pieds",
+                "Uniquement gravité",
+                "Sans interaction",
+                "Magnétisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poussée sur l'eau par contact."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une vis dans le bois exerce :",
+              "options": [
+                "Contact et s'enfonce par rotation",
+                "Force à distance",
+                "Rien",
+                "Uniquement poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact vis-bois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le support d'un livre sur une étagère :",
+              "options": [
+                "Force de contact vers le haut",
+                "Force vers le centre de la Terre sur l'étagère seule",
+                "Aucune force",
+                "Force magnétique obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction normale de l'étagère."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans contact direct, on ne parle pas d'action de contact pour :",
+              "options": [
+                "Poids d'un satellite en orbite (gravité à distance)",
+                "Main sur un mur",
+                "Pneu sur route",
+                "Assise sur une chaise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite : gravitation, pas contact avec le sol."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Actions à distance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Actions à distance (sans contact) :",
+              "options": [
+                "Gravitation",
+                "Interaction magnétique",
+                "Frottement patin-neige en contact",
+                "Poussée main-objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gravité et magnétisme agissent sans toucher."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Terre attire un objet lâché par :",
+              "options": [
+                "Gravitation (poids)",
+                "Contact air seul",
+                "Frottement",
+                "Tension de corde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute : action gravitationnelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux aimants qui se rapprochent sans se toucher :",
+              "options": [
+                "Force magnétique à distance",
+                "Force de contact",
+                "Aucune interaction",
+                "Force normale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magnétisme à distance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le Soleil attire la Terre :",
+              "options": [
+                "À distance par gravitation",
+                "Par contact",
+                "Par frottement",
+                "Par tension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite : gravitation solaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Électrostatique : peigne chargé attire petit morceau de papier :",
+              "options": [
+                "Action à distance électrique",
+                "Contact obligatoire",
+                "Magnétisme du papier",
+                "Poids seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force électrostatique sans contact."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le poids d'un objet au repos sur une table est une action :",
+              "options": [
+                "Gravitationnelle Terre-objet",
+                "De contact table-objet",
+                "Magnétique",
+                "Nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids = gravitation ; réaction du sol est contact."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À distance signifie :",
+              "options": [
+                "Les corps n'ont pas besoin de se toucher",
+                "Force nulle",
+                "Force horizontale seulement",
+                "Uniquement dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interaction through field/space."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La Lune attire les océans (marées) principalement par :",
+              "options": [
+                "Gravitation à distance",
+                "Contact lune-eau",
+                "Frottement",
+                "Magnétisme terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marées : différence de gravité lunaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un satellite en orbite est retenu par :",
+              "options": [
+                "Gravitation terrestre",
+                "Corde invisible",
+                "Frottement air dominant",
+                "Force normale du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orbite = gravitation fournit la courbure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer contact et à distance : le ressort étiré entre deux mains est :",
+              "options": [
+                "Contact aux mains et au ressort",
+                "Gravitation pure",
+                "Sans action",
+                "Uniquement à distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mains touchent le ressort : contact."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le poids",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le poids P d'un objet :",
+              "options": [
+                "Dépend de la masse m",
+                "Dépend de g (intensité de pesanteur)",
+                "Est identique partout dans l'Univers sans changement",
+                "Se mesure en kilogrammes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "P = m × g ; g varie selon le lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Formule du poids (approximation collège) :",
+              "options": ["P = m × g", "P = m / g", "P = m + g", "P = g seul"],
+              "correctAnswers": [0],
+              "explanation": "Poids en newtons = masse × g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "m = 2 kg, g ≈ 10 N/kg, P ≈",
+              "options": ["20 N", "2 N", "10 N", "200 N"],
+              "correctAnswers": [0],
+              "explanation": "2 × 10 = 20 N."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le poids est une force :",
+              "options": [
+                "Verticale vers le centre de la Terre (souvent)",
+                "Toujours horizontale",
+                "Sans direction",
+                "En kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids dirigé vers le bas (gravitation)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La masse se mesure en :",
+              "options": ["kg", "N", "m/s", "J"],
+              "correctAnswers": [0],
+              "explanation": "Masse ≠ poids ; unité kg."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur la Lune, g plus faible : le poids d'un objet :",
+              "options": [
+                "Diminue (masse inchangée)",
+                "Double",
+                "Disparaît toujours",
+                "Augmente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même masse, g lunaire plus petit ⇒ P plus faible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une balance électronique affiche souvent la masse car :",
+              "options": [
+                "Elle convertit la force en indication de masse via g local",
+                "Elle mesure les newtons directement affichés",
+                "La masse change sur la balance",
+                "g est nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Balance domestique calibrée en kg via pesanteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "g ≈ 10 N/kg signifie :",
+              "options": [
+                "Chaque kg pèse environ 10 N près de la surface terrestre",
+                "1 N = 10 kg",
+                "Poids nul",
+                "Masse 10 N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité de pesanteur terrestre approximative."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet en chute libre (négligeant air) : seule force principale :",
+              "options": [
+                "Poids",
+                "Réaction normale",
+                "Tension",
+                "Frottement fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chute : gravitation domine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P et m ne sont pas la même grandeur car :",
+              "options": [
+                "P est une force, m est une masse",
+                "Identiques toujours",
+                "P en kg",
+                "m en N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confusion fréquente : kg vs N."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Forces et équilibre simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Objet immobile sur une table (équilibre) :",
+              "options": [
+                "Poids vers le bas",
+                "Réaction du support vers le haut d'intensité égale au poids",
+                "Résultante non nulle verticale",
+                "Aucune force"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forces opposées même intensité : équilibre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Forces opposées même droite, même intensité :",
+              "options": [
+                "Se compensent (résultante nulle)",
+                "Doublent toujours la vitesse",
+                "Créent orbite",
+                "Augmentent la masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre des forces."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tirer un chariot avec une corde horizontale : action :",
+              "options": [
+                "Tension de contact via corde",
+                "Gravité seule",
+                "Magnétisme",
+                "Poids vers le haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde transmet une force de traction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sens de la force de frottement sur un livre poussé :",
+              "options": [
+                "Opposé au mouvement (ou à la poussée)",
+                "Identique à la poussée toujours",
+                "Vers le haut seulement",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement s'oppose au glissement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ressort dynamomètre mesure :",
+              "options": [
+                "Une force (en N)",
+                "Une masse en kg directement sans conversion",
+                "Une vitesse",
+                "Un volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élongation calibrée en newtons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux enfants tirent avec même force opposée sur une corde :",
+              "options": [
+                "Corde peut rester immobile (équilibre)",
+                "Corde accélère toujours",
+                "Forces n'existent pas",
+                "Poids double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forces égales opposées : pas de mouvement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Force résultante non nulle sur un objet libre de bouger :",
+              "options": [
+                "Peut modifier la vitesse (2e loi de Newton)",
+                "Ne fait rien",
+                "Change la masse",
+                "Fixe la trajectoire circulaire toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résultante non nulle ⇒ changement de mouvement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Représenter une force :",
+              "options": [
+                "Flèche (direction, sens, échelle pour l'intensité)",
+                "Cercle seul",
+                "Couleur",
+                "Point sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force = vecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet suspendu au plafond par fil : à l'équilibre tension et poids :",
+              "options": [
+                "Même intensité, sens opposés",
+                "Tension nulle",
+                "Poids nul",
+                "Tension horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suspension : T = P en équilibre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pousser plus fort un objet même masse :",
+              "options": [
+                "Force plus grande",
+                "Masse plus grande",
+                "g plus grand",
+                "Trajectoire obligatoirement circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité de la force appliquée augmente."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Frottements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le frottement fluide (air) :",
+              "options": [
+                "S'oppose au mouvement",
+                "Est une action de contact avec l'air",
+                "Augmente toujours la vitesse",
+                "N'existe pas pour un vélo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Résistance de l'air : contact et opposition au mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Patins à roulettes : frottement roues-sol en général :",
+              "options": [
+                "Plus faible qu'en chaussures",
+                "Infini",
+                "Identique au freinage",
+                "Sans contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roulement réduit le frottement de glissement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Freins vélo : on cherche à :",
+              "options": [
+                "Augmenter le frottement de contact",
+                "Supprimer toute force",
+                "Diminuer le poids",
+                "Augmenter g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freinage = frottement contrôlé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glisser carton sur moquette vs carrelage :",
+              "options": [
+                "Frottements différents",
+                "Identiques toujours",
+                "Nul partout",
+                "Sans contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nature des surfaces change le frottement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parachute : grande surface pour :",
+              "options": [
+                "Augmenter la résistance de l'air",
+                "Diminuer le poids",
+                "Annuler g",
+                "Magnétiser l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traînée aerodynamique ralentit la chute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Huiler une chaîne de vélo sert à :",
+              "options": [
+                "Réduire frottement solide entre maillons",
+                "Augmenter le poids",
+                "Changer la masse",
+                "Créer gravitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lubrification diminue frottement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sens du frottement de glissement :",
+              "options": [
+                "Opposé au déplacement relatif",
+                "Toujours vers le nord",
+                "Comme la vitesse",
+                "Vertical toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition au glissement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Marche possible car :",
+              "options": [
+                "Frottement pied-sol permet poussée",
+                "Poids nul",
+                "Pas de contact",
+                "Gravité nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appui avec frottement : réaction horizontale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objet sur plan incliné sans glisser : frottement statique :",
+              "options": [
+                "Compense composante du poids le long du plan",
+                "Est toujours nul",
+                "Égal au poids entier vers le haut",
+                "Magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frottement statique empêche le glissement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Frottement produit souvent :",
+              "options": [
+                "Échauffement",
+                "Refroidissement obligatoire",
+                "Masse nulle",
+                "Orbite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail dissipé en chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Magnétisme et électrostatique (actions à distance)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Forces à distance étudiées en 5e :",
+              "options": [
+                "Gravitation (poids)",
+                "Magnétisme",
+                "Contact main-mur",
+                "Frottement pneu-route"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gravité et aimants sans contact."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pôles N et N de deux aimants se rapprochent :",
+              "options": [
+                "Répulsion",
+                "Attraction toujours",
+                "Aucun effet",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Like poles repel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "N et S de deux aimants :",
+              "options": ["Attraction", "Répulsion", "Rien", "Poids nul"],
+              "correctAnswers": [0],
+              "explanation": "Pôles opposés s'attirent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aimant et fer :",
+              "options": [
+                "Attraction magnétique à distance",
+                "Contact obligatoire pour toute force",
+                "Gravité seule",
+                "Force normale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ magnétique attire le fer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Boussole : aiguille alignée par :",
+              "options": [
+                "Champ magnétique terrestre",
+                "Poids seul",
+                "Frottement nul",
+                "Tension de corde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terre agit comme un aimant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peigne frotté attire cheveux légers :",
+              "options": [
+                "Électrostatique",
+                "Gravitation",
+                "Frottement mécanique fort",
+                "Poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charges électriques à distance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aluminium non aimanté ordinaire :",
+              "options": [
+                "Peu ou pas attiré par aimant permanent simple",
+                "Toujours très ferromagnétique",
+                "Repousse tous les aimants fortement",
+                "Sans masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fer/nickel/cobalt : ferromagnétiques ; alu non."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Électrostatique et magnétisme sont :",
+              "options": [
+                "Distincts de la gravitation",
+                "Identiques au poids",
+                "Uniquement du contact",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autres interactions fondamentales à notre échelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aimant cassé en deux :",
+              "options": [
+                "Chaque morceau a encore N et S",
+                "Perd tout magnétisme",
+                "Un seul pôle",
+                "Devient gravitation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de monopôle magnétique isolé en cours usuel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Gravitation agit sur :",
+              "options": [
+                "Tous les objets avec masse",
+                "Uniquement les aimants",
+                "Uniquement l'air",
+                "Seulement le fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Universalité de la gravitation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Effets des actions mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une action mécanique peut entraîner :",
+              "options": [
+                "Changement de vitesse",
+                "Déformation",
+                "Changement du numéro atomique",
+                "Création de masse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mouvement ou forme, pas transformation nucléaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lancer un ballon : action de la main :",
+              "options": [
+                "Met en mouvement",
+                "Change la masse",
+                "Annule g",
+                "Rend immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force initiale communique une vitesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écraser une canette vide :",
+              "options": [
+                "Déformation plastique",
+                "Augmentation de masse",
+                "Orbite",
+                "MRU infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme modifiée durablement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Freiner un scooter :",
+              "options": [
+                "Diminue la vitesse",
+                "Augmente toujours v",
+                "Sans force",
+                "Change g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Force opposée au mouvement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ressort comprimé puis lâché sur voiture jouet :",
+              "options": [
+                "Peut accélérer la voiture",
+                "Supprime le poids",
+                "Gèle le temps",
+                "Magnétise la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie élastique → mouvement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mur arrête ballon (choc) :",
+              "options": [
+                "Force de contact modifie le mouvement",
+                "Gravité seule",
+                "Sans action",
+                "Poids nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact bref : grande force de réaction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tirer une élastique sans le casser :",
+              "options": [
+                "Déformation élastique",
+                "Déformation permanente obligatoire",
+                "Masse nulle",
+                "Chute libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour possible à la forme initiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Objectif frein d'urgence :",
+              "options": [
+                "Arrêter le véhicule (v → 0)",
+                "Augmenter v",
+                "Changer la trajectoire en cercle obligatoire",
+                "Réduire g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité : ralentissement fort."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Force perpendiculaire à un mouvement peut :",
+              "options": [
+                "Courber la trajectoire",
+                "Toujours accélérer en ligne droite",
+                "Annuler la masse",
+                "Supprimer le temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. gravitation en orbite courbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans action extérieure résultante, vitesse constante (1er principe simplifié) :",
+              "options": [
+                "Mouvement rectiligne uniforme ou repos",
+                "Accélération infinie",
+                "Changement de masse",
+                "Toujours chute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie : pas de changement sans cause."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Situations et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ceinture de sécurité en voiture sert à :",
+              "options": [
+                "Transmettre force de freinage au corps",
+                "Réduire la masse",
+                "Augmenter g",
+                "Éliminer le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retient le passager lors d'un freinage/choc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Coup de frein : passager tend à continuer (inertie) :",
+              "options": [
+                "Sans ceinture il glisse vers l'avant",
+                "Il s'arrête instantanément sans force",
+                "Masse devient nulle",
+                "Gravité disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inertie : corps garde tendance au mouvement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Casque vélo protège lors d'un choc :",
+              "options": [
+                "Absorbe énergie par déformation",
+                "Annule le poids",
+                "Magnétise la route",
+                "Supprime frottement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériau qui se déforme dissipe l'énergie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Charge lourde dans un camion : freinage plus long car :",
+              "options": [
+                "Plus grande masse, plus d'inertie",
+                "Masse nulle",
+                "Poids nul",
+                "Sans frottement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même force freine moins une masse plus grande."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pousser une voiture en panne : force horizontale :",
+              "options": [
+                "Action de contact",
+                "Gravitation lunaire",
+                "Sans effort",
+                "Uniquement magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnes en contact avec la carrosserie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Grimper à une corde : tension :",
+              "options": [
+                "Force de contact le long de la corde",
+                "Poids vers le bas seulement sur la corde",
+                "Magnétisme",
+                "Sans direction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde transmet traction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Porte poussée : charnières exercent :",
+              "options": [
+                "Forces de contact",
+                "Gravité seule",
+                "Rien",
+                "Force à distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rotation autour de l'axe : contacts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sol glissant (glace) : frottement faible :",
+              "options": [
+                "Marche difficile",
+                "Marche identique à sec",
+                "Poids nul",
+                "g double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faible adhérence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Remorquer une caravane : voiture exerce :",
+              "options": [
+                "Traction par contact (attelage)",
+                "Gravité vers la Lune",
+                "Sans force",
+                "Force normale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attelage transmet force horizontale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limiter vitesse en ville réduit :",
+              "options": [
+                "Distance de freinage et sévérité des chocs",
+                "La masse des voitures",
+                "g terrestre",
+                "Le poids en kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie cinétique ∝ v² : vitesse plus basse = freinage plus court."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse — actions mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont correctes ?",
+              "options": [
+                "Le poids est une action à distance",
+                "Le frottement pneu-route est une action de contact",
+                "Le magnétisme exige toujours un contact",
+                "La masse se mesure en newtons"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Poids = gravitation à distance ; frottement = surfaces en contact."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Unité de force :",
+              "options": ["N", "kg", "m/s", "Pa seul pour force"],
+              "correctAnswers": [0],
+              "explanation": "Newton."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P = m g avec m=3 kg, g=10 N/kg :",
+              "options": ["30 N", "3 N", "13 N", "300 N"],
+              "correctAnswers": [0],
+              "explanation": "3×10=30 N."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équilibre vertical table-objet :",
+              "options": [
+                "Réaction = poids",
+                "Réaction nulle",
+                "Poids nul",
+                "Réaction double du poids toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compensation des forces."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Force s'oppose au mouvement relatif :",
+              "options": [
+                "Frottement",
+                "Poids seul",
+                "Tension verticale équilibre",
+                "Gravité Terre-Soleil sur nous directement visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du frottement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aimant et clou :",
+              "options": [
+                "À distance",
+                "Contact seulement",
+                "Sans interaction",
+                "Poids seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magnétisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Action mécanique définition scolaire :",
+              "options": [
+                "Peut modifier mouvement ou déformer",
+                "Change les protons",
+                "Mesure le temps",
+                "Définit la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux effets principaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dynamomètre :",
+              "options": [
+                "Mesure une force",
+                "Mesure vitesse",
+                "Trace trajectoire",
+                "Donne la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de mesure de force."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Masse 5 kg : poids approximatif sur Terre :",
+              "options": ["50 N", "5 N", "500 N", "0,5 N"],
+              "correctAnswers": [0],
+              "explanation": "5×10=50 N."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence essentielle contact / à distance :",
+              "options": [
+                "Toucher ou non entre corps pour l'interaction modélisée",
+                "Couleur des corps",
+                "Masse identique",
+                "Trajectoire circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère de classification au collège."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

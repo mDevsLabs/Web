@@ -1,0 +1,2563 @@
+{
+  "id": "6e-sciences-et-technologie-02",
+  "year": "6e",
+  "subject": "sciences-et-technologie",
+  "title": "Matière, mouvement et signaux",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "États et mélanges",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les trois états de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels états de la matière trouve-t-on dans une bouteille d'eau gazéuse fermée ?",
+              "options": ["Solide", "Liquide", "Gaz", "Plasma"],
+              "correctAnswers": [1, 2],
+              "explanation": "L'eau est liquide et le dioxyde de carbone dissous forme des bulles de gaz."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La glace est de l'eau à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "La glace est un solide cristallin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'air dans la pièce est principalement à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "L'atmosphère est un mélange de gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'eau dans une carafe est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "L'eau courante est un liquide à température ambiante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un morceau de bois est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Le bois conserve une forme propre : c'est un solide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La vapeur d'eau invisible au-dessus d'une tasse chaude est un :",
+              "options": ["Solide", "Liquide", "Gaz", "Alliage"],
+              "correctAnswers": [2],
+              "explanation": "La vapeur d'eau est l'eau à l'état gazeux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un gaz occupe :",
+              "options": [
+                "Un volume fixe indépendant du récipient",
+                "Tout le volume disponible du récipient",
+                "Toujours moins de place qu'un solide",
+                "Une forme cubique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gaz se répand dans tout l'espace offert."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À température ambiante, le fer d'un clou est :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Le fer est solide à 20 °C environ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plasma à température ambiante dans une salle de classe est :",
+              "options": [
+                "Très courant",
+                "Rare et non étudié comme état principal",
+                "Identique à l'eau",
+                "Un liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le plasma n'est pas l'état dominant dans l'environnement quotidien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Toute matière, quel que soit son état, possède :",
+              "options": [
+                "Une masse et un volume",
+                "Toujours la même forme",
+                "Aucune particule",
+                "Une couleur obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masse et volume caractérisent la matière."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Propriétés des solides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent un solide rigide à température ambiante ?",
+              "options": [
+                "Il a une forme propre",
+                "Il prend toujours la forme du récipient",
+                "Il a un volume propre",
+                "Il se compresse comme l'air dans une seringue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un solide rigide garde sa forme et possède un volume défini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un cube de sucre est un exemple de matière :",
+              "options": ["Solide", "Liquide", "Gazeuse", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Le sucre en morceaux est à l'état solide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si on déplace un livre d'une table à une étagère, son volume :",
+              "options": [
+                "Double",
+                "Reste le même",
+                "Disparaît",
+                "Devient celui de l'étagère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le volume propre du solide ne change pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Casser une craie en petits morceaux :",
+              "options": [
+                "Transforme la craie en liquide",
+                "Laisse chaque fragment solide",
+                "Crée un gaz pur",
+                "Supprime la masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fragmenter un solide ne change pas son état."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La compressibilité d'un solide rigide est en général :",
+              "options": [
+                "Très faible",
+                "Identique à celle de l'air",
+                "Infinie",
+                "Nulle en masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compresse très difficilement un solide usuel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La glace dans un congélateur à -18 °C reste :",
+              "options": ["Liquide", "Solide", "Gazeuse", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "En dessous de 0 °C, l'eau reste solide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un solide posé sur une table :",
+              "options": [
+                "Coule comme un liquide",
+                "Conserve sa forme",
+                "Occupe tout l'air",
+                "Devient gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le solide garde sa forme propre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chauffer un métal jusqu'à la fusion le fait passer à l'état :",
+              "options": [
+                "Gazeux directement",
+                "Liquide",
+                "Plasma obligatoire",
+                "Solide plus froid"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fusion est le passage solide → liquide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le volume d'un caillou placé dans un grand aquarium d'eau :",
+              "options": [
+                "Devient égal au volume de l'aquarium",
+                "Reste le volume du caillou",
+                "Devient nul",
+                "Triple toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le caillou conserve son volume propre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un solide et un liquide ont tous deux :",
+              "options": [
+                "Une masse",
+                "La même compressibilité que l'air",
+                "Toujours la même température",
+                "Aucun volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute matière possède une masse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propriétés des liquides",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés conviennent à un liquide comme l'eau dans un verre ?",
+              "options": [
+                "Il prend la forme du récipient",
+                "Il a une forme propre fixe",
+                "Il a un volume propre",
+                "Il est aussi compressible que l'air dans une seringue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un liquide épouse le récipient tout en gardant un volume défini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Verser de l'eau d'un verre dans une bouteille fait que l'eau :",
+              "options": [
+                "Prend la forme de la bouteille",
+                "Devient solide",
+                "Perd son volume",
+                "Devient un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le liquide s'adapte à la forme du récipient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La surface libre d'un liquide au repos est en général :",
+              "options": [
+                "Horizontale",
+                "Verticale",
+                "Toujours sphérique",
+                "Absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous la gravité, la surface libre est horizontale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'huile dans une bouteille est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [1],
+              "explanation": "L'huile est un liquide visqueux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transvaser 150 mL d'eau conserve un volume de :",
+              "options": ["0 mL", "150 mL", "300 mL", "Volume du récipient"],
+              "correctAnswers": [1],
+              "explanation": "Le volume propre du liquide est conservé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un liquide coule car :",
+              "options": [
+                "Il est toujours chaud",
+                "Ses particules peuvent glisser les unes sur les autres",
+                "Il est un gaz",
+                "Il n'a pas de masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fluidité vient de la mobilité des particules."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mercure à température ambiante est :",
+              "options": [
+                "Un liquide métallique",
+                "Un gaz",
+                "Un solide dur",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mercure est liquide à environ 20 °C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un liquide dans une seringue fermée se compresse :",
+              "options": [
+                "Très peu en conditions scolaires",
+                "Comme l'air librement",
+                "Jamais du tout",
+                "En doublant sa masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liquides sont peu compressibles à l'échelle du collège."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La lave très chaude sortant d'un volcan est :",
+              "options": [
+                "Un solide froid",
+                "Un liquide très chaud",
+                "Un gaz invisible pur",
+                "De l'eau froide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La lave est du magma liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer eau et sable dans un entonnoir montre que le liquide :",
+              "options": [
+                "Ne traverse pas les trous",
+                "S'écoule et remplit le récipient en dessous",
+                "Devient solide",
+                "Perd sa masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'écoulement est caractéristique des liquides."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Propriétés des gaz",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés sont typiques d'un gaz comme l'air dans une pièce ?",
+              "options": [
+                "Il occupe tout le volume disponible",
+                "Il a une forme propre fixe",
+                "Il est facilement compressible",
+                "Il a un volume propre indépendant du récipient"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un gaz remplit l'espace et se compresse nettement plus qu'un liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'air dans un ballon exerce :",
+              "options": [
+                "Une pression sur la paroi",
+                "Aucune force",
+                "Une force uniquement vers le bas comme un liquide",
+                "Une fusion du caoutchouc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gaz emprisonné pousse sur la membrane."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comprimer l'air dans une seringue bouchée :",
+              "options": [
+                "Diminue le volume occupé par le gaz",
+                "Transforme l'air en eau",
+                "Supprime la masse",
+                "Rend l'air solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compression réduit le volume du gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'hélium dans un ballon est :",
+              "options": [
+                "Un gaz plus léger que l'air",
+                "Un liquide à 20 °C",
+                "Un solide",
+                "De l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hélium, gaz léger, fait monter le ballon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le dioxygène respiré est à l'état :",
+              "options": ["Solide", "Liquide", "Gazeux", "Plasma"],
+              "correctAnswers": [2],
+              "explanation": "L'oxygène de l'air est un gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans récipient, un gaz tend à :",
+              "options": [
+                "Rester en cube",
+                "Se répandre",
+                "Tomber en tas",
+                "Devenir liquide seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les gaz se dispersent dans l'espace."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'air possède une masse :",
+              "options": [
+                "Nulle",
+                "Mesurable",
+                "Impossible à comparer",
+                "Uniquement la nuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On peut montrer que l'air a une masse en pesant un ballon gonflé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le dioxyde de carbone (CO₂) à température ambiante est :",
+              "options": ["Un solide", "Un liquide", "Un gaz", "Un métal"],
+              "correctAnswers": [2],
+              "explanation": "Le CO₂ est gazeux dans les conditions usuelles de la classe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fumée au-dessus d'une bougie contient :",
+              "options": [
+                "Des gaz et des particules solides fines",
+                "Uniquement du liquide pur",
+                "Uniquement du plasma stable",
+                "Rien de matériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fumée est un mélange complexe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quand l'air s'échappe d'un ballon dégonflé, on entend un bruit car :",
+              "options": [
+                "Le gaz s'écoule rapidement",
+                "Le caoutchouc fond",
+                "L'air devient liquide",
+                "La masse disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écoulement rapide du gaz produit un son."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms désignent un passage entre solide et liquide ?",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Vaporisation",
+                "Condensation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fusion : solide → liquide ; solidification : liquide → solide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La fonte de la glace en eau s'appelle :",
+              "options": [
+                "Fusion",
+                "Vaporisation",
+                "Condensation",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fusion : solide → liquide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'eau qui gèle devient glace par :",
+              "options": ["Solidification", "Fusion", "Évaporation", "Mélange"],
+              "correctAnswers": [0],
+              "explanation": "Solidification : liquide → solide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'évaporation à la surface d'une flaque est :",
+              "options": [
+                "Liquide → gaz",
+                "Solide → liquide",
+                "Gaz → solide",
+                "Liquide → solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vaporisation : liquide → gaz."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les gouttes sur une vitre froide viennent de la :",
+              "options": [
+                "Condensation",
+                "Fusion",
+                "Combustion",
+                "Dissolution du verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condensation : gaz → liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À pression normale, l'eau pure bout à :",
+              "options": ["0 °C", "37 °C", "100 °C", "200 °C"],
+              "correctAnswers": [2],
+              "explanation": "L'ébullition de l'eau pure a lieu à 100 °C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'eau pure gèle à :",
+              "options": ["0 °C", "100 °C", "50 °C", "-50 °C"],
+              "correctAnswers": [0],
+              "explanation": "Sous pression atmosphérique normale, la glace fond à 0 °C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'ébullition est une vaporisation :",
+              "options": [
+                "Dans tout le volume du liquide",
+                "Uniquement du solide",
+                "Du gaz vers le solide",
+                "Sans changement d'état"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des bulles de vapeur se forment dans tout le liquide."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le passage direct solide → gaz s'appelle :",
+              "options": [
+                "Sublimation",
+                "Fusion",
+                "Condensation",
+                "Filtration"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sublimation : solide → gaz (exemple : glace carbonique)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pendant la fusion de la glace à 0 °C, la température de la glace/eau :",
+              "options": [
+                "Reste à 0 °C tant qu'il reste de la glace",
+                "Monte immédiatement à 100 °C",
+                "Devient négative sans limite",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant un changement d'état d'un corps pur, la température reste constante."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mélanges homogènes et hétérogènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples sont des mélanges hétérogènes visibles à l'œil nu ?",
+              "options": [
+                "Eau + huile",
+                "Eau + sel complètement dissous",
+                "Eau + sable",
+                "Air pur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Eau-huile et eau-sable présentent des phases ou grains visibles ; l'eau salée dissoute est homogène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau sucrée transparente est un mélange :",
+              "options": ["Homogène", "Hétérogène", "Corps pur", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Sucre et eau forment une seule phase visible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De l'eau avec des paillettes de glitter non dissoutes est :",
+              "options": [
+                "Homogène",
+                "Hétérogène",
+                "Un corps pur",
+                "Un gaz pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les paillettes restent visibles : mélange hétérogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'air est considéré en 6e comme :",
+              "options": [
+                "Un mélange de gaz",
+                "Un corps pur unique",
+                "Un liquide",
+                "Un solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air contient surtout du diazote et du dioxygène."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau + huile dans un tube à essai forme :",
+              "options": [
+                "Deux phases visibles",
+                "Une solution transparente unique",
+                "Un métal",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Huile et eau ne se mélangent pas : deux phases."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un lait non homogénéisé peut montrer :",
+              "options": [
+                "Une phase grasse séparée",
+                "Un seul gaz pur",
+                "Aucune matière",
+                "Un solide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La crème peut se séparer : aspect hétérogène."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau + sel après agitation complète et dissolution est :",
+              "options": ["Homogène", "Hétérogène", "Solide pur", "Gaz pur"],
+              "correctAnswers": [0],
+              "explanation": "Le sel dissous n'est plus visible : mélange homogène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Des cailloux dans de l'eau forment un mélange :",
+              "options": ["Hétérogène", "Homogène", "Corps pur", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Les cailloux restent visibles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mélange homogène :",
+              "options": [
+                "Paraît uniforme à l'œil nu",
+                "Montre toujours des grains",
+                "Ne contient jamais de liquide",
+                "Est toujours un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne distingue pas les composants à l'œil nu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour classer un mélange, on observe souvent :",
+              "options": [
+                "S'il est uniforme ou non à l'œil nu",
+                "Uniquement la couleur du récipient",
+                "La marque du fabricant",
+                "L'âge du liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation directe guide le classement homogène/hétérogène."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Séparer un mélange",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes conviennent pour séparer un mélange hétérogène solide-liquide ?",
+              "options": [
+                "Décantation",
+                "Filtration",
+                "Distillation immédiate du sel dissous",
+                "Fusion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Décantation et filtration séparent un solide insoluble d'un liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour récupérer du sable dans l'eau, on peut utiliser :",
+              "options": [
+                "La filtration",
+                "La dissolution",
+                "La sublimation du sable",
+                "La vaporisation du sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le papier filtre retient les grains de sable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La décantation laisse :",
+              "options": [
+                "Le solide se déposer au fond",
+                "Le sel dissoudre le sable",
+                "L'eau devenir gaz",
+                "Le fer devenir liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules lourdes tombent au fond."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Séparer l'eau de l'huile dans un tube peut utiliser :",
+              "options": [
+                "Une éprouvette et une séparation des phases",
+                "Une fusion",
+                "Une combustion",
+                "Une dissolution du plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux liquides non miscibles forment deux phases."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Récupérer l'eau d'une solution salée nécessite plutôt :",
+              "options": [
+                "Évaporation ou distillation",
+                "Filtration simple du sel dissous",
+                "Décantation du sel invisible",
+                "Tri magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut séparer l'eau du sel dissous par changement d'état."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le tri magnétique sépare :",
+              "options": [
+                "Des particules ferromagnétiques",
+                "Sel et eau dissous",
+                "Huile et eau miscibles",
+                "Gaz invisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aimant attire le fer ou certaines poudres magnétiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après filtration de l'eau boueuse, le résidu sur le filtre contient :",
+              "options": [
+                "Les particules retenues",
+                "Uniquement de l'eau pure",
+                "Uniquement du gaz",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre retient les particules solides."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La distillation peut séparer :",
+              "options": [
+                "Deux liquides de températures d'ébullition différentes",
+                "Un gaz et un gaz identiques",
+                "Un solide pur",
+                "Deux solides insolubles dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On exploite les différences de vaporisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour séparer des cailloux de graines, on peut :",
+              "options": [
+                "Utiliser un tamis ou une taille de maille",
+                "Dissoudre dans l'eau salée",
+                "Geler à 100 °C",
+                "Brûler l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tamisage trie par taille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir une méthode de séparation dépend :",
+              "options": [
+                "De la nature du mélange",
+                "De la couleur des gants",
+                "Du jour de la semaine",
+                "De la marque du bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On adapte l'outil au type de mélange."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La dissolution",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples forment une dissolution en eau à température ambiante (dans des conditions scolaires usuelles) ?",
+              "options": [
+                "Sel alimentaire + eau",
+                "Sable + eau",
+                "Sucre + eau",
+                "Cailloux + eau"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sel et sucre se dissolvent ; sable et cailloux restent insolubles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dissoudre du sel dans l'eau produit :",
+              "options": [
+                "Une solution salée",
+                "Un solide de sel visible en grains",
+                "Un gaz",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel disparaît visuellement dans l'eau : solution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le sable dans l'eau est :",
+              "options": [
+                "Insoluble",
+                "Toujours soluble",
+                "Un gaz",
+                "Un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sable reste visible et se dépose."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le solvant dans l'eau salée est :",
+              "options": ["L'eau", "Le sel", "L'air", "Le verre"],
+              "correctAnswers": [0],
+              "explanation": "Le solvant dissout le soluté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sel dissous est le :",
+              "options": ["Soluté", "Solvant", "Filtrat", "Récipient"],
+              "correctAnswers": [0],
+              "explanation": "Le soluté est la substance dissoute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Agiter le récipient accélère souvent :",
+              "options": [
+                "La dissolution",
+                "La fusion du verre",
+                "La gravité",
+                "La rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement favorise le contact soluté-solvant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chauffer modérément l'eau peut :",
+              "options": [
+                "Accélérer la dissolution du sucre",
+                "Rendre le sable soluble",
+                "Transformer l'eau en fer",
+                "Supprimer le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température influence la vitesse de dissolution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une solution est en général :",
+              "options": [
+                "Un mélange homogène",
+                "Toujours hétérogène",
+                "Un corps pur",
+                "Un solide dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soluté et solvant forment une phase uniforme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Filtrer une solution salée :",
+              "options": [
+                "Ne retire pas le sel dissous",
+                "Retire tout le sel invisible",
+                "Transforme le sel en sable",
+                "Crée deux phases visibles de sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel dissous passe à travers le filtre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La limite de solubilité signifie :",
+              "options": [
+                "On ne peut plus dissoudre au-delà d'une certaine quantité",
+                "Tout se dissout sans limite",
+                "Le sable devient soluble",
+                "L'eau disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà, le soluté s'accumule sans se dissoudre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Concentration et saturation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles situations indiquent une solution saturée à température donnée ?",
+              "options": [
+                "Du sel non dissous reste au fond",
+                "Tout le sel ajouté disparaît encore",
+                "On ne peut plus dissoudre davantage de soluté",
+                "L'eau devient un gaz"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "À saturation, le surplus de soluté reste visible et la solubilité est atteinte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ajouter du sucre dans l'eau froide jusqu'à accumulation au fond signifie :",
+              "options": [
+                "Saturation atteinte",
+                "Dissolution infinie",
+                "Absence de mélange",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surplus non dissous indique la saturation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une solution plus concentrée contient :",
+              "options": [
+                "Plus de soluté pour un même volume de solvant",
+                "Moins de matière",
+                "Uniquement du gaz",
+                "Aucun solvant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration augmente avec la quantité de soluté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Diluer une solution, c'est :",
+              "options": [
+                "Ajouter du solvant",
+                "Retirer tout le soluté par filtration simple",
+                "Geler le sel",
+                "Brûler l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajouter d'eau diminue la concentration."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À température constante, la solubilité d'un soluté :",
+              "options": [
+                "A une limite",
+                "Est infinie pour tous les solides",
+                "Ne concerne que les gaz",
+                "Empêche toute dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque soluté a une solubilité maximale à une température donnée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chauffer l'eau peut permettre de dissoudre :",
+              "options": [
+                "Un peu plus de sel avant saturation",
+                "Du sable",
+                "Des cailloux",
+                "De l'air solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité de nombreux solides augmente avec la température."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une eau légèrement salée non saturée :",
+              "options": [
+                "Peut encore dissoudre du sel",
+                "Ne peut jamais dissoudre",
+                "Est un corps pur",
+                "Est un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'on n'atteint pas la limite, le sel se dissout encore."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux verres avec la même eau mais des quantités de sucre différentes compare :",
+              "options": [
+                "La concentration",
+                "La couleur du verre",
+                "La masse de l'air",
+                "La forme du solide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de sucre dissous ⇒ plus concentré."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le sel au fond d'une solution saturée :",
+              "options": [
+                "N'est pas dissous",
+                "Est invisible",
+                "Est du gaz",
+                "A disparu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surplus reste solide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une solution diluée est :",
+              "options": [
+                "Moins concentrée",
+                "Toujours saturée",
+                "Un mélange hétérogène visible de grains",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer diminue la concentration."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révisions états et mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés sont corrects pour la matière en 6e ?",
+              "options": [
+                "La matière a une masse et un volume",
+                "Un gaz garde une forme propre comme un cube",
+                "Un mélange peut être homogène ou hétérogène",
+                "Dissoudre du sable rend une solution salée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Masse/volume et types de mélanges sont des bases ; le sable ne se dissout pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'eau à l'état solide s'appelle :",
+              "options": ["Glace", "Vapeur", "Plasma", "Huile"],
+              "correctAnswers": [0],
+              "explanation": "La glace est l'eau solidifiée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Filtrer de l'eau boueuse retient :",
+              "options": [
+                "Les particules solides",
+                "L'eau liquide",
+                "Le sel dissous",
+                "L'air pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre retient les particules."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Huile + eau est un mélange :",
+              "options": ["Hétérogène", "Homogène", "Corps pur", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Deux phases distinctes sont visibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La vaporisation correspond à :",
+              "options": [
+                "Liquide → gaz",
+                "Solide → liquide",
+                "Gaz → liquide",
+                "Liquide → solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage du liquide au gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le solvant de l'eau sucrée est :",
+              "options": ["L'eau", "Le sucre", "L'air", "Le filtre"],
+              "correctAnswers": [0],
+              "explanation": "L'eau dissout le sucre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un gaz se compresse :",
+              "options": [
+                "Facilement dans une seringue",
+                "Jamais",
+                "Comme un caillou",
+                "Uniquement en devient liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz sont compressibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La solidification de l'eau a lieu à :",
+              "options": [
+                "0 °C (eau pure, pression normale)",
+                "100 °C",
+                "50 °C",
+                "200 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gel de l'eau pure à 0 °C."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une solution saturée de sel :",
+              "options": [
+                "Ne dissout plus de sel supplémentaire",
+                "Dissout un volume infini",
+                "Est toujours hétérogène visible de grains de sable",
+                "Est un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité maximale est atteinte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir distillation plutôt que filtration sert à :",
+              "options": [
+                "Séparer solvant et soluté dissous",
+                "Retirer du sable",
+                "Séparer un aimant",
+                "Mélanger huile et eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distillation récupère le solvant d'une solution."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Mouvements simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire un mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments permettent de décrire un mouvement en sciences ?",
+              "options": [
+                "Un objet qui se déplace",
+                "Un repère et un référentiel",
+                "La couleur de l'objet seule",
+                "La trajectoire"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "On indique où et comment l'objet se déplace : repère, référentiel, trajectoire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un objet immobile par rapport à son repère :",
+              "options": [
+                "Ne se déplace pas",
+                "Change toujours de place",
+                "N'a pas de trajectoire",
+                "Voyage plus vite que la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immobile signifie position constante dans le référentiel choisi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La trajectoire est :",
+              "options": [
+                "Le chemin suivi par l'objet",
+                "La masse de l'objet",
+                "Sa couleur",
+                "Son volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trajectoire décrit le parcours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un référentiel peut être :",
+              "options": [
+                "Le sol de la classe",
+                "Une étoile lointaine uniquement",
+                "Impossible à choisir",
+                "Toujours le Soleil en 6e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On choisit un repère adapté à la situation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un train vu depuis le quai semble :",
+              "options": [
+                "Se déplacer",
+                "Toujours immobile",
+                "Sans trajectoire",
+                "Sans vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par rapport au quai, le train bouge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un passager assis dans un train en marche peut être :",
+              "options": [
+                "Immobile dans le référentiel du train",
+                "Toujours immobile par rapport au sol",
+                "Sans mouvement possible",
+                "Un plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement dépend du référentiel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour étudier un mouvement, on mesure souvent :",
+              "options": [
+                "Des positions au fil du temps",
+                "Uniquement la couleur",
+                "La saveur",
+                "L'âge du conducteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position et temps décrivent le mouvement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mouvement rectiligne a une trajectoire :",
+              "options": [
+                "En ligne droite",
+                "En cercle obligatoire",
+                "Aléatoire sans ligne",
+                "Toujours verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne = ligne droite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mouvement curviligne a une trajectoire :",
+              "options": [
+                "Courbe",
+                "Toujours rectiligne",
+                "Nulle",
+                "Invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curviligne = courbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le mouvement est relatif au :",
+              "options": [
+                "Référentiel choisi",
+                "Couleur du ciel",
+                "Jour férié",
+                "Type de crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même scène, référentiels différents ⇒ descriptions différentes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Trajectoire rectiligne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à une trajectoire rectiligne (dans un référentiel donné) ?",
+              "options": [
+                "Une bille roulant le long d'une règle sans dévier",
+                "Un skieur descendant une piste sinueuse",
+                "Un ascenseur montant verticalement dans sa cage",
+                "Une balançoire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Règle et ascenseur suivent une ligne droite ; piste sinueuse et balançoire sont curvilignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une trajectoire rectiligne est :",
+              "options": [
+                "Une ligne droite",
+                "Un cercle",
+                "Une zigzag aléatoire",
+                "Toujours horizontale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rectiligne signifie droite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un coureur sur piste droite (sans virage) a une trajectoire :",
+              "options": [
+                "Rectiligne",
+                "Curviligne",
+                "Circulaire",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans changement de direction, la trajectoire est droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet lancé verticalement (haut puis bas) a une trajectoire :",
+              "options": [
+                "Rectiligne verticale",
+                "Toujours circulaire",
+                "Sans trajectoire",
+                "Horizontale seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement vertical reste sur une droite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur un graphique position-temps en ligne droite inclinée, le mouvement peut être :",
+              "options": [
+                "Uniforme",
+                "Toujours immobile",
+                "Sans vitesse",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une droite inclinée indique souvent vitesse constante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un train sur voie rectilée a une trajectoire :",
+              "options": [
+                "Rectiligne",
+                "Obligatoirement circulaire",
+                "Nulle",
+                "Toujours curviligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie droite impose une trajectoire droite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Changer de référentiel peut :",
+              "options": [
+                "Changer la description du mouvement",
+                "Annuler la masse",
+                "Supprimer la trajectoire réelle",
+                "Transformer l'eau en sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le même déplacement se décrit différemment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une voiture sur autoroute rectiligne (référentiel route) :",
+              "options": [
+                "Trajectoire rectiligne",
+                "Trajectoire circulaire",
+                "Pas de mouvement",
+                "Trajectoire aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'elle ne tourne pas, la trajectoire est droite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet immobile a une trajectoire :",
+              "options": [
+                "Réduite à un point fixe",
+                "Toujours circulaire",
+                "Inconnue",
+                "Toujours verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position constante : point fixe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer rectiligne et curviligne porte sur :",
+              "options": [
+                "La forme du chemin",
+                "La couleur",
+                "Le goût",
+                "La masse uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On observe la forme de la trajectoire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Trajectoire curviligne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mouvements ont une trajectoire curviligne ?",
+              "options": [
+                "Une balançoire",
+                "Un coureur sur piste ovale",
+                "Une bille sur règle droite",
+                "Un virage en voiture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Balancier et piste ovale sont courbes ; règle droite est rectiligne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une trajectoire curviligne est :",
+              "options": [
+                "Courbe",
+                "Toujours une droite",
+                "Un point fixe",
+                "Un gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curviligne = courbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un train dans un virage a une trajectoire :",
+              "options": [
+                "Curviligne",
+                "Rectiligne",
+                "Nulle",
+                "Toujours verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le virage courbe la trajectoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La Lune autour de la Terre (modèle simplifié) a une trajectoire :",
+              "options": [
+                "Curviligne",
+                "Rectiligne",
+                "Immobile",
+                "Sans repère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite est courbe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lancer une balle avec effet latéral peut donner une trajectoire :",
+              "options": [
+                "Curviligne",
+                "Toujours verticale pure",
+                "Sans mouvement",
+                "Rectiligne horizontale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trajectoire peut courber."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un manège tourne avec une trajectoire :",
+              "options": [
+                "Curviligne (circulaire)",
+                "Rectiligne",
+                "Fixe pour tous",
+                "Sans vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement circulaire est curviligne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un skieur slalomant a une trajectoire :",
+              "options": ["Curviligne", "Rectiligne", "Un point", "Un gaz"],
+              "correctAnswers": [0],
+              "explanation": "Les virages courbent le chemin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un schéma, une courbe représente :",
+              "options": [
+                "Une trajectoire curviligne",
+                "Toujours un objet immobile",
+                "Un mélange hétérogène",
+                "Une dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courbe illustre le parcours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un satellite en orbite (modèle) se déplace sur une trajectoire :",
+              "options": [
+                "Curviligne",
+                "Rectiligne infinie",
+                "Sans mouvement",
+                "Toujours verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite est courbe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer droite et courbe sert à :",
+              "options": [
+                "Classer le type de trajectoire",
+                "Mesurer la masse",
+                "Dissoudre du sel",
+                "Filtrer de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une étape de description du mouvement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vitesse et distance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles relations sont correctes pour la vitesse moyenne ?",
+              "options": [
+                "v = d / t (distance sur durée)",
+                "v = t / d toujours",
+                "Plus la distance parcourue est grande à durée égale, plus la vitesse est grande",
+                "La vitesse n'a rien à voir avec la distance"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "v = d/t ; à temps égal, plus de distance ⇒ vitesse plus élevée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parcourir 100 m en 50 s donne une vitesse moyenne de :",
+              "options": ["2 m/s", "50 m/s", "0,5 m/s", "5000 m/s"],
+              "correctAnswers": [0],
+              "explanation": "100 ÷ 50 = 2 m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La distance se mesure souvent en :",
+              "options": ["Mètres", "Secondes", "Degrés Celsius", "Litres"],
+              "correctAnswers": [0],
+              "explanation": "Le mètre (m) est l'unité SI de distance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La durée se mesure en :",
+              "options": ["Secondes", "Mètres", "Kilogrammes", "Mètres cubes"],
+              "correctAnswers": [0],
+              "explanation": "La seconde (s) mesure le temps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si deux cyclistes mettent le même temps, celui qui parcourt la plus grande distance est :",
+              "options": [
+                "Plus rapide en moyenne",
+                "Plus lent",
+                "Immobile",
+                "Sans vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À t égal, plus grande d ⇒ plus grande v."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "10 km en 0,5 h correspond à une vitesse moyenne de :",
+              "options": ["20 km/h", "5 km/h", "10 km/h", "0 km/h"],
+              "correctAnswers": [0],
+              "explanation": "10 ÷ 0,5 = 20 km/h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une vitesse moyenne de 3 m/s pendant 10 s correspond à une distance de :",
+              "options": ["30 m", "3 m", "13 m", "0,3 m"],
+              "correctAnswers": [0],
+              "explanation": "d = v × t = 3 × 10 = 30 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Immobile signifie vitesse :",
+              "options": [
+                "Nulle",
+                "Infinie",
+                "Toujours 10 m/s",
+                "Impossible à définir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de déplacement : v = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Doubler la distance parcourue en gardant la même durée :",
+              "options": [
+                "Double la vitesse moyenne",
+                "Divise la vitesse par 2",
+                "Annule le mouvement",
+                "Change l'état de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v = d/t augmente avec d."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La vitesse indique :",
+              "options": [
+                "Rapidité du déplacement",
+                "Masse de l'objet",
+                "Volume du gaz",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse caractérise la rapidité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Unités de vitesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles unités de vitesse sont usuelles en 6e ?",
+              "options": [
+                "m/s (mètre par seconde)",
+                "km/h (kilomètre par heure)",
+                "kg (kilogramme)",
+                "L (litre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "m/s et km/h mesurent une vitesse ; kg et L ne conviennent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le symbole m/s signifie :",
+              "options": [
+                "Mètres par seconde",
+                "Minutes par seconde",
+                "Mètres par saison",
+                "Masse par seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "m/s = distance en mètres par temps en secondes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "km/h est adapté pour :",
+              "options": [
+                "Une voiture sur route",
+                "La masse d'une pomme",
+                "Le volume d'eau",
+                "La température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vitesses routières s'expriment souvent en km/h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 km/h équivaut approximativement à :",
+              "options": ["0,278 m/s", "10 m/s", "100 m/s", "1 m/s"],
+              "correctAnswers": [0],
+              "explanation": "1 km/h = 1000 m / 3600 s ≈ 0,278 m/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "36 km/h correspond à :",
+              "options": ["10 m/s", "1 m/s", "36 m/s", "0,36 m/s"],
+              "correctAnswers": [0],
+              "explanation": "36 km/h = 10 m/s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Utiliser des unités cohérentes dans v = d/t signifie :",
+              "options": [
+                "Distance et temps compatibles (ex. m et s)",
+                "Mélanger kg et s",
+                "Ignorer les unités",
+                "Utiliser °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les unités doivent correspondre au calcul."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un piéton à environ 5 km/h est :",
+              "options": [
+                "Lent comparé à une voiture",
+                "Plus rapide qu'un avion",
+                "À la vitesse de la lumière",
+                "Immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5 km/h est une marche lente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le seconde (s) sert à mesurer :",
+              "options": [
+                "Une durée",
+                "Une distance",
+                "Une masse",
+                "Un volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps entre deux instants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mètre (m) sert à mesurer :",
+              "options": [
+                "Une longueur ou distance",
+                "Une masse",
+                "Une température",
+                "Un volume de gaz uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité de distance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écrire 72 km/h sur un panneau indique :",
+              "options": [
+                "Une vitesse maximale autorisée",
+                "Une masse",
+                "Un volume",
+                "Une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les panneaux limitent une vitesse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mouvement uniforme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques décrivent un mouvement uniforme ?",
+              "options": [
+                "Vitesse constante",
+                "Trajectoire rectiligne en exemple simple",
+                "Vitesse qui double chaque seconde",
+                "Position qui ne change jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Uniforme : v constante ; en 6e on l'étudie souvent en trajectoire rectiligne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mouvement uniforme signifie :",
+              "options": [
+                "Vitesse constante",
+                "Vitesse nulle seulement",
+                "Trajectoire obligatoirement circulaire",
+                "Absence de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniforme = v ne change pas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un graphique d-t (distance-temps), une droite inclinée constante indique :",
+              "options": [
+                "Vitesse constante",
+                "Arrêt total",
+                "Température",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente constante ⇒ v constante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un train à vitesse constante sur voie droite est en :",
+              "options": [
+                "Mouvement uniforme rectiligne",
+                "Repos absolu partout",
+                "Changement d'état",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v constante + trajectoire droite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si v = 4 m/s constant, en 5 s la distance parcourue est :",
+              "options": ["20 m", "4 m", "9 m", "0 m"],
+              "correctAnswers": [0],
+              "explanation": "d = v × t = 20 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet en mouvement uniforme parcourt des distances :",
+              "options": [
+                "Égales chaque seconde",
+                "Nulles",
+                "Aléatoires sans règle",
+                "Toujours décroissantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À v constante, equal intervals ⇒ equal distances."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Accélérer signifie :",
+              "options": [
+                "Changer la vitesse",
+                "Rester à v constante",
+                "Geler l'eau",
+                "Filtrer un mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération modifie la vitesse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mouvement non uniforme a une vitesse :",
+              "options": [
+                "Qui varie",
+                "Toujours nulle",
+                "Toujours infinie",
+                "Sans trajectoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse change au cours du temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un piéton marchant à pas régulier (modèle) peut approximer :",
+              "options": [
+                "Un mouvement uniforme",
+                "Un plasma",
+                "Une dissolution",
+                "Un mélange hétérogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas réguliers ≈ vitesse quasi constante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "v constante implique que la vitesse moyenne sur un intervalle :",
+              "options": [
+                "Est égale à cette vitesse",
+                "Est toujours zéro",
+                "Double à chaque seconde",
+                "Est en kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si v ne change pas, moyenne = v."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mouvement modifié",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à un mouvement dont la vitesse change ?",
+              "options": [
+                "Une voiture qui freine",
+                "Un vélo qui accélère",
+                "Un train à vitesse constante",
+                "Un objet immobile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Freinage et accélération modifient la vitesse ; v constante ou immobile non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Freiner correspond à :",
+              "options": [
+                "Diminuer la vitesse",
+                "Augmenter toujours la vitesse",
+                "Geler l'air",
+                "Dissoudre du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le freinage ralentit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Accélérer correspond à :",
+              "options": [
+                "Augmenter la vitesse (en valeur)",
+                "Rester immobile",
+                "Mesurer la masse",
+                "Filtrer l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accélération augmente souvent la vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un graphique d-t avec une courbe dont la pente change indique :",
+              "options": [
+                "Vitesse variable",
+                "Vitesse strictement constante",
+                "Objet sans trajectoire",
+                "Température de fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente variable ⇒ v variable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Au feu rouge, une voiture à l'arrêt a une vitesse :",
+              "options": [
+                "Nulle",
+                "Maximale",
+                "De 100 m/s obligatoire",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'arrêt, v = 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relancer une trottinette en poussant fort modifie :",
+              "options": [
+                "Sa vitesse",
+                "Sa couleur",
+                "L'état plasma",
+                "La solubilité du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poussée accélère le véhicule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un mouvement ralenti puis arrêté montre :",
+              "options": [
+                "Vitesse décroissante",
+                "Vitesse constante infinie",
+                "Absence de trajectoire",
+                "Fusion de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse diminue jusqu'à zéro."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tomber d'un objet (modèle simple) accélère sous gravité :",
+              "options": [
+                "Sa vitesse augmente",
+                "Sa vitesse reste nulle",
+                "Il devient un gaz",
+                "Il se dissout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En chute libre simplifiée, v augmente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un virage à vitesse constante en valeur change :",
+              "options": [
+                "La direction de la vitesse",
+                "La masse de la voiture",
+                "L'état de l'eau",
+                "Le volume du gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changer de direction modifie le vecteur vitesse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Distinguer mouvement uniforme et modifié repose sur :",
+              "options": [
+                "Variation de la vitesse",
+                "Couleur du véhicule",
+                "Saveur de l'eau",
+                "Type de sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On observe si v change."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Repères et référentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés sur le référentiel sont corrects ?",
+              "options": [
+                "Le mouvement est relatif au référentiel",
+                "Un passager peut être immobile dans le train et mobile par rapport au sol",
+                "Tous les observateurs voient toujours la même vitesse sans choix de repère",
+                "Un repère fixe des axes pour mesurer la position"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le référentiel choisi change la description ; axes et origine définissent le repère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Par rapport au sol, un passager dans un train en marche est :",
+              "options": [
+                "En mouvement",
+                "Toujours immobile",
+                "Sans trajectoire",
+                "Un liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sol sert de référentiel : le passager avance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par rapport au train, le passager assis est :",
+              "options": [
+                "Immobile",
+                "Toujours à 100 km/h",
+                "Un gaz",
+                "Sans position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le référentiel train, il ne bouge pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un repère peut inclure :",
+              "options": [
+                "Une origine et des axes",
+                "Uniquement la couleur",
+                "Le goût de l'eau",
+                "La solubilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine + directions pour situer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Terre tourne : par rapport au Soleil, un point au sol :",
+              "options": [
+                "Se déplace",
+                "Est toujours immobile",
+                "N'a pas de trajectoire",
+                "Devient un solide pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référentiel héliocentrique simplifié : mouvement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir le référentiel le plus simple sert à :",
+              "options": [
+                "Faciliter l'étude du mouvement",
+                "Empêcher toute mesure",
+                "Dissoudre le sable",
+                "Filtrer l'huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bon repère simplifie l'analyse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux voitures à même vitesse côte à côte peuvent sembler :",
+              "options": [
+                "Immobile l'une par rapport à l'autre",
+                "À vitesse lumière",
+                "Sans trajectoire",
+                "En dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référentiel lié à l'une : l'autre semble fixe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La position d'un objet se note par rapport :",
+              "options": [
+                "Au repère choisi",
+                "Au hasard sans origine",
+                "Uniquement à la couleur",
+                "Au volume du gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées dans le repère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un GPS utilise un référentiel lié :",
+              "options": [
+                "À la surface terrestre (modèle)",
+                "Uniquement au crayon",
+                "Au sel dissous",
+                "Au filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le GPS situe par rapport à la Terre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Immobile dans un référentiel ne signifie pas :",
+              "options": [
+                "Immobile dans tous les référentiels",
+                "Vitesse nulle dans ce repère",
+                "Position constante",
+                "Trajectoire réduite à un point"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement dépend du choix du référentiel."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Signaux et informations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples sont des signaux porteurs d'information pour la circulation ?",
+              "options": [
+                "Feu tricolore",
+                "Panneau de limitation de vitesse",
+                "Couleur des chaussures du piéton",
+                "Masse d'une pomme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Feux et panneaux codifient des règles liées au déplacement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un feu rouge indique :",
+              "options": [
+                "Arrêt",
+                "Accélération maximale",
+                "Fusion",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge = stop."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un panneau 50 km/h indique :",
+              "options": [
+                "Une vitesse maximale",
+                "Une masse",
+                "Un volume",
+                "Une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limitation de vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un signal sonore (klaxon) peut :",
+              "options": [
+                "Avertir d'un danger",
+                "Mesurer la masse",
+                "Dissoudre le sel",
+                "Filtrer l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son transmet une alerte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un signal lumineux clignotant sur un vélo sert à :",
+              "options": [
+                "Être vu",
+                "Changer l'état de l'eau",
+                "Augmenter la masse",
+                "Rendre le gaz solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visibilité = sécurité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En sciences, un signal transporte :",
+              "options": [
+                "Une information",
+                "Toujours de la matière uniquement",
+                "Uniquement du sel",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal = support d'information."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un capteur de vitesse sur un vélo mesure :",
+              "options": [
+                "La vitesse",
+                "La couleur",
+                "Le goût",
+                "La solubilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il renvoie une info de vitesse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Afficher la vitesse au tableau de bord est un :",
+              "options": [
+                "Signal visuel d'information",
+                "Changement d'état",
+                "Mélange hétérogène",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information visuelle pour le conducteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un feu vert autorise en général :",
+              "options": [
+                "Repartir",
+                "Stop obligatoire",
+                "Fusion de la glace",
+                "Saturation du sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vert = passage autorisé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Relier signal et sécurité routière montre que l'information guide :",
+              "options": [
+                "Les comportements de mouvement",
+                "La masse des rochers",
+                "La dissolution du sucre",
+                "La couleur du ciel uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les signaux influencent conduite et déplacement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révisions mouvements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels énoncés sur le mouvement en 6e sont corrects ?",
+              "options": [
+                "v = d / t pour une vitesse moyenne",
+                "La trajectoire peut être rectiligne ou curviligne",
+                "La vitesse se mesure en kilogrammes",
+                "Le mouvement dépend du référentiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formule v=d/t, types de trajectoire ; kg n'est pas une unité de vitesse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "36 km/h vaut environ :",
+              "options": ["10 m/s", "1 m/s", "36 m/s", "0,1 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Conversion usuelle : 36 km/h = 10 m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mouvement uniforme a :",
+              "options": [
+                "Vitesse constante",
+                "Vitesse toujours nulle",
+                "Trajectoire obligatoirement circulaire",
+                "Pas de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uniforme = v constante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Freiner, c'est :",
+              "options": [
+                "Réduire la vitesse",
+                "Dissoudre du sel",
+                "Filtrer du sable",
+                "Fusionner de la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freinage = ralentissement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une balançoire a une trajectoire :",
+              "options": [
+                "Curviligne",
+                "Rectiligne horizontale infinie",
+                "Un point fixe seulement",
+                "Sans mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mouvement pendulaire est courbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "100 m en 25 s donne v moyenne :",
+              "options": ["4 m/s", "25 m/s", "0,25 m/s", "125 m/s"],
+              "correctAnswers": [0],
+              "explanation": "100/25 = 4 m/s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Immobile dans un référentiel signifie :",
+              "options": [
+                "Vitesse nulle dans ce repère",
+                "Vitesse nulle partout toujours",
+                "Trajectoire circulaire",
+                "Plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relatif au référentiel choisi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "m/s est une unité de :",
+              "options": ["Vitesse", "Masse", "Volume", "Température"],
+              "correctAnswers": [0],
+              "explanation": "Mètre par seconde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un train en ligne droite à vitesse constante :",
+              "options": [
+                "Mouvement uniforme rectiligne",
+                "Absence de trajectoire",
+                "Dissolution",
+                "Mélange hétérogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle classique du programme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un panneau de signalisation transmet :",
+              "options": [
+                "Une information",
+                "Uniquement de la matière solide",
+                "Du sel dissous",
+                "Un gaz invisible pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les panneaux portent des consignes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

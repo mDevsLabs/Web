@@ -1,0 +1,1893 @@
+{
+  "id": "terminale-arabe-01",
+  "year": "terminale",
+  "subject": "arabe",
+  "title": "Découvrir l'arabe",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Formules de salut",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles expressions arabes signifient « Paix sur vous » / réponse courante au salut islamique ?",
+              "options": [
+                "السلام عليكم",
+                "صباح الخير",
+                "وعليكم السلام",
+                "مع السلامة"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« as-salāmu ʿalaykum » (السلام عليكم) est le salut ; « wa-ʿalaykum as-salām » (وعليكم السلام) est la réponse. « Ṣabāḥ al-khayr » est « bonjour » le matin."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment dit-on « bonjour » (matin) en arabe standard ?",
+              "options": ["مساء الخير", "صباح الخير", "السلام عليكم", "أهلاً"],
+              "correctAnswers": [1],
+              "explanation": "« Ṣabāḥ al-khayr » (صباح الخير) = bonjour (litt. « bon matin »). « Masāʾ al-khayr » est pour le soir."
+            },
+            {
+              "type": "single_choice",
+              "question": "Que signifie « مساء الخير » ?",
+              "options": [
+                "Bonne nuit",
+                "Bonsoir / bonne soirée",
+                "Au revoir",
+                "Merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Masāʾ al-khayr » (مساء الخير) s'utilise en fin de journée pour saluer."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quelle formule correspond à « Au revoir » (à la prochaine) ?",
+              "options": ["إلى اللقاء", "السلام عليكم", "كيف حالك؟", "تشرفنا"],
+              "correctAnswers": [0],
+              "explanation": "« Ilā al-liqāʾ » (إلى اللقاء) = « au revoir », « jusqu'à la rencontre »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مع السلامة » signifie surtout :",
+              "options": [
+                "Bonjour",
+                "Au revoir (partir en paix)",
+                "Comment vas-tu ?",
+                "Enchanté"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Maʿa as-salāma » (مع السلامة) = « au revoir », souvent quand quelqu'un part."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment écrire « Bonne nuit » en arabe courant ?",
+              "options": ["تصبح على خير", "صباح النور", "أهلاً وسهلاً", "شكراً"],
+              "correctAnswers": [0],
+              "explanation": "« Tuṣbiḥ ʿalā khayr » (تصبح على خير) = bonne nuit (litt. « que tu te réveilles en paix »)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse habituelle à « صباح الخير » :",
+              "options": ["صباح النور", "مساء الخير", "مع السلامة", "لا بأس"],
+              "correctAnswers": [0],
+              "explanation": "On répond « Ṣabāḥ an-nūr » (صباح النور), « matin de lumière »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أهلاً وسهلاً » exprime :",
+              "options": ["Colère", "Bienvenue", "Tristesse", "Refus"],
+              "correctAnswers": [1],
+              "explanation": "« Ahlan wa-sahlan » = bienvenue, accueil chaleureux."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le salut « السلام عليكم » est surtout associé à :",
+              "options": [
+                "Uniquement l'argot",
+                "L'arabe standard et l'islam (paix)",
+                "Le dialecte marocain seul",
+                "L'anglais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule universelle en arabe, liturgique et quotidienne, signifiant la paix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quelle option est une salutation, pas une présentation ?",
+              "options": ["اسمي...", "السلام عليكم", "أنا من...", "أعمل..."],
+              "correctAnswers": [1],
+              "explanation": "« as-salāmu ʿalaykum » ouvre l'échange ; « ismī » présente le nom."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Demander des nouvelles",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases demandent « Comment vas-tu ? » (masculin / général) ?",
+              "options": ["كيف حالك؟", "ما اسمك؟", "كيف حالكِ؟", "من أين أنت؟"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Kayfa ḥālak? » (m.) et « Kayfa ḥāliki? » (f.) interrogent sur l'état de santé / moral."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse fréquente « Je vais bien, merci » :",
+              "options": ["بخير، شكراً", "مع السلامة", "لا أفهم", "غداً"],
+              "correctAnswers": [0],
+              "explanation": "« Bi-khayr, shukran » (بخير، شكراً) = bien, merci."
+            },
+            {
+              "type": "single_choice",
+              "question": "« الحمد لله » dans une réponse à « كيف حالك؟ » signifie :",
+              "options": [
+                "Jamais",
+                "Louange à Dieu (ça va)",
+                "Au revoir",
+                "Je m'appelle..."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Expression de gratitude ; contexte courant : « bien, grâce à Dieu »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« لا بأس » veut dire :",
+              "options": [
+                "C'est grave",
+                "Pas mal / ça va",
+                "Non merci",
+                "Oui toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Lā bāʾs » = « pas de mal », « ça va »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour saluer une femme « comment allez-vous ? » (forme féminine) :",
+              "options": ["كيف حالك؟", "كيف حالكِ؟", "كيف حالكم؟", "ما أخبارك؟"],
+              "correctAnswers": [1],
+              "explanation": "Le pronom en -ki (كِ) marque le féminin singulier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كيف حالكم؟ » s'adresse à :",
+              "options": [
+                "Une personne (f.)",
+                "Un groupe (pluriel)",
+                "Un enfant seul",
+                "Personne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ḥālakum » = « votre état » (pluriel / politesse)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« شكراً » signifie :",
+              "options": ["Pardon", "Merci", "S'il vous plaît", "Bonjour"],
+              "correctAnswers": [1],
+              "explanation": "« Shukran » = merci ; « shukran jazīlan » = merci beaucoup."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse à « شكراً » souvent entendue :",
+              "options": ["عفواً", "مع السلامة", "اسمي", "كيف"],
+              "correctAnswers": [0],
+              "explanation": "« ʿAfwan » (عفواً) = de rien / pardon selon contexte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« من فضلك » (masculin direct) correspond à :",
+              "options": [
+                "S'il te plaît",
+                "Au revoir",
+                "Je suis fatigué",
+                "Bienvenue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Min faḍlik » = s'il te plaît (à un homme ou neutre selon registre)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demander « Et toi ? » après avoir répondu :",
+              "options": ["وأنت؟", "من أنت؟", "أين؟", "متى؟"],
+              "correctAnswers": [0],
+              "explanation": "« Wa-anta? » (m.) / « wa-anti? » (f.) = et toi ?"
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Se présenter : le nom",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases présentent le nom ?",
+              "options": ["اسمي أحمد", "أنا أحمد", "كيف حالك؟", "اسمي فاطمة"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ismī » + nom ou « anā » + nom = je m'appelle / je suis (prénom)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ما اسمك؟ » demande :",
+              "options": [
+                "D'où viens-tu ?",
+                "Comment t'appelles-tu ?",
+                "Quel âge as-tu ?",
+                "Où habites-tu ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Question standard sur le prénom (m. « ismuka », f. « ismuki »)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse à « ما اسمك؟ » (féminin) :",
+              "options": ["اسمي سارة", "اسمك سارة", "هو سارة", "سارة كيف"],
+              "correctAnswers": [0],
+              "explanation": "« Ismī Sāra » = je m'appelle Sara."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le mot « اسم » signifie :",
+              "options": ["Maison", "Nom", "Ville", "Travail"],
+              "correctAnswers": [1],
+              "explanation": "Racine s-m-w ; « ism » = nom."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا » dans « أنا طالب » signifie :",
+              "options": ["Tu", "Je", "Nous", "Ils"],
+              "correctAnswers": [1],
+              "explanation": "Pronom personnel 1re personne singulier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« طالب » (m.) désigne :",
+              "options": [
+                "Professeur",
+                "Élève / étudiant (m.)",
+                "Médecin",
+                "Vendeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ṭālib » = élève, étudiant ; « ṭāliba » au féminin."
+            },
+            {
+              "type": "single_choice",
+              "question": "Féminin de « طالب » :",
+              "options": ["طالبة", "طلاب", "معلم", "أستاذ"],
+              "correctAnswers": [0],
+              "explanation": "Suffixe -a/at pour le féminin singulier en MSA."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ما » dans « ما اسمك؟ » est :",
+              "options": [
+                "Une préposition",
+                "Un interrogatif (« quoi / quel »)",
+                "Un verbe",
+                "Une conjonction temporelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Particule interrogative pour demander une information."
+            },
+            {
+              "type": "single_choice",
+              "question": "Présentation polie avec métier : « أنا معلم » =",
+              "options": [
+                "Je suis professeur",
+                "Je suis élève",
+                "Je suis médecin",
+                "Je suis étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Muʿallim » = enseignant (m.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour demander le nom à une femme : « ما ___؟ »",
+              "options": ["اسمكِ", "اسمك", "اسمه", "اسمنا"],
+              "correctAnswers": [0],
+              "explanation": "« Ismuki » avec kasra du féminin (كِ)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Origine et nationalité",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases indiquent l'origine ?",
+              "options": [
+                "أنا من فرنسا",
+                "من أين أنت؟",
+                "أنا فرنسي",
+                "كيف حالك؟"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Min » + pays ou adjectif de nationalité (francophone / français en arabe : faransī / min Faransā)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« من أين أنت؟ » signifie :",
+              "options": [
+                "Comment vas-tu ?",
+                "D'où es-tu ?",
+                "Quel est ton nom ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Interrogation sur le lieu d'origine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا من المغرب » =",
+              "options": [
+                "Je suis du Maroc",
+                "Je vais au Maroc",
+                "J'aime le Maroc",
+                "Je parle marocain seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Min al-Maghrib » = originaire du Maroc."
+            },
+            {
+              "type": "single_choice",
+              "question": "« فرنسا » est :",
+              "options": ["L'Egypte", "La France", "La Syrie", "Le Liban"],
+              "correctAnswers": [1],
+              "explanation": "Nom propre de pays en arabe standard."
+            },
+            {
+              "type": "single_choice",
+              "question": "Préposition « من » dans « من فرنسا » =",
+              "options": ["Vers", "De / depuis (origine)", "Dans", "Sans"],
+              "correctAnswers": [1],
+              "explanation": "« Min » marque la provenance."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أين » dans « أين تسكن؟ » signifie :",
+              "options": ["Quand", "Où", "Pourquoi", "Combien"],
+              "correctAnswers": [1],
+              "explanation": "Interrogatif spatial."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا أعيش في باريس » indique :",
+              "options": [
+                "Nationalité seule",
+                "Lieu de résidence",
+                "Profession",
+                "Salutation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Aʿīsh fī » = je vis à / j'habite à."
+            },
+            {
+              "type": "single_choice",
+              "question": "Féminin « أنا فرنسية » (je suis française) utilise :",
+              "options": ["فرنسي", "فرنسية", "فرنسيون", "فرانسا"],
+              "correctAnswers": [1],
+              "explanation": "Accord au féminin avec ta marbuta."
+            },
+            {
+              "type": "single_choice",
+              "question": "« تونس » en arabe désigne :",
+              "options": ["Turquie", "Tunisie", "Tchad", "Thaïlande"],
+              "correctAnswers": [1],
+              "explanation": "Pays du Maghreb ; « tūnisī » = tunisien."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse courte à « من أين أنت؟ » :",
+              "options": ["من الجزائر", "السلام عليكم", "اسمي...", "لا"],
+              "correctAnswers": [0],
+              "explanation": "« Min al-Jazāʾir » = d'Algérie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Rencontres et politesse",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles expressions conviennent lors d'une première rencontre ?",
+              "options": [
+                "تشرفنا",
+                "سررت بلقائك",
+                "مع السلامة فوراً",
+                "لا أعرفك"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Tasharrafnā » = enchanté ; « surirtu bi-liqāʾik » = ravi de te rencontrer."
+            },
+            {
+              "type": "single_choice",
+              "question": "« تشرفنا » équivaut à :",
+              "options": [
+                "Au revoir",
+                "Enchanté (nous sommes honorés)",
+                "Je m'en fiche",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule de politesse à la rencontre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Après les présentations, on peut dire :",
+              "options": ["سررت بلقائك", "اذهب", "اصمت", "لا شيء"],
+              "correctAnswers": [0],
+              "explanation": "Expression de plaisir de la rencontre (accord m./f. selon interlocuteur)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« من فضلك » vs impératif rude : préférer :",
+              "options": ["من فضلك", "الآن!", "اسكت", "اخرج"],
+              "correctAnswers": [0],
+              "explanation": "La politesse adoucit la demande en arabe comme en français."
+            },
+            {
+              "type": "single_choice",
+              "question": "« عفواً » peut signifier :",
+              "options": [
+                "Merci beaucoup",
+                "Pardon / de rien",
+                "Bonjour",
+                "Oui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Polyvalent : excuse ou réponse à remerciement."
+            },
+            {
+              "type": "single_choice",
+              "question": "Saluer avant de parler affaires est :",
+              "options": [
+                "Optionnel partout",
+                "Attendu culturellement",
+                "Interdit",
+                "Réservé aux enfants"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le salut ouvre la relation ; niveau terminale : sensibilité interculturelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« آسف » (m.) exprime :",
+              "options": ["Joie", "Excuses", "Faim", "Sommeil"],
+              "correctAnswers": [1],
+              "explanation": "« Āsif » = désolé ; « āifa » au féminin."
+            },
+            {
+              "type": "single_choice",
+              "question": "Présenter deux personnes : « هذا ___ » (m.) =",
+              "options": ["Voici...", "Au revoir", "Merci", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "« Hādhā » = voici (masculin proche)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هذه » introduit :",
+              "options": [
+                "Un homme proche",
+                "Une femme / chose f. proche",
+                "Un lieu lointain",
+                "Un nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Démonstratif féminin singulier."
+            },
+            {
+              "type": "single_choice",
+              "question": "Terminer poliment une conversation :",
+              "options": [
+                "مع السلامة / إلى اللقاء",
+                "لا ترد",
+                "اركض",
+                "اسمي فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules de clôture courantes."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Pronoms et présentation",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels pronoms sont à la 1re personne ?",
+              "options": ["أنا", "نحن", "أنت", "هو"],
+              "correctAnswers": [0, 1],
+              "explanation": "أنا = je et نحن = nous : les deux sont à la 1re personne."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنت » (m.) vs « أنتِ » (f.) diffèrent par :",
+              "options": [
+                "Le temps",
+                "Le genre (marque -i)",
+                "Le pluriel",
+                "Le passé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Distinction de genre à la 2e personne."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هو » signifie :",
+              "options": ["Elle", "Il", "Vous", "Je"],
+              "correctAnswers": [1],
+              "explanation": "3e personne masculin singulier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هي » signifie :",
+              "options": ["Il", "Elle", "Ils (f.)", "Nous"],
+              "correctAnswers": [1],
+              "explanation": "3e personne féminin singulier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« نحن » =",
+              "options": ["Vous", "Nous", "Ils", "Tu"],
+              "correctAnswers": [1],
+              "explanation": "1re personne pluriel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هم » désigne :",
+              "options": ["Elles", "Ils (m./mixte)", "Je", "Toi"],
+              "correctAnswers": [1],
+              "explanation": "3e personne masculin pluriel."
+            },
+            {
+              "type": "single_choice",
+              "question": "Présentation : « نحن طلاب » =",
+              "options": [
+                "Nous sommes élèves",
+                "Tu es élève",
+                "Ils sont profs",
+                "Je suis seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat au pluriel après « naḥnu »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنتم » s'adresse à :",
+              "options": [
+                "Un homme",
+                "Groupe masculin / mixte",
+                "Une femme seule",
+                "Personne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "2e personne pluriel masculin ou mixte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنتن » s'adresse à :",
+              "options": [
+                "Groupe féminin",
+                "Un enfant m.",
+                "Animaux",
+                "Objets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2e personne pluriel féminin."
+            },
+            {
+              "type": "single_choice",
+              "question": "Lier pronom + adjectif : « أنا سعيد » (m.) =",
+              "options": [
+                "Je suis content",
+                "Tu es content",
+                "Il est triste",
+                "Nous partons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de verbe « être » à la présent ; phrase nominale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Écriture et lecture de base",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels éléments caractérisent l'écriture arabe ?",
+              "options": [
+                "Écriture de droite à gauche",
+                "Lettres liées dans un mot",
+                "Alphabet latin",
+                "Uniquement des chiffres romains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Direction RTL et cursivité des lettres dans le mot."
+            },
+            {
+              "type": "single_choice",
+              "question": "L'arabe se lit principalement :",
+              "options": [
+                "De gauche à droite",
+                "De droite à gauche",
+                "De haut en bas seulement",
+                "Au hasard"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sens de lecture standard pour l'arabe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Les voyelles courtes en arabe sont souvent :",
+              "options": [
+                "Toujours écrites en lettres",
+                "Indiquées par des signes diacritiques (ou omises)",
+                "En cyrillique",
+                "En braille seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Harakāt (fatḥa, kasra, ḍamma) ; texte non vocalisé en presse."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ا » (alif) peut représenter :",
+              "options": [
+                "Uniquement un chiffre",
+                "Une voyelle longue / support",
+                "Une ponctuation",
+                "Rien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lettre fondamentale ; hamza parfois sur alif."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le « ب » (bāʾ) se prononce comme :",
+              "options": ["B français", "V", "K", "Z"],
+              "correctAnswers": [0],
+              "explanation": "Consonne occlusive bilabiale voisée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ش » correspond au son :",
+              "options": ["Ch", "Th", "R roulé seul", "H aspiré seul"],
+              "correctAnswers": [0],
+              "explanation": "Shīn = /ʃ/ comme « chat »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le definite article en arabe est :",
+              "options": ["ال (al-)", "un", "le (français)", "pas d'article"],
+              "correctAnswers": [0],
+              "explanation": "« Al- » préfixé au nom ; assimilation solaire/lunaire au programme."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كتاب » sans article =",
+              "options": [
+                "Le livre",
+                "Un livre / livre",
+                "Les livres",
+                "Sans livre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Indéfini ou générique ; « al-kitāb » = le livre."
+            },
+            {
+              "type": "single_choice",
+              "question": "Combien de lettres dans l'alphabet arabe classique ?",
+              "options": ["26", "28", "32", "10"],
+              "correctAnswers": [1],
+              "explanation": "28 lettres (hamza parfois comptée à part selon manuels)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Les chiffres ١ ٢ ٣ sont :",
+              "options": [
+                "Chiffres orientaux arabes",
+                "Lettres latines",
+                "Runes",
+                "Symboles grecs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variante arabe des chiffres ; en MSA on voit aussi 1 2 3."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Questions et réponses courtes",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots sont des interrogatifs ?",
+              "options": ["ماذا", "أين", "كتاب", "متى"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Mādhā / mā » = quoi ; « ayna » = où ; « matā » = quand."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ماذا » / « ما » sert à demander :",
+              "options": [
+                "L'heure seule",
+                "Quoi / qu'est-ce que",
+                "La couleur seule",
+                "Le prix seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Interrogatif sur l'objet ou l'action."
+            },
+            {
+              "type": "single_choice",
+              "question": "« متى » signifie :",
+              "options": ["Où", "Quand", "Pourquoi", "Combien"],
+              "correctAnswers": [1],
+              "explanation": "Interrogatif temporel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« لماذا » =",
+              "options": ["Pourquoi", "Comment", "Qui", "Quel"],
+              "correctAnswers": [0],
+              "explanation": "Cause / raison."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كم » introduit une question sur :",
+              "options": [
+                "La quantité / combien",
+                "La couleur",
+                "Le nom",
+                "Le salut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Kam » + nom = combien de..."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse « نعم » =",
+              "options": ["Non", "Oui", "Peut-être", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Affirmation standard."
+            },
+            {
+              "type": "single_choice",
+              "question": "« لا » seul exprime souvent :",
+              "options": ["Oui", "Non", "Merci", "Bonjour"],
+              "correctAnswers": [1],
+              "explanation": "Négation ou refus."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هل » en début de phrase indique :",
+              "options": [
+                "Une question oui/non",
+                "Un ordre",
+                "Un passé",
+                "Un futur lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particule interrogative pour questions fermées."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هل أنت بخير؟ » =",
+              "options": [
+                "Es-tu bien ?",
+                "Où es-tu ?",
+                "Quel est ton nom ?",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question oui/non sur l'état."
+            },
+            {
+              "type": "single_choice",
+              "question": "« من » (interrogatif) signifie :",
+              "options": [
+                "Qui",
+                "De (origine)",
+                "Les deux selon contexte",
+                "Jamais qui"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Homographe : « man » = qui ; « min » = de."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Dialogues type bac",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Dans un dialogue de présentation, quelles répliques sont cohérentes ?",
+              "options": [
+                "— السلام عليكم — وعليكم السلام",
+                "— ما اسمك؟ — اسمي ليلى",
+                "— مع السلامة — bonjour en français seul",
+                "— كيف حالك؟ — بخير"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Enchaînements salut / nom ; aussi [3] est valide mais la consigne demande 2 bonnes : 0 et 1 sont paires dialogiques de base."
+            },
+            {
+              "type": "single_choice",
+              "question": "Ordre logique : saluer, puis :",
+              "options": [
+                "Partir sans parler",
+                "Demander des nouvelles ou se présenter",
+                "Insulter",
+                "Ignorer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Progression naturelle de la conversation."
+            },
+            {
+              "type": "single_choice",
+              "question": "En classe, « افتح الكتاب » est :",
+              "options": [
+                "Une question",
+                "Un impératif (ouvre le livre)",
+                "Un adjectif",
+                "Un pays"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Forme verbale impérative 2e pers."
+            },
+            {
+              "type": "single_choice",
+              "question": "Répondre à « أين تعيش؟ » :",
+              "options": ["أعيش في ليون", "السلام عليكم", "لا", "اسمي"],
+              "correctAnswers": [0],
+              "explanation": "Réponse locative avec « fī » + ville."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا تلميذة في الثانوية » indique :",
+              "options": [
+                "Statut scolaire (lycéenne)",
+                "Nationalité seule",
+                "Heure",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tilmīdha fī ath-thānawiyya » = élève au lycée."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour clarifier : « لا أفهم » =",
+              "options": [
+                "Je ne comprends pas",
+                "Je comprends tout",
+                "Je pars",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile en interaction ; « afham » = comprendre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« من فضلك، كرر » demande :",
+              "options": ["Répéter", "Crier", "Partir", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "« Karrer » = répéter (impératif ou contexte poli)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Clore un oral : « شكراً ___ »",
+              "options": ["جزيلاً", "مع السلامة seul", "لا", "من"],
+              "correctAnswers": [0],
+              "explanation": "« Shukran jazīlan » = merci beaucoup."
+            },
+            {
+              "type": "single_choice",
+              "question": "« اليوم » dans « اليوم الجمعة » =",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "« Al-yawm » = aujourd'hui / le jour."
+            },
+            {
+              "type": "single_choice",
+              "question": "Vocabulaire classe : « معلم » vs « تلميذ » :",
+              "options": [
+                "Prof vs élève",
+                "Deux pays",
+                "Deux saluts",
+                "Deux nombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acteurs de la situation scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse unité 1",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles formules appartiennent à la prise de contact ?",
+              "options": ["السلام عليكم", "تشرفنا", "1000", "كيف حالك"],
+              "correctAnswers": [0, 3],
+              "explanation": "Salut et demande de nouvelles ; « tasharrafnā » aussi mais 0 et 3 sont le duo minimal salut + suivi."
+            },
+            {
+              "type": "single_choice",
+              "question": "Traduire « Enchanté, je m'appelle Karim » :",
+              "options": [
+                "تشرفنا، اسمي كريم",
+                "مع السلامة كريم",
+                "لا كريم",
+                "كريم فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement politesse + « ismī Karīm »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Erreur fréquente : confondre « شكراً » et :",
+              "options": [
+                "« عفواً » (merci vs de rien)",
+                "« السلام »",
+                "« كتاب »",
+                "« بيت »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction remerciement / réponse."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا من فرنسا وأتحدث العربية » =",
+              "options": [
+                "Je suis de France et je parle arabe",
+                "Je hais l'arabe",
+                "Je suis arabe né en France seulement sans parler",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Atakallam al-ʿarabiyya » = je parle arabe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Genre : « أنتِ طالبة » s'adresse à :",
+              "options": [
+                "Une fille / femme (tu)",
+                "Un homme",
+                "Un groupe d'hommes",
+                "Personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Anti » + « ṭāliba » féminin."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pluriel poli « vous » (forme arabe courante MSA) :",
+              "options": ["أنتم / أنتن", "أنا", "هو", "هي"],
+              "correctAnswers": [0],
+              "explanation": "« Antum » (m./mixte) ; « antunna » (f. pl.)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« بيت » signifie :",
+              "options": ["Maison", "Livre", "École", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Nom de base ; utile pour « où habites-tu »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مدرسة » =",
+              "options": ["École", "Hôpital", "Mosquée", "Marché"],
+              "correctAnswers": [0],
+              "explanation": "« Madrasa » = école."
+            },
+            {
+              "type": "single_choice",
+              "question": "Révision : « وعليكم السلام » est :",
+              "options": [
+                "Réponse au salut",
+                "Question sur l'âge",
+                "Nom propre",
+                "Nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse à « as-salāmu ʿalaykum »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif unité : maîtriser surtout :",
+              "options": [
+                "Salutations et présentation orale",
+                "Conjugaison passée complexe seule",
+                "Poésie pré-islamique seule",
+                "Dialecte sans MSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence communicative de base terminale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Nombres 1 à 10",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels chiffres arabes (mots) correspondent à 1 et 5 ?",
+              "options": ["واحد", "خمسة", "عشرة", "ثلاثة"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Wāḥid » = 1 ; « khamsa » = 5 ; « thalātha » = 3 ; « ʿashara » = 10."
+            },
+            {
+              "type": "single_choice",
+              "question": "« اثنان » (ithnān) =",
+              "options": ["1", "2", "4", "8"],
+              "correctAnswers": [1],
+              "explanation": "Deux ; féminin « ithnatān » selon nom compté."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ثلاثة » =",
+              "options": ["3", "5", "7", "9"],
+              "correctAnswers": [0],
+              "explanation": "Trois (forme m. du compteur)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أربعة » =",
+              "options": ["4", "6", "2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Quatre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ستة » =",
+              "options": ["6", "60", "16", "8"],
+              "correctAnswers": [0],
+              "explanation": "Six."
+            },
+            {
+              "type": "single_choice",
+              "question": "« سبعة » =",
+              "options": ["7", "17", "70", "5"],
+              "correctAnswers": [0],
+              "explanation": "Sept."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ثمانية » =",
+              "options": ["8", "80", "18", "3"],
+              "correctAnswers": [0],
+              "explanation": "Huit."
+            },
+            {
+              "type": "single_choice",
+              "question": "« تسعة » =",
+              "options": ["9", "90", "19", "2"],
+              "correctAnswers": [0],
+              "explanation": "Neuf."
+            },
+            {
+              "type": "single_choice",
+              "question": "« عشرة » =",
+              "options": ["10", "100", "20", "11"],
+              "correctAnswers": [0],
+              "explanation": "Dix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Le nombre « صفر » =",
+              "options": ["0", "1", "10", "100"],
+              "correctAnswers": [0],
+              "explanation": "Zéro emprunt sémantique ; « ṣifr »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Famille proche",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots désignent les parents ?",
+              "options": ["أب", "أم", "جد", "أخ"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ab » = père ; « umm » = mère ; « jadd » = grand-père ; « akh » = frère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أخ » signifie :",
+              "options": ["Frère", "Sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0],
+              "explanation": "Frère ; « ukht » = sœur."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أخت » =",
+              "options": ["Sœur", "Frère", "Père", "Fille"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ابن » =",
+              "options": ["Fils", "Fille", "Mère", "Grand-mère"],
+              "correctAnswers": [0],
+              "explanation": "Fils ; « ibna / bint » = fille."
+            },
+            {
+              "type": "single_choice",
+              "question": "« بنت » =",
+              "options": ["Fille", "Garçon", "Oncle", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Fille."
+            },
+            {
+              "type": "single_choice",
+              "question": "« جدة » (f.) =",
+              "options": ["Grand-mère", "Grand-père", "Tante", "Nièce"],
+              "correctAnswers": [0],
+              "explanation": "« Jadda » grand-mère ; « jadd » grand-père."
+            },
+            {
+              "type": "single_choice",
+              "question": "« عائلة » =",
+              "options": ["Famille", "École", "Ville", "Pays"],
+              "correctAnswers": [0],
+              "explanation": "Nom collectif famille."
+            },
+            {
+              "type": "single_choice",
+              "question": "« زوج » (m.) =",
+              "options": ["Mari / époux", "Femme seule", "Enfant", "Voisin"],
+              "correctAnswers": [0],
+              "explanation": "« Zawj » époux ; « zawja » épouse."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هذا أبي » =",
+              "options": [
+                "Voici mon père",
+                "Voici ma mère",
+                "Au revoir père",
+                "Où est père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hādhā abī » avec possessif."
+            },
+            {
+              "type": "single_choice",
+              "question": "Possessif « my » sur « mother » :",
+              "options": ["أمي", "أبي", "أخي", "بيتي"],
+              "correctAnswers": [0],
+              "explanation": "« Ummī » = ma mère."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Couleurs et objets",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles couleurs de base en arabe ?",
+              "options": ["أحمر", "أزرق", "كتاب", "مدرسة"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Aḥmar » rouge ; « azraq » bleu (m.) ; les deux autres sont des noms communs."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أخضر » =",
+              "options": ["Vert", "Noir", "Blanc", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Vert."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أصفر » =",
+              "options": ["Jaune", "Rouge", "Bleu", "Gris"],
+              "correctAnswers": [0],
+              "explanation": "Jaune."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أسود » =",
+              "options": ["Noir", "Blanc", "Rose", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Noir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أبيض » =",
+              "options": ["Blanc", "Noir", "Vert", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Blanc."
+            },
+            {
+              "type": "single_choice",
+              "question": "« قلم » =",
+              "options": ["Stylo / crayon", "Table", "Chaise", "Porte"],
+              "correctAnswers": [0],
+              "explanation": "Instrument d'écriture."
+            },
+            {
+              "type": "single_choice",
+              "question": "« طاولة » =",
+              "options": ["Table", "Lit", "Fenêtre", "Mur"],
+              "correctAnswers": [0],
+              "explanation": "Meuble."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كرسي » =",
+              "options": ["Chaise", "Plafond", "Sol", "Toit"],
+              "correctAnswers": [0],
+              "explanation": "Chaise."
+            },
+            {
+              "type": "single_choice",
+              "question": "« باب » =",
+              "options": ["Porte", "Rue", "Pont", "Mer"],
+              "correctAnswers": [0],
+              "explanation": "Porte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هذا قلم أحمر » décrit :",
+              "options": [
+                "Un stylo rouge",
+                "Une table bleue",
+                "Une porte",
+                "Une école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord adjectif après nom (genre/nombre selon règles)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Verbes essentiels présent",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels verbes expriment des actions quotidiennes (forme de base) ?",
+              "options": ["يأكل", "يشرب", "كتاب", "يفهم"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Yaʾkul » manger ; « yashrab » boire ; « yafham » comprendre ; « kitāb » nom."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أكل » (racine) = notion de :",
+              "options": ["Manger", "Dormir", "Courir", "Lire seul"],
+              "correctAnswers": [0],
+              "explanation": "Racine ʾ-k-l."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يذهب » =",
+              "options": ["Il va", "Il vient", "Il reste", "Il dort"],
+              "correctAnswers": [0],
+              "explanation": "Aller (3e m. sing. présent)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يقرأ » =",
+              "options": ["Il lit", "Il écrit", "Il écoute", "Il parle"],
+              "correctAnswers": [0],
+              "explanation": "Lire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يكتب » =",
+              "options": ["Il écrit", "Il lit", "Il mange", "Il nage"],
+              "correctAnswers": [0],
+              "explanation": "Écrire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يسكن » =",
+              "options": ["Il habite", "Il meurt", "Il naît", "Il vend"],
+              "correctAnswers": [0],
+              "explanation": "Résider."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا آكل » =",
+              "options": ["Je mange", "Tu manges", "Nous mangeons", "Il mange"],
+              "correctAnswers": [0],
+              "explanation": "1re pers. sing. présent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« نحن ندرس » =",
+              "options": [
+                "Nous étudions",
+                "Ils étudient",
+                "Je étudie",
+                "Tu étudies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel avec préfixe « na- » sur le verbe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Négation présent : « لا ___ »",
+              "options": ["يأكل", "أكل", "أكلت", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "« Lā yaʾkul » = il ne mange pas (présent)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يفهم » =",
+              "options": ["Comprendre (il)", "Oublier", "Crier", "Pleurer"],
+              "correctAnswers": [0],
+              "explanation": "Verbe fréquent en classe."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Temps et jours",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots relèvent du temps calendaire ?",
+              "options": ["اليوم", "غداً", "قلم", "أمس"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Al-yawm » aujourd'hui ; « ams » hier ; « ghadan » demain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« غداً » =",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أمس » =",
+              "options": ["Hier", "Demain", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "Hier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« الأحد » est souvent :",
+              "options": ["Dimanche", "Lundi", "Vendredi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour de la semaine dans plusieurs calendriers arabes."
+            },
+            {
+              "type": "single_choice",
+              "question": "« الجمعة » =",
+              "options": ["Vendredi", "Samedi", "Jeudi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Jour saint musulman ; semaine MSA standard."
+            },
+            {
+              "type": "single_choice",
+              "question": "« السبت » =",
+              "options": ["Samedi", "Dimanche", "Lundi", "Vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Samedi."
+            },
+            {
+              "type": "single_choice",
+              "question": "« صباح » =",
+              "options": ["Matin", "Soir", "Nuit", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مساء » =",
+              "options": ["Soir", "Matin", "Aube", "Minuit"],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« الساعة » =",
+              "options": [
+                "L'heure / horloge",
+                "La semaine",
+                "Le mois",
+                "L'année seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps horaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« الآن » =",
+              "options": ["Maintenant", "Jamais", "Toujours", "Parfois"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe temporal."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Lieux et directions",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels termes désignent des lieux ?",
+              "options": ["بيت", "مدينة", "أحمر", "سوق"],
+              "correctAnswers": [0, 1],
+              "explanation": "Maison, ville ; « sūq » marché aussi lieu ; « aḥmar » couleur."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مدينة » =",
+              "options": ["Ville", "Village seul", "Pays entier", "Océan"],
+              "correctAnswers": [0],
+              "explanation": "Ville."
+            },
+            {
+              "type": "single_choice",
+              "question": "« سوق » =",
+              "options": ["Marché", "École", "Aéroport", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "Souk / marché."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مستشفى » =",
+              "options": ["Hôpital", "Mosquée", "Banque", "Stade"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de soins."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مسجد » =",
+              "options": ["Mosquée", "Église", "Temple seul", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de culte musulman."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هنا » =",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de lieu proche."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هناك » =",
+              "options": ["Là-bas", "Ici", "Devant", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "Lieu éloigné."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يمين » =",
+              "options": ["Droite", "Gauche", "Haut", "Bas"],
+              "correctAnswers": [0],
+              "explanation": "Direction."
+            },
+            {
+              "type": "single_choice",
+              "question": "« يسار » =",
+              "options": ["Gauche", "Droite", "Nord", "Sud"],
+              "correctAnswers": [0],
+              "explanation": "Gauche."
+            },
+            {
+              "type": "single_choice",
+              "question": "« قريب » =",
+              "options": ["Proche", "Loin", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif distance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Nourriture et boisson",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots sont alimentaires ?",
+              "options": ["ماء", "خبز", "قلم", "تفاح"],
+              "correctAnswers": [0, 1],
+              "explanation": "Eau, pain ; « tuffāḥ » pomme aussi ; « qalam » non."
+            },
+            {
+              "type": "single_choice",
+              "question": "« ماء » =",
+              "options": ["Eau", "Lait", "Jus", "Café"],
+              "correctAnswers": [0],
+              "explanation": "Eau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« حليب » =",
+              "options": ["Lait", "Eau", "Thé", "Vin"],
+              "correctAnswers": [0],
+              "explanation": "Lait."
+            },
+            {
+              "type": "single_choice",
+              "question": "« خبز » =",
+              "options": ["Pain", "Riz", "Viande", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "Pain."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أرز » =",
+              "options": ["Riz", "Pomme", "Fromage", "Oeuf"],
+              "correctAnswers": [0],
+              "explanation": "Riz."
+            },
+            {
+              "type": "single_choice",
+              "question": "« لحم » =",
+              "options": ["Viande", "Légume", "Fruit", "Sucre"],
+              "correctAnswers": [0],
+              "explanation": "Viande."
+            },
+            {
+              "type": "single_choice",
+              "question": "« فاكهة » =",
+              "options": ["Fruit (collectif)", "Légume", "Boisson", "Plat"],
+              "correctAnswers": [0],
+              "explanation": "Fruits en général."
+            },
+            {
+              "type": "single_choice",
+              "question": "« قهوة » =",
+              "options": ["Café", "Thé", "Eau", "Lait"],
+              "correctAnswers": [0],
+              "explanation": "Café."
+            },
+            {
+              "type": "single_choice",
+              "question": "« شاي » =",
+              "options": ["Thé", "Café", "Jus", "Soupe"],
+              "correctAnswers": [0],
+              "explanation": "Thé."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أنا جائع » (m.) =",
+              "options": [
+                "J'ai faim",
+                "J'ai soif",
+                "Je suis fatigué",
+                "Je suis content"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Jā'iʿ » affamé ; « jā'i'a » f."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Adjectifs et contraires",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles paires sont des contraires courants ?",
+              "options": [
+                "كبير / صغير",
+                "ساخن / بارد",
+                "كتاب / قلم",
+                "طويل / قصير"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grand/petit ; chaud/froid ; long/court aussi paire [3] mais 0 et 1 sont contraires clairs."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كبير » =",
+              "options": ["Grand", "Petit", "Beau", "Laid"],
+              "correctAnswers": [0],
+              "explanation": "Grand."
+            },
+            {
+              "type": "single_choice",
+              "question": "« صغير » =",
+              "options": ["Petit", "Grand", "Vieux", "Jeune"],
+              "correctAnswers": [0],
+              "explanation": "Petit."
+            },
+            {
+              "type": "single_choice",
+              "question": "« جديد » =",
+              "options": ["Nouveau", "Vieux", "Sale", "Propre"],
+              "correctAnswers": [0],
+              "explanation": "Nouveau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« قديم » =",
+              "options": ["Vieux / ancien", "Neuf", "Rapide", "Lent"],
+              "correctAnswers": [0],
+              "explanation": "Ancien."
+            },
+            {
+              "type": "single_choice",
+              "question": "« جميل » =",
+              "options": ["Beau", "Laid", "Fort", "Faible"],
+              "correctAnswers": [0],
+              "explanation": "Beau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« سهل » =",
+              "options": ["Facile", "Difficile", "Lourd", "Léger"],
+              "correctAnswers": [0],
+              "explanation": "Facile ; « saʿb » difficile."
+            },
+            {
+              "type": "single_choice",
+              "question": "« صعب » =",
+              "options": ["Difficile", "Facile", "Cher", "Bon marché"],
+              "correctAnswers": [0],
+              "explanation": "Difficile."
+            },
+            {
+              "type": "single_choice",
+              "question": "« سريع » =",
+              "options": ["Rapide", "Lent", "Froid", "Chaud"],
+              "correctAnswers": [0],
+              "explanation": "Rapide."
+            },
+            {
+              "type": "single_choice",
+              "question": "« بطيء » =",
+              "options": ["Lent", "Rapide", "Grand", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "Lent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases utiles",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes en MSA élémentaire ?",
+              "options": [
+                "أنا طالب",
+                "الكتاب على الطاولة",
+                "أنا كتاب",
+                "هذا بيت كبير"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "« Anā ṭālib » et « hādhā bayt kabīr » ; « anā kitāb » absurd ; phrase prépositionnelle [1] aussi valide."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أريد ماء » =",
+              "options": [
+                "Je veux de l'eau",
+                "Je mange de l'eau",
+                "Je suis de l'eau",
+                "J'ai de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Urīdu » + nom = vouloir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« عندي كتاب » =",
+              "options": [
+                "J'ai un livre",
+                "Je suis un livre",
+                "Je lis un livre",
+                "Je veux un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « ʿindī » possession."
+            },
+            {
+              "type": "single_choice",
+              "question": "« لا أعرف » =",
+              "options": [
+                "Je ne sais pas",
+                "Je sais tout",
+                "Je veux savoir",
+                "J'ai su"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation + verbe savoir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أحب اللغة العربية » =",
+              "options": [
+                "J'aime la langue arabe",
+                "Je déteste l'arabe",
+                "Je parle chinois",
+                "J'étudie le latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Uḥibb » + objet."
+            },
+            {
+              "type": "single_choice",
+              "question": "« في » dans « في البيت » =",
+              "options": ["Dans", "Sur", "Sous", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "Préposition « dans »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« على » =",
+              "options": ["Sur", "Dans", "De", "Vers"],
+              "correctAnswers": [0],
+              "explanation": "Préposition surface."
+            },
+            {
+              "type": "single_choice",
+              "question": "« مع » =",
+              "options": ["Avec", "Contre", "Sans", "Pour"],
+              "correctAnswers": [0],
+              "explanation": "Accompagnement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« إلى » =",
+              "options": [
+                "Vers / à (direction)",
+                "De",
+                "Chez sans mouvement",
+                "Entre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Direction."
+            },
+            {
+              "type": "single_choice",
+              "question": "« هذا » + nom définit proche :",
+              "options": [
+                "Voici / ce ... (m.)",
+                "Cela lointain",
+                "Question",
+                "Négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif masculin."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse unité 2",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots appartiennent au lexique essentiel terminale ?",
+              "options": ["مدرسة", "عائلة", "xyz inventé", "ماء"],
+              "correctAnswers": [0, 1],
+              "explanation": "École, famille, eau — base thématique ; option inventée exclue."
+            },
+            {
+              "type": "single_choice",
+              "question": "Compter « trois livres » conceptuellement :",
+              "options": ["ثلاثة كتب", "كتاب ثلاثة", "ثلاث كتاب", "كتب واحد"],
+              "correctAnswers": [0],
+              "explanation": "Nombre + nom pluriel (accord selon règles 3-10)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« أخي طالب » =",
+              "options": [
+                "Mon frère est élève",
+                "Mon père est prof",
+                "Ma sœur est médecin",
+                "Mon ami est grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase nominale possessive + métier."
+            },
+            {
+              "type": "single_choice",
+              "question": "Antonyme de « ساخن » :",
+              "options": ["بارد", "كبير", "جميل", "سريع"],
+              "correctAnswers": [0],
+              "explanation": "Chaud / froid."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كل يوم » =",
+              "options": ["Chaque jour", "Un jour", "Jamais", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence."
+            },
+            {
+              "type": "single_choice",
+              "question": "« كثير » =",
+              "options": ["Beaucoup", "Peu", "Rien", "Trop seul sans contexte"],
+              "correctAnswers": [0],
+              "explanation": "Quantité."
+            },
+            {
+              "type": "single_choice",
+              "question": "« قليل » =",
+              "options": ["Peu", "Beaucoup", "Trop", "Assez"],
+              "correctAnswers": [0],
+              "explanation": "Opposé approximatif de « kathīr »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Lire « ٥ » en mot arabe courant :",
+              "options": ["خمسة", "خمسون", "خمس مئة", "خمسة عشر"],
+              "correctAnswers": [0],
+              "explanation": "Cinq."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif unité 2 :",
+              "options": [
+                "Enrichir le vocabulaire de base et le réemployer",
+                "Oublier l'unité 1",
+                "Ne plus lire l'arabe",
+                "Uniquement l'oral sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lexique essentiel pour production terminale."
+            },
+            {
+              "type": "single_choice",
+              "question": "Révision : « بنت » + « صغيرة » décrit :",
+              "options": [
+                "Une petite fille",
+                "Un grand garçon",
+                "Une ville",
+                "Un marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin singulier."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

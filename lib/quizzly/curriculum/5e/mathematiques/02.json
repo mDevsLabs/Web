@@ -1,0 +1,1953 @@
+{
+  "id": "5e-mathematiques-02",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Nombres relatifs et repérage",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Nombres relatifs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir les nombres relatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont des nombres relatifs ?",
+              "options": ["-3", "0", "2,5", "π"],
+              "correctAnswers": [0, 2],
+              "explanation": "Les relatifs incluent négatifs, zéro et décimaux comme 2,5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "+7 s'écrit aussi :",
+              "options": ["7", "-7", "1/7", "√7"],
+              "correctAnswers": [0],
+              "explanation": "Le signe + devant un entier positif est optionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un nombre strictement négatif est :",
+              "options": [
+                "inférieur à 0",
+                "supérieur à 0",
+                "égal à 0",
+                "toujours pair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négatif signifie plus petit que zéro."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De -2 °C à +3 °C, la variation est :",
+              "options": ["+5 °C", "-5 °C", "+1 °C", "-1 °C"],
+              "correctAnswers": [0],
+              "explanation": "3 - (-2) = 5 °C."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur une droite graduée, les négatifs sont :",
+              "options": [
+                "à gauche de 0",
+                "à droite de 0",
+                "en haut",
+                "sans ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention : négatifs à gauche de l'origine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Altitude -15 m :",
+              "options": [
+                "15 m sous le niveau de référence",
+                "15 m au-dessus",
+                "0 m",
+                "15 m horizontaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le signe - indique sous le niveau choisi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le plus grand parmi -1, -5, -2, 0 :",
+              "options": ["0", "-1", "-2", "-5"],
+              "correctAnswers": [0],
+              "explanation": "0 dépasse tout nombre négatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "-8 est :",
+              "options": [
+                "un relatif négatif",
+                "toujours une soustraction",
+                "8²",
+                "l'inverse de 8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-8 est un nombre relatif négatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Solde -12 € :",
+              "options": [
+                "12 € de dette",
+                "12 € de gain",
+                "0 €",
+                "12 € d'épargne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solde négatif = dette."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0 est :",
+              "options": [
+                "ni positif ni négatif",
+                "positif",
+                "négatif",
+                "indéfini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zéro n'est ni positif ni négatif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Signe et opposé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombres strictement négatifs ?",
+              "options": ["-0,5", "0", "+4", "-12"],
+              "correctAnswers": [0, 3],
+              "explanation": "-0,5 et -12 sont inférieurs à 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Opposé de +9 :",
+              "options": ["-9", "+9", "1/9", "9²"],
+              "correctAnswers": [0],
+              "explanation": "On change le signe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Opposé de -4 :",
+              "options": ["+4", "-4", "0", "-1/4"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de -4 : +4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Opposé de 0 :",
+              "options": ["0", "1", "-1", "impossible"],
+              "correctAnswers": [0],
+              "explanation": "0 est son propre opposé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "a = -6, opposé de a :",
+              "options": ["+6", "-6", "0", "12"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de -6 : +6."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux opposés sont :",
+              "options": [
+                "symétriques par rapport à 0",
+                "égaux",
+                "de même signe",
+                "confondus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même distance à 0 de part et d'autre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Signe de -2,3 :",
+              "options": ["négatif", "positif", "nul", "double"],
+              "correctAnswers": [0],
+              "explanation": "-2,3 < 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opposé de l'opposé de +5 :",
+              "options": ["+5", "-5", "0", "10"],
+              "correctAnswers": [0],
+              "explanation": "Double opposé redonne +5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Abscisses -3 et +3 :",
+              "options": [
+                "symétriques / 0",
+                "identiques",
+                "toutes deux > 0",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-3 et +3 sont opposés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "a + (-a) =",
+              "options": ["0", "1", "2a", "a²"],
+              "correctAnswers": [0],
+              "explanation": "Somme de deux opposés : 0."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Comparer des relatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affirmations vraies ?",
+              "options": ["-8 < -3", "-3 < -8", "2 > -100", "-1 > 0"],
+              "correctAnswers": [0, 2],
+              "explanation": "-8 < -3 et 2 > -100."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Compléter : -5 … -2",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "-5 est plus à gauche que -2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus petit : -4, 1, -1, 0",
+              "options": ["-4", "-1", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "-4 est minimal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus grand : -7, -2, -9, -1",
+              "options": ["-1", "-2", "-7", "-9"],
+              "correctAnswers": [0],
+              "explanation": "-1 est le plus proche de 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "-0,4 … -0,7",
+              "options": [">", "<", "=", "≠"],
+              "correctAnswers": [0],
+              "explanation": "-0,4 est à droite de -0,7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre croissant 3, -2, 0, -5",
+              "options": [
+                "-5 ; -2 ; 0 ; 3",
+                "-2 ; -5 ; 0 ; 3",
+                "3 ; 0 ; -2 ; -5",
+                "-5 ; 0 ; -2 ; 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Du plus petit au plus grand : -5, -2, 0, 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si a < 0 et b > 0, alors a … b",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "Tout négatif est inférieur à tout positif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer -3 et 3 :",
+              "options": ["-3 < 3", "-3 > 3", "-3 = 3", "incomparables"],
+              "correctAnswers": [0],
+              "explanation": "Négatif inférieur au positif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entier entre -6 et -4 :",
+              "options": ["-5", "-7", "-3", "0"],
+              "correctAnswers": [0],
+              "explanation": "-5 est entre -6 et -4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "-10 ≤ -10 est :",
+              "options": ["vrai", "fausse", "parfois", "indéfini"],
+              "correctAnswers": [0],
+              "explanation": "Un nombre est toujours inférieur ou égal à lui-même."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Addition de relatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Calculs valant +5 ?",
+              "options": ["(+2)+(+3)", "(-2)+(-3)", "(+7)+(-2)", "(-7)+(+2)"],
+              "correctAnswers": [0, 2],
+              "explanation": "2+3=5 et 7+(-2)=5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(+4)+(+6) =",
+              "options": ["+10", "+2", "-10", "-2"],
+              "correctAnswers": [0],
+              "explanation": "Somme de deux positifs : +10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(-3)+(-5) =",
+              "options": ["-8", "-2", "+8", "+2"],
+              "correctAnswers": [0],
+              "explanation": "Deux négatifs : -8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(+8)+(-3) =",
+              "options": ["+5", "+11", "-5", "-11"],
+              "correctAnswers": [0],
+              "explanation": "8-3=5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "(-9)+(+4) =",
+              "options": ["-5", "-13", "+5", "+13"],
+              "correctAnswers": [0],
+              "explanation": "9-4=5, signe négatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(-1)+(+1) =",
+              "options": ["0", "2", "-2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Opposés : somme 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(+2,5)+(-2,5) =",
+              "options": ["0", "5", "-5", "2,5"],
+              "correctAnswers": [0],
+              "explanation": "Opposés : 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(-6)+0 =",
+              "options": ["-6", "0", "+6", "6"],
+              "correctAnswers": [0],
+              "explanation": "0 est neutre pour l'addition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(+12)+(-20) =",
+              "options": ["-8", "+8", "-32", "+32"],
+              "correctAnswers": [0],
+              "explanation": "20-12=8, signe négatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "(-4)+(+9) =",
+              "options": ["+5", "-5", "+13", "-13"],
+              "correctAnswers": [0],
+              "explanation": "9-4=5."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Soustraction de relatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Égalités correctes ?",
+              "options": [
+                "(+5)-(+3)=+2",
+                "(+5)-(-3)=+8",
+                "(-5)-(+3)=-2",
+                "(-5)-(-3)=+2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "5-3=2 et 5-(-3)=8."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(+7)-(+2) =",
+              "options": ["+5", "+9", "-5", "-9"],
+              "correctAnswers": [0],
+              "explanation": "7-2=5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(+7)-(-2) =",
+              "options": ["+9", "+5", "-5", "-9"],
+              "correctAnswers": [0],
+              "explanation": "7+2=9."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(-8)-(+3) =",
+              "options": ["-11", "-5", "+11", "+5"],
+              "correctAnswers": [0],
+              "explanation": "-8-3=-11."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "(-8)-(-3) =",
+              "options": ["-5", "-11", "+5", "+11"],
+              "correctAnswers": [0],
+              "explanation": "-8+3=-5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0-(+4) =",
+              "options": ["-4", "+4", "0", "8"],
+              "correctAnswers": [0],
+              "explanation": "0-4=-4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "0-(-4) =",
+              "options": ["+4", "-4", "0", "-8"],
+              "correctAnswers": [0],
+              "explanation": "0+4=4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(+1)-(+6) =",
+              "options": ["-5", "+5", "-7", "+7"],
+              "correctAnswers": [0],
+              "explanation": "1-6=-5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(-2)-(-7) =",
+              "options": ["+5", "-5", "+9", "-9"],
+              "correctAnswers": [0],
+              "explanation": "-2+7=5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Soustraire b, c'est :",
+              "options": [
+                "ajouter l'opposé de b",
+                "ajouter b",
+                "diviser par b",
+                "comparer à b"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a-b = a + (-b)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Calculs mixtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résultats valant -3 ?",
+              "options": ["(+2)+(-5)", "(-2)+(-1)", "(+5)-(+2)", "(-5)-(-2)"],
+              "correctAnswers": [0, 1],
+              "explanation": "2-5=-3 et -2-1=-3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(-3)+(+8)-(+2) =",
+              "options": ["+3", "-3", "+13", "-13"],
+              "correctAnswers": [0],
+              "explanation": "-3+6=3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(+5)-(-4)+(-9) =",
+              "options": ["0", "+18", "-18", "+8"],
+              "correctAnswers": [0],
+              "explanation": "5+4-9=0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(-6)-(+2)+(+10) =",
+              "options": ["+2", "-2", "+18", "-18"],
+              "correctAnswers": [0],
+              "explanation": "-8+10=2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "4+(-7)-(-3) =",
+              "options": ["0", "-6", "+6", "-10"],
+              "correctAnswers": [0],
+              "explanation": "4-7+3=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(-1)+(-1)+(-1) =",
+              "options": ["-3", "-1", "+3", "0"],
+              "correctAnswers": [0],
+              "explanation": "Trois fois -1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(+10)+(-4)-(+6) =",
+              "options": ["0", "+20", "-20", "+2"],
+              "correctAnswers": [0],
+              "explanation": "10-4-6=0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(-5)-(-5)+(+3) =",
+              "options": ["+3", "-3", "0", "+10"],
+              "correctAnswers": [0],
+              "explanation": "0+3=3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(+2)-(+7)-(-5) =",
+              "options": ["0", "-10", "+10", "-4"],
+              "correctAnswers": [0],
+              "explanation": "2-7+5=0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "(-8)+(+3)-(-2) =",
+              "options": ["-3", "-13", "+3", "+13"],
+              "correctAnswers": [0],
+              "explanation": "-8+5=-3."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Droite graduée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Abscisses strictement supérieures à -2 ?",
+              "options": ["0", "-5", "+1", "-3"],
+              "correctAnswers": [0, 2],
+              "explanation": "0 et +1 sont > -2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 unités à gauche de 0 :",
+              "options": ["-3", "+3", "0", "-2"],
+              "correctAnswers": [0],
+              "explanation": "Gauche = abscisse négative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De -4 à +1, on avance de :",
+              "options": [
+                "5 unités vers la droite",
+                "5 vers la gauche",
+                "3 vers la droite",
+                "-5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1-(-4)=5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0 est entre -2 et +3 ?",
+              "options": [
+                "oui",
+                "non",
+                "0 est à gauche de -2",
+                "0 est à droite de +3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 appartient à [-2 ; 3]."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "-7 par rapport à -4 :",
+              "options": [
+                "plus à gauche",
+                "plus à droite",
+                "confondu",
+                "au-dessus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-7 < -4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Distance de -5 à +2 :",
+              "options": ["7", "3", "-7", "5"],
+              "correctAnswers": [0],
+              "explanation": "2-(-5)=7 unités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symétrique de -6 par rapport à 0 :",
+              "options": ["+6", "-6", "0", "+3"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : +6."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus proche de 0 : -9 ou -2 ?",
+              "options": ["-2", "-9", "égaux", "0"],
+              "correctAnswers": [0],
+              "explanation": "|-2| < |-9|."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre croissant -1, 2, -3, 0 :",
+              "options": [
+                "-3 ; -1 ; 0 ; 2",
+                "-1 ; -3 ; 0 ; 2",
+                "2 ; 0 ; -1 ; -3",
+                "0 ; -1 ; 2 ; -3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-3, -1, 0, 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "A à gauche de B ⇒ abscisse(A) … abscisse(B)",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "À gauche signifie abscisse plus petite."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Relatifs en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Situations avec un relatif négatif ?",
+              "options": [
+                "-5 °C",
+                "-10 m d'altitude",
+                "+3 € de gain",
+                "niveau 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Température négative et altitude sous le niveau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Étage -2 puis monter de 5 :",
+              "options": ["+3", "-7", "+7", "-3"],
+              "correctAnswers": [0],
+              "explanation": "-2+5=3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Solde -15 € puis dépôt +20 € :",
+              "options": ["+5 €", "-35 €", "+35 €", "-5 €"],
+              "correctAnswers": [0],
+              "explanation": "-15+20=5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 h avant minuit (0 h) :",
+              "options": ["21 h", "3 h", "-3 h", "15 h"],
+              "correctAnswers": [0],
+              "explanation": "Reculer de 3 h depuis minuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De -100 m à -40 m, montée de :",
+              "options": ["60 m", "140 m", "40 m", "-60 m"],
+              "correctAnswers": [0],
+              "explanation": "-40-(-100)=60 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Score +4 puis pénalité -7 :",
+              "options": ["-3", "+3", "+11", "-11"],
+              "correctAnswers": [0],
+              "explanation": "4-7=-3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "A à -5 m, B à +8 m : B est plus haute de",
+              "options": ["13 m", "3 m", "-13 m", "8 m"],
+              "correctAnswers": [0],
+              "explanation": "8-(-5)=13 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "-8 °C puis baisse de 3 °C :",
+              "options": ["-11 °C", "-5 °C", "+11 °C", "+5 °C"],
+              "correctAnswers": [0],
+              "explanation": "-8-3=-11."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Position -12, avancer de +7 :",
+              "options": ["-5", "+5", "-19", "+19"],
+              "correctAnswers": [0],
+              "explanation": "-12+7=-5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dettes de 8 € et 5 € : solde total",
+              "options": ["-13 €", "+13 €", "-3 €", "+3 €"],
+              "correctAnswers": [0],
+              "explanation": "-8-5=-13."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Enchaînements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Expressions valant 1 ?",
+              "options": ["(+4)+(-3)", "(+5)-(+4)", "(-2)+(-1)", "(+2)-(+2)"],
+              "correctAnswers": [0, 1],
+              "explanation": "4-3=1 et 5-4=1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(-4)+(+9)-(-2) =",
+              "options": ["+7", "-7", "+15", "-15"],
+              "correctAnswers": [0],
+              "explanation": "-4+11=7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(+6)-(+10)-(-5) =",
+              "options": ["+1", "-1", "+21", "-9"],
+              "correctAnswers": [0],
+              "explanation": "6-10+5=1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(-1)-(-1)-(+3) =",
+              "options": ["-3", "+3", "0", "+1"],
+              "correctAnswers": [0],
+              "explanation": "0-3=-3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "(+3)+(-8)-(-6) =",
+              "options": ["+1", "-1", "+17", "-5"],
+              "correctAnswers": [0],
+              "explanation": "3-8+6=1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0-(+5)-(-5) =",
+              "options": ["0", "-10", "+10", "-5"],
+              "correctAnswers": [0],
+              "explanation": "0-5+5=0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(-7)-(-2)+(+4) =",
+              "options": ["-1", "+1", "-13", "+13"],
+              "correctAnswers": [0],
+              "explanation": "-7+6=-1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(+8)+(-3)-(+6) =",
+              "options": ["-1", "+1", "-17", "+17"],
+              "correctAnswers": [0],
+              "explanation": "8-9=-1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(-2)-(+5)-(-10) =",
+              "options": ["+3", "-3", "+17", "-7"],
+              "correctAnswers": [0],
+              "explanation": "-7+10=3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "(+1)-(-1)-(+5) =",
+              "options": ["-3", "+3", "-7", "+7"],
+              "correctAnswers": [0],
+              "explanation": "1+1-5=-3."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan nombres relatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombres inférieurs à -1 ?",
+              "options": ["-5", "0", "-2", "+2"],
+              "correctAnswers": [0, 2],
+              "explanation": "-5 et -2 sont < -1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(-5)+(+8) =",
+              "options": ["+3", "-3", "+13", "-13"],
+              "correctAnswers": [0],
+              "explanation": "8-5=3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(+2)-(-6) =",
+              "options": ["+8", "-8", "+4", "-4"],
+              "correctAnswers": [0],
+              "explanation": "2+6=8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus petit : -0,1 et -0,9",
+              "options": ["-0,9", "-0,1", "égaux", "0"],
+              "correctAnswers": [0],
+              "explanation": "-0,9 est plus à gauche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Opposé de -12 :",
+              "options": ["+12", "-12", "0", "1/12"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : +12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(-15)-(-20) =",
+              "options": ["+5", "-5", "+35", "-35"],
+              "correctAnswers": [0],
+              "explanation": "-15+20=5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(+7)+(-7)+(-4) =",
+              "options": ["-4", "+4", "0", "+14"],
+              "correctAnswers": [0],
+              "explanation": "0-4=-4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "0-(-3) =",
+              "options": ["+3", "-3", "0", "-6"],
+              "correctAnswers": [0],
+              "explanation": "0+3=3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(-9)+(+9)-(+1) =",
+              "options": ["-1", "+1", "0", "+19"],
+              "correctAnswers": [0],
+              "explanation": "0-1=-1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Addition de signes différents :",
+              "options": [
+                "on soustrait les distances à 0",
+                "on additionne les distances",
+                "on ignore les signes",
+                "on multiplie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retire la plus petite distance à la plus grande."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Repérage dans le plan",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le repère du plan",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Éléments d'un repère orthogonal du plan ?",
+              "options": [
+                "origine O",
+                "axe des abscisses (Ox)",
+                "une seule demi-droite",
+                "axe des ordonnées (Oy)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Il faut O, Ox et Oy perpendiculaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Axe horizontal orienté vers la droite :",
+              "options": [
+                "axe des abscisses",
+                "axe des ordonnées",
+                "diagonale",
+                "quadrant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ox est l'axe horizontal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Axe vertical orienté vers le haut :",
+              "options": [
+                "axe des ordonnées",
+                "axe des abscisses",
+                "Ox seul",
+                "origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oy est l'axe vertical."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Coordonnées d'un point M :",
+              "options": [
+                "(abscisse ; ordonnée)",
+                "(ordonnée ; abscisse)",
+                "(x+y ; x-y)",
+                "deux angles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On note M(x ; y)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'origine O a pour coordonnées :",
+              "options": ["(0 ; 0)", "(1 ; 1)", "(0 ; 1)", "(1 ; 0)"],
+              "correctAnswers": [0],
+              "explanation": "O(0 ; 0)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour lire l'abscisse, on projette sur :",
+              "options": ["Ox", "Oy", "la diagonale", "le quadrant"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse = projection sur Ox."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour lire l'ordonnée, on projette sur :",
+              "options": ["Oy", "Ox", "O seule", "le signe de x"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée = projection sur Oy."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux axes perpendiculaires se coupent en :",
+              "options": ["O", "un quadrant", "deux points", "aucun point"],
+              "correctAnswers": [0],
+              "explanation": "Intersection = origine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un repère permet de :",
+              "options": [
+                "situer un point avec deux nombres",
+                "calculer une aire sans mesure",
+                "tracer sans origine",
+                "compter les axes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérage par (x ; y)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans (3 ; -2), le premier nombre est :",
+              "options": ["3", "-2", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "3 est l'abscisse."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Lire des coordonnées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points d'abscisse strictement positive ?",
+              "options": ["(2 ; 1)", "(-3 ; 4)", "(5 ; -2)", "(-1 ; -1)"],
+              "correctAnswers": [0, 2],
+              "explanation": "x > 0 pour (2 ; 1) et (5 ; -2)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "A(4 ; -3) : ordonnée =",
+              "options": ["-3", "4", "-1", "7"],
+              "correctAnswers": [0],
+              "explanation": "y = -3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "B(-2 ; 5) : abscisse =",
+              "options": ["-2", "5", "3", "-7"],
+              "correctAnswers": [0],
+              "explanation": "x = -2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "C(0 ; 6) est sur :",
+              "options": ["Oy", "Ox", "aucun axe", "les deux axes"],
+              "correctAnswers": [0],
+              "explanation": "x = 0 : axe des ordonnées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "D(-4 ; 0) est sur :",
+              "options": ["Ox", "Oy", "O seulement", "aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "y = 0 : axe des abscisses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "E(3 ; 3) : x … y",
+              "options": ["=", "<", ">", "≠"],
+              "correctAnswers": [0],
+              "explanation": "3 = 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "F(-5 ; -1) : les coordonnées sont :",
+              "options": [
+                "toutes deux négatives",
+                "toutes deux positives",
+                "nulles",
+                "opposées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x et y < 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "G(1 ; -4) :",
+              "options": [
+                "x > 0 et y < 0",
+                "x < 0 et y > 0",
+                "x > 0 et y > 0",
+                "x < 0 et y < 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quadrant IV."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "H(-3 ; 2) : x … 0",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "-3 < 0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "I(0 ; 0) est :",
+              "options": [
+                "l'origine",
+                "sur Ox seulement",
+                "sur Oy seulement",
+                "hors repère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O(0 ; 0)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quadrants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points du 1er quadrant (x > 0, y > 0) ?",
+              "options": ["(2 ; 3)", "(-1 ; 2)", "(4 ; 1)", "(-2 ; -3)"],
+              "correctAnswers": [0, 2],
+              "explanation": "x et y positifs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(-3 ; 5) est dans le quadrant :",
+              "options": ["II", "I", "III", "IV"],
+              "correctAnswers": [0],
+              "explanation": "x < 0 et y > 0 : quadrant II."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(4 ; -2) est dans le quadrant :",
+              "options": ["IV", "I", "II", "III"],
+              "correctAnswers": [0],
+              "explanation": "x > 0 et y < 0 : quadrant IV."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(-1 ; -4) est dans le quadrant :",
+              "options": ["III", "I", "II", "IV"],
+              "correctAnswers": [0],
+              "explanation": "x < 0 et y < 0 : quadrant III."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "(3 ; 2) est dans le quadrant :",
+              "options": ["I", "II", "III", "IV"],
+              "correctAnswers": [0],
+              "explanation": "x > 0 et y > 0 : quadrant I."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un point sur Ox (y = 0) :",
+              "options": [
+                "n'est dans aucun quadrant",
+                "est toujours en I",
+                "est en IV",
+                "est en II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un axe, pas de quadrant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quadrant I : signes de x et y",
+              "options": [
+                "x > 0 et y > 0",
+                "x < 0 et y > 0",
+                "x < 0 et y < 0",
+                "x > 0 et y < 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du 1er quadrant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Symétrique de I par rapport à O :",
+              "options": ["III", "II", "IV", "I"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de (+ ; +) : (- ; -) = III."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(0 ; -3) est :",
+              "options": [
+                "sur Oy, hors quadrants",
+                "en quadrant IV",
+                "en quadrant III",
+                "en quadrant I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un axe, hors quadrants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de quadrants (sans les axes) ?",
+              "options": ["4", "2", "3", "8"],
+              "correctAnswers": [0],
+              "explanation": "Quatre régions ouvertes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Points sur les axes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points sur l'axe Ox ?",
+              "options": ["(5 ; 0)", "(0 ; -2)", "(-3 ; 0)", "(2 ; 3)"],
+              "correctAnswers": [0, 2],
+              "explanation": "y = 0 sur Ox."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(0 ; 7) appartient à :",
+              "options": ["Oy", "Ox", "O uniquement", "quadrant I"],
+              "correctAnswers": [0],
+              "explanation": "x = 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(-6 ; 0) est :",
+              "options": ["sur Ox", "sur Oy", "à l'origine", "en quadrant II"],
+              "correctAnswers": [0],
+              "explanation": "y = 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tout point de Oy vérifie :",
+              "options": ["x = 0", "y = 0", "x = y", "x > 0"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse nulle sur Oy."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tout point de Ox vérifie :",
+              "options": ["y = 0", "x = 0", "y > 0", "x = 1"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée nulle sur Ox."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "(0 ; -4) est sur :",
+              "options": ["Oy", "Ox", "quadrant I", "quadrant IV"],
+              "correctAnswers": [0],
+              "explanation": "x = 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(2 ; 0) est à droite de O de :",
+              "options": ["2 unités", "0 unité", "-2 unités", "2 en ordonnée"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse +2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(0 ; -5) est :",
+              "options": [
+                "5 unités sous O sur Oy",
+                "5 unités à droite",
+                "à l'origine",
+                "en quadrant III"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée -5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Intersection de Ox et Oy :",
+              "options": ["(0 ; 0)", "(1 ; 0)", "(0 ; 1)", "aucun point"],
+              "correctAnswers": [0],
+              "explanation": "Origine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "(-4 ; 0) est à gauche de O :",
+              "options": ["vrai", "faux", "impossible", "y > 0"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse négative."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Placer un point",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points du quadrant IV ?",
+              "options": ["(2 ; -1)", "(-2 ; 1)", "(5 ; -3)", "(-1 ; -2)"],
+              "correctAnswers": [0, 2],
+              "explanation": "x > 0 et y < 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Placer P(3 ; 2) :",
+              "options": [
+                "3 à droite, 2 au-dessus de O",
+                "2 à droite, 3 au-dessus",
+                "3 à gauche, 2 en bas",
+                "sur Oy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x = 3, y = 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Q(-4 ; 1) est :",
+              "options": [
+                "à gauche de O et au-dessus",
+                "à droite et en dessous",
+                "sur Ox",
+                "à l'origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x négatif, y positif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "R(0 ; -3) a pour abscisse :",
+              "options": ["0", "-3", "3", "indéfinie"],
+              "correctAnswers": [0],
+              "explanation": "x = 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "S(-2 ; 0) a pour ordonnée :",
+              "options": ["0", "-2", "2", "indéfinie"],
+              "correctAnswers": [0],
+              "explanation": "y = 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "T(1 ; -5) : y est :",
+              "options": ["négatif", "positif", "nul", "égal à x"],
+              "correctAnswers": [0],
+              "explanation": "y = -5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "U(-3 ; -2) est dans le quadrant :",
+              "options": ["III", "I", "II", "IV"],
+              "correctAnswers": [0],
+              "explanation": "x < 0 et y < 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "V(4 ; 0) est confondu avec sa projection sur :",
+              "options": ["Ox", "Oy", "O", "aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "Point sur Ox."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "W(-1 ; 4) : |x| … |y| pour x=-1, y=4",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "1 < 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Même point que (2 ; -3) :",
+              "options": ["(2 ; -3)", "( -3 ; 2 )", "(2 ; 3)", "(-2 ; -3)"],
+              "correctAnswers": [0],
+              "explanation": "Ordre et signes fixent la position."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Déplacements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Depuis (1 ; 3), quels points avec (+2 ; 0) ou (0 ; -2) ?",
+              "options": ["(3 ; 3)", "(1 ; 5)", "(1 ; 1)", "(3 ; 5)"],
+              "correctAnswers": [0, 2],
+              "explanation": "(1+2 ; 3) = (3 ; 3) et (1 ; 3-2) = (1 ; 1)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De (2 ; 1) vers la droite de 4 :",
+              "options": ["(6 ; 1)", "(2 ; 5)", "(-2 ; 1)", "(6 ; 5)"],
+              "correctAnswers": [0],
+              "explanation": "Abscisse +4 : 2+4=6."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De (5 ; 4) vers le bas de 3 :",
+              "options": ["(5 ; 1)", "(2 ; 4)", "(5 ; 7)", "(8 ; 4)"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée -3 : 4-3=1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De (-1 ; 2) de +3 en x et -1 en y :",
+              "options": ["(2 ; 1)", "(2 ; 3)", "(-4 ; 1)", "(2 ; -1)"],
+              "correctAnswers": [0],
+              "explanation": "(-1+3 ; 2-1) = (2 ; 1)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Retour à O depuis (4 ; -2) :",
+              "options": ["(-4 ; +2)", "(4 ; 2)", "(-4 ; -2)", "(2 ; 4)"],
+              "correctAnswers": [0],
+              "explanation": "Translation opposée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De (0 ; 0) à ( -3 ; 5 ) :",
+              "options": [
+                "3 gauche, 5 haut",
+                "3 droite, 5 bas",
+                "5 gauche, 3 haut",
+                "sur Ox"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x = -3, y = 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(1 ; 1) puis (+2 ; +2) :",
+              "options": ["(3 ; 3)", "(3 ; 1)", "(1 ; 3)", "(2 ; 2)"],
+              "correctAnswers": [0],
+              "explanation": "Addition des coordonnées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parallèle à Ox : on modifie surtout :",
+              "options": [
+                "l'abscisse",
+                "l'ordonnée",
+                "l'origine",
+                "le quadrant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horizontal → x change."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parallèle à Oy : on modifie surtout :",
+              "options": [
+                "l'ordonnée",
+                "l'abscisse",
+                "les deux à la fois",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vertical → y change."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "De (3 ; -2) à (3 ; 4) :",
+              "options": [
+                "6 unités vers le haut",
+                "6 vers la droite",
+                "6 vers le bas",
+                "sur Ox"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même x, y passe de -2 à 4 : +6."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Milieu et symétrie simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points sur Ox ?",
+              "options": ["(2 ; 0)", "(0 ; 3)", "(-4 ; 0)", "(1 ; 2)"],
+              "correctAnswers": [0, 2],
+              "explanation": "y = 0 pour (2 ; 0) et (-4 ; 0)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Milieu de A(0 ; 0) et B(4 ; 0) :",
+              "options": ["(2 ; 0)", "(4 ; 0)", "(0 ; 2)", "(2 ; 2)"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne des abscisses : 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Symétrique de (3 ; 0) par rapport à O :",
+              "options": ["(-3 ; 0)", "(3 ; 0)", "(0 ; -3)", "(-3 ; -3)"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de chaque coordonnée : (-3 ; 0)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Symétrique de (0 ; 5) par rapport à O :",
+              "options": ["(0 ; -5)", "(0 ; 5)", "(5 ; 0)", "(-5 ; 0)"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : (0 ; -5)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Symétrique de (-2 ; 3) par rapport à O :",
+              "options": ["(2 ; -3)", "(2 ; 3)", "(-2 ; -3)", "(-3 ; 2)"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : (2 ; -3)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Milieu de (2 ; 4) et (2 ; 0) :",
+              "options": ["(2 ; 2)", "(0 ; 2)", "(2 ; 4)", "(4 ; 2)"],
+              "correctAnswers": [0],
+              "explanation": "Même x, moyenne des y : 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Milieu de (-4 ; 0) et (4 ; 0) :",
+              "options": ["(0 ; 0)", "(4 ; 0)", "(-4 ; 0)", "(0 ; 4)"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne : 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "A(1 ; 1) et B(3 ; 3) : milieu",
+              "options": ["(2 ; 2)", "(4 ; 4)", "(2 ; 3)", "(1 ; 3)"],
+              "correctAnswers": [0],
+              "explanation": "((1+3)/2 ; (1+3)/2) = (2 ; 2)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Symétrique de (4 ; -2) par rapport à O :",
+              "options": ["(-4 ; 2)", "(4 ; 2)", "(-4 ; -2)", "(2 ; -4)"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : (-4 ; 2)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si M(2 ; -1), symétrique N par rapport à O, alors N :",
+              "options": ["(-2 ; 1)", "(2 ; 1)", "(-2 ; -1)", "(1 ; -2)"],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées opposées."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Distances à l'origine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points à 3 unités de O sur Ox ?",
+              "options": ["(3 ; 0)", "(-3 ; 0)", "(0 ; 3)", "(3 ; 3)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sur Ox à distance 3 : ±3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "(5 ; 0) est à … de O sur Ox",
+              "options": ["5 unités", "0 unité", "-5 unités", "5 en ordonnée"],
+              "correctAnswers": [0],
+              "explanation": "|5| = 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "(0 ; -4) est à … de O sur Oy",
+              "options": ["4 unités", "-4 unités", "0 unité", "8 unités"],
+              "correctAnswers": [0],
+              "explanation": "Distance = 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus proche de O : (6 ; 0) ou (-2 ; 0) ?",
+              "options": ["(-2 ; 0)", "(6 ; 0)", "égaux", "O"],
+              "correctAnswers": [0],
+              "explanation": "2 < 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "(0 ; 0) est à distance … de O",
+              "options": ["0", "1", "indéfinie", "2"],
+              "correctAnswers": [0],
+              "explanation": "O est à 0 de lui-même."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur Oy, (0 ; -7) est à … de O",
+              "options": ["7", "-7", "0", "14"],
+              "correctAnswers": [0],
+              "explanation": "Distance positive : 7."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux points opposés par O ont :",
+              "options": [
+                "la même distance à O",
+                "distance 0",
+                "des abscisses égales",
+                "des ordonnées nulles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie centrale conserve la distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "( -5 ; 0 ) et ( 5 ; 0 ) sont à … de O",
+              "options": [
+                "5 unités chacun",
+                "10 unités chacun",
+                "0",
+                "5 entre eux seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abscisses ±5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur Ox, le plus proche de (4 ; 0) parmi (2 ; 0), (5 ; 0), (0 ; 0) :",
+              "options": ["(5 ; 0)", "(2 ; 0)", "(0 ; 0)", "(4 ; 1)"],
+              "correctAnswers": [0],
+              "explanation": "Distances 2, 1 et 4 : (5 ; 0) est le plus proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur un repère, la distance à O le long de Ox se lit sur :",
+              "options": ["|x|", "|y|", "x+y", "xy"],
+              "correctAnswers": [0],
+              "explanation": "Sur Ox, y = 0, distance = |x|."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes de repérage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Points d'ordonnée négative ?",
+              "options": ["(1 ; -2)", "(-3 ; 4)", "(2 ; -5)", "(0 ; 3)"],
+              "correctAnswers": [0, 2],
+              "explanation": "y < 0 pour (1 ; -2) et (2 ; -5)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Trésor en (4 ; 3), départ O :",
+              "options": [
+                "4 à droite, 3 haut",
+                "3 droite, 4 haut",
+                "4 bas, 3 gauche",
+                "sur Oy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x = 4, y = 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A(-2 ; 1) et B(-2 ; -3) : même",
+              "options": ["abscisse", "ordonnée", "quadrant", "distance à O"],
+              "correctAnswers": [0],
+              "explanation": "x = -2 pour les deux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "C(3 ; 3) et D(-3 ; -3) sont :",
+              "options": [
+                "symétriques / O",
+                "identiques",
+                "sur Ox",
+                "même quadrant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées opposées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle de sommets (0;0), (4;0), (4;2), (0;2) : largeur",
+              "options": ["4", "2", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "De 0 à 4 sur Ox : 4 unités."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Même rectangle : hauteur",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "De 0 à 2 sur Oy : 2 unités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P( -1 ; 4 ) et Q( 2 ; 4 ) : segment parallèle à",
+              "options": ["Ox", "Oy", "diagonale", "aucun axe"],
+              "correctAnswers": [0],
+              "explanation": "Même ordonnée → horizontal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "R(1 ; -2) et S(1 ; 5) : segment parallèle à",
+              "options": ["Oy", "Ox", "O", "quadrant III"],
+              "correctAnswers": [0],
+              "explanation": "Même abscisse → vertical."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ville A(0 ; 0), B(6 ; 0) : distance sur route horizontale",
+              "options": ["6", "0", "3", "12"],
+              "correctAnswers": [0],
+              "explanation": "6 - 0 = 6."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Point à la fois x ≤ 0 et y ≥ 0 (hors axes) :",
+              "options": [
+                "quadrant II",
+                "quadrant I",
+                "quadrant IV",
+                "quadrant III"
+              ],
+              "correctAnswers": [0],
+              "explanation": "II : x négatif, y positif."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan repérage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Coordonnées avec x = 0 ?",
+              "options": ["(0 ; 5)", "(3 ; 0)", "(0 ; -2)", "(2 ; 4)"],
+              "correctAnswers": [0, 2],
+              "explanation": "Abscisse nulle : (0 ; 5) et (0 ; -2)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "K( -4 ; -2 ) : quadrant",
+              "options": ["III", "II", "IV", "I"],
+              "correctAnswers": [0],
+              "explanation": "x < 0, y < 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L(2 ; -5) : quadrant",
+              "options": ["IV", "III", "II", "I"],
+              "correctAnswers": [0],
+              "explanation": "x > 0, y < 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De (1 ; 2) à (4 ; 2) :",
+              "options": ["+3 en x", "+3 en y", "-3 en x", "sur Oy"],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée inchangée, x +3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Symétrique de ( -3 ; 0 ) par O :",
+              "options": ["(3 ; 0)", "( -3 ; 0 )", "(0 ; 3)", "(3 ; 3)"],
+              "correctAnswers": [0],
+              "explanation": "Opposé : (3 ; 0)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Milieu de (0 ; 0) et (0 ; 6) :",
+              "options": ["(0 ; 3)", "(3 ; 0)", "(0 ; 6)", "(6 ; 0)"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne des ordonnées : 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Axe des abscisses : équation y =",
+              "options": ["0", "x", "1", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Points de Ox : y = 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Axe des ordonnées : équation x =",
+              "options": ["0", "y", "1", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Points de Oy : x = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(5 ; 0) est dans :",
+              "options": [
+                "aucun quadrant",
+                "quadrant I",
+                "quadrant IV",
+                "quadrant II"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un axe, hors quadrants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repère orthogonal : Ox et Oy sont :",
+              "options": [
+                "perpendiculaires",
+                "parallèles",
+                "confondus",
+                "sans origine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Axes perpendiculaires en O."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

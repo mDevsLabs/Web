@@ -23,7 +23,7 @@ mais ne se compilent pas ensemble.
 
 | | Application Next.js | Backend Hono (Val Town) |
 |---|---|---|
-| Racine | `app/`, `components/`, `lib/`, `hooks/` | 52 modules du graphe `main.ts` **à la racine du dépôt** |
+| Racine | `app/`, `components/`, `lib/`, `hooks/` | 64 modules du graphe `main.ts` **à la racine du dépôt** |
 | Point d'entrée | `app/layout.tsx` | `main.ts` |
 | Build | `next build` | Aucun — déployé sur `https://mai.val.run` |
 | Base | PostgreSQL (Drizzle) | Neon **et** SQLite (`esm.town/v/std/sqlite`) |
@@ -53,7 +53,7 @@ Conséquences pratiques:
   ticks. Un 404 sur un tick signifie « cette route n'existe pas sur cette
   cible» (déploiement trop ancien, ou `APP_URL` erroné), jamais « la route a
   échoué».
-- Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 52
+- Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 64
   fichiers du graphe d'imports transitif de `main.ts`).
 - Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.
 - Les connexions OAuth aux applications externes (Google, GitHub), leurs
@@ -592,6 +592,26 @@ Deux règles à ne pas contourner:
   comme nettoyage d'effet React. Une activité jamais libérée garderait
   l'interface en économie pour toujours.
 
+## 8.6 Quizzly (`/quizzly`)
+
+Quizzly est l'application de révision (collège et lycée), montée par l'hôte
+sous `/quizzly` dans son propre groupe de routes `app/(quizzly)/quizzly`.
+Ce n'est pas le plugin de chat qui génère un quiz à la demande.
+
+Cinq règles à ne pas contourner:
+
+- **Groupe de routes propre**, session via `requireUser` dans le layout. Le
+  groupe `(chat)` ne doit pas envelopper `/quizzly`.
+- **Les questions vivent dans les JSON** de `lib/quizzly/curriculum`, versionnés
+  avec le module. Sans ce dossier, `/quizzly` ne charge plus le programme.
+- **Seule la progression du compte est en Postgres** : `QuizzlyProfile`,
+  `QuizzlyQuizProgress`, `QuizzlyQuest`, `QuizzlyReport` (migrations 0073 et
+  0074).
+- **`lib/quizzly/rules.ts` tranche** (cœurs, XP, gemmes, quêtes). `queries.ts`
+  est `server-only`. L'interface ne s'accorde pas de récompenses.
+- **Le nom affiché n'est pas sur le profil Quizzly** : il vient de
+  `profiles.display_name` (Vibe), partagé avec Blackline.
+
 ## 9. Points d'attention historiques
 
 Des pièges déjà payés, à ne pas réintroduire:
@@ -628,7 +648,7 @@ Les règles locales sont aussi dans `components/wakies/AGENTS.md`, `lib/wakies/A
 - Favoris et sourdine sont persistés en base (migration 0049). Les alertes de réponses terminées et la clé des réactions humaines demandent la migration 0050.
 - SWR relève la messagerie à cinq secondes; aucune synchronisation ne remplace un streaming actif ou un brouillon. Les notifications navigateur ne fonctionnent que lorsque l’application reste ouverte.
 - Le catalogue MCP GitHub et son modèle de skill dédié sont retirés. Le plugin `github-public` (lecture de dépôts publics avec une clé globale) est retiré à son tour et remplacé par le connecteur OAuth `github`, qui lit les dépôts du compte connecté et peut y écrire avec approbation. Les serveurs MCP déjà enregistrés et les usages Git de Coder restent disponibles.
-- `node scripts/audit-backend.mjs` régénère l’inventaire des 52 modules backend et des routes Next; ces dernières ne sont pas toutes des proxys.
+- `node scripts/audit-backend.mjs` régénère l’inventaire des 64 modules backend et des routes Next; ces dernières ne sont pas toutes des proxys.
 - Le nettoyage des services autonomes OpenMuse est tracé dans `docs/CLEANUP_INVENTORY.json`. Les images, la licence, les sources CSS et les références mobiles localement adaptées restent protégées; le contrôle de provenance distingue les sources conservées des retraits.
 
 ### 10.1 La recherche Wakies est côté serveur

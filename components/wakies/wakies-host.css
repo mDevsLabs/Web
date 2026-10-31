@@ -3217,11 +3217,17 @@ html.dark .wakies-root .chat-bubble.user .chat-pin-toggle:hover {
   transition: all 0.2s ease;
 }
 
+.wakies-root .wakies-reasoning-head {
+  display: flex;
+  align-items: center;
+}
+
 .wakies-root .wakies-reasoning-trigger {
   display: flex;
   align-items: center;
   gap: 7px;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   padding: 7px 10px;
   font-size: 12px;
   font-weight: 500;
@@ -3231,6 +3237,23 @@ html.dark .wakies-root .chat-bubble.user .chat-pin-toggle:hover {
   background: none;
   border: none;
   text-align: left;
+}
+
+.wakies-root .wakies-reasoning-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+  padding: 4px 6px;
+  font-size: 11px;
+  color: var(--muted, #8c8d97);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.wakies-root .wakies-reasoning-copy:hover {
+  color: var(--ink, #333641);
 }
 
 .wakies-root .wakies-reasoning-trigger:hover {
@@ -3261,6 +3284,14 @@ html.dark .wakies-root .wakies-reasoning {
 
 html.dark .wakies-root .wakies-reasoning-trigger {
   color: #9ca3af;
+}
+
+html.dark .wakies-root .wakies-reasoning-copy {
+  color: #9ca3af;
+}
+
+html.dark .wakies-root .wakies-reasoning-copy:hover {
+  color: #f4f4f5;
 }
 
 html.dark .wakies-root .wakies-reasoning-trigger:hover {

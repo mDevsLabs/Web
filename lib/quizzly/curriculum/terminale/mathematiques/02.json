@@ -1,0 +1,2178 @@
+{
+  "id": "terminale-mathematiques-02",
+  "year": "terminale",
+  "subject": "mathematiques",
+  "title": "Compléments sur la dérivation",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Convexité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Définitions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f convexe sur I (f deux fois dérivable) :",
+              "options": [
+                "f''(x) ≥ 0 sur I",
+                "f(ta+(1-t)b) ≤ tf(a)+(1-t)f(b)",
+                "f' décroissante",
+                "Courbe au-dessus de toute corde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Équivalence inégalité de Jensen et f'' ≥ 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f convexe : la courbe est",
+              "options": [
+                "Sous chaque corde",
+                "Au-dessus de chaque tangente",
+                "Horizontale",
+                "Symétrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition par les cordes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f concave ⟺",
+              "options": [
+                "f' croissante",
+                "f' décroissante",
+                "f'' > 0",
+                "f décroissante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Concavité ⟺ f' décroissante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "x² sur ℝ est",
+              "options": ["Concave", "Convexe", "Affine", "Concave sur ℝ⁺"],
+              "correctAnswers": [1],
+              "explanation": "(x²)'' = 2 > 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ln x sur ]0;+∞[ est",
+              "options": [
+                "Convexe",
+                "Concave",
+                "Linéaire",
+                "Convexe sur ]0;1]"
+              ],
+              "correctAnswers": [1],
+              "explanation": "(ln x)'' = -1/x² < 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f'' > 0 sur I ⟹ f",
+              "options": [
+                "Strictement concave",
+                "Strictement convexe",
+                "Constante",
+                "Sans f'"
+              ],
+              "correctAnswers": [1],
+              "explanation": "f' strictement croissante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "e^x sur ℝ est",
+              "options": [
+                "Concave",
+                "Convexe",
+                "Concave sur ℝ⁻",
+                "Non dérivable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "(e^x)'' = e^x > 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Point d'inflexion (cas usuel)",
+              "options": ["f' = 0", "f'' change de signe", "f = 0", "f'' > 0"],
+              "correctAnswers": [1],
+              "explanation": "Changement de convexité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "√x sur ]0;+∞[ est",
+              "options": ["Convexe", "Concave", "Affine", "Convexe sur ]1;+∞["],
+              "correctAnswers": [1],
+              "explanation": "(√x)'' < 0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f et g convexes ⟹ f+g",
+              "options": ["Concave", "Convexe", "Constante", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Somme de convexes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Dérivée seconde",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f(x) = x³ - 3x :",
+              "options": [
+                "f''(x) = 6x",
+                "Concave sur ]-∞;0[",
+                "Convexe sur ]0;+∞[",
+                "Sans inflexion"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "f'' = 6x, inflexion en 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "e^x + e^{-x} sur ℝ",
+              "options": ["Concave", "Convexe", "Affine", "Concave sur ℝ⁻"],
+              "correctAnswers": [1],
+              "explanation": "f'' > 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1/x sur ]0;+∞[, f''",
+              "options": ["> 0", "< 0", "= 0", "Non définie"],
+              "correctAnswers": [0],
+              "explanation": "f'' = 2/x³ > 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f'' ≤ 0 sur I ⟹",
+              "options": ["Convexe", "Concave", "Croissante", "Périodique"],
+              "correctAnswers": [1],
+              "explanation": "Signe de f''."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "sin x sur [0;π]",
+              "options": ["Convexe", "Concave", "Affine", "Croissant"],
+              "correctAnswers": [1],
+              "explanation": "(sin)'' = -sin ≤ 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "x³ en 0",
+              "options": [
+                "Extremum",
+                "Point d'inflexion",
+                "Discontinuité",
+                "f'' > 0"
+              ],
+              "correctAnswers": [1],
+              "explanation": "f'' change de signe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "x ln x sur ]0;+∞[",
+              "options": ["Convexe", "Concave", "Affine", "Sans f''"],
+              "correctAnswers": [0],
+              "explanation": "f'' = 1/x > 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f convexe, tangente en a",
+              "options": [
+                "Au-dessus de f",
+                "En dessous de f (f ≥ tangente)",
+                "Horizontale",
+                "Absente"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Inégalité de convexité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "|x| sur ℝ",
+              "options": ["Convexe", "Concave", "C²", "Non convexe"],
+              "correctAnswers": [0],
+              "explanation": "Fonction convexe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f'' = 0 sur I",
+              "options": [
+                "Concave",
+                "Affine",
+                "Strictement convexe",
+                "Cubique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "f' constante."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Polynômes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f(x) = x⁴ - 4x² :",
+              "options": [
+                "f'' = 12x² - 8",
+                "Concave entre -√(2/3) et √(2/3)",
+                "Convexe si |x| > √(2/3)",
+                "Sans zéro de f''"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Signe de 12x²-8."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "-x² + 4x - 1",
+              "options": ["Convexe", "Concave", "Croissant", "Pair"],
+              "correctAnswers": [1],
+              "explanation": "f'' = -2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Degré 3 : inflexions max",
+              "options": ["0", "1", "3", "Infini"],
+              "correctAnswers": [1],
+              "explanation": "f'' affine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "x³ + x, inflexion en",
+              "options": ["0", "1", "Aucun", "-1"],
+              "correctAnswers": [0],
+              "explanation": "f'' = 6x."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ax²+bx+c, a > 0",
+              "options": ["Concave", "Convexe", "Affine", "Sans f''"],
+              "correctAnswers": [1],
+              "explanation": "Parabole vers le haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f'' > 0 : courbure",
+              "options": ["Vers le bas", "Vers le haut", "Nulle", "Verticale"],
+              "correctAnswers": [1],
+              "explanation": "Convexité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "x⁵ sur ℝ",
+              "options": [
+                "Concave sur ℝ⁻, convexe sur ℝ⁺",
+                "Convexe partout",
+                "Concave partout",
+                "Affine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'' = 20x³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "{x | f''(x) > 0}",
+              "options": [
+                "Où f convexe",
+                "Où f concave",
+                "Domaine de f",
+                "Zéros de f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractérisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Étude convexité",
+              "options": [
+                "Signe de f",
+                "Signe de f''",
+                "Limites seules",
+                "Parité seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tableau de f''."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "x² - 4x + 5",
+              "options": ["Concave", "Convexe", "Sans minimum", "Impair"],
+              "correctAnswers": [1],
+              "explanation": "f'' = 2."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Applications",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "x + 1/x sur ]0;+∞[ :",
+              "options": [
+                "f'' = 2/x³",
+                "Convexe",
+                "Concave",
+                "Minimum en x = 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "f'' > 0, minimum en 1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/x convexe sur",
+              "options": [
+                "ℝ",
+                "]0;+∞[ et ]-∞;0[",
+                "]0;+∞[ seulement",
+                "Aucun I"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Signe de f''."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f convexe, f > 0 ⟹ 1/f",
+              "options": ["Convexe", "Concave", "Croissant", "Affine"],
+              "correctAnswers": [1],
+              "explanation": "Résultat de cours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jensen t=1/2",
+              "options": [
+                "f((a+b)/2) ≤ (f(a)+f(b))/2",
+                "f((a+b)/2) ≥ (f(a)+f(b))/2",
+                "f = 0",
+                "f linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition convexe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "e^x ≥ 1+x car",
+              "options": ["e^x concave", "e^x convexe", "x ≥ 0", "ln x"],
+              "correctAnswers": [1],
+              "explanation": "Tangente en 0 sous la courbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ln x ≤ x-1 car",
+              "options": ["ln convexe", "ln concave", "x ≤ 1", "e^x"],
+              "correctAnswers": [1],
+              "explanation": "Tangente en 1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f convexe sur [a;b], max atteint",
+              "options": ["Intérieur", "En a ou b", "En inflexion", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Maximum aux bornes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f'' = x(x-1), convexe si",
+              "options": ["x < 0 ou x > 1", "0 < x < 1", "x > 0", "x ∈ ℝ"],
+              "correctAnswers": [0],
+              "explanation": "Signe du produit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inflexion : tangente",
+              "options": [
+                "Traverse la courbe",
+                "Toujours au-dessus",
+                "Verticale",
+                "Absente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement de côté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f concave, f' > 0",
+              "options": [
+                "Croissante concave",
+                "Décroissante convexe",
+                "Constante",
+                "Convexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variations et courbure."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Exponentielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "x e^x :",
+              "options": [
+                "f'' = e^x(x+2)",
+                "Concave sur ]-∞;-2[",
+                "Convexe sur ]-2;+∞[",
+                "f'' nulle en 0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Signe de e^x(x+2)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "e^x - x",
+              "options": ["Concave", "Convexe", "Sans minimum", "Affine"],
+              "correctAnswers": [1],
+              "explanation": "f'' = e^x > 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "e^{ax}, a > 0",
+              "options": ["Concave", "Convexe", "Affine", "Concave si a>1"],
+              "correctAnswers": [1],
+              "explanation": "f'' = a²e^{ax} > 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "v convexe croissante, u convexe ⟹ v∘u",
+              "options": ["Concave", "Convexe", "Linéaire", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Composition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "e^{-x²} en 0",
+              "options": ["Convexe", "Concave", "Affine", "Discontinue"],
+              "correctAnswers": [1],
+              "explanation": "f''(0) < 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f'' ≥ m > 0",
+              "options": [
+                "Concave",
+                "Convexité forte",
+                "Affine",
+                "Décroissante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Courbure minorée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f convexe, f'(x₀)=0",
+              "options": [
+                "Maximum",
+                "Minimum global (si existe)",
+                "Inflexion",
+                "Asymptote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Unicité du minimum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "x - ln x, min en x=1",
+              "options": [
+                "f concave",
+                "f convexe, f'(1)=0",
+                "f' nulle en 0",
+                "Sans f''"
+              ],
+              "correctAnswers": [1],
+              "explanation": "f'' = 1/x > 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f et g concaves ⟹ f+g",
+              "options": [
+                "Convexe",
+                "Concave",
+                "Produit convexe",
+                "Non définie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Somme de concaves."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f'' > 0 ⟺ f'",
+              "options": ["Croissante", "Décroissante", "Nulle", "Périodique"],
+              "correctAnswers": [0],
+              "explanation": "Lien f' et f''."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Trigonométrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "sin x sur [0;π] :",
+              "options": ["f'' = -sin x", "Concave", "Convexe", "f'' ≥ 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "-sin ≤ 0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "cos x sur [0;π/2]",
+              "options": ["Convexe", "Concave", "Affine", "Croissant"],
+              "correctAnswers": [1],
+              "explanation": "(cos)'' ≤ 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "sin x sur [π;2π]",
+              "options": ["Concave", "Convexe", "Positif", "Croissant"],
+              "correctAnswers": [1],
+              "explanation": "-sin ≥ 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "sin x ≤ x sur [0;π/2] car",
+              "options": [
+                "sin concave sur [0;π]",
+                "sin convexe",
+                "cos ≥ 1",
+                "tan ≥ x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde au-dessus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "cos x sur [0;π]",
+              "options": ["Convexe", "Concave", "Croissant", "Pair"],
+              "correctAnswers": [1],
+              "explanation": "Concave sur [0;π]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Concave : courbe vs cordes",
+              "options": ["En dessous", "Au-dessus", "Confondue", "Parallèle"],
+              "correctAnswers": [1],
+              "explanation": "Définition concave."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "sin²x",
+              "options": [
+                "Convexité mixte",
+                "Convexe partout",
+                "Concave partout",
+                "Affine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f'' change de signe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "tan x sur ]0;π/2[",
+              "options": ["Convexe", "Concave", "≤ x", "≤ 0"],
+              "correctAnswers": [0],
+              "explanation": "(tan)'' > 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Concave ⟹ f'",
+              "options": ["Croissante", "Décroissante", "Nulle", "= f''"],
+              "correctAnswers": [1],
+              "explanation": "Monotonie de f'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "sin x, f'' = -sin",
+              "options": [
+                "Change de signe sur [0;2π]",
+                "Toujours > 0",
+                "Toujours < 0",
+                "Nulle partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance de convexité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Inégalités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "a²+b² ≥ 2ab :",
+              "options": [
+                "(a-b)² ≥ 0",
+                "Convexité de x²",
+                "Concavité de ln",
+                "Dérivée de √x"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Identité ou Jensen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "IAG via convexité de",
+              "options": ["-ln", "x²", "1/x sur ℝ", "sin"],
+              "correctAnswers": [0],
+              "explanation": "Jensen sur -ln."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f convexe, a<b<c, f(b)",
+              "options": [
+                "Au-dessus corde",
+                "Sous la corde",
+                "= f(a)",
+                "Indéfini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Convexité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f convexe, f(0)=0, f(1)=1, t∈[0;1]",
+              "options": ["f(t) ≤ t", "f(t) ≥ t", "f(t)=t²", "f(t)≤0"],
+              "correctAnswers": [0],
+              "explanation": "Corde y=t."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Courbe logistique",
+              "options": [
+                "Sans inflexion",
+                "Un point d'inflexion",
+                "Toujours convexe",
+                "Toujours concave"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Forme en S."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "x³-6x²+9x, inflexion en",
+              "options": ["1", "2", "3", "0"],
+              "correctAnswers": [1],
+              "explanation": "f''=6x-12."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "(1/2)x² - ln x sur ]0;+∞[",
+              "options": ["Concave", "Convexe", "Sans min", "Affine"],
+              "correctAnswers": [1],
+              "explanation": "f''=1+1/x²>0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f convexe, b>a, f(b) vs tangente(a)(b)",
+              "options": [
+                "f(b) ≥ tangente",
+                "f(b) ≤ tangente",
+                "Égal",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inégalité tangente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f''=0 sans changement (x⁴ en 0)",
+              "options": [
+                "Toujours inflexion",
+                "Peut ne pas l'être",
+                "Impossible",
+                "Extremum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contact sans traversée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f''=0 sert à trouver",
+              "options": [
+                "Asymptotes",
+                "Candidats inflexion",
+                "Période",
+                "Parité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Changements de convexité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Tableaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau convexité :",
+              "options": [
+                "Zéros de f''",
+                "Signe de f'' par intervalle",
+                "Uniquement f'",
+                "Sans calcul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Découpage par f''."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f'' ≠ 0 sur I",
+              "options": [
+                "Convexe ou concave",
+                "Toujours convexe",
+                "Affine",
+                "Discontinue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe constant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "x⁴, f''=12x²",
+              "options": ["Concave", "Convexe", "Concave en 0", "Sans f''"],
+              "correctAnswers": [1],
+              "explanation": "f'' ≥ 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f''>0 ⟺ f'",
+              "options": ["Croissante", "Décroissante", "Nulle", "Impair"],
+              "correctAnswers": [0],
+              "explanation": "Interprétation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f concave, f''(x₀)=0",
+              "options": [
+                "f' max local souvent",
+                "f' min obligatoire",
+                "f=0",
+                "Saut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f' décroissante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "e^{x²}, f''(0)=",
+              "options": ["0", "2", "1", "e"],
+              "correctAnswers": [1],
+              "explanation": "Dérivation en 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur ]0;+∞[, f''=1/x",
+              "options": ["Concave", "Convexe", "Affine", "≤ 0"],
+              "correctAnswers": [1],
+              "explanation": "f''>0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1/(1+x²)",
+              "options": [
+                "Convexe partout",
+                "Convexe près de 0, concave loin",
+                "Concave partout",
+                "Affine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Signe variable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique en U",
+              "options": [
+                "Souvent convexe",
+                "Souvent concave",
+                "Linéaire",
+                "Sans f''"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parabole type."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f''<0 sur I",
+              "options": ["f concave", "f convexe", "f croissante", "f<0"],
+              "correctAnswers": [0],
+              "explanation": "Signe direct."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Types bac",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f C² convexe ⟺",
+              "options": ["f'' ≥ 0", "f' croissante", "f concave", "f'' ≤ 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "Équivalences programme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "x ln x, minimum en",
+              "options": ["1/e", "e", "1", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "f'=ln x+1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "e^x+x",
+              "options": ["Convexe", "Concave", "f''=0", "Décroissante"],
+              "correctAnswers": [0],
+              "explanation": "f''=e^x>0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Concave ⟹ graphe de f'",
+              "options": ["Décroissant", "Croissant", "Horizontal", "Saut"],
+              "correctAnswers": [0],
+              "explanation": "f' décroissante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1/x convexe sur ]0;+∞[",
+              "options": [
+                "Sous tangentes",
+                "Au-dessus tangentes (f≥tangente)",
+                "Linéaire",
+                "Horizontale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Convexité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cubique : inflexions max",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [1],
+              "explanation": "f'' degré 1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ln concave, tangente x=1",
+              "options": [
+                "y=x-1, ln en dessous",
+                "y=x+1",
+                "Horizontale",
+                "y=1/x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concave sous tangente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f''=-6",
+              "options": ["Convexe", "Concave", "Croissante", "Périodique"],
+              "correctAnswers": [1],
+              "explanation": "Courbure négative."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Optimiser f convexe C¹",
+              "options": ["f'=0", "f''=0", "f=0", "f' max"],
+              "correctAnswers": [0],
+              "explanation": "Premier ordre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Concave décroissante possible ?",
+              "options": ["Oui", "Non", "Force f'=0", "Force convexe"],
+              "correctAnswers": [0],
+              "explanation": "Ex. ln sur ]0;1] décroissant concave."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse convexité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai (f C²) :",
+              "options": [
+                "f concave ⟺ f'' ≤ 0",
+                "f'' > 0 ⟹ strictement convexe",
+                "f convexe ⟺ f' décroissante",
+                "Inflexion ⟺ f''>0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Concave ⟺ f''≤0 ; strict si f''>0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Chapitre convexité : objectif",
+              "options": [
+                "Signe f'' et courbe",
+                "Seulement f'",
+                "Remplacer limites",
+                "Sans tangentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compléter étude de fonctions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "e^x convexe ⟹",
+              "options": [
+                "Au-dessus de chaque tangente",
+                "Sous chaque tangente",
+                "Affine",
+                "Concave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inégalité tangente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "|x|³ sur ℝ",
+              "options": ["Convexe", "Concave", "Non convexe", "C²"],
+              "correctAnswers": [0],
+              "explanation": "Fonction convexe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f convexe entre deux points",
+              "options": [
+                "Sous la corde",
+                "Au-dessus",
+                "Confondu",
+                "Orthogonal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "x²-4x+3",
+              "options": ["Concave", "Convexe", "Sans f''", "Impair"],
+              "correctAnswers": [1],
+              "explanation": "f''=2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f''=0 et change de signe",
+              "options": [
+                "Extremum seul",
+                "Point d'inflexion",
+                "Asymptote",
+                "Discontinuité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Changement convexité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f+g convexes",
+              "options": [
+                "Concave",
+                "Convexe",
+                "Produit convexe",
+                "Impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Addition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f strictement convexe ⟹ minima",
+              "options": ["Au plus un", "Infinité", "f' constante", "f''=0"],
+              "correctAnswers": [0],
+              "explanation": "Unicité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire f''>0",
+              "options": ["f convexe", "f concave", "f croissante", "f>0"],
+              "correctAnswers": [0],
+              "explanation": "Caractérisation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Primitives",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Notion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "F primitive de f sur I :",
+              "options": [
+                "F' = f",
+                "F = f'",
+                "Primitives diffèrent d'une constante",
+                "F unique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Définition et famille F+C."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "F primitive de f ⟹ F+C",
+              "options": [
+                "Primitive de f",
+                "Primitive de f+C",
+                "Dérivée de f",
+                "Non dérivable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(F+C)'=f."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Primitive de 0",
+              "options": ["0 seulement", "Toute constante", "x", "x²"],
+              "correctAnswers": [1],
+              "explanation": "Dérivée nulle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f continue sur I",
+              "options": [
+                "Sans primitive",
+                "Admet une primitive",
+                "Primitive unique",
+                "F'=f"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Théorème fondamental."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "F(x)=x², f(x)=",
+              "options": ["x", "2x", "x²", "2"],
+              "correctAnswers": [1],
+              "explanation": "F'=2x."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Condition F(x₀)=y₀",
+              "options": ["Fixe C", "Fixe f", "Inutile", "Interdit"],
+              "correctAnswers": [0],
+              "explanation": "Primitive unique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫f(x)dx",
+              "options": ["Dérivée", "Famille de primitives", "Limite", "f(x)"],
+              "correctAnswers": [1],
+              "explanation": "Intégrale indéfinie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "(ln|x|)' sur ℝ*",
+              "options": ["1/x", "ln x", "x", "0"],
+              "correctAnswers": [0],
+              "explanation": "Primitive de 1/x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "F'=G' sur I connexe",
+              "options": ["F=G", "F-G constante", "F=0", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Égalité des dérivées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vérifier primitive",
+              "options": [
+                "Dériver F",
+                "Intégrer numériquement",
+                "Dériver f",
+                "Comparer valeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F' doit valoir f."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Tableau usuel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules (C∈ℝ) :",
+              "options": [
+                "∫x^n dx = x^{n+1}/(n+1)+C, n≠-1",
+                "∫x^{-1} dx = ln|x|+C",
+                "∫e^x dx = e^x+C",
+                "∫cos x dx = -sin x+C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tableau terminale ; cos ⟹ sin, pas -sin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫3x² dx",
+              "options": ["x³+C", "6x+C", "x²+C", "9x+C"],
+              "correctAnswers": [0],
+              "explanation": "(x³)'=3x²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫cos x dx",
+              "options": ["-sin x+C", "sin x+C", "cos x+C", "-cos x+C"],
+              "correctAnswers": [1],
+              "explanation": "(sin x)'=cos x."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "∫sin x dx",
+              "options": ["cos x+C", "-cos x+C", "sin x+C", "-sin x+C"],
+              "correctAnswers": [1],
+              "explanation": "(-cos x)'=sin x."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "∫e^{2x} dx",
+              "options": ["2e^{2x}+C", "(1/2)e^{2x}+C", "e^{2x}+C", "e^x+C"],
+              "correctAnswers": [1],
+              "explanation": "Facteur 1/a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫1/x dx sur ]0;+∞[",
+              "options": ["ln x+C", "-1/x²+C", "x ln x+C", "1+C"],
+              "correctAnswers": [0],
+              "explanation": "(ln x)'=1/x."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫x^{-3} dx",
+              "options": ["-x^{-2}/2+C", "x^{-2}+C", "-2x^{-2}+C", "ln x+C"],
+              "correctAnswers": [0],
+              "explanation": "n=-3≠-1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫√x dx",
+              "options": ["(2/3)x^{3/2}+C", "(1/2)√x+C", "x^{1/2}+C", "2√x+C"],
+              "correctAnswers": [0],
+              "explanation": "n=1/2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "∫1/(1+x²) dx",
+              "options": ["arctan x+C", "ln(1+x²)+C", "1/x+C", "arcsin x+C"],
+              "correctAnswers": [0],
+              "explanation": "(arctan x)'=1/(1+x²)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "∫1/√(1-x²) dx",
+              "options": ["arcsin x+C", "arctan x+C", "ln|x|+C", "-cos x+C"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée arcsin."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Linéarité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "a,b réels, f,g primitivables :",
+              "options": [
+                "∫(af+bg)dx = a∫f+b∫g",
+                "(∫f)' = f",
+                "∫fg = (∫f)(∫g)",
+                "∫f = f+C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Linéarité et dérivation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫(2x+5) dx",
+              "options": ["x²+5x+C", "2x²+5+C", "x+5+C", "2+C"],
+              "correctAnswers": [0],
+              "explanation": "Terme à terme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫(e^x - 1/x) dx sur ]0;+∞[",
+              "options": [
+                "e^x - ln x + C",
+                "e^x + ln x + C",
+                "e^x - 1/x² + C",
+                "ln x + C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "∫(3cos x - sin x) dx",
+              "options": [
+                "3sin x + cos x + C",
+                "3sin x - cos x + C",
+                "-3sin x + cos x + C",
+                "sin x + C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(-cos x)'=sin x."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "F primitive f, G primitive g ⟹ F+G primitive de",
+              "options": ["f+g", "fg", "f'", "f/g"],
+              "correctAnswers": [0],
+              "explanation": "Somme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫(x²+1/x) dx sur ]0;+∞[",
+              "options": [
+                "x³/3 + ln x + C",
+                "2x + ln x + C",
+                "x³ + C",
+                "x²/2 + C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polynôme + 1/x."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫k f dx, k constante",
+              "options": ["k∫f dx", "∫f dx / k", "kf + C", "f + C"],
+              "correctAnswers": [0],
+              "explanation": "Homogénéité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫(-4) dx",
+              "options": ["-4x+C", "4x+C", "-4+C", "0"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "∫(2x-1)² dx : méthode",
+              "options": [
+                "Développer puis linéarité",
+                "Produit des primitives",
+                "Substitution obligatoire",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identité remarquable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente",
+              "options": [
+                "Oublier +C",
+                "Ajouter C²",
+                "Dériver f",
+                "Linéarité fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constante d'intégration."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "u'e^u et u'/u",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes composées :",
+              "options": [
+                "∫u'e^u du = e^u + C",
+                "∫u'/u du = ln|u| + C",
+                "∫e^u = e^u sans u'",
+                "∫u du = u²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Reconnaissance u'×e^u et u'/u."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫2x e^{x²} dx",
+              "options": ["e^{x²}+C", "2e^{x²}+C", "x²e^{x²}+C", "e^x+C"],
+              "correctAnswers": [0],
+              "explanation": "u=x²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫(2x)/(x²+1) dx",
+              "options": ["ln(x²+1)+C", "arctan x+C", "1/(x²+1)+C", "2ln x+C"],
+              "correctAnswers": [0],
+              "explanation": "u=x²+1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "∫cos x · e^{sin x} dx",
+              "options": [
+                "e^{sin x}+C",
+                "sin x · e^{sin x}+C",
+                "cos x+C",
+                "e^{cos x}+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u=sin x."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "∫(1/(2√x)) e^{√x} dx",
+              "options": ["e^{√x}+C", "2e^{√x}+C", "√x e^{√x}+C", "e^x+C"],
+              "correctAnswers": [0],
+              "explanation": "u=√x."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫(-sin x)/(cos x) dx",
+              "options": ["ln|cos x|+C", "-ln|cos x|+C", "tan x+C", "sin x+C"],
+              "correctAnswers": [0],
+              "explanation": "u=cos x."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫3x²/(x³+1) dx",
+              "options": ["ln|x³+1|+C", "arctan(x³)+C", "x³+C", "3ln x+C"],
+              "correctAnswers": [0],
+              "explanation": "u=x³+1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫e^{3x} dx",
+              "options": ["(1/3)e^{3x}+C", "3e^{3x}+C", "e^{3x}+C", "e^x+C"],
+              "correctAnswers": [0],
+              "explanation": "Facteur 1/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "∫(5/x) dx sur ]0;+∞[",
+              "options": ["5 ln x + C", "ln(5x)+C", "5/x²+C", "ln x seulement"],
+              "correctAnswers": [0],
+              "explanation": "5∫(1/x)dx."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "∫(1/x) e^{ln x} dx sur ]0;+∞[",
+              "options": ["x+C", "ln x + C", "e^x + C", "1+C"],
+              "correctAnswers": [0],
+              "explanation": "Integrande = 1."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Polynômes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "∫(x³-2x) dx :",
+              "options": [
+                "x⁴/4 - x² + C",
+                "On primitivise terme à terme",
+                "x⁴ - x² + C",
+                "3x² - 2 + C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "x⁴/4-x²+C ; linéarité et puissances."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫(x²+3x+1) dx",
+              "options": [
+                "x³/3 + 3x²/2 + x + C",
+                "2x+3+C",
+                "x³+3x²+x+C",
+                "x²/2+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficients corrects."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫(4x³) dx",
+              "options": ["x⁴+C", "12x²+C", "4x⁴+C", "x³+C"],
+              "correctAnswers": [0],
+              "explanation": "(x⁴)'=4x³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "∫(1-2x+x²) dx",
+              "options": ["x - x² + x³/3 + C", "1-2x+C", "x²-x+C", "x³+C"],
+              "correctAnswers": [0],
+              "explanation": "Polynôme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "∫x dx",
+              "options": ["x²/2+C", "x+C", "1+C", "x²+C"],
+              "correctAnswers": [0],
+              "explanation": "n=1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫(x⁵) dx",
+              "options": ["x⁶/6+C", "5x⁴+C", "x⁶+C", "6x⁵+C"],
+              "correctAnswers": [0],
+              "explanation": "n=5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫(2x-1)² dx après développement",
+              "options": [
+                "4x³/3 - 2x² + x + C",
+                "2x-1+C",
+                "(2x-1)³/3+C",
+                "4x²-4x+1+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4x²-4x+1 intégré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫(x³/x) dx sur ]0;+∞[",
+              "options": ["x²/2+C", "x³/3+C", "ln x+C", "x²+C"],
+              "correctAnswers": [0],
+              "explanation": "Integrande x²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "∫(a x^n) dx, n≠-1",
+              "options": [
+                "a x^{n+1}/(n+1)+C",
+                "a x^n/(n)+C",
+                "x^{n+1}+C",
+                "a ln x+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule générale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Degré de F si f polynôme degré n",
+              "options": ["n+1", "n", "n-1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Primitive augmente le degré."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Trigonométrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Primitives trig :",
+              "options": [
+                "∫cos x dx = sin x + C",
+                "∫sin x dx = -cos x + C",
+                "∫cos x dx = -sin x + C",
+                "∫sin x dx = cos x + C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Signes du tableau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫2cos x dx",
+              "options": ["2sin x+C", "sin x+C", "-2cos x+C", "2cos x+C"],
+              "correctAnswers": [0],
+              "explanation": "Facteur 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫(sin x + cos x) dx",
+              "options": [
+                "-cos x + sin x + C",
+                "cos x - sin x + C",
+                "sin x + cos x + C",
+                "0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "∫sin(2x) dx",
+              "options": [
+                "-(1/2)cos(2x)+C",
+                "-cos(2x)+C",
+                "cos(2x)+C",
+                "2cos(2x)+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteur 1/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "∫cos(3x) dx",
+              "options": [
+                "(1/3)sin(3x)+C",
+                "3sin(3x)+C",
+                "-sin(3x)+C",
+                "sin(3x)+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u=3x."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫(1+cos²x) dx (terminale : développer si besoin)",
+              "options": [
+                "x + sin(2x)/4 + C",
+                "x + cos²x + C",
+                "sin x + C",
+                "x + C seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "cos²x=(1+cos2x)/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "∫(-sin x) dx",
+              "options": ["cos x + C", "-cos x + C", "sin x + C", "cos x - C"],
+              "correctAnswers": [0],
+              "explanation": "(-cos x)'=sin x."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫(π) dx",
+              "options": ["πx + C", "π + C", "0", "x + C"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "F(x)=sin x, f(x)=",
+              "options": ["cos x", "-cos x", "sin x", "0"],
+              "correctAnswers": [0],
+              "explanation": "(sin x)'=cos x."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "∫cos x · sin x dx",
+              "options": [
+                "sin²x/2 + C",
+                "-cos²x/2 + C",
+                "cos²x/2 + C",
+                "Les deux B et C à C près"
+              ],
+              "correctAnswers": [3],
+              "explanation": "u=sin ou u=cos : même famille à constante."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Équations y'=f(x)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "y'=f(x) :",
+              "options": [
+                "Solutions y = F(x) + C avec F' = f",
+                "Solution unique sans constante",
+                "y = f(x) pour toute solution",
+                "Toute solution vérifie y' = f(x)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Les solutions sont les primitives F+C ; chaque solution a bien pour dérivée f."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "y'=2x, solution générale",
+              "options": ["y=x²+C", "y=2x+C", "y=x+C", "y=2+C"],
+              "correctAnswers": [0],
+              "explanation": "Primitive de 2x."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "y'=e^x",
+              "options": ["y=e^x+C", "y=xe^x+C", "y=e^x", "y=ln x+C"],
+              "correctAnswers": [0],
+              "explanation": "e^x primitive de e^x."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "y'=1/x sur ]0;+∞[",
+              "options": ["y=ln x + C", "y=1/x² + C", "y=x ln x + C", "y=ln x"],
+              "correctAnswers": [0],
+              "explanation": "Primitive ln."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "y'=-sin x",
+              "options": [
+                "y=cos x + C",
+                "y=-cos x + C",
+                "y=sin x + C",
+                "y=cos x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(cos x)'=-sin x."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y'=3",
+              "options": ["y=3x+C", "y=3+C", "y=x³+C", "y=0"],
+              "correctAnswers": [0],
+              "explanation": "Primitive constante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "y'=x²",
+              "options": ["y=x³/3+C", "y=2x+C", "y=x²+C", "y=3x²+C"],
+              "correctAnswers": [0],
+              "explanation": "Puissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "y'=0",
+              "options": ["y=C", "y=0", "y=x+C", "Pas de solution"],
+              "correctAnswers": [0],
+              "explanation": "Fonctions constantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "y'=cos x, y(0)=1",
+              "options": [
+                "y=sin x + 1",
+                "y=sin x",
+                "y=cos x + 1",
+                "y=-cos x + 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C=1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résoudre y'=f(x) revient à",
+              "options": [
+                "Calculer une primitive de f",
+                "Dériver f",
+                "Intégrer sur [0;1] seulement",
+                "Résoudre f=0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode terminale."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Conditions initiales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "y'=f(x), y(x₀)=y₀ :",
+              "options": [
+                "Une seule primitive vérifie y(x₀)=y₀",
+                "C est déterminé par y(x₀)=y₀",
+                "Infinité de C possibles",
+                "Impossible si f continue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Problème de Cauchy linéaire du premier ordre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "y'=2x, y(1)=3",
+              "options": ["y=x²+2", "y=x²+3", "y=2x+1", "y=x²+1"],
+              "correctAnswers": [0],
+              "explanation": "1+C=3 ⟹ C=2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "y'=e^x, y(0)=2",
+              "options": ["y=e^x+1", "y=e^x+2", "y=e^x", "y=2e^x"],
+              "correctAnswers": [0],
+              "explanation": "1+C=2 ⟹ C=1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "y'=1/x, y(e)=1 sur ]0;+∞[",
+              "options": ["y=ln x", "y=ln x + C", "y=1/x", "y=e^x"],
+              "correctAnswers": [0],
+              "explanation": "ln e + C = 1 ⟹ C=0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "y'=-2x, y(0)=5",
+              "options": ["y=-x²+5", "y=-2x+5", "y=x²+5", "y=5"],
+              "correctAnswers": [0],
+              "explanation": "C=5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y'=cos x, y(π/2)=4",
+              "options": [
+                "y=sin x + 3",
+                "y=sin x + 4",
+                "y=cos x + 4",
+                "y=sin x"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1+C=4 ⟹ C=3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "y'=3x², y(-1)=2",
+              "options": ["y=x³+3", "y=x³+2", "y=3x²+2", "y=x³-1"],
+              "correctAnswers": [0],
+              "explanation": "-1+C=2 ⟹ C=3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux solutions y₁,y₂ de y'=f avec même y(x₀)",
+              "options": [
+                "Identiques",
+                "Diffèrent d'une constante",
+                "Parallèles",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unicité avec condition initiale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "y'=5, y(2)=7",
+              "options": ["y=5x-3", "y=5x+7", "y=5x+2", "y=7"],
+              "correctAnswers": [0],
+              "explanation": "10+C=7 ⟹ C=-3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Trouver C : on utilise",
+              "options": [
+                "La condition initiale",
+                "La limite en +∞ seule",
+                "f''",
+                "Le signe de f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substitution x₀, y₀."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modélisation et aires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Interprétation ∫_a^b f(x)dx (f≥0) :",
+              "options": [
+                "Aire sous la courbe",
+                "Primitive définie F(b)-F(a)",
+                "Longueur de courbe",
+                "Pente moyenne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Théorème fondamental (lien terminale)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "v(t) vitesse, x(t) position : x'(t)=v(t) ⟹",
+              "options": [
+                "x primitive de v",
+                "v primitive de x",
+                "x=v",
+                "v=x'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position = primitive de vitesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "F'=f ⟹ F(b)-F(a)",
+              "options": ["∫_a^b f(x)dx", "f(b)-f(a)", "f(a)b", "0"],
+              "correctAnswers": [0],
+              "explanation": "Théorème fondamental."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "y'=k y (rappel terminale spé) : solutions",
+              "options": ["y=Ce^{kx}", "y=Cx^k", "y=kx+C", "y=ln x"],
+              "correctAnswers": [0],
+              "explanation": "Équation différentielle linéaire (hors primitive directe mais liée)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Primitive de v(t)=2t, x(0)=0",
+              "options": ["x=t²", "x=2t", "x=t²+1", "x=2"],
+              "correctAnswers": [0],
+              "explanation": "C=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "∫_0^1 2x dx",
+              "options": ["1", "2", "0", "x²"],
+              "correctAnswers": [0],
+              "explanation": "[x²]_0^1=1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Unité aire si x en m, f en m/s sur t",
+              "options": [
+                "m²/s mal dimensionné — f en m/s² et x en s donne m",
+                "Toujours sans unité",
+                "m/s",
+                "s/m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention dimensions : vitesse × temps = distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "F(x)=∫_1^x t² dt",
+              "options": ["F'(x)=x²", "F'=2x", "F=x³/3", "F=0"],
+              "correctAnswers": [0],
+              "explanation": "Dérivée d'intégrale à borne variable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "y'=g'(x)",
+              "options": ["y=g(x)+C", "y=g'(x)+C", "y=g(x)", "y=C"],
+              "correctAnswers": [0],
+              "explanation": "Primitive directe de dérivée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Constante C en physique",
+              "options": [
+                "Condition initiale fixe C",
+                "Toujours 0",
+                "Inutile",
+                "Aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État initial du système."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse primitives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai :",
+              "options": [
+                "(∫f dx)' = f",
+                "∫f dx + C représente toutes les primitives",
+                "∫fg = ∫f · ∫g",
+                "Primitive unique sans C"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dérivation et famille F+C."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "∫(e^x + 1/x) dx sur ]0;+∞[",
+              "options": [
+                "e^x + ln x + C",
+                "e^x - ln x + C",
+                "e^x + 1/x² + C",
+                "ln x seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des formules."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "∫x e^{x²} dx",
+              "options": [
+                "(1/2)e^{x²}+C",
+                "e^{x²}+C",
+                "2e^{x²}+C",
+                "x²e^{x²}+C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "u=x², du=2x dx."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vérifier ∫2x dx = x²+C",
+              "options": [
+                "Dériver x²+C",
+                "Intégrer x",
+                "Comparer en x=0",
+                "Mesurer aire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dérivation inverse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "∫(3/x) dx sur ]0;+∞[",
+              "options": ["3 ln x + C", "ln(3x)+C", "3/x²+C", "ln x + 3"],
+              "correctAnswers": [0],
+              "explanation": "3∫(1/x)dx."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y'=4x³, y(0)=1",
+              "options": ["y=x⁴+1", "y=x⁴", "y=4x²+1", "y=x³+1"],
+              "correctAnswers": [0],
+              "explanation": "C=1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Forme u'/u donne",
+              "options": ["ln|u| + C", "e^u + C", "u²/2 + C", "1/u + C"],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "∫sin x dx + ∫cos x dx",
+              "options": [
+                "-cos x + sin x + C",
+                "cos x - sin x + C",
+                "0",
+                "sin x cos x + C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Linéarité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "n = -1 dans ∫x^n dx",
+              "options": ["ln|x| + C", "x^0/0", "Impossible", "x^{-2}/(-2)+C"],
+              "correctAnswers": [0],
+              "explanation": "Cas exceptionnel du tableau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif chapitre primitives",
+              "options": [
+                "Inverser la dérivation et modéliser",
+                "Calculer f''",
+                "Étudier limites seules",
+                "Remplacer les tangentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément à la dérivation en terminale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

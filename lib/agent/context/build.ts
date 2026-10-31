@@ -69,15 +69,9 @@ export type AgentContextResult = {
 export async function buildAgentContext(
   input: AgentContextInput
 ): Promise<AgentContextResult> {
-  const projectBlock = input.project.resourcesBlock
-    ? `${input.project.resourcesBlock}${
-        input.project.memories.length > 0
-          ? `\n\nÉléments retenus liés au projet :\n${input.project.memories.join("\n")}`
-          : ""
-      }`
-    : input.project.memories.length > 0
-      ? `Éléments retenus liés au projet :\n${input.project.memories.join("\n")}`
-      : null;
+  // Les souvenirs du projet sont déjà dans memoryBlock (buildMemoryContext).
+  // Les réécrire ici les envoyait deux fois dans la même section.
+  const projectBlock = input.project.resourcesBlock;
 
   const attachmentsBlock = attachmentsInstructions(input.attachments);
   const memoryBlocks = [

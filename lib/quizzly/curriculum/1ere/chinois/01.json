@@ -1,0 +1,2103 @@
+{
+  "id": "1ere-chinois-01",
+  "year": "1ere",
+  "subject": "chinois",
+  "title": "Découvrir le chinois",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Bonjour et bonsoir",
+          "questions": [
+            {
+              "id": "q01-01",
+              "type": "multiple_choice",
+              "question": "Quelles salutations conviennent le matin ? (你好 · nǐ hǎo)",
+              "options": [
+                "你好 (nǐ hǎo)",
+                "晚上好 (wǎnshang hǎo)",
+                "早上好 (zǎoshang hǎo)",
+                "再见 (zàijiàn)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« 你好 » sert aussi le matin ; « 早上好 » précise « bonjour (matin) ». « 晚上好 » est le soir, « 再见 » au revoir."
+            },
+            {
+              "id": "q01-02",
+              "type": "single_choice",
+              "question": "Comment dit-on « bonsoir » ?",
+              "options": [
+                "早上好 (zǎoshang hǎo)",
+                "晚上好 (wǎnshang hǎo)",
+                "你好 (nǐ hǎo)",
+                "谢谢 (xièxie)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« 晚上好 » (wǎnshang hǎo) = bonsoir."
+            },
+            {
+              "id": "q01-03",
+              "type": "single_choice",
+              "question": "Sens de 你好 (nǐ hǎo) ?",
+              "options": ["Au revoir", "Bonjour / Salut", "Merci", "Pardon"],
+              "correctAnswers": [1],
+              "explanation": "Salutation universelle, équivalent de bonjour ou salut."
+            },
+            {
+              "id": "q01-04",
+              "type": "single_choice",
+              "question": "Pinyin de 再见 ?",
+              "options": ["zàijiàn", "zǎojiàn", "jiànmiàn", "zàihuì"],
+              "correctAnswers": [0],
+              "explanation": "再见 se prononce zàijiàn (à bientôt / au revoir)."
+            },
+            {
+              "id": "q01-05",
+              "type": "single_choice",
+              "question": "Quel caractère signifie « bon » dans 你好 ?",
+              "options": ["你", "好", "见", "谢"],
+              "correctAnswers": [1],
+              "explanation": "好 (hǎo) = bon, bien."
+            },
+            {
+              "id": "q01-06",
+              "type": "single_choice",
+              "question": "Tu sers à saluer quelqu'un le soir :",
+              "options": ["早上好", "晚上好", "你好", "对不起"],
+              "correctAnswers": [1],
+              "explanation": "Le soir, on privilégie 晚上好."
+            },
+            {
+              "id": "q01-07",
+              "type": "single_choice",
+              "question": "Traduction de 早上好 (zǎoshang hǎo) ?",
+              "options": ["Bonsoir", "Bonjour (matin)", "Merci", "Enchanté"],
+              "correctAnswers": [1],
+              "explanation": "早上 = matin, 好 = bon → bonjour du matin."
+            },
+            {
+              "id": "q01-08",
+              "type": "single_choice",
+              "question": "Réponse polie après « 你好 » :",
+              "options": ["再见", "你好", "不", "六"],
+              "correctAnswers": [1],
+              "explanation": "On répond souvent par le même 你好."
+            },
+            {
+              "id": "q01-09",
+              "type": "single_choice",
+              "question": "Au revoir en chinois :",
+              "options": ["谢谢", "你好", "再见 (zàijiàn)", "老师"],
+              "correctAnswers": [2],
+              "explanation": "再见 = revoir → au revoir."
+            },
+            {
+              "id": "q01-10",
+              "type": "single_choice",
+              "question": "你 (nǐ) signifie :",
+              "options": ["moi", "toi / vous (sing.)", "lui", "nous"],
+              "correctAnswers": [1],
+              "explanation": "你 = tu ; 你们 = vous (pl.)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Merci et pardon",
+          "questions": [
+            {
+              "id": "q02-01",
+              "type": "multiple_choice",
+              "question": "Quelles formules expriment la gratitude ?",
+              "options": [
+                "谢谢 (xièxie)",
+                "对不起 (duìbuqǐ)",
+                "不客气 (bú kèqi)",
+                "再见 (zàijiàn)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "谢谢 = merci ; 不客气 = de rien (réponse au merci). 对不起 = pardon."
+            },
+            {
+              "id": "q02-02",
+              "type": "single_choice",
+              "question": "Réponse à « 谢谢 » :",
+              "options": ["对不起", "不客气", "你好", "老师"],
+              "correctAnswers": [1],
+              "explanation": "不客气 = ce n'est rien / de rien."
+            },
+            {
+              "id": "q02-03",
+              "type": "single_choice",
+              "question": "对不起 (duìbuqǐ) =",
+              "options": ["Merci", "Pardon / désolé", "Bonjour", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "Expression standard pour s'excuser."
+            },
+            {
+              "id": "q02-04",
+              "type": "single_choice",
+              "question": "Pinyin de 谢谢 ?",
+              "options": ["xièxie", "xiēxiē", "shèshè", "xièxiè"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième syllabe en ton léger (neutral)."
+            },
+            {
+              "id": "q02-05",
+              "type": "single_choice",
+              "question": "谢 (xiè) dans 谢谢 signifie :",
+              "options": ["bonjour", "remercier", "revoir", "pardon"],
+              "correctAnswers": [1],
+              "explanation": "Le caractère 谢 est lié au remerciement."
+            },
+            {
+              "id": "q02-06",
+              "type": "single_choice",
+              "question": "Après avoir bousculé quelqu'un, tu dis :",
+              "options": ["你好", "谢谢", "对不起", "不客气"],
+              "correctAnswers": [2],
+              "explanation": "对不起 convient pour s'excuser."
+            },
+            {
+              "id": "q02-07",
+              "type": "single_choice",
+              "question": "不 (bù) dans 不客气 indique :",
+              "options": ["très", "négation", "question", "politesse seule"],
+              "correctAnswers": [1],
+              "explanation": "不 = ne pas ; 客气 = cérémonie → « pas de cérémonie »."
+            },
+            {
+              "id": "q02-08",
+              "type": "single_choice",
+              "question": "Quelle phrase n'est PAS une excuse ?",
+              "options": ["对不起", "不好意思", "谢谢", "没关系 (réponse)"],
+              "correctAnswers": [2],
+              "explanation": "谢谢 remercie, n'excuse pas."
+            },
+            {
+              "id": "q02-09",
+              "type": "single_choice",
+              "question": "Sens de 客气 (kèqi) ?",
+              "options": ["colère", "cérémonie / formalité", "nuit", "matin"],
+              "correctAnswers": [1],
+              "explanation": "D'où 不客气 = pas de formalité entre nous."
+            },
+            {
+              "id": "q02-10",
+              "type": "single_choice",
+              "question": "On dit 谢谢 quand :",
+              "options": [
+                "on part",
+                "on reçoit un service",
+                "on se présente",
+                "on dit bonsoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Merci après une aide ou un cadeau."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Je m'appelle",
+          "questions": [
+            {
+              "id": "q03-01",
+              "type": "multiple_choice",
+              "question": "Phrases pour dire son nom :",
+              "options": [
+                "我叫… (wǒ jiào…)",
+                "你叫什么名字？",
+                "我是… (wǒ shì…)",
+                "再见"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "我叫 + nom ou 我是 + nom/prénom chinois. La question utilise 叫."
+            },
+            {
+              "id": "q03-02",
+              "type": "single_choice",
+              "question": "我叫 Marie =",
+              "options": [
+                "Je suis Marie (nom)",
+                "Tu t'appelles Marie",
+                "Il s'appelle Marie",
+                "Marie dit bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我 = je, 叫 = s'appeler."
+            },
+            {
+              "id": "q03-03",
+              "type": "single_choice",
+              "question": "Comment demander « Comment tu t'appelles ? »",
+              "options": [
+                "你好吗？",
+                "你叫什么名字？",
+                "你去哪儿？",
+                "你几岁？"
+              ],
+              "correctAnswers": [1],
+              "explanation": "名字 = prénom / nom."
+            },
+            {
+              "id": "q03-04",
+              "type": "single_choice",
+              "question": "我 (wǒ) =",
+              "options": ["tu", "je", "il", "vous"],
+              "correctAnswers": [1],
+              "explanation": "Pronom personnel 1re personne."
+            },
+            {
+              "id": "q03-05",
+              "type": "single_choice",
+              "question": "叫 (jiào) signifie ici :",
+              "options": ["manger", "s'appeler", "partir", "aimer"],
+              "correctAnswers": [1],
+              "explanation": "Verbe « s'appeler » dans cette leçon."
+            },
+            {
+              "id": "q03-06",
+              "type": "single_choice",
+              "question": "名字 (míngzi) =",
+              "options": ["âge", "nom / prénom", "pays", "école"],
+              "correctAnswers": [1],
+              "explanation": "Mot composé pour le nom."
+            },
+            {
+              "id": "q03-07",
+              "type": "single_choice",
+              "question": "什么 (shénme) dans la question du nom =",
+              "options": ["où", "quoi / quel", "quand", "combien"],
+              "correctAnswers": [1],
+              "explanation": "什么 = quoi ; 叫什么名字 = comment (quel) nom."
+            },
+            {
+              "id": "q03-08",
+              "type": "single_choice",
+              "question": "我是学生 (wǒ shì xuésheng) =",
+              "options": [
+                "Je m'appelle étudiant",
+                "Je suis étudiant(e)",
+                "Tu es étudiant",
+                "Il est prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "是 = être (identité, profession)."
+            },
+            {
+              "id": "q03-09",
+              "type": "single_choice",
+              "question": "Réponse à « 你叫什么名字？ » :",
+              "options": ["你好", "我叫Luc", "谢谢", "对不起"],
+              "correctAnswers": [1],
+              "explanation": "Structure directe 我叫 + prénom."
+            },
+            {
+              "id": "q03-10",
+              "type": "single_choice",
+              "question": "是 (shì) sert à :",
+              "options": ["posséder", "être / identifier", "aller", "saluer"],
+              "correctAnswers": [1],
+              "explanation": "Copule « être » pour identité."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Enchanté",
+          "questions": [
+            {
+              "id": "q04-01",
+              "type": "multiple_choice",
+              "question": "Formules après une présentation :",
+              "options": [
+                "很高兴认识你 (hěn gāoxìng rènshi nǐ)",
+                "认识你很高兴",
+                "你好",
+                "谢谢"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux ordres sont courants : « très heureux de te connaître »."
+            },
+            {
+              "id": "q04-02",
+              "type": "single_choice",
+              "question": "认识 (rènshi) =",
+              "options": [
+                "manger",
+                "connaître / rencontrer",
+                "dormir",
+                "étudier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Verbe « connaître, faire la connaissance »."
+            },
+            {
+              "id": "q04-03",
+              "type": "single_choice",
+              "question": "高兴 (gāoxìng) =",
+              "options": ["triste", "content / heureux", "fatigué", "fâché"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif de sentiment positif."
+            },
+            {
+              "id": "q04-04",
+              "type": "single_choice",
+              "question": "很 (hěn) devant un adjectif =",
+              "options": ["pas", "très", "peu", "jamais"],
+              "correctAnswers": [1],
+              "explanation": "Adverbe d'intensité « très »."
+            },
+            {
+              "id": "q04-05",
+              "type": "single_choice",
+              "question": "Traduction : « Ravi de te rencontrer »",
+              "options": ["再见", "很高兴认识你", "对不起", "不客气"],
+              "correctAnswers": [1],
+              "explanation": "Formule standard en début de relation."
+            },
+            {
+              "id": "q04-06",
+              "type": "single_choice",
+              "question": "你 dans 认识你 =",
+              "options": ["je", "toi (te)", "lui", "nous"],
+              "correctAnswers": [1],
+              "explanation": "Complément d'objet : te connaître."
+            },
+            {
+              "id": "q04-07",
+              "type": "single_choice",
+              "question": "Après « 我叫… », on ajoute souvent :",
+              "options": ["再见", "很高兴认识你", "晚上好", "六"],
+              "correctAnswers": [1],
+              "explanation": "Enchaînement poli typique."
+            },
+            {
+              "id": "q04-08",
+              "type": "single_choice",
+              "question": "认 (rèn) évoque l'idée de :",
+              "options": [
+                "oublier",
+                "reconnaître / connaître",
+                "courir",
+                "parler"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Radical lié à la reconnaissance."
+            },
+            {
+              "id": "q04-09",
+              "type": "single_choice",
+              "question": "识 (shi) dans 认识 se lit :",
+              "options": ["shí", "shi (ton léger)", "shì", "sī"],
+              "correctAnswers": [1],
+              "explanation": "Deuxième syllabe souvent neutre en conversation."
+            },
+            {
+              "id": "q04-10",
+              "type": "single_choice",
+              "question": "Cette leçon concerne surtout :",
+              "options": [
+                "les nombres",
+                "la politesse de rencontre",
+                "la nourriture",
+                "les couleurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contexte : première poignée de main sociale."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Comment ça va",
+          "questions": [
+            {
+              "id": "q05-01",
+              "type": "multiple_choice",
+              "question": "Questions sur l'état de quelqu'un :",
+              "options": [
+                "你好吗？(nǐ hǎo ma?)",
+                "你怎么样？(nǐ zěnmeyàng?)",
+                "你叫什么？",
+                "再见"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "好吗 = ça va ? ; 怎么样 = comment (ça se passe) ?"
+            },
+            {
+              "id": "q05-02",
+              "type": "single_choice",
+              "question": "Réponse courante à 你好吗？",
+              "options": ["我叫…", "我很好 (wǒ hěn hǎo)", "谢谢", "老师"],
+              "correctAnswers": [1],
+              "explanation": "我很好 = je vais très bien."
+            },
+            {
+              "id": "q05-03",
+              "type": "single_choice",
+              "question": "吗 (ma) en fin de phrase =",
+              "options": [
+                "nom",
+                "particule interrogative",
+                "au revoir",
+                "merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Transforme une phrase en question oui/non."
+            },
+            {
+              "id": "q05-04",
+              "type": "single_choice",
+              "question": "怎么样 (zěnmeyàng) =",
+              "options": ["comment (ça va)", "où", "qui", "pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "Expression familière « comment »."
+            },
+            {
+              "id": "q05-05",
+              "type": "single_choice",
+              "question": "我 (wǒ) + 很 (hěn) + 好 (hǎo) signifie :",
+              "options": [
+                "Je vais mal",
+                "Je vais très bien",
+                "Tu vas bien",
+                "Il va bien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Structure sujet + très + adjectif."
+            },
+            {
+              "id": "q05-06",
+              "type": "single_choice",
+              "question": "Peut-on répondre 谢谢 à 你好吗？",
+              "options": [
+                "Oui, toujours",
+                "Non, ce n'est pas adapté",
+                "Oui, c'est la seule réponse",
+                "Oui, comme au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On décrit son état (很好, 还行…), pas merci."
+            },
+            {
+              "id": "q05-07",
+              "type": "single_choice",
+              "question": "还行 (hái xíng) exprime :",
+              "options": ["parfait", "correct / pas mal", "très mal", "colère"],
+              "correctAnswers": [1],
+              "explanation": "Réponse modérée « ça va »."
+            },
+            {
+              "id": "q05-08",
+              "type": "single_choice",
+              "question": "好 dans 你好吗 garde le sens :",
+              "options": ["bon / bien", "nom", "revoir", "pardon"],
+              "correctAnswers": [0],
+              "explanation": "Même caractère que dans 你好."
+            },
+            {
+              "id": "q05-09",
+              "type": "single_choice",
+              "question": "Pinyin de 你怎么样？",
+              "options": ["nǐ zěnmeyàng", "nǐ shénme", "nǐ nǎr", "nǐ duōshao"],
+              "correctAnswers": [0],
+              "explanation": "Ton sur 样 (yàng)."
+            },
+            {
+              "id": "q05-10",
+              "type": "single_choice",
+              "question": "Demander l'actualité d'un ami, c'est :",
+              "options": ["你几岁", "你好吗 / 你怎么样", "你叫什么", "晚上好"],
+              "correctAnswers": [1],
+              "explanation": "Formules de bien-être social."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Nationalité",
+          "questions": [
+            {
+              "id": "q06-01",
+              "type": "multiple_choice",
+              "question": "Phrases sur l'origine :",
+              "options": [
+                "我是法国人 (wǒ shì Fǎguó rén)",
+                "我来自法国 (wǒ láizì Fǎguó)",
+                "你好",
+                "谢谢"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "是 + pays + 人 = être [nationalité] ; 来自 = venir de."
+            },
+            {
+              "id": "q06-02",
+              "type": "single_choice",
+              "question": "人 (rén) après un pays =",
+              "options": ["langue", "personne / habitant", "ville", "monnaie"],
+              "correctAnswers": [1],
+              "explanation": "法国人 = personne de France."
+            },
+            {
+              "id": "q06-03",
+              "type": "single_choice",
+              "question": "法国 (Fǎguó) =",
+              "options": ["Chine", "France", "États-Unis", "Japon"],
+              "correctAnswers": [1],
+              "explanation": "国 = pays ; 法 = France (phonétique historique)."
+            },
+            {
+              "id": "q06-04",
+              "type": "single_choice",
+              "question": "来自 (láizì) =",
+              "options": [
+                "partir vers",
+                "venir de",
+                "habiter sans origine",
+                "remercier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Verbe composé « provenir de »."
+            },
+            {
+              "id": "q06-05",
+              "type": "single_choice",
+              "question": "中国 (Zhōngguó) =",
+              "options": ["France", "Chine", "Canada", "Corée"],
+              "correctAnswers": [1],
+              "explanation": "Pays le plus cité en cours de chinois."
+            },
+            {
+              "id": "q06-06",
+              "type": "single_choice",
+              "question": "中国人 (Zhōngguó rén) =",
+              "options": [
+                "langue chinoise",
+                "Chinois(e)",
+                "ville chinoise",
+                "repas chinois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mot type nationalité."
+            },
+            {
+              "id": "q06-07",
+              "type": "single_choice",
+              "question": "Question « Tu es de quel pays ? » (simple) :",
+              "options": [
+                "你是哪国人？",
+                "你好吗？",
+                "你叫什么？",
+                "你去哪儿？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪国 = quel pays."
+            },
+            {
+              "id": "q06-08",
+              "type": "single_choice",
+              "question": "哪 (nǎ) =",
+              "options": ["quel / quelle", "très", "bon", "merci"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif « lequel »."
+            },
+            {
+              "id": "q06-09",
+              "type": "single_choice",
+              "question": "国 (guó) signifie :",
+              "options": ["maison", "pays / nation", "eau", "montagne"],
+              "correctAnswers": [1],
+              "explanation": "Caractère fréquent en géographie."
+            },
+            {
+              "id": "q06-10",
+              "type": "single_choice",
+              "question": "Je suis étudiant français :",
+              "options": [
+                "我是法国学生",
+                "我是法国人",
+                "我来自学生",
+                "我叫法国"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nationalité avec 是…人 ; métier avec 学生 séparément."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Professions simples",
+          "questions": [
+            {
+              "id": "q07-01",
+              "type": "multiple_choice",
+              "question": "Mots de métier vus en 1ère :",
+              "options": [
+                "学生 (xuésheng)",
+                "老师 (lǎoshī)",
+                "医生 (yīshēng)",
+                "再见"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étudiant et professeur sont les premiers métiers au programme."
+            },
+            {
+              "id": "q07-02",
+              "type": "single_choice",
+              "question": "老师 (lǎoshī) =",
+              "options": ["élève", "professeur / maître", "médecin", "ami"],
+              "correctAnswers": [1],
+              "explanation": "老 = vénérable ; 师 = maître."
+            },
+            {
+              "id": "q07-03",
+              "type": "single_choice",
+              "question": "学生 (xuésheng) =",
+              "options": ["prof", "étudiant / élève", "parent", "cuisinier"],
+              "correctAnswers": [1],
+              "explanation": "学 = étudier ; 生 = personne (né/engagé dans l'étude)."
+            },
+            {
+              "id": "q07-04",
+              "type": "single_choice",
+              "question": "我是老师 =",
+              "options": [
+                "Je suis prof",
+                "Je suis élève",
+                "Tu es prof",
+                "Il est médecin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是 + métier sans 人."
+            },
+            {
+              "id": "q07-05",
+              "type": "single_choice",
+              "question": "医生 (yīshēng) =",
+              "options": [
+                "infirmier",
+                "médecin",
+                "dentiste seulement",
+                "pharmacien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mot standard « médecin »."
+            },
+            {
+              "id": "q07-06",
+              "type": "single_choice",
+              "question": "问 « Quelle est ta profession ? » :",
+              "options": ["你是做什么工作的？", "你好吗？", "你几岁？", "谢谢"],
+              "correctAnswers": [0],
+              "explanation": "做什么工作 = faire quel travail."
+            },
+            {
+              "id": "q07-07",
+              "type": "single_choice",
+              "question": "工作 (gōngzuò) =",
+              "options": ["vacances", "travail / emploi", "école", "repas"],
+              "correctAnswers": [1],
+              "explanation": "Nom « travail »."
+            },
+            {
+              "id": "q07-08",
+              "type": "single_choice",
+              "question": "做 (zuò) dans la question profession =",
+              "options": ["être", "faire", "aller", "manger"],
+              "correctAnswers": [1],
+              "explanation": "Verbe « faire »."
+            },
+            {
+              "id": "q07-09",
+              "type": "single_choice",
+              "question": "En classe, tu es probablement :",
+              "options": ["老师", "学生", "医生", "国"],
+              "correctAnswers": [1],
+              "explanation": "Contexte scolaire 1ère."
+            },
+            {
+              "id": "q07-10",
+              "type": "single_choice",
+              "question": "师 (shī) apparaît dans :",
+              "options": ["学生", "老师", "法国", "谢谢"],
+              "correctAnswers": [1],
+              "explanation": "Caractère « maître »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Tu et vous",
+          "questions": [
+            {
+              "id": "q08-01",
+              "type": "multiple_choice",
+              "question": "Pronoms de 2e personne :",
+              "options": ["你 (nǐ)", "你们 (nǐmen)", "我 (wǒ)", "他们"],
+              "correctAnswers": [0, 1],
+              "explanation": "你 = tu ; 们 marque le pluriel → vous."
+            },
+            {
+              "id": "q08-02",
+              "type": "single_choice",
+              "question": "你们 (nǐmen) =",
+              "options": ["tu", "vous (pluriel)", "ils", "je"],
+              "correctAnswers": [1],
+              "explanation": "Suffixe 们 = pluriel humain."
+            },
+            {
+              "id": "q08-03",
+              "type": "single_choice",
+              "question": "你们好吗？ s'adresse à :",
+              "options": [
+                "une personne",
+                "plusieurs personnes",
+                "soi-même",
+                "animaux seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel obligatoire dans la formule."
+            },
+            {
+              "id": "q08-04",
+              "type": "single_choice",
+              "question": "们 (men) ne s'ajoute pas à :",
+              "options": ["你", "老师", "我们", "他们"],
+              "correctAnswers": [1],
+              "explanation": "们 avec pronoms/personnes humaines, pas collé à un nom seul comme 老师们 (autre structure)."
+            },
+            {
+              "id": "q08-05",
+              "type": "single_choice",
+              "question": "我们 (wǒmen) =",
+              "options": ["vous", "nous", "tu", "eux"],
+              "correctAnswers": [1],
+              "explanation": "我 + 们."
+            },
+            {
+              "id": "q08-06",
+              "type": "single_choice",
+              "question": "Saluer un groupe :",
+              "options": [
+                "你好 (singulier seulement)",
+                "你们好",
+                "我很好",
+                "再见"
+              ],
+              "correctAnswers": [1],
+              "explanation": "你们好 = bonjour à vous tous."
+            },
+            {
+              "id": "q08-07",
+              "type": "single_choice",
+              "question": "你 vs 你们 : différence de",
+              "options": ["temps", "nombre", "lieu", "couleur"],
+              "correctAnswers": [1],
+              "explanation": "Singulier / pluriel."
+            },
+            {
+              "id": "q08-08",
+              "type": "single_choice",
+              "question": "他们 (tāmen) =",
+              "options": ["nous", "eux / elles (3e pers.)", "vous", "tu"],
+              "correctAnswers": [1],
+              "explanation": "他/她 + 们 selon le genre ; 他们 masculin ou mixte."
+            },
+            {
+              "id": "q08-09",
+              "type": "single_choice",
+              "question": "En classe, le prof dit aux élèves :",
+              "options": ["你好吗", "你们好", "我很好", "谢谢"],
+              "correctAnswers": [1],
+              "explanation": "Destinataires multiples."
+            },
+            {
+              "id": "q08-10",
+              "type": "single_choice",
+              "question": "Pinyin de 我们 :",
+              "options": ["wǒmen", "wǒmén", "wómen", "wǒmèn"],
+              "correctAnswers": [0],
+              "explanation": "Ton neutre sur 们."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Dialogue de classe",
+          "questions": [
+            {
+              "id": "q09-01",
+              "type": "multiple_choice",
+              "question": "Enchaînement typique en classe :",
+              "options": [
+                "老师：你好！",
+                "学生：老师好！",
+                "学生：再见！ (début)",
+                "谢谢 (sans contexte)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutation prof/élèves avec 老师好 très courant."
+            },
+            {
+              "id": "q09-02",
+              "type": "single_choice",
+              "question": "老师好！(lǎoshī hǎo) =",
+              "options": [
+                "Au revoir prof",
+                "Bonjour professeur",
+                "Merci prof",
+                "Pardon prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salutation respectueuse envers l'enseignant."
+            },
+            {
+              "id": "q09-03",
+              "type": "single_choice",
+              "question": "Avant de parler, l'élève peut dire :",
+              "options": ["对不起，老师", "再见", "法国", "六"],
+              "correctAnswers": [0],
+              "explanation": "S'excuser pour interrompre ou attirer l'attention."
+            },
+            {
+              "id": "q09-04",
+              "type": "single_choice",
+              "question": "同学 (tóngxué) =",
+              "options": ["prof", "camarade de classe", "parent", "médecin"],
+              "correctAnswers": [1],
+              "explanation": "同 = même ; 学 = étude → condisciple."
+            },
+            {
+              "id": "q09-05",
+              "type": "single_choice",
+              "question": "请 (qǐng) devant un verbe =",
+              "options": [
+                "interdiction",
+                "veuillez (politesse)",
+                "colère",
+                "au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "请说 = veuillez parler."
+            },
+            {
+              "id": "q09-06",
+              "type": "single_choice",
+              "question": "请坐 (qǐng zuò) =",
+              "options": ["Levez-vous", "Asseyez-vous", "Sortez", "Parlez"],
+              "correctAnswers": [1],
+              "explanation": "坐 = s'asseoir."
+            },
+            {
+              "id": "q09-07",
+              "type": "single_choice",
+              "question": "说 (shuō) =",
+              "options": ["écouter", "parler / dire", "écrire", "manger"],
+              "correctAnswers": [1],
+              "explanation": "Verbe de base en classe de langue."
+            },
+            {
+              "id": "q09-08",
+              "type": "single_choice",
+              "question": "听 (tīng) =",
+              "options": ["parler", "écouter", "voir", "partir"],
+              "correctAnswers": [1],
+              "explanation": "Compétence orale : écoute."
+            },
+            {
+              "id": "q09-09",
+              "type": "single_choice",
+              "question": "Fin de cours, on dit souvent :",
+              "options": ["老师好", "再见，老师", "你好", "不客气"],
+              "correctAnswers": [1],
+              "explanation": "Au revoir poli envers le prof."
+            },
+            {
+              "id": "q09-10",
+              "type": "single_choice",
+              "question": "坐 (zuò) =",
+              "options": ["debout", "s'asseoir", "courir", "dormir"],
+              "correctAnswers": [1],
+              "explanation": "Instruction fréquente."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision salutations",
+          "questions": [
+            {
+              "id": "q10-01",
+              "type": "multiple_choice",
+              "question": "Vocabulaire « rencontrer quelqu'un » :",
+              "options": ["你好", "很高兴认识你", "我叫", "谢谢"],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer puis exprimer la joie de la rencontre."
+            },
+            {
+              "id": "q10-02",
+              "type": "single_choice",
+              "question": "Ordre logique d'une présentation :",
+              "options": [
+                "再见→你好",
+                "你好→我叫…→很高兴认识你",
+                "谢谢→对不起",
+                "晚上好→早上好"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salutation, nom, formule de rencontre."
+            },
+            {
+              "id": "q10-03",
+              "type": "single_choice",
+              "question": "Quelle paire est correcte ?",
+              "options": [
+                "A:谢谢 B:对不起",
+                "A:谢谢 B:不客气",
+                "A:你好 B:再见",
+                "A:对不起 B:谢谢"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Merci / de rien."
+            },
+            {
+              "id": "q10-04",
+              "type": "single_choice",
+              "question": "Le matin en Chine, on peut dire :",
+              "options": ["晚上好", "早上好 / 你好", "再见", "医生"],
+              "correctAnswers": [1],
+              "explanation": "Les deux restent acceptables le matin."
+            },
+            {
+              "id": "q10-05",
+              "type": "single_choice",
+              "question": "我很好 répond à :",
+              "options": ["你叫什么", "你好吗", "你是哪国人", "请坐"],
+              "correctAnswers": [1],
+              "explanation": "Question sur le bien-être."
+            },
+            {
+              "id": "q10-06",
+              "type": "single_choice",
+              "question": "Caractère commun à 你好 et 您好 (poli) :",
+              "options": ["好", "吗", "国", "师"],
+              "correctAnswers": [0],
+              "explanation": "好 = bon ; 您 = vous de respect."
+            },
+            {
+              "id": "q10-07",
+              "type": "single_choice",
+              "question": "您好 (nín hǎo) s'utilise pour :",
+              "options": [
+                "un enfant",
+                "une personne à respecter",
+                "un animal",
+                "un nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "您 = vous honorifique."
+            },
+            {
+              "id": "q10-08",
+              "type": "single_choice",
+              "question": "Combien de syllabes dans nǐ hǎo ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "你 + 好 = deux syllabes."
+            },
+            {
+              "id": "q10-09",
+              "type": "single_choice",
+              "question": "Le pinyin aide surtout à :",
+              "options": [
+                "compter",
+                "prononcer les tons",
+                "écrire les hanzi",
+                "traduire en anglais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Transcription phonétique avec tons."
+            },
+            {
+              "id": "q10-10",
+              "type": "single_choice",
+              "question": "Unité u1 porte surtout sur :",
+              "options": [
+                "nourriture",
+                "saluer et se présenter",
+                "couleurs",
+                "sports"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Thème du chapitre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Nombres 1 à 5",
+          "questions": [
+            {
+              "id": "u2q01-01",
+              "type": "multiple_choice",
+              "question": "Nombres de 1 à 3 en hanzi :",
+              "options": ["一 (yī)", "二 (èr)", "五 (wǔ)", "十 (shí)"],
+              "correctAnswers": [0, 1],
+              "explanation": "一、二、三 sont la base ; 五 et 十 viennent après."
+            },
+            {
+              "id": "u2q01-02",
+              "type": "single_choice",
+              "question": "三 (sān) =",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [1],
+              "explanation": "Troisième chiffre."
+            },
+            {
+              "id": "u2q01-03",
+              "type": "single_choice",
+              "question": "四 (sì) =",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "Quatre."
+            },
+            {
+              "id": "u2q01-04",
+              "type": "single_choice",
+              "question": "五 (wǔ) =",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [1],
+              "explanation": "Cinq."
+            },
+            {
+              "id": "u2q01-05",
+              "type": "single_choice",
+              "question": "Pinyin de 一 ?",
+              "options": ["yī", "èr", "yí", "yì"],
+              "correctAnswers": [0],
+              "explanation": "Premier ton sur yī."
+            },
+            {
+              "id": "u2q01-06",
+              "type": "single_choice",
+              "question": "二 se prononce souvent :",
+              "options": ["èr", "liǎng (devant nom)", "sān", "wǔ"],
+              "correctAnswers": [1],
+              "explanation": "En 1ère, on apprend 二 ; 两 apparaît avec classificateurs."
+            },
+            {
+              "id": "u2q01-07",
+              "type": "single_choice",
+              "question": "Ordre croissant :",
+              "options": ["三 一 二", "一 二 三", "五 四 三", "二 一 三"],
+              "correctAnswers": [1],
+              "explanation": "Séquence 1-2-3."
+            },
+            {
+              "id": "u2q01-08",
+              "type": "single_choice",
+              "question": "Quel caractère vaut 5 ?",
+              "options": ["四", "五", "六", "七"],
+              "correctAnswers": [1],
+              "explanation": "五 = 5."
+            },
+            {
+              "id": "u2q01-09",
+              "type": "single_choice",
+              "question": "一 + 一 symbolise souvent en culture :",
+              "options": [
+                "deux traits simples",
+                "début / unité",
+                "dix",
+                "zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un trait horizontal : le nombre un."
+            },
+            {
+              "id": "u2q01-10",
+              "type": "single_choice",
+              "question": "Compter jusqu'à 5 inclut :",
+              "options": ["零 seulement", "一 à 五", "十 à 百", "月 et 日"],
+              "correctAnswers": [1],
+              "explanation": "Objectif de ce quiz."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Nombres 6 à 10",
+          "questions": [
+            {
+              "id": "u2q02-01",
+              "type": "multiple_choice",
+              "question": "Nombres ≥ 6 appris ici :",
+              "options": ["六 (liù)", "七 (qī)", "一 (yī)", "八 (bā)"],
+              "correctAnswers": [0, 1],
+              "explanation": "六 et 七 font partie de 6–10 ; 八 aussi dans la leçon."
+            },
+            {
+              "id": "u2q02-02",
+              "type": "single_choice",
+              "question": "八 (bā) =",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [2],
+              "explanation": "Huit."
+            },
+            {
+              "id": "u2q02-03",
+              "type": "single_choice",
+              "question": "九 (jiǔ) =",
+              "options": ["7", "8", "9", "10"],
+              "correctAnswers": [2],
+              "explanation": "Neuf."
+            },
+            {
+              "id": "u2q02-04",
+              "type": "single_choice",
+              "question": "十 (shí) =",
+              "options": ["5", "10", "100", "0"],
+              "correctAnswers": [1],
+              "explanation": "Dix ; base du système décimal chinois."
+            },
+            {
+              "id": "u2q02-05",
+              "type": "single_choice",
+              "question": "六 (liù) =",
+              "options": ["5", "6", "7", "8"],
+              "correctAnswers": [1],
+              "explanation": "Six."
+            },
+            {
+              "id": "u2q02-06",
+              "type": "single_choice",
+              "question": "七 (qī) =",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [1],
+              "explanation": "Sept."
+            },
+            {
+              "id": "u2q02-07",
+              "type": "single_choice",
+              "question": "Après 九 vient :",
+              "options": ["八", "十", "一", "五"],
+              "correctAnswers": [1],
+              "explanation": "10 = 十."
+            },
+            {
+              "id": "u2q02-08",
+              "type": "single_choice",
+              "question": "Combien de traits simples dans 十 ?",
+              "options": ["1", "2 croisés", "5", "10 traits"],
+              "correctAnswers": [1],
+              "explanation": "Forme en croix : dix."
+            },
+            {
+              "id": "u2q02-09",
+              "type": "single_choice",
+              "question": "Pinyin de 九 :",
+              "options": ["jiǔ", "jiū", "jiù", "jǔ"],
+              "correctAnswers": [0],
+              "explanation": "3e ton."
+            },
+            {
+              "id": "u2q02-10",
+              "type": "single_choice",
+              "question": "De 1 à 10, le plus grand hanzi vu :",
+              "options": ["五", "十", "一", "三"],
+              "correctAnswers": [1],
+              "explanation": "十 clôt la série."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Famille proche",
+          "questions": [
+            {
+              "id": "u2q03-01",
+              "type": "multiple_choice",
+              "question": "Membres de la famille nucléaire :",
+              "options": ["爸爸 (bàba)", "妈妈 (māma)", "老师", "同学"],
+              "correctAnswers": [0, 1],
+              "explanation": "Papa et maman ; les autres ne sont pas famille."
+            },
+            {
+              "id": "u2q03-02",
+              "type": "single_choice",
+              "question": "爸爸 (bàba) =",
+              "options": ["maman", "papa", "frère", "sœur"],
+              "correctAnswers": [1],
+              "explanation": "Redoublement affectueux pour père."
+            },
+            {
+              "id": "u2q03-03",
+              "type": "single_choice",
+              "question": "妈妈 (māma) =",
+              "options": ["papa", "maman", "grand-mère", "oncle"],
+              "correctAnswers": [1],
+              "explanation": "Mère."
+            },
+            {
+              "id": "u2q03-04",
+              "type": "single_choice",
+              "question": "哥哥 (gēge) =",
+              "options": ["frère aîné", "sœur", "père", "cousin"],
+              "correctAnswers": [0],
+              "explanation": "哥 = frère aîné."
+            },
+            {
+              "id": "u2q03-05",
+              "type": "single_choice",
+              "question": "妹妹 (mèimei) =",
+              "options": ["frère", "sœur cadette", "mère", "tante"],
+              "correctAnswers": [1],
+              "explanation": "妹 = sœur cadette."
+            },
+            {
+              "id": "u2q03-06",
+              "type": "single_choice",
+              "question": "我爱妈妈 (wǒ ài māma) =",
+              "options": [
+                "Je déteste maman",
+                "J'aime maman",
+                "Maman m'aime",
+                "Au revoir maman"
+              ],
+              "correctAnswers": [1],
+              "explanation": "爱 = aimer."
+            },
+            {
+              "id": "u2q03-07",
+              "type": "single_choice",
+              "question": "爱 (ài) =",
+              "options": ["saluer", "aimer", "manger", "étudier"],
+              "correctAnswers": [1],
+              "explanation": "Verbe affectif."
+            },
+            {
+              "id": "u2q03-08",
+              "type": "single_choice",
+              "question": "爸 et 妈 sont :",
+              "options": [
+                "nombres",
+                "caractères familiaux",
+                "verbes",
+                "particules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Radicaux familiers du quotidien."
+            },
+            {
+              "id": "u2q03-09",
+              "type": "single_choice",
+              "question": "Présenter sa mère :",
+              "options": ["这是我妈妈", "这是我老师", "我是妈妈", "再见妈妈"],
+              "correctAnswers": [0],
+              "explanation": "这 = ce/cette ; 是 = est."
+            },
+            {
+              "id": "u2q03-10",
+              "type": "single_choice",
+              "question": "这 (zhè) =",
+              "options": ["cela / ce-ci", "là-bas", "qui", "quand"],
+              "correctAnswers": [0],
+              "explanation": "Démonstratif proche."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Oui, non, et",
+          "questions": [
+            {
+              "id": "u2q04-01",
+              "type": "multiple_choice",
+              "question": "Mots de réponse basique :",
+              "options": ["是 (shì)", "不 (bù)", "和 (hé)", "再见"],
+              "correctAnswers": [0, 1],
+              "explanation": "是 = oui (affirmation) ; 不 = non / ne…pas."
+            },
+            {
+              "id": "u2q04-02",
+              "type": "single_choice",
+              "question": "不是 (bù shì) =",
+              "options": ["c'est oui", "ce n'est pas", "merci", "bonjour"],
+              "correctAnswers": [1],
+              "explanation": "Négation de 是."
+            },
+            {
+              "id": "u2q04-03",
+              "type": "single_choice",
+              "question": "和 (hé) =",
+              "options": ["mais", "et (liaison)", "ou", "donc"],
+              "correctAnswers": [1],
+              "explanation": "Conjonction « et » entre noms."
+            },
+            {
+              "id": "u2q04-04",
+              "type": "single_choice",
+              "question": "爸爸和妈妈 =",
+              "options": [
+                "papa ou maman",
+                "papa et maman",
+                "papa sans maman",
+                "au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "和 implicite ou explicite entre deux noms."
+            },
+            {
+              "id": "u2q04-05",
+              "type": "single_choice",
+              "question": "Réponse courte « oui » à « 你是学生吗？ » :",
+              "options": ["不", "是", "和", "吗"],
+              "correctAnswers": [1],
+              "explanation": "Affirmation avec 是."
+            },
+            {
+              "id": "u2q04-06",
+              "type": "single_choice",
+              "question": "我不去 (wǒ bù qù) contient :",
+              "options": [
+                "affirmation",
+                "négation avec 不",
+                "question",
+                "merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "不 nie le verbe 去."
+            },
+            {
+              "id": "u2q04-07",
+              "type": "single_choice",
+              "question": "也 (yě) =",
+              "options": ["aussi", "jamais", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe « aussi »."
+            },
+            {
+              "id": "u2q04-08",
+              "type": "single_choice",
+              "question": "我也是学生 =",
+              "options": [
+                "Je ne suis pas élève",
+                "Je suis aussi élève",
+                "Tu es élève",
+                "Il est prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "也 + 是."
+            },
+            {
+              "id": "u2q04-09",
+              "type": "single_choice",
+              "question": "没 (méi) s'apprend surtout pour :",
+              "options": [
+                "négation passé / absence",
+                "salutation",
+                "couleur",
+                "nombre 8"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première approche : 没有 = ne pas avoir."
+            },
+            {
+              "id": "u2q04-10",
+              "type": "single_choice",
+              "question": "没有 (méiyǒu) =",
+              "options": [
+                "avoir beaucoup",
+                "ne pas avoir / il n'y a pas",
+                "toujours",
+                "merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mot essentiel du niveau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Personnes et pronoms",
+          "questions": [
+            {
+              "id": "u2q05-01",
+              "type": "multiple_choice",
+              "question": "Pronoms personnels de base :",
+              "options": ["我", "你", "好", "吗"],
+              "correctAnswers": [0, 1],
+              "explanation": "我 et 你 ; 好 et 吗 ne sont pas pronoms."
+            },
+            {
+              "id": "u2q05-02",
+              "type": "single_choice",
+              "question": "他 (tā) =",
+              "options": ["elle (écrit 她)", "il", "je", "nous"],
+              "correctAnswers": [1],
+              "explanation": "3e personne masculin (écriture standard 他)."
+            },
+            {
+              "id": "u2q05-03",
+              "type": "single_choice",
+              "question": "她 (tā) =",
+              "options": ["il", "elle", "tu", "vous"],
+              "correctAnswers": [1],
+              "explanation": "Même prononciation, radical 女."
+            },
+            {
+              "id": "u2q05-04",
+              "type": "single_choice",
+              "question": "它是 (tā shì) pour un objet :",
+              "options": [
+                "il est",
+                "elle est",
+                "c'est (neutre / objet)",
+                "nous sommes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "它 = it / animal ou chose."
+            },
+            {
+              "id": "u2q05-05",
+              "type": "single_choice",
+              "question": "谁 (shéi) =",
+              "options": ["où", "qui", "quoi", "comment"],
+              "correctAnswers": [1],
+              "explanation": "Interrogatif personne."
+            },
+            {
+              "id": "u2q05-06",
+              "type": "single_choice",
+              "question": "他是谁？ =",
+              "options": [
+                "Où est-il ?",
+                "Qui est-il ?",
+                "Comment va-t-il ?",
+                "Quel âge ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Question d'identité."
+            },
+            {
+              "id": "u2q05-07",
+              "type": "single_choice",
+              "question": "我你他 partagent :",
+              "options": [
+                "même ton obligatoire",
+                "structure pronominale 1-2-3 pers.",
+                "être des nombres",
+                "être des salutations"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Table de base en chinois."
+            },
+            {
+              "id": "u2q05-08",
+              "type": "single_choice",
+              "question": "我们 vs 你们 :",
+              "options": [
+                "même sens",
+                "nous vs vous",
+                "je vs tu",
+                "il vs elle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriels de 1re et 2e personne."
+            },
+            {
+              "id": "u2q05-09",
+              "type": "single_choice",
+              "question": "他们 (tāmen) désigne :",
+              "options": [
+                "un seul homme",
+                "un groupe (ils)",
+                "moi seul",
+                "merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel 3e personne."
+            },
+            {
+              "id": "u2q05-10",
+              "type": "single_choice",
+              "question": "Pinyin identique pour 他/她/它 en mandarin standard :",
+              "options": [
+                "faux, tons différents",
+                "vrai : tā",
+                "faux, voyelles différentes",
+                "vrai seulement au cantonais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Homophonie ; l'écriture distingue."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Lieu et démonstratifs",
+          "questions": [
+            {
+              "id": "u2q06-01",
+              "type": "multiple_choice",
+              "question": "Mots de lieu simples :",
+              "options": [
+                "这儿 (zhèr) / 这里",
+                "那儿 (nàr) / 那里",
+                "谢谢",
+                "老师"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ici et là ; salutations hors thème lieu."
+            },
+            {
+              "id": "u2q06-02",
+              "type": "single_choice",
+              "question": "这儿 (zhèr) =",
+              "options": ["là-bas", "ici", "où", "quand"],
+              "correctAnswers": [1],
+              "explanation": "Variante nordique de 这里."
+            },
+            {
+              "id": "u2q06-03",
+              "type": "single_choice",
+              "question": "那儿 (nàr) =",
+              "options": ["ici", "là-bas", "dedans", "haut"],
+              "correctAnswers": [1],
+              "explanation": "Opposé de 这儿."
+            },
+            {
+              "id": "u2q06-04",
+              "type": "single_choice",
+              "question": "在哪儿 (zài nǎr) =",
+              "options": ["qui", "où (être)", "pourquoi", "combien"],
+              "correctAnswers": [1],
+              "explanation": "在 = être à ; 哪儿 = où."
+            },
+            {
+              "id": "u2q06-05",
+              "type": "single_choice",
+              "question": "在 (zài) indique souvent :",
+              "options": [
+                "temps seulement",
+                "localisation",
+                "couleur",
+                "nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Préposition / verbe de localisation."
+            },
+            {
+              "id": "u2q06-06",
+              "type": "single_choice",
+              "question": "学校 (xuéxiào) =",
+              "options": ["hôpital", "école", "maison", "magasin"],
+              "correctAnswers": [1],
+              "explanation": "学 + 校."
+            },
+            {
+              "id": "u2q06-07",
+              "type": "single_choice",
+              "question": "我在学校 =",
+              "options": [
+                "Je vais à l'école (futur)",
+                "Je suis à l'école",
+                "Je suis prof",
+                "Au revoir école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "在 + lieu = être à."
+            },
+            {
+              "id": "u2q06-08",
+              "type": "single_choice",
+              "question": "家 (jiā) =",
+              "options": [
+                "famille / maison",
+                "pays étranger",
+                "voiture",
+                "ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double sens foyer/famille."
+            },
+            {
+              "id": "u2q06-09",
+              "type": "single_choice",
+              "question": "我回家 (wǒ huí jiā) ≈",
+              "options": [
+                "Je quitte la maison",
+                "Je rentre à la maison",
+                "Je suis à l'école",
+                "Bonjour"
+              ],
+              "correctAnswers": [1],
+              "explanation": "回 = retourner."
+            },
+            {
+              "id": "u2q06-10",
+              "type": "single_choice",
+              "question": "那 (nà) vs 这 (zhè) :",
+              "options": [
+                "là-bas vs ici (démonstratif)",
+                "haut vs bas",
+                "oui vs non",
+                "merci vs pardon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposition de distance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Temps : aujourd'hui",
+          "questions": [
+            {
+              "id": "u2q07-01",
+              "type": "multiple_choice",
+              "question": "Mots de temps proche :",
+              "options": [
+                "今天 (jīntiān)",
+                "明天 (míngtiān)",
+                "昨天 (zuótiān)",
+                "五"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aujourd'hui et demain ; hier aussi dans la leçon."
+            },
+            {
+              "id": "u2q07-02",
+              "type": "single_choice",
+              "question": "今天 (jīntiān) =",
+              "options": ["hier", "aujourd'hui", "demain", "semaine"],
+              "correctAnswers": [1],
+              "explanation": "今 = maintenant / ce ; 天 = jour."
+            },
+            {
+              "id": "u2q07-03",
+              "type": "single_choice",
+              "question": "明天 (míngtiān) =",
+              "options": ["aujourd'hui", "demain", "hier", "matin"],
+              "correctAnswers": [1],
+              "explanation": "明 = clair → jour suivant."
+            },
+            {
+              "id": "u2q07-04",
+              "type": "single_choice",
+              "question": "昨天 (zuótiān) =",
+              "options": ["demain", "hier", "soir", "nuit"],
+              "correctAnswers": [1],
+              "explanation": "昨 = passé récent."
+            },
+            {
+              "id": "u2q07-05",
+              "type": "single_choice",
+              "question": "天 (tiān) dans ces mots =",
+              "options": ["ciel / jour", "mer", "montagne", "porte"],
+              "correctAnswers": [0],
+              "explanation": "Unité calendaire."
+            },
+            {
+              "id": "u2q07-06",
+              "type": "single_choice",
+              "question": "现在 (xiànzài) =",
+              "options": [
+                "autrefois",
+                "maintenant",
+                "jamais",
+                "toujours demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "现 = actuel ; 在 = être."
+            },
+            {
+              "id": "u2q07-07",
+              "type": "single_choice",
+              "question": "我明天去学校 =",
+              "options": [
+                "Hier à l'école",
+                "Demain je vais à l'école",
+                "Aujourd'hui à la maison",
+                "Au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "明天 marque le futur proche."
+            },
+            {
+              "id": "u2q07-08",
+              "type": "single_choice",
+              "question": "今 (jīn) évoque :",
+              "options": [
+                "passé lointain",
+                "le présent / ce",
+                "futur seulement",
+                "négation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Présent dans 今天、今年…"
+            },
+            {
+              "id": "u2q07-09",
+              "type": "single_choice",
+              "question": "去 (qù) =",
+              "options": ["venir", "aller", "rester", "manger"],
+              "correctAnswers": [1],
+              "explanation": "Verbe de mouvement aller."
+            },
+            {
+              "id": "u2q07-10",
+              "type": "single_choice",
+              "question": "Ordre chronologique :",
+              "options": [
+                "明天 今天 昨天",
+                "昨天 今天 明天",
+                "今天 昨天 明天",
+                "五 四 三"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passé → présent → futur."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Nourriture et boisson",
+          "questions": [
+            {
+              "id": "u2q08-01",
+              "type": "multiple_choice",
+              "question": "Vocabulaire alimentaire de base :",
+              "options": ["水 (shuǐ)", "饭 (fàn)", "老师", "十"],
+              "correctAnswers": [0, 1],
+              "explanation": "Eau et riz/repas ; hors thème."
+            },
+            {
+              "id": "u2q08-02",
+              "type": "single_choice",
+              "question": "水 (shuǐ) =",
+              "options": ["feu", "eau", "pain", "viande"],
+              "correctAnswers": [1],
+              "explanation": "Boisson essentielle."
+            },
+            {
+              "id": "u2q08-03",
+              "type": "single_choice",
+              "question": "饭 (fàn) =",
+              "options": ["eau", "repas / riz cuit", "fruit", "légume seul"],
+              "correctAnswers": [1],
+              "explanation": "Repas en général en conversation."
+            },
+            {
+              "id": "u2q08-04",
+              "type": "single_choice",
+              "question": "我喝水 (wǒ hē shuǐ) =",
+              "options": [
+                "Je mange du riz",
+                "Je bois de l'eau",
+                "Je vais à l'école",
+                "Merci"
+              ],
+              "correctAnswers": [1],
+              "explanation": "喝 = boire."
+            },
+            {
+              "id": "u2q08-05",
+              "type": "single_choice",
+              "question": "吃 (chī) =",
+              "options": ["boire", "manger", "dormir", "parler"],
+              "correctAnswers": [1],
+              "explanation": "Verbe manger."
+            },
+            {
+              "id": "u2q08-06",
+              "type": "single_choice",
+              "question": "我吃饭 =",
+              "options": [
+                "Je bois",
+                "Je prends un repas",
+                "Je dors",
+                "Au revoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Expression quotidienne."
+            },
+            {
+              "id": "u2q08-07",
+              "type": "single_choice",
+              "question": "茶 (chá) =",
+              "options": ["café", "thé", "jus", "lait"],
+              "correctAnswers": [1],
+              "explanation": "Boisson culturelle chinoise."
+            },
+            {
+              "id": "u2q08-08",
+              "type": "single_choice",
+              "question": "要 (yào) devant nom =",
+              "options": [
+                "refuser",
+                "vouloir / prendre (commander)",
+                "oublier",
+                "courir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "我要水 = je veux de l'eau."
+            },
+            {
+              "id": "u2q08-09",
+              "type": "single_choice",
+              "question": "请给我水 (qǐng gěi wǒ shuǐ) ≈",
+              "options": [
+                "Donne-moi de l'eau s'il te plaît",
+                "Au revoir",
+                "Je suis prof",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "给 = donner ; 我 = moi."
+            },
+            {
+              "id": "u2q08-10",
+              "type": "single_choice",
+              "question": "给 (gěi) =",
+              "options": ["prendre", "donner", "partir", "étudier"],
+              "correctAnswers": [1],
+              "explanation": "Verbe « donner »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Couleurs de base",
+          "questions": [
+            {
+              "id": "u2q09-01",
+              "type": "multiple_choice",
+              "question": "Couleurs primaires en chinois :",
+              "options": ["红 (hóng)", "蓝 (lán)", "好", "吗"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et bleu ; 白、黑 complètent la leçon."
+            },
+            {
+              "id": "u2q09-02",
+              "type": "single_choice",
+              "question": "红 (hóng) =",
+              "options": ["vert", "rouge", "jaune", "noir"],
+              "correctAnswers": [1],
+              "explanation": "Couleur du 红 dans drapeau."
+            },
+            {
+              "id": "u2q09-03",
+              "type": "single_choice",
+              "question": "白 (bái) =",
+              "options": ["noir", "blanc", "bleu", "rouge"],
+              "correctAnswers": [1],
+              "explanation": "Opposé fréquent de 黑."
+            },
+            {
+              "id": "u2q09-04",
+              "type": "single_choice",
+              "question": "黑 (hēi) =",
+              "options": ["blanc", "noir", "gris", "orange"],
+              "correctAnswers": [1],
+              "explanation": "Noir."
+            },
+            {
+              "id": "u2q09-05",
+              "type": "single_choice",
+              "question": "蓝 (lán) =",
+              "options": ["rouge", "bleu", "vert", "violet"],
+              "correctAnswers": [1],
+              "explanation": "Bleu."
+            },
+            {
+              "id": "u2q09-06",
+              "type": "single_choice",
+              "question": "这是红色的 (zhè shì hóngsè de) ≈",
+              "options": [
+                "C'est bleu",
+                "C'est rouge",
+                "C'est grand",
+                "C'est prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "色 = couleur ; 的 marque la description."
+            },
+            {
+              "id": "u2q09-07",
+              "type": "single_choice",
+              "question": "色 (sè) =",
+              "options": ["nombre", "couleur", "jour", "eau"],
+              "correctAnswers": [1],
+              "explanation": "Suffixe de couleur."
+            },
+            {
+              "id": "u2q09-08",
+              "type": "single_choice",
+              "question": "绿 (lǜ) =",
+              "options": ["rouge", "vert", "blanc", "noir"],
+              "correctAnswers": [1],
+              "explanation": "Vert."
+            },
+            {
+              "id": "u2q09-09",
+              "type": "single_choice",
+              "question": "大 (dà) =",
+              "options": ["petit", "grand", "rouge", "boire"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif taille (souvent avec couleurs/objets)."
+            },
+            {
+              "id": "u2q09-10",
+              "type": "single_choice",
+              "question": "小 (xiǎo) =",
+              "options": ["grand", "petit", "long", "haut"],
+              "correctAnswers": [1],
+              "explanation": "Opposé de 大."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision mots essentiels",
+          "questions": [
+            {
+              "id": "u2q10-01",
+              "type": "multiple_choice",
+              "question": "Mots outils du quotidien appris :",
+              "options": ["是 / 不", "和 / 也", "再见 seul", "一 à 十"],
+              "correctAnswers": [0, 3],
+              "explanation": "Négation/affirmation, conjonctions, et nombres 1–10."
+            },
+            {
+              "id": "u2q10-02",
+              "type": "single_choice",
+              "question": "Je suis à la maison aujourd'hui :",
+              "options": ["我昨天在家", "我今天在家", "我明天学校", "谢谢在家"],
+              "correctAnswers": [1],
+              "explanation": "今天 + 在 + 家."
+            },
+            {
+              "id": "u2q10-03",
+              "type": "single_choice",
+              "question": " trois + quatre =",
+              "options": ["六", "七", "八", "九"],
+              "correctAnswers": [1],
+              "explanation": "3+4=7 → 七."
+            },
+            {
+              "id": "u2q10-04",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "我不学生",
+                "我不是学生",
+                "我不是学生吗错",
+                "我是不要"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Négation : 不是 + nom."
+            },
+            {
+              "id": "u2q10-05",
+              "type": "single_choice",
+              "question": "爸爸、妈妈、哥哥、妹妹 concernent :",
+              "options": ["école", "famille", "nourriture", "couleurs"],
+              "correctAnswers": [1],
+              "explanation": "Lexique familial."
+            },
+            {
+              "id": "u2q10-06",
+              "type": "single_choice",
+              "question": "我要茶 =",
+              "options": [
+                "Je refuse le thé",
+                "Je veux du thé",
+                "Je suis thé",
+                "Au revoir thé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "要 + nom."
+            },
+            {
+              "id": "u2q10-07",
+              "type": "single_choice",
+              "question": "Où es-tu ? en chinois simple :",
+              "options": ["你是谁", "你在哪儿", "你几岁", "你叫什么"],
+              "correctAnswers": [1],
+              "explanation": "你在哪儿 / 你在哪里."
+            },
+            {
+              "id": "u2q10-08",
+              "type": "single_choice",
+              "question": "Unité u2 vise surtout :",
+              "options": [
+                "salutations seules",
+                "vocabulaire essentiel (nombres, famille, lieu, temps…)",
+                "grammaire avancée",
+                "calligraphie seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Titre du chapitre."
+            },
+            {
+              "id": "u2q10-09",
+              "type": "single_choice",
+              "question": "Hanzi + pinyin servent à :",
+              "options": [
+                "remplacer le français",
+                "lire et prononcer le mandarin",
+                "compter en anglais",
+                "éviter les tons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Double codage niveau 1ère."
+            },
+            {
+              "id": "u2q10-10",
+              "type": "single_choice",
+              "question": "Dix quiz × dix questions =",
+              "options": ["100", "200", "20", "1000"],
+              "correctAnswers": [1],
+              "explanation": "Total du fichier curriculum 01."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

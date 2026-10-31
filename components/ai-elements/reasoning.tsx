@@ -12,7 +12,7 @@ import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
-import { BrainIcon, ChevronDownIcon } from "@mdevs/icons";
+import { BrainIcon, ChevronDownIcon, CopyIcon } from "@mdevs/icons";
 import {
   createContext,
   memo,
@@ -151,6 +151,7 @@ export const Reasoning = memo(
 export type ReasoningTriggerProps = ComponentProps<
   typeof CollapsibleTrigger
 > & {
+  copyText?: string;
   getThinkingMessage?: (isStreaming: boolean, duration?: number) => ReactNode;
 };
 
@@ -181,37 +182,60 @@ export const ReasoningTrigger = memo(
   ({
     className,
     children,
+    copyText,
     getThinkingMessage = defaultGetThinkingMessage,
     ...props
   }: ReasoningTriggerProps) => {
     const { isStreaming, isOpen, duration } = useReasoning();
+    const [copied, setCopied] = useState(false);
 
     return (
-      <CollapsibleTrigger
-        className={cn(
-          "flex w-full items-center gap-2 text-muted-foreground text-[13px] leading-[1.65] transition-colors hover:text-foreground",
-          className
-        )}
-        {...props}
-      >
-        {children ?? (
-          <>
-            <BrainIcon
-              className={cn(
-                "size-3.5 shrink-0",
-                isStreaming && "animate-pulse text-primary"
-              )}
-            />
-            {getThinkingMessage(isStreaming, duration)}
-            <ChevronDownIcon
-              className={cn(
-                "size-4 transition-transform",
-                isOpen ? "rotate-180" : "rotate-0"
-              )}
-            />
-          </>
-        )}
-      </CollapsibleTrigger>
+      <div className="flex items-center gap-2">
+        <CollapsibleTrigger
+          className={cn(
+            "flex min-w-0 flex-1 items-center gap-2 text-muted-foreground text-[13px] leading-[1.65] transition-colors hover:text-foreground",
+            className
+          )}
+          {...props}
+        >
+          {children ?? (
+            <>
+              <BrainIcon
+                className={cn(
+                  "size-3.5 shrink-0",
+                  isStreaming && "animate-pulse text-primary"
+                )}
+              />
+              {getThinkingMessage(isStreaming, duration)}
+              <ChevronDownIcon
+                className={cn(
+                  "size-4 transition-transform",
+                  isOpen ? "rotate-180" : "rotate-0"
+                )}
+              />
+            </>
+          )}
+        </CollapsibleTrigger>
+        {copyText ? (
+          <button
+            aria-label="Copier la réflexion"
+            className="inline-flex shrink-0 items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
+            onClick={() => {
+              navigator.clipboard
+                .writeText(copyText)
+                .then(() => {
+                  setCopied(true);
+                  window.setTimeout(() => setCopied(false), 2000);
+                })
+                .catch(() => {});
+            }}
+            type="button"
+          >
+            <CopyIcon className="size-3.5" />
+            {copied ? "Copié" : "Copier"}
+          </button>
+        ) : null}
+      </div>
     );
   }
 );
@@ -224,13 +248,7 @@ const streamdownPlugins = { cjk, code, math, mermaid };
 
 export const ReasoningContent = memo(
   ({ className, children, ...props }: ReasoningContentProps) => {
-    const { isStreaming, isOpen } = useReasoning();
-    const scrollRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-      if (isStreaming && scrollRef.current) {
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-      }
-    }, [children, isStreaming]);
+    const { isOpen } = useReasoning();
 
     if (!isOpen) return null;
 
@@ -243,9 +261,7 @@ export const ReasoningContent = memo(
         {...props}
       >
         <div
-          className="max-h-[260px] overflow-y-auto rounded-xl border border-border/60 bg-muted/25 backdrop-blur-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-muted-foreground/85 font-sans shadow-[inset_0_1px_0_var(--md-highlight)]"
-          ref={scrollRef}
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="rounded-xl border border-border/60 bg-muted/25 backdrop-blur-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-muted-foreground/85 font-sans shadow-[inset_0_1px_0_var(--md-highlight)]"
         >
           <Streamdown plugins={streamdownPlugins}>
             {children}

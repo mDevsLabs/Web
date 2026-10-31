@@ -76,6 +76,7 @@ import { chatModels } from "@/lib/ai/models";
 import type { ToolId } from "@/lib/ai/tools/config";
 import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { memoryLimitForTier } from "@/lib/auth/plan";
+import { markInFlightChat } from "@/lib/chat/in-flight";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
@@ -598,6 +599,7 @@ function PureMultimodalInput({
   );
 
   const doSendCurrentMessage = useCallback(() => {
+    markInFlightChat(chatId);
     if (!isGhostMode) {
       window.history.pushState(
         {},

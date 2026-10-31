@@ -1,0 +1,2448 @@
+{
+  "id": "5e-russe-03",
+  "year": "5e",
+  "subject": "russe",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Affiche de fête",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une affiche « День города », quels indices montrent que c'est une fête urbaine ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le mot « город » (ville)",
+                "Une date et un lieu",
+                "Un prix en euros",
+                "Le mot « день » (jour)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "« День » et « город » renvoient au jour de la ville."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie « День города » en français ?",
+              "type": "single_choice",
+              "options": [
+                "Jour de la ville",
+                "Jour de l'école",
+                "Fête de la neige",
+                "Marché du dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la fête annuelle d'une ville."
+            },
+            {
+              "id": "q3",
+              "question": "Où cherche-t-on d'abord l'heure sur une affiche ?",
+              "type": "single_choice",
+              "options": [
+                "Près de la date",
+                "Dans le titre seul",
+                "Sous le logo de la marque",
+                "En bas de page en petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Date et heure sont souvent groupées."
+            },
+            {
+              "id": "q4",
+              "question": "Le mot russe « концерт » ressemble à quel mot français ?",
+              "type": "single_choice",
+              "options": ["Concert", "Conseil", "Conte", "Couvert"],
+              "correctAnswers": [0],
+              "explanation": "C'est un mot transparent entre les langues."
+            },
+            {
+              "id": "q5",
+              "question": "Une affiche indique « 15:00 » : que comprends-tu ?",
+              "type": "single_choice",
+              "options": [
+                "Trois heures de l'après-midi",
+                "Quinze heures",
+                "Minuit",
+                "Une durée de quinze minutes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En Russie, l'heure est souvent en format 24 h."
+            },
+            {
+              "id": "q6",
+              "question": "« Бесплатно » sur une affiche signifie :",
+              "type": "single_choice",
+              "options": ["Gratuit", "Interdit", "Payant", "Reporté"],
+              "correctAnswers": [0],
+              "explanation": "Entrée sans payer."
+            },
+            {
+              "id": "q7",
+              "question": "Quel élément n'est pas indispensable sur une affiche d'événement ?",
+              "type": "single_choice",
+              "options": [
+                "Le nom de ton animal",
+                "Le lieu",
+                "La date",
+                "Le type d'événement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affiche informe le public, pas les animaux."
+            },
+            {
+              "id": "q8",
+              "question": "Pourquoi repérer « ул. » sur un document ?",
+              "type": "single_choice",
+              "options": [
+                "C'est une abréviation de rue",
+                "C'est une monnaie",
+                "C'est un prénom",
+                "C'est une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Улица » veut dire rue."
+            },
+            {
+              "id": "q9",
+              "question": "Un document en russe avec beaucoup de chiffres peut être :",
+              "type": "single_choice",
+              "options": [
+                "Un horaire ou un prix",
+                "Un poème",
+                "Une chanson seule",
+                "Une carte de visite sans texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chiffres = dates, heures ou tarifs."
+            },
+            {
+              "id": "q10",
+              "question": "Lire une affiche, c'est surtout :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre l'essentiel du message",
+                "Recopier tout mot à mot",
+                "Ignorer les images",
+                "Traduire chaque lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cherche l'information utile."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Carte postale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur une carte « из Москвы », quels repères indiquent l'origine ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le mot « из » (de)",
+                "Le nom « Москва »",
+                "Un drapeau français",
+                "Le mot « carte » en français"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Из Москвы » = de Moscou."
+            },
+            {
+              "id": "q2",
+              "question": "« Привет » sur une carte postale veut dire :",
+              "type": "single_choice",
+              "options": ["Salut", "Au revoir", "Merci", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Formule amicale courante."
+            },
+            {
+              "id": "q3",
+              "question": "Où trouve-t-on souvent le message personnel ?",
+              "type": "single_choice",
+              "options": [
+                "Au verso",
+                "Sur la timbre seule",
+                "Dans le code-barres",
+                "Sous l'enveloppe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recto montre souvent une image."
+            },
+            {
+              "id": "q4",
+              "question": "« Кремль » sur une image évoque surtout :",
+              "type": "single_choice",
+              "options": [
+                "Un ensemble historique à Moscou",
+                "Une plage",
+                "Un stade de foot",
+                "Un aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symbole connu de Moscou."
+            },
+            {
+              "id": "q5",
+              "question": "Que faire en premier avec un document court inconnu ?",
+              "type": "single_choice",
+              "options": [
+                "Repérer mots connus et chiffres",
+                "Le déchirer",
+                "Le lire à l'envers",
+                "Deviner sans lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les indices familiers aident."
+            },
+            {
+              "id": "q6",
+              "question": "« Спасибо » signifie :",
+              "type": "single_choice",
+              "options": ["Merci", "Bonjour", "Oui", "Non"],
+              "correctAnswers": [0],
+              "explanation": "Politesse de base."
+            },
+            {
+              "id": "q7",
+              "question": "Une carte postale est un document :",
+              "type": "single_choice",
+              "options": [
+                "Court et adressé",
+                "Long comme un roman",
+                "Secret sans texte",
+                "Uniquement audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format bref pour un message."
+            },
+            {
+              "id": "q8",
+              "question": "Le mot « музей » en russe ressemble à :",
+              "type": "single_choice",
+              "options": ["Musée", "Musique seule", "Mousse", "Mouton"],
+              "correctAnswers": [0],
+              "explanation": "Mot international."
+            },
+            {
+              "id": "q9",
+              "question": "« До свидания » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Dire au revoir",
+                "Commander un plat",
+                "Demander l'heure",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de départ."
+            },
+            {
+              "id": "q10",
+              "question": "Lire une carte, c'est aussi observer :",
+              "type": "single_choice",
+              "options": [
+                "L'image et le lieu montrés",
+                "Seulement la couleur du papier",
+                "Le poids du courrier",
+                "La météo de demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image et texte se complètent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Menu de café",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur un menu, « чай » et « кофе » permettent de repérer :",
+              "type": "multiple_choice",
+              "options": [
+                "Des boissons",
+                "Des mots proches du français",
+                "Des villes",
+                "Des jours"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boissons repérables grâce à des mots transparents."
+            },
+            {
+              "id": "q2",
+              "question": "« Чай » signifie :",
+              "type": "single_choice",
+              "options": ["Thé", "Fromage", "Pain", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Boisson chaude populaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Кофе » signifie :",
+              "type": "single_choice",
+              "options": ["Café", "Carotte", "Carte", "Cadeau"],
+              "correctAnswers": [0],
+              "explanation": "Mot proche du français."
+            },
+            {
+              "id": "q4",
+              "question": "Un prix « 150 ₽ » indique :",
+              "type": "single_choice",
+              "options": [
+                "Des roubles",
+                "Des dollars US",
+                "Des euros seulement",
+                "Des kilogrammes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "₽ = rouble russe."
+            },
+            {
+              "id": "q5",
+              "question": "Pour commander, tu peux dire :",
+              "type": "single_choice",
+              "options": [
+                "« Один чай, пожалуйста »",
+                "« Bonjour Paris »",
+                "« Merci beaucoup » sans demande",
+                "Rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande polie avec « s'il vous plaît »."
+            },
+            {
+              "id": "q6",
+              "question": "« Пожалуйста » dans une commande veut dire :",
+              "type": "single_choice",
+              "options": ["S'il vous plaît", "Non merci", "À demain", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Formule de politesse."
+            },
+            {
+              "id": "q7",
+              "question": "Un menu est un document :",
+              "type": "single_choice",
+              "options": [
+                "Qui liste des plats ou boissons",
+                "Qui raconte une guerre",
+                "Qui remplace une carte d'identité",
+                "Sans mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il sert au choix au restaurant."
+            },
+            {
+              "id": "q8",
+              "question": "« Суп » ressemble à quel mot français ?",
+              "type": "single_choice",
+              "options": ["Soupe", "Salade", "Sucre", "Soleil"],
+              "correctAnswers": [0],
+              "explanation": "Plat liquide chaud."
+            },
+            {
+              "id": "q9",
+              "question": "Si tu ne comprends pas un mot, tu peux :",
+              "type": "single_choice",
+              "options": [
+                "Chercher un mot transparent ou une image",
+                "Abandonner la lecture",
+                "Changer de pays",
+                "Effacer le menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratégie de lecture en langue étrangère."
+            },
+            {
+              "id": "q10",
+              "question": "« Вода » signifie :",
+              "type": "single_choice",
+              "options": ["Eau", "Viande", "Vin", "Voiture"],
+              "correctAnswers": [0],
+              "explanation": "Boisson ou ressource essentielle."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Horaire de train",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un horaire, « отправление » et « прибытие » concernent :",
+              "type": "multiple_choice",
+              "options": [
+                "Le départ",
+                "L'arrivée",
+                "La couleur du train",
+                "Le prénom du chef"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ce sont les termes départ et arrivée."
+            },
+            {
+              "id": "q2",
+              "question": "« Отправление » signifie :",
+              "type": "single_choice",
+              "options": ["Départ", "Arrivée", "Retard", "Annulation"],
+              "correctAnswers": [0],
+              "explanation": "Moment où le train part."
+            },
+            {
+              "id": "q3",
+              "question": "« Прибытие » signifie :",
+              "type": "single_choice",
+              "options": ["Arrivée", "Départ", "Billet", "Quai"],
+              "correctAnswers": [0],
+              "explanation": "Moment où le train arrive."
+            },
+            {
+              "id": "q4",
+              "question": "« Москва — Санкт-Петербург » indique :",
+              "type": "single_choice",
+              "options": [
+                "Un trajet entre deux villes",
+                "Une recette",
+                "Un film",
+                "Un sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ligne entre capitale et grande ville du nord."
+            },
+            {
+              "id": "q5",
+              "question": "Le numéro de train sert à :",
+              "type": "single_choice",
+              "options": [
+                "Identifier le bon convoi",
+                "Choisir un prénom",
+                "Peindre le wagon",
+                "Mesurer la température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évite la confusion entre trains."
+            },
+            {
+              "id": "q6",
+              "question": "« Платформа 3 » te dit :",
+              "type": "single_choice",
+              "options": [
+                "Sur quel quai monter",
+                "Quelle langue parler",
+                "Quel plat manger",
+                "Quelle chanson écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quai = platform en russe courant."
+            },
+            {
+              "id": "q7",
+              "question": "Un horaire est lu surtout pour :",
+              "type": "single_choice",
+              "options": [
+                "Savoir quand et où partir",
+                "Écrire un roman",
+                "Décorer la chambre",
+                "Jouer au foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Document pratique de transport."
+            },
+            {
+              "id": "q8",
+              "question": "« Билет » signifie :",
+              "type": "single_choice",
+              "options": ["Billet", "Bagage", "Banque", "Bateau"],
+              "correctAnswers": [0],
+              "explanation": "Preuve d'achat pour voyager."
+            },
+            {
+              "id": "q9",
+              "question": "Si l'heure est « 08:30 », c'est :",
+              "type": "single_choice",
+              "options": [
+                "Huit heures trente",
+                "Huit heures du soir seulement",
+                "Trente heures",
+                "Minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format 24 heures."
+            },
+            {
+              "id": "q10",
+              "question": "Avant de lire un horaire, repère :",
+              "type": "single_choice",
+              "options": [
+                "Ta ville de départ et d'arrivée",
+                "Ton film préféré",
+                "Ta couleur favorite",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrer l'information utile."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Pancarte de musée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur « Музей … », quels indices montrent un lieu culturel ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le mot « музей »",
+                "Des horaires d'ouverture",
+                "Un code de foot",
+                "Une liste de courses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Musée + horaires = visite possible."
+            },
+            {
+              "id": "q2",
+              "question": "« Музей » signifie :",
+              "type": "single_choice",
+              "options": ["Musée", "Maison", "Marché", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'exposition."
+            },
+            {
+              "id": "q3",
+              "question": "« Открыто » indique que le lieu est :",
+              "type": "single_choice",
+              "options": ["Ouvert", "Fermé", "Neuf", "Loin"],
+              "correctAnswers": [0],
+              "explanation": "Opposé de « fermé »."
+            },
+            {
+              "id": "q4",
+              "question": "« Закрыто » signifie :",
+              "type": "single_choice",
+              "options": ["Fermé", "Ouvert", "Gratuit", "Cher"],
+              "correctAnswers": [0],
+              "explanation": "Pas de visite pour l'instant."
+            },
+            {
+              "id": "q5",
+              "question": "« Вход » veut dire :",
+              "type": "single_choice",
+              "options": ["Entrée", "Sortie", "Toilettes", "Cuisine"],
+              "correctAnswers": [0],
+              "explanation": "Où entrer dans le bâtiment."
+            },
+            {
+              "id": "q6",
+              "question": "« Выход » veut dire :",
+              "type": "single_choice",
+              "options": ["Sortie", "Entrée", "Ticket", "Guide"],
+              "correctAnswers": [0],
+              "explanation": "Où quitter le bâtiment."
+            },
+            {
+              "id": "q7",
+              "question": "Un panneau « фото запрещено » interdit :",
+              "type": "single_choice",
+              "options": [
+                "De prendre des photos",
+                "De parler russe",
+                "De marcher",
+                "De respirer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle fréquente en salle."
+            },
+            {
+              "id": "q8",
+              "question": "Lire une pancarte, c'est respecter :",
+              "type": "single_choice",
+              "options": [
+                "Les règles du lieu",
+                "Rien du tout",
+                "Seulement ton envie",
+                "Les autres pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le document informe et protège."
+            },
+            {
+              "id": "q9",
+              "question": "« Экскурсия » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Une visite guidée",
+                "Un match",
+                "Un vol",
+                "Un poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot proche de « excursion »."
+            },
+            {
+              "id": "q10",
+              "question": "« Сегодня » signifie :",
+              "type": "single_choice",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Repère temporel utile."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Invitation scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une invitation « в школу » mentionne souvent :",
+              "type": "multiple_choice",
+              "options": ["La date", "L'heure", "Un volcan", "Une planète"],
+              "correctAnswers": [0, 1],
+              "explanation": "Date et heure pour être à l'heure."
+            },
+            {
+              "id": "q2",
+              "question": "« Школа » signifie :",
+              "type": "single_choice",
+              "options": ["École", "Plage", "Gare", "Forêt"],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'apprentissage."
+            },
+            {
+              "id": "q3",
+              "question": "« Родительское собрание » concerne :",
+              "type": "single_choice",
+              "options": [
+                "Une réunion de parents",
+                "Un concert rock",
+                "Un voyage spatial",
+                "Un match de hockey"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Événement pour les familles."
+            },
+            {
+              "id": "q4",
+              "question": "« Уважаемые родители » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Les parents",
+                "Les élèves seuls",
+                "Les animaux",
+                "Les voitures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule officielle d'appel."
+            },
+            {
+              "id": "q5",
+              "question": "« Пожалуйста, приходите » invite à :",
+              "type": "single_choice",
+              "options": ["Venir", "Partir", "Dormir", "Crier"],
+              "correctAnswers": [0],
+              "explanation": "Demande polie de présence."
+            },
+            {
+              "id": "q6",
+              "question": "Un document « invitation » sert à :",
+              "type": "single_choice",
+              "options": ["Prévenir et convier", "Punir", "Cacher", "Vendre"],
+              "correctAnswers": [0],
+              "explanation": "Il annonce un rendez-vous."
+            },
+            {
+              "id": "q7",
+              "question": "« Класс 5 » indique :",
+              "type": "single_choice",
+              "options": [
+                "Une classe de niveau",
+                "Un bus",
+                "Un café",
+                "Un stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "« Директор » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Le directeur",
+                "Le cuisinier",
+                "Le gardien seulement",
+                "Un élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsable de l'établissement."
+            },
+            {
+              "id": "q9",
+              "question": "Lire une invitation, c'est noter :",
+              "type": "single_choice",
+              "options": [
+                "Qui, quand, où",
+                "Seulement la marge",
+                "La taille du papier",
+                "Le parfum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les trois infos clés."
+            },
+            {
+              "id": "q10",
+              "question": "« Спасибо за внимание » clôt souvent :",
+              "type": "single_choice",
+              "options": [
+                "Un message officiel",
+                "Un jeu",
+                "Un film muet",
+                "Un sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciement poli en fin de texte."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Programme de spectacle",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un programme de théâtre indique souvent :",
+              "type": "multiple_choice",
+              "options": [
+                "Le titre du spectacle",
+                "L'heure",
+                "La recette du bortsch",
+                "Le nom de ta rue à Paris"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Titre et horaire guident le spectateur."
+            },
+            {
+              "id": "q2",
+              "question": "« Театр » signifie :",
+              "type": "single_choice",
+              "options": ["Théâtre", "Téléphone", "Train", "Table"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de représentation."
+            },
+            {
+              "id": "q3",
+              "question": "« Спектакль » veut dire :",
+              "type": "single_choice",
+              "options": ["Spectacle", "Sport", "Spaghetti", "Spécialité"],
+              "correctAnswers": [0],
+              "explanation": "Pièce jouée sur scène."
+            },
+            {
+              "id": "q4",
+              "question": "« Антракт » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Entracte",
+                "Début",
+                "Fin des soldes",
+                "Entrée gratuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause au milieu du spectacle."
+            },
+            {
+              "id": "q5",
+              "question": "« Место » sur un billet indique :",
+              "type": "single_choice",
+              "options": ["La place assise", "La météo", "Le menu", "Le métro"],
+              "correctAnswers": [0],
+              "explanation": "Numéro de siège."
+            },
+            {
+              "id": "q6",
+              "question": "« Ряд » signifie :",
+              "type": "single_choice",
+              "options": ["Rangée", "Rivière", "Rouge", "Règle"],
+              "correctAnswers": [0],
+              "explanation": "Rang de fauteuils."
+            },
+            {
+              "id": "q7",
+              "question": "Lire un programme aide à :",
+              "type": "single_choice",
+              "options": [
+                "Suivre le déroulé",
+                "Oublier l'heure",
+                "Perdre son billet",
+                "Changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On sait ce qui va se passer."
+            },
+            {
+              "id": "q8",
+              "question": "« Начало в 19:00 » précise :",
+              "type": "single_choice",
+              "options": [
+                "Le début à dix-neuf heures",
+                "La fin à midi",
+                "Une durée de 19 minutes",
+                "Un prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure de commencement."
+            },
+            {
+              "id": "q9",
+              "question": "« Детский » sur une affiche cible :",
+              "type": "single_choice",
+              "options": [
+                "Un public jeune",
+                "Les adultes seulement",
+                "Les voitures",
+                "Les bateaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Детский » = pour enfants."
+            },
+            {
+              "id": "q10",
+              "question": "Un document « programme » est :",
+              "type": "single_choice",
+              "options": [
+                "Organisé par sections",
+                "Sans aucun ordre",
+                "Uniquement une image",
+                "Toujours en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure claire par parties."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Notice de parc",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un parc, « нельзя » et « можно » servent à :",
+              "type": "multiple_choice",
+              "options": [
+                "Dire ce qui est interdit",
+                "Dire ce qui est permis",
+                "Compter les arbres",
+                "Nommer les planètes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux mots opposés pour les règles du parc."
+            },
+            {
+              "id": "q2",
+              "question": "« Нельзя кормить животных » interdit :",
+              "type": "single_choice",
+              "options": ["Nourrir les animaux", "Marcher", "Respirer", "Lire"],
+              "correctAnswers": [0],
+              "explanation": "Protège la santé des bêtes."
+            },
+            {
+              "id": "q3",
+              "question": "« Можно » signifie :",
+              "type": "single_choice",
+              "options": [
+                "C'est permis",
+                "C'est interdit",
+                "C'est cher",
+                "C'est loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autorisation."
+            },
+            {
+              "id": "q4",
+              "question": "« Парк » signifie :",
+              "type": "single_choice",
+              "options": ["Parc", "Port", "Pain", "Pont"],
+              "correctAnswers": [0],
+              "explanation": "Espace vert public."
+            },
+            {
+              "id": "q5",
+              "question": "« Осторожно » alerte :",
+              "type": "single_choice",
+              "options": [
+                "Faire attention",
+                "Dormir",
+                "Courir vite",
+                "Parler fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mise en garde."
+            },
+            {
+              "id": "q6",
+              "question": "Une notice courte vise à :",
+              "type": "single_choice",
+              "options": [
+                "Informer rapidement",
+                "Remplacer un livre",
+                "Cacher les règles",
+                "Allonger le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Messages brefs et clairs."
+            },
+            {
+              "id": "q7",
+              "question": "« Детская площадка » indique :",
+              "type": "single_choice",
+              "options": [
+                "Aire de jeux pour enfants",
+                "Piscine olympique",
+                "Aéroport",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace de jeu."
+            },
+            {
+              "id": "q8",
+              "question": "« Собаки на поводке » demande :",
+              "type": "single_choice",
+              "options": [
+                "Tenir le chien en laisse",
+                "Lâcher le chien",
+                "Abandonner le chien",
+                "Peindre le chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité des promeneurs."
+            },
+            {
+              "id": "q9",
+              "question": "Repérer un pictogramme aide quand :",
+              "type": "single_choice",
+              "options": [
+                "Le texte est difficile",
+                "Il n'y a aucune image",
+                "Tu ne vois rien",
+                "Tu refuses de lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image complète les mots."
+            },
+            {
+              "id": "q10",
+              "question": "Lire les règles d'un parc, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Protéger la nature et les visiteurs",
+                "Ignorer les panneaux",
+                "Casser les affiches",
+                "Partir sans regarder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre de vie partagé."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Petite annonce",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Une annonce « Продаётся » avec un prix parle de :",
+              "type": "multiple_choice",
+              "options": [
+                "Une vente",
+                "Un objet à acheter",
+                "Un vol gratuit",
+                "Une leçon de natation obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vente d'un bien avec tarif."
+            },
+            {
+              "id": "q2",
+              "question": "« Продаётся » signifie :",
+              "type": "single_choice",
+              "options": ["À vendre", "À louer", "Perdu", "Trouvé"],
+              "correctAnswers": [0],
+              "explanation": "Annonce de vente."
+            },
+            {
+              "id": "q3",
+              "question": "« Срочно » suggère :",
+              "type": "single_choice",
+              "options": ["Urgence", "Jamais", "Doucement", "Demain seulement"],
+              "correctAnswers": [0],
+              "explanation": "Besoin rapide."
+            },
+            {
+              "id": "q4",
+              "question": "Un numéro de téléphone sert à :",
+              "type": "single_choice",
+              "options": [
+                "Contacter le vendeur",
+                "Changer la météo",
+                "Éteindre la lumière",
+                "Jouer au basket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien direct avec la personne."
+            },
+            {
+              "id": "q5",
+              "question": "« Книга » signifie :",
+              "type": "single_choice",
+              "options": ["Livre", "Clé", "Chien", "Chaise"],
+              "correctAnswers": [0],
+              "explanation": "Objet culturel courant."
+            },
+            {
+              "id": "q6",
+              "question": "« Недорого » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Pas cher",
+                "Très cher",
+                "Gratuit pour toujours",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix modeste."
+            },
+            {
+              "id": "q7",
+              "question": "Une petite annonce est :",
+              "type": "single_choice",
+              "options": [
+                "Brève et ciblée",
+                "Un roman",
+                "Un dictionnaire entier",
+                "Un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de lignes, info précise."
+            },
+            {
+              "id": "q8",
+              "question": "« Контакт » indique :",
+              "type": "single_choice",
+              "options": [
+                "Comment joindre la personne",
+                "La couleur du ciel",
+                "Un plat",
+                "Un animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnées."
+            },
+            {
+              "id": "q9",
+              "question": "Avant d'appeler, relis :",
+              "type": "single_choice",
+              "options": [
+                "L'objet et le prix",
+                "Ton prénom seulement",
+                "La date de Noël",
+                "Un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier que l'annonce te convient."
+            },
+            {
+              "id": "q10",
+              "question": "« Район » précise :",
+              "type": "single_choice",
+              "options": [
+                "Le quartier",
+                "Le pays entier",
+                "La lune",
+                "Un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone de la ville."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Consignes de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Un règlement « в классе » rappelle souvent :",
+              "type": "multiple_choice",
+              "options": [
+                "Le respect",
+                "Le silence en travail",
+                "La couleur du soleil",
+                "Le nom des dinosaures"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vivre ensemble en cours."
+            },
+            {
+              "id": "q2",
+              "question": "« Тишина » demande :",
+              "type": "single_choice",
+              "options": [
+                "Le silence",
+                "La danse",
+                "Le rire fort",
+                "La course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calme pour travailler."
+            },
+            {
+              "id": "q3",
+              "question": "« Поднимите руку » invite à :",
+              "type": "single_choice",
+              "options": ["Lever la main", "Sortir", "Manger", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Règle de participation."
+            },
+            {
+              "id": "q4",
+              "question": "« Домашнее задание » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Devoirs à la maison",
+                "Repas à l'école",
+                "Vacances",
+                "Sport obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail après les cours."
+            },
+            {
+              "id": "q5",
+              "question": "« Учитель » désigne :",
+              "type": "single_choice",
+              "options": ["Le professeur", "Le bus", "Le pain", "Le parc"],
+              "correctAnswers": [0],
+              "explanation": "Adulte qui enseigne."
+            },
+            {
+              "id": "q6",
+              "question": "Lire les consignes évite :",
+              "type": "single_choice",
+              "options": [
+                "Les malentendus",
+                "Les bons notes",
+                "La politesse",
+                "L'écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun sait quoi faire."
+            },
+            {
+              "id": "q7",
+              "question": "« Внимание » appelle à :",
+              "type": "single_choice",
+              "options": ["Écouter", "Partir", "Jouer", "Crier"],
+              "correctAnswers": [0],
+              "explanation": "Regarder et entendre le message."
+            },
+            {
+              "id": "q8",
+              "question": "Un document de consignes est :",
+              "type": "single_choice",
+              "options": [
+                "Normatif et court",
+                "Un conte",
+                "Une carte postale",
+                "Un menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fixe des règles."
+            },
+            {
+              "id": "q9",
+              "question": "« Урок » signifie :",
+              "type": "single_choice",
+              "options": ["Cours / leçon", "Usine", "Ustensile", "Union"],
+              "correctAnswers": [0],
+              "explanation": "Période de classe."
+            },
+            {
+              "id": "q10",
+              "question": "Après lecture, tu peux :",
+              "type": "single_choice",
+              "options": [
+                "Reformuler les règles avec tes mots",
+                "Oublier tout",
+                "Déchirer la feuille",
+                "Ne rien noter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vérifier ta compréhension."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La Russie en Europe et en Asie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "La Russie est un repère géographique car elle :",
+              "type": "multiple_choice",
+              "options": [
+                "S'étend sur deux continents",
+                "A une très grande superficie",
+                "N'a aucune frontière",
+                "Est plus petite que Monaco"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Étendue en Europe et en Asie."
+            },
+            {
+              "id": "q2",
+              "question": "La capitale de la Russie est :",
+              "type": "single_choice",
+              "options": ["Moscou", "Berlin", "Rome", "Madrid"],
+              "correctAnswers": [0],
+              "explanation": "Centre politique du pays."
+            },
+            {
+              "id": "q3",
+              "question": "« Санкт-Петербург » est une grande ville :",
+              "type": "single_choice",
+              "options": [
+                "Au nord-ouest",
+                "Dans le désert du Sahara",
+                "En Amérique",
+                "Sous l'océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville historique près de la Baltique."
+            },
+            {
+              "id": "q4",
+              "question": "La frontière russe avec la Chine se situe plutôt :",
+              "type": "single_choice",
+              "options": [
+                "À l'est du pays",
+                "Au centre de Paris",
+                "En Antarctique",
+                "Dans l'Atlantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Asie orientale borde la Russie."
+            },
+            {
+              "id": "q5",
+              "question": "Un repère de civilisation aide à :",
+              "type": "single_choice",
+              "options": [
+                "Situer un pays dans le monde",
+                "Oublier la carte",
+                "Compter sans contexte",
+                "Effacer l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donne des repères culturels et géographiques."
+            },
+            {
+              "id": "q6",
+              "question": "La Russie possède des côtes sur :",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs mers et océans",
+                "Aucune eau",
+                "Uniquement des lacs sans nom",
+                "Seulement des rivières sèches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arctique, Pacifique, etc."
+            },
+            {
+              "id": "q7",
+              "question": "Le fleuve Volga est un symbole :",
+              "type": "single_choice",
+              "options": [
+                "Russe majeur",
+                "Exclusivement français",
+                "Australien",
+                "Imaginaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grand fleuve du pays."
+            },
+            {
+              "id": "q8",
+              "question": "La Sibérie désigne surtout :",
+              "type": "single_choice",
+              "options": [
+                "Une vaste région est et nord",
+                "Une rue à Lyon",
+                "Un petit parc",
+                "Un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espace immense et froid."
+            },
+            {
+              "id": "q9",
+              "question": "Sur une carte, la Russie apparaît souvent :",
+              "type": "single_choice",
+              "options": [
+                "Très vaste",
+                "Invisible",
+                "Comme un point",
+                "Sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un des plus grands États."
+            },
+            {
+              "id": "q10",
+              "question": "Connaître la position de la Russie sert en :",
+              "type": "single_choice",
+              "options": [
+                "Géographie et histoire",
+                "Cuisine seule",
+                "Musique seule",
+                "Sans lien scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte des échanges et des cultures."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Alphabet cyrillique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "L'alphabet cyrillique en Russie sert à :",
+              "type": "multiple_choice",
+              "options": [
+                "Écrire la langue russe",
+                "Lire des textes russes",
+                "Remplacer tous les chiffres",
+                "Interdire le français"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Système d'écriture du russe."
+            },
+            {
+              "id": "q2",
+              "question": "Le russe s'écrit avec :",
+              "type": "single_choice",
+              "options": [
+                "Des lettres cyrilliques",
+                "Des hiéroglyphes égyptiens",
+                "Uniquement des chiffres",
+                "Aucun signe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alphabet propre au slavon."
+            },
+            {
+              "id": "q3",
+              "question": "La lettre « А » russe se lit comme :",
+              "type": "single_choice",
+              "options": ["A", "B", "V", "G"],
+              "correctAnswers": [0],
+              "explanation": "Ressemble au A latin."
+            },
+            {
+              "id": "q4",
+              "question": "« М » russe correspond à :",
+              "type": "single_choice",
+              "options": ["M", "N", "P", "R"],
+              "correctAnswers": [0],
+              "explanation": "Forme proche du M latin."
+            },
+            {
+              "id": "q5",
+              "question": "« Р » russe se prononce plutôt :",
+              "type": "single_choice",
+              "options": ["R", "P", "L", "H"],
+              "correctAnswers": [0],
+              "explanation": "Lettre « er » en russe."
+            },
+            {
+              "id": "q6",
+              "question": "Certains signes cyrilliques ressemblent au latin mais :",
+              "type": "single_choice",
+              "options": [
+                "Peuvent avoir un son différent",
+                "Sont toujours identiques",
+                "N'existent pas",
+                "Sont des chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faux amis graphiques."
+            },
+            {
+              "id": "q7",
+              "question": "Apprendre le cyrillique aide à :",
+              "type": "single_choice",
+              "options": [
+                "Déchiffrer des panneaux",
+                "Ignorer la langue",
+                "Parler sans écouter",
+                "Ne plus lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier repère culturel écrit."
+            },
+            {
+              "id": "q8",
+              "question": "« Н » russe vaut le son :",
+              "type": "single_choice",
+              "options": ["N", "H", "K", "T"],
+              "correctAnswers": [0],
+              "explanation": "Comme N en français."
+            },
+            {
+              "id": "q9",
+              "question": "« В » russe se lit :",
+              "type": "single_choice",
+              "options": ["V", "B", "F", "W"],
+              "correctAnswers": [0],
+              "explanation": "Son [v], pas [b]."
+            },
+            {
+              "id": "q10",
+              "question": "Le cyrillique est un repère lié à :",
+              "type": "single_choice",
+              "options": [
+                "L'histoire slave et orthodoxe",
+                "La cuisine mexicaine",
+                "Le rugby néo-zélandais",
+                "Les pyramides seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission culturelle ancienne."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fêtes et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Новый год » et « Рождество » sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Calendaires",
+                "Culturels",
+                "Sportifs olympiques",
+                "Astronomiques de Mars"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fêtes hivernales importantes."
+            },
+            {
+              "id": "q2",
+              "question": "« Новый год » signifie :",
+              "type": "single_choice",
+              "options": ["Nouvel An", "Pâques", "Été", "Rentrée"],
+              "correctAnswers": [0],
+              "explanation": "Célébration du 1er janvier."
+            },
+            {
+              "id": "q3",
+              "question": "Le Ded Moroz évoque :",
+              "type": "single_choice",
+              "options": [
+                "Un personnage du froid hivernal",
+                "Un président",
+                "Un train",
+                "Un poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure proche du Père Frost."
+            },
+            {
+              "id": "q4",
+              "question": "« Мaslenitsa » est liée :",
+              "type": "single_choice",
+              "options": [
+                "Au carnaval et au printemps",
+                "Au ski seul",
+                "À la pluie tropicale",
+                "Au désert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semaine des crêpes."
+            },
+            {
+              "id": "q5",
+              "question": "« День Победы » commémore :",
+              "type": "single_choice",
+              "options": [
+                "La victoire de 1945",
+                "L'invention du vélo",
+                "La première pizza",
+                "Un match de tennis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "9 mai, mémoire collective."
+            },
+            {
+              "id": "q6",
+              "question": "Une tradition est :",
+              "type": "single_choice",
+              "options": [
+                "Une coutume transmise",
+                "Un ticket de métro",
+                "Un bug informatique",
+                "Un exercice de maths seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage social."
+            },
+            {
+              "id": "q7",
+              "question": "« Пасха » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Pâques",
+                "Noël",
+                "Halloween",
+                "Carnaval brésilien seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête chrétienne orthodoxe."
+            },
+            {
+              "id": "q8",
+              "question": "Les blinis de Maslenitsa sont :",
+              "type": "single_choice",
+              "options": [
+                "Des crêpes",
+                "Des chaussures",
+                "Des bateaux",
+                "Des cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat symbolique."
+            },
+            {
+              "id": "q9",
+              "question": "Comprendre une fête russe, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Mieux saisir la culture",
+                "Refuser la différence",
+                "Oublier l'histoire",
+                "Ne jamais comparer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ouverture culturelle."
+            },
+            {
+              "id": "q10",
+              "question": "« Праздник » signifie :",
+              "type": "single_choice",
+              "options": ["Fête", "Travail", "École", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "Jour ou moment festif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Patrimoine et monuments",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le Kremlin et la place Rouge sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Architecturaux",
+                "Historiques",
+                "De supermarché",
+                "De piscine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cœur symbolique de Moscou."
+            },
+            {
+              "id": "q2",
+              "question": "La cathédrale Saint-Basile se trouve à :",
+              "type": "single_choice",
+              "options": ["Moscou", "Tokyo", "Le Caire", "Sydney"],
+              "correctAnswers": [0],
+              "explanation": "Célèbre dômes colorés."
+            },
+            {
+              "id": "q3",
+              "question": "« Эрмитаж » à Saint-Pétersbourg est :",
+              "type": "single_choice",
+              "options": [
+                "Un grand musée",
+                "Un stade",
+                "Un aéroport",
+                "Un métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collections d'art mondiales."
+            },
+            {
+              "id": "q4",
+              "question": "« Памятник » signifie :",
+              "type": "single_choice",
+              "options": ["Monument", "Parfum", "Pain", "Pont"],
+              "correctAnswers": [0],
+              "explanation": "Hommage sculpté ou bâti."
+            },
+            {
+              "id": "q5",
+              "question": "Un patrimoine se transmet pour :",
+              "type": "single_choice",
+              "options": [
+                "Mémoire des générations",
+                "Effacer le passé",
+                "Interdire les visites",
+                "Vendre tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien avec l'histoire."
+            },
+            {
+              "id": "q6",
+              "question": "« Транссib » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Une célèbre ligne de train",
+                "Une île grecque",
+                "Un dessert",
+                "Un alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traversée continentale."
+            },
+            {
+              "id": "q7",
+              "question": "« Собор » désigne :",
+              "type": "single_choice",
+              "options": ["Une cathédrale", "Une gare", "Une plage", "Un bus"],
+              "correctAnswers": [0],
+              "explanation": "Édifice religieux majeur."
+            },
+            {
+              "id": "q8",
+              "question": "Visiter un monument aide à :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre une époque",
+                "Ignorer les guides",
+                "Oublier les dates",
+                "Ne rien apprendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture du passé sur place."
+            },
+            {
+              "id": "q9",
+              "question": "« UNESCO » classe parfois des sites russes comme :",
+              "type": "single_choice",
+              "options": [
+                "Patrimoine mondial",
+                "Stades de foot",
+                "Menus de café",
+                "Billets de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection culturelle internationale."
+            },
+            {
+              "id": "q10",
+              "question": "Un repère architectural se reconnaît à :",
+              "type": "single_choice",
+              "options": [
+                "Sa forme et son histoire",
+                "Sa couleur invisible",
+                "Son absence",
+                "Son bruit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silhouette et récit."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Arts et musique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tchaïkovski et les ballets russes sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Musicaux",
+                "Choregraphiques",
+                "Culinaires de base",
+                "Automobiles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grande tradition classique."
+            },
+            {
+              "id": "q2",
+              "question": "« Балет » signifie :",
+              "type": "single_choice",
+              "options": ["Ballet", "Ballon", "Banque", "Bateau"],
+              "correctAnswers": [0],
+              "explanation": "Danse classique sur scène."
+            },
+            {
+              "id": "q3",
+              "question": "« Лебединое озеро » est :",
+              "type": "single_choice",
+              "options": [
+                "Le Lac des cygnes",
+                "Une gare",
+                "Un marché",
+                "Un parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ballet très connu."
+            },
+            {
+              "id": "q4",
+              "question": "« Матрёшка » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Poupées gigognes",
+                "Un train",
+                "Un fromage",
+                "Un drapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet artisanal emblématique."
+            },
+            {
+              "id": "q5",
+              "question": "La peinture des icônes est liée à :",
+              "type": "single_choice",
+              "options": [
+                "L'art religieux orthodoxe",
+                "Le surf",
+                "Le hockey seul",
+                "La mode parisienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition visuelle sacrée."
+            },
+            {
+              "id": "q6",
+              "question": "« Художник » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Artiste / peintre",
+                "Boulanger",
+                "Médecin",
+                "Pilote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Créateur visuel."
+            },
+            {
+              "id": "q7",
+              "question": "Écouter de la musique russe, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Découvrir une culture",
+                "Refuser la tienne",
+                "Ne rien ressentir",
+                "Effacer l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art = fenêtre culturelle."
+            },
+            {
+              "id": "q8",
+              "question": "« Театр оперы и балета » propose :",
+              "type": "single_choice",
+              "options": [
+                "Opéra et ballet",
+                "Uniquement du foot",
+                "Des courses de chevaux",
+                "Des examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scène lyrique et dansée."
+            },
+            {
+              "id": "q9",
+              "question": "« Народная музыка » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Musique traditionnelle",
+                "Musique silencieuse",
+                "Musique interdite",
+                "Musique sans instruments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage des campagnes."
+            },
+            {
+              "id": "q10",
+              "question": "Un repère artistique peut être :",
+              "type": "single_choice",
+              "options": [
+                "Une œuvre connue",
+                "Un chiffre au hasard",
+                "Un panneau routier seul",
+                "Une erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Œuvre repère dans la culture."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Gastronomie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le bortsch et le blini sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Culinaires",
+                "Culturels",
+                "Astronomiques",
+                "Mécaniques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plats connus de la table russe."
+            },
+            {
+              "id": "q2",
+              "question": "« Борщ » est :",
+              "type": "single_choice",
+              "options": [
+                "Une soupe",
+                "Un dessert glacé",
+                "Un bus",
+                "Un chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soupe rouge à betterave."
+            },
+            {
+              "id": "q3",
+              "question": "« Блины » sont :",
+              "type": "single_choice",
+              "options": [
+                "Des crêpes",
+                "Des chaussures",
+                "Des livres",
+                "Des montagnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Servies avec divers garnitures."
+            },
+            {
+              "id": "q4",
+              "question": "« Сметана » ressemble à :",
+              "type": "single_choice",
+              "options": ["Crème fraîche", "Eau", "Sel seul", "Sucre seul"],
+              "correctAnswers": [0],
+              "explanation": "Accompagnement fréquent."
+            },
+            {
+              "id": "q5",
+              "question": "« Чай » avec un samovar évoque :",
+              "type": "single_choice",
+              "options": [
+                "Rituel du thé",
+                "Match de rugby",
+                "Vol spatial",
+                "Silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition conviviale."
+            },
+            {
+              "id": "q6",
+              "question": "« Квас » est :",
+              "type": "single_choice",
+              "options": [
+                "Une boisson fermentée",
+                "Un métro",
+                "Un musée",
+                "Un drapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boisson légère traditionnelle."
+            },
+            {
+              "id": "q7",
+              "question": "Goûter un plat local, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre un mode de vie",
+                "Refuser sa culture",
+                "Ignorer l'histoire",
+                "Ne pas partager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuisine = culture."
+            },
+            {
+              "id": "q8",
+              "question": "« Уха » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Une soupe de poisson",
+                "Une danse",
+                "Un train",
+                "Un parc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialité de rivière ou mer."
+            },
+            {
+              "id": "q9",
+              "question": "« Вкусно » signifie :",
+              "type": "single_choice",
+              "options": [
+                "C'est bon",
+                "C'est froid",
+                "C'est loin",
+                "C'est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appréciation gustative."
+            },
+            {
+              "id": "q10",
+              "question": "Un repère gastronomique aide à :",
+              "type": "single_choice",
+              "options": [
+                "Parler de la Russie concrètement",
+                "Oublier les mots",
+                "Ne plus manger",
+                "Effacer les recettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anecdotes et échanges en classe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sport et loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le hockey sur glace et la gymnastique sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Sportifs",
+                "Culturels populaires",
+                "Cinématographiques seuls",
+                "Meteorologiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sports où la Russie brille."
+            },
+            {
+              "id": "q2",
+              "question": "« Хоккей » signifie :",
+              "type": "single_choice",
+              "options": ["Hockey", "Foot", "Tennis", "Natation"],
+              "correctAnswers": [0],
+              "explanation": "Sport sur glace très suivi."
+            },
+            {
+              "id": "q3",
+              "question": "« Фигурное катание » concerne :",
+              "type": "single_choice",
+              "options": [
+                "Patinage artistique",
+                "Course à pied",
+                "Boxe",
+                "Escalade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipline olympique."
+            },
+            {
+              "id": "q4",
+              "question": "« Олимпиада » renvoie à :",
+              "type": "single_choice",
+              "options": ["Jeux olympiques", "Marché", "École", "Théâtre"],
+              "correctAnswers": [0],
+              "explanation": "Compétition internationale."
+            },
+            {
+              "id": "q5",
+              "question": "« Шахматы » signifie :",
+              "type": "single_choice",
+              "options": ["Échecs", "Dames seules", "Cartes", "Billard"],
+              "correctAnswers": [0],
+              "explanation": "Jeu de stratégie célèbre."
+            },
+            {
+              "id": "q6",
+              "question": "Le sport peut être un repère car il :",
+              "type": "single_choice",
+              "options": [
+                "Rassemble et identifie",
+                "Efface les langues",
+                "Interdit les échanges",
+                "N'a pas d'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fierté collective possible."
+            },
+            {
+              "id": "q7",
+              "question": "« Каток » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Patinoire",
+                "Piscine",
+                "Stade d'été",
+                "Gymnase sans glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu pour patiner."
+            },
+            {
+              "id": "q8",
+              "question": "« Команда » signifie :",
+              "type": "single_choice",
+              "options": ["Équipe", "Match", "Score", "Sifflet"],
+              "correctAnswers": [0],
+              "explanation": "Groupe qui joue ensemble."
+            },
+            {
+              "id": "q9",
+              "question": "« Победа » signifie :",
+              "type": "single_choice",
+              "options": ["Victoire", "Défaite", "Match nul", "Pause"],
+              "correctAnswers": [0],
+              "explanation": "Résultat gagnant."
+            },
+            {
+              "id": "q10",
+              "question": "Connaître un sport national facilite :",
+              "type": "single_choice",
+              "options": [
+                "La conversation avec des Russes",
+                "L'oubli du vocabulaire",
+                "La fin du russe",
+                "Le refus de lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet d'échange simple."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Langue et politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Здравствуйте » et « Спасибо » sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "De politesse",
+                "De communication",
+                "De cuisine",
+                "De géographie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules de base en société."
+            },
+            {
+              "id": "q2",
+              "question": "« Здравствуйте » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer poliment",
+                "Dire au revoir",
+                "Demander l'heure",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonjour formel."
+            },
+            {
+              "id": "q3",
+              "question": "« Привет » est plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Salut familier",
+                "Discours officiel",
+                "Insulte",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre amis."
+            },
+            {
+              "id": "q4",
+              "question": "« Пожалуйста » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "S'il vous plaît / de rien",
+                "Non",
+                "Jamais",
+                "Fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double usage courant."
+            },
+            {
+              "id": "q5",
+              "question": "« Извините » signifie :",
+              "type": "single_choice",
+              "options": ["Excusez-moi", "Bravo", "Bon appétit", "Bonne nuit"],
+              "correctAnswers": [0],
+              "explanation": "Demander pardon ou attention."
+            },
+            {
+              "id": "q6",
+              "question": "Tutoyer ou vouvoyer en russe dépend :",
+              "type": "single_choice",
+              "options": [
+                "De la situation et des personnes",
+                "Du hasard",
+                "De la météo",
+                "De la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre de langue."
+            },
+            {
+              "id": "q7",
+              "question": "« Да » et « Нет » veulent dire :",
+              "type": "single_choice",
+              "options": [
+                "Oui et non",
+                "Merci et pardon",
+                "Bonjour et au revoir",
+                "Ici et là"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponses essentielles."
+            },
+            {
+              "id": "q8",
+              "question": "« Как дела? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Comment ça va ?",
+                "Quelle heure ?",
+                "Où est la gare ?",
+                "Combien coûte ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question amicale."
+            },
+            {
+              "id": "q9",
+              "question": "Apprendre la politesse, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Respecter l'autre",
+                "Ignorer les règles",
+                "Parler sans écouter",
+                "Crier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond des relations."
+            },
+            {
+              "id": "q10",
+              "question": "Un repère de civilisation linguistique inclut :",
+              "type": "single_choice",
+              "options": [
+                "Formules et gestes usuels",
+                "Seulement les maths",
+                "Uniquement les cartes",
+                "Rien de social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue = vie quotidienne."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Histoire en bref",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Les tsars et l'URSS sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Historiques",
+                "Pour situer des époques",
+                "De cuisine",
+                "De mode 2026 seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avant et pendant le XXe siècle."
+            },
+            {
+              "id": "q2",
+              "question": "Un « tsar » était :",
+              "type": "single_choice",
+              "options": [
+                "Un souverain russe",
+                "Un cuisinier",
+                "Un astronaute moderne",
+                "Un jouet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre impérial."
+            },
+            {
+              "id": "q3",
+              "question": "« Россия » signifie :",
+              "type": "single_choice",
+              "options": ["Russie", "France", "Pologne", "Japon"],
+              "correctAnswers": [0],
+              "explanation": "Nom du pays en russe."
+            },
+            {
+              "id": "q4",
+              "question": "Moscou devient capitale centrale surtout depuis :",
+              "type": "single_choice",
+              "options": [
+                "L'époque moderne récente",
+                "L'Antiquité grecque",
+                "Le Moyen Âge occidental seul",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renforcement progressif du pouvoir."
+            },
+            {
+              "id": "q5",
+              "question": "« Советский Союз » désigne :",
+              "type": "single_choice",
+              "options": [
+                "L'Union soviétique",
+                "L'Union européenne",
+                "L'ONU",
+                "La ligue de rugby"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État du XXe siècle."
+            },
+            {
+              "id": "q6",
+              "question": "1991 marque surtout :",
+              "type": "single_choice",
+              "options": [
+                "La fin de l'URSS",
+                "La découverte de l'Amérique",
+                "La chute de Rome antique",
+                "L'invention du téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Naissance de la Fédération actuelle."
+            },
+            {
+              "id": "q7",
+              "question": "« Космос » rappelle que la Russie a :",
+              "type": "single_choice",
+              "options": [
+                "Une tradition spatiale",
+                "Aucun scientifique",
+                "Interdit le ciel",
+                "Oublié Gagarine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier homme dans l'espace : Youri Gagarine."
+            },
+            {
+              "id": "q8",
+              "question": "Un repère historique sert à :",
+              "type": "single_choice",
+              "options": [
+                "Comprendre le présent",
+                "Effacer la mémoire",
+                "Refuser les dates",
+                "Ne plus lire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte des sociétés."
+            },
+            {
+              "id": "q9",
+              "question": "« Революция 1917 » renvoie à :",
+              "type": "single_choice",
+              "options": [
+                "Grands bouleversements politiques",
+                "Un festival de crêpes",
+                "Un match de tennis",
+                "Une mode vestimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin de l'empire tsariste."
+            },
+            {
+              "id": "q10",
+              "question": "Étudier l'histoire russe en 5e, c'est :",
+              "type": "single_choice",
+              "options": [
+                "Poser des bases simples",
+                "Tout savoir en une heure",
+                "Ignorer l'Europe",
+                "Refuser les cartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères adaptés au niveau."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Symboles du pays",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le drapeau tricolore et l'hymne sont des repères :",
+              "type": "multiple_choice",
+              "options": [
+                "Nationaux",
+                "Identitaires",
+                "Privés de ton cartable",
+                "Culinaires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Symboles de l'État."
+            },
+            {
+              "id": "q2",
+              "question": "Les couleurs du drapeau russe actuel sont :",
+              "type": "single_choice",
+              "options": [
+                "Blanc, bleu, rouge",
+                "Vert, jaune seul",
+                "Noir, orange",
+                "Rose, violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois bandes horizontales."
+            },
+            {
+              "id": "q3",
+              "question": "« Герб » signifie :",
+              "type": "single_choice",
+              "options": ["Armoiries / emblème", "Gare", "Gâteau", "Gant"],
+              "correctAnswers": [0],
+              "explanation": "Aigle bicéphale historique."
+            },
+            {
+              "id": "q4",
+              "question": "« Гимн » désigne :",
+              "type": "single_choice",
+              "options": ["Hymne national", "Poème comique", "Menu", "Carte"],
+              "correctAnswers": [0],
+              "explanation": "Chant officiel du pays."
+            },
+            {
+              "id": "q5",
+              "question": "« Рубль » est :",
+              "type": "single_choice",
+              "options": [
+                "La monnaie",
+                "Un fleuve",
+                "Une montagne",
+                "Un fromage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité monétaire."
+            },
+            {
+              "id": "q6",
+              "question": "« Москва » sur un document indique souvent :",
+              "type": "single_choice",
+              "options": [
+                "La capitale",
+                "Une île des Caraïbes",
+                "Un village fictif",
+                "Un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Centre administratif."
+            },
+            {
+              "id": "q7",
+              "question": "L'aigle à deux têtes sur l'emblème russe évoque :",
+              "type": "single_choice",
+              "options": [
+                "L'aigle à deux têtes sur l'emblème",
+                "Sport de plage",
+                "Musique jazz",
+                "Poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage historique."
+            },
+            {
+              "id": "q8",
+              "question": "Connaître les symboles aide lors :",
+              "type": "single_choice",
+              "options": [
+                "Des échanges internationaux",
+                "D'un repas sans parler",
+                "D'un sommeil",
+                "D'un refus de carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères visibles partout."
+            },
+            {
+              "id": "q9",
+              "question": "« Страна » signifie :",
+              "type": "single_choice",
+              "options": ["Pays", "Rue", "Stade", "Store"],
+              "correctAnswers": [0],
+              "explanation": "Mot fréquent en géo."
+            },
+            {
+              "id": "q10",
+              "question": "Un repère de civilisation peut être :",
+              "type": "single_choice",
+              "options": [
+                "Un symbole partagé par de nombreux citoyens",
+                "Un mot inconnu sans contexte",
+                "Une erreur de lecture",
+                "Un bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce qui unit une communauté."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

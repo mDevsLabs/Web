@@ -4,32 +4,149 @@ import { requireUser } from "@/lib/auth/require-user";
 import {
   clearSearchQueries,
   deleteSearchQuery,
-  getRecentSearchQueries,
+  getSearchHistoryPage,
+  getSearchQueryForUser,
+  patchSearchQuery,
+  SEARCH_HISTORY_PAGE_SIZE,
 } from "@/lib/db/queries/search-history";
+
+function refuseOrigineEtrangere(request: Request): NextResponse | null {
+  const origin = request.headers.get("origin");
+  const host = request.headers.get("host");
+  if (origin && host && new URL(origin).host !== host) {
+    return NextResponse.json(
+      { error: "Origine de la requête non autorisée." },
+      { status: 403 }
+    );
+  }
+  return null;
+}
 
 /**
  * GET /api/mai-search/recent — historique du compte connecté.
  *
- * La table est `MaiSearchQuery` (migration 0060). Un visiteur sans session
- * reçoit une liste vide : l'historique est un confort, pas une erreur.
+ * Sans `id` : une page (épinglées d'abord). Avec `id` : la recherche, sa
+ * synthèse et sa réflexion, pour les rouvrir sans relancer le modèle.
+ * Un visiteur sans session reçoit une liste vide : l'historique est un
+ * confort, pas une erreur.
  */
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const session = await requireUser();
     if (!session) {
       return NextResponse.json({ queries: [] });
     }
-    const queries = await getRecentSearchQueries(session.userId, 12);
+    const url = new URL(request.url);
+    const id = url.searchParams.get("id");
+    if (id) {
+      if (!z.string().uuid().safeParse(id).success) {
+        return NextResponse.json(
+          { error: "Identifiant invalide." },
+          { status: 400 }
+        );
+      }
+      const row = await getSearchQueryForUser(id, session.userId);
+      if (!row) {
+        return NextResponse.json(
+          { error: "Recherche introuvable." },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json({
+        query: {
+          createdAt: row.createdAt.toISOString(),
+          id: row.id,
+          pinned: row.pinned,
+          query: row.query,
+          reasoning: row.reasoning,
+          summary: row.summary,
+          title: row.title,
+          vote: row.vote === "good" || row.vote === "bad" ? row.vote : null,
+        },
+      });
+    }
+
+    const limit = Number(
+      url.searchParams.get("limit") ?? SEARCH_HISTORY_PAGE_SIZE
+    );
+    const offset = Number(url.searchParams.get("offset") ?? 0);
+    const page = await getSearchHistoryPage({
+      limit: Number.isFinite(limit) ? limit : SEARCH_HISTORY_PAGE_SIZE,
+      offset: Number.isFinite(offset) ? offset : 0,
+      userId: session.userId,
+    });
     return NextResponse.json({
-      queries: queries.map((query) => ({
+      hasMore: page.hasMore,
+      nextOffset: page.hasMore
+        ? Math.max(0, Number.isFinite(offset) ? offset : 0) +
+          page.queries.length
+        : null,
+      queries: page.queries.map((query) => ({
         createdAt: query.createdAt.toISOString(),
+        hasSummary: query.hasSummary,
         id: query.id,
+        pinned: query.pinned,
         query: query.query,
+        title: query.title,
       })),
     });
   } catch (error) {
     console.error("[mAI-Search-Recent] Lecture impossible:", error);
-    return NextResponse.json({ queries: [] });
+    return NextResponse.json({ hasMore: false, queries: [] });
+  }
+}
+
+const patchSchema = z
+  .object({
+    id: z.string().uuid(),
+    pinned: z.boolean().optional(),
+    title: z.string().max(180).nullable().optional(),
+  })
+  .refine((value) => value.pinned !== undefined || value.title !== undefined, {
+    message: "Rien à modifier.",
+  });
+
+/**
+ * PATCH /api/mai-search/recent — renomme ou épingle une recherche du compte.
+ */
+export async function PATCH(request: Request) {
+  const refused = refuseOrigineEtrangere(request);
+  if (refused) {
+    return refused;
+  }
+  try {
+    const session = await requireUser();
+    if (!session) {
+      return NextResponse.json({ error: "Non authentifié." }, { status: 401 });
+    }
+    const parsed = patchSchema.safeParse(
+      await request.json().catch(() => null)
+    );
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Modification d'historique invalide." },
+        { status: 400 }
+      );
+    }
+    const updated = await patchSearchQuery({
+      id: parsed.data.id,
+      pinned: parsed.data.pinned,
+      title: parsed.data.title,
+      userId: session.userId,
+    });
+    if (!updated) {
+      return NextResponse.json(
+        { error: "Recherche introuvable." },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("[mAI-Search-Recent] Modification impossible:", error);
+    return NextResponse.json(
+      { error: "Impossible de modifier l'historique." },
+      { status: 500 }
+    );
   }
 }
 
@@ -54,13 +171,9 @@ const bodySchema = z.union([
 
 export async function DELETE(request: Request) {
   try {
-    const origin = request.headers.get("origin");
-    const host = request.headers.get("host");
-    if (origin && host && new URL(origin).host !== host) {
-      return NextResponse.json(
-        { error: "Origine de la requête non autorisée." },
-        { status: 403 }
-      );
+    const refused = refuseOrigineEtrangere(request);
+    if (refused) {
+      return refused;
     }
 
     const session = await requireUser();

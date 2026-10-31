@@ -1,4 +1,5 @@
 import type { TouchAction,TouchInput } from './input.ts';
+import { root as gameRoot } from './root.ts';
 export class TouchControls {
   captures=new Map<number,HTMLElement>();cleanups:(()=>void)[]=[];
   constructor(readonly root:HTMLElement,readonly input:TouchInput,readonly callbacks:{allowed:(action?:TouchAction)=>boolean;look:(x:number,y:number)=>void;action:(action:TouchAction)=>void}){
@@ -38,7 +39,7 @@ export class TouchControls {
     for(const event of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(event,end as EventListener,{passive:false});
     this.cleanups.push(()=>{el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);for(const event of ['pointerup','pointercancel','lostpointercapture'])el.removeEventListener(event,end as EventListener);});
   }
-  paintJoystick(){const knob=this.root.querySelector<HTMLElement>('.joystick-knob');if(knob)knob.style.transform=`translate(${this.input.side*(typeof document!=='undefined'&&document.documentElement?.classList?.contains('left-handed')?-35:35)}px,${-this.input.forward*35}px)`;}
+  paintJoystick(){const knob=this.root.querySelector<HTMLElement>('.joystick-knob');const leftHanded=gameRoot().classList.contains('left-handed');if(knob)knob.style.transform=`translate(${this.input.side*(leftHanded?-35:35)}px,${-this.input.forward*35}px)`;}
   reflect(weaponId:string,aim:boolean,crouch:boolean,sprinting:boolean,scoreboard:boolean){
     for(const [key,active]of [['aim',aim],['crouch',crouch],['sprint',sprinting],['score',scoreboard]] as const){const b=this.root.querySelector<HTMLElement>(`[data-touch="${key}"]`);if(b){b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));}}
     for(const button of this.root.querySelectorAll<HTMLElement>('[data-weapon-id]'))button.classList.toggle('active',button.dataset.weaponId===weaponId);

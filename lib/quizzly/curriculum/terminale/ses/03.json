@@ -1,0 +1,2763 @@
+{
+  "id": "terminale-ses-03",
+  "year": "terminale",
+  "subject": "ses",
+  "title": "Action publique et environnement",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Externalités",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Externalités — notions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Une externalité négative se caractérise par (deux réponses) :",
+              "options": [
+                "Un coût supporté par un tiers non partie au marché",
+                "Une surproduction par rapport à l'optimum social",
+                "Un prix qui reflète tous les coûts privés et sociaux",
+                "Un excédent du consommateur maximal en concurrence pure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'externalité négative impose un coût externe ; le marché produit alors trop par rapport au optimum de Pigou."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "L'optimum de Pigou internalise les externalités lorsque :",
+              "options": [
+                "Le prix marginal privé égale le coût marginal social",
+                "Le profit est nul",
+                "La demande est parfaitement inélastique",
+                "L'État fixe un prix plancher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité prix/coût marginal social aligne incitations privées et bien-être collectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Une externalité positive entraîne typiquement :",
+              "options": [
+                "Une sous-production par rapport à l'optimum social",
+                "Une surproduction",
+                "L'absence de défaillance de marché",
+                "Un monopole naturel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bénéfice externe n'étant pas rémunéré, la production privée reste insuffisante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Le concept de « bien public pur » implique :",
+              "options": [
+                "Non-rivalité et non-exclusion",
+                "Rivalité et exclusion",
+                "Externalité négative systématique",
+                "Concurrence parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non-rivalité : la consommation d'un agent n'en réduit pas la disponibilité ; non-exclusion : difficile d'exclure les non-payeurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "La pollution atmosphérique d'une usine est un exemple d'externalité :",
+              "options": [
+                "Négative de production",
+                "Positive de consommation",
+                "Interne",
+                "Pécuniaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pollution affecte des tiers sans compensation contractuelle : externalité négative liée à la production."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Une externalité pécuniaire :",
+              "options": [
+                "Ne constitue pas une défaillance de marché au sens microéconomique standard",
+                "Justifie toujours une taxe pigouvienne",
+                "Réduit le PIB réel",
+                "Est identique à une externalité technologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle passe par les prix (ex. hausse du loyer) sans distorsion directe des quantités échangées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Le free-rider (passager clandestin) concerne surtout :",
+              "options": [
+                "Les biens publics",
+                "Les biens privés rivalis",
+                "Les externalités négatives",
+                "Les oligopoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun a intérêt à consommer sans payer lorsque l'exclusion est coûteuse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Internaliser une externalité, c'est :",
+              "options": [
+                "Faire porter le coût ou le bénéfice externe à l'agent responsable",
+                "Supprimer toute régulation",
+                "Nationaliser le secteur",
+                "Interdire le commerce international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internaliser réaligne coûts privés et coûts sociaux via prix, taxes, droits ou contrats."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Coase (1960) souligne que, sans coûts de transaction, :",
+              "options": [
+                "La négociation privée peut atteindre l'efficience quel que soit l'attribut initial des droits",
+                "Seule la taxe est efficace",
+                "Le marché échoue toujours",
+                "L'État doit produire le bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorème de Coase : avec droits de propriété définis et négociation possible, l'allocation efficiente est atteignable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Une défaillance de marché liée à l'environnement peut résulter de :",
+              "options": [
+                "Externalités et biens publics",
+                "Uniquement de la concurrence",
+                "L'absence de PIB",
+                "La seule inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution (externalité) et climat ( bien public global) justifient une action publique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Externalités technologiques et pécuniaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Une externalité technologique (réelle) :",
+              "options": [
+                "Modifie directement le bien-être d'un tiers",
+                "Passe uniquement par les prix du marché",
+                "Peut être positive ou négative",
+                "Est toujours internalisée par le marché"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Elle affecte l'utilité ou la production d'autrui indépendamment des prix ; le marché peut sous-produire ou surproduire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Externalité pécuniaire typique :",
+              "options": [
+                "Hausse des loyers quand une gare ouvre à proximité",
+                "Fumée d'usine sur les cultures voisines",
+                "Bruit de voisinage non compensé",
+                "Rejet de CO₂ dans l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet transite par le marché immobilier sans distorsion directe des quantités d'un autre marché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "La distinction technologique / pécuniaire sert surtout à :",
+              "options": [
+                "Identifier les vraies défaillances de marché",
+                "Calculer le PIB",
+                "Mesurer l'inflation",
+                "Définir le SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les externalités technologiques justifient classiquement une correction publique au sens microéconomique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Vaccination générant immunité collective illustre :",
+              "options": [
+                "Externalité positive de consommation",
+                "Externalité négative de production",
+                "Externalité pécuniaire seule",
+                "Absence d'effet externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vaccin protège aussi les non-vaccinés : bénéfice externe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "R&D non brevetée diffusée aux concurrents peut créer :",
+              "options": [
+                "Externalité positive",
+                "Monopole garanti",
+                "Externalité pécuniaire obligatoire",
+                "Optimum automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les spillovers technologiques sous-rémunèrent l'innovateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Pollution sonore d'un aéroport est une externalité :",
+              "options": [
+                "Négative technologique",
+                "Positive de consommation",
+                "Pécuniaire par définition",
+                "Interne à l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bruit nuit directement aux riverains sans passer par un prix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Quand une usine ferme, baisse du loyer local :",
+              "options": [
+                "Externalité pécuniaire",
+                "Externalité négative technologique",
+                "Bien public pur",
+                "Taxe pigouvienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet via le marché foncier, pas défaillance classique sur le marché du bien pollué."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Externalité négative de consommation : exemple",
+              "options": [
+                "Automobiliste polluant en conduisant",
+                "Usine rejetant des effluents",
+                "Subvention à la R&D",
+                "Parc public gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'usage du véhicule qui génère l'émission."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Internaliser une externalité technologique négative vise à :",
+              "options": [
+                "Réduire la quantité échangée vers l'optimum social",
+                "Maximiser le profit privé",
+                "Supprimer toute production",
+                "Augmenter la surproduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marché libre produit trop ; la correction réduit l'écart avec le coût social."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "En SES terminale, l'environnement est souvent analysé via :",
+              "options": [
+                "Externalités technologiques négatives",
+                "Uniquement externalités pécuniaires",
+                "Théorie des jeux sans marché",
+                "Mercantilisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution et climat sont des effets externes non marchandés."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Biens publics et ressources communes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Un bien public pur se distingue par :",
+              "options": [
+                "Non-rivalité",
+                "Non-exclusion",
+                "Rivalité totale",
+                "Profit maximum privé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tous peuvent en profiter simultanément et l'exclusion est impraticable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "La rivalité signifie :",
+              "options": [
+                "La consommation d'un agent réduit la disponibilité pour les autres",
+                "Impossibilité de taxer",
+                "Absence de production",
+                "Marché parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractéristique des biens privés rivalis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Ressource commune (pêche en haute mer) risque :",
+              "options": [
+                "Surexploitation type « tragédie des communs »",
+                "Sous-utilisation systématique",
+                "Optimum privé automatique",
+                "Bien public pur sans rivalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rivalité sans exclusion efficace incite à surpêcher."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Climat stable mondial ressemble à :",
+              "options": [
+                "Bien public global",
+                "Bien privé rival",
+                "Externalité pécuniaire seule",
+                "Monopole naturel local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les émissions d'un pays affectent tous ; exclusion impossible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Éclairage public municipal est plutôt :",
+              "options": [
+                "Bien public local (club ou public selon cas)",
+                "Bien privé pur",
+                "Externalité positive seule",
+                "Quota d'importation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non-rivalité locale et financement collectif typiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Le passager clandestin sur un bien public mène à :",
+              "options": [
+                "Sous-financement ou sous-production",
+                "Surproduction privée optimale",
+                "Prix marché efficace",
+                "Taxe pigouvienne automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun espère que les autres paieront."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Bien club :",
+              "options": [
+                "Exclusion possible, non-rivalité à l'intérieur du club",
+                "Non-exclusion totale",
+                "Toujours gratuit",
+                "Sans régulation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemples : abonnement, infrastructures payantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Ostrom montre que certaines communs :",
+              "options": [
+                "Peuvent être gérées par règles communautaires",
+                "Échouent toujours sans privatisation totale",
+                "Interdisent toute coopération",
+                "Suppriment rivalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance locale peut éviter tragédie sans État seul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Biodiversité mondiale pose enjeu de :",
+              "options": [
+                "Bien public global et externalités",
+                "Uniquement marché privé",
+                "SMIC",
+                "Balance commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bénéfices diffus, tentations de free-riding."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Défaillance marché + bien public justifie :",
+              "options": [
+                "Intervention publique ou accords collectifs",
+                "Laisser faire seul",
+                "Suppression propriété",
+                "Interdiction science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marché sous-fournit les biens publics."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Théorème de Coase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Coase (1960) suppose pour l'efficience par négociation :",
+              "options": [
+                "Droits de propriété bien définis",
+                "Coûts de transaction nuls ou négligeables",
+                "Impossibilité de contrat",
+                "Monopole obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sans ces conditions, la correction privée peut échouer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Le théorème de Coase indique que l'allocation efficiente :",
+              "options": [
+                "Ne dépend pas de l'attribution initiale des droits si négociation possible",
+                "Dépend toujours du plus riche",
+                "Exige nationalisation",
+                "Interdit les tribunaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les agents échangent droits jusqu'à l'optimum."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Coûts de transaction élevés (nombreux agents) :",
+              "options": [
+                "Favorisent intervention publique (taxes, normes)",
+                "Garantissent négociation privée",
+                "Rendent Coase trivial",
+                "Suppriment externalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution diffuse : négociation entre milliers d'agents est coûteuse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Attribution du droit à polluer vs à respirer air pur :",
+              "options": [
+                "Change la répartition du revenu, pas l'efficience en Coase pur",
+                "Change toujours la quantité efficiente",
+                "Sans effet",
+                "Interdit en droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compensation monétaire entre gagnants et perdants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Exemple classique Coase : usine bruyante et voisin :",
+              "options": [
+                "Bargaining sur niveau de bruit et paiement",
+                "Taxe seule obligatoire",
+                "Interdiction marché",
+                "Externalité pécuniaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négociation directe si peu d'acteurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Critique du théorème en politique environnementale :",
+              "options": [
+                "Acteurs nombreux et asymétrie d'information",
+                "Marché toujours parfait",
+                "Absence d'externalités",
+                "PIB mal mesuré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat global illustre limites pratiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Définir la propriété des ressources (pêche, forêt) :",
+              "options": [
+                "Préalable à négociation ou gestion",
+                "Inutile",
+                "Interdit par Coase",
+                "Remplace toute norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clarté des droits facilite accords et marchés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Coase vs Pigou : débat central",
+              "options": [
+                "Marché négocié vs taxe étatique",
+                "Keynes vs Hayek seul",
+                "Offre vs demande sans externalité",
+                "Inflation vs chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux voies d'internalisation des externalités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Coûts de transaction incluent :",
+              "options": [
+                "Information, négociation, exécution des contrats",
+                "Uniquement taxes",
+                "Profit entreprise",
+                "Export net"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frais qui freinent accords privés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "En cas de coûts de transaction prohibeifs, l'État peut :",
+              "options": [
+                "Imposer taxe, norme ou marché de permis",
+                "Laisser surproduction",
+                "Supprimer droits",
+                "Ignorer pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instruments publics remplacent négociation impossible."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Optimum de Pigou",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "L'optimum pigouvien requiert (deux réponses) :",
+              "options": [
+                "Internaliser l'externalité (coûts/bénéfices sociaux pris en compte)",
+                "Quantité où le surplus social est maximal",
+                "Surproduction par rapport au marché libre",
+                "Absence de toute intervention publique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Internalisation et maximisation du bien-être collectif définissent l'optimum de Pigou."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Sur un marché avec externalité négative non corrigée :",
+              "options": [
+                "Quantité produite > optimum social",
+                "Quantité = optimum",
+                "Quantité = zéro obligatoire",
+                "Prix = coût social"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le producteur ignore une partie du coût."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Taxe pigouvienne idéale égale en principe :",
+              "options": [
+                "Externalité marginale au niveau optimal",
+                "PIB par habitant",
+                "Taux de chômage",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pigou : taxe = dommage marginal au optimum."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Externalité positive : subvention pigouvienne vise à :",
+              "options": [
+                "Augmenter production vers optimum social",
+                "Réduire production",
+                "Supprimer marché",
+                "Taxer consommateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encourager activité sous-fournie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Difficulté pratique taxe pigouvienne :",
+              "options": [
+                "Estimer dommages et externalité marginale",
+                "Absence théorie",
+                "Interdit en UE",
+                "Toujours sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incertitude scientifique et politique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Coût marginal social (CMS) :",
+              "options": [
+                "Coût privé + coût externe marginal",
+                "Coût privé seul",
+                "Revenu fiscal",
+                "Profit comptable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Somme des coûts pour la société."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Graphiquement, optimum social où :",
+              "options": [
+                "Offre sociale croise demande",
+                "Profit max seul",
+                "Chômage zéro",
+                "Export max"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix/montant tenant compte externalité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Pigou critique le :",
+              "options": [
+                "Laisser-faire face aux externalités",
+                "Planification totale",
+                "Mercantilisme historique",
+                "Keynésianisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie du bien-être et correction des défaillances."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Double dividende (débat) : taxe carbone pourrait :",
+              "options": [
+                "Réduire émissions et financer baisse d'autres impôts",
+                "Augmenter pollution",
+                "Supprimer État",
+                "Interdire innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recettes fiscales et correction environnementale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Sans correction, perte sèche associée :",
+              "options": [
+                "Triangle de Harberger (surproduction)",
+                "Full emploi",
+                "Excédent max",
+                "Zero deadweight"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écart entre quantité marché et sociale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Climat et externalités globales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Gaz à effet de serre (GES) :",
+              "options": [
+                "Externalité négative globale",
+                "Effet sur climat partagé par tous",
+                "Bien privé rival exclusif",
+                "Sans lien énergie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Émissions localisées, conséquences planétaires diffuses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Free-riding climatique :",
+              "options": [
+                "Pays retardent effort si autres agissent",
+                "Tous coopèrent toujours",
+                "Marché internalise seul",
+                "Sans accords"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation à minimiser coût national sans coordination."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Coût marginal des dommages climatiques :",
+              "options": [
+                "Difficile à estimer sur long terme",
+                "Connu avec certitude",
+                "Nul",
+                "Égal SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incertitudes scientifiques et économiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Accord de Paris (2015) :",
+              "options": [
+                "Objectifs nationaux déterminés (NDC) et coopération",
+                "Taxe carbone mondiale unique imposée",
+                "Interdiction énergie",
+                "Sans États"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture souple de contributions nationales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Externalité intergénérationnelle :",
+              "options": [
+                "Coûts/bénéfices reportés aux générations futures",
+                "Uniquement même année",
+                "Pécuniaire seule",
+                "Sans éthique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat justice climatique et actualisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Taux d'actualisation élevé dans coût-bénéfice climat :",
+              "options": [
+                "Réduit poids des dommages futurs",
+                "Augmente action aujourd'hui",
+                "Sans effet",
+                "Interdit politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix éthique et technique majeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Secteurs émetteurs majeurs en France (débat) :",
+              "options": [
+                "Transports, bâtiment, industrie, agriculture",
+                "Uniquement services",
+                "Export seul",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques sectorielles ciblées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Effet rebond (Jevons) :",
+              "options": [
+                "Gain efficacité peut accroître usage total",
+                "Baisse consommation garantie",
+                "Sans lien énergie",
+                "Interdit technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix effectif plus bas → demande plus forte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Justice climatique oppose souvent :",
+              "options": [
+                "Pays historiquement émetteurs vs pays vulnérables",
+                "SMIC vs prix",
+                "Export vs import seul",
+                "Chômage vs inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Responsabilités communes mais différenciées (CBDR)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Internaliser GES nécessite surtout :",
+              "options": [
+                "Coopération internationale et instruments nationaux",
+                "Laisser-faire seul",
+                "Suppression propriété",
+                "Fin mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Échelle globale de la défaillance."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Pollution, santé et inégalités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Externalités environnementales et santé :",
+              "options": [
+                "Pollution atmosphérique augmente morbidité",
+                "Populations précaires souvent plus exposées",
+                "Effets toujours pécuniaires seuls",
+                "Sans coût social"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Externalité négative + inégalités de exposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Zones à faibles revenus près d'infrastructures polluantes :",
+              "options": [
+                "Illustrent inégalité environnementale",
+                "Prouvent absence externalité",
+                "Optimum marché",
+                "Sans lien SES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dimension sociale de l'environnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Coût social de la pollution inclut :",
+              "options": [
+                "Dépenses santé et perte productivité",
+                "Uniquement taxe perçue",
+                "Profit entreprise",
+                "Export net"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dommages sanitaires chiffrables partiellement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Particules fines (PM2.5) :",
+              "options": [
+                "Externalité négative avec effets cardiovasculaires",
+                "Bien public pur",
+                "Subvention verte",
+                "Quota pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enjeu santé publique urbaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Normes antipollution automobiles visent à :",
+              "options": [
+                "Internaliser part des externalités",
+                "Supprimer transport",
+                "Augmenter émissions",
+                "Fin innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglementation technique type instrument."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Externalité positive d'un parc urbain :",
+              "options": [
+                "Bien-être et santé des riverains",
+                "Taxe carbone",
+                "Permis négociable",
+                "Monopole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espaces verts génèrent bénéfices non marchandés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Principe de précaution :",
+              "options": [
+                "Agir face au risque grave même incertitude",
+                "Attendre certitude totale",
+                "Interdit régulation",
+                "Remplace science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charte environnement 2004, débats SES."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Pollueur-payeur :",
+              "options": [
+                "Agent responsable supporte coûts de correction",
+                "État paie toujours",
+                "Consommateur exempté",
+                "Sans fondement juridique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe de droit environnemental français et UE."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Externalités et justice sociale :",
+              "options": [
+                "Taxes vertes peuvent être régressives sans compensation",
+                "Toujours progressives prouvé",
+                "Sans débat",
+                "Interdit pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renvoi dividende ou minima sociaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Mesure qualité air (AQI) sert à :",
+              "options": [
+                "Informer et fonder politiques",
+                "Calculer PIB seul",
+                "Fixer SMIC",
+                "Remplacer médecine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence et action publique locale."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Économie circulaire et externalités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Économie linéaire « extraire-produire-jeter » :",
+              "options": [
+                "Externalise coûts déchets et ressources",
+                "Peut surconsommer matières premières",
+                "Élimine toute externalité",
+                "Est déjà circulaire partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coûts environnementaux non intégrés aux prix."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Externalité négative des déchets plastiques :",
+              "options": [
+                "Pollution océans et paysages",
+                "Bien public pur",
+                "Taxe sur le travail",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dégradation écosystèmes et santé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Économie circulaire vise à :",
+              "options": [
+                "Réduire gaspillage et boucler flux matières",
+                "Maximiser déchets",
+                "Supprimer recyclage",
+                "Interdire production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réemploi, réparation, recyclage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Extended producer responsibility (REP) :",
+              "options": [
+                "Producteur internalise fin de vie du produit",
+                "Subvention sans obligation",
+                "Externalité pécuniaire",
+                "Monopole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filères à responsabilité élargie en France."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Recyclage insuffisant sans régulation car :",
+              "options": [
+                "Externalités non prises en compte par marché",
+                "Coût nul",
+                "Demande infinie",
+                "Sans tri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marché secondaire faible sans incitations."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Obsolescence programmée (débat) :",
+              "options": [
+                "Stratégie accroissant déchets et consommation",
+                "Externalité positive",
+                "Optimum social",
+                "Bien public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique consommation et durabilité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Taxe générale sur activités polluantes (TGAP) :",
+              "options": [
+                "Exemple d'instrument fiscal environnemental",
+                "Allocation chômage",
+                "SMIC",
+                "Quota monétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiscalité pigouvienne sectorielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Externalité positive du tri sélectif collectif :",
+              "options": [
+                "Réduction pollution amont si suffisamment suivi",
+                "Surproduction carbone",
+                "Fin déchets",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effort collectif avec bénéfice environnemental."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Écoconception :",
+              "options": [
+                "Intègre impacts environnementaux dès conception",
+                "Ignore externalités",
+                "Remplace droit",
+                "Interdit matériaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention plutôt que correction a posteriori."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Cercle vertueux circularité et emploi (débat) :",
+              "options": [
+                "Filières recyclage et réparation créent activités",
+                "Supprime tout emploi",
+                "Sans lien SES",
+                "Chômage garanti"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition écologique et marché du travail."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Débats sur l'action publique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Arguments pour intervention publique environnementale :",
+              "options": [
+                "Défaillances de marché (externalités, biens publics)",
+                "Protection santé et générations futures",
+                "Marché toujours optimal sans État",
+                "Interdiction toute croissance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Efficacité économique et objectifs sociaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Argument libéral critique :",
+              "options": [
+                "Risque d'efficacité faible et capture réglementaire",
+                "Externalités inexistantes",
+                "Climat faux",
+                "Science interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coûts administratifs et lobbies."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Capture réglementaire :",
+              "options": [
+                "Secteur régulé influence règles à son profit",
+                "Optimum social garanti",
+                "Sans entreprises",
+                "Fin démocratie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat Stigler appliqué à l'environnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Approche par les coûts de la vie (VSL) :",
+              "options": [
+                "Monétise risque mortalité pour évaluer politiques",
+                "Remplace démocratie",
+                "Sans controverse",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Controverses éthiques en évaluation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Subsidiarité (UE) :",
+              "options": [
+                "Action au niveau le plus pertinent (local à global)",
+                "Tout à Bruxelles",
+                "Sans collectivités",
+                "Interdit régions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Climat global vs air local."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Lobbying industrie fossile peut :",
+              "options": [
+                "Retarder internalisation externalités",
+                "Garantir taxe optimale",
+                "Supprimer profit",
+                "Fin externalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat démocratie et transition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "État stratège (Chesnais) en environnement :",
+              "options": [
+                "Oriente investissements long terme (réseaux, R&D verte)",
+                "Laisser-faire pur",
+                "Sans planification",
+                "Interdit taxes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rôle de coordination et infrastructures."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Acceptabilité sociale taxe carbone :",
+              "options": [
+                "Dépend redistribution et services alternatifs",
+                "Toujours maximale",
+                "Sans lien pouvoir d'achat",
+                "Interdit pauvres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gilets jaunes et débat justice fiscale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Multiplication labels (énergie, bio) vise à :",
+              "options": [
+                "Réduire asymétrie d'information",
+                "Créer externalité négative",
+                "Remplacer loi",
+                "Supprimer consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information comme instrument complémentaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Trade-off croissance-environnement (débat) :",
+              "options": [
+                "Découplage possible mais incertain selon secteurs",
+                "Impossible toute croissance verte",
+                "Identité PIB pollution",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courbe de Kuznets environnementale discutée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Études de cas et synthèse externalités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Mer du Nord et acide sulfurique (historique) illustrent :",
+              "options": [
+                "Externalités transfrontières",
+                "Nécessité coopération",
+                "Bien privé pur",
+                "Absence défaillance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pollution ne s'arrête pas aux frontières."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Protocole de Montréal :",
+              "options": [
+                "Réduction substances appauvrissant ozone",
+                "Taxe carbone mondiale",
+                "Fin pêche",
+                "Sans succès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple relativement efficace de coopération."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Deepwater Horizon (2010) :",
+              "options": [
+                "Externalité négative majeure pétrole en mer",
+                "Externalité positive",
+                "Bien club",
+                "Sans coût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dommages écosystèmes et activités côtières."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "ZFE (zone faibles émissions) :",
+              "options": [
+                "Restreint circulation véhicules polluants en agglomération",
+                "Subvention fossile",
+                "Permis carbone global",
+                "Sans local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument territorial qualité air."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Biodiversité : effet externe destruction habitat :",
+              "options": [
+                "Perte services écosystémiques pour société",
+                "Gain marché automatique",
+                "Pécuniaire seule",
+                "Sans lien économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollinisation, filtration eau, etc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Externalité réseau (numérique) diffère car :",
+              "options": [
+                "Valeur augmente avec utilisateurs (effet réseau)",
+                "Toujours négative",
+                "Identique pollution",
+                "Sans marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas confondre avec externalité technologique classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Internalisation partielle signifie :",
+              "options": [
+                "Correction incomplète laisse écart à optimum",
+                "Optimum atteint",
+                "Sans instrument",
+                "Taxe nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques réelles souvent sous-optimales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Coût d'abattement marginal croissant :",
+              "options": [
+                "Réduire pollution devient plus cher à mesure qu'on s'approche de zéro",
+                "Toujours constant",
+                "Nul",
+                "Sans graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base choix instrument mixte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "SES : lien externalité et bien-être social :",
+              "options": [
+                "Efficacité allocative vs équité peuvent diverger",
+                "Toujours identiques",
+                "Sans norme",
+                "Interdit redistribution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimum pigouvien ≠ répartition juste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Synthèse chapitre externalités :",
+              "options": [
+                "Marché seul sous-produit/surproduit ; correction publique ou négociée",
+                "Marché parfait environnement",
+                "Fin action publique",
+                "Externalités pécuniaires seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondement microéconomique action publique environnementale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Instruments",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Taxes et tarification carbone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Une taxe pigouvienne sur carbone vise à :",
+              "options": [
+                "Internaliser externalité GES",
+                "Réduire émissions en modifiant prix relatifs",
+                "Supprimer toute consommation énergétique",
+                "Remplacer droit environnemental"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Signal prix oriente producteurs et ménages."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "ICC (impôt carbone) en France concerne surtout :",
+              "options": [
+                "Combustibles fossiles (evolution vers tarification élargie)",
+                "Uniquement aviation sans autre secteur",
+                "Allocations chômage",
+                "Exportations agricoles seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Composante fiscalité climat nationale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Avantage taxe vs norme uniforme :",
+              "options": [
+                "Coût d'abattement minimisé si agents hétérogènes",
+                "Sans recettes",
+                "Interdit entreprises",
+                "Coût identique pour tous obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque agent réduit jusqu'à coût marginal = taxe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Risque fuite carbone :",
+              "options": [
+                "Production émigrante vers pays moins stricts",
+                "Augmentation automatique emploi local",
+                "Fin compétitivité concept",
+                "Sans industrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat compétitivité et ajuster frontières."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Recettes taxe carbone peuvent :",
+              "options": [
+                "Financer transition ou baisser autres impôts",
+                "Être obligatoirement brûlées",
+                "Interdire budget",
+                "Sans affectation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat double dividende et acceptabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Taxe trop basse :",
+              "options": [
+                "Laisse émissions au-dessus optimum",
+                "Atteint zéro émission garanti",
+                "Sans effet",
+                "Remplace innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal prix insuffisant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Taxe trop élevée sans adaptation :",
+              "options": [
+                "Coût social excessif et risque rejet politique",
+                "Optimum garanti",
+                "Full emploi",
+                "Sans pauvreté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arbitrage environnement / compétitivité / justice."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Mécanisme d'ajustement carbone aux frontières (MACF UE) :",
+              "options": [
+                "Nivellement partiel coût carbone import/industrie",
+                "Suppression taxe interne",
+                "Fin commerce",
+                "Quota monétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse partielle fuite carbone."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Comparé à norme quantitative, taxe fixe :",
+              "options": [
+                "Quantité d'émission incertaine si demande change",
+                "Quantité certaine",
+                "Sans prix",
+                "Interdit marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix vs quantité (Weitzman)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Tarification carbone reconnue par économistes pour :",
+              "options": [
+                "Efficacité allocative en théorie",
+                "Supprimer État",
+                "Fin externalités sans politique",
+                "Gratuité énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument de référence microéconomique."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Redevances et fiscalité environnementale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Redevance (redevance pesée, eau) :",
+              "options": [
+                "Paiement pour usage ressource ou service",
+                "Peut financer gestion collective",
+                "Est toujours une taxe pigouvienne pure",
+                "Sans lien environnement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tarification usage + financement service public."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "TGAP en France :",
+              "options": [
+                "Taxe sur activités polluantes",
+                "Subvention chômage",
+                "SMIC",
+                "Permis carbone seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiscalité corrective sectorielle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Redevance mise en décharge :",
+              "options": [
+                "Internalise part coût traitement déchets",
+                "Externalité positive",
+                "Bien public pur",
+                "Sans producteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation réduction déchets amont."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Fiscalité environnementale vs fiscalité budgétaire :",
+              "options": [
+                "Objectif écologique peut primer sur rendement",
+                "Toujours identiques",
+                "Interdit recettes",
+                "Sans distinction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat affectation et signal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Écotaxe camions (historique France) :",
+              "options": [
+                "Illustre acceptabilité politique fragile",
+                "Succès sans contestation",
+                "Remplace climat",
+                "Fin transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1990s : contestation et abandon partiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Bonus-malus automobile :",
+              "options": [
+                "Fiscalité différenciée selon émissions CO₂",
+                "Norme unique sans prix",
+                "Allocation logement",
+                "Quota pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument mixte prix + incitation achat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Redevance audiovisuelle (contre-exemple) :",
+              "options": [
+                "N'est pas un instrument environnemental",
+                "Taxe carbone",
+                "Permis échange",
+                "TGAP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction objet fiscal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Taxe sur kérosène aviation (débat) :",
+              "options": [
+                "Faible taxation internationale historique",
+                "Interdite partout",
+                "Remplace train obligatoire",
+                "Sans externalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Externalité transport aérien global."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Harmonisation fiscale environnementale UE :",
+              "options": [
+                "Limite concurrence fiscale dommageable",
+                "Impossible juridiquement",
+                "Sans directive",
+                "Fin États"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. système ETS et minimums."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Régressivité possible taxes énergie :",
+              "options": [
+                "Compensation via transfers ou tarifs sociaux",
+                "Inexistante toujours",
+                "Interdit pauvres consommer",
+                "Sans politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Justice sociale des instruments."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Normes et standards",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Normes environnementales (techniques) :",
+              "options": [
+                "Imposent seuil ou technologie",
+                "Quantité ou qualité contrôlée réglementairement",
+                "Garantissent toujours moindre coût global",
+                "Remplacent toute taxe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Instrument commande-contrôle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Norme vs taxe : incertitude sur coûts :",
+              "options": [
+                "Norme fixe quantité, coût inconnu",
+                "Taxe fixe coût marginal, quantité incertaine",
+                "Identiques",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weitzman : choix selon pente dommages/coûts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Norme Euro sur émissions véhicules neufs :",
+              "options": [
+                "Standard performance environnementale",
+                "Subvention fossile",
+                "Marché permis carbone",
+                "RSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réglementation produit UE."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Inconvénient norme uniforme :",
+              "options": [
+                "Coût d'abattement élevé pour certains producteurs",
+                "Flexibilité maximale",
+                "Recettes fiscales",
+                "Sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même effort pour producteurs hétérogènes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Normes d'émissions industrielles (IED) :",
+              "options": [
+                "Limites polluants secteur par secteur",
+                "Taxe unique",
+                "Privatisation",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permis intégrés et meilleures techniques disponibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Interdiction plastique à usage unique :",
+              "options": [
+                "Norme prohibitive",
+                "Taxe pigouvienne",
+                "Permis négociable",
+                "Subvention consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument réglementaire fort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Avantage norme :",
+              "options": [
+                "Objectif environnemental clair et vérifiable",
+                "Toujours moindre coût",
+                "Sans administration",
+                "Fin innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévisibilité écologique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Zéro émission véhicules neufs (objectif UE) :",
+              "options": [
+                "Norme/standard de marché futur",
+                "Externalité pécuniaire",
+                "Bien club",
+                "Allocation chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calendrier réglementaire transition auto."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Non-conformité norme entraîne :",
+              "options": [
+                "Sanctions administratives ou pénales",
+                "Toujours subvention",
+                "Sans contrôle",
+                "Profit obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Application droit environnement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Mix norme + taxe :",
+              "options": [
+                "Courant (ex. norme minimale + prix carbone)",
+                "Interdit",
+                "Redondant toujours",
+                "Sans exemple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques publiques combinent instruments."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Marchés de permis d'émission",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Système ETS (UE) :",
+              "options": [
+                "Plafond d'émissions (cap) + échange de quotas",
+                "Permet flexibilité entre entreprises",
+                "Fixe prix carbone avec certitude totale",
+                "Sans plafond"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Instrument cap-and-trade."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Quota gratuit vs aux enchères :",
+              "options": [
+                "Enchères génèrent recettes publiques",
+                "Gratuit sans enjeu",
+                "Interdit entreprises",
+                "Fin marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat allocation initiale et concurrence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Prix du carbone sur ETS varie car :",
+              "options": [
+                "Offre/demande de quotas",
+                "Toujours fixe légalement",
+                "Sans marché",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volatilité politique et économique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Avantage permis vs taxe si incertitude dommages :",
+              "options": [
+                "Quantité totale plafonnée",
+                "Coût entreprise nul",
+                "Sans entreprises",
+                "Interdit État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Weitzman : dommages incertains → quantité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Banking de quotas :",
+              "options": [
+                "Reporter surplus à période future",
+                "Interdit stockage",
+                "Supprime plafond",
+                "Fin climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lissage efforts intertemporels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Fuite carbone ETS atténuée par :",
+              "options": [
+                "Réduction progressive gratuits + MACF",
+                "Suppression plafond",
+                "Fin industrie",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réformes récentes système."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Permis d'émission =",
+              "options": [
+                "Droit limité à émettre polluant",
+                "Subvention verte",
+                "Norme sans échange",
+                "Taxe fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propriété marchande temporaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Scandale fraude quotas (historique) :",
+              "options": [
+                "Montre enjeux gouvernance marché",
+                "Prouve perfection",
+                "Sans régulation",
+                "Fin ETS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle et intégrité nécessaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Élargissement ETS (bâtiment, transport) :",
+              "options": [
+                "Étend signal carbone secteurs",
+                "Supprime taxe intérieure",
+                "Interdit ménages",
+                "Sans débat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réforme Fit for 55."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Cap-and-trade internalise externalité via :",
+              "options": [
+                "Prix implicite carbone sur quotas",
+                "Gratuité totale",
+                "Externalité pécuniaire",
+                "RSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût d'opportunité d'émettre."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Subventions et incitations vertes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Subvention R&D renouvelables :",
+              "options": [
+                "Corrige externalité positive sous-investie",
+                "Peut accélérer innovation bas-carbone",
+                "Remplace toujours taxe",
+                "Sans coût budget"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Instrument pull/push technologique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "MaPrimeRénov' (France) :",
+              "options": [
+                "Subvention rénovation énergétique logement",
+                "Taxe carbone",
+                "Permis échange",
+                "Norme seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation financière secteur bâtiment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Risque subvention :",
+              "options": [
+                "Effet d'aubaine et coût inefficace",
+                "Optimum automatique",
+                "Sans entreprise",
+                "Fin marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaluation impact nécessaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Crédit d'impôt transition énergétique passé :",
+              "options": [
+                "Réduit coût privé actions vertes",
+                "Externalité négative",
+                "Quota carbone",
+                "Interdit ménages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument fiscal incitatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Subvention vs taxe sur polluant :",
+              "options": [
+                "Subvention baisse coût vert ; taxe relève coût polluant",
+                "Identiques",
+                "Subvention augmente pollution directe",
+                "Sans différence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux leviers prix opposés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Feed-in tariff (historique éolien) :",
+              "options": [
+                "Prix garanti électricité renouvelable",
+                "Sanction pénale",
+                "Chômage",
+                "Export pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien prix producteurs verts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Conditionnalité aides entreprises vertes :",
+              "options": [
+                "Objectifs écologiques vérifiables",
+                "Sans contrôle",
+                "Interdit PME",
+                "Fin État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éviter greenwashing et aubaines."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Subvention transport public :",
+              "options": [
+                "Externalité positive mobilité propre renforcée",
+                "Taxe carbone",
+                "Permis",
+                "Norme interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Correction défaillance + service public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Budget vert (green budgeting) :",
+              "options": [
+                "Repère dépenses favorables/défavorables climat",
+                "Supprime fiscalité",
+                "Sans Parlement",
+                "PIB seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence action publique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Mix subvention + taxe carbone :",
+              "options": [
+                "Renforce transition (prix et investissement)",
+                "Interdit",
+                "Redondant toujours",
+                "Sans France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique industrielle et climat."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Réglementation et contrôle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Contrôle et sanctions environnementaux :",
+              "options": [
+                "Assurent crédibilité des normes",
+                "Peuvent dissuader infractions",
+                "Remplacent toujours incitations prix",
+                "Sans administration"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Application du droit = dimension instrument."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Inspection des installations classées (ICPE) :",
+              "options": [
+                "Contrôle respect réglementation",
+                "Subvention",
+                "Permis carbone ménage",
+                "RSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État garantit conformité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Amende administrative pollution :",
+              "options": [
+                "Sanction pécuniaire internalisant partiellement",
+                "Subvention",
+                "Bien public",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complète prévention et réparation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Responsabilité environnementale élargie :",
+              "options": [
+                "Oblige réparation dommages écologiques",
+                "Taxe carbone",
+                "Quota gratuit",
+                "Sans justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit réparation post-dommage."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Licence environnementale :",
+              "options": [
+                "Autorisation conditionnée au respect exigences",
+                "Marché permis GES",
+                "Impôt revenu",
+                "Export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commande-contrôle avec agrément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Contrôle faible (débat) :",
+              "options": [
+                "Normes inefficaces si non appliquées",
+                "Garantit optimum",
+                "Sans fraude",
+                "Fin pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût application et corruption."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Droit de l'environnement UE prime sur :",
+              "options": [
+                "Droit national incompatible (principe primauté)",
+                "Toujours loi locale seule",
+                "Sans effet",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmonisation marché unique vert."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Plan de prévention risques :",
+              "options": [
+                "Instrument anticipatif territorial",
+                "Taxe seule",
+                "Permis échange",
+                "Subvention chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention plutôt que cure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Contrôle citoyen (associations) :",
+              "options": [
+                "Complète action publique (alertes, justice)",
+                "Remplace État",
+                "Interdit",
+                "Sans recours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démocratie environnementale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Compliance entreprise :",
+              "options": [
+                "Mise en conformité proactive avec normes",
+                "Externalité pécuniaire",
+                "Fin régulation",
+                "Optimum sans coût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût administratif des instruments."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Nudge et information",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Nudge (Thaler & Sunstein) :",
+              "options": [
+                "Architecture choix modifiant comportement sans interdiction",
+                "Information simplifiée (étiquetage)",
+                "Toujours taxe maximale",
+                "Supprime liberté"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Instruments comportementaux doux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Étiquette énergie sur électroménager :",
+              "options": [
+                "Réduit asymétrie information consommateur",
+                "Taxe carbone",
+                "Permis",
+                "Norme interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal comparatif achat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Affichage environnemental alimentaire (expérimentations) :",
+              "options": [
+                "Informe impact carbone/écologique",
+                "Subvention fossile",
+                "Quota GES",
+                "RSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat transparence consommation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Limite nudge seul :",
+              "options": [
+                "Externalités fortes peuvent exiger prix ou normes",
+                "Remplace tout État",
+                "Optimum garanti",
+                "Sans biais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comportement ≠ internalisation complète."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Défaut option vertueuse (green default) :",
+              "options": [
+                "Option présélectionnée favorisant choix durable",
+                "Taxe",
+                "Sanction pénale",
+                "Interdit consommer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. renouvellement contrat énergie verte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Campagne sensibilisation déchets :",
+              "options": [
+                "Instrument informationnel complémentaire",
+                "Remplace tri obligatoire toujours",
+                "Sans effet possible",
+                "Fin économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation et normes sociales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Biais présent (myopie) justifie parfois :",
+              "options": [
+                "Régulation plus que seul nudge",
+                "Laisser-faire pur",
+                "Absence politique",
+                "Fin actualisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie comportementale et climat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Score carbone entreprise (reporting CSRD) :",
+              "options": [
+                "Transparence pour investisseurs et régulateur",
+                "Subvention",
+                "Permis gratuit",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance et pression marché."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Prix affiché carbone produit :",
+              "options": [
+                "Aide comparer externalité intégrée",
+                "Remplace toute taxe",
+                "Sans méthode",
+                "Interdit UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Information + responsabilité filière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Nudge et liberté paternalisme :",
+              "options": [
+                "Débat éthique légitimité État",
+                "Sans controverse",
+                "Interdit philosophie",
+                "Fin démocratie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SES : efficacité vs autonomie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Coopération internationale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Instruments climat internationaux :",
+              "options": [
+                "Accords multilatéraux (Paris)",
+                "Mécanismes flexibilité (Art. 6)",
+                "Suppression souveraineté totale",
+                "Sans ONG"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Coopération + marchés carbone projet (évolution)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Protocole Kyoto (historique) :",
+              "options": [
+                "Objectifs binding pays industrialisés (période)",
+                "Taxe mondiale unique",
+                "Fin GES",
+                "Sans marchés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier cadre quantifié ; limites USA etc."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "CBDR-RC :",
+              "options": [
+                "Responsabilités communes différenciées",
+                "Interdit pays émergents agir",
+                "Taxe France seule",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Principe équité Nord-Sud."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Fonds vert pour le climat :",
+              "options": [
+                "Aide financière pays en développement",
+                "Subvention fossile",
+                "Permis UE seule",
+                "RSA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instrument financier solidarité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Coopération sans contrainte binding (Paris) :",
+              "options": [
+                "Incertitude sur effort collectif suffisant",
+                "Garantit 1,5°C seul",
+                "Sans NDC",
+                "Fin COP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soft law vs hard law débattu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Border adjustment et accords :",
+              "options": [
+                "Tension avec règles commerce (OMC)",
+                "Sans débat",
+                "Interdit UE",
+                "Fin taxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compatibilité commerce international."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Diplomatie climat et intérêts nationaux :",
+              "options": [
+                "Free-riding menace objectifs globaux",
+                "Coopération automatique",
+                "Sans État",
+                "PIB seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeu stratégique international."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Accords sectoriels (aviation CIATA) :",
+              "options": [
+                "Instruments ciblés secteur difficile",
+                "Remplacent Paris",
+                "Sans émissions",
+                "Norme SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches hybrides globales/sectorielles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Technologie transfert Sud :",
+              "options": [
+                "Instrument réduction externalité globale",
+                "Externalité pécuniaire",
+                "Interdit brevet",
+                "Fin innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Justice et efficacité climat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "COP annuelle :",
+              "options": [
+                "Forum négociation et revue ambitions",
+                "Tribunal pénal",
+                "Banque centrale",
+                "Sans société civile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance climatique mondiale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Évaluation coût-bénéfice",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Analyse coût-bénéfice (ACB) politique climat :",
+              "options": [
+                "Compare coûts abattement et dommages évités",
+                "Repose sur actualisation flux futurs",
+                "Élimine incertitude",
+                "Remplace démocratie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Outil décision avec limites éthiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Coût marginal d'abattement (CMA) :",
+              "options": [
+                "Coût d'une unité de réduction supplémentaire",
+                "SMIC",
+                "Chômage",
+                "Export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guide choix entre instruments/secteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Égalité CMA entre secteurs (efficacité) :",
+              "options": [
+                "Minimise coût total pour objectif donné",
+                "Maximise toujours emploi",
+                "Interdit taxe",
+                "Sans graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logique taxe unique ou marché permis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Dommages climatiques estimés (Stern, Nordhaus) :",
+              "options": [
+                "Divergent sur taux actualisation",
+                "Identiques",
+                "Sans modèle",
+                "Fin science"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat éthique intergénérationnel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Coût social carbone (SCC) :",
+              "options": [
+                "Estimation dommage marginal tonne CO₂",
+                "Prix ETS toujours égal",
+                "SMIC",
+                "Quota pêche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Référence évaluation projets publics."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Limites ACB environnement :",
+              "options": [
+                "Valeur vie, irréversibilités, incertitudes",
+                "Perfection information",
+                "Sans critique",
+                "Interdit chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critiques écologistes et éthiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Principe coût-efficacité :",
+              "options": [
+                "Atteindre objectif au moindre coût",
+                "Maximiser profit privé",
+                "Ignorer objectif",
+                "Fin norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinct de coût-bénéfice global."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Externalités non marchandées chiffrées via :",
+              "options": [
+                "Méthodes contingent valuation, coût voyage",
+                "Comptabilité nationale seule",
+                "Sans controverse",
+                "SMIC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Controverses méthodologiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Évaluation ex post politique verte :",
+              "options": [
+                "Mesure effets réels vs anticipés",
+                "Inutile",
+                "Interdit stats",
+                "Fin contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Learning by doing politiques publiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "ACB ne tranche pas seule :",
+              "options": [
+                "Choix politiques et valeurs sociales",
+                "Remplace Parlement",
+                "Sans citoyens",
+                "Optimum unique prouvé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SES : science + démocratie."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Mix instrumentale et synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Mix optimal instruments environnement :",
+              "options": [
+                "Combine prix, normes, subventions, info",
+                "Dépend secteur et incertitudes",
+                "Toujours taxe seule",
+                "Interdit régulation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pas de solution unique ; complémentarités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Taxe + norme minimale :",
+              "options": [
+                "Filet environnemental + flexibilité",
+                "Redondant inutile toujours",
+                "Interdit UE",
+                "Fin ETS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Norme plancher, taxe pour au-delà."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Transition juste :",
+              "options": [
+                "Accompagne ménages/workers affectés par instruments",
+                "Ignore justice",
+                "Supprime taxe",
+                "Chômage voulu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acceptabilité et équité transition."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Planification énergétique nationale :",
+              "options": [
+                "Oriente mix long terme complémentaire prix",
+                "Remplace marché total",
+                "Sans objectif",
+                "Interdit renouvelable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État stratège + instruments marché."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Effet cumulé taxe carbone + ETS + normes :",
+              "options": [
+                "Nécessite coordination pour éviter surcoût",
+                "Toujours incohérent",
+                "Sans France",
+                "Fin climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence signal carbone."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Instrument choisi si coûts incertains (Weitzman) :",
+              "options": [
+                "Taxe si dommages steep",
+                "Permis si dommages plats",
+                "Toujours subvention",
+                "Sans théorie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle prix vs quantité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Décarbonation industrie lourde :",
+              "options": [
+                "Mix subventions, normes, hydrogène, MACF",
+                "Taxe seule suffit toujours",
+                "Sans innovation",
+                "Interdit UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique industrielle verte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Local vs global instruments :",
+              "options": [
+                "ZFE local, ETS/Paris global",
+                "Tout local",
+                "Tout sans État",
+                "Chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subsidiarité et échelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Évaluation continue mix (France Stratégie, CGDD) :",
+              "options": [
+                "Ajuste instruments selon résultats",
+                "Interdit mesure",
+                "Fin débat",
+                "Sans data"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance adaptive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Synthèse chapitre instruments :",
+              "options": [
+                "Action publique corrige externalités via boîte à outils variée",
+                "Marché seul suffit",
+                "Instruments sans coût",
+                "Externalités pécuniaires seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminale SES : de la défaillance à la politique environnementale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

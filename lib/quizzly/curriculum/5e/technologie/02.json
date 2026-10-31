@@ -1,0 +1,2703 @@
+{
+  "id": "5e-technologie-02",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Informatique et programmation",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Algorithme",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir l'algorithme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement un algorithme ?",
+              "options": [
+                "Une suite finie d'instructions ordonnées pour résoudre un problème",
+                "Un fichier image stocké sur le disque dur",
+                "Une description claire des étapes à suivre",
+                "Un câble qui relie l'écran à l'unité centrale"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un algorithme est une suite d'étapes ordonnées, pas un objet matériel ni un simple fichier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la vie courante, lequel est le plus proche d'un algorithme ?",
+              "options": [
+                "Une recette de cuisine avec des étapes numérotées",
+                "Une photo prise avec un téléphone",
+                "Le poids d'un sac à dos",
+                "La couleur d'un mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une recette indique des étapes dans un ordre précis, comme un algorithme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi l'ordre des instructions est-il important dans un algorithme ?",
+              "options": [
+                "Parce que changer l'ordre peut changer le résultat",
+                "Parce que l'ordinateur choisit l'ordre au hasard",
+                "Parce que seule la première instruction compte",
+                "Parce que l'ordre sert uniquement à décorer la fiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exécuter les étapes dans le mauvais ordre peut produire un résultat incorrect."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une instruction dans un algorithme, c'est :",
+              "options": [
+                "Une action précise que l'on demande d'effectuer",
+                "Un bug qui bloque toujours le programme",
+                "Un type de virus informatique",
+                "Un modèle de clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque instruction décrit une action élémentaire à réaliser."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un algorithme doit être :",
+              "options": [
+                "Clair, fini et exécutable étape par étape",
+                "Secret et impossible à lire",
+                "Infini pour être puissant",
+                "Écrit uniquement en langue étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On doit pouvoir le suivre sans ambiguïté et en un nombre fini d'étapes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel exemple correspond à une séquence d'instructions ?",
+              "options": [
+                "Ouvrir l'application, saisir le texte, enregistrer le fichier",
+                "Appuyer une seule fois sur le bouton d'alimentation sans suite",
+                "Regarder l'écran sans agir",
+                "Mélanger les pages d'un cahier sans numéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs actions enchaînées forment une séquence, base d'un algorithme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avant de coder, on peut écrire un algorithme :",
+              "options": [
+                "En français simple ou avec des symboles, sur papier ou à l'écran",
+                "Uniquement en binaire sans aide",
+                "Seulement après avoir acheté un robot",
+                "Jamais, car seul l'ordinateur réfléchit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme se conçoit d'abord ; le programme le traduit pour la machine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La différence entre algorithme et programme est que :",
+              "options": [
+                "L'algorithme est la méthode ; le programme est écrit pour l'ordinateur",
+                "Ils sont strictement identiques en technologie",
+                "Le programme existe seulement sur papier",
+                "L'algorithme ne contient jamais d'instructions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On conçoit la logique puis on la traduit dans un langage de programmation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour tracer un carré au sol, un algorithme commence souvent par :",
+              "options": [
+                "Définir la longueur du côté et la direction du premier pas",
+                "Effacer le carré déjà tracé sans mesure",
+                "Compter les nuages dans le ciel",
+                "Changer de couleur de craie à chaque coin sans règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des paramètres et une première action avant de répéter les côtés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un algorithme incorrect peut :",
+              "options": [
+                "Donner un mauvais résultat même si chaque ligne semble claire",
+                "Empêcher physiquement d'allumer l'ordinateur",
+                "Augmenter automatiquement la taille de l'écran",
+                "Rendre le clavier plus bruyant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une logique fausse produit un résultat erroné malgré des instructions lisibles."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les instructions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces éléments, lesquels sont des instructions possibles dans un algorithme ?",
+              "options": [
+                "Afficher un message à l'écran",
+                "La couleur des murs de la salle",
+                "Ajouter 1 à un compteur",
+                "Le nombre de fenêtres du bâtiment"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une instruction est une action ; la couleur d'un mur ou le nombre de fenêtres ne sont pas des actions du programme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une instruction « lire une valeur » sert à :",
+              "options": [
+                "Récupérer une donnée saisie ou fournie",
+                "Éteindre définitivement le processeur",
+                "Changer la taille de la police du système",
+                "Supprimer le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire une valeur consiste à obtenir une entrée pour l'utiliser ensuite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'instruction « afficher » permet de :",
+              "options": [
+                "Montrer un résultat ou un texte à l'utilisateur",
+                "Cacher toutes les fenêtres sans message",
+                "Réparer automatiquement le matériel",
+                "Installer un logiciel sans permission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Afficher communique une information vers l'extérieur du programme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour qu'une instruction soit utile, elle doit être :",
+              "options": [
+                "Compréhensible et réalisable par celui qui exécute l'algorithme",
+                "Volontairement vague",
+                "Répétée un nombre infini de fois sans fin",
+                "Écrite sans verbe d'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans clarté ni possibilité d'exécution, l'instruction ne sert pas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « poser le crayon, tracer une ligne, relever le crayon », combien y a-t-il d'instructions ?",
+              "options": ["3", "1", "10", "0"],
+              "correctAnswers": [0],
+              "explanation": "Chaque segment séparé par une virgule décrit une action distincte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Assigner une valeur à une variable signifie :",
+              "options": [
+                "Stocker une information sous un nom pour la réutiliser",
+                "Effacer la mémoire de l'ordinateur entière",
+                "Changer la langue du clavier",
+                "Couper la connexion Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mémorise une donnée dans une variable pour s'en servir plus tard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle instruction vient en premier pour calculer l'aire d'un rectangle ?",
+              "options": [
+                "Connaître la longueur et la largeur",
+                "Afficher le résultat final",
+                "Multiplier longueur par largeur",
+                "Féliciter l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut d'abord disposer des données avant de calculer et afficher."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une instruction d'entrée peut être :",
+              "options": [
+                "Demander un nombre à l'utilisateur au clavier",
+                "Imprimer une page sans demander rien",
+                "Chauffer le processeur",
+                "Modifier la date du calendrier mural"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée récupère une information fournie par l'utilisateur ou un capteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une instruction manque dans un algorithme de tri, on risque :",
+              "options": [
+                "De ne pas obtenir la liste correctement ordonnée",
+                "D'augmenter la vitesse du réseau",
+                "De changer la couleur de l'écran",
+                "De rendre le programme indestructible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oublier une étape essentielle fausse le résultat final."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour tester un algorithme sur papier, on :",
+              "options": [
+                "Exécute chaque instruction une par une en suivant l'ordre",
+                "Lit seulement le titre du document",
+                "Mélange les étapes pour aller plus vite",
+                "Ignore les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test manuel vérifie la logique en simulant l'exécution."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Séquences et ordre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un algorithme, quelles règles concernent l'ordre des étapes ?",
+              "options": [
+                "Les étapes s'enchaînent une après l'autre",
+                "L'ordre n'a jamais d'importance",
+                "Certaines étapes dépendent du résultat des précédentes",
+                "On peut exécuter toutes les étapes en même temps sans ordre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La séquence est fondamentale et certaines étapes utilisent les résultats antérieurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Algorithme : A←5, B←A+2, afficher B. Que s'affiche ?",
+              "options": ["7", "5", "2", "52"],
+              "correctAnswers": [0],
+              "explanation": "B vaut 5+2, donc 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Inverser les deux premières lignes d'un algorithme qui prépare une boisson peut :",
+              "options": [
+                "Changer le goût ou rater la recette",
+                "Augmenter la mémoire RAM",
+                "Rendre l'écran plus lumineux",
+                "Corriger tous les bugs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commencer par la mauvaise étape fausse le processus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une séquence linéaire signifie :",
+              "options": [
+                "Pas de saut ni de choix : on avance ligne par ligne",
+                "Chaque ligne est choisie au hasard",
+                "On ne lit que la dernière ligne",
+                "On exécute la fin avant le début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans boucle ni condition, l'exécution est strictement linéaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour allumer une lampe simulée : brancher, appuyer sur interrupteur. Si on appuie avant de brancher :",
+              "options": [
+                "La lampe ne peut pas s'allumer correctement",
+                "Le programme devient plus rapide",
+                "Le câble devient plus long",
+                "Rien ne change jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre des prérequis compte pour le résultat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Numéroter les étapes 1, 2, 3 sert surtout à :",
+              "options": [
+                "Montrer clairement l'ordre d'exécution",
+                "Décorer la page",
+                "Compter les lettres du titre",
+                "Remplacer les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La numérotation aide à suivre la séquence sans se perdre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux algorithmes avec les mêmes instructions dans un ordre différent :",
+              "options": [
+                "Peuvent donner des résultats différents",
+                "Donnent toujours exactement le même résultat",
+                "Ne peuvent pas exister",
+                "Sont interdits en technologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre modifie souvent le comportement ou le résultat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après une instruction qui calcule X, la suivante peut :",
+              "options": [
+                "Utiliser la valeur de X",
+                "Ignorer X sans conséquence possible",
+                "Supprimer le clavier",
+                "Changer le forfait Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les étapes suivantes s'appuient souvent sur les valeurs produites avant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un organigramme sans flèches entre les blocs serait :",
+              "options": [
+                "Ambigu sur l'ordre à suivre",
+                "Plus clair qu'avec des flèches",
+                "Inutile en technologie",
+                "Réservé aux experts uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les flèches matérialisent le sens de la séquence."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour vérifier l'ordre, on peut :",
+              "options": [
+                "Tracer un exemple pas à pas avec des valeurs",
+                "Ne jamais tester",
+                "Changer l'ordre à chaque essai sans noter",
+                "Effacer toutes les étapes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La simulation pas à pas révèle les erreurs d'enchaînement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les boucles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une boucle dans un algorithme permet de :",
+              "options": [
+                "Répéter un bloc d'instructions",
+                "Éviter d'écrire plusieurs fois la même suite à la main",
+                "Supprimer toute condition",
+                "Interdire les variables"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On regroupe des actions répétitives dans une boucle pour les exécuter plusieurs fois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Répéter 4 fois : avancer d'un pas » trace :",
+              "options": ["4 pas", "1 pas", "8 pas", "0 pas"],
+              "correctAnswers": [0],
+              "explanation": "La boucle exécute quatre fois la même instruction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une boucle « tant que » s'arrête quand :",
+              "options": [
+                "La condition devient fausse",
+                "L'ordinateur est éteint depuis une semaine",
+                "Le clavier est débranché",
+                "La couleur du fond change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condition contrôle la continuation ou la fin de la boucle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans boucle, dessiner un carré de 100 côtés demanderait :",
+              "options": [
+                "Écrire très souvent la même instruction « tracer un côté »",
+                "Une seule ligne de code",
+                "Aucune instruction",
+                "Uniquement une condition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans répétition structurée, il faudrait dupliquer les mêmes instructions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le compteur de boucle sert à :",
+              "options": [
+                "Savoir combien de tours ont été faits",
+                "Changer la langue du système",
+                "Mesurer la température du processeur",
+                "Effacer l'écran une seule fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il suit le nombre d'itérations déjà réalisées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une boucle infinie sans condition d'arrêt :",
+              "options": [
+                "Ne se termine jamais si rien ne l'interrompt",
+                "Est toujours recommandée en 5e",
+                "Calcule toujours plus vite",
+                "N'existe que sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans arrêt, les instructions tournent indéfiniment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pour i de 1 à 3, afficher i » affiche :",
+              "options": [
+                "1 puis 2 puis 3",
+                "3 uniquement",
+                "1 une seule fois",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variable i prend successivement 1, 2 et 3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répéter « ajouter 2 » trois fois à partir de 0 donne :",
+              "options": ["6", "2", "3", "0"],
+              "correctAnswers": [0],
+              "explanation": "0+2+2+2 = 6."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans Scratch, la brique « répéter 10 fois » est :",
+              "options": [
+                "Une boucle",
+                "Une condition seule",
+                "Une variable",
+                "Un commentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle répète le bloc emboîté un nombre fixe de fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour parcourir les côtés d'un hexagone régulier, une boucle utile répète :",
+              "options": [
+                "6 fois « tracer un côté »",
+                "3 fois « sauter »",
+                "1 fois « tourner »",
+                "12 fois « effacer »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un hexagone a six côtés identiques à enchaîner."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les conditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une structure conditionnelle « si … alors … » sert à :",
+              "options": [
+                "Exécuter des instructions seulement si un test est vrai",
+                "Choisir entre plusieurs comportements selon une situation",
+                "Répéter une action un nombre fixe sans test",
+                "Désactiver le clavier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le test oriente le chemin suivi dans l'algorithme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si pluie alors prendre un parapluie, sinon partir sans. C'est :",
+              "options": [
+                "Une condition avec alternative",
+                "Une boucle infinie",
+                "Une variable sans nom",
+                "Un câble réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le choix dépend de la présence de pluie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un test « âge ≥ 12 » renvoie vrai pour :",
+              "options": ["13 ans", "11 ans", "-1 an", "Texte « douze »"],
+              "correctAnswers": [0],
+              "explanation": "13 est supérieur ou égal à 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si la condition est fausse et qu'il n'y a pas de « sinon », on :",
+              "options": [
+                "Saute le bloc « alors »",
+                "Exécute quand même le bloc « alors »",
+                "Redémarre l'ordinateur",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul le bloc associé au cas vrai s'exécute."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer deux nombres pour afficher le plus grand utilise :",
+              "options": [
+                "Une condition",
+                "Uniquement une boucle sans test",
+                "Aucune instruction",
+                "Un capteur de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tester quelle valeur est la plus grande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'instruction « si bouton pressé alors allumer LED » réagit à :",
+              "options": [
+                "Un événement d'entrée",
+                "La couleur du boîtier",
+                "La date de fabrication",
+                "Le nom du fichier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état du bouton déclenche l'action."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enchaîner plusieurs « sinon si » permet :",
+              "options": [
+                "Plusieurs cas exclusifs",
+                "Des boucles imbriquées obligatoires",
+                "D'ignorer tous les tests",
+                "De supprimer les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque branche correspond à un cas différent testé dans l'ordre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un feu tricolore simulé utilise surtout :",
+              "options": [
+                "Des conditions sur la couleur active",
+                "Une seule boucle sans test",
+                "Aucune logique",
+                "Uniquement des commentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque état (rouge, orange, vert) suit des règles conditionnelles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Si score > 10 alors niveau suivant » nécessite :",
+              "options": [
+                "Une variable score mise à jour",
+                "Un écran tactile obligatoire",
+                "Une connexion satellite",
+                "Un clavier sans chiffres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test porte sur la valeur stockée du score."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une condition mal écrite peut faire :",
+              "options": [
+                "Exécuter la mauvaise branche",
+                "Accélérer le processeur",
+                "Changer la taille du disque",
+                "Rendre le Wi-Fi gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un test incorrect oriente vers un comportement inadapté."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Variables et données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une variable dans un algorithme :",
+              "options": [
+                "Porte un nom et stocke une valeur modifiable",
+                "Peut contenir un nombre ou un texte selon le contexte",
+                "Est toujours fixée une fois pour toutes sans changement",
+                "Est un morceau de plastique dans le boîtier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On nomme un emplacement mémoire pour lire et mettre à jour des données."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "n ← 0 puis n ← n + 1 deux fois donne n = :",
+              "options": ["2", "0", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "n passe à 1 puis à 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le symbole ← en pseudo-code signifie souvent :",
+              "options": [
+                "Affecter une nouvelle valeur",
+                "Comparer deux valeurs",
+                "Afficher à l'écran",
+                "Couper l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flèche vers la gauche indique une affectation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une constante diffère d'une variable car :",
+              "options": [
+                "Sa valeur ne doit pas changer pendant l'algorithme",
+                "Elle n'a pas de nom",
+                "Elle occupe deux claviers",
+                "Elle remplace les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fixe une constante une fois, par exemple π arrondi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire la température dans une variable permet de :",
+              "options": [
+                "La réutiliser dans des tests ou calculs",
+                "La cacher au processeur",
+                "Empêcher toute boucle",
+                "Supprimer les conditions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On stocke la mesure pour s'en servir plus loin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux variables scoreJoueur1 et scoreJoueur2 servent à :",
+              "options": [
+                "Distinguer deux valeurs homologues",
+                "Partager toujours la même case mémoire",
+                "Interdire les comparaisons",
+                "Remplacer le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des noms différents séparent les données de chaque joueur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Initialiser une variable avant une boucle évite souvent :",
+              "options": [
+                "Des valeurs imprévisibles au premier tour",
+                "D'augmenter la taille de l'écran",
+                "De perdre le fichier CSS",
+                "De couper Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans valeur de départ, le premier calcul peut être faux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une variable booléenne peut valoir :",
+              "options": [
+                "Vrai ou faux",
+                "Seulement 100",
+                "Uniquement des lettres",
+                "Toujours zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mémorise un état logique pour les tests."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Échanger les valeurs de A et B sans troisième variable demande :",
+              "options": [
+                "Un algorithme soigneux avec affectations successives",
+                "Impossible en informatique",
+                "Uniquement du matériel",
+                "Aucune instruction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut permuter avec des affectations intermédiaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Afficher une variable sans l'avoir initialisée ou calculée peut :",
+              "options": [
+                "Montrer une valeur incohérente ou vide",
+                "Améliorer le Wi-Fi",
+                "Changer le forfait",
+                "Réparer le ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut définir la valeur avant de l'utiliser."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Organigrammes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un organigramme représente :",
+              "options": [
+                "Le déroulement d'un algorithme avec des symboles",
+                "Des décisions avec des losanges",
+                "Le prix d'un ordinateur",
+                "Uniquement des photos"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Blocs et losanges visualisent étapes et choix."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le rectangle dans un organigramme symbolise :",
+              "options": [
+                "Une action ou un traitement",
+                "Le début uniquement",
+                "Toujours une boucle",
+                "Un câble USB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rectangle correspond à une instruction à exécuter."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le losange correspond à :",
+              "options": [
+                "Un test ou une question oui/non",
+                "Une fin obligatoire",
+                "Un commentaire décoratif",
+                "Un haut-parleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On y pose une condition qui oriente les flèches."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'ellipse ou le double rectangle marque souvent :",
+              "options": [
+                "Le début ou la fin",
+                "Une multiplication",
+                "Un capteur",
+                "Un clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces symboles encadrent l'algorithme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les flèches entre blocs indiquent :",
+              "options": [
+                "Le sens de progression",
+                "La couleur du papier",
+                "La vitesse du ventilateur",
+                "Le nom de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles montrent quelle étape suit la précédente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir un organigramme en liste numérotée demande :",
+              "options": [
+                "Suivre les flèches dans l'ordre",
+                "Lire les blocs au hasard",
+                "Ignorer les losanges",
+                "Supprimer le début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On parcourt le graphe du début vers la fin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une boucle en organigramme se voit par :",
+              "options": [
+                "Une flèche qui revient à un bloc antérieur",
+                "L'absence de toute flèche",
+                "Un seul rectangle",
+                "Un triangle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retour arrière matérialise la répétition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux flèches sortant d'un losange signifient :",
+              "options": [
+                "Deux issues selon le résultat du test",
+                "Deux algorithmes indépendants",
+                "Une erreur de dessin obligatoire",
+                "Aucun choix possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque branche correspond à vrai ou faux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un organigramme trop chargé devient :",
+              "options": [
+                "Difficile à lire et à corriger",
+                "Toujours plus rapide à exécuter",
+                "Impossible à simuler",
+                "Interdit en 5e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clarté visuelle aide à comprendre la logique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de coder, dessiner un organigramme aide à :",
+              "options": [
+                "Repérer oublis et incohérences",
+                "Changer la résolution de l'écran",
+                "Installer un antivirus",
+                "Formater le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La visualisation facilite la validation de la méthode."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Algorithmes du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lesquels sont des algorithmes de la vie réelle ?",
+              "options": [
+                "Itinéraire GPS étape par étape",
+                "Notice de montage de meuble",
+                "Couleur des chaussures sans étapes",
+                "Recette avec temps de cuisson"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "GPS, notice et recette décrivent des enchaînements d'actions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un lave-linge choisit un programme selon le textile : c'est proche de :",
+              "options": [
+                "Une condition dans un algorithme",
+                "Une boucle sans fin",
+                "Une variable sans nom",
+                "Un écran cassé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type de linge déclenche un cycle adapté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tri de cartes par valeur croissante illustre :",
+              "options": [
+                "Un algorithme de tri",
+                "Un capteur de lumière",
+                "Un câble HDMI",
+                "Un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On applique une méthode répétée pour ordonner."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marquer une case « fait » sur une liste de tâches ressemble à :",
+              "options": [
+                "Mettre à jour une variable ou un état",
+                "Effacer la mémoire vive",
+                "Couper le réseau",
+                "Changer de clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état de la tâche passe de non fait à fait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un distributeur automatique vérifie le paiement avant de servir :",
+              "options": [
+                "Condition puis action",
+                "Boucle sans test",
+                "Aucune logique",
+                "Commentaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le service n'a lieu que si le test de paiement réussit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chercher un mot dans un dictionnaire page par page utilise :",
+              "options": [
+                "Découper le problème (recherche)",
+                "Uniquement le hasard",
+                "Aucun ordre",
+                "Une boucle infinie obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On réduit la zone de recherche méthodiquement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un feu piéton avec bouton combine :",
+              "options": [
+                "Entrée utilisateur et temporisation",
+                "Seulement une image",
+                "Uniquement du son",
+                "Aucune instruction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bouton et le timer contrôlent le cycle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ranger des livres par auteur puis titre rappelle :",
+              "options": [
+                "Un algorithme avec critères multiples",
+                "Une panne électrique",
+                "Un fichier audio",
+                "Un câble réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On applique des règles d'ordre successives."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simuler « faire ses devoirs » avec étapes listées prépare :",
+              "options": [
+                "À traduire plus tard en programme",
+                "À ignorer la logique",
+                "À ne jamais tester",
+                "À supprimer les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La routine quotidienne se formalise comme un algorithme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un algorithme de sécurité « si mot de passe faux, réessayer 3 fois » mélange :",
+              "options": [
+                "Boucle et condition",
+                "Uniquement des commentaires",
+                "Aucune donnée",
+                "Un capteur GPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On teste le mot de passe et on limite les tentatives."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Décomposer un problème",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Décomposer un problème consiste à :",
+              "options": [
+                "Le diviser en sous-problèmes plus simples",
+                "Résoudre d'abord les petites tâches",
+                "Tout fusionner en une seule étape floue",
+                "Ignorer les tests"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On découpe pour traiter chaque partie puis recomposer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour créer un quiz, une décomposition possible est :",
+              "options": [
+                "Poser question, lire réponse, vérifier, afficher score",
+                "Tout faire en une ligne sans ordre",
+                "Ne jamais afficher le score",
+                "Supprimer les questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque sous-tâche devient une étape claire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un sous-algorithme ou une fonction sert à :",
+              "options": [
+                "Regrouper des étapes réutilisables",
+                "Empêcher toute boucle",
+                "Cacher le programme",
+                "Couper Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On appelle le bloc autant de fois que nécessaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans décomposition, un gros projet devient :",
+              "options": [
+                "Difficile à lire et à déboguer",
+                "Toujours plus court",
+                "Automatiquement sans bug",
+                "Inutile à documenter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La complexité non structurée nuit à la maintenance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tester chaque sous-partie avant l'ensemble permet :",
+              "options": [
+                "Localiser plus vite une erreur",
+                "D'augmenter la taille du clavier",
+                "De formater le disque",
+                "De changer de forfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On isole la partie défectueuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un jeu, « déplacer le personnage » peut se décomposer en :",
+              "options": [
+                "Lire entrée, calculer position, afficher sprite",
+                "Une seule étape magique",
+                "Aucune variable",
+                "Uniquement du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement = entrée, calcul, sortie graphique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La recherche du plus petit élément d'une liste combine :",
+              "options": [
+                "Parcours (souvent boucle) et comparaisons",
+                "Uniquement des conditions sans données",
+                "Aucune instruction",
+                "Un câble VGA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On examine les éléments en gardant le minimum trouvé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un plan de projet avec étapes numérotées est :",
+              "options": [
+                "Une forme de décomposition",
+                "Un virus",
+                "Un capteur",
+                "Un écran OLED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan ordonne les sous-tâches à réaliser."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recomposer signifie :",
+              "options": [
+                "Assembler les sous-solutions en solution finale",
+                "Effacer toutes les variables",
+                "Interdire les tests",
+                "Supprimer les commentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les morceaux validés s'enchaînent dans le programme global."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Demander « que doit faire cette partie ? » aide à :",
+              "options": [
+                "Écrire des instructions précises",
+                "Augmenter le bruit du ventilateur",
+                "Changer la couleur du boîtier",
+                "Perdre les données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formuler le rôle de chaque bloc clarifie l'algorithme."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision algorithme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour valider un algorithme on peut :",
+              "options": [
+                "Le simuler avec des exemples",
+                "Le représenter en organigramme",
+                "Le laisser sans jamais le tester",
+                "Confondre ordre et hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tests et schémas vérifient la logique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Instruction, boucle et condition sont :",
+              "options": [
+                "Structures de base en 5e",
+                "Uniquement du matériel",
+                "Des langues parlées",
+                "Des types de câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les briques pour décrire une solution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un algorithme fini signifie :",
+              "options": [
+                "Il se termine en un nombre d'étapes limité",
+                "Il dure une éternité",
+                "Il n'a pas de fin",
+                "Il ignore les données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fini s'oppose à une répétition sans arrêt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si … alors … sinon … permet :",
+              "options": [
+                "Deux chemins selon un test",
+                "Une boucle infinie obligatoire",
+                "D'effacer le disque",
+                "De couper le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux branches couvrent cas vrai et cas faux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La trace d'exécution note :",
+              "options": [
+                "Les valeurs et étapes suivies",
+                "La marque du processeur",
+                "La couleur du mur",
+                "Le numéro de série du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On note ce qui se passe à chaque ligne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un algorithme de recherche dans une liste parcourt :",
+              "options": [
+                "Les éléments un par un ou par dichotomie",
+                "Uniquement le premier élément sans suite",
+                "Aucune donnée",
+                "Le boîtier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare jusqu'à trouver ou épuiser la liste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pseudo-code signifie :",
+              "options": [
+                "Langage simplifié proche du français",
+                "Code secret illisible",
+                "Uniquement du binaire",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il décrit la logique sans syntaxe stricte d'un langage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une boucle « pour » convient quand :",
+              "options": [
+                "On connaît le nombre de répétitions",
+                "On ne connaît jamais la fin",
+                "On interdit les variables",
+                "On supprime les tests"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compteur fixe le nombre de tours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur de logique signifie :",
+              "options": [
+                "Le programme tourne mais donne un mauvais résultat",
+                "L'ordinateur ne s'allume pas",
+                "Le clavier est sale",
+                "L'écran est petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La syntaxe peut être correcte avec une méthode fausse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer de l'algorithme au programme, c'est :",
+              "options": [
+                "Traduire en langage compris par la machine",
+                "Oublier toute structure",
+                "Supprimer les tests",
+                "Ne garder que des images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code source implémente la méthode conçue."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Programme simple",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un programme ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un programme informatique :",
+              "options": [
+                "Est une suite d'instructions exécutées par l'ordinateur",
+                "Traduit souvent un algorithme en langage machine ou interprété",
+                "Est uniquement un morceau de plastique",
+                "Ne contient jamais de boucles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le programme matérialise la logique pour la machine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le langage de programmation sert à :",
+              "options": [
+                "Écrire le code lisible par l'ordinateur",
+                "Peindre le boîtier",
+                "Choisir la taille du bureau",
+                "Remplacer l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il fournit mots-clés et syntaxe pour coder."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scratch est :",
+              "options": [
+                "Un environnement de blocs pour débuter",
+                "Un type de câble",
+                "Un virus connu",
+                "Un capteur de température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On assemble des blocs pour créer un programme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Exécuter un programme signifie :",
+              "options": [
+                "Lancer les instructions une par une",
+                "Éteindre le moniteur",
+                "Formater la clé USB",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le processeur suit le code compilé ou interprété."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un bug est :",
+              "options": [
+                "Une erreur dans le programme",
+                "Un insecte dans le clavier obligatoire",
+                "Un câble HDMI",
+                "Un forfait Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bug produit un comportement incorrect ou un plantage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le code source est :",
+              "options": [
+                "Le texte du programme écrit par le développeur",
+                "La poussière sur l'écran",
+                "Le manuel du clavier",
+                "Uniquement des images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la version humaine avant compilation éventuelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un programme interactif réagit à :",
+              "options": [
+                "Clavier, souris ou capteurs",
+                "Uniquement à la date du calendrier mural",
+                "Rien du tout",
+                "La couleur des murs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les entrées utilisateur modifient le déroulement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sauvegarder un projet Scratch permet de :",
+              "options": [
+                "Le rouvrir plus tard",
+                "Effacer définitivement le disque",
+                "Changer le processeur",
+                "Couper l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fichier conserve blocs et scripts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un programme et un logiciel désignent souvent :",
+              "options": [
+                "La même idée d'application exécutable",
+                "Uniquement du matériel",
+                "Un câble réseau",
+                "Une gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logiciel = ensemble de programmes et ressources."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de partager un programme, on vérifie :",
+              "options": [
+                "Qu'il fait ce qui est attendu sans erreur grave",
+                "La couleur des chaussures",
+                "Le bruit du ventilateur uniquement",
+                "Le numéro de série du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tests limitent les mauvaises surprises."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Écrire des instructions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une instruction correcte en programmation doit :",
+              "options": [
+                "Être syntaxiquement valide dans le langage",
+                "Exprimer une action claire",
+                "Être volontairement ambiguë",
+                "Ignorer la ponctuation sans conséquence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Syntaxe et clarté permettent l'exécution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En Scratch, empiler des blocs crée :",
+              "options": [
+                "Une séquence d'actions",
+                "Un câble USB",
+                "Un fichier audio seul",
+                "Une panne électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre vertical définit l'ordre d'exécution."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un commentaire dans le code sert à :",
+              "options": [
+                "Expliquer aux humains sans être exécuté",
+                "Ralentir le processeur",
+                "Remplacer toutes les boucles",
+                "Supprimer les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il documente le programme pour la lecture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oublier un point-virgule ou un bloc fermé peut :",
+              "options": [
+                "Provoquer une erreur de syntaxe",
+                "Augmenter la RAM",
+                "Changer la couleur du clavier",
+                "Réparer le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le langage exige une forme correcte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Dire bonjour pendant 2 secondes » en Scratch utilise :",
+              "options": [
+                "Bloc apparence ou son avec attente",
+                "Uniquement une variable",
+                "Aucun script",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On enchaîne dire et bloc attendre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nommer ses scripts clairement aide à :",
+              "options": [
+                "Retrouver la logique plus tard",
+                "Empêcher toute boucle",
+                "Formater le disque",
+                "Couper Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des noms explicites facilitent la maintenance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dupliquer un script permet de :",
+              "options": [
+                "Réutiliser une logique déjà écrite",
+                "Supprimer le projet",
+                "Changer le processeur",
+                "Effacer la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On copie pour gagner du temps sans tout réécrire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une instruction d'affectation change :",
+              "options": [
+                "La valeur d'une variable",
+                "La taille physique de l'écran",
+                "Le modèle de souris",
+                "Le numéro de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On stocke un nouveau contenu dans la variable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le drapeau vert en Scratch :",
+              "options": [
+                "Démarre le programme",
+                "Efface le disque",
+                "Coupe le son définitivement",
+                "Formate la carte SD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il lance les scripts qui commencent par l'événement drapeau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester après chaque petite modification :",
+              "options": [
+                "Facilite de trouver l'erreur récente",
+                "Est inutile en 5e",
+                "Empêche les variables",
+                "Supprime les conditions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On localise plus vite la ligne fautive."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Séquence dans un programme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un programme, l'ordre des blocs :",
+              "options": [
+                "Détermine l'ordre d'exécution",
+                "Peut changer le résultat affiché",
+                "N'a jamais aucun effet",
+                "Remplace les variables"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les blocs s'exécutent de haut en bas sauf événements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Script : dire A, dire B. L'utilisateur entend :",
+              "options": [
+                "A puis B",
+                "B puis A",
+                "Rien",
+                "A et B en même temps toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La seconde instruction suit la première."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mettre « attendre 1 seconde » entre deux actions :",
+              "options": [
+                "Introduit une pause",
+                "Supprime la première action",
+                "Efface le projet",
+                "Coupe le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le délai retarde la suite du script."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plusieurs scripts sur le même lutin peuvent :",
+              "options": [
+                "S'exécuter en parallèle selon leurs événements",
+                "Ne jamais tourner ensemble",
+                "Effacer la scène",
+                "Formater le PC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque chapeau d'événement lance son propre fil."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Changer l'ordre « avancer puis tourner » vs « tourner puis avancer » :",
+              "options": [
+                "Change la position finale",
+                "Ne change jamais rien",
+                "Supprime le lutin",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La géométrie du parcours dépend de l'ordre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une séquence sans boucle ni condition s'appelle :",
+              "options": [
+                "Linéaire",
+                "Aléatoire obligatoire",
+                "Infinie",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On avance instruction après instruction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enregistrer la position puis la restaurer plus tard utilise :",
+              "options": [
+                "Variables ou blocs de mouvement mémorisés",
+                "Uniquement du son",
+                "Aucune donnée",
+                "Un câble VGA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut stocker ou recopier les coordonnées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un script qui ne commence par aucun événement :",
+              "options": [
+                "Ne part pas seul au drapeau vert",
+                "S'exécute toujours en premier",
+                "Formate le disque",
+                "Est obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il manque un déclencheur comme le drapeau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Enchaîner calcul puis afficher le résultat respecte :",
+              "options": [
+                "Entrée/traitement/sortie",
+                "Uniquement du hasard",
+                "Aucune logique",
+                "Une boucle infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On produit une valeur puis on la communique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réorganiser des blocs sans comprendre :",
+              "options": [
+                "Peut casser le comportement",
+                "Améliore toujours le programme",
+                "Change le processeur",
+                "Répare les bugs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut connaître le rôle de chaque bloc."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Boucles dans un programme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les boucles en programmation permettent :",
+              "options": [
+                "De répéter un bloc de code",
+                "D'éviter de copier-coller dix fois la même action",
+                "De supprimer toute condition",
+                "De couper l'alimentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La répétition structure les actions identiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Répéter 5 » autour de « avancer 10 » fait avancer de :",
+              "options": ["50 pas au total", "10 pas", "5 pas", "0 pas"],
+              "correctAnswers": [0],
+              "explanation": "5 × 10 = 50 unités parcourues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Répéter jusqu'à toucher bord » est une boucle :",
+              "options": [
+                "Conditionnelle",
+                "Sans test",
+                "Impossible",
+                "Uniquement sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condition de contact arrête la répétition."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une boucle autour d'un changement de costume anime :",
+              "options": [
+                "Une succession d'images",
+                "Le ventilateur",
+                "Le clavier",
+                "Le câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les costumes défilent à chaque tour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Incrémenter un compteur dans une boucle sert à :",
+              "options": [
+                "Compter les tours ou parcourir une liste",
+                "Effacer l'écran une fois",
+                "Couper le son",
+                "Formater le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compteur suit l'itération en cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Boucle infinie « répéter toujours » sans break :",
+              "options": [
+                "Tourne sans fin sauf arrêt manuel",
+                "Est la seule autorisée",
+                "Calcule plus vite",
+                "N'existe pas en Scratch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un événement d'arrêt ou stopper le programme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dessiner un carré avec « répéter 4 » et « tourner 90° » :",
+              "options": [
+                "Ferme la figure",
+                "Trace un cercle",
+                "Efface le lutin",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre côtés droits forment un carré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Répéter une boucle interne dans une externe crée :",
+              "options": [
+                "Des boucles imbriquées",
+                "Une erreur système obligatoire",
+                "Un virus",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque tour externe relance la boucle interne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour parcourir une liste de noms, on combine souvent :",
+              "options": [
+                "Boucle et accès à l'élément courant",
+                "Uniquement une condition",
+                "Aucun script",
+                "Un capteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La boucle avance l'index dans la liste."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réduire le nombre de répétitions dans une boucle :",
+              "options": [
+                "Raccourcit l'exécution si le reste est identique",
+                "Augmente toujours le temps",
+                "Change le processeur",
+                "Supprime les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de tours = moins d'actions répétées."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Conditions dans un programme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un bloc « si … alors » en Scratch :",
+              "options": [
+                "Teste une condition booléenne",
+                "Exécute le sous-stack seulement si vrai",
+                "Répète toujours sans fin",
+                "Efface le projet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le test contrôle l'exécution du bloc interne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Si touche espace pressée alors sauter » réagit à :",
+              "options": [
+                "Une entrée clavier",
+                "La température CPU",
+                "La couleur du mur",
+                "Le câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement clavier déclenche l'action."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bloc « si … sinon » exécute la branche sinon quand :",
+              "options": [
+                "La condition est fausse",
+                "La condition est vraie",
+                "Jamais",
+                "Toujours deux fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cas contraire prend le chemin alternatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tester « distance < 50 » sert à :",
+              "options": [
+                "Détecter la proximité d'un objet",
+                "Changer la taille du disque",
+                "Couper le Wi-Fi",
+                "Formater la clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distance mesurée alimente le test."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combiner « et » dans une condition exige :",
+              "options": [
+                "Que les deux tests soient vrais",
+                "Qu'un seul soit faux toujours",
+                "Aucune variable",
+                "Une boucle infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le et logique requiert vrai des deux côtés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un jeu « si score = 10 alors gagner » met à jour :",
+              "options": [
+                "L'état de victoire",
+                "Le modèle de clavier",
+                "Le câble réseau",
+                "La poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le score déclenche la fin gagnante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur « couleur touchée = rouge » est une :",
+              "options": [
+                "Condition sur l'environnement",
+                "Boucle sans fin",
+                "Variable seule",
+                "Erreur syntaxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On teste une propriété du fond ou objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éviter les instructions dupliquées avec deux « si » identiques :",
+              "options": [
+                "Regrouper avec si/sinon ou opérateurs",
+                "Supprimer toute logique",
+                "Couper le son",
+                "Effacer la scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une structure claire remplace la duplication."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une condition toujours vraie dans une boucle :",
+              "options": [
+                "Répète le bloc à chaque tour",
+                "Empêche la boucle",
+                "Formate le PC",
+                "Coupe l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test réussi laisse exécuter le contenu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester avec valeurs limites (0, maximum) :",
+              "options": [
+                "Vérifie les cas extrêmes du programme",
+                "Est inutile",
+                "Supprime les boucles",
+                "Change le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bords révèlent des bugs cachés."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Entrées et sorties",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un programme simple, une sortie peut être :",
+              "options": [
+                "Texte ou nombre affiché",
+                "Son ou mouvement du lutin",
+                "Uniquement la poussière du clavier",
+                "Le câble d'alimentation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Affichage, son et déplacement communiquent un résultat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander un nombre à l'utilisateur est une :",
+              "options": [
+                "Entrée",
+                "Sortie",
+                "Boucle infinie",
+                "Erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme lit une valeur fournie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bloc « dire » en Scratch est plutôt :",
+              "options": ["Une sortie", "Une entrée", "Un capteur", "Un câble"],
+              "correctAnswers": [0],
+              "explanation": "Il montre un message à l'écran."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cliquer sur un lutin peut servir d' :",
+              "options": [
+                "Entrée événementielle",
+                "Sortie uniquement",
+                "Formateur de disque",
+                "Antivirus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La souris envoie un signal au programme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Afficher le résultat d'une addition après calcul respecte :",
+              "options": [
+                "Traitement puis sortie",
+                "Sortie avant entrée obligatoire",
+                "Aucune étape",
+                "Une boucle sans fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On calcule d'abord, on communique ensuite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un capteur « distance » sur un robot est une :",
+              "options": [
+                "Entrée physique",
+                "Sortie graphique",
+                "Commentaire",
+                "Gomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il mesure l'environnement pour le programme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Journaliser des valeurs dans une liste est :",
+              "options": [
+                "Stocker des sorties intermédiaires",
+                "Couper Internet",
+                "Formater le PC",
+                "Effacer la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On conserve l'historique pour l'afficher ou l'analyser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sans sortie visible, l'utilisateur :",
+              "options": [
+                "Ne voit pas le résultat du programme",
+                "Gagne toujours au jeu",
+                "Change de processeur",
+                "Répare le bug"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut au moins un retour perceptible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir une entrée texte « 12 » en nombre utilise :",
+              "options": [
+                "Un bloc de conversion ou calcul",
+                "Un câble HDMI",
+                "Uniquement une image",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type doit correspondre au calcul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plusieurs sorties dans un script (dire et jouer un son) :",
+              "options": [
+                "Peuvent s'enchaîner",
+                "S'excluent toujours",
+                "Interdisent les variables",
+                "Coupent le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme peut combiner plusieurs effets."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Erreurs et débogage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour déboguer un programme on peut :",
+              "options": [
+                "Relire le script pas à pas",
+                "Tester avec des valeurs simples",
+                "Ignorer toute erreur",
+                "Mélanger les blocs au hasard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Observation et tests ciblés localisent le problème."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une erreur de syntaxe empêche :",
+              "options": [
+                "Souvent le lancement du script",
+                "Uniquement le son",
+                "Le changement de wallpaper",
+                "Le bruit du ventilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le langage refuse un code mal formé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le lutin ne bouge pas : on vérifie d'abord :",
+              "options": [
+                "L'événement de départ et les blocs mouvement",
+                "La couleur des chaussures",
+                "Le modèle de clavier",
+                "Le câble d'enceinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans déclencheur ou bloc move, rien ne se passe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Afficher une variable pendant l'exécution aide à :",
+              "options": [
+                "Voir si elle change comme prévu",
+                "Formater le disque",
+                "Couper le Wi-Fi",
+                "Changer le tier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surveillance des valeurs révèle la logique fausse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Isoler un morceau de code dans un petit script :",
+              "options": [
+                "Permet de tester une partie seule",
+                "Supprime le projet",
+                "Est interdit",
+                "Efface la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire le scope simplifie le diagnostic."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une boucle trop longue peut sembler :",
+              "options": [
+                "Un blocage ou un freeze",
+                "Une amélioration Wi-Fi",
+                "Un nouveau clavier",
+                "Un disque plus grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de répétitions retardent la réponse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Corriger un bug, c'est :",
+              "options": [
+                "Modifier le code pour obtenir le comportement voulu",
+                "Acheter un nouvel écran",
+                "Changer de langue du système",
+                "Effacer tous les fichiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajuste la logique ou la syntaxe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander à un camarade d'expliquer son exécution est :",
+              "options": [
+                "Une méthode de recherche d'erreur",
+                "Inutile en technologie",
+                "Un virus",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La relecture croisée repère des oublis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sauvegarder avant gros changement :",
+              "options": [
+                "Permet de revenir en arrière",
+                "Est inutile",
+                "Coupe Internet",
+                "Formate le PC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une copie limite la perte en cas d'échec."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un message d'erreur du langage indique souvent :",
+              "options": [
+                "La ligne ou le bloc problématique",
+                "La météo",
+                "Le prix du clavier",
+                "La couleur du mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il oriente vers l'endroit à corriger."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Scratch et blocs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les catégories de blocs Scratch incluent :",
+              "options": [
+                "Mouvement et apparence",
+                "Contrôle et opérateurs",
+                "Uniquement des câbles",
+                "Des vis sans logique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Couleurs regroupent actions, flux et calculs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les blocs hexagonaux représentent :",
+              "options": [
+                "Des valeurs booléennes ou nombres pour les tests",
+                "Des câbles USB",
+                "Des fichiers texte",
+                "Des gommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils s'emboîtent dans les conditions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Créer une variable « score » permet de :",
+              "options": [
+                "Mémoriser les points",
+                "Changer le processeur",
+                "Couper le son définitivement",
+                "Formater le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variable suit l'état du jeu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La zone des scripts contient :",
+              "options": [
+                "Le code du lutin sélectionné",
+                "Uniquement le fond",
+                "Le clavier physique",
+                "Le câble réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque sprite possède ses propres scripts."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glisser un bloc depuis la palette :",
+              "options": [
+                "Ajoute une instruction au script",
+                "Efface le projet",
+                "Installe un antivirus",
+                "Change la RAM"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On construit le programme par glisser-déposer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les messages entre lutins utilisent :",
+              "options": [
+                "Événements et variables de message",
+                "Uniquement le papier",
+                "Aucune communication",
+                "Un câble VGA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Broadcast coordonne plusieurs objets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le bloc « créer clone » sert à :",
+              "options": [
+                "Dupliquer un lutin actif",
+                "Formater la clé USB",
+                "Couper Internet",
+                "Supprimer la scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les clones partagent scripts du parent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opérateurs mathématiques en Scratch :",
+              "options": [
+                "Calculent dans les entrées d'autres blocs",
+                "Peignent le boîtier",
+                "Remplacent le clavier",
+                "Sont interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "+ − × ÷ alimentent mouvement ou tests."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisir un fond de scène modifie :",
+              "options": [
+                "L'apparence de la scène",
+                "La vitesse du processeur",
+                "Le modèle de souris",
+                "Le tier du compte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un élément visuel du projet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Partager en ligne un projet Scratch demande :",
+              "options": [
+                "Respect des règles et compte si requis",
+                "Formater le PC",
+                "Couper l'électricité",
+                "Supprimer tous les blocs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La publication suit les conditions de la plateforme."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Simuler un programme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Simuler un programme sur papier consiste à :",
+              "options": [
+                "Suivre les variables à la main",
+                "Exécuter chaque instruction dans l'ordre",
+                "Ignorer les conditions",
+                "Ne jamais noter les valeurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La simulation manuelle vérifie la logique sans machine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Table de trace : colonnes « étape » et « x » sert à :",
+              "options": [
+                "Noter l'évolution de x",
+                "Décorer le cahier",
+                "Changer le clavier",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On suit la variable tour après tour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prédire la sortie avant de lancer Scratch :",
+              "options": [
+                "Compare intuition et test réel",
+                "Est inutile",
+                "Formate le disque",
+                "Supprime les boucles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La prédiction puis l'essai confirment ou infirment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Joueur humain qui joue le rôle du processeur :",
+              "options": [
+                "Exécute les instructions lues à voix haute",
+                "Coupe le câble",
+                "Change le boîtier",
+                "Installe un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jeu de rôle rend l'exécution concrète."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une simulation incorrecte révèle :",
+              "options": [
+                "Une incompréhension de l'algorithme",
+                "Un disque plus rapide",
+                "Un clavier neuf",
+                "Un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écart avec le vrai run signale une erreur de raisonnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tester avec entrée 0 et entrée 100 :",
+              "options": [
+                "Couvre des cas différents",
+                "Est identique toujours",
+                "Interdit les boucles",
+                "Coupe le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des entrées variées stressent la logique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pas à pas dans le débogueur ou avec pause :",
+              "options": [
+                "Observe l'état entre deux instructions",
+                "Formate le PC",
+                "Efface la scène",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pause freeze le moment pour analyser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rejouer la même simulation après correction :",
+              "options": [
+                "Vérifie que le bug est résolu",
+                "Est interdit",
+                "Supprime le projet",
+                "Change le processeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confirme que le comportement est bon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Collaborer : un lit, l'autre exécute sur machine :",
+              "options": [
+                "Compare deux traces",
+                "Est inutile",
+                "Coupe le clavier",
+                "Formate le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double vue papier/machine accélère la recherche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La simulation ne remplace pas :",
+              "options": [
+                "Un test réel sur l'ordinateur",
+                "La réflexion",
+                "Les variables",
+                "Les commentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut aussi valider sur le programme réel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision programmation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un programme simple en 5e combine souvent :",
+              "options": [
+                "Séquence, boucle et condition",
+                "Variables et entrées/sorties",
+                "Uniquement du matériel sans code",
+                "Aucune instruction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ces éléments structurent les petits projets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduire un algorithme en blocs Scratch :",
+              "options": [
+                "Respecte la même logique avec syntaxe visuelle",
+                "Efface toute boucle",
+                "Interdit les tests",
+                "Coupe Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les blocs reprennent les structures du pseudo-code."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le drapeau vert puis arrêt rouge :",
+              "options": [
+                "Démarre et stoppe l'exécution",
+                "Formate le disque",
+                "Change le clavier",
+                "Supprime les variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôles de base du lecteur Scratch."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un projet « labyrinthe » utilise surtout :",
+              "options": [
+                "Mouvement, conditions de mur, parfois boucle",
+                "Uniquement du son",
+                "Aucune logique",
+                "Un câble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacement et collisions structurent le jeu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Documenter son programme aide les autres à :",
+              "options": [
+                "Comprendre et reprendre le code",
+                "Casser le processeur",
+                "Perdre le fichier",
+                "Couper le Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commentaires et noms clairs facilitent la lecture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Respecter une consigne (« utiliser une boucle ») :",
+              "options": [
+                "Montre qu'on maîtrise la structure demandée",
+                "Est optionnel sans conséquence",
+                "Supprime le score",
+                "Formate le PC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaluation porte aussi sur les structures imposées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Améliorer un programme existant sans tout refaire :",
+              "options": [
+                "Itération et petits changements testés",
+                "Effacer tout le disque",
+                "Couper l'électricité",
+                "Supprimer les entrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fait évoluer par étapes contrôlées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Programme correct mais lent :",
+              "options": [
+                "Peut être optimisé (moins de répétitions inutiles)",
+                "Est toujours parfait",
+                "N'a pas besoin de boucles",
+                "Coupe le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On simplifie la logique pour gagner en fluidité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Créer un quiz interactif combine :",
+              "options": [
+                "Variables, conditions et affichage",
+                "Uniquement une image",
+                "Aucun script",
+                "Un câble réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Questions, réponses et score utilisent ces briques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Passer de la 5e à des projets plus grands demande :",
+              "options": [
+                "Continuer à structurer et tester",
+                "Oublier les algorithmes",
+                "Ne plus utiliser de variables",
+                "Ne jamais déboguer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bonnes habitudes de base restent essentielles."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

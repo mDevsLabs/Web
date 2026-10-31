@@ -1,0 +1,2018 @@
+{
+  "id": "2nde-mathematiques-03",
+  "year": "2nde",
+  "subject": "mathematiques",
+  "title": "Probabilités",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Expériences aléatoires",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Univers et issues",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Expérience aléatoire : quelles affirmations sont vraies ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ω regroupe toutes les issues",
+                "Une issue est toujours un nombre",
+                "Une seule issue se réalise par épreuve",
+                "Ω a toujours une issue"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ω est l'ensemble des résultats élémentaires."
+            },
+            {
+              "id": "q2",
+              "question": "Dé équilibré : l'univers est",
+              "type": "single_choice",
+              "options": ["{1,2,3,4,5,6}", "{pair,impair}", "{1,6}", "{3}"],
+              "correctAnswers": [0],
+              "explanation": "Six faces distinctes."
+            },
+            {
+              "id": "q3",
+              "question": "Tirage d'une carte (32 cartes) : nombre d'issues",
+              "type": "single_choice",
+              "options": ["32", "4", "8", "16"],
+              "correctAnswers": [0],
+              "explanation": "Une issue par carte."
+            },
+            {
+              "id": "q4",
+              "question": "Deux pièces, ordre compté : |Ω|",
+              "type": "single_choice",
+              "options": ["4", "2", "3", "8"],
+              "correctAnswers": [0],
+              "explanation": "PP, PF, FP, FF."
+            },
+            {
+              "id": "q5",
+              "question": "Un événement est",
+              "type": "single_choice",
+              "options": [
+                "Un sous-ensemble de Ω",
+                "Une issue",
+                "Une fréquence",
+                "Un chemin d'arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regroupement d'issues."
+            },
+            {
+              "id": "q6",
+              "question": "Dé : multiple de 3. Issues favorables",
+              "type": "single_choice",
+              "options": ["{3,6}", "{1,3,5}", "{2,4,6}", "{6}"],
+              "correctAnswers": [0],
+              "explanation": "3 et 6."
+            },
+            {
+              "id": "q7",
+              "question": "Événement certain",
+              "type": "single_choice",
+              "options": [
+                "Contient tout Ω",
+                "Est vide",
+                "A probabilité 0",
+                "A une issue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est Ω."
+            },
+            {
+              "id": "q8",
+              "question": "Événement impossible",
+              "type": "single_choice",
+              "options": ["∅", "Ω", "{ω}", "Ā seulement"],
+              "correctAnswers": [0],
+              "explanation": "Aucune issue."
+            },
+            {
+              "id": "q9",
+              "question": "Complémentaire Ā",
+              "type": "single_choice",
+              "options": [
+                "Issues de Ω hors de A",
+                "Issues de A",
+                "A∩B",
+                "Ω toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ā = Ω\\A."
+            },
+            {
+              "id": "q10",
+              "question": "ω désigne",
+              "type": "single_choice",
+              "options": ["Une issue", "Un événement", "P(A)", "Un tableau"],
+              "correctAnswers": [0],
+              "explanation": "Résultat élémentaire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Équiprobabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Équiprobabilité : vrai",
+              "type": "multiple_choice",
+              "options": [
+                "P(ω) identique pour chaque issue",
+                "P(A)=|A|/|Ω|",
+                "On l'impose sans modèle",
+                "ΣP(ω)=1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle uniforme sur Ω fini."
+            },
+            {
+              "id": "q2",
+              "question": "Dé : P(5)",
+              "type": "single_choice",
+              "options": ["1/6", "1/5", "5/6", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Six issues égales."
+            },
+            {
+              "id": "q3",
+              "question": "3 rouges, 7 bleues, tirage uniforme : P(rouge)",
+              "type": "single_choice",
+              "options": ["3/10", "7/10", "1/3", "3/7"],
+              "correctAnswers": [0],
+              "explanation": "3 sur 10."
+            },
+            {
+              "id": "q4",
+              "question": "0,25 =",
+              "type": "single_choice",
+              "options": ["1/4", "1/25", "25", "2/5"],
+              "correctAnswers": [0],
+              "explanation": "Écriture fractionnaire."
+            },
+            {
+              "id": "q5",
+              "question": "20 élèves, tirage équitable : P(être tiré)",
+              "type": "single_choice",
+              "options": ["1/20", "1/2", "20", "0"],
+              "correctAnswers": [0],
+              "explanation": "Uniforme sur 20."
+            },
+            {
+              "id": "q6",
+              "question": "Dé : P(pair)",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "3 faces sur 6."
+            },
+            {
+              "id": "q7",
+              "question": "Pièce équilibrée : P(pile)",
+              "type": "single_choice",
+              "options": ["1/2", "1/4", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Deux issues."
+            },
+            {
+              "id": "q8",
+              "question": "32 cartes : P(as)",
+              "type": "single_choice",
+              "options": ["1/8", "1/4", "4/52", "1/32"],
+              "correctAnswers": [0],
+              "explanation": "4/32."
+            },
+            {
+              "id": "q9",
+              "question": "|Ω|=n uniforme : P(une issue)",
+              "type": "single_choice",
+              "options": ["1/n", "n", "1", "n-1"],
+              "correctAnswers": [0],
+              "explanation": "1/n."
+            },
+            {
+              "id": "q10",
+              "question": "Dé truqué : |A|/|Ω| sans hypothèse",
+              "type": "single_choice",
+              "options": [
+                "Peut être faux",
+                "Toujours vrai",
+                "Vaut 1",
+                "Vaut 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut les vrais poids."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calcul de P(A)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Uniforme : P(A) vaut",
+              "type": "multiple_choice",
+              "options": [
+                "|A|/|Ω|",
+                "Σ_{ω∈A} P(ω)",
+                "Toujours 1/2",
+                "P(Ω)-P(A)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même valeur si P(ω)=1/|Ω|."
+            },
+            {
+              "id": "q2",
+              "question": "Dé : au moins 4",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{4,5,6}."
+            },
+            {
+              "id": "q3",
+              "question": "5 blanches, 5 noires : P(noire)",
+              "type": "single_choice",
+              "options": ["1/2", "1/5", "5/10", "1/10"],
+              "correctAnswers": [0],
+              "explanation": "5/10."
+            },
+            {
+              "id": "q4",
+              "question": "Jour au hasard : P(week-end)",
+              "type": "single_choice",
+              "options": ["2/7", "1/7", "5/7", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "2 jours sur 7."
+            },
+            {
+              "id": "q5",
+              "question": "MATHS, une lettre : P(M)",
+              "type": "single_choice",
+              "options": ["1/5", "1/4", "2/5", "0"],
+              "correctAnswers": [0],
+              "explanation": "5 lettres."
+            },
+            {
+              "id": "q6",
+              "question": "Deux dés : couples somme 7",
+              "type": "single_choice",
+              "options": ["6", "7", "36", "1"],
+              "correctAnswers": [0],
+              "explanation": "Six couples."
+            },
+            {
+              "id": "q7",
+              "question": "Deux dés : P(somme=7)",
+              "type": "single_choice",
+              "options": ["1/6", "1/7", "7/36", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "6/36."
+            },
+            {
+              "id": "q8",
+              "question": "P(A)=0,3 : P(Ā)",
+              "type": "single_choice",
+              "options": ["0,7", "0,3", "1,3", "0"],
+              "correctAnswers": [0],
+              "explanation": "1-P(A)."
+            },
+            {
+              "id": "q9",
+              "question": "Disjoints :",
+              "type": "single_choice",
+              "options": ["A∩B=∅", "A=B", "P(A)=P(B)", "A∪B=∅"],
+              "correctAnswers": [0],
+              "explanation": "Pas simultanés."
+            },
+            {
+              "id": "q10",
+              "question": "Disjoints : P(A∪B)",
+              "type": "single_choice",
+              "options": ["P(A)+P(B)", "P(A)P(B)", "1", "P(A)-P(B)"],
+              "correctAnswers": [0],
+              "explanation": "Somme sans retranchement."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Réunion et intersection",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "A∩B signifie",
+              "type": "multiple_choice",
+              "options": [
+                "A et B",
+                "Issues communes",
+                "A ou B",
+                "Complémentaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Intersection."
+            },
+            {
+              "id": "q2",
+              "question": "A∪B signifie",
+              "type": "single_choice",
+              "options": [
+                "Au moins un des deux",
+                "Les deux seulement",
+                "Aucun",
+                "A seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réunion."
+            },
+            {
+              "id": "q3",
+              "question": "Dé : pair et ≥4. Issue 4 est dans",
+              "type": "single_choice",
+              "options": ["A∩B", "A seulement", "B seulement", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "4 vérifie les deux."
+            },
+            {
+              "id": "q4",
+              "question": "P(A∪B)=",
+              "type": "single_choice",
+              "options": [
+                "P(A)+P(B)-P(A∩B)",
+                "P(A)+P(B)",
+                "P(A)P(B)",
+                "1-P(A)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crible."
+            },
+            {
+              "id": "q5",
+              "question": "P(A)=0,4, P(B)=0,5, P(A∩B)=0,1 : P(A∪B)",
+              "type": "single_choice",
+              "options": ["0,8", "0,9", "0,7", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "0,8."
+            },
+            {
+              "id": "q6",
+              "question": "A⊂B : A∩B=",
+              "type": "single_choice",
+              "options": ["A", "B", "∅", "Ω"],
+              "correctAnswers": [0],
+              "explanation": "A inclus dans B."
+            },
+            {
+              "id": "q7",
+              "question": "A={1,2}, B={2,3} : |A∪B|",
+              "type": "single_choice",
+              "options": ["3", "4", "2", "1"],
+              "correctAnswers": [0],
+              "explanation": "{1,2,3}."
+            },
+            {
+              "id": "q8",
+              "question": "Dé : A={2,4,6}, B={4,5,6} : P(A∩B)",
+              "type": "single_choice",
+              "options": ["2/6", "1/6", "4/6", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "{4,6}."
+            },
+            {
+              "id": "q9",
+              "question": "« 2 ou 5 » au dé",
+              "type": "single_choice",
+              "options": ["Réunion", "Intersection", "Ω", "∅"],
+              "correctAnswers": [0],
+              "explanation": "Ou inclusif."
+            },
+            {
+              "id": "q10",
+              "question": "P(A∩B) est",
+              "type": "single_choice",
+              "options": ["≤ P(A) et ≤ P(B)", "> P(A)", "≥ 1", "Négative"],
+              "correctAnswers": [0],
+              "explanation": "Sous-ensembles."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Modéliser",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Modéliser c'est",
+              "type": "multiple_choice",
+              "options": [
+                "Fixer Ω",
+                "Donner des P(ω) cohérentes",
+                "Oublier des issues",
+                "Confondre issue et événement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Univers + loi."
+            },
+            {
+              "id": "q2",
+              "question": "Roue 3 secteurs égaux : P(bleu)",
+              "type": "single_choice",
+              "options": ["1/3", "1/2", "1/6", "3"],
+              "correctAnswers": [0],
+              "explanation": "Uniforme sur 3."
+            },
+            {
+              "id": "q4",
+              "question": "Entier 1 à 10 : P(pair)",
+              "type": "single_choice",
+              "options": ["1/2", "1/10", "5/10", "4/10"],
+              "correctAnswers": [0],
+              "explanation": "5 pairs."
+            },
+            {
+              "id": "q3",
+              "question": "Entier 1 à 10 : |Ω|",
+              "type": "single_choice",
+              "options": ["10", "9", "11", "100"],
+              "correctAnswers": [0],
+              "explanation": "Dix entiers."
+            },
+            {
+              "id": "q5",
+              "question": "2 gagnants, 8 perdants : P(gagner)",
+              "type": "single_choice",
+              "options": ["1/5", "2/8", "8/10", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "2/10."
+            },
+            {
+              "id": "q6",
+              "question": "Oui/non : |Ω| minimal",
+              "type": "single_choice",
+              "options": ["2", "1", "10", "0"],
+              "correctAnswers": [0],
+              "explanation": "Deux réponses."
+            },
+            {
+              "id": "q7",
+              "question": "Dé résumé pair/impair : Ω",
+              "type": "single_choice",
+              "options": ["{pair,impair}", "{1,…,6}", "{0,1}", "{P}"],
+              "correctAnswers": [0],
+              "explanation": "Regroupement."
+            },
+            {
+              "id": "q8",
+              "question": "Modèle {pair,impair} uniforme : P(pair)",
+              "type": "single_choice",
+              "options": ["1/2", "1/6", "2/6", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Trois faces paires."
+            },
+            {
+              "id": "q9",
+              "question": "Probabilité s'exprime en",
+              "type": "single_choice",
+              "options": [
+                "Fraction, décimal, %",
+                "% seulement",
+                "Entier",
+                ">1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équivalences."
+            },
+            {
+              "id": "q10",
+              "question": "Σ P(ω) sur Ω",
+              "type": "single_choice",
+              "options": ["1", "0", "n", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "Somme totale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Fréquence",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Fréquence",
+              "type": "multiple_choice",
+              "options": [
+                "Succès/N",
+                "Approche souvent P si N grand",
+                "Toujours égale à P",
+                "Indépendante de N"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Statistique vs modèle."
+            },
+            {
+              "id": "q2",
+              "question": "50 pièces, 23 piles : fréquence",
+              "type": "single_choice",
+              "options": ["0,46", "0,23", "0,5", "23"],
+              "correctAnswers": [0],
+              "explanation": "23/50."
+            },
+            {
+              "id": "q3",
+              "question": "200 lancers, 34 fois 6 : fréquence",
+              "type": "single_choice",
+              "options": ["0,17", "34", "1/6", "0,34"],
+              "correctAnswers": [0],
+              "explanation": "34/200."
+            },
+            {
+              "id": "q4",
+              "question": "P=0,2, 100 essais : succès attendus",
+              "type": "single_choice",
+              "options": ["20", "2", "50", "0,2"],
+              "correctAnswers": [0],
+              "explanation": "100×0,2."
+            },
+            {
+              "id": "q5",
+              "question": "Fréquence 1",
+              "type": "single_choice",
+              "options": [
+                "Succès à chaque fois",
+                "P=0",
+                "Impossible",
+                "Une issue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toujours réussi."
+            },
+            {
+              "id": "q6",
+              "question": "Petit N : fréquence",
+              "type": "single_choice",
+              "options": [
+                "Peut s'écarter de P",
+                "=P toujours",
+                "Négative",
+                "Vaut 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fluctuations."
+            },
+            {
+              "id": "q7",
+              "question": "1000 tirages 1–10 : fréquence par nombre",
+              "type": "single_choice",
+              "options": ["≈0,1", "0,5", "1", "0,01"],
+              "correctAnswers": [0],
+              "explanation": "1/10."
+            },
+            {
+              "id": "q8",
+              "question": "P théorique modélise",
+              "type": "single_choice",
+              "options": [
+                "Le hasard à long terme",
+                "5 essais exacts",
+                ">1",
+                "Ω seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loi du modèle."
+            },
+            {
+              "id": "q9",
+              "question": "0 succès / 30 : fréquence",
+              "type": "single_choice",
+              "options": ["0", "30", "1/30", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "0/30."
+            },
+            {
+              "id": "q10",
+              "question": "Simulation plus stable : augmenter",
+              "type": "single_choice",
+              "options": ["N répétitions", "P>1", "Issues oubliées", "Ω vide"],
+              "correctAnswers": [0],
+              "explanation": "Grand N."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Événements au dé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Strictement >4 au dé",
+              "type": "multiple_choice",
+              "options": ["{5,6}", "2 issues", "{4,5,6}", "{1,2,3}"],
+              "correctAnswers": [0, 1],
+              "explanation": "5 et 6 seulement."
+            },
+            {
+              "id": "q2",
+              "question": "P(>4)",
+              "type": "single_choice",
+              "options": ["1/3", "1/2", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "2/6."
+            },
+            {
+              "id": "q3",
+              "question": "P(≤2)",
+              "type": "single_choice",
+              "options": ["1/3", "1/2", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{1,2}."
+            },
+            {
+              "id": "q4",
+              "question": "Pair et ≤3 : P(A∩B)",
+              "type": "single_choice",
+              "options": ["1/6", "2/6", "1/2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Issue 2."
+            },
+            {
+              "id": "q5",
+              "question": "P(≤3)",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{1,2,3}."
+            },
+            {
+              "id": "q6",
+              "question": "P(≥5)",
+              "type": "single_choice",
+              "options": ["1/3", "1/2", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{5,6}."
+            },
+            {
+              "id": "q7",
+              "question": "P(impair)",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{1,3,5}."
+            },
+            {
+              "id": "q8",
+              "question": "P(1 ou 6)",
+              "type": "single_choice",
+              "options": ["1/3", "1/6", "2/3", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "2/6."
+            },
+            {
+              "id": "q9",
+              "question": "P(premier nombre premier)",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "{2,3,5} → 3/6."
+            },
+            {
+              "id": "q10",
+              "question": "P(=4)",
+              "type": "single_choice",
+              "options": ["1/6", "1/3", "1/2", "4/6"],
+              "correctAnswers": [0],
+              "explanation": "Une face."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pourcentages",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Probabilité et pourcentage",
+              "type": "multiple_choice",
+              "options": [
+                "20% = 0,2 = 1/5",
+                "100% = certitude",
+                "50% > 1",
+                "0% impossible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conversions."
+            },
+            {
+              "id": "q2",
+              "question": "P=0,12 en %",
+              "type": "single_choice",
+              "options": ["12%", "1,2%", "0,12%", "120%"],
+              "correctAnswers": [0],
+              "explanation": "×100."
+            },
+            {
+              "id": "q3",
+              "question": "35% =",
+              "type": "single_choice",
+              "options": ["0,35", "3,5", "35", "0,035"],
+              "correctAnswers": [0],
+              "explanation": "Décimal."
+            },
+            {
+              "id": "q4",
+              "question": "P=3/4 en %",
+              "type": "single_choice",
+              "options": ["75%", "34%", "25%", "30%"],
+              "correctAnswers": [0],
+              "explanation": "0,75."
+            },
+            {
+              "id": "q5",
+              "question": "Équiprobable 8 issues : P en %",
+              "type": "single_choice",
+              "options": ["12,5%", "8%", "50%", "100%"],
+              "correctAnswers": [0],
+              "explanation": "1/8."
+            },
+            {
+              "id": "q6",
+              "question": "P(A)=40%, P(B)=30%, disjoints : P(A∪B)",
+              "type": "single_choice",
+              "options": ["70%", "12%", "10%", "100%"],
+              "correctAnswers": [0],
+              "explanation": "Somme."
+            },
+            {
+              "id": "q7",
+              "question": "Fréquence 0,08 =",
+              "type": "single_choice",
+              "options": ["8%", "80%", "0,8%", "8"],
+              "correctAnswers": [0],
+              "explanation": "8%."
+            },
+            {
+              "id": "q8",
+              "question": "P(Ā) si P(A)=15%",
+              "type": "single_choice",
+              "options": ["85%", "15%", "115%", "0%"],
+              "correctAnswers": [0],
+              "explanation": "100%-15%."
+            },
+            {
+              "id": "q9",
+              "question": "Tableau : 25 sur 200",
+              "type": "single_choice",
+              "options": ["12,5%", "25%", "2,5%", "50%"],
+              "correctAnswers": [0],
+              "explanation": "25/200."
+            },
+            {
+              "id": "q10",
+              "question": "P certaine",
+              "type": "single_choice",
+              "options": ["100%", "0%", "50%", "200%"],
+              "correctAnswers": [0],
+              "explanation": "P(Ω)=1."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dénombrement fini",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour P(A)=|A|/|Ω|",
+              "type": "multiple_choice",
+              "options": [
+                "Compter les issues de Ω",
+                "Compter les issues favorables",
+                "Ω peut être vide",
+                "Une issue compte double"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dénombrement."
+            },
+            {
+              "id": "q2",
+              "question": "Lettres de INFO : |Ω| tirage une lettre",
+              "type": "single_choice",
+              "options": ["4", "3", "8", "16"],
+              "correctAnswers": [0],
+              "explanation": "I,N,F,O."
+            },
+            {
+              "id": "q3",
+              "question": "P(I) dans INFO",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "0", "2/4"],
+              "correctAnswers": [0],
+              "explanation": "Une I."
+            },
+            {
+              "id": "q4",
+              "question": "Code 2 chiffres 0–9, ordre compte : |Ω|",
+              "type": "single_choice",
+              "options": ["100", "20", "10", "90"],
+              "correctAnswers": [0],
+              "explanation": "10×10."
+            },
+            {
+              "id": "q5",
+              "question": "P(code 00)",
+              "type": "single_choice",
+              "options": ["1/100", "1/10", "2/100", "1/20"],
+              "correctAnswers": [0],
+              "explanation": "Un couple."
+            },
+            {
+              "id": "q6",
+              "question": "3 chemins disjoints : P(chemin2) si équiprobables",
+              "type": "single_choice",
+              "options": ["1/3", "1/2", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "Trois chemins."
+            },
+            {
+              "id": "q7",
+              "question": "Lancer pièce puis dé : |Ω|",
+              "type": "single_choice",
+              "options": ["12", "8", "6", "2"],
+              "correctAnswers": [0],
+              "explanation": "2×6."
+            },
+            {
+              "id": "q8",
+              "question": "Même expérience : P(pile et 6)",
+              "type": "single_choice",
+              "options": ["1/12", "1/6", "1/2", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Une issue sur 12."
+            },
+            {
+              "id": "q9",
+              "question": "Urne 2R,3V : |Ω| tirage",
+              "type": "single_choice",
+              "options": ["5", "2", "3", "6"],
+              "correctAnswers": [0],
+              "explanation": "Cinq boules."
+            },
+            {
+              "id": "q10",
+              "question": "P(V) uniforme",
+              "type": "single_choice",
+              "options": ["3/5", "2/5", "1/3", "1/5"],
+              "correctAnswers": [0],
+              "explanation": "3 vertes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse expériences",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Vocabulaire probabilité",
+              "type": "multiple_choice",
+              "options": [
+                "Issue ∈ Ω",
+                "Événement ⊂ Ω",
+                "Fréquence = P toujours",
+                "Équiprobabilité = modèle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bases 2nde."
+            },
+            {
+              "id": "q2",
+              "question": "P impossible",
+              "type": "single_choice",
+              "options": ["0", "1", "1/2", "-1"],
+              "correctAnswers": [0],
+              "explanation": "P(∅)."
+            },
+            {
+              "id": "q3",
+              "question": "P certaine",
+              "type": "single_choice",
+              "options": ["1", "0", "1/2", "n"],
+              "correctAnswers": [0],
+              "explanation": "P(Ω)."
+            },
+            {
+              "id": "q4",
+              "question": "A et B disjoints, P(A)=0,1, P(B)=0,4 : P(A∪B)",
+              "type": "single_choice",
+              "options": ["0,5", "0,04", "0,1", "1"],
+              "correctAnswers": [0],
+              "explanation": "0,5."
+            },
+            {
+              "id": "q5",
+              "question": "Dé : P(non pair)",
+              "type": "single_choice",
+              "options": ["1/2", "1/3", "2/3", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "Impair."
+            },
+            {
+              "id": "q6",
+              "question": "P(A)=0,6 : P(Ā)",
+              "type": "single_choice",
+              "options": ["0,4", "0,6", "1,6", "0"],
+              "correctAnswers": [0],
+              "explanation": "Complément."
+            },
+            {
+              "id": "q7",
+              "question": "Deux issues equiprobables : P(chacune)",
+              "type": "single_choice",
+              "options": ["1/2", "1/4", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Uniforme."
+            },
+            {
+              "id": "q8",
+              "question": "|A|=3, |Ω|=12 uniforme : P(A)",
+              "type": "single_choice",
+              "options": ["1/4", "1/3", "3/12", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "3/12=1/4."
+            },
+            {
+              "id": "q9",
+              "question": "A∩B⊂A donc",
+              "type": "single_choice",
+              "options": ["P(A∩B)≤P(A)", "P(A∩B)>P(A)", "P(A∩B)=1", "P(A)=0"],
+              "correctAnswers": [0],
+              "explanation": "Inclusion."
+            },
+            {
+              "id": "q10",
+              "question": "But du modèle probabiliste",
+              "type": "single_choice",
+              "options": [
+                "Quantifier l'incertitude",
+                "Prédire une issue exacte",
+                "Supprimer le hasard",
+                "Remplacer Ω"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure du hasard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Arbres et tableaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Lire un arbre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Arbre de probabilités",
+              "type": "multiple_choice",
+              "options": [
+                "Représente des étapes successives",
+                "Probabilités sur les branches",
+                "Une branche = toujours Ω",
+                "Somme des branches d'un nœud = 1"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Lecture d'étapes et conservation."
+            },
+            {
+              "id": "q2",
+              "question": "1er niveau : P(A)=0,3 et P(Ā)=0,7. Somme",
+              "type": "single_choice",
+              "options": ["1", "0,21", "1,4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Partition du 1er tirage."
+            },
+            {
+              "id": "q3",
+              "question": "Chemin = suite de branches",
+              "type": "single_choice",
+              "options": [
+                "Issue de l'expérience composée",
+                "Un événement seul",
+                "Ω",
+                "Un tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Du root à une feuille."
+            },
+            {
+              "id": "q4",
+              "question": "Deux niveaux, branches 0,5 et 0,5 puis 0,2 et 0,8 : P(chemin 1re branche puis 0,2)",
+              "type": "single_choice",
+              "options": ["0,1", "0,7", "0,5", "0,2"],
+              "correctAnswers": [0],
+              "explanation": "0,5×0,2."
+            },
+            {
+              "id": "q5",
+              "question": "Produit sur un chemin donne",
+              "type": "single_choice",
+              "options": [
+                "P du chemin complet",
+                "P(A∪B)",
+                "1 toujours",
+                "Somme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle multiplicative."
+            },
+            {
+              "id": "q6",
+              "question": "Feuilles d'un arbre fini",
+              "type": "single_choice",
+              "options": [
+                "Issues élémentaires du produit",
+                "Toujours 2",
+                "Des événements vides",
+                "Des fréquences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scénarios complets."
+            },
+            {
+              "id": "q7",
+              "question": "Arbre équiprobable 1er niveau 2 branches, 2e niveau 2 branches : |Ω|",
+              "type": "single_choice",
+              "options": ["4", "2", "3", "8"],
+              "correctAnswers": [0],
+              "explanation": "2×2."
+            },
+            {
+              "id": "q8",
+              "question": "Même arbre uniforme : P(chaque feuille)",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "1/3", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "Quatre chemins égaux."
+            },
+            {
+              "id": "q9",
+              "question": "Étiquette sur branche",
+              "type": "single_choice",
+              "options": [
+                "P conditionnelle ou simple selon modèle",
+                "Toujours 1",
+                "Effectif",
+                "Pourcentage >100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poids de la branche."
+            },
+            {
+              "id": "q10",
+              "question": "Arbre à deux niveaux sert surtout à",
+              "type": "single_choice",
+              "options": [
+                "Deux étapes aléatoires",
+                "Une seule issue",
+                "Remplacer Ω vide",
+                "Calculer une aire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expérience composée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Probabilité d'un chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "P(chemin)",
+              "type": "multiple_choice",
+              "options": [
+                "Produit des P des branches",
+                "Branches indépendantes le long du chemin",
+                "Somme des branches",
+                "Toujours 0,5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Multiplication le long du chemin."
+            },
+            {
+              "id": "q2",
+              "question": "P=0,4 puis 0,25 sur chemin : P(chemin)",
+              "type": "single_choice",
+              "options": ["0,1", "0,65", "0,15", "1"],
+              "correctAnswers": [0],
+              "explanation": "0,4×0,25."
+            },
+            {
+              "id": "q3",
+              "question": "0,6 × 0,5",
+              "type": "single_choice",
+              "options": ["0,3", "0,11", "1,1", "0,55"],
+              "correctAnswers": [0],
+              "explanation": "Produit."
+            },
+            {
+              "id": "q4",
+              "question": "Chemin A puis B : P(A et B) si arbre",
+              "type": "single_choice",
+              "options": [
+                "P(A)×P(B|A) sur branches",
+                "P(A)+P(B)",
+                "1",
+                "P(A)-P(B)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture arbre."
+            },
+            {
+              "id": "q5",
+              "question": "Trois branches 0,2, 0,3, 0,5 au 1er nœud",
+              "type": "single_choice",
+              "options": ["Somme 1", "Somme 0,5", "Produit 1", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Partition."
+            },
+            {
+              "id": "q6",
+              "question": "P(chemin)=0 : signifie",
+              "type": "single_choice",
+              "options": [
+                "Branche impossible",
+                "Certain",
+                "Chemin unique",
+                "Somme 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Probabilité nulle."
+            },
+            {
+              "id": "q7",
+              "question": "0,5 × 0,5 × 0,5 (3 branches)",
+              "type": "single_choice",
+              "options": ["0,125", "1,5", "0,5", "0,25"],
+              "correctAnswers": [0],
+              "explanation": "Trois facteurs."
+            },
+            {
+              "id": "q8",
+              "question": "Deux chemins disjoints P=0,2 et 0,3 : P(l'un ou l'autre)",
+              "type": "single_choice",
+              "options": ["0,5", "0,06", "0,2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Somme feuilles."
+            },
+            {
+              "id": "q9",
+              "question": "P(feuille1)=0,12, feuille2=0,18, autres=0,7 : somme",
+              "type": "single_choice",
+              "options": ["1", "0,3", "0,12", "2"],
+              "correctAnswers": [0],
+              "explanation": "Loi complète."
+            },
+            {
+              "id": "q10",
+              "question": "Pour P(événement), on additionne",
+              "type": "single_choice",
+              "options": [
+                "Chemins compatibles",
+                "Toutes branches sans filtre",
+                "Produits au hasard",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réunion de chemins."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Arbre équiprobable",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Arbre 2×2 uniforme",
+              "type": "multiple_choice",
+              "options": [
+                "4 feuilles",
+                "P(feuille)=1/4",
+                "2 feuilles",
+                "P=1/2 sur chaque branche du 1er niveau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quatre scénarios égaux."
+            },
+            {
+              "id": "q2",
+              "question": "Pièce deux fois, arbre : P(PP)",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "1/3", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "Uniforme 4 feuilles."
+            },
+            {
+              "id": "q3",
+              "question": "P(exactement une pile)",
+              "type": "single_choice",
+              "options": ["1/2", "1/4", "3/4", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "PF et FP."
+            },
+            {
+              "id": "q4",
+              "question": "P(au moins une pile)",
+              "type": "single_choice",
+              "options": ["3/4", "1/2", "1/4", "1"],
+              "correctAnswers": [0],
+              "explanation": "Tout sauf FF."
+            },
+            {
+              "id": "q5",
+              "question": "Dé puis pièce, uniforme : |Ω|",
+              "type": "single_choice",
+              "options": ["12", "6", "2", "8"],
+              "correctAnswers": [0],
+              "explanation": "6×2."
+            },
+            {
+              "id": "q6",
+              "question": "P(6 et pile)",
+              "type": "single_choice",
+              "options": ["1/12", "1/6", "1/2", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Une feuille sur 12."
+            },
+            {
+              "id": "q7",
+              "question": "P(pair au dé) via arbre 6 branches égales",
+              "type": "single_choice",
+              "options": ["1/2", "1/6", "2/6", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Trois feuilles."
+            },
+            {
+              "id": "q8",
+              "question": "Somme P feuilles",
+              "type": "single_choice",
+              "options": ["1", "0", "1/2", "n"],
+              "correctAnswers": [0],
+              "explanation": "Normalisation."
+            },
+            {
+              "id": "q9",
+              "question": "Événement = ensemble de",
+              "type": "single_choice",
+              "options": [
+                "Feuilles",
+                "Racines seulement",
+                "Branches sans fin",
+                "Tableaux vides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regroupement."
+            },
+            {
+              "id": "q10",
+              "question": "P(FF) deux pièces",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "3/4", "0"],
+              "correctAnswers": [0],
+              "explanation": "Une feuille."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Arbre pondéré",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Arbre pondéré",
+              "type": "multiple_choice",
+              "options": [
+                "Branches avec P≠ selon cas",
+                "Peut modéliser sans équiprobabilité",
+                "Toutes branches 0,5",
+                "Somme au nœud ≠1 possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Poids réalistes."
+            },
+            {
+              "id": "q2",
+              "question": "Urne 60% R, 40% B. 1er tirage P(R)",
+              "type": "single_choice",
+              "options": ["0,6", "0,4", "1", "0,24"],
+              "correctAnswers": [0],
+              "explanation": "Branche R."
+            },
+            {
+              "id": "q3",
+              "question": "Après R, 2e tirage avec remise : P(R puis R)",
+              "type": "single_choice",
+              "options": ["0,36", "0,6", "0,16", "1"],
+              "correctAnswers": [0],
+              "explanation": "0,6×0,6."
+            },
+            {
+              "id": "q4",
+              "question": "P(R puis B) sans remise (même urne 3R,2B approx 0,6/0,4 1er) : si 1er R 0,6 et 2e B|R=0,4",
+              "type": "single_choice",
+              "options": ["0,24", "0,6", "0,4", "0,12"],
+              "correctAnswers": [0],
+              "explanation": "0,6×0,4."
+            },
+            {
+              "id": "q5",
+              "question": "Test 95% fiabilité positif si malade, 10% faux positif si sain : arbre 2 niveaux typique",
+              "type": "single_choice",
+              "options": [
+                "Maladie puis test",
+                "Test seul",
+                "Ω vide",
+                "Tableau sans effectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étape puis observation."
+            },
+            {
+              "id": "q6",
+              "question": "P=0,7 et branche complément 1er nœud",
+              "type": "single_choice",
+              "options": ["0,3", "0,7", "1", "0,21"],
+              "correctAnswers": [0],
+              "explanation": "Complément."
+            },
+            {
+              "id": "q7",
+              "question": "0,2 × 0,5",
+              "type": "single_choice",
+              "options": ["0,1", "0,7", "0,25", "1"],
+              "correctAnswers": [0],
+              "explanation": "Chemin."
+            },
+            {
+              "id": "q8",
+              "question": "Deux événements compatibles sur chemins différents : P totale",
+              "type": "single_choice",
+              "options": ["Somme des P chemins", "Produit", "0", "1/n"],
+              "correctAnswers": [0],
+              "explanation": "Disjoints en feuilles."
+            },
+            {
+              "id": "q9",
+              "question": "Branche 0 absent",
+              "type": "single_choice",
+              "options": ["Impossible", "Certaine", "Somme 1", "Feuille"],
+              "correctAnswers": [0],
+              "explanation": "P=0."
+            },
+            {
+              "id": "q10",
+              "question": "Lecture arbre vs liste Ω",
+              "type": "single_choice",
+              "options": [
+                "Arbre structure les étapes",
+                "Identique toujours",
+                "Arbre remplace P",
+                "Arbre sans feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Tableau d'effectifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tableau croisé",
+              "type": "multiple_choice",
+              "options": [
+                "Croise deux caractères",
+                "Effectifs dans cases",
+                "Toujours 2×2",
+                "Somme effectifs = population étudiée"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Double entrée."
+            },
+            {
+              "id": "q2",
+              "question": "Tableau 2×2 total 100, case (A,B)=15 : effectif",
+              "type": "single_choice",
+              "options": ["15", "100", "15%", "85"],
+              "correctAnswers": [0],
+              "explanation": "Comptage."
+            },
+            {
+              "id": "q3",
+              "question": "Marge ligne total 40 sur 200",
+              "type": "single_choice",
+              "options": [
+                "40 individus",
+                "200%",
+                "0,2 personne",
+                "Effectif colonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Total ligne."
+            },
+            {
+              "id": "q4",
+              "question": "Total général 250",
+              "type": "single_choice",
+              "options": [
+                "Somme de toutes les cases",
+                "Une case",
+                "250%",
+                "Produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effectif total."
+            },
+            {
+              "id": "q5",
+              "question": "Lecture : ligne Sport=oui, colonne Filles=30",
+              "type": "single_choice",
+              "options": [
+                "30 filles pratiquant",
+                "30%",
+                "30 garçons",
+                "Total général"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intersection."
+            },
+            {
+              "id": "q6",
+              "question": "Case hors ligne/colonne choisie",
+              "type": "single_choice",
+              "options": ["A∩B", "A∪B", "Ω", "Ā"],
+              "correctAnswers": [0],
+              "explanation": "Croisement."
+            },
+            {
+              "id": "q7",
+              "question": "Effectif A total ligne 50 sur N=100",
+              "type": "single_choice",
+              "options": ["50", "0,5", "50% seulement sans N", "100"],
+              "correctAnswers": [0],
+              "explanation": "Marge A."
+            },
+            {
+              "id": "q8",
+              "question": "Compléter tableau : somme lignes =",
+              "type": "single_choice",
+              "options": ["Total général", "0", "1", "Case (1,1)"],
+              "correctAnswers": [0],
+              "explanation": "Cohérence."
+            },
+            {
+              "id": "q9",
+              "question": "Double entrée âge × média",
+              "type": "single_choice",
+              "options": [
+                "Probabilité jointe estimée si tirage uniforme personne",
+                "Arbre",
+                "P=1",
+                "Sans effectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statistiques → probas."
+            },
+            {
+              "id": "q10",
+              "question": "Tableau 3×2 a combien de cases intérieures",
+              "type": "single_choice",
+              "options": ["6", "5", "3", "2"],
+              "correctAnswers": [0],
+              "explanation": "3×2."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Probabilité depuis un tableau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tirage au hasard d'un individu du tableau",
+              "type": "multiple_choice",
+              "options": [
+                "P(case)=effectif/N",
+                "P(A)=effectif ligne A / N",
+                "P toujours 1/2",
+                "N=0 possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Loi uniforme sur individus."
+            },
+            {
+              "id": "q2",
+              "question": "N=200, case=30 : P(case)",
+              "type": "single_choice",
+              "options": ["0,15", "30", "0,30", "1/30"],
+              "correctAnswers": [0],
+              "explanation": "30/200."
+            },
+            {
+              "id": "q3",
+              "question": "N=80, ligne total 20 : P(A)",
+              "type": "single_choice",
+              "options": ["0,25", "20", "0,20", "1/80"],
+              "correctAnswers": [0],
+              "explanation": "20/80."
+            },
+            {
+              "id": "q4",
+              "question": "N=50, colonne total 10 : P(B)",
+              "type": "single_choice",
+              "options": ["0,2", "10", "0,5", "1/10"],
+              "correctAnswers": [0],
+              "explanation": "10/50."
+            },
+            {
+              "id": "q5",
+              "question": "N=100, case=5 : P en %",
+              "type": "single_choice",
+              "options": ["5%", "5", "0,5%", "50%"],
+              "correctAnswers": [0],
+              "explanation": "5/100."
+            },
+            {
+              "id": "q6",
+              "question": "N=120, hors case : 120-15=105 reste autre zone si case=15",
+              "type": "single_choice",
+              "options": ["105", "15", "120", "0,15"],
+              "correctAnswers": [0],
+              "explanation": "Complément effectif."
+            },
+            {
+              "id": "q7",
+              "question": "Uniforme : P(A) + P(Ā)",
+              "type": "single_choice",
+              "options": ["1", "0", "0,5", "N"],
+              "correctAnswers": [0],
+              "explanation": "Partition."
+            },
+            {
+              "id": "q8",
+              "question": "Effectif 0 : P",
+              "type": "single_choice",
+              "options": ["0", "1", "Indéfini", "N"],
+              "correctAnswers": [0],
+              "explanation": "Impossible."
+            },
+            {
+              "id": "q9",
+              "question": "Doubler tous effectifs change P(case)?",
+              "type": "single_choice",
+              "options": ["Non", "Oui double", "P=1", "P=0"],
+              "correctAnswers": [0],
+              "explanation": "Ratio constant."
+            },
+            {
+              "id": "q10",
+              "question": "P(A∩B) depuis case (A,B)",
+              "type": "single_choice",
+              "options": [
+                "effectif case / N",
+                "Somme lignes",
+                "Produit marges",
+                "1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jointe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Intersection et tableau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "A∩B dans tableau",
+              "type": "multiple_choice",
+              "options": [
+                "Case intersection",
+                "Effectif commun",
+                "Réunion des marges",
+                "Total général"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lecture croisée."
+            },
+            {
+              "id": "q2",
+              "question": "N=400, (A,B)=50 : P(A∩B)",
+              "type": "single_choice",
+              "options": ["0,125", "50", "0,5", "1/50"],
+              "correctAnswers": [0],
+              "explanation": "50/400."
+            },
+            {
+              "id": "q3",
+              "question": "N=100, A total 40, B total 30, (A,B)=10 : P(A∩B)",
+              "type": "single_choice",
+              "options": ["0,1", "0,4", "0,3", "0,12"],
+              "correctAnswers": [0],
+              "explanation": "10/100."
+            },
+            {
+              "id": "q4",
+              "question": "P(A|B) effectif approx : (A,B)/colonne B si uniforme",
+              "type": "single_choice",
+              "options": ["10/30", "10/100", "40/100", "10/40"],
+              "correctAnswers": [0],
+              "explanation": "Parmi B."
+            },
+            {
+              "id": "q5",
+              "question": "Si (A,B)=0 alors",
+              "type": "single_choice",
+              "options": [
+                "A et B incompatibles sur échantillon",
+                "P(A∩B)=0",
+                "P(A)=1",
+                "N=0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun cas commun."
+            },
+            {
+              "id": "q6",
+              "question": "P(A et B) notation",
+              "type": "single_choice",
+              "options": ["P(A∩B)", "P(A)+P(B)", "P(A)-P(B)", "P(Ω)"],
+              "correctAnswers": [0],
+              "explanation": "Intersection."
+            },
+            {
+              "id": "q7",
+              "question": "Case (Garçon, Maths) 22, N=110",
+              "type": "single_choice",
+              "options": ["0,2", "22", "0,22", "1/22"],
+              "correctAnswers": [0],
+              "explanation": "22/110."
+            },
+            {
+              "id": "q8",
+              "question": "Max P(A∩B) avec P(A)=0,5, P(B)=0,4",
+              "type": "single_choice",
+              "options": ["0,4", "0,5", "0,9", "1"],
+              "correctAnswers": [0],
+              "explanation": "≤ min(P(A),P(B))."
+            },
+            {
+              "id": "q9",
+              "question": "A∩B ⊂ A implique P(A∩B)",
+              "type": "single_choice",
+              "options": ["≤ P(A)", "≥ P(A)", "=1", ">1"],
+              "correctAnswers": [0],
+              "explanation": "Inclusion."
+            },
+            {
+              "id": "q10",
+              "question": "Lire intersection = lire",
+              "type": "single_choice",
+              "options": [
+                "Une case du tableau",
+                "Somme du tableau",
+                "Marge seule",
+                "Arbre racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Case (A,B)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réunion et tableau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "P(A∪B) depuis effectifs",
+              "type": "multiple_choice",
+              "options": [
+                "(eff A + eff B - eff A∩B)/N",
+                "Éviter double comptage",
+                "(eff A×eff B)/N",
+                "Toujours 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formule ensemble."
+            },
+            {
+              "id": "q2",
+              "question": "N=100, A=40, B=35, A∩B=10 : P(A∪B)",
+              "type": "single_choice",
+              "options": ["0,65", "0,75", "0,55", "0,10"],
+              "correctAnswers": [0],
+              "explanation": "(40+35-10)/100."
+            },
+            {
+              "id": "q3",
+              "question": "Même données : P(A seulement sans B)",
+              "type": "single_choice",
+              "options": ["0,30", "0,40", "0,10", "0,35"],
+              "correctAnswers": [0],
+              "explanation": "40-10=30."
+            },
+            {
+              "id": "q4",
+              "question": "P(A ou B) langage",
+              "type": "single_choice",
+              "options": ["P(A∪B)", "P(A∩B)", "P(A)-P(B)", "0"],
+              "correctAnswers": [0],
+              "explanation": "Ou inclusif."
+            },
+            {
+              "id": "q5",
+              "question": "Disjoints : A∩B=0, A=25, B=15, N=100",
+              "type": "single_choice",
+              "options": ["0,40", "0,25", "0,10", "0,60"],
+              "correctAnswers": [0],
+              "explanation": "Somme 40/100."
+            },
+            {
+              "id": "q6",
+              "question": "P(A∪B) max si N fixé",
+              "type": "single_choice",
+              "options": ["≤1", "≥2", "=0", "Négatif"],
+              "correctAnswers": [0],
+              "explanation": "Probabilité."
+            },
+            {
+              "id": "q7",
+              "question": "A⊂B : P(A∪B)",
+              "type": "single_choice",
+              "options": ["P(B)", "P(A)", "0", "1-P(A)"],
+              "correctAnswers": [0],
+              "explanation": "Réunion = B."
+            },
+            {
+              "id": "q8",
+              "question": "100 élèves, 60 sport, 50 musique, 20 les deux : P(au moins une activité)",
+              "type": "single_choice",
+              "options": ["0,90", "0,80", "0,70", "1,10"],
+              "correctAnswers": [0],
+              "explanation": "60+50-20=90."
+            },
+            {
+              "id": "q9",
+              "question": "Complément P(Ā) tableau : (N-eff A)/N",
+              "type": "single_choice",
+              "options": ["Vrai si A ligne", "Faux toujours", "1/N", "0"],
+              "correctAnswers": [0],
+              "explanation": "Hors A."
+            },
+            {
+              "id": "q10",
+              "question": "Réunion via arbre :",
+              "type": "single_choice",
+              "options": [
+                "Somme P feuilles correspondantes",
+                "Produit branches",
+                "Une branche",
+                "Effectif 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemins union."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Arbre et tableau",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Arbre et tableau",
+              "type": "multiple_choice",
+              "options": [
+                "Deux représentations d'une même expérience composée",
+                "Tableau compte des effectifs",
+                "Arbre multiplie le long d'un chemin",
+                "Toujours incohérents"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vues complémentaires."
+            },
+            {
+              "id": "q2",
+              "question": "2 étapes binaires uniformes : feuilles",
+              "type": "single_choice",
+              "options": ["4", "2", "3", "8"],
+              "correctAnswers": [0],
+              "explanation": "2×2."
+            },
+            {
+              "id": "q3",
+              "question": "Tableau 2×2 issu de deux Oui/Non équiprobables indépendants : case centrale P",
+              "type": "single_choice",
+              "options": ["0,25", "0,5", "0,75", "1"],
+              "correctAnswers": [0],
+              "explanation": "1/4 si PP etc."
+            },
+            {
+              "id": "q4",
+              "question": "Arbre : P chemin 0,3×0,4",
+              "type": "single_choice",
+              "options": ["0,12", "0,7", "1", "0,34"],
+              "correctAnswers": [0],
+              "explanation": "Produit."
+            },
+            {
+              "id": "q5",
+              "question": "Tableau N=500, case 75 : P",
+              "type": "single_choice",
+              "options": ["0,15", "75", "0,75", "1/5"],
+              "correctAnswers": [0],
+              "explanation": "75/500."
+            },
+            {
+              "id": "q6",
+              "question": "Passer arbre→tableau :",
+              "type": "single_choice",
+              "options": [
+                "Regrouper feuilles par labels",
+                "Effacer N",
+                "Sommer branches d'un nœud >1",
+                "Oublier P"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptage feuilles."
+            },
+            {
+              "id": "q7",
+              "question": "Indépendance intuitive uniforme 2×2 : P(A∩B)",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Une case sur 4."
+            },
+            {
+              "id": "q8",
+              "question": "P(A∪B) avec arbre deux feuilles pour A seul et B seul chevauchement feuille",
+              "type": "single_choice",
+              "options": [
+                "Somme P feuilles de l'événement",
+                "Produit",
+                "0",
+                "N"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union de chemins."
+            },
+            {
+              "id": "q9",
+              "question": "Effectif tableau = 0 ⟺",
+              "type": "single_choice",
+              "options": [
+                "P=0 au tirage uniforme",
+                "P=1",
+                "Impossible arbre",
+                "Certain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucun individu."
+            },
+            {
+              "id": "q10",
+              "question": "Choix utile arbre",
+              "type": "single_choice",
+              "options": [
+                "Voir les étapes successives",
+                "Remplacer tout calcul",
+                "Sans probabilités",
+                "Sans feuilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temporalité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse arbres et tableaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Règles 2nde",
+              "type": "multiple_choice",
+              "options": [
+                "Produit le long d'un chemin",
+                "Somme P feuilles disjointes",
+                "P(case)=effectif/N",
+                "Somme branches d'un nœud =1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Arbres et tableaux."
+            },
+            {
+              "id": "q2",
+              "question": "0,5×0,6",
+              "type": "single_choice",
+              "options": ["0,3", "0,11", "1,1", "0,56"],
+              "correctAnswers": [0],
+              "explanation": "Chemin."
+            },
+            {
+              "id": "q3",
+              "question": "N=250, (A,B)=20 : P(A∩B)",
+              "type": "single_choice",
+              "options": ["0,08", "20", "0,2", "1/20"],
+              "correctAnswers": [0],
+              "explanation": "20/250."
+            },
+            {
+              "id": "q4",
+              "question": "A=50, B=40, A∩B=10, N=200 : P(A∪B)",
+              "type": "single_choice",
+              "options": ["0,40", "0,45", "0,25", "0,50"],
+              "correctAnswers": [0],
+              "explanation": "80/200."
+            },
+            {
+              "id": "q5",
+              "question": "Arbre 1er nœud 0,8 et 0,2 : somme",
+              "type": "single_choice",
+              "options": ["1", "0,16", "0,6", "2"],
+              "correctAnswers": [0],
+              "explanation": "Partition."
+            },
+            {
+              "id": "q6",
+              "question": "4 feuilles égales : P chacune",
+              "type": "single_choice",
+              "options": ["1/4", "1/2", "1/8", "4"],
+              "correctAnswers": [0],
+              "explanation": "Uniforme."
+            },
+            {
+              "id": "q7",
+              "question": "P(A)+P(B)-P(A∩B) sert à",
+              "type": "single_choice",
+              "options": ["P(A∪B)", "P(A∩B)", "P(Ω)", "P(∅)"],
+              "correctAnswers": [0],
+              "explanation": "Réunion."
+            },
+            {
+              "id": "q8",
+              "question": "Tableau : total général 0",
+              "type": "single_choice",
+              "options": [
+                "Probabilités indéfinies",
+                "P=1",
+                "Normal",
+                "Arbre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N=0 interdit."
+            },
+            {
+              "id": "q9",
+              "question": "Deux niveaux arbre =",
+              "type": "single_choice",
+              "options": ["2 étapes", "1 issue", "0 branche", "Tableau 1×1"],
+              "correctAnswers": [0],
+              "explanation": "Structure."
+            },
+            {
+              "id": "q10",
+              "question": "Objectif final",
+              "type": "single_choice",
+              "options": [
+                "Calculer P d'événements composés",
+                "Éliminer Ω",
+                "Toujours 50%",
+                "Ignorer effectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence 2nde."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

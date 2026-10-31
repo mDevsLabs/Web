@@ -1,0 +1,2343 @@
+{
+  "id": "4e-allemand-02",
+  "year": "4e",
+  "subject": "allemand",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les membres de la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment dit-on « la sœur » et « le frère » en allemand ?",
+              "type": "multiple_choice",
+              "options": [
+                "die Schwester",
+                "der Bruder",
+                "die Mutter",
+                "der Onkel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schwester = sœur, Bruder = frère ; Mutter et Onkel ne correspondent pas."
+            },
+            {
+              "id": "q2",
+              "question": "« Meine Eltern » signifie :",
+              "type": "single_choice",
+              "options": [
+                "mes parents",
+                "mes grands-parents",
+                "mes enfants",
+                "mes cousins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eltern = parents au pluriel."
+            },
+            {
+              "id": "q3",
+              "question": "Comment se dit « mon grand-père » ?",
+              "type": "single_choice",
+              "options": [
+                "mein Großvater",
+                "meine Großmutter",
+                "mein Onkel",
+                "mein Vater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Großvater = grand-père ; Großmutter = grand-mère."
+            },
+            {
+              "id": "q4",
+              "question": "« Ich habe eine Schwester. » — Quelle affirmation est vraie ?",
+              "type": "single_choice",
+              "options": [
+                "J'ai une sœur.",
+                "J'ai un frère.",
+                "Je suis une sœur.",
+                "Ma sœur a un frère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "haben + une Schwester = avoir une sœur."
+            },
+            {
+              "id": "q5",
+              "question": "Le mot « die Tante » désigne :",
+              "type": "single_choice",
+              "options": ["la tante", "l'oncle", "la cousine", "la nièce"],
+              "correctAnswers": [0],
+              "explanation": "Tante = tante ; Onkel = oncle."
+            },
+            {
+              "id": "q6",
+              "question": "« Wir sind eine große Familie. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes une grande famille.",
+                "Nous avons une grande maison.",
+                "C'est une grande fête.",
+                "La famille est loin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "große Familie = grande famille."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « les enfants » ?",
+              "type": "single_choice",
+              "options": [
+                "die Kinder",
+                "die Eltern",
+                "die Geschwister",
+                "die Freunde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kinder = enfants ; Geschwister = frères et sœurs."
+            },
+            {
+              "id": "q8",
+              "question": "« Mein Bruder heißt Tom. » — Tom est :",
+              "type": "single_choice",
+              "options": [
+                "le frère du locuteur",
+                "le père du locuteur",
+                "l'ami du locuteur",
+                "le cousin du locuteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mein Bruder = mon frère."
+            },
+            {
+              "id": "q9",
+              "question": "« die Cousine » en français :",
+              "type": "single_choice",
+              "options": ["la cousine", "le cousin", "la tante", "la sœur"],
+              "correctAnswers": [0],
+              "explanation": "Cousine = cousine (féminin)."
+            },
+            {
+              "id": "q10",
+              "question": "Dans « Das ist meine Mutter », « meine » s'accorde avec :",
+              "type": "single_choice",
+              "options": [
+                "Mutter (féminin)",
+                "Mutter (masculin)",
+                "Das (neutre)",
+                "ist (verbe)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutter est féminin : meine Mutter."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La journée à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots allemands signifient « l'école » et « la classe » ?",
+              "type": "multiple_choice",
+              "options": [
+                "die Schule",
+                "die Klasse",
+                "die Pause",
+                "die Hausaufgabe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schule = école, Klasse = classe ; Pause = récréation, Hausaufgabe = devoirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich gehe in die Schule. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je vais à l'école.",
+                "Je suis à la maison.",
+                "Je fais mes devoirs.",
+                "Je suis en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gehen in die Schule = aller à l'école."
+            },
+            {
+              "id": "q3",
+              "question": "« die Hausaufgaben » désigne :",
+              "type": "single_choice",
+              "options": [
+                "les devoirs",
+                "la maison",
+                "le travail en classe",
+                "les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausaufgaben = devoirs à la maison."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « le professeur » (masculin) ?",
+              "type": "single_choice",
+              "options": [
+                "der Lehrer",
+                "die Lehrerin",
+                "der Schüler",
+                "die Schule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lehrer = professeur ; Lehrerin = professeure."
+            },
+            {
+              "id": "q5",
+              "question": "« Der Unterricht beginnt um acht Uhr. » — L'heure de début :",
+              "type": "single_choice",
+              "options": ["8 h", "18 h", "9 h", "7 h"],
+              "correctAnswers": [0],
+              "explanation": "acht Uhr = huit heures."
+            },
+            {
+              "id": "q6",
+              "question": "« die Pause » à l'école, c'est :",
+              "type": "single_choice",
+              "options": [
+                "la récréation / la pause",
+                "la classe",
+                "l'examen",
+                "le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause = pause, récréation."
+            },
+            {
+              "id": "q7",
+              "question": "« Wir haben heute Mathe. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui nous avons maths.",
+                "Nous aimons les maths.",
+                "Les maths sont difficiles.",
+                "Nous n'avons pas cours."
+              ],
+              "correctAnswers": [0],
+              "explanation": "haben Mathe = avoir cours de maths."
+            },
+            {
+              "id": "q8",
+              "question": "Un « Schüler » est :",
+              "type": "single_choice",
+              "options": [
+                "un élève (garçon)",
+                "un professeur",
+                "un directeur",
+                "un parent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schüler = élève (masculin)."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich lerne Deutsch. » — Quelle matière ?",
+              "type": "single_choice",
+              "options": ["allemand", "maths", "sport", "histoire"],
+              "correctAnswers": [0],
+              "explanation": "Deutsch = allemand."
+            },
+            {
+              "id": "q10",
+              "question": "« Das Schulbuch » signifie :",
+              "type": "single_choice",
+              "options": [
+                "le manuel scolaire",
+                "le cartable",
+                "le tableau",
+                "le stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schulbuch = livre de l'école / manuel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les matières scolaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles traductions sont correctes pour « maths » et « allemand » ?",
+              "type": "multiple_choice",
+              "options": ["Mathe", "Deutsch", "Sport", "Kunst"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mathe = maths, Deutsch = allemand."
+            },
+            {
+              "id": "q2",
+              "question": "Sur un emploi du temps de 4e, la case « Englisch » indique :",
+              "type": "single_choice",
+              "options": [
+                "le cours d'anglais",
+                "le cours d'allemand",
+                "le cours d'espagnol",
+                "le cours de français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Englisch désigne l'anglais, pas l'allemand (Deutsch)."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « sport » en allemand ?",
+              "type": "single_choice",
+              "options": ["Sport", "Musik", "Biologie", "Physik"],
+              "correctAnswers": [0],
+              "explanation": "Sport = sport (identique en allemand courant)."
+            },
+            {
+              "id": "q4",
+              "question": "« Geschichte » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "l'histoire",
+                "la géographie",
+                "la biologie",
+                "la chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geschichte = histoire."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich mag Mathe nicht. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je n'aime pas les maths.",
+                "J'aime les maths.",
+                "Je n'ai pas maths.",
+                "Les maths sont faciles."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mögen nicht = ne pas aimer."
+            },
+            {
+              "id": "q6",
+              "question": "« die Musik » est :",
+              "type": "single_choice",
+              "options": [
+                "la musique",
+                "l'art plastique",
+                "le théâtre",
+                "l'informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musik = musique."
+            },
+            {
+              "id": "q7",
+              "question": "« Physik » en français :",
+              "type": "single_choice",
+              "options": ["physique", "philosophie", "français", "latin"],
+              "correctAnswers": [0],
+              "explanation": "Physik = physique (sciences)."
+            },
+            {
+              "id": "q8",
+              "question": "Dans « Nach Deutsch haben wir Sport », l'ordre des cours :",
+              "type": "single_choice",
+              "options": [
+                "d'abord allemand, puis sport",
+                "d'abord sport, puis allemand",
+                "seulement sport",
+                "pas de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nach Deutsch = après l'allemand."
+            },
+            {
+              "id": "q9",
+              "question": "« Kunst » désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "les arts plastiques",
+                "les maths",
+                "l'allemand",
+                "l'éducation civique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kunst = art / arts plastiques à l'école."
+            },
+            {
+              "id": "q10",
+              "question": "« Bio » est une abréviation pour :",
+              "type": "single_choice",
+              "options": ["Biologie", "Bibliothek", "Bildung", "Brief"],
+              "correctAnswers": [0],
+              "explanation": "Bio = biologie (SVT)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quelle heure est-il ?",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases indiquent correctement l'heure en allemand pour « il est trois heures » et « il est sept heures » ?",
+              "type": "multiple_choice",
+              "options": [
+                "Es ist drei Uhr.",
+                "Es ist sieben Uhr.",
+                "Es ist halb vier.",
+                "Es ist Viertel nach acht."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "drei Uhr = 3 h, sieben Uhr = 7 h."
+            },
+            {
+              "id": "q2",
+              "question": "« Es ist halb neun. » — Quelle heure ?",
+              "type": "single_choice",
+              "options": ["8 h 30", "9 h 30", "9 h 00", "8 h 15"],
+              "correctAnswers": [0],
+              "explanation": "En allemand, halb neun = 8 h 30 (vers 9 h)."
+            },
+            {
+              "id": "q3",
+              "question": "« Viertel nach vier » signifie :",
+              "type": "single_choice",
+              "options": ["4 h 15", "4 h 45", "3 h 15", "4 h 30"],
+              "correctAnswers": [0],
+              "explanation": "Viertel nach = quart après."
+            },
+            {
+              "id": "q4",
+              "question": "Comment demander « Quelle heure est-il ? »",
+              "type": "single_choice",
+              "options": [
+                "Wie spät ist es?",
+                "Wie alt bist du?",
+                "Wo ist die Uhr?",
+                "Was ist das?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wie spät ist es? = quelle heure est-il ?"
+            },
+            {
+              "id": "q5",
+              "question": "« Um zehn Uhr » indique :",
+              "type": "single_choice",
+              "options": [
+                "à dix heures",
+                "depuis dix heures",
+                "avant dix heures",
+                "après minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "um + heure = à … heures."
+            },
+            {
+              "id": "q6",
+              "question": "« Es ist zwanzig Uhr. » — Heure au format 24 h :",
+              "type": "single_choice",
+              "options": [
+                "20 h",
+                "2 h",
+                "8 h du soir seulement en parlé",
+                "12 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zwanzig Uhr = 20 h."
+            },
+            {
+              "id": "q7",
+              "question": "« Der Unterricht ist von acht bis zwölf. » — Durée :",
+              "type": "single_choice",
+              "options": [
+                "de 8 h à 12 h",
+                "de 12 h à 8 h",
+                "8 heures seulement",
+                "12 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "von … bis … = de … à …"
+            },
+            {
+              "id": "q8",
+              "question": "« Viertel vor sechs » =",
+              "type": "single_choice",
+              "options": ["5 h 45", "6 h 15", "6 h 45", "5 h 15"],
+              "correctAnswers": [0],
+              "explanation": "Viertel vor = quart avant six → 5 h 45."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich stehe um sieben Uhr auf. » — Je me lève :",
+              "type": "single_choice",
+              "options": ["à 7 h", "à 17 h", "à 19 h", "à midi"],
+              "correctAnswers": [0],
+              "explanation": "sieben Uhr = sept heures du matin en contexte scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "« Die Schule fängt um halb acht an. » — Début approximatif :",
+              "type": "single_choice",
+              "options": ["7 h 30", "8 h 30", "8 h 00", "7 h 00"],
+              "correctAnswers": [0],
+              "explanation": "halb acht = 7 h 30 en allemand."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Loisirs et free time",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels verbes correspondent à « jouer au football » et « lire » ?",
+              "type": "multiple_choice",
+              "options": ["Fußball spielen", "lesen", "schwimmen", "kochen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fußball spielen = jouer au foot ; lesen = lire."
+            },
+            {
+              "id": "q2",
+              "question": "« In meiner Freizeit » signifie :",
+              "type": "single_choice",
+              "options": [
+                "pendant mon temps libre",
+                "à l'école",
+                "le matin tôt",
+                "en famille seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Freizeit = temps libre."
+            },
+            {
+              "id": "q3",
+              "question": "« Ich höre gern Musik. » — Activité :",
+              "type": "single_choice",
+              "options": [
+                "écouter de la musique",
+                "jouer de la musique",
+                "chanter seulement",
+                "danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "hören = écouter ; gern = volontiers."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « nager » ?",
+              "type": "single_choice",
+              "options": ["schwimmen", "laufen", "fahren", "fliegen"],
+              "correctAnswers": [0],
+              "explanation": "schwimmen = nager."
+            },
+            {
+              "id": "q5",
+              "question": "« Mein Hobby ist Zeichnen. » — Le hobby :",
+              "type": "single_choice",
+              "options": [
+                "dessiner",
+                "jouer aux jeux vidéo",
+                "faire du vélo",
+                "cuisiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zeichnen = dessin / dessiner."
+            },
+            {
+              "id": "q6",
+              "question": "« treffen Freunde » signifie :",
+              "type": "single_choice",
+              "options": [
+                "retrouver des amis",
+                "appeler des amis",
+                "écrire à des amis",
+                "oublier des amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "treffen = rencontrer / retrouver."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich spiele Gitarre. » — Instrument :",
+              "type": "single_choice",
+              "options": ["guitare", "piano", "violon", "batterie"],
+              "correctAnswers": [0],
+              "explanation": "Gitarre = guitare."
+            },
+            {
+              "id": "q8",
+              "question": "« ins Kino gehen » =",
+              "type": "single_choice",
+              "options": [
+                "aller au cinéma",
+                "regarder la télé",
+                "lire un livre",
+                "jouer au basket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kino = cinéma."
+            },
+            {
+              "id": "q9",
+              "question": "« Tanzen » en français :",
+              "type": "single_choice",
+              "options": ["danser", "chanter", "courir", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "tanzen = danser."
+            },
+            {
+              "id": "q10",
+              "question": "« Am Wochenende » indique :",
+              "type": "single_choice",
+              "options": [
+                "le week-end",
+                "en semaine",
+                "le lundi matin",
+                "pendant les vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wochenende = week-end."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Verbes au présent (1)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes sont correctes au présent pour « spielen » avec « ich » et « wir » ?",
+              "type": "multiple_choice",
+              "options": [
+                "ich spiele",
+                "wir spielen",
+                "ich spielst",
+                "wir spielt"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ich spiele, wir spielen ; spielst/spielt sont pour du/sie."
+            },
+            {
+              "id": "q2",
+              "question": "« Du lernst Deutsch. » — Pronom :",
+              "type": "single_choice",
+              "options": ["tu", "je", "nous", "vous"],
+              "correctAnswers": [0],
+              "explanation": "du = tu ; lernst = terminaison du 2e pers. sing."
+            },
+            {
+              "id": "q3",
+              "question": "Terminaison correcte : « Er ___ Fußball. » (spielen)",
+              "type": "single_choice",
+              "options": ["spielt", "spiele", "spielst", "spielen"],
+              "correctAnswers": [0],
+              "explanation": "er/sie/es → spielt."
+            },
+            {
+              "id": "q4",
+              "question": "« Wir gehen nach Hause. » — Verbe :",
+              "type": "single_choice",
+              "options": ["gehen", "geht", "gehe", "gehst"],
+              "correctAnswers": [0],
+              "explanation": "wir + gehen (infinitif en terminaison pour wir/sie)."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich mache Hausaufgaben. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je fais mes devoirs.",
+                "Je vais à l'école.",
+                "Je lis un livre.",
+                "Je joue."
+              ],
+              "correctAnswers": [0],
+              "explanation": "machen = faire ; Hausaufgaben = devoirs."
+            },
+            {
+              "id": "q6",
+              "question": "« Sie liest ein Buch. » — sie ici est :",
+              "type": "single_choice",
+              "options": ["elle", "ils", "vous formel", "impersonnel"],
+              "correctAnswers": [0],
+              "explanation": "liest → 3e pers. sing. : elle lit."
+            },
+            {
+              "id": "q7",
+              "question": "Forme correcte : « Ihr ___ Tennis. » (spielen)",
+              "type": "single_choice",
+              "options": ["spielt", "spielen", "spiele", "spielst"],
+              "correctAnswers": [0],
+              "explanation": "ihr → spielt."
+            },
+            {
+              "id": "q8",
+              "question": "« Ich wohne in Berlin. » — Sens :",
+              "type": "single_choice",
+              "options": [
+                "J'habite à Berlin.",
+                "Je vais à Berlin.",
+                "Je suis né à Berlin.",
+                "Berlin est loin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "wohnen = habiter."
+            },
+            {
+              "id": "q9",
+              "question": "« Trinkst du Wasser? » — Verbe à l'infinitif :",
+              "type": "single_choice",
+              "options": ["trinken", "trinkt", "getrunken", "trank"],
+              "correctAnswers": [0],
+              "explanation": "trinkst vient de trinken."
+            },
+            {
+              "id": "q10",
+              "question": "« Sie essen in der Mensa. » — sujet « Sie » =",
+              "type": "single_choice",
+              "options": ["ils/elles", "tu", "je", "elle seule"],
+              "correctAnswers": [0],
+              "explanation": "essen → pluriel : ils/elles mangent."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Verbes au présent (2)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent correctement un verbe au présent ?",
+              "type": "multiple_choice",
+              "options": [
+                "Meine Schwester kocht gern.",
+                "Wir fahren mit dem Bus.",
+                "Ich gegangen gestern.",
+                "Du hast spielen."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "kocht et fahren sont au présent ; les autres sont incorrectes."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich helfe meiner Mutter. » — Activité :",
+              "type": "single_choice",
+              "options": [
+                "j'aide ma mère",
+                "je vois ma mère",
+                "j'appelle ma mère",
+                "je suis ma mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "helfen + datif : aider quelqu'un."
+            },
+            {
+              "id": "q3",
+              "question": "Verbe séparable : « Ich stehe früh auf. » — Particule :",
+              "type": "single_choice",
+              "options": ["auf (en fin de phrase)", "stehe", "früh", "ich"],
+              "correctAnswers": [0],
+              "explanation": "aufstehen : auf va en fin dans la proposition principale."
+            },
+            {
+              "id": "q4",
+              "question": "« Er fährt Fahrrad. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il fait du vélo.",
+                "Il conduit une voiture.",
+                "Il prend le train.",
+                "Il court."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fahrrad fahren = faire du vélo."
+            },
+            {
+              "id": "q5",
+              "question": "« Wir treffen uns um vier. » — Heure du rendez-vous :",
+              "type": "single_choice",
+              "options": [
+                "16 h / 4 h",
+                "14 h",
+                "4 h du matin seulement",
+                "40 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "um vier = à quatre heures."
+            },
+            {
+              "id": "q6",
+              "question": "« Du siehst fern. » — Activité :",
+              "type": "single_choice",
+              "options": ["regarder la télé", "voir un ami", "lire", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "fernsehen = regarder la télévision."
+            },
+            {
+              "id": "q7",
+              "question": "Forme correcte : « Das Kind ___ schnell. » (laufen)",
+              "type": "single_choice",
+              "options": ["läuft", "laufe", "laufst", "laufen"],
+              "correctAnswers": [0],
+              "explanation": "laufen → er/es läuft (changement de voyelle)."
+            },
+            {
+              "id": "q8",
+              "question": "« Ich kaufe ein Eis. » — Objet :",
+              "type": "single_choice",
+              "options": ["une glace", "un livre", "un vélo", "un ticket"],
+              "correctAnswers": [0],
+              "explanation": "Eis = glace (crème glacée)."
+            },
+            {
+              "id": "q9",
+              "question": "« Sie arbeitet viel. » — sie =",
+              "type": "single_choice",
+              "options": [
+                "elle travaille beaucoup",
+                "ils travaillent",
+                "tu travailles",
+                "nous travaillons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "arbeitet → 3e pers. sing. féminin ou neutre contexte."
+            },
+            {
+              "id": "q10",
+              "question": "« Antwortest du? » — Question :",
+              "type": "single_choice",
+              "options": [
+                "Est-ce que tu réponds ?",
+                "Tu as répondu ?",
+                "Réponds !",
+                "Il répond ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "antworten = répondre ; forme interrogative du."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Questions avec inversion",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles questions sont formées correctement avec inversion sujet-verbe ?",
+              "type": "multiple_choice",
+              "options": [
+                "Spielst du gern Fußball?",
+                "Kommst du aus Frankreich?",
+                "Du kommst aus Frankreich?",
+                "Was machst du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Inversion : verbe + sujet en début ; Was machst du garde l'ordre après l'interrogatif."
+            },
+            {
+              "id": "q2",
+              "question": "« Hast du Geschwister? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "As-tu des frères et sœurs ?",
+                "As-tu des parents ?",
+                "Es-tu en classe ?",
+                "As-tu faim ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geschwister = frères et sœurs."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse logique à « Lernst du Mathe? » :",
+              "type": "single_choice",
+              "options": [
+                "Ja, Mathe ist interessant.",
+                "Nein, ich bin müde.",
+                "Guten Tag!",
+                "Das ist mein Bruder."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse oui/non sur l'apprentissage des maths."
+            },
+            {
+              "id": "q4",
+              "question": "« Wo wohnst du? » demande :",
+              "type": "single_choice",
+              "options": [
+                "où tu habites",
+                "comment tu t'appelles",
+                "quelle heure il est",
+                "ce que tu fais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wo = où."
+            },
+            {
+              "id": "q5",
+              "question": "Inversion correcte pour « tu joues » :",
+              "type": "single_choice",
+              "options": [
+                "Spielst du?",
+                "Du spielst?",
+                "Spielen du?",
+                "Spielt du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "du → spielst en 2e position invertie."
+            },
+            {
+              "id": "q6",
+              "question": "« Isst du gern Pizza? » — Structure :",
+              "type": "single_choice",
+              "options": [
+                "verbe + sujet + compléments",
+                "sujet + verbe seulement",
+                "passé composé",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question oui/non : Isst du … ?"
+            },
+            {
+              "id": "q7",
+              "question": "« Wann beginnt der Unterricht? » — wann =",
+              "type": "single_choice",
+              "options": ["quand", "où", "pourquoi", "comment"],
+              "correctAnswers": [0],
+              "explanation": "wann = quand."
+            },
+            {
+              "id": "q8",
+              "question": "« Magst du Sport? » — Verbe :",
+              "type": "single_choice",
+              "options": ["aimer", "jouer", "faire (devoirs)", "aller"],
+              "correctAnswers": [0],
+              "explanation": "mögen = aimer."
+            },
+            {
+              "id": "q9",
+              "question": "« Fährst du mit dem Bus zur Schule? » — moyen de transport :",
+              "type": "single_choice",
+              "options": ["bus", "vélo", "à pied seulement", "avion"],
+              "correctAnswers": [0],
+              "explanation": "mit dem Bus = en bus."
+            },
+            {
+              "id": "q10",
+              "question": "« Was ist dein Lieblingsfach? » — on demande :",
+              "type": "single_choice",
+              "options": [
+                "ta matière préférée",
+                "ton prof préféré",
+                "ton heure de lever",
+                "ton adresse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieblingsfach = matière favorite."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Perfekt avec haben",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases au Perfekt avec « haben » sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich habe Fußball gespielt.",
+                "Wir haben ferngesehen.",
+                "Ich bin gespielt.",
+                "Du hast gegangen."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "spielen et fernsehen → haben ; gegangen → sein."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich habe meine Hausaufgaben gemacht. » — Auxiliaire :",
+              "type": "single_choice",
+              "options": ["haben", "sein", "werden", "können"],
+              "correctAnswers": [0],
+              "explanation": "machen → Perfekt mit haben."
+            },
+            {
+              "id": "q3",
+              "question": "Participe passé de « spielen » :",
+              "type": "single_choice",
+              "options": ["gespielt", "spielte", "spielen", "gespielte"],
+              "correctAnswers": [0],
+              "explanation": "ge- + joué → gespielt."
+            },
+            {
+              "id": "q4",
+              "question": "« Sie hat ein Buch gelesen. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Elle a lu un livre.",
+                "Elle lit un livre.",
+                "Elle va lire.",
+                "Elle n'aime pas lire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perfekt = action passée achevée."
+            },
+            {
+              "id": "q5",
+              "question": "Ordre typique dans « Ich habe gestern Musik gehört » :",
+              "type": "single_choice",
+              "options": [
+                "auxiliaire + participe en fin",
+                "participe avant auxiliaire",
+                "deux verbes conjugués côte à côte",
+                "infinitif seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "habe … gehört : participe en fin de proposition."
+            },
+            {
+              "id": "q6",
+              "question": "« Wir haben Pizza gegessen. » — Verbe principal à l'infinitif :",
+              "type": "single_choice",
+              "options": ["essen", "gegessen", "haben", "isst"],
+              "correctAnswers": [0],
+              "explanation": "gegessen vient de essen (irrégulier)."
+            },
+            {
+              "id": "q7",
+              "question": "« Hast du gut geschlafen? » — Action :",
+              "type": "single_choice",
+              "options": ["dormir (passé)", "manger", "jouer", "nager"],
+              "correctAnswers": [0],
+              "explanation": "schlafen → geschlafen."
+            },
+            {
+              "id": "q8",
+              "question": "« Er hat Gitarre gespielt. » — Instrument :",
+              "type": "single_choice",
+              "options": ["guitare", "piano", "football", "ordinateur"],
+              "correctAnswers": [0],
+              "explanation": "spielen + Gitarre."
+            },
+            {
+              "id": "q9",
+              "question": "Auxiliaire pour « kaufen » au Perfekt :",
+              "type": "single_choice",
+              "options": [
+                "haben",
+                "sein",
+                "haben ou sein selon le contexte de mouvement",
+                "toujours sein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kaufen (acheter) → haben : gekauft."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich habe einen Film gesehen. » — Activité passée :",
+              "type": "single_choice",
+              "options": [
+                "avoir regardé un film",
+                "aller au cinéma maintenant",
+                "aimer le cinéma",
+                "acheter un DVD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sehen → gesehen."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Perfekt avec sein",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases au Perfekt avec « sein » sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich bin nach Hause gegangen.",
+                "Wir sind ins Kino gegangen.",
+                "Ich habe gegangen.",
+                "Er ist Fußball gespielt."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "gehen → sein ; spielen → haben."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich bin um sieben Uhr aufgestanden. » — Auxiliaire :",
+              "type": "single_choice",
+              "options": ["sein", "haben", "werden", "müssen"],
+              "correctAnswers": [0],
+              "explanation": "aufstehen (changement d'état/lieu) → sein."
+            },
+            {
+              "id": "q3",
+              "question": "Participe de « gehen » :",
+              "type": "single_choice",
+              "options": ["gegangen", "geht", "ging", "gehen"],
+              "correctAnswers": [0],
+              "explanation": "gehen → gegangen."
+            },
+            {
+              "id": "q4",
+              "question": "« Sie ist zur Schule gefahren. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Elle est allée à l'école (en véhicule).",
+                "Elle a acheté l'école.",
+                "Elle enseigne.",
+                "Elle est professeure."
+              ],
+              "correctAnswers": [0],
+              "explanation": "fahren → gefahren avec sein (déplacement)."
+            },
+            {
+              "id": "q5",
+              "question": "« Wir sind gestern schwimmen gegangen. » — Sens approximatif :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes allés nager hier.",
+                "Nous nageons maintenant.",
+                "Nous avons nagé (sans aller).",
+                "Nous aimons nager."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schwimmen gehen = aller nager."
+            },
+            {
+              "id": "q6",
+              "question": "« Er ist nach Berlin gefahren. » — Lieu :",
+              "type": "single_choice",
+              "options": ["Berlin", "Paris", "école", "maison seulement"],
+              "correctAnswers": [0],
+              "explanation": "nach Berlin = vers Berlin."
+            },
+            {
+              "id": "q7",
+              "question": "« Bist du pünktlich gekommen? » — Verbe :",
+              "type": "single_choice",
+              "options": ["venir", "partir", "rester", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "kommen → gekommen."
+            },
+            {
+              "id": "q8",
+              "question": "Pour « fliegen » au Perfekt, l'auxiliaire est :",
+              "type": "single_choice",
+              "options": [
+                "sein",
+                "haben",
+                "haben toujours en 4e",
+                "kein auxiliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fliegen (voler) → ist geflogen."
+            },
+            {
+              "id": "q9",
+              "question": "« Ich bin zu spät gekommen. » — Problème :",
+              "type": "single_choice",
+              "options": [
+                "être en retard",
+                "être en avance",
+                "être malade",
+                "être content"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu spät = trop tard."
+            },
+            {
+              "id": "q10",
+              "question": "« Sie sind aus dem Urlaub zurückgekommen. » — Événement :",
+              "type": "single_choice",
+              "options": [
+                "retour de vacances",
+                "départ en vacances",
+                "premier jour d'école",
+                "week-end sportif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zurückkommen = revenir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent correctement une personne en allemand ?",
+              "type": "multiple_choice",
+              "options": ["groß", "freundlich", "Mathe", "Uhr"],
+              "correctAnswers": [0, 1],
+              "explanation": "groß = grand, freundlich = amical ; Mathe et Uhr ne sont pas des adjectifs de personne."
+            },
+            {
+              "id": "q2",
+              "question": "« Er ist ziemlich sportlich. » — Trait :",
+              "type": "single_choice",
+              "options": ["sportif", "timide", "triste", "malade"],
+              "correctAnswers": [0],
+              "explanation": "sportlich = sportif."
+            },
+            {
+              "id": "q3",
+              "question": "« Sie hat braune Augen. » — Couleur des yeux :",
+              "type": "single_choice",
+              "options": ["marron", "bleus", "verts", "gris"],
+              "correctAnswers": [0],
+              "explanation": "braun = marron."
+            },
+            {
+              "id": "q4",
+              "question": "« Mein Lehrer ist streng aber fair. » — Caractère :",
+              "type": "single_choice",
+              "options": [
+                "strict mais juste",
+                "toujours en colère",
+                "très jeune",
+                "silencieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "streng = strict, fair = juste."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « elle est intelligente » ?",
+              "type": "single_choice",
+              "options": [
+                "Sie ist intelligent.",
+                "Sie ist intelligente.",
+                "Sie hat intelligent.",
+                "Sie sind intelligent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif après sein sans terminaison forte ici (intelligent)."
+            },
+            {
+              "id": "q6",
+              "question": "« Er trägt eine Brille. » — Accessoire :",
+              "type": "single_choice",
+              "options": ["lunettes", "chapeau", "montre", "sac"],
+              "correctAnswers": [0],
+              "explanation": "Brille = lunettes."
+            },
+            {
+              "id": "q7",
+              "question": "« Sie ist vierzehn Jahre alt. » — Âge :",
+              "type": "single_choice",
+              "options": ["14 ans", "4 ans", "40 ans", "13 ans"],
+              "correctAnswers": [0],
+              "explanation": "vierzehn = quatorze."
+            },
+            {
+              "id": "q8",
+              "question": "« lustig » décrit quelqu'un :",
+              "type": "single_choice",
+              "options": ["drôle", "fatigué", "grand", "rapide"],
+              "correctAnswers": [0],
+              "explanation": "lustig = drôle, amusant."
+            },
+            {
+              "id": "q9",
+              "question": "« Meine Schwester ist sehr musikalisch. » — Talent :",
+              "type": "single_choice",
+              "options": ["musique", "sport", "dessin", "cuisine"],
+              "correctAnswers": [0],
+              "explanation": "musikalisch = musical."
+            },
+            {
+              "id": "q10",
+              "question": "« Er sieht müde aus. » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Il a l'air fatigué.",
+                "Il est content.",
+                "Il court vite.",
+                "Il dort."
+              ],
+              "correctAnswers": [0],
+              "explanation": "müde aussehen = avoir l'air fatigué."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Une journée type",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions situent correctement des moments de la journée ?",
+              "type": "multiple_choice",
+              "options": ["am Morgen", "am Abend", "am Mathe", "am spielen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Morgen = matin, Abend = soir ; les autres ne sont pas des moments."
+            },
+            {
+              "id": "q2",
+              "question": "« Zuerst frühstücke ich. » — Première action :",
+              "type": "single_choice",
+              "options": [
+                "prendre le petit-déjeuner",
+                "aller à l'école",
+                "dormir",
+                "faire du sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "frühstücken = petit-déjeuner."
+            },
+            {
+              "id": "q3",
+              "question": "« Dann fahre ich mit dem Bus. » — Ensuite :",
+              "type": "single_choice",
+              "options": ["prendre le bus", "manger", "lire", "jouer"],
+              "correctAnswers": [0],
+              "explanation": "dann = puis ; mit dem Bus fahren."
+            },
+            {
+              "id": "q4",
+              "question": "« Nach der Schule » signifie :",
+              "type": "single_choice",
+              "options": [
+                "après l'école",
+                "avant l'école",
+                "pendant le cours",
+                "pendant la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nach = après."
+            },
+            {
+              "id": "q5",
+              "question": "« Am Mittag esse ich in der Mensa. » — Lieu du déjeuner :",
+              "type": "single_choice",
+              "options": ["cantine", "maison", "parc", "bibliothèque"],
+              "correctAnswers": [0],
+              "explanation": "Mensa = cantine scolaire."
+            },
+            {
+              "id": "q6",
+              "question": "« Später mache ich Hausaufgaben. » — spater =",
+              "type": "single_choice",
+              "options": ["plus tard", "tôt", "jamais", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "später = plus tard."
+            },
+            {
+              "id": "q7",
+              "question": "« Abends sehe ich fern. » — Moment :",
+              "type": "single_choice",
+              "options": [
+                "le soir",
+                "le matin",
+                "à midi",
+                "la nuit profonde seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "abends = le soir."
+            },
+            {
+              "id": "q8",
+              "question": "« Ich gehe um zehn Uhr ins Bett. » — Heure du coucher :",
+              "type": "single_choice",
+              "options": [
+                "22 h si contexte 24 h, ou 10 h selon contexte — ici 22 h courant pour enfant",
+                "7 h",
+                "midi",
+                "minuit toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zehn Uhr le soir = souvent 22 h au quotidien d'un collégien."
+            },
+            {
+              "id": "q9",
+              "question": "« Vor dem Unterricht » =",
+              "type": "single_choice",
+              "options": [
+                "avant le cours",
+                "après le cours",
+                "pendant le cours",
+                "sans cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vor = avant."
+            },
+            {
+              "id": "q10",
+              "question": "« Heute ist Montag. » — Jour :",
+              "type": "single_choice",
+              "options": ["lundi", "mardi", "dimanche", "vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Montag = lundi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Raconter au passé (1)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases racontent une action passée au Perfekt ?",
+              "type": "multiple_choice",
+              "options": [
+                "Gestern habe ich Fußball gespielt.",
+                "Letztes Wochenende bin ich ins Schwimmbad gegangen.",
+                "Ich spiele jetzt.",
+                "Morgen lerne ich."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gestern/letztes Wochenende + Perfekt ; les autres sont présent/futur."
+            },
+            {
+              "id": "q2",
+              "question": "« Gestern » signifie :",
+              "type": "single_choice",
+              "options": ["hier", "aujourd'hui", "demain", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "gestern = hier."
+            },
+            {
+              "id": "q3",
+              "question": "« Am Samstag haben wir Freunde getroffen. » — Activité :",
+              "type": "single_choice",
+              "options": [
+                "avoir retrouvé des amis",
+                "avoir étudié",
+                "être allés à l'école",
+                "avoir dormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "treffen → getroffen."
+            },
+            {
+              "id": "q4",
+              "question": "Marqueur temporel : « letzte Woche » =",
+              "type": "single_choice",
+              "options": [
+                "la semaine dernière",
+                "cette semaine",
+                "la semaine prochaine",
+                "chaque semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "letzte Woche = semaine passée."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich habe lange geschlafen. » — Action :",
+              "type": "single_choice",
+              "options": [
+                "avoir beaucoup dormi",
+                "avoir couru",
+                "avoir mangé",
+                "avoir nagé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schlafen → geschlafen."
+            },
+            {
+              "id": "q6",
+              "question": "« Wir sind spazieren gegangen. » — Type de sortie :",
+              "type": "single_choice",
+              "options": [
+                "promenade",
+                "match de foot",
+                "cours de maths",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "spazieren gehen = se promener."
+            },
+            {
+              "id": "q7",
+              "question": "« Er hat ein neues Lied gehört. » — Sens :",
+              "type": "single_choice",
+              "options": [
+                "Il a écouté une nouvelle chanson.",
+                "Il chante.",
+                "Il déteste la musique.",
+                "Il joue de la guitare."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hören → gehört."
+            },
+            {
+              "id": "q8",
+              "question": "« Sie ist früh nach Hause gekommen. » — Mouvement :",
+              "type": "single_choice",
+              "options": [
+                "rentrer tôt à la maison",
+                "partir en vacances",
+                "rester à l'école",
+                "aller au cinéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nach Hause kommen = rentrer."
+            },
+            {
+              "id": "q9",
+              "question": "« Vor zwei Tagen » =",
+              "type": "single_choice",
+              "options": [
+                "il y a deux jours",
+                "dans deux jours",
+                "pendant deux jours",
+                "deux fois par jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vor zwei Tagen = il y a deux jours."
+            },
+            {
+              "id": "q10",
+              "question": "« Das Wetter war schön. » — Temps :",
+              "type": "single_choice",
+              "options": [
+                "Il faisait beau (Präteritum simple).",
+                "Il pleut.",
+                "Il neige.",
+                "Il fait froid maintenant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "war = était (passé narratif simple)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Raconter au passé (2)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels récits au passé sont grammaticalement corrects en 4e ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich habe gestern Deutsch gelernt.",
+                "Meine Schwester ist zum Sport gegangen.",
+                "Ich lerne gestern.",
+                "Er geht gestern."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Perfekt + gestern ; présent + gestern est incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich habe einen Kuchen gebacken. » — Action :",
+              "type": "single_choice",
+              "options": [
+                "avoir fait un gâteau",
+                "avoir acheté un gâteau",
+                "manger un gâteau",
+                "aimer les gâteaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "backen → gebacken."
+            },
+            {
+              "id": "q3",
+              "question": "« Wir haben den Film zu Ende gesehen. » — Film :",
+              "type": "single_choice",
+              "options": [
+                "regardé jusqu'au bout",
+                "raté le début",
+                "pas regardé",
+                "tourné un film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu Ende sehen = voir jusqu'à la fin."
+            },
+            {
+              "id": "q4",
+              "question": "« Er ist mit dem Fahrrad zur Schule gefahren. » — Transport :",
+              "type": "single_choice",
+              "options": ["vélo", "bus", "train", "à pied"],
+              "correctAnswers": [0],
+              "explanation": "mit dem Fahrrad = à vélo."
+            },
+            {
+              "id": "q5",
+              "question": "« Sie hat viel gelacht. » — Émotion passée :",
+              "type": "single_choice",
+              "options": [
+                "avoir beaucoup ri",
+                "avoir pleuré",
+                "être en colère",
+                "s'ennuyer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "lachen → gelacht."
+            },
+            {
+              "id": "q6",
+              "question": "« Am Sonntag sind wir spät aufgestanden. » — Jour :",
+              "type": "single_choice",
+              "options": ["dimanche", "samedi", "lundi", "vendredi"],
+              "correctAnswers": [0],
+              "explanation": "Sonntag = dimanche."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich habe meinem Bruder geholfen. » — Datif après :",
+              "type": "single_choice",
+              "options": ["helfen", "spielen", "sein", "haben"],
+              "correctAnswers": [0],
+              "explanation": "jemandem helfen + datif."
+            },
+            {
+              "id": "q8",
+              "question": "« Sie ist in die Stadt gegangen. » — Destination :",
+              "type": "single_choice",
+              "options": [
+                "en ville",
+                "à la maison",
+                "à l'école seulement",
+                "au parc seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "in die Stadt = en ville."
+            },
+            {
+              "id": "q9",
+              "question": "« Wir haben zusammen gegessen. » — zusammen =",
+              "type": "single_choice",
+              "options": ["ensemble", "seul", "vite", "hier"],
+              "correctAnswers": [0],
+              "explanation": "zusammen = ensemble."
+            },
+            {
+              "id": "q10",
+              "question": "« Es hat geregnet. » — Météo passée :",
+              "type": "single_choice",
+              "options": [
+                "Il a plu.",
+                "Il a neigé.",
+                "Il a fait soleil.",
+                "Il vente."
+              ],
+              "correctAnswers": [0],
+              "explanation": "regnen → geregnet (impersonnel es hat)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Verbes du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels couples infinitif / sens sont corrects ?",
+              "type": "multiple_choice",
+              "options": [
+                "aufstehen / se lever",
+                "anfangen / commencer",
+                "Hausaufgabe / devoir",
+                "Uhr / heure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Verbes séparables courants ; Hausaufgabe et Uhr sont des noms."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich räume mein Zimmer auf. » — Action :",
+              "type": "single_choice",
+              "options": [
+                "ranger ma chambre",
+                "peindre ma chambre",
+                "quitter ma chambre",
+                "acheter une chambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "aufräumen = ranger."
+            },
+            {
+              "id": "q3",
+              "question": "Perfekt de « anrufen » :",
+              "type": "single_choice",
+              "options": [
+                "hat angerufen",
+                "ist angerufen",
+                "hat anrufen",
+                "ist anrufte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "anrufen → hat angerufen (haben)."
+            },
+            {
+              "id": "q4",
+              "question": "« Wir putzen uns die Zähne. » — Routine :",
+              "type": "single_choice",
+              "options": [
+                "se brosser les dents",
+                "se laver les cheveux",
+                "se coucher",
+                "manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zähne putzen = se brosser les dents."
+            },
+            {
+              "id": "q5",
+              "question": "« kochen » en français :",
+              "type": "single_choice",
+              "options": ["cuisiner", "manger", "acheter", "laver"],
+              "correctAnswers": [0],
+              "explanation": "kochen = cuisiner."
+            },
+            {
+              "id": "q6",
+              "question": "« Er duscht jeden Morgen. » — Fréquence :",
+              "type": "single_choice",
+              "options": [
+                "chaque matin",
+                "chaque soir",
+                "jamais",
+                "une fois par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "jeden Morgen = tous les matins."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich ziehe mich an. » — Action :",
+              "type": "single_choice",
+              "options": [
+                "m'habiller",
+                "me déshabiller",
+                "me reposer",
+                "me promener"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich anziehen = s'habiller."
+            },
+            {
+              "id": "q8",
+              "question": "« Sie wäscht die Wäsche. » — Tâche :",
+              "type": "single_choice",
+              "options": [
+                "faire la lessive",
+                "faire la vaisselle",
+                "passer l'aspirateur",
+                "jardiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wäsche waschen = laver le linge."
+            },
+            {
+              "id": "q9",
+              "question": "« aufhören » signifie souvent :",
+              "type": "single_choice",
+              "options": [
+                "arrêter (de faire quelque chose)",
+                "commencer",
+                "continuer",
+                "oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "aufhören = cesser."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich nehme den Bus. » — Verbe à l'infinitif :",
+              "type": "single_choice",
+              "options": ["nehmen", "genommen", "nimmt", "nahm"],
+              "correctAnswers": [0],
+              "explanation": "nehmen = prendre (transports)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lieu et direction",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles prépositions indiquent un lieu ou une direction correctement ?",
+              "type": "multiple_choice",
+              "options": [
+                "in die Schule",
+                "nach Hause",
+                "auf Mathe",
+                "unter spielen"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "in die Schule / nach Hause = direction ; les autres sont incorrectes."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich bin in der Bibliothek. » — Lieu :",
+              "type": "single_choice",
+              "options": ["bibliothèque", "cantine", "gymnase", "cour"],
+              "correctAnswers": [0],
+              "explanation": "Bibliothek = bibliothèque."
+            },
+            {
+              "id": "q3",
+              "question": "« Wir gehen in den Park. » — Akkusatif après mouvement :",
+              "type": "single_choice",
+              "options": ["den Park", "der Park", "dem Park", "des Parks"],
+              "correctAnswers": [0],
+              "explanation": "in + Akk. = vers/dans (mouvement)."
+            },
+            {
+              "id": "q4",
+              "question": "« Er wohnt bei seinen Großeltern. » — Habitation :",
+              "type": "single_choice",
+              "options": [
+                "chez ses grands-parents",
+                "seul",
+                "à l'hôtel",
+                "à l'étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "bei = chez."
+            },
+            {
+              "id": "q5",
+              "question": "« Das Schwimmbad ist neben der Schule. » — neben =",
+              "type": "single_choice",
+              "options": ["à côté de", "loin de", "derrière", "sous"],
+              "correctAnswers": [0],
+              "explanation": "neben = à côté de."
+            },
+            {
+              "id": "q6",
+              "question": "« Ich komme aus der Türkei. » — Origine :",
+              "type": "single_choice",
+              "options": ["Turquie", "Allemagne", "France", "Autriche"],
+              "correctAnswers": [0],
+              "explanation": "aus + pays = origine."
+            },
+            {
+              "id": "q7",
+              "question": "« Links » / « rechts » en allemand :",
+              "type": "single_choice",
+              "options": [
+                "links / rechts",
+                "oben / unten",
+                "hier / dort",
+                "viel / wenig"
+              ],
+              "correctAnswers": [0],
+              "explanation": "links = gauche, rechts = droite."
+            },
+            {
+              "id": "q8",
+              "question": "« Geh geradeaus! » — Consigne :",
+              "type": "single_choice",
+              "options": ["tout droit", "à gauche", "stop", "retourne-toi"],
+              "correctAnswers": [0],
+              "explanation": "geradeaus = tout droit."
+            },
+            {
+              "id": "q9",
+              "question": "« Sie ist in die Stadt gefahren. » — Perfekt + direction :",
+              "type": "single_choice",
+              "options": [
+                "Elle est allée en ville.",
+                "Elle habite en ville.",
+                "Elle n'aime pas la ville.",
+                "Elle travaille en ville."
+              ],
+              "correctAnswers": [0],
+              "explanation": "fahren → ist gefahren."
+            },
+            {
+              "id": "q10",
+              "question": "« Hier ist es laut. » — laut =",
+              "type": "single_choice",
+              "options": ["bruyant", "calme", "froid", "sombre"],
+              "correctAnswers": [0],
+              "explanation": "laut = bruyant."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Exprimer une opinion",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases expriment une opinion correctement ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich finde Mathe spannend.",
+                "Deutsch finde ich interessant.",
+                "Ich bin gern Pizza.",
+                "Uhr mag ich."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "finden + adjectif ; inversion possible ; les autres sont incorrectes."
+            },
+            {
+              "id": "q2",
+              "question": "« Ich mag Sport. » — Sentiment :",
+              "type": "single_choice",
+              "options": [
+                "J'aime le sport.",
+                "Je déteste le sport.",
+                "Je fais du sport maintenant.",
+                "Je suis sportif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "mögen = aimer."
+            },
+            {
+              "id": "q3",
+              "question": "« Das finde ich langweilig. » — Opinion :",
+              "type": "single_choice",
+              "options": [
+                "Je trouve ça ennuyeux.",
+                "Je trouve ça super.",
+                "Je ne sais pas.",
+                "Je suis fatigué."
+              ],
+              "correctAnswers": [0],
+              "explanation": "langweilig = ennuyeux."
+            },
+            {
+              "id": "q4",
+              "question": "« Lieblingsfach » =",
+              "type": "single_choice",
+              "options": [
+                "matière préférée",
+                "prof préféré",
+                "jour préféré",
+                "sport préféré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fach = matière scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich finde den Lehrer nett. » — nett =",
+              "type": "single_choice",
+              "options": ["sympa / gentil", "méchant", "triste", "grand"],
+              "correctAnswers": [0],
+              "explanation": "nett = gentil, sympa."
+            },
+            {
+              "id": "q6",
+              "question": "« Super! » dans « Das ist super! » exprime :",
+              "type": "single_choice",
+              "options": ["enthousiasme positif", "colère", "peur", "doute"],
+              "correctAnswers": [0],
+              "explanation": "super = génial."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich finde … nicht so gut. » — Nuance :",
+              "type": "single_choice",
+              "options": [
+                "avis plutôt négatif",
+                "avis très positif",
+                "question",
+                "ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht so gut = pas très bien."
+            },
+            {
+              "id": "q8",
+              "question": "« Toll » signifie souvent :",
+              "type": "single_choice",
+              "options": ["génial", "terrible", "petit", "lent"],
+              "correctAnswers": [0],
+              "explanation": "toll = super, génial."
+            },
+            {
+              "id": "q9",
+              "question": "« Meiner Meinung nach » =",
+              "type": "single_choice",
+              "options": [
+                "à mon avis",
+                "selon toi",
+                "en vérité",
+                "par exemple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meinung = opinion."
+            },
+            {
+              "id": "q10",
+              "question": "« Ich finde Zeichnen kreativ. » — Activité jugée :",
+              "type": "single_choice",
+              "options": ["dessin", "football", "maths", "bus"],
+              "correctAnswers": [0],
+              "explanation": "Zeichnen = dessin."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Connecteurs pour raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots enchaînent correctement un récit ?",
+              "type": "multiple_choice",
+              "options": ["dann", "später", "Mathe", "der"],
+              "correctAnswers": [0, 1],
+              "explanation": "dann = puis, später = plus tard."
+            },
+            {
+              "id": "q2",
+              "question": "« Zuerst …, dann … » structure :",
+              "type": "single_choice",
+              "options": [
+                "d'abord …, ensuite …",
+                "jamais …, toujours …",
+                "hier …, demain …",
+                "peut-être …, non …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zuerst/dann = ordre chronologique."
+            },
+            {
+              "id": "q3",
+              "question": "« Danach » signifie :",
+              "type": "single_choice",
+              "options": [
+                "après cela",
+                "avant",
+                "pendant",
+                "soudain sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "danach = après."
+            },
+            {
+              "id": "q4",
+              "question": "« Plötzlich » dans un récit :",
+              "type": "single_choice",
+              "options": ["soudain", "lentement", "chaque jour", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "plötzlich = soudain."
+            },
+            {
+              "id": "q5",
+              "question": "« Am Ende » =",
+              "type": "single_choice",
+              "options": ["à la fin", "au début", "au milieu", "dehors"],
+              "correctAnswers": [0],
+              "explanation": "am Ende = à la fin."
+            },
+            {
+              "id": "q6",
+              "question": "« Weil ich müde war, bin ich früh ins Bett gegangen. » — weil introduit :",
+              "type": "single_choice",
+              "options": [
+                "la cause",
+                "le lieu",
+                "l'heure seule",
+                "une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "weil = parce que (cause)."
+            },
+            {
+              "id": "q7",
+              "question": "« Deshalb » exprime :",
+              "type": "single_choice",
+              "options": [
+                "conséquence / donc",
+                "contraste",
+                "doute",
+                "salutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "deshalb = c'est pourquoi, donc."
+            },
+            {
+              "id": "q8",
+              "question": "« Aber » dans « Es regnete, aber wir sind spazieren gegangen. » :",
+              "type": "single_choice",
+              "options": ["opposition", "addition identique", "cause", "temps"],
+              "correctAnswers": [0],
+              "explanation": "aber = mais."
+            },
+            {
+              "id": "q9",
+              "question": "« Und » sert à :",
+              "type": "single_choice",
+              "options": [
+                "addition / et",
+                "négation",
+                "question",
+                "fin de phrase obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "und = et."
+            },
+            {
+              "id": "q10",
+              "question": "« Schließlich » dans un récit indique souvent :",
+              "type": "single_choice",
+              "options": [
+                "enfin / pour finir",
+                "tout de suite au début",
+                "jamais",
+                "toujours avant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schließlich = enfin."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mélange présent et passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases mélangent correctement présent (habitude) et passé (événement) ?",
+              "type": "multiple_choice",
+              "options": [
+                "Normalerweise stehe ich um sieben auf, aber gestern habe ich länger geschlafen.",
+                "Jeden Tag lerne ich Mathe und gestern habe ich einen Test geschrieben.",
+                "Ich gehe gestern und ich gehe morgen.",
+                "Habe ich jetzt spielen."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contraste habitude / hier avec Perfekt correct."
+            },
+            {
+              "id": "q2",
+              "question": "« Jeden Tag » indique :",
+              "type": "single_choice",
+              "options": [
+                "chaque jour",
+                "un jour seulement",
+                "jamais",
+                "la semaine dernière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "jeden Tag = tous les jours."
+            },
+            {
+              "id": "q3",
+              "question": "« Normalerweise » =",
+              "type": "single_choice",
+              "options": [
+                "normalement / d'habitude",
+                "exceptionnellement",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "normalerweise = en général."
+            },
+            {
+              "id": "q4",
+              "question": "« Oft » avec verbe au présent décrit :",
+              "type": "single_choice",
+              "options": [
+                "fréquence habituelle",
+                "action unique passée",
+                "futur lointain",
+                "interdiction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "oft = souvent."
+            },
+            {
+              "id": "q5",
+              "question": "« Gestern habe ich … » exige :",
+              "type": "single_choice",
+              "options": ["Perfekt", "présent seul", "futur", "impératif"],
+              "correctAnswers": [0],
+              "explanation": "gestern + Perfekt pour le passé."
+            },
+            {
+              "id": "q6",
+              "question": "« Manchmal spiele ich Fußball, letzten Samstag habe ich gewonnen. » — Dernier événement :",
+              "type": "single_choice",
+              "options": [
+                "victoire samedi dernier",
+                "défaite",
+                "pas de match",
+                "cours de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gewonnen = gagné."
+            },
+            {
+              "id": "q7",
+              "question": "« Ich bin oft müde, aber gestern war ich fit. » — Contraste :",
+              "type": "single_choice",
+              "options": [
+                "habitude fatigue vs hier en forme",
+                "toujours fatigué",
+                "jamais fatigué",
+                "futur seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "oft vs gestern war."
+            },
+            {
+              "id": "q8",
+              "question": "« Immer » =",
+              "type": "single_choice",
+              "options": ["toujours", "parfois", "rarement", "une fois"],
+              "correctAnswers": [0],
+              "explanation": "immer = toujours."
+            },
+            {
+              "id": "q9",
+              "question": "« Selten » indique :",
+              "type": "single_choice",
+              "options": ["rarement", "souvent", "chaque heure", "demain"],
+              "correctAnswers": [0],
+              "explanation": "selten = rarement."
+            },
+            {
+              "id": "q10",
+              "question": "« Heute lerne ich, gestern habe ich gespielt. » — Aujourd'hui :",
+              "type": "single_choice",
+              "options": ["étudier / apprendre", "jouer", "dormir", "voyager"],
+              "correctAnswers": [0],
+              "explanation": "heute + présent lernen."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses complètes décrivent bien le quotidien d'un élève de 4e ?",
+              "type": "multiple_choice",
+              "options": [
+                "Ich habe Mathe und Deutsch und treffe Freunde am Wochenende.",
+                "Nach der Schule mache ich manchmal Sport.",
+                "Ich bin gestern spielen.",
+                "Uhr ist mein Bruder."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phrases cohérentes avec matières, loisirs ; les autres sont incorrectes."
+            },
+            {
+              "id": "q2",
+              "question": "« Wie war dein Tag? » — On demande :",
+              "type": "single_choice",
+              "options": [
+                "Comment s'est passée ta journée ?",
+                "Quelle heure est-il ?",
+                "Où habites-tu ?",
+                "Quel est ton nom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "war = passé de sein ; jour passé."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse possible : « Gut, ich habe … » — Temps :",
+              "type": "single_choice",
+              "options": [
+                "Perfekt pour raconter",
+                "présent seulement interdit",
+                "futur obligatoire",
+                "latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raconter la journée → Perfekt."
+            },
+            {
+              "id": "q4",
+              "question": "« Mein Tag beginnt um halb sieben. » — Heure de début :",
+              "type": "single_choice",
+              "options": ["6 h 30", "7 h 30", "7 h 00", "6 h 00"],
+              "correctAnswers": [0],
+              "explanation": "halb sieben = 6 h 30."
+            },
+            {
+              "id": "q5",
+              "question": "« Ich erzähle von meiner Familie. » — erzählen =",
+              "type": "single_choice",
+              "options": ["raconter", "dessiner", "courir", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "erzählen = raconter."
+            },
+            {
+              "id": "q6",
+              "question": "« Das war ein schöner Tag! » — schön =",
+              "type": "single_choice",
+              "options": ["beau / agréable", "mauvais", "long", "court"],
+              "correctAnswers": [0],
+              "explanation": "schön = beau, nice."
+            },
+            {
+              "id": "q7",
+              "question": "Pour dire « hier soir j'ai regardé la télé » :",
+              "type": "single_choice",
+              "options": [
+                "Gestern Abend habe ich ferngesehen.",
+                "Gestern Abend ich sehe fern.",
+                "Ich bin ferngesehen.",
+                "Gestern fernsehen ich."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perfekt : habe ferngesehen."
+            },
+            {
+              "id": "q8",
+              "question": "« Morgen habe ich Deutsch und Mathe. » — Temps visé :",
+              "type": "single_choice",
+              "options": [
+                "demain (emploi du temps)",
+                "hier",
+                "maintenant passé",
+                "il y a un mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "morgen + présent pour emploi du temps futur proche."
+            },
+            {
+              "id": "q9",
+              "question": "« Beschreib deine Schwester! » — Consigne :",
+              "type": "single_choice",
+              "options": [
+                "Décris ta sœur !",
+                "Appelle ta sœur !",
+                "Où est ta sœur ?",
+                "As-tu une sœur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "beschreiben = décrire."
+            },
+            {
+              "id": "q10",
+              "question": "« Alles Gute! » dans un échange amical signifie :",
+              "type": "single_choice",
+              "options": [
+                "Tout le bonheur / bonne continuation (souhait)",
+                "Au revoir définitif seulement",
+                "Bonne nuit obligatoire",
+                "Félicitations pour un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de vœu générale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

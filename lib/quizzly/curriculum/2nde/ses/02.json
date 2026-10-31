@@ -1,0 +1,2733 @@
+{
+  "id": "2nde-ses-02",
+  "year": "2nde",
+  "subject": "ses",
+  "title": "Comment crée-t-on et mesure-t-on les richesses ?",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La production",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les facteurs de production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont traditionnellement considérés comme facteurs de production en économie ?",
+              "options": ["Le travail", "La loi", "Le capital", "La météo"],
+              "correctAnswers": [0, 2],
+              "explanation": "Travail et capital sont les deux facteurs classiques auxquels s'ajoute souvent la terre et l'entrepreneuriat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le capital productif désigne principalement :",
+              "options": [
+                "L'argent dépensé en loisirs",
+                "Les biens d'équipement et infrastructures utilisés pour produire",
+                "Les salaires versés",
+                "Les impôts sur les sociétés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le capital productif regroupe machines, bâtiments et outils mobilisés dans le processus productif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La combinaison des facteurs de production vise à :",
+              "options": [
+                "Augmenter uniquement les profits",
+                "Transformer des inputs en outputs",
+                "Supprimer le travail",
+                "Fixer le taux de change"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Produire, c'est combiner travail, capital et matières premières pour obtenir des biens ou services."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un apport de travail correspond à :",
+              "options": [
+                "Un prêt bancaire",
+                "L'utilisation de la force de travail et des compétences",
+                "Un terrain agricole",
+                "Une taxe carbone"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le travail est l'ensemble des efforts humains, qualifiés ou non, mobilisés dans la production."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La productivité mesure :",
+              "options": [
+                "Le nombre d'employés uniquement",
+                "La quantité produite par unité de facteur utilisé",
+                "Le prix de vente au public",
+                "Le taux d'inflation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La productivité rapporte la production obtenue à la quantité de travail ou de capital employée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une entreprise investit quand elle :",
+              "options": [
+                "Distribue des dividendes sans projet",
+                "Acquiert des équipements ou construit des capacités nouvelles",
+                "Réduit ses stocks sans raison",
+                "Ferme une usine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Investir, c'est consacrer des ressources aujourd'hui pour augmenter la capacité de production future."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fonction de production d'une entreprise décrit :",
+              "options": [
+                "Son logo commercial",
+                "La relation entre inputs et output maximal atteignable",
+                "Le nombre de clients fidèles",
+                "Le taux de chômage national"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle indique combien l'entreprise peut produire avec une combinaison donnée de facteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le progrès technique peut se traduire par :",
+              "options": [
+                "Une baisse mécanique des salaires",
+                "Une même production avec moins de facteurs ou plus de output",
+                "L'arrêt des échanges internationaux",
+                "La suppression du capital"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le progrès technique améliore l'efficacité de la combinaison productive."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une économie de marché, qui organise souvent la combinaison des facteurs ?",
+              "options": [
+                "Uniquement l'État",
+                "Les entreprises et entrepreneurs",
+                "Les ménages seuls sans entreprises",
+                "Les banques centrales seules"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les entreprises décident comment associer travail et capital pour répondre à la demande."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une matière première est un input car :",
+              "options": [
+                "Elle est consommée directement par le ménage sans transformation",
+                "Elle entre dans le processus de fabrication d'un bien final",
+                "Elle ne peut pas être échangée",
+                "Elle remplace toujours le travail"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les matières premières sont transformées ou assemblées lors de la production."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Productivité et croissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels leviers peuvent accroître la productivité du travail à moyen terme ?",
+              "options": [
+                "Formation des salariés",
+                "Interdiction de toute innovation",
+                "Investissement en équipements",
+                "Destruction volontaire du capital"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Qualification et équipements modernes permettent de produire davantage par heure travaillée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La productivité globale des facteurs (PGF) intègre :",
+              "options": [
+                "Seulement le nombre d'heures travaillées",
+                "L'efficacité de l'ensemble travail et capital",
+                "Uniquement le prix des actions",
+                "Le déficit commercial"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La PGF reflète les gains d'efficacité non expliqués par la seule augmentation des inputs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une croissance économique durable repose souvent sur :",
+              "options": [
+                "Une hausse continue de la productivité",
+                "Une baisse permanente de la production",
+                "L'absence d'investissement",
+                "La fermeture des frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Produire plus avec les mêmes ressources ou mieux soutient l'augmentation de la richesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le rendement marginal décroissant signifie que :",
+              "options": [
+                "Ajouter toujours plus d'un facteur fixe augmente indéfiniment la production au même rythme",
+                "Au-delà d'un certain point, chaque unité supplémentaire d'un facteur accroît moins la production",
+                "La production est toujours nulle",
+                "Le capital n'a aucun effet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est une loi empirique fréquente quand un facteur varie tandis qu'un autre reste constant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'innovation de procédé consiste à :",
+              "options": [
+                "Lancer une campagne publicitaire",
+                "Modifier la manière de produire pour réduire les coûts ou améliorer la qualité",
+                "Augmenter les prix sans changement technique",
+                "Supprimer la concurrence par la loi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle change les méthodes de production plutôt que le produit lui-même."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une hausse du taux d'équipement par salarié tend à :",
+              "options": [
+                "Réduire mécaniquement le chômage structurel sans autre effet",
+                "Accroître le capital par unité de travail",
+                "Supprimer le besoin de formation",
+                "Interdire l'importation de machines"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Doter les salariés de plus de capital augmente souvent la production par travailleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La spécialisation internationale peut améliorer la productivité car :",
+              "options": [
+                "Chaque pays produit tout en autarcie",
+                "Les pays se concentrent sur ce qu'ils font relativement mieux",
+                "Elle supprime les échanges",
+                "Elle fixe un salaire unique mondial"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La division internationale du travail exploite les avantages comparatifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un choc technologique positif se traduit typiquement par :",
+              "options": [
+                "Un déplacement vers l'intérieur de la fonction de production",
+                "Un déplacement vers l'extérieur de la fonction de production",
+                "Une baisse de la production à inputs constants",
+                "L'arrêt des investissements"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec la même combinaison de facteurs, on obtient plus de production après progrès technique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesurer la productivité du travail revient à calculer :",
+              "options": [
+                "Production divisée par le nombre de travailleurs ou les heures",
+                "Chiffre d'affaires divisé par les impôts",
+                "Exportations divisées par importations uniquement",
+                "Dette publique divisée par PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rapporte la valeur ou volume produit à la quantité de travail utilisée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les gains de productivité peuvent permettre :",
+              "options": [
+                "Uniquement des licenciements sans autre effet",
+                "Des hausses de salaires réels ou des prix plus bas selon le contexte",
+                "L'interdiction de la concurrence",
+                "La fin de l'investissement public"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Produire plus efficacement libère des ressources partageables entre profits, salaires et prix."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Division du travail et spécialisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets la division du travail peut-elle produire selon Adam Smith ?",
+              "options": [
+                "Hausse de la productivité",
+                "Suppression de toute coopération",
+                "Spécialisation des tâches",
+                "Interdiction des échanges"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "En séparant les opérations, chaque ouvrier acquiert une maîtrise qui accroît l'efficacité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La spécialisation d'un agent économique signifie qu'il :",
+              "options": [
+                "Produit une gamme illimitée de biens",
+                "Se concentre sur un nombre restreint d'activités",
+                "Ne consomme plus rien",
+                "Fixe seul les prix mondiaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Se spécialiser, c'est renoncer à l'autarcie pour se concentrer sur ce que l'on fait relativement mieux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un avantage comparatif existe quand :",
+              "options": [
+                "Un pays est meilleur en tout",
+                "Un pays produit un bien à moindre coût d'opportunité",
+                "Les salaires sont identiques partout",
+                "Il n'y a pas de commerce"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est le coût d'opportunité relatif qui fonde les gains à l'échange international."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La chaîne de production désigne :",
+              "options": [
+                "Uniquement la vente au détail",
+                "L'enchaînement des étapes transformant inputs en produit final",
+                "Le budget de l'État",
+                "Le taux de chômage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque maillon ajoute souvent de la valeur avant la commercialisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Externaliser une tâche revient à :",
+              "options": [
+                "La réaliser en interne systématiquement",
+                "Confier sa réalisation à un autre agent spécialisé",
+                "Supprimer la production",
+                "Nationaliser l'entreprise"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La sous-traitance repose sur la spécialisation et la recherche de coûts moindres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La division internationale du travail implique :",
+              "options": [
+                "Que chaque pays ferme ses frontières",
+                "Des échanges de biens produits selon des spécialisations nationales",
+                "L'absence de multinationales",
+                "Un salaire unique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les pays échangent ce qu'ils produisent grâce à leurs spécialisations respectives."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un inconvénient possible d'une forte spécialisation est :",
+              "options": [
+                "Une meilleure productivité garantie pour tous",
+                "Une dépendance accrue à l'égard de quelques activités ou marchés",
+                "L'impossibilité d'exporter",
+                "La fin du travail qualifié"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une spécialisation étroite expose à des chocs sectoriels ou commerciaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une usine automatisée, la division du travail peut concerner :",
+              "options": [
+                "Seulement les ouvriers manuels",
+                "Les robots, ingénieurs et logisticiens dans un processus coordonné",
+                "Uniquement la direction",
+                "Personne si tout est automatisé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La coordination humaine et technique reste centrale même avec des machines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le coût d'opportunité d'une production mesure :",
+              "options": [
+                "Le prix affiché en magasin",
+                "Ce à quoi on renonce en choisissant cette production",
+                "Le taux d'intérêt bancaire seul",
+                "Les dividendes versés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Produire davantage d'un bien implique souvent de produire moins d'un autre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La mondialisation des chaînes de valeur signifie :",
+              "options": [
+                "Que tout est produit dans un seul village",
+                "Que les étapes de production sont réparties entre plusieurs pays",
+                "La fin du transport",
+                "L'interdiction des importations"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Design, fabrication et assemblage peuvent avoir lieu dans des territoires différents."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Coûts de production et décisions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels coûts augmentent généralement lorsque la production augmente à court terme ?",
+              "options": [
+                "Matières premières et composants achetés",
+                "Heures supplémentaires ou intérim liés au volume",
+                "Loyer du local indépendamment du volume",
+                "Amortissement comptable fixe du matériel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Consommations intermédiaires et une partie flexible de la main-d'œuvre suivent le niveau de production."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le coût fixe est un coût qui :",
+              "options": [
+                "Disparaît dès la première unité produite",
+                "Ne dépend pas du niveau de production à court terme",
+                "Augmente proportionnellement à chaque unité",
+                "Est toujours nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Loyer ou amortissement d'équipement typique reste dû même si la production baisse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le coût marginal correspond à :",
+              "options": [
+                "Le coût total divisé par le nombre d'unités",
+                "Le surcoût induit par la production d'une unité supplémentaire",
+                "Le salaire moyen national",
+                "La TVA collectée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il guide souvent la décision de produire ou non une unité de plus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une entreprise maximise son profit quand :",
+              "options": [
+                "Son chiffre d'affaires est maximal",
+                "Son coût marginal égale son revenu marginal",
+                "Elle produit zéro unité",
+                "Elle fixe un prix aléatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Au-delà, produire une unité de plus coûterait plus qu'elle ne rapporterait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Des économies d'échelle apparaissent quand :",
+              "options": [
+                "Le coût unitaire baisse avec l'augmentation de la production",
+                "Les prix augmentent avec le volume",
+                "La production doit rester artisanale",
+                "Les coûts fixes disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartir les coûts fixes sur plus d'unités réduit souvent le coût moyen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un seuil de rentabilité est le niveau de production où :",
+              "options": [
+                "Le profit est maximal",
+                "Les recettes couvrent exactement les coûts totaux",
+                "L'entreprise ferme automatiquement",
+                "Les impôts sont nuls"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En dessous, l'entreprise enregistre une perte comptable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le coût d'opportunité du capital investi dans une machine est :",
+              "options": [
+                "Zéro car la machine est déjà achetée",
+                "Le rendement de la meilleure alternative non choisie",
+                "Toujours égal au taux d'inflation",
+                "Le prix d'achat oublié"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Immobiliser des fonds dans un projet exclut d'autres placements possibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une hausse du prix des matières premières déplace généralement :",
+              "options": [
+                "La courbe de coût total vers le bas",
+                "La courbe de coût total vers le haut",
+                "La demande des ménages vers l'infini",
+                "Le PIB nominal vers zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les inputs plus chers augmentent le coût de chaque unité produite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Externaliser peut réduire les coûts si :",
+              "options": [
+                "Le fournisseur est moins efficace",
+                "Le fournisseur est plus spécialisé et compétitif",
+                "Tous les salaires augmentent",
+                "La production s'arrête"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La spécialisation du sous-traitant peut abaisser le coût unitaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À court terme, une entreprise peut continuer à produire si :",
+              "options": [
+                "Elle couvre au moins ses coûts variables et une part des fixes",
+                "Elle ne couvre aucun coût",
+                "Le prix est nul",
+                "Elle ignore la demande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contribuer aux coûts fixes limite la perte par rapport à une fermeture immédiate."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Secteurs d'activité et production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels secteurs composent traditionnellement la classification primaire/secondaire/tertiaire ?",
+              "options": [
+                "Primaire : extraction et agriculture",
+                "Secondaire : industries et construction",
+                "Tertiaire : services",
+                "Quaternaire : uniquement l'éducation publique sans services privés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cette tripartition décrit les grandes étapes de la production économique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le secteur secondaire regroupe surtout :",
+              "options": [
+                "Les banques",
+                "L'industrie et la construction",
+                "L'agriculture seule",
+                "Les administrations sans activité marchande"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il transforme des matières premières en biens manufacturés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La tertiarisation d'une économie signifie :",
+              "options": [
+                "La part des services dans l'emploi ou la valeur ajoutée augmente",
+                "L'agriculture devient seule activité",
+                "La production industrielle devient nulle",
+                "Les échanges internationaux disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les économies développées consacrent une part croissante au secteur tertiaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La valeur ajoutée d'une entreprise se calcule grossièrement par :",
+              "options": [
+                "Chiffre d'affaires moins consommations intermédiaires",
+                "Somme des salaires uniquement",
+                "Exportations moins importations du pays entier",
+                "Dette publique divisée par PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mesure la richesse créée par l'unité productive dans le processus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une multinationale produit souvent :",
+              "options": [
+                "Dans un seul pays sans filiales",
+                "Dans plusieurs pays via des filiales ou sous-traitants",
+                "Sans aucun échange transfrontalier",
+                "Uniquement pour l'autoconsommation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle organise la production et la commercialisation à l'échelle mondiale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le secteur public produit des services lorsque :",
+              "options": [
+                "L'État ou collectivités fournissent éducation, santé ou sécurité",
+                "Seules les entreprises privées agissent",
+                "Il n'y a pas de financement",
+                "Les prix de marché fixent tout sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains biens collectifs ou merit goods sont produits ou financés publiquement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La délocalisation de production vise parfois à :",
+              "options": [
+                "Augmenter les coûts volontairement",
+                "Profiter de coûts salariaux ou fiscaux plus bas ailleurs",
+                "Supprimer toute exportation",
+                "Interdire l'innovation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les entreprises comparent les conditions de production entre territoires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un PME se distingue souvent d'une grande entreprise par :",
+              "options": [
+                "Une taille modeste et une structure plus flexible",
+                "L'absence totale de salariés",
+                "Le monopole légal sur tout un marché",
+                "La production exclusivement publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taille, chiffre d'affaires et effectifs définissent juridiquement une PME."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La filière agroalimentaire illustre :",
+              "options": [
+                "Une chaîne de la ferme à l'assiette avec plusieurs maillons productifs",
+                "Uniquement la vente de services financiers",
+                "L'absence de transformation",
+                "Un secteur hors économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production agricole, transformation industrielle et distribution se succèdent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesurer la part d'un secteur dans le PIB revient à :",
+              "options": [
+                "Rapporter sa valeur ajoutée au PIB total",
+                "Compter seulement les exportations agricoles",
+                "Additionner les dettes publiques",
+                "Mesurer le bonheur des ménages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur ajoutée sectorielle permet de comparer la structure productive."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Externalités et production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles situations illustrent une externalité négative de production ?",
+              "options": [
+                "Pollution de l'air par une usine",
+                "Bruit imposé au voisinage",
+                "Formation interne entièrement payée sans effet externe",
+                "Amélioration gratuite du savoir-faire des concurrents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Des tiers subissent un coût sans être compensés ni avoir choisi la production."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une externalité positive se produit quand :",
+              "options": [
+                "Une activité profite à des tiers sans qu'ils paient",
+                "Seul le producteur gagne",
+                "Le marché fixe toujours le prix optimal",
+                "Il n'y a aucun effet sur autrui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : recherche dont les résultats bénéficient à d'autres agents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sans intervention, le marché tend à surproduire un bien générateur d'externalité négative car :",
+              "options": [
+                "Le coût social dépasse le coût privé",
+                "Le producteur internalise tous les coûts",
+                "La demande est nulle",
+                "Les prix sont trop bas pour toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le producteur ne paie pas la pollution, donc produit trop au regard du optimum social."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une taxe pigouvienne vise à :",
+              "options": [
+                "Subventionner la pollution",
+                "Internaliser le coût externe dans le prix du producteur",
+                "Supprimer toute production industrielle",
+                "Fixer un salaire minimum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle aligne incitation privée et coût social de l'externalité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La responsabilité sociale des entreprises peut inclure :",
+              "options": [
+                "Réduction volontaire des impacts environnementaux",
+                "Transparence sur les chaînes d'approvisionnement",
+                "Interdiction légale de tout profit",
+                "Suppression du droit du travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà du minimum légal, certaines firmes limitent leurs externalités."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un bien public pur se caractérise par :",
+              "options": [
+                "Rivalité et exclusion possibles",
+                "Non-rivalité et non-exclusion",
+                "Production impossible par l'État",
+                "Prix toujours nul sans financement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La consommation d'un agent n'empêche pas celle d'un autre et on ne peut exclure facilement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La production peut créer des effets sur la santé publique lorsque :",
+              "options": [
+                "Des émissions toxiques affectent la population",
+                "Aucun lien n'existe avec l'environnement",
+                "Seuls les ménages polluent",
+                "Le PIB baisse mécaniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les externalités sanitaires dépassent le périmètre de l'entreprise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Internaliser une externalité signifie :",
+              "options": [
+                "Faire porter le coût ou bénéfice externe au décideur privé",
+                "Ignorer les tiers",
+                "Nationaliser tous les secteurs",
+                "Supprimer les taxes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regulations, taxes ou marchés de permis modifient les incitations du producteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'économie circulaire cherche à :",
+              "options": [
+                "Réduire les déchets en réutilisant les matériaux",
+                "Augmenter la production linéaire extractive",
+                "Interdire toute innovation",
+                "Supprimer le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle limite les externalités en bouclant les flux de matières."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un accord volontaire entre entreprises et collectivités sur les émissions est :",
+              "options": [
+                "Un outil possible complémentaire à la régulation",
+                "Interdit en économie de marché",
+                "Identique au PIB",
+                "Un substitut obligatoire aux salaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les politiques peuvent combiner incitations, normes et engagements privés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Innovation, R&D et production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments relèvent de l'innovation de produit ?",
+              "options": [
+                "Lancement d'un smartphone nouveau modèle",
+                "Création d'un médicament inédit",
+                "Réduction des coûts par robotisation seule",
+                "Fermeture d'une usine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Innovation de produit : nouveau bien ou service commercialisé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La R&D désigne :",
+              "options": [
+                "Recherche et développement pour créer connaissances et prototypes",
+                "Distribution des dividendes",
+                "Collecte des impôts",
+                "Mesure du chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investir en R&D vise de futurs produits ou procédés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un brevet protège temporairement :",
+              "options": [
+                "Une invention pour permettre un retour sur investissement",
+                "Toute idée sans condition",
+                "Le monopole permanent sur un marché",
+                "Les salaires minimum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il incite à innover en garantissant une exclusivité limitée dans le temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'imitation rapide des innovations peut :",
+              "options": [
+                "Réduire l'incitation privée à investir en R&D",
+                "Augmenter toujours les profits de l'innovateur initial",
+                "Supprimer la concurrence",
+                "Interdire la diffusion des connaissances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans protection, les retours sur l'innovation peuvent être captés par les imitateurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une start-up technologique se caractérise souvent par :",
+              "options": [
+                "Forte part de dépenses en R&D et croissance rapide visée",
+                "Absence totale de risque",
+                "Production uniquement agricole",
+                "Statut public obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle mise sur une innovation scalable avec financement par capital-risque parfois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le spillover de connaissance correspond à :",
+              "options": [
+                "La diffusion involontaire de savoir vers d'autres agents",
+                "La vente secrète de brevets",
+                "L'interdiction de former les salariés",
+                "La baisse du PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les externalités positives de la recherche profitent à l'ensemble de l'économie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'open innovation implique :",
+              "options": [
+                "Coopération avec l'extérieur de l'entreprise pour innover",
+                "Rejet de tout partenaire externe",
+                "Fin de la propriété intellectuelle partout",
+                "Production sans travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Universités, start-ups et clients peuvent co-développer des solutions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un retard technologique national peut résulter de :",
+              "options": [
+                "Faibles dépenses de R&D et faible qualification",
+                "Investissement massif continu en innovation",
+                "Fortes économies d'échelle exportatrices",
+                "Concurrence internationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans capacité d'innovation, la compétitivité productive s'érode."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'industrie 4.0 évoque surtout :",
+              "options": [
+                "Numérisation et interconnexion des moyens de production",
+                "Retour exclusif à l'artisanat",
+                "Suppression des capteurs et données",
+                "Autarcie totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objets connectés et analyse de données optimisent les chaînes productives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'État peut soutenir l'innovation via :",
+              "options": [
+                "Crédits d'impôt recherche et financement public de la science",
+                "Interdiction de brevets systématique",
+                "Suppression de l'enseignement supérieur",
+                "Fixation des prix de tous les biens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les externalités positives justifient souvent un soutien public à la R&D."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Mondialisation et organisation productive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes caractérisent la mondialisation productive ?",
+              "options": [
+                "Commerce international de biens intermédiaires",
+                "Implantation de filiales à l'étranger",
+                "Autarcie de chaque ménage",
+                "Absence totale de flux de capitaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Production et échanges s'organisent au-delà des frontières nationales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un avantage d'échange international classique repose sur :",
+              "options": [
+                "Les différences de productivité ou de dotations entre pays",
+                "L'identité des prix salariaux mondiaux",
+                "L'interdiction des importations",
+                "La planification unique mondiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque pays gagne à se spécialiser selon ses avantages comparatifs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une firme verticale intégrée contrôle :",
+              "options": [
+                "Plusieurs étapes successives de la chaîne de production",
+                "Uniquement la publicité",
+                "Seulement la consommation finale des ménages",
+                "Aucun maillon productif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle peut posséder approvisionnement, fabrication et distribution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le nearshoring consiste à :",
+              "options": [
+                "Rapprocher la production du marché final dans un pays voisin",
+                "Délocaliser toujours plus loin sans critère",
+                "Supprimer les transports",
+                "Nationaliser les importations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire distances et risques logistiques tout en cherchant des coûts compétitifs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les accords commerciaux régionaux peuvent :",
+              "options": [
+                "Faciliter les échanges entre membres via baisse des barrières",
+                "Interdire toute production industrielle",
+                "Fixer le PIB mondial",
+                "Supprimer les différences de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zones de libre-échange ou unions douanières modifient les flux productifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une chaîne d'approvisionnement mondiale expose à :",
+              "options": [
+                "Risques logistiques, géopolitiques et sanitaires",
+                "Zéro aléa car tout est prévisible",
+                "Uniquement des gains sans coûts",
+                "La fin du commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pandémies ou conflits peuvent interrompre des maillons éloignés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le commerce intra-firmes désigne :",
+              "options": [
+                "Échanges entre filiales d'une même multinationale",
+                "Vente entre ménages uniquement",
+                "Don sans contrepartie",
+                "Barter obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une part importante du commerce mondial transite par les réseaux multinationaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La compétitivité-prix d'un pays dépend notamment de :",
+              "options": [
+                "Coûts unitaires de production et taux de change",
+                "Uniquement du climat",
+                "Du nombre de lois sociales seul sans productivité",
+                "De l'absence d'innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Productivité et parité monétaire influencent les prix à l'exportation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les normes techniques internationales visent parfois à :",
+              "options": [
+                "Faciliter l'interopérabilité des produits échangés",
+                "Interdire toute importation",
+                "Augmenter aléatoirement les coûts",
+                "Supprimer la concurrence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmoniser les standards réduit les frictions commerciales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La relocalisation peut être motivée par :",
+              "options": [
+                "Risques supply chain, image ou subventions publiques",
+                "L'impossibilité de produire localement",
+                "Une interdiction du travail",
+                "La baisse obligatoire des salaires à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà du coût salarial, stratégie industrielle et résilience comptent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Travail, emploi et production",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indicateurs renseignent sur l'utilisation du travail dans la production ?",
+              "options": [
+                "Productivité horaire du travail",
+                "Taux d'emploi",
+                "Taux de change euro-dollar seul",
+                "Nombre de brevets déposés seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Productivité et emploi décrivent comment le travail contribue à la richesse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le travail qualifié se distingue par :",
+              "options": [
+                "Compétences reconnues et souvent certifiées",
+                "Absence de formation",
+                "Productivité nécessairement nulle",
+                "Interdiction d'utiliser des machines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capital humain spécifique accroît souvent la valeur produite par heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La flexibilité du marché du travail peut signifier :",
+              "options": [
+                "Adaptation des effectifs ou horaires à la demande",
+                "Suppression de tout contrat",
+                "Salaire identique pour toutes les professions",
+                "Fin de la négociation collective"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entreprises et salariés ajustent l'organisation face aux fluctuations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un licenciement économique survient lorsque :",
+              "options": [
+                "L'entreprise réduit ses effectifs pour des raisons financières ou de production",
+                "Le salarié commet une faute grave uniquement",
+                "L'État impose une embauche",
+                "Le PIB augmente mécaniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficultés de l'entreprise ou restructuration productives expliquent la suppression de postes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le chômage de frictions correspond à :",
+              "options": [
+                "Une transition temporaire entre deux emplois",
+                "L'absence totale de demande de travail",
+                "Un choix permanent de ne jamais travailler",
+                "Une mesure du PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rechercher un poste adapté prend du temps, d'où un chômage court."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La désindustrialisation relative signifie souvent :",
+              "options": [
+                "Baisse de la part de l'industrie dans l'emploi ou la VA",
+                "Disparition instantanée de toute usine",
+                "Hausse mécanique de l'agriculture seule",
+                "Fin du secteur tertiaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les services prennent une part croissante dans les économies avancées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le teletravail modifie la production en :",
+              "options": [
+                "Déplaçant le lieu de travail sans supprimer la contribution productive",
+                "Éliminant toute coordination",
+                "Interdisant le numérique",
+                "Remplaçant systématiquement le capital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation spatiale change, mais le travail continue de créer de la valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une négociation collective peut porter sur :",
+              "options": [
+                "Salaires, conditions de travail et organisation du temps",
+                "Fixation unilatérale du PIB",
+                "Interdiction de toute grève sans exception légale",
+                "Prix des actions en Bourse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Syndicats et employeurs discutent des règles du travail dans l'entreprise ou branche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le salaire réel évolue selon :",
+              "options": [
+                "Salaire nominal et inflation",
+                "Uniquement le taux d'intérêt",
+                "Le nombre d'entreprises sans prix",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pouvoir d'achat du travail dépend du niveau des prix."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Investir dans la formation professionnelle vise à :",
+              "options": [
+                "Accroître le capital humain et la productivité future",
+                "Réduire à zéro l'emploi industriel",
+                "Supprimer l'innovation",
+                "Interdire l'exportation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences adaptées améliorent la performance productive des salariés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Richesses créées et répartitions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels revenus proviennent directement de la participation à la production ?",
+              "options": [
+                "Salaires du travail",
+                "Profits de l'entrepreneur ou actionnaires",
+                "Transferts sociaux sans activité",
+                "Dons philanthropiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Travail et capital rémunèrent les facteurs engagés dans la production marchande."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La répartition primaire des revenus concerne :",
+              "options": [
+                "Partage entre facteurs avant impôts et transfers",
+                "Redistribution par l'impôt uniquement",
+                "Consommation des ménages seule",
+                "Exportations nettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salaires, profits, loyers et intérêts sont versés aux agents contributeurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une hausse de la part des salaires dans la valeur ajoutée signifie :",
+              "options": [
+                "Les travailleurs captent une plus grande part de la richesse créée",
+                "Les profits augmentent mécaniquement au même rythme",
+                "Le PIB doit baisser",
+                "L'investissement devient impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition entre travail et capital peut varier selon conjoncture et institutions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le loyer du capital correspond à :",
+              "options": [
+                "Rémunération de la mise à disposition de biens de production",
+                "Salaire horaire du ouvrier",
+                "Impôt sur le revenu",
+                "Subvention européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intérêts, dividendes ou loyers d'équipement rémunèrent le capital."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La valeur ajoutée nationale se répartit approximativement entre :",
+              "options": [
+                "Rémunération du travail et excédent brut d'exploitation",
+                "Uniquement les importations",
+                "Dette publique et PIB",
+                "Consommation intermédiaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptabilité nationale distingue compensation employés et profits des entreprises."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une inégalité de revenus du travail peut résulter de :",
+              "options": [
+                "Différences de qualification, secteur et négociations",
+                "Identité parfaite de tous les salaires",
+                "Absence de production",
+                "PIB nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capital humain, institutions et demande sectorielle expliquent les écarts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le profit est la rémunération résiduelle de l'entrepreneur après :",
+              "options": [
+                "Paiement des facteurs et charges",
+                "Collecte de la TVA seulement",
+                "Calcul du PIB mondial",
+                "Versement automatique des salaires par l'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il récompense le risque et la coordination après autres coûts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les revenus du patrimoine proviennent surtout de :",
+              "options": [
+                "Dividendes, intérêts et loyers",
+                "Salaires horaires uniquement",
+                "Prestations chômage sans épargne",
+                "Subventions agricoles seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détention d'actifs financiers ou immobiliers génère des revenus de capital."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La redistribution modifie les revenus disponibles via :",
+              "options": [
+                "Impôts et prestations sociales",
+                "Production industrielle seule",
+                "Exportations brutes",
+                "Formation professionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après redistribution, inégalités primaires peuvent être atténuées ou amplifiées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Créer de la richesse ne garantit pas :",
+              "options": [
+                "Une répartition équitable sans politiques ou négociations",
+                "L'existence d'une production marchande",
+                "La présence de facteurs de production",
+                "L'utilisation de monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume de richesse et justice distributive sont des questions distinctes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le PIB et ses limites",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Définir et mesurer le PIB",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement le produit intérieur brut ?",
+              "options": [
+                "Flux annuel de biens et services finaux produits sur un territoire",
+                "Stock patrimonial cumulé des ménages",
+                "Mesure d'activité et non de bonheur ou de richesse totale",
+                "Montant des seules exportations"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le PIB agrège la production finale sur une période; il n'est ni un patrimoine ni un indicateur de bien-être complet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi exclut-on les biens intermédiaires du PIB ?",
+              "options": [
+                "Pour éviter de compter plusieurs fois la même valeur",
+                "Parce qu'ils ne sont jamais produits",
+                "Parce qu'ils sont toujours importés",
+                "Pour mesurer le chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la valeur ajoutée finale doit être agrégée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le PIB peut s'exprimer en :",
+              "options": [
+                "Valeur à prix courants (nominal)",
+                "Volume à prix constants (réel)",
+                "Nombre de brevets déposés",
+                "Heures de loisirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nominal et réel distinguent effets prix et effets quantités."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un bien produit mais stocké invendu entre encore au PIB si :",
+              "options": [
+                "Il constitue un accroissement de stocks final",
+                "Il est détruit immédiatement",
+                "Il n'a jamais été fabriqué",
+                "Il est uniquement importé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation de stocks compte comme dépense finale en comptabilité nationale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le territoire du PIB correspond :",
+              "options": [
+                "Aux agents productifs situés géographiquement dans le pays",
+                "Uniquement aux entreprises nationales à l'étranger",
+                "Aux ménages de nationalité française seulement",
+                "Au commerce exclusivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère territorial : où a lieu la production, quelle que soit la nationalité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les services publics non marchands entrent au PIB via :",
+              "options": [
+                "Coût de production ou dépenses qui les financent",
+                "Prix de marché inexistants remplacés par zéro",
+                "Exclusion systématique",
+                "Exportations nettes seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absence de prix de marché impose une valorisation par les coûts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le PIB par habitant se calcule en :",
+              "options": [
+                "PIB total divisé par la population",
+                "PIB divisé par le nombre d'entreprises",
+                "Exportations divisées par importations",
+                "Dette publique divisée par PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cet indicateur moyen facilite les comparaisons internationales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une activité illégale non déclarée est généralement :",
+              "options": [
+                "Exclue des comptes officiels",
+                "Toujours intégrée au PIB",
+                "Mesurée par sondage obligatoire",
+                "Identique au PIB réel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Économie souterraine échappe en partie à la comptabilité nationale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le PIB est un indicateur de :",
+              "options": [
+                "Production et activité économique",
+                "Bonheur subjectif complet",
+                "Égalité parfaite des revenus",
+                "Stock de capital naturel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il quantifie la production marchande et non marchande valorisée, pas le bien-être total."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer deux pays par leur PIB nominal sans conversion :",
+              "options": [
+                "Peut fausser la comparaison à cause des monnaies et prix",
+                "Donne toujours le classement exact du niveau de vie",
+                "Ignore uniquement la population",
+                "Est impossible mathématiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parités de pouvoir d'achat ou taux de change corrigent les comparaisons."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Valeur ajoutée et comptes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités approchent la définition comptable du PIB ?",
+              "options": [
+                "Somme des valeurs ajoutées",
+                "Production + importations - consommations intermédiaires au niveau agrégé",
+                "Somme des patrimoines des ménages",
+                "Total des transactions boursières"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PIB = Σ VA ou approche production après avoir retranché les inputs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La consommation intermédiaire comprend :",
+              "options": [
+                "Matières premières et services utilisés dans le processus productif",
+                "Dépenses d'investissement en machines",
+                "Salaires versés aux ménages",
+                "Impôts sur le revenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle est soustraite du chiffre d'affaires pour obtenir la valeur ajoutée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'excédent brut d'exploitation rémunère approximativement :",
+              "options": [
+                "Le capital et l'entrepreneur",
+                "Uniquement les fonctionnaires",
+                "Les importations",
+                "Les transferts sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part de la VA revenant aux apporteurs de capital et profits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La compensation des employés correspond aux :",
+              "options": [
+                "Salaires et charges sociales patronales liées au travail",
+                "Dividendes versés",
+                "Subventions à l'exportation",
+                "Amortissements comptables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la part de la VA captée par le facteur travail."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une entreprise avec CA 1 M€ et consommations intermédiaires 600 k€ a une VA de :",
+              "options": ["400 k€", "1,6 M€", "600 k€", "100 k€"],
+              "correctAnswers": [0],
+              "explanation": "VA = chiffre d'affaires - consommations intermédiaires = 400 k€."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les impôts nets de subventions sur la production :",
+              "options": [
+                "Font partie de la valeur ajoutée au niveau macro",
+                "Sont ignorés par la comptabilité nationale",
+                "Remplacent le PIB",
+                "Mesurent le chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils complètent salaires et profits dans la décomposition de la VA."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La production marchande se distingue par :",
+              "options": [
+                "Un prix de marché observable",
+                "Une absence totale de vente",
+                "Un financement exclusivement par don",
+                "Une exclusion du PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Biens et services vendus sur un marché sont valorisés à leur prix."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un déficit commercial signifie que :",
+              "options": [
+                "Importations de biens/services supérieures aux exportations",
+                "Exportations supérieures aux importations",
+                "PIB nul",
+                "Excédent public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "X-M négatif dans l'équation comptable des ressources-emplois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'approche revenus du PIB additionne :",
+              "options": [
+                "Salaires, profits, revenus mixtes, impôts nets de subventions",
+                "Uniquement les dividendes",
+                "Seulement la consommation des ménages",
+                "La dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle totalise les revenus générés par la production."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La comptabilité nationale vise à :",
+              "options": [
+                "Décrire de façon cohérente production, revenus et dépenses",
+                "Fixer les prix des entreprises",
+                "Remplacer les statistiques du travail",
+                "Mesurer le climat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois approches (production, revenus, dépenses) doivent théoriquement coïncider."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "PIB nominal, PIB réel et inflation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs distinguent PIB nominal et PIB réel ?",
+              "options": [
+                "Les prix courants pour le nominal",
+                "Les quantités déflattées pour le réel",
+                "Le nombre d'habitants seulement",
+                "Le taux de chômage structurel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nominal intègre l'inflation; réel isole l'évolution des volumes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si les prix augmentent et les quantités restent identiques, le PIB nominal :",
+              "options": [
+                "Augmente",
+                "Baisse",
+                "Reste strictement inchangé en réel",
+                "Devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même production physique se valorise plus cher à prix courants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un indice des prix utilisé pour déflater le PIB sert à :",
+              "options": [
+                "Retirer l'effet inflation de la mesure",
+                "Augmenter artificiellement la croissance",
+                "Mesurer les exportations",
+                "Calculer le taux d'intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déflater revient à exprimer la production en prix d'une année de référence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La croissance réelle du PIB mesure :",
+              "options": [
+                "Variation du volume de production",
+                "Variation du niveau général des prix",
+                "Variation du patrimoine financier",
+                "Variation du taux de change seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle indique si l'économie produit plus de biens et services, hors inflation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une inflation élevée peut fausser l'interprétation du PIB nominal car :",
+              "options": [
+                "Elle gonfle la valeur monétaire sans plus de production",
+                "Elle réduit toujours le PIB réel mécaniquement",
+                "Elle supprime les exportations",
+                "Elle annule la valeur ajoutée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confondre nominal et réel surestime la progression réelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le déflateur du PIB se calcule grossièrement par :",
+              "options": [
+                "Rapport PIB nominal / PIB réel",
+                "Exportations - importations",
+                "Dette / PIB",
+                "Chômage / population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il reflète l'évolution des prix de l'ensemble de la production."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Année de base d'un indice signifie :",
+              "options": [
+                "Référence valant 100 pour comparer les autres années",
+                "Année où le PIB est nul",
+                "Dernière récession obligatoire",
+                "Premier trimestre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les volumes sont exprimés relativement à cette année."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si PIB réel augmente et population aussi, le PIB/habitant réel peut :",
+              "options": [
+                "Augmenter, baisser ou stagner selon les rythmes",
+                "Augmenter mécaniquement toujours",
+                "Être impossible à calculer",
+                "Rester identique au nominal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance par tête dépend de la différence entre croissance et démographie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un choc d'offre négatif (pétrole) peut provoquer :",
+              "options": [
+                "Stagflation : inflation et croissance faible",
+                "PIB réel et nominal toujours identiques",
+                "Baisse des prix et boom simultané garanti",
+                "Disparition du commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coûts de production plus élevés réduisent volumes et tirent les prix."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour comparer niveaux de vie, on préfère souvent :",
+              "options": [
+                "PIB réel par habitant en parité de pouvoir d'achat",
+                "PIB nominal seul sans population",
+                "Nombre d'entreprises",
+                "Volume des transactions financières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PPA corrige différences de prix entre pays pour comparer pouvoir d'achat."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les trois approches du PIB",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les trois approches du PIB sont :",
+              "options": [
+                "Production (valeur ajoutée)",
+                "Revenus des facteurs",
+                "Dépenses finales",
+                "Patrimoine net des banques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Comptabilité nationale équilibre production, revenus et utilisation finale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'approche dépenses écrit : PIB =",
+              "options": [
+                "C + I + G + (X - M)",
+                "Salaires + profits uniquement",
+                "Importations - exportations",
+                "Dette publique + inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consommation, investissement, dépenses publiques et commerce extérieur net."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'investissement (I) inclut typiquement :",
+              "options": [
+                "Formation brute de capital fixe et variation de stocks",
+                "Achats de biens déjà usagés entre ménages",
+                "Transferts sociaux",
+                "Remboursement de dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Machines, bâtiments productifs et stocks comptent dans I."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La consommation des ménages (C) comprend :",
+              "options": [
+                "Dépenses de biens et services finaux des ménages",
+                "Achat de machines pour usines",
+                "Dépenses militaires classées en G",
+                "Exportations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C couvre consommation finale des particuliers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "G dans C+I+G+X-M désigne :",
+              "options": [
+                "Dépenses de consommation et investissement publics",
+                "Uniquement la dette",
+                "Les salaires privés",
+                "Importations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État et collectivités achètent biens/services et investissent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Des exportations nettes positives signifient :",
+              "options": [
+                "X > M, contribution positive au PIB via commerce extérieur",
+                "M > X",
+                "PIB forcément nul",
+                "Déficit public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excédent commercial ajoute à la demande intérieure adressée à la production nationale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'approche revenus somme principalement :",
+              "options": [
+                "Salaires, EBEX, revenus mixtes, impôts nets de subventions",
+                "Uniquement profits financiers",
+                "Variation de stocks seule",
+                "Transferts sociaux aux ménages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revenus primaires distribués lors de la production."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un écart entre les trois approches en pratique :",
+              "options": [
+                "Est corrigé par un terme d'écart statistique",
+                "Prouve que le PIB n'existe pas",
+                "Annule la comptabilité",
+                "Mesure le bonheur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sources imparfaites laissent un petit solde d'ajustement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Acheter une maison neuve entre en :",
+              "options": [
+                "Investissement résidentiel (I)",
+                "Consommation courante C seulement",
+                "Exportations X",
+                "Variation de stocks uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Logements neufs sont investissement des ménages en comptabilité nationale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Importer un bien fini consommé localement :",
+              "options": [
+                "Augmente M et peut augmenter C sans accroître production domestique",
+                "Augmente X",
+                "Réduit C mécaniquement à zéro",
+                "Compte doublement au PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande intérieure peut être satisfaite par production étrangère."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Utilisation du PIB et croissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels usages font autorité du PIB en politique économique ?",
+              "options": [
+                "Mesurer la croissance et le cycle",
+                "Calibrer certains ratios d'endettement public",
+                "Mesurer directement le bonheur",
+                "Remplacer les enquêtes emploi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PIB sert de référence macro mais ne résume pas le bien-être."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une récession technique est souvent définie par :",
+              "options": [
+                "Deux trimestres consécutifs de baisse du PIB réel",
+                "Une hausse des prix seule",
+                "Une baisse du taux de change",
+                "Une année sans innovation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère usuel de contraction de l'activité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le potentiel de croissance désigne :",
+              "options": [
+                "Rythme soutenable sans accélération inflationniste durable",
+                "Croissance maximale ponctuelle quel qu'en soit le coût",
+                "Taux de chômage zéro obligatoire",
+                "Exportations nettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capacité productive de l'économie à moyen terme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un écart de production positif signifie :",
+              "options": [
+                "PIB effectif au-dessus du PIB potentiel",
+                "Sous-utilisation des capacités",
+                "Chômage maximal",
+                "Inflation nulle garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression sur les prix possible si demande excède capacités."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Politiques de relance visent parfois à :",
+              "options": [
+                "Stimuler la demande agrégée pour soutenir le PIB",
+                "Réduire mécaniquement le PIB",
+                "Interdire l'investissement public",
+                "Supprimer les statistiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépenses ou monétaire peuvent combler un manque de demande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le multiplicateur keynésien suggère qu'une hausse de G peut :",
+              "options": [
+                "Accroître le PIB de plus que la dépense initiale via effets induits",
+                "Réduire toujours le PIB",
+                "N'affecter que les importations",
+                "Ignorer la consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revenus regénérés entraînent consommation supplémentaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une croissance extensive repose surtout sur :",
+              "options": [
+                "Augmentation des facteurs (emploi, capital)",
+                "Gains de productivité seuls",
+                "Baisse de la population",
+                "Réduction des exportations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de travailleurs ou d'équipements sans progrès technique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une croissance intensive repose surtout sur :",
+              "options": [
+                "Productivité et efficacité",
+                "Seulement l'accroissement démographique",
+                "Importations massives sans production",
+                "Destruction du capital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même facteurs produisent davantage grâce au progrès."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le PIB ne distingue pas :",
+              "options": [
+                "Activités nuisant à l'environnement et activités durables",
+                "Production marchande et non marchande valorisée",
+                "Secteurs public et privé",
+                "Flux et stocks"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution et soin peuvent augmenter le PIB de façon similaire comptable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de croissance durable intègre souvent :",
+              "options": [
+                "Qualité environnementale et sociale, pas seulement PIB",
+                "Maximisation du PIB nominal quelle que soit la dégradation",
+                "Suppression de toute mesure",
+                "Autarcie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat public sur indicateurs complémentaires au PIB."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Limites du PIB — bien-être et qualité de vie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles limites du PIB concernent le bien-être ?",
+              "options": [
+                "Il ignore les activités non marchandes domestiques",
+                "Il ne mesure pas la répartition des revenus",
+                "Il compte les dépenses de sécurité sociale comme négatives",
+                "Il inclut toujours le bonheur subjectif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Production non payée et inégalités échappent au sens du PIB."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le PIB augmente si :",
+              "options": [
+                "Des dépenses de réparation après catastrophe sont élevées",
+                "Aucune activité n'a lieu",
+                "Tous les prix sont nuls",
+                "Les ménages ne consomment pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépenses liées à des dommages comptent comme production, sans améliorer bien-être."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le temps libre non marchand :",
+              "options": [
+                "N'est pas valorisé dans le PIB",
+                "Vaut toujours le salaire moyen",
+                "Double le PIB",
+                "Remplace la consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loisirs non commercialisés restent hors comptes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une société avec PIB élevé peut avoir :",
+              "options": [
+                "Fortes inégalités de revenus",
+                "Faible espérance de vie si santé mal distribuée",
+                "Bonheur identique garanti pour tous",
+                "Absence de pollution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau agrégé ne dit rien de la distribution ni de la santé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les externalités négatives non internalisées :",
+              "options": [
+                "Réduisent le bien-être sans diminuer le PIB",
+                "Augmentent toujours le PIB réel",
+                "Sont toujours soustraites du PIB",
+                "N'existent pas en économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pollution peut coexister avec production comptabilisée positivement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le travail bénévole associatif :",
+              "options": [
+                "Crée du bien-être mais peu ou pas de PIB",
+                "Compte intégralement au PIB",
+                "Est interdit en France",
+                "Remplace les salaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité utile hors marché sous-estimée par le PIB."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une route construite puis jamais utilisée :",
+              "options": [
+                "A pu augmenter le PIB à la construction sans utilité sociale",
+                "Diminue toujours le PIB immédiatement",
+                "N'est jamais comptée",
+                "Mesure le chômage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investissement comptabilisé même si rendement social faible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le PIB par habitant est une moyenne qui :",
+              "options": [
+                "Masque les disparités entre individus",
+                "Indique la médiane des revenus",
+                "Mesure le patrimoine",
+                "Remplace l'IDH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux pays avec même PIB/h peuvent avoir des inégalités différentes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les activités financières spéculatives peuvent :",
+              "options": [
+                "Gonfler certaines composantes sans améliorer biens réels",
+                "Être totalement absentes du PIB",
+                "Remplacer la production industrielle dans tous les cas",
+                "Supprimer l'inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intermédiation financière entre au PIB mais ne garantit pas utilité sociale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Critiquer le PIB ne signifie pas :",
+              "options": [
+                "Renoncer à toute mesure de l'activité économique",
+                "Reconnaître ses angles morts",
+                "Chercher des indicateurs complémentaires",
+                "Questionner la croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cherche à enrichir l'évaluation du développement, pas à supprimer toute statistique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Travail non marchand et économie informelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles activités restent largement hors PIB ?",
+              "options": [
+                "Travaux domestiques non payés",
+                "Garde d'enfants par un parent sans rémunération",
+                "Production industrielle exportée déclarée",
+                "Services publics valorisés par coûts"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Travail familial non marchand n'est pas comptabilisé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'économie informelle se caractérise par :",
+              "options": [
+                "Activités échappant partiellement au fisc et aux statistiques",
+                "Production toujours légale et déclarée",
+                "Absence totale d'échanges monétaires",
+                "Comptabilité nationale exhaustive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petits boulots non déclarés sous-estiment production et emploi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si les ménages externalisent la cuisine (restaurants), le PIB :",
+              "options": [
+                "Peut augmenter car activité devient marchande",
+                "Doit baisser mécaniquement",
+                "Reste identique toujours",
+                "Devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même fonction satisfaite via marché entre dans les comptes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le travail au noir :",
+              "options": [
+                "Sous-estime PIB et recettes fiscales",
+                "Améliore toujours la mesure du bien-être",
+                "Est identique au bénévolat",
+                "Compte doublement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Production réelle existe mais échappe aux enquêtes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Valoriser le travail domestique en comptabilité satellite :",
+              "options": [
+                "Permet d'illustrer l'ampleur ignorée par le PIB",
+                "Remplace obligatoirement le PIB officiel",
+                "Supprime les inégalités",
+                "Interdit le marché du travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expériences statistiques montrent le poids du non marchand."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une femme qui cesse de travailler pour élever ses enfants :",
+              "options": [
+                "Peut réduire le PIB mesuré sans réduire le bien-être familial",
+                "Augmente toujours le PIB",
+                "N'a aucun effet économique",
+                "Compte comme chômage technique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substitution entre travail marchand et non marchand."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'auto-production agricole subsistance :",
+              "options": [
+                "Est faiblement captée dans pays développés",
+                "Domine parfois PIB pays pauvres si non marchande",
+                "Double les exportations",
+                "Mesure l'IDH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consommation propre échappe au circuit marchand."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Digital gratuit (réseaux sociaux) pose problème car :",
+              "options": [
+                "Utilité pour utilisateurs sans prix marchand observable",
+                "PIB surestime toujours le numérique",
+                "Services sont toujours payants",
+                "Externalités n'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gratuité apparente complique valorisation de la production numérique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Formaliser l'économie informelle peut :",
+              "options": [
+                "Augmenter PIB mesuré et recettes publiques",
+                "Réduire toujours le bien-être",
+                "Supprimer l'emploi",
+                "Interdire les PME"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enregistrement statistique et fiscal révèle activité existante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le temps de travail non rémunéré dans les ménages :",
+              "options": [
+                "Contribue au fonctionnement social sans être un salaire",
+                "Est identique aux profits",
+                "Compte dans les exportations nettes",
+                "Remplace le capital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition du travail entre marché et foyer influence statistiques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Environnement et PIB",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels problèmes environnementaux le PIB ne corrige pas ?",
+              "options": [
+                "Épuisement des ressources naturelles non comptabilisé",
+                "Pollution traitée comme coût de production positif",
+                "Amélioration gratuite de l'air",
+                "Prise en compte systématique du capital naturel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dégradation gratuite pour la nature n'est pas soustraite; dépollution ajoute au PIB."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Construire une usine polluante puis acheter des filtres :",
+              "options": [
+                "Peut augmenter le PIB deux fois sans net environnemental positif",
+                "Diminue toujours le PIB",
+                "Ignore la production",
+                "Mesure le bonheur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Investissement et dépenses anti-pollution comptent positivement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un accident industriel majeur peut :",
+              "options": [
+                "Augmenter le PIB via dépenses de nettoyage et reconstruction",
+                "Réduire toujours le PIB réel à zéro",
+                "Ne pas affecter l'activité",
+                "Supprimer les externalités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paradoxe : destruction suivie de dépenses comptabilisées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le capital naturel comprend :",
+              "options": [
+                "Forêts, eau, biodiversité, climat stable",
+                "Uniquement les machines",
+                "Dette publique",
+                "Actions en Bourse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources environnementales soutiennent production future."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une comptabilité « verte » propose de :",
+              "options": [
+                "Intégrer déplétion et dommages environnementaux",
+                "Supprimer toute croissance",
+                "Interdire l'industrie",
+                "Remplacer les salaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajustements visent un indicateur de richesse nette étendu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La croissance faible carbone vise à :",
+              "options": [
+                "Découpler émissions de GES et croissance du PIB",
+                "Augmenter les émissions",
+                "Ignorer le climat",
+                "Supprimer l'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition énergétique change structure de production mesurée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Services écosystémiques gratuits (pollinisation) :",
+              "options": [
+                "Ne sont pas valorisés dans le PIB standard",
+                "Valent toujours le PIB mondial",
+                "Sont des exportations",
+                "Comptent comme impôts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bénéfices naturels gratuits sous-estiment dépendance économique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Taxe carbone internalise :",
+              "options": [
+                "Coût climatique dans les prix producteurs",
+                "Toujours une baisse du PIB mesurée",
+                "Uniquement les salaires",
+                "Les transferts sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle modifie incitations sans retirer automatiquement le PIB."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Déforestation pour agriculture intensive :",
+              "options": [
+                "Peut augmenter PIB court terme en échange de perte de capital naturel",
+                "Améliore toujours le bien-être long terme",
+                "Est exclue de toute production",
+                "Mesure l'IDH directement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Richesse comptable immédiate masque appauvrissement futur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectifs développement durable (ODD) :",
+              "options": [
+                "Dépassement du seul PIB pour évaluer progrès social et environnemental",
+                "Suppression de toute statistique économique",
+                "Croissance à tout prix",
+                "Autarcie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agenda 2030 combine indicateurs multiples au PIB."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Indicateurs alternatifs et IDH",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indicateurs complètent le PIB ?",
+              "options": [
+                "Indice de développement humain (IDH)",
+                "Empreinte écologique",
+                "Nombre de tweets",
+                "Cours du bitcoin seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IDH mélange revenu, éducation et santé; empreinte mesure pression environnementale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'IDH combine :",
+              "options": [
+                "Revenu par habitant, espérance de vie, années de scolarisation",
+                "PIB nominal seul",
+                "Exportations nettes",
+                "Dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois dimensions de capacités humaines de base."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un pays riche (PIB/h élevé) peut avoir IDH plus faible si :",
+              "options": [
+                "Inégalités de santé ou éducation persistantes",
+                "Population nulle",
+                "Pas de monnaie",
+                "PIB réel nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Richesse agrégée ne garantit pas accès universel aux services."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'indicateur de progressisme social (IPS) ou indices de pauvreté :",
+              "options": [
+                "Éclairent des aspects ignorés par le PIB",
+                "Remplacent totalement la comptabilité nationale",
+                "Mesurent uniquement le climat",
+                "Sont identiques au taux de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multidimensionnalité de la pauvreté dépasse flux de production."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le PIB vert ou ajusté environnemental tente de :",
+              "options": [
+                "Soustraire dommages environnementaux au PIB conventionnel",
+                "Doubler toujours le PIB",
+                "Ignorer la pollution",
+                "Supprimer l'éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approches expérimentales corrigent comptes macro."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le bonheur national brut (Bhoutan) et enquêtes de satisfaction :",
+              "options": [
+                "Mesurent bien-être subjectif hors PIB",
+                "Sont identiques au PIB/h",
+                "Remplacent les exportations",
+                "Calculent la VA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perception de vie compte dans débats post-PIB."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'indice de Gini sur revenus :",
+              "options": [
+                "Résume inégalités de 0 à 1",
+                "Mesure inflation",
+                "Remplace PIB réel",
+                "Compte les importations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément indispensable à la moyenne PIB/habitant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tableau de bord de Stiglitz-Sen-Fitoussi (2009) recommande :",
+              "options": [
+                "Indicateurs de qualité de vie, environnement et capabilités",
+                "Abandon de toute mesure",
+                "PIB unique",
+                "Suppression des ménages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapport français influent sur statistiques du bien-être."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer pays uniquement par IDH :",
+              "options": [
+                "Omet la production économique et dynamique des capacités futures",
+                "Résout tous les problèmes de mesure",
+                "Remplace le commerce international",
+                "Mesure les stocks boursiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque indicateur éclaire une facette; aucun n'est suffisant seul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe de SES, critiquer le PIB sert à :",
+              "options": [
+                "Comprendre ce qu'il mesure et ce qu'il occulte",
+                "Rejeter toute comptabilité",
+                "Affirmer que croissance est toujours négative",
+                "Ignorer les politiques publiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maîtriser définition et limites pour débattre des politiques de développement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "PIB, politiques publiques et débat citoyen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objectifs publics mobilisent le PIB sans s'y réduire ?",
+              "options": [
+                "Soutien à l'emploi et relance en récession",
+                "Règle d'or budgétaire liée au ratio dette/PIB",
+                "Mesure directe du bonheur",
+                "Remplacement des élections"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "PIB sert de repère macro pour emploi et finances publiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le ratio dette publique / PIB compare :",
+              "options": [
+                "Encours de dette à la production annuelle",
+                "Dette aux exportations seules",
+                "PIB à population",
+                "Chômage à inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capacité relative de remboursement via flux économique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une politique uniquement centrée sur PIB peut négliger :",
+              "options": [
+                "Environnement, santé mentale et cohésion sociale",
+                "Comptabilité nationale",
+                "Statistiques du commerce",
+                "Recensement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optimiser un chiffre agrégé peut contredire développement durable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les pays développés fixent parfois des objectifs climatiques :",
+              "options": [
+                "Qui peuvent ralentir croissance du PIB mesuré à court terme",
+                "Qui annulent toute production",
+                "Qui suppriment l'IDH",
+                "Qui interdisent l'éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition coûteuse comptablement mais bénéfique long terme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Redistribuer via impôt-progressivité :",
+              "options": [
+                "Modifie revenus disponibles sans changer PIB primaire",
+                "Augmente toujours PIB réel",
+                "Supprime la production",
+                "Remplace la valeur ajoutée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PIB mesure production; redistribution intervient après."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Investir dans éducation et santé :",
+              "options": [
+                "Renforce capital humain futur au-delà du PIB immédiat",
+                "N'a aucun effet économique",
+                "Diminue toujours PIB/h",
+                "Remplace le travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour sur investissement social se diffuse sur long terme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le débat « décroissance » questionne :",
+              "options": [
+                "Poursuite indéfinie de hausse du PIB matériel",
+                "Absence de toute production",
+                "Suppression de la science",
+                "Interdiction du commerce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains écologistes plaident réduction volontaire de certains flux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transparence statistique (INSEE) permet :",
+              "options": [
+                "Contrôle citoyen et scientifique des chiffres du PIB",
+                "Fixation des salaires par sondage",
+                "Suppression des recensements",
+                "Monopole politique sur données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutions indépendantes garantissent crédibilité des mesures."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En eurozone, critères de convergence ont historiquement regardé :",
+              "options": [
+                "Niveau d'endettement relatif au PIB et déficits",
+                "Bonheur subjectif seul",
+                "Nombre de langues",
+                "Climat uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité macro s'appuie sur ratios liés au PIB."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesurer la richesse aujourd'hui implique :",
+              "options": [
+                "Combiner PIB et indicateurs sociaux/environnementaux",
+                "Ignorer toute donnée",
+                "PIB seul suffit toujours",
+                "Rejeter la comptabilité nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche pluraliste recommandée par économistes et institutions internationales."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

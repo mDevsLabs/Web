@@ -1,0 +1,1783 @@
+{
+  "id": "6e-mathematiques-03",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Grandeurs et mesures",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Longueurs et durées",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Unités de longueur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Unités pour une distance à parcourir :",
+              "options": ["mm", "cm", "m", "km"],
+              "correctAnswers": [2, 3],
+              "explanation": "Le mètre et le kilomètre conviennent aux trajets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Épaisseur d'une feuille :",
+              "options": ["km", "m", "mm", "hm"],
+              "correctAnswers": [2],
+              "explanation": "On utilise le millimètre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 m = ? cm",
+              "options": ["10", "100", "1000", "10000"],
+              "correctAnswers": [1],
+              "explanation": "Cent centimètres dans un mètre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 km = ? m",
+              "options": ["10", "100", "1000", "10000"],
+              "correctAnswers": [2],
+              "explanation": "Mille mètres par kilomètre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plus grande longueur :",
+              "options": ["250 cm", "2,5 m", "0,025 km", "2500 mm"],
+              "correctAnswers": [2],
+              "explanation": "0,025 km vaut 25 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Kilo signifie :",
+              "options": ["÷1000", "×10", "×1000", "×100"],
+              "correctAnswers": [2],
+              "explanation": "Multiplier par 1000."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 cm = ? mm",
+              "options": ["1", "10", "100", "1000"],
+              "correctAnswers": [1],
+              "explanation": "Dix millimètres par centimètre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hauteur d'une porte (~2 m) :",
+              "options": ["mm", "cm", "m", "km"],
+              "correctAnswers": [2],
+              "explanation": "Le mètre est adapté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3,5 m = ? cm",
+              "options": ["35", "350", "3500", "0,35"],
+              "correctAnswers": [1],
+              "explanation": "350 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pas une longueur :",
+              "options": ["dam", "hm", "L", "mm"],
+              "correctAnswers": [2],
+              "explanation": "Le litre est un volume."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Conversions cm et m",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2 m 15 cm =",
+              "options": ["215 cm", "2,15 m", "21,5 cm", "0,215 km"],
+              "correctAnswers": [0, 1],
+              "explanation": "215 cm = 2,15 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "450 cm = ? m",
+              "options": ["4,5", "45", "0,45", "4500"],
+              "correctAnswers": [0],
+              "explanation": "4,5 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "0,8 m = ? cm",
+              "options": ["8", "80", "800", "8000"],
+              "correctAnswers": [1],
+              "explanation": "80 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 m 50 cm = ? cm",
+              "options": ["150", "1050", "15", "1500"],
+              "correctAnswers": [0],
+              "explanation": "150 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "325 cm =",
+              "options": ["3 m 25 cm", "32 m 5 cm", "325 m", "30 m 25 cm"],
+              "correctAnswers": [0],
+              "explanation": "3 m 25 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5,02 m = ? cm",
+              "options": ["502", "52", "5020", "5,02"],
+              "correctAnswers": [0],
+              "explanation": "502 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vaut 2 m :",
+              "options": ["20 cm", "200 cm", "2000 cm", "0,2 cm"],
+              "correctAnswers": [1],
+              "explanation": "200 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "12 dm = ? cm",
+              "options": ["1,2", "120", "12", "1200"],
+              "correctAnswers": [1],
+              "explanation": "120 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,05 m = ? cm",
+              "options": ["0,5", "5", "50", "500"],
+              "correctAnswers": [1],
+              "explanation": "5 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "7 m 8 cm = ? cm",
+              "options": ["78", "708", "780", "7008"],
+              "correctAnswers": [1],
+              "explanation": "708 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Millimètres et décimètres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Égalités vraies :",
+              "options": [
+                "1 cm = 10 mm",
+                "1 m = 1000 mm",
+                "1 mm = 10 cm",
+                "1 dm = 1000 mm"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "10 mm par cm et 1000 mm par m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "35 mm = ? cm",
+              "options": ["3,5", "0,35", "350", "35"],
+              "correctAnswers": [0],
+              "explanation": "3,5 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "4 cm 5 mm = ? mm",
+              "options": ["45", "405", "450", "4,5"],
+              "correctAnswers": [0],
+              "explanation": "45 mm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1,2 dm = ? cm",
+              "options": ["12", "120", "1,2", "0,12"],
+              "correctAnswers": [0],
+              "explanation": "12 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2500 mm = ? m",
+              "options": ["0,25", "2,5", "25", "250"],
+              "correctAnswers": [1],
+              "explanation": "2,5 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus petite :",
+              "options": ["15 mm", "2 cm", "0,015 m", "25 mm"],
+              "correctAnswers": [0],
+              "explanation": "15 mm = 1,5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "8 mm + 12 mm = ? cm",
+              "options": ["2", "20", "0,2", "200"],
+              "correctAnswers": [0],
+              "explanation": "2 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3 dm = ? mm",
+              "options": ["30", "300", "3000", "3"],
+              "correctAnswers": [1],
+              "explanation": "300 mm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,7 cm = ? mm",
+              "options": ["7", "70", "0,7", "700"],
+              "correctAnswers": [0],
+              "explanation": "7 mm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "125 mm = ? cm",
+              "options": ["12,5", "1,25", "1250", "0,125"],
+              "correctAnswers": [0],
+              "explanation": "12,5 cm."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Comparer des longueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "> 1 m :",
+              "options": ["85 cm", "1,2 m", "950 mm", "1,05 m"],
+              "correctAnswers": [1, 3],
+              "explanation": "1,2 m et 1,05 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre croissant : 2 m ; 180 cm ; 1900 mm",
+              "options": [
+                "180 cm ; 1900 mm ; 2 m",
+                "2 m ; 1900 mm ; 180 cm",
+                "1900 mm ; 2 m ; 180 cm",
+                "180 cm ; 2 m ; 1900 mm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "180 cm < 1,9 m < 2 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 km 200 m = ? m",
+              "options": ["320", "3200", "30200", "32000"],
+              "correctAnswers": [1],
+              "explanation": "3200 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1,5 km = ? m",
+              "options": ["150", "1500", "15000", "15"],
+              "correctAnswers": [1],
+              "explanation": "1500 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2500 m = ? km",
+              "options": ["2,5", "25", "0,25", "250"],
+              "correctAnswers": [0],
+              "explanation": "2,5 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus long :",
+              "options": ["0,4 km", "450 m", "4000 dm", "4 hm"],
+              "correctAnswers": [1],
+              "explanation": "450 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "6 hm = ? m",
+              "options": ["60", "600", "6000", "6"],
+              "correctAnswers": [1],
+              "explanation": "600 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1,25 m et 125 cm :",
+              "options": ["125 cm >", "1,25 m >", "Égaux", "?"],
+              "correctAnswers": [2],
+              "explanation": "Même longueur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "< 50 cm :",
+              "options": ["0,6 m", "55 cm", "480 mm", "520 mm"],
+              "correctAnswers": [2],
+              "explanation": "48 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2 dam = ? m",
+              "options": ["2", "20", "200", "0,2"],
+              "correctAnswers": [1],
+              "explanation": "20 m."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Additionner des longueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 m 20 cm + 80 cm =",
+              "options": ["2 m", "200 cm", "1 m 80 cm", "120 cm"],
+              "correctAnswers": [0, 1],
+              "explanation": "2 m = 200 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "45 cm + 37 cm =",
+              "options": ["72 cm", "82 cm", "92 cm", "712 cm"],
+              "correctAnswers": [1],
+              "explanation": "82 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 m 25 cm + 1 m 50 cm =",
+              "options": ["4 m 75 cm", "5 m 75 cm", "4 m 15 cm", "475 cm"],
+              "correctAnswers": [0],
+              "explanation": "4 m 75 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "250 mm + 150 mm = ? cm",
+              "options": ["40", "400", "4", "4000"],
+              "correctAnswers": [0],
+              "explanation": "40 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1,5 km + 500 m = ? km",
+              "options": ["1,55", "2", "2,5", "15"],
+              "correctAnswers": [1],
+              "explanation": "2 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0,8 m + 0,35 m = ? m",
+              "options": ["1,15", "1,05", "0,115", "11,5"],
+              "correctAnswers": [0],
+              "explanation": "1,15 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2 dm 3 cm + 4 cm = ? cm",
+              "options": ["27", "23", "230", "7"],
+              "correctAnswers": [0],
+              "explanation": "27 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "120 cm + 1 m 30 cm = ? m",
+              "options": ["2,5", "250", "1,5", "13"],
+              "correctAnswers": [0],
+              "explanation": "2,5 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "750 m + 250 m = ? km",
+              "options": ["0,1", "1", "10", "100"],
+              "correctAnswers": [1],
+              "explanation": "1 km."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "15 mm + 2 cm 5 mm = ? mm",
+              "options": ["30", "40", "45", "405"],
+              "correctAnswers": [1],
+              "explanation": "40 mm."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Soustraire des longueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "3 m − 75 cm =",
+              "options": ["2 m 25 cm", "225 cm", "2,25 m", "1 m 25 cm"],
+              "correctAnswers": [0, 2],
+              "explanation": "2 m 25 cm = 2,25 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 m 50 cm − 80 cm =",
+              "options": ["70 cm", "130 cm", "7 cm", "0,7 dm"],
+              "correctAnswers": [0],
+              "explanation": "70 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 km − 1200 m = ? km",
+              "options": ["3,8", "4,8", "3800", "48"],
+              "correctAnswers": [0],
+              "explanation": "3,8 km."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "90 cm − 45 mm = ? cm",
+              "options": ["85,5", "45", "85", "855"],
+              "correctAnswers": [0],
+              "explanation": "85,5 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2,4 m − 1,1 m = ? cm",
+              "options": ["130", "13", "1300", "1,3"],
+              "correctAnswers": [0],
+              "explanation": "130 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3 m 20 cm − 95 cm =",
+              "options": ["2 m 25 cm", "2 m 15 cm", "1 m 25 cm", "3 m 15 cm"],
+              "correctAnswers": [0],
+              "explanation": "2 m 25 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "800 mm − 25 cm = ? mm",
+              "options": ["550", "575", "75", "5500"],
+              "correctAnswers": [0],
+              "explanation": "550 mm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4 hm − 150 m = ? m",
+              "options": ["250", "350", "2500", "50"],
+              "correctAnswers": [0],
+              "explanation": "250 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 km − 750 m = ? m",
+              "options": ["250", "25", "2500", "0,25"],
+              "correctAnswers": [0],
+              "explanation": "250 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "6 dm 2 cm − 3 cm = ? cm",
+              "options": ["59", "56", "62", "602"],
+              "correctAnswers": [0],
+              "explanation": "59 cm."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Unités de durée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mesurent une durée :",
+              "options": ["Seconde", "Mètre", "Minute", "Litre"],
+              "correctAnswers": [0, 2],
+              "explanation": "Seconde et minute."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 min = ? s",
+              "options": ["10", "60", "100", "3600"],
+              "correctAnswers": [1],
+              "explanation": "60 s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 h = ? min",
+              "options": ["24", "60", "100", "3600"],
+              "correctAnswers": [1],
+              "explanation": "60 min."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 h = ? s",
+              "options": ["60", "360", "3600", "600"],
+              "correctAnswers": [2],
+              "explanation": "3600 s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 jour = ? h",
+              "options": ["12", "24", "60", "100"],
+              "correctAnswers": [1],
+              "explanation": "24 h."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 h 30 min = ? min",
+              "options": ["150", "230", "130", "250"],
+              "correctAnswers": [0],
+              "explanation": "150 min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus long :",
+              "options": ["90 s", "1 min 20 s", "85 s", "1 min"],
+              "correctAnswers": [0],
+              "explanation": "90 s."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3 min 15 s = ? s",
+              "options": ["315", "195", "135", "215"],
+              "correctAnswers": [1],
+              "explanation": "195 s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "½ h = ? min",
+              "options": ["15", "30", "45", "50"],
+              "correctAnswers": [1],
+              "explanation": "30 min."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 semaine = ? jours",
+              "options": ["5", "6", "7", "10"],
+              "correctAnswers": [2],
+              "explanation": "7 jours."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Heures et minutes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 h 45 min =",
+              "options": ["105 min", "6300 s", "145 min", "1,45 h"],
+              "correctAnswers": [0, 1],
+              "explanation": "105 min = 6300 s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "180 min = ? h",
+              "options": ["1,8", "2", "3", "18"],
+              "correctAnswers": [2],
+              "explanation": "3 h."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 h 15 min = ? min",
+              "options": ["135", "215", "125", "225"],
+              "correctAnswers": [0],
+              "explanation": "135 min."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "95 min =",
+              "options": [
+                "1 h 35 min",
+                "1 h 55 min",
+                "2 h 35 min",
+                "9 h 5 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 h 35 min."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "4 h − 2 h 40 min = ? min",
+              "options": ["80", "120", "20", "140"],
+              "correctAnswers": [0],
+              "explanation": "80 min."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 h 05 min + 55 min = ? h",
+              "options": ["1", "2", "2,5", "1,5"],
+              "correctAnswers": [1],
+              "explanation": "2 h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3,5 h = ? min",
+              "options": ["35", "210", "350", "105"],
+              "correctAnswers": [1],
+              "explanation": "210 min."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "7200 s = ? h",
+              "options": ["0,2", "2", "12", "720"],
+              "correctAnswers": [1],
+              "explanation": "2 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 jour 6 h = ? h",
+              "options": ["30", "126", "106", "24"],
+              "correctAnswers": [0],
+              "explanation": "30 h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "50 min + 40 min =",
+              "options": ["1 h 30", "1 h 20", "1 h", "90 h"],
+              "correctAnswers": [0],
+              "explanation": "1 h 30."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Calculer une durée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "8 h 15 → 10 h 45 :",
+              "options": ["2 h 30", "150 min", "2 h 15", "135 min"],
+              "correctAnswers": [0, 1],
+              "explanation": "2 h 30 = 150 min."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fin 20 h 10, film 1 h 52. Début ?",
+              "options": ["18 h 18", "18 h 08", "19 h 18", "17 h 58"],
+              "correctAnswers": [0],
+              "explanation": "18 h 18."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "7 h 40 + 25 min =",
+              "options": ["8 h 05", "7 h 65", "8 h 15", "7 h 15"],
+              "correctAnswers": [0],
+              "explanation": "8 h 05."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "22 h 50 → 23 h 20 :",
+              "options": ["30 min", "50 min", "1 h 30", "20 min"],
+              "correctAnswers": [0],
+              "explanation": "30 min."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10 h 47 + 15 min =",
+              "options": ["11 h 02", "10 h 62", "11 h 12", "10 h 32"],
+              "correctAnswers": [0],
+              "explanation": "11 h 02."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "9 h 08 + 42 min =",
+              "options": ["9 h 50", "10 h 50", "9 h 42", "8 h 50"],
+              "correctAnswers": [0],
+              "explanation": "9 h 50."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "0 h → 3 h 20 :",
+              "options": ["3 h 20", "200 min", "320 min", "2 h 20"],
+              "correctAnswers": [0],
+              "explanation": "3 h 20."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2 jours 5 h = ? h",
+              "options": ["29", "53", "48", "55"],
+              "correctAnswers": [1],
+              "explanation": "53 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 × 1 h 15 =",
+              "options": ["3 h 15", "3 h 45", "4 h 15", "2 h 45"],
+              "correctAnswers": [1],
+              "explanation": "3 h 45."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "11 h 55 → 12 h 05 :",
+              "options": ["10 min", "50 min", "1 h 10", "15 min"],
+              "correctAnswers": [0],
+              "explanation": "10 min."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes longueurs et durées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "4 km + 1500 m =",
+              "options": ["5,5 km", "5500 m", "550 m", "5150 m"],
+              "correctAnswers": [0, 1],
+              "explanation": "5,5 km = 5500 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "5 m en tronçons de 80 cm (max entier) :",
+              "options": ["5", "6", "7", "62"],
+              "correctAnswers": [1],
+              "explanation": "6 tronçons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "6 h 35 + 2 h 48 =",
+              "options": ["9 h 23", "9 h 13", "8 h 23", "10 h 23"],
+              "correctAnswers": [0],
+              "explanation": "9 h 23."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 m 60 cm − 2 m 15 cm =",
+              "options": ["1 m 45 cm", "145 cm", "1 m 55 cm", "155 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 m 45 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "25 cm + 15 cm + 300 mm =",
+              "options": ["80 cm", "8 m", "800 dm", "0,8 km"],
+              "correctAnswers": [0],
+              "explanation": "80 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 km en 1 h → 2 km en ?",
+              "options": ["24 min", "20 min", "30 min", "12 min"],
+              "correctAnswers": [0],
+              "explanation": "24 min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "2×(45 min + 15 min) =",
+              "options": ["2 h", "1 h 30", "1 h", "2 h 30"],
+              "correctAnswers": [0],
+              "explanation": "2 h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "0,8 km + 450 m = ? m",
+              "options": ["1250", "850", "4508", "580"],
+              "correctAnswers": [0],
+              "explanation": "1250 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "23 h 45 → 0 h 20 :",
+              "options": ["35 min", "55 min", "1 h 35", "25 min"],
+              "correctAnswers": [0],
+              "explanation": "35 min."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2 m 40 cm, livres 35 cm : max",
+              "options": ["6", "7", "8", "68"],
+              "correctAnswers": [0],
+              "explanation": "6 livres."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Aires et périmètres",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Périmètre du carré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Périmètre carré côté c :",
+              "options": ["4×c", "c+c+c+c", "c×c", "2×c"],
+              "correctAnswers": [0, 1],
+              "explanation": "4 côtés ou 4×c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côté 5 cm. P = ?",
+              "options": ["10 cm", "20 cm", "25 cm", "15 cm"],
+              "correctAnswers": [1],
+              "explanation": "20 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P = 36 cm. Côté ?",
+              "options": ["6 cm", "9 cm", "12 cm", "18 cm"],
+              "correctAnswers": [1],
+              "explanation": "9 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côté 1,5 dm. P en cm ?",
+              "options": ["6", "60", "15", "600"],
+              "correctAnswers": [1],
+              "explanation": "60 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "4 côtés égaux :",
+              "options": ["Rectangle", "Carré", "Triangle", "Cercle"],
+              "correctAnswers": [1],
+              "explanation": "Carré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Côté 8 mm. P ?",
+              "options": ["16 mm", "32 mm", "64 mm", "24 mm"],
+              "correctAnswers": [1],
+              "explanation": "32 mm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P = 1 m. Côté en cm ?",
+              "options": ["25", "100", "250", "400"],
+              "correctAnswers": [0],
+              "explanation": "25 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "P = 24 cm. Côté ?",
+              "options": ["4 cm", "6 cm", "8 cm", "12 cm"],
+              "correctAnswers": [1],
+              "explanation": "6 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côté ×2 → P × ?",
+              "options": ["2", "4", "8", "1"],
+              "correctAnswers": [0],
+              "explanation": "×2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Côté 12 cm. P en dm ?",
+              "options": ["4,8", "48", "0,48", "480"],
+              "correctAnswers": [0],
+              "explanation": "4,8 dm."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Périmètre du rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "P rectangle L×l :",
+              "options": ["2(L+l)", "2L+2l", "L×l", "L+l"],
+              "correctAnswers": [0, 1],
+              "explanation": "Double la somme des côtés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "6×4 cm. P ?",
+              "options": ["10 cm", "20 cm", "24 cm", "48 cm"],
+              "correctAnswers": [1],
+              "explanation": "20 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P=30 cm, L=10 cm. l ?",
+              "options": ["5 cm", "10 cm", "15 cm", "20 cm"],
+              "correctAnswers": [0],
+              "explanation": "5 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "25×18 m. P ?",
+              "options": ["43 m", "86 m", "450 m", "800 m"],
+              "correctAnswers": [1],
+              "explanation": "86 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "12×5 dm. P en m ?",
+              "options": ["3,4", "34", "0,34", "340"],
+              "correctAnswers": [0],
+              "explanation": "3,4 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "P=1 m, l=15 cm. L ?",
+              "options": ["35 cm", "20 cm", "25 cm", "40 cm"],
+              "correctAnswers": [0],
+              "explanation": "35 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3×2 et 5×1 : même P ?",
+              "options": ["Oui", "Non", "Même aire", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "P=10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L=8 cm, l moitié. P ?",
+              "options": ["24 cm", "16 cm", "12 cm", "32 cm"],
+              "correctAnswers": [0],
+              "explanation": "24 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "P=48 mm, carré : côté ?",
+              "options": ["12 mm", "24 mm", "6 mm", "48 mm"],
+              "correctAnswers": [0],
+              "explanation": "12 mm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0,8 m × 50 cm. P en cm ?",
+              "options": ["260", "160", "130", "210"],
+              "correctAnswers": [0],
+              "explanation": "260 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Aire du carré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aire carré côté c :",
+              "options": ["c×c", "4×c", "2×c", "c multiplié par c"],
+              "correctAnswers": [0, 3],
+              "explanation": "c×c."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côté 4 cm. Aire ?",
+              "options": ["8 cm²", "16 cm²", "12 cm²", "20 cm²"],
+              "correctAnswers": [1],
+              "explanation": "16 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aire 49 cm². Côté ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "7 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Côté 10 cm. Aire en dm² ?",
+              "options": ["1", "10", "100", "0,1"],
+              "correctAnswers": [0],
+              "explanation": "1 dm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Feuille A4 : unité ?",
+              "options": ["cm²", "km²", "m³", "L"],
+              "correctAnswers": [0],
+              "explanation": "cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Côté 5 dm. Aire ?",
+              "options": ["20", "25", "10", "50"],
+              "correctAnswers": [1],
+              "explanation": "25 dm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côté ×2 → aire × ?",
+              "options": ["2", "4", "8", "1"],
+              "correctAnswers": [1],
+              "explanation": "×4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire 100 m². Côté ?",
+              "options": ["5 m", "10 m", "20 m", "50 m"],
+              "correctAnswers": [1],
+              "explanation": "10 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côté 3 cm. Aire ?",
+              "options": ["6 cm²", "9 cm²", "12 cm²", "15 cm²"],
+              "correctAnswers": [1],
+              "explanation": "9 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P=20 cm. Aire carré ?",
+              "options": ["20 cm²", "25 cm²", "16 cm²", "100 cm²"],
+              "correctAnswers": [1],
+              "explanation": "25 cm²."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Aire du rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aire rectangle L×l :",
+              "options": ["L×l", "2(L+l)", "L+l", "longueur × largeur"],
+              "correctAnswers": [0, 3],
+              "explanation": "Produit longueur par largeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "8×5 cm. Aire ?",
+              "options": ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
+              "correctAnswers": [2],
+              "explanation": "40 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aire 36 cm², l=4 cm. L ?",
+              "options": ["6 cm", "8 cm", "9 cm", "12 cm"],
+              "correctAnswers": [2],
+              "explanation": "9 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "20×15 m. Aire ?",
+              "options": ["35 m²", "70 m²", "300 m²", "200 m²"],
+              "correctAnswers": [2],
+              "explanation": "300 m²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "12×5 dm. Aire en m² ?",
+              "options": ["0,6", "6", "60", "0,06"],
+              "correctAnswers": [0],
+              "explanation": "0,6 m²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 m² = ? cm²",
+              "options": ["100", "1000", "10000", "10"],
+              "correctAnswers": [2],
+              "explanation": "10000 cm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10×3 cm. Aire ?",
+              "options": ["13 cm²", "30 cm²", "26 cm²", "60 cm²"],
+              "correctAnswers": [1],
+              "explanation": "30 cm²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire 24 cm². Dimensions possibles :",
+              "options": ["6×4", "8×3", "12×2", "Toutes"],
+              "correctAnswers": [3],
+              "explanation": "Plusieurs couples conviennent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "0,5 m × 40 cm. Aire en cm² ?",
+              "options": ["200", "2000", "20", "20000"],
+              "correctAnswers": [1],
+              "explanation": "2000 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Aire 45 dm², L=9 dm. l ?",
+              "options": ["4 dm", "5 dm", "6 dm", "8 dm"],
+              "correctAnswers": [1],
+              "explanation": "5 dm."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Unités d'aire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Unités d'aire :",
+              "options": ["cm²", "m²", "cm", "km"],
+              "correctAnswers": [0, 1],
+              "explanation": "Unités carrées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 m² = ? cm²",
+              "options": ["100", "1000", "10000", "100000"],
+              "correctAnswers": [2],
+              "explanation": "10000."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5000 cm² = ? m²",
+              "options": ["0,5", "5", "50", "0,05"],
+              "correctAnswers": [0],
+              "explanation": "0,5 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Terrain : unité courante ?",
+              "options": ["mm²", "cm²", "m²", "km²"],
+              "correctAnswers": [2],
+              "explanation": "m²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 dm² = ? cm²",
+              "options": ["1", "10", "100", "1000"],
+              "correctAnswers": [2],
+              "explanation": "100 cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus grande aire :",
+              "options": ["2 m²", "15000 cm²", "0,3 dam²", "250 dm²"],
+              "correctAnswers": [1],
+              "explanation": "1,5 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "km² sert pour :",
+              "options": ["Feuille", "Pièce", "Région", "Segment"],
+              "correctAnswers": [2],
+              "explanation": "Grandes surfaces."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2 m² + 5000 cm² = ? m²",
+              "options": ["2,5", "7", "2500", "2,05"],
+              "correctAnswers": [0],
+              "explanation": "2,5 m²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Carré 1 cm de côté en mm² :",
+              "options": ["1", "10", "100", "1000"],
+              "correctAnswers": [2],
+              "explanation": "100 mm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "cm² et cm :",
+              "options": [
+                "Pareil",
+                "Aire vs longueur",
+                "cm² toujours >",
+                "Même nombre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Grandeurs différentes."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Périmètre et aire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un carré on calcule :",
+              "options": ["Périmètre", "Aire", "Volume en cm²", "Masse"],
+              "correctAnswers": [0, 1],
+              "explanation": "P et aire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Côté 3 cm. P et A ?",
+              "options": [
+                "12 cm ; 9 cm²",
+                "9 cm ; 12 cm²",
+                "6 cm ; 9 cm²",
+                "12 cm ; 6 cm²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "P=12, A=9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même P, aires différentes ?",
+              "options": ["Non", "Oui", "Cercles seulement", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Possible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5×2, P=14. Aire ?",
+              "options": ["7 cm²", "10 cm²", "14 cm²", "20 cm²"],
+              "correctAnswers": [1],
+              "explanation": "10 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On allonge L seulement :",
+              "options": ["P seulement", "A seulement", "P et A", "Rien"],
+              "correctAnswers": [2],
+              "explanation": "Les deux augmentent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aire 16 cm². P ?",
+              "options": ["4 cm", "8 cm", "16 cm", "32 cm"],
+              "correctAnswers": [2],
+              "explanation": "P=16 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P s'exprime en :",
+              "options": ["cm²", "cm", "L", "kg"],
+              "correctAnswers": [1],
+              "explanation": "Longueur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire s'exprime en :",
+              "options": ["m", "m²", "m³", "s"],
+              "correctAnswers": [1],
+              "explanation": "Unité carrée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "10×1 et 5×5 : même P ?",
+              "options": ["Oui", "Non", "Même aire", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "P=22."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tapis 4×3 m. Bordure ?",
+              "options": ["7 m", "12 m", "14 m", "24 m"],
+              "correctAnswers": [2],
+              "explanation": "14 m."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Figures composées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Périmètre figure en L :",
+              "options": [
+                "Somme côtés du contour",
+                "Addition côtés extérieurs",
+                "L×l",
+                "Un seul côté"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On parcourt tout le contour."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux carrés de 2 cm collés par un côté. P ?",
+              "options": ["8 cm", "12 cm", "16 cm", "20 cm"],
+              "correctAnswers": [1],
+              "explanation": "Le contour mesure 12 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 6×3 découpé en 2 carrés 3×3. P total ?",
+              "options": ["12 cm", "18 cm", "24 cm", "30 cm"],
+              "correctAnswers": [1],
+              "explanation": "P inchangé si coupe intérieure : 18 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux rectangles 4 cm × 2 cm disjoints. Aire totale ?",
+              "options": ["8 cm²", "16 cm²", "32 cm²", "12 cm²"],
+              "correctAnswers": [1],
+              "explanation": "2 × 8 cm² = 16 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P carré 5 cm + segment 3 cm (alignés) : P total ?",
+              "options": ["20 cm", "23 cm", "26 cm", "15 cm"],
+              "correctAnswers": [1],
+              "explanation": "23 cm si segment ajouté au contour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cour 10×8 avec alcôve 2×2 (coin). P ?",
+              "options": ["36 m", "40 m", "44 m", "48 m"],
+              "correctAnswers": [0],
+              "explanation": "Contour adapté : 36 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aire L : 5×4 moins 2×2 :",
+              "options": ["12 m²", "16 m²", "20 m²", "8 m²"],
+              "correctAnswers": [0],
+              "explanation": "20−8=12 m²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pentagone régulier côté 4 cm. P ?",
+              "options": ["16 cm", "20 cm", "24 cm", "12 cm"],
+              "correctAnswers": [1],
+              "explanation": "5×4=20 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux rectangles 3×2 collés sur le côté 2. Aire ?",
+              "options": ["6 cm²", "12 cm²", "18 cm²", "24 cm²"],
+              "correctAnswers": [1],
+              "explanation": "12 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P triangle équilatéral 6 cm. P ?",
+              "options": ["12 cm", "18 cm", "24 cm", "36 cm"],
+              "correctAnswers": [1],
+              "explanation": "18 cm."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Conversions d'aires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 m² =",
+              "options": ["100 dm²", "10000 cm²", "100 cm²", "10 dm²"],
+              "correctAnswers": [0, 1],
+              "explanation": "100 dm² et 10000 cm²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 m² = ? cm²",
+              "options": ["300", "3000", "30000", "300000"],
+              "correctAnswers": [2],
+              "explanation": "30000 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "25000 cm² = ? m²",
+              "options": ["0,25", "2,5", "25", "250"],
+              "correctAnswers": [1],
+              "explanation": "2,5 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1,5 dm² = ? cm²",
+              "options": ["15", "150", "1500", "1,5"],
+              "correctAnswers": [1],
+              "explanation": "150 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "800 mm² = ? cm²",
+              "options": ["8", "80", "800", "0,8"],
+              "correctAnswers": [0],
+              "explanation": "8 cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0,02 hm² = ? m²",
+              "options": ["2", "20", "200", "2000"],
+              "correctAnswers": [2],
+              "explanation": "200 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus grande :",
+              "options": ["1 m²", "9000 cm²", "0,15 dam²", "120 dm²"],
+              "correctAnswers": [0],
+              "explanation": "1 m² = 10000 cm²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2 m² 5000 cm² = ? m²",
+              "options": ["2,5", "7", "2500", "2,05"],
+              "correctAnswers": [0],
+              "explanation": "2,5 m²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Carré 1 dm de côté. Aire en cm² ?",
+              "options": ["1", "10", "100", "1000"],
+              "correctAnswers": [2],
+              "explanation": "100 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "4 cm² = ? mm²",
+              "options": ["4", "40", "400", "4000"],
+              "correctAnswers": [2],
+              "explanation": "400 mm²."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes de périmètre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour clôturer un jardin rectangulaire, on calcule :",
+              "options": [
+                "Le périmètre",
+                "2 × (L + l)",
+                "L × l",
+                "L + l seulement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La clôture suit le périmètre, calculé par 2(L + l)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jardin 12×8 m. Clôture ?",
+              "options": ["20 m", "40 m", "96 m", "48 m"],
+              "correctAnswers": [1],
+              "explanation": "40 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P=100 m, carré. Côté ?",
+              "options": ["20 m", "25 m", "50 m", "10 m"],
+              "correctAnswers": [1],
+              "explanation": "25 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Piste rectangulaire 400 m, L=120 m. l ?",
+              "options": ["80 m", "40 m", "60 m", "100 m"],
+              "correctAnswers": [0],
+              "explanation": "80 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3 carrés 2 cm alignés. P ?",
+              "options": ["8 cm", "16 cm", "24 cm", "12 cm"],
+              "correctAnswers": [2],
+              "explanation": "24 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Table 1,2×0,8 m. Bandeau sur le bord ?",
+              "options": ["2 m", "4 m", "3,2 m", "5 m"],
+              "correctAnswers": [1],
+              "explanation": "4 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "P=26 cm, L=8 cm. l ?",
+              "options": ["5 cm", "6 cm", "7 cm", "9 cm"],
+              "correctAnswers": [0],
+              "explanation": "5 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carré et rectangle même P=20. Carré côté ?",
+              "options": ["4", "5", "6", "10"],
+              "correctAnswers": [1],
+              "explanation": "5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hexagone régulier côté 5 cm. P ?",
+              "options": ["25 cm", "30 cm", "35 cm", "40 cm"],
+              "correctAnswers": [1],
+              "explanation": "30 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux fois le tour d'un carré 7 cm. Distance ?",
+              "options": ["14 cm", "28 cm", "49 cm", "56 cm"],
+              "correctAnswers": [3],
+              "explanation": "2×28=56 cm."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Problèmes d'aire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Recouvrir une surface plane, on calcule :",
+              "options": [
+                "L × l",
+                "L'aire en m²",
+                "Le périmètre",
+                "Une longueur seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On multiplie longueur par largeur pour obtenir l'aire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mur 4×2,5 m. Peinture ?",
+              "options": ["6,5 m²", "10 m²", "10,5 m²", "8 m²"],
+              "correctAnswers": [1],
+              "explanation": "10 m²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parquet 15 m², lame 1 m². Nombre ?",
+              "options": ["10", "15", "20", "30"],
+              "correctAnswers": [1],
+              "explanation": "15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aire 48 cm², L=8 cm. l ?",
+              "options": ["4 cm", "6 cm", "8 cm", "12 cm"],
+              "correctAnswers": [1],
+              "explanation": "6 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tapis 3×2 m. Aire ?",
+              "options": ["5 m²", "6 m²", "8 m²", "10 m²"],
+              "correctAnswers": [1],
+              "explanation": "6 m²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carré aire 81 cm². Côté ?",
+              "options": ["7 cm", "8 cm", "9 cm", "10 cm"],
+              "correctAnswers": [2],
+              "explanation": "9 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux pièces 12 m² et 8 m². Total ?",
+              "options": ["18 m²", "20 m²", "24 m²", "96 m²"],
+              "correctAnswers": [1],
+              "explanation": "20 m²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire doublée si L×2 et l×2 ?",
+              "options": ["×2", "×4", "×8", "Identique"],
+              "correctAnswers": [1],
+              "explanation": "×4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Jardin 10×6 m, bassin 2×2 m. Gazon ?",
+              "options": ["56 m²", "60 m²", "52 m²", "58 m²"],
+              "correctAnswers": [0],
+              "explanation": "56 m²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Affiche 80×60 cm. Aire en dm² ?",
+              "options": ["48", "480", "4,8", "4800"],
+              "correctAnswers": [0],
+              "explanation": "48 dm²."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

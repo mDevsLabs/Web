@@ -1,0 +1,2393 @@
+{
+  "id": "6e-espagnol-03",
+  "year": "6e",
+  "subject": "espagnol",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Une carte de bibliothèque",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Document : « Biblioteca municipal — Carnet de lector — Nombre: Ana García — Número: 2847 ». Quelles informations le carnet affiche-t-il clairement ?",
+              "options": [
+                "Le nom complet de la lectrice",
+                "L'adresse de la bibliothèque",
+                "Un numéro de lecteur",
+                "La date de naissance"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On lit le nombre Ana García et un número d'identification, pas l'adresse ni la date de naissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « Biblioteca » ?",
+              "options": [
+                "Librairie commerciale",
+                "Bibliothèque",
+                "Bureau de poste",
+                "Banque"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Biblioteca = bibliothèque en espagnol."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Nombre » ici veut dire :",
+              "options": [
+                "Un chiffre",
+                "Le nom de la personne",
+                "Un prénom seul obligatoire",
+                "Un code secret"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sur une carte, nombre = nom (souvent nom complet)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Municipal » indique :",
+              "options": [
+                "Une bibliothèque privée",
+                "Une bibliothèque de la ville",
+                "Une bibliothèque scolaire seule",
+                "Une bibliothèque nationale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Municipal renvoie à la commune (municipio)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un « lector » est :",
+              "options": [
+                "Un bibliothécaire",
+                "Une personne qui emprunte des livres",
+                "Un écrivain",
+                "Un livre rare"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lector/lectora = lecteur ou lectrice."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Número: 2847 » sert à :",
+              "options": [
+                "Indiquer l'heure",
+                "Identifier le carnet de lecteur",
+                "Donner le prix d'un livre",
+                "Nommer une rue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est un identifiant du lecteur inscrit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« García » est généralement :",
+              "options": [
+                "Une ville",
+                "Un nom de famille espagnol",
+                "Un mois",
+                "Une boisson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "García est un patronyme très fréquent en Espagne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Carnet de lector » sert surtout à :",
+              "options": [
+                "Payer le métro",
+                "Prouver son inscription à la bibliothèque",
+                "Réserver un vol",
+                "Achever des devoirs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le carnet atteste le statut de lecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La langue du document est :",
+              "options": ["Français", "Espagnol", "Allemand", "Italien"],
+              "correctAnswers": [1],
+              "explanation": "Les termes biblioteca, nombre, número sont espagnols."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour retrouver Ana à la bibliothèque, on utilise surtout :",
+              "options": [
+                "Seulement son âge",
+                "Son nombre et son número",
+                "Un ticket de cinéma",
+                "Une carte bancaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nom et numéro permettent d'identifier la lectrice."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Un horaire de classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Horario — Lunes a viernes — Clase: 9:00 a 14:00 — Recreo: 11:00 a 11:30 ». Que précise ce texte ?",
+              "options": [
+                "Cours en semaine de 9 h à 14 h",
+                "Une pause à 11 h",
+                "Cours le dimanche",
+                "Fin des cours à 16 h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'horaire couvre lunes-viernes, clase 9-14 et recreo 11-11h30."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Lunes a viernes » =",
+              "options": [
+                "Du lundi au vendredi",
+                "Du samedi au dimanche",
+                "Seulement le mercredi",
+                "Toute la semaine sept jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunes = lundi, viernes = vendredi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Clase » signifie ici :",
+              "options": [
+                "Récréation",
+                "Temps de cours",
+                "Cantine",
+                "Sortie scolaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Clase = cours ou période de classe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Recreo » =",
+              "options": ["Examen", "Récréation", "Devoir maison", "Réunion"],
+              "correctAnswers": [1],
+              "explanation": "Recreo = pause entre les cours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Début des cours :",
+              "options": ["8:00", "9:00", "10:00", "11:00"],
+              "correctAnswers": [1],
+              "explanation": "Le document indique 9:00 comme début."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fin des cours :",
+              "options": ["12:00", "13:00", "14:00", "15:00"],
+              "correctAnswers": [2],
+              "explanation": "Clase se termine à 14:00."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Durée du recreo :",
+              "options": ["15 min", "30 min", "60 min", "90 min"],
+              "correctAnswers": [1],
+              "explanation": "De 11:00 à 11:30 = trente minutes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Horario » =",
+              "options": ["Horaire", "Histoire", "Horloge", "Hospital"],
+              "correctAnswers": [0],
+              "explanation": "Horario = horaire / emploi du temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ce document aide à savoir :",
+              "options": [
+                "Quand sont les cours et la pause",
+                "Le menu du self",
+                "Les notes trimestrielles",
+                "Le prix des livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un horario indique heures de clase et recreo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le samedi est-il mentionné ?",
+              "options": [
+                "Oui, matin",
+                "Non",
+                "Oui, soir",
+                "Oui, toute la journée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seuls lunes a viernes apparaissent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Une affiche de fête",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Fiesta de la Primavera — Sábado 23 de marzo — Plaza Mayor — 18:00 h — Entrada gratuita ». Quelles infos sont données ?",
+              "options": [
+                "Une fête printanière",
+                "Lieu : Plaza Mayor",
+                "Entrée à 15 €",
+                "Heure : 18 h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fiesta de la Primavera, lieu Plaza Mayor ; l'heure 18 h et l'entrée gratuite sont aussi visibles mais la question demande deux bonnes réponses parmi les options — 0 et 1 sont correctes (18 h est option 3, gratuite contredit option 2)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Fiesta » =",
+              "options": ["Fête", "Film", "Froid", "Fixe"],
+              "correctAnswers": [0],
+              "explanation": "Fiesta = fête."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Primavera » =",
+              "options": ["Hiver", "Printemps", "Été", "Automne"],
+              "correctAnswers": [1],
+              "explanation": "Primavera = printemps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Entrada gratuita » =",
+              "options": [
+                "Entrée payante",
+                "Entrée gratuite",
+                "Entrée interdite",
+                "Entrée sur invitation seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gratuita = gratuite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Plaza Mayor » est :",
+              "options": [
+                "Une gare",
+                "Une grande place",
+                "Un musée",
+                "Un aéroport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plaza = place ; Mayor = principale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Sábado » =",
+              "options": ["Vendredi", "Samedi", "Dimanche", "Jeudi"],
+              "correctAnswers": [1],
+              "explanation": "Sábado = samedi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Marzo » =",
+              "options": ["Janvier", "Mars", "Mai", "Juin"],
+              "correctAnswers": [1],
+              "explanation": "Marzo = mars."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« 18:00 h » =",
+              "options": [
+                "6 h du matin",
+                "18 h (soir)",
+                "8 h du matin",
+                "Minuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "18:00 = six heures du soir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« 23 de marzo » exprime :",
+              "options": [
+                "Une date",
+                "Un prix",
+                "Une adresse",
+                "Un numéro de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour + de + mois = date en espagnol."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour y aller, il faut retenir surtout :",
+              "options": [
+                "Date, lieu, heure",
+                "Code postal français",
+                "Numéro de vol",
+                "Recette de cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affiche indique quand et où se rendre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Un menu de café",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Café solo 1,20 € — Café con leche 1,50 € — Zumo de naranja 2,00 € — Agua 1,00 € ». Quels produits sont listés ?",
+              "options": [
+                "Des cafés",
+                "Un jus d'orange",
+                "Une paella",
+                "De l'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La carte propose cafés et zumo de naranja ; l'eau aussi mais seules deux réponses multiples — cafés et jus sont bien listés (eau = option 3 aussi présente ; consigne : exactement 2 correctes : cafés + jus)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Café solo » =",
+              "options": [
+                "Café avec lait",
+                "Café noir",
+                "Thé",
+                "Chocolat chaud"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Solo = seul, sans lait."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Café con leche » =",
+              "options": [
+                "Café avec lait",
+                "Café glacé",
+                "Déca uniquement",
+                "Jus de fruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Con leche = avec lait."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Zumo de naranja » =",
+              "options": ["Eau gazeuse", "Jus d'orange", "Soupe", "Bière"],
+              "correctAnswers": [1],
+              "explanation": "Zumo = jus ; naranja = orange."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Agua » =",
+              "options": ["Eau", "Air", "Ail", "Argent"],
+              "correctAnswers": [0],
+              "explanation": "Agua = eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le café solo coûte :",
+              "options": ["1,00 €", "1,20 €", "1,50 €", "2,00 €"],
+              "correctAnswers": [1],
+              "explanation": "Prix indiqué : 1,20 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'article le plus cher ici :",
+              "options": [
+                "Agua",
+                "Café solo",
+                "Zumo de naranja",
+                "Café con leche"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Zumo de naranja à 2,00 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole « € » indique :",
+              "options": ["Euros", "Degrés", "Heures", "Litres"],
+              "correctAnswers": [0],
+              "explanation": "€ = monnaie euro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ce document est :",
+              "options": [
+                "Une carte de prix / menu",
+                "Un horaire de train",
+                "Une lettre d'amour",
+                "Un plan de ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liste de boissons et prix = menu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Naranja » =",
+              "options": ["Pomme", "Orange (fruit)", "Banane", "Raisin"],
+              "correctAnswers": [1],
+              "explanation": "Naranja = orange."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Un panneau de rue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Panneau : « Calle Mayor, 12 — Centro — Prohibido aparcar — Lunes a viernes 8:00-20:00 ». Que comprend-on ?",
+              "options": [
+                "Nom de rue et numéro",
+                "Stationnement interdit certains jours/heures",
+                "Piscine ouverte",
+                "Entrée gratuite au musée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calle Mayor 12 au centro ; aparcar prohibido lunes-viernes 8-20 h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Calle » =",
+              "options": ["Rue", "Place", "Route nationale", "Pont"],
+              "correctAnswers": [0],
+              "explanation": "Calle = rue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Centro » =",
+              "options": ["Centre-ville", "Campagne", "Aéroport", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "Centro = centre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Prohibido aparcar » =",
+              "options": [
+                "Parking autorisé",
+                "Interdiction de stationner",
+                "Stationnement gratuit",
+                "Bus obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prohibido = interdit ; aparcar = se garer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le numéro du bâtiment :",
+              "options": ["8", "12", "20", "365"],
+              "correctAnswers": [1],
+              "explanation": "Calle Mayor, 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'interdiction vaut :",
+              "options": [
+                "Samedi et dimanche seulement",
+                "Lunes a viernes",
+                "Uniquement la nuit",
+                "Jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Texte : lunes a viernes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plage horaire indiquée :",
+              "options": [
+                "8 h – 20 h",
+                "9 h – 14 h",
+                "Minuit – 6 h",
+                "12 h – 13 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "8:00-20:00 sur le panneau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mayor » dans un nom de rue suggère souvent :",
+              "options": [
+                "Une rue secondaire",
+                "Une rue importante",
+                "Un chemin privé",
+                "Une autoroute"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mayor = principal / grande."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un conducteur doit :",
+              "options": [
+                "Lire les jours et heures avant de se garer",
+                "Ignorer le panneau",
+                "Klaxonner",
+                "Couper les arbres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le panneau fixe quand le stationnement est interdit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce panneau est utile pour :",
+              "options": [
+                "Respecter la réglementation de stationnement",
+                "Commander au restaurant",
+                "Réviser l'espagnol uniquement à l'école",
+                "Acheter des billets de metro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il informe sur l'interdiction d'aparcar."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Un SMS d'invitation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "SMS : « Hola Pablo — ¿Vienes a mi cumpleaños el sábado? — Casa de María — 17:00 — Trae un regalo pequeño ». De quoi parle le message ?",
+              "options": [
+                "Une invitation à un anniversaire samedi",
+                "Un rendez-vous chez María à 17 h",
+                "Un examen lundi matin",
+                "Un voyage en avion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cumpleaños el sábado, casa de María, 17:00."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hola » =",
+              "options": ["Bonjour / salut", "Au revoir", "Merci", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Hola = salutation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ¿Vienes...? » demande :",
+              "options": [
+                "Si Pablo vient",
+                "L'heure du train",
+                "Le prix",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vienes = tu viens ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cumpleaños » =",
+              "options": ["Anniversaire", "Mariage", "Noël", "Vacances"],
+              "correctAnswers": [0],
+              "explanation": "Cumpleaños = anniversaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Casa de María » =",
+              "options": [
+                "Chez María / maison de María",
+                "Hôtel de luxe",
+                "Stade",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Casa = maison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Trae un regalo pequeño » =",
+              "options": [
+                "Apporte un petit cadeau",
+                "N'apporte rien",
+                "Apporte un gâteau obligatoire",
+                "Apporte un chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trae = apporte ; regalo = cadeau ; pequeño = petit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le message s'adresse à :",
+              "options": ["María", "Pablo", "Ana", "Le professeur"],
+              "correctAnswers": [1],
+              "explanation": "« Hola Pablo »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jour de la fête :",
+              "options": ["Lunes", "Sábado", "Mercredi", "Vendredi"],
+              "correctAnswers": [1],
+              "explanation": "El sábado."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heure :",
+              "options": ["7 h", "17 h", "20 h", "Minuit"],
+              "correctAnswers": [1],
+              "explanation": "17:00 = 17 h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour répondre poliment, Pablo peut :",
+              "options": [
+                "Confirmer s'il vient ou non",
+                "Ignorer sans raison",
+                "Envoyer une facture",
+                "Changer la date sans demander"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une invitation appelle une réponse (sí/no)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Un ticket de cinéma",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ticket : « Cine Rex — Película: Aventura en Madrid — Sala 3 — Sábado 20:30 — Asiento F-12 — Precio: 8 € ». Quelles données apparaissent ?",
+              "options": [
+                "Titre du film",
+                "Numéro de siège F-12",
+                "Vol Barcelona–Paris",
+                "Prix 8 €"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Película, asiento F-12 ; le prix est aussi sur le ticket mais on retient deux réponses : titre et siège."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Cine » =",
+              "options": ["Cinéma", "Cimetière", "Cuisine", "Circus"],
+              "correctAnswers": [0],
+              "explanation": "Cine = cinéma."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Película » =",
+              "options": ["Film", "Photo", "Musique", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "Película = film."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sala » =",
+              "options": ["Salle (de projection)", "Salade", "Sol", "Sortie"],
+              "correctAnswers": [0],
+              "explanation": "Sala = salle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Asiento » =",
+              "options": [
+                "Siège / place assise",
+                "Ascenseur",
+                "Acteur",
+                "Affiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Asiento = siège."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Precio » =",
+              "options": ["Prix", "Précision", "Premier", "Prière"],
+              "correctAnswers": [0],
+              "explanation": "Precio = prix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heure de la séance :",
+              "options": ["20:30", "8:30 matin", "14:00", "23:59"],
+              "correctAnswers": [0],
+              "explanation": "Sábado 20:30."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le film se passe à :",
+              "options": [
+                "Madrid (d'après le titre)",
+                "Tokyo",
+                "Paris",
+                "Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aventura en Madrid."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Salle numéro :",
+              "options": ["1", "2", "3", "12"],
+              "correctAnswers": [2],
+              "explanation": "Sala 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce ticket sert à :",
+              "options": [
+                "Entrer à la séance avec la bonne place",
+                "Prendre l'avion",
+                "Payer les impôts",
+                "Louer un vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il prouve séance, salle et asiento."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Une notice de musée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Museo del Prado — Horario: 10:00-20:00 — Cerrado los lunes — Entrada general: 15 € — Menores de 18 años: gratis ». Que dit la notice ?",
+              "options": [
+                "Horaires d'ouverture 10-20 h",
+                "Fermé le lundi",
+                "Gratuit pour tous les adultes",
+                "Ouvert 24 h/24"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Horario 10-20 ; cerrado los lunes ; mineurs gratuits mais pas tous adultes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Museo » =",
+              "options": ["Musée", "Musique", "Métro", "Magasin"],
+              "correctAnswers": [0],
+              "explanation": "Museo = musée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cerrado » =",
+              "options": ["Fermé", "Ouvert", "Cher", "Chaud"],
+              "correctAnswers": [0],
+              "explanation": "Cerrado = fermé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Los lunes » =",
+              "options": [
+                "Les lundis",
+                "Les dimanches",
+                "Les étés",
+                "Les nuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunes = lundi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Entrada general » =",
+              "options": [
+                "Tarif adulte standard",
+                "Sortie de secours",
+                "Entrée des artistes",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrada general = billet standard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Menores de 18 años » =",
+              "options": [
+                "Personnes de moins de 18 ans",
+                "Professeurs",
+                "Retraités",
+                "Touristes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Menores = mineurs ; años = ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Gratis » =",
+              "options": ["Gratuit", "Gros", "Gris", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "Gratis = gratuit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un lundi, le musée est :",
+              "options": [
+                "Ouvert",
+                "Fermé",
+                "Gratuit pour tous",
+                "En travaux forcés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cerrado los lunes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prix adulte :",
+              "options": ["8 €", "15 €", "Gratis", "50 €"],
+              "correctAnswers": [1],
+              "explanation": "Entrada general: 15 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le Prado est un musée célèbre à :",
+              "options": ["Madrid", "Londres", "Berlin", "Oslo"],
+              "correctAnswers": [0],
+              "explanation": "Museo del Prado est à Madrid."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Un programme sportif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Polideportivo — Natación: martes y jueves 16:00 — Fútbol: miércoles 17:30 — Inscripción en recepción ». Quelles activités et moments ?",
+              "options": [
+                "Natation mardi et jeudi 16 h",
+                "Foot mercredi 17 h 30",
+                "Ski le dimanche",
+                "Inscription à la réception"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Natación martes/jueves 16:00 ; fútbol miércoles 17:30 ; recepción pour inscripción."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Polideportivo » =",
+              "options": [
+                "Complexe sportif",
+                "Bibliothèque",
+                "Pharmacie",
+                "Boulangerie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polideportivo = centre multisports."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Natación » =",
+              "options": ["Natation", "Tennis", "Danse", "Course"],
+              "correctAnswers": [0],
+              "explanation": "Natación = natation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Fútbol » =",
+              "options": ["Football", "Basket", "Rugby", "Golf"],
+              "correctAnswers": [0],
+              "explanation": "Fútbol = football."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Martes » =",
+              "options": ["Mardi", "Jeudi", "Mercredi", "Samedi"],
+              "correctAnswers": [0],
+              "explanation": "Martes = mardi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Jueves » =",
+              "options": ["Jeudi", "Vendredi", "Lundi", "Dimanche"],
+              "correctAnswers": [0],
+              "explanation": "Jueves = jeudi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Miércoles » =",
+              "options": ["Mercredi", "Mardi", "Samedi", "Janvier"],
+              "correctAnswers": [0],
+              "explanation": "Miércoles = mercredi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Inscripción » =",
+              "options": [
+                "Inscription",
+                "Internet",
+                "Inspection",
+                "Invitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inscripción = inscription."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Recepción » =",
+              "options": [
+                "Accueil / réception",
+                "Recette de cuisine",
+                "Récession",
+                "Récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recepción = accueil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Y » dans « martes y jueves » =",
+              "options": ["Et", "Ou", "Mais", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "Y = et."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Une étiquette de bagage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Étiquette : « Aeropuerto Barajas — Vuelo IB324 — Destino: Sevilla — Pasajero: Lucía Romero — Peso: 18 kg ». Quelles infos ?",
+              "options": [
+                "Vol IB324 vers Séville",
+                "Passagère Lucía Romero",
+                "Train Paris–Lyon",
+                "Poids 18 kg"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vuelo IB324 destino Sevilla ; pasajero Lucía Romero ; poids aussi sur l'étiquette."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Aeropuerto » =",
+              "options": ["Aéroport", "Gare", "Port", "Autoroute"],
+              "correctAnswers": [0],
+              "explanation": "Aeropuerto = aéroport."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Vuelo » =",
+              "options": ["Vol (avion)", "Ville", "Velo", "Verre"],
+              "correctAnswers": [0],
+              "explanation": "Vuelo = vol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Destino » =",
+              "options": ["Destination", "Départ", "Dessert", "Destin"],
+              "correctAnswers": [0],
+              "explanation": "Destino = destination."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Pasajero / pasajera » =",
+              "options": [
+                "Passager / passagère",
+                "Pilote",
+                "Hôtesse seulement",
+                "Bagage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasajero/a = passager/ère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Peso » =",
+              "options": ["Poids", "Pays", "Pièce", "Peur"],
+              "correctAnswers": [0],
+              "explanation": "Peso = poids."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Barajas est l'aéroport de :",
+              "options": ["Madrid", "Séville", "Barcelone", "Valence"],
+              "correctAnswers": [0],
+              "explanation": "Aeropuerto Barajas = Madrid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sevilla est une ville en :",
+              "options": ["Espagne", "France", "Mexique", "Maroc"],
+              "correctAnswers": [0],
+              "explanation": "Séville (Sevilla) est en Andalousie, Espagne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "18 kg indique :",
+              "options": [
+                "Masse du bagage",
+                "Numéro de siège",
+                "Heure du vol",
+                "Prix du billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peso: 18 kg = poids."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cette étiquette aide à :",
+              "options": [
+                "Identifier le bagage et le vol",
+                "Cuisiner paella",
+                "Réviser le subjonctif",
+                "Acheter des timbres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle lie bagage, passager et destination."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'Espagne en Europe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Espagne est un pays d'Europe du Sud. Quels repères géographiques sont corrects ?",
+              "options": [
+                "Elle partage la péninsule ibérique avec le Portugal",
+                "Sa capitale est Madrid",
+                "Elle est en Scandinavie",
+                "Son océan au nord-est est l'océan Indien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Espagne et Portugal sur l'Ibérie ; capitale Madrid ; bordée par l'Atlantique et la Méditerranée, pas l'Indien."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Capitale de l'Espagne :",
+              "options": ["Barcelone", "Madrid", "Séville", "Valence"],
+              "correctAnswers": [1],
+              "explanation": "Madrid est la capitale politique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'Espagne fait partie de :",
+              "options": [
+                "L'Union européenne",
+                "L'Antarctique",
+                "L'OTAN uniquement sans UE",
+                "Aucun continent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Espagne est membre de l'UE."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Langue officielle principale :",
+              "options": [
+                "Espagnol (castillan)",
+                "Japonais",
+                "Russe",
+                "Suédois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'espagnol est la langue officielle nationale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Monnaie utilisée :",
+              "options": ["Euro", "Livre sterling", "Dollar US", "Yen"],
+              "correctAnswers": [0],
+              "explanation": "L'Espagne utilise l'euro."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Voisin au west de l'Espagne :",
+              "options": ["Portugal", "Italie", "Allemagne", "Pologne"],
+              "correctAnswers": [0],
+              "explanation": "Le Portugal est à l'ouest."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mer au sud de l'Espagne continentale :",
+              "options": [
+                "Méditerranée",
+                "Mer du Nord",
+                "Mer Baltique",
+                "Mer Caspienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sud borde la Méditerranée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les îles Baléares appartiennent à :",
+              "options": ["L'Espagne", "Le Maroc", "La France", "Le Portugal"],
+              "correctAnswers": [0],
+              "explanation": "Majorque, Minorque etc. sont espagnoles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Population : l'Espagne est :",
+              "options": [
+                "Un pays peuplé d'Europe",
+                "Un désert sans habitants",
+                "Une île seule",
+                "Un territoire sans villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Espagne compte des millions d'habitants et de grandes villes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En espagnol, le pays s'appelle :",
+              "options": ["España", "France", "Italia", "Deutschland"],
+              "correctAnswers": [0],
+              "explanation": "España = Espagne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Madrid et ses symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Madrid est connue pour plusieurs repères. Lesquels sont exacts ?",
+              "options": [
+                "Le musée du Prado",
+                "La place Puerta del Sol",
+                "La tour Eiffel",
+                "Le Big Ben"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Prado et Puerta del Sol sont à Madrid ; Eiffel et Big Ben ne le sont pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puerta del Sol » signifie :",
+              "options": [
+                "Porte du Soleil",
+                "Porte de la Lune",
+                "Pont du Nord",
+                "Place de la Pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puerta = porte ; Sol = soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le Prado expose surtout :",
+              "options": [
+                "Des œuvres d'art (peintures)",
+                "Des voitures",
+                "Des poissons vivants",
+                "Des fusées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un grand musée de peinture et sculpture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Madrid se situe :",
+              "options": [
+                "Au centre de l'Espagne",
+                "Au pôle Nord",
+                "En Asie",
+                "En Océanie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Madrid est une capitale centrale sur la Meseta."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Museo del Prado » est :",
+              "options": [
+                "Un musée",
+                "Un stade de foot",
+                "Une plage",
+                "Une gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Museo = musée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un artiste espagnol célèbre au Prado :",
+              "options": [
+                "Velázquez",
+                "Mozart",
+                "Picasso seulement né à Madrid",
+                "Shakespeare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Velázquez est une figure majeure du Prado."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le parc du Retiro est :",
+              "options": [
+                "Un grand parc madrilène",
+                "Un volcan",
+                "Un aéroport",
+                "Un desert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "El Retiro est un parc connu à Madrid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Real » dans « Real Madrid » (club) évoque :",
+              "options": [
+                "Royal (historique)",
+                "Réel en anglais seulement",
+                "Route",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Real = royal, titre lié à la monarchie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Madrid est la capitale depuis longtemps ; elle concentre :",
+              "options": [
+                "Institutions politiques et culture",
+                "Uniquement des plages",
+                "La banque du Japon",
+                "Le parlement britannique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale = gouvernement, musées, vie culturelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour situer Madrid sur une carte d'Espagne, on la place :",
+              "options": [
+                "Au centre",
+                "À l'extrême nord de la Scandinavie",
+                "Dans les Canaries seulement",
+                "En Amérique du Sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Madrid est au centre de la péninsule."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Barcelone et la Catalogne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Barcelone est la capitale de la Catalogne. Quels repères sont vrais ?",
+              "options": [
+                "La Sagrada Família (Gaudí)",
+                "La plage urbaine et le port",
+                "La Statue de la Liberté",
+                "Le Kremlin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sagrada Família et côte méditerranéenne ; Statue de la Liberté et Kremlin ne sont pas à Barcelone."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Barcelone se trouve :",
+              "options": [
+                "Au nord-est de l'Espagne",
+                "Au centre du Sahara",
+                "En Irlande",
+                "Au Japon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barcelone est en Catalogne, bord de Méditerranée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Antoni Gaudí est :",
+              "options": [
+                "Un architecte",
+                "Un footballeur seulement",
+                "Un roi du XVIe siècle",
+                "Un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaudí est architecte moderniste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Sagrada Família » =",
+              "options": ["Basilique célèbre", "Gare", "Stade", "Aéroport"],
+              "correctAnswers": [0],
+              "explanation": "Temple/basilique emblématique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Catalogne, on parle aussi :",
+              "options": ["Catalan", "Chinois", "Hindi", "Finnois"],
+              "correctAnswers": [0],
+              "explanation": "Le catalan est co-officiel en Catalogne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« La Rambla » est :",
+              "options": [
+                "Une avenue très connue",
+                "Une montagne en Alaska",
+                "Un fleuve en France",
+                "Un musée à Londres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Rambla est une promenade célèbre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le Camp Nou est lié au :",
+              "options": [
+                "FC Barcelone (foot)",
+                "Tour de France",
+                "Opéra de Sydney",
+                "NASA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stade du FC Barcelone."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Barcelone a accès à :",
+              "options": [
+                "La mer Méditerranée",
+                "L'océan Arctique",
+                "La mer Morte",
+                "Le lac Baïkal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville côtière méditerranéenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Cataluña » en espagnol =",
+              "options": ["Catalogne", "Castille", "Galice", "Navarre"],
+              "correctAnswers": [0],
+              "explanation": "Cataluña = Catalogne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le modernisme catalan se voit surtout dans :",
+              "options": [
+                "Architecture colorée de Gaudí et autres",
+                "Pyramides d'Égypte",
+                "Temples grecs uniquement",
+                "Igloos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barcelone est riche en modernisme."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Flamenco et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le flamenco est un art espagnol. Il associe souvent :",
+              "options": [
+                "Chant (cante)",
+                "Danse et guitare",
+                "Ski alpin obligatoire",
+                "Origami japonais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Flamenco = cante, baile, toque (guitare) ; pas ski ni origami."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Région très liée au flamenco :",
+              "options": ["Andalousie", "Laponie", "Sibérie", "Hawaii"],
+              "correctAnswers": [0],
+              "explanation": "L'Andalousie (Sud) est le cœur du flamenco."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Baile » en contexte flamenco =",
+              "options": ["Danse", "Ballon", "Bateau", "Bain"],
+              "correctAnswers": [0],
+              "explanation": "Baile = danse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cante » =",
+              "options": ["Chant", "Cantine", "Cent", "Ciment"],
+              "correctAnswers": [0],
+              "explanation": "Cante = chant flamenco."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Instrument souvent présent :",
+              "options": [
+                "Guitare espagnole",
+                "Harpe celtique seule",
+                "Synthétiseur des années 80 uniquement",
+                "Didgeridoo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La guitare accompagne le flamenco."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un lieu pour voir du flamenco :",
+              "options": [
+                "Tablao (salle)",
+                "Piste de ski",
+                "Station spatiale",
+                "Mine de charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tablao propose des spectacles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Séville et Grenade sont en :",
+              "options": ["Andalousie", "Finlande", "Canada", "Inde"],
+              "correctAnswers": [0],
+              "explanation": "Villes andalouses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le flamenco est :",
+              "options": [
+                "Patrimoine culturel reconnu",
+                "Sport olympique officiel",
+                "Langue officielle",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Art inscrit au patrimoine de l'humanité (UNESCO)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Olé » exprime souvent :",
+              "options": [
+                "Encouragement / admiration",
+                "Sommeil",
+                "Froid",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interjection d'enthousiasme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les costumes de flamenco peuvent inclure :",
+              "options": [
+                "Robes aux volants (mujer)",
+                "Uniforme de astronaute",
+                "Armure médiévale complète",
+                "Maillot de rugby seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Robes traditionnelles aux volants."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fêtes et calendrier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En Espagne, certaines fêtes sont nationales ou très connues. Lesquelles ?",
+              "options": [
+                "Semana Santa (processions)",
+                "Feria de Abril à Séville",
+                "Thanksgiving officiel espagnol",
+                "Setsubun japonais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Semana Santa et Feria de Abril sont des repères ; Thanksgiving US et Setsubun ne sont pas fêtes espagnoles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Semana Santa » =",
+              "options": [
+                "Semaine sainte",
+                "Semaine de la science",
+                "Semaine du ski",
+                "Semaine sans soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semana Santa = Semaine sainte avant Pâques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Feria » =",
+              "options": ["Foire / fête", "Fer", "Ferme", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Feria = foire festive."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tomatina (Bunol) est :",
+              "options": [
+                "Une bataille de tomates",
+                "Un examen scolaire",
+                "Un défilé militaire",
+                "Un concours de silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête où l'on se lance des tomates."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« San Fermín » à Pampelune est connu pour :",
+              "options": [
+                "Encierro (courses de taureaux dans les rues)",
+                "Tournoi d'échecs",
+                "Marathon de l'espace",
+                "Festival de neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les encierros sont célèbres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Navidad » =",
+              "options": ["Noël", "Navigation", "Noviembre", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Navidad = Noël."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Reyes » (6 janvier) =",
+              "options": [
+                "Fête des Rois mages",
+                "Fête du travail",
+                "Halloween",
+                "Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Los Reyes Magos apportent des cadeaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Día de la Hispanidad » (12 octobre) commémore :",
+              "options": [
+                "Lien historique avec l'Amérique",
+                "Fin de l'école",
+                "Jour sans musique",
+                "Invention du téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête nationale liée à l'héritage hispanique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Fallas » à Valence sont :",
+              "options": [
+                "Sculptures puis feux en mars",
+                "Matchs de tennis",
+                "Courses de bateaux",
+                "Examen de conduite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fallas = monuments effigies brûlés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Beaucoup de fêtes espagnoles se déroulent :",
+              "options": [
+                "En plein air, dans la rue",
+                "Uniquement dans l'espace",
+                "Sans public",
+                "Sans musique ni danse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rue et la place sont centrales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Gastronomie espagnole",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Plats et habitudes alimentaires en Espagne : lesquels sont corrects ?",
+              "options": [
+                "La paella (riz, origine valencienne)",
+                "Les tapas (petites portions)",
+                "Sushi comme plat national",
+                "Poutine comme tradition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Paella et tapas sont emblématiques ; sushi et poutine ne sont pas espagnols."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Paella » est surtout :",
+              "options": ["Plat de riz", "Soupe froide", "Gâteau", "Boisson"],
+              "correctAnswers": [0],
+              "explanation": "Paella = riz avec garnitures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tapas » =",
+              "options": [
+                "Petites bouchées à partager",
+                "Grandes pizzas uniquement",
+                "Céréales du petit-déjeuner",
+                "Glaces obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tapas = portions à grignoter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Gazpacho » =",
+              "options": [
+                "Soupe froide de tomate",
+                "Chocolat chaud",
+                "Steak",
+                "Pain seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gazpacho andalou froid."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Tortilla española » contient souvent :",
+              "options": [
+                "Pommes de terre et œufs",
+                "Pâtes et ketchup",
+                "Riz et curry",
+                "Poisson cru seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Omelette espagnole aux pommes de terre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Jamón » =",
+              "options": [
+                "Jambon (souvent ibérique)",
+                "Jambon d'eau",
+                "Confiture",
+                "Jus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jamón = jambon sec espagnol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Churros » sont :",
+              "options": [
+                "Beignets allongés",
+                "Légumes verts",
+                "Fromages suisses",
+                "Pois chiches seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Churros frits, souvent avec chocolat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heure typique du déjeuner en Espagne :",
+              "options": [
+                "Plus tard qu'en France (souvent 14-15 h)",
+                "À 6 h du matin",
+                "À minuit seulement",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas décalés par rapport au Nord de l'Europe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Aceite de oliva » =",
+              "options": ["Huile d'olive", "Eau", "Lait", "Vinaigre seul"],
+              "correctAnswers": [0],
+              "explanation": "L'Espagne produit beaucoup d'huile d'olive."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Partager des tapas encourage :",
+              "options": [
+                "Convivialité à table",
+                "Manger sans parler",
+                "Jeter la nourriture",
+                "Ne pas goûter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture sociale des tapas."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Football et sport",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le football est très populaire en Espagne. Repères corrects :",
+              "options": [
+                "La Roja = équipe nationale",
+                "Clubs célèbres : Real Madrid, FC Barcelone",
+                "Le cricket est le sport n°1",
+                "Le sumo est national"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La Roja et grands clubs ; cricket et sumo ne dominent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Fútbol » =",
+              "options": ["Football", "Basket", "Natation", "Golf"],
+              "correctAnswers": [0],
+              "explanation": "Fútbol = football."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« La Roja » désigne :",
+              "options": [
+                "L'équipe nationale espagnole",
+                "Un fromage",
+                "Une rivière",
+                "Un train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surnom pour le maillot rouge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'Espagne a gagné la Coupe du monde en :",
+              "options": ["2010", "1990", "2022", "1950"],
+              "correctAnswers": [0],
+              "explanation": "Victoire en Afrique du Sud 2010."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Liga » renvoie à :",
+              "options": [
+                "Championnat espagnol",
+                "Ligue canadienne",
+                "Ligue de cricket",
+                "Course de Formule 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Liga = première division."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le Clásico oppose :",
+              "options": [
+                "Real Madrid et Barcelone",
+                "Paris et Marseille",
+                "Rome et Milan",
+                "Lyon et Lille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Match historique entre les deux clubs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Baloncesto » =",
+              "options": ["Basket-ball", "Baseball", "Volley", "Handball"],
+              "correctAnswers": [0],
+              "explanation": "Baloncesto = basket."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rafa Nadal est surtout connu pour :",
+              "options": [
+                "Tennis",
+                "Hockey sur glace",
+                "Saut à ski",
+                "Escrime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champion de tennis majeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Estadio » =",
+              "options": ["Stade", "Statue", "Station", "Stratégie"],
+              "correctAnswers": [0],
+              "explanation": "Estadio = stade."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les supporters célèbrent souvent :",
+              "options": [
+                "Buts avec chants et drapeaux",
+                "Silence total obligatoire",
+                "Absence de couleurs",
+                "Interdiction de regarder"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ambiance festive dans les stades."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Art et artistes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Artistes espagnols reconnus mondialement :",
+              "options": [
+                "Pablo Picasso",
+                "Salvador Dalí",
+                "Léonard de Vinci (espagnol)",
+                "Hokusai (espagnol)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Picasso et Dalí sont espagnols ; Vinci est italien, Hokusai japonais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Picasso est surtout :",
+              "options": [
+                "Peintre / artiste plasticien",
+                "Footballeur",
+                "Roi",
+                "Astronaute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure majeure de l'art moderne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dalí est associé au :",
+              "options": [
+                "Surréalisme",
+                "Cubisme seul",
+                "Impressionnisme uniquement",
+                "Art roman médiéval"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dalí = surréalisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Guernica » de Picasso dénonce :",
+              "options": [
+                "Guerre et bombardement",
+                "Fête foraine",
+                "Match de tennis",
+                "Recette de paella"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Œuvre anti-guerre (Guernica 1937)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le musée Reina Sofía (Madrid) expose notamment :",
+              "options": ["Guernica", "Joconde", "Nefertari", "Statue de Zeus"],
+              "correctAnswers": [0],
+              "explanation": "Guernica y est conservée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Goya est :",
+              "options": [
+                "Peintre espagnol des XVIIIe-XIXe",
+                "Chanteur de reggaeton",
+                "Architecte grec",
+                "Sculpteur égyptien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Francisco de Goya, peintre majeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pintura » =",
+              "options": ["Peinture", "Pin", "Piano", "Pizza"],
+              "correctAnswers": [0],
+              "explanation": "Pintura = peinture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Miró est connu pour :",
+              "options": [
+                "Formes colorées abstraites",
+                "Sculptures de glace seulement",
+                "Photos de lune",
+                "Romans policiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joan Miró, peintre moderniste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le musée Dalí se trouve surtout en :",
+              "options": [
+                "Catalogne (Figueres)",
+                "Antarctique",
+                "Sibérie",
+                "Hawaii"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théâtre-musée Dalí à Figueres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'art espagnol enrichit :",
+              "options": [
+                "Patrimoine culturel européen et mondial",
+                "Uniquement le sport",
+                "Rien du tout",
+                "Seulement l'informatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peinture, architecture, flamenco, etc."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Histoire en bref",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères historiques espagnols :",
+              "options": [
+                "Présence romaine et maures (Al-Andalus)",
+                "Expéditions vers les Amériques (XVe-XVIe)",
+                "Indépendance vis-à-vis de la Lune en 2000",
+                "Construction de la Grande Muraille en Espagne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Héritage romain, islamique médiéval, puis âge des explorations ; pas muraille chinoise ni Lune."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Reconquista » désigne :",
+              "options": [
+                "Reconquête chrétienne progressive de la péninsule",
+                "Match de foot",
+                "Recette",
+                "Reconstruction d'un stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus médiéval contre les royaumes musulmans."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Christophe Colomb (soutenu par les Rois catholiques) a ouvert la route vers :",
+              "options": [
+                "Amériques (1492)",
+                "Australie en 1492",
+                "Mars",
+                "Pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyage de 1492 vers les Amériques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Reyes Católicos » =",
+              "options": [
+                "Isabelle de Castille et Ferdinand d'Aragon",
+                "Deux rois du Japon",
+                "Astronautes",
+                "Peintres hollandais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union dynastique fin XVe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'Alhambra est un palais à :",
+              "options": [
+                "Grenade",
+                "Paris",
+                "Moscou",
+                "Caire égyptien seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alhambra = Grenade, Andalousie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Franco a dirigé l'Espagne :",
+              "options": [
+                "Partie du XXe siècle (dictature)",
+                "Au Moyen Âge",
+                "En 2025",
+                "Jamais mentionné à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime franquiste 1939-1975 environ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Depuis les années 1970, l'Espagne est :",
+              "options": [
+                "Démocratie parlementaire",
+                "Monarchie absolue sans lois",
+                "Colonie",
+                "Sans constitution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transition démocratique et monarchie constitutionnelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Imperio español » a laissé :",
+              "options": [
+                "Langue et culture en Amérique latine",
+                "Pyramides en Espagne",
+                "Sumo en Madrid",
+                "Sushi national"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Héritage hispanophone en Amérique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La guerre civile espagnole (1936-1939) :",
+              "options": [
+                "A profondément marqué le XXe siècle",
+                "N'a jamais existé",
+                "S'est passée au pôle Nord",
+                "Était un match de foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conflit majeur avant la Seconde Guerre mondiale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître l'histoire aide à :",
+              "options": [
+                "Comprendre monuments et fêtes actuels",
+                "Oublier la géographie",
+                "Ne plus parler espagnol",
+                "Ignorer les musées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé et présent culturel sont liés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Langues et diversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Espagne est plurilingue. Langues co-officielles ou reconnues dans certaines communautés :",
+              "options": [
+                "Catalan",
+                "Basque (euskera)",
+                "Mandarin obligatoire partout",
+                "Swahili officiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Catalan, basque, galicien etc. ; pas mandarin ni swahili."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Castellano » =",
+              "options": [
+                "Espagnol standard",
+                "Castor",
+                "Castille seulement sans langue",
+                "Cat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Castellano = espagnol."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Gallego » se parle en :",
+              "options": ["Galice", "Madrid centre", "Sahara", "Pôle Nord"],
+              "correctAnswers": [0],
+              "explanation": "Galice = nord-ouest."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le basque est :",
+              "options": [
+                "Langue non indo-européenne",
+                "Dialecte arabe",
+                "Langue inventée en 2020",
+                "Identique au français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Euskera est isolée linguistiquement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les Canaries parlent surtout :",
+              "options": [
+                "Espagnol",
+                "Japonais",
+                "Latin classique seul",
+                "Quechua"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Archipel espagnol, espagnol dominant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Comunidad autónoma » =",
+              "options": [
+                "Communauté autonome (région)",
+                "Communauté de voisins",
+                "Communisme",
+                "Commissariat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Division administrative de l'Espagne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À l'école en France, on apprend surtout :",
+              "options": [
+                "Castillan (espagnol)",
+                "Toutes les langues régionales d'Espagne dès la 6e",
+                "Aucune langue",
+                "Le basque obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 6e, l'espagnol standard est la base."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Respecter la diversité linguistique, c'est :",
+              "options": [
+                "Reconnaître plusieurs cultures en Espagne",
+                "Interdire l'espagnol",
+                "Ne parler qu'une rue",
+                "Effacer le catalan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plurilinguisme = richesse culturelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Signes bilingues (espagnol/catalan) se voient surtout en :",
+              "options": ["Catalogne", "Lune", "Antarctique", "Mer du Nord"],
+              "correctAnswers": [0],
+              "explanation": "Catalogne bilingue fréquente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Apprendre l'espagnol en 6e permet plus tard de :",
+              "options": [
+                "Communiquer avec des millions de locuteurs",
+                "Parler uniquement aux poissons",
+                "Ne jamais voyager",
+                "Oublier le français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue mondiale, utile pour échanges."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2548 @@
+{
+  "id": "3e-chinois-02",
+  "year": "3e",
+  "subject": "chinois",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Parents et fratrie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Comment dit-on « père » et « mère » en chinois ? (deux réponses correctes)",
+              "type": "multiple_choice",
+              "options": [
+                "爸爸 (bàba)",
+                "妈妈 (māma)",
+                "哥哥 (gēge)",
+                "老师 (lǎoshī)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "爸爸 signifie papa et 妈妈 signifie maman ; ce sont les mots les plus courants pour parler de ses parents."
+            },
+            {
+              "id": "q2",
+              "question": "哥哥 (gēge) désigne :",
+              "type": "single_choice",
+              "options": [
+                "le grand frère",
+                "la grande sœur",
+                "le petit frère",
+                "l'oncle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哥哥 = grand frère aîné ; 弟弟 serait le petit frère."
+            },
+            {
+              "id": "q3",
+              "question": "妹妹 (mèimei) signifie :",
+              "type": "single_choice",
+              "options": ["la petite sœur", "la mère", "la tante", "l'amie"],
+              "correctAnswers": [0],
+              "explanation": "妹妹 = petite sœur ; 姐姐 = grande sœur."
+            },
+            {
+              "id": "q4",
+              "question": "Pour dire « ma famille », on dit :",
+              "type": "single_choice",
+              "options": [
+                "我的家 (wǒ de jiā)",
+                "我的学校",
+                "我的书",
+                "我的朋友"
+              ],
+              "correctAnswers": [0],
+              "explanation": "家 (jiā) = maison / famille ; 我的家 = ma famille (ou ma maison)."
+            },
+            {
+              "id": "q5",
+              "question": "Combien de personnes dans 三口之家 (sān kǒu zhī jiā) ?",
+              "type": "single_choice",
+              "options": ["trois", "deux", "quatre", "cinq"],
+              "correctAnswers": [0],
+              "explanation": "三口 = trois bouches (trois personnes) ; 之家 = famille de."
+            },
+            {
+              "id": "q6",
+              "question": "爷爷 (yéye) est :",
+              "type": "single_choice",
+              "options": [
+                "le grand-père paternel",
+                "le père",
+                "le frère",
+                "le professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "爷爷 = grand-père (côté père) ; 奶奶 = grand-mère paternelle."
+            },
+            {
+              "id": "q7",
+              "question": "« Nous sommes une famille de quatre » se dit :",
+              "type": "single_choice",
+              "options": ["我们是四口人", "我们是三个人", "我是学生", "他在家"],
+              "correctAnswers": [0],
+              "explanation": "四口人 = quatre personnes (dans la famille) ; 我们 = nous."
+            },
+            {
+              "id": "q8",
+              "question": "孩子 (háizi) signifie :",
+              "type": "single_choice",
+              "options": ["enfant", "parent", "cousin", "voisin"],
+              "correctAnswers": [0],
+              "explanation": "孩子 = enfant ; souvent utilisé au pluriel pour « les enfants »."
+            },
+            {
+              "id": "q9",
+              "question": "Pour présenter ton frère : 这是我哥哥 (Zhè shì wǒ gēge) =",
+              "type": "single_choice",
+              "options": [
+                "Voici mon grand frère",
+                "Voici ma sœur",
+                "Voici mon père",
+                "Voici mon ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这是 = voici ; 我 = mon ; 哥哥 = grand frère."
+            },
+            {
+              "id": "q10",
+              "question": "父母 (fùmǔ) désigne :",
+              "type": "single_choice",
+              "options": [
+                "les parents (père et mère)",
+                "les grands-parents",
+                "les frères",
+                "les voisins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "父母 = père et mère réunis, les parents."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Maison et repas",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent des pièces de la maison ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["厨房 (chúfáng)", "卧室 (wòshì)", "足球", "数学"],
+              "correctAnswers": [0, 1],
+              "explanation": "厨房 = cuisine ; 卧室 = chambre à coucher."
+            },
+            {
+              "id": "q2",
+              "question": "吃饭 (chīfàn) signifie :",
+              "type": "single_choice",
+              "options": [
+                "prendre un repas",
+                "faire du sport",
+                "dormir",
+                "étudier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吃 = manger ; 饭 = riz / repas."
+            },
+            {
+              "id": "q3",
+              "question": "在家 (zài jiā) =",
+              "type": "single_choice",
+              "options": ["à la maison", "à l'école", "au parc", "en classe"],
+              "correctAnswers": [0],
+              "explanation": "在 = être à ; 家 = maison."
+            },
+            {
+              "id": "q4",
+              "question": "早饭 (zǎofàn) c'est :",
+              "type": "single_choice",
+              "options": [
+                "le petit-déjeuner",
+                "le déjeuner",
+                "le dîner",
+                "le goûter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "早 = matin ; 饭 = repas → petit-déjeuner."
+            },
+            {
+              "id": "q5",
+              "question": "爸爸在家做饭 (bàba zài jiā zuò fàn) :",
+              "type": "single_choice",
+              "options": [
+                "Papa cuisine à la maison",
+                "Papa est au lycée",
+                "Papa joue au foot",
+                "Papa dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "做饭 = préparer / cuisiner un repas."
+            },
+            {
+              "id": "q6",
+              "question": "房间 (fángjiān) =",
+              "type": "single_choice",
+              "options": [
+                "chambre / pièce",
+                "jardin",
+                "couloir du lycée",
+                "cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "房间 = pièce (d'une maison)."
+            },
+            {
+              "id": "q7",
+              "question": "一起 (yīqǐ) s'utilise pour :",
+              "type": "single_choice",
+              "options": ["« ensemble »", "« seul »", "« jamais »", "« hier »"],
+              "correctAnswers": [0],
+              "explanation": "一起吃饭 = manger ensemble."
+            },
+            {
+              "id": "q8",
+              "question": "晚饭 (wǎnfàn) =",
+              "type": "single_choice",
+              "options": ["dîner", "déjeuner", "collation", "petit-déjeuner"],
+              "correctAnswers": [0],
+              "explanation": "晚 = soir ; 饭 = repas."
+            },
+            {
+              "id": "q9",
+              "question": "帮妈妈 (bāng māma) signifie :",
+              "type": "single_choice",
+              "options": [
+                "aider maman",
+                "appeler maman",
+                "voir maman",
+                "quitter maman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "帮 = aider."
+            },
+            {
+              "id": "q10",
+              "question": "桌子 (zhuōzi) est un classificateur pour :",
+              "type": "single_choice",
+              "options": [
+                "une table (meuble)",
+                "une personne",
+                "un livre",
+                "une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "桌子 = table ; 一张桌子 = une table (张 pour objets plats)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Au lycée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots concernent le lycée ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["中学 (zhōngxué)", "同学 (tóngxué)", "爷爷", "晚饭"],
+              "correctAnswers": [0, 1],
+              "explanation": "中学 = collège / lycée ; 同学 = camarade de classe."
+            },
+            {
+              "id": "q2",
+              "question": "我是中学生 (wǒ shì zhōngxuéshēng) =",
+              "type": "single_choice",
+              "options": [
+                "Je suis élève au collège/lycée",
+                "Je suis professeur",
+                "Je suis à la maison",
+                "Je suis enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中学生 = élève du secondaire."
+            },
+            {
+              "id": "q3",
+              "question": "教室 (jiàoshì) =",
+              "type": "single_choice",
+              "options": [
+                "salle de classe",
+                "cantine",
+                "gymnase",
+                "bibliothèque municipale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "教 = enseigner ; 室 = salle."
+            },
+            {
+              "id": "q4",
+              "question": "上课 (shàngkè) signifie :",
+              "type": "single_choice",
+              "options": [
+                "avoir cours / commencer le cours",
+                "finir l'école",
+                "manger",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上 = monter / commencer ; 课 = cours."
+            },
+            {
+              "id": "q5",
+              "question": "下课 (xiàkè) =",
+              "type": "single_choice",
+              "options": [
+                "fin de cours",
+                "début de cours",
+                "vacances",
+                "examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下 = descendre / terminer ; 课 = cours."
+            },
+            {
+              "id": "q6",
+              "question": "校长 (xiàozhǎng) est :",
+              "type": "single_choice",
+              "options": [
+                "le proviseur / directeur",
+                "un élève",
+                "un parent",
+                "un cousin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "校 = établissement scolaire ; 长 = chef."
+            },
+            {
+              "id": "q7",
+              "question": "考试 (kǎoshì) =",
+              "type": "single_choice",
+              "options": ["examen / contrôle", "récréation", "sport", "repas"],
+              "correctAnswers": [0],
+              "explanation": "考 = passer un examen ; 试 = test."
+            },
+            {
+              "id": "q8",
+              "question": "我八点上课 (bā diǎn shàngkè) : l'élève :",
+              "type": "single_choice",
+              "options": [
+                "a cours à 8 h",
+                "mange à 8 h",
+                "dort à 8 h",
+                "joue à 8 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "八点 = huit heures ; 点 marque l'heure."
+            },
+            {
+              "id": "q9",
+              "question": "作业 (zuòyè) =",
+              "type": "single_choice",
+              "options": ["devoirs", "jeux", "films", "vacances"],
+              "correctAnswers": [0],
+              "explanation": "做 = faire ; 业 = travail → devoirs."
+            },
+            {
+              "id": "q10",
+              "question": "图书馆 (túshūguǎn) se trouve souvent :",
+              "type": "single_choice",
+              "options": [
+                "au lycée ou en ville pour lire",
+                "dans la cuisine",
+                "sur le terrain de foot",
+                "dans la chambre des parents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "图书馆 = bibliothèque."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Matières et études",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux matières scolaires en chinois :",
+              "type": "multiple_choice",
+              "options": ["数学 (shùxué)", "英语 (yīngyǔ)", "足球", "爸爸"],
+              "correctAnswers": [0, 1],
+              "explanation": "数学 = maths ; 英语 = anglais (langue étrangère au lycée)."
+            },
+            {
+              "id": "q2",
+              "question": "历史 (lìshǐ) =",
+              "type": "single_choice",
+              "options": ["histoire", "géographie", "physique", "musique"],
+              "correctAnswers": [0],
+              "explanation": "历史 = histoire (matière)."
+            },
+            {
+              "id": "q3",
+              "question": "我喜欢学中文 (xué Zhōngwén) =",
+              "type": "single_choice",
+              "options": [
+                "J'aime apprendre le chinois",
+                "Je déteste le lycée",
+                "Je mange du riz",
+                "Je joue au basket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学 = apprendre ; 中文 = chinois."
+            },
+            {
+              "id": "q4",
+              "question": "难 (nán) dans 这道题很难 :",
+              "type": "single_choice",
+              "options": ["difficile", "facile", "long", "court"],
+              "correctAnswers": [0],
+              "explanation": "难 = difficile ; 容易 = facile."
+            },
+            {
+              "id": "q5",
+              "question": "笔记本 (bǐjìběn) se compte avec :",
+              "type": "single_choice",
+              "options": ["本 (běn)", "个 (gè)", "条 (tiáo)", "位 (wèi)"],
+              "correctAnswers": [0],
+              "explanation": "本 est le classificateur des cahiers et livres."
+            },
+            {
+              "id": "q6",
+              "question": "认真 (rènzhēn) décrit un élève :",
+              "type": "single_choice",
+              "options": [
+                "sérieux / appliqué",
+                "paresseux",
+                "en retard",
+                "absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "认真学习 = étudier sérieusement."
+            },
+            {
+              "id": "q7",
+              "question": "成绩 (chéngjì) =",
+              "type": "single_choice",
+              "options": ["résultats / notes", "classe", "professeur", "pause"],
+              "correctAnswers": [0],
+              "explanation": "成绩 = résultats scolaires."
+            },
+            {
+              "id": "q8",
+              "question": "物理 (wùlǐ) est une matière :",
+              "type": "single_choice",
+              "options": [
+                "sciences physiques",
+                "arts plastiques",
+                "EPS seulement",
+                "cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "物理 = physique (au lycée)."
+            },
+            {
+              "id": "q9",
+              "question": "请打开书 (qǐng dǎkāi shū) : le professeur demande :",
+              "type": "single_choice",
+              "options": [
+                "d'ouvrir le livre",
+                "de fermer la porte",
+                "de courir",
+                "de dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "打开 = ouvrir ; 书 = livre."
+            },
+            {
+              "id": "q10",
+              "question": "化学 (huàxué) =",
+              "type": "single_choice",
+              "options": ["chimie", "chinois", "sport", "théâtre"],
+              "correctAnswers": [0],
+              "explanation": "化学 = chimie."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Professeurs et camarades",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux façons de parler d'une personne à l'école :",
+              "type": "multiple_choice",
+              "options": ["老师 (lǎoshī)", "同学 (tóngxué)", "桌子", "了"],
+              "correctAnswers": [0, 1],
+              "explanation": "老师 = professeur ; 同学 = camarade de classe."
+            },
+            {
+              "id": "q2",
+              "question": "我们的语文老师很严格 (yán gé) : le prof est :",
+              "type": "single_choice",
+              "options": ["strict", "drôle", "absent", "jeune enfant"],
+              "correctAnswers": [0],
+              "explanation": "严格 = strict / exigeant."
+            },
+            {
+              "id": "q3",
+              "question": "问 (wèn) dans 我问老师 :",
+              "type": "single_choice",
+              "options": [
+                "demander (une question)",
+                "répondre",
+                "crier",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "问 = poser une question."
+            },
+            {
+              "id": "q4",
+              "question": "位 (wèi) s'utilise poliment pour :",
+              "type": "single_choice",
+              "options": [
+                "compter les personnes",
+                "compter les livres",
+                "compter les heures",
+                "compter les matchs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一位老师 = un professeur (classificateur poli)."
+            },
+            {
+              "id": "q5",
+              "question": "我最好的朋友是我的同学 : 最好 =",
+              "type": "single_choice",
+              "options": [
+                "le/la meilleur(e)",
+                "le pire",
+                "le premier cours",
+                "le dernier repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最好 = le meilleur / la meilleure."
+            },
+            {
+              "id": "q6",
+              "question": "帮助 (bāngzhù) =",
+              "type": "single_choice",
+              "options": ["aider", "quitter", "oublier", "cacher"],
+              "correctAnswers": [0],
+              "explanation": "帮助同学 = aider un camarade."
+            },
+            {
+              "id": "q7",
+              "question": "讨论 (tǎolùn) en groupe en classe :",
+              "type": "single_choice",
+              "options": ["discuter", "manger", "nager", "chanter seul"],
+              "correctAnswers": [0],
+              "explanation": "讨论 = discuter, débattre."
+            },
+            {
+              "id": "q8",
+              "question": "班长 (bānzhǎng) =",
+              "type": "single_choice",
+              "options": [
+                "délégué de classe",
+                "proviseur",
+                "parent",
+                "grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "班 = classe ; 长 = responsable."
+            },
+            {
+              "id": "q9",
+              "question": "谢谢你的帮助 (xièxie nǐ de bāngzhù) =",
+              "type": "single_choice",
+              "options": [
+                "Merci pour ton aide",
+                "Bonjour professeur",
+                "À demain",
+                "Je suis malade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢谢 = merci ; 帮助 = aide."
+            },
+            {
+              "id": "q10",
+              "question": "新同学 (xīn tóngxué) =",
+              "type": "single_choice",
+              "options": [
+                "nouveau / nouvelle camarade",
+                "ancien professeur",
+                "petit frère",
+                "voisin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "新 = nouveau ; 同学 = camarade."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Sport et mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux activités sportives :",
+              "type": "multiple_choice",
+              "options": [
+                "打篮球 (dǎ lánqiú)",
+                "游泳 (yóuyǒng)",
+                "做饭",
+                "考试"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "打篮球 = jouer au basket ; 游泳 = nager."
+            },
+            {
+              "id": "q2",
+              "question": "跑步 (pǎobù) =",
+              "type": "single_choice",
+              "options": ["courir / course à pied", "dormir", "lire", "écrire"],
+              "correctAnswers": [0],
+              "explanation": "跑 = courir ; 步 = pas."
+            },
+            {
+              "id": "q3",
+              "question": "体育场 (tǐyùchǎng) =",
+              "type": "single_choice",
+              "options": [
+                "stade / terrain de sport",
+                "salle de classe",
+                "cuisine",
+                "chambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "体育 = éducation physique ; 场 = terrain."
+            },
+            {
+              "id": "q4",
+              "question": "我每个周末踢足球 (tī zúqiú) :",
+              "type": "single_choice",
+              "options": [
+                "Je joue au foot chaque week-end",
+                "Je fais mes devoirs le lundi",
+                "Je dors à huit heures",
+                "Je cuisine avec papa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "踢足球 = jouer au football."
+            },
+            {
+              "id": "q5",
+              "question": "队 (duì) dans 篮球队 :",
+              "type": "single_choice",
+              "options": ["équipe", "livre", "heure", "repas"],
+              "correctAnswers": [0],
+              "explanation": "篮球队 = équipe de basket."
+            },
+            {
+              "id": "q6",
+              "question": "锻炼 (duànliàn) =",
+              "type": "single_choice",
+              "options": [
+                "s'entraîner / faire de l'exercice",
+                "regarder la télé",
+                "manger des bonbons",
+                "rester assis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "锻炼身体 = faire de l'exercice physique."
+            },
+            {
+              "id": "q7",
+              "question": "赢 (yíng) opposé de 输 (shū) :",
+              "type": "single_choice",
+              "options": ["gagner", "perdre", "nager", "courir"],
+              "correctAnswers": [0],
+              "explanation": "赢 = gagner ; 输 = perdre."
+            },
+            {
+              "id": "q8",
+              "question": "羽毛球 (yǔmáoqiú) =",
+              "type": "single_choice",
+              "options": ["badminton", "tennis de table", "rugby", "ski"],
+              "correctAnswers": [0],
+              "explanation": "羽毛球 = badminton (sport loisir fréquent)."
+            },
+            {
+              "id": "q9",
+              "question": "运动后我很渴 (kě) :",
+              "type": "single_choice",
+              "options": [
+                "J'ai soif après le sport",
+                "J'ai faim le matin",
+                "Je suis fatigué de lire",
+                "Je suis content à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "渴 = avoir soif."
+            },
+            {
+              "id": "q10",
+              "question": "加油 (jiāyóu) sur un match signifie souvent :",
+              "type": "single_choice",
+              "options": [
+                "Allez ! / Courage !",
+                "Arrête",
+                "Rentre à la maison",
+                "Silence en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "加油 = encouragement (« vas-y »)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Musique, lecture et écrans",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux loisirs calmes :",
+              "type": "multiple_choice",
+              "options": [
+                "看书 (kàn shū)",
+                "听音乐 (tīng yīnyuè)",
+                "踢足球",
+                "考试"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "看书 = lire ; 听音乐 = écouter de la musique."
+            },
+            {
+              "id": "q2",
+              "question": "电影 (diànyǐng) =",
+              "type": "single_choice",
+              "options": ["film", "chanson", "roman seulement", "devoir"],
+              "correctAnswers": [0],
+              "explanation": "电影 = film ; 看电影 = aller au cinéma / regarder un film."
+            },
+            {
+              "id": "q3",
+              "question": "我周末常常上网 (shàngwǎng) :",
+              "type": "single_choice",
+              "options": [
+                "Je vais souvent sur Internet le week-end",
+                "Je nage le lundi",
+                "Je dors en classe",
+                "Je cuisine avec maman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上网 = se connecter à Internet."
+            },
+            {
+              "id": "q4",
+              "question": "游戏 (yóuxì) peut désigner :",
+              "type": "single_choice",
+              "options": [
+                "jeu (vidéo ou autre)",
+                "examen",
+                "classe",
+                "grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "游戏 = jeu ; 电子游戏 = jeu vidéo."
+            },
+            {
+              "id": "q5",
+              "question": "画画 (huàhuà) =",
+              "type": "single_choice",
+              "options": ["dessiner", "chanter", "courir", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "画 = dessiner (répété pour l'activité)."
+            },
+            {
+              "id": "q6",
+              "question": "小说 (xiǎoshuō) se lit avec :",
+              "type": "single_choice",
+              "options": ["本 (běn)", "条 (tiáo)", "位 (wèi)", "口 (kǒu)"],
+              "correctAnswers": [0],
+              "explanation": "一本小说 = un roman (classificateur 本)."
+            },
+            {
+              "id": "q7",
+              "question": "无聊 (wúliáo) : un élève dit 今天很无聊 quand :",
+              "type": "single_choice",
+              "options": [
+                "il s'ennuie",
+                "il est très heureux",
+                "il a beaucoup de devoirs",
+                "il gagne un match"
+              ],
+              "correctAnswers": [0],
+              "explanation": "无聊 = s'ennuyer / ennuyeux."
+            },
+            {
+              "id": "q8",
+              "question": "摄影 (shèyǐng) =",
+              "type": "single_choice",
+              "options": ["photographie", "natation", "maths", "histoire"],
+              "correctAnswers": [0],
+              "explanation": "摄影 = photographie (loisir créatif)."
+            },
+            {
+              "id": "q9",
+              "question": "别玩太久游戏 (bié wán tài jiǔ) : les parents demandent :",
+              "type": "single_choice",
+              "options": [
+                "de ne pas jouer trop longtemps",
+                "de manger plus",
+                "de courir plus vite",
+                "de dormir à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别 = ne pas ; 太久 = trop longtemps."
+            },
+            {
+              "id": "q10",
+              "question": "兴趣 (xìngqù) =",
+              "type": "single_choice",
+              "options": [
+                "centre d'intérêt / hobby",
+                "punition",
+                "cloche",
+                "cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "兴趣爱好 = centres d'intérêt."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Sorties et amis",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux lieux de sortie :",
+              "type": "multiple_choice",
+              "options": [
+                "公园 (gōngyuán)",
+                "商场 (shāngchǎng)",
+                "教室",
+                "作业"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "公园 = parc ; 商场 = centre commercial."
+            },
+            {
+              "id": "q2",
+              "question": "朋友 (péngyou) =",
+              "type": "single_choice",
+              "options": [
+                "ami / amie",
+                "professeur",
+                "frère",
+                "cousin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "朋友 = ami(e) ; 好朋友 = bon(ne) ami(e)."
+            },
+            {
+              "id": "q3",
+              "question": "见面 (jiànmiàn) =",
+              "type": "single_choice",
+              "options": [
+                "se retrouver / se voir",
+                " téléphoner",
+                "écrire un devoir",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟朋友们见面 = retrouver des amis."
+            },
+            {
+              "id": "q4",
+              "question": "周末我们去逛街 (guàngjiē) :",
+              "type": "single_choice",
+              "options": [
+                "Nous faisons les magasins le week-end",
+                "Nous avons cours le samedi matin",
+                "Nous mangeons à la cantine",
+                "Nous passons un examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "逛街 = flâner / faire les boutiques."
+            },
+            {
+              "id": "q5",
+              "question": "邀请 (yāoqǐng) =",
+              "type": "single_choice",
+              "options": ["inviter", "refuser", "oublier", "punir"],
+              "correctAnswers": [0],
+              "explanation": "邀请朋友 = inviter des amis."
+            },
+            {
+              "id": "q6",
+              "question": "咖啡 (kāfēi) : au café avec des amis on peut :",
+              "type": "single_choice",
+              "options": [
+                "boire un café et discuter",
+                "passer un examen de maths",
+                "faire du basket en salle de classe",
+                "dormir en cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "咖啡馆 = café (lieu) ; loisir social au lycée."
+            },
+            {
+              "id": "q7",
+              "question": "生日派对 (shēngrì pàiduì) =",
+              "type": "single_choice",
+              "options": [
+                "fête d'anniversaire",
+                "rentrée scolaire",
+                "match de foot",
+                "devoir maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "生日 = anniversaire ; 派对 = fête."
+            },
+            {
+              "id": "q8",
+              "question": "等一下 (děng yīxià) =",
+              "type": "single_choice",
+              "options": [
+                "Attends un moment",
+                "Au revoir",
+                "Bon appétit",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "等 = attendre ; 一下 = un instant."
+            },
+            {
+              "id": "q9",
+              "question": "约定 (yuēdìng) avec un ami :",
+              "type": "single_choice",
+              "options": [
+                "fixer un rendez-vous",
+                "annuler l'école",
+                "manger seul",
+                "dormir en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "约定 = convenir d'un rendez-vous."
+            },
+            {
+              "id": "q10",
+              "question": "玩得很开心 (wán de hěn kāixīn) =",
+              "type": "single_choice",
+              "options": [
+                "S'amuser beaucoup",
+                "Être très triste",
+                "Avoir peur de l'examen",
+                "Rater le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开心 = content / joyeux."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Routine et week-end",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux mots de fréquence :",
+              "type": "multiple_choice",
+              "options": [
+                "常常 (chángcháng)",
+                "有时候 (yǒu shíhou)",
+                "桌子",
+                "化学"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "常常 = souvent ; 有时候 = parfois."
+            },
+            {
+              "id": "q2",
+              "question": "周末 (zhōumò) =",
+              "type": "single_choice",
+              "options": [
+                "week-end",
+                "lundi matin",
+                "vacances d'été seules",
+                "heure de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "周末 = week-end (samedi-dimanche)."
+            },
+            {
+              "id": "q3",
+              "question": "我七点起床 (qǐchuáng) le matin :",
+              "type": "single_choice",
+              "options": [
+                "Je me lève à sept heures",
+                "Je me couche à sept heures",
+                "J'ai cours à sept heures du soir seulement",
+                "Je mange à sept heures la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "起床 = se lever."
+            },
+            {
+              "id": "q4",
+              "question": "睡觉 (shuìjiào) =",
+              "type": "single_choice",
+              "options": ["dormir", "manger", "courir", "lire un roman"],
+              "correctAnswers": [0],
+              "explanation": "睡觉 = dormir ; 十点睡觉 = se coucher à dix heures."
+            },
+            {
+              "id": "q5",
+              "question": "先…再… (xiān… zài…) exprime :",
+              "type": "single_choice",
+              "options": [
+                "d'abord… ensuite…",
+                "jamais… toujours…",
+                "hier… demain…",
+                "seul… ensemble…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先做作业再玩 = d'abord les devoirs, ensuite jouer."
+            },
+            {
+              "id": "q6",
+              "question": "打扫房间 (dǎsǎo fángjiān) le samedi :",
+              "type": "single_choice",
+              "options": [
+                "nettoyer sa chambre",
+                "jouer au parc",
+                "passer un examen",
+                "nager en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "打扫 = nettoyer."
+            },
+            {
+              "id": "q7",
+              "question": "通常 (tōngcháng) =",
+              "type": "single_choice",
+              "options": [
+                "d'habitude / en général",
+                "jamais",
+                "une seule fois",
+                "tout de suite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我通常七点吃早饭 = d'habitude je petit-déjeune à sept heures."
+            },
+            {
+              "id": "q8",
+              "question": "休息 (xiūxi) après une semaine de lycée :",
+              "type": "single_choice",
+              "options": [
+                "se reposer",
+                "étudier sans pause",
+                "courir un marathon en classe",
+                "écrire dix examens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "休息 = se reposer."
+            },
+            {
+              "id": "q9",
+              "question": "帮家里做家务 (jiāwù) =",
+              "type": "single_choice",
+              "options": [
+                "aider aux tâches ménagères",
+                "quitter la maison",
+                "acheter un lycée",
+                "oublier ses amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "家务 = travaux ménagers."
+            },
+            {
+              "id": "q10",
+              "question": "明天 (míngtiān) par rapport à 今天 (jīntiān) :",
+              "type": "single_choice",
+              "options": [
+                "demain / aujourd'hui",
+                "hier / demain",
+                "semaine / mois",
+                "matin / soir seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今天 = aujourd'hui ; 明天 = demain."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse famille-école-loisirs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux phrases sur la vie quotidienne au lycée :",
+              "type": "multiple_choice",
+              "options": [
+                "我下午踢足球",
+                "晚上我帮妈妈做饭",
+                "我是桌子",
+                "了是书"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Activités loisir l'après-midi et aide à la maison le soir — vie de 3e."
+            },
+            {
+              "id": "q2",
+              "question": "平衡 (pínghéng) études et loisirs :",
+              "type": "single_choice",
+              "options": [
+                "équilibre",
+                "guerre",
+                "sommeil seulement",
+                "examen raté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "平衡 = équilibre (important au collège/lycée)."
+            },
+            {
+              "id": "q3",
+              "question": "三个同学 (sān gè tóngxué) utilise le classificateur :",
+              "type": "single_choice",
+              "options": ["个 (gè)", "本 (běn)", "张 (zhāng)", "条 (tiáo)"],
+              "correctAnswers": [0],
+              "explanation": "个 compte les camarades (personnes informellement)."
+            },
+            {
+              "id": "q4",
+              "question": "又…又… (yòu… yòu…) : 他又高又帅 décrit :",
+              "type": "single_choice",
+              "options": [
+                "deux qualités à la fois (grand et …)",
+                "deux heures",
+                "deux livres",
+                "deux classificateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "又…又… = à la fois… et… (description)."
+            },
+            {
+              "id": "q5",
+              "question": "忙 (máng) : 最近我很忙 au lycée signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis très occupé(e) en ce moment",
+                "Je suis libre",
+                "Je suis en vacances",
+                "Je ne vais jamais en cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "忙 = occupé."
+            },
+            {
+              "id": "q6",
+              "question": "参加 (cānjiā) 学校的活动 :",
+              "type": "single_choice",
+              "options": [
+                "participer aux activités du lycée",
+                "quitter la famille",
+                "dormir en cours",
+                "refuser tous les amis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "参加 = participer à."
+            },
+            {
+              "id": "q7",
+              "question": "希望 (xīwàng) : 我希望周末不下雨 :",
+              "type": "single_choice",
+              "options": [
+                "J'espère qu'il ne pleuvra pas le week-end",
+                "Je mange à huit heures",
+                "J'ai deux frères",
+                "Le prof est strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "希望 = espérer."
+            },
+            {
+              "id": "q8",
+              "question": "愉快 (yúkuài) 的一天 après école et foot :",
+              "type": "single_choice",
+              "options": [
+                "journée agréable",
+                "journée horrible",
+                "nuit sans dormir",
+                "examen surprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "愉快 = agréable, joyeux."
+            },
+            {
+              "id": "q9",
+              "question": "虽然…但是… (suīrán… dànshì…) :",
+              "type": "single_choice",
+              "options": [
+                "bien que… mais…",
+                "parce que… donc…",
+                "d'abord… ensuite…",
+                "souvent… parfois…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "虽然作业多，但是我周末还是踢球 = Malgré beaucoup de devoirs, je joue quand même au foot."
+            },
+            {
+              "id": "q10",
+              "question": "生活 (shēnghuó) dans 我的生活很充实 :",
+              "type": "single_choice",
+              "options": [
+                "vie (quotidienne)",
+                "livre",
+                "heure",
+                "classificateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "生活 = vie ; 充实 = riche / bien remplie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Dire l'heure",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux façons correctes de lire 3 h :",
+              "type": "multiple_choice",
+              "options": [
+                "三点 (sān diǎn)",
+                "三点钟 (sān diǎn zhōng)",
+                "三个书",
+                "三了"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "点 / 点钟 marquent l'heure ; 三点 = trois heures."
+            },
+            {
+              "id": "q2",
+              "question": "现在几点？ (Xiànzài jǐ diǎn?) demande :",
+              "type": "single_choice",
+              "options": [
+                "Quelle heure est-il ?",
+                "Où es-tu ?",
+                "Comment tu t'appelles ?",
+                "Tu aimes le sport ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "现在 = maintenant ; 几点 = quelle heure."
+            },
+            {
+              "id": "q3",
+              "question": "半 (bàn) dans 八点半 :",
+              "type": "single_choice",
+              "options": [
+                "et demie (8 h 30)",
+                "huit heures pile",
+                "huit minutes",
+                "huit secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "半 = moitié → … et demie."
+            },
+            {
+              "id": "q4",
+              "question": "差 (chà) 十分八点 signifie :",
+              "type": "single_choice",
+              "options": [
+                "7 h 50 (dix minutes avant huit)",
+                "8 h 10",
+                "10 h 08",
+                "8 h pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "差十分八点 = il manque dix minutes pour huit heures."
+            },
+            {
+              "id": "q5",
+              "question": "刻 (kè) = quart d'heure ; 七点三刻 =",
+              "type": "single_choice",
+              "options": ["7 h 45", "7 h 15", "7 h 30", "3 h 07"],
+              "correctAnswers": [0],
+              "explanation": "三刻 = trois quarts d'heure après l'heure."
+            },
+            {
+              "id": "q6",
+              "question": "中午 (zhōngwǔ) =",
+              "type": "single_choice",
+              "options": ["midi", "minuit", "matin", "soir"],
+              "correctAnswers": [0],
+              "explanation": "中午 = midi (repas du lycée souvent à midi)."
+            },
+            {
+              "id": "q7",
+              "question": "我们两点十五分上课 :",
+              "type": "single_choice",
+              "options": [
+                "Le cours commence à 14 h 15",
+                "Le cours finit à 2 h",
+                "Nous mangeons à 2 h du matin",
+                "Nous dormons à 14 h 15"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两点十五分 = deux heures quinze (14 h 15 en format 24 h courant)."
+            },
+            {
+              "id": "q8",
+              "question": "分钟 (fēnzhōng) compte :",
+              "type": "single_choice",
+              "options": [
+                "les minutes",
+                "les livres",
+                "les personnes polies",
+                "les tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "分钟 = minute (durée ou partie de l'heure)."
+            },
+            {
+              "id": "q9",
+              "question": "晚上 (wǎnshang) vs 早上 (zǎoshang) :",
+              "type": "single_choice",
+              "options": [
+                "soir / matin",
+                "midi / minuit",
+                "hier / demain",
+                "lundi / dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晚上 = le soir ; 早上 = le matin."
+            },
+            {
+              "id": "q10",
+              "question": "准时 (zhǔnshí) à l'école :",
+              "type": "single_choice",
+              "options": [
+                "à l'heure / ponctuel",
+                "en retard",
+                "absent",
+                "trop tôt interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "准时到校 = arriver à l'heure au lycée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Matin, après-midi, soir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux moments de la journée :",
+              "type": "multiple_choice",
+              "options": ["下午 (xiàwǔ)", "夜里 (yèlǐ)", "本", "位"],
+              "correctAnswers": [0, 1],
+              "explanation": "下午 = après-midi ; 夜里 = la nuit."
+            },
+            {
+              "id": "q2",
+              "question": "我每天早上七点吃早饭 : 每天 =",
+              "type": "single_choice",
+              "options": ["chaque jour", "chaque année", "une fois", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "每天 = tous les jours."
+            },
+            {
+              "id": "q3",
+              "question": "然后 (ránhòu) dans un récit :",
+              "type": "single_choice",
+              "options": [
+                "ensuite / puis",
+                "avant",
+                "jamais",
+                "maintenant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "然后 enchaîne les actions dans un récit."
+            },
+            {
+              "id": "q4",
+              "question": "放学后 (fàngxué hòu) =",
+              "type": "single_choice",
+              "options": [
+                "après les cours",
+                "avant le petit-déjeuner",
+                "pendant l'examen",
+                "à minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "放学 = fin de l'école ; 后 = après."
+            },
+            {
+              "id": "q5",
+              "question": "刚才 (gāngcái) =",
+              "type": "single_choice",
+              "options": [
+                "à l'instant / tout à l'heure",
+                "demain",
+                "l'année prochaine",
+                "toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 = il y a un instant (passé très proche)."
+            },
+            {
+              "id": "q6",
+              "question": "一会儿 (yīhuìr) =",
+              "type": "single_choice",
+              "options": [
+                "dans un moment / un petit moment",
+                "hier soir",
+                "deux heures pile",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "等我一会儿 = attends un peu."
+            },
+            {
+              "id": "q7",
+              "question": "从…到… (cóng… dào…) 从早上八点到下午四点 :",
+              "type": "single_choice",
+              "options": [
+                "de 8 h du matin à 16 h",
+                "de lundi à mardi seulement",
+                "de la maison au parc sans heure",
+                "de hier à demain sans précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从…到… = de… à… (souvent pour les heures)."
+            },
+            {
+              "id": "q8",
+              "question": "深夜 (shēnyè) un lycéen devrait plutôt :",
+              "type": "single_choice",
+              "options": [
+                "dormir (pas jouer tard)",
+                "avoir cours obligatoire",
+                "manger le petit-déjeuner",
+                "passer l'examen de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "深夜 = profonde nuit — contexte de récit sur les habitudes."
+            },
+            {
+              "id": "q9",
+              "question": "刚才我在图书馆，现在在家 :",
+              "type": "single_choice",
+              "options": [
+                "Il y a un instant j'étais à la bibliothèque, maintenant je suis à la maison",
+                "Demain je serai au lycée",
+                "Je n'ai jamais quitté l'école",
+                "Je cours à huit heures demain matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才…现在… = contraste passé récent / présent."
+            },
+            {
+              "id": "q10",
+              "question": "一天 (yī tiān) dans 我的一天很忙 :",
+              "type": "single_choice",
+              "options": [
+                "une journée",
+                "une heure",
+                "une semaine",
+                "un classificateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一天 = un jour / une journée (récit quotidien)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La particule 了 (le)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "了 marque souvent : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "un changement d'état accompli",
+                "une action terminée (aspect)",
+                "un classificateur pour les livres",
+                "le mot « table »"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "了 exprime le accompli ou un nouveau état — niveau 3e."
+            },
+            {
+              "id": "q2",
+              "question": "我吃了早饭 (Wǒ chī le zǎofàn) =",
+              "type": "single_choice",
+              "options": [
+                "J'ai pris le petit-déjeuner",
+                "Je vais petit-déjeuner demain",
+                "Je ne mange jamais",
+                "Je mange en ce moment sans fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 après le verbe : action accomplie."
+            },
+            {
+              "id": "q3",
+              "question": "他十八岁了 (Tā shíbā suì le) :",
+              "type": "single_choice",
+              "options": [
+                "Il a maintenant dix-huit ans (changement)",
+                "Il aura dix-huit ans dans dix ans",
+                "Il a dix ans",
+                "Il n'a pas d'âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 en fin de phrase : nouvel état (être majeur au lycée)."
+            },
+            {
+              "id": "q4",
+              "question": "下雨了 (Xià yǔ le) =",
+              "type": "single_choice",
+              "options": [
+                "Il se met à pleuvoir / il pleut maintenant",
+                "Il a plu hier seulement sans effet",
+                "Il ne pleut jamais",
+                "Il fait soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement météo — utile pour raconter une sortie annulée."
+            },
+            {
+              "id": "q5",
+              "question": "我做完作业了 :",
+              "type": "single_choice",
+              "options": [
+                "J'ai fini mes devoirs",
+                "Je commence les devoirs",
+                "Je n'ai pas de devoirs",
+                "Je fais du sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "做完…了 = terminer complètement + accompli."
+            },
+            {
+              "id": "q6",
+              "question": "别说了 (Bié shuō le) =",
+              "type": "single_choice",
+              "options": [
+                "Arrête de parler (c'en est assez)",
+                "Parle plus fort",
+                "Répète encore",
+                "Commence à parler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 peut marquer l'arrêt ou l'excès d'une action."
+            },
+            {
+              "id": "q7",
+              "question": "她去医院了 (Tā qù yīyuàn le) :",
+              "type": "single_choice",
+              "options": [
+                "Elle est allée à l'hôpital (départ accompli / elle y est)",
+                "Elle ira l'an prochain",
+                "Elle est au lycée",
+                "Elle mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 indique que le déplacement est réalisé."
+            },
+            {
+              "id": "q8",
+              "question": "没有 (méiyǒu) avec un verbe :",
+              "type": "single_choice",
+              "options": [
+                "négation du passé (n'a pas fait)",
+                "futur certain",
+                "deux classificateurs",
+                "heure pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我没有去 = je n'y suis pas allé (contrasté avec 去了)."
+            },
+            {
+              "id": "q9",
+              "question": "快…了 (kuài… le) 快考试了 :",
+              "type": "single_choice",
+              "options": [
+                "L'examen approche / c'est bientôt",
+                "L'examen est fini depuis longtemps",
+                "Pas d'examen au lycée",
+                "Examen il y a dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "快…了 = sur le point de / bientôt."
+            },
+            {
+              "id": "q10",
+              "question": "我懂了 (Wǒ dǒng le) en cours de chinois :",
+              "type": "single_choice",
+              "options": [
+                "J'ai compris",
+                "Je ne comprends rien",
+                "Je dors",
+                "Je pars jouer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "懂 = comprendre ; 了 = prise de conscience accomplie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Classificateur 个 (gè)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "个 s'emploie souvent avec : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "人 (personnes informellement)",
+                "苹果 (pommes)",
+                "书 (livres — plutôt 本)",
+                "鱼 (poissons — souvent 条)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "个 est le classificateur général ; personnes et pommes sont typiques en 3e."
+            },
+            {
+              "id": "q2",
+              "question": "一个人 (yī gè rén) =",
+              "type": "single_choice",
+              "options": [
+                "une personne",
+                "un livre",
+                "une feuille",
+                "une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 + 人 = une personne."
+            },
+            {
+              "id": "q3",
+              "question": "三个苹果 (sān gè píngguǒ) :",
+              "type": "single_choice",
+              "options": [
+                "trois pommes",
+                "trois livres",
+                "trois professeurs polis",
+                "trois heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 compte les fruits ronds courants."
+            },
+            {
+              "id": "q4",
+              "question": "两个朋友 (liǎng gè péngyou) : 两 (liǎng) s'utilise pour :",
+              "type": "single_choice",
+              "options": [
+                "deux (devant classificateur)",
+                "dix",
+                "cent",
+                "zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两 + classificateur = deux (个 朋友)."
+            },
+            {
+              "id": "q5",
+              "question": "哪个 (nǎ ge) =",
+              "type": "single_choice",
+              "options": ["lequel / laquelle", "tous", "aucun", "hier"],
+              "correctAnswers": [0],
+              "explanation": "哪个 = lequel (choix entre plusieurs)."
+            },
+            {
+              "id": "q6",
+              "question": "有个问题 (yǒu ge wèntí) =",
+              "type": "single_choice",
+              "options": [
+                "Il y a une question (problème)",
+                "Il y a dix heures",
+                "Il y a trois livres",
+                "Il n'y a rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 devant 问题 = une question."
+            },
+            {
+              "id": "q7",
+              "question": "这个比那个大 (zhè ge bǐ nà ge dà) :",
+              "type": "single_choice",
+              "options": [
+                "Celui-ci est plus grand que celui-là",
+                "Demain il pleut",
+                "J'ai fini mes devoirs",
+                "Le cours est à huit heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这个 / 那个 = celui-ci / celui-là (avec 个)."
+            },
+            {
+              "id": "q8",
+              "question": "几个 (jǐ ge) demande :",
+              "type": "single_choice",
+              "options": [
+                "combien (petit nombre) ?",
+                "quelle heure ?",
+                "où ?",
+                "pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几个 = combien (général, quelques)."
+            },
+            {
+              "id": "q9",
+              "question": "每个 (měi ge) 每个学生 :",
+              "type": "single_choice",
+              "options": [
+                "chaque élève",
+                "aucun élève",
+                "deux élèves",
+                "dix heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每个 = chaque."
+            },
+            {
+              "id": "q10",
+              "question": "一个上午 (yī gè shàngwù) =",
+              "type": "single_choice",
+              "options": [
+                "une matinée (durée)",
+                "une minute",
+                "un professeur",
+                "une règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "个 peut marquer un créneau de temps : une matinée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Classificateurs 本 et 张",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "本 et 张 conviennent à : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "本 → 书 / 杂志",
+                "张 → 纸 / 照片",
+                "本 → 人",
+                "张 → 小时"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "本 pour ouvrages reliés ; 张 pour objets plats (papier, photo)."
+            },
+            {
+              "id": "q2",
+              "question": "两本词典 (liǎng běn cídiǎn) =",
+              "type": "single_choice",
+              "options": [
+                "deux dictionnaires",
+                "deux pommes",
+                "deux amis polis",
+                "deux heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "本 + dictionnaire (livre)."
+            },
+            {
+              "id": "q3",
+              "question": "一张纸 (yī zhāng zhǐ) =",
+              "type": "single_choice",
+              "options": [
+                "une feuille de papier",
+                "un livre",
+                "une personne",
+                "une nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "张 + 纸 = feuille de papier (devoirs au lycée)."
+            },
+            {
+              "id": "q4",
+              "question": "这本小说很有意思 :",
+              "type": "single_choice",
+              "options": [
+                "Ce roman est très intéressant",
+                "Cette pomme est chère",
+                "Ce prof est strict",
+                "Cette heure est fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这本 = ce livre (roman)."
+            },
+            {
+              "id": "q5",
+              "question": "三张票 (sān zhāng piào) pour le cinéma :",
+              "type": "single_choice",
+              "options": [
+                "trois billets",
+                "trois livres",
+                "trois profs",
+                "trois matinées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "票 = billet ; 张 pour billets/feuilles."
+            },
+            {
+              "id": "q6",
+              "question": "笔记本用本，照片用张 car :",
+              "type": "single_choice",
+              "options": [
+                "本 = volumes ; 张 = surfaces plates",
+                "本 = personnes ; 张 = heures",
+                "本 et 张 sont identiques",
+                "本 = nuit ; 张 = matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction fondamentale des classificateurs en 3e."
+            },
+            {
+              "id": "q7",
+              "question": "请给我一本书 (qǐng gěi wǒ yī běn shū) :",
+              "type": "single_choice",
+              "options": [
+                "Donne-moi un livre, s'il te plaît",
+                "Donne-moi une heure",
+                "Donne-moi un prof",
+                "Donne-moi trois pommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一本 = un livre."
+            },
+            {
+              "id": "q8",
+              "question": "墙上有一张画 (huà) :",
+              "type": "single_choice",
+              "options": [
+                "Il y a un tableau accroché au mur",
+                "Il y a trois dictionnaires",
+                "Il pleut",
+                "Le cours est fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一张画 = un tableau / une image (plane)."
+            },
+            {
+              "id": "q9",
+              "question": "五本练习册 (liànxícè) pour les cours :",
+              "type": "single_choice",
+              "options": [
+                "cinq cahiers d'exercices",
+                "cinq amis",
+                "cinq minutes seules",
+                "cinq nuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "练习册 = cahier d'exercices (本)."
+            },
+            {
+              "id": "q10",
+              "question": "那张旧照片 (jiù zhàopiàn) dans un récit :",
+              "type": "single_choice",
+              "options": [
+                "cette vieille photo (souvenir)",
+                "ce nouveau livre",
+                "cette heure demain",
+                "ce strict prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "张 + 照片 = photo (raconter le passé)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Classificateurs 位 et 条",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "位 et 条 s'utilisent pour : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "位 → 老师 / 客人 (poli)",
+                "条 → 鱼 / 路",
+                "位 → 纸",
+                "条 → 书"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "位 = personnes (politesse) ; 条 = longs et souples (poisson, route)."
+            },
+            {
+              "id": "q2",
+              "question": "一位年轻的老师 (yī wèi niánqīng de lǎoshī) =",
+              "type": "single_choice",
+              "options": [
+                "un jeune professeur (formule polie)",
+                "un jeune livre",
+                "une jeune feuille",
+                "une heure jeune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "位 marque le respect envers une personne."
+            },
+            {
+              "id": "q3",
+              "question": "一条路 (yī tiáo lù) =",
+              "type": "single_choice",
+              "options": ["une route", "un poisson", "un livre", "une pomme"],
+              "correctAnswers": [0],
+              "explanation": "条 + 路 = route (longue)."
+            },
+            {
+              "id": "q4",
+              "question": "两条鱼 (liǎng tiáo yú) au repas :",
+              "type": "single_choice",
+              "options": [
+                "deux poissons",
+                "deux personnes",
+                "deux cahiers",
+                "deux photos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "条 pour poisson entier allongé."
+            },
+            {
+              "id": "q5",
+              "question": "几位同学？(Jǐ wèi tóngxué?) :",
+              "type": "single_choice",
+              "options": [
+                "Combien de camarades (poli) ?",
+                "Quelle heure ?",
+                "Quel livre ?",
+                "Quelle route ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "位 devant 同学 = formule soignée."
+            },
+            {
+              "id": "q6",
+              "question": "这条裤子 (kùzi) 太长了 :",
+              "type": "single_choice",
+              "options": [
+                "Ce pantalon est trop long",
+                "Ce poisson est trop petit",
+                "Ce prof est trop strict",
+                "Cette heure est trop tôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "条 aussi pour pantalon (objet long)."
+            },
+            {
+              "id": "q7",
+              "question": "请两位客人坐 (qǐng liǎng wèi kèrén zuò) :",
+              "type": "single_choice",
+              "options": [
+                "Veuillez asseoir deux invités",
+                "Deux livres sur la table",
+                "Deux heures de cours",
+                "Deux pommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "客人 = invité ; 位 = politesse."
+            },
+            {
+              "id": "q8",
+              "question": "从学校到公园有一条近路 :",
+              "type": "single_choice",
+              "options": [
+                "Du lycée au parc il y a un raccourci",
+                "Il y a dix poissons en classe",
+                "Le prof est jeune",
+                "J'ai fini mes devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一条近路 = un chemin court (条 + 路)."
+            },
+            {
+              "id": "q9",
+              "question": "位 vs 个 pour un professeur :",
+              "type": "single_choice",
+              "options": [
+                "位 est plus poli que 个",
+                "个 est toujours interdit",
+                "位 sert pour les livres",
+                "个 sert pour les routes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 3e on apprend la politesse avec 位."
+            },
+            {
+              "id": "q10",
+              "question": "三条新闻 (sān tiáo xīnwén) lues sur le téléphone :",
+              "type": "single_choice",
+              "options": [
+                "trois brèves / actus",
+                "trois livres",
+                "trois profs",
+                "trois matinées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "条 pour informations courtes (news)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Décrire une journée type",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Deux verbes pour raconter la journée :",
+              "type": "multiple_choice",
+              "options": [
+                "起床 (se lever)",
+                "复习 (réviser)",
+                "了 (particule seule)",
+                "张 (classificateur seul)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Se lever le matin et réviser — routine lycée."
+            },
+            {
+              "id": "q2",
+              "question": "我一天的生活：早上…中午…晚上… structure :",
+              "type": "single_choice",
+              "options": [
+                "ordre chronologique de la journée",
+                "liste de classificateurs",
+                "négation sans verbe",
+                "questions sans réponse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit quotidien par créneaux."
+            },
+            {
+              "id": "q3",
+              "question": "挤公共汽车 (jǐ gōnggòng qìchē) le matin :",
+              "type": "single_choice",
+              "options": [
+                "prendre le bus bondé",
+                "nager au lycée",
+                "dormir en cours",
+                "manger à minuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "挤 = être serré / bus plein — description réaliste."
+            },
+            {
+              "id": "q4",
+              "question": "午饭在食堂吃 (shítáng) :",
+              "type": "single_choice",
+              "options": [
+                "déjeuner à la cantine",
+                "dîner à la maison seulement",
+                "petit-déjeuner à minuit",
+                "pas de repas au lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "食堂 = cantine scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "认真听讲 (tīngjiǎng) en cours :",
+              "type": "single_choice",
+              "options": [
+                "écouter attentivement le prof",
+                "jouer au téléphone",
+                "courir dans le couloir",
+                "dormir sur la table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听讲 = écouter l'explication du professeur."
+            },
+            {
+              "id": "q6",
+              "question": "有时候在图书馆自习 (zìxí) :",
+              "type": "single_choice",
+              "options": [
+                "parfois réviser seul à la bibliothèque",
+                "toujours jouer au foot",
+                "jamais ouvrir un livre",
+                "dormir en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "自习 = étudier par soi-même."
+            },
+            {
+              "id": "q7",
+              "question": "回家路上 (huí jiā lù shang) =",
+              "type": "single_choice",
+              "options": [
+                "sur le chemin du retour",
+                "dans la salle d'examen",
+                "sur le terrain de basket seulement",
+                "à minuit en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "路上 = en chemin ; récit après le lycée."
+            },
+            {
+              "id": "q8",
+              "question": "帮弟弟辅导功课 (fǔdǎo gōngkè) :",
+              "type": "single_choice",
+              "options": [
+                "aider le petit frère pour les devoirs",
+                "inviter dix profs",
+                "acheter trois poissons",
+                "perdre un match"
+              ],
+              "correctAnswers": [0],
+              "explanation": "辅导功课 = aide aux devoirs (famille)."
+            },
+            {
+              "id": "q9",
+              "question": "总结 (zǒngjié) sa journée dans un journal intime :",
+              "type": "single_choice",
+              "options": [
+                "résumer / bilan",
+                "courir",
+                "nager",
+                "chanter en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "总结 = faire le bilan (décrire)."
+            },
+            {
+              "id": "q10",
+              "question": "虽然累，但是很高兴 (lèi… gāoxìng) :",
+              "type": "single_choice",
+              "options": [
+                "Fatigué(e) mais content(e)",
+                "Jamais fatigué",
+                "Triste et en colère",
+                "Sans devoirs ni loisirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase de conclusion d'un récit de journée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Raconter au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Marqueurs du passé récent : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "昨天 (zuótiān)",
+                "了 (aspect accompli)",
+                "明天",
+                "半 (demie)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 = hier ; 了 avec verbe pour action passée."
+            },
+            {
+              "id": "q2",
+              "question": "昨天我没去踢球 (qù tī qiú) :",
+              "type": "single_choice",
+              "options": [
+                "Hier je ne suis pas allé jouer au foot",
+                "Demain je jouerai",
+                "Je joue maintenant",
+                "Je n'aime pas le sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 + verbe = négation passée."
+            },
+            {
+              "id": "q3",
+              "question": "上次 (shàng cì) =",
+              "type": "single_choice",
+              "options": [
+                "la dernière fois",
+                "la prochaine fois",
+                "chaque jour",
+                "à midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上次 = la fois précédente (récit)."
+            },
+            {
+              "id": "q4",
+              "question": "我们看了电影，然后吃了饭 :",
+              "type": "single_choice",
+              "options": [
+                "Nous avons vu un film puis mangé",
+                "Nous verrons un film demain",
+                "Nous ne mangeons jamais",
+                "Nous sommes en cours maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了…然后… = enchaînement d'actions passées."
+            },
+            {
+              "id": "q5",
+              "question": "突然 (tūrán) dans un récit :",
+              "type": "single_choice",
+              "options": ["soudain", " lentement", " toujours", " jamais"],
+              "correctAnswers": [0],
+              "explanation": "突然 = soudain (tournure narrative)."
+            },
+            {
+              "id": "q6",
+              "question": "最后 (zuìhòu) =",
+              "type": "single_choice",
+              "options": [
+                "finalement / à la fin",
+                "au début",
+                "à midi",
+                "hier matin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最后 conclut un récit."
+            },
+            {
+              "id": "q7",
+              "question": "他迟到 (chídào) 了，所以没赶上公交 :",
+              "type": "single_choice",
+              "options": [
+                "Il est arrivé en retard et a raté le bus",
+                "Il est à l'heure",
+                "Il n'a pas de lycée",
+                "Il a gagné le match"
+              ],
+              "correctAnswers": [0],
+              "explanation": "迟到 = être en retard ; 所以 = donc."
+            },
+            {
+              "id": "q8",
+              "question": "记得 (jìde) 那天的事吗？ :",
+              "type": "single_choice",
+              "options": [
+                "Tu te souviens de ce jour-là ?",
+                "Tu oublies tout ?",
+                "Quelle heure est-il ?",
+                "Combien de livres ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "记得 = se souvenir (raconter le passé)."
+            },
+            {
+              "id": "q9",
+              "question": "曾经 (céngjīng) =",
+              "type": "single_choice",
+              "options": [
+                "autrefois / il est arrivé que",
+                "demain matin",
+                "dans cinq minutes",
+                "jamais au lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "曾经 = dans le passé (expérience)."
+            },
+            {
+              "id": "q10",
+              "question": "那是一次难忘 (nánwàng) 的旅行 :",
+              "type": "single_choice",
+              "options": [
+                "C'était un voyage inoubliable",
+                "C'est demain matin",
+                "C'est un classificateur",
+                "C'est une feuille de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "难忘 = inoubliable — conclusion de récit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Enchaîner et comparer",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Connecteurs de récit : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "因为…所以… (car… donc…)",
+                "不但…而且… (non seulement… mais aussi…)",
+                "个…个…",
+                "张…张… seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parce que / donc et non seulement / mais aussi — niveau 3e."
+            },
+            {
+              "id": "q2",
+              "question": "比 (bǐ) 我比你高 :",
+              "type": "single_choice",
+              "options": [
+                "Je suis plus grand que toi",
+                "Je suis moins grand",
+                "Nous sommes égaux",
+                "Il est huit heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比 = comparer (plus que)."
+            },
+            {
+              "id": "q3",
+              "question": "一样 (yīyàng) …跟…一样 :",
+              "type": "single_choice",
+              "options": [
+                "être pareil / comme",
+                "être différent",
+                "être en retard",
+                "être un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟…一样 = être comme / pareil à."
+            },
+            {
+              "id": "q4",
+              "question": "越来越 (yuè lái yuè) 忙 :",
+              "type": "single_choice",
+              "options": [
+                "de plus en plus occupé",
+                "de moins en moins occupé",
+                "toujours libre",
+                "jamais au lycée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "越来越 = de plus en plus."
+            },
+            {
+              "id": "q5",
+              "question": "先介绍自己，再介绍朋友 : ordre :",
+              "type": "single_choice",
+              "options": [
+                "d'abord soi, ensuite l'ami (récit/presentation)",
+                "l'inverse seulement",
+                "sans ordre",
+                "classificateurs d'abord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先…再… pour structurer un récit oral."
+            },
+            {
+              "id": "q6",
+              "question": "不但学习努力，而且爱运动 :",
+              "type": "single_choice",
+              "options": [
+                "Non seulement il/elle étudie dur, mais aime aussi le sport",
+                "Il/elle ne fait que dormir",
+                "Il/elle n'a pas d'amis",
+                "Il/elle oublie l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不但…而且… enrichit la description d'une personne."
+            },
+            {
+              "id": "q7",
+              "question": "最 (zuì) 在我家谁最高？ :",
+              "type": "single_choice",
+              "options": [
+                "superlatif : le plus",
+                "comparatif faible",
+                "négation",
+                "heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最高 = le plus grand (superlatif)."
+            },
+            {
+              "id": "q8",
+              "question": "跟去年比 (qùnián) 今年更忙 :",
+              "type": "single_choice",
+              "options": [
+                "Par rapport à l'an dernier, cette année est plus chargée",
+                "Demain sera libre",
+                "Hier il neige",
+                "À huit heures pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟…比 = comparer avec ; 更 = encore plus."
+            },
+            {
+              "id": "q9",
+              "question": "一边…一边… (yībiān… yībiān…) 一边听歌一边写作业 :",
+              "type": "single_choice",
+              "options": [
+                "faire deux choses en même temps",
+                "faire l'une après l'autre seulement",
+                "ne rien faire",
+                "dormir en cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一边…一边… = simultanéité (habitude lycéenne)."
+            },
+            {
+              "id": "q10",
+              "question": "这样 (zhèyàng) 讲故事更清楚 :",
+              "type": "single_choice",
+              "options": [
+                "Raconter ainsi est plus clair",
+                "Il est minuit",
+                "Deux poissons",
+                "Un classificateur 位"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这样 = de cette manière (conseil de narration)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse décrire et raconter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrase correcte avec heure et 了 : (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "我六点半吃了晚饭",
+                "下了课我们去了公园",
+                "我三本书吃饭",
+                "了八点个"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heure + repas accompli ; fin de cours + sortie — récit 3e."
+            },
+            {
+              "id": "q2",
+              "question": "请用“两位、三本、两张”描述一次准备 de sortie scolaire : combinaison logique :",
+              "type": "single_choice",
+              "options": [
+                "两位老师带三本笔记本和两张票",
+                "两张老师三位票",
+                "三位纸五条小时",
+                "了本个张"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classificateurs polis et objets du récit."
+            },
+            {
+              "id": "q3",
+              "question": "从早上八点到现在，我一直在学习 :",
+              "type": "single_choice",
+              "options": [
+                "Depuis 8 h ce matin jusqu'à maintenant, j'ai étudié sans arrêt",
+                "Je dormirai demain",
+                "Hier je n'ai pas mangé",
+                "Il n'y a pas de classificateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从…到现在 + 一直 = durée jusqu'à présent."
+            },
+            {
+              "id": "q4",
+              "question": "完了 (wán le) 作业以后去看电影 :",
+              "type": "single_choice",
+              "options": [
+                "Après avoir fini les devoirs, aller au cinéma",
+                "Avant de commencer les devoirs",
+                "Sans classificateur ni heure",
+                "En plein examen de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "完了…以后 = une fois terminé… ensuite."
+            },
+            {
+              "id": "q5",
+              "question": "描述天气：今天比昨天冷，还下了雨 :",
+              "type": "single_choice",
+              "options": [
+                "Aujourd'hui il fait plus froid qu'hier et il a plu",
+                "Demain il fera chaud",
+                "Il est huit heures",
+                "Trois pommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比 + 下了雨 (了 passé météo)."
+            },
+            {
+              "id": "q6",
+              "question": "一共 (yīgòng) 五个同学参加了活动 :",
+              "type": "single_choice",
+              "options": [
+                "Au total cinq camarades ont participé",
+                "Zéro participant",
+                "Dix heures de pluie",
+                "Un seul livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一共 = au total ( bilan d'un récit)."
+            },
+            {
+              "id": "q7",
+              "question": "把故事讲给爸爸妈妈听 (jiǎng gěi… tīng) :",
+              "type": "single_choice",
+              "options": [
+                "Raconter l'histoire à papa et maman",
+                "Manger avec 了 seulement",
+                "Compter 张 sans verbe",
+                "Dire l'heure sans 点"
+              ],
+              "correctAnswers": [0],
+              "explanation": "讲给…听 = raconter à quelqu'un."
+            },
+            {
+              "id": "q8",
+              "question": "要是 (yàoshi) 明天下雨，活动就取消 (qǔxiāo) :",
+              "type": "single_choice",
+              "options": [
+                "S'il pleut demain, l'activité sera annulée",
+                "Il pleut hier",
+                "Il est midi passé",
+                "Deux poissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "要是…就… = si… alors… (projeter un récit)."
+            },
+            {
+              "id": "q9",
+              "question": "我的汉语进步 (jìnbù) 了，因为每天练习 :",
+              "type": "single_choice",
+              "options": [
+                "Mon chinois progresse car je m'entraîne chaque jour",
+                "Je ne parle jamais",
+                "Je confonds 本 et 条 toujours",
+                "Il est 了 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 marque le progrès ; 因为 = parce que."
+            },
+            {
+              "id": "q10",
+              "question": "以上就是 (yǐshàng jiù shì) 我忙碌而快乐的一天 :",
+              "type": "single_choice",
+              "options": [
+                "Voilà ma journée bien remplie et joyeuse (fin de récit)",
+                "Voici trois classificateurs",
+                "Il est question d'hier sans verbe",
+                "C'est une liste d'heures seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "以上就是… = formule de clôture d'un récit descriptif."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -25,10 +25,15 @@ type DocxBlock = Paragraph | Table;
 
 export type DocumentExportFormat = "html" | "md";
 
-export const DOCUMENT_EXPORT_MIME: Record<"html" | "md" | "docx", string> = {
+export const DOCUMENT_EXPORT_MIME: Record<
+  "docx" | "html" | "md" | "pdf" | "txt",
+  string
+> = {
   docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   html: "text/html;charset=utf-8",
   md: "text/markdown;charset=utf-8",
+  pdf: "application/pdf",
+  txt: "text/plain;charset=utf-8",
 };
 
 /** Slug minimal : accents translittérés, caractères non sûrs en tiret. */
@@ -480,6 +485,317 @@ export async function markdownToDocx(
 
   const buffer = await Packer.toBuffer(doc);
   // Packer.toBuffer renvoie un Buffer Node selon les versions : normalise.
+  return new Uint8Array(
+    buffer.buffer.slice(
+      buffer.byteOffset,
+      buffer.byteOffset + buffer.byteLength
+    ) as ArrayBuffer
+  );
+}
+
+type ExportBlock =
+  | { level: number; text: string; type: "heading" }
+  | { text: string; type: "paragraph" }
+  | { items: string[]; ordered: boolean; type: "list" }
+  | { text: string; type: "code" }
+  | { text: string; type: "quote" }
+  | { rows: string[][]; type: "table" }
+  | { type: "hr" };
+
+function inlineToText(children: MarkdownItToken[] | null | undefined): string {
+  if (!children) {
+    return "";
+  }
+  let out = "";
+  for (const token of children) {
+    if (token.type === "text" || token.type === "code_inline") {
+      out += token.content;
+    } else if (token.type === "softbreak" || token.type === "hardbreak") {
+      out += "\n";
+    } else if (token.type === "image") {
+      const alt = token.content?.trim();
+      if (alt) {
+        out += alt;
+      }
+    } else if (token.children) {
+      out += inlineToText(token.children);
+    }
+  }
+  return out;
+}
+
+/** Blocs communs au texte brut et au PDF. Les images deviennent leur texte alternatif. */
+function markdownBlocks(markdown: string): ExportBlock[] {
+  const tokens = createMarkdownRenderer().parse(markdown ?? "", {});
+  const blocks: ExportBlock[] = [];
+
+  for (let i = 0; i < tokens.length; i += 1) {
+    const token = tokens[i];
+    if (!token) {
+      continue;
+    }
+    if (token.type === "heading_open") {
+      const level = Number.parseInt(token.tag.slice(1), 10) || 1;
+      blocks.push({
+        level,
+        text: inlineToText(tokens[i + 1]?.children),
+        type: "heading",
+      });
+      i += 1;
+      continue;
+    }
+    if (token.type === "paragraph_open") {
+      blocks.push({
+        text: inlineToText(tokens[i + 1]?.children),
+        type: "paragraph",
+      });
+      i += 1;
+      continue;
+    }
+    if (token.type === "fence" || token.type === "code_block") {
+      blocks.push({
+        text: (token.content || "").replace(/\n$/, ""),
+        type: "code",
+      });
+      continue;
+    }
+    if (token.type === "hr") {
+      blocks.push({ type: "hr" });
+      continue;
+    }
+    if (
+      token.type === "bullet_list_open" ||
+      token.type === "ordered_list_open"
+    ) {
+      const ordered = token.type === "ordered_list_open";
+      const items: string[] = [];
+      let depth = 1;
+      let j = i + 1;
+      while (j < tokens.length && depth > 0) {
+        const current = tokens[j];
+        if (!current) {
+          break;
+        }
+        if (
+          current.type === "bullet_list_open" ||
+          current.type === "ordered_list_open"
+        ) {
+          depth += 1;
+        } else if (
+          current.type === "bullet_list_close" ||
+          current.type === "ordered_list_close"
+        ) {
+          depth -= 1;
+        } else if (current.type === "paragraph_open" && depth === 1) {
+          items.push(inlineToText(tokens[j + 1]?.children));
+        }
+        j += 1;
+      }
+      blocks.push({ items, ordered, type: "list" });
+      i = j - 1;
+      continue;
+    }
+    if (token.type === "blockquote_open") {
+      const parts: string[] = [];
+      let depth = 1;
+      let j = i + 1;
+      while (j < tokens.length && depth > 0) {
+        const current = tokens[j];
+        if (!current) {
+          break;
+        }
+        if (current.type === "blockquote_open") {
+          depth += 1;
+        } else if (current.type === "blockquote_close") {
+          depth -= 1;
+        } else if (current.type === "paragraph_open") {
+          parts.push(inlineToText(tokens[j + 1]?.children));
+        }
+        j += 1;
+      }
+      blocks.push({ text: parts.join("\n"), type: "quote" });
+      i = j - 1;
+      continue;
+    }
+    if (token.type === "table_open") {
+      const rows: string[][] = [];
+      let j = i + 1;
+      while (j < tokens.length && tokens[j]?.type !== "table_close") {
+        if (tokens[j]?.type === "tr_open") {
+          const cells: string[] = [];
+          let k = j + 1;
+          while (k < tokens.length && tokens[k]?.type !== "tr_close") {
+            if (
+              tokens[k]?.type === "th_open" ||
+              tokens[k]?.type === "td_open"
+            ) {
+              cells.push(inlineToText(tokens[k + 1]?.children));
+            }
+            k += 1;
+          }
+          rows.push(cells);
+          j = k;
+        }
+        j += 1;
+      }
+      blocks.push({ rows, type: "table" });
+      i = j;
+    }
+  }
+
+  return blocks;
+}
+
+export function markdownToText(markdown: string): string {
+  const lines: string[] = [];
+  for (const block of markdownBlocks(markdown)) {
+    if (block.type === "heading") {
+      lines.push(block.text, "");
+    } else if (block.type === "paragraph" || block.type === "quote") {
+      lines.push(block.text, "");
+    } else if (block.type === "code") {
+      lines.push(block.text, "");
+    } else if (block.type === "list") {
+      block.items.forEach((item, index) => {
+        lines.push(`${block.ordered ? `${index + 1}. ` : "• "}${item}`);
+      });
+      lines.push("");
+    } else if (block.type === "table") {
+      for (const row of block.rows) {
+        lines.push(row.join(" | "));
+      }
+      lines.push("");
+    } else if (block.type === "hr") {
+      lines.push("---", "");
+    }
+  }
+  return lines.join("\n").trim();
+}
+
+/** Polices standard PDF (WinAnsi) : les accents français passent, pas les emoji. */
+function pdfSafe(value: string): string {
+  let out = "";
+  for (const char of value) {
+    const code = char.codePointAt(0) ?? 0;
+    if (code === 0x20_18 || code === 0x20_19) {
+      out += "'";
+      continue;
+    }
+    if (code === 0x20_1c || code === 0x20_1d) {
+      out += '"';
+      continue;
+    }
+    if (code === 0x20_13 || code === 0x20_14) {
+      out += "-";
+      continue;
+    }
+    if (code === 0x20_26) {
+      out += "...";
+      continue;
+    }
+    if (code === 0x00_a0) {
+      out += " ";
+      continue;
+    }
+    if (code === 10 || code === 13 || (code >= 32 && code <= 255)) {
+      out += char;
+      continue;
+    }
+    out += "·";
+  }
+  return out;
+}
+
+type PdfDoc = {
+  end: () => void;
+  font: (name: string) => PdfDoc;
+  fontSize: (size: number) => PdfDoc;
+  info: { Title?: string };
+  moveDown: (lines?: number) => PdfDoc;
+  on: (event: string, listener: (...args: never[]) => void) => PdfDoc;
+  text: (value: string, options?: { indent?: number }) => PdfDoc;
+};
+
+export async function markdownToPdf(
+  markdown: string,
+  title?: string
+): Promise<Uint8Array> {
+  const imported = (await import("pdfkit")) as {
+    default?: new (options?: { margin?: number; size?: string }) => PdfDoc;
+  };
+  const Ctor =
+    imported.default ??
+    (imported as unknown as new (options?: {
+      margin?: number;
+      size?: string;
+    }) => PdfDoc);
+  const doc = new Ctor({ margin: 56, size: "A4" });
+  const chunks: Buffer[] = [];
+  const done = new Promise<Buffer>((resolve, reject) => {
+    doc.on("data", (chunk) => {
+      chunks.push(chunk);
+    });
+    doc.on("end", () => {
+      resolve(Buffer.concat(chunks));
+    });
+    doc.on("error", (error) => {
+      reject(error);
+    });
+  });
+
+  const headingMatch = /^#\s+(.+)$/m.exec(markdown ?? "");
+  const docTitle =
+    title ?? (headingMatch ? headingMatch[1].trim() : "Document");
+  doc.info.Title = pdfSafe(docTitle);
+
+  const blocks = markdownBlocks(markdown);
+  if (blocks.length === 0) {
+    doc.font("Helvetica").fontSize(11).text("");
+  }
+  for (const block of blocks) {
+    if (block.type === "heading") {
+      const size = block.level === 1 ? 20 : block.level === 2 ? 16 : 13;
+      doc.font("Helvetica-Bold").fontSize(size).text(pdfSafe(block.text));
+      doc.moveDown(0.4);
+    } else if (block.type === "paragraph") {
+      doc.font("Helvetica").fontSize(11).text(pdfSafe(block.text));
+      doc.moveDown(0.6);
+    } else if (block.type === "quote") {
+      doc.font("Helvetica-Oblique").fontSize(11).text(pdfSafe(block.text), {
+        indent: 16,
+      });
+      doc.moveDown(0.6);
+    } else if (block.type === "code") {
+      doc.font("Courier").fontSize(9).text(pdfSafe(block.text));
+      doc.moveDown(0.6);
+    } else if (block.type === "list") {
+      block.items.forEach((item, index) => {
+        const prefix = block.ordered ? `${index + 1}. ` : "• ";
+        doc
+          .font("Helvetica")
+          .fontSize(11)
+          .text(pdfSafe(`${prefix}${item}`), {
+            indent: 12,
+          });
+      });
+      doc.moveDown(0.6);
+    } else if (block.type === "table") {
+      for (const row of block.rows) {
+        doc
+          .font("Helvetica")
+          .fontSize(10)
+          .text(pdfSafe(row.join("  |  ")));
+      }
+      doc.moveDown(0.6);
+    } else if (block.type === "hr") {
+      doc.moveDown(0.3);
+      doc.font("Helvetica").fontSize(11).text("―");
+      doc.moveDown(0.3);
+    }
+  }
+
+  doc.end();
+  const buffer = await done;
   return new Uint8Array(
     buffer.buffer.slice(
       buffer.byteOffset,

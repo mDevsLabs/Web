@@ -2,7 +2,7 @@
 //
 // La planification n'a longtemps proposé qu'une liste d'outils unitaires
 // (case par case) alors que l'exécuteur n'en connaît qu'un petit nombre
-// (calculator, codeExecution, dateTime, webSearch) plus les outils de plugins,
+// (calculator, codeExecution, dateTime, readUrl, webSearch) plus les outils de plugins,
 // de serveurs MCP et de skills. Le granularity unitaire était donc trompeur :
 // cocher « Générer image » n'avait aucun effet. On expose désormais trois
 // modes qui décrivent exactement ce que l'exécution peut appeler.

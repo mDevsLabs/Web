@@ -1,0 +1,2738 @@
+{
+  "id": "1ere-svt-01",
+  "year": "1ere",
+  "subject": "svt",
+  "title": "La Terre, la vie et l'évolution",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Génétique",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "L'ADN et le gène",
+          "questions": [
+            {
+              "id": "u1-q01-01",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent l'ADN ?",
+              "options": [
+                "Double hélice à deux brins antiparallèles",
+                "Uniquement des protéines histones sans nucléotides",
+                "Appariement A–T et C–G par liaisons hydrogène",
+                "Quatre brins parallèles identiques"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'ADN est une double hélice ; les bases complémentaires se lient par des liaisons hydrogène."
+            },
+            {
+              "id": "u1-q01-02",
+              "type": "single_choice",
+              "question": "Base complémentaire de l'adénine dans l'ADN :",
+              "options": ["Thymine", "Guanine", "Uracile", "Cytosine seule"],
+              "correctAnswers": [0],
+              "explanation": "A s'apparie avec T dans l'ADN."
+            },
+            {
+              "id": "u1-q01-03",
+              "type": "single_choice",
+              "question": "Un nucléotide comprend :",
+              "options": [
+                "Base, désoxyribose, phosphate",
+                "Acide aminé, sucre, lipide",
+                "Deux brins d'ARN",
+                "Chromosome entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité structurale de l'ADN."
+            },
+            {
+              "id": "u1-q01-04",
+              "type": "single_choice",
+              "question": "ADN nucléaire eucaryote localisé :",
+              "options": [
+                "Dans le noyau",
+                "Dans le ribosome",
+                "Dans la paroi",
+                "Dans le vacuole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN est enfermé dans le noyau chez les eucaryotes."
+            },
+            {
+              "id": "u1-q01-05",
+              "type": "single_choice",
+              "question": "Un gène est :",
+              "options": [
+                "Une séquence d'ADN portant une information fonctionnelle",
+                "Un acide aminé",
+                "Un organite",
+                "Un chromosome sans séquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gène code généralement un ARN puis une protéine."
+            },
+            {
+              "id": "u1-q01-06",
+              "type": "single_choice",
+              "question": "Le génome désigne :",
+              "options": [
+                "L'ensemble de l'information génétique",
+                "Un seul allèle",
+                "Uniquement l'ADN mitochondrial",
+                "Le proteome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine génétique total d'une cellule ou d'un individu."
+            },
+            {
+              "id": "u1-q01-07",
+              "type": "single_choice",
+              "question": "La chromatine associe :",
+              "options": [
+                "ADN et histones",
+                "ARNm et ribosomes",
+                "Glucose et lipides",
+                "Eau et sels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Condensation de l'ADN avec les protéines histones."
+            },
+            {
+              "id": "u1-q01-08",
+              "type": "single_choice",
+              "question": "Cellule somatique humaine :",
+              "options": [
+                "46 chromosomes (23 paires)",
+                "23 chromosomes haploïdes",
+                "92 paires",
+                "12 chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diploïdie : 2n = 46."
+            },
+            {
+              "id": "u1-q01-09",
+              "type": "single_choice",
+              "question": "L'information génétique est portée par :",
+              "options": [
+                "L'ordre des bases azotées",
+                "La couleur du noyau",
+                "Le pH du cytoplasme",
+                "La taille du ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquence des nucléotides = code."
+            },
+            {
+              "id": "u1-q01-10",
+              "type": "single_choice",
+              "question": "L'ARN diffère souvent de l'ADN car :",
+              "options": [
+                "Ribose et uracile au lieu de thymine",
+                "Désoxyribose et thymine",
+                "Double brin permanent",
+                "Sans bases"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ARN : ribose et U."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Réplication et expression",
+          "questions": [
+            {
+              "id": "u1-q02-01",
+              "type": "multiple_choice",
+              "question": "Réplication semi-conservative :",
+              "options": [
+                "Chaque ADN fils a un brin parental et un brin neuf",
+                "Tous les brins sont neufs",
+                "L'ADN polymérase ajoute des nucléotides complémentaires",
+                "Les ribosomes copient l'ADN"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Meselson-Stahl ; polymérase ADN sur matrice."
+            },
+            {
+              "id": "u1-q02-02",
+              "type": "single_choice",
+              "question": "La transcription produit :",
+              "options": [
+                "ARN à partir d'un brin d'ADN",
+                "ADN à partir de protéine",
+                "Glucose",
+                "Chromosomes visibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copie d'un gène en ARN (souvent ARNm)."
+            },
+            {
+              "id": "u1-q02-03",
+              "type": "single_choice",
+              "question": "La traduction a lieu :",
+              "options": [
+                "Sur les ribosomes",
+                "Dans le noyau uniquement",
+                "Sur l'ADN nu",
+                "Dans la paroi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assemblage des acides aminés selon l'ARNm."
+            },
+            {
+              "id": "u1-q02-04",
+              "type": "single_choice",
+              "question": "Un codon est :",
+              "options": [
+                "Triplet de bases sur l'ARNm",
+                "Un chromosome",
+                "Une mutation",
+                "Un ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code lu par triplets."
+            },
+            {
+              "id": "u1-q02-05",
+              "type": "single_choice",
+              "question": "Dogme central :",
+              "options": [
+                "ADN → ARN → protéine",
+                "Protéine → ADN",
+                "Lipide → ADN",
+                "ADN → glucose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux d'information moléculaire classique."
+            },
+            {
+              "id": "u1-q02-06",
+              "type": "single_choice",
+              "question": "Les introns :",
+              "options": [
+                "Sont retirés à l'épissage",
+                "Sont toujours traduits",
+                "Remplacent les exons",
+                "Sont des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquences non codantes coupées chez les eucaryotes."
+            },
+            {
+              "id": "u1-q02-07",
+              "type": "single_choice",
+              "question": "Mutation ponctuelle peut :",
+              "options": [
+                "Changer un acide aminé ou créer un stop",
+                "Dupliquer toujours un chromosome",
+                "Empêcher toute vie",
+                "Créer de l'ADN à partir d'ARN chez tous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Effet selon le codon touché."
+            },
+            {
+              "id": "u1-q02-08",
+              "type": "single_choice",
+              "question": "ARNt transporte :",
+              "options": [
+                "Acides aminés vers le ribosome",
+                "ADN vers le noyau",
+                "Oxygène",
+                "Glucose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adaptateur codon–acide aminé."
+            },
+            {
+              "id": "u1-q02-09",
+              "type": "single_choice",
+              "question": "Promoteur d'un gène :",
+              "options": [
+                "Région où débute la transcription",
+                "Site de traduction",
+                "Centromère",
+                "Télomère seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recrutement de l'ARN polymérase."
+            },
+            {
+              "id": "u1-q02-10",
+              "type": "single_choice",
+              "question": "Expression différentielle :",
+              "options": [
+                "Active certains gènes selon la cellule",
+                "Tous les gènes actifs partout",
+                "Supprime l'ADN",
+                "Interdit l'ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différenciation et spécialisation."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Lois de Mendel",
+          "questions": [
+            {
+              "id": "u1-q03-01",
+              "type": "multiple_choice",
+              "question": "Première loi de Mendel (uniformité F1) :",
+              "options": [
+                "Croisement de deux lignées pures donne F1 uniforme",
+                "Tous les F1 ont le même phénotype pour le caractère étudié",
+                "Les caractères se mélangent en mélange",
+                "Les gènes sont sur le même chromosome sans exception"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "F1 hybride et uniforme pour un caractère avec deux allèles."
+            },
+            {
+              "id": "u1-q03-02",
+              "type": "single_choice",
+              "question": "Deuxième loi : autosomes, deux gènes indépendants → F2 :",
+              "options": [
+                "Proportions 9:3:3:1 pour deux hétérozygotes",
+                "100 % dominants",
+                "50 % seulement",
+                "0 % récessifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brassage indépendant des allèles."
+            },
+            {
+              "id": "u1-q03-03",
+              "type": "single_choice",
+              "question": "Allèle dominant :",
+              "options": [
+                "S'exprime en hétérozygote",
+                "Jamais visible",
+                "Toujours léthal",
+                "Identique à récessif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénotype dominant avec un seul allèle dominant."
+            },
+            {
+              "id": "u1-q03-04",
+              "type": "single_choice",
+              "question": "Croisement Aa × Aa (un gène) → phénotype récessif :",
+              "options": ["25 % en moyenne", "50 %", "0 %", "75 %"],
+              "correctAnswers": [0],
+              "explanation": "Genotypes aa = 1/4."
+            },
+            {
+              "id": "u1-q03-05",
+              "type": "single_choice",
+              "question": "Lignée pure :",
+              "options": [
+                "Homozygote pour l'allèle considéré",
+                "Toujours hétérozygote",
+                "Sans ADN",
+                "Triploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AA ou aa selon le caractère."
+            },
+            {
+              "id": "u1-q03-06",
+              "type": "single_choice",
+              "question": "Test-cross (rétrocroisement) avec récessif sert à :",
+              "options": [
+                "Déterminer si un individu est hétérozygote",
+                "Mesurer l'ADN",
+                "Faire la méiose",
+                "Compter les chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croisement avec homozygote récessif."
+            },
+            {
+              "id": "u1-q03-07",
+              "type": "single_choice",
+              "question": "Gamète reçoit :",
+              "options": [
+                "Un allèle par gène (diploïde → haploïde)",
+                "Deux allèles par gène",
+                "46 chromosomes en humain",
+                "Le proteome entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ségrégation des allèles à la méiose."
+            },
+            {
+              "id": "u1-q03-08",
+              "type": "single_choice",
+              "question": "Caractère récessif visible si :",
+              "options": [
+                "Homozygote récessif",
+                "Hétérozygote",
+                "Dominant présent",
+                "Triploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut deux allèles récessifs."
+            },
+            {
+              "id": "u1-q03-09",
+              "type": "single_choice",
+              "question": "Mendel a travaillé sur :",
+              "options": [
+                "Pois cultivés et caractères discrets",
+                "Bactéries uniquement",
+                "Humains en laboratoire",
+                "Virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractères héréditaires du pois."
+            },
+            {
+              "id": "u1-q03-10",
+              "type": "single_choice",
+              "question": "Hétérozygote :",
+              "options": [
+                "Deux allèles différents pour un gène",
+                "Deux copies identiques",
+                "Un seul chromosome",
+                "Sans noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. Aa."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Génotype et phénotype",
+          "questions": [
+            {
+              "id": "u1-q04-01",
+              "type": "multiple_choice",
+              "question": "Phénotype et génotype :",
+              "options": [
+                "Génotype = composition allélique",
+                "Phénotype = caractères observables",
+                "Phénotype = toujours identique au génotype sans environnement",
+                "Génotype = couleur des yeux seulement sans gènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phénotype dépend du génotype et de l'environnement."
+            },
+            {
+              "id": "u1-q04-02",
+              "type": "single_choice",
+              "question": "Homozygote dominant :",
+              "options": ["AA", "Aa", "aa", "Ab"],
+              "correctAnswers": [0],
+              "explanation": "Deux allèles dominants identiques."
+            },
+            {
+              "id": "u1-q04-03",
+              "type": "single_choice",
+              "question": "Allèles d'un gène :",
+              "options": [
+                "Versions différentes du même gène",
+                "Gènes sur chromosomes différents",
+                "Protéines identiques",
+                "ARN ribosomal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Occupent le même locus."
+            },
+            {
+              "id": "u1-q04-04",
+              "type": "single_choice",
+              "question": "Locus :",
+              "options": [
+                "Emplacement d'un gène sur chromosome",
+                "Type de mutation",
+                "Organe",
+                "Codon stop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position sur le chromosome."
+            },
+            {
+              "id": "u1-q04-05",
+              "type": "single_choice",
+              "question": "Codominance :",
+              "options": [
+                "Les deux allèles s'expriment (ex. groupes sanguins AB)",
+                "Un seul allèle visible",
+                "Pas d'ADN",
+                "Létalité systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénotype combine les deux."
+            },
+            {
+              "id": "u1-q04-06",
+              "type": "single_choice",
+              "question": "Allèle récessif léthal en homozygose :",
+              "options": [
+                "Peut disparaître si mort avant reproduction",
+                "Toujours fréquent",
+                "Dominant en F1",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection contre aa possible."
+            },
+            {
+              "id": "u1-q04-07",
+              "type": "single_choice",
+              "question": "Environnement peut modifier le phénotype :",
+              "options": [
+                "Sans changer le génotype",
+                "En changeant la séquence d'ADN",
+                "En supprimant les chromosomes",
+                "En créant de nouveaux gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. couleur du pelage, métabolites."
+            },
+            {
+              "id": "u1-q04-08",
+              "type": "single_choice",
+              "question": "Porteur sain :",
+              "options": [
+                "Hétérozygote pour allèle récessif pathologique",
+                "Homozygote atteint",
+                "Sans gène",
+                "Haploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phénotype normal, peut transmettre."
+            },
+            {
+              "id": "u1-q04-09",
+              "type": "single_choice",
+              "question": "Caryotype montre :",
+              "options": [
+                "Ensemble des chromosomes d'une cellule",
+                "Séquence de tous les gènes",
+                "Proteome",
+                "ARN total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photographie des chromosomes métaphase."
+            },
+            {
+              "id": "u1-q04-10",
+              "type": "single_choice",
+              "question": "Diploïde signifie :",
+              "options": [
+                "Deux jeux de chromosomes homologues",
+                "Un seul jeu",
+                "Trois jeux",
+                "Sans noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2n chez les cellules somatiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Méiose",
+          "questions": [
+            {
+              "id": "u1-q05-01",
+              "type": "multiple_choice",
+              "question": "Méiose produit :",
+              "options": [
+                "Quatre cellules haploïdes génétiquement différentes",
+                "Deux cellules identiques au parent",
+                "Cellules diploïdes identiques",
+                "Réduction du nombre de chromosomes de moitié"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Division réductionnelle avec recombinaison ; passage 2n → n."
+            },
+            {
+              "id": "u1-q05-02",
+              "type": "single_choice",
+              "question": "Méiose I sépare :",
+              "options": [
+                "Chromosomes homologues",
+                "Chromatides sœurs",
+                "Ribosomes",
+                "Membranes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction du nombre de chromosomes."
+            },
+            {
+              "id": "u1-q05-03",
+              "type": "single_choice",
+              "question": "Méiose II sépare :",
+              "options": [
+                "Chromatides sœurs",
+                "Homologues",
+                "Noyaux entiers",
+                "ADN en brins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme une mitose."
+            },
+            {
+              "id": "u1-q05-04",
+              "type": "single_choice",
+              "question": "Crossing-over :",
+              "options": [
+                "Échange de segments entre chromatides non sœurs",
+                "Fusion de noyaux",
+                "Réplication sans division",
+                "Mutation obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prophase I ; nouvelles combinaisons."
+            },
+            {
+              "id": "u1-q05-05",
+              "type": "single_choice",
+              "question": "Brassage interchromosomique :",
+              "options": [
+                "Distribution aléatoire des homologues en méiose I",
+                "Copie de l'ADN",
+                "Traduction",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indépendance des chromosomes."
+            },
+            {
+              "id": "u1-q05-06",
+              "type": "single_choice",
+              "question": "Gamètes humains :",
+              "options": ["n = 23 chromosomes", "n = 46", "n = 92", "n = 12"],
+              "correctAnswers": [0],
+              "explanation": "Haploïdes après méiose."
+            },
+            {
+              "id": "u1-q05-07",
+              "type": "single_choice",
+              "question": "Fécondation :",
+              "options": [
+                "Fusion de deux gamètes → zygote diploïde",
+                "Méiose supplémentaire",
+                "Mitose seule",
+                "Mutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restaure 2n."
+            },
+            {
+              "id": "u1-q05-08",
+              "type": "single_choice",
+              "question": "Synapsis :",
+              "options": [
+                "Appariement des homologues en prophase I",
+                "Séparation en anaphase II",
+                "Traduction",
+                "Respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complexe synaptonémal."
+            },
+            {
+              "id": "u1-q05-09",
+              "type": "single_choice",
+              "question": "Mitose vs méiose :",
+              "options": [
+                "Mitose conserve 2n ; méiose produit n",
+                "Les deux produisent n",
+                "Méiose sans réplication",
+                "Mitose uniquement dans gonades"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méiose = formation des gamètes."
+            },
+            {
+              "id": "u1-q05-10",
+              "type": "single_choice",
+              "question": "Diversité génétique sexuée due surtout à :",
+              "options": [
+                "Méiose et fécondation",
+                "Mitose seule",
+                "Clonage",
+                "Absence de mutations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brassage + recombinaison."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Mutations",
+          "questions": [
+            {
+              "id": "u1-q06-01",
+              "type": "multiple_choice",
+              "question": "Sources de variation génétique :",
+              "options": [
+                "Mutations",
+                "Brassage lors de la méiose",
+                "Photosynthèse uniquement",
+                "Homéostasie seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mutations + recombinaison."
+            },
+            {
+              "id": "u1-q06-02",
+              "type": "single_choice",
+              "question": "Mutation ponctuelle :",
+              "options": [
+                "Changement d'une ou quelques bases",
+                "Perte d'un chromosome entier toujours",
+                "Fusion de deux espèces",
+                "Traduction inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Substitution, insertion, délétion locale."
+            },
+            {
+              "id": "u1-q06-03",
+              "type": "single_choice",
+              "question": "Mutation silencieuse :",
+              "options": [
+                "Ne change pas l'acide aminé (dégénérescence du code)",
+                "Toujours létale",
+                "Crée un chromosome",
+                "Supprime le gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synonyme au niveau protéique."
+            },
+            {
+              "id": "u1-q06-04",
+              "type": "single_choice",
+              "question": "Mutation nonsense :",
+              "options": [
+                "Crée un codon stop prématuré",
+                "Allonge la protéine",
+                "Duplique le gène",
+                "Change le ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrêt de traduction."
+            },
+            {
+              "id": "u1-q06-05",
+              "type": "single_choice",
+              "question": "Mutagènes :",
+              "options": [
+                "Facteurs augmentant la fréquence de mutations",
+                "Protéines de réparation uniquement",
+                "Gamètes",
+                "Hormones seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UV, certains produits chimiques."
+            },
+            {
+              "id": "u1-q06-06",
+              "type": "single_choice",
+              "question": "Mutation germinale :",
+              "options": [
+                "Transmissible à la descendance",
+                "Uniquement dans une cellule somatique",
+                "Sans ADN",
+                "Toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lignée des gamètes."
+            },
+            {
+              "id": "u1-q06-07",
+              "type": "single_choice",
+              "question": "Duplication génique :",
+              "options": [
+                "Copie supplémentaire d'un segment de gène",
+                "Perte de tout le génome",
+                "Crossing-over",
+                "Mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut créer de nouvelles fonctions."
+            },
+            {
+              "id": "u1-q06-08",
+              "type": "single_choice",
+              "question": "Réparation de l'ADN :",
+              "options": [
+                "Limite les effets des erreurs de réplication",
+                "Empêche toute mutation",
+                "Remplace la méiose",
+                "Traduit l'ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enzymes de réparation."
+            },
+            {
+              "id": "u1-q06-09",
+              "type": "single_choice",
+              "question": "Délétion chromosomique :",
+              "options": [
+                "Perte d'un segment de chromosome",
+                "Gain d'un chromosome entier seulement",
+                "Crossing-over",
+                "Fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anomalie structurale ou numérique."
+            },
+            {
+              "id": "u1-q06-10",
+              "type": "single_choice",
+              "question": "Variation sans mutation immédiate :",
+              "options": [
+                "Recombinaison en méiose",
+                "Changement de code génétique universel",
+                "Disparition de l'ADN",
+                "Clonage par mitose seul dans une population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveaux allèles recombinés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Chromosomes et anomalies",
+          "questions": [
+            {
+              "id": "u1-q07-01",
+              "type": "multiple_choice",
+              "question": "Anomalies du nombre de chromosomes :",
+              "options": [
+                "Trisomie (2n+1 pour un chromosome)",
+                "Monosomie d'un autosome souvent non viable",
+                "Toujours sans effet phénotypique",
+                "Uniquement chez les plantes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ex. trisomie 21 ; monosomies autosomiques rares."
+            },
+            {
+              "id": "u1-q07-02",
+              "type": "single_choice",
+              "question": "Trisomie 21 :",
+              "options": [
+                "Trois copies du chromosome 21",
+                "Absence du 21",
+                "Fusion 21-22",
+                "Haploïdie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anomalie la plus fréquente viable."
+            },
+            {
+              "id": "u1-q07-03",
+              "type": "single_choice",
+              "question": "Non-disjonction :",
+              "options": [
+                "Mauvaise séparation de chromosomes en méiose",
+                "Traduction",
+                "Respiration",
+                "Épissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cause de trisomie ou monosomie."
+            },
+            {
+              "id": "u1-q07-04",
+              "type": "single_choice",
+              "question": "Chromosomes homologues :",
+              "options": [
+                "Même gènes aux mêmes loci, allèles peuvent différer",
+                "Identiques en séquence toujours",
+                "Uniquement chez haploïdes",
+                "Sans centromère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire d'un même type."
+            },
+            {
+              "id": "u1-q07-05",
+              "type": "single_choice",
+              "question": "Chromatides sœurs :",
+              "options": [
+                "Copies identiques liées après réplication",
+                "Homologues de parents différents",
+                "Gamètes",
+                "ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparées en anaphase."
+            },
+            {
+              "id": "u1-q07-06",
+              "type": "single_choice",
+              "question": "Translocation :",
+              "options": [
+                "Segment déplacé sur un autre chromosome",
+                "Gain d'un bras entier seulement",
+                "Mitose",
+                "Mutation ponctuelle seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anomalie structurale."
+            },
+            {
+              "id": "u1-q07-07",
+              "type": "single_choice",
+              "question": "Syndrome de Turner :",
+              "options": [
+                "Monosomie X (45,X)",
+                "Trisomie X",
+                "XXY",
+                "Trisomie 21"
+              ],
+              "correctAnswers": [0],
+              "explanation": "45 chromosomes, un seul X."
+            },
+            {
+              "id": "u1-q07-08",
+              "type": "single_choice",
+              "question": "Klinefelter :",
+              "options": [
+                "47,XXY",
+                "45,X",
+                "47,XXX seule définition",
+                "46,XY normal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anomalie sexuelle fréquente."
+            },
+            {
+              "id": "u1-q07-09",
+              "type": "single_choice",
+              "question": "Centromère :",
+              "options": [
+                "Région de attache des microtubules",
+                "Extrémité télomérique seule",
+                "Promoteur",
+                "Ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Division équitable."
+            },
+            {
+              "id": "u1-q07-10",
+              "type": "single_choice",
+              "question": "Diagnostic prénatal peut utiliser :",
+              "options": [
+                "Caryotype fœtal",
+                "Mesure de la vitesse de la lumière",
+                "Photosynthèse",
+                "Traduction in vitro seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyses cytogénétiques et moléculaires."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Hérédité liée au sexe",
+          "questions": [
+            {
+              "id": "u1-q08-01",
+              "type": "multiple_choice",
+              "question": "Gènes liés à l'X :",
+              "options": [
+                "Portés sur le chromosome X",
+                "Plus fréquents chez les mâles XY pour allèles récessifs",
+                "Absents chez les femmes",
+                "Toujours dominants"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mâles hémizygotes pour l'X."
+            },
+            {
+              "id": "u1-q08-02",
+              "type": "single_choice",
+              "question": "Père XY : chromosome transmis aux fils :",
+              "options": ["Y", "X", "Les deux X", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Le père transmet Y aux fils et X aux filles ; la mère transmet X aux deux."
+            },
+            {
+              "id": "u1-q08-03",
+              "type": "single_choice",
+              "question": "Daltonisme récessif lié à X :",
+              "options": [
+                "Plus visible chez hommes XY",
+                "Uniquement femmes",
+                "Autosomique dominant",
+                "Sans gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul allèle mutant suffit chez l'homme."
+            },
+            {
+              "id": "u1-q08-04",
+              "type": "single_choice",
+              "question": "Femme XX porteuse :",
+              "options": [
+                "Peut transmettre l'allèle sans être atteinte",
+                "Toujours malade",
+                "Sans chromosome X",
+                "Haploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hétérozygote sur l'X."
+            },
+            {
+              "id": "u1-q08-05",
+              "type": "single_choice",
+              "question": "Chromosome Y :",
+              "options": [
+                "Contient le gène SRY (déterminisme mâle chez mammifères)",
+                "Identique au X en taille",
+                "Absent chez homme",
+                "Porte tous les gènes autosomiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SRY déclenche voie mâle."
+            },
+            {
+              "id": "u1-q08-06",
+              "type": "single_choice",
+              "question": "Hémizygote :",
+              "options": [
+                "Un seul allèle pour un gène (ex. X chez XY)",
+                "Deux allèles identiques",
+                "Triploïde",
+                "Sans ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de paire pour gènes X chez mâle."
+            },
+            {
+              "id": "u1-q08-07",
+              "type": "single_choice",
+              "question": "Hérédité mitochondriale :",
+              "options": [
+                "Transmission surtout maternelle",
+                "Paternelle uniquement",
+                "Autosomique récessive classique",
+                "Sans ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ADN mt dans le cytoplasme ovocyte."
+            },
+            {
+              "id": "u1-q08-08",
+              "type": "single_choice",
+              "question": "Gène récessif lié à X chez femme XX atteinte :",
+              "options": [
+                "Homozygote ou composante rare",
+                "Toujours hétérozygote",
+                "Impossible",
+                "Sans phénotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux allèles mutants ou lyonisation."
+            },
+            {
+              "id": "u1-q08-09",
+              "type": "single_choice",
+              "question": "Pseudogène autosomique vs lié X :",
+              "options": [
+                "Mode de transmission différent",
+                "Identiques",
+                "Sans chromosome",
+                "Uniquement Y"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyser le pedigree."
+            },
+            {
+              "id": "u1-q08-10",
+              "type": "single_choice",
+              "question": "Arbre généalogique : crux lié X récessif :",
+              "options": [
+                "Atteints surtout mâles liés par femmes porteuses",
+                "Uniquement femmes",
+                "Génération sautée impossible",
+                "Dominant autosomal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission typique mère → fils."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Génétique des populations (intro)",
+          "questions": [
+            {
+              "id": "u1-q09-01",
+              "type": "multiple_choice",
+              "question": "Fréquences alléliques :",
+              "options": [
+                "Proportion d'un allèle dans une population",
+                "Peuvent être calculées à partir des génotypes en équilibre de Hardy-Weinberg",
+                "Fixées à 50 % pour chaque allèle toujours",
+                "Sans lien avec l'évolution"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "p + q = 1 ; p² + 2pq + q² = 1 (ideal HW)."
+            },
+            {
+              "id": "u1-q09-02",
+              "type": "single_choice",
+              "question": "Hardy-Weinberg suppose (modèle) :",
+              "options": [
+                "Population grande, panmixie, sans mutation/sélection/drift",
+                "Sélection forte",
+                "Migration obligatoire",
+                "Apomixie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle de référence null."
+            },
+            {
+              "id": "u1-q09-03",
+              "type": "single_choice",
+              "question": "2pq dans HW :",
+              "options": [
+                "Fréquence des hétérozygotes",
+                "Fréquence homozygote dominant",
+                "Fréquence mutation",
+                "Taille population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genotype Aa."
+            },
+            {
+              "id": "u1-q09-04",
+              "type": "single_choice",
+              "question": "Polymorphisme génétique :",
+              "options": [
+                "Plusieurs allèles ou variants dans une population",
+                "Un seul allèle",
+                "Absence d'ADN",
+                "Clones uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité allélique."
+            },
+            {
+              "id": "u1-q09-05",
+              "type": "single_choice",
+              "question": "Dérive génétique :",
+              "options": [
+                "Variation aléatoire des fréquences (effet petites populations)",
+                "Sélection naturelle seule",
+                "Crossing-over",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hasard de la reproduction."
+            },
+            {
+              "id": "u1-q09-06",
+              "type": "single_choice",
+              "question": "Flux génique :",
+              "options": [
+                "Apport d'allèles par migration",
+                "Mitose",
+                "Méiose seule",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immigration/émigration."
+            },
+            {
+              "id": "u1-q09-07",
+              "type": "single_choice",
+              "question": "Allèle fixé :",
+              "options": [
+                "Fréquence = 1 (autre = 0)",
+                "Fréquence 0,5 toujours",
+                "Absent du génome",
+                "Uniquement récessif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de polymorphisme à ce locus."
+            },
+            {
+              "id": "u1-q09-08",
+              "type": "single_choice",
+              "question": "Sélection modifie :",
+              "options": [
+                "Fréquences alléliques au fil des générations",
+                "Loi de Mendel",
+                "Nombre de bases par codon",
+                "Universalité du code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien génétique–évolution."
+            },
+            {
+              "id": "u1-q09-09",
+              "type": "single_choice",
+              "question": "Consanguinité :",
+              "options": [
+                "Augmente fréquence homozygotes",
+                "Diminue homozygotes",
+                "Sans effet",
+                "Empêche méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque allèles récessifs."
+            },
+            {
+              "id": "u1-q09-10",
+              "type": "single_choice",
+              "question": "ADN polymorphe sert à :",
+              "options": [
+                "Étudier parenté et diversité",
+                "Mesurer température",
+                "Remplacer la sélection",
+                "Supprimer les gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs moléculaires."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse génétique",
+          "questions": [
+            {
+              "id": "u1-q10-01",
+              "type": "multiple_choice",
+              "question": "De l'ADN au caractère héréditaire :",
+              "options": [
+                "Expression génique → protéine → phénotype",
+                "Phénotype → ADN direct",
+                "Méiose crée gamètes avec un jeu d'allèles",
+                "Mitose forme les gamètes chez l'humain"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Information génétique et transmission sexuée."
+            },
+            {
+              "id": "u1-q10-02",
+              "type": "single_choice",
+              "question": "Croisement et méiose expliquent :",
+              "options": [
+                "Diversité des descendants",
+                "Identité clonale",
+                "Absence d'allèles",
+                "Code à deux bases"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recombinaison + gamètes."
+            },
+            {
+              "id": "u1-q10-03",
+              "type": "single_choice",
+              "question": "Gène = séquence ; allèle = :",
+              "options": [
+                "Variante du gène",
+                "Chromosome entier",
+                "Cellule",
+                "Organe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire de première."
+            },
+            {
+              "id": "u1-q10-04",
+              "type": "single_choice",
+              "question": "PCR en biologie moléculaire :",
+              "options": [
+                "Amplifie un fragment d'ADN",
+                "Traduit des protéines",
+                "Fait la méiose",
+                "Mesure la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de copie in vitro."
+            },
+            {
+              "id": "u1-q10-05",
+              "type": "single_choice",
+              "question": "Électrophorèse d'ADN :",
+              "options": [
+                "Sépare fragments par taille",
+                "Séquence automatiquement sans lecture",
+                "Crée des mutations",
+                "Remplace la fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Migration dans un gel."
+            },
+            {
+              "id": "u1-q10-06",
+              "type": "single_choice",
+              "question": "OGM : transgène :",
+              "options": [
+                "Gène introduit d'une espèce à une autre",
+                "Suppression du noyau",
+                "Mitose accélérée",
+                "Sans ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ingénierie génétique."
+            },
+            {
+              "id": "u1-q10-07",
+              "type": "single_choice",
+              "question": "Éthique génétique concerne :",
+              "options": [
+                "Données sensibles et usage des tests",
+                "Couleur des yeux seule",
+                "Vitesse lumière",
+                "Tectonique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consentement et discrimination."
+            },
+            {
+              "id": "u1-q10-08",
+              "type": "single_choice",
+              "question": "Lien génétique–évolution :",
+              "options": [
+                "Variation héréditable + sélection",
+                "Phénotype acquis hérédité",
+                "Sans mutations",
+                "Code non universel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base de la théorie synthétique."
+            },
+            {
+              "id": "u1-q10-09",
+              "type": "single_choice",
+              "question": "Cellule souche embryonnaire :",
+              "options": [
+                "Pluripotente",
+                "Différenciée terminale",
+                "Sans ADN",
+                "Haploïde obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Potentiel de différenciation."
+            },
+            {
+              "id": "u1-q10-10",
+              "type": "single_choice",
+              "question": "Objectif unité Génétique :",
+              "options": [
+                "Comprendre information, transmission et variation",
+                "Ignorer les chromosomes",
+                "Remplacer Darwin",
+                "Étudier uniquement les fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondements moléculaires et mendéliens."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Sélection naturelle",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Diversité et variation",
+          "questions": [
+            {
+              "id": "u2-q01-01",
+              "type": "multiple_choice",
+              "question": "Variation et diversité du vivant :",
+              "options": [
+                "Richesse spécifique et variabilité génétique",
+                "Mutations et recombinaison : variation héréditable",
+                "Identité génétique totale",
+                "Absence d'adaptation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Diversité du vivant et matériel pour l'évolution."
+            },
+            {
+              "id": "u2-q01-02",
+              "type": "single_choice",
+              "question": "Biodiversité génétique :",
+              "options": [
+                "Variabilité des allèles et génotypes",
+                "Nombre de cellules",
+                "Masse corporelle",
+                "Vitesse de course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversité au sein d'une espèce."
+            },
+            {
+              "id": "u2-q01-03",
+              "type": "single_choice",
+              "question": "Caractère quantitatif :",
+              "options": [
+                "Distribution continue (taille, poids)",
+                "Deux formes seulement toujours",
+                "Sans gènes",
+                "Non héréditaire jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polygénique + environnement."
+            },
+            {
+              "id": "u2-q01-04",
+              "type": "single_choice",
+              "question": "Sélection artificielle :",
+              "options": [
+                "Homme choisit les reproducteurs",
+                "Nature seule",
+                "Sans hérédité",
+                "Mutation dirigée obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. races domestiques."
+            },
+            {
+              "id": "u2-q01-05",
+              "type": "single_choice",
+              "question": "Espèce (concept biologique) :",
+              "options": [
+                "Populations qui se reproduisent et produisent une descendance viable",
+                "Apparence identique seule",
+                "Même ADN base par base",
+                "Un individu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolement reproductif."
+            },
+            {
+              "id": "u2-q01-06",
+              "type": "single_choice",
+              "question": "Fossiles montrent :",
+              "options": [
+                "Formes disparues et changements dans le temps",
+                "Création instantanée de toutes espèces",
+                "Absence d'extinction",
+                "Uniquement bactéries actuelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Histoire du vivant."
+            },
+            {
+              "id": "u2-q01-07",
+              "type": "single_choice",
+              "question": "Homologie :",
+              "options": [
+                "Structures issues d'un ancêtre commun",
+                "Fonction identique seule",
+                "Convergence sans parenté",
+                "Analogie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même origine évolutive."
+            },
+            {
+              "id": "u2-q01-08",
+              "type": "single_choice",
+              "question": "Analogie (convergence) :",
+              "options": [
+                "Formes similaires sans ancêtre commun récent",
+                "Bras humain et chien",
+                "ADN identique",
+                "Même gène toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection sur formes comparables."
+            },
+            {
+              "id": "u2-q01-09",
+              "type": "single_choice",
+              "question": "Niche écologique :",
+              "options": [
+                "Rôle et conditions de vie d'une espèce",
+                "Nid d'oiseau seulement",
+                "Chromosome",
+                "Mutation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interactions avec milieu."
+            },
+            {
+              "id": "u2-q01-10",
+              "type": "single_choice",
+              "question": "Extinction :",
+              "options": [
+                "Disparition d'une espèce",
+                "Nouvelle espèce instantanée",
+                "Mitose",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part de l'histoire évolutive."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Darwin et théorie de l'évolution",
+          "questions": [
+            {
+              "id": "u2-q02-01",
+              "type": "multiple_choice",
+              "question": "Théorie darwinienne :",
+              "options": [
+                "Descente avec modification",
+                "Sélection naturelle sur variation héréditaire",
+                "Hérédité des caractères acquis de Lamarck seule",
+                "Fixisme des espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Darwin : variation + sélection + descendance."
+            },
+            {
+              "id": "u2-q02-02",
+              "type": "single_choice",
+              "question": "« Origine des espèces » (1859) propose :",
+              "options": [
+                "Évolution par sélection naturelle",
+                "Création fixe de chaque espèce",
+                "Spontanéité des microbes",
+                "Absence de parenté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ouvrage fondateur de Darwin."
+            },
+            {
+              "id": "u2-q02-03",
+              "type": "single_choice",
+              "question": "Lamarck : idée erronée retenue historiquement :",
+              "options": [
+                "Hérédité des caractères acquis",
+                "Changement des espèces dans le temps",
+                "Adaptation au milieu",
+                "Fossiles témoignent du passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage du organe ≠ modification génétique héréditable."
+            },
+            {
+              "id": "u2-q02-04",
+              "type": "single_choice",
+              "question": "Wallace :",
+              "options": [
+                "Co-découvreur de la sélection naturelle",
+                "Auteur du code génétique",
+                "Inventeur du microscope seul",
+                "Fixiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même idée transmise à Darwin."
+            },
+            {
+              "id": "u2-q02-05",
+              "type": "single_choice",
+              "question": "Théorie synthétique de l'évolution :",
+              "options": [
+                "Relie génétique mendélienne et sélection",
+                "Nie les mutations",
+                "Ignore la sélection",
+                "Fixisme moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "XXe siècle : population genetics + Darwin."
+            },
+            {
+              "id": "u2-q02-06",
+              "type": "single_choice",
+              "question": "Uniformitarisme (Lyell) suggère :",
+              "options": [
+                "Lois naturelles constantes dans le temps",
+                "Catastrophes seules",
+                "Terre jeune de 6000 ans",
+                "Sans sédiments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Processus lents et continus."
+            },
+            {
+              "id": "u2-q02-07",
+              "type": "single_choice",
+              "question": "Malthus a influencé Darwin sur :",
+              "options": [
+                "Compétition pour ressources limitées",
+                "Structure de l'ADN",
+                "Méiose",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surpopulation et lutte pour la vie."
+            },
+            {
+              "id": "u2-q02-08",
+              "type": "single_choice",
+              "question": "Fossiles de Galápagos (fiches) :",
+              "options": [
+                "Variations adaptées entre îles",
+                "Identité sans variation",
+                "Création récente seule",
+                "Sans oiseaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radiation adaptative observée."
+            },
+            {
+              "id": "u2-q02-09",
+              "type": "single_choice",
+              "question": "Arbre phylogénétique :",
+              "options": [
+                "Représente parenté et divergence",
+                "Liste alphabétique d'espèces",
+                "Carte géographique seule",
+                "Tableau périodique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hypothèses de relations évolutives."
+            },
+            {
+              "id": "u2-q02-10",
+              "type": "single_choice",
+              "question": "Évolution ≠ :",
+              "options": [
+                "Changement aléatoire sans sélection ni hérédité seule",
+                "Changement des fréquences alléliques",
+                "Adaptation",
+                "Spéciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution = changement héréditaire dans les populations."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Sélection naturelle",
+          "questions": [
+            {
+              "id": "u2-q03-01",
+              "type": "multiple_choice",
+              "question": "Conditions de la sélection naturelle :",
+              "options": [
+                "Variation héréditaire",
+                "Différences de survie ou reproduction",
+                "Absence de toute variation",
+                "Environnement identique sans pression"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Variation + avantage différentiel."
+            },
+            {
+              "id": "u2-q03-02",
+              "type": "single_choice",
+              "question": "Sélection naturelle agit sur :",
+              "options": [
+                "Phénotype via survie/reproduction",
+                "Mutations dirigées voulues",
+                "Individu immortel",
+                "Lamarckisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtrage des variants."
+            },
+            {
+              "id": "u2-q03-03",
+              "type": "single_choice",
+              "question": "Sélection stabilisante :",
+              "options": [
+                "Favorise phénotypes intermédiaires",
+                "Favorise deux extrêmes",
+                "Favorise un extrême",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit variance autour de la moyenne."
+            },
+            {
+              "id": "u2-q03-04",
+              "type": "single_choice",
+              "question": "Sélection disruptive :",
+              "options": [
+                "Favorise deux phénotypes extrêmes",
+                "Favorise la moyenne",
+                "Fixe un allèle en une génération",
+                "Empêche reproduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peut favoriser spéciation."
+            },
+            {
+              "id": "u2-q03-05",
+              "type": "single_choice",
+              "question": "Sélection directionnelle :",
+              "options": [
+                "Déplace la moyenne phénotypique",
+                "Maintient statu quo",
+                "Supprime l'ADN",
+                "Crée des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Favorise un extrême."
+            },
+            {
+              "id": "u2-q03-06",
+              "type": "single_choice",
+              "question": "Résistance aux antibiotiques :",
+              "options": [
+                "Sélection de bactéries résistantes",
+                "Acquisition individuelle non héréditaire seule",
+                "Sans mutations",
+                "Toujours instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple de sélection forte."
+            },
+            {
+              "id": "u2-q03-07",
+              "type": "single_choice",
+              "question": "Adaptation locale :",
+              "options": [
+                "Allèles favorisés dans un milieu donné",
+                "Même phénotype partout",
+                "Sans gènes",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression de sélection variable."
+            },
+            {
+              "id": "u2-q03-08",
+              "type": "single_choice",
+              "question": "Sélection ne crée pas directement :",
+              "options": [
+                "Mutations ; elle trie la variation existante",
+                "Différences de reproduction",
+                "Changements de fréquences",
+                "Adaptation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mutation est aléatoire ; la sélection filtre."
+            },
+            {
+              "id": "u2-q03-09",
+              "type": "single_choice",
+              "question": "Peppered moth (phénomène industriel) illustre :",
+              "options": [
+                "Sélection directionnelle sur coloration",
+                "Lamarck",
+                "Absence d'hérédité",
+                "Créationnisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Camouflage et prédation."
+            },
+            {
+              "id": "u2-q03-10",
+              "type": "single_choice",
+              "question": "Fitness (aptitude darwinienne) :",
+              "options": [
+                "Contribution génétique à la génération suivante",
+                "Force musculaire seule",
+                "Taille uniquement",
+                "Intelligence mesurée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Succès reproducteur relatif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Adaptation",
+          "questions": [
+            {
+              "id": "u2-q04-01",
+              "type": "multiple_choice",
+              "question": "Adaptation :",
+              "options": [
+                "Caractère favorisé par sélection dans un environnement",
+                "Résultat de l'histoire évolutive",
+                "Toujours parfaite et immuable",
+                "Identique à un caractère acquis non héréditaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Adaptation = adéquation sélective, pas optimal absolu."
+            },
+            {
+              "id": "u2-q04-02",
+              "type": "single_choice",
+              "question": "Adaptation vs adéquation actuelle :",
+              "options": [
+                "Peut être héritée d'un autre contexte (exaptation)",
+                "Toujours optimale",
+                "Sans gènes",
+                "Instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraintes historiques."
+            },
+            {
+              "id": "u2-q04-03",
+              "type": "single_choice",
+              "question": "Exaptation :",
+              "options": [
+                "Fonction nouvelle d'un trait existant",
+                "Trait créé ex nihilo",
+                "Sans sélection",
+                "Mutation dirigée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. plumes puis vol."
+            },
+            {
+              "id": "u2-q04-04",
+              "type": "single_choice",
+              "question": "Camouflage est une adaptation à :",
+              "options": [
+                "Échapper prédateurs ou chasser",
+                "Photosynthèse",
+                "Mitose",
+                "Gravity seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection visuelle."
+            },
+            {
+              "id": "u2-q04-05",
+              "type": "single_choice",
+              "question": "Co-adaptation :",
+              "options": [
+                "Traits de deux espèces évoluent en interaction",
+                "Un organe seul",
+                "Sans coévolution",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. fleur et pollinisateur."
+            },
+            {
+              "id": "u2-q04-06",
+              "type": "single_choice",
+              "question": "Limite d'une adaptation :",
+              "options": [
+                "Compromis et contraintes historiques",
+                "Perfection absolue",
+                "Absence de gènes",
+                "Environnement figé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de optimum global."
+            },
+            {
+              "id": "u2-q04-07",
+              "type": "single_choice",
+              "question": "Mimétisme :",
+              "options": [
+                "Ressemblance sélective entre espèces",
+                "Homologie stricte",
+                "Hasard sans sélection",
+                "Clonage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bates, Müller."
+            },
+            {
+              "id": "u2-q04-08",
+              "type": "single_choice",
+              "question": "Niche et adaptation :",
+              "options": [
+                "Pressions sélectives liées au rôle écologique",
+                "Sans environnement",
+                "Uniquement génétique labo",
+                "Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu sculpte la sélection."
+            },
+            {
+              "id": "u2-q04-09",
+              "type": "single_choice",
+              "question": "Plantes xériques : adaptations à :",
+              "options": [
+                "Sécheresse",
+                "Milieu aquatique",
+                "Froid polaire seul",
+                "Obscurité totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction transpiration, stockage eau."
+            },
+            {
+              "id": "u2-q04-10",
+              "type": "single_choice",
+              "question": "Test d'adaptation en science :",
+              "options": [
+                "Hypothèses sur avantage sélectif + données",
+                "Opinion sans preuve",
+                "Un seul fossile",
+                "Ignorer l'hérédité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démarche hypothético-déductive."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Preuves de l'évolution",
+          "questions": [
+            {
+              "id": "u2-q05-01",
+              "type": "multiple_choice",
+              "question": "Preuves de l'évolution :",
+              "options": [
+                "Fossiles et succession dans les strates",
+                "Anatomie comparée (homologies)",
+                "Absence de parenté moléculaire",
+                "Fixité des espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Paléontologie, anatomie, molécules, biogéographie."
+            },
+            {
+              "id": "u2-q05-02",
+              "type": "single_choice",
+              "question": "Datation relative des fossiles :",
+              "options": [
+                "Position dans les couches sédimentaires",
+                "Couleur seule",
+                "Poids",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stratigraphie."
+            },
+            {
+              "id": "u2-q05-03",
+              "type": "single_choice",
+              "question": "Archaeopteryx montre :",
+              "options": [
+                "Forme intermédiaire dinosaure–oiseau",
+                "Poisson moderne",
+                "Bactérie",
+                "Humain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plumes et dents."
+            },
+            {
+              "id": "u2-q05-04",
+              "type": "single_choice",
+              "question": "Os homologues avant-bras vertébrés :",
+              "options": [
+                "Même plan d'organisation",
+                "Convergence pure",
+                "Sans ADN",
+                "Création indépendante sans parenté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Homologie de structure."
+            },
+            {
+              "id": "u2-q05-05",
+              "type": "single_choice",
+              "question": "ADN universel chez le vivant :",
+              "options": [
+                "Parenté commune (LUCA)",
+                "Preuve de fixisme",
+                "Sans mutation",
+                "Code à 2 bases"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Similarités séquences."
+            },
+            {
+              "id": "u2-q05-06",
+              "type": "single_choice",
+              "question": "Biogéographie : faunes insulaires :",
+              "options": [
+                "Parenté avec continent proche + spéciation",
+                "Identiques partout",
+                "Sans dispersion",
+                "Création locale instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Darwin sur les finches."
+            },
+            {
+              "id": "u2-q05-07",
+              "type": "single_choice",
+              "question": "Organe vestigial :",
+              "options": [
+                "Réduit, hérité d'un ancêtre",
+                "Toujours fonctionnel optimal",
+                "Sans gène",
+                "Analogie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. coccyx, appendice."
+            },
+            {
+              "id": "u2-q05-08",
+              "type": "single_choice",
+              "question": "Embryologie comparée :",
+              "options": [
+                "Stades communs chez vertébrés",
+                "Preuve de fixisme",
+                "Sans gènes",
+                "Identité adulte complète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plans de développement partagés."
+            },
+            {
+              "id": "u2-q05-09",
+              "type": "single_choice",
+              "question": "Horloge moléculaire :",
+              "options": [
+                "Estime divergences via taux mutation",
+                "Mesure masse",
+                "Ignore l'ADN",
+                "Datation absolue sans hypothèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approximation calibrée."
+            },
+            {
+              "id": "u2-q05-10",
+              "type": "single_choice",
+              "question": "Observation en temps réel :",
+              "options": [
+                "Évolution bactérienne ou expériences de sélection",
+                "Impossible jamais",
+                "Sans génétique",
+                "Uniquement fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection mesurable sur courtes échelles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sélection sexuelle",
+          "questions": [
+            {
+              "id": "u2-q06-01",
+              "type": "multiple_choice",
+              "question": "Sélection sexuelle :",
+              "options": [
+                "Competition intra-sexe pour accès accouplement",
+                "Choix du partenaire (souvent par un sexe)",
+                "Absence de variation",
+                "Sélection uniquement sur survie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Darwin : traits d'ornement ou armes."
+            },
+            {
+              "id": "u2-q06-02",
+              "type": "single_choice",
+              "question": "Dimorphisme sexuel peut résulter de :",
+              "options": [
+                "Sélection sexuelle",
+                "Sélection naturelle seule toujours",
+                "Sans gènes",
+                "Mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différences morphologie/comportement."
+            },
+            {
+              "id": "u2-q06-03",
+              "type": "single_choice",
+              "question": "Handicap de Zahavi (signaux coûteux) :",
+              "options": [
+                "Trait coûteux prouve qualité génétique",
+                "Sans coût",
+                "Lamarck",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Honest signaling."
+            },
+            {
+              "id": "u2-q06-04",
+              "type": "single_choice",
+              "question": "Plumes du paon :",
+              "options": [
+                "Exemple de sélection inter-sexuelle",
+                "Adaptation fuite prédateur seule",
+                "Sans hérédité",
+                "Analogie strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix femelle."
+            },
+            {
+              "id": "u2-q06-05",
+              "type": "single_choice",
+              "question": "Combat entre mâles :",
+              "options": [
+                "Sélection intra-sexuelle",
+                "Sélection stabilisante seule",
+                "Photosynthèse",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accès aux femelles/territoire."
+            },
+            {
+              "id": "u2-q06-06",
+              "type": "single_choice",
+              "question": "Sélection sexuelle vs naturelle :",
+              "options": [
+                "Peut favoriser traits défavorables à la survie",
+                "Toujours identiques",
+                "Sans reproduction",
+                "Ignore les gènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compromis survie/reproduction."
+            },
+            {
+              "id": "u2-q06-07",
+              "type": "single_choice",
+              "question": "Chant d'oiseau :",
+              "options": [
+                "Signal sexuel et territorial",
+                "Sans fonction",
+                "Non héréditaire jamais",
+                "Mutation dirigée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication et sélection."
+            },
+            {
+              "id": "u2-q06-08",
+              "type": "single_choice",
+              "question": "Runaway selection :",
+              "options": [
+                "Renforcement runaway d'un trait choisi",
+                "Arrêt immédiat sélection",
+                "Sans choix",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle préférence–trait."
+            },
+            {
+              "id": "u2-q06-09",
+              "type": "single_choice",
+              "question": "Chez humains, certains traits peuvent subir :",
+              "options": [
+                "Pressions sociales et sexuelles",
+                "Aucune sélection",
+                "Uniquement Lamarck",
+                "Sans culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interactions bio–culture."
+            },
+            {
+              "id": "u2-q06-10",
+              "type": "single_choice",
+              "question": "Mesure sélection sexuelle :",
+              "options": [
+                "Succès reproductif lié au trait",
+                "Masse seule",
+                "Nombre chromosomes",
+                "pH du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien trait–reproduction."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Spéciation",
+          "questions": [
+            {
+              "id": "u2-q07-01",
+              "type": "multiple_choice",
+              "question": "Spéciation :",
+              "options": [
+                "Formation de nouvelles espèces",
+                "Isolement reproductive entre populations",
+                "Fusion instantanée de tous taxons",
+                "Sans changement génétique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Barrières à la reproduction."
+            },
+            {
+              "id": "u2-q07-02",
+              "type": "single_choice",
+              "question": "Spéciation allopatrique :",
+              "options": [
+                "Populations séparées géographiquement",
+                "Même lieu sans isolement",
+                "Sans mutations",
+                "Polyploïdie seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière géographique."
+            },
+            {
+              "id": "u2-q07-03",
+              "type": "single_choice",
+              "question": "Spéciation sympatrique :",
+              "options": [
+                "Même zone, isolement reproductif",
+                "Continents séparés obligatoire",
+                "Sans sélection",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. phytophages, polyploïdie."
+            },
+            {
+              "id": "u2-q07-04",
+              "type": "single_choice",
+              "question": "Barrière prézygotique :",
+              "options": [
+                "Empêche fécondation (comportement, temporalité…)",
+                "Hybrid stérile seulement",
+                "Sans effet",
+                "Traduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant formation zygote."
+            },
+            {
+              "id": "u2-q07-05",
+              "type": "single_choice",
+              "question": "Barrière postzygotique :",
+              "options": [
+                "Hybrid inviable ou stérile",
+                "Accouplement impossible",
+                "Identique prézygotique",
+                "Sans gène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après zygote."
+            },
+            {
+              "id": "u2-q07-06",
+              "type": "single_choice",
+              "question": "Polyploïdie chez plantes :",
+              "options": [
+                "Peut créer isolement reproductif instantané",
+                "Impossible",
+                "Sans noyau",
+                "Mitose seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spéciation sympatrique fréquente."
+            },
+            {
+              "id": "u2-q07-07",
+              "type": "single_choice",
+              "question": "Divergence génétique :",
+              "options": [
+                "Accumulation différences entre populations isolées",
+                "Identité forcée",
+                "Sans dérive",
+                "Un individu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mutations, sélection, drift."
+            },
+            {
+              "id": "u2-q07-08",
+              "type": "single_choice",
+              "question": "Espèce chimique (insectes) :",
+              "options": [
+                "Isolement par phéromones",
+                "Uniquement géographique",
+                "Sans reproduction",
+                "Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance partenaire."
+            },
+            {
+              "id": "u2-q07-09",
+              "type": "single_choice",
+              "question": "Zone hybridation :",
+              "options": [
+                "Contact avec flux génique partiel",
+                "Absence totale de gènes",
+                "Fixisme",
+                "Sans fossiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Espèces sœurs en bordure."
+            },
+            {
+              "id": "u2-q07-10",
+              "type": "single_choice",
+              "question": "Radiation adaptive :",
+              "options": [
+                "Diversification rapide depuis ancêtre",
+                "Une seule espèce figée",
+                "Extinction seule",
+                "Sans niche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ex. mammifères post-K-Pg."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Phylogénie",
+          "questions": [
+            {
+              "id": "u2-q08-01",
+              "type": "multiple_choice",
+              "question": "Phylogénie :",
+              "options": [
+                "Histoire évolutive des espèces",
+                "Arbre basé sur caractères homologiques ou séquences",
+                "Liste sans parenté",
+                "Fixisme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Reconstruction des liens de parenté."
+            },
+            {
+              "id": "u2-q08-02",
+              "type": "single_choice",
+              "question": "Groupe monophylétique :",
+              "options": [
+                "Ancêtre commun + tous descendants",
+                "Ancêtre sans tous descendants",
+                "Formes convergentes seules",
+                "Sans ancêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clade."
+            },
+            {
+              "id": "u2-q08-03",
+              "type": "single_choice",
+              "question": "Caractère dérivé (apomorphie) :",
+              "options": [
+                "Nouveau trait chez un groupe",
+                "Trait ancestral seul",
+                "Analogie",
+                "Sans ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synapomorphie pour clades."
+            },
+            {
+              "id": "u2-q08-04",
+              "type": "single_choice",
+              "question": "Outgroup :",
+              "options": [
+                "Taxon proche hors du groupe étudié",
+                "Membre interne",
+                "Fossile obligatoire",
+                "Racine sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polarise les caractères."
+            },
+            {
+              "id": "u2-q08-05",
+              "type": "single_choice",
+              "question": "Parcimonie en phylogénie :",
+              "options": [
+                "Arbre minimisant changements",
+                "Maximise mutations",
+                "Hasard pur",
+                "Sans données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère de reconstruction."
+            },
+            {
+              "id": "u2-q08-06",
+              "type": "single_choice",
+              "question": "Séquences alignées :",
+              "options": [
+                "Comparaison positions homologues",
+                "Sans homologie",
+                "Couleur des plumes",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alignement ADN/protéines."
+            },
+            {
+              "id": "u2-q08-07",
+              "type": "single_choice",
+              "question": "Convergence rend :",
+              "options": [
+                "Analogies pouvant brouiller l'arbre",
+                "Homologies claires",
+                "Clades parfaits sans erreur",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Similarité non due à parenté."
+            },
+            {
+              "id": "u2-q08-08",
+              "type": "single_choice",
+              "question": "Nœud de l'arbre :",
+              "options": [
+                "Ancêtre hypothétique commun",
+                "Espèce actuelle seulement",
+                "Feuille uniquement",
+                "Mutation unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point de divergence."
+            },
+            {
+              "id": "u2-q08-09",
+              "type": "single_choice",
+              "question": "LUCA :",
+              "options": [
+                "Dernier ancêtre commun universel",
+                "Premier homme",
+                "Première plante seule",
+                "Virus seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine commune du vivant actuel."
+            },
+            {
+              "id": "u2-q08-10",
+              "type": "single_choice",
+              "question": "Classification phylogénétique privilégie :",
+              "options": [
+                "Clades monophylétiques",
+                "Similarité globale sans arbre",
+                "Couleur",
+                "Taille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Systematics cladistique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Évolution en action",
+          "questions": [
+            {
+              "id": "u2-q09-01",
+              "type": "multiple_choice",
+              "question": "Évolution observée :",
+              "options": [
+                "Changement fréquences alléliques dans le temps",
+                "Sélection mesurée en expérience",
+                "Absence de variation",
+                "Fixisme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Populations réelles ou expériences."
+            },
+            {
+              "id": "u2-q09-02",
+              "type": "single_choice",
+              "question": "Tiques de Darwin (finches) :",
+              "options": [
+                "Becs adaptés aux ressources des îles",
+                "Identiques partout",
+                "Sans hérédité",
+                "Création récente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radiation adaptative."
+            },
+            {
+              "id": "u2-q09-03",
+              "type": "single_choice",
+              "question": "Guppies (Endler) :",
+              "options": [
+                "Sélection prédation sur coloration",
+                "Sans prédation",
+                "Lamarck",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preuve expérimentale."
+            },
+            {
+              "id": "u2-q09-04",
+              "type": "single_choice",
+              "question": "Coévolution hôte–parasite :",
+              "options": [
+                "Course évolutive réciproque",
+                "Sans interaction",
+                "Un seul partenaire évolue",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Red Queen hypothesis."
+            },
+            {
+              "id": "u2-q09-05",
+              "type": "single_choice",
+              "question": "Antibiorésistance : éviter surprescription pour :",
+              "options": [
+                "Réduire pression sélective",
+                "Augmenter mutations dirigées",
+                "Supprimer gènes",
+                "Arrêter évolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestion médicale."
+            },
+            {
+              "id": "u2-q09-06",
+              "type": "single_choice",
+              "question": "Changement climatique peut :",
+              "options": [
+                "Modifier sélection et répartition espèces",
+                "Sans effet biologique",
+                "Créer ADN de novo",
+                "Stopper méiose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection et migration."
+            },
+            {
+              "id": "u2-q09-07",
+              "type": "single_choice",
+              "question": "Conservation : diversité génétique :",
+              "options": [
+                "Résilience des populations",
+                "Sans intérêt",
+                "Fixisme",
+                "Un gène suffit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Potentiel adaptatif."
+            },
+            {
+              "id": "u2-q09-08",
+              "type": "single_choice",
+              "question": "Évolution humaine récente :",
+              "options": [
+                "Ex. lactase adulte, altitude, immunité",
+                "Arrêt complet il y a 100 000 ans",
+                "Sans génétique",
+                "Lamarck seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection récente documentée."
+            },
+            {
+              "id": "u2-q09-09",
+              "type": "single_choice",
+              "question": "Domestication :",
+              "options": [
+                "Sélection artificielle forte",
+                "Sélection naturelle seule",
+                "Sans gènes",
+                "Instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traits favorisés par l'homme."
+            },
+            {
+              "id": "u2-q09-10",
+              "type": "single_choice",
+              "question": "Super-bactéries :",
+              "options": [
+                "Multirésistance par sélection",
+                "Apparition magique",
+                "Sans plasmides",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hôpital et antibiotiques."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse évolution",
+          "questions": [
+            {
+              "id": "u2-q10-01",
+              "type": "multiple_choice",
+              "question": "Théorie évolutive moderne :",
+              "options": [
+                "Variation génétique, sélection, dérive et temps",
+                "Mutations et recombinaison comme source de variation",
+                "Hérédité lamarckienne seule",
+                "Fixisme des espèces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Synthèse néodarwiniste : variation héréditable filtrée par sélection."
+            },
+            {
+              "id": "u2-q10-02",
+              "type": "single_choice",
+              "question": "Unité du vivant :",
+              "options": [
+                "Code génétique et biochimie communes",
+                "Plans sans parenté",
+                "ADN absent chez certains",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine commune."
+            },
+            {
+              "id": "u2-q10-03",
+              "type": "single_choice",
+              "question": "Gradualisme vs punctué :",
+              "options": [
+                "Débat rythme des changements",
+                "Un seul modèle prouvé partout",
+                "Sans fossiles",
+                "Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gould-Eldredge vs gradualisme."
+            },
+            {
+              "id": "u2-q10-04",
+              "type": "single_choice",
+              "question": "Extinction massive K-Pg :",
+              "options": [
+                "Disparition dinosaures non aviens + ouverture niches",
+                "Création nouvelles espèces ex nihilo",
+                "Sans fossiles",
+                "Hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impact + changements."
+            },
+            {
+              "id": "u2-q10-05",
+              "type": "single_choice",
+              "question": "Évolution n'est pas :",
+              "options": [
+                "Progrès moral vers le « meilleur »",
+                "Changement des populations",
+                "Descente avec modification",
+                "Spéciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de finalité."
+            },
+            {
+              "id": "u2-q10-06",
+              "type": "single_choice",
+              "question": "Science vs croyance :",
+              "options": [
+                "Théorie évolutive testée ; enseignement scientifique",
+                "Même statut que fixisme non testé",
+                "Sans preuves",
+                "Ignore génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadre scolaire français."
+            },
+            {
+              "id": "u2-q10-07",
+              "type": "single_choice",
+              "question": "Lien chapitre Terre-vie-évolution :",
+              "options": [
+                "Génétique fournit variation ; sélection oriente",
+                "Sans lien",
+                "Uniquement géologie",
+                "Uniquement chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme première SVT."
+            },
+            {
+              "id": "u2-q10-08",
+              "type": "single_choice",
+              "question": "Intelligence et évolution :",
+              "options": [
+                "Traits complexes polygéniques + environnement",
+                "Un seul gène maître",
+                "Lamarck",
+                "Fixisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de simplification extrême."
+            },
+            {
+              "id": "u2-q10-09",
+              "type": "single_choice",
+              "question": "Éthique évolutionniste appliquée :",
+              "options": [
+                "Éviter eugénisme social darwinisme",
+                "Justifier discrimination",
+                "Nier médecine",
+                "Fixisme politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distinction science/valeurs."
+            },
+            {
+              "id": "u2-q10-10",
+              "type": "single_choice",
+              "question": "Objectif unité Sélection naturelle :",
+              "options": [
+                "Expliquer adaptation et diversité du vivant",
+                "Nier génétique",
+                "Remplacer paléontologie",
+                "Ignorer sélection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre mécanismes évolutifs."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

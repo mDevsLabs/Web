@@ -37,6 +37,7 @@ import {
   SettingsAnchorNav,
 } from "@/components/settings/settings-anchor-nav";
 import { UsageTab } from "@/components/settings/usage-tab";
+import { preloadApplicationSettings } from "@/lib/settings/preload-applications";
 import { cn } from "@/lib/utils";
 
 type SettingsTab =
@@ -89,6 +90,10 @@ function SettingsPageInner() {
       ? initialTab
       : "profile"
   );
+
+  useEffect(() => {
+    preloadApplicationSettings();
+  }, []);
 
   const handleTabChange = useCallback(
     (tab: SettingsTab) => {
@@ -209,6 +214,8 @@ function SettingsPageInner() {
           { id: "blackline", label: "Blackline — Jeu 3D" },
           { id: "blackline-graphics", label: "↳ Image & Énergie" },
           { id: "blackline-gameplay", label: "↳ Caméra, Visée & Jeu" },
+          { id: "pages", label: "Pages — Documents" },
+          { id: "quizzly", label: "Quizzly — Profil" },
         ];
       case "memory":
         return [

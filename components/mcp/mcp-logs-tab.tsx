@@ -1,11 +1,9 @@
 "use client";
 
-import {
-  CheckCircle2Icon,
-  DownloadIcon,
-  RefreshCwIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { CheckCircle2Icon } from "@mdevs/icons/controls/check-circle-2";
+import { DownloadIcon } from "@mdevs/icons/misc/download";
+import { RefreshCwIcon } from "@mdevs/icons/misc/refresh-cw";
+import { Trash2Icon } from "@mdevs/icons/objects/trash-2";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

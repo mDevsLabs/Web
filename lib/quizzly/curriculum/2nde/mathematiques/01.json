@@ -1,0 +1,2183 @@
+{
+  "id": "2nde-mathematiques-01",
+  "year": "2nde",
+  "subject": "mathematiques",
+  "title": "Fonctions",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Notion de fonction",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Vocabulaire des fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles décrivent correctement une fonction f de ℝ dans ℝ ?",
+              "options": [
+                "À tout nombre x de ℝ, f associe un unique nombre f(x)",
+                "À un même x, f peut associer plusieurs images distinctes",
+                "L'ensemble de départ est ℝ et l'ensemble d'arrivée est ℝ",
+                "Une fonction est toujours donnée par une formule explicite"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une fonction associe une unique image à chaque antécédent ; ici le domaine et le codomaine sont ℝ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si f(3) = -2, que signifie -2 pour la fonction f ?",
+              "options": [
+                "L'antécédent de -2",
+                "L'image de 3",
+                "Le domaine de f",
+                "La pente de f"
+              ],
+              "correctAnswers": [1],
+              "explanation": "f(3) désigne l'image du nombre 3 par la fonction f."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre 3 est, pour f telle que f(3) = -2 :",
+              "options": [
+                "Une image",
+                "Un antécédent de -2",
+                "Un maximum",
+                "Un paramètre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "3 est un antécédent de l'image -2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'ensemble des antécédents d'une fonction f est appelé :",
+              "options": [
+                "Ensemble d'arrivée",
+                "Ensemble de définition",
+                "Ensemble image",
+                "Intervalle de confiance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ensemble de définition (ou domaine) regroupe les x pour lesquels f(x) existe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ensemble des valeurs prises par f(x) est :",
+              "options": [
+                "Le domaine",
+                "L'ensemble image",
+                "Le codomaine obligatoirement",
+                "L'axe des abscisses"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ensemble image est l'ensemble des f(x) effectivement atteints."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur un graphique, l'image de 2 se lit :",
+              "options": [
+                "Sur l'axe des abscisses en x = 2",
+                "Sur l'axe des ordonnées à la hauteur de la courbe en x = 2",
+                "À l'origine",
+                "Au point d'intersection avec l'axe Ox"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On lit l'ordonnée du point de la courbe d'abscisse 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une correspondance qui à x = 1 associe à la fois 2 et 5 :",
+              "options": [
+                "Est une fonction",
+                "N'est pas une fonction",
+                "Est une fonction affine",
+                "Est une bijection"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une fonction n'associe qu'une seule image à chaque antécédent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si f est définie sur [-1 ; 4], alors :",
+              "options": [
+                "f(0) n'existe pas",
+                "Seuls les entiers ont une image",
+                "x = 2 appartient au domaine",
+                "x = 5 appartient au domaine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tout x de [-1 ; 4], donc 2, est un antécédent admissible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La notation f : x ↦ 2x + 1 signifie que :",
+              "options": [
+                "f(1) = 2x",
+                "f(x) = 2x + 1",
+                "x = 2f + 1",
+                "f est constante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La flèche indique la règle de calcul de l'image f(x)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux fonctions f et g sont égales sur D si :",
+              "options": [
+                "Elles ont la même graphique sur D",
+                "Elles ont des noms différents",
+                "Leurs domaines diffèrent",
+                "Leurs images sont disjointes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité sur D signifie f(x) = g(x) pour tout x de D, donc même courbe sur D."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Calcul d'images",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x) = x² - 1, quelles valeurs sont correctes ?",
+              "options": ["f(0) = -1", "f(1) = 1", "f(-1) = -2", "f(3) = 8"],
+              "correctAnswers": [0, 3],
+              "explanation": "f(0) = -1 et f(3) = 8 ; les autres égalités proposées sont fausses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si f(x) = 3x - 4, alors f(2) vaut :",
+              "options": ["2", "6", "10", "-1"],
+              "correctAnswers": [0],
+              "explanation": "f(2) = 3×2 - 4 = 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour g(x) = -x + 5, l'image de -3 est :",
+              "options": ["2", "8", "-8", "-2"],
+              "correctAnswers": [1],
+              "explanation": "g(-3) = 3 + 5 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "h(x) = x². Que vaut h(-4) ?",
+              "options": ["-16", "16", "-4", "4"],
+              "correctAnswers": [1],
+              "explanation": "Le carré d'un réel est positif : (-4)² = 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x) = 1/x. L'image de 4 est :",
+              "options": ["4", "1/4", "-1/4", "0"],
+              "correctAnswers": [1],
+              "explanation": "f(4) = 1/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x) = |x - 2|. f(5) = ?",
+              "options": ["3", "-3", "7", "2"],
+              "correctAnswers": [0],
+              "explanation": "|5 - 2| = 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x) = 2x² - x. f(-1) = ?",
+              "options": ["1", "3", "-1", "-3"],
+              "correctAnswers": [1],
+              "explanation": "2×1 - (-1) = 2 + 1 = 3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une fonction affine f(x) = ax + b avec a = -2 et b = 7. f(3) = ?",
+              "options": ["1", "-1", "13", "-13"],
+              "correctAnswers": [0],
+              "explanation": "-2×3 + 7 = 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x) = √(x + 1). f(3) = ?",
+              "options": ["2", "4", "1", "16"],
+              "correctAnswers": [0],
+              "explanation": "√(3 + 1) = √4 = 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x) = x³. f(-2) = ?",
+              "options": ["-8", "8", "-6", "6"],
+              "correctAnswers": [0],
+              "explanation": "(-2)³ = -8."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Recherche d'antécédents",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x) = x², quels nombres sont antécédents de 4 ?",
+              "options": ["x = 2", "x = -2", "x = 4", "x = 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "x² = 4 admet les deux solutions x = 2 et x = -2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résoudre f(x) = 10 pour f(x) = 2x + 6.",
+              "options": ["x = 2", "x = 8", "x = -2", "x = 4"],
+              "correctAnswers": [0],
+              "explanation": "2x = 4, donc x = 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x) = x² - 9. Antécédents de 0 ?",
+              "options": ["-3 et 3", "0 seulement", "9 et -9", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "x² = 9 ⟺ x = ±3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x) = 5 - x. Antécédent de 2 ?",
+              "options": ["3", "-3", "7", "2"],
+              "correctAnswers": [0],
+              "explanation": "5 - x = 2 ⟺ x = 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x) = |x|. Antécédents de 4 ?",
+              "options": ["4 et -4", "2 et -2", "4 seulement", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "|x| = 4 ⟺ x = 4 ou x = -4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x) = 1/x. Antécédent de 2 ?",
+              "options": ["1/2", "2", "-1/2", "0"],
+              "correctAnswers": [0],
+              "explanation": "1/x = 2 ⟺ x = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x) = x² + 1. Antécédent de 5 ?",
+              "options": ["2 et -2", "4 et -4", "√5", "Impossible car 5 > 1"],
+              "correctAnswers": [0],
+              "explanation": "x² + 1 = 5 ⟺ x² = 4 ⟺ x = ±2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x) = 3x - 1. Antécédent de -4 ?",
+              "options": ["-1", "1", "-5/3", "-3"],
+              "correctAnswers": [0],
+              "explanation": "3x - 1 = -4 ⟺ 3x = -3 ⟺ x = -1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x) = (x - 1)². Antécédent de 0 ?",
+              "options": ["1", "0", "-1", "2"],
+              "correctAnswers": [0],
+              "explanation": "(x - 1)² = 0 ⟺ x = 1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x) = -2x + 8. Antécédent de 0 ?",
+              "options": ["4", "-4", "8", "0"],
+              "correctAnswers": [0],
+              "explanation": "-2x + 8 = 0 ⟺ x = 4."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ensemble de définition",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour quelles valeurs de x l'expression 1/(x - 2) a-t-elle un sens ?",
+              "options": ["x ≠ 2", "x = 2", "x > 2", "x ∈ ℝ \\ {2}"],
+              "correctAnswers": [0, 3],
+              "explanation": "Le dénominateur ne doit pas s'annuler : x ≠ 2, ce qu'expriment les réponses équivalentes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Domaine naturel de f(x) = √(x - 5) ?",
+              "options": ["[5 ; +∞[", "]5 ; +∞[", "ℝ", "[0 ; +∞["],
+              "correctAnswers": [0],
+              "explanation": "Il faut x - 5 ≥ 0, donc x ≥ 5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x) = 3x + 1 sur ℝ. Le domaine est :",
+              "options": ["ℝ", "[0 ; +∞[", "Les réels positifs", "∅"],
+              "correctAnswers": [0],
+              "explanation": "Une expression polynomiale est définie sur ℝ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x) = 1/x². Valeur interdite ?",
+              "options": ["x = 0", "x = 1", "x = -1", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "x² = 0 uniquement pour x = 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x) = √(4 - x²). Domaine ?",
+              "options": ["[-2 ; 2]", "[-2 ; 2[", "]0 ; 2]", "ℝ"],
+              "correctAnswers": [0],
+              "explanation": "4 - x² ≥ 0 ⟺ x² ≤ 4 ⟺ x ∈ [-2 ; 2]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x) = (x + 1)/(x² - 1). Valeurs interdites ?",
+              "options": [
+                "x = 1 et x = -1",
+                "x = 1 seulement",
+                "x = -1 seulement",
+                "Aucune exclusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur s'annule pour x = 1 et x = -1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une fonction définie sur [0 ; 3] : f(3,5) est-il autorisé ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement si x entier",
+                "Oui si x > 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3,5 ∉ [0 ; 3], donc f(3,5) n'est pas défini."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x) = |x| / x pour x ≠ 0. Peut-on définir f(0) ?",
+              "options": [
+                "Non avec cette règle",
+                "Oui, f(0) = 0",
+                "Oui, f(0) = 1",
+                "Oui, f(0) = -1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fraction n'est pas définie lorsque x = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Domaine de f(x) = 2/(|x| - 3) ?",
+              "options": ["ℝ \\ {-3 ; 3}", "[-3 ; 3]", "]3 ; +∞[", "ℝ"],
+              "correctAnswers": [0],
+              "explanation": "|x| - 3 = 0 pour x = 3 et x = -3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si f est définie sur ]-1 ; 5], alors :",
+              "options": [
+                "x = -1 n'a pas d'image",
+                "x = 5 a une image",
+                "x = 5 n'a pas d'image",
+                "x = -2 a une image"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La borne 5 est incluse ; -1 est exclue."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fonctions linéaires et affines",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions sont linéaires ?",
+              "options": [
+                "f(x) = 5x",
+                "g(x) = 3x + 2",
+                "h(x) = -x/2",
+                "k(x) = 2"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Linéaire ⟺ forme ax sans terme constant ; f et h conviennent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x) = 4x - 7 est :",
+              "options": [
+                "Affine non linéaire",
+                "Linéaire",
+                "Constante",
+                "Quadratique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présence de b = -7 ≠ 0 : affine, pas linéaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pente de f(x) = -3x + 1 ?",
+              "options": ["-3", "1", "3", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient directeur a vaut -3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x) = 2x passe par quel point ?",
+              "options": ["(0 ; 0)", "(0 ; 2)", "(2 ; 0)", "(1 ; 1)"],
+              "correctAnswers": [0],
+              "explanation": "f(0) = 0 : origine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordonnée à l'origine de g(x) = x/2 + 4 ?",
+              "options": ["4", "1/2", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "C'est le terme constant b = 4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux points (1 ; 3) et (3 ; 7) sont alignés sur une droite de pente :",
+              "options": ["2", "4", "1/2", "-2"],
+              "correctAnswers": [0],
+              "explanation": "(7 - 3)/(3 - 1) = 4/2 = 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x) = -x + 5 est décroissante car :",
+              "options": ["a = -1 < 0", "b = 5 > 0", "a = 1", "b < 0"],
+              "correctAnswers": [0],
+              "explanation": "Signe négatif du coefficient directeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f et g linéaires avec f(1)=2, g(1)=6. Rapport g/f en x=1 ?",
+              "options": ["3", "1/3", "4", "8"],
+              "correctAnswers": [0],
+              "explanation": "6/2 = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Équation de la droite passant par (0 ; -2) de pente 3 :",
+              "options": [
+                "y = 3x - 2",
+                "y = -2x + 3",
+                "y = 3x + 2",
+                "y = x - 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme y = ax + b avec a = 3 et b = -2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x) = 0 pour toute x : fonction",
+              "options": [
+                "Nulle",
+                "Affine de pente 0",
+                "Constante",
+                "Toutes les réponses précédentes"
+              ],
+              "correctAnswers": [3],
+              "explanation": "f ≡ 0 est constante, affine (a=0) et dite nulle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Lecture graphique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La courbe d'une fonction coupe l'axe des ordonnées en (0 ; 3). Que peut-on affirmer ?",
+              "options": [
+                "f(0) = 3",
+                "3 est une image",
+                "L'ordonnée à l'origine vaut 3",
+                "f(3) = 0"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le point (0 ; 3) donne f(0) = 3, l'ordonnée à l'origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un graphique, les antécédents de 2 sont lus :",
+              "options": [
+                "Sur Ox aux abscisses où la courbe est à hauteur 2",
+                "Sur Oy en y = 2",
+                "À l'origine",
+                "Au maximum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On coupe la droite y = 2 et on lit les abscisses."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la courbe est au-dessus de Ox sur [1 ; 4], alors sur cet intervalle :",
+              "options": [
+                "f(x) > 0",
+                "f(x) < 0",
+                "f(x) = 0",
+                "f est décroissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-dessus de l'axe horizontal signifie ordonnées positives."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nombre de antécédents de 1 pour une fonction strictement croissante sur ℝ ?",
+              "options": ["Au plus un", "Toujours deux", "Infini", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Strictement croissante ⟹ injectivité : au plus un antécédent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La courbe de f passe par (2 ; -1). Cela signifie :",
+              "options": [
+                "f(2) = -1",
+                "f(-1) = 2",
+                "x = -1",
+                "Image de 2 vaut 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abscisse 2, ordonnée -1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Zéros de f visibles : intersections avec",
+              "options": ["Ox", "Oy", "La droite y = 1", "L'origine seulement"],
+              "correctAnswers": [0],
+              "explanation": "f(x) = 0 ⟺ point sur l'axe des abscisses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si f(-1) = 4 et f(1) = -2, la courbe descend entre -1 et 1 ?",
+              "options": [
+                "On ne peut pas conclure sans plus d'info",
+                "Oui obligatoirement",
+                "Non, elle monte",
+                "Elle est constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux valeurs ne suffisent pas à décrire la variation sur tout l'intervalle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Graphique d'une fonction paire : symétrie par rapport à",
+              "options": ["Oy", "Ox", "Origine", "y = x"],
+              "correctAnswers": [0],
+              "explanation": "f(-x) = f(x) ⟺ symétrie par rapport à l'axe vertical."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(4) lu sur le graphique vaut 1,5. Image de 4 ?",
+              "options": ["1,5", "4", "1,5/4", "6,5"],
+              "correctAnswers": [0],
+              "explanation": "C'est l'ordonnée du point d'abscisse 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une droite non verticale est graphique d'une fonction car :",
+              "options": [
+                "Une seule ordonnée par abscisse",
+                "Elle coupe toujours Oy deux fois",
+                "Elle est infinie",
+                "Elle a une pente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test de la droite verticale : une seule image par x."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Tableaux de valeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x) = x + 2, quelles paires (x ; f(x)) sont correctes ?",
+              "options": ["(0 ; 2)", "(1 ; 3)", "(2 ; 3)", "(-1 ; 1)"],
+              "correctAnswers": [0, 1],
+              "explanation": "f(0)=2, f(1)=3 ; f(2)=4 et f(-1)=1 invalident les autres lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x) = -2x. f(-3) = ?",
+              "options": ["6", "-6", "-5", "5"],
+              "correctAnswers": [0],
+              "explanation": "-2×(-3) = 6."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau : x = 0,1,2 et f(x) = 1,4,7. f semble",
+              "options": [
+                "Affine de pente 3",
+                "Quadratique",
+                "Constante",
+                "Décroissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Différences constantes +3 : forme 3x + 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x) = x². Compléter : f(-2) = ?",
+              "options": ["4", "-4", "2", "-2"],
+              "correctAnswers": [0],
+              "explanation": "(-2)² = 4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si f(1)=0 et f(3)=0, le tableau suggère",
+              "options": [
+                "Deux zéros possibles",
+                "f toujours positive",
+                "f(2)=0 obligatoire",
+                "Domaine restreint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux antécédents de 0 observés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x) = 1/x pour x = 1, 2, 4 donne f(x) =",
+              "options": [
+                "1 ; 1/2 ; 1/4",
+                "1 ; 2 ; 4",
+                "0 ; 1 ; 2",
+                "1 ; -1/2 ; 1/4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images respectives 1, 1/2, 1/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Augmenter x de 1 pour f(x)=5x : f augmente de",
+              "options": ["5", "1", "x", "5x"],
+              "correctAnswers": [0],
+              "explanation": "Δf = 5Δx = 5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=|x|. Valeurs pour x = -2, 0, 2 ?",
+              "options": ["2 ; 0 ; 2", "-2 ; 0 ; 2", "2 ; 0 ; -2", "0 ; 0 ; 0"],
+              "correctAnswers": [0],
+              "explanation": "|±2|=2, |0|=0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=3. Tableau de f sur [-1;2] ?",
+              "options": [
+                "Toutes les images valent 3",
+                "Images 0,3,6",
+                "Décroissant",
+                "Non définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonction constante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=2x-1. f(0,5) = ?",
+              "options": ["0", "1", "-1", "2"],
+              "correctAnswers": [0],
+              "explanation": "2×0,5 - 1 = 0."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Compositions simples et problèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une taxi facture 2 € de prise en charge plus 1,20 € par km. Quelles formules modélisent le prix P(d) pour d km ?",
+              "options": [
+                "P(d) = 1,2d + 2",
+                "P(d) = 2d + 1,2",
+                "P(0) = 2",
+                "P(1) = 3,2"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Affine P(d)=1,2d+2 et prise en charge P(0)=2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Périmètre d'un carré de côté x : P(x) = ?",
+              "options": ["4x", "x²", "2x", "x/4"],
+              "correctAnswers": [0],
+              "explanation": "Somme des quatre côtés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aire d'un disque de rayon r : A(r) = πr². A(3) contient le facteur",
+              "options": ["9", "3", "6", "π seul"],
+              "correctAnswers": [0],
+              "explanation": "r² = 9 pour r = 3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Température F = 1,8C + 32. C = 0 donne F =",
+              "options": ["32", "0", "1,8", "-32"],
+              "correctAnswers": [0],
+              "explanation": "Conversion du zéro Celsius."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=2x+1, g(x)=x². f(3)+g(3) = ?",
+              "options": ["16", "14", "10", "18"],
+              "correctAnswers": [0],
+              "explanation": "7 + 9 = 16."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nombre de antécédents de 9 pour f(x)=x² sur ℝ ?",
+              "options": ["2", "1", "0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "±3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=5x-10. Valeur de x annulant f ?",
+              "options": ["2", "-2", "10", "5"],
+              "correctAnswers": [0],
+              "explanation": "5x=10 ⟺ x=2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une fonction C décroissante modélise un stock. C(0)=500 signifie",
+              "options": [
+                "Stock initial 500",
+                "Stock nul",
+                "500 jours",
+                "Perte de 500"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image à t=0 : quantité initiale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=|x-3|. Minimum de f sur ℝ ?",
+              "options": ["0", "3", "-3", "1"],
+              "correctAnswers": [0],
+              "explanation": "Valeur absolue ≥ 0, atteint 0 en x=3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux fonctions ont même domaine et f(x)=g(x) pour x=0,1,2 seulement. Sont-elles égales ?",
+              "options": [
+                "Pas nécessairement",
+                "Oui toujours",
+                "Non jamais",
+                "Seulement si linéaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité doit valoir sur tout le domaine."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Injectivité et représentations multiples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions peuvent associer la même image à deux antécédents distincts ?",
+              "options": ["f(x)=x²", "f(x)=2x", "f(x)=|x|", "f(x)=x+1"],
+              "correctAnswers": [0, 2],
+              "explanation": "Parabole et valeur absolue ne sont pas injectives sur ℝ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=3x est sur ℝ :",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Non monotone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente 3 > 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Représenter f par une courbe permet surtout de",
+              "options": [
+                "Visualiser variations et images",
+                "Calculer toujours sans calcul",
+                "Remplacer le domaine",
+                "Éviter les antécédents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le graphique aide à la lecture qualitative."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=1 si x rationnel, 0 sinon (Dirichlet) : utile en 2nde pour",
+              "options": [
+                "Illustrer qu'une règle peut exister sans courbe simple",
+                "Calculer des aires",
+                "Étudier la dérivée",
+                "Trouver des antécédents facilement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple théorique de fonction non élémentaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si f(-2)=f(2), que peut-on dire ?",
+              "options": [
+                "Rien de général sans connaître f",
+                "f est paire",
+                "f est impaire",
+                "f est croissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule égalité ne caractérise pas la symétrie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ensemble de définition explicite dans f: [0;5] → ℝ signifie",
+              "options": [
+                "Seuls x entre 0 et 5 sont admis",
+                "Les images sont ≤ 5",
+                "f vaut 5",
+                "ℝ est exclu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notation source → cible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=x³ est sur ℝ",
+              "options": [
+                "Strictement croissante",
+                "Décroissante sur ℝ+",
+                "Paires seulement",
+                "Bornée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x ↦ x³ est strictement croissante sur ℝ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une suite (u_n) peut être vue comme fonction de",
+              "options": ["ℕ dans ℝ", "ℝ dans ℝ", "ℤ seulement", "Aucun lien"],
+              "correctAnswers": [0],
+              "explanation": "n ↦ u_n est une fonction discrète."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=2 pour tout x. Nombre d'antécédents de 2 ?",
+              "options": ["Infini", "1", "0", "2"],
+              "correctAnswers": [0],
+              "explanation": "Tout réel du domaine est antécédent de 2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Changer d'échelle sur les axes du graphique",
+              "options": [
+                "Ne change pas la fonction",
+                "Change f(x)",
+                "Modifie le domaine",
+                "Rend f linéaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la représentation visuelle change."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse notion de fonction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Soit f(x)= -x + 4. Quelles affirmations sont vraies ?",
+              "options": ["f(0)=4", "f(4)=0", "f est croissante", "f(2)=2"],
+              "correctAnswers": [0, 3],
+              "explanation": "f(0)=4, f(2)=2 ; f décroît car pente -1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Domaine naturel de f(x)=√(9-x²) ?",
+              "options": ["[-3;3]", "]-3;3[", "[0;3]", "ℝ"],
+              "correctAnswers": [0],
+              "explanation": "9-x²≥0 ⟺ x∈[-3;3]."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Image de -1 par f(x)=x²+2x ?",
+              "options": ["-1", "1", "0", "3"],
+              "correctAnswers": [0],
+              "explanation": "1-2=-1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Antécédents de 0 pour f(x)=x²-4 ?",
+              "options": ["-2 et 2", "0", "4", "-4 et 4"],
+              "correctAnswers": [0],
+              "explanation": "x²=4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=1/(x+2). Image de -1 ?",
+              "options": ["1", "-1", "0", "2"],
+              "correctAnswers": [0],
+              "explanation": "1/1=1."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe symétrique par rapport à Oy :",
+              "options": ["f(-x)=f(x)", "f(x)=-f(x)", "f(x)=0", "f(x)=x"],
+              "correctAnswers": [0],
+              "explanation": "Définition d'une fonction paire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si f(1)=5 et f est linéaire, f(x)= ?",
+              "options": ["5x", "x+4", "5", "x/5"],
+              "correctAnswers": [0],
+              "explanation": "f(x)=5x passe par (1;5) et l'origine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nombre d'images possibles pour une fonction de {1,2} vers ℝ ?",
+              "options": [
+                "Une par élément du domaine",
+                "Une seule au total",
+                "Deux obligatoirement",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque élément du domaine a une image."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=|2x-6|. f(3)= ?",
+              "options": ["0", "6", "3", "-6"],
+              "correctAnswers": [0],
+              "explanation": "|0|=0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résoudre graphiquement f(x)=k, on cherche",
+              "options": [
+                "Abscisses des points de hauteur k",
+                "Ordonnée en x=k",
+                "Intersection avec Oy",
+                "Pente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intersection courbe / droite y=k."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Variations et représentations",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Sens de variation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un intervalle I, f est croissante si :",
+              "options": [
+                "Pour tout a<b dans I, f(a)≤f(b)",
+                "Pour tout a<b dans I, f(a)≥f(b)",
+                "f(x)=ax+b avec a>0 sur I",
+                "La courbe monte toujours sans palier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Définition par comparaison des images ; une affine de pente positive est croissante sur ℝ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=-3x+2 sur ℝ est",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Constante",
+                "Non monotone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficient directeur négatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=x² est décroissante sur",
+              "options": ["]-∞ ; 0]", "[0 ; +∞[", "ℝ", "]0 ; +∞["],
+              "correctAnswers": [0],
+              "explanation": "Parabole décroît à gauche du sommet 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=x² est croissante sur",
+              "options": ["[0 ; +∞[", "]-∞ ; 0]", "[-1 ; 0]", "ℝ"],
+              "correctAnswers": [0],
+              "explanation": "À droite du sommet, les images augmentent avec x."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Strictement croissante signifie : a<b ⇒",
+              "options": ["f(a)<f(b)", "f(a)≤f(b)", "f(a)=f(b)", "f(a)>f(b)"],
+              "correctAnswers": [0],
+              "explanation": "Inégalité stricte sur les images."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f constante sur I : variation",
+              "options": [
+                "Ni croissante strictement ni décroissante strictement",
+                "Croissante et décroissante",
+                "Impossible",
+                "Strictement croissante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(a)=f(b) pour toute paire : pas de strict monotonie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur ]1;5], f passe de 3 à 7. On peut dire f",
+              "options": [
+                "Croissante au sens large sur ]1;5]",
+                "Décroissante",
+                "Constante",
+                "Non définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image finale plus grande que initiale sur l'intervalle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=|x| décroît sur",
+              "options": ["]-∞ ; 0]", "[0 ; +∞[", "ℝ+", "Aucun intervalle"],
+              "correctAnswers": [0],
+              "explanation": "Distance à 0 diminue quand x s'approche de 0 par négatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau : x 0→1→2, f(x) 5→5→5. Sur [0;2], f est",
+              "options": [
+                "Constante",
+                "Croissante strictement",
+                "Décroissante",
+                "Non définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images identiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si f croît sur [a;b] et g croît sur [b;c], f+g croît sur [a;c] si",
+              "options": [
+                "On ne peut pas conclure sans hypothèse de continuité en b",
+                "Toujours",
+                "Jamais",
+                "Seulement si f(b)=g(b)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somme de deux croissances « collées» demande une analyse en b."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Extremums sur un intervalle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x)=x² sur [-2;3], quelles affirmations sont exactes ?",
+              "options": [
+                "Minimum en x=0, f(0)=0",
+                "Maximum en x=3, f(3)=9",
+                "Maximum en x=-2, f(-2)=4",
+                "Minimum vaut -4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sommet en 0 ; aux bornes f(3)=9 > f(-2)=4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=5-x sur [0;4]. Maximum atteint en",
+              "options": ["0", "4", "5", "2"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante : plus grande image à la borne gauche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=2x+1 sur [1;5]. Minimum en",
+              "options": ["1", "5", "3", "0"],
+              "correctAnswers": [0],
+              "explanation": "Affine croissante : minimum à x=1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=-(x-1)²+4 sur ℝ. Maximum vaut",
+              "options": ["4", "1", "0", "-4"],
+              "correctAnswers": [0],
+              "explanation": "Sommet (1;4)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur [0;2], f(x)=x. Maximum ?",
+              "options": ["2", "0", "1", "4"],
+              "correctAnswers": [0],
+              "explanation": "Croissante : f(2)=2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=|x| sur [-3;1]. Minimum ?",
+              "options": ["0", "-3", "1", "3"],
+              "correctAnswers": [0],
+              "explanation": "Sommet en 0."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=x² sur ]-2;2[. Minimum atteint ?",
+              "options": [
+                "En 0, mais 0∈]-2;2[",
+                "En -2",
+                "En 2",
+                "Pas de minimum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sommet intérieur à l'intervalle ouvert."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=3 sur [1;10]. Maximum ?",
+              "options": ["3", "10", "1", "0"],
+              "correctAnswers": [0],
+              "explanation": "Constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=-x² sur [-1;2]. Maximum en",
+              "options": ["0", "2", "-1", "1"],
+              "correctAnswers": [0],
+              "explanation": "Parabole tournée vers le bas, sommet en 0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer f(1) et f(4) pour f(x)=x² :",
+              "options": ["f(1)<f(4)", "f(1)>f(4)", "Égales", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Croissante sur [0;+∞[."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Tableaux de variations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un tableau de variations indique typiquement :",
+              "options": [
+                "Des intervalles de monotonie",
+                "Des valeurs de f aux bornes",
+                "Le signe de la pente pour une affine",
+                "Le domaine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Flèches de variation et images remarquables aux extrémités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=2x-3 : flèche sur ℝ ?",
+              "options": ["↗", "↘", "→", "↗ puis ↘"],
+              "correctAnswers": [0],
+              "explanation": "Pente 2 > 0."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=-x : variation sur ℝ",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Constante",
+                "Non monotone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente -1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=x² : tableau sur ℝ (schéma usuel)",
+              "options": [
+                "↘ sur ]-∞;0] puis ↗ sur [0;+∞[",
+                "↗ partout",
+                "↘ partout",
+                "→ puis ↗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimum en 0."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Flèche horizontale → sur I signifie",
+              "options": [
+                "f constante sur I",
+                "f croissante",
+                "f décroissante",
+                "f non définie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation nulle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=|x-2|. Sommet en x=2. Sur ]-∞;2], f",
+              "options": ["Décroît", "Croît", "Est constante", "Alterne"],
+              "correctAnswers": [0],
+              "explanation": "Distance à 2 diminue avant 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Affine f(x)=ax+b avec a=0 : tableau",
+              "options": ["Flèche →", "↗", "↘", "↗↘"],
+              "correctAnswers": [0],
+              "explanation": "Fonction constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lire ↗ sur [1;5] implique f(3) … f(1)",
+              "options": ["≥", "≤", "=", "≠ toujours"],
+              "correctAnswers": [0],
+              "explanation": "Croissance au sens large."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=1/x sur ]0;+∞[",
+              "options": [
+                "Décroissante",
+                "Croissante",
+                "Constante",
+                "Non définie en 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inverse décroît sur ℝ+*."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ajouter +2 à toutes les images translate la courbe",
+              "options": [
+                "Verticalement vers le haut",
+                "Horizontalement",
+                "Inverse les flèches",
+                "Annule les variations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "y ↦ f(x)+2 conserve la forme du tableau en x."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Représentation graphique affine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La droite d'équation y=2x-1 :",
+              "options": [
+                "A pour pente 2",
+                "Passe par (0;-1)",
+                "Est parallèle à y=2x+5",
+                "Passe par (1;0)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "a=2, b=-1 ; (1;0) donnerait 2-1=1≠0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Droites y=3x+2 et y=3x-4 sont",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Identiques",
+                "Sécantes non parallèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même coefficient directeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pente nulle : droite",
+              "options": ["Horizontale", "Verticale", "Oblique", "Absente"],
+              "correctAnswers": [0],
+              "explanation": "y=b."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=x. Angle avec Ox (qualitatif) ?",
+              "options": ["45° (croissante pente 1)", "0°", "90°", "180°"],
+              "correctAnswers": [0],
+              "explanation": "Référence visuelle de la première bissectrice."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordonnée à l'origine -3 : intersection avec Oy en",
+              "options": ["(0;-3)", "(-3;0)", "(3;0)", "(0;3)"],
+              "correctAnswers": [0],
+              "explanation": "x=0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=-2x+4 coupe Ox en",
+              "options": ["(2;0)", "(0;2)", "(4;0)", "(0;-2)"],
+              "correctAnswers": [0],
+              "explanation": "-2x+4=0 ⟺ x=2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux droites non parallèles se coupent",
+              "options": ["En un point", "En deux points", "Jamais", "Partout"],
+              "correctAnswers": [0],
+              "explanation": "Système deux équations de degré 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pente 0,5 signifie +1 en x ⇒ + … en y",
+              "options": ["0,5", "2", "1", "-0,5"],
+              "correctAnswers": [0],
+              "explanation": "Δy = aΔx."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique d'une fonction décroissante sur ℝ :",
+              "options": [
+                "Descend de gauche à droite (au sens large)",
+                "Monte partout",
+                "Est vertical",
+                "Est une parabole toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture directionnelle standard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "y=|x| : forme du graphique",
+              "options": [
+                "V sommet en 0",
+                "Droite seule",
+                "Parabole tournée vers le bas",
+                "Cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux demi-droites de pentes opposées."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Comparer f(a) et f(b)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f strictement croissante et 2<5. Quelles inégalités sont vraies ?",
+              "options": ["f(2)<f(5)", "f(5)>f(2)", "f(2)>f(5)", "f(2)=f(5)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux formulations équivalentes de la même comparaison."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=x+3, comparer f(-1) et f(2)",
+              "options": [
+                "f(-1)<f(2)",
+                "f(-1)>f(2)",
+                "Égales",
+                "Non comparables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=-4x, f(1) et f(3)",
+              "options": ["f(1)>f(3)", "f(1)<f(3)", "Égales", "f(3)=0"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=x², f(-3) et f(2)",
+              "options": ["f(-3)>f(2)", "f(-3)<f(2)", "Égales", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "9>4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=x², f(-1) et f(1)",
+              "options": ["Égales", "f(-1)>f(1)", "f(-1)<f(1)", "Non définies"],
+              "correctAnswers": [0],
+              "explanation": "Carré : opposés même image."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur [1;+∞[, f(x)=1/x. f(2) vs f(5)",
+              "options": ["f(2)>f(5)", "f(2)<f(5)", "Égales", "Signe opposé"],
+              "correctAnswers": [0],
+              "explanation": "Inverse décroît sur ℝ+*."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f constante 7. f(100) vs f(-5)",
+              "options": [
+                "Égales à 7",
+                "f(100)>f(-5)",
+                "Comparaison impossible",
+                "0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même image."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=2x-1 sur [0;10]. Plus grande image en",
+              "options": ["10", "0", "5", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "Croissante, maximum à droite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=5-2x. f(0) vs f(1)",
+              "options": ["f(0)>f(1)", "f(0)<f(1)", "Égales", "f(1)=6"],
+              "correctAnswers": [0],
+              "explanation": "Décroissante : 5 > 3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Monotonie utile pour",
+              "options": [
+                "Ordonner des images sans recalculer",
+                "Trouver le domaine",
+                "Factoriser",
+                "Dériver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil de comparaison directe."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Résolution graphique et équations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résoudre graphiquement f(x)=3 revient à",
+              "options": [
+                "Couper la courbe de f avec y=3",
+                "Lire les abscisses des points d'ordonnée 3",
+                "Chercher f(3)",
+                "Trouver l'intersection avec Ox"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même opération : droite horizontale y=3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la courbe de f coupe y=2 en x=-1 et x=4, solutions de f(x)=2 ?",
+              "options": [
+                "-1 et 4",
+                "2",
+                "-1 et 4 seulement si f affine",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abscisses des points d'intersection."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nombre de solutions de x²=1 graphiquement sur y=x² et y=1 ?",
+              "options": ["2", "1", "0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "±1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=2x. Solution de f(x)=6 ?",
+              "options": ["3", "6", "2", "12"],
+              "correctAnswers": [0],
+              "explanation": "x=3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer graphiquement f et g : f(x)>g(x) signifie courbe de f",
+              "options": [
+                "Au-dessus de g",
+                "En dessous",
+                "Identique",
+                "Verticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordres des ordonnées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Racines de f : graphiquement",
+              "options": [
+                "Abscisses des zéros",
+                "Ordonnées nulles en x=0",
+                "Intersection avec Oy",
+                "Maximum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Points sur Ox."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Système y=x et y=2 : intersection",
+              "options": ["(2;2)", "(0;2)", "(2;0)", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "x=2, y=2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=|x|-1. Nombre de solutions à f(x)=0 ?",
+              "options": ["2", "1", "0", "3"],
+              "correctAnswers": [0],
+              "explanation": "|x|=1 ⟺ x=±1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Inéquation f(x)≥0 : ensemble des x où",
+              "options": [
+                "Courbe au-dessus ou sur Ox",
+                "Courbe sous Ox",
+                "f(x)=1",
+                "x>0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signe positif ou nul."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Droite y=5 et parabole y=x² : nombre d'intersections",
+              "options": ["2", "1", "0", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "x²=5 deux solutions réelles."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fonction carré et paraboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour f(x)=x² sur ℝ :",
+              "options": [
+                "Minimum 0 en x=0",
+                "Fonction paire",
+                "Strictement croissante sur ℝ",
+                "Image [0;+∞["
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sommet en 0, symétrie Oy ; pas croissante sur tout ℝ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=(x-3)². Sommet",
+              "options": ["(3;0)", "(0;3)", "(-3;0)", "(3;3)"],
+              "correctAnswers": [0],
+              "explanation": "Translation de 3 vers la droite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=x²+2. Minimum ?",
+              "options": ["2", "0", "-2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Translate +2 verticalement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "f(x)=-x². Ouverture de la parabole",
+              "options": [
+                "Vers le bas",
+                "Vers le haut",
+                "Horizontale",
+                "Aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coefficient négatif devant x²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Axe de symétrie de f(x)=(x+1)²",
+              "options": ["x=-1", "x=1", "y=-1", "y=1"],
+              "correctAnswers": [0],
+              "explanation": "Forme (x-(-1))²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "f(x)=x², f(3)-f(2)=",
+              "options": ["5", "1", "9", "4"],
+              "correctAnswers": [0],
+              "explanation": "9-4=5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plus petite valeur de x² sur ℝ",
+              "options": ["0", "-∞", "1", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "Carré toujours ≥ 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "f(x)=x² et g(x)=x sur [0;1]. Plus grande en x=1 ?",
+              "options": ["Égales à 1", "f>g", "g>f", "Impossible"],
+              "correctAnswers": [0],
+              "explanation": "1²=1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique y=x² passe par",
+              "options": ["(2;4)", "(2;2)", "(-2;-4)", "(0;-1)"],
+              "correctAnswers": [0],
+              "explanation": "2²=4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "f(x)=x²-4. Zéros ?",
+              "options": ["-2 et 2", "0 et 4", "-4 et 4", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "x²=4."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Translations et dilatations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Passer de y=x² à y=(x-2)²+1 :",
+              "options": [
+                "Translation +2 en x",
+                "Translation +1 en y",
+                "Réflexion Ox",
+                "Dilatation verticale par 2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Décalage horizontal puis vertical."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "y=f(x)+3 : effet sur le graphique",
+              "options": [
+                "Monte de 3 unités",
+                "Glisse de 3 à droite",
+                "Symétrie",
+                "Rétrécit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajout aux ordonnées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "y=f(x-1) : effet",
+              "options": [
+                "Translation 1 vers la droite",
+                "Translation 1 vers la gauche",
+                "Montée verticale",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x remplacé par x-1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "y=2f(x) :",
+              "options": [
+                "Étire verticalement",
+                "Compresse horizontalement",
+                "Translate",
+                "Inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double les ordonnées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "y=f(2x) :",
+              "options": [
+                "Compresse horizontalement par 2",
+                "Étire horizontalement",
+                "Translate",
+                "Pente doublée seulement pour affine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x remplacé par 2x : période divisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "y=-f(x) :",
+              "options": [
+                "Symétrie par rapport à Ox",
+                "Symétrie Oy",
+                "Translation",
+                "Identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposé des ordonnées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sommet de y=(x+3)²-2",
+              "options": ["(-3;-2)", "(3;-2)", "(-3;2)", "(3;2)"],
+              "correctAnswers": [0],
+              "explanation": "Forme canonique décalée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "y=f(x)+f(-x) est toujours",
+              "options": ["Paire", "Impairs", "Linéaire", "Constante"],
+              "correctAnswers": [0],
+              "explanation": "Invariant par x ↦ -x."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Affine y=2(x-1)+5 simplifiée",
+              "options": ["y=2x+3", "y=2x+5", "y=x+3", "y=2x-2"],
+              "correctAnswers": [0],
+              "explanation": "2x-2+5=2x+3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître f sur [0;+∞[ et parité paire permet de reconstruire f sur",
+              "options": ["ℝ", "[0;+∞[ seulement", "Aucun autre", "ℤ"],
+              "correctAnswers": [0],
+              "explanation": "f(-x)=f(x) prolonge."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Modélisation des variations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une grandeur qui diminue linéairement avec le temps peut se modéliser par",
+              "options": [
+                "f(t)=at+b avec a<0",
+                "f(t)=at+b avec a>0",
+                "f(t)=t²",
+                "Une fonction affine à pente strictement négative"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Une évolution linéaire décroissante correspond à une pente a<0."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Profit P(x)=50x-2000 (x ventes). Seuil de rentabilité quand",
+              "options": ["P(x)=0", "P(x)=50", "x=0", "x=2000"],
+              "correctAnswers": [0],
+              "explanation": "x=40."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hauteur h(t)=-5t+20 (t en s). h=0 après",
+              "options": ["4 s", "5 s", "20 s", "0 s"],
+              "correctAnswers": [0],
+              "explanation": "t=4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tarif dégressif par paliers : graphique typique",
+              "options": [
+                "Suite de segments",
+                "Parabole seule",
+                "Hyperbole seule",
+                "Cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affines par morceaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f croissante modélise une population. f(2020)<f(2025) signifie",
+              "options": [
+                "Effectif plus élevé en 2025",
+                "Décroissance",
+                "Stagnation",
+                "Erreur d'unité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images croissantes avec le temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Area A(r)=πr² : variation sur ]0;+∞[",
+              "options": [
+                "Strictement croissante",
+                "Décroissante",
+                "Constante",
+                "Non monotone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "r ↦ r² croît sur ℝ+*."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Distance d=|v|t avec v≠0 fixe : d(t) affine ?",
+              "options": [
+                "Oui, d=|v|t",
+                "Non, quadratique",
+                "Non, constante",
+                "Non, valeur absolue variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportionnelle au temps."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Température T linéaire decroissante de 90 à 30 en 2 h : pente (°C/h)",
+              "options": ["-30", "30", "60", "-60"],
+              "correctAnswers": [0],
+              "explanation": "ΔT=-60 sur 2 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisir un intervalle où f(x)=x² modélise une chute libre approximative près du sol est",
+              "options": [
+                "Inadapté sans autre modèle",
+                "Toujours exact",
+                "Identique à affine",
+                "Constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Physique demande souvent t², pas x² arbitraire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau ↗ puis ↘ suggère",
+              "options": [
+                "Maximum intermédiaire",
+                "Minimum toujours en 0",
+                "Fonction affine",
+                "Domaine vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement de monotonie : extremum local."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse variations et représentations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "f(x)=|x-1|+2 :",
+              "options": [
+                "Minimum 2 en x=1",
+                "Décroît sur ]-∞;1]",
+                "Croît sur [1;+∞[",
+                "Sommet en (1;2)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "V translate : sommet (1;2), minimum 2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "f(x)=3-2x sur [0;2]. Range des images ?",
+              "options": ["[-1;3]", "[0;3]", "[-2;2]", "[3;7]"],
+              "correctAnswers": [0],
+              "explanation": "f(0)=3, f(2)=-1, décroissante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "f(x)=x²-2x+1=(x-1)². Minimum ?",
+              "options": ["0", "1", "-1", "2"],
+              "correctAnswers": [0],
+              "explanation": "Carré ≥ 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Graphique ↘ sur [a;b] et f(a)>f(b) : compatible ?",
+              "options": [
+                "Oui (décroissante)",
+                "Non",
+                "Seulement si affine",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image diminue de gauche à droite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "f(x)=1/x sur ]0;1]. f(0,1) vs f(1)",
+              "options": [
+                "f(0,1)>f(1)",
+                "f(0,1)<f(1)",
+                "Égales",
+                "Non définies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inverse décroît : petit x, grande image."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Représentation par tableau complète le graphique pour",
+              "options": [
+                "Valeurs isolées et lecture discrète",
+                "Remplacer le domaine",
+                "Prouver la dérivée",
+                "Éliminer les variations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complément discret/continu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "f(x)=max(0,x). Sur ℝ, f est",
+              "options": [
+                "Croissante sur [0;+∞[ et constante sur ]-∞;0]",
+                "Décroissante partout",
+                "Quadratique",
+                "Impairs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Partie positive : palier puis pente 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux graphiques identiques signifient",
+              "options": [
+                "Même fonction sur le domaine affiché",
+                "Même formule obligatoirement",
+                "Même nom",
+                "Même codomaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Égalité graphique sur la fenêtre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "f(x)=-(x+2)²+5. Maximum ?",
+              "options": ["5", "-2", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "Sommet ordonnée 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « variations et représentations » :",
+              "options": [
+                "Relier courbe, tableau et monotonie",
+                "Calculer des limites infinies",
+                "Intégrer",
+                "Résoudre des systèmes 3×3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture qualitative et liens entre outils."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

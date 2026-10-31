@@ -1,0 +1,2323 @@
+{
+  "id": "5e-espagnol-01",
+  "year": "5e",
+  "subject": "espagnol",
+  "title": "Découvrir l'espagnol",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Salutations et registres",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formules sont des salutations adaptées en journée ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Buenos días", "Gracias", "Hola", "De nada"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Buenos días » et « Hola » saluent ; « Gracias » remercie."
+            },
+            {
+              "id": "q2",
+              "question": "Traduis : « Bon après-midi » (formule usuelle).",
+              "type": "single_choice",
+              "options": [
+                "Buenas tardes",
+                "Buenos días",
+                "Buenas noches",
+                "Hasta luego"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Buenas tardes » couvre l'après-midi et le début de soirée."
+            },
+            {
+              "id": "q3",
+              "question": "À 22 h, quelle salutation est la plus logique en entrant chez quelqu'un ?",
+              "type": "single_choice",
+              "options": [
+                "Buenos días",
+                "Buenas tardes",
+                "Buenas noches",
+                "Buen provecho"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le soir tard, on emploie « Buenas noches »."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie « ¿Qué tal? » dans une conversation informelle ?",
+              "type": "single_choice",
+              "options": [
+                "Comment tu t'appelles ?",
+                "Comment ça va ?",
+                "D'où es-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« ¿Qué tal? » demande des nouvelles, comme « comment ça va ? »."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle réponse convient à « ¿Cómo estás? » ?",
+              "type": "single_choice",
+              "options": [
+                "Muy bien, gracias",
+                "Me llamo Luis",
+                "Soy de Francia",
+                "Tengo quince años"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond sur son état : « Muy bien, gracias »."
+            },
+            {
+              "id": "q6",
+              "question": "Différence principale entre « ¿Cómo estás? » et « ¿Cómo está usted? » :",
+              "type": "single_choice",
+              "options": [
+                "L'heure de la journée",
+                "Le tutoiement / vouvoiement",
+                "La nationalité",
+                "L'âge"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Usted » marque un registre plus formel."
+            },
+            {
+              "id": "q7",
+              "question": "« Mucho gusto » s'utilise surtout :",
+              "type": "single_choice",
+              "options": [
+                "Pour dire au revoir",
+                "En se rencontrant",
+                "Pour commander",
+                "Pour s'excuser"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On le dit en faisant connaissance."
+            },
+            {
+              "id": "q8",
+              "question": "Une fille dit « Encantada ». Un garçon dira plutôt :",
+              "type": "single_choice",
+              "options": ["Encantada", "Encantado", "Encantados", "Encantan"],
+              "correctAnswers": [1],
+              "explanation": "L'adjectif s'accorde : encantado / encantada."
+            },
+            {
+              "id": "q9",
+              "question": "Lequel est une formule d'adieu, pas de salut ?",
+              "type": "single_choice",
+              "options": ["Hola", "Buenos días", "Hasta luego", "¿Qué tal?"],
+              "correctAnswers": [2],
+              "explanation": "« Hasta luego » signifie « à plus tard »."
+            },
+            {
+              "id": "q10",
+              "question": "En classe, le professeur dit « Buenos días ». Tu réponds poliment :",
+              "type": "single_choice",
+              "options": ["Adiós", "Buenos días", "Buenas noches", "Por favor"],
+              "correctAnswers": [1],
+              "explanation": "On renvoie la salutation du matin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Politesse : merci, s'il vous plaît, pardon",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions expriment la politesse positive ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Gracias", "Por favor", "Adiós", "Odio"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gracias » et « por favor » sont essentiels."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « de rien » ?",
+              "type": "single_choice",
+              "options": ["Lo siento", "De nada", "Perdón", "Hasta luego"],
+              "correctAnswers": [1],
+              "explanation": "« De nada » répond à « gracias »."
+            },
+            {
+              "id": "q3",
+              "question": "« Perdón » ou « Disculpa » servent surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Saluer",
+                "Demander pardon / attirer l'attention",
+                "Donner son âge",
+                "Nommer sa ville"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ce sont des excuses ou une interpellation légère."
+            },
+            {
+              "id": "q4",
+              "question": "Traduis : « Excusez-moi » (formel).",
+              "type": "single_choice",
+              "options": ["Perdona", "Disculpe", "Gracias", "Hola"],
+              "correctAnswers": [1],
+              "explanation": "« Disculpe » convient au vouvoiement."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase est correcte pour remercier chaleureusement ?",
+              "type": "single_choice",
+              "options": [
+                "Muchas gracias",
+                "Muchas noches",
+                "Muchos días",
+                "Muchas tardes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Muchas gracias » intensifie le remerciement."
+            },
+            {
+              "id": "q6",
+              "question": "« Por favor » se place en espagnol :",
+              "type": "single_choice",
+              "options": [
+                "Uniquement à la fin",
+                "Souvent au début ou à la fin de la demande",
+                "Jamais à l'oral",
+                "Seulement à l'écrit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On peut dire « Por favor, … » ou « …, por favor »."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie « Lo siento » ?",
+              "type": "single_choice",
+              "options": [
+                "Je m'appelle",
+                "Je suis désolé(e)",
+                "J'ai faim",
+                "Je suis fatigué(e)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Lo siento » exprime des regrets."
+            },
+            {
+              "id": "q8",
+              "question": "Réponse adaptée à « Gracias por tu ayuda » :",
+              "type": "single_choice",
+              "options": [
+                "De nada",
+                "Buenos días",
+                "Me llamo Ana",
+                "Soy español"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On minimise avec « de nada »."
+            },
+            {
+              "id": "q9",
+              "question": "Lequel n'est PAS une formule de politesse ?",
+              "type": "single_choice",
+              "options": ["Por favor", "Gracias", "Hola", "Perdón"],
+              "correctAnswers": [2],
+              "explanation": "« Hola » est une salutation."
+            },
+            {
+              "id": "q10",
+              "question": "Pour entrer dans une boutique : « ___ , ¿dónde está la salida? »",
+              "type": "single_choice",
+              "options": [
+                "Adiós",
+                "Perdón / Disculpe",
+                "Encantado",
+                "Buenas noches"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On s'excuse ou interpelle poliment."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Se présenter : nom et identité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases présentent correctement son prénom ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Me llamo Carla",
+                "Me llamo Carlos",
+                "Me gusta Carla",
+                "Tengo Carla"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Me llamo + nom » est la structure standard."
+            },
+            {
+              "id": "q2",
+              "question": "Comment demander « Comment tu t'appelles ? » (tutoiement) ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Cómo se llama usted?",
+                "¿Cuántos años tienes?",
+                "¿De dónde eres?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Te » correspond au tutoiement."
+            },
+            {
+              "id": "q3",
+              "question": "« ¿Cómo se llama usted? » demande :",
+              "type": "single_choice",
+              "options": [
+                "L'âge",
+                "Le nom (vouvoiement)",
+                "La nationalité",
+                "L'heure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule formelle pour le nom."
+            },
+            {
+              "id": "q4",
+              "question": "Traduis : « Je m'appelle Mathias ».",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Mathias",
+                "Me gusta Mathias",
+                "Soy Mathias años",
+                "Tengo Mathias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe « llamarse » au présent."
+            },
+            {
+              "id": "q5",
+              "question": "« Mi nombre es Lucía » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Lucía est ma sœur",
+                "Je m'appelle Lucía",
+                "Lucía est professeure",
+                "J'aime Lucía"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Autre façon de donner son prénom."
+            },
+            {
+              "id": "q6",
+              "question": "Dans « Me llamo Pierre », « me » indique :",
+              "type": "single_choice",
+              "options": [
+                "Une question",
+                "Le pronom réfléchi (je)",
+                "Le pluriel",
+                "Le futur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Me » renvoie à la première personne."
+            },
+            {
+              "id": "q7",
+              "question": "Réponse à « ¿Cómo te llamas? » :",
+              "type": "single_choice",
+              "options": [
+                "Bien, gracias",
+                "Me llamo Sara",
+                "Soy de Madrid",
+                "Tengo catorce años"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On donne son nom."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle question est incohérente avec la réponse « Me llamo Tom » ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Cuál es tu nombre?",
+                "¿Cuántos años tienes?",
+                "¿Cómo se llama?"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'âge ne répond pas avec « me llamo »."
+            },
+            {
+              "id": "q9",
+              "question": "« Encantado de conocerte » équivaut à :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Ravi de te connaître",
+                "Merci beaucoup",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule lors d'une première rencontre."
+            },
+            {
+              "id": "q10",
+              "question": "Pour présenter un ami : « Él ___ Pablo » (Il s'appelle).",
+              "type": "single_choice",
+              "options": ["llama", "se llama", "llamas", "me llamo"],
+              "correctAnswers": [1],
+              "explanation": "Verbe pronominal « llamarse » à la 3e personne."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Âge et nombres en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases indiquent un âge correctement ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Tengo quince años",
+                "Tengo catorce años",
+                "Soy quince años",
+                "Estoy quince"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On utilise « tener + número + años »."
+            },
+            {
+              "id": "q2",
+              "question": "Comment demander l'âge (tutoiement) ?",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Cómo te llamas?",
+                "¿Qué hora es?",
+                "¿Dónde vives?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure fixe avec « cuántos años »."
+            },
+            {
+              "id": "q3",
+              "question": "« Tengo dieciséis años » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai seize ans",
+                "Je suis le seizième",
+                "Il est seize heures",
+                "Seize jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Años » = ans."
+            },
+            {
+              "id": "q4",
+              "question": "Erreur fréquente à éviter :",
+              "type": "single_choice",
+              "options": [
+                "Tengo doce años",
+                "Soy doce años",
+                "Tengo doce",
+                "¿Cuántos años tienes?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne dit pas « soy … años » pour l'âge."
+            },
+            {
+              "id": "q5",
+              "question": "Écris en lettres : 13 ans →",
+              "type": "single_choice",
+              "options": [
+                "trece años",
+                "tres años",
+                "treinta años",
+                "trec años"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trece = 13."
+            },
+            {
+              "id": "q6",
+              "question": "Dans « ¿Cuántos años tiene usted? », on vouvoie car :",
+              "type": "single_choice",
+              "options": [
+                "« tiene » remplace « tienes »",
+                "« usted » change le verbe",
+                "Les deux",
+                "Aucun"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Usted » entraîne « tiene »."
+            },
+            {
+              "id": "q7",
+              "question": "Réponse logique : « ¿Cuántos años tienes? » — « ___ »",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Leo",
+                "Tengo trece años",
+                "Soy francés",
+                "Estoy bien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On donne un nombre avec « tener »."
+            },
+            {
+              "id": "q8",
+              "question": "« Diecinueve » correspond à :",
+              "type": "single_choice",
+              "options": ["9", "19", "90", "29"],
+              "correctAnswers": [1],
+              "explanation": "Préfixe dieci- + nueve."
+            },
+            {
+              "id": "q9",
+              "question": "Pour dire « nous avons » (âge d'un groupe fictif « nous avons 14 ans ») :",
+              "type": "single_choice",
+              "options": [
+                "Tenemos catorce años",
+                "Tienen catorce años",
+                "Tengo catorce años",
+                "Tenéis catorce años"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re personne du pluriel de « tener »."
+            },
+            {
+              "id": "q10",
+              "question": "« Veinte » est suivi de « años » pour :",
+              "type": "single_choice",
+              "options": ["20 ans", "2 ans", "12 ans", "100 ans"],
+              "correctAnswers": [0],
+              "explanation": "Veinte = 20."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Origine, nationalité et langues",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases parlent de nationalité / origine ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Soy francés",
+                "Soy de París",
+                "Tengo hambre",
+                "Estoy cansado"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ser » + adjectif ou « ser de » + lieu."
+            },
+            {
+              "id": "q2",
+              "question": "Comment demander « D'où viens-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "¿De dónde eres?",
+                "¿Cómo estás?",
+                "¿Qué hora es?",
+                "¿Cuántos años tienes?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « de dónde + ser »."
+            },
+            {
+              "id": "q3",
+              "question": "Une fille française dit :",
+              "type": "single_choice",
+              "options": [
+                "Soy francés",
+                "Soy francesa",
+                "Soy francesas",
+                "Soy de francés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Accord féminin : francesa."
+            },
+            {
+              "id": "q4",
+              "question": "« Soy de México » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Je suis mexicain (adjectif)",
+                "Je viens du Mexique",
+                "Les deux peuvent se traduire ainsi",
+                "Je parle mexicain"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Ser de » indique la provenance."
+            },
+            {
+              "id": "q5",
+              "question": "Nationalité : « espagnol » (masc.) →",
+              "type": "single_choice",
+              "options": ["española", "español", "españoles", "España"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif de nationalité masculin."
+            },
+            {
+              "id": "q6",
+              "question": "« Hablo un poco de español » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Je parle un peu espagnol",
+                "Je suis espagnol",
+                "J'aime l'Espagne",
+                "Je vais en Espagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe « hablar » + langue."
+            },
+            {
+              "id": "q7",
+              "question": "Réponse à « ¿De dónde eres? » :",
+              "type": "single_choice",
+              "options": [
+                "Soy de Lyon",
+                "Tengo quince años",
+                "Me llamo Nina",
+                "Estoy bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On indique sa ville ou pays."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Eres de Francia? » attend plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Sí, soy de Francia",
+                "Sí, tengo Francia",
+                "Sí, estoy Francia",
+                "Sí, llamo Francia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confirmation avec « ser de »."
+            },
+            {
+              "id": "q9",
+              "question": "Le nom du pays « France » en espagnol :",
+              "type": "single_choice",
+              "options": ["Francia", "Francés", "Francesa", "Francisco"],
+              "correctAnswers": [0],
+              "explanation": "Francia = le pays ; francés = l'adjectif."
+            },
+            {
+              "id": "q10",
+              "question": "Pour dire « nous sommes allemands » (groupe masculin ou mixte) :",
+              "type": "single_choice",
+              "options": [
+                "Somos alemanes",
+                "Sois alemanes",
+                "Son alemanes",
+                "Soy alemán"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re personne du pluriel de « ser »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Verbes ser et estar au présent (intro)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quand utilise-t-on « ser » plutôt qu'« estar » ici ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Soy estudiante",
+                "Estoy en clase",
+                "Soy de Chile",
+                "Estoy cansado"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ser » pour identité / origine ; « estar » pour état ou lieu."
+            },
+            {
+              "id": "q2",
+              "question": "Traduis : « Je suis fatigué » (état passager).",
+              "type": "single_choice",
+              "options": [
+                "Estoy cansado",
+                "Soy cansado",
+                "Tengo cansado",
+                "Hago cansado"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fatigue est un état → « estar »."
+            },
+            {
+              "id": "q3",
+              "question": "« Estoy en el instituto » parle de :",
+              "type": "single_choice",
+              "options": ["Nationalité", "Localisation", "Nom", "Âge"],
+              "correctAnswers": [1],
+              "explanation": "« Estar en » = être dans un lieu."
+            },
+            {
+              "id": "q4",
+              "question": "Forme correcte : « Ellos ___ amigos » (identité).",
+              "type": "single_choice",
+              "options": ["son", "están", "tienen", "hacen"],
+              "correctAnswers": [0],
+              "explanation": "Relation durable → « ser » : ellos son."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿Dónde estás? » utilise « estar » car :",
+              "type": "single_choice",
+              "options": [
+                "On demande un lieu",
+                "On demande un nom",
+                "On demande l'âge",
+                "On remercie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position → estar."
+            },
+            {
+              "id": "q6",
+              "question": "Conjugaison : yo ___ (ser)",
+              "type": "single_choice",
+              "options": ["soy", "estoy", "tengo", "hago"],
+              "correctAnswers": [0],
+              "explanation": "Yo soy."
+            },
+            {
+              "id": "q7",
+              "question": "Conjugaison : tú ___ (estar)",
+              "type": "single_choice",
+              "options": ["eres", "estás", "es", "somos"],
+              "correctAnswers": [1],
+              "explanation": "Tú estás."
+            },
+            {
+              "id": "q8",
+              "question": "Phrase incorrecte :",
+              "type": "single_choice",
+              "options": [
+                "Soy profesor",
+                "Estoy contenta",
+                "Soy contenta ahora",
+                "Estoy en casa"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Contento » émotion passagère → plutôt « estoy contenta »."
+            },
+            {
+              "id": "q9",
+              "question": "« Nosotros somos de España » : « somos » est :",
+              "type": "single_choice",
+              "options": [
+                "Ser, 1re pers. pluriel",
+                "Estar, 1re pers. pluriel",
+                "Tener",
+                "Ir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine → ser, nosotros somos."
+            },
+            {
+              "id": "q10",
+              "question": "Choisis la paire cohérente :",
+              "type": "single_choice",
+              "options": [
+                "Soy en Madrid / Estoy español",
+                "Soy español / Estoy en Madrid",
+                "Tengo en Madrid",
+                "Estoy de Madrid identidad"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nationalité avec ser, lieu avec estar."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Dialogues : première rencontre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un dialogue de présentation, quelles répliques vont ensemble ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo te llamas? — Me llamo Eva",
+                "¿Cuántos años tienes? — Tengo quince años",
+                "¿Qué hora es? — Soy Luis",
+                "¿De dónde eres? — Bien, gracias"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Question-réponse logiques pour nom et âge."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre naturel en se rencontrant :",
+              "type": "single_choice",
+              "options": [
+                "Adiós → Hola → nombre",
+                "Hola → nombre → Mucho gusto",
+                "Gracias → Por favor → Adiós",
+                "Nombre → Adiós → Hola"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Salut, présentation, plaisir de rencontrer."
+            },
+            {
+              "id": "q3",
+              "question": "Complète : « Hola, ___ Ana. ¿Y tú? »",
+              "type": "single_choice",
+              "options": ["me llamo", "me gusta", "tengo", "estoy"],
+              "correctAnswers": [0],
+              "explanation": "Présentation avec « me llamo »."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « Mucho gusto » souvent :",
+              "type": "single_choice",
+              "options": [
+                "Igualmente / El gusto es mío",
+                "De nada",
+                "Buenas noches",
+                "Lo siento"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la politesse."
+            },
+            {
+              "id": "q5",
+              "question": "Tu demandes l'origine :",
+              "type": "single_choice",
+              "options": [
+                "¿De dónde eres?",
+                "¿Cómo te llamas?",
+                "¿Qué tal?",
+                "¿Cuántos años tienes?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question de provenance."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Y tú? » sert à :",
+              "type": "single_choice",
+              "options": [
+                "Relancer la même question",
+                "Dire au revoir",
+                "Refuser",
+                "Commander"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie la question à l'interlocuteur."
+            },
+            {
+              "id": "q7",
+              "question": "Mini-dialogue : « ¿Qué tal? » — « Bien, ¿___? »",
+              "type": "single_choice",
+              "options": ["y tú", "me llamo", "soy de", "tengo"],
+              "correctAnswers": [0],
+              "explanation": "Relance informelle."
+            },
+            {
+              "id": "q8",
+              "question": "Formule trop formelle entre deux élèves du même âge :",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo estás?",
+                "¿Cómo está usted?",
+                "¿Qué tal?",
+                "Hola"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Usted » est rare entre camarades."
+            },
+            {
+              "id": "q9",
+              "question": "Pour clore une première rencontre :",
+              "type": "single_choice",
+              "options": [
+                "Hasta luego",
+                "Buenos días (encore)",
+                "¿Cómo te llamas?",
+                "Tengo quince"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adieu courant."
+            },
+            {
+              "id": "q10",
+              "question": "Traduis la question : « Et toi, d'où viens-tu ? »",
+              "type": "single_choice",
+              "options": [
+                "¿Y tú, de dónde eres?",
+                "¿Y tú, cómo estás?",
+                "¿Y tú, cuántos años?",
+                "¿Y tú, qué hora es?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure parallèle en espagnol."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Adieux et formules de départ",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions disent au revoir ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "Hasta mañana",
+                "Hasta luego",
+                "Buenos días",
+                "Mucho gusto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Hasta … » indique un au-revoir."
+            },
+            {
+              "id": "q2",
+              "question": "« Hasta mañana » signifie :",
+              "type": "single_choice",
+              "options": [
+                "À demain",
+                "À tout de suite",
+                "Bonne nuit",
+                "Bon appétit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mañana = demain."
+            },
+            {
+              "id": "q3",
+              "question": "Différence : « Adiós » est souvent :",
+              "type": "single_choice",
+              "options": [
+                "Plus définitif que « hasta luego »",
+                "Une salutation du matin",
+                "Un remerciement",
+                "Une question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Adiós » peut sonner plus final."
+            },
+            {
+              "id": "q4",
+              "question": "Tu quittes le collège à 17 h :",
+              "type": "single_choice",
+              "options": [
+                "Hasta luego",
+                "Buenos días",
+                "Buenas noches (salut matinal)",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir standard."
+            },
+            {
+              "id": "q5",
+              "question": "« Nos vemos » équivaut à :",
+              "type": "single_choice",
+              "options": [
+                "On se voit (bientôt)",
+                "Je m'appelle",
+                "Merci",
+                "Je suis fatigué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression familière de départ."
+            },
+            {
+              "id": "q6",
+              "question": "« Chao » en espagnol est :",
+              "type": "single_choice",
+              "options": [
+                "Emprunt informel pour dire au revoir",
+                "Un plat typique",
+                "Un mois",
+                "Un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage oral fréquent."
+            },
+            {
+              "id": "q7",
+              "question": "Avant de dormir on dit plutôt :",
+              "type": "single_choice",
+              "options": [
+                "Buenas noches",
+                "Buenos días",
+                "Hasta luego (matin suivant)",
+                "Hola"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souhait nocturne."
+            },
+            {
+              "id": "q8",
+              "question": "« Hasta pronto » convient quand :",
+              "type": "single_choice",
+              "options": [
+                "On reverra la personne rapidement",
+                "On ne reverra jamais",
+                "On mange",
+                "On présente son nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronto = bientôt."
+            },
+            {
+              "id": "q9",
+              "question": "Lequel reste une salutation d'arrivée ?",
+              "type": "single_choice",
+              "options": ["Hola", "Adiós", "Hasta mañana", "Hasta luego"],
+              "correctAnswers": [0],
+              "explanation": "« Hola » accueille."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « Adiós » :",
+              "type": "single_choice",
+              "options": [
+                "Adiós / Hasta luego",
+                "Buenos días",
+                "Me llamo…",
+                "Gracias por favor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On renvoie l'adieu."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Questions oui / non et réponses courtes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles réponses sont des affirmations courtes ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Sí", "No", "Tal vez (parfois)", "Adiós"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sí » et « no » répondent à une question fermée."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Hablas español? » — réponse positive :",
+              "type": "single_choice",
+              "options": [
+                "Sí, un poco",
+                "No, gracias",
+                "Me llamo…",
+                "Buenas tardes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On confirme en précisant le niveau."
+            },
+            {
+              "id": "q3",
+              "question": "« ¿Eres de esta ciudad? » — négation :",
+              "type": "single_choice",
+              "options": [
+                "No, soy de otra ciudad",
+                "Sí, tengo ciudad",
+                "Estoy bien",
+                "Mucho gusto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation + précision."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Te gusta el español? » utilise :",
+              "type": "single_choice",
+              "options": [
+                "gustar (goût / appréciation)",
+                "llamarse",
+                "tener (âge)",
+                "ser de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « gustar » introduite ici."
+            },
+            {
+              "id": "q5",
+              "question": "Question : « ¿Estás bien? » — réponse logique :",
+              "type": "single_choice",
+              "options": [
+                "Sí, estoy bien",
+                "Sí, soy bien",
+                "Sí, tengo bien",
+                "Sí, me llamo bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État → estar."
+            },
+            {
+              "id": "q6",
+              "question": "Pour demander « Est-ce que tu as … ans ? » on dit plutôt :",
+              "type": "single_choice",
+              "options": [
+                "¿Tienes … años?",
+                "¿Eres … años?",
+                "¿Estás … años?",
+                "¿Llamas … años?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec tener."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Verdad? » à la fin d'une phrase invite à :",
+              "type": "single_choice",
+              "options": [
+                "Confirmer (n'est-ce pas ?)",
+                "Saluer",
+                "Partir",
+                "Compter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tag question espagnol."
+            },
+            {
+              "id": "q8",
+              "question": "Réponse à « ¿Cómo estás? » si tu vas mal :",
+              "type": "single_choice",
+              "options": [
+                "Mal, gracias / Regular",
+                "Soy mal",
+                "Tengo mal",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif avec estar implicite."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Sí o no? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Un choix binaire",
+                "L'heure",
+                "Le nom complet",
+                "La date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oui ou non."
+            },
+            {
+              "id": "q10",
+              "question": "Traduis : « Oui, je suis français ».",
+              "type": "single_choice",
+              "options": [
+                "Sí, soy francés",
+                "Sí, estoy francés",
+                "Sí, tengo francés",
+                "Sí, me llamo francés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nationalité → ser."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : saluer et se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Associe les bonnes paires (deux réponses) :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo te llamas? / Me llamo…",
+                "¿Cuántos años tienes? / Tengo… años",
+                "¿Qué hora es? / Soy de…",
+                "Gracias / Hola"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom avec llamarse, âge avec tener."
+            },
+            {
+              "id": "q2",
+              "question": "Scénario : premier cours d'espagnol, 9 h. Tu dis :",
+              "type": "single_choice",
+              "options": [
+                "Buenos días",
+                "Buenas noches",
+                "Hasta mañana",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation matinale."
+            },
+            {
+              "id": "q3",
+              "question": "Présentation complète la plus riche :",
+              "type": "single_choice",
+              "options": [
+                "Hola, me llamo…, tengo… años y soy de…",
+                "Adiós",
+                "Gracias",
+                "Buenas noches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom, âge, origine."
+            },
+            {
+              "id": "q4",
+              "question": "Erreur à corriger : « Soy catorce años » →",
+              "type": "single_choice",
+              "options": [
+                "Tengo catorce años",
+                "Estoy catorce años",
+                "Me llamo catorce",
+                "Soy de catorce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge avec tener."
+            },
+            {
+              "id": "q5",
+              "question": "« Encantada » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Une fille qui parle",
+                "Un garçon",
+                "Un objet",
+                "Une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin."
+            },
+            {
+              "id": "q6",
+              "question": "Formule de politesse après un service :",
+              "type": "single_choice",
+              "options": ["Gracias", "Hola", "Me llamo", "Soy"],
+              "correctAnswers": [0],
+              "explanation": "Remerciement."
+            },
+            {
+              "id": "q7",
+              "question": "Vouvoiement correct :",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo está usted?",
+                "¿Cómo estás usted?",
+                "¿Cómo estás tú formal?",
+                "¿Cómo eres usted?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Está + usted."
+            },
+            {
+              "id": "q8",
+              "question": "Quitter un ami après le collège :",
+              "type": "single_choice",
+              "options": [
+                "Hasta luego",
+                "Buenos días",
+                "¿De dónde eres?",
+                "Mucho gusto (encore)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿De dónde eres? » — « Soy de Portugal » indique :",
+              "type": "single_choice",
+              "options": ["Provenance", "Nom", "Heure", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Ser de + pays."
+            },
+            {
+              "id": "q10",
+              "question": "Mot interrogatif dans « ¿Cuántos años tienes? » :",
+              "type": "single_choice",
+              "options": ["Cuántos", "Años", "Tienes", "Cómo"],
+              "correctAnswers": [0],
+              "explanation": "Cuántos = combien (pluriel)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Nombres 0–20 et calcul simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels nombres sont pairs ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["catorce", "quince", "dieciséis", "trece"],
+              "correctAnswers": [0, 2],
+              "explanation": "14 et 16 sont pairs."
+            },
+            {
+              "id": "q2",
+              "question": "« Once » vaut :",
+              "type": "single_choice",
+              "options": ["11", "1", "10", "21"],
+              "correctAnswers": [0],
+              "explanation": "Once = 11."
+            },
+            {
+              "id": "q3",
+              "question": "5 + 7 en espagnol (résultat) :",
+              "type": "single_choice",
+              "options": ["doce", "diez", "catorce", "siete"],
+              "correctAnswers": [0],
+              "explanation": "12 = doce."
+            },
+            {
+              "id": "q4",
+              "question": "Ordre croissant : choisis la suite correcte",
+              "type": "single_choice",
+              "options": [
+                "diez, once, doce",
+                "doce, once, diez",
+                "once, diez, doce",
+                "diez, doce, once"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10, 11, 12."
+            },
+            {
+              "id": "q5",
+              "question": "« Veinte » moins « cinco » donne :",
+              "type": "single_choice",
+              "options": ["quince", "veinticinco", "cinco", "diez"],
+              "correctAnswers": [0],
+              "explanation": "20 − 5 = 15."
+            },
+            {
+              "id": "q6",
+              "question": "Écris 18 :",
+              "type": "single_choice",
+              "options": ["dieciocho", "diecioche", "ochoce", "ochodiez"],
+              "correctAnswers": [0],
+              "explanation": "Dieciocho."
+            },
+            {
+              "id": "q7",
+              "question": "« Cero » s'utilise pour :",
+              "type": "single_choice",
+              "options": ["0", "10", "100", "6"],
+              "correctAnswers": [0],
+              "explanation": "Cero = zéro."
+            },
+            {
+              "id": "q8",
+              "question": "Numéro de téléphone : lire « 15 » →",
+              "type": "single_choice",
+              "options": ["quince", "cinco", "cincuenta", "catorce"],
+              "correctAnswers": [0],
+              "explanation": "Quince."
+            },
+            {
+              "id": "q9",
+              "question": "« Diecinueve » précède :",
+              "type": "single_choice",
+              "options": ["veinte", "dieciocho", "once", "nueve"],
+              "correctAnswers": [0],
+              "explanation": "19 puis 20."
+            },
+            {
+              "id": "q10",
+              "question": "Dans « tengo quince años », « quince » est :",
+              "type": "single_choice",
+              "options": ["15", "5", "50", "14"],
+              "correctAnswers": [0],
+              "explanation": "Quince = 15."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Couleurs et accord",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs de couleur s'accordent en genre ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["blanco / blanca", "azul", "rojo / roja", "verde"],
+              "correctAnswers": [0, 2],
+              "explanation": "Blanco et rojo varient ; azul et verde sont invariables en genre."
+            },
+            {
+              "id": "q2",
+              "question": "« La casa blanca » →",
+              "type": "single_choice",
+              "options": [
+                "la casa blanca",
+                "la casa blanco",
+                "la casa blancos",
+                "la casa blancas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin singulier."
+            },
+            {
+              "id": "q3",
+              "question": "Couleur du ciel en espagnol :",
+              "type": "single_choice",
+              "options": ["azul", "rojo", "negro", "rosa"],
+              "correctAnswers": [0],
+              "explanation": "Azul."
+            },
+            {
+              "id": "q4",
+              "question": "« Los libros ___ » (rouges, masc. plur.)",
+              "type": "single_choice",
+              "options": ["rojos", "rojas", "rojo", "roja"],
+              "correctAnswers": [0],
+              "explanation": "Rojo → rojos au masculin pluriel."
+            },
+            {
+              "id": "q5",
+              "question": "Traduis « orange » (couleur) :",
+              "type": "single_choice",
+              "options": ["naranja", "anaranjado", "Les deux existent", "azul"],
+              "correctAnswers": [2],
+              "explanation": "Naranja ou anaranjado selon le registre."
+            },
+            {
+              "id": "q6",
+              "question": "« Verde » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Vert (invariable au genre)",
+                "Vert uniquement féminin",
+                "Un nombre",
+                "Un jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verte reste verde."
+            },
+            {
+              "id": "q7",
+              "question": "« Negro » au féminin :",
+              "type": "single_choice",
+              "options": [
+                "negra",
+                "negro",
+                "negros",
+                "negras (pluriel seulement)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Negra."
+            },
+            {
+              "id": "q8",
+              "question": "Phrase : « El coche es ___ » (bleu)",
+              "type": "single_choice",
+              "options": ["azul", "azula", "azules (obligatoire)", "azulo"],
+              "correctAnswers": [0],
+              "explanation": "Azul invariable."
+            },
+            {
+              "id": "q9",
+              "question": "Couleur « gris » :",
+              "type": "single_choice",
+              "options": ["gris", "grisa", "gri", "grises (singulier)"],
+              "correctAnswers": [0],
+              "explanation": "Gris invariable en genre."
+            },
+            {
+              "id": "q10",
+              "question": "« Una camiseta rosa » : « rosa » ici est :",
+              "type": "single_choice",
+              "options": [
+                "Couleur rose (invariable)",
+                "Fleur",
+                "Verbe",
+                "Nombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rosa = rose."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Famille : vocabulaire étendu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots désignent la génération des parents ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["padre", "madre", "primo", "sobrino"],
+              "correctAnswers": [0, 1],
+              "explanation": "Padre et madre."
+            },
+            {
+              "id": "q2",
+              "question": "« Hermana » signifie :",
+              "type": "single_choice",
+              "options": ["Sœur", "Frère", "Cousine", "Tante"],
+              "correctAnswers": [0],
+              "explanation": "Hermana = sœur."
+            },
+            {
+              "id": "q3",
+              "question": "Fils du frère ou de la sœur :",
+              "type": "single_choice",
+              "options": ["sobrino", "primo", "tío", "abuelo"],
+              "correctAnswers": [0],
+              "explanation": "Sobrino = neveu."
+            },
+            {
+              "id": "q4",
+              "question": "« Abuelos » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Les grands-parents (les deux)",
+                "Un seul grand-père",
+                "Les parents",
+                "Les cousins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel des deux grands-parents."
+            },
+            {
+              "id": "q5",
+              "question": "Traduis « les enfants » :",
+              "type": "single_choice",
+              "options": [
+                "los hijos / las hijas / los niños",
+                "los padres",
+                "los tíos",
+                "los abuelos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hijos ou niños selon le contexte."
+            },
+            {
+              "id": "q6",
+              "question": "« Mi familia es grande » : « mi » veut dire :",
+              "type": "single_choice",
+              "options": ["mon / ma / mes", "ton", "son", "notre"],
+              "correctAnswers": [0],
+              "explanation": "Possessif 1re personne."
+            },
+            {
+              "id": "q7",
+              "question": "« Tía » :",
+              "type": "single_choice",
+              "options": ["Tante", "Oncle", "Cousine", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Tía = tante."
+            },
+            {
+              "id": "q8",
+              "question": "Cousin (masculin) :",
+              "type": "single_choice",
+              "options": ["primo", "prima", "sobrino", "hermano"],
+              "correctAnswers": [0],
+              "explanation": "Primo."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase correcte : « Tengo un ___ y una hermana » (frère)",
+              "type": "single_choice",
+              "options": ["hermano", "hermana", "hijo", "tío"],
+              "correctAnswers": [0],
+              "explanation": "Hermano."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Cuántas personas hay en tu familia? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Le nombre de personnes",
+                "La couleur",
+                "L'heure",
+                "Le verbe ser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter les membres."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Classe et matériel scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des objets de classe ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["libro", "cuaderno", "hermano", "madre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Livre et cahier."
+            },
+            {
+              "id": "q2",
+              "question": "« El profesor / la profesora » :",
+              "type": "single_choice",
+              "options": [
+                "Enseignant(e)",
+                "Élève",
+                "Directeur uniquement",
+                "Cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Professeur."
+            },
+            {
+              "id": "q3",
+              "question": "Traduis « stylo » :",
+              "type": "single_choice",
+              "options": ["bolígrafo / pluma", "mesa", "silla", "puerta"],
+              "correctAnswers": [0],
+              "explanation": "Bolígrafo courant."
+            },
+            {
+              "id": "q4",
+              "question": "« La pizarra » est :",
+              "type": "single_choice",
+              "options": ["Le tableau", "La chaise", "La fenêtre", "Le sol"],
+              "correctAnswers": [0],
+              "explanation": "Pizarra = tableau."
+            },
+            {
+              "id": "q5",
+              "question": "« Estudiante » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Un élève / une élève",
+                "Une matière",
+                "Une couleur",
+                "Un mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personne qui étudie."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Dónde está mi ___? » (trousse)",
+              "type": "single_choice",
+              "options": ["estuche", "abuelo", "perro", "naranja"],
+              "correctAnswers": [0],
+              "explanation": "Estuche = trousse."
+            },
+            {
+              "id": "q7",
+              "question": "« Silla » vs « mesa » :",
+              "type": "single_choice",
+              "options": [
+                "Chaise / table",
+                "Table / chaise",
+                "Porte / fenêtre",
+                "Livre / cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silla = chaise, mesa = table."
+            },
+            {
+              "id": "q8",
+              "question": "« Clase de español » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Cours d'espagnol",
+                "Classe sociale",
+                "Salle de bain",
+                "Cour de récréation seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière enseignée."
+            },
+            {
+              "id": "q9",
+              "question": "Article défini masculin singulier :",
+              "type": "single_choice",
+              "options": ["el", "la", "los", "las"],
+              "correctAnswers": [0],
+              "explanation": "El libro."
+            },
+            {
+              "id": "q10",
+              "question": "« Los lápices » : « lápices » est :",
+              "type": "single_choice",
+              "options": ["Crayons (pluriel)", "Gomme", "Règle", "Professeur"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel de lápiz."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Jours, mois et date",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels jours font partie du week-end en Espagne ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["sábado", "domingo", "lunes", "martes"],
+              "correctAnswers": [0, 1],
+              "explanation": "Samedi et dimanche."
+            },
+            {
+              "id": "q2",
+              "question": "Premier jour de la semaine scolaire (souvent) :",
+              "type": "single_choice",
+              "options": ["lunes", "domingo", "viernes", "sábado"],
+              "correctAnswers": [0],
+              "explanation": "Lunes = lundi."
+            },
+            {
+              "id": "q3",
+              "question": "« Mi cumpleaños es en ___ » (juillet)",
+              "type": "single_choice",
+              "options": [
+                "julio",
+                "jueves",
+                "junio incorrect si juillet",
+                "lunes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Julio = juillet."
+            },
+            {
+              "id": "q4",
+              "question": "Différence : « jueves » vs « julio » :",
+              "type": "single_choice",
+              "options": [
+                "Jour / mois",
+                "Mois / jour",
+                "Couleur / nombre",
+                "Verbe / nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeudi vs juillet."
+            },
+            {
+              "id": "q5",
+              "question": "« Hoy es ___ » (mercredi)",
+              "type": "single_choice",
+              "options": [
+                "miércoles",
+                "marzo",
+                "miercoles sin accent (faux en classe)",
+                "mañana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accent sur miércoles."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Qué día es hoy? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Le jour de la semaine",
+                "L'heure exacte",
+                "L'âge",
+                "La nationalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour actuel."
+            },
+            {
+              "id": "q7",
+              "question": "Ordre : après « enero » vient :",
+              "type": "single_choice",
+              "options": ["febrero", "marzo", "diciembre", "agosto"],
+              "correctAnswers": [0],
+              "explanation": "Février."
+            },
+            {
+              "id": "q8",
+              "question": "« Navidad » est en :",
+              "type": "single_choice",
+              "options": ["diciembre", "junio", "lunes", "mañana"],
+              "correctAnswers": [0],
+              "explanation": "Décembre."
+            },
+            {
+              "id": "q9",
+              "question": "« Mañana » peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Demain ou matin (selon contexte)",
+                "Hier",
+                "Année",
+                "Couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polysemie fréquente."
+            },
+            {
+              "id": "q10",
+              "question": "Date : « el cinco de mayo » →",
+              "type": "single_choice",
+              "options": ["5 mai", "5 mars", "15 mai", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Cinco = 5, mayo = mai."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Verbes tener, haber intro et expressions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases utilisent « tener » correctement ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["Tengo sed", "Tengo frío", "Soy sed", "Estoy hambre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Soif et froid avec tener."
+            },
+            {
+              "id": "q2",
+              "question": "« Tengo hambre » signifie :",
+              "type": "single_choice",
+              "options": [
+                "J'ai faim",
+                "J'ai soif",
+                "Je suis content",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression idiomatique."
+            },
+            {
+              "id": "q3",
+              "question": "Traduis « J'ai chaud » :",
+              "type": "single_choice",
+              "options": [
+                "Tengo calor",
+                "Estoy calor",
+                "Soy calor",
+                "Hago calor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tener calor."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿Qué tienes en la mochila? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Ce qu'il y a dans le sac",
+                "Ton nom",
+                "Ton âge",
+                "Ta couleur préférée seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenu du sac."
+            },
+            {
+              "id": "q5",
+              "question": "Négation : « No tengo ___ » (peur)",
+              "type": "single_choice",
+              "options": ["miedo", "mieda", "miendo", "miedos (rare ici)"],
+              "correctAnswers": [0],
+              "explanation": "Tener miedo."
+            },
+            {
+              "id": "q6",
+              "question": "« Hay » (impersonnel) introduit :",
+              "type": "single_choice",
+              "options": [
+                "Il y a",
+                "Je suis",
+                "Tu as (tú tienes)",
+                "Nous allons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hay = il y a."
+            },
+            {
+              "id": "q7",
+              "question": "« Hay dos ventanas » : nombre de fenêtres :",
+              "type": "single_choice",
+              "options": ["2", "1", "3", "0"],
+              "correctAnswers": [0],
+              "explanation": "Dos = 2."
+            },
+            {
+              "id": "q8",
+              "question": "Conjugaison : nosotros ___ (tener)",
+              "type": "single_choice",
+              "options": ["tenemos", "tienen", "tengo", "tenéis"],
+              "correctAnswers": [0],
+              "explanation": "Tenemos."
+            },
+            {
+              "id": "q9",
+              "question": "Erreur : « Estoy hambre » → corrige :",
+              "type": "single_choice",
+              "options": [
+                "Tengo hambre",
+                "Soy hambre",
+                "Hago hambre",
+                "Llamo hambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faim avec tener."
+            },
+            {
+              "id": "q10",
+              "question": "« Tener sueño » veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Avoir sommeil",
+                "Faire un rêve raconté",
+                "Être en colère",
+                "Avoir soif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression avec tener."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mots interrogatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont interrogatifs ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["dónde", "qué", "gracias", "adiós"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dónde et qué interrogent."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿___ es tu color favorito? »",
+              "type": "single_choice",
+              "options": ["Cuál", "Cómo", "Dónde", "Cuándo"],
+              "correctAnswers": [0],
+              "explanation": "Cuál pour choix parmi options."
+            },
+            {
+              "id": "q3",
+              "question": "« ¿___ vives? » (lieu de résidence)",
+              "type": "single_choice",
+              "options": ["Dónde", "Quién", "Cuántos", "Qué"],
+              "correctAnswers": [0],
+              "explanation": "Dónde = où."
+            },
+            {
+              "id": "q4",
+              "question": "« ¿___ años tienes? »",
+              "type": "single_choice",
+              "options": ["Cuántos", "Cuántas", "Cuánto", "Qué"],
+              "correctAnswers": [0],
+              "explanation": "Cuántos + pluriel años."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿___ es ella? » (identité)",
+              "type": "single_choice",
+              "options": ["Quién", "Qué", "Cuál", "Dónde"],
+              "correctAnswers": [0],
+              "explanation": "Quién = qui."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿___ es la clase? » (heure)",
+              "type": "single_choice",
+              "options": [
+                "A qué hora / ¿Cuándo?",
+                "Cuántos",
+                "Cuál color",
+                "Quién"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moment → cuándo ou qué hora."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Por ___ estudias español? » (cause)",
+              "type": "single_choice",
+              "options": ["qué", "quién", "dónde", "cuántos"],
+              "correctAnswers": [0],
+              "explanation": "Por qué = pourquoi (accent dans por qué en question)."
+            },
+            {
+              "id": "q8",
+              "question": "Question : « ¿Cómo se escribe? » porte sur :",
+              "type": "single_choice",
+              "options": [
+                "L'orthographe",
+                "La couleur",
+                "Le prix",
+                "La taille du pays"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écriture d'un mot."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿Qué significa …? » demande :",
+              "type": "single_choice",
+              "options": [
+                "La signification",
+                "L'heure",
+                "Le propriétaire",
+                "Le pluriel seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens d'un mot."
+            },
+            {
+              "id": "q10",
+              "question": "Mot interrogatif pour « combien » (singulier, prix) :",
+              "type": "single_choice",
+              "options": ["Cuánto", "Cuántos", "Cuántas", "Cuál"],
+              "correctAnswers": [0],
+              "explanation": "Cuánto cuesta."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Animaux, nourriture et lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots sont des animaux ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": ["perro", "gato", "pan", "leche"],
+              "correctAnswers": [0, 1],
+              "explanation": "Chien et chat."
+            },
+            {
+              "id": "q2",
+              "question": "« La leche » est :",
+              "type": "single_choice",
+              "options": ["Du lait", "Du pain", "De l'eau", "Un fruit"],
+              "correctAnswers": [0],
+              "explanation": "Leche = lait."
+            },
+            {
+              "id": "q3",
+              "question": "Traduis « pomme » :",
+              "type": "single_choice",
+              "options": ["manzana", "naranja", "plátano", "pan"],
+              "correctAnswers": [0],
+              "explanation": "Manzana."
+            },
+            {
+              "id": "q4",
+              "question": "« El parque » est :",
+              "type": "single_choice",
+              "options": [
+                "Un parc",
+                "Un parlement",
+                "Une plage",
+                "Une gare seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parque = parc."
+            },
+            {
+              "id": "q5",
+              "question": "« Biblioteca » :",
+              "type": "single_choice",
+              "options": [
+                "Bibliothèque",
+                "Librairie (shop) — attention faux ami partiel",
+                "Bureau",
+                "Cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu de livres empruntables."
+            },
+            {
+              "id": "q6",
+              "question": "« Agua » : genre grammatical",
+              "type": "single_choice",
+              "options": [
+                "Féminin avec article el (agua)",
+                "Masculin el agua",
+                "Neutre",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exception : el agua (fém.)."
+            },
+            {
+              "id": "q7",
+              "question": "« Me gusta el ___ » (poisson)",
+              "type": "single_choice",
+              "options": ["pescado", "perro", "libro", "lunes"],
+              "correctAnswers": [0],
+              "explanation": "Pescado."
+            },
+            {
+              "id": "q8",
+              "question": "« Ciudad » signifie :",
+              "type": "single_choice",
+              "options": ["Ville", "Campagne", "Mer", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "Ciudad = ville."
+            },
+            {
+              "id": "q9",
+              "question": "« En el supermercado » indique :",
+              "type": "single_choice",
+              "options": ["Lieu : supermarché", "Heure", "Couleur", "Verbe"],
+              "correctAnswers": [0],
+              "explanation": "Préposition en + lieu."
+            },
+            {
+              "id": "q10",
+              "question": "« Pájaro » :",
+              "type": "single_choice",
+              "options": ["Oiseau", "Poisson", "Serpent", "Vache"],
+              "correctAnswers": [0],
+              "explanation": "Pájaro = oiseau."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Adjectifs fréquents et description",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adjectifs décrivent une personne ? (deux réponses)",
+              "type": "multiple_choice",
+              "options": [
+                "alto / alta",
+                "simpático / simpática",
+                "martes",
+                "julio"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grand et sympathique."
+            },
+            {
+              "id": "q2",
+              "question": "« Es muy inteligente » : « inteligente » est :",
+              "type": "single_choice",
+              "options": [
+                "Invariable en genre",
+                "Masculin seulement",
+                "Un verbe",
+                "Un jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intelligent(e) même forme."
+            },
+            {
+              "id": "q3",
+              "question": "Féminin de « simpático » :",
+              "type": "single_choice",
+              "options": [
+                "simpática",
+                "simpatico",
+                "simpaticos",
+                "simpatique (français)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simpática."
+            },
+            {
+              "id": "q4",
+              "question": "Traduis « Il est grand » (masculin) :",
+              "type": "single_choice",
+              "options": [
+                "Es alto",
+                "Es alta",
+                "Está alto identité",
+                "Tiene alto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caractéristique → ser + alto."
+            },
+            {
+              "id": "q5",
+              "question": "« La casa es pequeña » :",
+              "type": "single_choice",
+              "options": [
+                "La maison est petite",
+                "La maison est grande",
+                "La maison est bleue",
+                "La maison est un jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pequeña = petite."
+            },
+            {
+              "id": "q6",
+              "question": "Antonyme de « bueno » :",
+              "type": "single_choice",
+              "options": ["malo", "grande", "rápido", "nuevo"],
+              "correctAnswers": [0],
+              "explanation": "Mauvais."
+            },
+            {
+              "id": "q7",
+              "question": "« Estoy ocupado » (garçon) / fille :",
+              "type": "single_choice",
+              "options": [
+                "ocupada",
+                "ocupado",
+                "ocupados",
+                "ocupadas (pluriel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord avec la fille : ocupada."
+            },
+            {
+              "id": "q8",
+              "question": "« Bon » au masculin :",
+              "type": "single_choice",
+              "options": ["bueno", "buena", "buen", "buenos (pluriel)"],
+              "correctAnswers": [0],
+              "explanation": "Bueno ; buen devant nom masc."
+            },
+            {
+              "id": "q9",
+              "question": "Phrase : « Mi amiga es ___ » (drôle)",
+              "type": "single_choice",
+              "options": ["divertida", "divertido", "divertidos", "divertir"],
+              "correctAnswers": [0],
+              "explanation": "Amiga → divertida."
+            },
+            {
+              "id": "q10",
+              "question": "« Nuevo / nueva » décrivent :",
+              "type": "single_choice",
+              "options": ["Nouveau / nouvelle", "Vieux", "Lent", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "Nuevo/nueva."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Révision : mots essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Associe correctement (deux réponses) :",
+              "type": "multiple_choice",
+              "options": [
+                "lunes → jour",
+                "enero → mois",
+                "rojo → verbe",
+                "tener → couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jours et mois ; pas verbe/couleur pour ces paires."
+            },
+            {
+              "id": "q2",
+              "question": "« Tengo un hermano y ___ hermanas » (deux)",
+              "type": "single_choice",
+              "options": ["dos", "doce", "lunes", "rojo"],
+              "correctAnswers": [0],
+              "explanation": "Dos = 2."
+            },
+            {
+              "id": "q3",
+              "question": "Couleur + nom : « el bolígrafo ___ » (vert)",
+              "type": "single_choice",
+              "options": ["verde", "verda", "verdes (singulier)", "verdo"],
+              "correctAnswers": [0],
+              "explanation": "Verde invariable."
+            },
+            {
+              "id": "q4",
+              "question": "Question avec « cuántos » :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos libros tienes?",
+                "¿Cómo libros?",
+                "¿Dónde libros?",
+                "¿Qué libros eres?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter des livres."
+            },
+            {
+              "id": "q5",
+              "question": "« Hay ___ estudiantes en la clase » (15)",
+              "type": "single_choice",
+              "options": ["quince", "quincea", "catorce si 15 faux", "lunes"],
+              "correctAnswers": [0],
+              "explanation": "Quince étudiants."
+            },
+            {
+              "id": "q6",
+              "question": "Traduis « la professeure d'espagnol » :",
+              "type": "single_choice",
+              "options": [
+                "la profesora de español",
+                "el profesor de español (si homme)",
+                "Les deux selon le genre",
+                "la clase de español"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Profesora ou profesor."
+            },
+            {
+              "id": "q7",
+              "question": "« Mi cumpleaños es el tres de ___ » (octobre)",
+              "type": "single_choice",
+              "options": ["octubre", "octubro", "ocho", "ochober"],
+              "correctAnswers": [0],
+              "explanation": "Octubre."
+            },
+            {
+              "id": "q8",
+              "question": "Expression : « Tengo prisa » =",
+              "type": "single_choice",
+              "options": [
+                "Je suis pressé(e)",
+                "J'ai faim",
+                "J'ai froid",
+                "Je suis triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prisa = précipitation."
+            },
+            {
+              "id": "q9",
+              "question": "Lieu : « vivo en un ___ » (petit appartement — vocabulaire simple « piso »)",
+              "type": "single_choice",
+              "options": ["piso", "perro", "pan", "pájaro"],
+              "correctAnswers": [0],
+              "explanation": "Piso = appartement (Espagne)."
+            },
+            {
+              "id": "q10",
+              "question": "Pour réviser, la meilleure stratégie est :",
+              "type": "single_choice",
+              "options": [
+                "Mélanger vocabulaire, phrases et questions",
+                "Apprendre seulement les nombres",
+                "Ignorer les accords",
+                "Ne jamais parler à voix haute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Révision active et variée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

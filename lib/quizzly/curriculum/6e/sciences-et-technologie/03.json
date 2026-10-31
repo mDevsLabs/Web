@@ -1,0 +1,2718 @@
+{
+  "id": "6e-sciences-et-technologie-03",
+  "year": "6e",
+  "subject": "sciences-et-technologie",
+  "title": "La Terre et le ciel",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "La planète Terre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La Terre dans l'univers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement la Terre ?",
+              "options": [
+                "C'est une planète du système solaire",
+                "Elle tourne autour du Soleil",
+                "Elle est au centre de l'univers",
+                "Elle est une étoile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La Terre est une planète qui orbite autour du Soleil, notre étoile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Terre a approximativement quelle forme ?",
+              "options": [
+                "Sphérique légèrement aplatie aux pôles",
+                "Un cube",
+                "Un disque plat",
+                "Une sphère parfaite sans variation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre est une sphère légèrement aplatie aux pôles, appelée géoïde."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel gaz compose majoritairement l'atmosphère terrestre ?",
+              "options": ["Azote", "Oxygène", "Dioxyde de carbone", "Hélium"],
+              "correctAnswers": [0],
+              "explanation": "L'azote représente environ 78 % de l'air que nous respirons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction de la surface terrestre est recouverte d'eau ?",
+              "options": [
+                "Environ les deux tiers",
+                "Environ un quart",
+                "La moitié exacte",
+                "Moins de 10 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les océans couvrent environ 71 % de la surface de la Terre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Terre est située dans quelle galaxie ?",
+              "options": [
+                "La Voie lactée",
+                "Andromède",
+                "Le Grand Nuage de Magellan",
+                "La galaxie du Sombrero"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notre planète fait partie de la galaxie spirale appelée Voie lactée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui permet à la vie telle que nous la connaissons sur Terre ?",
+              "options": [
+                "Une distance favorable au Soleil et une atmosphère",
+                "Une absence totale de gravité",
+                "Une température constante de 100 °C",
+                "L'absence d'eau liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température modérée, l'eau liquide et l'air protègent et nourrissent la biosphère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des êtres vivants sur Terre ?",
+              "options": [
+                "La biosphère",
+                "La lithosphère",
+                "La stratosphère",
+                "L'hydrosphère seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La biosphère regroupe tous les écosystèmes où vivent les organismes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument permet de voir la courbure de la Terre depuis l'espace ?",
+              "options": [
+                "Un satellite ou une station spatiale",
+                "Un simple miroir",
+                "Un thermomètre",
+                "Une boussole seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photos prises depuis l'orbite montrent clairement la planète bleue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La Terre est principalement composée de quels états de la matière en surface ?",
+              "options": [
+                "Roche, eau et air",
+                "Uniquement de métal fondu visible",
+                "Gaz uniquement",
+                "Glace uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En surface, roches, océans et atmosphère dominent le paysage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la Terre n'est-elle pas une étoile ?",
+              "options": [
+                "Elle ne produit pas sa propre lumière par fusion",
+                "Elle est trop petite pour exister",
+                "Elle n'a pas de gravité",
+                "Elle ne tourne pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les étoiles comme le Soleil fusionnent l'hydrogène et émettent une lumière intense."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Rotation et alternance jour-nuit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels effets la rotation de la Terre produit-elle ?",
+              "options": [
+                "L'alternance jour et nuit",
+                "Un lever et un coucher du Soleil vus du sol",
+                "Le changement des saisons en une journée",
+                "La création instantanée des océans"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En tournant sur elle-même, la Terre expose successivement chaque face au Soleil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quel axe la Terre effectue-t-elle sa rotation ?",
+              "options": [
+                "Un axe incliné passant par les pôles",
+                "Un axe horizontal passant par l'équateur uniquement",
+                "Aucun axe, mouvement aléatoire",
+                "Un axe fixe dans l'espace loin de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre tourne en environ 24 h autour de l'axe nord-sud."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de temps dure approximativement une rotation complète de la Terre ?",
+              "options": ["24 heures", "365 jours", "12 heures", "30 jours"],
+              "correctAnswers": [0],
+              "explanation": "Un jour solaire correspond à une rotation complète plus un petit décalage orbital."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand il est midi en France, que se passe-t-il de l'autre côté de la Terre ?",
+              "options": [
+                "Il peut être nuit",
+                "Il est forcément midi partout",
+                "Le Soleil disparaît définitivement",
+                "La Terre s'arrête de tourner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fuseaux horaires décalent l'heure solaire selon la longitude."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le Soleil semble-t-il se lever à l'est ?",
+              "options": [
+                "Parce que la Terre tourne vers l'est",
+                "Parce que le Soleil orbite autour de la Terre",
+                "Parce que la Lune pousse le Soleil",
+                "Parce que l'atmosphère ne bouge pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notre planète tourne d'ouest en est, donc le ciel semble dériver vers l'ouest."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle partie de la Terre reçoit le plus directement les rayons du Soleil à un instant donné ?",
+              "options": [
+                "La zone où il est environ midi local",
+                "Uniquement le pôle Nord",
+                "Uniquement le pôle Sud",
+                "N'importe quel point au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À midi, le Soleil est le plus haut dans le ciel local et chauffe plus fort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la ligne imaginaire qui sépare le jour et la nuit sur la Terre ?",
+              "options": [
+                "Le terminateur",
+                "L'équateur magnétique",
+                "La ceinture de Van Allen",
+                "Le méridien de Greenwich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terminateur est la frontière entre la partie éclairée et l'ombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la Terre ne tournait plus sur elle-même, que se passerait-il ?",
+              "options": [
+                "Un même hémisphère resterait toujours face au Soleil",
+                "Les saisons disparaîtraient totalement",
+                "La Lune tomberait sur Terre immédiatement",
+                "Le Soleil s'éteindrait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans rotation, jour permanent d'un côté et nuit permanente de l'autre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel sens de rotation a la Terre vue du pôle Nord ?",
+              "options": [
+                "Antihoraire",
+                "Horaire",
+                "Aucun mouvement",
+                "Alterné toutes les heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vue du pôle Nord, la Terre tourne dans le sens inverse des aiguilles d'une montre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel phénomène quotidien est directement lié à la rotation ?",
+              "options": [
+                "L'ombre d'un bâtiment qui se déplace",
+                "La formation des montagnes en une nuit",
+                "La naissance des volcans chaque matin",
+                "La révolution complète autour du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ombres bougent car la direction du Soleil change au cours de la journée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Révolution et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs expliquent les saisons sur Terre ?",
+              "options": [
+                "L'inclinaison de l'axe terrestre",
+                "La révolution autour du Soleil",
+                "La couleur des océans",
+                "La taille de la Lune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'axe incliné et l'orbite annuelle modifient l'éclairement des hémisphères."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de temps dure une révolution complète de la Terre autour du Soleil ?",
+              "options": [
+                "Environ 365 jours",
+                "24 heures",
+                "28 jours",
+                "10 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une année correspond à un tour complet autour du Soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand l'hémisphère nord a l'été, l'hémisphère sud a généralement ?",
+              "options": [
+                "L'hiver",
+                "Le printemps",
+                "La même saison identique",
+                "Aucune saison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les saisons sont opposées entre nord et sud."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi l'été est-il plus chaud que l'hiver dans un hémisphère ?",
+              "options": [
+                "Les rayons solaires y sont plus directs et plus longs",
+                "Le Soleil est plus gros en été",
+                "La Terre s'éloigne du Soleil en été",
+                "La rotation s'accélère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un Soleil plus haut dans le ciel chauffe plus efficacement la surface."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelles dates marquent approximativement le début du printemps dans l'hémisphère nord ?",
+              "options": [
+                "Vers le 20 mars (équinoxe)",
+                "21 juin",
+                "21 décembre",
+                "1er janvier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'équinoxe de mars, jour et nuit durent à peu près pareil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le solstice d'été dans l'hémisphère nord correspond à ?",
+              "options": [
+                "Le jour le plus long de l'année",
+                "La nuit la plus longue",
+                "L'égalité parfaite jour-nuit",
+                "L'absence de Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers le 21 juin, le Soleil atteint sa hauteur maximale au nord."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La distance Terre-Soleil varie légèrement. Est-ce la cause principale des saisons ?",
+              "options": [
+                "Non, c'est surtout l'inclinaison de l'axe",
+                "Oui, uniquement la distance",
+                "Oui, la Terre touche le Soleil en été",
+                "Oui, car le Soleil se déplace chaque mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairement angulaire compte bien plus que la petite variation de distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle trajectoire décrit la Terre autour du Soleil ?",
+              "options": [
+                "Une ellipse",
+                "Un cercle parfait",
+                "Une ligne droite",
+                "Un carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite terrestre est légèrement elliptique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En automne dans l'hémisphère nord, que devient la durée du jour ?",
+              "options": [
+                "Elle diminue progressivement",
+                "Elle augmente sans fin",
+                "Elle reste toujours de 24 h fixes",
+                "Elle disparaît en une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après l'équinoxe d'automne, les nuits deviennent plus longues."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mouvement combine rotation et révolution pour notre calendrier ?",
+              "options": [
+                "La révolution définit l'année, la rotation le jour",
+                "Seule la rotation définit l'année",
+                "Seule la révolution définit l'heure",
+                "Aucun lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jour vient de la rotation, l'année de la révolution."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Structure interne de la Terre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels ensembles décrivent la structure de la Terre ?",
+              "options": [
+                "Croûte, manteau et noyau en profondeur",
+                "Atmosphère et océans en surface",
+                "Un noyau vide",
+                "Une seule couche uniforme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La planète combine couches internes solides et enveloppes fluides en surface."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se trouvent les continents que nous habitons ?",
+              "options": [
+                "Dans la croûte terrestre",
+                "Dans le noyau externe liquide",
+                "Dans le manteau profond directement",
+                "Dans le noyau interne solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La croûte est la couche solide mince à la surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quoi est principalement composé le noyau de la Terre ?",
+              "options": [
+                "Fer et nickel",
+                "Bois et plastique",
+                "Glace pure",
+                "Gaz uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau dense contient surtout du fer et du nickel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel état a une partie du noyau externe ?",
+              "options": [
+                "Liquide",
+                "Gazeux uniquement",
+                "Plasma visible",
+                "Vide total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau externe liquide participe au champ magnétique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le manteau est surtout ?",
+              "options": [
+                "Des roches chaudes plastiques",
+                "De l'air comprimé",
+                "De l'eau salée",
+                "Du sable sec seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manteau est solide mais peut se déformer très lentement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les scientifiques étudient-ils l'intérieur terrestre ?",
+              "options": [
+                "Ondes sismiques après séismes",
+                "En creusant jusqu'au noyau",
+                "En regardant la Lune",
+                "En mesurant uniquement la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les séismes envoient des ondes qui révèlent les couches."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel phénomène surface est lié au manteau ?",
+              "options": [
+                "Volcanisme et plaques tectoniques",
+                "Formation des nuages uniquement",
+                "Marées océaniques seules",
+                "Rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manteau convecte et entraîne les plaques de la croûte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La croûte océanique est généralement ?",
+              "options": [
+                "Plus fine que la croûte continentale",
+                "Plus épaisse que les continents",
+                "Absente sous les océans",
+                "Identique partout en épaisseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous les océans, la croûte est plus fine et plus dense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La température augmente-t-elle en profondeur ?",
+              "options": [
+                "Oui, elle augmente vers le centre",
+                "Non, elle baisse toujours",
+                "Elle reste à 0 °C",
+                "Elle dépend du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus on s'enfonce, plus la chaleur interne est élevée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le champ magnétique terrestre est principalement dû à ?",
+              "options": [
+                "Le mouvement du noyau externe",
+                "La Lune uniquement",
+                "Les nuages",
+                "Les forêts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dynamo du noyau liquide génère le magnétisme planétaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Continents, océans et cartes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments apparaissent sur une carte du monde ?",
+              "options": [
+                "Continents et océans",
+                "Échelle et légende",
+                "Le noyau de la Terre en coupe",
+                "Les planètes voisines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une carte représente les reliefs et masses d'eau avec des symboles expliqués."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de grands océans recouvrent la Terre ?",
+              "options": [
+                "Cinq océans reconnus",
+                "Un seul sans nom",
+                "Vingt océans",
+                "Aucun océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pacifique, Atlantique, Indien, Arctique et Austral sont les cinq océans."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel océan est le plus vaste ?",
+              "options": [
+                "L'océan Pacifique",
+                "L'océan Arctique",
+                "La mer Méditerranée",
+                "La mer Morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Pacifique couvre plus de surface que tous les continents réunis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'équateur sur une carte ?",
+              "options": [
+                "Une ligne imaginaire à 0° de latitude",
+                "Le pôle Nord",
+                "La frontière France-Espagne",
+                "Un océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équateur partage la Terre en hémisphère nord et sud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les méridiens servent à mesurer ?",
+              "options": [
+                "La longitude",
+                "La température",
+                "La masse de la Terre",
+                "La couleur des océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les méridiens indiquent l'est ou l'ouest par rapport à Greenwich."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les cartes utilisent-elles une échelle ?",
+              "options": [
+                "Pour réduire la réalité à une taille lisible",
+                "Pour agrandir la Terre réelle",
+                "Pour cacher les montagnes",
+                "Pour effacer les villes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle indique combien de km réels correspond à 1 cm sur la carte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel continent abrite la France métropolitaine ?",
+              "options": [
+                "L'Europe",
+                "L'Antarctique",
+                "L'Australie",
+                "L'Amérique du Sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La France est un pays d'Europe occidentale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La banquise entoure principalement quel continent ?",
+              "options": [
+                "L'Antarctique",
+                "L'Afrique",
+                "L'Asie uniquement",
+                "L'Europe seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Antarctique est un continent recouvert d'une épaisse calotte glaciaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une carte en projection transforme ?",
+              "options": [
+                "La sphère terrestre en plan",
+                "Les montagnes en océans",
+                "Les saisons en mois",
+                "Le Soleil en planète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projeter une sphère sur un plan déforme légèrement distances et formes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau salée des océans provient surtout de ?",
+              "options": [
+                "L'érosion des roches et sels dissous",
+                "Uniquement la pluie douce",
+                "La fusion des étoiles",
+                "Les usines humaines seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les minéraux transportés par les fleuves enrichissent la salinité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Atmosphère et météo",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles joue l'atmosphère terrestre ?",
+              "options": [
+                "Protéger des rayons ultraviolets",
+                "Retenir une partie de la chaleur",
+                "Empêcher toute vie",
+                "Créer le noyau de la Terre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air filtre les UV et participe à l'effet de serre modéré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel gaz les plantes absorbent pour la photosynthèse ?",
+              "options": [
+                "Dioxyde de carbone",
+                "Azote pur",
+                "Hélium",
+                "Ozone pur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO₂ est fixé par les végétaux qui rejettent de l'oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un nuage ?",
+              "options": [
+                "De minuscules gouttelettes ou cristaux en suspension",
+                "De la fumée uniquement",
+                "Du plastique",
+                "Du sable du désert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condensation de vapeur d'eau forme les nuages visibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le vent est causé par ?",
+              "options": [
+                "Des différences de pression et température",
+                "La rotation de la Lune",
+                "Les volcans seuls",
+                "L'absence d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air se déplace des zones hautes pressions vers basses pressions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel instrument mesure la pression atmosphérique ?",
+              "options": [
+                "Un baromètre",
+                "Un thermomètre seul",
+                "Une règle",
+                "Un microscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le baromètre indique si le temps va souvent se stabiliser ou changer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La couche d'ozone protège surtout contre ?",
+              "options": [
+                "Les ultraviolets du Soleil",
+                "La pluie acide seule",
+                "Les astéroïdes",
+                "Les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ozone stratosphérique absorbe une partie des UV nocifs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un anticyclone est associé à ?",
+              "options": [
+                "Un temps souvent sec et stable",
+                "Une tempête permanente",
+                "Une éruption volcanique",
+                "Une éclipse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haute pression et air descendant favorisent peu de nuages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pluie se forme quand ?",
+              "options": [
+                "Les gouttelettes des nuages deviennent trop lourdes",
+                "Le Soleil s'éteint",
+                "La Terre s'arrête",
+                "La Lune disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condensation puis la chute des gouttes produisent les précipitations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi respirons-nous de l'oxygène ?",
+              "options": [
+                "Nos cellules l'utilisent pour produire de l'énergie",
+                "Il colore le ciel en bleu",
+                "Il remplace la gravité",
+                "Il forme les montagnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La respiration cellulaire libère l'énergie des aliments."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le réchauffement climatique est lié à l'augmentation de ?",
+              "options": [
+                "Certains gaz à effet de serre",
+                "L'azote pur seul",
+                "La taille de la Lune",
+                "Le nombre d'étoiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de CO₂ et méthane retiennent davantage de chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Eau sur Terre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où trouve-t-on de l'eau sur la Terre ?",
+              "options": [
+                "Dans les océans",
+                "Dans les glaciers et nappes souterraines",
+                "Uniquement dans le noyau",
+                "Seulement dans l'espace"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'eau est présente en surface et sous terre sous plusieurs formes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel cycle décrit l'évaporation, condensation et précipitations ?",
+              "options": [
+                "Le cycle de l'eau",
+                "Le cycle lunaire",
+                "Le cycle du fer",
+                "Le cycle des saisons seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau circule entre air, terre et océans en boucle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'eau des océans est ?",
+              "options": [
+                "Salée",
+                "Toujours distillée",
+                "Gazeuse pure",
+                "Solide permanente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sels dissous rendent l'eau de mer non potable directement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une nappe phréatique est ?",
+              "options": [
+                "Une réserve d'eau souterraine",
+                "Un nuage bas",
+                "Un volcan",
+                "Une étoile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau infiltrée s'accumule dans les roches poreuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les fleuves transportent vers la mer ?",
+              "options": [
+                "Eau, sédiments et matières dissoutes",
+                "Uniquement du sable sec",
+                "De l'air chaud seul",
+                "Des météorites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'érosion sculpte les vallées et alimente les deltas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La fonte des glaciers peut entraîner ?",
+              "options": [
+                "Une montée du niveau des mers",
+                "La disparition de la gravité",
+                "L'arrêt de la rotation",
+                "La fusion du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau douce stockée en glace rejoint les océans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'eau potable est ?",
+              "options": [
+                "Une ressource précieuse à préserver",
+                "Illimitée partout sans traitement",
+                "Identique à l'eau de mer",
+                "Toujours colorée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule une petite fraction de l'eau terrestre est facilement utilisable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La condensation forme des gouttes dans ?",
+              "options": [
+                "Les nuages",
+                "Le noyau terrestre",
+                "La Lune",
+                "Le vide spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur refroidie devient liquide autour de particules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un estuaire est ?",
+              "options": [
+                "La rencontre d'un fleuve et de la mer",
+                "Un désert sec",
+                "Un pôle magnétique",
+                "Une comète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau douce et salée se mélangent dans les estuaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'eau liquide est-elle essentielle à la vie ?",
+              "options": [
+                "Elle permet les réactions chimiques dans les cellules",
+                "Elle remplace la lumière",
+                "Elle crée le magnétisme",
+                "Elle supprime l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau dissout les nutriments et transporte les échanges vitaux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Relief et paysages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels reliefs existent sur Terre ?",
+              "options": [
+                "Montagnes et plaines",
+                "Volcans et vallées",
+                "Cratères lunaires",
+                "Anneaux de Saturne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tectonique, érosion et volcanisme sculptent la surface terrestre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un volcan éjecte surtout ?",
+              "options": [
+                "Lave, cendres et gaz",
+                "Uniquement de l'eau douce",
+                "Des météorites",
+                "De la lumière solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le magma qui remonte alimente éruptions et nouvelles roches."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'érosion par l'eau creuse ?",
+              "options": [
+                "Des vallées et des gorges",
+                "Le noyau interne",
+                "La stratosphère",
+                "Les orbites planétaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rivières et la pluie entraînent les roches vers l'aval."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un séisme est provoqué par ?",
+              "options": [
+                "Un brusque déplacement de roches en profondeur",
+                "Le lever du Soleil",
+                "La photosynthèse",
+                "La rotation lunaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les failles libèrent de l'énergie en ondes sismiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sommet le plus élevé au-dessus du niveau de la mer est ?",
+              "options": [
+                "L'Everest",
+                "Le Mont Blanc uniquement",
+                "Une dune du Sahara",
+                "Un immeuble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Everest dans l'Himalaya atteint environ 8 849 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un désert se caractérise surtout par ?",
+              "options": [
+                "De très faibles précipitations",
+                "Une couverture glaciaire permanente",
+                "Une profondeur océanique",
+                "Une température toujours négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de pluie limite la végétation, même si certains déserts sont chauds."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les plaques tectoniques ?",
+              "options": [
+                "Se déplacent lentement à la surface",
+                "Sont fixées pour toujours",
+                "Flottent dans l'espace",
+                "N'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur collision ou séparation crée montagnes et fosses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un delta se forme à ?",
+              "options": [
+                "L'embouchure d'un fleuve",
+                "Le pôle Sud seul",
+                "Le centre du noyau",
+                "La surface du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sédiments s'accumulent où le courant ralentit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le vent en mer peut modeler ?",
+              "options": [
+                "Des dunes de sable",
+                "Le noyau de fer",
+                "La ceinture d'astéroïdes",
+                "Le champ magnétique solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transport éolien déplace les grains sur les plages et déserts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La roche magmatique provient de ?",
+              "options": [
+                "Refroidissement du magma",
+                "Compression de plastique",
+                "Photosynthèse",
+                "Condensation de nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le magma solidifié forme des roches comme le basalte ou le granite."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Ressources et roches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles ressources la Terre fournit-elle ?",
+              "options": [
+                "Minéraux et sols fertiles",
+                "Eau et air",
+                "Pétrole illimité sans impact",
+                "Nouvelles étoiles chaque jour"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La planète nourrit et équipe les sociétés via sol, eau et minerais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le pétrole est une ressource ?",
+              "options": [
+                "Non renouvelable à l'échelle humaine",
+                "Inépuisable en quelques années",
+                "Créée par la Lune",
+                "Identique à l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hydrocarbures mettent des millions d'années à se former."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le charbon provient surtout de ?",
+              "options": [
+                "Végétaux anciens enfouis",
+                "Neige récente",
+                "Poussière stellaire",
+                "Météores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière organique fossilisée devient charbon sous pression."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une roche sédimentaire peut contenir ?",
+              "options": [
+                "Des fossiles",
+                "Du magma liquide actif",
+                "Du gaz solaire pur",
+                "Des anneaux planétaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sédiments fossilisent parfois des traces d'êtres anciens."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le sol fertile permet ?",
+              "options": [
+                "La culture de plantes alimentaires",
+                "La respiration dans le vide",
+                "La fusion du noyau",
+                "La disparition de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humus, minéraux et eau nourrissent les cultures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'énergie solaire est ?",
+              "options": [
+                "Renouvelable",
+                "Épuisée chaque nuit pour toujours",
+                "Produite par le noyau terrestre",
+                "Identique au charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil rayonne encore pendant des milliards d'années."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Recycler les métaux sert à ?",
+              "options": [
+                "Réduire l'extraction de minerais",
+                "Augmenter les déchets",
+                "Vider les océans",
+                "Arrêter la rotation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réutiliser l'aluminium ou le cuivre économise énergie et matière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un fossile témoigne de ?",
+              "options": [
+                "Des organismes vivant autrefois",
+                "Des planètes futures",
+                "Du centre du Soleil",
+                "Des satellites artificiels récents seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fossiles aident à dater les roches et reconstituer l'histoire du vivant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La surexploitation des ressources peut mener à ?",
+              "options": [
+                "Épuisement et pollution",
+                "Plus de gravité",
+                "Moins de saisons",
+                "Une nouvelle Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prélèvements excessifs dégradent écosystèmes et climat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le granite est une roche ?",
+              "options": [
+                "Magmatique",
+                "Sédimentaire uniquement",
+                "Métamorphique seule",
+                "Gazeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il cristallise lentement à partir de magma en profondeur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Protéger la planète Terre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes aident à protéger la Terre ?",
+              "options": [
+                "Économiser l'eau et l'énergie",
+                "Réduire certains déchets",
+                "Polluer volontairement les rivières",
+                "Brûler toutes les forêts"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Consommer avec modération limite la pression sur les ressources."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La biodiversité désigne ?",
+              "options": [
+                "La variété des espèces vivantes",
+                "Le nombre de voitures",
+                "La taille du noyau",
+                "La couleur du ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus d'espèces rendent les écosystèmes souvent plus résilients."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une espèce menacée est ?",
+              "options": [
+                "En danger de disparition",
+                "Toujours nuisible",
+                "Uniquement une plante",
+                "Toujours un poisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La destruction d'habitat ou la chasse peuvent faire disparaître des espèces."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les forêts participent à ?",
+              "options": [
+                "Stockage du carbone et production d'oxygène",
+                "Création de pétrole instantané",
+                "Refroidissement du Soleil",
+                "Disparition de l'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les arbres absorbent du CO₂ par la photosynthèse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Jeter des plastiques en mer provoque ?",
+              "options": [
+                "Pollution et danger pour la faune",
+                "Plus de poissons automatiquement",
+                "Une nouvelle atmosphère",
+                "L'arrêt des marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déchets persistent et peuvent être ingérés par les animaux marins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transports en commun ou vélo permettent de ?",
+              "options": [
+                "Limiter les émissions de gaz",
+                "Augmenter le bruit seul",
+                "Vider les océans",
+                "Accélérer la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de voitures individuelles réduit CO₂ et pollution locale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un parc naturel protège surtout ?",
+              "options": [
+                "Des milieux et espèces",
+                "Des astéroïdes",
+                "Le noyau externe",
+                "Les anneaux de Saturne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aires protégées limitent la destruction des habitats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le tri des déchets facilite ?",
+              "options": [
+                "Le recyclage des matériaux",
+                "La fusion du Soleil",
+                "La montée des marées seule",
+                "La rotation inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparer papier, verre et plastique améliore leur réutilisation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'effet de serre naturel est ?",
+              "options": [
+                "Nécessaire mais doit rester modéré",
+                "Toujours nuisible sans exception",
+                "Absent sur Terre",
+                "Créé uniquement par les volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans effet de serre, la Terre serait trop froide pour la vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Agir pour le climat signifie aussi ?",
+              "options": [
+                "S'informer et participer à des actions collectives",
+                "Ignorer les données scientifiques",
+                "Consommer sans limite",
+                "Détruire les sols"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les choix individuels et politiques se combinent pour réduire les impacts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le système solaire",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le Soleil, étoile du système",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent le Soleil ?",
+              "options": [
+                "C'est une étoile",
+                "Il fournit lumière et chaleur à la Terre",
+                "Il tourne autour de la Terre",
+                "Il est une planète rocheuse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Soleil est une étoile au centre du système solaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quoi le Soleil produit-il surtout son énergie ?",
+              "options": [
+                "Fusion de l'hydrogène en hélium",
+                "Combustion de bois",
+                "Rotation de la Lune",
+                "Condensation de nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion nucléaire libère une énorme quantité d'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de temps met la lumière du Soleil pour nous parvenir ?",
+              "options": [
+                "Environ 8 minutes",
+                "1 seconde",
+                "1 année",
+                "1 mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière parcourt 150 millions de km à grande vitesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les taches solaires sont ?",
+              "options": [
+                "Des zones plus fraibles à la surface",
+                "Des cratères lunaires",
+                "Des planètes",
+                "Des comètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles sont liées à l'activité magnétique solaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une éruption solaire peut ?",
+              "options": [
+                "Perturber les communications radio",
+                "Arrêter la gravité terrestre",
+                "Créer une nouvelle planète",
+                "Vider les océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules éjectées interagissent avec le champ magnétique terrestre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le Soleil représente quelle part de la masse du système solaire ?",
+              "options": [
+                "La très grande majorité",
+                "Moins de 1 %",
+                "Exactement la moitié",
+                "Aucune masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Presque toute la matière du système est concentrée dans le Soleil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans le Soleil, la Terre serait ?",
+              "options": [
+                "Dans le noir et très froide",
+                "Plus chaude",
+                "Sans gravité",
+                "Sans noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière et la chaleur solaires rendent la vie possible en surface."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment observe-t-on le Soleil en sécurité ?",
+              "options": [
+                "Avec un filtre adapté ou projection",
+                "Directement à l'œil nu",
+                "Avec une loupe sans filtre",
+                "La nuit sans instrument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Observer sans protection abîme irréversiblement la rétine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le vent solaire est composé de ?",
+              "options": [
+                "Particules chargées éjectées",
+                "Gouttes d'eau",
+                "Roche fondue",
+                "Air terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce flux de particules s'étend jusqu'aux confins du système."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans combien de milliards d'années le Soleil brillera-t-il encore longtemps ?",
+              "options": [
+                "Plusieurs milliards",
+                "Quelques jours",
+                "Cent ans seulement",
+                "Il s'est déjà éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une étoile comme le Soleil a une durée de vie de l'ordre de 10 milliards d'années."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Planètes telluriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur les planètes telluriques sont correctes ?",
+              "options": [
+                "Ce sont des planètes rocheuses",
+                "Mercure, Vénus, Terre et Mars en font partie",
+                "Jupiter est tellurique",
+                "Elles ont toutes de grands anneaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les quatre planètes intérieures sont rocheuses et orbitent près du Soleil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La planète la plus proche du Soleil est ?",
+              "options": ["Mercure", "Mars", "Neptune", "Jupiter"],
+              "correctAnswers": [0],
+              "explanation": "Mercure a la plus petite distance moyenne au Soleil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vénus est connue pour ?",
+              "options": [
+                "Une atmosphère très dense et chaude",
+                "Des anneaux visibles",
+                "Une grande calotte polaire",
+                "Plusieurs grandes lunes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet de serre extrême de Vénus chauffe fortement la surface."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mars est surnommée souvent ?",
+              "options": [
+                "La planète rouge",
+                "La planète bleue",
+                "La planète annelée",
+                "La planète géante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La poussière riche en oxyde de fer lui donne une teinte rougeâtre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle tellurique a le plus grand volcan connu du système solaire ?",
+              "options": [
+                "Mars (Olympus Mons)",
+                "Mercure",
+                "La Terre",
+                "Vénus uniquement sans volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olympus Mons sur Mars est un volcan bouclier immense."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi Mercure a-t-elle de grandes variations de température ?",
+              "options": [
+                "Atmosphère quasi absente",
+                "Trop de nuages",
+                "Trop loin du Soleil",
+                "Anneaux réfléchissants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans air épais, la chaleur n'est pas retenue la nuit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Terre se distingue des autres telluriques par ?",
+              "options": [
+                "Présence d'eau liquide abondante et vie",
+                "Absence totale de roche",
+                "Température toujours identique",
+                "Anneaux permanents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau, air et températures modérées favorisent la biosphère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un rover est ?",
+              "options": [
+                "Un robot explorateur sur une planète",
+                "Une comète",
+                "Une étoile",
+                "Un satellite du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rovers analysent le sol martien et renvoient des données."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'ordre des telluriques du plus proche au plus loin du Soleil est ?",
+              "options": [
+                "Mercure, Vénus, Terre, Mars",
+                "Mars, Terre, Vénus, Mercure",
+                "Terre, Mars, Mercure, Vénus",
+                "Vénus, Mercure, Mars, Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cet ordre suit les orbites autour du Soleil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les telluriques ont en commun ?",
+              "options": [
+                "Une surface principalement rocheuse",
+                "Une composition identique au Soleil",
+                "Des anneaux de glace",
+                "Aucune gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur noyau rocheux domine, contrairement aux géantes gazeuses."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Géantes gazeuses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles planètes sont des géantes gazeuses ?",
+              "options": [
+                "Jupiter et Saturne",
+                "Uranus et Neptune",
+                "Mercure et Vénus",
+                "La Terre et Mars"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les quatre géantes sont Jupiter, Saturne, Uranus et Neptune."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Jupiter est surtout composé de ?",
+              "options": [
+                "Hydrogène et hélium",
+                "Roche pure uniquement",
+                "Métal liquide seul",
+                "Glace sans gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme le Soleil, Jupiter contient surtout des gaz légers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Grande Tache rouge de Jupiter est ?",
+              "options": [
+                "Une énorme tempête",
+                "Un continent",
+                "Une lune",
+                "Un cratère d'astéroïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette tempête tourbillonnante dure depuis des siècles observés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Saturne est célèbre pour ?",
+              "options": [
+                "Ses anneaux visibles",
+                "Son absence de gravité",
+                "Sa surface rocheuse nue",
+                "Sa proximité avec le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les anneaux sont faits de glace et de poussière en orbite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Uranus se distingue par ?",
+              "options": [
+                "Un axe de rotation très incliné",
+                "Des températures identiques au Soleil",
+                "L'absence de toute lune",
+                "Une orbite autour de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uranus semble rouler sur son orbite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neptune est la planète ?",
+              "options": [
+                "La plus éloignée du Soleil",
+                "La plus proche du Soleil",
+                "Sans atmosphère",
+                "La plus petite tellurique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neptune orbite au bord visible du système planétaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les géantes ont-elles une surface solide accessible ?",
+              "options": [
+                "Pas de surface rocheuse nette comme sur Terre",
+                "Oui, identique à la Terre",
+                "Oui, en bois",
+                "Oui, en métal pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On plonge dans des couches de gaz de plus en plus denses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Galilée a observé les lunes de Jupiter pour montrer que ?",
+              "options": [
+                "Tous les astres ne tournent pas autour de la Terre",
+                "Le Soleil est une planète",
+                "La Terre est plate",
+                "Jupiter n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lunes joviennes prouvent des orbites autour d'une autre planète."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La sonde Cassini-Huygens a surtout étudié ?",
+              "options": [
+                "Saturne et Titan",
+                "Mercure seul",
+                "Pluton uniquement",
+                "Le Soleil de près"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette mission a exploré Saturne, ses anneaux et sa grande lune Titan."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les géantes sont-elles plus massives que les telluriques ?",
+              "options": [
+                "Elles ont capturé beaucoup de gaz",
+                "Elles n'ont pas de gravité",
+                "Elles sont creuses",
+                "Elles sont plus petites en volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur forte gravité a retenu d'immenses enveloppes gazeuses."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La Lune",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés décrivent la Lune ?",
+              "options": [
+                "Elle orbite autour de la Terre",
+                "Elle reflète la lumière du Soleil",
+                "Elle produit sa propre lumière comme une étoile",
+                "Elle est une planète du système solaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La Lune est un satellite naturel qui n'émet pas de lumière propre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de temps dure environ une révolution lunaire autour de la Terre ?",
+              "options": ["27 à 29 jours", "24 heures", "365 jours", "1 heure"],
+              "correctAnswers": [0],
+              "explanation": "Un mois lunaire correspond à un tour complet autour de la Terre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les phases de la Lune sont dues à ?",
+              "options": [
+                "La partie éclairée visible depuis la Terre",
+                "La Lune qui change de taille",
+                "Le Soleil qui s'éteint",
+                "La Terre qui devient carrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon l'angle Soleil-Lune-Terre, nous voyons une tranche plus ou moins grande."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un cratère lunaire est surtout formé par ?",
+              "options": [
+                "Impacts d'astéroïdes ou météorites",
+                "Pluie acide",
+                "Volcans terrestres",
+                "Mareaux océaniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans atmosphère épaisse, les impacts laissent des cicatrices durables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi voit-on toujours à peu près la même face de la Lune ?",
+              "options": [
+                "Rotation synchronisée avec la révolution",
+                "La Lune ne tourne pas",
+                "La Terre ne tourne pas",
+                "Les nuages cachent l'autre face"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune met autant de temps à tourner sur elle-même qu'à orbiter."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les marées sur Terre sont surtout causées par ?",
+              "options": [
+                "L'attraction de la Lune et du Soleil",
+                "Le vent seul",
+                "Les volcans",
+                "Les avions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gravité lunaire étire légèrement les océans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Lune possède-t-elle une atmosphère respirable ?",
+              "options": [
+                "Non, quasi aucune atmosphère",
+                "Oui, comme la Terre",
+                "Oui, uniquement en oxygène pur",
+                "Oui, très épaisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans air, un astronaute doit porter une combinaison pressurisée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La première marche humaine sur la Lune date de ?",
+              "options": [
+                "1969 (mission Apollo 11)",
+                "2020 seulement",
+                "1800",
+                "Il n'y a jamais eu de mission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neil Armstrong et Buzz Aldrin ont posé le pied sur la Lune en 1969."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une éclipse de Lune se produit quand ?",
+              "options": [
+                "La Terre cache le Soleil vu depuis la Lune",
+                "La Lune disparaît définitivement",
+                "Le Soleil orbite la Lune",
+                "Mars passe devant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune passe dans l'ombre terrestre et devient rougeâtre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La gravité à la surface lunaire est ?",
+              "options": [
+                "Environ six fois plus faible que sur Terre",
+                "Identique à la Terre",
+                "Inexistante",
+                "Plus forte que sur Jupiter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune est moins massive, donc attire moins les objets."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Astéroïdes et ceinture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où trouve-t-on des astéroïdes dans le système solaire ?",
+              "options": [
+                "Ceinture principale entre Mars et Jupiter",
+                "Orbites croisant parfois celle de la Terre",
+                "Dans le noyau terrestre",
+                "Uniquement sur la Lune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La ceinture concentre la majorité des astéroïdes, dont certains géocroiseurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un astéroïde est plutôt ?",
+              "options": [
+                "Un petit corps rocheux",
+                "Une étoile",
+                "Une comète sans glace",
+                "Un satellite artificiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les astéroïdes sont des reliquats de la formation du système solaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cérès est ?",
+              "options": [
+                "Le plus grand objet de la ceinture, classé planète naine",
+                "Une lune de Saturne",
+                "Le Soleil",
+                "Une galaxie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cérès a une forme sphérique et orbite dans la ceinture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi Jupiter limite-t-il la formation d'une planète dans la ceinture ?",
+              "options": [
+                "Sa gravité perturbe les orbites",
+                "Il absorbe toute la lumière",
+                "Il est trop petit",
+                "Il n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les résonances gravitationnelles empêchent l'accrétion en une seule planète."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un impact d'astéroïde sur Terre peut ?",
+              "options": [
+                "Créer un cratère et modifier le climat",
+                "Arrêter la rotation instantanément",
+                "Créer une nouvelle étoile",
+                "Vider l'atmosphère en une seconde toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les grands impacts libèrent énormément d'énergie et de poussière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les astéroïdes géocroiseurs ?",
+              "options": [
+                "Croisent parfois l'orbite terrestre",
+                "Orbitent autour de la Lune seule",
+                "Sont tous plus gros que la Terre",
+                "N'existent pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On les surveille pour évaluer les risques de collision."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La mission DART a testé ?",
+              "options": [
+                "La déviation d'un astéroïde par impact",
+                "L'allumage du Soleil",
+                "La fusion de Jupiter",
+                "La création de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un impact contrôlé peut légèrement modifier la trajectoire d'un petit astéroïde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La plupart des astéroïdes mesurent ?",
+              "options": [
+                "De quelques mètres à quelques centaines de km",
+                "Plus grands que le Soleil",
+                "Microscopiques uniquement",
+                "Identiques à la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils varient de poussières regroupées à corps de plusieurs centaines de km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un météore dans le ciel est ?",
+              "options": [
+                "La traînée lumineuse d'un météoroïde",
+                "Une planète",
+                "Une étoile qui meurt",
+                "Un satellite TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En entrant dans l'atmosphère, le corps brûle et brille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un météorite est ?",
+              "options": [
+                "Un fragment qui atteint le sol",
+                "Un nuage",
+                "Une comète intacte",
+                "Un rayon laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'il ne se vaporise pas entièrement, le reste tombe sur Terre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Comètes et météores",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent une comète ?",
+              "options": [
+                "Elle contient glace, poussière et roche",
+                "Elle peut développer une queue près du Soleil",
+                "Elle est en métal pur liquide",
+                "Elle est un satellite artificiel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les comètes sont des corps glaciaires qui libèrent gaz et poussières au Soleil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La queue d'une comète pointe généralement ?",
+              "options": [
+                "À l'opposé du Soleil",
+                "Vers le Soleil",
+                "Vers la Terre uniquement",
+                "Vers le pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vent solaire pousse gaz et poussières à l'opposé de l'étoile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Halley est une comète ?",
+              "options": [
+                "Périodique visible environ tous les 76 ans",
+                "Qui frappe la Terre chaque mois",
+                "Sans orbite",
+                "Identique à la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sa dernière passage notable était en 1986, le prochain vers 2061."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand une comète brille le plus ?",
+              "options": [
+                "Près du Soleil",
+                "Au fond du système froid",
+                "Derrière la Lune",
+                "Sous l'océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur fait sublimer la glace et libère gaz poussiéreux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le nuage d'Oort est ?",
+              "options": [
+                "Une région lointaine d'objets gelés",
+                "Le centre du Soleil",
+                "Une planète",
+                "Un volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des comètes à longue période proviennent de cette zone très éloignée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une pluie de météores est liée à ?",
+              "options": [
+                "La poussière laissée par une comète",
+                "La fusion du noyau terrestre",
+                "Les marées seules",
+                "Les éclipses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre traverse un fil de débris et multiplie les météores."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les Perséides en août viennent de ?",
+              "options": [
+                "La comète Swift-Tuttle",
+                "Jupiter",
+                "Mars seul",
+                "La Voie lactée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque été, la Terre croise les débris de cette comète."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rosetta a ?",
+              "options": [
+                "Accompagné la comète Tchouri",
+                "Atterri sur le Soleil",
+                "Détruit la Lune",
+                "Mesuré la Terre seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sonde européenne a posé Philae sur Tchourioumov-Guérassimenko."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La tête d'une comète est appelée ?",
+              "options": ["Le noyau", "L'anneau", "Le cratère", "Le méridien"],
+              "correctAnswers": [0],
+              "explanation": "Le noyau solide libère matière en s'approchant du Soleil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer une comète à l'œil nu est possible quand ?",
+              "options": [
+                "Elle est assez brillante et proche",
+                "Elle est toujours invisible",
+                "Uniquement le jour sans filtre",
+                "Sous l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines comètes deviennent visibles comme une tache diffuse."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Organisation du système solaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets appartiennent au système solaire ?",
+              "options": [
+                "Le Soleil et les planètes",
+                "Astéroïdes, comètes et satellites",
+                "Les étoiles de la Voie lactée entière",
+                "D'autres galaxies"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tout ce qui orbite autour du Soleil fait partie du système."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'ordre des planètes du Soleil vers l'extérieur est ?",
+              "options": [
+                "Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune",
+                "Terre, Soleil, Mars, Jupiter",
+                "Neptune, Uranus, Terre seule",
+                "Mars, Mercure, Jupiter, Vénus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Huit planètes majeures suivent cet ordre orbital."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluton est aujourd'hui classée ?",
+              "options": [
+                "Planète naine",
+                "Étoile",
+                "Comète uniquement",
+                "Galaxie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle n'a pas nettoyé son voisinage orbital comme les planètes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le système solaire s'est formé il y a environ ?",
+              "options": [
+                "4,6 milliards d'années",
+                "100 ans",
+                "1 million d'années",
+                "50 milliards d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un disque de gaz et poussières s'est accrété autour du jeune Soleil."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La gravité du Soleil ?",
+              "options": [
+                "Maintient les planètes en orbite",
+                "Repousse toutes les planètes",
+                "N'existe pas",
+                "Agit seulement sur la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attraction gravitationnelle équilibre la vitesse des planètes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le plan orbital des planètes est approximativement ?",
+              "options": [
+                "Dans le même plan (écliptique)",
+                "Perpendiculaire partout",
+                "Aléatoire sans lien",
+                "Autour de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les orbites sont proches d'un disque commun."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une année-lumière mesure ?",
+              "options": [
+                "Une distance parcourue par la lumière en un an",
+                "Une durée de rotation",
+                "La masse du Soleil",
+                "La température d'une étoile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On l'utilise pour les distances stellaires, pas dans le système solaire interne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'étoile la plus proche du Soleil est ?",
+              "options": [
+                "Proxima du Centaure",
+                "Sirius",
+                "Polaris",
+                "Betelgeuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle se trouve à plus de quatre années-lumière."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le système solaire se situe ?",
+              "options": [
+                "Dans un bras de la Voie lactée",
+                "Au centre de l'univers",
+                "Dans une autre galaxie",
+                "Hors de toute galaxie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous orbitons autour du centre galactique avec le Soleil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un satellite naturel orbite ?",
+              "options": [
+                "Une planète ou planète naine",
+                "Le Soleil directement toujours",
+                "Une étoile lointaine",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Lune est le satellite naturel de la Terre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Observer le ciel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils aident à observer le ciel ?",
+              "options": [
+                "Télescope ou jumelles",
+                "Carte stellaire ou application",
+                "Microscope seul pour les planètes",
+                "Thermomètre seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Instruments optiques et repères permettent de localiser les astres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une étoile scintille surtout parce que ?",
+              "options": [
+                "L'atmosphère terrestre perturbe la lumière",
+                "Elle s'allume et s'éteint",
+                "Elle est proche de la Terre",
+                "Elle est une planète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les planètes scintillent moins car leur disque est plus large."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La planète souvent visible le soir comme étoile du berger est ?",
+              "options": [
+                "Vénus",
+                "Neptune toujours",
+                "Pluton",
+                "Mercure uniquement le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vénus brille fort près de l'horizon au crépuscule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une constellation est ?",
+              "options": [
+                "Un groupe d'étoiles vu depuis la Terre",
+                "Une planète",
+                "Un satellite",
+                "Un cratère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les constellations sont des repères imaginaires sur la voûte céleste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Grande Ourse aide à trouver ?",
+              "options": [
+                "L'étoile Polaire",
+                "Le Soleil le midi",
+                "La Lune le matin",
+                "Jupiter toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prolonger la casserole guide vers Polaris au nord."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Observer le ciel est plus facile ?",
+              "options": [
+                "Loin des lumières urbaines",
+                "En plein centre-ville éclairé",
+                "Sous un toit fermé",
+                "En journée pour les étoiles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pollution lumineuse masque les astres faibles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une éclipse de Soleil se produit quand ?",
+              "options": [
+                "La Lune passe devant le Soleil",
+                "La Terre passe devant la Lune",
+                "Mars cache le Soleil",
+                "Le Soleil disparaît pour toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut des lunettes spéciales pour observer en sécurité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La Voie lactée vue de nuit est ?",
+              "options": [
+                "Notre galaxie vue de bord",
+                "Une comète",
+                "Un avion",
+                "La Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La bande laiteuse est la densité d'étoiles de notre galaxie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un planétarium permet de ?",
+              "options": [
+                "Simuler le ciel à toute heure",
+                "Atterrir sur Mars",
+                "Mesurer les séismes",
+                "Creuser le noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dôme projette étoiles et planètes pour apprendre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les saisons des observations dépendent aussi de ?",
+              "options": [
+                "Quelles constellations sont visibles la nuit",
+                "La couleur des océans",
+                "Le nombre de volcans",
+                "La taille des villes seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre tourne autour du Soleil, donc le ciel nocturne change au fil des mois."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Exploration spatiale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels moyens explorent l'espace ?",
+              "options": [
+                "Sondes automatiques",
+                "Télescopes spatiaux",
+                "Uniquement des sous-marins",
+                "Des chariots antiques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Robots et observatoires orbitaux étudient planètes et univers lointain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Station spatiale internationale orbite ?",
+              "options": [
+                "Autour de la Terre",
+                "Autour du Soleil seule",
+                "Sur la Lune",
+                "Dans le noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des astronautes y mènent des expériences en microgravité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hubble est surtout ?",
+              "options": [
+                "Un télescope spatial",
+                "Un rover martien",
+                "Une comète",
+                "Un astéroïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-dessus de l'atmosphère, il capture des images nettes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "James Webb observe surtout ?",
+              "options": [
+                "Infrarouge lointain",
+                "Uniquement les radios FM",
+                "Les marées",
+                "Le vent terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il étudie galaxies lointaines et atmosphères exoplanétaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Voyager 1 et 2 ont ?",
+              "options": [
+                "Quitté le système planétaire interne",
+                "Atterri sur le Soleil",
+                "Créé la Lune",
+                "Mesuré uniquement Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lancées en 1977, elles explorent l'espace interstellaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Perseverance sur Mars cherche entre autres ?",
+              "options": [
+                "Des traces de vie passée",
+                "Du pétrole",
+                "Des poissons vivants",
+                "De l'or uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rover collecte des roches pour analyser l'histoire martienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une fusée doit atteindre ?",
+              "options": [
+                "Une vitesse suffisante pour rester en orbite",
+                "100 km/h seulement",
+                "La vitesse du son uniquement",
+                "Zéro vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut environ 28 000 km/h pour orbiter bas autour de la Terre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En orbite, les astronautes semblent en ?",
+              "options": [
+                "Chute libre permanente",
+                "Absence totale de gravité réelle",
+                "Pression double",
+                "Solide rocheux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils tombent autour de la Terre avec la station, d'où la microgravité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le programme Artemis vise à ?",
+              "options": [
+                "Retourner des humains vers la Lune",
+                "Détruire Mars",
+                "Remplacer le Soleil",
+                "Coloniser le noyau terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Artemis prépare des missions lunaires durables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les données des sondes reviennent par ?",
+              "options": [
+                "Ondes radio vers les antennes sur Terre",
+                "Courrier postal",
+                "Fumée",
+                "Marées océaniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les signaux voyagent à la vitesse de la lumière vers nos récepteurs."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Terre et ciel aujourd'hui",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pourquoi étudier le système solaire ?",
+              "options": [
+                "Comprendre l'origine de la Terre",
+                "Préparer la protection contre certains impacts",
+                "Ignorer le climat terrestre",
+                "Empêcher toute science"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'histoire planétaire éclaire notre planète bleue et ses risques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le changement climatique sur Terre est étudié aussi via ?",
+              "options": [
+                "Satellites météo et climat",
+                "Astrologie seule",
+                "Mythes sans données",
+                "Observation du Soleil interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite permet de mesurer glaces, températures et végétation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une exoplanète est ?",
+              "options": [
+                "Une planète autour d'une autre étoile",
+                "Une lune de la Terre",
+                "Un astéroïde",
+                "Le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des milliers d'exoplanètes ont été détectées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La zone habitable d'une étoile est ?",
+              "options": [
+                "Où l'eau liquide peut exister en surface",
+                "Où il fait toujours nuit",
+                "Le centre du Soleil",
+                "Sous la croûte terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ni trop chaud ni trop froid pour l'eau liquide stable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Protéger la couche d'ozone a impliqué ?",
+              "options": [
+                "Réduire certains gaz destructeurs",
+                "Augmenter les CFC",
+                "Vider les océans",
+                "Éteindre le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le protocole de Montréal a limité les chlorofluorocarbures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La Terre et le ciel sont liés car ?",
+              "options": [
+                "Le Soleil drive le climat et la vie",
+                "La Lune produit la lumière du jour",
+                "Les planètes remplacent l'atmosphère",
+                "Jupiter chauffe les océans directement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayonnement solaire, marées et impacts façonnent notre environnement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Citizen science en astronomie permet ?",
+              "options": [
+                "Aux amateurs d'aider à classifier des données",
+                "De voyager plus vite que la lumière",
+                "De toucher le Soleil",
+                "D'ignorer les mesures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le public peut repérer exoplanètes ou météores dans des catalogues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un modèle du système solaire à l'école sert à ?",
+              "options": [
+                "Visualiser distances et ordres des planètes",
+                "Mesurer la masse du Soleil exacte",
+                "Remplacer les observations",
+                "Prouver que la Terre est plate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les maquettes aident à comprendre échelles et mouvements."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La recherche spatiale internationale est ?",
+              "options": [
+                "Coopérative entre plusieurs pays",
+                "Interdite partout",
+                "Limitée à une seule ville",
+                "Sans lien avec la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ISS, télescopes et sondes impliquent souvent des équipes mondiales."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Continuer d'observer le ciel nous rappelle que ?",
+              "options": [
+                "La Terre est une planète parmi d'autres",
+                "Nous sommes au centre de l'univers",
+                "Le Soleil orbite la Terre",
+                "Les étoiles sont des trous dans la voûte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La science place notre maison dans un cosmos vaste et dynamique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

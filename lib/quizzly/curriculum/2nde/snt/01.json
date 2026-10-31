@@ -1,0 +1,2698 @@
+{
+  "id": "2nde-snt-01",
+  "year": "2nde",
+  "subject": "snt",
+  "title": "Internet et le Web",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Réseaux et protocoles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un réseau ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces éléments, lesquels caractérisent un réseau informatique ?",
+              "options": [
+                "Interconnexion de machines",
+                "Échange de données",
+                "Impression papier obligatoire",
+                "Protocoles communs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un réseau relie des équipements pour échanger des données selon des règles communes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un réseau local (LAN) couvre généralement :",
+              "options": [
+                "Un bâtiment ou un site",
+                "Toute la planète",
+                "Un seul câble sans appareils",
+                "Uniquement les satellites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un LAN s'étend sur une zone géographique limitée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Internet est plutôt :",
+              "options": [
+                "Un réseau de réseaux",
+                "Un seul câble",
+                "Un logiciel de messagerie",
+                "Une marque de téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Internet interconnecte des millions de réseaux autonomes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un nœud dans un réseau peut être :",
+              "options": [
+                "Ordinateur, routeur ou serveur",
+                "Uniquement une imprimante",
+                "Seulement un câble",
+                "Uniquement un écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout équipement connecté et adressable est un nœud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La topologie en étoile place les appareils :",
+              "options": [
+                "Autour d'un point central",
+                "En ligne sans centre",
+                "Uniquement en wifi",
+                "Sans liaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En étoile, chaque poste est relié à un équipement central."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le débit mesure :",
+              "options": [
+                "Des données par unité de temps",
+                "La couleur des câbles",
+                "Le nombre de claviers",
+                "La taille de l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit s'exprime en bit/s, Mbit/s ou Gbit/s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un réseau filaire utilise surtout :",
+              "options": [
+                "Câbles Ethernet ou fibre",
+                "Ondes radio seules",
+                "Cartes SD",
+                "Disques internes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filaire transporte les signaux par cuivre ou fibre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Wi-Fi est un réseau :",
+              "options": [
+                "Sans fil",
+                "Uniquement filaire",
+                "Exclusivement satellite",
+                "Coaxial uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Wi-Fi utilise des ondes radio."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un pare-feu sert à :",
+              "options": [
+                "Filtrer le trafic réseau",
+                "Augmenter la résolution",
+                "Compiler du HTML",
+                "Stocker des cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pare-feu applique des règles de sécurité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La latence désigne :",
+              "options": [
+                "Le délai de propagation",
+                "La taille d'un fichier",
+                "Le nombre de pixels",
+                "La couleur du lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une faible latence améliore visio et jeux en ligne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Adresses IP et routage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur IPv4 sont correctes ?",
+              "options": [
+                "Adresse sur 32 bits",
+                "Notation décimale pointée",
+                "Adresse illimitée sans doublon",
+                "Identifie une interface réseau"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "IPv4 utilise 32 bits et identifie une interface sur un réseau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une adresse IPv4 ressemble à :",
+              "options": [
+                "192.168.1.10",
+                "www.example.fr",
+                "00:1A:2B:3C:4D:5E",
+                "HTTPS://site"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre octets séparés par des points forment une IPv4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le masque de sous-réseau sert à :",
+              "options": [
+                "Distinguer partie réseau et hôte",
+                "Chiffrer les emails",
+                "Traduire les noms DNS",
+                "Compresser les images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le masque délimite le préfixe réseau et l'identifiant hôte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une adresse IP privée typique en classe C domestique :",
+              "options": [
+                "192.168.0.1",
+                "8.8.8.8",
+                "142.250.80.46",
+                "2001:db8::1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plages privées RFC 1918 incluent 192.168.0.0/16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le routeur :",
+              "options": [
+                "Relie des réseaux et route les paquets",
+                "Stocke uniquement des photos",
+                "Affiche des pages web",
+                "Remplace le clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le routeur choisit le chemin des paquets entre réseaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "IPv6 utilise :",
+              "options": ["128 bits", "16 bits", "8 bits", "256 bits"],
+              "correctAnswers": [0],
+              "explanation": "IPv6 offre un espace d'adressage bien plus vaste qu'IPv4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "NAT permet souvent de :",
+              "options": [
+                "Partager une IP publique entre plusieurs appareils",
+                "Supprimer le DNS",
+                "Bloquer tout HTTPS",
+                "Créer des sites web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La translation d'adresses masque le réseau local derrière une IP publique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une passerelle par défaut est :",
+              "options": [
+                "Le routeur de sortie du réseau local",
+                "Un antivirus",
+                "Un moteur de recherche",
+                "Un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les paquets vers l'extérieur sont envoyés à la passerelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ping utilise principalement :",
+              "options": ["ICMP", "SMTP", "FTP", "HTML"],
+              "correctAnswers": [0],
+              "explanation": "Ping envoie des requêtes ICMP echo pour tester la reachabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "traceroute (tracert) montre :",
+              "options": [
+                "Les sauts successifs vers une destination",
+                "Le contenu d'une page",
+                "Les mots de passe",
+                "La police du site"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On observe la route et la latence par routeur intermédiaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Protocoles et couches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un protocole réseau définit :",
+              "options": [
+                "Format des messages échangés",
+                "Règles de communication",
+                "Couleur des câbles",
+                "Taille de l'écran"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les protocoles standardisent syntaxe et séquence des échanges."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le modèle TCP/IP compte environ :",
+              "options": ["4 couches", "7 couches", "1 couche", "12 couches"],
+              "correctAnswers": [0],
+              "explanation": "Liaison, Internet, transport et application structurent TCP/IP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "HTTP appartient à la couche :",
+              "options": [
+                "Application",
+                "Liaison",
+                "Physique",
+                "Internet uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP est un protocole de la couche application."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "IP se situe à la couche :",
+              "options": [
+                "Internet",
+                "Application",
+                "Présentation",
+                "Session seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IP assure l'adressage et le routage des datagrammes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ethernet concerne surtout :",
+              "options": [
+                "Liaison de données locale",
+                "Messagerie email",
+                "Traduction DNS",
+                "Rendu web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ethernet encadre les trames sur un LAN filaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'encapsulation signifie :",
+              "options": [
+                "Ajouter des en-têtes à chaque couche",
+                "Supprimer toutes les données",
+                "Chiffrer l'écran",
+                "Imprimer un paquet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couche enveloppe les données de la couche supérieure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un standard ouvert favorise :",
+              "options": [
+                "L'interopérabilité entre fabricants",
+                "Un seul fournisseur",
+                "L'absence de réseau",
+                "Des câbles propriétaires obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les RFC et normes permettent à des systèmes hétérogènes de communiquer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le port transport identifie :",
+              "options": [
+                "Une application sur une machine",
+                "Un câble physique",
+                "Une adresse MAC globale",
+                "Un nom de domaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : port 443 pour HTTPS sur un serveur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "MAC désigne :",
+              "options": [
+                "Adresse physique de carte réseau",
+                "Mot de passe wifi",
+                "URL d'un site",
+                "Protocole email"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adresse MAC identifie une interface en couche liaison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le switch en LAN :",
+              "options": [
+                "Commute les trames entre ports",
+                "Route entre continents sans IP",
+                "Héberge des sites web",
+                "Traduit DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commutateur relaie les trames selon les adresses MAC."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "TCP et UDP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "TCP offre notamment :",
+              "options": [
+                "Connexion fiable ordonnée",
+                "Contrôle de flux",
+                "Aucune correction d'erreur",
+                "Retransmission possible"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "TCP garantit la livraison ordonnée avec retransmissions si besoin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "UDP est plutôt :",
+              "options": [
+                "Sans connexion et léger",
+                "Toujours chiffré",
+                "Réservé au courrier",
+                "Identique à TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UDP envoie des datagrammes sans établir de session."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le three-way handshake concerne :",
+              "options": [
+                "Établissement de connexion TCP",
+                "Compression JPEG",
+                "Requête DNS",
+                "Ping ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SYN, SYN-ACK, ACK ouvrent une session TCP."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le streaming vidéo peut utiliser :",
+              "options": [
+                "UDP ou TCP selon le protocole",
+                "Uniquement ICMP",
+                "Seulement SMTP",
+                "Aucun transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines applications tolèrent des pertes (UDP), d'autres non (TCP)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le numéro de port 80 est associé à :",
+              "options": ["HTTP non chiffré", "HTTPS", "SSH", "DNS"],
+              "correctAnswers": [0],
+              "explanation": "HTTP classique écoute par convention sur le port 80."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "HTTPS utilise le port :",
+              "options": ["443", "25", "110", "67"],
+              "correctAnswers": [0],
+              "explanation": "TLS sur HTTP utilise le port 443 en général."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un segment TCP contient :",
+              "options": [
+                "En-tête TCP et données",
+                "Uniquement une URL",
+                "Une adresse MAC seule",
+                "Un fichier image brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le segment transporte des octets de la couche application."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fiabilité TCP repose aussi sur :",
+              "options": [
+                "Accusés de réception (ACK)",
+                "Couleur du câble",
+                "Taille du moniteur",
+                "Police CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ACK confirment la réception des segments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "DNS utilise souvent :",
+              "options": [
+                "UDP pour des requêtes courtes",
+                "TCP uniquement jamais UDP",
+                "ICMP seul",
+                "HTTP POST systématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les requêtes DNS courtes passent en UDP port 53."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Multiplexage par port permet :",
+              "options": [
+                "Plusieurs services sur une même IP",
+                "Une seule application par machine",
+                "Zéro adresse IP",
+                "Pas de protocole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque service écoute sur un port distinct."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "DNS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le DNS sert à :",
+              "options": [
+                "Associer noms et adresses IP",
+                "Faciliter la mémorisation des sites",
+                "Remplacer tous les routeurs",
+                "Traduire noms en adresses"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le DNS résout les noms de domaine en adresses IP."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un FQDN exemple :",
+              "options": [
+                "www.education.gouv.fr",
+                "192.168.1.1",
+                "00:11:22:33:44:55",
+                "TCP/IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nom de domaine pleinement qualifié inclut l'hôte et la zone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un enregistrement A fournit :",
+              "options": [
+                "Une IPv4 pour un nom",
+                "Un serveur mail",
+                "Un texte libre",
+                "Une signature TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le type A mappe un nom vers une adresse IPv4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le résolveur DNS du client interroge :",
+              "options": [
+                "Des serveurs DNS en cascade",
+                "Directement chaque site web",
+                "Uniquement le clavier",
+                "Le cache du disque dur interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résolution récursive via résolveur puis serveurs autoritaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "TTL dans DNS indique :",
+              "options": [
+                "Durée de validité en cache",
+                "Taille du câble",
+                "Version HTML",
+                "Port HTTPS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après le TTL, l'entrée cache doit être rafraîchie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un CDN améliore souvent :",
+              "options": [
+                "Délai d'accès aux contenus",
+                "Consommation papier",
+                "Nombre de claviers",
+                "Adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des copies géographiquement proches réduisent la latence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "DNSSEC vise à :",
+              "options": [
+                "Signer les réponses DNS",
+                "Supprimer HTTPS",
+                "Bloquer le wifi",
+                "Créer des cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DNSSEC authentifie l'origine des enregistrements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le fichier hosts local peut :",
+              "options": [
+                "Forcer une résolution manuelle",
+                "Remplacer Internet entier",
+                "Chiffrer TCP",
+                "Compiler JavaScript"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une entrée hosts contourne temporairement le DNS public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un enregistrement MX concerne :",
+              "options": [
+                "Serveurs de messagerie",
+                "Adresse IPv6 seule",
+                "Compression vidéo",
+                "Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MX indique où livrer le courrier pour un domaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La racine DNS est notée :",
+              "options": [
+                "Point final implicite ou .",
+                "http://",
+                "@home",
+                "#root"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hiérarchie commence par les serveurs racine."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "HTTP et HTTPS",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "HTTPS combine :",
+              "options": [
+                "HTTP",
+                "Chiffrement TLS",
+                "ICMP uniquement",
+                "FTP obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "HTTPS encapsule HTTP dans une connexion TLS chiffrée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une requête GET sert surtout à :",
+              "options": [
+                "Demander une ressource",
+                "Envoyer un mot de passe en corps secret",
+                "Formater un disque",
+                "Ping un routeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GET récupère une ressource identifiée par URL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le code 404 signifie :",
+              "options": [
+                "Ressource introuvable",
+                "Succès total",
+                "Redirection permanente",
+                "Erreur serveur interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "404 indique que le serveur n'a pas trouvé la ressource."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un en-tête HTTP transporte :",
+              "options": [
+                "Métadonnées de la requête ou réponse",
+                "Uniquement l'image brute",
+                "La table de routage",
+                "Le BIOS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Content-Type, Cache-Control, etc. sont des en-têtes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le cookie HTTP permet :",
+              "options": [
+                "État côté client pour le serveur",
+                "Chiffrer le disque dur",
+                "Remplacer DNS",
+                "Augmenter le débit fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur peut mémoriser une session via Set-Cookie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "POST convient plutôt à :",
+              "options": [
+                "Envoyer des données au serveur",
+                "Télécharger une page statique sans effet",
+                "Tracer une route IP",
+                "Scanner les ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "POST envoie un corps de requête, par exemple un formulaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le certificat TLS prouve surtout :",
+              "options": [
+                "Identité du site au visiteur",
+                "Vitesse du wifi",
+                "Adresse MAC du PC",
+                "Couleur du thème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une autorité de certification signe le certificat du domaine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "HTTP/2 améliore entre autres :",
+              "options": [
+                "Multiplexage sur une connexion",
+                "Suppression de TCP",
+                "Interdiction du chiffrement",
+                "Fin des URL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs requêtes peuvent partager une connexion TCP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "CORS concerne :",
+              "options": [
+                "Accès cross-origin depuis un navigateur",
+                "Câblage Ethernet",
+                "Ping ICMP",
+                "Impression réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur applique des règles d'origine croisée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une API REST expose souvent :",
+              "options": [
+                "Ressources via HTTP",
+                "Uniquement du courrier SMTP",
+                "Des trames Ethernet brutes",
+                "Des adresses MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "REST structure les services web autour de ressources et verbes HTTP."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Équipements réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À la maison, on trouve souvent :",
+              "options": [
+                "Box ou routeur",
+                "Switch ou wifi intégré",
+                "Uniquement un satellite",
+                "Aucun protocole"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La box route le trafic et distribue le LAN filaire ou Wi-Fi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un point d'accès Wi-Fi :",
+              "options": [
+                "Étend la couverture sans fil",
+                "Remplace Internet mondial",
+                "Est un moteur de recherche",
+                "Compile du Python"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il connecte les clients radio au réseau filaire amont."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La fibre optique transporte :",
+              "options": [
+                "Lumière modulée",
+                "Courant continu haute tension",
+                "Encre",
+                "Son analogique seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les impulsions lumineuses codent les bits sur longue distance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un modem câble ou DSL :",
+              "options": [
+                "Adapte le signal du FAI au réseau local",
+                "Héberge des bases SQL",
+                "Traduit HTML en PDF",
+                "Est un antivirus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il modulate/démodulate l'accès du fournisseur d'accès."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un serveur dans un réseau :",
+              "options": [
+                "Fournit des services aux clients",
+                "Ne possède jamais d'IP",
+                "Est toujours un smartphone",
+                "Ne utilise pas TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Web, mail, fichiers peuvent tourner sur des serveurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La carte réseau (NIC) :",
+              "options": [
+                "Interface entre machine et média",
+                "Uniquement un écran",
+                "Un logiciel de dessin",
+                "Un câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle envoie et reçoit des trames ou paquets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un hub (obsolète) :",
+              "options": [
+                "Répète le trafic à tous les ports",
+                "Route intelligemment par IP",
+                "Chiffre TLS",
+                "Héberge DNS racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au switch, il duplique les collisions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "SNMP sert surtout à :",
+              "options": [
+                "Superviser des équipements",
+                "Envoyer des SMS",
+                "Créer des memes",
+                "Jouer en 3D"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simple Network Management Protocol collecte des métriques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "PoE signifie :",
+              "options": [
+                "Alimentation via câble Ethernet",
+                "Protocole email",
+                "Point d'entrée web",
+                "Police de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Power over Ethernet alimente caméras ou points d'accès."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesh Wi-Fi vise à :",
+              "options": [
+                "Couvrir un logement avec plusieurs nœuds",
+                "Supprimer le chiffrement",
+                "Remplacer HTTP",
+                "Désactiver les adresses IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bornes coopèrent pour étendre la couverture."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Modèle client-serveur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le modèle client-serveur :",
+              "options": [
+                "Le client initie la demande",
+                "Le serveur fournit le service",
+                "Le serveur initie toujours seul",
+                "Aucune adresse IP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le client requête ; le serveur écoute et répond."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un navigateur agit comme :",
+              "options": [
+                "Client HTTP",
+                "Serveur DNS racine",
+                "Routeur BGP",
+                "Switch layer 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il envoie des requêtes HTTP(S) aux serveurs web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le peer-to-peer (P2P) diffère car :",
+              "options": [
+                "Des pairs jouent client et serveur",
+                "Il n'y a jamais de données",
+                "Pas de réseau physique",
+                "Uniquement du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque nœud peut à la fois fournir et consommer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une charge élevée sur un serveur peut nécessiter :",
+              "options": [
+                "Réplication ou load balancing",
+                "Couper Internet",
+                "Supprimer TCP",
+                "Désactiver DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs instances répartissent les requêtes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le cloud repose souvent sur :",
+              "options": [
+                "Des datacenters mutualisés",
+                "Un seul PC domestique",
+                "Aucun câble",
+                "Des disquettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des ressources distantes sont louées à la demande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "SaaS signifie :",
+              "options": [
+                "Logiciel utilisé en ligne",
+                "Stockage local obligatoire",
+                "Protocole de routage",
+                "Format d'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Software as a Service : application hébergée par le fournisseur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une API permet :",
+              "options": [
+                "Échange structuré entre programmes",
+                "Peindre un mur",
+                "Couper le wifi",
+                "Imprimer sans réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les applications communiquent via endpoints définis."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La latence serveur inclut :",
+              "options": [
+                "Temps de traitement backend",
+                "Taille du clavier",
+                "Couleur CSS",
+                "Nombre de pixels seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base de données et logique métier ajoutent du délai."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une file d'attente de messages sert à :",
+              "options": [
+                "Découpler producteurs et consommateurs",
+                "Bloquer HTTP",
+                "Remplacer IP",
+                "Supprimer TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tâches asynchrones améliorent la scalabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le statut 503 indique :",
+              "options": [
+                "Service temporairement indisponible",
+                "Page trouvée",
+                "Redirection",
+                "Création réussie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le serveur ne peut pas traiter la requête momentanément."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Wi-Fi et Ethernet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Wi-Fi utilise :",
+              "options": [
+                "Ondes radio",
+                "Normes IEEE 802.11",
+                "Câble coaxial uniquement",
+                "Encre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "802.11 définit les réseaux locaux sans fil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "WPA2 ou WPA3 protège :",
+              "options": [
+                "Accès au réseau sans fil",
+                "Le BIOS du PC",
+                "Le DNS racine",
+                "Les câbles fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiffrement wifi sécurise l'accès au LAN radio."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ethernet en cuivre utilise souvent :",
+              "options": ["RJ45", "HDMI", "USB-C seul", "Jack audio"],
+              "correctAnswers": [0],
+              "explanation": "La prise RJ45 porte les paires torsadées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le débit wifi diminue si :",
+              "options": [
+                "Signal faible ou interférences",
+                "Câble trop court",
+                "Écran trop grand",
+                "Clavier AZERTY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance, murs et bandes encombrées dégradent le débit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2,4 GHz vs 5 GHz :",
+              "options": [
+                "5 GHz offre souvent plus de débit proche",
+                "2,4 GHz n'existe pas",
+                "5 GHz ne traverse pas les murs jamais",
+                "Identiques toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,4 GHz porte mieux ; 5 GHz est souvent moins encombré."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "SSID désigne :",
+              "options": [
+                "Nom du réseau wifi visible",
+                "Mot de passe TLS",
+                "Adresse IPv6",
+                "Port SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SSID identifie le réseau sans fil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Full duplex en Ethernet switché :",
+              "options": [
+                "Émission et réception simultanées",
+                "Une seule direction",
+                "Sans adresse MAC",
+                "Sans trames"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le commutation moderne évite les collisions half duplex."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bluetooth n'est pas :",
+              "options": [
+                "Un remplacement direct du routage IP WAN",
+                "Un protocole radio courte portée",
+                "Utilisé pour périphériques",
+                "Standard IEEE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bluetooth sert surtout aux liaisons personnelles courtes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La box affiche parfois :",
+              "options": [
+                "Liste des appareils connectés",
+                "Code HTML du monde",
+                "Table BGP complète",
+                "Film en streaming obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interface admin liste les clients DHCP ou wifi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester débit wifi se fait avec :",
+              "options": [
+                "Outils type speedtest vers serveur",
+                "Mesure du poids du câble",
+                "Comptage des touches",
+                "Ping du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mesure upload/download vers un serveur de test."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Sécurité réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonnes pratiques domestiques :",
+              "options": [
+                "Mot de passe wifi fort",
+                "Mises à jour de la box",
+                "Partager le mot de passe à tous",
+                "Désactiver le chiffrement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Authentification forte et firmware à jour réduisent les risques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phishing vise à :",
+              "options": [
+                "Vol de identifiants par tromperie",
+                "Accélérer la fibre",
+                "Compiler du C",
+                "Augmenter le débit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De faux messages incitent à révéler des secrets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un VPN chiffre souvent :",
+              "options": [
+                "Tunnel entre client et passerelle",
+                "Uniquement l'écran",
+                "Le bruit du ventilateur",
+                "Les pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trafic est protégé sur le lien jusqu'au VPN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Scan de ports sert à :",
+              "options": [
+                "Détecter services ouverts",
+                "Peindre un routeur",
+                "Traduire DNS",
+                "Créer un certificat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On teste quels ports répondent sur une cible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "DDoS signifie :",
+              "options": [
+                "Saturation par flux massifs",
+                "Chiffrement TLS",
+                "Compression gzip",
+                "Cache DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Denial of Service distribué surcharge la cible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "HTTPS protège surtout :",
+              "options": [
+                "Confidentialité et intégrité en transit",
+                "Le disque dur local",
+                "La poussière",
+                "La batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "TLS chiffre et authentifie le canal HTTP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Segmenter le réseau (VLAN) :",
+              "options": [
+                "Isole des groupes d'appareils",
+                "Supprime IP",
+                "Remplace wifi",
+                "Efface cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La segmentation limite la propagation d'un incident."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2FA ajoute :",
+              "options": [
+                "Second facteur d'authentification",
+                "Deux adresses IP",
+                "Deux navigateurs obligatoires",
+                "Deux câbles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code SMS, app ou clé en plus du mot de passe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Journalisation (logs) aide à :",
+              "options": [
+                "Analyser incidents de sécurité",
+                "Changer la couleur du site",
+                "Traduire une page",
+                "Compresser JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les traces horodatées facilitent l'audit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Principe de moindre privilège :",
+              "options": [
+                "Accorder le minimum de droits nécessaires",
+                "Tout ouvrir",
+                "Partager mots de passe admin",
+                "Désactiver TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque compte ou service n'a que les permissions utiles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le Web et ses usages",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Naissance du Web",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le World Wide Web diffère d'Internet car :",
+              "options": [
+                "Web est un service d'hypertexte",
+                "Internet est l'infrastructure",
+                "Web est le même que la fibre",
+                "Internet n'existe pas sans Web"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Internet transporte ; le Web propose pages et liens via HTTP."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tim Berners-Lee a proposé le Web au CERN vers :",
+              "options": ["1989-1991", "1970", "2005", "2020"],
+              "correctAnswers": [0],
+              "explanation": "HTML, URL et HTTP formalisent l'hypertexte distribué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une page web est identifiée par :",
+              "options": [
+                "Une URL",
+                "Une adresse MAC seule",
+                "Un numéro de série disque",
+                "Un port SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'URL localise la ressource sur le réseau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un hyperlien permet :",
+              "options": [
+                "Naviguer vers une autre ressource",
+                "Couper le câble réseau",
+                "Chiffrer le BIOS",
+                "Imprimer sans file"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lien associe un texte ou image à une destination."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le Web est ouvert grâce à :",
+              "options": [
+                "Standards publics (W3C, IETF)",
+                "Un seul navigateur propriétaire",
+                "Absence de protocoles",
+                "Câbles exclusifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des normes ouvertes permettent l'interopérabilité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le premier navigateur grand public a popularisé :",
+              "options": [
+                "Navigation graphique",
+                "Routage BGP",
+                "Compilation kernel",
+                "DNSSEC seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mosaic puis Netscape ont démocratisé le surf."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Web 2.0 désigne surtout :",
+              "options": [
+                "Contenus générés par les utilisateurs",
+                "Fin du HTML",
+                "Suppression des liens",
+                "Réseau sans IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux sociaux, blogs et wikis illustrent la participation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une ressource statique :",
+              "options": [
+                "Fichier servi tel quel",
+                "Programme exécuté côté client seul",
+                "Routeur Cisco",
+                "Adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTML, CSS, images peuvent être statiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le Web s'appuie principalement sur :",
+              "options": [
+                "HTTP(S)",
+                "SMTP pour chaque page",
+                "ICMP pour le texte",
+                "Bluetooth"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP transporte HTML, JSON, médias, etc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "WWW dans une URL signifie :",
+              "options": [
+                "World Wide Web",
+                "Wide Window Wifi",
+                "Web Without Wire",
+                "World Wire Worker"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe www indique souvent l'hôte web."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Navigateurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un navigateur :",
+              "options": [
+                "Interprète HTML/CSS",
+                "Exécute JavaScript",
+                "Route les paquets BGP",
+                "Affiche des pages web"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Moteur de rendu et JS transforment le code en interface."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le moteur de rendu calcule :",
+              "options": [
+                "Mise en page et affichage",
+                "Tables de routage IP",
+                "Signaux fibre",
+                "Courrier SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blink, Gecko ou WebKit dessinent le DOM."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les outils de développement servent à :",
+              "options": [
+                "Inspecter réseau et DOM",
+                "Formater un disque",
+                "Changer le CPU",
+                "Couper le wifi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Console, inspecteur et onglet Réseau aident au debug."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cache navigateur :",
+              "options": [
+                "Stocke ressources pour accélérer",
+                "Supprime HTTPS",
+                "Remplace DNS",
+                "Efface la RAM du serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Images et scripts réutilisés limitent les requêtes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mode navigation privée :",
+              "options": [
+                "Limite traces locales",
+                "Anonymise totalement sur Internet",
+                "Chiffre tous les sites",
+                "Supprime les FAI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Historique local réduit ; le serveur voit toujours la requête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bloqueur de publicités :",
+              "options": [
+                "Filtre requêtes ou éléments pub",
+                "Accélère la fibre physique",
+                "Change adresse IP",
+                "Installe TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Listes de blocage coupent scripts et trackers pub."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "User-Agent indique :",
+              "options": [
+                "Type et version du navigateur",
+                "Mot de passe wifi",
+                "Clé privée TLS",
+                "Adresse MAC wifi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En-tête HTTP envoyé à chaque requête."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Same-origin policy limite :",
+              "options": [
+                "Accès scripts entre origines différentes",
+                "Couleur des liens",
+                "Taille des images",
+                "Ping ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité : un script ne lit pas librement une autre origine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mettre à jour le navigateur :",
+              "options": [
+                "Corrige failles de sécurité",
+                "Supprime HTML5",
+                "Désactive JavaScript",
+                "Enlève les cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les patches ferment des vulnérabilités connues."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Progressive Web App (PWA) peut :",
+              "options": [
+                "S'installer et fonctionner hors ligne partiel",
+                "Remplacer le routeur",
+                "Router BGP",
+                "Supprimer HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service workers et manifest offrent une expérience app-like."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "URLs et liens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une URL contient souvent :",
+              "options": [
+                "Schéma (https)",
+                "Hôte",
+                "Couleur du texte obligatoire",
+                "Chemin de ressource"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schéma, autorité, chemin, paramètres et ancre structurent l'URL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "https://site.fr/a?b=1#sec : l'ancre est :",
+              "options": ["#sec", "?b=1", "site.fr", "https"],
+              "correctAnswers": [0],
+              "explanation": "Le fragment #sec cible un emplacement dans la page."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "URL relative :",
+              "options": [
+                "Sans domaine, par rapport à la page courante",
+                "Toujours ftp://",
+                "Une adresse MAC",
+                "Un port 25"
+              ],
+              "correctAnswers": [0],
+              "explanation": "/images/logo.png se résout depuis l'origine courante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Encodage pour caractères spéciaux :",
+              "options": [
+                "Pourcent-encoding (%20)",
+                "Base64 obligatoire",
+                "Binaire pur",
+                "Aucun encodage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les espaces et accents passent en %XX dans les URL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lien absolu commence par :",
+              "options": [
+                "Schéma complet ou //",
+                "Uniquement #",
+                "Un point seul",
+                "MAC address"
+              ],
+              "correctAnswers": [0],
+              "explanation": "https://... ou //cdn... pointe sans ambiguïté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Raccourcisseur d'URL peut :",
+              "options": [
+                "Masquer la destination réelle",
+                "Chiffrer TLS",
+                "Augmenter débit fibre",
+                "Remplacer DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prudence : vérifier la cible avant de cliquer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "target=\"_blank\" ouvre :",
+              "options": [
+                "Nouvel onglet ou fenêtre",
+                "Routeur",
+                "Console kernel",
+                "Ping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut HTML du lien hypertexte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Domaine .fr est géré par :",
+              "options": [
+                "Registry national (.fr)",
+                "Chaque navigateur",
+                "Chaque PC",
+                "NASA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AFNIC administre la zone .fr."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "HTTPS dans l'URL indique :",
+              "options": [
+                "Canal chiffré TLS",
+                "Protocole email",
+                "Fichier local",
+                "ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma https active TLS avant HTTP."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deep linking mène :",
+              "options": [
+                "Directement à une section ou app",
+                "Uniquement à l'accueil",
+                "Sans protocole",
+                "Sans hôte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien précis vers contenu ou écran applicatif."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "HTML et contenus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "HTML structure :",
+              "options": [
+                "Titres et paragraphes",
+                "Liens et images",
+                "Tables de routage",
+                "Balises sémantiques possibles"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "HTML décrit le contenu ; CSS en présente la forme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CSS sert à :",
+              "options": [
+                "Style et mise en page",
+                "Routage IP",
+                "Résolution DNS",
+                "Compression TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs, grilles et polices relèvent de CSS."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "JavaScript côté client peut :",
+              "options": [
+                "Modifier le DOM dynamiquement",
+                "Configurer le routeur FAI",
+                "Signer DNSSEC",
+                "Couper la fibre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scripts interactifs dans le navigateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Balise <a> crée :",
+              "options": [
+                "Un hyperlien",
+                "Un paragraphe seul",
+                "Une image obligatoire",
+                "Un script serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "href définit la destination du lien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accessibilité web (a11y) vise :",
+              "options": [
+                "Contenus utilisables par tous",
+                "Supprimer les images",
+                "Interdire clavier",
+                "Couper le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrastes, alternatives texte et navigation clavier comptent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Responsive design adapte :",
+              "options": [
+                "Affichage à la taille d'écran",
+                "Vitesse de la lumière",
+                "Adresse IP",
+                "Port SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Media queries et grilles flexibles ajustent la mise en page."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "CDN pour assets statiques :",
+              "options": [
+                "Rapproche fichiers de l'utilisateur",
+                "Supprime HTML",
+                "Remplace navigateur",
+                "Efface cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scripts et images servis depuis un point proche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Balise alt sur image :",
+              "options": [
+                "Texte alternatif",
+                "Mot de passe",
+                "URL DNS",
+                "Port 443"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecteurs d'écran et SEO utilisent alt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Formulaire HTML envoie souvent via :",
+              "options": ["POST ou GET", "ICMP", "BGP", "ARP seul"],
+              "correctAnswers": [0],
+              "explanation": "method et action définissent verbe et destination."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "W3C recommande :",
+              "options": [
+                "Standards ouverts du Web",
+                "Fermer Internet",
+                "Un seul OS",
+                "Câbles propriétaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "World Wide Web Consortium publie recommandations."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Moteurs de recherche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un moteur de recherche :",
+              "options": [
+                "Indexe des pages",
+                "Répond à des requêtes",
+                "Remplace le DNS",
+                "Classe des résultats"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Crawl, index et algorithme de pertinence alimentent la réponse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "SEO signifie :",
+              "options": [
+                "Optimisation pour moteurs",
+                "Protocole chiffré",
+                "Langage serveur",
+                "Format vidéo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure et contenu influencent le référencement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Requête entre guillemets :",
+              "options": [
+                "Expression exacte",
+                "Supprime filtres",
+                "Change IP",
+                "Coupe TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guillemets forcent la phrase exacte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Biais de bulle de filtres :",
+              "options": [
+                "Personnalisation limite la diversité",
+                "Améliore toujours la vérité",
+                "Supprime Internet",
+                "Efface historique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les recommandations renforcent les opinions existantes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vérifier une info implique :",
+              "options": [
+                "Sources croisées fiables",
+                "Un seul mème",
+                "Commentaire anonyme seul",
+                "Titre sensationaliste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esprit critique et recoupement sont essentiels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "robots.txt indique :",
+              "options": [
+                "Règles pour robots d'indexation",
+                "Mot de passe admin",
+                "Clé TLS",
+                "Table ARP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Directives pour crawlers (non forcées légalement)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Snippet est :",
+              "options": [
+                "Extrait affiché dans résultats",
+                "Virus",
+                "Câble",
+                "Port 25"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre, URL et description proviennent de l'index."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Recherche d'images filtre par :",
+              "options": [
+                "Taille, couleur, licence",
+                "Adresse MAC",
+                "Ping",
+                "SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outils avancés affinent les visuels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dark web nécessite souvent :",
+              "options": [
+                "Outils spécifiques (ex. Tor)",
+                "Uniquement Chrome",
+                "Sans réseau",
+                "Carte SD"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseaux superposés anonymisants ≠ web indexé classique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Publicité en tête de résultats :",
+              "options": [
+                "Est signalée comme annonce",
+                "Est toujours organique",
+                "Remplace DNS",
+                "Chiffre le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liens sponsorisés doivent être identifiables."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Réseaux sociaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les réseaux sociaux permettent :",
+              "options": [
+                "Publier du contenu",
+                "Interagir avec d'autres",
+                "Routage BGP obligatoire",
+                "Créer des graphes sociaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Partage, commentaires et likes structurent l'interaction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Profil public expose :",
+              "options": [
+                "Informations visibles selon réglages",
+                "Toujours rien",
+                "Adresse MAC",
+                "Table de routage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paramètres de confidentialité définissent la visibilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Echo chamber désigne :",
+              "options": [
+                "Environnement où circulent surtout opinions similaires",
+                "Salle serveur",
+                "Protocole HTTP",
+                "Cache DNS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil d'actualité renforce les cercles homogènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fake news se combat par :",
+              "options": [
+                "Vérification des sources",
+                "Partage sans lire",
+                "Captures anonymes seules",
+                "Trolls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fact-checking et esprit critique limitent la désinformation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Modération de contenu :",
+              "options": [
+                "Règles communautaires et signalements",
+                "Suppression d'Internet",
+                "Fin du HTML",
+                "ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateformes appliquent chartes et lois."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hashtag sert à :",
+              "options": [
+                "Indexer thématiquement",
+                "Chiffrer TLS",
+                "Ping routeur",
+                "Compiler C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "#mot agrège publications sur un sujet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Influenceur rémunéré doit :",
+              "options": [
+                "Signaler la publicité (réglementation)",
+                "Cacher le partenariat",
+                "Usurper identité",
+                "Publier mots de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence publicitaire est obligatoire en France."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cyberharcèlement inclut :",
+              "options": [
+                "Insultes ou menaces répétées en ligne",
+                "Compliment unique",
+                "Mise à jour navigateur",
+                "Backup disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harcèlement en ligne est punissable ; signaler et bloquer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Empreinte numérique :",
+              "options": [
+                "Trace laissée par activités en ligne",
+                "Taille du câble",
+                "Version BIOS",
+                "Port 67"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Publications et métadonnées composent la réputation en ligne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Limite de temps d'écran vise :",
+              "options": [
+                "Équilibre vie numérique et réelle",
+                "Couper la fibre",
+                "Désactiver DNS",
+                "Supprimer HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage réfléchi prévient addiction et fatigue."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Données personnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Données personnelles incluent :",
+              "options": [
+                "Nom et email",
+                "Adresse IP parfois",
+                "Couleur des câbles",
+                "Identifiant en ligne"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Toute info identifiant une personne est protégée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "RGPD s'applique en :",
+              "options": [
+                "Union européenne",
+                "Lune seule",
+                "Sans Internet",
+                "Uniquement SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règlement général sur la protection des données (UE)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Consentement valide doit être :",
+              "options": [
+                "Libre, spécifique et éclairé",
+                "Caché en 100 pages",
+                "Force brute",
+                "Permanent sans retrait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur comprend et peut retirer son accord."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Droit à l'effacement permet :",
+              "options": [
+                "Demander suppression sous conditions",
+                "Effacer Internet entier",
+                "Supprimer lois",
+                "Changer MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit à l'oubli encadré par le RGPD."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Minimisation des données :",
+              "options": [
+                "Collecter seulement le nécessaire",
+                "Tout stocker sans limite",
+                "Publier mots de passe",
+                "Indexer sans base légale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finalité et proportionnalité guident la collecte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "DPO est :",
+              "options": [
+                "Délégué à la protection des données",
+                "Protocole HTTP",
+                "Routeur",
+                "Format JPEG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certaines organisations nomment un DPO."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Violation de données :",
+              "options": [
+                "Fuite à notifier aux autorités",
+                "Mise à jour CSS",
+                "Changement favicon",
+                "Ping réussi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CNIL peut exiger notification sous 72 h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pseudonymisation :",
+              "options": [
+                "Remplace identité directe par pseudonyme",
+                "Supprime chiffrement",
+                "Coupe wifi",
+                "Efface HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit les risques sans anonymisation totale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Géolocalisation sur smartphone :",
+              "options": [
+                "Nécessite permission utilisateur",
+                "Toujours sans consentement",
+                "Remplace GPS satellite",
+                "Bloque TLS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "OS demande l'autorisation d'accès localisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Export de données (portabilité) :",
+              "options": [
+                "Récupérer ses données dans format structuré",
+                "Supprimer loi",
+                "Couper câble",
+                "Interdire cookies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit de recevoir ses données pour les réutiliser."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Cookies et traceurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un cookie HTTP :",
+              "options": [
+                "Petit fichier stocké par le navigateur",
+                "Envoyé par en-tête Set-Cookie",
+                "Remplace le processeur",
+                "Route les paquets"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le serveur demande au client de mémoriser une valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cookie de session sert à :",
+              "options": [
+                "Maintenir connexion utilisateur",
+                "Augmenter débit fibre",
+                "Traduire DNS",
+                "Compiler Java"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifiant de session après authentification."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cookie tiers (third-party) :",
+              "options": [
+                "Domaine différent de la page visitée",
+                "Toujours interdit partout",
+                "Identique au BIOS",
+                "ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent utilisé pour publicité et analytics."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bandeau cookies en UE demande :",
+              "options": [
+                "Consentement avant traceurs non essentiels",
+                "Mot de passe admin",
+                "Adresse MAC",
+                "Scan ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ePrivacy et RGPD encadrent le dépôt."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fingerprinting :",
+              "options": [
+                "Identification via config navigateur",
+                "Chiffrement TLS",
+                "Ping",
+                "HTML5 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empreinte device contourne parfois les cookies."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "SameSite attribute limite :",
+              "options": [
+                "Envoi cross-site du cookie",
+                "Taille écran",
+                "Version IP",
+                "SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Strict ou Lax réduit CSRF et fuite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Effacer cookies peut :",
+              "options": [
+                "Déconnecter des sites",
+                "Accélérer CPU",
+                "Changer IP publique",
+                "Installer OS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sessions stockées localement disparaissent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "LocalStorage diffère des cookies :",
+              "options": [
+                "Stockage clé-valeur côté client sans envoi auto",
+                "Envoi systématique à chaque requête HTTP",
+                "Routage BGP",
+                "DNSSEC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de capacité ; pas envoyé automatiquement au serveur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Do Not Track (DNT) :",
+              "options": [
+                "Signal de préférence peu respecté",
+                "Protocole chiffré",
+                "Langage HTML",
+                "Port 443"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En-tête indiquant refus de tracking (adoption limitée)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tracker publicitaire suit :",
+              "options": [
+                "Pages vues pour ciblage",
+                "Température CPU",
+                "Câble RJ45",
+                "Ping seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Profils publicitaires agrègent comportements."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Citoyenneté numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Citoyenneté numérique inclut :",
+              "options": [
+                "Respect en ligne",
+                "Esprit critique face aux infos",
+                "Piratage systématique",
+                "Protection de sa vie privée"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Droits, devoirs et literacy numérique vont ensemble."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Licence Creative Commons :",
+              "options": [
+                "Indique conditions de réutilisation",
+                "Supprime copyright",
+                "Coupe Internet",
+                "Remplace GPL système"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BY, NC, SA, ND combinent permissions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Droit d'auteur protège :",
+              "options": [
+                "Œuvres originales",
+                "Faits bruts seuls",
+                "Protocoles TCP",
+                "Adresses IP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copie ou diffusion nécessite autorisation sauf exceptions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Exception de citation permet :",
+              "options": [
+                "Courts extraits avec source",
+                "Copier livre entier",
+                "Usurper auteur",
+                "Vendre sans droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Citation loyale avec référence et proportion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fracture numérique :",
+              "options": [
+                "Inégalités d'accès ou compétences",
+                "Vitesse lumière",
+                "Format JSON",
+                "Port 25"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Territoires, revenus et âge influencent l'accès."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Open data public :",
+              "options": [
+                "Données réutilisables librement souvent",
+                "Secrets d'État",
+                "Mots de passe",
+                "Clés TLS privées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "data.gouv.fr illustre l'ouverture administrative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Signaler contenu illicite :",
+              "options": [
+                "Outils plateforme ou PHAROS",
+                "Supprimer loi",
+                "Couper fibre",
+                "DDoS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "PHAROS centralise signalements en France."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Green IT vise :",
+              "options": [
+                "Réduire impact environnemental du numérique",
+                "Plus de datacenters sans limite",
+                "Jeter matériel vite",
+                "Laisser serveurs vides allumés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sobriété, réemploi et efficacité énergétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accessibilité numérique concerne :",
+              "options": [
+                "Personnes en situation de handicap",
+                "Uniquement développeurs",
+                "Routeurs seuls",
+                "BGP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RGAA et WCAG guident sites accessibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identité numérique FranceConnect :",
+              "options": [
+                "Fédération d'identités pour services publics",
+                "Réseau social",
+                "Protocole UDP",
+                "Moteur de recherche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connexion unique vers certaines démarches."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Cloud et services en ligne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cloud offre :",
+              "options": [
+                "Stockage distant",
+                "Applications hébergées",
+                "Câble RJ45 local seul",
+                "Calcul à la demande"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "IaaS, PaaS, SaaS mutualisent l'infrastructure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Synchronisation cloud :",
+              "options": [
+                "Copie fichiers entre appareils",
+                "Coupe DNS",
+                "Remplace navigateur",
+                "ICMP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Drive ou iCloud répliquent documents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chiffrement bout en bout (messagerie) :",
+              "options": [
+                "Seuls interlocuteurs lisent le contenu",
+                "Serveur lit toujours tout",
+                "Sans clés",
+                "HTTP seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clés côté client protègent le contenu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conditions générales d'utilisation :",
+              "options": [
+                "Contrat droits et devoirs utilisateur",
+                "Code HTML",
+                "Table IP",
+                "Ping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire les CGU éclaire usage des données."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Multicloud signifie :",
+              "options": [
+                "Plusieurs fournisseurs cloud",
+                "Un seul serveur",
+                "Sans Internet",
+                "Disquette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diversifier réduit dépendance vendor lock-in."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Office en ligne (docs) :",
+              "options": [
+                "Édition collaborative navigateur",
+                "Routeur",
+                "DNS root",
+                "Bluetooth"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Google Docs ou Office 365 collaborent en temps réel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Streaming musical :",
+              "options": [
+                "Lecture sans téléchargement permanent",
+                "Fichier local obligatoire",
+                "SMTP",
+                "ARP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux continu depuis serveurs distants."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Backup 3-2-1 recommande :",
+              "options": [
+                "3 copies, 2 supports, 1 hors site",
+                "1 copie seule",
+                "0 backup",
+                "Sur même disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ransomware ou panne nécessitent copies externalisées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quitter un service cloud :",
+              "options": [
+                "Exporter données puis fermer compte",
+                "Abandonner sans export",
+                "Publier mots de passe",
+                "DDoS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Portabilité avant suppression du compte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Edge computing rapproche :",
+              "options": [
+                "Traitement des données de l'utilisateur",
+                "Datacenter unique lointain",
+                "Sans réseau",
+                "Papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Latence réduite pour IoT et temps réel."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

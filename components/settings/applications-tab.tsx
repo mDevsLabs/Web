@@ -26,6 +26,8 @@ import {
   CheckIcon,
   CpuIcon,
   CrosshairIcon,
+  FileTextIcon,
+  GraduationCapIcon,
   LayersIcon,
   Loader2Icon,
   LockIcon,
@@ -46,7 +48,9 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { ProfilQuizzly } from "@/components/quizzly/profil";
 import { SourceIcon } from "@/components/search/source-icon";
+import { PagesSettingsSection } from "@/components/settings/applications/pages-section";
 import {
   WakiesCapacityPicker,
   WakiesToolPicker,
@@ -72,6 +76,11 @@ import {
   type MaiSearchSafetyLevel,
   type MaiSearchSourceKey,
 } from "@/lib/search/sources";
+import {
+  VIBE_CIRCLE_KEY,
+  VIBE_SETTINGS_KEY,
+  WAKIES_SETTINGS_KEY,
+} from "@/lib/settings/preload-applications";
 import { cn, fetcher } from "@/lib/utils";
 import { ApiService } from "@/lib/vibe/services/api";
 import { haptics } from "@/lib/vibe/services/haptics";
@@ -294,62 +303,75 @@ export function ApplicationsTab() {
     }
   }, []);
 
-  // Chargement des paramètres Vibe
+  const {
+    data: vibeSettingsData,
+    error: vibeSettingsError,
+    isLoading: vibeSettingsLoading,
+  } = useSWR(VIBE_SETTINGS_KEY, () => ApiService.getSettings(), {
+    dedupingInterval: 15_000,
+  });
+  const { data: vibeCircleData } = useSWR(
+    VIBE_CIRCLE_KEY,
+    () => ApiService.getCircle(),
+    { dedupingInterval: 15_000 }
+  );
+  const {
+    data: wakiesLoaded,
+    error: wakiesError,
+    isLoading: wakiesQueryLoading,
+  } = useSWR<WakiesData>(WAKIES_SETTINGS_KEY, fetcher, {
+    dedupingInterval: 15_000,
+  });
+
+  // Chargement des paramètres Vibe (cache amorcé par le préchargement).
   useEffect(() => {
-    let active = true;
-    ApiService.getSettings()
-      .then((res) => {
-        if (!active || !res?.settings) return;
-        const s = res.settings;
-        appliquerReglagesVibe(s);
+    if (vibeSettingsLoading) {
+      return;
+    }
+    if (vibeSettingsError || !vibeSettingsData?.settings) {
+      setVibeLoading(false);
+      return;
+    }
+    const s = vibeSettingsData.settings;
+    appliquerReglagesVibe(s);
+    if (s.mai_default_model && !userPrefData?.defaultChatModel) {
+      setUnifiedModel(s.mai_default_model);
+    }
+    if (s.mai_tts_voice && !userPrefData?.defaultAudioVoice) {
+      setUnifiedVoice(s.mai_tts_voice);
+    }
+    setVibeLoading(false);
+  }, [
+    appliquerReglagesVibe,
+    userPrefData,
+    vibeSettingsData,
+    vibeSettingsError,
+    vibeSettingsLoading,
+  ]);
 
-        // Si Vibe avait un modèle ou voix défini et qu'aucun n'est encore configuré côté mAI
-        if (s.mai_default_model && !userPrefData?.defaultChatModel) {
-          setUnifiedModel(s.mai_default_model);
-        }
-        if (s.mai_tts_voice && !userPrefData?.defaultAudioVoice) {
-          setUnifiedVoice(s.mai_tts_voice);
-        }
-      })
-      .catch(() => {})
-      .finally(() => {
-        if (active) setVibeLoading(false);
-      });
-
-    // Chargement du cercle privé
-    ApiService.getCircle()
-      .then((res) => {
-        if (active && res?.members) setCircleMembers(res.members);
-      })
-      .catch(() => {});
-
-    return () => {
-      active = false;
-    };
-  }, [userPrefData, appliquerReglagesVibe]);
+  useEffect(() => {
+    if (vibeCircleData?.members) {
+      setCircleMembers(vibeCircleData.members);
+    }
+  }, [vibeCircleData]);
 
   // Chargement des données Wakies
   useEffect(() => {
-    let active = true;
-    wakiesApi<WakiesData>("/settings")
-      .then((data) => {
-        if (!active || !data) return;
-        setWakiesData(data);
-        setWakiesAccount(data.settings);
-        wakiesConfirmedRef.current = data.settings;
-        if (data.wakies?.length > 0) {
-          setActiveWakieId(data.wakies[0].id);
-        }
-      })
-      .catch(() => {})
-      .finally(() => {
-        if (active) setWakiesLoading(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
+    if (wakiesQueryLoading) {
+      return;
+    }
+    if (wakiesError || !wakiesLoaded) {
+      setWakiesLoading(false);
+      return;
+    }
+    setWakiesData(wakiesLoaded);
+    setWakiesAccount(wakiesLoaded.settings);
+    wakiesConfirmedRef.current = wakiesLoaded.settings;
+    setActiveWakieId(
+      (courant) => courant || wakiesLoaded.wakies?.[0]?.id || ""
+    );
+    setWakiesLoading(false);
+  }, [wakiesError, wakiesLoaded, wakiesQueryLoading]);
 
   // Recherche d'utilisateurs pour le cercle privé
   useEffect(() => {
@@ -789,7 +811,7 @@ export function ApplicationsTab() {
           Applications intégrées
         </div>
         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-          Paramètres de Vibe, Wakies & Blackline
+          Paramètres de Vibe, Recherche, Wakies, Blackline, Pages et Quizzly
         </h2>
         <p className="text-xs sm:text-sm text-muted-foreground">
           Centralisez la configuration de vos applications satellites mAI. Les
@@ -826,6 +848,20 @@ export function ApplicationsTab() {
           >
             <CrosshairIcon className="size-3.5 text-primary" />
             Blackline
+          </a>
+          <a
+            className="chip flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            href="#pages"
+          >
+            <FileTextIcon className="size-3.5 text-primary" />
+            Pages
+          </a>
+          <a
+            className="chip flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            href="#quizzly"
+          >
+            <GraduationCapIcon className="size-3.5 text-primary" />
+            Quizzly
           </a>
         </div>
       </div>
@@ -1770,6 +1806,30 @@ export function ApplicationsTab() {
         </div>
 
         <BlacklineSettingsSection />
+      </section>
+
+      <PagesSettingsSection />
+
+      <section
+        className="flex scroll-mt-24 flex-col gap-6 border-t border-border/50 pt-4"
+        id="quizzly"
+      >
+        <div className="flex items-center justify-between border-b border-border/50 pb-3">
+          <div className="flex items-center gap-2.5">
+            <span className="flex size-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <GraduationCapIcon className="size-4" />
+            </span>
+            <div>
+              <h3 className="text-base font-bold text-foreground sm:text-lg">
+                Quizzly
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Nom affiché, année scolaire et cadre
+              </p>
+            </div>
+          </div>
+        </div>
+        <ProfilQuizzly integre />
       </section>
     </div>
   );

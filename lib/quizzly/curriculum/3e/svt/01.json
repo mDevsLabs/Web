@@ -1,0 +1,2738 @@
+{
+  "id": "3e-svt-01",
+  "year": "3e",
+  "subject": "svt",
+  "title": "Le corps humain et la santé",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Système nerveux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le neurone et le tissu nerveux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent correctement un neurone ?",
+              "options": [
+                "Il possède un corps cellulaire et des prolongements",
+                "Il transmet des messages électriques",
+                "Il fabrique du glucose par photosynthèse",
+                "Il constitue la cellule de base du système nerveux"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le neurone est une cellule spécialisée qui transmet l'influx nerveux via ses prolongements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le prolongement qui conduit l'influx vers le corps cellulaire s'appelle :",
+              "options": [
+                "L'axone",
+                "La dendrite",
+                "Le muscle",
+                "Le capillaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les dendrites reçoivent les signaux et les dirigent vers le corps du neurone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'axone sert surtout à :",
+              "options": [
+                "Conduire l'influx nerveux loin du corps cellulaire",
+                "Digérer les aliments",
+                "Filtrer le sang",
+                "Produire des hormones digestives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axone propage le message nerveux vers d'autres neurones ou vers un effecteur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un nerf périphérique est principalement :",
+              "options": [
+                "Un faisceau d'axones entouré de gaines",
+                "Un os du crâne",
+                "Une veine du cerveau",
+                "Un alvéole pulmonaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nerfs regroupent de nombreuses fibres nerveuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La gaine de myéline autour de certains axones permet :",
+              "options": [
+                "D'accélérer la conduction de l'influx",
+                "D'empêcher toute transmission",
+                "De stocker le CO₂",
+                "De produire des anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La myélinisation favorise une propagation plus rapide du signal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le système nerveux central comprend :",
+              "options": [
+                "Le cerveau et la moelle épinière",
+                "Uniquement les nerfs des doigts",
+                "Les poumons et le cœur",
+                "Les reins et la rate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SNC regroupe cerveau et moelle épinière, protégés par le crâne et la colonne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le système nerveux périphérique comprend surtout :",
+              "options": [
+                "Les nerfs en dehors du SNC",
+                "Les ventricules cardiaques",
+                "Les alvéoles",
+                "Les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il relie le SNC aux organes des sens et aux muscles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un neurone au repos possède une différence de potentiel caractéristique entre :",
+              "options": [
+                "Intérieur et extérieur de la membrane",
+                "Deux os adjacents",
+                "Air et sang",
+                "Peau et ongle uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au repos, la membrane du neurone est polarisée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'influx nerveux se propage le long de l'axone sous forme :",
+              "options": [
+                "D'une variation électrique de la membrane",
+                "D'une vague sonore",
+                "D'un courant sanguin",
+                "D'une lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dépolarisation se propage le long de la fibre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les astrocytes et cellules gliales servent surtout à :",
+              "options": [
+                "Soutenir et nourrir les neurones",
+                "Contracter les os",
+                "Pomper l'air",
+                "Produire des spermatozoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glie assiste les neurones sans transmettre l'influx principal."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La synapse et la transmission chimique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À la synapse, que se passe-t-il correctement ?",
+              "options": [
+                "L'influx ne passe pas directement d'une cellule à l'autre",
+                "Des neurotransmetteurs peuvent être libérés",
+                "Les os fusionnent",
+                "Le sang remplace le message nerveux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La synapse est une zone de contact où le message devient chimique puis électrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'espace entre deux neurones à la synapse est la :",
+              "options": [
+                "Fente synaptique",
+                "Trachée",
+                "Cornée",
+                "Moelle osseuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le neurotransmetteur traverse cette fente pour atteindre la cellule suivante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un neurotransmetteur est :",
+              "options": [
+                "Une molécule chimique de transmission",
+                "Un muscle",
+                "Un globule rouge",
+                "Un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un messager chimique libéré par le neurone présynaptique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après avoir agi, une partie du neurotransmetteur peut être :",
+              "options": [
+                "Recaptée par le neurone émetteur",
+                "Transformée en os",
+                "Stockée dans les poumons",
+                "Convertie en lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recapture limite la durée du signal synaptique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une synapse excitatrice tend à :",
+              "options": [
+                "Faciliter la transmission vers le neurone suivant",
+                "Bloquer définitivement tout neurone",
+                "Produire de l'insuline",
+                "Digérer les lipides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle augmente la probabilité de déclencher un influx postsynaptique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une synapse inhibitrice tend à :",
+              "options": [
+                "Diminuer l'activité du neurone cible",
+                "Accélérer la croissance des cheveux",
+                "Augmenter la température du sang",
+                "Créer des anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle freine la dépolarisation du neurone postsynaptique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La synapse permet surtout :",
+              "options": [
+                "La communication entre neurones ou vers un effecteur",
+                "La photosynthèse",
+                "La respiration pulmonaire",
+                "La filtration rénale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le lieu de transfert du message nerveux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les récepteurs du neurotransmetteur se trouvent surtout :",
+              "options": [
+                "Sur la membrane du neurone postsynaptique",
+                "Dans l'estomac",
+                "Sur les dents",
+                "Dans le cartilage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils reconnaissent le messager chimique et déclenchent une réponse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un neurone peut recevoir des milliers de synapses car :",
+              "options": [
+                "Il intègre de nombreux messages",
+                "Il n'a qu'un seul axone sans fonction",
+                "Il ne transmet jamais de signal",
+                "Il remplace le cœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le neurone somme les influences excitatrices et inhibitrices."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Certaines drogues perturbent la synapse en :",
+              "options": [
+                "Modifiant l'action des neurotransmetteurs",
+                "Renforçant les os",
+                "Augmentant la teneur en azote de l'air",
+                "Produisant des globules blancs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles peuvent imiter ou bloquer les neurotransmetteurs."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Du stimulus à la réponse motrice",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une chaîne nerveuse sensorielle-motrice, on trouve :",
+              "options": [
+                "Un récepteur sensoriel",
+                "Un centre nerveux",
+                "Un effecteur (muscle ou glande)",
+                "Une chloroplaste"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Stimulus → récepteur → centre → effecteur compose la réponse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un récepteur sensoriel transforme un stimulus en :",
+              "options": [
+                "Message nerveux",
+                "Roches sédimentaires",
+                "Sucre dans l'air",
+                "Anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il convertit une information du milieu en signal nerveux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un effecteur peut être :",
+              "options": [
+                "Un muscle squelettique",
+                "Un neurone capteur",
+                "Une dent uniquement",
+                "Un cristal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les muscles et glandes exécutent la réponse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le trajet aller d'un message sensoriel va vers :",
+              "options": [
+                "Le système nerveux central",
+                "Uniquement la peau sans connexion",
+                "Les poumons seuls",
+                "L'atmosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les informations sensorielles sont traitées au SNC."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le trajet retour moteur part :",
+              "options": [
+                "Du SNC vers l'effecteur",
+                "De l'effecteur vers la peau sans neurone",
+                "Du sang vers l'air",
+                "Des reins vers les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La commande motrice descend vers muscles ou glandes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un stimulus est :",
+              "options": [
+                "Une variation de l'environnement détectable",
+                "Toujours une lumière uniquement",
+                "Un médicament obligatoire",
+                "Un os cassé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaud, froid, douleur, lumière peuvent être des stimuli."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La vitesse de réaction dépend entre autres de :",
+              "options": [
+                "La longueur des voies nerveuses et du traitement",
+                "La couleur des yeux seule",
+                "Le nombre de dents",
+                "La phase de la lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reflexes rapides vs mouvements volontaires plus lents."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les neurones moteurs envoient leur axone vers :",
+              "options": [
+                "Les muscles ou glandes",
+                "Les poumons pour y rester",
+                "Le foie sans connexion",
+                "Les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont les neurones de la commande motrice."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les neurones sensitifs conduisent l'information :",
+              "options": [
+                "Des récepteurs vers le SNC",
+                "Du muscle vers le muscle sans centre",
+                "De l'air vers le sang",
+                "Des os vers la peau sans nerf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils relaient les messages sensoriels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans fonctionnement des neurones, un muscle commandé ne peut :",
+              "options": [
+                "Recevoir correctement l'ordre de se contracter",
+                "Exister",
+                "Contenir de l'eau",
+                "Avoir des fibres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La commande nerveuse est nécessaire à la contraction volontaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Réflexes et moelle épinière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un arc réflexe comporte typiquement :",
+              "options": [
+                "Un récepteur",
+                "Un centre dans la moelle épinière",
+                "Un effecteur muscle",
+                "Trois estomacs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le réflexe myotatique évite le cortex pour être plus rapide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le réflexe rotulien teste surtout :",
+              "options": [
+                "L'intégrité de l'arc réflexe",
+                "La vision des couleurs",
+                "L'ouïe musicale",
+                "La digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un coup sur le tendon étire le muscle et provoque une contraction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un réflexe, le centre nerveux peut être :",
+              "options": [
+                "Dans la moelle sans passer par le cerveau",
+                "Uniquement dans le pied",
+                "Dans l'estomac",
+                "Absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains réflexes sont médullaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Retirer la main d'une flamme est souvent :",
+              "options": [
+                "Très rapide grâce à un réflexe",
+                "Impossible sans muscles",
+                "Une photosynthèse",
+                "Un vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moelle peut déclencher la réponse avant la perception consciente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La moelle épinière est protégée par :",
+              "options": [
+                "Les vertèbres",
+                "Les côtes flottantes seules",
+                "Les dents",
+                "La cornée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colonne vertébrale entoure et protège la moelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un réflexe est généralement :",
+              "options": [
+                "Involontaire",
+                "Toujours appris à l'école",
+                "Volontaire et lent",
+                "Lié au vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il se produit sans décision consciente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une lésion de la moelle peut entraîner :",
+              "options": [
+                "Perte de sensibilité ou de motricité sous la lésion",
+                "Meilleure vision",
+                "Plus d'oxygène dans l'air",
+                "Croissance des dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voies nerveuses ascendantes et descendantes sont interrompues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le neurone sensitif du réflexe entre dans la moelle par :",
+              "options": [
+                "La corne dorsale",
+                "Le ventricule cardiaque",
+                "L'alvéole",
+                "Le foie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voies sensitives pénètrent dorsalement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le neurone moteur du réflexe sort par :",
+              "options": [
+                "La corne ventrale",
+                "Les branchies",
+                "Les poumons",
+                "La rate uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les motoneurones quittent la moelle ventralement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un réflexe de retrait protège l'organisme en :",
+              "options": [
+                "Éloignant rapidement une zone du danger",
+                "Augmentant la température du soleil",
+                "Produisant des microbes",
+                "Stoppant la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réponse rapide limite les dommages tissulaires."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le cerveau et ses grandes fonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le cerveau participe notamment à :",
+              "options": [
+                "La perception consciente",
+                "La coordination des mouvements",
+                "La photosynthèse des feuilles",
+                "Certaines fonctions cognitives"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "C'est le centre d'intégration des informations et des décisions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le cerveau est protégé par :",
+              "options": [
+                "Le crâne et les méninges",
+                "Les côtes seules",
+                "La peau des doigts",
+                "Les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os et enveloppes protègent le tissu nerveux délicat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le cervelet sert surtout à :",
+              "options": [
+                "Coordonner mouvements et équilibre",
+                "Filtrer le sang",
+                "Produire des hormones digestives",
+                "Fabriquer des anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il affine la précision des gestes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le tronc cérébral contrôle entre autres :",
+              "options": [
+                "Fonctions vitales automatiques (respiration, rythme cardiaque)",
+                "La couleur des yeux",
+                "La croissance des ongles",
+                "La météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il régule des fonctions essentielles involontaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le cortex cérébral est impliqué dans :",
+              "options": [
+                "La pensée, la mémoire, la perception",
+                "La digestion des fibres seule",
+                "La production de lait",
+                "La photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la couche externe où s'intègrent fonctions supérieures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les hémisphères cérébraux sont reliés notamment par :",
+              "options": [
+                "Le corps calleux",
+                "La trachée",
+                "Le diaphragme",
+                "Le fémur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce faisceau de fibres échange l'information entre les deux côtés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une imagerie cérébrale peut montrer :",
+              "options": [
+                "L'activité ou la structure du cerveau",
+                "Le contenu de l'estomac",
+                "Les marées océaniques",
+                "Les minéraux des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IRM ou scanner aident à visualiser le cerveau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un AVC peut survenir lorsque :",
+              "options": [
+                "Un vaisseau cérébral est obstrué ou rompu",
+                "On respire de l'air",
+                "On mange des légumes",
+                "On dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manque d'apport sanguin endommage le tissu nerveux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le liquide céphalo-rachidien baigne :",
+              "options": [
+                "Le cerveau et la moelle",
+                "Les poumons uniquement",
+                "Les muscles des jambes seuls",
+                "Les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il protège et nourrit le SNC."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Apprendre un geste moteur implique souvent :",
+              "options": [
+                "Des modifications des connexions nerveuses",
+                "La disparition des neurones",
+                "L'arrêt du cerveau",
+                "La fusion des os du crâne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plasticité cérébrale renforce certaines voies synaptiques."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Commandes volontaires et involontaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de fonctions involontaires :",
+              "options": [
+                "Battements du cœur",
+                "Digestion lente",
+                "Saut volontaire après décision",
+                "Écriture d'un devoir réfléchi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le tronc cérébral et autres centres régulent automatiquement certaines fonctions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un mouvement volontaire nécessite :",
+              "options": [
+                "Une décision du cortex moteur",
+                "Aucun neurone",
+                "Uniquement la peau",
+                "Des branchies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cortex planifie et commande le geste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La respiration au repos est surtout :",
+              "options": [
+                "Involontaire mais modifiable volontairement",
+                "Toujours volontaire",
+                "Impossible à influencer",
+                "Absente chez l'Homme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut retenir sa respiration mais elle reprend automatiquement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cligner des yeux par poussière relève plutôt :",
+              "options": [
+                "D'un réflexe",
+                "D'un calcul mathématique",
+                "D'une photosynthèse",
+                "D'une vaccination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une protection rapide de la cornée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Marcher en choisissant sa direction combine :",
+              "options": [
+                "Centres volontaires et réflexes d'équilibre",
+                "Uniquement les os sans muscles",
+                "Les poumons seuls",
+                "Les microbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cortex, cervelet et moelle coopèrent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les glandes salivaires lors d'un repas reçoivent :",
+              "options": [
+                "Des commandes nerveuses involontaires",
+                "Aucune innervation",
+                "Uniquement des ordres volontaires conscients",
+                "De l'oxygène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sécréation salivaire est en grande partie autonome."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le système nerveux autonome régule surtout :",
+              "options": [
+                "Organes internes (digestion, pupilles…)",
+                "Les roches",
+                "La lumière solaire",
+                "Les marées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il agit en dehors du contrôle volontaire direct."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écrire son nom est :",
+              "options": [
+                "Volontaire",
+                "Un réflexe médullaire pur",
+                "Une digestion",
+                "Une infection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce geste demande une commande corticale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accélération du cœur à l'effort est plutôt :",
+              "options": [
+                "Involontaire",
+                "Choix conscient identique à lever le bras",
+                "Une fracture",
+                "Un virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rythme cardiaque s'adapte automatiquement aux besoins."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La moelle et le tronc participent aux :",
+              "options": [
+                "Fonctions automatiques et réflexes",
+                "Fonctions uniquement volontaires sans exception",
+                "Photosynthèse",
+                "Formation des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils assurent des réponses rapides et des régulations vitales."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'œil et la vision",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour former une image nette sur la rétine :",
+              "options": [
+                "La cornée et le cristallin focalisent la lumière",
+                "La lumière doit être absorbée entièrement par l'iris",
+                "Les muscles de l'œil peuvent modifier la forme du cristallin",
+                "La rétine émet de la lumière vers l'extérieur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La réfraction de la lumière et l'accommodation permettent la netteté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La rétine contient des photorécepteurs :",
+              "options": [
+                "Cônes et bâtonnets",
+                "Neurones moteurs uniquement",
+                "Globules rouges",
+                "Os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils transforment la lumière en signal nerveux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les cônes permettent surtout :",
+              "options": [
+                "Vision des couleurs et détails en lumière forte",
+                "Vision nocturne seule",
+                "L'ouïe",
+                "La digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bâtonnets sont plus sensibles en faible lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le nerf optique conduit :",
+              "options": [
+                "L'information visuelle vers le cerveau",
+                "L'air vers les poumons",
+                "Le sang vers la peau",
+                "Les sons vers l'oreille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la voie sensitive de la vision."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'iris régule :",
+              "options": [
+                "La quantité de lumière entrant dans l'œil",
+                "La température du corps",
+                "La production d'anticorps",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il modifie la taille de la pupille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Myopie signifie souvent :",
+              "options": [
+                "Image formée devant la rétine",
+                "Image formée derrière la rétine",
+                "Absence de cristallin",
+                "Oreille interne endommagée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œil myope voit mal de loin sans correction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hypermétropie signifie souvent :",
+              "options": [
+                "Image formée derrière la rétine",
+                "Image sur la rétine toujours",
+                "Perte totale de l'ouïe",
+                "Infection virale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vision de près est surtout gênée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'œil est protégé par :",
+              "options": [
+                "Paupières, larmes, orbite osseuse",
+                "Les poumons",
+                "Le foie",
+                "Les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanismes mécaniques et chimiques protègent la surface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un stimulus visuel est détecté par :",
+              "options": [
+                "Les photorécepteurs de la rétine",
+                "Les muscles de la jambe",
+                "Les alvéoles",
+                "Les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière déclenche une réponse dans les capteurs rétiniens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le point le plus sensible de la rétine est la :",
+              "options": ["Fovéa", "Cornée", "Pupille seule", "Langue"],
+              "correctAnswers": [0],
+              "explanation": "La fovéa concentre les cônes pour la vision fine."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "L'oreille et les autres sens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'oreille interne participe à :",
+              "options": [
+                "La détection des sons",
+                "L'équilibre",
+                "La photosynthèse",
+                "La production de bile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cochlée pour l'audition, vestibule pour l'équilibre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le tympan transmet les vibrations vers :",
+              "options": [
+                "Les osselets",
+                "La rétine",
+                "Le cœur",
+                "Les poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les osselets amplifient le signal vers la cochlée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les récepteurs gustatifs se trouvent surtout :",
+              "options": [
+                "Sur la langue",
+                "Sur les cheveux",
+                "Dans les os",
+                "Dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les papilles gustatives détectent sucré, salé, acide, amer, umami."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les récepteurs olfactifs sont dans :",
+              "options": [
+                "La muqueuse nasale",
+                "L'estomac",
+                "Le fémur",
+                "La cornée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les odeurs sont détectées en haut des fosses nasales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un son trop fort peut endommager :",
+              "options": [
+                "Les cellules ciliées de la cochlée",
+                "Les dents",
+                "Les ongles",
+                "Les roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bruit intense peut provoquer une surdité partielle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La peau détecte notamment :",
+              "options": [
+                "Pression, chaleur, douleur",
+                "Uniquement la lumière",
+                "Les saveurs",
+                "Les couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les récepteurs cutanés transmettent le toucher et la thermosensation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le nerf auditif conduit l'information :",
+              "options": [
+                "De l'oreille interne vers le cerveau",
+                "De l'œil vers la main",
+                "Du muscle vers la peau sans neurone",
+                "Des poumons vers l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la voie sensitive de l'audition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Proprioception désigne :",
+              "options": [
+                "Sens de la position du corps",
+                "Goût du sucre",
+                "Vision des couleurs",
+                "Odeur des fleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle informe sur la posture et le mouvement des membres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un régulateur de volume limite :",
+              "options": [
+                "L'exposition sonore des oreilles",
+                "La lumière du soleil",
+                "Les microbes",
+                "La digestion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire le volume protège l'audition."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les organes des sens transforment les stimuli en :",
+              "options": [
+                "Messages nerveux",
+                "Roches",
+                "Anticorps",
+                "Sucre dans le sang sans signal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils sont les récepteurs de la chaîne sensitive."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Drogues, alcool et système nerveux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'alcool et certaines drogues peuvent :",
+              "options": [
+                "Ralentir les réflexes",
+                "Altérer le jugement",
+                "Renforcer la myélinisation",
+                "Améliorer toujours la coordination"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Elles perturbent le fonctionnement du SNC."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conduire après consommation d'alcool est dangereux car :",
+              "options": [
+                "Les temps de réaction augmentent",
+                "La vision s'améliore toujours",
+                "Les réflexes deviennent parfaits",
+                "Le cerveau double de volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vigilance et la coordination diminuent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le tabac contient de la nicotine qui :",
+              "options": [
+                "Stimule puis peut créer une dépendance",
+                "Renforce les alvéoles",
+                "Tue tous les virus instantanément",
+                "Produit des anticorps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nicotine agit sur des récepteurs du système nerveux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le cannabis perturbe notamment :",
+              "options": [
+                "La mémoire et la concentration",
+                "La photosynthèse",
+                "La structure des os uniquement",
+                "La rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le THC affecte des récepteurs cérébraux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une dépendance signifie :",
+              "options": [
+                "Besoin compulsif de consommer une substance",
+                "Allergie alimentaire",
+                "Vaccination réussie",
+                "Réflexe rotulien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cerveau s'adapte et réclame la substance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le sevrage peut provoquer :",
+              "options": [
+                "Symptômes physiques et psychiques",
+                "Toujours une croissance osseuse",
+                "Immunité totale",
+                "Vision des ultraviolets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arrêter une substance addictive peut être difficile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prévention : ne pas consommer de drogue illicite vise surtout à :",
+              "options": [
+                "Éviter lésions cérébrales et dépendance",
+                "Augmenter les microbes",
+                "Casser les os",
+                "Stopper la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La santé mentale et physique est en jeu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'alcool est déprimant du système nerveux car il :",
+              "options": [
+                "Diminue l'activité cérébrale",
+                "Augmente toujours la vitesse de réflexe",
+                "Produit des lymphocytes",
+                "Filtre le sang des reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il ralentit les transmissions nerveuses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parler à un adulte de confiance en cas de pression est :",
+              "options": [
+                "Une stratégie de prévention",
+                "Une infection",
+                "Un réflexe médullaire",
+                "Une synapse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le repérage et l'aide réduisent les risques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le code de la route fixe un taux d'alcool maximal car :",
+              "options": [
+                "Au-delà, les capacités de conduite sont altérées",
+                "L'alcool renforce la vue nocturne",
+                "Le sang devient bleu",
+                "Les nerfs disparaissent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sécurité routière dépend de la vigilance."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — système nerveux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le système nerveux assure :",
+              "options": [
+                "La perception",
+                "La coordination des réponses",
+                "La photosynthèse des plantes vertes dans nos poumons",
+                "La transmission rapide de messages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il intègre informations sensorielles et commandes motrices."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se trouve le cerveau ?",
+              "options": [
+                "Dans le crâne",
+                "Dans le ventre",
+                "Dans le pied",
+                "Dans l'oreille externe seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est protégé par la boîte crânienne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un neurone transmet :",
+              "options": [
+                "Un influx nerveux",
+                "Du sang",
+                "De l'air",
+                "Des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la unité fonctionnelle de conduction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La synapse utilise :",
+              "options": [
+                "Des neurotransmetteurs",
+                "Uniquement des os",
+                "De la chlorophylle",
+                "Des dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message devient chimique entre deux neurones."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réflexe est :",
+              "options": [
+                "Rapide et involontaire",
+                "Toujours appris en dormant",
+                "Volontaire uniquement",
+                "Une maladie microbienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moelle peut coordonner sans le cortex."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La rétine envoie l'information via :",
+              "options": [
+                "Le nerf optique",
+                "Le nerf sciatique vers l'estomac",
+                "La trachée",
+                "Les reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voie sensitive de la vision."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le cervelet aide à :",
+              "options": [
+                "L'équilibre",
+                "La digestion des graisses seule",
+                "La production de virus",
+                "La formation des nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordination fine des mouvements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Stimulus → récepteur → centre → effecteur décrit :",
+              "options": [
+                "Une chaîne de fonctionnement nerveux",
+                "La respiration des plantes aquatiques",
+                "Une infection",
+                "Un vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma général de la réponse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les substances toxiques pour le SNC peuvent :",
+              "options": [
+                "Endommager neurones et synapses",
+                "Renforcer toujours la mémoire",
+                "Créer des muscles supplémentaires",
+                "Produire de l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alcool, drogues et tabac comportent des risques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Protéger sa tête à vélo limite :",
+              "options": [
+                "Les traumatismes crâniens",
+                "Les microbes intestinaux",
+                "La myopie génétique",
+                "La faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un choc peut lésionner le cerveau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Microbes et immunité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Micro-organismes et diversité du vivant invisible",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un micro-organisme peut être :",
+              "options": [
+                "Une bactérie",
+                "Un virus",
+                "Un champignon microscopique",
+                "Un éléphant adulte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Microbes désigne des êtres vivants ou entités infectieuses très petites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un microbe se voit souvent avec :",
+              "options": [
+                "Un microscope",
+                "L'œil nu seul",
+                "Un mètre ruban",
+                "Un thermomètre de four"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leur taille micrométrique nécessite un grossissement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les bactéries sont :",
+              "options": [
+                "Des cellules procaryotes",
+                "Des virus",
+                "Des roches",
+                "Des métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles n'ont pas de noyau délimité comme les eucaryotes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un virus est :",
+              "options": [
+                "Un parasite obligatoire des cellules",
+                "Une bactérie qui photosynthese",
+                "Un muscle",
+                "Un globule rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il doit infecter une cellule hôte pour se multiplier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le microbiote intestinal aide notamment à :",
+              "options": [
+                "Digérer certains aliments",
+                "Produire de la lumière",
+                "Pomper le sang",
+                "Respirer à la place des poumons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des milliards de microbes participent à la digestion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tous les microbes sont-ils pathogènes ?",
+              "options": [
+                "Non, beaucoup sont inoffensifs ou utiles",
+                "Oui, tous tuent en une seconde",
+                "Oui, tous sont des virus",
+                "Non, il n'existe que des virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule une partie provoque des maladies."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une culture sur gélose permet :",
+              "options": [
+                "De multiplier et observer des microbes",
+                "De mesurer la vitesse du vent",
+                "De voir les étoiles",
+                "De couper les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les colonies apparaissent après incubation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pasteurisation vise surtout à :",
+              "options": [
+                "Réduire les microbes dans un liquide",
+                "Créer des virus",
+                "Détruire les os",
+                "Augmenter le sucre dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur modérée diminue la charge microbienne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les levures sont des :",
+              "options": [
+                "Champignons unicellulaires",
+                "Virus",
+                "Poissons",
+                "Minéraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles fermentent le sucre (pain, levure boulangère)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un pathogène est un microbe qui :",
+              "options": [
+                "Peut provoquer une maladie",
+                "Ne se reproduit jamais",
+                "Vit uniquement dans l'espace",
+                "Est toujours bénéfique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pathogénicité dépend du microbe et de l'hôte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Bactéries et virus en détail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Différences bactérie / virus :",
+              "options": [
+                "La bactérie est une cellule vivante autonome",
+                "Le virus n'a pas de métabolisme propre hors cellule",
+                "Le virus se multiplie dans une cellule hôte",
+                "Les deux sont identiques à un éléphant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bactéries = cellules ; virus = particules infectieuses intracellulaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les antibiotiques agissent sur :",
+              "options": [
+                "Les bactéries",
+                "Les virus",
+                "Les roches",
+                "Les vitamines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils ne traitent pas les infections virales classiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La grippe est causée par :",
+              "options": [
+                "Un virus",
+                "Une bactérie du lait",
+                "Un champignon du pain",
+                "Un métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une infection virale respiratoire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une bactérie se reproduit souvent par :",
+              "options": [
+                "Division binaire",
+                "Photosynthèse dans nos yeux",
+                "Ponte d'œufs",
+                "Fusion avec des os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule donne deux cellules filles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un antibiogramme sert à :",
+              "options": [
+                "Tester la sensibilité d'une bactérie aux antibiotiques",
+                "Mesurer la taille des planètes",
+                "Voir les couleurs de l'arc-en-ciel",
+                "Compter les cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il guide le choix d'un traitement adapté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La paroi des bactéries contient :",
+              "options": [
+                "Peptidoglycane (chez beaucoup)",
+                "Chlorophylle",
+                "Hémoglobine",
+                "Os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure caractéristique des bactéries."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un vaccin antigrippe vise :",
+              "options": [
+                "Le virus de la grippe",
+                "Toutes les bactéries",
+                "Les fractures",
+                "La myopie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il stimule l'immunité contre des souches virales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le VIH est :",
+              "options": [
+                "Un virus",
+                "Une bactérie du sol",
+                "Un minéral",
+                "Un muscle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Virus de l'immunodéficience humaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Certaines bactéries produisent des spores pour :",
+              "options": [
+                "Résister dans l'environnement",
+                "Voler",
+                "Produire de la lumière",
+                "Devenir des virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme de dormance très résistante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La taille d'un virus est en général :",
+              "options": [
+                "Plus petite qu'une bactérie",
+                "Plus grande qu'un chat",
+                "Identique à un globule rouge toujours",
+                "Visible à l'œil nu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les virus sont des particules nanométriques."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Contamination, infection et transmission",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Voies de transmission des microbes :",
+              "options": [
+                "Contact direct",
+                "Gouttelettes respiratoires",
+                "Aliments ou eau contaminés",
+                "Par la lumière seule sans contact"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les modes varient selon le pathogène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contamination signifie :",
+              "options": [
+                "Présence de microbes sur ou dans le corps",
+                "Guérison immédiate",
+                "Production d'anticorps",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute présence ne mène pas à une maladie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Infection signifie :",
+              "options": [
+                "Multiplication du microbe avec réaction de l'hôte",
+                "Simple lavage des mains",
+                "Vaccination",
+                "Coupure de cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pathogène s'installe et peut provoquer des symptômes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Se laver les mains réduit :",
+              "options": [
+                "La transmission de microbes",
+                "La gravité de la gravité terrestre",
+                "La taille du Soleil",
+                "Le nombre de dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygiène des mains = geste barrière essentiel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une porte ouverte aux microbes par une plaie est :",
+              "options": [
+                "Une porte d'entrée cutanée",
+                "Un vaccin",
+                "Un nerf optique",
+                "Un alvéole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau intacte est une barrière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tousser dans son coude limite :",
+              "options": [
+                "La diffusion de gouttelettes",
+                "La croissance des os",
+                "La vision",
+                "La digestion des fibres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geste d'hygiène respiratoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une épidémie correspond à :",
+              "options": [
+                "Nombre élevé de cas dans une population",
+                "Un seul cas isolé",
+                "Absence de maladie",
+                "Formation de roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propagation accrue d'une maladie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un vecteur (ex. moustique) peut :",
+              "options": [
+                "Transporter un pathogène d'un hôte à l'autre",
+                "Produire des antibiotiques",
+                "Créer des neurones",
+                "Filtrer le sang des reins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission vectorielle pour certaines maladies."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'eau potable traitée vise à :",
+              "options": [
+                "Éliminer ou réduire les microbes dangereux",
+                "Ajouter des virus",
+                "Supprimer l'oxygène",
+                "Fondre les métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chloration ou filtration protègent la santé publique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une personne contagieuse peut :",
+              "options": [
+                "Transmettre le microbe à d'autres",
+                "Jamais transmettre",
+                "Uniquement guérir les autres",
+                "Produire de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contagiosité = capacité à transmettre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Barrières naturelles de l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Barrières non spécifiques comprennent :",
+              "options": [
+                "Peau intacte",
+                "Muqueuses et sécrétions (larmes, salive)",
+                "Anticorps spécifiques d'une seule maladie",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Première ligne de défense avant l'immunité adaptative."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La peau empêche surtout :",
+              "options": [
+                "Entrée libre des microbes",
+                "La digestion",
+                "La respiration",
+                "La pensée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couche cornée + acidité limitent les germes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les mucus des voies respiratoires :",
+              "options": [
+                "Piègent particules et microbes",
+                "Produisent des anticorps uniquement",
+                "Remplacent les poumons",
+                "Créent des virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transportés par le cil battement vers la gorge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les larmes contiennent :",
+              "options": [
+                "Des substances antibactériennes",
+                "Uniquement du sel sans défense",
+                "Des dents",
+                "Du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lysozyme aide à détruire certaines bactéries."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'acidité de l'estomac :",
+              "options": [
+                "Détruit beaucoup de microbes avalés",
+                "Facilite toujours la croissance virale",
+                "Produit de l'oxygène",
+                "Remplace le cerveau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu hostile pour de nombreux pathogènes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une inflammation locale se caractérise par :",
+              "options": [
+                "Rougeur, chaleur, gonflement, douleur",
+                "Absence totale de réaction",
+                "Photosynthèse",
+                "Perte de la moelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse immédiate tissulaire au danger."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les phagocytes ingèrent :",
+              "options": [
+                "Microbes et débris",
+                "Uniquement de l'air",
+                "La lumière",
+                "Les os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cellules mangeuses de l'immunité innée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La fièvre peut aider à :",
+              "options": [
+                "Ralentir certains microbes et activer les défenses",
+                "Refroidir le virus par glace externe seule",
+                "Stopper le cœur",
+                "Produire des spores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse systémique à l'infection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une coupure non désinfectée augmente le risque :",
+              "options": [
+                "D'infection bactérienne",
+                "De meilleure vision",
+                "De vaccin automatique",
+                "De synapse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bactéries du milieu peuvent pénétrer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La flore cutanée normale :",
+              "options": [
+                "Occupe l'espace et limite les pathogènes",
+                "Est toujours mortelle",
+                "N'existe pas",
+                "Remplace le sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Microbiote commensal protecteur."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Immunité innée et adaptative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'immunité adaptative implique :",
+              "options": [
+                "Lymphocytes B et T",
+                "Mémoire immunitaire",
+                "Réaction identique dès la première seconde sans apprentissage",
+                "Spécificité vis-à-vis d'un antigène"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Réponse ciblée et mémorisée après exposition."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'immunité innée est :",
+              "options": [
+                "Rapide et non spécifique",
+                "Toujours lente de plusieurs semaines",
+                "Uniquement due aux vaccins",
+                "Absente chez l'Homme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Première réponse sans reconnaissance fine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un antigène est :",
+              "options": [
+                "Reconnu par le système immunitaire",
+                "Toujours un antibiotique",
+                "Un muscle",
+                "Une roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécule étrangère déclenchant une réponse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les organes lymphoïdes incluent :",
+              "options": [
+                "Rate, ganglions, moelle osseuse",
+                "Poumons seuls",
+                "Dents",
+                "Cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sites de production et maturation des cellules immunitaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les globules blancs participent à :",
+              "options": [
+                "La défense immunitaire",
+                "Le transport d'oxygène",
+                "La photosynthèse",
+                "La digestion mécanique seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leucocytes = acteurs de l'immunité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une réaction immunitaire trop forte peut :",
+              "options": [
+                "Endommager les tissus (allergie)",
+                "Toujours guérir instantanément",
+                "Créer des virus",
+                "Arrêter la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hyper-réactivité a un coût."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La moelle osseuse produit :",
+              "options": [
+                "Cellules sanguines dont lymphocytes",
+                "Uniquement des globules rouges sans leucocytes",
+                "De l'air",
+                "Des neurotransmetteurs seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Site central de l'hématopoïèse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les ganglions enflés lors d'une angine indiquent :",
+              "options": [
+                "Activation immunitaire locale",
+                "Absence d'infection",
+                "Fracture osseuse",
+                "Myopie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lymphocytes s'y multiplient pour combattre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La barrière placentaire protège partiellement :",
+              "options": [
+                "Le fœtus de certains microbes",
+                "Tous les virus sans exception",
+                "Les roches",
+                "Le Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défense maternelle et transfert d'anticorps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mémoire immunitaire permet :",
+              "options": [
+                "Réponse plus rapide lors d'une second exposition",
+                "Oublier le microbe",
+                "Supprimer les phagocytes",
+                "Empêcher toute fièvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base du vaccin et de l'immunité durable."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Anticorps et lymphocytes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les lymphocytes B peuvent :",
+              "options": [
+                "Produire des anticorps",
+                "Se différencier en plasmocytes",
+                "Photosynthetiser",
+                "Pomper le sang comme le cœur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Voie humoral de l'immunité adaptative."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un anticorps se lie à :",
+              "options": [
+                "Un antigène spécifique",
+                "Uniquement des os",
+                "De l'air pur",
+                "Des roches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protéine en forme de Y reconnaissant l'intrus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les lymphocytes T cytotoxiques :",
+              "options": [
+                "Détruisent cellules infectées",
+                "Produisent tous les anticorps",
+                "Transportent l'oxygène",
+                "Forment la cornée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voie cellulaire de l'immunité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les plasmocytes sécrètent :",
+              "options": [
+                "Des anticorps",
+                "Du mucus seul",
+                "De la bile",
+                "Des spores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dérivés activés des lymphocytes B."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les cellules mémoire :",
+              "options": [
+                "Persistent après une infection",
+                "Disparaissent en une minute",
+                "Sont des virus",
+                "Remplacent les neurones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permettent une réponse accélérée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un sérum avec anticorps peut :",
+              "options": [
+                "Neutraliser un toxique ou un microbe",
+                "Créer une dépendance au tabac",
+                "Casser les os",
+                "Produire du CO₂ dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immunothérapie passive dans certains cas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les lymphocytes T auxiliaires aident :",
+              "options": [
+                "Coordonner la réponse immunitaire",
+                "Digérer les lipides",
+                "Respirer",
+                "Voir les couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils activent autres lymphocytes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Présentation de l'antigène signifie :",
+              "options": [
+                "Exposer un fragment à un lymphocyte",
+                "Cacher le microbe",
+                "Vacciner sans contact",
+                "Brûler la peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cellules présentatrices d'antigène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les anticorps facilitent parfois :",
+              "options": [
+                "Phagocytose (opsonisation)",
+                "Entrée libre des virus sans défense",
+                "Photosynthèse",
+                "Croissance des cheveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils marquent l'intrus pour élimination."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le VIH attaque surtout :",
+              "options": [
+                "Certains lymphocytes T helper",
+                "Les dents",
+                "Les os",
+                "Les alvéoles seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Affaiblissement progressif des défenses."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Vaccination et prévention",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un vaccin vise à :",
+              "options": [
+                "Stimuler l'immunité sans provoquer la maladie complète",
+                "Introduire des microbes morts ou atténués ou des fragments",
+                "Guérir instantanément toute infection en cours sans mémoire",
+                "Remplacer les lavages de mains"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Immunité active protégée par rappels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La vaccination est une :",
+              "options": [
+                "Immunisation active",
+                "Allergie volontaire",
+                "Photosynthèse",
+                "Fracture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps produit ses propres anticorps et cellules mémoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un rappel vaccinal sert à :",
+              "options": [
+                "Renforcer la mémoire immunitaire",
+                "Effacer la mémoire",
+                "Créer des virus",
+                "Casser la moelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintient une protection efficace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La couverture vaccinale élevée permet :",
+              "options": [
+                "Immunité collective (de groupe)",
+                "Propagation garantie",
+                "Disparition des lymphocytes",
+                "Plus de microbes partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protège aussi les personnes non vaccinées fragiles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vaccin contre la rougeole protège contre :",
+              "options": [
+                "Un virus",
+                "Une bactérie du fer",
+                "Les fractures",
+                "La myopie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maladie virale très contagieuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Effets secondaires légers (fièvre locale) :",
+              "options": [
+                "Signe souvent d'une réponse immunitaire",
+                "Prouvent une infection grave systématique",
+                "Montrent l'échec total",
+                "Remplacent le vaccin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réaction transitoire fréquente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un calendrier vaccinal :",
+              "options": [
+                "Indique l'âge des injections recommandées",
+                "Liste les devoirs de maths",
+                "Mesure la pluie",
+                "Compte les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation de la prévention en France."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vaccin ARNm (ex. certaines covid) contient :",
+              "options": [
+                "Instructions pour produire un antigène",
+                "Virus vivants complets toujours",
+                "Des roches",
+                "Du pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Technologie sans virus entier réplicant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Refuser la vaccination sans avis médical peut :",
+              "options": [
+                "Augmenter les risques de maladies évitables",
+                "Renforcer toujours l'immunité",
+                "Créer des neurones",
+                "Filtrer le sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix individuel avec conséquences collectives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La prévention combine :",
+              "options": [
+                "Vaccins, hygiène, alimentation équilibrée",
+                "Uniquement les antibiotiques",
+                "Photosynthèse",
+                "Absence de sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approche globale de la santé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Hygiène, antibiotiques et résistance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bon usage des antibiotiques :",
+              "options": [
+                "Uniquement sur prescription médicale",
+                "Jamais pour une infection virale banale",
+                "Toujours partager les comprimés entre amis",
+                "Respecter la durée du traitement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'abus favorise les bactéries résistantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Antibiorésistance signifie :",
+              "options": [
+                "Bactéries insensibles à certains antibiotiques",
+                "Virus tués par l'eau",
+                "Os plus solides",
+                "Meilleure vue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Problème majeur de santé publique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ne pas finir son antibiotique peut :",
+              "options": [
+                "Laisser des bactéries résistantes",
+                "Tuer tous les virus",
+                "Vacciner automatiquement",
+                "Renforcer les dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut éliminer toute la population bactérienne ciblée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Désinfecter une plaie vise à :",
+              "options": [
+                "Réduire les microbes",
+                "Introduire des pathogènes",
+                "Casser les os",
+                "Produire de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limite le risque d'infection."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le savon émulsionne :",
+              "options": [
+                "Gras et microbes pour les éliminer à l'eau",
+                "Uniquement la poussière sans microbes",
+                "Les anticorps",
+                "Les neurones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lavage mains = geste simple et efficace."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conserver les aliments au froid :",
+              "options": [
+                "Ralentit multiplication bactérienne",
+                "Tue toutes les bactéries instantanément",
+                "Crée des virus",
+                "Remplace la cuisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne du froid pour sécurité alimentaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cuire suffisamment la viande :",
+              "options": [
+                "Détruit beaucoup de bactéries dangereuses",
+                "Produit des spores obligatoires",
+                "Empêche toute digestion",
+                "Crée des lymphocytes dans l'assiette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduit le risque d'intoxication."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une staphylocoque peut causer :",
+              "options": [
+                "Infections cutanées ou alimentaires",
+                "Photosynthèse",
+                "Myopie",
+                "Tremblement de Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bactérie fréquente peau et nourriture mal conservée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'hygiène alimentaire inclut :",
+              "options": [
+                "Se laver les mains avant de cuisiner",
+                "Manger de la viande crue risquée sans précaution",
+                "Laisser tout à température ambiante longtemps",
+                "Ignorer les dates limites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention des toxi-infections."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les médias antibactériens dans les gels hydroalcooliques agissent sur :",
+              "options": [
+                "Enveloppes lipidiques de nombreux microbes",
+                "Uniquement les virus sans effet sur bactéries",
+                "Les os",
+                "La lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alcool dénature protéines et lipides microbiens."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "VIH, IST et santé sexuelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le VIH :",
+              "options": [
+                "Attaque le système immunitaire",
+                "Se transmet par certains fluides (sang, sperme…)",
+                "Se guérit toujours seul en une journée sans traitement",
+                "Peut être prévenu par préservatif et dépistage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Traitement antirétroviral contrôle la maladie mais pas de vaccin généralisé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "SIDA correspond à :",
+              "options": [
+                "Stade avancé d'immunodéficience liée au VIH",
+                "Simple rhume",
+                "Allergie alimentaire",
+                "Myopie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défenses très affaiblies, infections opportunistes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une IST peut se transmettre par :",
+              "options": [
+                "Rapports sexuels non protégés",
+                "Poignée de main sèche",
+                "Respiration normale à distance",
+                "Regard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact intime sans barrière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le préservatif limite :",
+              "options": [
+                "Transmission de nombreuses IST",
+                "Toutes les maladies sans exception",
+                "La digestion",
+                "La respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barrière mécanique efficace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dépistage du VIH se fait par :",
+              "options": [
+                "Test sanguin",
+                "Mesure de la taille",
+                "Couleur des yeux",
+                "Nombre de dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détection d'anticorps ou du matériel viral."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traitement antirétroviral :",
+              "options": [
+                "Réduit la charge virale",
+                "Supprime le virus en 24 h toujours",
+                "Remplace le vaccin contre la rougeole",
+                "Crée des bactéries"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permet de vivre longtemps avec VIH."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parler avec un professionnel de santé en cas de doute :",
+              "options": [
+                "Permet conseil et dépistage",
+                "Est inutile",
+                "Provoque toujours infection",
+                "Remplace les neurones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention et prise en charge précoce."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le VIH ne se transmet pas par :",
+              "options": [
+                "Moustique piqueur banal",
+                "Partage de seringue contaminée",
+                "Rapport non protégé",
+                "Transmission mère-enfant sans prophylaxie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les insectes ne vectorent pas le VIH."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Éducation à la santé sexuelle vise :",
+              "options": [
+                "Information et protection",
+                "Cacher toute information",
+                "Augmenter les IST",
+                "Supprimer l'hygiène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autonomie et responsabilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Respecter le secret médical signifie :",
+              "options": [
+                "Confidentialité des informations de santé",
+                "Publier les résultats sur les réseaux",
+                "Ignorer le patient",
+                "Partager les ordonnances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit fondamental du patient."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan — microbes et immunité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour se défendre, le corps utilise :",
+              "options": [
+                "Barrières physiques",
+                "Immunité innée",
+                "Immunité adaptative avec mémoire",
+                "Photosynthèse pulmonaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Défense en couches complémentaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un virus a besoin d'une cellule hôte pour :",
+              "options": [
+                "Se reproduire",
+                "Respirer comme un poisson",
+                "Marcher",
+                "Digérer sans enzyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parasite obligatoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les antibiotiques ne guérissent pas :",
+              "options": [
+                "La grippe virale",
+                "Certaines angines bactériennes",
+                "Certaines infections urinaires bactériennes",
+                "Infection à staphylocoque sensible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antibiotiques = anti-bactériens."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vaccin =",
+              "options": [
+                "Prévention",
+                "Curatif instantané de toute maladie",
+                "Remplacement de l'eau",
+                "Source de microbes mortels systématiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anticiper l'infection."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Se laver les mains avant le repas :",
+              "options": [
+                "Limite ingestion de microbes",
+                "Augmente les virus",
+                "Casse les os",
+                "Produit des anticorps sans contact"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygiène alimentaire de base."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Anticorps produits par :",
+              "options": [
+                "Lymphocytes B activés",
+                "Globules rouges",
+                "Neurones",
+                "Dents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Immunité humorale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fièvre lors d'infection :",
+              "options": [
+                "Réponse de l'organisme",
+                "Signe que le corps abandonne",
+                "Toujours inutile",
+                "Photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Active défenses et gêne certains microbes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Microbiote utile se trouve aussi :",
+              "options": [
+                "Dans l'intestin",
+                "Uniquement dans l'espace",
+                "Dans le vide",
+                "Sans cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Équilibre flore-pathogènes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Antibiorésistance survient surtout si :",
+              "options": [
+                "Antibiotiques mal utilisés",
+                "On se lave les mains",
+                "On mange des légumes",
+                "On dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sélection de bactéries résistantes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hygiène + vaccins + alimentation équilibrée :",
+              "options": [
+                "Réduisent le risque de maladies",
+                "Augmentent toujours les infections",
+                "Remplacent le cerveau",
+                "Empêchent la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piliers de la santé au collège."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

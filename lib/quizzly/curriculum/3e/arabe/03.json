@@ -1,0 +1,2749 @@
+{
+  "id": "3e-arabe-03",
+  "year": "3e",
+  "subject": "arabe",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Déchiffrer un menu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Menu : « قهوة | شاي | ماء ». Quels mots désignent des boissons ?",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "قهوة" },
+                { "id": "B", "text": "شاي" },
+                { "id": "C", "text": "مدرسة" },
+                { "id": "D", "text": "طائرة" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Café et thé sont des boissons ; les autres mots ne sont pas des boissons."
+            },
+            {
+              "id": "q2",
+              "question": "« عصير برتقال » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jus d'orange" },
+                { "id": "B", "text": "Pain" },
+                { "id": "C", "text": "Soupe" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "عصير = jus, برتقال = orange."
+            },
+            {
+              "id": "q3",
+              "question": "« مشروبات » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Boissons" },
+                { "id": "B", "text": "Chaussures" },
+                { "id": "C", "text": "Livres" },
+                { "id": "D", "text": "Stylos" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Rubrique menu courante."
+            },
+            {
+              "id": "q4",
+              "question": "« حلويات » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Desserts" },
+                { "id": "B", "text": "Viandes" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Cartes" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Section sucrée."
+            },
+            {
+              "id": "q5",
+              "question": "« من فضلك » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "S'il vous plaît" },
+                { "id": "B", "text": "Au revoir" },
+                { "id": "C", "text": "Demain" },
+                { "id": "D", "text": "Jamais" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Politesse au restaurant."
+            },
+            {
+              "id": "q6",
+              "question": "« فاتورة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Addition" },
+                { "id": "B", "text": "Invitation" },
+                { "id": "C", "text": "Horaire" },
+                { "id": "D", "text": "Affiche" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Note à payer."
+            },
+            {
+              "id": "q7",
+              "question": "« كباب » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Grillade" },
+                { "id": "B", "text": "Boisson" },
+                { "id": "C", "text": "Jour férié" },
+                { "id": "D", "text": "Classe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Plat populaire."
+            },
+            {
+              "id": "q8",
+              "question": "Prix « 10 » à côté d'un plat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Tarif" },
+                { "id": "B", "text": "Heure" },
+                { "id": "C", "text": "Numéro de rue" },
+                { "id": "D", "text": "Température" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Chiffre + plat = prix."
+            },
+            {
+              "id": "q9",
+              "question": "« ماء » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Eau" },
+                { "id": "B", "text": "Feu" },
+                { "id": "C", "text": "Vent" },
+                { "id": "D", "text": "Terre" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Boisson de base."
+            },
+            {
+              "id": "q10",
+              "question": "Lire un menu sert à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Choisir et payer" },
+                { "id": "B", "text": "Effacer le tableau" },
+                { "id": "C", "text": "Changer de langue maternelle" },
+                { "id": "D", "text": "Oublier les prix" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Usage concret du document."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Comprendre un horaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« الاثنين 8:00 — الأربعاء 8:00 ». Cours à 8 h :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Lundi" },
+                { "id": "B", "text": "Mercredi" },
+                { "id": "C", "text": "Vendredi" },
+                { "id": "D", "text": "Samedi" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Deux jours affichés à 8:00."
+            },
+            {
+              "id": "q2",
+              "question": "« الجمعة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Vendredi" },
+                { "id": "B", "text": "Mardi" },
+                { "id": "C", "text": "Jeudi" },
+                { "id": "D", "text": "Dimanche" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Jour repère."
+            },
+            {
+              "id": "q3",
+              "question": "« من 9 إلى 11 » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "De 9 h à 11 h" },
+                { "id": "B", "text": "Neuf mois" },
+                { "id": "C", "text": "Onze ans" },
+                { "id": "D", "text": "De minuit à midi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Plage horaire."
+            },
+            {
+              "id": "q4",
+              "question": "« استراحة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Pause" },
+                { "id": "B", "text": "Examen final" },
+                { "id": "C", "text": "Vacances d'été" },
+                { "id": "D", "text": "Retard" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Récréation."
+            },
+            {
+              "id": "q5",
+              "question": "« مغلق » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Fermé" },
+                { "id": "B", "text": "Ouvert" },
+                { "id": "C", "text": "Gratuit" },
+                { "id": "D", "text": "Nouveau" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Pas de cours."
+            },
+            {
+              "id": "q6",
+              "question": "« السبت » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Samedi" },
+                { "id": "B", "text": "Lundi" },
+                { "id": "C", "text": "Mercredi" },
+                { "id": "D", "text": "Jeudi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Jour de la semaine."
+            },
+            {
+              "id": "q7",
+              "question": "« قاعة 2 » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Salle 2" },
+                { "id": "B", "text": "Deux profs" },
+                { "id": "C", "text": "Deux euros" },
+                { "id": "D", "text": "Deux mois" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu du cours."
+            },
+            {
+              "id": "q8",
+              "question": "14:30 =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Quatorze heures trente" },
+                { "id": "B", "text": "Quatre heures du matin" },
+                { "id": "C", "text": "Trente heures" },
+                { "id": "D", "text": "Une heure" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Format 24 h."
+            },
+            {
+              "id": "q9",
+              "question": "« الأحد » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Dimanche" },
+                { "id": "B", "text": "Vendredi" },
+                { "id": "C", "text": "Samedi" },
+                { "id": "D", "text": "Mardi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Premier jour dans plusieurs pays."
+            },
+            {
+              "id": "q10",
+              "question": "Un emploi du temps indique surtout :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jours et heures des cours" },
+                { "id": "B", "text": "Recette de gâteau" },
+                { "id": "C", "text": "Prix du pétrole" },
+                { "id": "D", "text": "Nom de tous les océans" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisation scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Lire une invitation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« أنت مدعو — حفلة ». Indices d'invitation :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "مدعو" },
+                { "id": "B", "text": "حفلة" },
+                { "id": "C", "text": "امتحان" },
+                { "id": "D", "text": "مغلق" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Invité + fête."
+            },
+            {
+              "id": "q2",
+              "question": "« أنت مدعو » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Tu es invité" },
+                { "id": "B", "text": "Tu es puni" },
+                { "id": "C", "text": "Tu es prof" },
+                { "id": "D", "text": "Tu es absent" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Formule carte."
+            },
+            {
+              "id": "q3",
+              "question": "« عيد ميلاد » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Anniversaire" },
+                { "id": "B", "text": "Examen" },
+                { "id": "C", "text": "Marché" },
+                { "id": "D", "text": "Aéroport" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fête personnelle."
+            },
+            {
+              "id": "q4",
+              "question": "« العنوان » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Adresse" },
+                { "id": "B", "text": "Menu" },
+                { "id": "C", "text": "Heure seule" },
+                { "id": "D", "text": "Couleur" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Où se rendre."
+            },
+            {
+              "id": "q5",
+              "question": "« نرجو الحضور » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Merci de venir" },
+                { "id": "B", "text": "Ne venez pas" },
+                { "id": "C", "text": "Payez double" },
+                { "id": "D", "text": "Cours annulé" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Demande de présence."
+            },
+            {
+              "id": "q6",
+              "question": "« 16:00 » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Seize heures" },
+                { "id": "B", "text": "Quatre heures matin" },
+                { "id": "C", "text": "Seize minutes" },
+                { "id": "D", "text": "Minuit" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Heure d'après-midi."
+            },
+            {
+              "id": "q7",
+              "question": "« عائلة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Famille" },
+                { "id": "B", "text": "Stade" },
+                { "id": "C", "text": "Avion" },
+                { "id": "D", "text": "Clavier" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisateur fréquent."
+            },
+            {
+              "id": "q8",
+              "question": "« مع تحيات » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Cordialement" },
+                { "id": "B", "text": "Urgence" },
+                { "id": "C", "text": "Interdit" },
+                { "id": "D", "text": "Gratuit" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fin polie."
+            },
+            {
+              "id": "q9",
+              "question": "RSVP signifie :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Confirmer sa venue" },
+                { "id": "B", "text": "Changer de monnaie" },
+                { "id": "C", "text": "Acheter un bus" },
+                { "id": "D", "text": "Noter en latin" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Réponse attendue."
+            },
+            {
+              "id": "q10",
+              "question": "Invitation : lire d'abord :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Événement, date, lieu" },
+                { "id": "B", "text": "Couleur du papier seule" },
+                { "id": "C", "text": "Taille de l'enveloppe" },
+                { "id": "D", "text": "Marque du stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Méthode 3e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Analyser une affiche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« مسابقة — مجاناً ». Mots clés :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "مسابقة" },
+                { "id": "B", "text": "مجاناً" },
+                { "id": "C", "text": "فاتورة" },
+                { "id": "D", "text": "امتحان secret" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Concours gratuit."
+            },
+            {
+              "id": "q2",
+              "question": "« مسابقة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Concours" },
+                { "id": "B", "text": "Pluie" },
+                { "id": "C", "text": "Valise" },
+                { "id": "D", "text": "Montagne" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Événement."
+            },
+            {
+              "id": "q3",
+              "question": "« مجاناً » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Gratuit" },
+                { "id": "B", "text": "Cher" },
+                { "id": "C", "text": "Fermé" },
+                { "id": "D", "text": "Privé" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Sans payer."
+            },
+            {
+              "id": "q4",
+              "question": "« سجل الآن » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Inscrivez-vous maintenant" },
+                { "id": "B", "text": "Dormez" },
+                { "id": "C", "text": "Partez" },
+                { "id": "D", "text": "Effacez" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Appel à l'action."
+            },
+            {
+              "id": "q5",
+              "question": "« تاريخ » sur affiche =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Date" },
+                { "id": "B", "text": "Animal" },
+                { "id": "C", "text": "Sport interdit" },
+                { "id": "D", "text": "Recette" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Quand ?"
+            },
+            {
+              "id": "q6",
+              "question": "« ممنوع التدخين » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Interdiction de fumer" },
+                { "id": "B", "text": "Entrée libre" },
+                { "id": "C", "text": "Cours d'arabe" },
+                { "id": "D", "text": "Menu" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Consigne sécurité."
+            },
+            {
+              "id": "q7",
+              "question": "Gros titre sert à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Résumer l'événement" },
+                { "id": "B", "text": "Cacher la date" },
+                { "id": "C", "text": "Remplacer l'adresse" },
+                { "id": "D", "text": "Effacer le lieu" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lecture visuelle."
+            },
+            {
+              "id": "q8",
+              "question": "« مدرسة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "École" },
+                { "id": "B", "text": "Hôpital" },
+                { "id": "C", "text": "Plage" },
+                { "id": "D", "text": "Banque" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu scolaire."
+            },
+            {
+              "id": "q9",
+              "question": "Numéro de téléphone sur affiche :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Contact" },
+                { "id": "B", "text": "Heure de prière seule" },
+                { "id": "C", "text": "Note de maths" },
+                { "id": "D", "text": "Prix du thé" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Infos pratiques."
+            },
+            {
+              "id": "q10",
+              "question": "Affiche ≠ menu car :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Elle annonce un événement" },
+                { "id": "B", "text": "Elle liste toujours des plats" },
+                { "id": "C", "text": "Elle n'a jamais de date" },
+                { "id": "D", "text": "Elle est toujours en latin" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Types de documents."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Menu et quantités",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 2x شاي — 1x قهوة ». Commandé :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Deux thés" },
+                { "id": "B", "text": "Un café" },
+                { "id": "C", "text": "Trois eaux" },
+                { "id": "D", "text": "Un bus" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Quantités affichées."
+            },
+            {
+              "id": "q2",
+              "question": "« المجموع : 25 » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Total 25" },
+                { "id": "B", "text": "25 heures" },
+                { "id": "C", "text": "25 salles" },
+                { "id": "D", "text": "25 profs" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Somme à payer."
+            },
+            {
+              "id": "q3",
+              "question": "« صغير / كبير » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Petit / grand" },
+                { "id": "B", "text": "Hier / demain" },
+                { "id": "C", "text": "Entrée / sortie" },
+                { "id": "D", "text": "Chaud / froid seuls" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Tailles."
+            },
+            {
+              "id": "q4",
+              "question": "« بدون سكر » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Sans sucre" },
+                { "id": "B", "text": "Avec sucre" },
+                { "id": "C", "text": "Sans sel" },
+                { "id": "D", "text": "Avec glace" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Précision boisson."
+            },
+            {
+              "id": "q5",
+              "question": "« فطور » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Petit-déjeuner" },
+                { "id": "B", "text": "Dîner" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Repas matin."
+            },
+            {
+              "id": "q6",
+              "question": "« غداء » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Déjeuner" },
+                { "id": "B", "text": "Minuit" },
+                { "id": "C", "text": "Carte ID" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Midi."
+            },
+            {
+              "id": "q7",
+              "question": "« عشاء » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Dîner" },
+                { "id": "B", "text": "Récréation" },
+                { "id": "C", "text": "Métro" },
+                { "id": "D", "text": "Classe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q8",
+              "question": "« نادل » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Serveur" },
+                { "id": "B", "text": "Pilote" },
+                { "id": "C", "text": "Juge" },
+                { "id": "D", "text": "Maçon" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Restaurant."
+            },
+            {
+              "id": "q9",
+              "question": "10+10+5 =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "25" },
+                { "id": "B", "text": "15" },
+                { "id": "C", "text": "30" },
+                { "id": "D", "text": "5" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Calcul note."
+            },
+            {
+              "id": "q10",
+              "question": "x2 devant un plat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Deux portions" },
+                { "id": "B", "text": "Deux heures" },
+                { "id": "C", "text": "Deux villes" },
+                { "id": "D", "text": "Deux langues" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Multiplicateur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Emploi du temps détaillé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« رياضيات الثلاثاء — فيزياء الخميس » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Maths mardi" },
+                { "id": "B", "text": "Physique jeudi" },
+                { "id": "C", "text": "Maths jeudi" },
+                { "id": "D", "text": "Physique mardi" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Associations jour-matière."
+            },
+            {
+              "id": "q2",
+              "question": "« الثلاثاء » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mardi" },
+                { "id": "B", "text": "Mercredi" },
+                { "id": "C", "text": "Samedi" },
+                { "id": "D", "text": "Dimanche" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q3",
+              "question": "« الخميس » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jeudi" },
+                { "id": "B", "text": "Lundi" },
+                { "id": "C", "text": "Vendredi" },
+                { "id": "D", "text": "Mardi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q4",
+              "question": "« لغة عربية » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Cours d'arabe" },
+                { "id": "B", "text": "Natation" },
+                { "id": "C", "text": "Cuisine" },
+                { "id": "D", "text": "Vol" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q5",
+              "question": "« معلم » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Professeur" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Ballon" },
+                { "id": "D", "text": "Nuage" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Enseignant."
+            },
+            {
+              "id": "q6",
+              "question": "« ساعة » (durée) =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Heure" },
+                { "id": "B", "text": "Semaine" },
+                { "id": "C", "text": "Montagne" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Durée cours."
+            },
+            {
+              "id": "q7",
+              "question": "« فصل » (classe) =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Classe" },
+                { "id": "B", "text": "Avion" },
+                { "id": "C", "text": "Gâteau" },
+                { "id": "D", "text": "Satellite" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Groupe d'élèves."
+            },
+            {
+              "id": "q8",
+              "question": "Cours barré :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Annulé ou déplacé" },
+                { "id": "B", "text": "Note max" },
+                { "id": "C", "text": "Vacances" },
+                { "id": "D", "text": "Examen surprise" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lecture visuelle."
+            },
+            {
+              "id": "q9",
+              "question": "« رياضيات » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Maths" },
+                { "id": "B", "text": "Musique seule" },
+                { "id": "C", "text": "Geographie seule" },
+                { "id": "D", "text": "Sport seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Matière scolaire."
+            },
+            {
+              "id": "q10",
+              "question": "Comparer deux créneaux :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jour et heure d'abord" },
+                { "id": "B", "text": "Couleur du cartable" },
+                { "id": "C", "text": "Marque de gomme" },
+                { "id": "D", "text": "Taille de chaussure" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Invitation familiale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« زفاف — 18:00 ». Repères :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Mariage (زفاف)" },
+                { "id": "B", "text": "Heure 18 h" },
+                { "id": "C", "text": "Examen" },
+                { "id": "D", "text": "Menu cantine" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Type + horaire."
+            },
+            {
+              "id": "q2",
+              "question": "« زفاف » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mariage" },
+                { "id": "B", "text": "Foot" },
+                { "id": "C", "text": "Pluie" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Célébration."
+            },
+            {
+              "id": "q3",
+              "question": "« قاعة الأفراح » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Salle des fêtes" },
+                { "id": "B", "text": "Labo" },
+                { "id": "C", "text": "Parking seul" },
+                { "id": "D", "text": "Piscine seule" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu réception."
+            },
+            {
+              "id": "q4",
+              "question": "« حضوركم يسعدنا » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Votre présence nous fait plaisir" },
+                { "id": "B", "text": "Restez chez vous" },
+                { "id": "C", "text": "Payez double" },
+                { "id": "D", "text": "Cours annulé" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Accueil."
+            },
+            {
+              "id": "q5",
+              "question": "« هدية » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Cadeau" },
+                { "id": "B", "text": "Amende" },
+                { "id": "C", "text": "Punition" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Usage social."
+            },
+            {
+              "id": "q6",
+              "question": "« رسمي » (tenue) =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Habillé" },
+                { "id": "B", "text": "Pyjama" },
+                { "id": "C", "text": "Maillot ski" },
+                { "id": "D", "text": "Uniforme sport seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Tenue formelle."
+            },
+            {
+              "id": "q7",
+              "question": "Lieu + heure évitent :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Erreur de rendez-vous" },
+                { "id": "B", "text": "Parler" },
+                { "id": "C", "text": "Lire" },
+                { "id": "D", "text": "Saluer" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Utilité carte."
+            },
+            {
+              "id": "q8",
+              "question": "« العائلة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Famille" },
+                { "id": "B", "text": "Gare" },
+                { "id": "C", "text": "Usine" },
+                { "id": "D", "text": "Satellite" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisateurs."
+            },
+            {
+              "id": "q9",
+              "question": "WhatsApp sur carte :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Confirmer" },
+                { "id": "B", "text": "Commander pizza obligatoire" },
+                { "id": "C", "text": "Changer fuseau horaire mondial" },
+                { "id": "D", "text": "Supprimer l'arabe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Contact moderne."
+            },
+            {
+              "id": "q10",
+              "question": "« أحد » souvent =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Dimanche" },
+                { "id": "B", "text": "Lundi" },
+                { "id": "C", "text": "Mercredi" },
+                { "id": "D", "text": "Vendredi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Jour possible de fête."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Affiche sportive",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« مباراة كرة قدم » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Match" },
+                { "id": "B", "text": "Football" },
+                { "id": "C", "text": "Addition" },
+                { "id": "D", "text": "Thé" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Match de foot."
+            },
+            {
+              "id": "q2",
+              "question": "« مباراة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Match" },
+                { "id": "B", "text": "Soupe" },
+                { "id": "C", "text": "Parapluie" },
+                { "id": "D", "text": "Bibliothèque" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Sport."
+            },
+            {
+              "id": "q3",
+              "question": "« فريق » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Équipe" },
+                { "id": "B", "text": "Horloge" },
+                { "id": "C", "text": "Table" },
+                { "id": "D", "text": "Nuage" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Joueurs."
+            },
+            {
+              "id": "q4",
+              "question": "« ملعب » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Terrain" },
+                { "id": "B", "text": "Cuisine" },
+                { "id": "C", "text": "Bureau" },
+                { "id": "D", "text": "Musée" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Stade."
+            },
+            {
+              "id": "q5",
+              "question": "« تشجيع » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Encourager" },
+                { "id": "B", "text": "Interdire public" },
+                { "id": "C", "text": "Fermer école" },
+                { "id": "D", "text": "Annuler maths" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Supporters."
+            },
+            {
+              "id": "q6",
+              "question": "« فوز » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Victoire" },
+                { "id": "B", "text": "Défaite obligatoire" },
+                { "id": "C", "text": "Pause déjeuner" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Résultat."
+            },
+            {
+              "id": "q7",
+              "question": "« دخول مجاني للتلاميذ » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Gratuit pour élèves" },
+                { "id": "B", "text": "Interdit élèves" },
+                { "id": "C", "text": "Prof payant seul" },
+                { "id": "D", "text": "Cours supplémentaire" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "تلاميذ = élèves."
+            },
+            {
+              "id": "q8",
+              "question": "Couleurs du lycée :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Identité visuelle" },
+                { "id": "B", "text": "Code postal" },
+                { "id": "C", "text": "Notes" },
+                { "id": "D", "text": "Recette" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lecture affiche."
+            },
+            {
+              "id": "q9",
+              "question": "Après lecture tu sais :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Quand/où supporter" },
+                { "id": "B", "text": "Menu du Caire" },
+                { "id": "C", "text": "Calendrier lunaire complet" },
+                { "id": "D", "text": "Rien" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Info pratique."
+            },
+            {
+              "id": "q10",
+              "question": "« كرة قدم » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Football" },
+                { "id": "B", "text": "Tennis seul" },
+                { "id": "C", "text": "Natation" },
+                { "id": "D", "text": "Échecs" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Sport populaire."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cantine scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« عدس — سلطة — خبز » au menu :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Lentilles" },
+                { "id": "B", "text": "Salade" },
+                { "id": "C", "text": "Avion" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Plats du jour."
+            },
+            {
+              "id": "q2",
+              "question": "« عدس » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Lentilles" },
+                { "id": "B", "text": "Glace" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Plat."
+            },
+            {
+              "id": "q3",
+              "question": "« سلطة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Salade" },
+                { "id": "B", "text": "Château" },
+                { "id": "C", "text": "Radio" },
+                { "id": "D", "text": "Métro" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Accompagnement."
+            },
+            {
+              "id": "q4",
+              "question": "« خبز » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Pain" },
+                { "id": "B", "text": "Eau" },
+                { "id": "C", "text": "Chaussure" },
+                { "id": "D", "text": "Carte" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Base alimentaire."
+            },
+            {
+              "id": "q5",
+              "question": "« مطعم المدرسة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Cantine" },
+                { "id": "B", "text": "Aéroport" },
+                { "id": "C", "text": "Musée Paris" },
+                { "id": "D", "text": "Stade seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu repas."
+            },
+            {
+              "id": "q6",
+              "question": "« نباتي » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Végétarien" },
+                { "id": "B", "text": "Viande obligatoire" },
+                { "id": "C", "text": "Alcool" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Option."
+            },
+            {
+              "id": "q7",
+              "question": "« حساسية » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Allergie" },
+                { "id": "B", "text": "Vitesse" },
+                { "id": "C", "text": "Sport" },
+                { "id": "D", "text": "Couleur mur" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Santé."
+            },
+            {
+              "id": "q8",
+              "question": "« دور » (file) =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Queue ordonnée" },
+                { "id": "B", "text": "Sortie secours" },
+                { "id": "C", "text": "Vacances" },
+                { "id": "D", "text": "Cinéma" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisation."
+            },
+            {
+              "id": "q9",
+              "question": "« اليوم » en tête =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Menu du jour" },
+                { "id": "B", "text": "Menu annuel fixe" },
+                { "id": "C", "text": "Phase lunaire" },
+                { "id": "D", "text": "Liste profs" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Actualisation."
+            },
+            {
+              "id": "q10",
+              "question": "Lire cantine aide à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Prévoir repas et budget" },
+                { "id": "B", "text": "Changer nationalité" },
+                { "id": "C", "text": "Éviter école" },
+                { "id": "D", "text": "Supprimer arabe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Vie quotidienne."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse documents",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Documents avec heure précise :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Emploi du temps" },
+                { "id": "B", "text": "Invitation 16:00" },
+                { "id": "C", "text": "Menu sans heure" },
+                { "id": "D", "text": "Affiche sans horaire" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "EDT et invitation."
+            },
+            {
+              "id": "q2",
+              "question": "Prix surtout sur :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Menu" },
+                { "id": "B", "text": "Hymne" },
+                { "id": "C", "text": "Carte ID" },
+                { "id": "D", "text": "Invitation seule" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Aspect commercial."
+            },
+            {
+              "id": "q3",
+              "question": "« عنوان » utile pour :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Lieu" },
+                { "id": "B", "text": "Verbes seuls" },
+                { "id": "C", "text": "Alphabet seul" },
+                { "id": "D", "text": "Silence" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Adresse."
+            },
+            {
+              "id": "q4",
+              "question": "Face à texte arabe court :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Identifier le type de document" },
+                { "id": "B", "text": "Ignorer chiffres" },
+                { "id": "C", "text": "Tout lire sans pause" },
+                { "id": "D", "text": "Refuser traduire" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Stratégie."
+            },
+            {
+              "id": "q5",
+              "question": "Chiffres ١٢ =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "12" },
+                { "id": "B", "text": "21 obligatoire" },
+                { "id": "C", "text": "Jamais prix" },
+                { "id": "D", "text": "Interdit menu" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lecture numérique."
+            },
+            {
+              "id": "q6",
+              "question": "« مجاناً » sur :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Affiche" },
+                { "id": "B", "text": "Amende" },
+                { "id": "C", "text": "Examen final" },
+                { "id": "D", "text": "Devoir noté" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Accès libre."
+            },
+            {
+              "id": "q7",
+              "question": "« من فضلك » au :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Café" },
+                { "id": "B", "text": "Insulte" },
+                { "id": "C", "text": "Nuit seule" },
+                { "id": "D", "text": "Jamais école" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q8",
+              "question": "Salle + prof + jour =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "EDT" },
+                { "id": "B", "text": "Recette thé" },
+                { "id": "C", "text": "Billet avion" },
+                { "id": "D", "text": "Poème" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Organisation."
+            },
+            {
+              "id": "q9",
+              "question": "« سجل الآن » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "S'inscrire" },
+                { "id": "B", "text": "Dormir" },
+                { "id": "C", "text": "Quitter pays" },
+                { "id": "D", "text": "Effacer tableau" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Action."
+            },
+            {
+              "id": "q10",
+              "question": "But unité u1 :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Comprendre documents pratiques" },
+                { "id": "B", "text": "Écrire roman" },
+                { "id": "C", "text": "Oublier français" },
+                { "id": "D", "text": "Ignorer chiffres" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Compétence 3e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Grandes villes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« القاهرة » et « بيروت » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Le Caire" },
+                { "id": "B", "text": "Beyrouth" },
+                { "id": "C", "text": "Paris" },
+                { "id": "D", "text": "Tokyo" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Villes du monde arabe."
+            },
+            {
+              "id": "q2",
+              "question": "Capitale Égypte :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "القاهرة" },
+                { "id": "B", "text": "الرياض" },
+                { "id": "C", "text": "باريس" },
+                { "id": "D", "text": "لندن" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Le Caire."
+            },
+            {
+              "id": "q3",
+              "question": "« الرياض » capitale :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Arabie saoudite" },
+                { "id": "B", "text": "Maroc" },
+                { "id": "C", "text": "Indonésie" },
+                { "id": "D", "text": "Brésil" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Péninsule."
+            },
+            {
+              "id": "q4",
+              "question": "« دبي » (EAU) :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ville moderne touristique" },
+                { "id": "B", "text": "Pôle Nord" },
+                { "id": "C", "text": "Antarctique" },
+                { "id": "D", "text": "Amazonie seule" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Emirats."
+            },
+            {
+              "id": "q5",
+              "question": "« بغداد » :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Irak" },
+                { "id": "B", "text": "Mars" },
+                { "id": "C", "text": "Suisse" },
+                { "id": "D", "text": "Pacifique" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Capitale historique."
+            },
+            {
+              "id": "q6",
+              "question": "« الجزائر » :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Alger" },
+                { "id": "B", "text": "Rome" },
+                { "id": "C", "text": "Oslo" },
+                { "id": "D", "text": "Sydney" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Maghreb."
+            },
+            {
+              "id": "q7",
+              "question": "« مدينة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ville" },
+                { "id": "B", "text": "Chien" },
+                { "id": "C", "text": "Stylo" },
+                { "id": "D", "text": "Nuage" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Géographie."
+            },
+            {
+              "id": "q8",
+              "question": "« تونس » peut être :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Capitale tunisienne" },
+                { "id": "B", "text": "Océan" },
+                { "id": "C", "text": "Continent" },
+                { "id": "D", "text": "Langue latine" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Ville-pays."
+            },
+            {
+              "id": "q9",
+              "question": "Méditerranée touche :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ports arabes du nord" },
+                { "id": "B", "text": "Aucune ville arabe" },
+                { "id": "C", "text": "Antarctique seul" },
+                { "id": "D", "text": "Sahara seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Carte."
+            },
+            {
+              "id": "q10",
+              "question": "Apprendre villes :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Diversité monde arabe" },
+                { "id": "B", "text": "Supprimer cartes" },
+                { "id": "C", "text": "Ne plus voyager" },
+                { "id": "D", "text": "Tout confondre" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Repère civilisation."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fêtes musulmanes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« عيد الفطر » et « عيد الأضحى » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Fêtes musulmanes" },
+                { "id": "B", "text": "Grands Aïd du calendrier hijri" },
+                { "id": "C", "text": "Matières scolaires" },
+                { "id": "D", "text": "Plats de poisson" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Deux fêtes majeures."
+            },
+            {
+              "id": "q2",
+              "question": "« عيد » souvent =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Fête" },
+                { "id": "B", "text": "Examen" },
+                { "id": "C", "text": "Pluie" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Mot fête."
+            },
+            {
+              "id": "q3",
+              "question": "Aïd al-Fitr après :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ramadan" },
+                { "id": "B", "text": "Noël" },
+                { "id": "C", "text": "Rentree seule" },
+                { "id": "D", "text": "Examen maths" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fin jeûne."
+            },
+            {
+              "id": "q4",
+              "question": "« مبارك » (Aïd) =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Bonne fête" },
+                { "id": "B", "text": "Au revoir" },
+                { "id": "C", "text": "Interdit" },
+                { "id": "D", "text": "Fermé" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Vœu."
+            },
+            {
+              "id": "q5",
+              "question": "« عيد ميلاد » ≠ Aïd religieux car :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Anniversaire personnel" },
+                { "id": "B", "text": "Toujours jeudi" },
+                { "id": "C", "text": "Toujours en latin" },
+                { "id": "D", "text": "Sans date" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Distinction."
+            },
+            {
+              "id": "q6",
+              "question": "Fête : « كل عام وأنتم بخير » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Vœu de bien-être" },
+                { "id": "B", "text": "Menu restaurant" },
+                { "id": "C", "text": "Horaire bus" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Formule polie."
+            },
+            {
+              "id": "q7",
+              "question": "Calendrier musulman :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Lunaire" },
+                { "id": "B", "text": "Fixe solaire comme grégorien seul" },
+                { "id": "C", "text": "Sans mois" },
+                { "id": "D", "text": "Sans fêtes" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Repère culturel."
+            },
+            {
+              "id": "q8",
+              "question": "« صلاة » liée aux fêtes :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Prière" },
+                { "id": "B", "text": "Football" },
+                { "id": "C", "text": "Glace" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Pratique religieuse."
+            },
+            {
+              "id": "q9",
+              "question": "Tenue festive :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Habits propres / neufs souvent" },
+                { "id": "B", "text": "Uniforme obligatoire partout" },
+                { "id": "C", "text": "Pyjama seul" },
+                { "id": "D", "text": "Interdit couleurs" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Tradition."
+            },
+            {
+              "id": "q10",
+              "question": "Respect fêtes autrui :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Souhaiter bonne fête" },
+                { "id": "B", "text": "Moquer" },
+                { "id": "C", "text": "Ignorer" },
+                { "id": "D", "text": "Interdire parler" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Vivre ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Ramadan",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« رمضان » et « صيام » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Mois de Ramadan" },
+                { "id": "B", "text": "Jeûne" },
+                { "id": "C", "text": "Football" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Mois + pratique."
+            },
+            {
+              "id": "q2",
+              "question": "« رمضان » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ramadan" },
+                { "id": "B", "text": "Janvier fixe" },
+                { "id": "C", "text": "Sport" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Mois sacré."
+            },
+            {
+              "id": "q3",
+              "question": "« صيام » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jeûne" },
+                { "id": "B", "text": "Natation" },
+                { "id": "C", "text": "Danse obligatoire" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Pas manger jour."
+            },
+            {
+              "id": "q4",
+              "question": "« إفطار » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Repas rupture jeûne" },
+                { "id": "B", "text": "Début jeûne" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Classe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q5",
+              "question": "« سحور » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Repas avant aube" },
+                { "id": "B", "text": "Midi" },
+                { "id": "C", "text": "Gâteau anniversaire" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Avant lever soleil."
+            },
+            {
+              "id": "q6",
+              "question": "« ليلة القدر » :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Nuit bénie du Ramadan" },
+                { "id": "B", "text": "Veille Noël" },
+                { "id": "C", "text": "Fin école" },
+                { "id": "D", "text": "Match foot" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Spiritualité."
+            },
+            {
+              "id": "q7",
+              "question": "Ramadan avance chaque année grégorien car :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Calendrier lunaire plus court" },
+                { "id": "B", "text": "Terre plate" },
+                { "id": "C", "text": "Sans mois" },
+                { "id": "D", "text": "Fixe 25 décembre" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Décalage dates."
+            },
+            {
+              "id": "q8",
+              "question": "« هلال » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Croissant lune" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Stylo" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Annonce mois."
+            },
+            {
+              "id": "q9",
+              "question": "Politesse en Ramadan :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Ne pas manger devant jeûneur sans need" },
+                { "id": "B", "text": "Forcer manger" },
+                { "id": "C", "text": "Moquer" },
+                { "id": "D", "text": "Crier" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Respect."
+            },
+            {
+              "id": "q10",
+              "question": "Fin Ramadan fête :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Aïd al-Fitr" },
+                { "id": "B", "text": "Halloween" },
+                { "id": "C", "text": "Rentree seule" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lien fêtes."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« السلام عليكم » et « مرحبا » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Salutations" },
+                { "id": "B", "text": "Formules de paix / bonjour" },
+                { "id": "C", "text": "Insultes" },
+                { "id": "D", "text": "Adieux seuls" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Accueil."
+            },
+            {
+              "id": "q2",
+              "question": "« السلام عليكم » réponse courante :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "وعليكم السلام" },
+                { "id": "B", "text": "مع السلامة seul" },
+                { "id": "C", "text": "شكراً seul" },
+                { "id": "D", "text": "نعم seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Échange."
+            },
+            {
+              "id": "q3",
+              "question": "« مرحبا » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Bonjour / bienvenue" },
+                { "id": "B", "text": "Au revoir" },
+                { "id": "C", "text": "Non" },
+                { "id": "D", "text": "Peut-être" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Accueil."
+            },
+            {
+              "id": "q4",
+              "question": "« شكراً » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Merci" },
+                { "id": "B", "text": "Pardon" },
+                { "id": "C", "text": "Bonjour" },
+                { "id": "D", "text": "Demain" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q5",
+              "question": "« من فضلك » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "S'il vous plaît" },
+                { "id": "B", "text": "Jamais" },
+                { "id": "C", "text": "Fermé" },
+                { "id": "D", "text": "Gratuit" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Demande polie."
+            },
+            {
+              "id": "q6",
+              "question": "« مع السلامة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Au revoir (paix)" },
+                { "id": "B", "text": "Bon appétit" },
+                { "id": "C", "text": "Bonne fête" },
+                { "id": "D", "text": "Devoir" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Départ."
+            },
+            {
+              "id": "q7",
+              "question": "« كيف حالك؟ » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Comment vas-tu ?" },
+                { "id": "B", "text": "Quelle heure ?" },
+                { "id": "C", "text": "Quel prix ?" },
+                { "id": "D", "text": "Quelle ville ?" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Formule amicale."
+            },
+            {
+              "id": "q8",
+              "question": "« أهلاً وسهلاً » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Bienvenue" },
+                { "id": "B", "text": "Interdit" },
+                { "id": "C", "text": "Fermé" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Hospitalité."
+            },
+            {
+              "id": "q9",
+              "question": "Saluer en arabe aide à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Communiquer dans monde arabe" },
+                { "id": "B", "text": "Effacer culture" },
+                { "id": "C", "text": "Ne plus parler français" },
+                { "id": "D", "text": "Ignorer politesse" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Langue vivante."
+            },
+            {
+              "id": "q10",
+              "question": "« نعم / لا » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Oui / non" },
+                { "id": "B", "text": "Merci / pardon" },
+                { "id": "C", "text": "Bonjour / au revoir" },
+                { "id": "D", "text": "Grand / petit" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Réponses base."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Chiffres et dates",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Chiffres ٥ et ٧ valent :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "5" },
+                { "id": "B", "text": "7" },
+                { "id": "C", "text": "2" },
+                { "id": "D", "text": "9" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Lecture arabo-indienne."
+            },
+            {
+              "id": "q2",
+              "question": "« 2026 » en doc arabe peut s'écrire :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Chiffres occidentaux ou orientaux" },
+                { "id": "B", "text": "Jamais de chiffres" },
+                { "id": "C", "text": "Lettres seules" },
+                { "id": "D", "text": "Symboles interdits" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Deux systèmes."
+            },
+            {
+              "id": "q3",
+              "question": "« سنة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Année" },
+                { "id": "B", "text": "Heure" },
+                { "id": "C", "text": "Minute" },
+                { "id": "D", "text": "Seconde" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Temps."
+            },
+            {
+              "id": "q4",
+              "question": "« شهر » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mois" },
+                { "id": "B", "text": "Jour" },
+                { "id": "C", "text": "Semaine" },
+                { "id": "D", "text": "Siècle" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Calendrier."
+            },
+            {
+              "id": "q5",
+              "question": "« يوم » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jour" },
+                { "id": "B", "text": "Nuit seule" },
+                { "id": "C", "text": "Année" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Unité temps."
+            },
+            {
+              "id": "q6",
+              "question": "Date invitation 15/06 :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jour et mois indiqués" },
+                { "id": "B", "text": "Toujours heure" },
+                { "id": "C", "text": "Toujours prix" },
+                { "id": "D", "text": "Sans sens" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lecture doc."
+            },
+            {
+              "id": "q7",
+              "question": "« ألف » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mille" },
+                { "id": "B", "text": "Un" },
+                { "id": "C", "text": "Dix" },
+                { "id": "D", "text": "Cent seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Grand nombre."
+            },
+            {
+              "id": "q8",
+              "question": "« مئة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Cent" },
+                { "id": "B", "text": "Mille" },
+                { "id": "C", "text": "Un" },
+                { "id": "D", "text": "Zéro" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Centaine."
+            },
+            {
+              "id": "q9",
+              "question": "Compter en arabe sert sur :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Menus et horaires" },
+                { "id": "B", "text": "Effacer texte" },
+                { "id": "C", "text": "Changer alphabet" },
+                { "id": "D", "text": "Supprimer maths" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Documents 3e."
+            },
+            {
+              "id": "q10",
+              "question": "١٠ =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "10" },
+                { "id": "B", "text": "1" },
+                { "id": "C", "text": "100" },
+                { "id": "D", "text": "0" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Dix."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Monuments et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« الكعبة » et « مسجد » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Kaaba (Mecque)" },
+                { "id": "B", "text": "Lieu de mosquée" },
+                { "id": "C", "text": "Stade foot" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Religion + lieu culte."
+            },
+            {
+              "id": "q2",
+              "question": "« الكعبة » à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "La Mecque" },
+                { "id": "B", "text": "Paris" },
+                { "id": "C", "text": "Tokyo" },
+                { "id": "D", "text": "Sydney" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu saint islam."
+            },
+            {
+              "id": "q3",
+              "question": "« مسجد » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mosquée" },
+                { "id": "B", "text": "École laïque" },
+                { "id": "C", "text": "Gare" },
+                { "id": "D", "text": "Plage" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Lieu prière."
+            },
+            {
+              "id": "q4",
+              "question": "« مئذنة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Minaret" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Gâteau" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Architecture mosquée."
+            },
+            {
+              "id": "q5",
+              "question": "« أهرامات » liées à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Égypte" },
+                { "id": "B", "text": "Pôle Nord" },
+                { "id": "C", "text": "Amazonie" },
+                { "id": "D", "text": "Antarctique" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Patrimoine."
+            },
+            {
+              "id": "q6",
+              "question": "« نيل » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Nil" },
+                { "id": "B", "text": "Seine" },
+                { "id": "C", "text": "Thames" },
+                { "id": "D", "text": "Mississippi" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fleuve Égypte."
+            },
+            {
+              "id": "q7",
+              "question": "Dôme du Rocher à :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Jérusalem" },
+                { "id": "B", "text": "Moscou" },
+                { "id": "C", "text": "Berlin" },
+                { "id": "D", "text": "Oslo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Ville sainte."
+            },
+            {
+              "id": "q8",
+              "question": "« تراث » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Patrimoine" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Devoir" },
+                { "id": "D", "text": "Glace" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Héritage culturel."
+            },
+            {
+              "id": "q9",
+              "question": "Respect mosquée :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Calme et tenue adaptée" },
+                { "id": "B", "text": "Crier" },
+                { "id": "C", "text": "Courir" },
+                { "id": "D", "text": "Jeter déchets" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Savoir-vivre."
+            },
+            {
+              "id": "q10",
+              "question": "Monuments racontent :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Histoire et identité" },
+                { "id": "B", "text": "Menu cantine" },
+                { "id": "C", "text": "Horaire bus seul" },
+                { "id": "D", "text": "Rien" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Civilisation."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Langue arabe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« العربية » et « لغة » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Langue arabe" },
+                { "id": "B", "text": "Mot langue" },
+                { "id": "C", "text": "Sport" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Désignation langue."
+            },
+            {
+              "id": "q2",
+              "question": "Langue officielle des médias panarabes souvent :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Arabe standard moderne" },
+                { "id": "B", "text": "Latin seul" },
+                { "id": "C", "text": "Sans écriture" },
+                { "id": "D", "text": "Chinois" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fusha médias."
+            },
+            {
+              "id": "q3",
+              "question": "Dialecte =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Arabe parlé local" },
+                { "id": "B", "text": "Langue sans mots" },
+                { "id": "C", "text": "Alphabet latin obligatoire" },
+                { "id": "D", "text": "Code secret" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Variété régionale."
+            },
+            {
+              "id": "q4",
+              "question": "Alphabet arabe :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Écrit de droite à gauche" },
+                { "id": "B", "text": "De gauche à droite" },
+                { "id": "C", "text": "Sans voyelles jamais" },
+                { "id": "D", "text": "Chiffres romains seuls" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Sens lecture."
+            },
+            {
+              "id": "q5",
+              "question": "« كتاب » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Livre" },
+                { "id": "B", "text": "Chien" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Objet école."
+            },
+            {
+              "id": "q6",
+              "question": "Arabe parlé au Maroc ≠ fusha car :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Dialecte maghrébin" },
+                { "id": "B", "text": "Pas arabe" },
+                { "id": "C", "text": "Latin" },
+                { "id": "D", "text": "Sans sons" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Diversité."
+            },
+            {
+              "id": "q7",
+              "question": "« أنا » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Je" },
+                { "id": "B", "text": "Tu" },
+                { "id": "C", "text": "Ils" },
+                { "id": "D", "text": "Nous seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Pronom."
+            },
+            {
+              "id": "q8",
+              "question": "« نحن » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Nous" },
+                { "id": "B", "text": "Je" },
+                { "id": "C", "text": "Tu" },
+                { "id": "D", "text": "Il" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Pronom."
+            },
+            {
+              "id": "q9",
+              "question": "Apprendre arabe ouvre :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "22+ pays et cultures" },
+                { "id": "B", "text": "Aucune communication" },
+                { "id": "C", "text": "Fin du français" },
+                { "id": "D", "text": "Interdiction voyager" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Langue internationale."
+            },
+            {
+              "id": "q10",
+              "question": "« كلمة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mot" },
+                { "id": "B", "text": "Phrase entière" },
+                { "id": "C", "text": "Livre" },
+                { "id": "D", "text": "Ville" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Unité vocabulaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Géographie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« صحراء » et « واحة » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Désert" },
+                { "id": "B", "text": "Oasis" },
+                { "id": "C", "text": "Océan Atlantique seul" },
+                { "id": "D", "text": "Glacier" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Paysages arabes."
+            },
+            {
+              "id": "q2",
+              "question": "« صحراء » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Désert" },
+                { "id": "B", "text": "Forêt tropicale" },
+                { "id": "C", "text": "Banquise" },
+                { "id": "D", "text": "Volcan actif seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Sahara connu."
+            },
+            {
+              "id": "q3",
+              "question": "« واحة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Oasis" },
+                { "id": "B", "text": "Tempête" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Eau végétation."
+            },
+            {
+              "id": "q4",
+              "question": "« خليج » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Golfe" },
+                { "id": "B", "text": "Montagne" },
+                { "id": "C", "text": "Plaine seule" },
+                { "id": "D", "text": "Désert sans mer" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Golfe Persique."
+            },
+            {
+              "id": "q5",
+              "question": "Pétrole associé région :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Golfe / Moyen-Orient" },
+                { "id": "B", "text": "Antarctique seul" },
+                { "id": "C", "text": "Pôle Nord seul" },
+                { "id": "D", "text": "Lune" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Ressource."
+            },
+            {
+              "id": "q6",
+              "question": "« شبه جزيرة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Péninsule arabique" },
+                { "id": "B", "text": "Île Hawaii seule" },
+                { "id": "C", "text": "Lac" },
+                { "id": "D", "text": "Rivière" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Géographie."
+            },
+            {
+              "id": "q7",
+              "question": "« بحر » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mer" },
+                { "id": "B", "text": "Montagne" },
+                { "id": "C", "text": "Désert" },
+                { "id": "D", "text": "Forêt" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Mer Rouge etc."
+            },
+            {
+              "id": "q8",
+              "question": "Climat Maghreb inclut :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Méditerranéen et désert" },
+                { "id": "B", "text": "Glacial permanent" },
+                { "id": "C", "text": "Sans saisons" },
+                { "id": "D", "text": "Uniquement tundra" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Diversité."
+            },
+            {
+              "id": "q9",
+              "question": "« وطن » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Patrie" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Gâteau" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Attachement."
+            },
+            {
+              "id": "q10",
+              "question": "Carte monde arabe montre :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Afrique + Asie ouest" },
+                { "id": "B", "text": "Amérique seule" },
+                { "id": "C", "text": "Antarctique seul" },
+                { "id": "D", "text": "Océan seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Étendue."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cuisine et convivialité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« كسكس » et « شاي بالنعناع » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Plat maghrébin" },
+                { "id": "B", "text": "Thé à la menthe" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Examen" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Traditions culinaires."
+            },
+            {
+              "id": "q2",
+              "question": "« خبز » base repas :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Pain" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Stylo" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Aliment."
+            },
+            {
+              "id": "q3",
+              "question": "« تمر » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Datte" },
+                { "id": "B", "text": "Poisson" },
+                { "id": "C", "text": "Glace" },
+                { "id": "D", "text": "Bus" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Fruit palmer."
+            },
+            {
+              "id": "q4",
+              "question": "« قهوة عربية » :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Café traditionnel épicé parfois" },
+                { "id": "B", "text": "Jus orange seul" },
+                { "id": "C", "text": "Eau interdite" },
+                { "id": "D", "text": "Soupe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Hospitalité."
+            },
+            {
+              "id": "q5",
+              "question": "« ضيافة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Hospitalité" },
+                { "id": "B", "text": "Punition" },
+                { "id": "C", "text": "Examen" },
+                { "id": "D", "text": "Fermeture" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Valeur culturelle."
+            },
+            {
+              "id": "q6",
+              "question": "Manger main droite (tradition) :",
+              "type": "single_choice",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Signe politesse dans certains contextes"
+                },
+                { "id": "B", "text": "Interdit parler" },
+                { "id": "C", "text": "Obligation courir" },
+                { "id": "D", "text": "Moquer invités" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Savoir-vivre."
+            },
+            {
+              "id": "q7",
+              "question": "« فول » plat :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Fèves (Égypte)" },
+                { "id": "B", "text": "Glace" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Petit-déjeuner cairoote."
+            },
+            {
+              "id": "q8",
+              "question": "« حلال » (nourriture) :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Permis islam" },
+                { "id": "B", "text": "Toujours porc" },
+                { "id": "C", "text": "Sans règle" },
+                { "id": "D", "text": "Interdit manger" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Règle alimentaire."
+            },
+            {
+              "id": "q9",
+              "question": "Partager repas =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Convivialité" },
+                { "id": "B", "text": "Interdit parler" },
+                { "id": "C", "text": "Examen" },
+                { "id": "D", "text": "Devoir seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Social."
+            },
+            {
+              "id": "q10",
+              "question": "« بُن » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Café (grains)" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Mer" },
+                { "id": "D", "text": "Montagne" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Boisson."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Identité et patrimoine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« ثقافة » et « تراث » :",
+              "type": "multiple_choice",
+              "options": [
+                { "id": "A", "text": "Culture" },
+                { "id": "B", "text": "Patrimoine" },
+                { "id": "C", "text": "Bus" },
+                { "id": "D", "text": "Stylo" }
+              ],
+              "correctAnswers": ["A", "B"],
+              "explanation": "Identité collective."
+            },
+            {
+              "id": "q2",
+              "question": "« ثقافة » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Culture" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Examen" },
+                { "id": "D", "text": "Glace" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Arts, modes de vie."
+            },
+            {
+              "id": "q3",
+              "question": "Calligraphie arabe :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Art du beau écrit" },
+                { "id": "B", "text": "Sport olympique seul" },
+                { "id": "C", "text": "Code informatique" },
+                { "id": "D", "text": "Recette" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Patrimoine UNESCO."
+            },
+            {
+              "id": "q4",
+              "question": "« أدب » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Littérature" },
+                { "id": "B", "text": "Bus" },
+                { "id": "C", "text": "Stade seul" },
+                { "id": "D", "text": "Océan" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Poésie romans."
+            },
+            {
+              "id": "q5",
+              "question": "Musique « أود » / traditionnelle :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Expression culturelle régionale" },
+                { "id": "B", "text": "Silence obligatoire" },
+                { "id": "C", "text": "Interdit écouter" },
+                { "id": "D", "text": "Examen maths" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Diversité."
+            },
+            {
+              "id": "q6",
+              "question": "« عالم عربي » ≈",
+              "type": "single_choice",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Ensemble pays + diaspora liés à l'arabe"
+                },
+                { "id": "B", "text": "Un seul village" },
+                { "id": "C", "text": "Continent Amérique" },
+                { "id": "D", "text": "Planète Mars" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Repère civilisation u2."
+            },
+            {
+              "id": "q7",
+              "question": "UNESCO protège sites car :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Valeur universelle" },
+                { "id": "B", "text": "Effacer histoire" },
+                { "id": "C", "text": "Interdire visite" },
+                { "id": "D", "text": "Vendre tickets seul" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Patrimoine mondial."
+            },
+            {
+              "id": "q8",
+              "question": "« تسامح » =",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Tolérance" },
+                { "id": "B", "text": "Guerre" },
+                { "id": "C", "text": "Moquerie" },
+                { "id": "D", "text": "Fermeture" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Vivre ensemble."
+            },
+            {
+              "id": "q9",
+              "question": "Étudier monde arabe en 3e :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Mieux comprendre voisins culturels" },
+                { "id": "B", "text": "Nier diversité" },
+                { "id": "C", "text": "Supprimer français" },
+                { "id": "D", "text": "Ignorer géographie" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Ouverture."
+            },
+            {
+              "id": "q10",
+              "question": "Unité u2 objectif :",
+              "type": "single_choice",
+              "options": [
+                { "id": "A", "text": "Repères civilisation arabophone" },
+                { "id": "B", "text": "Copier menu 4e seul" },
+                { "id": "C", "text": "Oublier documents" },
+                { "id": "D", "text": "Ne plus lire arabe" }
+              ],
+              "correctAnswers": ["A"],
+              "explanation": "Culture + langue."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

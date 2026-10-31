@@ -1,0 +1,2023 @@
+{
+  "id": "2nde-russe-01",
+  "year": "2nde",
+  "subject": "russe",
+  "title": "Découvrir le russe",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "L'alphabet et les salutations de base",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles lettres cyrilliques se lisent « a » ou « o » en français ?",
+              "options": ["А", "О", "У", "Э"],
+              "correctAnswers": [0, 1],
+              "explanation": "А = a et О = o ; У = ou et Э = è ouvert."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment écrit-on « bonjour » (formel, vouvoiement) en russe ?",
+              "options": ["Привет", "Здравствуйте", "Пока", "Спасибо"],
+              "correctAnswers": [1],
+              "explanation": "« Здравствуйте » s'adresse à un adulte, un professeur ou plusieurs personnes ; « Привет » est familier."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quelle salutation convient entre camarades de seconde au lycée ?",
+              "options": [
+                "Здравствуйте, товарищ директор",
+                "Привет!",
+                "Доброй ночи",
+                "До свидания"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Entre élèves du même âge, « Привет » ou « Здорово » (registre très familier) sont naturels ; le vouvoiement formel serait excessif."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Доброе утро » signifie :",
+              "options": [
+                "Bonsoir",
+                "Bonne nuit",
+                "Bonjour (le matin)",
+                "À bientôt"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Утро » = matin ; on l'emploie jusqu'à environ midi, comme « good morning »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment répondre poliment à « Как дела? » quand tout va bien ?",
+              "options": ["Плохо", "Нормально, спасибо", "Пока", "Извините"],
+              "correctAnswers": [1],
+              "explanation": "« Нормально » ou « Хорошо, спасибо » répond à « Comment ça va ? » ; « плохo » signifierait le contraire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Que signifie « Спасибо » ?",
+              "options": ["S'il vous plaît", "Merci", "Pardon", "Bonjour"],
+              "correctAnswers": [1],
+              "explanation": "« Спасибо » = merci ; « пожалуйста » peut signifier s'il vous plaît ou de rien selon le contexte."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quelle formule pour saluer un professeur en entrant en cours de russe ?",
+              "options": [
+                "Пока, учитель!",
+                "Здравствуйте!",
+                "Привет, мама",
+                "Доброй ночи"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec un enseignant, le registre formel « Здравствуйте » (ou « Добрый день ») est attendu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« До свидания » correspond à :",
+              "options": [
+                "Salut (familier)",
+                "Au revoir (formel/neutre)",
+                "Merci",
+                "Comment tu t'appelles ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« До свидания » = au revoir ; « Пока » est l'équivalent familier de « salut / ciao »."
+            },
+            {
+              "type": "single_choice",
+              "question": "La lettre « Р » en russe se prononce comme :",
+              "options": [
+                "Un « p » français",
+                "Un « r » roulé",
+                "Un « h » aspiré",
+                "Un « v »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Р = r ; ne pas la confondre avec P latine qui vaut « p » en translittération."
+            },
+            {
+              "type": "single_choice",
+              "question": "Dans « Москва », quelle lettre cyrillique vaut « s » ?",
+              "options": ["М", "С", "К", "В"],
+              "correctAnswers": [1],
+              "explanation": "Мoscou s'écrit М-о-с-к-в-а : С = s, В = v en fin de mot."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Se présenter : nom et politesse",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles phrases permettent de dire comment vous vous appelez (niveau lycée) ?",
+              "options": ["Меня зовут…", "Мне … лет", "Я …", "Где ты?"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Меня зовут + prénom » et « Я + prénom » présentent le nom ; « мне … лет » donne l'âge ; « где » = où."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Меня зовут Лéa » se traduit par :",
+              "options": [
+                "J'ai seize ans",
+                "Je m'appelle Léa",
+                "Je suis française",
+                "J'habite à Paris"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Меня зовут » + instrumental du prénom = je m'appelle…"
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment demander le nom de quelqu'un (vouvoiement) ?",
+              "options": [
+                "Как тебя зовут?",
+                "Как вас зовут?",
+                "Сколько тебе лет?",
+                "Откуда ты?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Как вас зовут? » avec « вас » marque le respect ; « тебя » est tutoiement."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Очень приятно » en russe, formule courante après une présentation :",
+              "options": [
+                "Извините",
+                "Очень приятно → Приятно познакомиться",
+                "Пожалуйста",
+                "Ничего"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Приятно познакомиться » ou « Очень приятно » accompagnent une première rencontre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Извините » s'utilise surtout pour :",
+              "options": [
+                "Remercier",
+                "Demander pardon / attirer l'attention poliment",
+                "Dire bonjour le soir",
+                "Compter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Извините » = excusez-moi, pardon ; plus formel que « извини » (tu)."
+            },
+            {
+              "type": "single_choice",
+              "question": "En classe, pour dire « Je suis élève » (féminin) :",
+              "options": ["Я ученик", "Я ученица", "Я учитель", "Я директор"],
+              "correctAnswers": [1],
+              "explanation": "« Ученица » = élève (fille) ; « ученик » = garçon ; « учитель » = professeur."
+            },
+            {
+              "type": "single_choice",
+              "question": "La lettre « Н » en cyrillique correspond à :",
+              "options": [
+                "N en français",
+                "H en français",
+                "I en français",
+                "G en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Н = n ; H cyrillique vaut « n » en translittération latine, pas « h »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Пожалуйста » peut signifier :",
+              "options": [
+                "Uniquement merci",
+                "S'il vous plaît ou de rien",
+                "Au revoir",
+                "Je m'appelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après « спасибо », « пожалуйста » = de rien ; dans une demande, = s'il vous plaît."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour présenter un camarade : « Это мой друг… » — « друг » signifie :",
+              "options": ["Sœur", "Ami (masculin)", "Professeur", "Ville"],
+              "correctAnswers": [1],
+              "explanation": "« Друг » = ami ; « подруга » = amie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Добрый день » convient :",
+              "options": [
+                "Uniquement avant 6 h",
+                "En journée (après le matin)",
+                "Seulement la nuit",
+                "Jamais à l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Добрый день » = bonjour (journée) ; le matin on préfère « доброе утро », le soir « добрый вечер »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tu et vous : pronoms et registre",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles options nomment des pronoms personnels russes (pas des mots interrogatifs) ?",
+              "options": ["ты / вы", "я / мы", "он / она", "кто / что"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ты / вы », « он / она » sont des pronoms ; « кто / что » interrogent ; « я / мы » aussi pronoms — ici les paires tu-vous et il-elle couvrent le registre et la 3e personne."
+            },
+            {
+              "type": "single_choice",
+              "question": "Avec un professeur de russe en seconde, on emploie en général :",
+              "options": ["ты", "вы", "они", "оно"],
+              "correctAnswers": [1],
+              "explanation": "Le vouvoiement « вы » marque le respect envers l'adulte et l'enseignant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Как ты? » s'adresse à :",
+              "options": [
+                "Un directeur",
+                "Un ami du même âge",
+                "Une foule inconnue",
+                "Personne (incorrect)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ты » implique familiarité ; avec un adulte inconnu, « как вы? » est adapté."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я » signifie :",
+              "options": ["Tu", "Je", "Nous", "Ils"],
+              "correctAnswers": [1],
+              "explanation": "« Я » = je ; « мы » = nous."
+            },
+            {
+              "type": "single_choice",
+              "question": "Comment dire « Nous sommes en seconde » (groupe) en simplifiant avec « мы » :",
+              "options": [
+                "Мы во втором классе (lycée russe : 11-й класс ≠ seconde FR)",
+                "Мы — ученики второго класса лицея",
+                "Они студенты",
+                "Ты один"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En contexte lycée français, on explique souvent « nous sommes élèves de seconde » ; « мы ученики » + établissement est la structure utile."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вы » peut désigner :",
+              "options": [
+                "Seulement une personne",
+                "Plusieurs personnes ou une personne vouvoyée",
+                "Uniquement les animaux",
+                "Le passé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Вы » = pluriel ou politesse singulier — distinction essentielle en russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Saluer plusieurs camarades avec respect modéré :",
+              "options": [
+                "Привет, вы!",
+                "Здравствуйте!",
+                "Доброй ночи, мама",
+                "Пока, директор"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Здравствуйте » fonctionne au pluriel ; « привет » reste souvent du tutoiement implicite entre jeunes."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Тебя » est la forme de « ты » après certaines prépositions / verbes ; « вас » vient de :",
+              "options": ["я", "вы", "мы", "он"],
+              "correctAnswers": [1],
+              "explanation": "Accusatif : тебя (tu) / вас (vous) — repère pour « как тебя / как вас зовут »."
+            },
+            {
+              "type": "single_choice",
+              "question": "En Russie, tutoyer un inconnu plus âgé est :",
+              "options": [
+                "Toujours obligatoire",
+                "Mal vu ; on préfère « вы »",
+                "Interdit par la loi",
+                "Identique au français scolaire sans nuance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme en français formel, le vouvoiement protège la politesse sociale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мы из Франции » commence par le pronom :",
+              "options": ["Ты", "Мы", "Вы", "Она"],
+              "correctAnswers": [1],
+              "explanation": "« Мы » = nous ; « из Франции » = de France."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Salutations selon le moment",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles paires salutation / moment sont correctes ?",
+              "options": [
+                "Доброе утро — matin",
+                "Добрый вечер — soirée",
+                "Доброй ночi — au réveil uniquement",
+                "Привет — registre familier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Доброй ночи » se dit en partant la nuit, pas au réveil ; matin et soir sont corrects."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Добрый вечер » =",
+              "options": [
+                "Bonjour (matin)",
+                "Bonsoir",
+                "Bonne nuit",
+                "À demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Вечер » = soir ; formule de contact en fin de journée."
+            },
+            {
+              "type": "single_choice",
+              "question": "Avant de dormir, on dit souvent :",
+              "options": [
+                "Доброе утро",
+                "Спокойной ночи",
+                "Здравствуйте",
+                "Как дела?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Спокойной ночi » / « доброй ночи » = bonne nuit."
+            },
+            {
+              "type": "single_choice",
+              "question": "Entrer en cours à 8 h, salutation adaptée :",
+              "options": [
+                "Доброй ночи",
+                "Доброе утро / Здравствуйте",
+                "Пока",
+                "До завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le matin : « доброе утro » ou formule neutre « здравствуйте »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« До завтра » signifie :",
+              "options": ["À demain", "Hier", "Jamais", "Bon appétit"],
+              "correctAnswers": [0],
+              "explanation": "« Завтра » = demain ; formule d'au revoir entre élèves."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Как поживаете? » (vouvoiement) est :",
+              "options": [
+                "Une insulte",
+                "Une formule de politesse « comment allez-vous ? »",
+                "Un nombre",
+                "Un jour de la semaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Variante plus soignée de « как дела? » avec « вы »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse courte positive : « Хорошо » =",
+              "options": ["Mal", "Bien", "Peut-être", "Non"],
+              "correctAnswers": [1],
+              "explanation": "« Хорошо » = bien, d'accord."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Плохо » indique :",
+              "options": ["Tout va mal", "Merci", "Bonjour", "Ami"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme de « хорошо » dans « как дела? »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Счастливо! » (au revoir familier) évoque :",
+              "options": [
+                "Bonheur / bonne continuation",
+                "Colère",
+                "Faim",
+                "Devoir de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression familière en partant, proche de « bonne chance / porte-toi bien »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Добро пожаловать » s'entend :",
+              "options": [
+                "En expulsant quelqu'un",
+                "Bienvenue",
+                "Fermez la porte",
+                "Silence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Accueil : bienvenue (visite, échange scolaire)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Cyrillique utile pour se présenter",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles lettres ressemblent à l'alphabet latin mais ont un autre son ?",
+              "options": ["Р (r)", "В (v)", "Н (n)", "С (s)"],
+              "correctAnswers": [1, 2],
+              "explanation": "В = v et Н = n prêtent à confusion avec B et H latins ; Р = r et С = s aussi, mais l'énoncé cible surtout В/Н comme pièges visuels classiques en 2nde."
+            },
+            {
+              "type": "single_choice",
+              "question": "Lire « Париж » : la première lettre se prononce :",
+              "options": ["P", "R", "L", "F"],
+              "correctAnswers": [0],
+              "explanation": "П = p ; Paris en russe commence par П."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Франция » en cyrillique commence par :",
+              "options": ["Ф", "П", "Т", "К"],
+              "correctAnswers": [0],
+              "explanation": "Ф = f ; « Франция » = France."
+            },
+            {
+              "type": "single_choice",
+              "question": "La lettre « Г » vaut :",
+              "options": ["g comme « gare »", "n", "d", "ch"],
+              "correctAnswers": [0],
+              "explanation": "Г = g dur ; ne pas confondre avec « r » latine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Л » dans « Лиза » (Lisa) =",
+              "options": ["l", "i", "a", "z"],
+              "correctAnswers": [0],
+              "explanation": "Л = l."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ж » se prononce environ comme :",
+              "options": [
+                "ch français de « chat »",
+                "j de « jour »",
+                "s de « mesure »",
+                "k"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ж = j mouillé / « jour »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ш » correspond à :",
+              "options": [
+                "ch dur (« chaud »)",
+                "ch mou (« chinois »)",
+                "z",
+                "v"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ш = ch comme « chapeau »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour écrire « Marie » en russe approximatif « Мари » :",
+              "options": ["М-А-Р-И", "П-А-Р-И", "М-О-Р-И", "М-Е-Р-И"],
+              "correctAnswers": [0],
+              "explanation": "М = m, А = a, Р = r, И = i."
+            },
+            {
+              "type": "single_choice",
+              "question": "« У » se lit :",
+              "options": ["ou", "u français fermé", "i", "e"],
+              "correctAnswers": [0],
+              "explanation": "У = ou comme « ou » français."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ы » est une voyelle :",
+              "options": [
+                "Proche de « i » posteriori (unique au russe)",
+                "Identique à « e » muet",
+                "Silencieuse",
+                "Uniquement en fin de phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son typique russe ; en 2nde, on le repère dans des mots comme « мы » n'en contient pas, mais « сыр » etc."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Dialogues au lycée",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Dans un échange « — Здравствуйте! — Здравствуйте! », quelles affirmations sont vraies ?",
+              "options": [
+                "Les deux personnes se saluent",
+                "C'est une dispute",
+                "« Здравствуйте » est formel",
+                "On dit « пока » pour entrer en classe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Double salutation formelle ; « пока » sert plutôt au départ familier."
+            },
+            {
+              "type": "single_choice",
+              "question": "Élève : « Меня зовут Tom. А вас? » — Le professeur répond logiquement :",
+              "options": [
+                "Пока!",
+                "Меня зовут Анна Петровна.",
+                "Я сплю.",
+                "Доброй ночи."
+              ],
+              "correctAnswers": [1],
+              "explanation": "On renvoie le nom ; patronyme possible avec un enseignant."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Приятно познакомиться » convient :",
+              "options": [
+                "Après une première présentation",
+                "En quittant sans avoir parlé",
+                "Pour demander l'heure",
+                "Comme jurons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule standard après « меня зовут… »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Un échange scolaire : « Мы из лицея в Лyon » — mot clé « лицей » ≈",
+              "options": ["Lycée", "Hôpital", "Stade", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "« Лицей » désigne souvent un établissement secondaire selective."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demander « D'où viens-tu ? » (tu) :",
+              "options": ["Откуда ты?", "Куда ты?", "Когда ты?", "Почему ты?"],
+              "correctAnswers": [0],
+              "explanation": "« Откуда » = d'où ; « куда » = vers où."
+            },
+            {
+              "type": "single_choice",
+              "question": "Répondre « Je viens de France » :",
+              "options": [
+                "Я из Франции",
+                "Я во Францию",
+                "Я Франция",
+                "Мне Франция"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Я из + genitif pays » = je viens de…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Класс » dans « наш класс » désigne souvent :",
+              "options": [
+                "La classe (groupe d'élèves)",
+                "Un cours de danse uniquement",
+                "La météo",
+                "Un verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Наш класс » = notre classe (promo)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour demander l'âge (vouvoiement scolaire rare entre élèves) : « Сколько вам лет? » — « лет » concerne :",
+              "options": [
+                "L'âge en années",
+                "La taille",
+                "La note",
+                "La ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure « сколько … лет » = combien d'années."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мне шестнадцать лет » =",
+              "options": [
+                "J'ai seize ans",
+                "J'ai six ans",
+                "Il est sixteen heures",
+                "Seize camarades"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En russe l'âge se dit avec « мне + nombre + лет »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Clore une conversation polie avec un invité :",
+              "options": [
+                "До свидания! Спасибо!",
+                "Привет снова",
+                "Как тебя зовут?",
+                "Здравствуйте ×10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + remerciement est naturel après un accueil."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Nationalités et origines",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots désignent une personne liée à un pays (intro 2nde) ?",
+              "options": [
+                "француз / француженка",
+                "россиянин",
+                "стол",
+                "учебник"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Francais / Française et Russe (homme) ; « стол » = table, « учебник » = manuel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я француз » (garçon) / « Я француженка » (fille) expriment :",
+              "options": ["La nationalité", "La faim", "L'heure", "La couleur"],
+              "correctAnswers": [0],
+              "explanation": "Adjectifs/substantifs de nationalité avec « я »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Россия » =",
+              "options": [
+                "Russie",
+                "Pologne",
+                "Ukraine (homonyme partiel)",
+                "France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom du pays ; « россиянин » = Russe (citoyen)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Présenter son pays d'origine : « Я живу во Франции, но мои родители из … » — « живу » ≈",
+              "options": ["J'habite", "Je mange", "Je cours", "Je dors"],
+              "correctAnswers": [0],
+              "explanation": "« Жить » = vivre/habiter."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Студент » vs « ученик » en contexte lycée français :",
+              "options": [
+                "Ученик = élève du secondaire",
+                "Студент = lycéen obligatoire",
+                "Identiques",
+                "Professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Студент » = étudiant (supérieur) ; lycée = « ученик »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Город » signifie :",
+              "options": ["Ville", "Campagne", "Mer", "Montagne seule"],
+              "correctAnswers": [0],
+              "explanation": "« Я из города … » = je suis de la ville de…"
+            },
+            {
+              "type": "single_choice",
+              "question": "« Париж » en russe se lit avec le son :",
+              "options": [
+                "P au début",
+                "B au début",
+                "F au début",
+                "K au début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "П = p initial dans « Париж »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Москва » =",
+              "options": ["Moscou", "Berlin", "Rome", "Madrid"],
+              "correctAnswers": [0],
+              "explanation": "Capitale russe, repère culturel."
+            },
+            {
+              "type": "single_choice",
+              "question": "Question : « Ты говоришь по-французски? » demande :",
+              "options": [
+                "Parles-tu français ?",
+                "Manges-tu ?",
+                "Viens-tu ?",
+                "Dors-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Говорить по-… » = parler (une langue)."
+            },
+            {
+              "type": "single_choice",
+              "question": "Réponse : « Да, немного » =",
+              "options": [
+                "Oui, un peu",
+                "Non, jamais",
+                "Oui, couramment",
+                "Je ne sais pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Немного » = un peu — réaliste en 2nde."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Formules de courtoisie en classe",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont polies en cours de russe ?",
+              "options": [
+                "Можно выйти?",
+                "Извините, я не понял",
+                "Заткнись",
+                "Спасибо"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demander la permission et excuser l'incompréhension sont polis ; l'impératif grossier est exclu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Можно? » seul, levant la main, suggère :",
+              "options": [
+                "Puis-je (parler / sortir) ?",
+                "Je refuse",
+                "Devoir fini",
+                "Recréation maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Можно » = est-ce permis / puis-je."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я не понимаю » =",
+              "options": [
+                "Je ne comprends pas",
+                "Je comprends tout",
+                "Je suis professeur",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase clé pour le lycée en langue étrangère."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Повторите, пожалуйста » demande :",
+              "options": [
+                "Répétez, s'il vous plaît",
+                "Asseyez-vous",
+                "Partez",
+                "Écrivez un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Повторить » = répéter ; « пожалуйста » adoucit."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Слушаю » en réponse au téléphone ou en classe peut signifier :",
+              "options": ["Je vous écoute", "Je dors", "Fermé", "Non merci"],
+              "correctAnswers": [0],
+              "explanation": "Indique l'attention — utile en jeux de rôle."
+            },
+            {
+              "type": "single_choice",
+              "question": "Remercier après correction :",
+              "options": ["Спасибо", "Плохо", "Пока", "Кто?"],
+              "correctAnswers": [0],
+              "explanation": "Politesse élémentaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Будьте добры, … » (vouvoiement) introduit :",
+              "options": [
+                "Une demande courtoise",
+                "Une menace",
+                "Un chiffre",
+                "Un adjectif couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Soyez assez bon pour… » — registre soutenu mais utile."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Простите » vs « Извините » : tous deux ≈",
+              "options": ["Excusez-moi", "Bravo", "Bon appétit", "À plus"],
+              "correctAnswers": [0],
+              "explanation": "Nuances de registre, même famille sémantique."
+            },
+            {
+              "type": "single_choice",
+              "question": "Avant de lire à voix haute : « Можно читать? » =",
+              "options": [
+                "Puis-je lire ?",
+                "Je lis mal",
+                "Lisez vous",
+                "Fin du cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Permission en activité orale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Хорошо, садитесь » côté professeur signifie :",
+              "options": [
+                "Très bien, asseyez-vous",
+                "Levez-vous",
+                "Sortez",
+                "Silence absolu sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Садиться » = s'asseoir."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révisions : lire et écrire son prénom",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Pour transcrire « Lucas » en cyrillique approximatif, quelles lettres sont indispensables ?",
+              "options": ["Л (l)", "К (k)", "У (ou)", "Ж (j)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Л-у-к-а-с : L, K essentiels ; У pour le « ou » ; Ж n'apparaît pas dans Lucas."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Анна » se prononce :",
+              "options": [
+                "Anna",
+                "Ahna avec h aspiré obligatoire",
+                "Anya avec y final obligatoire",
+                "Silencieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom russe courant, proche d'Anna."
+            },
+            {
+              "type": "single_choice",
+              "question": "« И » vaut :",
+              "options": ["i", "e", "a", "ou"],
+              "correctAnswers": [0],
+              "explanation": "И = i."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Е » en début de mot « Елена » se lit souvent :",
+              "options": ["ye (ié)", "ch", "ou", "muet"],
+              "correctAnswers": [0],
+              "explanation": "Е = « é » ou « ié » en position initiale (Hélène)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ю » =",
+              "options": ["iou / you", "a", "k", "tch"],
+              "correctAnswers": [0],
+              "explanation": "Lettre composée i+ou."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я » =",
+              "options": ["ya (comme « yard »)", "za", "na", "fa"],
+              "correctAnswers": [0],
+              "explanation": "Я = ya ; aussi le pronom « je » homographe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Écrire « russe » (langue) : « русский язык » — « язык » =",
+              "options": ["Langue", "Jambe", "Clé", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "« Русский язык » = langue russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Французский язык » =",
+              "options": [
+                "Langue française",
+                "Langue russe",
+                "Mathématiques",
+                "Histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adjectif « français » + « langue »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мой друг зовут… » est incorrect ; la bonne structure est :",
+              "options": [
+                "Моего друга зовут… / Мой друг, его зовут…",
+                "Мой друг зовут",
+                "Друг меня зовут",
+                "Зовут друг мой"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord et cas : en 2nde on retient « мой друг + il s'appelle » → « мой друг, его зовут … »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Это » en présentation (« Это Маша ») =",
+              "options": [
+                "C'est Masha",
+                "Où est Masha",
+                "Masha mange",
+                "Bye Masha"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation neutre : c'est…"
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan unité 1 : saluer et se présenter",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels couples français ↔ russe sont corrects pour l'unité ?",
+              "options": [
+                "Au revoir ↔ До свидания",
+                "Merci ↔ Спасибо",
+                "Je m'appelle ↔ Меня зовут",
+                "Bonjour matin ↔ Добрый вечer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Добрый вечer » = bonsoir, pas bonjour du matin ; « меня зовут » va avec « je m'appelle »."
+            },
+            {
+              "type": "single_choice",
+              "question": "Registre le plus sûr avec un professeur inconnu :",
+              "options": [
+                "ты + привет",
+                "вы + здравствуйте",
+                "silence total",
+                "pokа seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vouvoiement + salutation formelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Как дела? » attend souvent :",
+              "options": [
+                "Хорошо / Нормально",
+                "Un prénom seul",
+                "Un pays",
+                "Une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse sur l'état, pas l'identité."
+            },
+            {
+              "type": "single_choice",
+              "question": "Lettre cyrillique pour « m » dans « мама » :",
+              "options": ["М", "Н", "П", "Т"],
+              "correctAnswers": [0],
+              "explanation": "М = m."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Папа » =",
+              "options": ["Papa", "Maman", "Frère", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire familier proche du français."
+            },
+            {
+              "type": "single_choice",
+              "question": "Quitter un correspondant après échange scolaire :",
+              "options": [
+                "До свидания! Было приятно!",
+                "Здравствуйте encore",
+                "Как дела?",
+                "Я буква"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir + satisfaction de la rencontre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Было приятно » ≈",
+              "options": [
+                "C'était agréable (de vous rencontrer)",
+                "C'était terrible",
+                "C'est demain",
+                "J'ai mal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clôture positive d'une interaction."
+            },
+            {
+              "type": "single_choice",
+              "question": "Différence clé « привет » / « здравствуйте » :",
+              "options": [
+                "Familier vs formel",
+                "Matin vs soir uniquement",
+                "Merci vs pardon",
+                "Pluriel vs singulier uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre social, pas seulement l'heure."
+            },
+            {
+              "type": "single_choice",
+              "question": "Pour dire « enchanté » (masc.) couramment :",
+              "options": [
+                "Приятно познакомиться",
+                "Доброе утро",
+                "Плохо",
+                "Стул"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule fixe de présentation."
+            },
+            {
+              "type": "single_choice",
+              "question": "Objectif de l'unité 1 en 2nde :",
+              "options": [
+                "Saluer, choisir tu/vous, se présenter au lycée en cyrillique",
+                "Conjuguer tous les verbes perfectifs",
+                "Lire Tolstoï intégral",
+                "Omettre l'alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Socio-langagier et alphabet appliqué aux présentations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Chiffres et âge au lycée",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels nombres russes désignent des âges typiques de seconde (15–17 ans) ?",
+              "options": ["пятнадцать", "шестнадцать", "семнадцать", "сто"],
+              "correctAnswers": [1, 2],
+              "explanation": "16 et 17 ans collent à la seconde ; « пятнадцать » aussi possible ; « стo » = 100, hors tranche."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мне пятнадцать лет » =",
+              "options": [
+                "J'ai quinze ans",
+                "J'ai cinq ans",
+                "Il est quinze heures",
+                "Quinze élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure d'âge avec « мне »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Один » =",
+              "options": ["1", "10", "7", "2"],
+              "correctAnswers": [0],
+              "explanation": "Cardinal de base."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Два » =",
+              "options": ["2", "3", "12", "20"],
+              "correctAnswers": [0],
+              "explanation": "Deux ; « двадцать » = 20."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Пять » =",
+              "options": ["5", "6", "50", "15"],
+              "correctAnswers": [0],
+              "explanation": "Cinq."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Десять » =",
+              "options": ["10", "14", "40", "100"],
+              "correctAnswers": [0],
+              "explanation": "Dix."
+            },
+            {
+              "type": "single_choice",
+              "question": "Demander un numéro de téléphone commence souvent par « Какой номер… » — « номер » =",
+              "options": ["Numéro", "Nom", "Ville", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire utile mais secondaire vs âge."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сколько? » =",
+              "options": ["Combien ?", "Où ?", "Qui ?", "Pourquoi ?"],
+              "correctAnswers": [0],
+              "explanation": "Question quantité."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Три » =",
+              "options": ["3", "13", "30", "8"],
+              "correctAnswers": [0],
+              "explanation": "Trois."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Восемнадцать » =",
+              "options": ["18", "80", "8", "28"],
+              "correctAnswers": [0],
+              "explanation": "Dix-huit — fin de lycée proche."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Objets de la classe",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots sont des objets du cours de russe ?",
+              "options": ["учебник", "тетрадь", "небо", "стул"],
+              "correctAnswers": [0, 1],
+              "explanation": "Manuel et cahier sont des fournitures ; « небо » = ciel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Учебник » =",
+              "options": ["Manuel scolaire", "Professeur", "Cour", "Vacances"],
+              "correctAnswers": [0],
+              "explanation": "Support principal."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Тетрадь » =",
+              "options": ["Cahier", "Table", "Porte", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Cahier d'exercices."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Ручка » =",
+              "options": ["Stylo", "Gomme", "Règle", "Carte"],
+              "correctAnswers": [0],
+              "explanation": "Peut aussi signifier poignée selon contexte — ici classe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Карандаш » =",
+              "options": [
+                "Crayon",
+                "Peinture",
+                "Téléphone",
+                "Sac à dos uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crayon à papier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Доска » (au tableau) =",
+              "options": [
+                "Tableau (noir/blanc)",
+                "Planche de bois seulement",
+                "Chaise",
+                "Fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Писать на доске »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Парта » ≈",
+              "options": ["Pupitre d'élève", "Cour de récré", "Cantine", "Bus"],
+              "correctAnswers": [0],
+              "explanation": "Meuble scolaire russe typique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сумка » =",
+              "options": ["Sac", "Chaussure", "Montre", "Clé"],
+              "correctAnswers": [0],
+              "explanation": "Sac de cours."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Компьютер » =",
+              "options": [
+                "Ordinateur",
+                "Calculatrice seule",
+                "Stylo",
+                "Globe uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt international reconnaissable."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Классная комната » ≈",
+              "options": ["Salle de classe", "Gare", "Musée", "Plage"],
+              "correctAnswers": [0],
+              "explanation": "Lieu de l'unité scolaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Matières et emploi du temps",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots peuvent être des matières au lycée ?",
+              "options": ["математика", "история", "физика", "стул"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Математика » et « физика » sont des matières ; « стул » = chaise."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Математика » =",
+              "options": ["Mathématiques", "Musique", "Russe", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Matière scientifique."
+            },
+            {
+              "type": "single_choice",
+              "question": "« История » =",
+              "options": ["Histoire", "Géographie", "Arts", "Latin"],
+              "correctAnswers": [0],
+              "explanation": "Discipline humaine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Физика » =",
+              "options": ["Physique", "Philosophie", "Français", "Russe"],
+              "correctAnswers": [0],
+              "explanation": "Sciences physiques."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Урок » =",
+              "options": [
+                "Cours / leçon",
+                "Devoir maison seul",
+                "Récréation",
+                "Examen final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Урок русского языка »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Перемена » =",
+              "options": [
+                "Récréation",
+                "Cloche de nuit",
+                "Vacances d'été",
+                "Retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause entre les cours."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Понедельник » =",
+              "options": ["Lundi", "Mardi", "Dimanche", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Premier jour ouvré russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сегодня » =",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe temporal fréquent."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Завтра » =",
+              "options": ["Demain", "Aujourd'hui", "Semaine", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "Planifier un devoir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Расписание » =",
+              "options": [
+                "Emploi du temps",
+                "Cantine",
+                "Carte du monde",
+                "Stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Document clé du lycéen."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Couleurs et descriptions simples",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quelles couleurs de base existent en russe ?",
+              "options": ["красный", "синий", "зелёный", "стул"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Красный » et « зелёный » sont des couleurs de base ; « стул » n'est pas une couleur."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Красный » =",
+              "options": ["Rouge", "Noir", "Blanc", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "Couleur du drapeau russe avec blanc et bleu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Синий / голубой » distinguent surtout :",
+              "options": [
+                "Nuances de bleu",
+                "Rouge et vert",
+                "Deux verbes",
+                "Deux profs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bleu foncé vs clair — repère culturel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Большой » =",
+              "options": ["Grand", "Petit", "Lent", "Chaud"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif taille."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Маленький » =",
+              "options": ["Petit", "Grand", "Beau", "Laide"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme de « большой »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Новый » =",
+              "options": ["Nouveau", "Vieux", "Cher", "Gratuit"],
+              "correctAnswers": [0],
+              "explanation": "« Новый учебник »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Старый » =",
+              "options": ["Vieux", "Jeune", "Propre", "Sale"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme de « новый »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Хороший » =",
+              "options": ["Bon / bien (adj.)", "Mauvais", "Lourd", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "« Хороший день »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Плохой » =",
+              "options": ["Mauvais", "Excellent", "Rapide", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Antonyme de « хороший »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Это красная ручка » décrit :",
+              "options": [
+                "Un stylo rouge",
+                "Une table bleue",
+                "Un prof",
+                "Une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre à approfondir plus tard — sens global clair."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Famille et personnes",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des membres de la famille proche ?",
+              "options": ["мама", "папа", "брат", "учебник"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Мама » et « брат » désignent la famille ; « учебник » = manuel."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сестра » =",
+              "options": ["Sœur", "Frère", "Oncle", "Cousine seulement"],
+              "correctAnswers": [0],
+              "explanation": "Fratrie."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Бабушка » =",
+              "options": ["Grand-mère", "Grand-père", "Bébé", "Voisin"],
+              "correctAnswers": [0],
+              "explanation": "Figure familiale fréquente."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дедушка » =",
+              "options": ["Grand-père", "Grand-mère", "Père", "Fils"],
+              "correctAnswers": [0],
+              "explanation": "Paire de « бабушка »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Семья » =",
+              "options": ["Famille", "École", "Ville", "Langue"],
+              "correctAnswers": [0],
+              "explanation": "Thème présentation personnelle."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Родители » =",
+              "options": ["Parents", "Enfants", "Professeurs", "Amis"],
+              "correctAnswers": [0],
+              "explanation": "« Мои родители » en biographie courte."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сын » / « дочь » =",
+              "options": [
+                "Fils / fille",
+                "Frère / sœur",
+                "Oncle / tante",
+                "Cousin / cousine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descendance."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Муж » / « жена » =",
+              "options": [
+                "Mari / femme (époux/se)",
+                "Ami / amie",
+                "Père / mère",
+                "Prof / élève"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adultes — vocabulaire reconnaissance."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Это моя семья » =",
+              "options": [
+                "Voici ma famille",
+                "Ma famille est loin",
+                "Je n'ai pas de famille",
+                "Famille = école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation photo projet scolaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Друг » / « подруга » =",
+              "options": [
+                "Ami / amie",
+                "Frère / sœur",
+                "Devoir / leçon",
+                "Stylo / crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relations hors famille."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Verbes essentiels : être, avoir, habiter",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels verbes sont indispensables en 2nde pour parler de soi ?",
+              "options": [
+                "быть (être)",
+                "иметь (avoir)",
+                "жить (habiter/vivre)",
+                "летать (voler)"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "« Иметь » et « жить » servent à dire ce qu'on a et où l'on habite ; « летать » est hors socle immédiat."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я студент » utilise « être » implicite : en russe présent on dit souvent :",
+              "options": [
+                "Я + nom/adj. sans « est »",
+                "Я есть студент toujours",
+                "Студент я есть",
+                "Нет verbe possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent de « être » omis sauf emphase/contrast."
+            },
+            {
+              "type": "single_choice",
+              "question": "« У меня есть … » exprime :",
+              "options": ["J'ai …", "Je suis …", "Je vais …", "Je vois …"],
+              "correctAnswers": [0],
+              "explanation": "Construction « chez moi il y a » = possession."
+            },
+            {
+              "type": "single_choice",
+              "question": "« У меня есть брат » =",
+              "options": [
+                "J'ai un frère",
+                "Mon frère est ici",
+                "Je suis frère",
+                "Frère mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession familiale."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я живу в … » =",
+              "options": [
+                "J'habite à / vis à",
+                "Je travaille à",
+                "Je nais à",
+                "Je meurs à"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville ou pays avec préposition appropriée (в/на)."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Говорить » =",
+              "options": ["Parler", "Manger", "Dormir", "Courir"],
+              "correctAnswers": [0],
+              "explanation": "« Я говорю по-русски »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Читать » =",
+              "options": ["Lire", "Écrire", "Écouter", "Chanter"],
+              "correctAnswers": [0],
+              "explanation": "Activité classe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Писать » =",
+              "options": ["Écrire", "Lire", "Parler", "Marcher"],
+              "correctAnswers": [0],
+              "explanation": "Cahier et tableau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Любить » =",
+              "options": ["Aimer", "Détester", "Oublier", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "« Я люблю русский язык »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Понимать » =",
+              "options": ["Comprendre", "Parler", "Demander", "Répondre"],
+              "correctAnswers": [0],
+              "explanation": "Lié à « я не понимаю »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Mots interrogatifs",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs correspondent à « qui » et « où » ?",
+              "options": ["кто", "что", "где", "когда"],
+              "correctAnswers": [0, 2],
+              "explanation": "Кто = qui ; где = où ; « что » = quoi ; « когда » = quand."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Где ты учишься? » demande :",
+              "options": [
+                "Où étudies-tu ?",
+                "Comment tu t'appelles ?",
+                "Quel âge ?",
+                "Quelle couleur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Учиться » = étudier."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Кто это? » =",
+              "options": ["Qui est-ce ?", "Qu'est-ce ?", "Où ?", "Quand ?"],
+              "correctAnswers": [0],
+              "explanation": "Identification personne."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Что это? » =",
+              "options": [
+                "Qu'est-ce que c'est ?",
+                "Qui ?",
+                "Pourquoi ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet ou concept."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Когда? » =",
+              "options": ["Quand ?", "Où ?", "Qui ?", "Comment ?"],
+              "correctAnswers": [0],
+              "explanation": "Temps."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Почему? » =",
+              "options": ["Pourquoi ?", "Où ?", "Quoi ?", "Qui ?"],
+              "correctAnswers": [0],
+              "explanation": "Cause."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Как? » =",
+              "options": ["Comment ?", "Combien ?", "Quoi ?", "Qui ?"],
+              "correctAnswers": [0],
+              "explanation": "Manière."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Куда? » =",
+              "options": [
+                "Vers où ? (direction)",
+                "D'où ?",
+                "Quand ?",
+                "Qui ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opposé approximatif de « откуда »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сколько стоит? » concerne :",
+              "options": ["Le prix", "L'âge", "Le nom", "La couleur"],
+              "correctAnswers": [0],
+              "explanation": "Achat carnet — vocabulaire utile."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Какой? / какая? » =",
+              "options": ["Quel / quelle", "Qui", "Où", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Accord en genre à venir — sens interrogatif « quel »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Nourriture et vie lycéenne",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels mots relèvent de la cantine / pause ?",
+              "options": ["обед", "вода", "хлеб", "доска"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Обед » et « хлеб » relèvent de la cantine ; « доска » = tableau."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Завтрак » =",
+              "options": ["Petit-déjeuner", "Déjeuner", "Dîner", "Goûter seul"],
+              "correctAnswers": [0],
+              "explanation": "Repas du matin."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Обед » =",
+              "options": [
+                "Déjeuner (midi)",
+                "Petit-déjeuner",
+                "Collation minuit",
+                "Cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas de midi."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вода » =",
+              "options": ["Eau", "Vin", "Jus obligatoire", "Lait seulement"],
+              "correctAnswers": [0],
+              "explanation": "Boisson de base."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Хлеб » =",
+              "options": ["Pain", "Viande", "Poisson", "Fruit"],
+              "correctAnswers": [0],
+              "explanation": "Aliment staple."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я хочу … » =",
+              "options": ["Je veux …", "Je dois …", "Je peux …", "Je sais …"],
+              "correctAnswers": [0],
+              "explanation": "Souhait à la cantine."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Голодный » (masc.) =",
+              "options": ["Affamé", "Fatigué", "Heureux", "En retard"],
+              "correctAnswers": [0],
+              "explanation": "Avant la pause."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Усталый » =",
+              "options": ["Fatigué", "Affamé", "Prêt", "En forme"],
+              "correctAnswers": [0],
+              "explanation": "Fin de journée lycée."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Вкусно » =",
+              "options": [
+                "C'est bon (au goût)",
+                "C'est cher",
+                "C'est froid",
+                "C'est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après repas."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Приятного аппetita » en russe courant :",
+              "options": [
+                "Приятного аппетита!",
+                "Доброй ночи!",
+                "До свидания!",
+                "Как дела?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule repas — emprunt reconnaissable."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Lieux et directions simples",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Quels lieux entourent le lycéen ?",
+              "options": ["школа", "библиотека", "дом", "луна"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Школа » et « дом » entourent le lycéen ; « луна » = lune, hors contexte quotidien."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Школа » =",
+              "options": ["École", "Hôpital", "Banque", "Aéroport"],
+              "correctAnswers": [0],
+              "explanation": "Établissement scolaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Дом » =",
+              "options": ["Maison / chez soi", "Devoir", "Stylo", "Bus"],
+              "correctAnswers": [0],
+              "explanation": "« Я иду домой » = je rentre."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Библиотека » =",
+              "options": ["Bibliothèque", "Boulangerie", "Piscine", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "Lecture et travail."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Улица » =",
+              "options": ["Rue", "Place", "Pont", "Tunnel"],
+              "correctAnswers": [0],
+              "explanation": "Adresse ville."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Здесь » =",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "Pointer le lycée sur plan."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Там » =",
+              "options": ["Là-bas", "Ici", "Devant moi seulement", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de lieu."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Налево » / « направо » =",
+              "options": [
+                "À gauche / à droite",
+                "Devant / derrière",
+                "Haut / bas",
+                "Entrer / sortir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Directions couloir."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Рядом » =",
+              "options": [
+                "À côté / près",
+                "Loin",
+                "Dedans",
+                "Dehors uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Рядом со школой »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Где туалет? » (demande polie « Где …? ») =",
+              "options": [
+                "Où sont les toilettes ?",
+                "Quelle heure ?",
+                "Qui es-tu ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire pratique voyage/lycée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan unité 2 : mots essentiels",
+          "questions": [
+            {
+              "type": "multiple_choice",
+              "question": "Pour décrire ta journée de seconde en russe simple, tu peux combiner :",
+              "options": [
+                "расписание + урок",
+                "семья + мне … лет",
+                "красный + ручка",
+                "кто + стол как verbe"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Emploi du temps + cours et couleur + stylo décrivent la journée ; « кто » n'est pas un verbe."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Я ученик, мне шестнадцать лет, я живу во Франции » contient :",
+              "options": [
+                "Statut, âge, lieu",
+                "Uniquement couleurs",
+                "Que des nombres",
+                "Rien sur soi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse identité lycéen."
+            },
+            {
+              "type": "single_choice",
+              "question": "« У меня есть учебник и тетрадь » =",
+              "options": [
+                "J'ai un manuel et un cahier",
+                "Je suis un manuel",
+                "Le prof a faim",
+                "La classe dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possession matériel scolaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Questionner un objet inconnu :",
+              "options": [
+                "Что это?",
+                "Кто это?",
+                "Где завтра?",
+                "Сколько лет?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet → « что »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Мой любимый предмет — русский язык » — « предмет » =",
+              "options": ["Matière (scolaire)", "Meuble", "Animal", "Fruit"],
+              "correctAnswers": [0],
+              "explanation": "Discipline favorite."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Любимый » ≈",
+              "options": ["Préféré / favori", "Dernier", "Premier", "Mauvais"],
+              "correctAnswers": [0],
+              "explanation": "Opinion lycéen."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Сейчас » =",
+              "options": ["Maintenant", "Hier", "Bientôt", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "« Сейчас урок »."
+            },
+            {
+              "type": "single_choice",
+              "question": "« Потом » =",
+              "options": ["Ensuite / après", "Avant", "Pendant", "Contre"],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement horaire."
+            },
+            {
+              "type": "single_choice",
+              "question": "Relier les deux unités du chapitre :",
+              "options": [
+                "Saluer puis décrire sa vie au lycée avec vocabulaire de base",
+                "Ignorer l'alphabet",
+                "Ne jamais vouvoyer",
+                "Apprendre uniquement des noms de planètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Progression pédagogique 2nde russe."
+            },
+            {
+              "type": "single_choice",
+              "question": "Encodage JSON : chaque quiz comporte 10 questions ; q1 = deux bonnes réponses en multiple_choice, q2–q10 = une seule — cela aide à :",
+              "options": [
+                "Varier la évaluation (attention vs recall)",
+                "Supprimer le cyrillique",
+                "Éviter les salutations",
+                "Remplacer le professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méta : diversité des formats dans Quizzly."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

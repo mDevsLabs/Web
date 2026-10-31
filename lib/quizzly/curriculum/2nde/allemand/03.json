@@ -1,0 +1,1953 @@
+{
+  "id": "2nde-allemand-03",
+  "year": "2nde",
+  "subject": "allemand",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Stundenplan — comprendre l'horaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Montag: Deutsch 8–9 Uhr, Mathe 9–10 Uhr. » Quels éléments sont indiqués ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Le lundi",
+                "L'allemand",
+                "Le dimanche",
+                "La piscine"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Dienstag: Sport in der Halle. » Où a lieu le cours ?",
+              "type": "single_choice",
+              "options": [
+                "Dans le gymnase",
+                "À la bibliothèque",
+                "Au rectorat",
+                "Dehors seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Die Stunde beginnt um halb neun. » À quelle heure ?",
+              "type": "single_choice",
+              "options": ["8 h 30", "9 h", "9 h 30", "8 h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Mittwoch: keine Schule — Elternabend. » Mercredi ?",
+              "type": "single_choice",
+              "options": [
+                "Pas de cours, soirée parents",
+                "Examen",
+                "Sortie ski",
+                "Vacances d'été"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Donnerstag: Englisch, dann Pause. » Après l'anglais ?",
+              "type": "single_choice",
+              "options": ["Récréation", "Cours de nuit", "Devoir oral", "Rien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Freitag: letzte Stunde Biologie. » Dernière matière vendredi ?",
+              "type": "single_choice",
+              "options": ["Biologie", "Musik", "Latin", "Cuisine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Raum 204, 2. Stock. » Localisation ?",
+              "type": "single_choice",
+              "options": ["2e étage", "Rez-de-chaussée", "Parking", "Stade"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Vertretung: Herr Weber statt Frau Klein. » Professeur présent ?",
+              "type": "single_choice",
+              "options": ["Herr Weber", "Frau Klein", "Directeur", "Personne"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Hausaufgaben: Seite 12 für Montag. » Consigne ?",
+              "type": "single_choice",
+              "options": [
+                "Travailler page 12",
+                "Oublier le livre",
+                "Annuler le cours",
+                "Rendre un DVD"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Klassenfahrt — Info in der Aula. » Où s'informer ?",
+              "type": "single_choice",
+              "options": ["Aula", "Cantine", "Piscine", "Gare"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Schulankündigung — lire une annonce",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Bibliothek heute bis 16 Uhr geöffnet. » Infos correctes ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Bibliothèque ouverte",
+                "Fermeture 16 h",
+                "Fermée toute la journée",
+                "Ouverte minuit"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Morgen kein Unterricht — Lehrerkonferenz. » Raison ?",
+              "type": "single_choice",
+              "options": [
+                "Conférence enseignants",
+                "Neige",
+                "Grève élèves",
+                "Fête nationale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Sportkleidung mitbringen! » À apporter ?",
+              "type": "single_choice",
+              "options": [
+                "Tenue de sport",
+                "Dictionnaire",
+                "PC portable",
+                "Timbres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Bus 10 Minuten später. » Le bus…",
+              "type": "single_choice",
+              "options": [
+                "A 10 min de retard",
+                "Part plus tôt",
+                "Annulé",
+                "Gratuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Chor-Anmeldung bis Freitag. » Date limite ?",
+              "type": "single_choice",
+              "options": ["Vendredi", "Lundi", "Dimanche", "Janvier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Verlorene Jacke — Sekretariat. » Où demander ?",
+              "type": "single_choice",
+              "options": ["Secrétariat", "Gymnase", "Toilettes", "Cour"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Elternsprechtag online buchen. » Prise de RDV ?",
+              "type": "single_choice",
+              "options": [
+                "En ligne",
+                "Par fax uniquement",
+                "Sans RDV",
+                "Par télégramme"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Im Schulhof Rauchen verboten. » Règle ?",
+              "type": "single_choice",
+              "options": [
+                "Interdiction de fumer",
+                "Zone fumeurs",
+                "Fête autorisée",
+                "Silence"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Kosten: 5 Euro pro Person. » Prix ?",
+              "type": "single_choice",
+              "options": ["5 € par personne", "Gratuit", "100 €", "1 centime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Fragen: Frau Hoffmann, Zimmer 12. » Contact ?",
+              "type": "single_choice",
+              "options": ["Frau Hoffmann", "Herr Müller", "Élèves", "Personne"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "E-Mail — comprendre un message",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Betreff: Treffen am Samstag » Objet du mail ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Rendez-vous samedi",
+                "Réunion samedi",
+                "Devoir lundi",
+                "Vacances"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Liebe Anna, kommst du um 15 Uhr? » Destinataire ?",
+              "type": "single_choice",
+              "options": ["Anna", "Tom seulement", "Le maire", "Professeur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Ich warte vor dem Kino. » Lieu ?",
+              "type": "single_choice",
+              "options": ["Devant le cinéma", "Gare", "École", "Montagne"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Ich bin krank, bleibe zu Hause. » Motif ?",
+              "type": "single_choice",
+              "options": ["Maladie", "Voyage", "Sport", "Fête"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Schick mir bitte die Hausaufgaben. » Demande ?",
+              "type": "single_choice",
+              "options": ["Les devoirs", "Argent", "Billet avion", "Chapeau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Viele Grüße, Tom » Formule de fin ?",
+              "type": "single_choice",
+              "options": [
+                "Salutations amicales",
+                "Insulte",
+                "Formule royale",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Antworte bis morgen. » Délai ?",
+              "type": "single_choice",
+              "options": ["Demain", "Dans un an", "Jamais", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Anhang: Ausflug.pdf » Pièce jointe ?",
+              "type": "single_choice",
+              "options": [
+                "Fichier sortie",
+                "Recette",
+                "Horaire bus",
+                "Photo chat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Neue Adresse: Wien. » Ville ?",
+              "type": "single_choice",
+              "options": ["Vienne", "Berlin", "Paris", "Tokyo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Ich freue mich auf deine Antwort! » Ton ?",
+              "type": "single_choice",
+              "options": ["Attente positive", "Colère", "Ennui", "Peur"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fahrplan — transport",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« ICE 842: 14:22, Gleis 7. » Infos ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Heure départ", "Voie 7", "Prix", "Nom chef"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Verspätung 15 Minuten. » Situation ?",
+              "type": "single_choice",
+              "options": ["Retard", "Avance", "Annulé", "À l'heure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Nächster Halt: München Hbf. » Arrêt ?",
+              "type": "single_choice",
+              "options": ["Munich", "Berlin", "Bâle", "Salzbourg"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Ausweis bereithalten. » Document ?",
+              "type": "single_choice",
+              "options": ["Pièce d'identité", "Sandwich", "Livre", "Ballon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Bus 12: Endstation Flughafen. » Destination ?",
+              "type": "single_choice",
+              "options": ["Aéroport", "Plage", "Musée", "Forêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Einsteigen vordere Tür. » Monter ?",
+              "type": "single_choice",
+              "options": ["Porte avant", "Toit", "Arrière seule", "Fenêtre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Fahrkarte entwerten! » Action ?",
+              "type": "single_choice",
+              "options": ["Composter ticket", "Jeter", "Manger", "Cacher"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« S3 Richtung Zürich. » Direction ?",
+              "type": "single_choice",
+              "options": ["Zürich", "Wien", "Köln", "Rom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Ausfall — Ersatzbus. » Solution ?",
+              "type": "single_choice",
+              "options": ["Bus remplacement", "Rien", "Hélicoptère", "Bateau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Kinder bis 14 halb preis. » Tarif enfants ?",
+              "type": "single_choice",
+              "options": ["Moitié prix", "Gratuit total", "Double", "Interdit"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Speiseplan — cantine",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Montag: Gemüsesuppe, Salat, Obst. » Au menu ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Soupe légumes", "Salade", "Pizza", "Steak"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Dienstag vegetarisches Gericht. » Option ?",
+              "type": "single_choice",
+              "options": ["Végétarien", "Viande seule", "Rien", "Bonbons"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Allergiker an der Kasse melden. » Allergiques ?",
+              "type": "single_choice",
+              "options": [
+                "Se signaler",
+                "Se cacher",
+                "Ne pas manger jamais",
+                "Partir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Wasser, Apfelsaft. » Boissons ?",
+              "type": "single_choice",
+              "options": ["Eau, jus pomme", "Café", "Soda seul", "Vin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Essenszeit 12:00–13:30. » Horaire ?",
+              "type": "single_choice",
+              "options": ["Midi–13h30", "8 h", "Minuit", "Soir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Tablett zurückbringen. » Consigne ?",
+              "type": "single_choice",
+              "options": ["Rapporter plateau", "Laisser", "Casser", "Vendre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Schülerpreis 3,50 €. » Tarif élève ?",
+              "type": "single_choice",
+              "options": ["3,50 €", "Gratuit", "50 €", "0,10 €"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Freitag Fisch statt Fleisch. » Vendredi ?",
+              "type": "single_choice",
+              "options": ["Poisson", "Viande", "Rien", "Gâteau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Bio aus der Region. » Produits ?",
+              "type": "single_choice",
+              "options": [
+                "Bio locaux",
+                "Import lointain",
+                "Plastique",
+                "Inconnus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Menü kann sich ändern. » Menu ?",
+              "type": "single_choice",
+              "options": ["Peut changer", "Fixe 10 ans", "Secret", "Vide"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Einladung — invitation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Eingeladen zu Lisas Party, 20. April. » De quoi ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Fête Lisa", "Invitation", "Examen", "Cours"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« 18 Uhr bei mir zu Hause. » Quand et où ?",
+              "type": "single_choice",
+              "options": ["18 h chez l'hôte", "8 h école", "Midi gare", "Nuit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Antwort bis 10. April. » RSVP ?",
+              "type": "single_choice",
+              "options": ["Avant 10 avril", "20 avril", "Mai", "Jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Mitbringen: Snacks ok. » Apporter ?",
+              "type": "single_choice",
+              "options": [
+                "Snacks possibles",
+                "Rien autorisé",
+                "Devoir",
+                "Chien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Dresscode: casual. » Tenue ?",
+              "type": "single_choice",
+              "options": ["Décontractée", "Smoking", "Uniforme", "Armure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« München, Seestraße 8. » Ville ?",
+              "type": "single_choice",
+              "options": ["Munich", "Vienne", "Genève", "Hambourg"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Abholen um 22 Uhr. » Fin ?",
+              "type": "single_choice",
+              "options": ["22 h", "6 h", "14 h", "3 h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Keine Geschenke nötig. » Cadeaux ?",
+              "type": "single_choice",
+              "options": [
+                "Pas obligatoires",
+                "Obligatoires",
+                "Interdits punis",
+                "Or seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Bei Regen drinnen. » Pluie ?",
+              "type": "single_choice",
+              "options": ["Intérieur", "Dehors", "Annulé", "Piscine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Fragen: anrufen. » Contact ?",
+              "type": "single_choice",
+              "options": ["Téléphoner", "Ignorer", "Crier", "Courrier seul"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Hinweise — consignes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Brandfall: Notausgang, kein Aufzug. » Urgence ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Sortie secours",
+                "Pas d'ascenseur",
+                "Ascenseur",
+                "Rester"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Handys aus im Unterricht. » Téléphones ?",
+              "type": "single_choice",
+              "options": ["Éteints", "Allumés", "Obligatoires", "Volume max"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Flasche nur Wasser. » Boisson ?",
+              "type": "single_choice",
+              "options": ["Eau", "Soda", "Jus rouge", "Café"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Pünktlichkeit wichtig. » Valeur ?",
+              "type": "single_choice",
+              "options": ["Ponctualité", "Retard", "Bruit", "Sommeil"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Hausaufgaben rechtzeitig. » Devoirs ?",
+              "type": "single_choice",
+              "options": ["À temps", "Jamais", "Après vacances", "Oral seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Labor: Schutzbrille. » Labo ?",
+              "type": "single_choice",
+              "options": ["Lunettes protection", "Chapeau", "Sandales", "Rien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Ruhe in der Bibliothek! » Bibliothèque ?",
+              "type": "single_choice",
+              "options": ["Silence", "Cris", "Musique", "Course"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Müll richtig trennen. » Déchets ?",
+              "type": "single_choice",
+              "options": ["Tri", "Par terre", "Brûler", "Mélanger"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Ausweis dabei. » Document ?",
+              "type": "single_choice",
+              "options": ["Badge / ID", "Rien", "Passeport seul", "Permis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Krank: Eltern informieren. » Malade ?",
+              "type": "single_choice",
+              "options": ["Prévenir", "Silence", "Venir quand même", "Fuir"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Kurzmeldung — info presse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Jugendliche aus Österreich, Robotik. » Sujet ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Autriche", "Robotique", "Foot", "Mode"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Festival Basel, Freitag. » Lieu ?",
+              "type": "single_choice",
+              "options": ["Bâle", "Berlin", "Paris", "Rome"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Eintritt frei mit Schülerausweis. » Entrée ?",
+              "type": "single_choice",
+              "options": [
+                "Gratuit avec badge",
+                "50 €",
+                "Interdit",
+                "Adultes seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Morgen sonnig, 22 Grad. » Météo ?",
+              "type": "single_choice",
+              "options": ["Soleil 22 °C", "Neige", "Orage -10", "Pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« App zum Deutschlernen. » App ?",
+              "type": "single_choice",
+              "options": ["Apprendre allemand", "Cuisine", "Voiture", "Sport"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Recycling Schweiz steigt. » Thème ?",
+              "type": "single_choice",
+              "options": ["Recyclage Suisse", "Guerre", "Cinéma", "Mode"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Konzert abgesagt, Tickets zurück. » Concert ?",
+              "type": "single_choice",
+              "options": [
+                "Annulé remboursé",
+                "Complet",
+                "Gratuit extra",
+                "Report inconnu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Lesung Buchladen 19 Uhr. » Événement ?",
+              "type": "single_choice",
+              "options": ["Lecture librairie", "Match", "Natation", "Auto"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Infos: www.stadt.de/jugend » Source ?",
+              "type": "single_choice",
+              "options": ["Site web", "Sous lit", "Nulle part", "Radio seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Redaktion München. » Auteur ?",
+              "type": "single_choice",
+              "options": [
+                "Rédaction Munich",
+                "Élève",
+                "Robot",
+                "Anonyme total"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Schild — panneau magasin",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Geöffnet 9–18, Sonntag zu. » Horaires ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["9–18 h", "Fermé dimanche", "24 h/24", "Lundi fermé"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« -20 % auf Bücher. » Promo ?",
+              "type": "single_choice",
+              "options": [
+                "-20 % livres",
+                "-20 % chaussures",
+                "Aucune",
+                "+20 %"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Nur Barzahlung. » Paiement ?",
+              "type": "single_choice",
+              "options": ["Espèces", "Carte seule", "Chèque voyage", "Crypto"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Anprobe erlaubt. » Essayage ?",
+              "type": "single_choice",
+              "options": [
+                "Autorisé",
+                "Interdit",
+                "Dehors seulement",
+                "Payant 100 €"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Umtausch 14 Tage mit Bon. » Échange ?",
+              "type": "single_choice",
+              "options": ["14 j + ticket", "Jamais", "Sans ticket", "1 an"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Kein Essen mitbringen. » Nourriture ?",
+              "type": "single_choice",
+              "options": [
+                "Ne pas apporter",
+                "Buffet libre",
+                "Cuisiner",
+                "Obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« WLAN gratis, Passwort Kasse. » Wi-Fi ?",
+              "type": "single_choice",
+              "options": [
+                "Gratuit, MDP caisse",
+                "Interdit",
+                "10 €/min",
+                "Absent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Bio-Siegel auf Produkten. » Label ?",
+              "type": "single_choice",
+              "options": ["Bio", "Pétrole", "Tabac", "Aucun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Toilette 1. Stock. » WC clients ?",
+              "type": "single_choice",
+              "options": ["1er étage", "Sous-sol", "Dehors", "Inexistants"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Maskenpflicht aufgehoben. » Masques ?",
+              "type": "single_choice",
+              "options": [
+                "Obligation levée",
+                "Obligatoires",
+                "Double",
+                "Interdit porter"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Programm — sortie scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« 10:00 Museum, 12:30 Essen. » Programme ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Visite musée", "Repas", "Examen", "Piano"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Treffpunkt Hbf Gleis 3. » RDV ?",
+              "type": "single_choice",
+              "options": ["Gare voie 3", "Aéroport", "Plage", "Forêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Wetterfeste Kleidung. » Vêtements ?",
+              "type": "single_choice",
+              "options": [
+                "Adaptés météo",
+                "Robe soirée",
+                "Maillot seul",
+                "Sandales"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Fotos ok, kein Blitz. » Photos ?",
+              "type": "single_choice",
+              "options": [
+                "Sans flash",
+                "Interdites",
+                "Flash obligatoire",
+                "Drone"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Rückkehr ca. 18 Uhr. » Retour ?",
+              "type": "single_choice",
+              "options": [
+                "Vers 18 h",
+                "6 h matin",
+                "Semaine prochaine",
+                "Minuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Max. 25 Schüler. » Groupe ?",
+              "type": "single_choice",
+              "options": ["25 max", "5", "1000", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Begleitung Frau Berger. » Accompagnatrice ?",
+              "type": "single_choice",
+              "options": ["Frau Berger", "Personne", "Élèves seuls", "Inconnu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Notfallnummer auf Zettel. » Urgence ?",
+              "type": "single_choice",
+              "options": ["Sur feuille", "Absente", "Secrète", "Fausse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Änderungen möglich. » Programme ?",
+              "type": "single_choice",
+              "options": ["Modifiable", "Fixe", "Secret", "Vide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Ziel: Schloss Neuschwanstein. » Lieu ?",
+              "type": "single_choice",
+              "options": [
+                "Château Neuschwanstein",
+                "Tour Eiffel",
+                "Big Ben",
+                "Colisée"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Deutschland — géographie et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Berlin ist Hauptstadt Deutschlands. » Vrai ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Berlin capitale",
+                "En Allemagne",
+                "En Suisse",
+                "Capitale Vienne"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Deutschland in Mitteleuropa. » Position ?",
+              "type": "single_choice",
+              "options": [
+                "Europe centrale",
+                "Amérique",
+                "Afrique",
+                "Antarctique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Flagge Schwarz-Rot-Gold. » Drapeau ?",
+              "type": "single_choice",
+              "options": [
+                "Noir rouge or",
+                "Bleu blanc rouge",
+                "Vert blanc",
+                "Rouge seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Rhein durch mehrere Länder. » Le Rhin ?",
+              "type": "single_choice",
+              "options": [
+                "Frontière / plusieurs pays",
+                "Montagne",
+                "Océan",
+                "Désert"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Bayern, Oktoberfest München. » Région ?",
+              "type": "single_choice",
+              "options": ["Bavière", "Alsace FR", "Suisse", "Autriche seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Über 80 Millionen Einwohner. » Population ?",
+              "type": "single_choice",
+              "options": [
+                "> 80 millions",
+                "500 000",
+                "2 millions",
+                "1 milliard"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Amtssprache Deutsch. » Langue ?",
+              "type": "single_choice",
+              "options": ["Allemand", "Français seul", "Latin", "Arabe seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Hamburg wichtiger Hafen. » Hambourg ?",
+              "type": "single_choice",
+              "options": ["Grand port", "Désert", "Volcan", "Lac seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« 16 Bundesländer. » Länder ?",
+              "type": "single_choice",
+              "options": ["16", "3", "50", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Währung Euro. » Monnaie ?",
+              "type": "single_choice",
+              "options": ["Euro", "Franc suisse", "Dollar", "Yen"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Österreich — Vienne et culture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Wien Hauptstadt Österreichs. » Repères ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Vienne", "Autriche", "Berlin", "Zürich capitale"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Mozart in Salzburg geboren. » Naissance ?",
+              "type": "single_choice",
+              "options": ["Salzbourg", "Paris", "Tokyo", "Le Caire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Alpen großer Teil des Landes. » Relief ?",
+              "type": "single_choice",
+              "options": ["Alpes", "Plaine seule", "Océan", "Dune"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Nachbarland Deutschland. » Voisin ?",
+              "type": "single_choice",
+              "options": ["Allemagne", "Brésil", "Japon", "Aucun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Wiener Schnitzel bekannt. » Plat ?",
+              "type": "single_choice",
+              "options": ["Escalope viennoise", "Sushi", "Tacos", "Ramen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Donau fließt durch Wien. » Fleuve ?",
+              "type": "single_choice",
+              "options": ["Danube", "Nil", "Amazone", "Seine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Amtssprache Deutsch. » Langue officielle ?",
+              "type": "single_choice",
+              "options": ["Allemand", "Hongrois seul", "Anglais seul", "Latin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Euro seit 2002. » Monnaie ?",
+              "type": "single_choice",
+              "options": ["Euro", "Schilling encore", "Dollar", "Franc"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Bundesländer: 9. » Régions ?",
+              "type": "single_choice",
+              "options": ["9 Länder", "16", "1", "50"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Ski in den Alpen beliebt. » Sport ?",
+              "type": "single_choice",
+              "options": ["Ski alpin", "Surf", "Cricket", "Polo"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Schweiz — langues et diversité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Schweiz: Deutsch, Französisch, Italienisch, Rätoromanisch. » Vrai ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Quatre langues nationales",
+                "Multilingue",
+                "Une seule langue",
+                "Arabe officiel"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Bern ist Bundesstadt. » Capitale politique ?",
+              "type": "single_choice",
+              "options": ["Berne", "Zürich", "Genève", "Paris"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Franken (CHF) Währung. » Monnaie ?",
+              "type": "single_choice",
+              "options": ["Franc suisse", "Euro seul", "Dollar", "Yen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« In Zürich spricht man Deutsch. » Canton ?",
+              "type": "single_choice",
+              "options": [
+                "Allemand à Zürich",
+                "Italien seul",
+                "Latin",
+                "Russe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Genf: viele internationale Organisationen. » Genève ?",
+              "type": "single_choice",
+              "options": [
+                "Organisations internationales",
+                "Désert",
+                "Pétrole",
+                "Usine seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Direkte Demokratie: Abstimmungen. » Politique ?",
+              "type": "single_choice",
+              "options": [
+                "Votes populaires",
+                "Dictature",
+                "Pas de vote",
+                "Roi absolu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Alpen bedecken viel Land. » Relief ?",
+              "type": "single_choice",
+              "options": ["Montagne alpine", "Plaine", "Océan", "Volcan"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Pünktliche Züge bekannt. » Réputation transports ?",
+              "type": "single_choice",
+              "options": [
+                "Ponctualité",
+                "Toujours en retard",
+                "Inexistants",
+                "Gratuits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Nachbarn: DE, FR, IT, AT, LI. » Voisins ?",
+              "type": "single_choice",
+              "options": [
+                "Allemagne France Italie Autriche Liechtenstein",
+                "Seulement Espagne",
+                "Aucun",
+                "USA"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Schokolade und Uhren — Symbole. » Symboles ?",
+              "type": "single_choice",
+              "options": ["Chocolat et montres", "Pétrole", "Riz", "Thé seul"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Feste — traditions germanophones",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Weihnachten: Adventskranz, Nikolaus. » Noël ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Couronne Avent",
+                "Saint-Nicolas",
+                "Halloween seul",
+                "Pâques"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Oktoberfest in München. » Fête ?",
+              "type": "single_choice",
+              "options": [
+                "Oktoberfest Munich",
+                "Carnaval Rio",
+                "Diwali",
+                "Hanoucca seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Karneval in Köln — Rosenmontag. » Ville ?",
+              "type": "single_choice",
+              "options": ["Cologne", "Tokyo", "Le Caire", "Sydney"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Ostern: Ostereier suchen. » Pâques ?",
+              "type": "single_choice",
+              "options": [
+                "Chasse aux œufs",
+                "Sapin",
+                "Feux artifice seul",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Tag der Deutschen Einheit: 3. Oktober. » Fête nationale DE ?",
+              "type": "single_choice",
+              "options": [
+                "3 octobre",
+                "14 juillet",
+                "4 juillet",
+                "1er mai seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Nationalfeiertag Österreich: 26. Oktober. » Autriche ?",
+              "type": "single_choice",
+              "options": [
+                "26 octobre",
+                "25 décembre",
+                "1er janvier seul",
+                "17 mars"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« 1. August Schweizer Nationalfeiertag. » Suisse ?",
+              "type": "single_choice",
+              "options": ["1er août", "11 novembre", "2 février", "30 avril"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Silvester: Feuerwerk um Mitternacht. » Nouvel An ?",
+              "type": "single_choice",
+              "options": ["Feux minuit", "Midi", "Matin", "Pas de fête"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Maifest — Tanz um den Maibaum. » Mai ?",
+              "type": "single_choice",
+              "options": ["Arbre de mai", "Halloween", "Noël", "Pâques"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Fasching: Kostüme und Umzüge. » Carnaval ?",
+              "type": "single_choice",
+              "options": [
+                "Déguisements défilés",
+                "Silence",
+                "Examen",
+                "Jeûne strict"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Schule — éducation comparée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« In DE Pflichtschule bis Klasse 9/10. » Scolarité ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "École obligatoire",
+                "Jusqu'à 9e/10e",
+                "Jamais obligatoire",
+                "Université dès 6 ans"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Gymnasium: Abitur am Ende. » Gymnasium ?",
+              "type": "single_choice",
+              "options": [
+                "Baccalauréat Abitur",
+                "Permis conduire",
+                "Apprentissage seul",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Schultasche und Hefte wichtig. » Matériel ?",
+              "type": "single_choice",
+              "options": [
+                "Cartable cahiers",
+                "Ordinateur seul interdit livres",
+                "Rien",
+                "Télé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Klassenarbeit — schriftliche Prüfung. » Devoir ?",
+              "type": "single_choice",
+              "options": ["Contrôle écrit", "Sport seul", "Musique", "Cuisine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Ferien: Sommer ca. 6 Wochen. » Vacances été ?",
+              "type": "single_choice",
+              "options": ["Environ 6 semaines", "1 jour", "12 mois", "Aucune"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Schülerfreundliche Öffnungszeiten Bibliothek. » Bibliothèque ?",
+              "type": "single_choice",
+              "options": [
+                "Horaires pour élèves",
+                "Fermée",
+                "Nuit seule",
+                "Adultes seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« In CH verschiedene Schulsysteme je Kanton. » Suisse ?",
+              "type": "single_choice",
+              "options": [
+                "Systèmes par canton",
+                "Un seul pays sans cantons",
+                "Pas d'école",
+                "Identique Japon"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Matura in AT nach Oberstufe. » Autriche fin lycée ?",
+              "type": "single_choice",
+              "options": ["Matura", "Abitur DE seul nom", "Rien", "Permis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Klassenfahrt — Ausflug mit Lehrer. » Sortie classe ?",
+              "type": "single_choice",
+              "options": [
+                "Voyage scolaire encadré",
+                "Seul sans adulte",
+                "Interdit",
+                "Prison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Noten: 1 sehr gut, 6 ungenügend (DE). » Notes DE ?",
+              "type": "single_choice",
+              "options": [
+                "1 = très bien",
+                "6 = très bien",
+                "Pas de notes",
+                "Couleurs seules"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mobilité — D-A-CH",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« ICE schnelle Züge in Deutschland. » Train ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "ICE rapide",
+                "Allemagne",
+                "Bateau",
+                "Téléphérique seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« ÖBB Züge in Österreich. » Autriche ?",
+              "type": "single_choice",
+              "options": [
+                "Chemins de fer ÖBB",
+                "Pas de trains",
+                "Métro seul",
+                "Camels"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« SBB in der Schweiz. » Suisse ?",
+              "type": "single_choice",
+              "options": [
+                "CFF SBB",
+                "Pas de rail",
+                "Avion obligatoire",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Fahrradwege in vielen Städten. » Vélo ?",
+              "type": "single_choice",
+              "options": ["Pistes cyclables", "Interdit", "Autoroute", "Ciel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Umweltzone — saubere Plakette Auto. » Zone ?",
+              "type": "single_choice",
+              "options": ["Vignette pollution", "Plage", "Ski", "Musée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Generalabonnement in der Schweiz. » Abo CH ?",
+              "type": "single_choice",
+              "options": [
+                "Pass transport général",
+                "Ticket une ville",
+                "Gratuit total",
+                "Interdit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Autobahn Deutschland oft ohne Limit. » Autoroute DE ?",
+              "type": "single_choice",
+              "options": [
+                "Sections sans limite",
+                "20 km/h partout",
+                "Interdite",
+                "Piétons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Semesterticket für Studenten. » Étudiants ?",
+              "type": "single_choice",
+              "options": ["Ticket semestre", "Avion", "Hélico", "Rien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Öffentlicher Verkehr gut ausgebaut. » Transports publics ?",
+              "type": "single_choice",
+              "options": [
+                "Réseau développé",
+                "Inexistants",
+                "Chameaux",
+                "Un bus/an"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« BahnCard Rabatt in DE. » Réduction ?",
+              "type": "single_choice",
+              "options": [
+                "Carte réduction rail",
+                "Restaurant",
+                "Cinéma seul",
+                "Aucune"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Küche — goûts régionaux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Brezel und Wurst beliebt in DE. » Allemagne ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Bretzel", "Saucisse", "Sushi seul", "Tacos seul"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Sachertorte aus Wien. » Gâteau ?",
+              "type": "single_choice",
+              "options": [
+                "Sachertorte Vienne",
+                "Crêpe Bretagne",
+                "Mochi",
+                "Brownie seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Fondue und Raclette in der Schweiz. » Suisse ?",
+              "type": "single_choice",
+              "options": ["Fondue raclette", "Pizza seule", "Curry", "Ramen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Kartoffeln oft Beilage. » Accompagnement ?",
+              "type": "single_choice",
+              "options": [
+                "Pommes de terre",
+                "Riz seul toujours",
+                "Rien",
+                "Bonbons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Apfelstrudel — süßes Gericht. » Dessert ?",
+              "type": "single_choice",
+              "options": ["Strudel pommes", "Soupe", "Steak", "Salade"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Vegetarische Optionen heute üblich. » Régimes ?",
+              "type": "single_choice",
+              "options": [
+                "Options végétariennes",
+                "Impossible",
+                "Interdit",
+                "Viande seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Brot wichtig — viele Sorten. » Pain ?",
+              "type": "single_choice",
+              "options": ["Central, variétés", "Absent", "Interdit", "Liquide"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Kaffee und Kuchen am Nachmittag. » Goûter ?",
+              "type": "single_choice",
+              "options": [
+                "Café gâteau après-midi",
+                "Minuit seul",
+                "Jamais",
+                "Sport"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Bio-Markt wächst. » Tendance ?",
+              "type": "single_choice",
+              "options": [
+                "Bio en croissance",
+                "Disparaît",
+                "Interdit",
+                "Plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Trinkgeld optional im Restaurant. » Pourboire ?",
+              "type": "single_choice",
+              "options": [
+                "Facultatif",
+                "Obligatoire 50 %",
+                "Interdit",
+                "Illégal"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Medien — jeunes et information",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Tagesschau — Nachrichten im Fernsehen. » Média ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": ["Journal TV", "Allemagne", "Roman", "Carte"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Podcasts zum Lernen beliebt. » Podcasts ?",
+              "type": "single_choice",
+              "options": [
+                "Apprentissage",
+                "Interdits",
+                "Seulement sport",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Jugendmagazine online und Print. » Presse jeunes ?",
+              "type": "single_choice",
+              "options": [
+                "En ligne et papier",
+                "Interdite",
+                "Adultes seuls",
+                "Latin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Öffentlich-rechtliche Sender ARD ZDF. » TV public DE ?",
+              "type": "single_choice",
+              "options": ["ARD ZDF", "Un seul canal", "Aucun", "Netflix seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Fake News erkennen lernen. » Compétence ?",
+              "type": "single_choice",
+              "options": [
+                "Désinformation",
+                "Copier devoirs",
+                "Dormir",
+                "Ignorer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Social Media Regeln in der Schule. » Réseaux ?",
+              "type": "single_choice",
+              "options": [
+                "Règles école",
+                "Obligatoires cours",
+                "Interdits partout vie",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Deutschsprachige YouTuber für Schüler. » Contenu ?",
+              "type": "single_choice",
+              "options": ["Créateurs DE", "Seulement EN", "Interdit", "Aucun"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Radio: Ö3 in Österreich. » Radio AT ?",
+              "type": "single_choice",
+              "options": ["Ö3 Autriche", "BBC seul", "Silence", "FM interdit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« SRG SSR Medien in der Schweiz. » Médias CH ?",
+              "type": "single_choice",
+              "options": [
+                "SRG SSR",
+                "Pas de média",
+                "Un blog",
+                "Télé russe seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Lesen fördert Sprache. » Lecture ?",
+              "type": "single_choice",
+              "options": ["Aide la langue", "Inutile", "Interdit", "Nuisible"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Umwelt — engagement D-A-CH",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Recycling Pflicht in vielen Städten. » Recyclage ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Obligatoire souvent",
+                "Tri des déchets",
+                "Jeter tout",
+                "Brûler"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« Erneuerbare Energie wächst. » Énergie ?",
+              "type": "single_choice",
+              "options": [
+                "Renouvelables",
+                "Charbon seul",
+                "Pétrole seul",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Mülltrennung: Papier, Glas, Rest. » Tri ?",
+              "type": "single_choice",
+              "options": [
+                "Papier verre reste",
+                "Tout ensemble",
+                "Interdit",
+                "Ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Naturschutzgebiete in Alpen. » Protection ?",
+              "type": "single_choice",
+              "options": ["Réserves nature", "Usines", "Parking", "Mall"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Fahrgemeinschaft spart CO2. » Covoiturage ?",
+              "type": "single_choice",
+              "options": ["Réduit CO2", "Augmente", "Interdit", "Rien"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Plastik reduzieren — Trend. » Plastique ?",
+              "type": "single_choice",
+              "options": ["Réduire", "Plus", "Obligatoire partout", "Ignorer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Klimastreik Fridays for Future bekannt. » Mouvement ?",
+              "type": "single_choice",
+              "options": ["Grèves climat", "Sport", "Mode", "Cuisine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Wasser sparen Tipps im Haushalt. » Eau ?",
+              "type": "single_choice",
+              "options": ["Économiser", "Gaspiller", "Interdit", "Polluer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« ÖPNV statt Auto — Kampagne. » Message ?",
+              "type": "single_choice",
+              "options": [
+                "Transports publics",
+                "Voiture seule",
+                "Avion court",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Schulprojekt: Schulgarten. » Projet ?",
+              "type": "single_choice",
+              "options": ["Jardin école", "Parking", "Casino", "Usine"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Reisen — découvrir l'espace D-A-CH",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Reisepass oder Personalausweis mitnehmen. » Voyage ? (Deux réponses.)",
+              "type": "multiple_choice",
+              "options": [
+                "Passeport / carte ID",
+                "Document identité",
+                "Rien",
+                "Jouet"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "question": "« In der EU oft kein Zoll für Touristen. » Douane UE ?",
+              "type": "single_choice",
+              "options": [
+                "Souvent pas de douane",
+                "Toujours lourde",
+                "Interdit voyager",
+                "Taxe 100 %"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "question": "« Hostel günstig für Jugendliche. » Hébergement ?",
+              "type": "single_choice",
+              "options": [
+                "Auberge jeunesse",
+                "Palais seul",
+                "Gratuit luxe",
+                "Interdit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "question": "« Salzburg Altstadt UNESCO. » Patrimoine ?",
+              "type": "single_choice",
+              "options": ["Centre historique", "Usine", "Parking", "Mall"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "question": "« Zürichsee — beliebtes Ausflugsziel. » Lac ?",
+              "type": "single_choice",
+              "options": ["Lac Zürich", "Mer Morte", "Pacifique", "Nil"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "question": "« Berlin Mauer Geschichte lernen. » Berlin ?",
+              "type": "single_choice",
+              "options": ["Mur histoire", "Plage", "Désert", "Volcan"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "question": "« Respekt Regeln in Museen. » Musée ?",
+              "type": "single_choice",
+              "options": ["Respect règles", "Cris", "Toucher tout", "Course"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "question": "« Reiseversicherung empfohlen. » Assurance ?",
+              "type": "single_choice",
+              "options": [
+                "Recommandée",
+                "Interdite",
+                "Inutile toujours",
+                "Obligatoire prison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "question": "« Mehrsprachige Schilder in der Schweiz. » Panneaux CH ?",
+              "type": "single_choice",
+              "options": [
+                "Plusieurs langues",
+                "Latin seul",
+                "Aucun",
+                "Emoji seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "question": "« Austausch Schüler — Austauschprogramm. » Échange ?",
+              "type": "single_choice",
+              "options": [
+                "Programme échange",
+                "Interdit",
+                "Adultes seuls",
+                "Un jour max"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

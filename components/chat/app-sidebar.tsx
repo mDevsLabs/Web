@@ -5,6 +5,7 @@ import {
   ArrowRightIcon,
   CalendarClockIcon,
   ChevronDownIcon,
+  FileTextIcon,
   FolderKanbanIcon,
   LibraryIcon,
   LockIcon,
@@ -700,6 +701,23 @@ export function AppSidebar({
                     >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Pages"
+                  >
+                    <Link
+                      data-onboarding="nav-pages"
+                      href="/pages"
+                      onClick={handleNavClick}
+                    >
+                      <FileTextIcon className="size-4" />
+                      <span>Pages</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

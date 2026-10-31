@@ -25,7 +25,7 @@ describe("public/plugins/", () => {
   it("expose un fichier pour chaque connecteur déclaré", () => {
     const missing = INTEGRATION_PROVIDERS.filter((descriptor) => {
       const src = integrationLogoSrc(descriptor.id);
-      return !(src.startsWith("/plugins/") || src.startsWith("/mcp/"));
+      return !src.startsWith("/plugins/");
     });
     expect(missing.map((item) => item.id)).toEqual([]);
     for (const descriptor of INTEGRATION_PROVIDERS) {

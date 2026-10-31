@@ -1,0 +1,2363 @@
+{
+  "id": "4e-physique-chimie-03",
+  "year": "4e",
+  "subject": "physique-chimie",
+  "title": "Lumière et son",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Propagation de la lumière",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Sources et objets lumineux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels corps sont des sources primaires de lumière visible ?",
+              "type": "multiple_choice",
+              "options": [
+                "Le Soleil",
+                "La Lune",
+                "Une LED allumée",
+                "Un livre"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le Soleil et une LED émettent de la lumière ; la Lune et le livre ne font que la renvoyer."
+            },
+            {
+              "id": "q2",
+              "question": "Un objet lumineux est un objet qui…",
+              "type": "single_choice",
+              "options": [
+                "Renvoie toujours la lumière",
+                "Émet de la lumière",
+                "Est forcément chaud",
+                "Est transparent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Source signifie émission propre de lumière."
+            },
+            {
+              "id": "q3",
+              "question": "La Lune brillante la nuit…",
+              "type": "single_choice",
+              "options": [
+                "Émet comme le Soleil",
+                "Réfléchit la lumière solaire",
+                "Brille sans lumière extérieure",
+                "Absorbe toute lumière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle diffuse vers nous la lumière reçue du Soleil."
+            },
+            {
+              "id": "q4",
+              "question": "Une ampoule incandescente allumée est…",
+              "type": "single_choice",
+              "options": [
+                "Un diffuseur seulement",
+                "Une source lumineuse",
+                "Un filtre",
+                "Un miroir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le filament chaud émet un rayonnement visible."
+            },
+            {
+              "id": "q5",
+              "question": "Voir un mur blanc éclairé suppose que le mur…",
+              "type": "single_choice",
+              "options": [
+                "Émet de la lumière",
+                "Renvoie une partie de la lumière reçue",
+                "Est une source",
+                "Est dans le noir total"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Objet non lumineux : visible par réflexion ou diffusion."
+            },
+            {
+              "id": "q6",
+              "question": "Une étoile est classée comme…",
+              "type": "single_choice",
+              "options": [
+                "Objet sombre",
+                "Source lumineuse",
+                "Miroir",
+                "Transparent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle produit son propre rayonnement."
+            },
+            {
+              "id": "q7",
+              "question": "Écran de téléphone allumé :",
+              "type": "single_choice",
+              "options": [
+                "Source lumineuse",
+                "Objet invisible",
+                "Absorbeur total",
+                "Miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pixels émettent de la lumière."
+            },
+            {
+              "id": "q8",
+              "question": "Pièce sans source, rideaux fermés : les objets ne se voient pas car…",
+              "type": "single_choice",
+              "options": [
+                "Ils deviennent transparents",
+                "Aucune lumière n’atteint l’œil depuis eux",
+                "L’air les cache",
+                "Ils perdent leur couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut de la lumière renvoyée ou émise vers l’œil."
+            },
+            {
+              "id": "q9",
+              "question": "Feu de cheminée visible la nuit grâce à…",
+              "type": "single_choice",
+              "options": [
+                "Réflexion lunaire",
+                "Émission de lumière par la flamme",
+                "Absorption",
+                "Ombre portée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La combustion émet de la lumière."
+            },
+            {
+              "id": "q10",
+              "question": "Miroir dans la lumière du jour :",
+              "type": "single_choice",
+              "options": [
+                "Source",
+                "Réfléchit la lumière",
+                "Émet de la lumière",
+                "Transparent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il renvoie la lumière incidente."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Propagation rectiligne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans un milieu transparent homogène, la lumière se propage…",
+              "type": "multiple_choice",
+              "options": [
+                "En ligne droite",
+                "Sans changer de direction dans ce milieu",
+                "En zigzag obligé",
+                "Uniquement le long des parois"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Propagation rectiligne : trajectoire droite tant que le milieu est uniforme."
+            },
+            {
+              "id": "q2",
+              "question": "Un rayon lumineux modélise…",
+              "type": "single_choice",
+              "options": [
+                "Un fil",
+                "La direction de la lumière",
+                "Un son",
+                "Un courant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C’est une ligne orientée suivie par la lumière."
+            },
+            {
+              "id": "q3",
+              "question": "Faisceau visible dans l’air poussiéreux car…",
+              "type": "single_choice",
+              "options": [
+                "Poussière diffuse vers l’œil",
+                "Air lumineux",
+                "Rayons courbes",
+                "Couleur du laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particules renvoient une fraction du faisceau."
+            },
+            {
+              "id": "q4",
+              "question": "Trois trous alignés avec trois sources : lumière passe si…",
+              "type": "single_choice",
+              "options": [
+                "Propagation rectiligne",
+                "Réfraction nulle part",
+                "Son rapide",
+                "Miroir présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alignement source–trous–œil vérifie la rectitude."
+            },
+            {
+              "id": "q5",
+              "question": "Lumière solaire dans le vide…",
+              "type": "single_choice",
+              "options": [
+                "Ne se propage pas",
+                "Se propage en ligne droite",
+                "Nécessite l’air",
+                "Tourne en spirale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le vide n’arrête pas la lumière."
+            },
+            {
+              "id": "q6",
+              "question": "Ombre nette d’un opaque :",
+              "type": "single_choice",
+              "options": [
+                "Rayons bloqués rectilignement",
+                "Rayons courbés",
+                "Objet transparent",
+                "Source multiple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone où les rayons de la source n’arrivent pas."
+            },
+            {
+              "id": "q7",
+              "question": "Laser : faisceau étroit car…",
+              "type": "single_choice",
+              "options": [
+                "Très directionnel",
+                "Sans énergie",
+                "Plus lent que son",
+                "Courbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émission concentrée dans une direction."
+            },
+            {
+              "id": "q8",
+              "question": "Tracer une ombre : on dessine des rayons…",
+              "type": "single_choice",
+              "options": [
+                "Courbes",
+                "Droits stoppés par l’obstacle",
+                "Aléatoires",
+                "Verticaux seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle rectiligne + opacité."
+            },
+            {
+              "id": "q9",
+              "question": "Torche à travers vitre homogène :",
+              "type": "single_choice",
+              "options": [
+                "Chemin rectiligne dans chaque milieu",
+                "Impossible",
+                "Cercle",
+                "Surface seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu uniforme ⇒ rayon droit."
+            },
+            {
+              "id": "q10",
+              "question": "Rayons solaires par une fente : faisceaux parallèhes car…",
+              "type": "single_choice",
+              "options": [
+                "Soleil très lointain",
+                "Terre plate",
+                "Air chaud",
+                "Ombre colorée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source lointaine ⇒ rayons quasi parallèles."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Ombre et pénombre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Zones sans lumière directe derrière un opaque :",
+              "type": "multiple_choice",
+              "options": ["Ombre", "Pénombre", "Réflexion totale", "Source"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ombre = aucun rayon direct ; pénombre = une partie seulement des rayons."
+            },
+            {
+              "id": "q2",
+              "question": "Ombre plus nette si la source est…",
+              "type": "single_choice",
+              "options": [
+                "Très étendue",
+                "Ponctuelle (petite)",
+                "Absente",
+                "Froide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Source ponctuelle limite la pénombre."
+            },
+            {
+              "id": "q3",
+              "question": "Taille de l’ombre augmente si l’objet s’éloigne de l’écran…",
+              "type": "single_choice",
+              "options": [
+                "Vrai en général pour source fixe",
+                "Toujours faux",
+                "Sans effet",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons divergent, l’ombre s’agrandit avec la distance écran."
+            },
+            {
+              "id": "q4",
+              "question": "Pénombre autour de l’ombre car…",
+              "type": "single_choice",
+              "options": [
+                "Source non ponctuelle",
+                "Objet transparent",
+                "Pas de lumière",
+                "Miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une source étendue éclaire partiellement la zone."
+            },
+            {
+              "id": "q5",
+              "question": "Éclipse de Lune (ombre terrestre) montre…",
+              "type": "single_choice",
+              "options": [
+                "Lumière rectiligne et opacité",
+                "Son rapide",
+                "Réfraction nulle",
+                "Chaleur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre projette son ombre sur la Lune."
+            },
+            {
+              "id": "q6",
+              "question": "Ombre portée d’une main devant une lampe : main est…",
+              "type": "single_choice",
+              "options": ["Opaque", "Source", "Transparente", "Miroir"],
+              "correctAnswers": [0],
+              "explanation": "Elle bloque une partie des rayons."
+            },
+            {
+              "id": "q7",
+              "question": "Deux sources → souvent…",
+              "type": "single_choice",
+              "options": [
+                "Deux ombres et zones de pénombre",
+                "Une seule ombre nette",
+                "Aucune ombre",
+                "Lumière courbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition de contributions lumineuses."
+            },
+            {
+              "id": "q8",
+              "question": "Ombre sur le sol à midi (Soleil haut) est…",
+              "type": "single_choice",
+              "options": [
+                "Plus courte",
+                "Plus longue",
+                "Absente toujours",
+                "Circulaire forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons plus verticaux ⇒ ombre réduite."
+            },
+            {
+              "id": "q9",
+              "question": "Pour agrandir l’ombre d’un objet, on peut…",
+              "type": "single_choice",
+              "options": [
+                "Rapprocher l’objet de la source",
+                "Éloigner l’objet de l’écran en gardant source",
+                "Rendre source ponctuelle",
+                "Utiliser miroir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Distance objet–écran accrue dilate le cône d’ombre."
+            },
+            {
+              "id": "q10",
+              "question": "Zone où tous les rayons d’une source ponctuelle sont bloqués :",
+              "type": "single_choice",
+              "options": [
+                "Ombre totale",
+                "Pénombre",
+                "Arc-en-ciel",
+                "Réfraction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C’est la définition de l’ombre au sens strict."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Faisceaux et modélisation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Modèles utiles pour la lumière en 4e :",
+              "type": "multiple_choice",
+              "options": [
+                "Rayons rectilignes",
+                "Source ponctuelle",
+                "Vitesse du son",
+                "Masse molaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rayons et source simplifient ombres et alignements."
+            },
+            {
+              "id": "q2",
+              "question": "Faisceau de lumière : ensemble de…",
+              "type": "single_choice",
+              "options": [
+                "Rayons",
+                "Électrons",
+                "Molécules d’air sources",
+                "Ondes sonores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On représente un faisceau par plusieurs rayons parallèles ou convergents."
+            },
+            {
+              "id": "q3",
+              "question": "Source étendue (néon long) produit…",
+              "type": "single_choice",
+              "options": [
+                "Ombre floue avec pénombre",
+                "Ombre sans pénombre",
+                "Pas d’ombre",
+                "Lumière courbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque point de la source éclaire une partie différente."
+            },
+            {
+              "id": "q4",
+              "question": "Trou unique dans un carton : image du Soleil si trou petit ressemble à…",
+              "type": "single_choice",
+              "options": [
+                "Disque solaire",
+                "Carré du trou",
+                "Ombre du carton",
+                "Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Camera obscura : petite ouverture forme image du Soleil."
+            },
+            {
+              "id": "q5",
+              "question": "Aligner trois cartes percées teste…",
+              "type": "single_choice",
+              "options": [
+                "Rectitude du trajet",
+                "Vitesse lumière numérique",
+                "Couleur",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière ne passe que si les trous sont sur le même rayon."
+            },
+            {
+              "id": "q6",
+              "question": "Rayons parallèles conviennent pour modéliser…",
+              "type": "single_choice",
+              "options": [
+                "Soleil vu de la Terre",
+                "Ampoule proche",
+                "Bougie à 10 cm",
+                "Feu artifice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source lointaine ⇒ faisceaux quasi parallèles."
+            },
+            {
+              "id": "q7",
+              "question": "Rayons divergents depuis un point : source…",
+              "type": "single_choice",
+              "options": ["Proche ponctuelle", "Infinie", "Sonore", "Froide"],
+              "correctAnswers": [0],
+              "explanation": "Proche du point, les directions partent dans toutes les directions."
+            },
+            {
+              "id": "q8",
+              "question": "Opacité d’un objet signifie…",
+              "type": "single_choice",
+              "options": [
+                "Il laisse passer peu ou pas de lumière",
+                "Il émet toujours",
+                "Il est miroir",
+                "Il est source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opaque : transmission négligeable."
+            },
+            {
+              "id": "q9",
+              "question": "Transparent laisse passer la lumière avec…",
+              "type": "single_choice",
+              "options": [
+                "Peu de diffusion",
+                "Absorption totale",
+                "Émission propre",
+                "Ombre nette interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière traverse en restant organisée (ex. vitre)."
+            },
+            {
+              "id": "q10",
+              "question": "Translucide :",
+              "type": "single_choice",
+              "options": [
+                "Diffuse fortement, image floue",
+                "Totalement opaque",
+                "Source",
+                "Miroir parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière passe mais est dispersée (ex. verre dépoli)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Réflexion simple",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phénomènes où la lumière change de direction sans changer de milieu principal :",
+              "type": "multiple_choice",
+              "options": [
+                "Réflexion sur miroir",
+                "Diffusion sur papier blanc",
+                "Réfraction dans l’eau",
+                "Absorption totale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réflexion spéculaire ou diffuse renvoie la lumière vers l’avant."
+            },
+            {
+              "id": "q2",
+              "question": "Angle d’incidence = angle entre rayon incident et…",
+              "type": "single_choice",
+              "options": [
+                "Normale à la surface",
+                "Surface elle-même",
+                "Ombre",
+                "Horizon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La normale est perpendiculaire au plan réfléchissant."
+            },
+            {
+              "id": "q3",
+              "question": "Loi de réflexion : angle incident … angle réfléchi",
+              "type": "single_choice",
+              "options": ["Égal", "Double", "Moitié", "Sans lien"],
+              "correctAnswers": [0],
+              "explanation": "i = r par rapport à la normale."
+            },
+            {
+              "id": "q4",
+              "question": "Miroir plan : image semble…",
+              "type": "single_choice",
+              "options": [
+                "Derrière le miroir",
+                "Dans le miroir collée",
+                "Au Soleil",
+                "Sous terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image virtuelle symétrique par rapport au plan."
+            },
+            {
+              "id": "q5",
+              "question": "Papier blanc vs miroir :",
+              "type": "single_choice",
+              "options": [
+                "Papier diffuse, miroir réfléchit speculairement",
+                "Identiques",
+                "Papier miroir",
+                "Miroir diffuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rugosité microscopique diffuse la lumière."
+            },
+            {
+              "id": "q6",
+              "question": "Voir son reflet : lumière va…",
+              "type": "single_choice",
+              "options": [
+                "Objet → miroir → œil",
+                "Œil émet",
+                "Miroir émet",
+                "Sans trajet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière de l’objet réfléchie vers l’observateur."
+            },
+            {
+              "id": "q7",
+              "question": "Surface eau calme : réflexion …",
+              "type": "single_choice",
+              "options": [
+                "Partiellement spéculaire",
+                "Impossible",
+                "Source",
+                "Absorption seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facette lisse renvoie une image partielle."
+            },
+            {
+              "id": "q8",
+              "question": "Rayon incident vers normale, réfléchi…",
+              "type": "single_choice",
+              "options": [
+                "Même côté de la normale symétrique",
+                "Angle nul forcé",
+                "Passe à travers",
+                "Devient son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie par rapport à la normale."
+            },
+            {
+              "id": "q9",
+              "question": "Objectif rétroviseur plan : voir…",
+              "type": "single_choice",
+              "options": [
+                "Derrière sans grossir (plan)",
+                "Agrandir toujours",
+                "À travers",
+                "Soleil direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Miroir plan : taille apparente identique, champ derrière."
+            },
+            {
+              "id": "q10",
+              "question": "Lumière blanche sur miroir : couleur réfléchie…",
+              "type": "single_choice",
+              "options": [
+                "Conserve les couleurs incidentes",
+                "Devient toujours rouge",
+                "Disparaît",
+                "Verte seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion spéculaire conserve la composition spectrale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Couleur et lumière blanche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lumière blanche du Soleil contient…",
+              "type": "multiple_choice",
+              "options": [
+                "Plusieurs couleurs visibles",
+                "Radiations invisibles aussi",
+                "Une seule longueur d’onde verte",
+                "Aucune lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Spectre visible + UV/IR ; blanc = mélange de couleurs."
+            },
+            {
+              "id": "q2",
+              "question": "Objet rouge éclairé en blanc paraît rouge car il…",
+              "type": "single_choice",
+              "options": [
+                "Diffuse surtout le rouge",
+                "Émet rouge",
+                "Absorbe le rouge",
+                "Est source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il renvoie preferentially la composante rouge."
+            },
+            {
+              "id": "q3",
+              "question": "Objet bleu sous lumière rouge paraît…",
+              "type": "single_choice",
+              "options": ["Sombre/noir", "Bleu vif", "Blanc", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Il ne renvoie pas le rouge incident."
+            },
+            {
+              "id": "q4",
+              "question": "Prisme sépare la lumière blanche :",
+              "type": "single_choice",
+              "options": [
+                "Réfraction dépend de la couleur",
+                "Absorption",
+                "Ombre",
+                "Son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indices différents ⇒ déviation variable."
+            },
+            {
+              "id": "q5",
+              "question": "Couleur perçue dépend de…",
+              "type": "single_choice",
+              "options": [
+                "Lumière reçue et propriétés de l’objet",
+                "Température air seule",
+                "Masse",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut lumière incidente + diffusion sélective."
+            },
+            {
+              "id": "q6",
+              "question": "Noir en lumière blanche :",
+              "type": "single_choice",
+              "options": [
+                "Absorbe beaucoup",
+                "Réfléchit tout",
+                "Source",
+                "Transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de lumière renvoyée vers l’œil."
+            },
+            {
+              "id": "q7",
+              "question": "Blanc éclairé blanc paraît…",
+              "type": "single_choice",
+              "options": ["Blanc", "Noir", "Rouge seul", "Invisible"],
+              "correctAnswers": [0],
+              "explanation": "Diffuse une grande part du spectre."
+            },
+            {
+              "id": "q8",
+              "question": "Filtre rouge devant lampe blanche : lumière transmise surtout…",
+              "type": "single_choice",
+              "options": ["Rouge", "Bleue", "Toutes", "Aucune"],
+              "correctAnswers": [0],
+              "explanation": "Filtre colore en absorbant les autres."
+            },
+            {
+              "id": "q9",
+              "question": "Ombre colorée possible avec…",
+              "type": "single_choice",
+              "options": [
+                "Deux sources de couleurs différentes",
+                "Sans lumière",
+                "Miroir seul",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition de faisceaux colorés."
+            },
+            {
+              "id": "q10",
+              "question": "Arc-en-ciel : gouttes d’eau … la lumière solaire",
+              "type": "single_choice",
+              "options": [
+                "Réfractent et réfléchissent",
+                "Émettent",
+                "Absorbent tout",
+                "Créent du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décomposition du blanc dans les gouttes."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Réfraction introduction",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Réfraction : changement de direction à la passage…",
+              "type": "multiple_choice",
+              "options": [
+                "Entre deux milieux transparents",
+                "Interface air-verre",
+                "Dans le vide seul",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vitesse de la lumière change ⇒ rayons inclinés à l’interface."
+            },
+            {
+              "id": "q2",
+              "question": "Bâton dans l’eau paraît cassé car…",
+              "type": "single_choice",
+              "options": [
+                "Réfraction air-eau",
+                "Réflexion seule",
+                "Ombre",
+                "Son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons de l’objet déviés à la surface."
+            },
+            {
+              "id": "q3",
+              "question": "Lumière air → verre (plus dense optiquement) se rapproche en général de…",
+              "type": "single_choice",
+              "options": ["La normale", "La tangente", "Horizontale", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Vers milieu plus réfringent, angle avec normale diminue."
+            },
+            {
+              "id": "q4",
+              "question": "Fibre optique exploite…",
+              "type": "single_choice",
+              "options": [
+                "Réflexion totale interne",
+                "Diffusion papier",
+                "Ombre",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons piégés par réflexions répétées."
+            },
+            {
+              "id": "q5",
+              "question": "Image floue sous l’eau vue de l’air liée à…",
+              "type": "single_choice",
+              "options": [
+                "Réfraction surface",
+                "Vitesse son",
+                "Chaleur",
+                "Masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interface courbe ou plane dévie les rayons."
+            },
+            {
+              "id": "q6",
+              "question": "Prisme dévie plus le…",
+              "type": "single_choice",
+              "options": ["Violet", "Rouge", "Infra", "Radio"],
+              "correctAnswers": [0],
+              "explanation": "Dispersion : déviation depend de λ."
+            },
+            {
+              "id": "q7",
+              "question": "Sans réfraction, lunettes correctrices…",
+              "type": "single_choice",
+              "options": [
+                "Ne corrigeraient pas la focalisation",
+                "Créeraient ombre",
+                "Émettraient lumière",
+                "Arrêteraient son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verres courbés modifient la direction des rayons."
+            },
+            {
+              "id": "q8",
+              "question": "Milieu où lumière plus lente qu’en air : indice optique … 1",
+              "type": "single_choice",
+              "options": [">", "<", "=", "Nul"],
+              "correctAnswers": [0],
+              "explanation": "n = c/v > 1 dans matériaux transparents usuels."
+            },
+            {
+              "id": "q9",
+              "question": "Rayon incident perpendiculaire à surface : réfraction…",
+              "type": "single_choice",
+              "options": [
+                "Sans déviation",
+                "Angle 90°",
+                "Réflexion totale",
+                "Absorption"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée normale : pas de changement direction."
+            },
+            {
+              "id": "q10",
+              "question": "Poisson vu du bord piscine : position apparente … réelle",
+              "type": "single_choice",
+              "options": ["Plus haute", "Plus basse", "Identique", "Derrière"],
+              "correctAnswers": [0],
+              "explanation": "Rayons sortant de l’eau divergent, œil prolonge."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Vitesse de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Ordres de grandeur : la lumière dans le vide est…",
+              "type": "multiple_choice",
+              "options": [
+                "Très rapide",
+                "Plus rapide que le son dans l’air",
+                "Plus lente que le son",
+                "300 m/s"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "c ≈ 3×10^8 m/s, bien au-dessus du son."
+            },
+            {
+              "id": "q2",
+              "question": "c dans le vide vaut environ…",
+              "type": "single_choice",
+              "options": ["3×10^8 m/s", "340 m/s", "3×10^5 m/s", "10 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Constante fondamentale de la physique."
+            },
+            {
+              "id": "q3",
+              "question": "Éclair puis tonnerre : délai car…",
+              "type": "single_choice",
+              "options": [
+                "Lumière arrive avant le son",
+                "Son avant lumière",
+                "Même vitesse",
+                "Pas de propagation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On voit l’éclair quasi instantanément, le son met secondes."
+            },
+            {
+              "id": "q4",
+              "question": "Distance Terre-Soleil ~8 min lumière signifie…",
+              "type": "single_choice",
+              "options": [
+                "Lumière met ~8 min pour nous joindre",
+                "Son met 8 min",
+                "Instantané",
+                "8 secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal lumineux voyage à c finie."
+            },
+            {
+              "id": "q5",
+              "question": "Dans l’eau, lumière est … que dans le vide",
+              "type": "single_choice",
+              "options": ["Plus lente", "Plus rapide", "Identique", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "Indice >1 réduit la vitesse phase."
+            },
+            {
+              "id": "q6",
+              "question": "On ne voit pas le Soleil « en direct » car…",
+              "type": "single_choice",
+              "options": [
+                "Distance finie + vitesse finie",
+                "Terre opaque",
+                "Pas de lumière",
+                "Ombre lunaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image retardée ~8 min."
+            },
+            {
+              "id": "q7",
+              "question": "Comparer lumière et son : le plus rapide est…",
+              "type": "single_choice",
+              "options": ["Lumière", "Son", "Égal", "Son dans l’eau seulement"],
+              "correctAnswers": [0],
+              "explanation": "c >> v_son air."
+            },
+            {
+              "id": "q8",
+              "question": "Année-lumière mesure…",
+              "type": "single_choice",
+              "options": [
+                "Une distance",
+                "Une durée seule",
+                "Une masse",
+                "Une température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance parcourue par la lumière en un an."
+            },
+            {
+              "id": "q9",
+              "question": "GPS et astronomie utilisent c car…",
+              "type": "single_choice",
+              "options": [
+                "Signaux électromagnétiques voyagent à c",
+                "Son rapide",
+                "Ombre",
+                "Réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ondes radio/lumière = même c dans le vide."
+            },
+            {
+              "id": "q10",
+              "question": "Expérience Foucault (culture) mesurait…",
+              "type": "single_choice",
+              "options": [
+                "Vitesse de la lumière",
+                "Vitesse du son",
+                "Masse Terre",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premières mesures terrestres de c."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Sécurité et lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Risques liés à la lumière intense :",
+              "type": "multiple_choice",
+              "options": [
+                "Atteinte rétine (Soleil/laser)",
+                "Éblouissement",
+                "Propagation rectiligne",
+                "Ombre portée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ne jamais regarder Soleil/laser : dommages oculaires."
+            },
+            {
+              "id": "q2",
+              "question": "Regarder le Soleil sans protection…",
+              "type": "single_choice",
+              "options": [
+                "Dangereux pour les yeux",
+                "Sans effet",
+                "Améliore la vue",
+                "Refroidit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concentration sur rétine."
+            },
+            {
+              "id": "q3",
+              "question": "Laser classe école : ne pas pointer vers…",
+              "type": "single_choice",
+              "options": ["Yeux ou visages", "Mur", "Table", "Carton"],
+              "correctAnswers": [0],
+              "explanation": "Faisceau étroit, énergie focalisée."
+            },
+            {
+              "id": "q4",
+              "question": "Phare voiture de nuit : risque si mal réglé…",
+              "type": "single_choice",
+              "options": [
+                "Éblouir autres usagers",
+                "Ombre",
+                "Son",
+                "Réfraction nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière trop haute aveugle."
+            },
+            {
+              "id": "q5",
+              "question": "Lunettes solaires certifiées filtrent…",
+              "type": "single_choice",
+              "options": [
+                "Partie intense UV/visible",
+                "Toute lumière utile nuit",
+                "Son",
+                "Chaleur corps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection contre rayonnement nocif."
+            },
+            {
+              "id": "q6",
+              "question": "Signal routier réfléchissant la nuit utilise…",
+              "type": "single_choice",
+              "options": ["Réflexion retro", "Émission propre", "Son", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Microsphères renvoient vers phares."
+            },
+            {
+              "id": "q7",
+              "question": "Éclairage pièce travail : éviter…",
+              "type": "single_choice",
+              "options": [
+                "Reflets directs dans écran",
+                "Lumière diffuse",
+                "Lampe latérale",
+                "Ombre molette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confort visuel et fatigue."
+            },
+            {
+              "id": "q8",
+              "question": "Feu tricolore rouge signifie…",
+              "type": "single_choice",
+              "options": ["Arrêt", "Vitesse lumière", "Réfraction", "Écho"],
+              "correctAnswers": [0],
+              "explanation": "Code routier, pas physique, mais lien signal lumineux."
+            },
+            {
+              "id": "q9",
+              "question": "Lumière bleue écrans le soir : conseil santé…",
+              "type": "single_choice",
+              "options": [
+                "Réduire avant sommeil",
+                "Augmenter",
+                "Regarder Soleil",
+                "Laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hygène visuelle et rythme."
+            },
+            {
+              "id": "q10",
+              "question": "Expérience alignement trous : ne pas utiliser…",
+              "type": "single_choice",
+              "options": [
+                "Laser vers yeux",
+                "Carton",
+                "Sources LED faibles",
+                "Règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité en TP."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse propagation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Pour expliquer une éclipse de Soleil on utilise…",
+              "type": "multiple_choice",
+              "options": [
+                "Source lumineuse lointaine",
+                "Ombre de la Lune",
+                "Vitesse du son",
+                "Résonance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lune opaque intercepte rayons solaires rectilignes."
+            },
+            {
+              "id": "q2",
+              "question": "Lumière traverse le vide entre astres :",
+              "type": "single_choice",
+              "options": ["Oui rectiligne", "Non", "Avec air", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Propagation EM sans milieu matériel."
+            },
+            {
+              "id": "q3",
+              "question": "Camera obscura prouve…",
+              "type": "single_choice",
+              "options": [
+                "Propagation rectiligne",
+                "Son 340 m/s",
+                "Réflexion seule",
+                "Chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trou laisse passer rayons droits formant image."
+            },
+            {
+              "id": "q4",
+              "question": "Objet transparent + opaque côte à côte : ombre seulement de…",
+              "type": "single_choice",
+              "options": ["Opaque", "Transparent", "Les deux", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Transparent laisse passer la lumière."
+            },
+            {
+              "id": "q5",
+              "question": "Image miroir est … (virtuelle/réelle)",
+              "type": "single_choice",
+              "options": ["Virtuelle", "Réelle", "Sonore", "Thermique"],
+              "correctAnswers": [0],
+              "explanation": "Rayons réfléchis semblent provenir derrière."
+            },
+            {
+              "id": "q6",
+              "question": "Soleil lever : ombre s’allonge car rayons plus…",
+              "type": "single_choice",
+              "options": ["Obliques", "Verticaux", "Courbes", "Absents"],
+              "correctAnswers": [0],
+              "explanation": "Angle bas ⇒ grande ombre."
+            },
+            {
+              "id": "q7",
+              "question": "Deux trous alignés, troisième décalé : lumière…",
+              "type": "single_choice",
+              "options": [
+                "Ne passe pas",
+                "Passe",
+                "Devient son",
+                "Réfléchit seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non alignement bloque le faisceau."
+            },
+            {
+              "id": "q8",
+              "question": "Lumière blanche + prisme =",
+              "type": "single_choice",
+              "options": ["Spectre visible étalé", "Ombre", "Écho", "340 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Dispersion par réfraction."
+            },
+            {
+              "id": "q9",
+              "question": "Comparer temps lumière et son sur 1 km : lumière…",
+              "type": "single_choice",
+              "options": [
+                "Arrive quasi instantanément",
+                "Comme le son",
+                "Plus lente",
+                "N’arrive pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "c ~ 3 microsecondes vs son ~3 s."
+            },
+            {
+              "id": "q10",
+              "question": "Modèle rayon sert à prévoir…",
+              "type": "single_choice",
+              "options": [
+                "Ombres et réflexions",
+                "Masse atomique",
+                "pH",
+                "Pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil géométrique en optique géométrique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Vitesse du son",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Son et milieu",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Le son a besoin d’un milieu matériel pour…",
+              "type": "multiple_choice",
+              "options": [
+                "Se propager",
+                "Transporter des vibrations",
+                "Voyager dans le vide interplanétaire",
+                "Se propager comme la lumière dans le vide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Onde mécanique : particules du milieu oscillent ; pas de son dans le vide."
+            },
+            {
+              "id": "q2",
+              "question": "Dans le vide lunaire, un astronaute crie : on entend…",
+              "type": "single_choice",
+              "options": [
+                "Rien (sans radio)",
+                "Très fort",
+                "Comme sur Terre",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas d’air pour transmettre l’onde."
+            },
+            {
+              "id": "q3",
+              "question": "Son se propage dans…",
+              "type": "single_choice",
+              "options": [
+                "Air, eau, solides",
+                "Vide seul",
+                "Uniquement métal",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout milieu élastique convenable."
+            },
+            {
+              "id": "q4",
+              "question": "Source sonore :",
+              "type": "single_choice",
+              "options": ["Corps qui vibre", "Miroir", "Prisme", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Vibration entraîne compression/rarefaction."
+            },
+            {
+              "id": "q5",
+              "question": "Cloche sous cloche à vide : son…",
+              "type": "single_choice",
+              "options": [
+                "Disparaît quand air retiré",
+                "Augmente",
+                "Devient lumière",
+                "Plus rapide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expérience classique milieu nécessaire."
+            },
+            {
+              "id": "q6",
+              "question": "Onde sonore est…",
+              "type": "single_choice",
+              "options": [
+                "Mécanique",
+                "Électromagnétique",
+                "Sans énergie",
+                "Statique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à la lumière EM."
+            },
+            {
+              "id": "q7",
+              "question": "Poisson entend sous l’eau car…",
+              "type": "single_choice",
+              "options": [
+                "Eau transmet le son",
+                "Eau émet lumière",
+                "Vide",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liquide conducteur acoustique."
+            },
+            {
+              "id": "q8",
+              "question": "Mur épais peut transmettre son par…",
+              "type": "single_choice",
+              "options": [
+                "Vibrations du solide",
+                "Lumière",
+                "Vide interne",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solides propaguent souvent mieux que l’air."
+            },
+            {
+              "id": "q9",
+              "question": "Microphone capte…",
+              "type": "single_choice",
+              "options": [
+                "Variations pression air",
+                "Photons seuls",
+                "Ombre",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convertit acoustique en signal électrique."
+            },
+            {
+              "id": "q10",
+              "question": "Foudre : on voit avant d’entendre car…",
+              "type": "single_choice",
+              "options": [
+                "Lumière plus rapide",
+                "Son plus rapide",
+                "Même vitesse",
+                "Pas de son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "c >> v_son."
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "title": "Vitesse dans l'air",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Ordre de grandeur v_son dans l'air (20°C) :",
+              "type": "multiple_choice",
+              "options": [
+                "340 m/s",
+                "Environ 343 m/s à température ambiante",
+                "300 000 km/s",
+                "34 m/s"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "340 m/s est la valeur retenue en 4e ; 343 m/s est un ordre de grandeur réaliste dans l'air."
+            },
+            {
+              "id": "q2",
+              "question": "340 m/s signifie le son parcourt…",
+              "type": "single_choice",
+              "options": [
+                "340 m en 1 s",
+                "340 km en 1 s",
+                "34 cm en 1 s",
+                "340 m en 1 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unité m/s = mètres par seconde."
+            },
+            {
+              "id": "q3",
+              "question": "Sur 680 m, son met environ…",
+              "type": "single_choice",
+              "options": ["2 s", "0,002 s", "20 s", "680 s"],
+              "correctAnswers": [0],
+              "explanation": "t = d/v = 680/340 = 2 s."
+            },
+            {
+              "id": "q4",
+              "question": "Distance éclair-tonnerre : compter secondes × … ≈ km",
+              "type": "single_choice",
+              "options": ["0,34", "340", "3", "34"],
+              "correctAnswers": [0],
+              "explanation": "d ≈ v×t ; 340 m/s × s ≈ 0,34 km par seconde."
+            },
+            {
+              "id": "q5",
+              "question": "3 s entre éclair et tonnerre ≈ distance…",
+              "type": "single_choice",
+              "options": ["1 km", "3 m", "340 km", "10 m"],
+              "correctAnswers": [0],
+              "explanation": "3 × 340 m ≈ 1 km."
+            },
+            {
+              "id": "q6",
+              "question": "Son plus rapide que 340 m/s dans air standard ?",
+              "type": "single_choice",
+              "options": [
+                "Non (ordre fixe à température)",
+                "Oui toujours 1000",
+                "Comme lumière",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse depend T, humidité, mais ~340."
+            },
+            {
+              "id": "q7",
+              "question": "Calcul : 170 m, v=340 m/s → t =",
+              "type": "single_choice",
+              "options": ["0,5 s", "1 s", "2 s", "170 s"],
+              "correctAnswers": [0],
+              "explanation": "170/340 = 0,5 s."
+            },
+            {
+              "id": "q8",
+              "question": "Unité SI vitesse :",
+              "type": "single_choice",
+              "options": ["m/s", "m", "s/m", "Hz seul"],
+              "correctAnswers": [0],
+              "explanation": "Vitesse = distance/temps."
+            },
+            {
+              "id": "q9",
+              "question": "Son 1 s pour 340 m, 2 s pour…",
+              "type": "single_choice",
+              "options": ["680 m", "340 m", "170 m", "68 m"],
+              "correctAnswers": [0],
+              "explanation": "Proportionnalité d = v×t."
+            },
+            {
+              "id": "q10",
+              "question": "v = d/t ; d=1020 m, t=3 s → v",
+              "type": "single_choice",
+              "options": ["340 m/s", "300 m/s", "1020 m/s", "3 m/s"],
+              "correctAnswers": [0],
+              "explanation": "1020/3 = 340."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calculs de distance",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules utiles (v constante) :",
+              "type": "multiple_choice",
+              "options": [
+                "d = v × t",
+                "t = d / v",
+                "d = v / t toujours",
+                "v = d × t"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Relations fondamentales vitesse constante."
+            },
+            {
+              "id": "q2",
+              "question": "Echo : aller-retour 2 s, v=340 → distance obstacle",
+              "type": "single_choice",
+              "options": ["340 m", "680 m", "170 m", "6800 m"],
+              "correctAnswers": [0],
+              "explanation": "Aller 340 m + retour 340 m = 680 m parcouru son ; obstacle à 340 m."
+            },
+            {
+              "id": "q3",
+              "question": "Bateau sonar reçoit écho 0,4 s après émission, v=1500 m/s eau → profondeur ~",
+              "type": "single_choice",
+              "options": ["300 m", "1500 m", "600 m", "750 m"],
+              "correctAnswers": [0],
+              "explanation": "Distance parcourue 600 m A/R → 300 m profondeur."
+            },
+            {
+              "id": "q4",
+              "question": "t=5 s, v=340 → d",
+              "type": "single_choice",
+              "options": ["1700 m", "68 m", "3400 m", "5 m"],
+              "correctAnswers": [0],
+              "explanation": "5×340=1700."
+            },
+            {
+              "id": "q5",
+              "question": "Mur à 85 m, temps aller simple",
+              "type": "single_choice",
+              "options": ["0,25 s", "0,5 s", "1 s", "85 s"],
+              "correctAnswers": [0],
+              "explanation": "85/340=0,25 s."
+            },
+            {
+              "id": "q6",
+              "question": "Double distance echo : compter…",
+              "type": "single_choice",
+              "options": [
+                "Aller-retour",
+                "Simple aller seulement",
+                "Lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son fait trajet ×2."
+            },
+            {
+              "id": "q7",
+              "question": "d inconnu, t=1,5 s, v=340",
+              "type": "single_choice",
+              "options": ["510 m", "226 m", "1,5 m", "340 m"],
+              "correctAnswers": [0],
+              "explanation": "1,5×340=510."
+            },
+            {
+              "id": "q8",
+              "question": "Graphique d-t ligne droite origine : v",
+              "type": "single_choice",
+              "options": [
+                "Constante",
+                "Nulle",
+                "Variable aléatoire",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente = vitesse."
+            },
+            {
+              "id": "q9",
+              "question": "Erreur fréquente echo : oublier…",
+              "type": "single_choice",
+              "options": [
+                "Diviser temps par 2 pour distance",
+                "Multiplier v par 2",
+                "Utiliser c lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps mesuré = A/R."
+            },
+            {
+              "id": "q10",
+              "question": "v=340, d=34 m → t",
+              "type": "single_choice",
+              "options": ["0,1 s", "1 s", "3,4 s", "34 s"],
+              "correctAnswers": [0],
+              "explanation": "34/340=0,1."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Son dans différents milieux",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Où le son va généralement plus vite qu’en air ?",
+              "type": "multiple_choice",
+              "options": [
+                "Dans l’eau",
+                "Dans l’acier",
+                "Dans le vide",
+                "Dans l’hélium seulement toujours plus lent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Milieu plus rigide/dense conducteur : v plus élevée."
+            },
+            {
+              "id": "q2",
+              "question": "v eau ~1500 m/s vs air 340 : eau…",
+              "type": "single_choice",
+              "options": ["Plus rapide", "Plus lente", "Identique", "Nulle"],
+              "correctAnswers": [0],
+              "explanation": "Liquide transmet mieux."
+            },
+            {
+              "id": "q3",
+              "question": "Deux métal frappés : son arrive vite car…",
+              "type": "single_choice",
+              "options": ["Solide rigide", "Vide", "Lumière", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Vitesse élevée dans métaux."
+            },
+            {
+              "id": "q4",
+              "question": "Baleine communique sous l’eau car…",
+              "type": "single_choice",
+              "options": [
+                "Son se propage loin",
+                "Pas de lumière",
+                "Vide",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acoustique sous-marine efficace."
+            },
+            {
+              "id": "q5",
+              "question": "Même note, même source, air vs eau : arrivée…",
+              "type": "single_choice",
+              "options": [
+                "Plus tôt dans l’eau (même distance)",
+                "Plus tard eau",
+                "Jamais eau",
+                "Instant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "v_eau > v_air."
+            },
+            {
+              "id": "q6",
+              "question": "Son ne traverse pas espace interstellaire car…",
+              "type": "single_choice",
+              "options": [
+                "Presque vide",
+                "Trop rapide",
+                "Lumière bloque",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque milieu."
+            },
+            {
+              "id": "q7",
+              "question": "Mur : entendre voisin = son via…",
+              "type": "single_choice",
+              "options": [
+                "Structure et air",
+                "Photons",
+                "Vide",
+                "Réfraction lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transmission solid/airborne."
+            },
+            {
+              "id": "q8",
+              "question": "Température air chaud : v son…",
+              "type": "single_choice",
+              "options": [
+                "Augmente légèrement",
+                "Diminue toujours",
+                "Nulle",
+                "Comme c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Molécules plus agitées."
+            },
+            {
+              "id": "q9",
+              "question": "Sonar utilise surtout…",
+              "type": "single_choice",
+              "options": ["Eau", "Vide", "Lumière seule", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Ultrasons dans l’eau."
+            },
+            {
+              "id": "q10",
+              "question": "Comparer lumière et son eau : plus rapide…",
+              "type": "single_choice",
+              "options": ["Lumière", "Son", "Égal", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Lumière reste ~2×10^8 m/s dans eau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Fréquence et hauteur",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Grande fréquence (Hz) correspond à…",
+              "type": "multiple_choice",
+              "options": [
+                "Son aigu",
+                "Plus de cycles par seconde",
+                "Son grave forcément",
+                "Lumière rouge"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hz = vibrations/s ; aigu = fréquence élevée."
+            },
+            {
+              "id": "q2",
+              "question": "Unité fréquence :",
+              "type": "single_choice",
+              "options": ["Hertz", "Newton", "Pascal", "Joule"],
+              "correctAnswers": [0],
+              "explanation": "1 Hz = 1 cycle/s."
+            },
+            {
+              "id": "q3",
+              "question": "Voix enfant souvent plus…",
+              "type": "single_choice",
+              "options": ["Aiguë", "Grave", "Silencieuse lumière", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Cordes vocales plus courtes/rápides."
+            },
+            {
+              "id": "q4",
+              "question": "Contrebasse vs flûte : plus grave…",
+              "type": "single_choice",
+              "options": ["Contrebasse", "Flûte", "Égal", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence plus basse."
+            },
+            {
+              "id": "q5",
+              "question": "440 Hz : 440 … par seconde",
+              "type": "single_choice",
+              "options": ["Vibrations", "Mètres", "Secondes", "Photons"],
+              "correctAnswers": [0],
+              "explanation": "Définition Hz."
+            },
+            {
+              "id": "q6",
+              "question": "Ultrasons : fréquences … audibles humain",
+              "type": "single_choice",
+              "options": ["Au-dessus", "En dessous", "Visibles", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": ">20 kHz environ."
+            },
+            {
+              "id": "q7",
+              "question": "Grave = basse …",
+              "type": "single_choice",
+              "options": [
+                "Fréquence",
+                "Vitesse lumière",
+                "Masse",
+                "Volume seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur liée fréquence."
+            },
+            {
+              "id": "q8",
+              "question": "Sifflet court vs long tuyau : souvent plus aigu le…",
+              "type": "single_choice",
+              "options": ["Court", "Long", "Miroir", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Résonance longueur."
+            },
+            {
+              "id": "q9",
+              "question": "Période T et fréquence f :",
+              "type": "single_choice",
+              "options": ["f = 1/T", "f = T", "f = T^2", "f = v lumière"],
+              "correctAnswers": [0],
+              "explanation": "Inverse l’un de l’autre."
+            },
+            {
+              "id": "q10",
+              "question": "Son audible humain ~",
+              "type": "single_choice",
+              "options": ["20 Hz à 20 kHz", "340 Hz seul", "3×10^8 Hz", "0 Hz"],
+              "correctAnswers": [0],
+              "explanation": "Domaine auditif usuel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Intensité et niveau sonore",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Intensité sonore depend de…",
+              "type": "multiple_choice",
+              "options": [
+                "Amplitude vibration",
+                "Énergie transportée",
+                "Couleur lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plus forte vibration ⇒ plus d’énergie acoustique."
+            },
+            {
+              "id": "q2",
+              "question": "Décibel (dB) mesure…",
+              "type": "single_choice",
+              "options": ["Niveau sonore", "Vitesse", "Masse", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Échelle logarithmique sensation."
+            },
+            {
+              "id": "q3",
+              "question": "Son trop fort prolongé…",
+              "type": "single_choice",
+              "options": [
+                "Nuit à l’audition",
+                "Améliore ouïe",
+                "Devient lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention santé."
+            },
+            {
+              "id": "q4",
+              "question": "Bouchons oreilles…",
+              "type": "single_choice",
+              "options": [
+                "Atténuent son",
+                "Amplifient",
+                "Créent vide",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection."
+            },
+            {
+              "id": "q5",
+              "question": "S’éloigner source : intensité…",
+              "type": "single_choice",
+              "options": [
+                "Diminue",
+                "Augmente toujours",
+                "Constante",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition sur sphère croissante."
+            },
+            {
+              "id": "q6",
+              "question": "Whisper vs cri : cri plus…",
+              "type": "single_choice",
+              "options": [
+                "Intense",
+                "Grave seulement",
+                "Lent lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplitude plus grande."
+            },
+            {
+              "id": "q7",
+              "question": "Limite conversation ~60 dB signifie…",
+              "type": "single_choice",
+              "options": ["Modéré", "Silence absolu", "Douleur", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Repères culture scientifique."
+            },
+            {
+              "id": "q8",
+              "question": "Casque anti-bruit actif…",
+              "type": "single_choice",
+              "options": [
+                "Réduit certaines fréquences",
+                "Crée son vide",
+                "Remplace lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annulation partielle."
+            },
+            {
+              "id": "q9",
+              "question": "Même hauteur, volume différent : change surtout…",
+              "type": "single_choice",
+              "options": ["Amplitude", "Fréquence", "v lumière", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Intensité perçue."
+            },
+            {
+              "id": "q10",
+              "question": "Règlement travail bruit vise…",
+              "type": "single_choice",
+              "options": [
+                "Protéger audition",
+                "Accélérer son",
+                "Lumière",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normes sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Écho et réflexion sonore",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Écho : son …",
+              "type": "multiple_choice",
+              "options": [
+                "Réfléchi par obstacle",
+                "Revient à l’oreille",
+                "Émis par lumière",
+                "Sans milieu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réflexion acoustique perceptible séparée."
+            },
+            {
+              "id": "q2",
+              "question": "Écho audible si délai … ~0,1 s",
+              "type": "single_choice",
+              "options": [">", "<", "=", "Sans importance"],
+              "correctAnswers": [0],
+              "explanation": "Oreille distingue retards suffisants."
+            },
+            {
+              "id": "q3",
+              "question": "Montagne loin : crier entendre retour =",
+              "type": "single_choice",
+              "options": ["Écho", "Ombre", "Réfraction lumière", "Prisme"],
+              "correctAnswers": [0],
+              "explanation": "Surface réfléchissante lointaine."
+            },
+            {
+              "id": "q4",
+              "question": "Grande salle avec réverbération : on entend surtout…",
+              "type": "single_choice",
+              "options": [
+                "De nombreuses réflexions rapprochées",
+                "Aucun son",
+                "De la lumière",
+                "Une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son persiste car les réflexions se superposent."
+            },
+            {
+              "id": "q5",
+              "question": "Mur loin 170 m, écho délai A/R",
+              "type": "single_choice",
+              "options": ["1 s", "0,5 s", "2 s", "170 s"],
+              "correctAnswers": [0],
+              "explanation": "340 m A/R à 340 m/s."
+            },
+            {
+              "id": "q6",
+              "question": "Chauve-souris : écho …",
+              "type": "single_choice",
+              "options": ["Localisation proie", "Lumière", "Ombre", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Écholocation ultrasons."
+            },
+            {
+              "id": "q7",
+              "question": "Surface molle absorbante…",
+              "type": "single_choice",
+              "options": [
+                "Réduit écho",
+                "Augmente écho",
+                "Crée lumière",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absorption vs réflexion."
+            },
+            {
+              "id": "q8",
+              "question": "Sonar émet impulsion puis écoute…",
+              "type": "single_choice",
+              "options": ["Retour", "Lumière", "Ombre", "Prisme"],
+              "correctAnswers": [0],
+              "explanation": "Mesure temps retour."
+            },
+            {
+              "id": "q9",
+              "question": "Grotte large : écho …",
+              "type": "single_choice",
+              "options": [
+                "Possible",
+                "Impossible sans air",
+                "Lumière",
+                "340 km/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu air + parois."
+            },
+            {
+              "id": "q10",
+              "question": "Pour éviter écho salle conférence…",
+              "type": "single_choice",
+              "options": ["Panneaux absorbants", "Miroirs", "Prisme", "Laser"],
+              "correctAnswers": [0],
+              "explanation": "Traitement acoustique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Comparaison lumière et son",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Différences lumière / son :",
+              "type": "multiple_choice",
+              "options": [
+                "Lumière EM, son mécanique",
+                "c >> v_son air",
+                "Les deux nécessitent air",
+                "Son dans vide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nature et vitesses très différentes."
+            },
+            {
+              "id": "q2",
+              "question": "Orage : éclair puis tonnerre prouve…",
+              "type": "single_choice",
+              "options": ["c > v_son", "v_son > c", "Égal", "Pas propagation"],
+              "correctAnswers": [0],
+              "explanation": "Même distance, délais différents."
+            },
+            {
+              "id": "q3",
+              "question": "Voir feu feu d’artifice avant entendre…",
+              "type": "single_choice",
+              "options": [
+                "Lumière plus rapide",
+                "Son plus rapide",
+                "Même",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même principe."
+            },
+            {
+              "id": "q4",
+              "question": "Son nuit astronomie radio vs…",
+              "type": "single_choice",
+              "options": ["Téléscope lumière", "Ombre", "pH", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Infos différentes."
+            },
+            {
+              "id": "q5",
+              "question": "1 km : lumière ~",
+              "type": "single_choice",
+              "options": ["3 µs", "3 s", "340 s", "1 h"],
+              "correctAnswers": [0],
+              "explanation": "10^-3/3×10^8 ≈ 3×10^-6 s."
+            },
+            {
+              "id": "q6",
+              "question": "1 km : son ~",
+              "type": "single_choice",
+              "options": ["3 s", "3 µs", "Instant", "340 min"],
+              "correctAnswers": [0],
+              "explanation": "1000/340 ≈ 3 s."
+            },
+            {
+              "id": "q7",
+              "question": "Communication espace : radio (EM) car…",
+              "type": "single_choice",
+              "options": ["Traverse vide", "Son fort", "Ombre", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Ondes EM sans milieu."
+            },
+            {
+              "id": "q8",
+              "question": "Deux sources même événement : synchroniser horloges…",
+              "type": "single_choice",
+              "options": [
+                "Retard son connu",
+                "Retard lumière négligeable court",
+                "Ombre",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corrections différentes."
+            },
+            {
+              "id": "q9",
+              "question": "Foudre proche : délai son …",
+              "type": "single_choice",
+              "options": ["Court", "Minutes", "Heures", "Lumière nulle"],
+              "correctAnswers": [0],
+              "explanation": "Quelques secondes max proche."
+            },
+            {
+              "id": "q10",
+              "question": "Tableau récap : v_son air ~",
+              "type": "single_choice",
+              "options": ["340 m/s", "3×10^8 m/s", "340 km/s", "34 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Valeur de référence 4e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Expériences et mesures",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mesurer v son : méthodes scolaires…",
+              "type": "multiple_choice",
+              "options": [
+                "Chronomètre + distance",
+                "Écho connu",
+                "Regarder Soleil",
+                "Prisme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "d/t ou echo contrôlé."
+            },
+            {
+              "id": "q2",
+              "question": "Deux élèves éloignés, coup de feu (TP sécurisé simulé) : sync visuel vs auditif…",
+              "type": "single_choice",
+              "options": [
+                "Retard son",
+                "Retard lumière visible",
+                "Ombre",
+                "pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son arrive après image."
+            },
+            {
+              "id": "q3",
+              "question": "Erreur mesure t avec chronomètre…",
+              "type": "single_choice",
+              "options": ["Réaction humaine", "v lumière", "Ombre", "Prisme"],
+              "correctAnswers": [0],
+              "explanation": "Incertitude départ arrêt."
+            },
+            {
+              "id": "q4",
+              "question": "Répéter mesures…",
+              "type": "single_choice",
+              "options": ["Fiabilité", "Change v", "Lumière", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Moyenne réduit aléa."
+            },
+            {
+              "id": "q5",
+              "question": "Microphone + oscilloscope (culture) voit…",
+              "type": "single_choice",
+              "options": ["Forme onde", "Ombre", "pH", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Visualisation signal."
+            },
+            {
+              "id": "q6",
+              "question": "Longueur d’onde λ liée v et f par…",
+              "type": "single_choice",
+              "options": ["v = λ f", "v = λ/f", "v = f only", "c"],
+              "correctAnswers": [0],
+              "explanation": "Relation onde."
+            },
+            {
+              "id": "q7",
+              "question": "f=440 Hz, λ=0,77 m → v ≈",
+              "type": "single_choice",
+              "options": ["340 m/s", "440 m/s", "0,77 m/s", "1000 m/s"],
+              "correctAnswers": [0],
+              "explanation": "0,77×440≈339."
+            },
+            {
+              "id": "q8",
+              "question": "TP écho mur : mesurer …",
+              "type": "single_choice",
+              "options": ["Temps A/R", "Couleur", "Lumière seule", "Masse"],
+              "correctAnswers": [0],
+              "explanation": "Calcul distance."
+            },
+            {
+              "id": "q9",
+              "question": "Capteur distance ultrason arduino (culture) : principe…",
+              "type": "single_choice",
+              "options": ["Écho", "Prisme", "Ombre solaire", "pH"],
+              "correctAnswers": [0],
+              "explanation": "Impulsion réfléchie."
+            },
+            {
+              "id": "q10",
+              "question": "Rapport TP : indiquer …",
+              "type": "single_choice",
+              "options": [
+                "d, t, v calculée",
+                "Seulement couleur",
+                "Ombre",
+                "Tier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exploitation données."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse vitesse du son",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Bonnes affirmations :",
+              "type": "multiple_choice",
+              "options": [
+                "Le son nécessite un milieu matériel",
+                "v_air ≈ 340 m/s",
+                "Le son est plus rapide que la lumière",
+                "Le vide transmet le son"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rappels fin chapitre."
+            },
+            {
+              "id": "q2",
+              "question": "d=680 m, v=340 → t",
+              "type": "single_choice",
+              "options": ["2 s", "1 s", "0,5 s", "680 s"],
+              "correctAnswers": [0],
+              "explanation": "680/340=2."
+            },
+            {
+              "id": "q3",
+              "question": "Echo 1,7 s A/R air → obstacle à",
+              "type": "single_choice",
+              "options": ["289 m", "340 m", "170 m", "1,7 m"],
+              "correctAnswers": [0],
+              "explanation": "d=340×1,7/2=289."
+            },
+            {
+              "id": "q4",
+              "question": "Sous l’eau v~1500, 3 s aller simple → distance",
+              "type": "single_choice",
+              "options": ["4500 m", "1500 m", "450 m", "150 m"],
+              "correctAnswers": [0],
+              "explanation": "1500×3."
+            },
+            {
+              "id": "q5",
+              "question": "Pour protéger oreilles…",
+              "type": "single_choice",
+              "options": [
+                "Éloigner bruit",
+                "Bouchons",
+                "Regarder laser",
+                "Prisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévention."
+            },
+            {
+              "id": "q6",
+              "question": "En complément des bouchons d'oreille, on peut…",
+              "type": "single_choice",
+              "options": [
+                "Réduire l'intensité à la source",
+                "Augmenter le volume",
+                "Supprimer l'air",
+                "Pointer un laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter le bruit à l'origine réduit l'exposition."
+            },
+            {
+              "id": "q7",
+              "question": "Foudre 9 s → ~3 km car",
+              "type": "single_choice",
+              "options": [
+                "9×0,34 km",
+                "9×340 m seule",
+                "Lumière lente",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Approximation km."
+            },
+            {
+              "id": "q8",
+              "question": "Son métal barre : arrivée avant air même distance car",
+              "type": "single_choice",
+              "options": ["v plus grande", "v nulle", "Lumière", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Conduction rapide."
+            },
+            {
+              "id": "q9",
+              "question": "Chapitre lumière+son : deux ondes…",
+              "type": "single_choice",
+              "options": [
+                "EM vs mécanique",
+                "Identiques",
+                "Sans propagation",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse programme."
+            },
+            {
+              "id": "q10",
+              "question": "Valeur à retenir 4e pour son dans l’air :",
+              "type": "single_choice",
+              "options": ["340 m/s", "340 km/h", "3×10^8 m/s", "34 m/s"],
+              "correctAnswers": [0],
+              "explanation": "Ordre grandeur officiel scolaire."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2508 @@
+{
+  "id": "4e-espagnol-01",
+  "year": "4e",
+  "subject": "espagnol",
+  "title": "Découvrir l'espagnol",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Saluer selon le contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Tu croises une camarade dans la cour. Quelles salutations informelles conviennent ?",
+              "type": "multiple_choice",
+              "options": [
+                "¡Hola! ¿Qué tal?",
+                "Buenos días, señora.",
+                "¿Cómo estás?",
+                "Le presento a mi madre."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Entre pairs on emploie « hola », « ¿qué tal? » ou « ¿cómo estás? »."
+            },
+            {
+              "id": "q2",
+              "question": "Il est 9 h. Tu entres chez le directeur. Que dis-tu ?",
+              "type": "single_choice",
+              "options": [
+                "Buenas noches.",
+                "Buenos días.",
+                "Hasta luego.",
+                "¿Qué hora es?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le matin on dit « buenos días »."
+            },
+            {
+              "id": "q3",
+              "question": "Réponse polie à « ¿Cómo está usted? » (un garçon) :",
+              "type": "single_choice",
+              "options": [
+                "Estoy cansada.",
+                "Estoy cansado, gracias.",
+                "Estás bien.",
+                "Somos de Francia."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec « usted » on répond « estoy » + adjectif accordé au locuteur."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle question provoque « Muy bien, ¿y tú? » ?",
+              "type": "single_choice",
+              "options": [
+                "¿De dónde eres?",
+                "¿Cómo estás?",
+                "¿Cuántos años tienes?",
+                "¿Qué asignatura te gusta?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Muy bien, ¿y tú? » répond à « ¿cómo estás? »."
+            },
+            {
+              "id": "q5",
+              "question": "Saluer un professeur le matin :",
+              "type": "single_choice",
+              "options": [
+                "Buenas tardes, profe.",
+                "Buenos días, profe.",
+                "Buenas noches, profe.",
+                "Adiós, profe."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Buenos días » convient le matin."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Qué tal? » sert surtout à :",
+              "type": "single_choice",
+              "options": [
+                "Demander l'heure.",
+                "Saluer et prendre des nouvelles.",
+                "Donner son nom.",
+                "Dire son âge."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« ¿Qué tal? » équivaut à « comment ça va ? » entre amis."
+            },
+            {
+              "id": "q7",
+              "question": "Salutation inadaptée à 22 h :",
+              "type": "single_choice",
+              "options": [
+                "Buenas noches.",
+                "Hasta mañana.",
+                "Buenos días.",
+                "Me voy a dormir."
+              ],
+              "correctAnswers": [2],
+              "explanation": "On ne dit pas « buenos días » le soir."
+            },
+            {
+              "id": "q8",
+              "question": "Traduction de « Bonsoir » (salutation) :",
+              "type": "single_choice",
+              "options": [
+                "Buenos días.",
+                "Buenas tardes.",
+                "Buenas noches.",
+                "Hasta pronto."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le soir on emploie souvent « buenas noches »."
+            },
+            {
+              "id": "q9",
+              "question": "Tu quittes le collège à 17 h. Tu dis à un camarade :",
+              "type": "single_choice",
+              "options": [
+                "Buenos días.",
+                "Buenas tardes, ¡hasta mañana!",
+                "Buenas noches.",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'après-midi : « buenas tardes » puis « hasta mañana »."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « ¿Qué tal el cole? » :",
+              "type": "single_choice",
+              "options": [
+                "Tengo catorce años.",
+                "Regular, hay muchos deberes.",
+                "Soy de Lyon.",
+                "Me gusta el fútbol."
+              ],
+              "correctAnswers": [1],
+              "explanation": "La question porte sur le collège."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Nom, prénom et politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases pour demander le prénom à l'informel :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Cuál es tu nombre?",
+                "¿Cuántos años tienes?",
+                "¿Cómo se llama usted?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ¿Cómo te llamas? » et « ¿cuál es tu nombre? » demandent le prénom."
+            },
+            {
+              "id": "q2",
+              "question": "Tu t'appelles Mathias. Phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Mathias.",
+                "Me llama Mathias.",
+                "Te llamo Mathias.",
+                "Se llamo Mathias."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit « me llamo » + prénom."
+            },
+            {
+              "id": "q3",
+              "question": "Lucía dit qui elle est et qu'elle est contente :",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Lucía y soy contento.",
+                "Me llamo Lucía y estoy contenta.",
+                "Me llamo Lucía y estoy contento.",
+                "Me llamas Lucía."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Féminin : « contenta » avec « estar »."
+            },
+            {
+              "id": "q4",
+              "question": "Demander le nom à un adulte (usted) :",
+              "type": "single_choice",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Cómo se llama usted?",
+                "¿Cómo os llamáis?",
+                "¿Cómo me llamo?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec usted : « ¿cómo se llama? »."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « Encantado de conocerte » (garçon) :",
+              "type": "single_choice",
+              "options": ["Encantada.", "Igualmente.", "Adiós.", "Tengo sed."],
+              "correctAnswers": [1],
+              "explanation": "« Igualmente » répond poliment."
+            },
+            {
+              "id": "q6",
+              "question": "Forme masculine de « Encantada » :",
+              "type": "single_choice",
+              "options": [
+                "Encantado.",
+                "Encantados.",
+                "Encantada.",
+                "Encantadas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier : « encantado »."
+            },
+            {
+              "id": "q7",
+              "question": "« Mucho gusto » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Beaucoup de pain.",
+                "Enchanté(e).",
+                "À demain.",
+                "J'ai faim."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Expression de politesse à la rencontre."
+            },
+            {
+              "id": "q8",
+              "question": "Phrase qui présente quelqu'un d'autre :",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Ana.",
+                "Te presento a mi hermana.",
+                "¿Cómo estás?",
+                "Soy francés."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Te presento a… » = je te présente…."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse à « ¿Cuál es tu apellido? » :",
+              "type": "single_choice",
+              "options": [
+                "Tengo quince años.",
+                "Mi apellido es Dubois.",
+                "Vivo en París.",
+                "Me gusta la música."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Apellido » = nom de famille."
+            },
+            {
+              "id": "q10",
+              "question": "Pronom manquant : « ___ llamo Carlos » :",
+              "type": "single_choice",
+              "options": ["Te", "Me", "Se", "Os"],
+              "correctAnswers": [1],
+              "explanation": "1re personne de « llamarse » : « me »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "L'âge et les chiffres",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions pour demander l'âge à un camarade :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Qué edad tienes?",
+                "¿Cómo te llamas?",
+                "¿De dónde eres?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux formulations demandent l'âge à « tú »."
+            },
+            {
+              "id": "q2",
+              "question": "« J'ai quatorze ans » :",
+              "type": "single_choice",
+              "options": [
+                "Soy catorce.",
+                "Tengo catorce años.",
+                "Estoy catorce.",
+                "Hago catorce."
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'âge se dit avec « tener … años »."
+            },
+            {
+              "id": "q3",
+              "question": "13 ans : phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "Tengo trece año.",
+                "Tengo trece años.",
+                "Tengo treceña.",
+                "Soy trece años."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel : « trece años »."
+            },
+            {
+              "id": "q4",
+              "question": "« Cumplo quince años en mayo » :",
+              "type": "single_choice",
+              "options": [
+                "J'aurai 15 ans en mai.",
+                "Je cours 15 km en mai.",
+                "Je m'appelle Mai.",
+                "J'ai 15 cours."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cumplir años » = fêter son anniversaire."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « ¿Cuántos años tiene tu hermano? » :",
+              "type": "single_choice",
+              "options": [
+                "Se llama Pablo.",
+                "Tiene doce años.",
+                "Es alto.",
+                "Vive en Madrid."
+              ],
+              "correctAnswers": [1],
+              "explanation": "3e personne : « tiene … años »."
+            },
+            {
+              "id": "q6",
+              "question": "16 dans « Tengo ___ años » :",
+              "type": "single_choice",
+              "options": ["diez y seis", "dieciséis", "seis y diez", "catorce"],
+              "correctAnswers": [1],
+              "explanation": "16 = « dieciséis »."
+            },
+            {
+              "id": "q7",
+              "question": "Une fille de 14 ans dit :",
+              "type": "single_choice",
+              "options": [
+                "Soy catorce años.",
+                "Tengo catorce años.",
+                "Estoy catorce.",
+                "Hago catorce."
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'âge ne change pas avec le genre du locuteur."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Es mayor que tú? » demande si quelqu'un :",
+              "type": "single_choice",
+              "options": [
+                "Est plus âgé(e) que toi.",
+                "Est professeur.",
+                "Habite loin.",
+                "Aime le sport."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mayor que tú » compare l'âge ou la taille."
+            },
+            {
+              "id": "q9",
+              "question": "11 ans : « Mi prima tiene ___ años » :",
+              "type": "single_choice",
+              "options": ["once", "onze", "veintiuno", "diez y uno"],
+              "correctAnswers": [0],
+              "explanation": "11 = « once »."
+            },
+            {
+              "id": "q10",
+              "question": "Demander l'âge avec usted :",
+              "type": "single_choice",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Cuántos años tiene usted?",
+                "¿Cuántos años tenéis?",
+                "¿Cuántos años tengo?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Usted → « tiene »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Origine et nationalité",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases qui indiquent une origine :",
+              "type": "multiple_choice",
+              "options": [
+                "Soy de Marsella.",
+                "Vengo de Francia.",
+                "Tengo quince años.",
+                "Me gusta el cine."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ser de » et « vengo de » situent géographiquement."
+            },
+            {
+              "id": "q2",
+              "question": "Un garçon français :",
+              "type": "single_choice",
+              "options": [
+                "Soy francesa.",
+                "Soy francés.",
+                "Soy francésa.",
+                "Estoy francés."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nationalité masculine : « francés »."
+            },
+            {
+              "id": "q3",
+              "question": "Une fille espagnole :",
+              "type": "single_choice",
+              "options": [
+                "Soy español.",
+                "Soy española.",
+                "Soy españoles.",
+                "Soy de español."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Féminin : « española »."
+            },
+            {
+              "id": "q4",
+              "question": "En 4e, pour répondre à « ¿De dónde eres? », on choisit :",
+              "type": "single_choice",
+              "options": [
+                "Soy de Toulouse.",
+                "Tengo hambre.",
+                "Estudio matemáticas.",
+                "Hasta luego."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Soy de… » indique la provenance."
+            },
+            {
+              "id": "q5",
+              "question": "« Nous sommes mexicains » (masculin) :",
+              "type": "single_choice",
+              "options": [
+                "Somos mexicanas.",
+                "Somos mexicanos.",
+                "Sois mexicanos.",
+                "Son mexicanos."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Somos mexicanos » au masculin pluriel."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Eres de aquí? » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Tu es d'ici ?",
+                "Tu as faim ?",
+                "Tu viens quand ?",
+                "Comment tu t'appelles ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aquí » = ici."
+            },
+            {
+              "id": "q7",
+              "question": "Capitale pour « Soy de ___ » (France, ville capitale) :",
+              "type": "single_choice",
+              "options": ["Lyon", "París", "Madrid", "Roma"],
+              "correctAnswers": [1],
+              "explanation": "París est la capitale de la France."
+            },
+            {
+              "id": "q8",
+              "question": "« Mis abuelos son ___ » (italiens) :",
+              "type": "single_choice",
+              "options": ["italiano", "italiana", "italianos", "italianas"],
+              "correctAnswers": [2],
+              "explanation": "Masculin pluriel : « italianos »."
+            },
+            {
+              "id": "q9",
+              "question": "« Vivo en un pueblo pequeño » :",
+              "type": "single_choice",
+              "options": [
+                "Je vis dans un petit village.",
+                "Je vais au petit collège.",
+                "J'aime les petits chats.",
+                "Je suis petit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vivir en » = habiter."
+            },
+            {
+              "id": "q10",
+              "question": "Réponse à « ¿De dónde es usted? » :",
+              "type": "single_choice",
+              "options": [
+                "Soy de Valencia.",
+                "Eres de Valencia.",
+                "Sois de Valencia.",
+                "Son de Valencia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond « soy de… »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Goûts et préférences",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases qui expriment un goût positif :",
+              "type": "multiple_choice",
+              "options": [
+                "Me gusta la música.",
+                "Me gustan los deportes.",
+                "No me llamo Ana.",
+                "Tengo frío."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Me gusta » + singulier, « me gustan » + pluriel."
+            },
+            {
+              "id": "q2",
+              "question": "« Me gusta el baloncesto » : pourquoi « gusta » ?",
+              "type": "single_choice",
+              "options": [
+                "Le sujet grammatical est singulier.",
+                "Parce que je suis fille.",
+                "C'est le soir.",
+                "C'est une question."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« El baloncesto » est singulier."
+            },
+            {
+              "id": "q3",
+              "question": "« J'aime les sciences » :",
+              "type": "single_choice",
+              "options": [
+                "Me gusta las ciencias.",
+                "Me gustan las ciencias.",
+                "Me gustan la ciencia.",
+                "Te gustan las ciencias."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Las ciencias » → « gustan »."
+            },
+            {
+              "id": "q4",
+              "question": "« No me gusta nada el teatro » :",
+              "type": "single_choice",
+              "options": [
+                "J'adore le théâtre.",
+                "Je n'aime pas du tout le théâtre.",
+                "Je vais au théâtre.",
+                "Le théâtre est fermé."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« No … nada » renforce la négation."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse affirmative à « ¿Te gusta leer? » :",
+              "type": "single_choice",
+              "options": [
+                "Sí, me encanta.",
+                "No, me llamo Leo.",
+                "Tengo doce años.",
+                "Soy de aquí."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Me encanta » = j'aime beaucoup."
+            },
+            {
+              "id": "q6",
+              "question": "Aimer la pizza :",
+              "type": "single_choice",
+              "options": [
+                "Me gusta la pizza.",
+                "Me gustan la pizza.",
+                "Me gustas la pizza.",
+                "Me gusta los pizzas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« La pizza » singulier → « gusta »."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Qué te gusta hacer en verano? » demande :",
+              "type": "single_choice",
+              "options": [
+                "Ce que tu aimes faire en été.",
+                "Ta matière préférée.",
+                "Où tu habites.",
+                "Ton prénom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Qué te gusta hacer » + « en verano »."
+            },
+            {
+              "id": "q8",
+              "question": "« Prefiero ___ » (nager) :",
+              "type": "single_choice",
+              "options": ["nadar", "nado", "nadas", "nadamos"],
+              "correctAnswers": [0],
+              "explanation": "Infinitif après « preferir »."
+            },
+            {
+              "id": "q9",
+              "question": "« Odio madrugar » :",
+              "type": "single_choice",
+              "options": [
+                "Je déteste me lever tôt.",
+                "J'aime le matin.",
+                "Je suis en retard.",
+                "Je dors en classe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Odiar madrugar » = détester se lever tôt."
+            },
+            {
+              "id": "q10",
+              "question": "« A mi hermana le gustan las series » : « gustan » car :",
+              "type": "single_choice",
+              "options": [
+                "« las series » est pluriel.",
+                "« hermana » est pluriel.",
+                "C'est passé.",
+                "C'est une question."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord avec « las series »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Au collège : registre et respect",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules adaptées devant un professeur :",
+              "type": "multiple_choice",
+              "options": [
+                "Buenos días, profe.",
+                "¿Puedo entrar?",
+                "¿Qué tal, tío?",
+                "Perdone, ¿puede repetir?"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Saluer et « perdone » + « puede » restent polis."
+            },
+            {
+              "id": "q2",
+              "question": "À la porte du bureau :",
+              "type": "single_choice",
+              "options": [
+                "¡Adiós!",
+                "¿Puedo pasar?",
+                "Me gusta el cole.",
+                "Soy alumno."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« ¿Puedo pasar? » demande la permission."
+            },
+            {
+              "id": "q3",
+              "question": "« Perdona » vs « Perdone » :",
+              "type": "single_choice",
+              "options": [
+                "tú / usted.",
+                "matin / soir.",
+                "singulier / pluriel des choses.",
+                "présent / passé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Registre informel vs formel."
+            },
+            {
+              "id": "q4",
+              "question": "Se présenter comme élève (niveau collège espagnol) :",
+              "type": "single_choice",
+              "options": [
+                "Soy alumno de cuarto de ESO.",
+                "Tengo cuarto años.",
+                "Soy cuarto profesor.",
+                "Estoy cuarto casa."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Alumno » + niveau scolaire."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿Me puede ayudar? » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "Un adulte (usted).",
+                "Un animal.",
+                "Toujours à plusieurs amis.",
+                "Personne : phrase fausse."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Puede » = forme de usted."
+            },
+            {
+              "id": "q6",
+              "question": "« Levanta la mano » :",
+              "type": "single_choice",
+              "options": [
+                "Lève la main.",
+                "Ouvre la porte.",
+                "Silence.",
+                "Assieds-toi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne fréquente en classe."
+            },
+            {
+              "id": "q7",
+              "question": "Si tu n'as pas compris (poli) :",
+              "type": "single_choice",
+              "options": [
+                "No entiendo, ¿puede hablar más despacio?",
+                "Calla.",
+                "Me voy.",
+                "No me gusta."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander de parler plus lentement."
+            },
+            {
+              "id": "q8",
+              "question": "« Profe » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Professeur (abréviation courante).",
+                "Une matière.",
+                "Une ville.",
+                "Un verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apocope de « profesor/a »."
+            },
+            {
+              "id": "q9",
+              "question": "Tu rends un devoir (usted) :",
+              "type": "single_choice",
+              "options": [
+                "Aquí tiene mi trabajo.",
+                "Aquí tienes mi perro.",
+                "Me llamo trabajo.",
+                "Hasta mañana, trabajo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Aquí tiene mi trabajo »."
+            },
+            {
+              "id": "q10",
+              "question": "« Silencio, por favor » :",
+              "type": "single_choice",
+              "options": [
+                "Demande le silence.",
+                "Demande de répéter.",
+                "Demande de sortir.",
+                "Demande d'ouvrir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Silencio » = silence."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Accords : genre et nombre",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Adjectifs bien accordés :",
+              "type": "multiple_choice",
+              "options": [
+                "Mi amiga es alta.",
+                "Mis amigos son altos.",
+                "El libro es roja.",
+                "Las chicas son alto."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Amiga alta » et « amigos altos » sont corrects."
+            },
+            {
+              "id": "q2",
+              "question": "« Un chico inteligente » — l'adjectif :",
+              "type": "single_choice",
+              "options": [
+                "inteligente",
+                "inteligentes",
+                "inteligenta",
+                "inteligentos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier : « inteligente »."
+            },
+            {
+              "id": "q3",
+              "question": "« Las profesoras son ___ » (sympathiques) :",
+              "type": "single_choice",
+              "options": ["simpático", "simpática", "simpáticas", "simpáticos"],
+              "correctAnswers": [2],
+              "explanation": "Féminin pluriel : « simpáticas »."
+            },
+            {
+              "id": "q4",
+              "question": "Erreur d'accord :",
+              "type": "single_choice",
+              "options": [
+                "Mi hermano es alto.",
+                "Mi hermana es alta.",
+                "Mi hermana es alto.",
+                "Mis padres son altos."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Féminin : « alta », pas « alto »."
+            },
+            {
+              "id": "q5",
+              "question": "« Los libros son ___ » (intéressants) :",
+              "type": "single_choice",
+              "options": [
+                "interesante",
+                "interesantes",
+                "interesanta",
+                "interesantos"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Masculin pluriel : « interesantes »."
+            },
+            {
+              "id": "q6",
+              "question": "« Una casa pequeña » : pourquoi « pequeña » ?",
+              "type": "single_choice",
+              "options": [
+                "« casa » est féminin singulier.",
+                "C'est le pluriel.",
+                "C'est un verbe.",
+                "C'est usted."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord avec « casa » féminin."
+            },
+            {
+              "id": "q7",
+              "question": "« Somos estudiantes ___ » (motivés, groupe mixte masculin) :",
+              "type": "single_choice",
+              "options": ["motivada", "motivado", "motivados", "motivadas"],
+              "correctAnswers": [2],
+              "explanation": "Pluriel masculin : « motivados »."
+            },
+            {
+              "id": "q8",
+              "question": "Article + adjectif : « ___ niña rubia » :",
+              "type": "single_choice",
+              "options": ["Un", "Una", "Unos", "Unas"],
+              "correctAnswers": [1],
+              "explanation": "« Niña » féminin → « una »."
+            },
+            {
+              "id": "q9",
+              "question": "« El bolígrafo es ___ » (noir) :",
+              "type": "single_choice",
+              "options": ["negro", "negra", "negros", "negras"],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier : « negro »."
+            },
+            {
+              "id": "q10",
+              "question": "Phrase correcte :",
+              "type": "single_choice",
+              "options": [
+                "Mis primas son altas.",
+                "Mis primas son altos.",
+                "Mi primas es alta.",
+                "Mis prima son altas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel féminin : « primas … altas »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Tutoiement et vouvoiement",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formes avec « tú » (informel) :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Cómo estás?",
+                "¿Tienes hermanos?",
+                "¿Cómo está usted?",
+                "¿Tiene usted tiempo?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Estás » et « tienes » vont avec « tú »."
+            },
+            {
+              "id": "q2",
+              "question": "Parler à un inconnu âgé (respect) :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué quieres?",
+                "¿Qué quiere usted?",
+                "¿Qué queréis?",
+                "¿Qué quiero?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Usted → « quiere »."
+            },
+            {
+              "id": "q3",
+              "question": "« Habla más despacio » s'adresse à :",
+              "type": "single_choice",
+              "options": [
+                "tú (impératif familiar).",
+                "usted uniquement.",
+                "nous.",
+                "ils."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Impératif « habla » = tú."
+            },
+            {
+              "id": "q4",
+              "question": "Équivalent poli de « ¿Puedes ayudarme? » :",
+              "type": "single_choice",
+              "options": [
+                "¿Puedo ayudarte?",
+                "¿Puede ayudarme?",
+                "¿Podéis ayudarme?",
+                "¿Pueden ayudarme?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Puede » + infinitif avec usted."
+            },
+            {
+              "id": "q5",
+              "question": "Erreur de registre :",
+              "type": "single_choice",
+              "options": [
+                "Profe, ¿puede explicarlo otra vez?",
+                "Señor director, ¿tiene un momento?",
+                "Tío, ¿qué tal la clase?",
+                "Buenos días, señora López."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Tío » est trop familier pour un professeur."
+            },
+            {
+              "id": "q6",
+              "question": "« Usted » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "vous (singulier poli).",
+                "tu.",
+                "ils.",
+                "on (nous)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom de politesse singulier."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Vives cerca del instituto? » — verbe car :",
+              "type": "single_choice",
+              "options": [
+                "sujet « tú ».",
+                "sujet « usted ».",
+                "sujet « ellos ».",
+                "impératif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vives » = 2e personne « tú »."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Dónde vive usted? » — réponse cohérente :",
+              "type": "single_choice",
+              "options": [
+                "Vivo en Sevilla.",
+                "Vives en Sevilla.",
+                "Vivís en Sevilla.",
+                "Viven en Sevilla."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond « vivo… »."
+            },
+            {
+              "id": "q9",
+              "question": "Entre deux camarades de 4e :",
+              "type": "single_choice",
+              "options": [
+                "¿Qué haces después de clase?",
+                "¿Qué hace usted después de clase?",
+                "¿Qué hacen ustedes después de clase?",
+                "¿Qué hago después de clase?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Haces » = tú entre pairs."
+            },
+            {
+              "id": "q10",
+              "question": "« Tú » vs « usted » : choix surtout selon :",
+              "type": "single_choice",
+              "options": [
+                "Relation et contexte (âge, autorité).",
+                "La couleur des vêtements.",
+                "L'heure exacte.",
+                "La matière scolaire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre dépend du rapport social."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Dire au revoir",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Formules pour quitter quelqu'un (revoir bientôt) :",
+              "type": "multiple_choice",
+              "options": [
+                "Hasta luego.",
+                "Hasta mañana.",
+                "Buenos días.",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Hasta luego » et « hasta mañana » marquent le départ."
+            },
+            {
+              "id": "q2",
+              "question": "Tu quittes un ami après le sport :",
+              "type": "single_choice",
+              "options": [
+                "Hasta pronto.",
+                "Buenas noches (salutation matin).",
+                "¿Cuántos años tienes?",
+                "Me llamo…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hasta pronto » = à bientôt."
+            },
+            {
+              "id": "q3",
+              "question": "« Nos vemos el lunes » :",
+              "type": "single_choice",
+              "options": [
+                "On se voit lundi.",
+                "On est lundi.",
+                "Lundi c'est fermé.",
+                "Je déteste lundi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nos vemos » = on se voit."
+            },
+            {
+              "id": "q4",
+              "question": "Au revoir définitif (on ne revient pas tout de suite) :",
+              "type": "single_choice",
+              "options": ["Adiós.", "Hola.", "Gracias.", "Por favor."],
+              "correctAnswers": [0],
+              "explanation": "« Adiós » = au revoir / adieu."
+            },
+            {
+              "id": "q5",
+              "question": "Réponse à « Que tengas buen fin de semana » :",
+              "type": "single_choice",
+              "options": [
+                "Igualmente.",
+                "Me llamo…",
+                "Tengo doce años.",
+                "Soy de…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Igualmente » renvoie le souhait."
+            },
+            {
+              "id": "q6",
+              "question": "« Chao » est :",
+              "type": "single_choice",
+              "options": [
+                "Familier pour dire au revoir.",
+                "Une salutation du matin.",
+                "Un nombre.",
+                "Une nationalité."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emprunt italien, registre oral."
+            },
+            {
+              "id": "q7",
+              "question": "Avant de dormir à un proche :",
+              "type": "single_choice",
+              "options": [
+                "Buenas noches.",
+                "Buenos días.",
+                "Hasta luego (matin).",
+                "¿Qué tal?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Buenas noches » au coucher."
+            },
+            {
+              "id": "q8",
+              "question": "« Hasta entonces » convient quand :",
+              "type": "single_choice",
+              "options": [
+                "Un rendez-vous est déjà fixé.",
+                "On se rencontre pour la première fois.",
+                "On demande l'âge.",
+                "On présente sa mère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entonces » renvoie au moment convenu."
+            },
+            {
+              "id": "q9",
+              "question": "Poli avec usted en partant :",
+              "type": "single_choice",
+              "options": [
+                "Que tenga un buen día.",
+                "Que tengas un buen día.",
+                "Que tenéis un buen día.",
+                "Que tengo un buen día."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Subjonctif de usted : « tenga »."
+            },
+            {
+              "id": "q10",
+              "question": "« Hasta la vista » signifie environ :",
+              "type": "single_choice",
+              "options": [
+                "Au revoir (à la prochaine).",
+                "Bonjour.",
+                "Merci.",
+                "S'il vous plaît."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de séparation courante."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Présentation complète",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Phrases utiles dans une présentation orale (4e) :",
+              "type": "multiple_choice",
+              "options": [
+                "Me llamo… y tengo… años.",
+                "Soy de… y me gusta…",
+                "¿Qué hora es?",
+                "El bolígrafo es azul."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom, âge, origine et goûts se combinent ainsi."
+            },
+            {
+              "id": "q2",
+              "question": "Ordre logique : saluer puis :",
+              "type": "single_choice",
+              "options": [
+                "Decir el nombre y algo personal.",
+                "Decir adiós inmediatamente.",
+                "Contar solo números.",
+                "Hablar solo en francés."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la salutation vient la présentation."
+            },
+            {
+              "id": "q3",
+              "question": "Mini-présentation correcte (fille, 13 ans, Bordeaux) :",
+              "type": "single_choice",
+              "options": [
+                "Me llamo Clara, tengo trece años y soy de Burdeos.",
+                "Me llamo Clara, soy trece y de Burdeos tengo.",
+                "Clara me llamo años trece.",
+                "Tengo Clara trece Burdeos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure claire : nom, âge, origine."
+            },
+            {
+              "id": "q4",
+              "question": "Pour demander la même chose en retour :",
+              "type": "single_choice",
+              "options": [
+                "¿Y tú?",
+                "¿Y usted? (si usted)",
+                "Les deux selon le registre.",
+                "Solo « adiós »."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« ¿Y tú? » ou « ¿y usted? » relancent la conversation."
+            },
+            {
+              "id": "q5",
+              "question": "Relier goût et matière : « Me gusta ___ » (les langues) :",
+              "type": "single_choice",
+              "options": [
+                "el idioma",
+                "las lenguas",
+                "la lenguas",
+                "los lengua"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel : « las lenguas »."
+            },
+            {
+              "id": "q6",
+              "question": "« Encantado » s'emploie surtout :",
+              "type": "single_choice",
+              "options": [
+                "Après une présentation.",
+                "Avant de dormir.",
+                "Pour demander l'heure.",
+                "Pour compter."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse après les noms."
+            },
+            {
+              "id": "q7",
+              "question": "Erreur dans « Soy de Francia y tengo quince año » :",
+              "type": "single_choice",
+              "options": [
+                "« año » doit être « años ».",
+                "« Francia » est faux.",
+                "« Soy » est faux.",
+                "« de » manque."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluriel obligatoire : « quince años »."
+            },
+            {
+              "id": "q8",
+              "question": "Question pour relancer après les goûts :",
+              "type": "single_choice",
+              "options": [
+                "¿A ti qué te gusta hacer?",
+                "¿Cuántas sillas hay?",
+                "¿Dónde está el baño?",
+                "¿Qué color es?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande les loisirs de l'autre."
+            },
+            {
+              "id": "q9",
+              "question": "Clore poliment une première rencontre :",
+              "type": "single_choice",
+              "options": [
+                "Ha sido un placer. Hasta luego.",
+                "Buenos días otra vez.",
+                "¿Cómo te llamas? otra vez.",
+                "Tengo hambre siempre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de plaisir + au revoir."
+            },
+            {
+              "id": "q10",
+              "question": "« Somos de la misma clase » indique :",
+              "type": "single_choice",
+              "options": [
+                "Vous êtes dans la même classe.",
+                "Vous habitez le même pays.",
+                "Vous avez le même âge.",
+                "Vous aimez la même couleur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Clase » = classe scolaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Objets de la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Mots désignant du matériel scolaire :",
+              "type": "multiple_choice",
+              "options": [
+                "el cuaderno",
+                "el bolígrafo",
+                "el techo (ciel)",
+                "la silla del cielo azul solo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Cuaderno » et « bolígrafo » sont du matériel de classe."
+            },
+            {
+              "id": "q2",
+              "question": "« La gomme » :",
+              "type": "single_choice",
+              "options": [
+                "la goma de borrar",
+                "el borrador de goma",
+                "la goma (de borrar)",
+                "el lápiz"
+              ],
+              "correctAnswers": [2],
+              "explanation": "On dit souvent « la goma » pour la gomme."
+            },
+            {
+              "id": "q3",
+              "question": "« El estuche » contient surtout :",
+              "type": "single_choice",
+              "options": [
+                "Des stylos et crayons.",
+                "Des chaussures.",
+                "Des portes.",
+                "De l'eau."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trousse à stylos."
+            },
+            {
+              "id": "q4",
+              "question": "Dans une salle de classe, « la pizarra » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Le tableau.",
+                "La fenêtre.",
+                "Le plafond.",
+                "Le couloir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Support d'écriture en classe."
+            },
+            {
+              "id": "q5",
+              "question": "Demander un objet : « ¿Me prestas ___? » (règle) :",
+              "type": "single_choice",
+              "options": ["tu regla", "tu reglas", "tus regla", "tus reglas"],
+              "correctAnswers": [0],
+              "explanation": "« Tu regla » : possessif + nom singulier."
+            },
+            {
+              "id": "q6",
+              "question": "« El ordenador » au collège désigne :",
+              "type": "single_choice",
+              "options": [
+                "L'ordinateur.",
+                "L'ordre.",
+                "Le professeur.",
+                "Le cartable."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire informatique."
+            },
+            {
+              "id": "q7",
+              "question": "« Los deberes » sont :",
+              "type": "single_choice",
+              "options": [
+                "Les devoirs.",
+                "Les droits.",
+                "Les débats.",
+                "Les desserts."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail à la maison."
+            },
+            {
+              "id": "q8",
+              "question": "« El recreo » :",
+              "type": "single_choice",
+              "options": [
+                "La récréation.",
+                "La recette.",
+                "Le récit.",
+                "La réunion."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause entre les cours."
+            },
+            {
+              "id": "q9",
+              "question": "« Apunta en tu cuaderno » :",
+              "type": "single_choice",
+              "options": [
+                "Note dans ton cahier.",
+                "Lève la main.",
+                "Ouvre la porte.",
+                "Ferme les yeux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Apuntar » = noter."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Dónde está mi mochila? » :",
+              "type": "single_choice",
+              "options": [
+                "Où est mon sac à dos ?",
+                "Où est mon prof ?",
+                "Quelle heure est-il ?",
+                "Comment tu t'appelles ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mochila » = sac à dos."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Matières scolaires",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Noms de matières en espagnol :",
+              "type": "multiple_choice",
+              "options": ["matemáticas", "historia", "desayuno", "almohada"],
+              "correctAnswers": [0, 1],
+              "explanation": "Maths et histoire ; les deux autres ne sont pas des matières."
+            },
+            {
+              "id": "q2",
+              "question": "« Educación física » :",
+              "type": "single_choice",
+              "options": [
+                "EPS.",
+                "Espagnol.",
+                "Physique-chimie seule.",
+                "Musique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sport scolaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Me gusta ___ » (la géographie) :",
+              "type": "single_choice",
+              "options": [
+                "geografía",
+                "la geografía",
+                "las geografía",
+                "el geografía"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« La geografía » avec article."
+            },
+            {
+              "id": "q4",
+              "question": "« Lengua extranjera » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Une langue vivante étrangère.",
+                "La langue maternelle seule.",
+                "Le latin obligatoire.",
+                "Le sport."
+              ],
+              "correctAnswers": [0],
+              "explanation": "LV au collège."
+            },
+            {
+              "id": "q5",
+              "question": "« Tengo examen de ___ mañana » (sciences) :",
+              "type": "single_choice",
+              "options": ["ciencias", "ciencia", "ciencas", "científico"],
+              "correctAnswers": [0],
+              "explanation": "Souvent pluriel : « ciencias »."
+            },
+            {
+              "id": "q6",
+              "question": "« Plástica » correspond à :",
+              "type": "single_choice",
+              "options": [
+                "Arts plastiques.",
+                "Plastique matériau.",
+                "Plage.",
+                "Platine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière artistique."
+            },
+            {
+              "id": "q7",
+              "question": "« Música » — article défini :",
+              "type": "single_choice",
+              "options": ["la música", "el música", "las música", "los música"],
+              "correctAnswers": [0],
+              "explanation": "Féminin : « la música »."
+            },
+            {
+              "id": "q8",
+              "question": "« Tecnología » au collège :",
+              "type": "single_choice",
+              "options": [
+                "Technologie.",
+                "Téléphone.",
+                "Théologie.",
+                "Traduction."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière pratique / numérique."
+            },
+            {
+              "id": "q9",
+              "question": "Question : « ¿Cuál es tu asignatura favorita? » :",
+              "type": "single_choice",
+              "options": [
+                "Quelle est ta matière préférée ?",
+                "Quelle heure est-il ?",
+                "Où est la classe ?",
+                "Combien de profs ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Asignatura favorita »."
+            },
+            {
+              "id": "q10",
+              "question": "« Filosofía » en 4e en Espagne peut arriver plus tard ; ici « filosofía » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Philosophie.",
+                "Photographie.",
+                "Physique.",
+                "Phonétique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière de réflexion."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Heure et nombres utiles",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions sur l'heure :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Qué hora es?",
+                "¿A qué hora empieza la clase?",
+                "¿Cómo te llamas?",
+                "¿De qué color es?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heure actuelle ou heure de début de cours."
+            },
+            {
+              "id": "q2",
+              "question": "« Son las tres y cuarto » :",
+              "type": "single_choice",
+              "options": [
+                "Il est trois heures et quart.",
+                "Il est trois heures moins le quart.",
+                "Il est quatre heures.",
+                "Il est midi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Y cuarto » = et quart."
+            },
+            {
+              "id": "q3",
+              "question": "« Es la una » — pourquoi « la » ?",
+              "type": "single_choice",
+              "options": [
+                "Une heure : singulier féminin.",
+                "Parce que c'est usted.",
+                "Parce que c'est nuit.",
+                "Erreur, on dit « los »."
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 h : « es la una »."
+            },
+            {
+              "id": "q4",
+              "question": "« Son las ocho y media » :",
+              "type": "single_choice",
+              "options": ["8 h 30.", "8 h 15.", "8 h moins le quart.", "9 h."],
+              "correctAnswers": [0],
+              "explanation": "« Y media » = et demie."
+            },
+            {
+              "id": "q5",
+              "question": "20 en espagnol :",
+              "type": "single_choice",
+              "options": ["veinte", "viente", "diez y diez", "doce"],
+              "correctAnswers": [0],
+              "explanation": "20 = « veinte »."
+            },
+            {
+              "id": "q6",
+              "question": "« La clase empieza a las ___ » (8 h 15) :",
+              "type": "single_choice",
+              "options": [
+                "ocho y cuarto",
+                "ocho menos cuarto",
+                "nueve y media",
+                "ocho y media"
+              ],
+              "correctAnswers": [0],
+              "explanation": "8 h 15 = « ocho y cuarto »."
+            },
+            {
+              "id": "q7",
+              "question": "« Mediodía » :",
+              "type": "single_choice",
+              "options": ["Midi.", "Minuit.", "Mardi.", "Métro."],
+              "correctAnswers": [0],
+              "explanation": "Milieu de journée."
+            },
+            {
+              "id": "q8",
+              "question": "22 en chiffres se lit :",
+              "type": "single_choice",
+              "options": [
+                "veintidós",
+                "veinte dos",
+                "doce diez",
+                "veinticuatro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "22 = « veintidós »."
+            },
+            {
+              "id": "q9",
+              "question": "« ¿A qué hora termina? » demande :",
+              "type": "single_choice",
+              "options": [
+                "À quelle heure ça finit ?",
+                "Quelle matière ?",
+                "Quel jour ?",
+                "Quelle couleur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Terminar » = finir."
+            },
+            {
+              "id": "q10",
+              "question": "« Son las doce » :",
+              "type": "single_choice",
+              "options": [
+                "Il est midi (ou minuit selon contexte).",
+                "Il est une heure.",
+                "Il est dix heures.",
+                "Il est demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "12 h : midi ou minuit."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Couleurs et accords",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Accords corrects couleur + nom :",
+              "type": "multiple_choice",
+              "options": [
+                "una mochila roja",
+                "unos libros rojos",
+                "un libro roja",
+                "unas sillas rojo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Féminin singulier et masculin pluriel corrects."
+            },
+            {
+              "id": "q2",
+              "question": "« El bolígrafo ___ » (bleu) :",
+              "type": "single_choice",
+              "options": ["azul", "azules", "azula", "azulo"],
+              "correctAnswers": [0],
+              "explanation": "« Azul » invariable ici en singulier."
+            },
+            {
+              "id": "q3",
+              "question": "« Las carpetas ___ » (vertes) :",
+              "type": "single_choice",
+              "options": ["verde", "verdes", "verda", "verdos"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel : « verdes »."
+            },
+            {
+              "id": "q4",
+              "question": "« Marrón » avec « las paredes » :",
+              "type": "single_choice",
+              "options": ["marrones", "marrón", "marrona", "marrónes"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel : « marrones »."
+            },
+            {
+              "id": "q5",
+              "question": "Question : « ¿De qué color es tu estuche? » :",
+              "type": "single_choice",
+              "options": [
+                "De quelle couleur est ta trousse ?",
+                "Où est ta trousse ?",
+                "Combien coûte ta trousse ?",
+                "Qui a ta trousse ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« De qué color »."
+            },
+            {
+              "id": "q6",
+              "question": "« Blanco » → féminin singulier :",
+              "type": "single_choice",
+              "options": ["blanca", "blancas", "blanco", "blancos"],
+              "correctAnswers": [0],
+              "explanation": "Féminin : « blanca »."
+            },
+            {
+              "id": "q7",
+              "question": "« Un cuaderno amarillo » — « amarillo » car :",
+              "type": "single_choice",
+              "options": [
+                "« cuaderno » masculin singulier.",
+                "« cuaderno » féminin.",
+                "C'est pluriel.",
+                "C'est un verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord avec le nom."
+            },
+            {
+              "id": "q8",
+              "question": "« Gris » au pluriel :",
+              "type": "single_choice",
+              "options": ["grises", "gris", "grisa", "griso"],
+              "correctAnswers": [0],
+              "explanation": "« Grises » au pluriel."
+            },
+            {
+              "id": "q9",
+              "question": "Réponse : « Es negro y blanco » décrit :",
+              "type": "single_choice",
+              "options": [
+                "Noir et blanc.",
+                "Rouge et bleu.",
+                "Grand et petit.",
+                "Chaud et froid."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux couleurs."
+            },
+            {
+              "id": "q10",
+              "question": "Erreur :",
+              "type": "single_choice",
+              "options": [
+                "Una mesa roja.",
+                "Una mesa rojo.",
+                "Unos boli rojos.",
+                "Una goma rosa."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Mesa » féminin → « roja »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Famille proche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Membres de la famille proche :",
+              "type": "multiple_choice",
+              "options": ["madre", "padre", "profesor", "pizarra"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mère et père ; prof et tableau ne sont pas la famille."
+            },
+            {
+              "id": "q2",
+              "question": "« Hermano mayor » :",
+              "type": "single_choice",
+              "options": ["Grand frère.", "Petit frère.", "Oncle.", "Cousin."],
+              "correctAnswers": [0],
+              "explanation": "« Mayor » = plus âgé."
+            },
+            {
+              "id": "q3",
+              "question": "« Mis abuelos » :",
+              "type": "single_choice",
+              "options": [
+                "Mes grands-parents.",
+                "Mes parents.",
+                "Mes oncles.",
+                "Mes profs."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Abuelos » = grands-parents."
+            },
+            {
+              "id": "q4",
+              "question": "Dans l'arbre familial, « tía » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Tante.",
+                "Tante (tío = oncle).",
+                "Tante seulement si usted.",
+                "Cousine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tía » = tante."
+            },
+            {
+              "id": "q5",
+              "question": "« Somos tres hermanos » :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes trois frères et sœurs.",
+                "Nous sommes trois profs.",
+                "Nous avons trois maisons.",
+                "Nous avons trois chiens."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fratrie de trois."
+            },
+            {
+              "id": "q6",
+              "question": "« Mi prima vive en ___ » (Barcelone) :",
+              "type": "single_choice",
+              "options": ["Barcelona", "Barcelone", "Madrid", "París"],
+              "correctAnswers": [0],
+              "explanation": "Toponyme espagnol : Barcelona."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Tienes hermanos? » — réponse :",
+              "type": "single_choice",
+              "options": [
+                "Sí, tengo una hermana.",
+                "Sí, soy una hermana.",
+                "Sí, me gusta hermana.",
+                "Sí, vivo hermana."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tener » pour la fratrie."
+            },
+            {
+              "id": "q8",
+              "question": "« Hijo » / « hija » :",
+              "type": "single_choice",
+              "options": [
+                "Fils / fille (enfant).",
+                "Frère / sœur.",
+                "Père / mère.",
+                "Oncle / tante."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enfant du point de vue des parents."
+            },
+            {
+              "id": "q9",
+              "question": "« Familia numerosa » :",
+              "type": "single_choice",
+              "options": [
+                "Famille nombreuse.",
+                "Famille numérique.",
+                "Famille du prof.",
+                "Famille du livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beaucoup de membres."
+            },
+            {
+              "id": "q10",
+              "question": "« Nuestros padres » :",
+              "type": "single_choice",
+              "options": [
+                "Nos parents (à nous).",
+                "Vos parents.",
+                "Leurs parents.",
+                "Mes parents seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nuestros » = nos."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Jours et mois",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Jours de la semaine en espagnol :",
+              "type": "multiple_choice",
+              "options": ["lunes", "martes", "enero", "marzo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lundi et mardi ; janvier et mars sont des mois."
+            },
+            {
+              "id": "q2",
+              "question": "« El miércoles » :",
+              "type": "single_choice",
+              "options": ["Mercredi.", "Mardi.", "Jeudi.", "Lundi."],
+              "correctAnswers": [0],
+              "explanation": "Milieu de semaine."
+            },
+            {
+              "id": "q3",
+              "question": "Week-end : « ___ » :",
+              "type": "single_choice",
+              "options": [
+                "sábado y domingo",
+                "lunes y martes",
+                "enero y febrero",
+                "mañana y tarde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Samedi et dimanche."
+            },
+            {
+              "id": "q4",
+              "question": "« En septiembre empiezan las clases » :",
+              "type": "single_choice",
+              "options": [
+                "Les cours commencent en septembre.",
+                "Les cours finissent en septembre.",
+                "Septembre est un jour.",
+                "Septembre est une couleur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« En » + mois."
+            },
+            {
+              "id": "q5",
+              "question": "« Hoy es ___ » (vendredi) :",
+              "type": "single_choice",
+              "options": ["viernes", "jueves", "sábado", "domingo"],
+              "correctAnswers": [0],
+              "explanation": "Vendredi = viernes."
+            },
+            {
+              "id": "q6",
+              "question": "Selon le contexte, « mañana » peut vouloir dire :",
+              "type": "single_choice",
+              "options": [
+                "Demain ou le matin selon le contexte.",
+                "Hier.",
+                "Jamais.",
+                "Toujours hier soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polysemie fréquente en 4e."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Qué día es hoy? » :",
+              "type": "single_choice",
+              "options": [
+                "Quel jour sommes-nous ?",
+                "Quelle heure ?",
+                "Quel mois ?",
+                "Quelle matière ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour de la semaine."
+            },
+            {
+              "id": "q8",
+              "question": "« Abril » :",
+              "type": "single_choice",
+              "options": [
+                "Avril.",
+                "Mars.",
+                "Août.",
+                "Avril en anglais seulement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatrième mois."
+            },
+            {
+              "id": "q9",
+              "question": "« Cada lunes tengo inglés » :",
+              "type": "single_choice",
+              "options": [
+                "Chaque lundi j'ai anglais.",
+                "Un lundi j'ai anglais.",
+                "Jamais anglais.",
+                "Anglais le dimanche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Cada » = chaque."
+            },
+            {
+              "id": "q10",
+              "question": "« Anteayer » :",
+              "type": "single_choice",
+              "options": [
+                "Avant-hier.",
+                "Après-demain.",
+                "Aujourd'hui.",
+                "Ce soir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour précédant hier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Verbes utiles au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Conjugaisons correctes (present, tú) :",
+              "type": "multiple_choice",
+              "options": ["estudias", "hablas", "estudia", "hablamos"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Estudias » et « hablas » vont avec « tú »."
+            },
+            {
+              "id": "q2",
+              "question": "« Yo ___ español en clase » (étudier) :",
+              "type": "single_choice",
+              "options": ["estudio", "estudias", "estudia", "estudian"],
+              "correctAnswers": [0],
+              "explanation": "1re personne : « estudio »."
+            },
+            {
+              "id": "q3",
+              "question": "« Nosotros ___ en el patio » (jouer) :",
+              "type": "single_choice",
+              "options": ["jugamos", "juego", "juegas", "juegan"],
+              "correctAnswers": [0],
+              "explanation": "« Nosotros jugamos »."
+            },
+            {
+              "id": "q4",
+              "question": "« Ella ___ la tarea » (faire) :",
+              "type": "single_choice",
+              "options": ["hace", "hago", "haces", "hacemos"],
+              "correctAnswers": [0],
+              "explanation": "3e singulier : « hace »."
+            },
+            {
+              "id": "q5",
+              "question": "« Tú ___ muy bien » (comprendre) :",
+              "type": "single_choice",
+              "options": ["entiendes", "entiendo", "entiende", "entendemos"],
+              "correctAnswers": [0],
+              "explanation": "2e personne : « entiendes »."
+            },
+            {
+              "id": "q6",
+              "question": "« Vivir » : « Ellos ___ en la ciudad » :",
+              "type": "single_choice",
+              "options": ["viven", "vivo", "vives", "vivís"],
+              "correctAnswers": [0],
+              "explanation": "3e pluriel : « viven »."
+            },
+            {
+              "id": "q7",
+              "question": "« Tener » : « Nosotros ___ clase a las ocho » :",
+              "type": "single_choice",
+              "options": ["tenemos", "tengo", "tienes", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "« Tenemos clase »."
+            },
+            {
+              "id": "q8",
+              "question": "« Ir » : « ¿Vas al gimnasio? » — sujet :",
+              "type": "single_choice",
+              "options": ["tú", "yo", "ellos", "usted (forme vas = tú)"],
+              "correctAnswers": [0],
+              "explanation": "« Vas » = tú."
+            },
+            {
+              "id": "q9",
+              "question": "« Leer » : « Me gusta ___ » :",
+              "type": "single_choice",
+              "options": ["leer", "leo", "lees", "leen"],
+              "correctAnswers": [0],
+              "explanation": "Infinitif après « gusta »."
+            },
+            {
+              "id": "q10",
+              "question": "« Escribir » à la 1re personne :",
+              "type": "single_choice",
+              "options": ["escribo", "escribes", "escribe", "escribimos"],
+              "correctAnswers": [0],
+              "explanation": "« Escribo » = j'écris."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Articles et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Article + nom corrects :",
+              "type": "multiple_choice",
+              "options": ["el libro", "la clase", "el clase", "la libro"],
+              "correctAnswers": [0, 1],
+              "explanation": "Masculin « el libro », féminin « la clase »."
+            },
+            {
+              "id": "q2",
+              "question": "« ___ profesora » (une) :",
+              "type": "single_choice",
+              "options": ["Una", "Un", "Unos", "El"],
+              "correctAnswers": [0],
+              "explanation": "Féminin indéfini : « una »."
+            },
+            {
+              "id": "q3",
+              "question": "« ___ estudiantes » (des) :",
+              "type": "single_choice",
+              "options": ["Unos", "Una", "La", "El"],
+              "correctAnswers": [0],
+              "explanation": "Masculin pluriel indéfini : « unos »."
+            },
+            {
+              "id": "q4",
+              "question": "« Me gusta ___ música » :",
+              "type": "single_choice",
+              "options": ["la", "el", "los", "un"],
+              "correctAnswers": [0],
+              "explanation": "« La música » définie."
+            },
+            {
+              "id": "q5",
+              "question": "Erreur d'article :",
+              "type": "single_choice",
+              "options": ["La mesa.", "El mesa.", "La silla.", "El pupitre."],
+              "correctAnswers": [1],
+              "explanation": "« Mesa » féminin → « la mesa »."
+            },
+            {
+              "id": "q6",
+              "question": "« ___ agua » (de l'eau — cas spécial) :",
+              "type": "single_choice",
+              "options": ["El", "La", "Una", "Unos"],
+              "correctAnswers": [0],
+              "explanation": "Féminin commençant par a tonique : « el agua »."
+            },
+            {
+              "id": "q7",
+              "question": "Pluriel défini masculin : « ___ cuadernos » :",
+              "type": "single_choice",
+              "options": ["Los", "Las", "Un", "Una"],
+              "correctAnswers": [0],
+              "explanation": "« Los cuadernos »."
+            },
+            {
+              "id": "q8",
+              "question": "« Hay ___ examen mañana » (un) :",
+              "type": "single_choice",
+              "options": ["un", "una", "unos", "el"],
+              "correctAnswers": [0],
+              "explanation": "« Examen » masculin : « un examen »."
+            },
+            {
+              "id": "q9",
+              "question": "« ___ escuela es grande » (l') :",
+              "type": "single_choice",
+              "options": ["La", "El", "Un", "Unos"],
+              "correctAnswers": [0],
+              "explanation": "« La escuela »."
+            },
+            {
+              "id": "q10",
+              "question": "« Necesito ___ diccionario » (un) :",
+              "type": "single_choice",
+              "options": ["un", "una", "el", "las"],
+              "correctAnswers": [0],
+              "explanation": "Masculin : « un diccionario »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Questions avec qué et dónde",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Questions bien formées :",
+              "type": "multiple_choice",
+              "options": [
+                "¿Qué es esto?",
+                "¿Dónde está el baño?",
+                "¿Qué es usted?",
+                "¿Dónde es tu nombre?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demander une chose et un lieu."
+            },
+            {
+              "id": "q2",
+              "question": "« ¿Dónde está la biblioteca? » :",
+              "type": "single_choice",
+              "options": [
+                "Où est la bibliothèque / CDI ?",
+                "Quelle est la bibliothèque ?",
+                "Quand est la bibliothèque ?",
+                "Pourquoi la bibliothèque ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dónde » = où."
+            },
+            {
+              "id": "q3",
+              "question": "« ¿Qué significa…? » :",
+              "type": "single_choice",
+              "options": [
+                "Que signifie… ?",
+                "Où est… ?",
+                "Combien… ?",
+                "Qui est… ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sens d'un mot."
+            },
+            {
+              "id": "q4",
+              "question": "Réponse à « ¿Qué hora es? » — mauvaise réponse :",
+              "type": "single_choice",
+              "options": [
+                "Son las diez.",
+                "Es la una.",
+                "En el aula.",
+                "Son las dos y media."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« En el aula » ne donne pas l'heure."
+            },
+            {
+              "id": "q5",
+              "question": "« ¿De qué trata el texto? » demande :",
+              "type": "single_choice",
+              "options": [
+                "De quoi parle le texte ?",
+                "Où est le texte ?",
+                "Quelle couleur ?",
+                "Quel jour ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tratar de » = porter sur."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Adónde vas? » :",
+              "type": "single_choice",
+              "options": [
+                "Où vas-tu (direction) ?",
+                "D'où viens-tu ?",
+                "Comment vas-tu ?",
+                "Pourquoi vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement vers un lieu."
+            },
+            {
+              "id": "q7",
+              "question": "« ¿Qué tienes en la mochila? » :",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu dans le sac ?",
+                "Où est le sac ?",
+                "Quelle heure ?",
+                "Quel prof ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contenu du sac."
+            },
+            {
+              "id": "q8",
+              "question": "« ¿Dónde están los lavabos? » — lieu typique :",
+              "type": "single_choice",
+              "options": [
+                "Toilettes du collège.",
+                "Cuisine du prof.",
+                "Stade uniquement.",
+                "Lune."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lavabos » = toilettes / lavabos."
+            },
+            {
+              "id": "q9",
+              "question": "Intonation : question en espagnol écrite avec :",
+              "type": "single_choice",
+              "options": ["¿ … ?", "¡ … !", "… , …", "Sans ponctuation."],
+              "correctAnswers": [0],
+              "explanation": "Points d'interrogation doubles."
+            },
+            {
+              "id": "q10",
+              "question": "« ¿Qué necesitas para la clase de plástica? » :",
+              "type": "single_choice",
+              "options": [
+                "De quoi as-tu besoin pour arts plastiques ?",
+                "Où est plástica ?",
+                "Quelle heure plástica ?",
+                "Qui est plástica ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Necesitar para » = besoin pour."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Collège, CDI et consignes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Lieux du collège en espagnol :",
+              "type": "multiple_choice",
+              "options": [
+                "el patio",
+                "la biblioteca",
+                "el océano Atlántico entero",
+                "la galaxia"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cour et bibliothèque/CDI."
+            },
+            {
+              "id": "q2",
+              "question": "« El pasillo » :",
+              "type": "single_choice",
+              "options": [
+                "Le couloir.",
+                "Le passager.",
+                "Le passport.",
+                "Le parc."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circulation entre les salles."
+            },
+            {
+              "id": "q3",
+              "question": "« Silencio en la biblioteca » car :",
+              "type": "single_choice",
+              "options": [
+                "On y lit et on travaille.",
+                "On y fait du sport.",
+                "On y mange.",
+                "On y dort normalement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu d'étude calme."
+            },
+            {
+              "id": "q4",
+              "question": "« Prestar un libro » :",
+              "type": "single_choice",
+              "options": [
+                "Emprunter un livre.",
+                "Manger un livre.",
+                "Vendre un livre.",
+                "Jeter un livre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au CDI : emprunt."
+            },
+            {
+              "id": "q5",
+              "question": "« El secretario / la secretaria » :",
+              "type": "single_choice",
+              "options": [
+                "Personnel administratif du collège.",
+                "Prof de maths.",
+                "Élève délégué.",
+                "Gardien uniquement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accueil / secrétariat."
+            },
+            {
+              "id": "q6",
+              "question": "« ¿Puedo ir al baño? » :",
+              "type": "single_choice",
+              "options": [
+                "Demande d'aller aux toilettes.",
+                "Demande de nourriture.",
+                "Demande de note.",
+                "Demande de couleur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule classique en cours."
+            },
+            {
+              "id": "q7",
+              "question": "« El conserje » s'occupe souvent de :",
+              "type": "single_choice",
+              "options": [
+                "Entretien et accès du bâtiment.",
+                "Cours d'espagnol.",
+                "Examens nationaux seuls.",
+                "Recettes de cuisine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Personnel technique / gardien."
+            },
+            {
+              "id": "q8",
+              "question": "« La asignatura » =",
+              "type": "single_choice",
+              "options": [
+                "La matière (scolaire).",
+                "La signature.",
+                "L'assignation militaire.",
+                "La lune."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière enseignée."
+            },
+            {
+              "id": "q9",
+              "question": "« Trabajo en grupo » :",
+              "type": "single_choice",
+              "options": [
+                "Travail en groupe.",
+                "Travail en gris.",
+                "Devoir seul.",
+                "Récréation."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Consigne de classe."
+            },
+            {
+              "id": "q10",
+              "question": "« Entrega la ficha mañana » :",
+              "type": "single_choice",
+              "options": [
+                "Rends la fiche demain.",
+                "Entre dans la fiche demain.",
+                "Mange la fiche demain.",
+                "Oublie la fiche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Entregar » = rendre un devoir."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

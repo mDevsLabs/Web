@@ -1,0 +1,2763 @@
+{
+  "id": "terminale-ses-02",
+  "year": "terminale",
+  "subject": "ses",
+  "title": "Travail et emploi",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation du travail",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Division du travail et productivité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Selon Adam Smith, quels effets la division du travail peut-elle produire ?",
+              "options": [
+                "Augmentation de la productivité par spécialisation",
+                "Baisse mécanique et systématique de tous les salaires",
+                "Accroissement du volume produit par apprentissage répété",
+                "Suppression de toute coordination entre ouvriers"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Smith montre que spécialisation et répétition accroissent le rendement sans exclure la coordination."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "La productivité du travail mesure surtout :",
+              "options": [
+                "Les heures travaillées par an",
+                "La production par unité de travail",
+                "Le total des salaires versés",
+                "Le taux de chômage sectoriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est le rapport output/input de travail, indicateur clé de l'organisation productive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Durkheim relie la division du travail à :",
+              "options": [
+                "La fin de toute solidarité",
+                "La solidarité organique dans les sociétés modernes",
+                "Le retour à la solidarité mécanique seule",
+                "L'absence de droit du travail"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'interdépendance fonctionnelle fonde la solidarité organique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Un coût social possible d'une division extrême est :",
+              "options": [
+                "La polyvalence généralisée",
+                "L'ennui ou l'aliénation au travail répétitif",
+                "Une hausse automatique du pouvoir d'achat",
+                "La fin de la formation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Monotonie et perte de sens peuvent accompagner les gains productifs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Le deskilling désigne :",
+              "options": [
+                "L'enrichissement des postes",
+                "La déqualification par simplification des tâches",
+                "Le télétravail généralisé",
+                "La montée en diplôme obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Certaines organisations réduisent le contenu qualifié pour standardiser."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "La coopération entre tâches spécialisées exige :",
+              "options": [
+                "Aucune règle",
+                "Des mécanismes de coordination",
+                "Que chacun produise seul le bien fini",
+                "L'interdiction du travail d'équipe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Spécialiser implique synchroniser opérations et responsabilités."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Un gain de productivité avec demande stable peut entraîner :",
+              "options": [
+                "Embauches illimitées",
+                "Des réductions d'effectifs",
+                "Interdiction d'investir",
+                "Suppression du profit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'effet sur l'emploi dépend de la demande et des choix de répartition des gains."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Travail qualifié renvoie surtout à :",
+              "options": [
+                "Un salaire toujours > SMIC",
+                "Des compétences certifiées ou reconnues",
+                "Un statut fonctionnaire",
+                "Un temps partiel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La qualification structure accès aux emplois et rémunérations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "L'usine d'épingles de Smith illustre :",
+              "options": [
+                "La théorie monétaire",
+                "Division du travail et multiplication de la production",
+                "Le keynésianisme",
+                "La sécurité sociale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Exemple fondateur du progrès productif par spécialisation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Externalité positive possible de la division du travail :",
+              "options": [
+                "Innovation par échange de savoirs spécialisés",
+                "Disparition du commerce",
+                "Chômage structurel garanti",
+                "Baisse de toute production"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialisation et échanges peuvent favoriser progrès technique cumulatif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Taylorisme et fordisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Le taylorisme repose notamment sur :",
+              "options": [
+                "Étude scientifique des gestes et chronométrage",
+                "Autonomie totale des ouvriers sans normes",
+                "Séparation conception (cadres) et exécution (ouvriers)",
+                "Refus de standardisation"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Taylor codifie gestes et temps et sépare ingénierie et exécution."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Taylor est associé à :",
+              "options": [
+                "L'organisation scientifique du travail",
+                "La théorie des retraites",
+                "L'analyse marxiste des classes",
+                "Le mercantilisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'OST structure l'industrie du XXe siècle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Le fordisme combine :",
+              "options": [
+                "Production de masse et salaires soutenant la consommation",
+                "Artisanat sans machines",
+                "Travail domestique non marchand",
+                "Planification kolkhozienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ford lie chaîne, volumes et pouvoir d'achat des ouvriers."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "La chaîne de montage symbolise :",
+              "options": [
+                "Taylorisme sans capital",
+                "Organisation fordiste",
+                "Économie tertiaire pure",
+                "Travail agricole"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Assemblage synchronisé à grand volume."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Critique sociologique du taylorisme :",
+              "options": [
+                "Trop de créativité ouvrière",
+                "Déshumanisation et perte de sens",
+                "Impossibilité de cadencer",
+                "Refus d'investir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Standardisation extrême et aliénation sont centralisées par Braverman."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Primes tayloriennes visaient à :",
+              "options": [
+                "Récompenser le respect des normes de rendement",
+                "Supprimer la hiérarchie",
+                "Interdire syndicats",
+                "Généraliser le travail à la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incitation financière liée à l'application des méthodes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Fordisme et Trente Glorieuses :",
+              "options": [
+                "Modèle lié à croissance et consommation de masse",
+                "Crise sans industrie",
+                "Économie numérique actuelle",
+                "Révolution agricole seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après-guerre, ce modèle structure emploi industriel et demande."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Pièces interchangeables permettent :",
+              "options": [
+                "Produits tous uniques",
+                "Réduction temps et coûts d'assemblage",
+                "Interdiction export",
+                "Suppression maintenance"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Standard des composants facilite la série."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Gramsci voit le fordismo comme :",
+              "options": [
+                "Progrès sans domination",
+                "Enjeu hégémonique capital-travail",
+                "Économie planifiée",
+                "Corporatisme médiéval"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Organisation industrielle et rapport de forces culturels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "OST vs artisanat :",
+              "options": [
+                "Normes scientifiques imposées à l'exécution",
+                "Interdiction machines",
+                "Fin du salariat",
+                "Secteur public seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'artisan garde plus d'autonomie ; l'OST codifie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Post-fordisme et flexibilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Le post-fordisme se caractérise souvent par :",
+              "options": [
+                "Personnalisation et flexibilité de la production",
+                "Rigidité totale identique au fordisme pur",
+                "Importance accrue de l'informatique et des réseaux",
+                "Retour exclusif à l'artisanat sans technologie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Flexibilité, juste-à-temps et numérique marquent la mutation post-fordiste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Juste-à-temps (JIT) vise à :",
+              "options": [
+                "Stocker au maximum",
+                "Réduire stocks en synchronisant production et demande",
+                "Interdire sous-traitance",
+                "Augmenter chômage volontairement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins de stocks immobilisés, flux tendus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Toyotisme met l'accent sur :",
+              "options": [
+                "Qualité, équipes et amélioration continue",
+                "Chaîne identique sans participation",
+                "Travail isolé sans communication",
+                "Planification centralisée soviétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kaizen, groupes autonomes et qualité totale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Externalisation (outsourcing) peut :",
+              "options": [
+                "Concentrer toutes activités en interne",
+                "Déléguer à des sous-traitants",
+                "Supprimer le marché du travail",
+                "Interdire le salariat"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'entreprise recentre cœur de métier et externalise le reste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Travail précaire désigne souvent :",
+              "options": [
+                "CDI statutaire à vie",
+                "Contrats courts, intérim, fragilité de l'emploi",
+                "Fonction publique titulaire",
+                "Mandat électif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Précarité = incertitude durée et droits du contrat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "La flexibilité du travail peut signifier :",
+              "options": [
+                "Uniquement baisse des salaires",
+                "Adaptation des horaires, lieux ou contrats",
+                "Suppression de toute norme",
+                "Fin de la production"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Flexibilité horaire, géographique ou contractuelle selon contexte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "En SES, la « tertiarisation » implique :",
+              "options": [
+                "Baisse des emplois de services",
+                "Montée part des services dans l'emploi et la valeur ajoutée",
+                "Retour massif à l'agriculture",
+                "Disparition de l'industrie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les services dominent emploi et PIB dans les économies avancées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Économie de la connaissance valorise :",
+              "options": [
+                "Uniquement force physique",
+                "Savoir, innovation et capital humain",
+                "Troc non monétaire",
+                "Travail non rémunéré obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Compétences immatérielles et R&D sont centrales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Critique du post-fordisme :",
+              "options": [
+                "Trop de stabilité",
+                "Intensification du travail et précarisation pour certains",
+                "Absence de compétition",
+                "Trop de syndicats"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Flexibilité peut accroître pression et insécurité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Lean management cherche à :",
+              "options": [
+                "Gaspiller ressources",
+                "Éliminer gaspillages et fluidifier processus",
+                "Interdire qualité",
+                "Supprimer clients"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Héritier du modèle toyotaïen, optimiser flux et valeur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Contrat de travail et droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Le contrat de travail lie :",
+              "options": [
+                "Employeur et salarié par prestation rémunérée",
+                "Une relation de subordination juridique",
+                "Deux consommateurs sur un marché de biens",
+                "Parent et enfant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Subordination juridique et rémunération caractérisent le salariat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Subordination juridique signifie :",
+              "options": [
+                "Le salarié exécute sous autorité de l'employeur",
+                "Absence de règles",
+                "Propriété des machines par l'ouvrier",
+                "Travail toujours gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critère distinctif du salariat vs travail indépendant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "CDI signifie :",
+              "options": [
+                "Contrat à durée indéterminée",
+                "Contrat de travail temporaire",
+                "Convention de stage",
+                "Mandat politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme de contrat la plus protectrice en principe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "CDD est en principe :",
+              "options": [
+                "La norme sans limite",
+                "Un contrat à durée déterminée pour cas prévus par la loi",
+                "Un contrat sans salaire",
+                "Un statut d'élu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Motifs légaux et durée limitée encadrent le CDD."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Le SMIC est :",
+              "options": [
+                "Un salaire plancher légal horaire en France",
+                "Un impôt sur le capital",
+                "Une allocation chômage",
+                "Un quota d'export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Minimum légal de rémunération pour salariés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Temps partiel implique :",
+              "options": [
+                "Durée inférieure à temps plein légale ou conventionnelle",
+                "Travail non rémunéré",
+                "Fonction publique d'État seule",
+                "Mandat parlementaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Volume horaire réduit, souvent souhaité ou subi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Licenciement économique concerne :",
+              "options": [
+                "Faute grave du salarié",
+                "Suppression ou transformation poste pour motifs économiques",
+                "Fin de stage obligatoire",
+                "Élection perdue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Motif lié à difficultés ou réorganisation entreprise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Convention collective :",
+              "options": [
+                "Accord entre employeurs et syndicats d'une branche",
+                "Traité international seul",
+                "Contrat entre particuliers",
+                "Statut étudiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixe minima sociaux sectoriels complétant la loi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Période d'essai permet :",
+              "options": [
+                "Rupture facilitée au début pour tester adéquation",
+                "Travail sans rémunération illimitée",
+                "Éviction du code du travail",
+                "Interdiction de formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée et conditions encadrées par loi ou convention."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Travail dissimulé :",
+              "options": [
+                "Respect total du droit",
+                "Emploi non déclaré, fraude sociale et fiscale",
+                "Télétravail légal",
+                "Heures sup majorées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Atteint droits sociaux, concurrence loyale et recettes publiques."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Marché du travail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Sur le marché du travail on échange :",
+              "options": [
+                "Travail contre rémunération",
+                "Force de travail contre salaire",
+                "Biens finis entre ménages seuls",
+                "Terres sans travail"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Offre de travail des actifs, demande des employeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Offre de travail dépend notamment de :",
+              "options": [
+                "Population en âge de travailler et taux d'activité",
+                "Uniquement du SMIC sans autre facteur",
+                "Climat uniquement",
+                "Nombre de lycées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Démographie, participation et incitations structurent l'offre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Demande de travail dérive de :",
+              "options": [
+                "Demande de biens et services sur marché des produits",
+                "Goût des salariés seul",
+                "Nombre de syndicats",
+                "Taille des parcs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Embauches liées aux ventes anticipées et productivité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Salaire d'équilibre (modèle simple) :",
+              "options": [
+                "Intersection offre et demande de travail",
+                "Prix fixé arbitrairement sans marché",
+                "Toujours égal au SMIC",
+                "Toujours zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En concurrence pure, le salaire ajuste déséquilibres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Segmentation du marché du travail :",
+              "options": [
+                "Homogénéité parfaite des emplois",
+                "Sous-marchés avec barrières (qualif, genre, origine)",
+                "Absence de chômage",
+                "Un seul employeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dualisme primaire/secondaire ou fractures sociales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Monopsonie sur marché du travail :",
+              "options": [
+                "Un seul acheteur de travail pouvant peser sur salaires",
+                "Infinité d'employeurs identiques",
+                "Marché sans salaires",
+                "Échange troc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pouvoir de marché de l'employeur unique ou dominant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Friction salariale désigne :",
+              "options": [
+                "Ajustement instantané parfait",
+                "Rigidités (contrats, conventions) freinant ajustement",
+                "Absence de SMIC",
+                "Travail gratuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nominal rigidity et institutions ralentissent corrections."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Capital humain (Schultz, Becker) :",
+              "options": [
+                "Investissement formation augmente productivité et salaire",
+                "Théorie sans emploi",
+                "Refus de diplôme",
+                "Travail non qualifié seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éducation comme investissement rentable individuel et collectif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Discrimination à l'embauche peut :",
+              "options": [
+                "Ne jamais exister",
+                "Créer écarts de salaire ou d'accès non liés à la productivité",
+                "Garantir égalité parfaite",
+                "Supprimer offre de travail"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Goûts, stéréotypes ou ségrégation institutionnelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Taux d'activité mesure :",
+              "options": [
+                "Part actifs occupés ou chercheurs dans population 15-64 ans (ou 15+ selon définition)",
+                "PIB seul",
+                "Inflation",
+                "Dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur démographique-économique de participation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Salaire et inégalités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Le salaire rémunère notamment :",
+              "options": [
+                "La force de travail et le temps consacré",
+                "Uniquement la sympathie de l'employeur",
+                "Compétences et responsabilités selon grilles",
+                "Toujours un montant identique pour tous"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rémunération du travail selon poste, qualification et négociation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Salaire minimum vs salaire médian permet de :",
+              "options": [
+                "Mesurer compression bas de distribution",
+                "Calculer PIB",
+                "Compter entreprises",
+                "Mesurer exportations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ratio utilisé en débat sur pouvoir d'achat et inégalités."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Écart salarial femmes-hommes en France :",
+              "options": [
+                "Inexistant par définition légale",
+                "Persistant malgré principe à travail égal salaire égal",
+                "Dû uniquement au hasard",
+                "Interdit de mesurer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Discrimination, temps partiel subi, secteurs et carrières expliquent l'écart."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Théorie marxiste du salaire (vulgarisée) :",
+              "options": [
+                "Salaire lié à valeur travail et plus-value",
+                "Salaire fixé par Dieu",
+                "Pas de conflit distribution",
+                "Profit impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travail vivant vs travail mort et appropriation plus-value."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Prime ou bonus peut compenser :",
+              "options": [
+                "Performance individuelle ou collective",
+                "Absence totale de travail",
+                "Retraite",
+                "Impôt sur revenu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Part variable de la rémunération."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Heures supplémentaires sont :",
+              "options": [
+                "Majorées selon règles légales ou conventionnelles",
+                "Toujours interdites",
+                "Non payées",
+                "Réservées aux cadres dirigeants seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contingent, repos ou paiement encadrés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Salaire réel :",
+              "options": [
+                "Pouvoir d'achat après inflation",
+                "Nominal sans prix",
+                "Allocation chômage",
+                "Dividende actionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salaire nominal corrigé de l'évolution des prix."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Négociation salariale collective :",
+              "options": [
+                "Syndicats et employeurs fixent minima ou augmentations",
+                "Interdite en France",
+                "Réservée au Président",
+                "Sans effet contractuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accords de branche ou d'entreprise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Plafonds de rémunération dans fonction publique visent :",
+              "options": [
+                "Transparence et contrainte budgétaire",
+                "Suppression de tout salaire",
+                "Profit privé",
+                "Exportation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grilles indiciaires et règles statutaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Inégalités de revenus du travail alimentent débats sur :",
+              "options": [
+                "Justice sociale et efficacité économique",
+                "Couleur des locaux",
+                "Nombre de parcs",
+                "Taux de change seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien redistribution, incitation et cohésion sociale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Conditions de travail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Conditions de travail incluent :",
+              "options": [
+                "Horaires, pénibilité, sécurité",
+                "Uniquement le salaire brut",
+                "Organisation des tâches et ambiance",
+                "Seulement la météo extérieure"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Environnement physique, organisationnel et relationnel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Risques psychosociaux (RPS) :",
+              "options": [
+                "Stress, harcèlement, burn-out liés au travail",
+                "Uniquement accidents machines",
+                "Phénomènes météo",
+                "Risques bancaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Santé mentale et relations au travail."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Médecine du travail a pour rôle :",
+              "options": [
+                "Suivi santé des salariés et prévention",
+                "Payer les salaires",
+                "Remplacer syndicats",
+                "Voter lois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service de prévention et santé au travail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Accident du travail ou maladie professionnelle :",
+              "options": [
+                "Ouvre droits indemnisation et prévention renforcée",
+                "Sans conséquence juridique",
+                "Interdit enregistrement",
+                "Uniquement faute salarié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régime spécifique de sécurité sociale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Droit à la déconnexion concerne :",
+              "options": [
+                "Limites usage outils numériques hors temps travail",
+                "Interdiction internet",
+                "Travail 24h/24 obligatoire",
+                "Retraite anticipée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection vie privée face à sollicitations permanentes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Pénibilité au travail peut motiver :",
+              "options": [
+                "Comptes retraite ou prévention spécifiques",
+                "Suppression sécurité sociale",
+                "Baisse SMIC obligatoire",
+                "Fin du code du travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reconnaissance expositions difficiles (historique comptes pénibilité)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Télétravail modifie :",
+              "options": [
+                "Lieu d'exécution et frontières vie pro/perso",
+                "Statut de citoyenneté",
+                "Monnaie nationale",
+                "Système électoral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flexibilité géographique et enjeux de contrôle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Harcèlement moral au travail est :",
+              "options": [
+                "Agissements répétés portant atteinte à dignité",
+                "Encouragé par le code du travail",
+                "Sans recours",
+                "Définition identique au compliment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Infraction et faute employeur possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Intensité du travail mesure souvent :",
+              "options": [
+                "Charge et cadence imposées",
+                "Nombre de vacances",
+                "Taille du territoire",
+                "Taux d'intérêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pression temporelle et exigences cognitives/physiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Qualité de vie au travail (QVT) vise :",
+              "options": [
+                "Améliorer bien-être et performance durable",
+                "Supprimer salaires",
+                "Interdire syndicats",
+                "Réduire formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politiques RH et négociation sur conditions."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Relations professionnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Représentants du personnel peuvent :",
+              "options": [
+                "Être élus pour défendre intérêts des salariés",
+                "Remplacer l'État dans vote des lois",
+                "Informer et négocier dans l'entreprise",
+                "Supprimer le profit"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Délégation du personnel, CSE, négociation collective."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Syndicat de salariés :",
+              "options": [
+                "Organisation défendant intérêts collectifs du travail",
+                "Entreprise commerciale",
+                "Ministère",
+                "Parti obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberté syndicale et négociation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Grève est :",
+              "options": [
+                "Cessation collective concertée du travail",
+                "Absence individuelle sans motif",
+                "Obligation légale quotidienne",
+                "Vote électoral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit constitutionnel encadré pour salariés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Patronat regroupe :",
+              "options": [
+                "Employeurs pour défendre intérêts des entreprises",
+                "Salariés uniquement",
+                "Consommateurs seuls",
+                "Étrangers sans droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MEDEF et autres organisations patronales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Dialogue social tripartite implique :",
+              "options": [
+                "État, organisations salariales et patronales",
+                "Deux ménages",
+                "Banque centrale seule",
+                "Un seul syndicat obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concertation pour réformes du travail et accords nationaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Accord d'entreprise peut porter sur :",
+              "options": [
+                "Organisation du temps, rémunération, égalité pro",
+                "Constitution de la République",
+                "Guerre et paix internationale",
+                "Climat seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Champ négociable défini par code du travail."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Taux de syndicalisation en France est :",
+              "options": [
+                "Relativement faible comparé à certains pays nordiques",
+                "Obligatoirement 100%",
+                "Interdit de mesurer",
+                "Identique partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Syndicalisation faible mais représentativité au niveau branche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Conflit du travail peut être géré par :",
+              "options": [
+                "Négociation, médiation, conciliation",
+                "Uniquement violence",
+                "Suppression du droit",
+                "Ignorance totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Institutions de règlement des conflits collectifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Droit d'expression directe des salariés :",
+              "options": [
+                "Permet remontée d'idées sur organisation et conditions",
+                "Remplace élections présidentielles",
+                "Interdit CSE",
+                "Supprime employeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispositif périodique dans entreprises."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Concertation obligatoire avant licenciement collectif vise :",
+              "options": [
+                "Information et négociation plan social",
+                "Secret total",
+                "Interdiction de reclassement",
+                "Augmentation automatique capital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Procédures encadrées pour licenciements économiques."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Formation et compétences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Formation professionnelle vise à :",
+              "options": [
+                "Adapter compétences aux emplois",
+                "Supprimer tout apprentissage",
+                "Maintenir employabilité face aux mutations",
+                "Interdire le numérique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Lifelong learning et adaptation technologique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Apprentissage combine :",
+              "options": [
+                "Formation en centre et pratique en entreprise",
+                "Uniquement cours magistraux sans entreprise",
+                "Travail non rémunéré illégal",
+                "Stage sans contrat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance et statut salarié de l'apprenti."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "CPF (compte personnel formation) permet :",
+              "options": [
+                "Financement droits formation individuels",
+                "Payer loyer uniquement",
+                "Vote électoral",
+                "Retraite automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monétisation droits acquis pour formation certifiante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Capitalisation des diplômes (Bourdieu) :",
+              "options": [
+                "Diplômes transmissibles en héritage culturel et social",
+                "Diplôme sans effet",
+                "Salaire aléatoire",
+                "Interdiction école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "École reproduit ou transforme inégalités sociales."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Mismatch emploi-compétence désigne :",
+              "options": [
+                "Décalage entre qualifications offertes et demandées",
+                "Égalité parfaite",
+                "Chômage zéro garanti",
+                "Surqualification impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source de chômage et tension sur recrutements."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "France Compétences supervise :",
+              "options": [
+                "Financements et certifications de la formation pro",
+                "Armée",
+                "Justice pénale",
+                "Météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouvernance réformée de la formation professionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Obsolescence des compétences accélérée par :",
+              "options": [
+                "Innovation technologique et numérique",
+                "Stagnation totale",
+                "Interdiction machines",
+                "Baisse éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin de mise à jour permanente des savoirs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Certification professionnelle :",
+              "options": [
+                "Reconnaissance officielle de compétences acquises",
+                "Diplôme sans valeur",
+                "Titre de propriété foncière",
+                "Carte d'électeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RNCP et blocs de compétences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Plan de développement des compétences :",
+              "options": [
+                "Actions formation financées par employeur",
+                "Impôt sur revenu",
+                "Allocation chômage seule",
+                "Budget défense"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obligation légale de formation continue en entreprise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Employabilité signifie :",
+              "options": [
+                "Capacité à occuper ou retrouver un emploi",
+                "Garantie emploi à vie",
+                "Interdiction mobilité",
+                "Retraite immédiate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept clé des politiques actives de l'emploi."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Travail et numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Transformation numérique du travail implique :",
+              "options": [
+                "Automatisation de certaines tâches",
+                "Disparition instantanée de tout emploi",
+                "Nouveaux métiers et compétences digitales",
+                "Fin du salariat dans tous secteurs"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Destruction et création d'emplois, mutation des compétences."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Plateformes de travail (uberisation) :",
+              "options": [
+                "Mise en relation via algorithmes, statuts parfois contestés",
+                "Uniquement fonction publique",
+                "Sans rémunération",
+                "Interdites partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat salariat vs indépendance et régulation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Intelligence artificielle au travail peut :",
+              "options": [
+                "Assister décision et automatiser routines",
+                "Supprimer toute régulation",
+                "Rendre humains inutiles d'un coup partout",
+                "Interdire formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentarité ou substitution selon tâches."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Cybersécurité en entreprise concerne :",
+              "options": [
+                "Protection données et systèmes",
+                "Couleur des bureaux",
+                "Menu cantine",
+                "Élections municipales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risques numériques pour organisation et salariés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Travail collaboratif en ligne utilise :",
+              "options": [
+                "Outils cloud et visioconférence",
+                "Uniquement courrier papier",
+                "Absence communication",
+                "Monnaie locale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisation distribuée et projet à distance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Surveillance numérique des salariés pose enjeux de :",
+              "options": [
+                "Vie privée et proportionnalité",
+                "Climat tropical",
+                "Taille des usines",
+                "Taux de change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrôle par outils et limites légales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Fracture numérique au travail :",
+              "options": [
+                "Inégal accès compétences et équipements",
+                "Égalité parfaite garantie",
+                "Sans effet emploi",
+                "Concept abandonné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exclusion des publics peu équipés ou formés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Économie des plateformes repose sur :",
+              "options": [
+                "Effets réseau et données",
+                "Absence d'utilisateurs",
+                "Production sans travail",
+                "Planification soviétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle scalable et valorisation data."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Smart working désigne souvent :",
+              "options": [
+                "Travail agile combinant présentiel et distance",
+                "Travail sans contrat",
+                "Agriculture seule",
+                "Fonction publique d'État"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flexibilité post-pandémie et organisation hybride."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Droit du travail face au numérique cherche à :",
+              "options": [
+                "Adapter protection (temps, santé, preuve)",
+                "Supprimer tout contrat",
+                "Interdire internet",
+                "Fixer salaire unique mondial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évolution législative (télétravail, droit déconnexion)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Chômage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Définir le chômage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Au sens du BIT, être au chômage suppose :",
+              "options": [
+                "Être sans emploi rémunéré",
+                "Être disponible et rechercher activement un emploi",
+                "Ne jamais vouloir travailler",
+                "Être étudiant à temps plein"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Trois critères cumulatifs : sans emploi, disponible, recherche active."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Taux de chômage =",
+              "options": [
+                "Chômeurs / population active",
+                "Chômeurs / population totale",
+                "Emplois / PIB",
+                "SMIC / prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ratio standardisé internationalement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Halo du chômage regroupe :",
+              "options": [
+                "Personnes marginalement attachées au marché (découragés, temps partiel subi)",
+                "Uniquement retraités",
+                "Toujours BIT au chômage",
+                "Exportations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure élargie de sous-utilisation de la main-d'œuvre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Chômage en France est aussi mesuré par :",
+              "options": [
+                "Enquête emploi INSEE et catégorie A Pôle emploi",
+                "Uniquement sondage météo",
+                "Balance commerciale",
+                "Taux de natalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux sources : enquête BIT et administratif demandeurs d'emploi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Population active comprend :",
+              "options": [
+                "Actifs occupés et chômeurs au sens BIT",
+                "Tous les habitants y compris retraités",
+                "Enfants scolarisés",
+                "Non-résidents seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15-64 ans ou 15+ selon série ; occupés + chômeurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Chômage de longue durée :",
+              "options": [
+                "Généralement plus d'un an sans emploi (définitions variables)",
+                "Une semaine",
+                "Toujours moins d'un jour",
+                "Statut étudiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur social et politique majeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Taux de chômage des jeunes est souvent :",
+              "options": [
+                "Plus élevé que la moyenne",
+                "Toujours nul",
+                "Inférieur aux seniors systématiquement",
+                "Non mesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée sur marché, précarité, mismatch."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Chômage partiel (activité partielle) :",
+              "options": [
+                "Réduction temporaire activité avec indemnisation",
+                "Absence totale d'emploi sans indemnité",
+                "Retraite",
+                "Congé parental seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispositif de préservation emploi en crise."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Comparabilité internationale des taux exige :",
+              "options": [
+                "Harmonisation définitions BIT",
+                "Ignorer méthodes",
+                "Utiliser seulement Pôle emploi français",
+                "Mesurer inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eurostat harmonise pour comparaisons UE."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Sous-emploi inclut :",
+              "options": [
+                "Temps partiel subi et chômeurs découragés",
+                "Uniquement cadres",
+                "PIB industriel",
+                "Export net"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept plus large que chômage strict BIT."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Types de chômage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Chômage frictionnel et structurel :",
+              "options": [
+                "Frictionnel : transitions entre emplois",
+                "Structurel : inadéquation offre/demande compétences ou institutions",
+                "Frictionnel : toujours permanent décennies",
+                "Structurel : uniquement cycle conjoncturel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Distinction fondamentale en analyse économique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Chômage conjoncturel ou cyclique :",
+              "options": [
+                "Lié à ralentissement de l'activité économique",
+                "Lié uniquement à météo",
+                "Permanent indépendant cycle",
+                "Dû seulement aux vacances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Keynes : insuffisance demande effective."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Chômage technologique (débat) :",
+              "options": [
+                "Destruction emplois par progrès technique, créations possibles",
+                "Impossible historiquement",
+                "Sans effet productivité",
+                "Crée chômage zéro toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schumpeter : destruction créatrice, ajustements lents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Chômage saisonnier :",
+              "options": [
+                "Variations liées calendrier (tourisme, agriculture)",
+                "Permanent 365 jours égal",
+                "Structurel diplômes",
+                "Conjoncture mondiale seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fluctuations prévisibles de l'activité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "NAIRU ou chômage naturel (néoclassique) :",
+              "options": [
+                "Taux compatible inflation stable sans surchauffe",
+                "Toujours zéro",
+                "Égal SMIC",
+                "Mesure export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept de chômage d'équilibre à moyen terme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Hystérésis du chômage :",
+              "options": [
+                "Chômage passé dégrade employabilité future",
+                "Effet instantané sans mémoire",
+                "Baisse automatique garantie",
+                "Théorie météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée chômage entraîne déqualification ou stigmatisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Chômage volontaire (modèle simple) :",
+              "options": [
+                "Refus emploi au salaire proposé",
+                "Obligation légale de chômer",
+                "Tous chômeurs volontaires",
+                "Concept BIT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critique néoclassique : file d'attente au salaire d'équilibre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Dualisme du marché du travail explique :",
+              "options": [
+                "Chômage persistant segment secondaire",
+                "Disparition chômage",
+                "Un seul salaire",
+                "Pas de précarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emplois stables vs instables coexistent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Chômage keynésien vient surtout de :",
+              "options": [
+                "Défaut demande globale",
+                "Excès offre travail volontaire seul",
+                "Progrès technique seul",
+                "Full emploi automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Relance possible par politique budgétaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Mismatch géographique :",
+              "options": [
+                "Offres et chercheurs d'emploi localisés différemment",
+                "Identique partout",
+                "Sans logement",
+                "PIB constant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobilité limitée accroît chômage régional."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Mesures et débats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Limites du taux de chômage BIT :",
+              "options": [
+                "Ignore sous-emploi et découragés",
+                "Mesure parfaite sans biais",
+                "Difficulté comparer sans harmonisation",
+                "Compte toujours étudiants job"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Indicateur utile mais incomplet ; enquête coûteuse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Taux de chômage catégorie A (France admin) :",
+              "options": [
+                "Demandeurs sans activité réduite",
+                "Tous retraités",
+                "PIB",
+                "Inflation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statistiques Pôle emploi / France Travail."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Courbe de Beveridge :",
+              "options": [
+                "Relation vacances d'emploi et chômeurs",
+                "Courbe inflation chômage seule",
+                "Export import",
+                "Dette publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficacité appariement marché travail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Courbe de Phillips (court terme) :",
+              "options": [
+                "Lien inverse inflation et chômage",
+                "PIB et population",
+                "Salaire et météo",
+                "Export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arbitrage inflation chômage en macro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Chômage de masse années 1930 en France :",
+              "options": [
+                "Crise économique et insuffisance demande",
+                "Full emploi",
+                "Guerre seule",
+                "Boom numérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contexte historique des politiques de l'emploi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Taux de chômage structurel estimé sert à :",
+              "options": [
+                "Évaluer marge relance sans inflation forte",
+                "Fixer SMIC seul",
+                "Compter votes",
+                "Mesurer pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique monétaire et budgétaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Paradoxe productivity-jobless growth :",
+              "options": [
+                "Croissance sans création emploi suffisante",
+                "Chômage zéro",
+                "Baisse productivité obligatoire",
+                "Stagnation PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gains productivité peuvent réduire besoin main-d'œuvre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Taux de chômage des seniors peut refléter :",
+              "options": [
+                "Difficultés reconversion fin carrière",
+                "Succès garanti",
+                "Absence retraite",
+                "Scolarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discrimination d'âge et obsolescence compétences."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Gender unemployment gap :",
+              "options": [
+                "Écarts taux chômage femmes-hommes",
+                "PIB genre",
+                "Export",
+                "Monnaie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Secteurs, temps partiel, carrières interrompues."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Indicateur complémentaire : taux d'emploi mesure :",
+              "options": [
+                "Part occupés dans population 15-64 ans",
+                "Chômeurs seuls",
+                "Inflation",
+                "Dette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vision inverse du chômage, sensible démographie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Assurance chômage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Assurance chômage en France :",
+              "options": [
+                "Indemnise perte emploi sous conditions",
+                "Finance par cotisations et État",
+                "Garantit salaire identique à vie sans limite",
+                "Réservée aux non-salariés seuls"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Régime UNEDIC/France Travail, droits ouverts selon durée travail."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "ARE (allocation chômage) nécessite :",
+              "options": [
+                "Avoir travaillé minimum et être involontairement privé d'emploi",
+                "Ne jamais avoir cotisé",
+                "Être retraité",
+                "Démission volontaire sans motif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif de rupture et durée cotisation comptent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "France Travail (ex Pôle emploi) :",
+              "options": [
+                "Accompagne recherche emploi et verse allocations",
+                "Banque centrale",
+                "Ministère défense",
+                "Organisme retraite seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Service public emploi et enregistrement chômeurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Délai de carence peut :",
+              "options": [
+                "Retarder versement après rupture",
+                "Supprimer droits à vie",
+                "Augmenter SMIC",
+                "Interdire formation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles selon indemnités licenciement et congés payés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Revenu de remplacement chômage est :",
+              "options": [
+                "Partielle, plafonnée, dégressive dans le temps",
+                "Toujours 100% dernier salaire illimité",
+                "Nulle",
+                "Égale retraite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule SJR et durée droits selon âge et cotisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Radiation France Travail si :",
+              "options": [
+                "Manquement obligations (actualisation, offres)",
+                "Simple visite médicale",
+                "Retraite automatique à 18 ans",
+                "Vote électoral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrepartie aux droits : recherche effective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Chômage partiel indemnisé diffère de ARE car :",
+              "options": [
+                "Salarié reste lié employeur, activité réduite",
+                "Demandeur sans employeur",
+                "Retraite",
+                "Stage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dispositif conjoncturel préservation emploi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "RSA activité concerne :",
+              "options": [
+                "Minimum social pour faibles revenus d'activité ou chômage",
+                "Réservé hauts revenus",
+                "Impôt seul",
+                "Export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revenu de solidarité complémentaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Réformes récurrentes assurance chômage visent :",
+              "options": [
+                "Équilibre financier et incitation retour emploi",
+                "Suppression protection",
+                "Fin cotisations",
+                "Interdiction syndicats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats durée, calcul, cumul emploi-chômage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Cumul emploi partiel et chômage partiel :",
+              "options": [
+                "Possible selon règles pour lisser revenus",
+                "Toujours interdit",
+                "Sans salaire",
+                "Full time obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modulation heures et indemnisation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Politiques de l'emploi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Politiques actives de l'emploi incluent :",
+              "options": [
+                "Formation et aide retour emploi",
+                "Allocation sans accompagnement seule",
+                "Subventions embauche ciblées",
+                "Interdiction de recruter"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Actives vs passives (indemnisation seule)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Politiques passives :",
+              "options": [
+                "Indemnisation chômage et minima sociaux",
+                "Formation obligatoire seule",
+                "Crédit impôt recherche",
+                "Infrastructure routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soutien revenu sans transformation offre travail directe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Plan Marshall (référence historique emploi) :",
+              "options": [
+                "Relance reconstruction et demande post-1945",
+                "Chômage massif volontaire",
+                "Isolation économique",
+                "Fin salariat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple relance demande et réduction chômage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Keynes recommande en récession :",
+              "options": [
+                "Relance demande par dépenses publiques",
+                "Budget toujours équilibré immédiat",
+                "Suppression allocations",
+                "Or strict seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplicateur et soutien activité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Flexibilité défendue par certains économistes vise :",
+              "options": [
+                "Faciliter ajustement quantités et prix travail",
+                "Interdire licenciement",
+                "SMIC illimité",
+                "Planification totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat avec thèse rigidités responsables chômage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Service public de l'emploi local :",
+              "options": [
+                "Médiation offre et demande proximité",
+                "Banque privée",
+                "Armée",
+                "Justice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Missions locales France Travail et partenaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Crédit d'impôt compétitivité emploi (CICE passé) visait :",
+              "options": [
+                "Baisser coût travail pour favoriser embauches",
+                "Augmenter chômage",
+                "Taxe export",
+                "Retraite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat efficacité vs autres leviers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Politique industrielle peut :",
+              "options": [
+                "Soutenir secteurs stratégiques et emplois",
+                "Ignorer travail",
+                "Supprimer innovation",
+                "Interdire export"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix collectifs filières et territoires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Garantie jeunes (dispositif) :",
+              "options": [
+                "Accompagnement intensif jeunes éloignés emploi",
+                "Retraite jeunes",
+                "Suppression formation",
+                "Interdiction stage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique ciblée insertion 16-25 ans."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Évaluation politiques emploi utilise :",
+              "options": [
+                "Expérimentations et statistiques impact",
+                "Uniquement opinions",
+                "Sans données",
+                "Interdiction mesure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DROES, microsimulations, comparaisons internationales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Coût et conséquences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Conséquences du chômage :",
+              "options": [
+                "Perte revenus et précarité",
+                "Coûts budgétaires indemnisation",
+                "Atteinte santé mentale et estime de soi",
+                "Augmentation automatique capital humain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Effets individuels, collectifs et financiers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Coût budgétaire du chômage inclut :",
+              "options": [
+                "Allocations et exonérations cotisations",
+                "Uniquement défense",
+                "Exportations",
+                "Taux change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charge assurances sociales et minima."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Rente de chômage (critique) désigne :",
+              "options": [
+                "Situation où indemnisation décourage reprise emploi faiblement payé",
+                "Gain formation",
+                "Succès insertion",
+                "Full emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat niveau replacement rate et incitations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Stigmatisation chômeur renvoie à :",
+              "options": [
+                "Représentations sociales négatives",
+                "Glorification",
+                "Absence préjugés",
+                "Concept médical seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sociologie du chômage et labelling."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Exclusion sociale liée chômage :",
+              "options": [
+                "Rupture liens travail, revenus, réseaux",
+                "Enrichissement garanti",
+                "Promotion automatique",
+                "Retraite obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Castel, Paugam : vulnérabilités cumulées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Coût de opportunity du chômage pour économie :",
+              "options": [
+                "Production non réalisée (PPI ou output perdu)",
+                "Gain productivité",
+                "Surplus export",
+                "Baisse dette automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources inutilisées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Chômage et criminalité : analyses SES :",
+              "options": [
+                "Corrélations complexes, pas causalité simple",
+                "Lien mécanique unique",
+                "Aucune recherche",
+                "Identité parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteurs sociaux multiples, prudence méthodologique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Longue durée accroît risque :",
+              "options": [
+                "Pauvreté et exclusion persistante",
+                "Promotion facile",
+                "Double salaire",
+                "Retraite anticipée automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hystérésis et spirales précarité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Coûts indirects employeur du chômage élevé :",
+              "options": [
+                "Moins pression revalorisation salaires bas (débat)",
+                "Full embauche",
+                "Taxe nulle",
+                "Innovation interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réserve armée travail dans certaines analyses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Santé et chômage : études montrent :",
+              "options": [
+                "Détérioration statutaire moyenne",
+                "Amélioration garantie",
+                "Sans effet",
+                "Effet uniquement météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stress, accès soins, comportements."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Jeunes et insertion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Difficultés insertion jeunes :",
+              "options": [
+                "Manque expérience et réseaux",
+                "Mismatch formation-emploi",
+                "Crise conjoncturelle amplifiant",
+                "Retraite anticipée généralisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cumul fragilité contrats et secteurs d'embauche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "NEET désigne :",
+              "options": [
+                "Jeunes ni en emploi ni en formation",
+                "Retraités",
+                "Cadres supérieurs",
+                "Élus locaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur risque décrochage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Stage non rémunéré mal encadré pose :",
+              "options": [
+                "Questions précarité et équité",
+                "Garantie CDI",
+                "Fin chômage",
+                "SMIC doublé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débats durée, gratification minimale, substitution emploi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Contrat jeune en alternance vise :",
+              "options": [
+                "Combiner qualification et expérience pro",
+                "Retraite",
+                "Chômage long",
+                "Sans entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Apprentissage et pro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Discrimination à l'embauche jeunes quartiers :",
+              "options": [
+                "Tests audit montrent écarts selon nom ou adresse",
+                "Inexistant prouvé",
+                "Illégal donc absent",
+                "Mesure PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Études terrains et politiques diversité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Service civique :",
+              "options": [
+                "Mission d'intérêt général rémunérée jeunes",
+                "Retraite",
+                "Armée obligatoire",
+                "Impôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Insertion sociale et professionnelle partielle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Précarité jeunes travailleurs :",
+              "options": [
+                "CDD, intérim, temps partiel subi fréquents",
+                "CDI majoritaire statistique toujours",
+                "Fonctionnaire titulaire",
+                "Sans contrat possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segmentation marché travail début carrière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Orientation et information métiers visent :",
+              "options": [
+                "Réduire mismatch et découragement",
+                "Supprimer lycée",
+                "Chômage obligatoire",
+                "Export seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onisep, CIO, Parcoursup liens emploi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Emplois francs (dispositif) :",
+              "options": [
+                "Incitation embauche zones prioritaires",
+                "Taxe jeunes",
+                "Retraite",
+                "Visa tourisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politique territoriale emploi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Crise 2008 et jeunes :",
+              "options": [
+                "Taux chômage jeunes particulièrement touché",
+                "Full emploi jeunes",
+                "Sans effet",
+                "Boom embauches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée cycle défavorable et scars effects."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Flexibilité et protection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Modèle flexisécurité (Danemark inspirant) combine :",
+              "options": [
+                "Flexibilité licenciement",
+                "Sécurité via formation et indemnisation",
+                "Absence tout filet social",
+                "Interdiction embauche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mobilité emploi soutenue par protection active."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Thèse des rigidités françaises (débat) :",
+              "options": [
+                "Protection excessive freinerait embauches",
+                "Chômage zéro prouvé",
+                "SMIC sans effet",
+                "Pas de code travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Controverses empirques sur CDI et coûts non salariaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Réforme El Khomri / loi travail 2016 :",
+              "options": [
+                "Négociation entreprise primée sur branche certains points",
+                "Suppression SMIC",
+                "Fin syndicats",
+                "Retraite 15 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flexibilité et sécurisation parcours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Licenciement sans cause économique en CDI :",
+              "options": [
+                "Procédure encadrée, indemnités, possible contentieux",
+                "Libre sans motif",
+                "Interdit totalement",
+                "Sans recours prudhommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Droit du licenciement et barèmes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Contrat de sécurisation professionnelle (CSP) :",
+              "options": [
+                "Accompagnement renforcé licenciés économiques",
+                "Stage scolaire",
+                "Bourse",
+                "Visa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reclassement et formation accélérée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Prud'hommes :",
+              "options": [
+                "Juridiction conflits individuels travail",
+                "Banque",
+                "Ministère culture",
+                "ONU"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conseil prud'hommes jugement litiges salariés-employeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "SMIC trop élevé (argument) pourrait :",
+              "options": [
+                "Réduire demande travail peu qualifié (modèle simple)",
+                "Garantir full emploi",
+                "Sans effet emploi",
+                "Doubler PIB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat néoclassique salaire minimum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "SMIC protecteur (argument) :",
+              "options": [
+                "Soutient pouvoir d'achat bas revenus",
+                "Supprime chômage seul",
+                "Remplace formation",
+                "Interdit négociation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif social et demande effective."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Externalisation précarité via intérim :",
+              "options": [
+                "Transfère risque sur intérimaires",
+                "Élimine chômage",
+                "CDI systématique",
+                "Fin intérim légal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dualisme et rotation emplois temporaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Sécurisation des parcours professionnels vise :",
+              "options": [
+                "Continuité droits malgré mobilité emploi",
+                "Statut unique immuable",
+                "Interdiction formation",
+                "Retraite à 18 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comptes professionnels, portabilité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Chômage et mondialisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Mondialisation et emploi :",
+              "options": [
+                "Délocalisations possibles secteurs concurrencés",
+                "Commerce peut détruire et créer emplois",
+                "Effet toujours nul sur France",
+                "Interdit importations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Specialisation comparative et ajustements sectoriels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Dumping social désigne :",
+              "options": [
+                "Concurrence via bas coûts sociaux ailleurs",
+                "Hausse SMIC mondiale",
+                "Full protection partout",
+                "Taxe carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débat commerce équitable et normes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Delocalisation industrie française :",
+              "options": [
+                "Réduit emplois manufacturiers locaux",
+                "Crée toujours emplois locaux équivalents garantis",
+                "Sans lien commerce",
+                "Interdit UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Territoires ouvriers touchés, reconversion difficile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Chômage zone euro diffère selon :",
+              "options": [
+                "Politiques nationales et chocs asymétriques",
+                "Identique mécanique",
+                "Un seul SMIC UE",
+                "Pas de BCE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Union monétaire sans budget fédéral complet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Immigration et marché travail (débat SES) :",
+              "options": [
+                "Apports compétences et concurrence selon secteurs",
+                "Sans effet jamais",
+                "Ferme frontières supprime chômage prouvé",
+                "Uniquement emploi public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analyses nuancées par qualifications."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "Nearshoring récent :",
+              "options": [
+                "Rapprocher production pour résilience",
+                "Fin industrie",
+                "Chômage mondial zéro",
+                "Planification URSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaînes valeur post-Covid et géopolitique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Accord commercial peut inclure :",
+              "options": [
+                "Clauses sociales ou environnementales",
+                "Interdiction travail",
+                "SMIC mondial unique",
+                "Fin échange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conditionnalité débattue OMC et bilatéral."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Chômage Allemagne vs France (comparaison cours) :",
+              "options": [
+                "Modèles formation, flexibilité et demande diffèrent",
+                "Identiques",
+                "Sans statistiques",
+                "Mesure météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hartz, mini-jobs, débats export modèle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Compétitivité-coût travail :",
+              "options": [
+                "Prix relatifs unité travail vs partenaires",
+                "Goût artistique",
+                "Climat seul",
+                "Vote présidentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indicateur échanges et emploi exportateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Protectionnisme et emploi (argument) :",
+              "options": [
+                "Soutien temporaire filières peut préserver emplois locaux",
+                "Toujours optimal long terme prouvé",
+                "Sans coût consommateur",
+                "Interdit économie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arbitrage prix, efficacité et souveraineté."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Perspectives et réformes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "prompt": "Revenu universel (débat) propose :",
+              "options": [
+                "Revenu inconditionnel ou simplifié",
+                "Suppression sécurité sociale sans débat",
+                "Peut viser réduire trappes à inactivité selon versions",
+                "Interdit emploi"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Expérimentations Finlande, Alaska, débats France."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "prompt": "Traps à inactivité (trappe) :",
+              "options": [
+                "Reprise emploi réduit plus allocations que gain salaire",
+                "Impossible mathématiquement",
+                "Sans minima sociaux",
+                "Full emploi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taux marginal implicite élevé bas revenus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "prompt": "Réduction durée travail (débat emploi) :",
+              "options": [
+                "Partager volume travail disponible",
+                "Garantie chômage zéro prouvé",
+                "Sans effet entreprises",
+                "Interdit légalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "35h historiques France, controverses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "prompt": "Automatisation future et emploi :",
+              "options": [
+                "Scénarios polarisation qualifications",
+                "Certitude 100% chômage",
+                "Sans impact services",
+                "Fin éducation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frey-Osborne, complémentarités possibles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "prompt": "Objectif full emploi keynésien :",
+              "options": [
+                "Tous ceux qui veulent travailler trouvent emploi",
+                "Zéro population active",
+                "Retraite universelle",
+                "Sans politique publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ambition historique Etat providence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "prompt": "France Travail fusion missions :",
+              "options": [
+                "Indemnisation et accompagnement renforcé",
+                "Banque centrale",
+                "Justice",
+                "Armée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réforme service public emploi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "prompt": "Écologie et emploi (transition) :",
+              "options": [
+                "Reconversions métiers verts et reconversion",
+                "Suppression tout travail",
+                "Chômage voulu",
+                "Pétrole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétences filières décarbonées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "prompt": "Territoires désindustrialisés :",
+              "options": [
+                "Chômage structurel durable sans politique",
+                "Paradis emploi automatique",
+                "Sans stats",
+                "Mer seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vallée ferroviaire, reconversion urbaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "prompt": "Coopération européenne emploi :",
+              "options": [
+                "Stratégie emploi et fonds investissement",
+                "Fin Etats nations",
+                "SMIC unique demain obligatoire",
+                "Sans Parlement UE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semestre européen, FSE+"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "prompt": "Citoyenneté et chômage en SES :",
+              "options": [
+                "Droit travail, dignité, participation sociale en jeu",
+                "Sans dimension sociale",
+                "Purement technique",
+                "Interdit politique publique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chômage question sociale, économique et politique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

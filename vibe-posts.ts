@@ -4,14 +4,13 @@
  * Point d'entrée historique des routes posts : ré-exporte les helpers
  * (vibe-posts-core.ts) pour compatibilité ascendante et délègue
  * l'enregistrement aux modules CRUD (vibe-posts-crud.ts) et engagement
- * (vibe-posts-engage.ts), plus les flux (vibe-feed.ts).
- * L'ordre d'enregistrement des routes est strictement inchangé.
+ * (vibe-posts-engage.ts). Le fil est monté une seule fois, depuis vibe.ts,
+ * avant les posts : /v1/posts/top doit primer sur /v1/posts/:id.
  * ============================================================================
  */
 
 import type { Hono } from "npm:hono@4";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { registerVibeFeedRoutes } from "./vibe-feed.ts";
 import { ensurePostColumns } from "./vibe-posts-core.ts";
 import { registerPostCrudRoutes } from "./vibe-posts-crud.ts";
 import { registerPostEngagementRoutes } from "./vibe-posts-engage.ts";
@@ -40,9 +39,6 @@ export function registerVibePostsRoutes(
 
   // Garantir les colonnes en tâche de fond dès le chargement du serveur
   ensurePostColumns().catch(() => {});
-
-  // Enregistrer également les routes de flux et recherche si non déjà fait
-  registerVibeFeedRoutes(app, registerMulti);
 
   // CRUD + extensions (création, sondages, stats, collab, programmés, brouillons…)
   registerPostCrudRoutes(registerMulti);

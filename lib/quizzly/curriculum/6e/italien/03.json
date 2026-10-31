@@ -1,0 +1,2483 @@
+{
+  "id": "6e-italien-03",
+  "year": "6e",
+  "subject": "italien",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Carte postale de Rome",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Document : « Ciao Maria! Sono a Roma. Il Colosseo è fantastico. Domani vado a Firenze. Baci, Luca ». Quelles informations sont exactes ?",
+              "options": [
+                "Luca est à Rome",
+                "Luca part demain pour Florence",
+                "Luca est à Florence aujourd'hui",
+                "Luca n'aime pas le Colisée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Luca écrit qu'il est à Rome et qu'il partira demain pour Florence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « Ciao » dans ce message ?",
+              "options": [
+                "Au revoir uniquement",
+                "Bonjour ou salut",
+                "Merci",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ciao » sert à saluer ou dire au revoir entre amis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Sono a Roma » veut dire :",
+              "options": [
+                "Je vais à Rome",
+                "Je suis à Rome",
+                "J'aime Rome",
+                "Je quitte Rome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Sono a Roma » = je suis à Rome (présent)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel monument Luca mentionne-t-il ?",
+              "options": [
+                "La Tour de Pise",
+                "Le Colisée",
+                "Le Duomo de Milan",
+                "Le Vésuve"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il écrit « Il Colosseo è fantastico »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Domani » correspond à :",
+              "options": ["Aujourd'hui", "Demain", "Hier", "Ce soir"],
+              "correctAnswers": [1],
+              "explanation": "« Domani » = demain en italien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« vado a Firenze » indique :",
+              "options": [
+                "Il est né à Florence",
+                "Il se rendra à Florence",
+                "Il refuse d'y aller",
+                "Il revient de Florence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« vado » = je vais (futur proche dans le contexte)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À qui s'adresse Luca ?",
+              "options": ["À Marco", "À Maria", "À Firenze", "Au Colisée"],
+              "correctAnswers": [1],
+              "explanation": "La carte commence par « Ciao Maria! »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Baci » à la fin signifie environ :",
+              "options": [
+                "Bisous / affectueusement",
+                "Bon appétit",
+                "Bonne nuit",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Baci » = bisous, formule amicale de fin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Firenze en français, c'est :",
+              "options": ["Venise", "Florence", "Milan", "Naples"],
+              "correctAnswers": [1],
+              "explanation": "Firenze = Florence, ville de Toscane."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le ton de ce document est :",
+              "options": [
+                "Une facture officielle",
+                "Un message personnel amical",
+                "Un horaire de bus",
+                "Une recette"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est une carte postale informelle entre proches."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Menu de pizzeria",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Menu : « PIZZERIA DA MARIO — Margherita 8€ — Quattro formaggi 10€ — Acqua 2€ — Aperto dalle 12 alle 23 ». Que peut-on commander ?",
+              "options": [
+                "Une pizza Margherita",
+                "De l'eau",
+                "Un steak frites",
+                "Une pizza quatre fromages"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Margherita, quatre fromages et eau figurent au menu ; pas de steak."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien coûte la Margherita ?",
+              "options": ["2 €", "8 €", "10 €", "23 €"],
+              "correctAnswers": [1],
+              "explanation": "« Margherita 8€ » indique le prix."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Quattro formaggi » signifie :",
+              "options": [
+                "Quatre poivrons",
+                "Quatre fromages",
+                "Quatre viandes",
+                "Quatre tomates"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formaggio = fromage ; quattro = quatre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Acqua » veut dire :",
+              "options": ["Eau", "Vin", "Jus", "Café"],
+              "correctAnswers": [0],
+              "explanation": "Acqua = eau en italien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Aperto dalle 12 alle 23 » : le restaurant est ouvert :",
+              "options": [
+                "De minuit à midi",
+                "De midi à 23 h",
+                "Seulement le matin",
+                "24 h sur 24"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aperto = ouvert ; dalle 12 alle 23 = de 12 h à 23 h."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel plat est le plus cher listé ?",
+              "options": [
+                "Margherita",
+                "Quattro formaggi",
+                "Acqua",
+                "Tous pareils"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quattro formaggi à 10 € coûte plus que Margherita (8 €) et l'eau (2 €)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pizzeria » désigne un lieu où l'on sert surtout :",
+              "options": [
+                "Des pâtes",
+                "Des pizzas",
+                "Des glaces",
+                "Du poisson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pizzeria = restaurant de pizzas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole « € » indique :",
+              "options": [
+                "La température",
+                "La monnaie euro",
+                "Le poids",
+                "L'heure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En Italie, les prix s'affichent en euros."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« DA MARIO » suggère :",
+              "options": [
+                "Le nom du propriétaire ou de l'établissement",
+                "Une rue",
+                "Un jour férié",
+                "Une marque de vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Da + prénom = chez Mario, nom courant pour un commerce."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce document est utile pour :",
+              "options": [
+                "Acheter un billet de train",
+                "Choisir un plat et connaître les prix",
+                "Lire la météo",
+                "Trouver un hôtel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un menu sert à voir plats et tarifs."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Horaire de train",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affiche : « Treno regionale Milano Centrale 09:15 — Pisa Centrale 11:40 — Binario 7 — Ritardo 10 min ». Quelles infos sont correctes ?",
+              "options": [
+                "Départ de Milan",
+                "Arrivée à Pise",
+                "Départ de Rome Termini",
+                "Retard annoncé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le train relie Milan Centrale à Pise ; un retard de 10 min est indiqué."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Treno regionale » est :",
+              "options": [
+                "Un avion",
+                "Un train régional",
+                "Un bus",
+                "Un bateau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Treno = train ; regionale = ligne régionale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heure de départ :",
+              "options": ["11:40", "09:15", "07:00", "23:00"],
+              "correctAnswers": [1],
+              "explanation": "Milano Centrale est associé à 09:15 (départ)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Binario 7 » indique :",
+              "options": [
+                "Le quai / voie 7",
+                "Le prix 7 €",
+                "7 passagers",
+                "7 bagages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Binario = voie/quai en gare."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ritardo 10 min » signifie :",
+              "options": [
+                "Avance de 10 min",
+                "Retard de 10 min",
+                "Trajet de 10 min",
+                "Arrêt de 10 min"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ritardo = retard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Milano en français :",
+              "options": ["Milan", "Modène", "Messine", "Mantoue"],
+              "correctAnswers": [0],
+              "explanation": "Milano = Milan."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pisa Centrale est :",
+              "options": [
+                "Une plage",
+                "La gare de Pise",
+                "Un musée",
+                "Un aéroport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Centrale = gare centrale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Durée approximative du trajet (09:15 → 11:40) :",
+              "options": [
+                "Environ 2 h 25",
+                "10 minutes",
+                "Une journée",
+                "30 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De 9 h 15 à 11 h 40 ≈ 2 h 25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ce document se lit surtout :",
+              "options": [
+                "Dans une église",
+                "En gare",
+                "À la plage",
+                "Au cinéma"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Horaires, binario : vocabulaire de gare."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Centrale » sur une affiche ferroviaire veut dire :",
+              "options": [
+                "Gare centrale",
+                "Centre-ville uniquement",
+                "Ticket central",
+                "Chef de train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stazione Centrale = gare principale."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Affiche de musée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Affiche : « MUSEO UFFIZI — Firenze — Ingresso 20€ — Studenti 10€ — Chiuso il lunedì ». Vrai ou faux selon le texte ?",
+              "options": [
+                "Le musée est à Florence",
+                "Fermé le lundi",
+                "Gratuit pour tous",
+                "Ouvert le lundi"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Uffizi à Firenze ; chiuso il lunedì = fermé lundi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ingresso » signifie :",
+              "options": ["Sortie", "Entrée (tarif)", "Toilettes", "Cadeau"],
+              "correctAnswers": [1],
+              "explanation": "Ingresso = entrée, billet d'accès."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tarif étudiant :",
+              "options": ["20 €", "10 €", "Gratuit", "50 €"],
+              "correctAnswers": [1],
+              "explanation": "Studenti 10€."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Chiuso » veut dire :",
+              "options": ["Ouvert", "Fermé", "Complet", "Gratuit"],
+              "correctAnswers": [1],
+              "explanation": "Chiuso = fermé (opposé de aperto)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« il lunedì » =",
+              "options": [
+                "Le lundi",
+                "Le dimanche",
+                "Le samedi",
+                "Tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunedì = lundi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les Uffizi sont célèbres pour :",
+              "options": [
+                "Les œuvres d'art",
+                "Les trains",
+                "Le ski",
+                "Les pizzas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musée Uffizi = grandes collections de peinture à Florence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Studenti » désigne :",
+              "options": [
+                "Les enseignants",
+                "Les étudiants",
+                "Les touristes",
+                "Les enfants seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Studente/studenti = étudiant(s)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un visiteur adulte paie :",
+              "options": ["10 €", "20 €", "0 €", "2 €"],
+              "correctAnswers": [1],
+              "explanation": "Ingresso standard 20€."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Firenze se trouve en :",
+              "options": ["Toscane", "Sicile", "Sardaigne", "Alpes suisses"],
+              "correctAnswers": [0],
+              "explanation": "Florence est la capitale de la Toscane."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce type d'affiche aide à :",
+              "options": [
+                "Planifier une visite culturelle",
+                "Commander au restaurant",
+                "Réserver un hôtel",
+                "Acheter des vêtements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix, lieu et jours de fermeture servent à organiser la visite."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Panneau de rue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Panneaux : « DIVieto di SOSTA » et « Senso unico ». Que comprenons-nous ?",
+              "options": [
+                "Stationnement interdit",
+                "Sens unique",
+                "Parking gratuit",
+                "Route à double sens"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Divieto di sosta = interdiction de stationner ; senso unico = sens unique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Divieto » signifie :",
+              "options": [
+                "Interdiction",
+                "Autorisation",
+                "Bienvenue",
+                "Danger volcanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Divieto = interdit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Sosta » concerne :",
+              "options": [
+                "La vitesse",
+                "L'arrêt / stationnement",
+                "Le bruit",
+                "Les piétons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sosta = arrêt, stationnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Senso unico » : les voitures vont :",
+              "options": [
+                "Dans un seul sens",
+                "Dans les deux sens",
+                "À l'envers seulement",
+                "Interdit aux voitures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Senso unico = circulation à sens unique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ces panneaux se voient surtout :",
+              "options": [
+                "Dans la rue",
+                "Sous l'eau",
+                "En classe d'allemand",
+                "Dans un menu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signalisation routière urbaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si tu vois « Divieto di sosta », tu ne dois pas :",
+              "options": [
+                "Laisser ta voiture stationner",
+                "Marcher",
+                "Parler italien",
+                "Regarder la carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stationner y est interdit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« unico » rappelle le français :",
+              "options": ["Unique", "Union", "Univers"],
+              "correctAnswers": [0],
+              "explanation": "Unico = unique (même racine latine)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un panneau rouge barré en Italie indique souvent :",
+              "options": [
+                "Une interdiction",
+                "Une plage",
+                "Un musée",
+                "Un festin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en France, rouge = interdiction fréquente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire ces panneaux aide un touriste à :",
+              "options": [
+                "Respecter les règles de circulation",
+                "Cuisiner la pasta",
+                "Chanter l'hymne",
+                "Nager en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre la signalisation évite les amendes et dangers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« di » dans « Divieto di sosta » exprime :",
+              "options": ["De / concernant", "Oui", "Non", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Divieto di sosta = interdiction de (faire) sosta."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Invitation à une fête",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Carton : « Festa di compleanno di Giulia — Sabato 15 maggio — ore 16:00 — Via Roma 12 — Conferma entro mercoledì ». Éléments corrects ?",
+              "options": [
+                "C'est un anniversaire",
+                "C'est un samedi",
+                "C'est à minuit",
+                "Adresse Via Roma 12"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Festa di compleanno = anniversaire ; sabato = samedi ; 16:00 = 16 h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Festa di compleanno » =",
+              "options": [
+                "Fête d'anniversaire",
+                "Fête nationale",
+                "Repas de Noël",
+                "Match de foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compleanno = anniversaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Sabato » c'est :",
+              "options": ["Samedi", "Dimanche", "Mercredi", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Sabato = samedi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ore 16:00 » indique :",
+              "options": ["16 heures", "16 euros", "16 invités", "16 jours"],
+              "correctAnswers": [0],
+              "explanation": "Ore = heures."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Via Roma » est :",
+              "options": [
+                "Une adresse (rue)",
+                "Un plat",
+                "Un train",
+                "Une montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Via = rue ; numéro 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Conferma entro mercoledì » : il faut répondre :",
+              "options": [
+                "Avant mercredi",
+                "Après dimanche",
+                "Jamais",
+                "En anglais seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entro = au plus tard, avant la fin de mercredi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fête est pour :",
+              "options": ["Giulia", "Luca", "Mario", "Rome"],
+              "correctAnswers": [0],
+              "explanation": "Compleanno di Giulia."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« maggio » est le mois de :",
+              "options": ["Mai", "Mars", "Juin", "Mars (planète)"],
+              "correctAnswers": [0],
+              "explanation": "Maggio = mai."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mercoledì =",
+              "options": ["Mercredi", "Mardi", "Jeudi", "Lundi"],
+              "correctAnswers": [0],
+              "explanation": "Mercoledì = mercredi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce document sert à :",
+              "options": [
+                "Inviter et donner date/lieu",
+                "Vendre des billets de train",
+                "Annoncer la météo",
+                "Lister des devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Invitation avec lieu, heure et RSVP."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Message sur l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Circulaire : « Scuola media Verdi — Riunione genitori giovedì 18:30 — Aula magna — Argomento: viaggio a Roma ». Que retient-on ?",
+              "options": [
+                "Réunion des parents",
+                "Sujet : voyage à Rome",
+                "Match de basket",
+                "Cours annulé toute l'année"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Riunione genitori ; viaggio a Roma = voyage scolaire à Rome."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Scuola media » correspond à :",
+              "options": [
+                "Collège (cycle moyen)",
+                "Université",
+                "Crèche",
+                "Stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Italie, scuola media ≈ collège."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Riunione genitori » =",
+              "options": [
+                "Réunion de parents",
+                "Sortie plage",
+                "Examen de maths",
+                "Cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Genitori = parents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« giovedì » :",
+              "options": ["Jeudi", "Vendredi", "Samedi", "Dimanche"],
+              "correctAnswers": [0],
+              "explanation": "Giovedì = jeudi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Aula magna » est :",
+              "options": [
+                "Une grande salle",
+                "Une cour de récré",
+                "Un bus",
+                "Une pizzeria"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aula = salle de classe ; magna = grande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« viaggio » signifie :",
+              "options": ["Voyage", "Victoire", "Voiture", "Ville"],
+              "correctAnswers": [0],
+              "explanation": "Viaggio = voyage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verdi dans le nom d'école renvoie souvent à :",
+              "options": [
+                "Le compositeur italien célèbre",
+                "Une marque de voiture",
+                "Un légume",
+                "Une île grecque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giuseppe Verdi, compositeur ; nom fréquent d'établissements."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heure de la réunion :",
+              "options": ["18 h 30", "8 h 30", "18 h matin", "Minuit"],
+              "correctAnswers": [0],
+              "explanation": "18:30 = 18 h 30."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Argomento » veut dire :",
+              "options": ["Sujet / thème", "Argent", "Arrivée", "Archive"],
+              "correctAnswers": [0],
+              "explanation": "Argomento = sujet abordé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce texte est destiné surtout aux :",
+              "options": [
+                "Parents d'élèves",
+                "Pilotes d'avion",
+                "Vendeurs de glace",
+                "Archéologues seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Riunione genitori = public parental."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Étiquette en magasin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Étiquette : « Gelato alla fragola — 3,50€ — Prodotto in Italia — Senza glutine ». Informations vraies ?",
+              "options": [
+                "Parfum fraise",
+                "Produit en Italie",
+                "Contient obligatoirement du gluten",
+                "Prix 3,50 €"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fragola = fraise ; prodotto in Italia ; senza glutine = sans gluten ; 3,50€."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Gelato » =",
+              "options": ["Glace", "Gâteau", "Fromage", "Jus"],
+              "correctAnswers": [0],
+              "explanation": "Gelato = glace artisanale italienne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« fragola » :",
+              "options": ["Fraise", "Framboise", "Banane", "Citron"],
+              "correctAnswers": [0],
+              "explanation": "Fragola = fraise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Senza glutine » indique :",
+              "options": [
+                "Sans gluten",
+                "Avec beaucoup de gluten",
+                "Sans sucre",
+                "Sans lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Senza = sans ; glutine = gluten."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Prodotto in Italia » :",
+              "options": [
+                "Fabriqué en Italie",
+                "Importé du Japon",
+                "Interdit en Italie",
+                "Gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prodotto = produit ; in Italia = en Italie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« alla » dans « alla fragola » marque :",
+              "options": [
+                "Le parfum (à la fraise)",
+                "L'heure",
+                "La couleur du ciel",
+                "Le vendeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alla fragola = au parfum fraise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où trouve-t-on ce type d'étiquette ?",
+              "options": [
+                "En magasin alimentaire",
+                "Sur un billet de train",
+                "Dans un dictionnaire",
+                "Sur un maillot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étiquette produit alimentaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3,50 € correspond au :",
+              "options": [
+                "Prix",
+                "Poids en kg",
+                "Numéro de lot",
+                "Nombre de boules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Format prix avec virgule décimale européenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un client allergique au gluten peut :",
+              "options": [
+                "Choisir ce produit",
+                "Devoir éviter ce produit",
+                "Ne jamais lire l'étiquette",
+                "Payer en dollars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Senza glutine = adapté sans gluten."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire l'étiquette permet de :",
+              "options": [
+                "Connaître parfum, origine et prix",
+                "Conduire une voiture",
+                "Réserver un hôtel",
+                "Traduire tout un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Informations consommateur essentielles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Programme de la journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Feuille : « Giornata a Venezia — 9:00 vaporetto — 11:00 Piazza San Marco — 14:00 pranzo — 16:30 museo ». Activités prévues ?",
+              "options": [
+                "Trajet en vaporetto",
+                "Visite place Saint-Marc",
+                "Ski alpin",
+                "Déjeuner"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vaporetto, Piazza San Marco et pranzo sont au programme ; pas de ski."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Giornata » signifie :",
+              "options": ["Journée", "Nuit", "Semaine", "Siècle"],
+              "correctAnswers": [0],
+              "explanation": "Giornata = journée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« vaporetto » à Venise est :",
+              "options": [
+                "Un bus sur l'eau",
+                "Un train",
+                "Un vélo",
+                "Un téléphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vaporetto = bateau-bus vénitien."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Piazza San Marco se trouve à :",
+              "options": ["Venise", "Turin", "Palerme", "Gênes"],
+              "correctAnswers": [0],
+              "explanation": "Place Saint-Marc = cœur de Venise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« pranzo » =",
+              "options": ["Déjeuner", "Petit-déjeuner", "Dîner", "Goûter"],
+              "correctAnswers": [0],
+              "explanation": "Pranzo = repas de midi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À 16 h 30, le groupe va :",
+              "options": ["Au musée", "Dormir", "Au foot", "En avion"],
+              "correctAnswers": [0],
+              "explanation": "16:30 museo."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Venezia en français :",
+              "options": ["Venise", "Vienne", "Verone", "Vatican"],
+              "correctAnswers": [0],
+              "explanation": "Venezia = Venise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ce document est un :",
+              "options": [
+                "Planning de visite",
+                "Menu de restaurant",
+                "Contrat de travail",
+                "Poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Horaires d'activités touristiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« museo » =",
+              "options": ["Musée", "Musique", "Mousse", "Municipalité"],
+              "correctAnswers": [0],
+              "explanation": "Museo = musée (proche du français)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire ce programme aide à :",
+              "options": [
+                "Organiser son temps sur place",
+                "Apprendre le japonais",
+                "Réparer un vélo",
+                "Voter aux élections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre et heures des étapes de la visite."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Consignes simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Panneau bibliothèque : « Silenzio — Non mangiare — Prestito libri fino a 14 giorni ». Règles indiquées ?",
+              "options": [
+                "Se taire",
+                "Ne pas manger",
+                "Parler fort",
+                "Emprunter des livres 14 jours max"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Silenzio et non mangiare ; prêt jusqu'à 14 jours."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Silenzio » =",
+              "options": ["Silence", "Sirène", "Soleil", "Sortie"],
+              "correctAnswers": [0],
+              "explanation": "Silenzio = silence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Non mangiare » interdit :",
+              "options": ["Manger", "Lire", "Dormir debout", "Emprunter"],
+              "correctAnswers": [0],
+              "explanation": "Mangiare = manger ; non = ne pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Prestito libri » concerne :",
+              "options": [
+                "Emprunt de livres",
+                "Vente de pizza",
+                "Location de bateaux",
+                "Cours de natation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prestito = prêt ; libri = livres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« 14 giorni » =",
+              "options": ["14 jours", "14 heures", "14 livres", "14 euros"],
+              "correctAnswers": [0],
+              "explanation": "Giorni = jours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« fino a » signifie :",
+              "options": ["Jusqu'à", "Depuis", "Contre", "Sans"],
+              "correctAnswers": [0],
+              "explanation": "Fino a = jusqu'à (durée maximale)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ce panneau se trouve plutôt :",
+              "options": [
+                "Dans une bibliothèque",
+                "Sur un terrain de rugby",
+                "Dans un volcan",
+                "En plein océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silence, livres : contexte bibliothèque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« libri » =",
+              "options": ["Livres", "Lions", "Lits", "Lumières"],
+              "correctAnswers": [0],
+              "explanation": "Libro/libri = livre(s)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respecter « Silenzio » permet :",
+              "options": [
+                "Étudier ou lire calmement",
+                "Courir partout",
+                "Jouer de la trompette",
+                "Nager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calme nécessaire en bibliothèque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre ces consignes en italien aide à :",
+              "options": [
+                "Suivre les règles du lieu",
+                "Ignorer le personnel",
+                "Perdre ses livres",
+                "Parler plus fort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture de consignes = bon comportement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Rome, capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Rome est un repère majeur de la civilisation italienne. Quelles affirmations sont vraies ?",
+              "options": [
+                "C'est la capitale de l'Italie",
+                "Elle abrite le Vatican voisin",
+                "C'est la capitale de la France",
+                "Elle fut au cœur de l'Empire romain"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Rome = capitale italienne et héritage romain ; le Vatican est une cité-État proche, pas Rome capitale de France."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En italien, Rome s'écrit :",
+              "options": ["Roma", "Romé", "Romeo", "Romagna"],
+              "correctAnswers": [0],
+              "explanation": "Roma = Rome en italien."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La langue officielle de l'Italie est :",
+              "options": [
+                "L'italien",
+                "Le latin parlé partout",
+                "Le français",
+                "L'allemand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'italien est la langue nationale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un monument emblématique de Rome antique :",
+              "options": [
+                "Le Colisée",
+                "La Tour Eiffel",
+                "Big Ben",
+                "La Statue de la Liberté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Colisée (Colosseo) date de l'époque romaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'Italie est en Europe :",
+              "options": [
+                "Méridionale",
+                "Septentrionale uniquement",
+                "En Amérique",
+                "En Afrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Italie forme la botte du Sud de l'Europe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le fleuve qui traverse Rome :",
+              "options": ["Le Tibre", "La Seine", "Le Nil", "Le Danube"],
+              "correctAnswers": [0],
+              "explanation": "Le Tibre (Tevere) traverse Rome."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Capitale » signifie la ville :",
+              "options": [
+                "Siège du gouvernement du pays",
+                "Plus petite du pays",
+                "Uniquement touristique",
+                "Sans habitants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capitale = centre politique de l'État."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La monnaie utilisée en Italie aujourd'hui :",
+              "options": ["L'euro", "La lire seulement", "Le dollar", "Le yen"],
+              "correctAnswers": [0],
+              "explanation": "L'Italie utilise l'euro depuis 2002."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un repère de civilisation désigne :",
+              "options": [
+                "Un élément culturel ou historique important",
+                "Un type de chaussure",
+                "Une recette oubliée",
+                "Un nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère = marque identitaire culturelle/historique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi Rome intéresse les visiteurs du monde entier ?",
+              "options": [
+                "Patrimoine antique et art",
+                "Soleil uniquement en hiver",
+                "Absence totale d'histoire",
+                "Frontières fermées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rome concentre art, histoire et monuments célèbres."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Venise et l'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Venise est célèbre pour :",
+              "options": [
+                "Ses canaux et gondoles",
+                "Sa situation sans mer ni eau",
+                "Le carnaval et masques",
+                "Être capitale de l'Italie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Venise = lagune, canaux, gondoles ; carnaval connu ; capitale = Rome."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Venise se situe dans le :",
+              "options": [
+                "Nord-est de l'Italie",
+                "Désert du Sahara",
+                "Pôle Nord",
+                "Brésil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Venise est en Vénétie, nord-est."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une gondole est :",
+              "options": [
+                "Une barque traditionnelle",
+                "Un train",
+                "Un fromage",
+                "Un château"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gondola = embarcation vénitienne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Place Saint-Marc en italien :",
+              "options": [
+                "Piazza San Marco",
+                "Piazza Roma",
+                "Piazza Pizza",
+                "Piazza Milano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piazza San Marco = place Saint-Marc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le carnaval de Venise est connu pour :",
+              "options": [
+                "Les costumes et masques",
+                "Les matchs de rugby",
+                "Les volcans",
+                "Les glaciers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masques et fêtes typiques du carnaval."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Venise est construite sur :",
+              "options": [
+                "Des îles en lagune",
+                "Une haute montagne seule",
+                "Un désert sec",
+                "Un lac gelé permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Architecture adaptée à la lagune vénitienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Acqua alta » à Venise désigne :",
+              "options": [
+                "Marée haute / inondations",
+                "Eau gratuite",
+                "Sécheresse",
+                "Neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Acqua alta = montée des eaux fréquente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Venise appartient à la région :",
+              "options": ["Vénétie", "Sicile", "Sardaigne", "Toscane"],
+              "correctAnswers": [0],
+              "explanation": "Venise = chef-lieu historique de la Vénétie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un repère vénitien pour l'art :",
+              "options": [
+                "Basilique Saint-Marc",
+                "Tour Eiffel",
+                "Stonehenge",
+                "Grande Muraille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La basilique domine la place Saint-Marc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Venise attire surtout pour :",
+              "options": [
+                "Son paysage unique sur l'eau",
+                "Ses usines de voitures",
+                "Ses champs de blé infinis",
+                "Son climat polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unicité urbaine liée à l'eau."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Gastronomie italienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La cuisine italienne est un repère culturel. Exemples reconnus :",
+              "options": [
+                "Pizza et pasta",
+                "Sushi traditionnel italien",
+                "Mozzarella et tomate",
+                "Curry indien d'origine romaine"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pizza, pâtes, mozzarella et tomate sont emblématiques ; sushi/curry ne sont pas italiens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Pasta » désigne :",
+              "options": [
+                "Les pâtes alimentaires",
+                "Un dessert glacé",
+                "Une boisson",
+                "Un chapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasta = pâtes en italien."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pizza Margherita rappelle les couleurs du drapeau italien avec :",
+              "options": [
+                "Tomate, mozzarella, basilic",
+                "Chocolat, vanille, café",
+                "Bleu, blanc, rouge peint",
+                "Uniquement du poivron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge tomate, blanc fromage, vert basilic."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Gelato » en Italie est :",
+              "options": ["Une glace", "Une soupe", "Un poisson", "Un pain"],
+              "correctAnswers": [0],
+              "explanation": "Gelato = glace artisanale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Caffè » pris au comptoir le matin, c'est souvent :",
+              "options": [
+                "Un espresso court",
+                "Un litre de lait seul",
+                "De l'eau gazeuse",
+                "Un thé anglais obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Culture du café espresso."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Buon appetito! » se dit :",
+              "options": [
+                "Avant de manger",
+                "En dormant",
+                "Au revoir",
+                "En skiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule pour souhaiter bon repas."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'huile d'olive est importante en Italie car :",
+              "options": [
+                "Oliviers cultivés au Mediterranée",
+                "Pas d'oliviers en Italie",
+                "Interdit alimentaire",
+                "Remplace l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méditerranée = culture oléicole."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Formaggio » =",
+              "options": ["Fromage", "Fourchette", "Fort", "Forme"],
+              "correctAnswers": [0],
+              "explanation": "Formaggio = fromage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les repas familiaux italiens valorisent :",
+              "options": [
+                "Partager à table",
+                "Manger seul sans parler",
+                "Éviter les traditions",
+                "Refuser la cuisine locale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convivialité autour de la table."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître la gastronomie aide à comprendre :",
+              "options": [
+                "La culture et l'identité italienne",
+                "Les lois du football seulement",
+                "La météo polaire",
+                "Les langues asiatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuisine = repère civilisationnel."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le Colisée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Colisée (Colosseo) :",
+              "options": [
+                "Est à Rome",
+                "Servait aux spectacles antiques",
+                "Est un gratte-ciel moderne",
+                "Est un amphithéâtre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amphithéâtre romain pour jeux et spectacles, situé à Rome."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il a été construit sous l'Empire :",
+              "options": ["Romain", "Chinois", "Aztèque", "Viking"],
+              "correctAnswers": [0],
+              "explanation": "Monument de Rome impériale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Colosseo » en italien correspond au français :",
+              "options": ["Colisée", "Collège", "Colline", "Coloriage"],
+              "correctAnswers": [0],
+              "explanation": "Colosseo = Colisée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aujourd'hui le Colisée est :",
+              "options": [
+                "Un site touristique majeur",
+                "Un aéroport",
+                "Un supermarché",
+                "Un stade de Formule 1 actif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine visité par des millions de personnes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Matériau principal visible :",
+              "options": [
+                "Pierre (dont travertin)",
+                "Bois uniquement",
+                "Plastique",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Construction en pierre romaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il symbolise :",
+              "options": [
+                "La Rome antique",
+                "La Rome du futur sur Mars",
+                "L'absence d'histoire",
+                "Un village invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emblème mondial de la civilisation romaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les gladiateurs sont associés historiquement à :",
+              "options": [
+                "Des combats spectaculaires",
+                "Des cours de piano",
+                "Des vols spatiaux",
+                "Des élections modernes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Image populaire des jeux de l'amphithéâtre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Colisée est classé au patrimoine :",
+              "options": [
+                "Mondial de l'UNESCO (avec le centre historique de Rome)",
+                "Local d'une école",
+                "Secret interdit",
+                "Uniquement privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rome antique protégée internationalement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Visiter le Colisée permet de :",
+              "options": [
+                "Comprendre l'histoire romaine",
+                "Apprendre à piloter",
+                "Nager en mer",
+                "Cuisiner sans ingrédients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu pédagogique historique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe d'italien, le Colisée sert de repère :",
+              "options": [
+                "Historique et culturel",
+                "Mathématique uniquement",
+                "Géographique du Pôle Nord",
+                "Linguistique du latin uniquement sans contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont entre langue, histoire et identité italienne."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Tour de Pise",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La tour penchée de Pise :",
+              "options": [
+                "Est en Toscane",
+                "Est célèbre pour son inclinaison",
+                "Est le plus haut gratte-ciel d'Europe",
+                "Fait partie du complexe du Duomo de Pise"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pise en Toscane ; tour inclinée ; campanile du Duomo, pas un gratte-ciel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pise se trouve en :",
+              "options": ["Italie", "Espagne", "Allemagne", "Canada"],
+              "correctAnswers": [0],
+              "explanation": "Pise = ville italienne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Torre pendente » signifie :",
+              "options": [
+                "Tour penchée",
+                "Tour pendule à Paris",
+                "Tour qui tombe toujours",
+                "Tour carrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendente = penchée/inclinée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les touristes prennent souvent des photos en :",
+              "options": [
+                "Faisant semblant de soutenir la tour",
+                "Nageant dans la tour",
+                "Dormant une semaine dedans",
+                "Peignant la tour en vert fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Photo traditionnelle illusion de perspective."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La tour est un campanile, donc :",
+              "options": [
+                "Une tour de cloche d'église",
+                "Un hôtel",
+                "Un stade",
+                "Un port"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Campanile = clocher/tour de cloches."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Duomo » indique :",
+              "options": [
+                "Cathédrale",
+                "Dôme seulement sportif",
+                "Duomo = dessert",
+                "Gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Duomo = cathédrale (place des Miracles à Pise)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Toscane est une région :",
+              "options": [
+                "Centrale d'Italie",
+                "Du Nord du Canada",
+                "D'Afrique",
+                "Du Pacifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toscane = Florence, Pise, Sienne…"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'inclinaison vient surtout de :",
+              "options": [
+                "Sol instable à la construction",
+                "Vent constant uniquement",
+                "Décision artistique récente",
+                "Tremblement hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondations sur sol meuble, fameuse inclinaison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pise est aussi une ville :",
+              "options": [
+                "Universitaire réputée",
+                "Sans école",
+                "Sous-marine",
+                "Sans histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Université de Pise among oldest in Europe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comme repère, la tour montre :",
+              "options": [
+                "Art et architecture médiévale italienne",
+                "Technologie spatiale",
+                "Cuisine japonaise",
+                "Musique reggae brésilienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chef-d'œuvre architectural toscan."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Fêtes et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Traditions italiennes connues :",
+              "options": [
+                "Noël (Natale) en famille",
+                "Carnaval de Venise",
+                "Thanksgiving officiel italien depuis l'Antiquité romaine",
+                "Ferragosto en été"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Natale, carnaval vénitien, Ferragosto (15 août) ; Thanksgiving n'est pas une fête italienne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Natale » =",
+              "options": ["Noël", "Nuit", "Natation", "National"],
+              "correctAnswers": [0],
+              "explanation": "Natale = Noël."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ferragosto » (15 août) marque :",
+              "options": [
+                "Vacances d'été importantes",
+                "Rentrée scolaire",
+                "Halloween",
+                "Pâques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête estivale et congés populaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Buon Natale » signifie :",
+              "options": [
+                "Joyeux Noël",
+                "Bon appétit",
+                "Bonne nuit",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de vœux de Noël."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Pasqua » =",
+              "options": ["Pâques", "Paix", "Pasta", "Place"],
+              "correctAnswers": [0],
+              "explanation": "Pasqua = Pâques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En Italie, le football (calcio) :",
+              "options": [
+                "Passion populaire",
+                "Inconnu",
+                "Interdit",
+                "Joué seulement en Antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calcio = football, sport national."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Carnevale » se fête surtout :",
+              "options": [
+                "Avant le Carême",
+                "En décembre seulement",
+                "Jamais",
+                "Uniquement à l'école de maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Période festive avant Pâques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les crèches (presepi) à Noël :",
+              "options": [
+                "Tradition dans plusieurs régions",
+                "Interdites",
+                "Uniquement en France",
+                "Réservées aux bateaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Presepe napolitain très connu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Auguri! » s'utilise pour :",
+              "options": [
+                "Féliciter / souhaiter",
+                "Insulter",
+                "Commander un café",
+                "Demander l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auguri = meilleurs vœux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étudier les fêtes aide à :",
+              "options": [
+                "Mieux comprendre la vie des Italiens",
+                "Oublier la langue",
+                "Éviter toute culture",
+                "Ne parler qu'en latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fêtes = repères de civilisation vivante."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Géographie de l'Italie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Italie en géographie :",
+              "options": [
+                "Forme une péninsule en botte",
+                "Est bordée par la Méditerranée",
+                "N'a aucune montagne",
+                "Est un pays sans côte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'Italie a la forme d'une botte et des côtes méditerranéennes ; les Alpes et les côtes contredisent les deux dernières propositions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plus haute montagne d'Italie :",
+              "options": [
+                "Le mont Etna (volcan actif en Sicile) ou Alpes ; Etna célèbre",
+                "Mont Blanc uniquement en Italie entière",
+                "Aucun relief",
+                "Colisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Etna en Sicile est un volcan emblématique ; les Alpes dominent le nord."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Sicile est :",
+              "options": [
+                "Une grande île au sud",
+                "Un quartier de Paris",
+                "Un fleuve",
+                "Un pays voisin sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Région insulaire italienne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La Sardaigne est :",
+              "options": [
+                "Une autre île italienne",
+                "En Scandinavie",
+                "Un désert",
+                "Un lac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sardaigne = île en mer Tyrrhénienne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Capitale : Rome. Autre grande ville du nord :",
+              "options": ["Milan", "Sydney", "Le Caire", "Oslo"],
+              "correctAnswers": [0],
+              "explanation": "Milano = Milan, métropole économique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'Italie a des frontières avec la France :",
+              "options": [
+                "Oui, dans les Alpes",
+                "Non, jamais",
+                "Seulement par la mer Rouge",
+                "Uniquement en Amérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frontière alpine franco-italienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mare » en italien =",
+              "options": ["Mer", "Mère", "Maison", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Mare = mer (Méditerranée = Mediterraneo)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le stivale (la botte) désigne :",
+              "options": [
+                "La forme de la péninsule italienne",
+                "Un magasin de chaussures",
+                "Un volcan",
+                "Un drapeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Métaphore géographique courante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Naples (Napoli) est au :",
+              "options": [
+                "Sud, près du Vésuve",
+                "Pôle Nord",
+                "Centre de l'Asie",
+                "Milieu de l'Atlantique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grande ville du sud, Vésuve proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Connaître la géographie aide à situer :",
+              "options": [
+                "Les repères culturels italiens",
+                "Les planètes",
+                "Les langues mortes sans pays",
+                "Les océans sans côte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localiser villes et régions contextualise la culture."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Art et Renaissance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'Italie est berceau de grands artistes. Exemples :",
+              "options": [
+                "Léonard de Vinci",
+                "Michel-Ange",
+                "Homère uniquement grec sans lien italien",
+                "La Joconde liée à Léonard"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Léonard et Michel-Ange sont des figures clés de la Renaissance italienne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La Renaissance est née surtout en :",
+              "options": [
+                "Italie (Florence, etc.)",
+                "Antarctique",
+                "Lune",
+                "Océan Pacifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement culturel débutant en Italie aux XVe-XVIe s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Florence est associée à :",
+              "options": [
+                "Médicis et art",
+                "Aucun musée",
+                "Only modern skyscrapers",
+                "Pas de peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Florence = Uffizi, Duomo, Renaissance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Pittura » =",
+              "options": ["Peinture", "Pizza", "Pont", "Pluie"],
+              "correctAnswers": [0],
+              "explanation": "Pittura = peinture."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La chapelle Sixtine se trouve à :",
+              "options": [
+                "Vatican (Rome)",
+                "Venise seule",
+                "Pise uniquement",
+                "Tokyo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fresques de Michel-Ange au Vatican."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Museo » permet de :",
+              "options": [
+                "Voir des œuvres d'art",
+                "Acheter des chaussures",
+                "Conduire",
+                "Pêcher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Musées conservent le patrimoine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'opéra italien est lié à des compositeurs comme :",
+              "options": [
+                "Verdi ou Puccini",
+                "Personne",
+                "Uniquement des DJs",
+                "Aucun lien musical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verdi, Puccini : opéra italien mondial."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Bello » en italien =",
+              "options": ["Beau / belle", "Bell", "Balle", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "Bello = beau, fréquent pour l'art."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Protéger les monuments anciens, c'est :",
+              "options": [
+                "Préserver la civilisation",
+                "Les détruire",
+                "Les cacher",
+                "Les vendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine transmis aux générations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'art italien est un repère car :",
+              "options": [
+                "Il influence l'Europe et le monde",
+                "Il n'existe pas",
+                "Il est secret",
+                "Il remplace la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renaissance et patrimoine mondial."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vatican et patrimoine religieux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Vatican :",
+              "options": [
+                "Est une cité-État enclavée à Rome",
+                "Abrite la basilique Saint-Pierre",
+                "Est la capitale de l'Espagne",
+                "Est le plus grand pays du monde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "État indépendant minuscule au cœur de Rome, centre catholique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Basilica di San Pietro » =",
+              "options": [
+                "Basilique Saint-Pierre",
+                "Gare Saint-Pierre",
+                "Plage Saint-Pierre",
+                "Stade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "San Pietro = Saint-Pierre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le pape réside :",
+              "options": [
+                "Au Vatican",
+                "À Paris",
+                "En Australie",
+                "Sur la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Siège de l'Église catholique romaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Chiesa » =",
+              "options": ["Église", "Chaise", "Cheese", "Chien"],
+              "correctAnswers": [0],
+              "explanation": "Chiesa = église."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La chapelle Sixtine appartient au :",
+              "options": [
+                "Vatican",
+                "Vésuve",
+                "Village alpin suisse",
+                "Vélodrome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les musées du Vatican."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'Italie a une forte tradition :",
+              "options": [
+                "Catholique historique",
+                "Sans aucune église",
+                "Uniquement bouddhiste officielle",
+                "Sans art religieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombreuses églises et fêtes chrétiennes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Respecter un lieu de culte implique :",
+              "options": [
+                "Calme et tenue adaptée",
+                "Courir et crier",
+                "Ignorer les règles",
+                "Photos flash partout si interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règles de visite courantes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Città del Vaticano » signifie :",
+              "options": [
+                "Cité du Vatican",
+                "Ville de Venise",
+                "Citron du Vatican",
+                "Cité du volcan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Città = ville ; Vaticano = Vatican."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les musées du Vatican exposent :",
+              "options": [
+                "Art et histoire",
+                "Voitures de course",
+                "Poissons uniquement",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collections artistiques majeures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce repère montre le lien Italie–Europe :",
+              "options": [
+                "Histoire religieuse et artistique partagée",
+                "Isolement total",
+                "Absence de tourisme",
+                "Langue anglaise obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vatican = carrefour culturel européen."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Identité et symboles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Symboles de l'Italie :",
+              "options": [
+                "Drapeau vert, blanc, rouge",
+                "Hymne Fratelli d'Italia",
+                "Drapeau bleu blanc rouge français",
+                "Devise union européenne seule sans identité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tricolore italien et hymne national Fratelli d'Italia."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleurs du drapeau italien :",
+              "options": [
+                "Vert, blanc, rouge",
+                "Noir, jaune",
+                "Uniquement bleu",
+                "Rose et orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vert (hope), blanc, rouge — ordre du mât."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Fratelli d'Italia » évoque :",
+              "options": [
+                "Frères d'Italie (hymne)",
+                "Frères de pizza",
+                "Frites d'Italie",
+                "Fleurs d'Italie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre de l'hymne national."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ciao » comme identité linguistique :",
+              "options": [
+                "Mot italien connu dans le monde",
+                "Mot chinois",
+                "Mot russe",
+                "Mot inventé hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation italienne exportée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'Union européenne : l'Italie en est :",
+              "options": [
+                "Membre fondatrice",
+                "Jamais membre",
+                "Membre seulement demain",
+                "Hors Europe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italie = État membre de l'UE."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Made in Italy » sur un produit suggère :",
+              "options": [
+                "Fabrication italienne",
+                "Made in France",
+                "Faux automatique",
+                "Import interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Label de qualité et origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le patrimoine UNESCO en Italie est :",
+              "options": [
+                "Très riche (nombreux sites)",
+                "Inexistant",
+                "Un seul arbre",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Italie compte among most World Heritage sites."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Apprendre l'italien en 6e avec la civilisation permet :",
+              "options": [
+                "Relier langue et culture",
+                "Ignorer la prononciation",
+                "Ne jamais voyager",
+                "Oublier la France"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue et repères culturels vont ensemble."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Repère de civilisation » veut dire un élément :",
+              "options": [
+                "Qui marque l'identité d'un peuple",
+                "Qui disparaît chaque jour",
+                "Sans intérêt",
+                "Purement mathématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère = marqueur culturel durable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résumer ce chapitre, l'élève doit :",
+              "options": [
+                "Lire des docs courts et situer des repères italiens",
+                "Ne connaître que des chiffres",
+                "Refuser l'italien",
+                "Confondre Italie et Islande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif : documents + civilisation italienne."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

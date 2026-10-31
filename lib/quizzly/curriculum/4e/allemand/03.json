@@ -1,0 +1,2548 @@
+{
+  "id": "4e-allemand-03",
+  "year": "4e",
+  "subject": "allemand",
+  "title": "Culture et documents",
+  "order": 3,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un document court",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Horaire de train",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans « Zug 412: Abfahrt 09:15, Ankunft 11:40 », quels termes désignent le départ et l'arrivée ?",
+              "type": "multiple_choice",
+              "options": ["Abfahrt", "Ankunft", "Zug", "Uhr"],
+              "correctAnswers": [0, 1],
+              "explanation": "Abfahrt = départ et Ankunft = arrivée ; Zug = train."
+            },
+            {
+              "id": "q2",
+              "question": "À quelle heure part le train ?",
+              "type": "single_choice",
+              "options": ["09:15", "11:40", "09:40", "11:15"],
+              "correctAnswers": [0],
+              "explanation": "Abfahrt 09:15 indique l'heure de départ."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « Gleis 7 » ?",
+              "type": "single_choice",
+              "options": ["Voie 7", "Bus 7", "Place 7", "Ligne 7"],
+              "correctAnswers": [0],
+              "explanation": "Gleis = voie (quai) en gare."
+            },
+            {
+              "id": "q4",
+              "question": "« Verspätung 10 Minuten » : que se passe-t-il ?",
+              "type": "single_choice",
+              "options": [
+                "Retard de 10 minutes",
+                "Avance de 10 minutes",
+                "Annulation",
+                "Changement de voie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verspätung = retard."
+            },
+            {
+              "id": "q5",
+              "question": "« Einsteigen bitte » invite à :",
+              "type": "single_choice",
+              "options": [
+                "Monter dans le train",
+                "Descendre",
+                "Acheter un billet",
+                "Attendre sur le quai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Einsteigen = monter (dans le véhicule)."
+            },
+            {
+              "id": "q6",
+              "question": "« Nur gültig mit Fahrkarte » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Valable seulement avec un billet",
+                "Gratuit pour les enfants",
+                "Billet perdu",
+                "Réservation obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fahrkarte = billet de transport."
+            },
+            {
+              "id": "q7",
+              "question": "« Richtung München » indique :",
+              "type": "single_choice",
+              "options": [
+                "Direction Munich",
+                "Départ de Munich",
+                "Retour depuis Munich",
+                "Correspondance à Munich"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Richtung = direction (vers)."
+            },
+            {
+              "id": "q8",
+              "question": "« Ausfall » sur un panneau horaire veut dire :",
+              "type": "single_choice",
+              "options": [
+                "Suppression du train",
+                "Retard léger",
+                "Voie changée",
+                "Prix réduit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ausfall = suppression (train annulé)."
+            },
+            {
+              "id": "q9",
+              "question": "« Bitte nicht rauchen » :",
+              "type": "single_choice",
+              "options": [
+                "Interdiction de fumer",
+                "Fumer autorisé",
+                "Zone fumeurs",
+                "Aérer la voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht rauchen = ne pas fumer."
+            },
+            {
+              "id": "q10",
+              "question": "« Anschluss in 5 Minuten » :",
+              "type": "single_choice",
+              "options": [
+                "Correspondance dans 5 minutes",
+                "Attente de 5 heures",
+                "Train complet",
+                "Fin de service"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anschluss = correspondance."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Menu au café",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Sur « Tageskarte: Suppe 4,50 €, Salat 6,90 € », quels plats sont au menu du jour ?",
+              "type": "multiple_choice",
+              "options": ["Suppe", "Salat", "Pizza", "Kuchen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Tageskarte liste soupe et salade avec leurs prix."
+            },
+            {
+              "id": "q2",
+              "question": "Combien coûte la soupe ?",
+              "type": "single_choice",
+              "options": ["4,50 €", "6,90 €", "9,00 €", "2,50 €"],
+              "correctAnswers": [0],
+              "explanation": "Suppe 4,50 €."
+            },
+            {
+              "id": "q3",
+              "question": "« Getränke » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Les boissons",
+                "Les desserts",
+                "Les entrées",
+                "Les plats chauds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Getränke = boissons."
+            },
+            {
+              "id": "q4",
+              "question": "« Mit Milch » sur un café signifie :",
+              "type": "single_choice",
+              "options": [
+                "Avec du lait",
+                "Sans sucre",
+                "Très chaud",
+                "Décaféiné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milch = lait."
+            },
+            {
+              "id": "q5",
+              "question": "« Vegetarisch » indique un plat :",
+              "type": "single_choice",
+              "options": ["Végétarien", "Épicé", "Froid", "Pour enfant"],
+              "correctAnswers": [0],
+              "explanation": "vegetarisch = végétarien."
+            },
+            {
+              "id": "q6",
+              "question": "« Inklusive Mehrwertsteuer » :",
+              "type": "single_choice",
+              "options": [
+                "TVA incluse",
+                "Hors taxes",
+                "Pourboire compris",
+                "Réduction étudiant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mehrwertsteuer = TVA."
+            },
+            {
+              "id": "q7",
+              "question": "« Stück Apfelkuchen » :",
+              "type": "single_choice",
+              "options": [
+                "Une part de tarte aux pommes",
+                "Un jus de pomme",
+                "Une pomme entière",
+                "Un menu enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stück = part/morceau ; Apfelkuchen = tarte aux pommes."
+            },
+            {
+              "id": "q8",
+              "question": "« Zu zahlen: 12,40 € » :",
+              "type": "single_choice",
+              "options": [
+                "Montant à payer",
+                "Monnaie rendue",
+                "Pourboire",
+                "Prix barré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "zu zahlen = à payer."
+            },
+            {
+              "id": "q9",
+              "question": "« Alle Preise in Euro » précise :",
+              "type": "single_choice",
+              "options": [
+                "Prix en euros",
+                "Prix en francs suisses",
+                "Paiement carte seule",
+                "Happy hour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Euro = monnaie affichée."
+            },
+            {
+              "id": "q10",
+              "question": "« Tisch 5 » sur l'addition :",
+              "type": "single_choice",
+              "options": [
+                "Table numéro 5",
+                "5 clients",
+                "5 plats",
+                "5 euros de réduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tisch = table (restaurant)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Invitation anniversaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Liebe Freunde, am Samstag feiere ich » : quels indices parlent du jour et des invités ?",
+              "type": "multiple_choice",
+              "options": ["Samstag", "Freunde", "Montag", "Lehrer"],
+              "correctAnswers": [0, 1],
+              "explanation": "Samstag = samedi ; Freunde = amis."
+            },
+            {
+              "id": "q2",
+              "question": "« Bitte komm um 15 Uhr » :",
+              "type": "single_choice",
+              "options": [
+                "Viens à 15 h",
+                "Viens à 15 h demain matin",
+                "Ne viens pas",
+                "Apporte un cadeau obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "um 15 Uhr = à 15 heures."
+            },
+            {
+              "id": "q3",
+              "question": "« Meine Adresse: Musterstraße 12 » :",
+              "type": "single_choice",
+              "options": [
+                "L'adresse de l'hôte",
+                "Un code postal seul",
+                "Le nom du parc",
+                "L'heure de fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adresse = lieu de la fête."
+            },
+            {
+              "id": "q4",
+              "question": "« RSVP bis Donnerstag » demande de :",
+              "type": "single_choice",
+              "options": [
+                "Confirmer avant jeudi",
+                "Arriver jeudi seulement",
+                "Payer jeudi",
+                "Annuler jeudi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "RSVP/bis = répondre avant jeudi."
+            },
+            {
+              "id": "q5",
+              "question": "« Mitbringen: nichts, nur gute Laune » :",
+              "type": "single_choice",
+              "options": [
+                "Ne rien apporter, juste la bonne humeur",
+                "Apporter un gâteau",
+                "Apporter des boissons",
+                "Venir en costume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nichts = rien ; gute Laune = bonne humeur."
+            },
+            {
+              "id": "q6",
+              "question": "« Ich freue mich auf euch » exprime :",
+              "type": "single_choice",
+              "options": [
+                "J'ai hâte de vous voir",
+                "Je suis en retard",
+                "Je suis malade",
+                "La fête est annulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sich freuen auf = avoir hâte de."
+            },
+            {
+              "id": "q7",
+              "question": "« Eltern sind willkommen » :",
+              "type": "single_choice",
+              "options": [
+                "Les parents sont les bienvenus",
+                "Parents interdits",
+                "Réservé aux adultes",
+                "Sans enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "willkommen = bienvenu."
+            },
+            {
+              "id": "q8",
+              "question": "« Dresscode: casual » :",
+              "type": "single_choice",
+              "options": [
+                "Tenue décontractée",
+                "Tenue de soirée",
+                "Uniforme scolaire",
+                "Tenue sportive obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "casual = décontracté (mot international)."
+            },
+            {
+              "id": "q9",
+              "question": "« Bei Regen feiern wir drinnen » :",
+              "type": "single_choice",
+              "options": [
+                "S'il pleut, fête à l'intérieur",
+                "Fête annulée s'il pleut",
+                "Fête dehors seulement",
+                "Apporte un parapluie pour danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "drinnen = à l'intérieur."
+            },
+            {
+              "id": "q10",
+              "question": "« Deine Julia » en fin de texte :",
+              "type": "single_choice",
+              "options": [
+                "Signature de Julia",
+                "Nom d'une rue",
+                "Titre du film",
+                "Heure de départ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule amicale de signature."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Plan de ville",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Gehen Sie geradeaus bis zur Ampel » : quels mots orientent le piéton ?",
+              "type": "multiple_choice",
+              "options": ["geradeaus", "Ampel", "schwimmen", "Flugzeug"],
+              "correctAnswers": [0, 1],
+              "explanation": "geradeaus = tout droit ; Ampel = feu tricolore."
+            },
+            {
+              "id": "q2",
+              "question": "« Dann links in die Goethestraße » :",
+              "type": "single_choice",
+              "options": [
+                "Puis tournez à gauche dans Goethestraße",
+                "Tournez à droite",
+                "Traversez le fleuve",
+                "Montez au 2e étage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "links = à gauche."
+            },
+            {
+              "id": "q3",
+              "question": "« Die Apotheke ist neben der Bank » :",
+              "type": "single_choice",
+              "options": [
+                "La pharmacie est à côté de la banque",
+                "La banque est fermée",
+                "La pharmacie est loin",
+                "C'est un hôpital"
+              ],
+              "correctAnswers": [0],
+              "explanation": "neben = à côté de."
+            },
+            {
+              "id": "q4",
+              "question": "« Entfernung: 800 m » :",
+              "type": "single_choice",
+              "options": [
+                "Distance 800 m",
+                "Durée 800 minutes",
+                "Prix 800 €",
+                "800 marches d'escalier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entfernung = distance."
+            },
+            {
+              "id": "q5",
+              "question": "« Sie sind hier » sur la carte :",
+              "type": "single_choice",
+              "options": [
+                "Vous êtes ici",
+                "Sortie de secours",
+                "Toilettes",
+                "Billeterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère de position actuelle."
+            },
+            {
+              "id": "q6",
+              "question": "« Fußgängerzone » :",
+              "type": "single_choice",
+              "options": [
+                "Zone piétonne",
+                "Autoroute",
+                "Piste cyclable",
+                "Parking"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fußgänger = piéton."
+            },
+            {
+              "id": "q7",
+              "question": "« Rathaus » sur le plan :",
+              "type": "single_choice",
+              "options": [
+                "Hôtel de ville",
+                "Gare routière",
+                "Stade",
+                "Aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rathaus = mairie/hôtel de ville."
+            },
+            {
+              "id": "q8",
+              "question": "« rechts abbiegen » :",
+              "type": "single_choice",
+              "options": [
+                "Tourner à droite",
+                "Tourner à gauche",
+                "Faire demi-tour",
+                "Continuer tout droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "rechts = droite ; abbiegen = tourner."
+            },
+            {
+              "id": "q9",
+              "question": "« Brücke über den Fluss » :",
+              "type": "single_choice",
+              "options": [
+                "Pont sur la rivière",
+                "Tunnel sous la ville",
+                "Frontière",
+                "Montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brücke = pont ; Fluss = rivière/fleuve."
+            },
+            {
+              "id": "q10",
+              "question": "« Ziel: Marktplatz » :",
+              "type": "single_choice",
+              "options": [
+                "Destination : place du marché",
+                "Départ : gare",
+                "Arrêt bus",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ziel = destination ; Marktplatz = place du marché."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Horaire de bus",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Linie 12: Mo–Fr alle 15 Minuten » : quels éléments concernent la fréquence et les jours ?",
+              "type": "multiple_choice",
+              "options": ["Mo–Fr", "alle 15 Minuten", "Sonntag", "Mitternacht"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mo–Fr = lun–ven ; alle 15 Minuten = toutes les 15 min."
+            },
+            {
+              "id": "q2",
+              "question": "« Haltestelle Hauptbahnhof » :",
+              "type": "single_choice",
+              "options": [
+                "Arrêt gare centrale",
+                "Terminus aéroport",
+                "Parking",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haltestelle = arrêt ; Hauptbahnhof = gare centrale."
+            },
+            {
+              "id": "q3",
+              "question": "« Letzte Fahrt 23:45 » :",
+              "type": "single_choice",
+              "options": [
+                "Dernier bus à 23 h 45",
+                "Premier bus",
+                "Bus gratuit",
+                "Bus de nuit illimité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "letzte Fahrt = dernier départ."
+            },
+            {
+              "id": "q4",
+              "question": "« Einzelticket 2,80 € » :",
+              "type": "single_choice",
+              "options": [
+                "Ticket unitaire",
+                "Abonnement annuel",
+                "Carte famille",
+                "Amende"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Einzelticket = ticket à l'unité."
+            },
+            {
+              "id": "q5",
+              "question": "« Umsteigen an der Haltestelle Park » :",
+              "type": "single_choice",
+              "options": [
+                "Changement à l'arrêt Park",
+                "Interdiction de monter",
+                "Fin de ligne",
+                "Zone piétonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "umsteigen = changer (de ligne)."
+            },
+            {
+              "id": "q6",
+              "question": "« Ausfall wegen Stau » :",
+              "type": "single_choice",
+              "options": [
+                "Suppression à cause des embouteillages",
+                "Avance",
+                "Nouvelle ligne",
+                "Grève terminée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stau = embouteillage."
+            },
+            {
+              "id": "q7",
+              "question": "« Richtung Zentrum » :",
+              "type": "single_choice",
+              "options": [
+                "Vers le centre-ville",
+                "Vers la banlieue",
+                "Vers l'aéroport",
+                "Vers la frontière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zentrum = centre."
+            },
+            {
+              "id": "q8",
+              "question": "« Bitte hinten aussteigen » :",
+              "type": "single_choice",
+              "options": [
+                "Descendre par l'arrière",
+                "Monter par l'avant",
+                "Parler au chauffeur",
+                "Valider le ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "hinten aussteigen = descendre à l'arrière."
+            },
+            {
+              "id": "q9",
+              "question": "« Sa/So: stündlich » :",
+              "type": "single_choice",
+              "options": [
+                "Samedi/dimanche : toutes les heures",
+                "Tous les jours : toutes les 15 min",
+                "Fermé le week-end",
+                "Nuit seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "stündlich = toutes les heures."
+            },
+            {
+              "id": "q10",
+              "question": "« Fahrplan gültig ab 1. September » :",
+              "type": "single_choice",
+              "options": [
+                "Horaire valable à partir du 1er septembre",
+                "Horaire expiré",
+                "Grève du 1er septembre",
+                "Prix doublé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gültig ab = valable à partir de."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Affiche musée",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Geöffnet di–so 10–18 Uhr » : quels indices donnent jours et heures ?",
+              "type": "multiple_choice",
+              "options": ["di–so", "10–18 Uhr", "geschlossen", "Mitternacht"],
+              "correctAnswers": [0, 1],
+              "explanation": "di–so = mardi–dimanche ; 10–18 Uhr = horaires."
+            },
+            {
+              "id": "q2",
+              "question": "« Eintritt frei für Kinder unter 12 » :",
+              "type": "single_choice",
+              "options": [
+                "Entrée gratuite pour les moins de 12 ans",
+                "Interdit aux enfants",
+                "Prix double pour enfants",
+                "Visite guidée obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eintritt frei = entrée gratuite."
+            },
+            {
+              "id": "q3",
+              "question": "« Sonderausstellung: Kunst der Schweiz » :",
+              "type": "single_choice",
+              "options": [
+                "Exposition temporaire sur l'art suisse",
+                "Cafétéria",
+                "Boutique de jouets",
+                "Salle de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sonderausstellung = expo temporaire."
+            },
+            {
+              "id": "q4",
+              "question": "« Führung um 14 Uhr » :",
+              "type": "single_choice",
+              "options": [
+                "Visite guidée à 14 h",
+                "Fermeture à 14 h",
+                "Concert à 14 h",
+                "Nettoyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Führung = visite guidée."
+            },
+            {
+              "id": "q5",
+              "question": "« Fotografieren ohne Blitz erlaubt » :",
+              "type": "single_choice",
+              "options": [
+                "Photos sans flash autorisées",
+                "Photos interdites",
+                "Vidéo obligatoire",
+                "Selfies interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ohne Blitz = sans flash."
+            },
+            {
+              "id": "q6",
+              "question": "« Garderobe Pflicht » :",
+              "type": "single_choice",
+              "options": [
+                "Vestiaire obligatoire",
+                "Manger interdit",
+                "Chaussures interdites",
+                "Silence absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garderobe = vestiaire."
+            },
+            {
+              "id": "q7",
+              "question": "« Montag Ruhetag » :",
+              "type": "single_choice",
+              "options": [
+                "Fermé le lundi",
+                "Ouvert seulement lundi",
+                "Gratuit lundi",
+                "Nuit blanche lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ruhetag = jour de fermeture."
+            },
+            {
+              "id": "q8",
+              "question": "« Audioguide auf Deutsch und Französisch » :",
+              "type": "single_choice",
+              "options": [
+                "Audioguide en allemand et français",
+                "Seulement en anglais",
+                "Sans guide",
+                "Guide papier uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "auf = en (langue)."
+            },
+            {
+              "id": "q9",
+              "question": "« Gruppen ab 10 Personen: Anmeldung » :",
+              "type": "single_choice",
+              "options": [
+                "Groupes dès 10 personnes : inscription",
+                "Interdit aux groupes",
+                "Gratuit pour 10",
+                "Visite libre seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anmeldung = inscription/reservation."
+            },
+            {
+              "id": "q10",
+              "question": "« Ausgang » dans le plan du musée :",
+              "type": "single_choice",
+              "options": ["Sortie", "Entrée", "Toilettes", "Boutique"],
+              "correctAnswers": [0],
+              "explanation": "Ausgang = sortie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Programme de concert",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Einlass 19:30, Beginn 20:00 » : quels mots indiquent ouverture des portes et début ?",
+              "type": "multiple_choice",
+              "options": ["Einlass", "Beginn", "Ende", "Pause"],
+              "correctAnswers": [0, 1],
+              "explanation": "Einlass = entrée (portes) ; Beginn = début du spectacle."
+            },
+            {
+              "id": "q2",
+              "question": "« Karten an der Abendkasse » :",
+              "type": "single_choice",
+              "options": [
+                "Billets à la billetterie du soir",
+                "Billets en ligne seulement",
+                "Entrée libre",
+                "Invitation par SMS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abendkasse = billetterie (soir)."
+            },
+            {
+              "id": "q3",
+              "question": "« Saal 2, Reihe 5, Platz 12 » :",
+              "type": "single_choice",
+              "options": [
+                "Salle 2, rang 5, place 12",
+                "12 artistes",
+                "5 concerts",
+                "2 heures de durée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reihe = rang ; Platz = place (siège)."
+            },
+            {
+              "id": "q4",
+              "question": "« Pause nach dem ersten Teil » :",
+              "type": "single_choice",
+              "options": [
+                "Entracte après la première partie",
+                "Fin du concert",
+                "Annulation",
+                "Encore immédiat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause = entracte."
+            },
+            {
+              "id": "q5",
+              "question": "« Handys bitte aus » :",
+              "type": "single_choice",
+              "options": [
+                "Éteignez les portables",
+                "Appelez le régisseur",
+                "Photos autorisées",
+                "Mode silencieux seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "aus = éteint."
+            },
+            {
+              "id": "q6",
+              "question": "« Dauer ca. 90 Minuten » :",
+              "type": "single_choice",
+              "options": [
+                "Durée environ 90 minutes",
+                "Retard 90 minutes",
+                "90 musiciens",
+                "90 chansons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ca. = environ ; Dauer = durée."
+            },
+            {
+              "id": "q7",
+              "question": "« Künstler: Wiener Philharmoniker » :",
+              "type": "single_choice",
+              "options": [
+                "Artistes : Orchestre philharmonique de Vienne",
+                "Groupe de rock berlinois",
+                "Chor d'enfants",
+                "DJ zurichois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wiener = viennois (Autriche)."
+            },
+            {
+              "id": "q8",
+              "question": "« Kein Einlass nach Beginn » :",
+              "type": "single_choice",
+              "options": [
+                "Plus d'entrée après le début",
+                "Entrée libre",
+                "Portes toujours ouvertes",
+                "Remboursement automatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kein Einlass = pas d'entrée."
+            },
+            {
+              "id": "q9",
+              "question": "« Garderobe 2 € » :",
+              "type": "single_choice",
+              "options": [
+                "Vestiaire payant 2 €",
+                "Parking 2 €",
+                "Programme 2 €",
+                "Boisson 2 €"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Garderobe = vestiaire."
+            },
+            {
+              "id": "q10",
+              "question": "« Applaus nach jedem Stück » est :",
+              "type": "single_choice",
+              "options": [
+                "Applaudir après chaque morceau (usage courant)",
+                "Interdit d'applaudir",
+                "Applaudir seulement à la fin",
+                "Rester assis en silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stück = morceau (musique)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Annonce scolaire",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Elternabend am 12. März, 18 Uhr, Aula » : quels détails situent date, heure et lieu ?",
+              "type": "multiple_choice",
+              "options": ["12. März", "18 Uhr", "Aula", "Sommerferien"],
+              "correctAnswers": [0, 1],
+              "explanation": "Date et heure ; Aula = salle des fêtes (lieu aussi valide mais consigne 2 réponses: März+Uhr)."
+            },
+            {
+              "id": "q2",
+              "question": "« Thema: Austausch nach Österreich » :",
+              "type": "single_choice",
+              "options": [
+                "Sujet : échange vers l'Autriche",
+                "Examen d'allemand",
+                "Sortie piscine",
+                "Réunion sportive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Austausch = échange ; Österreich = Autriche."
+            },
+            {
+              "id": "q3",
+              "question": "« Bitte Eltern und Schüler » :",
+              "type": "single_choice",
+              "options": [
+                "Parents et élèves invités",
+                "Enseignants seulement",
+                "Direction seule",
+                "Externes interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schüler = élèves."
+            },
+            {
+              "id": "q4",
+              "question": "« Anmeldung bis Freitag in Sekretariat » :",
+              "type": "single_choice",
+              "options": [
+                "Inscription avant vendredi au secrétariat",
+                "Annulation vendredi",
+                "Cours vendredi",
+                "Retard accepté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sekretariat = secrétariat."
+            },
+            {
+              "id": "q5",
+              "question": "« Mitbringen: Notizblock » :",
+              "type": "single_choice",
+              "options": [
+                "Apporter un bloc-notes",
+                "Apporter un ordinateur",
+                "Ne rien apporter",
+                "Apporter le déjeuner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notizblock = bloc-notes."
+            },
+            {
+              "id": "q6",
+              "question": "« Hausaufgaben: Text Seite 24 lesen » :",
+              "type": "single_choice",
+              "options": [
+                "Devoir : lire le texte page 24",
+                "Pas de devoir",
+                "Exercices de maths",
+                "Rédaction en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausaufgaben = devoirs."
+            },
+            {
+              "id": "q7",
+              "question": "« Klassenfahrt nach Berlin » :",
+              "type": "single_choice",
+              "options": [
+                "Voyage scolaire à Berlin",
+                "Cours en ligne",
+                "Examens à Berlin",
+                "Stage en Suisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Klassenfahrt = voyage de classe."
+            },
+            {
+              "id": "q8",
+              "question": "« Schule beginnt wieder am 7. Januar » :",
+              "type": "single_choice",
+              "options": [
+                "Reprise des cours le 7 janvier",
+                "Vacances le 7 janvier",
+                "Grève le 7 janvier",
+                "Portes ouvertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wieder beginnen = recommencer."
+            },
+            {
+              "id": "q9",
+              "question": "« Sporttag: Turnschuhe mitbringen » :",
+              "type": "single_choice",
+              "options": [
+                "Journée sport : apporter baskets",
+                "Uniforme obligatoire",
+                "Pas de sport",
+                "Compétition internationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turnschuhe = baskets."
+            },
+            {
+              "id": "q10",
+              "question": "« Bei Fragen: Frau Keller, Zimmer 204 » :",
+              "type": "single_choice",
+              "options": [
+                "Contact : Mme Keller, salle 204",
+                "Fermeture salle 204",
+                "Examen salle 204",
+                "Cuisine salle 204"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zimmer = salle (classe/bureau)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Heures d'ouverture",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Montag geschlossen, Dienstag 9–12 und 14–17 » : quels jours/heures apparaissent ?",
+              "type": "multiple_choice",
+              "options": [
+                "Montag geschlossen",
+                "Dienstag",
+                "9–12",
+                "Samstag 24h"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Lundi fermé ; mardi avec plage 9–12 (et 14–17 dans le texte)."
+            },
+            {
+              "id": "q2",
+              "question": "« Mittagspause 12–14 Uhr » :",
+              "type": "single_choice",
+              "options": [
+                "Pause midi de 12 h à 14 h",
+                "Ouvert seulement à midi",
+                "Fermé toute la journée",
+                "Ouvert 24 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mittagspause = pause de midi."
+            },
+            {
+              "id": "q3",
+              "question": "« Feiertag: geschlossen » :",
+              "type": "single_choice",
+              "options": [
+                "Fermé les jours fériés",
+                "Ouvert les fêtes",
+                "Gratuit les fêtes",
+                "Ouvert nuit fériée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Feiertag = jour férié."
+            },
+            {
+              "id": "q4",
+              "question": "« Termine nur mit Voranmeldung » :",
+              "type": "single_choice",
+              "options": [
+                "Rendez-vous seulement sur réservation",
+                "Sans rendez-vous",
+                "Urgences seulement",
+                "En ligne interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voranmeldung = réservation préalable."
+            },
+            {
+              "id": "q5",
+              "question": "« Notfallnummer außerhalb der Zeiten » :",
+              "type": "single_choice",
+              "options": [
+                "Numéro d'urgence hors horaires",
+                "Numéro pour commander",
+                "Publicité",
+                "Fax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notfall = urgence ; außerhalb = en dehors de."
+            },
+            {
+              "id": "q6",
+              "question": "« Samstag verkürzte Öffnungszeiten » :",
+              "type": "single_choice",
+              "options": [
+                "Samedi : horaires réduits",
+                "Samedi : fermé",
+                "Samedi : ouvert toute la nuit",
+                "Samedi : gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "verkürzt = raccourci/réduit."
+            },
+            {
+              "id": "q7",
+              "question": "« Wir haben geöffnet » sur la vitrine :",
+              "type": "single_choice",
+              "options": [
+                "Nous sommes ouverts",
+                "Nous sommes fermés",
+                "Soldes",
+                "Recrutement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "geöffnet = ouvert."
+            },
+            {
+              "id": "q8",
+              "question": "« Letzter Kunde 15 Minuten vor Schluss » :",
+              "type": "single_choice",
+              "options": [
+                "Dernier client 15 min avant la fermeture",
+                "Fermeture dans 15 jours",
+                "Réduction 15 %",
+                "Ouverture dans 15 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schluss = fin/fermeture."
+            },
+            {
+              "id": "q9",
+              "question": "« Beratung Donnerstag nachmittags » :",
+              "type": "single_choice",
+              "options": [
+                "Conseil le jeudi après-midi",
+                "Fermé jeudi",
+                "Nettoyage jeudi",
+                "Fête jeudi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beratung = conseil/accompagnement."
+            },
+            {
+              "id": "q10",
+              "question": "« Öffnungszeiten siehe Webseite » :",
+              "type": "single_choice",
+              "options": [
+                "Horaires sur le site web",
+                "Horaires inconnus",
+                "Fermé définitivement",
+                "Appelez l'ambassade"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Webseite = site internet."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Email de sortie",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "« Ausflug zum Bodensee, Treffpunkt 7:45 Bahnhof » : quels mots indiquent excursion et rendez-vous ?",
+              "type": "multiple_choice",
+              "options": ["Ausflug", "Treffpunkt", "Schlafen", "Prüfung"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ausflug = excursion ; Treffpunkt = point de rendez-vous."
+            },
+            {
+              "id": "q2",
+              "question": "« Bitte wetterfeste Kleidung » :",
+              "type": "single_choice",
+              "options": [
+                "Vêtements adaptés à la météo",
+                "Tenue de soirée",
+                "Maillot de bain obligatoire",
+                "Uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wetterfest = résistant/adapté au temps."
+            },
+            {
+              "id": "q3",
+              "question": "« Brotzeit selbst mitbringen » :",
+              "type": "single_choice",
+              "options": [
+                "Apporter son pique-nique",
+                "Repas fourni",
+                "Interdiction de manger",
+                "Restaurant obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brotzeit = collation/repas simple."
+            },
+            {
+              "id": "q4",
+              "question": "« Rückkehr gegen 17 Uhr » :",
+              "type": "single_choice",
+              "options": [
+                "Retour vers 17 h",
+                "Départ à 17 h",
+                "Nuit sur place",
+                "Retour à 7 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rückkehr = retour."
+            },
+            {
+              "id": "q5",
+              "question": "« Kosten: 8 € für Bus » :",
+              "type": "single_choice",
+              "options": [
+                "Coût : 8 € pour le bus",
+                "Bus gratuit",
+                "8 € pour le musée",
+                "8 € par heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kosten = coûts."
+            },
+            {
+              "id": "q6",
+              "question": "« Bei Krankheit bitte absagen » :",
+              "type": "single_choice",
+              "options": [
+                "En cas de maladie, prévenir annulation",
+                "Venir quand même",
+                "Examens médicaux",
+                "Vaccin obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "absagen = annuler."
+            },
+            {
+              "id": "q7",
+              "question": "« Gruppen A und B » :",
+              "type": "single_choice",
+              "options": [
+                "Deux groupes A et B",
+                "Deux bus identiques",
+                "Deux professeurs seulement",
+                "Deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répartition en groupes."
+            },
+            {
+              "id": "q8",
+              "question": "« Eltern holen Kinder am Bahnhof ab » :",
+              "type": "single_choice",
+              "options": [
+                "Parents récupèrent les enfants à la gare",
+                "Parents interdits",
+                "Enfants rentrent seuls",
+                "Départ de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "abholen = chercher/récupérer."
+            },
+            {
+              "id": "q9",
+              "question": "« Pass und Fahrkarte mitnehmen » :",
+              "type": "single_choice",
+              "options": [
+                "Emporter passeport et billet",
+                "Laisser à la maison",
+                "Acheter sur place seulement",
+                "Pas de contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mitnehmen = emporter."
+            },
+            {
+              "id": "q10",
+              "question": "« Viel Spaß und gute Reise » :",
+              "type": "single_choice",
+              "options": [
+                "Bon amusement et bon voyage",
+                "Devoirs supplémentaires",
+                "Retard annoncé",
+                "Examen surprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de vœux avant une sortie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Un repère de civilisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Berlin capitale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations sur Berlin sont exactes ?",
+              "type": "multiple_choice",
+              "options": [
+                "Berlin est en Allemagne",
+                "Berlin est la capitale de l'Allemagne",
+                "Berlin est capitale de l'Autriche",
+                "Berlin est en Suisse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Berlin est la capitale et la plus grande ville d'Allemagne."
+            },
+            {
+              "id": "q2",
+              "question": "« Deutschland » désigne :",
+              "type": "single_choice",
+              "options": [
+                "L'Allemagne",
+                "L'Autriche",
+                "La Suisse",
+                "La Belgique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deutschland = Allemagne."
+            },
+            {
+              "id": "q3",
+              "question": "Le Reichstag est surtout associé à :",
+              "type": "single_choice",
+              "options": ["Berlin", "Vienne", "Zurich", "Salzbourg"],
+              "correctAnswers": [0],
+              "explanation": "Parlement historique à Berlin."
+            },
+            {
+              "id": "q4",
+              "question": "« Ost und West » rappelle l'histoire :",
+              "type": "single_choice",
+              "options": [
+                "Ville divisée pendant la Guerre froide",
+                "Capitale suisse",
+                "Montagne autrichienne",
+                "Port du Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Berlin était séparée Est/Ouest."
+            },
+            {
+              "id": "q5",
+              "question": "« Bundestag » est :",
+              "type": "single_choice",
+              "options": [
+                "Le parlement fédéral allemand",
+                "Un festival viennois",
+                "Un lac suisse",
+                "Une école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bundestag = Chambre basse allemande."
+            },
+            {
+              "id": "q6",
+              "question": "La porte de Brandebourg se trouve à :",
+              "type": "single_choice",
+              "options": ["Berlin", "Munich", "Hambourg", "Innsbruck"],
+              "correctAnswers": [0],
+              "explanation": "Monument emblématique berlinois."
+            },
+            {
+              "id": "q7",
+              "question": "« Spree » à Berlin est :",
+              "type": "single_choice",
+              "options": [
+                "Une rivière",
+                "Une montagne",
+                "Un aéroport",
+                "Un fromage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Spree traverse Berlin."
+            },
+            {
+              "id": "q8",
+              "question": "« Museum Island » (Museumsinsel) est un ensemble de :",
+              "type": "single_choice",
+              "options": ["Musées", "Stades", "Usines", "Gares"],
+              "correctAnswers": [0],
+              "explanation": "Patrimoine culturel berlinois."
+            },
+            {
+              "id": "q9",
+              "question": "L'allemand parlé à Berlin est :",
+              "type": "single_choice",
+              "options": [
+                "Allemand (variété locale)",
+                "Français officiel",
+                "Italien",
+                "Russe officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue officielle : allemand."
+            },
+            {
+              "id": "q10",
+              "question": "« Hauptstadt » signifie :",
+              "type": "single_choice",
+              "options": ["Capitale", "Province", "Frontière", "Île"],
+              "correctAnswers": [0],
+              "explanation": "Hauptstadt = capitale."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Vienne et l'Autriche",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles affirmations concernent Vienne ?",
+              "type": "multiple_choice",
+              "options": [
+                "Capitale de l'Autriche",
+                "Ville de musique classique",
+                "Capitale de la Suisse",
+                "Port sur le Rhin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vienne = capitale autrichienne, patrimoine musical."
+            },
+            {
+              "id": "q2",
+              "question": "« Österreich » =",
+              "type": "single_choice",
+              "options": ["Autriche", "Allemagne", "Suisse", "Pologne"],
+              "correctAnswers": [0],
+              "explanation": "Österreich = Autriche."
+            },
+            {
+              "id": "q3",
+              "question": "« Wiener Schnitzel » est un plat :",
+              "type": "single_choice",
+              "options": [
+                "Autrichien",
+                "Berlinois",
+                "Suisse alémanique",
+                "Scandinave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialité viennoise."
+            },
+            {
+              "id": "q4",
+              "question": "Le Danube en allemand :",
+              "type": "single_choice",
+              "options": ["Donau", "Rhein", "Elbe", "Main"],
+              "correctAnswers": [0],
+              "explanation": "Donau = Danube."
+            },
+            {
+              "id": "q5",
+              "question": "« Schloss Schönbrunn » est :",
+              "type": "single_choice",
+              "options": [
+                "Un palais près de Vienne",
+                "Un stade de Berlin",
+                "Un lac suisse",
+                "Une gare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résidence impériale autrichienne."
+            },
+            {
+              "id": "q6",
+              "question": "« Bundesland » en Autriche rappelle :",
+              "type": "single_choice",
+              "options": [
+                "Des régions fédérales (Länder)",
+                "Des pays voisins",
+                "Des îles",
+                "Des dialectes interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Autriche fédérale comme l'Allemagne."
+            },
+            {
+              "id": "q7",
+              "question": "« Mozart » est lié à :",
+              "type": "single_choice",
+              "options": [
+                "Salzbourg et Vienne",
+                "Zurich seulement",
+                "Hambourg",
+                "La Haye"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compositeur né à Salzbourg, carrière à Vienne."
+            },
+            {
+              "id": "q8",
+              "question": "Monnaie autrichienne (zone euro) :",
+              "type": "single_choice",
+              "options": ["Euro", "Franc suisse", "Couronne", "Livre"],
+              "correctAnswers": [0],
+              "explanation": "L'Autriche utilise l'euro."
+            },
+            {
+              "id": "q9",
+              "question": "« Gemütlichkeit » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Ambiance conviviale",
+                "Vitesse extrême",
+                "Silence strict",
+                "Froid glacial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concept culturel germanique d'accueil chaleureux."
+            },
+            {
+              "id": "q10",
+              "question": "« Wiener » signifie :",
+              "type": "single_choice",
+              "options": ["Viennois", "Berlinois", "Zurichois", "Munichois"],
+              "correctAnswers": [0],
+              "explanation": "Adj. relatif à Vienne (Wien)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Suisse alémanique",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "En Suisse, quelles langues sont officielles au niveau national ?",
+              "type": "multiple_choice",
+              "options": ["Allemand", "Français", "Japonais", "Suédois"],
+              "correctAnswers": [0, 1],
+              "explanation": "Quatre langues nationales ; allemand et français en font partie."
+            },
+            {
+              "id": "q2",
+              "question": "« Zürich » est une grande ville :",
+              "type": "single_choice",
+              "options": [
+                "Suissesse alémanique",
+                "Autrichienne",
+                "Allemande de l'Est",
+                "Luxembourgeoise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zurich est dans le canton alémanique."
+            },
+            {
+              "id": "q3",
+              "question": "« Schweiz » =",
+              "type": "single_choice",
+              "options": ["Suisse", "Suède", "Autriche", "Slovaquie"],
+              "correctAnswers": [0],
+              "explanation": "Schweiz = Suisse (allemand standard)."
+            },
+            {
+              "id": "q4",
+              "question": "Monnaie en Suisse :",
+              "type": "single_choice",
+              "options": ["Franc suisse", "Euro", "Dollar", "Couronne danoise"],
+              "correctAnswers": [0],
+              "explanation": "La Suisse n'est pas dans la zone euro."
+            },
+            {
+              "id": "q5",
+              "question": "« Grüezi » est une salutation :",
+              "type": "single_choice",
+              "options": [
+                "Suisse alémanique",
+                "Exclusivement berlinoise",
+                "Française officielle",
+                "Espagnole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut en suisse allemand."
+            },
+            {
+              "id": "q6",
+              "question": "« Bern » est :",
+              "type": "single_choice",
+              "options": [
+                "Capitale fédérale de la Suisse",
+                "Capitale de l'Allemagne",
+                "Port de Vienne",
+                "Ville d'Autriche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Berne = capitale politique suisse."
+            },
+            {
+              "id": "q7",
+              "question": "« Kanton » en Suisse désigne :",
+              "type": "single_choice",
+              "options": [
+                "Une division fédérale (État)",
+                "Un fromage",
+                "Un train",
+                "Un festival"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cantons structurent la Confédération."
+            },
+            {
+              "id": "q8",
+              "question": "« Bodensee » est partagé par régions :",
+              "type": "single_choice",
+              "options": [
+                "Allemagne, Autriche, Suisse",
+                "France seule",
+                "Italie seule",
+                "Pologne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lac frontière entre espaces germanophones."
+            },
+            {
+              "id": "q9",
+              "question": "« Viervierteltakt » n'est pas le sujet ; « Neutralität » rappelle :",
+              "type": "single_choice",
+              "options": [
+                "Tradition de neutralité suisse",
+                "Guerre civile allemande",
+                "Union avec l'Autriche",
+                "Monnaie euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Suisse est connue pour sa neutralité."
+            },
+            {
+              "id": "q10",
+              "question": "« Basel » se situe :",
+              "type": "single_choice",
+              "options": [
+                "Au nord-ouest de la Suisse",
+                "En Autriche",
+                "À Berlin",
+                "En mer du Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville trinationale proche de France/Allemagne."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fêtes et traditions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles fêtes sont très présentes dans l'espace germanophone ?",
+              "type": "multiple_choice",
+              "options": [
+                "Weihnachten",
+                "Oktoberfest (culture bavaroise)",
+                "Diwali officiel",
+                "Carnaval de Rio obligatoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Noël (Weihnachten) partout ; Oktoberfest lié à Munich/Bavière."
+            },
+            {
+              "id": "q2",
+              "question": "« Weihnachten » =",
+              "type": "single_choice",
+              "options": ["Noël", "Pâques", "Halloween", "1er mai"],
+              "correctAnswers": [0],
+              "explanation": "Weihnachten = Noël."
+            },
+            {
+              "id": "q3",
+              "question": "« Nikolaus » (6 décembre) apporte souvent :",
+              "type": "single_choice",
+              "options": [
+                "Petits cadeaux aux enfants",
+                "Feux d'artifice d'été",
+                "Réveillon du 31 juillet",
+                "Poisson d'avril"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition saint Nicolas."
+            },
+            {
+              "id": "q4",
+              "question": "« Karneval » à Cologne ou Düsseldorf :",
+              "type": "single_choice",
+              "options": [
+                "Carnaval avec défilés",
+                "Silence religieux strict",
+                "Fête nationale suisse",
+                "Examens scolaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rhinland : carnaval très animé."
+            },
+            {
+              "id": "q5",
+              "question": "« Tag der Deutschen Einheit » (3 octobre) célèbre :",
+              "type": "single_choice",
+              "options": [
+                "Réunification allemande",
+                "Indépendance suisse",
+                "Fête nationale autrichienne",
+                "Fin de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête nationale allemande."
+            },
+            {
+              "id": "q6",
+              "question": "« Osterhase » est lié à :",
+              "type": "single_choice",
+              "options": ["Pâques", "Noël", "Halloween", "Silvester seulement"],
+              "correctAnswers": [0],
+              "explanation": "Lièvre de Pâques."
+            },
+            {
+              "id": "q7",
+              "question": "« Silvester » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Saint-Sylvestre (31 décembre)",
+                "Premier jour d'école",
+                "Fête des mères fixe",
+                "Harvest festival US"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silvester = réveillon du Nouvel An."
+            },
+            {
+              "id": "q8",
+              "question": "« Maibaum » (mai) symbolise :",
+              "type": "single_choice",
+              "options": [
+                "Arbre de mai (tradition printanière)",
+                "Sapin de Noël",
+                "Monument berlinois",
+                "Stade de Vienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition rurale et urbaine."
+            },
+            {
+              "id": "q9",
+              "question": "« Advent » précède :",
+              "type": "single_choice",
+              "options": ["Noël", "Été", "Rentrée des classes", "Examen final"],
+              "correctAnswers": [0],
+              "explanation": "Calendrier de l'Avent avant Weihnachten."
+            },
+            {
+              "id": "q10",
+              "question": "« Frühlingsfest » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Fête de printemps (foire)",
+                "Neige en montagne",
+                "Examen de conduite",
+                "Jour férié suisse unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fête populaire printanière en Bavière."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Langues et dialectes",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans quels pays l'allemand est langue officielle ?",
+              "type": "multiple_choice",
+              "options": ["Allemagne", "Autriche", "Brésil", "Japon"],
+              "correctAnswers": [0, 1],
+              "explanation": "Allemagne et Autriche ; en Suisse l'allemand est langue nationale."
+            },
+            {
+              "id": "q2",
+              "question": "« Hochdeutsch » désigne :",
+              "type": "single_choice",
+              "options": [
+                "Allemand standard",
+                "Dialecte suisse uniquement",
+                "Anglais",
+                "Latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Langue standard enseignée à l'école."
+            },
+            {
+              "id": "q3",
+              "question": "« Schwiizerdütsch » est :",
+              "type": "single_choice",
+              "options": [
+                "Suisse allemand parlé",
+                "Français suisse",
+                "Italien tessinois",
+                "Romanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialecte alémanique en Suisse."
+            },
+            {
+              "id": "q4",
+              "question": "« Guten Tag » est une formule :",
+              "type": "single_choice",
+              "options": [
+                "De politesse (bonjour)",
+                "D'au revoir",
+                "D'excuse",
+                "De colère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation standard."
+            },
+            {
+              "id": "q5",
+              "question": "« Servus » en Autriche peut signifier :",
+              "type": "single_choice",
+              "options": [
+                "Salut / au revoir",
+                "Merci beaucoup",
+                "Interdiction",
+                "Numéro de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule familière autrichienne."
+            },
+            {
+              "id": "q6",
+              "question": "« Bitte » sert souvent à :",
+              "type": "single_choice",
+              "options": ["Demander poliment", "Refuser", "Crier", "Compter"],
+              "correctAnswers": [0],
+              "explanation": "S'il vous plaît / je vous en prie."
+            },
+            {
+              "id": "q7",
+              "question": "En classe, on apprend surtout :",
+              "type": "single_choice",
+              "options": [
+                "Hochdeutsch",
+                "Uniquement dialecte",
+                "Latin",
+                "Grec ancien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allemand standard est la base scolaire."
+            },
+            {
+              "id": "q8",
+              "question": "« Danke » =",
+              "type": "single_choice",
+              "options": ["Merci", "Bonjour", "Pardon", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Remerciement courant."
+            },
+            {
+              "id": "q9",
+              "question": "« Entschuldigung » sert à :",
+              "type": "single_choice",
+              "options": [
+                "S'excuser / demander passage",
+                "Commander un menu",
+                "Louer un vélo",
+                "Fermer un musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excuse-moi."
+            },
+            {
+              "id": "q10",
+              "question": "« Auf Wiedersehen » =",
+              "type": "single_choice",
+              "options": [
+                "Au revoir",
+                "Bon appétit",
+                "Bonne nuit",
+                "Félicitations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule de départ formelle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Villes et paysages",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles paires ville-pays sont correctes ?",
+              "type": "multiple_choice",
+              "options": [
+                "München – Allemagne",
+                "Salzburg – Autriche",
+                "Paris – Allemagne",
+                "Rome – Suisse"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Munich en Allemagne ; Salzbourg en Autriche."
+            },
+            {
+              "id": "q2",
+              "question": "« Hamburg » est :",
+              "type": "single_choice",
+              "options": [
+                "Grand port allemand",
+                "Capitale autrichienne",
+                "Sommet alpin suisse",
+                "Village du Bodensee"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville-port du nord de l'Allemagne."
+            },
+            {
+              "id": "q3",
+              "question": "« Alpen » désignent :",
+              "type": "single_choice",
+              "options": [
+                "Les Alpes",
+                "La mer du Nord",
+                "Le désert",
+                "La toundra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne montagneuse partagée."
+            },
+            {
+              "id": "q4",
+              "question": "« Neuschwanstein » est un château en :",
+              "type": "single_choice",
+              "options": [
+                "Bavière (Allemagne)",
+                "Vienne",
+                "Zurich",
+                "Bruxelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Château emblématique bavarois."
+            },
+            {
+              "id": "q5",
+              "question": "« Innsbruck » est associée aux :",
+              "type": "single_choice",
+              "options": [
+                "Sports d'hiver / Alpes autrichiennes",
+                "Plages méditerranéennes",
+                "Dunes du Sahara",
+                "Volcans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ville alpine autrichienne."
+            },
+            {
+              "id": "q6",
+              "question": "« Rhein » traverse aussi des régions :",
+              "type": "single_choice",
+              "options": [
+                "Germanophones et voisines",
+                "Uniquement l'Asie",
+                "L'Australie",
+                "Le pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fleuve important d'Europe centrale."
+            },
+            {
+              "id": "q7",
+              "question": "« Schwarzwald » =",
+              "type": "single_choice",
+              "options": [
+                "Forêt-Noire",
+                "Mer Baltique",
+                "Capitale",
+                "Autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Région touristique allemande."
+            },
+            {
+              "id": "q8",
+              "question": "« Genfer See » est :",
+              "type": "single_choice",
+              "options": ["Le lac Léman", "Le Danube", "Le Rhin", "Le Nil"],
+              "correctAnswers": [0],
+              "explanation": "Nom germanophone du lac Léman."
+            },
+            {
+              "id": "q9",
+              "question": "« Dresden » se trouve en :",
+              "type": "single_choice",
+              "options": ["Allemagne (Saxe)", "Autriche", "Suisse", "Pays-Bas"],
+              "correctAnswers": [0],
+              "explanation": "Ville de l'est allemand."
+            },
+            {
+              "id": "q10",
+              "question": "« Luzern » (Lucerne) est en :",
+              "type": "single_choice",
+              "options": ["Suisse", "Allemagne", "Autriche", "France"],
+              "correctAnswers": [0],
+              "explanation": "Ville suisse au bord d'un lac."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "École et vie quotidienne",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels mots scolaires allemands sont courants en 4e ?",
+              "type": "multiple_choice",
+              "options": [
+                "Klasse",
+                "Hausaufgaben",
+                "Strandurlaub obligatoire",
+                "Rocket science"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Klasse = classe ; Hausaufgaben = devoirs."
+            },
+            {
+              "id": "q2",
+              "question": "« Gymnasium » (sens scolaire) désigne souvent :",
+              "type": "single_choice",
+              "options": [
+                "Lycée orienté études",
+                "Piscine municipale",
+                "Gare",
+                "Supermarché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Type d'établissement secondaire."
+            },
+            {
+              "id": "q3",
+              "question": "« Schultüte » à la rentrée :",
+              "type": "single_choice",
+              "options": [
+                "Grande cornet de bonbons pour les débutants",
+                "Uniforme obligatoire",
+                "Examen final",
+                "Carte de bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition allemande de la première rentrée."
+            },
+            {
+              "id": "q4",
+              "question": "« Pausenhof » est :",
+              "type": "single_choice",
+              "options": [
+                "Cour de récréation",
+                "Salle des profs",
+                "Bibliothèque nationale",
+                "Stade olympique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hof = cour ; Pause = récréation."
+            },
+            {
+              "id": "q5",
+              "question": "« Mittagessen » à la cantine :",
+              "type": "single_choice",
+              "options": [
+                "Déjeuner de midi",
+                "Petit-déjeuner",
+                "Goûter",
+                "Dîner tardif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas de midi."
+            },
+            {
+              "id": "q6",
+              "question": "« Fahrrad » pour aller au collège :",
+              "type": "single_choice",
+              "options": ["Vélo", "Voiture", "Avion", "Téléphérique"],
+              "correctAnswers": [0],
+              "explanation": "Mobilité douce fréquente."
+            },
+            {
+              "id": "q7",
+              "question": "« Müll trennen » en Allemagne encourage :",
+              "type": "single_choice",
+              "options": [
+                "Tri des déchets",
+                "Jeter tout ensemble",
+                "Brûler le plastique",
+                "Ignorer le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "trennen = séparer."
+            },
+            {
+              "id": "q8",
+              "question": "« Sonntagsruhe » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Repos dominical (magasins souvent fermés)",
+                "Fête nocturne",
+                "Examen du dimanche",
+                "Travail obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition de calme le dimanche."
+            },
+            {
+              "id": "q9",
+              "question": "« Bio-Laden » vend surtout :",
+              "type": "single_choice",
+              "options": [
+                "Produits biologiques",
+                "Voitures",
+                "Billets de train",
+                "Livres scolaires usagés interdits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bio = biologique."
+            },
+            {
+              "id": "q10",
+              "question": "« Öffentlicher Verkehr » =",
+              "type": "single_choice",
+              "options": [
+                "Transports en commun",
+                "Aviation privée",
+                "Taxi gratuit",
+                "Autoroute payante seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bus, tram, métro, train urbain."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Symboles et institutions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels symboles relèvent de l'Allemagne fédérale ?",
+              "type": "multiple_choice",
+              "options": [
+                "Bundesadler (aigle)",
+                "Couleurs noir-rouge-or",
+                "Drapeau suisse croix blanche",
+                "Hymne britannique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aigle fédéral et drapeau noir-rouge-or."
+            },
+            {
+              "id": "q2",
+              "question": "Drapeau suisse :",
+              "type": "single_choice",
+              "options": [
+                "Croix blanche sur fond rouge",
+                "Bandes noir-rouge-or",
+                "Aigle rouge seul",
+                "Étoiles bleues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emblème suisse distinct."
+            },
+            {
+              "id": "q3",
+              "question": "« Bundeskanzler » en Allemagne :",
+              "type": "single_choice",
+              "options": [
+                "Chancelier fédéral",
+                "Maire de Berlin",
+                "Guide touristique",
+                "Chef cuisinier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chef du gouvernement fédéral."
+            },
+            {
+              "id": "q4",
+              "question": "« EU » : l'Allemagne et l'Autriche sont :",
+              "type": "single_choice",
+              "options": [
+                "Membres de l'Union européenne",
+                "Hors Europe",
+                "Uniquement en Asie",
+                "Sans frontières"
+              ],
+              "correctAnswers": [0],
+              "explanation": "États membres de l'UE."
+            },
+            {
+              "id": "q5",
+              "question": "« Schweizer Eidgenossenschaft » =",
+              "type": "single_choice",
+              "options": [
+                "Confédération suisse",
+                "République d'Autriche",
+                "Land de Bavière",
+                "Ville libre de Hambourg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom officiel de la Suisse."
+            },
+            {
+              "id": "q6",
+              "question": "« Land » en Allemagne =",
+              "type": "single_choice",
+              "options": [
+                "État fédéré (Bundesland)",
+                "Mer",
+                "Montagne",
+                "Aéroport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "16 Länder en Allemagne."
+            },
+            {
+              "id": "q7",
+              "question": "« UNO-Sitz » à Genève montre :",
+              "type": "single_choice",
+              "options": [
+                "Rôle international de la Suisse",
+                "Capitale allemande",
+                "Port autrichien",
+                "Frontière polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organisations internationales à Genève."
+            },
+            {
+              "id": "q8",
+              "question": "« Goethe » est une figure :",
+              "type": "single_choice",
+              "options": [
+                "Littéraire allemande",
+                "Chanteuse suisse",
+                "Skieuse autrichienne",
+                "Peintre espagnol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auteur majeur de langue allemande."
+            },
+            {
+              "id": "q9",
+              "question": "« Beethoven » est né à :",
+              "type": "single_choice",
+              "options": [
+                "Bonn (Allemagne)",
+                "Vienne seulement",
+                "Zurich",
+                "Berlin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compositeur né à Bonn."
+            },
+            {
+              "id": "q10",
+              "question": "« Demokratie » signifie :",
+              "type": "single_choice",
+              "options": [
+                "Démocratie",
+                "Dictature",
+                "Monarchie absolue",
+                "Anarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire civique germanophone."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Gastronomie régionale",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels plats sont typiques de l'espace germanophone ?",
+              "type": "multiple_choice",
+              "options": [
+                "Brezel",
+                "Bratwurst",
+                "Sushi traditionnel allemand",
+                "Tacos officiels"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bretzel et saucisse grillée sont classiques."
+            },
+            {
+              "id": "q2",
+              "question": "« Brezel » (Bretzel) est :",
+              "type": "single_choice",
+              "options": [
+                "Pain en forme de nœud",
+                "Soupe froide",
+                "Poisson fumé",
+                "Gâteau suisse au chocolat seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spécialité de boulangerie."
+            },
+            {
+              "id": "q3",
+              "question": "« Sauerkraut » =",
+              "type": "single_choice",
+              "options": ["Choucroute", "Salade de fruits", "Riz", "Pâtes"],
+              "correctAnswers": [0],
+              "explanation": "Chou fermenté."
+            },
+            {
+              "id": "q4",
+              "question": "« Apfelstrudel » est :",
+              "type": "single_choice",
+              "options": [
+                "Strudel aux pommes",
+                "Fromage fondu",
+                "Saucisse",
+                "Bière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dessert partagé Autriche/Allemagne."
+            },
+            {
+              "id": "q5",
+              "question": "« Rösti » est surtout associé à :",
+              "type": "single_choice",
+              "options": [
+                "Cuisine suisse",
+                "Cuisine japonaise",
+                "Cuisine grecque",
+                "Cuisine indienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Galette de pommes de terre suisse."
+            },
+            {
+              "id": "q6",
+              "question": "« Bier » en Bavière est :",
+              "type": "single_choice",
+              "options": [
+                "Partie de la culture locale",
+                "Interdit partout",
+                "Uniquement importé",
+                "Boisson scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tradition brassicole (adultes)."
+            },
+            {
+              "id": "q7",
+              "question": "« Käsespätzle » évoque :",
+              "type": "single_choice",
+              "options": [
+                "Pâtes/fromage (Sud allemagne/Autriche)",
+                "Poisson du Nord",
+                "Soupe thaï",
+                "Glaces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plat copieux alpine."
+            },
+            {
+              "id": "q8",
+              "question": "« Frühstück » =",
+              "type": "single_choice",
+              "options": [
+                "Petit-déjeuner",
+                "Dîner",
+                "Collation minuit",
+                "Festin de Noël seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Premier repas de la journée."
+            },
+            {
+              "id": "q9",
+              "question": "« Markt » le samedi sert à :",
+              "type": "single_choice",
+              "options": [
+                "Acheter produits locaux",
+                "Passer examens",
+                "Dormir",
+                "Fermer les écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marché hebdomadaire fréquent."
+            },
+            {
+              "id": "q10",
+              "question": "« Prost ! » au repas signifie :",
+              "type": "single_choice",
+              "options": [
+                "Santé ! (trinquer)",
+                "Au revoir",
+                "Fermez la porte",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule en levant le verre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Mobilité et échanges",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels moyens de transport sont courants en Allemagne/Autriche/Suisse ?",
+              "type": "multiple_choice",
+              "options": [
+                "Zug (train)",
+                "Tram",
+                "Carrosse à cheval obligatoire",
+                "Fusée scolaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réseaux ferroviaires et tramways développés."
+            },
+            {
+              "id": "q2",
+              "question": "« ICE » en Allemagne désigne :",
+              "type": "single_choice",
+              "options": [
+                "Train à grande vitesse",
+                "Bus scolaire",
+                "Bateau",
+                "Télésiège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "InterCityExpress."
+            },
+            {
+              "id": "q3",
+              "question": "« Grenze » =",
+              "type": "single_choice",
+              "options": ["Frontière", "Gare", "Ticket", "Quai"],
+              "correctAnswers": [0],
+              "explanation": "Passage entre pays."
+            },
+            {
+              "id": "q4",
+              "question": "« Pass » (Reisepass) sert à :",
+              "type": "single_choice",
+              "options": [
+                "Voyager à l'étranger",
+                "Payer le menu",
+                "Ouvrir l'école",
+                "Couper le fromage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Document de voyage."
+            },
+            {
+              "id": "q5",
+              "question": "« Austausch » scolaire signifie :",
+              "type": "single_choice",
+              "options": [
+                "Échange entre établissements",
+                "Examen final",
+                "Vacances sans activité",
+                "Interdiction de parler allemand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme d'échange."
+            },
+            {
+              "id": "q6",
+              "question": "« Partnerstadt » =",
+              "type": "single_choice",
+              "options": ["Ville jumelée", "Capitale", "Autoroute", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "Jumelage international."
+            },
+            {
+              "id": "q7",
+              "question": "« Autobahn » en Allemagne :",
+              "type": "single_choice",
+              "options": [
+                "Autoroute",
+                "Piste cyclable",
+                "Sentier de randonnée",
+                "Ligne de métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau routier rapide."
+            },
+            {
+              "id": "q8",
+              "question": "« Fahrradweg » =",
+              "type": "single_choice",
+              "options": ["Piste cyclable", "Voie ferrée", "Aéroport", "Port"],
+              "correctAnswers": [0],
+              "explanation": "weg = chemin."
+            },
+            {
+              "id": "q9",
+              "question": "« Willkommen in » sur une pancarte :",
+              "type": "single_choice",
+              "options": [
+                "Bienvenue à…",
+                "Interdit d'entrer",
+                "Fermé pour travaux",
+                "Danger avalanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accueil touristique."
+            },
+            {
+              "id": "q10",
+              "question": "« Gute Fahrt ! » =",
+              "type": "single_choice",
+              "options": [
+                "Bon voyage !",
+                "Bon appétit !",
+                "Bonne chance à l'examen !",
+                "Bonne nuit !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule avant un déplacement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

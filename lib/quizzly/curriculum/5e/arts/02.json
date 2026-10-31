@@ -1,0 +1,2728 @@
+{
+  "id": "5e-arts-02",
+  "year": "5e",
+  "subject": "arts",
+  "title": "Éducation musicale — la mélodie",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Hauteur et contour",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce que la hauteur ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "En musique, la hauteur d'un son correspond à quoi ?",
+              "options": [
+                "À la fréquence perçue comme grave ou aigu",
+                "Au volume (fort ou piano)",
+                "À la place des notes sur la portée",
+                "Au timbre de l'instrument seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La hauteur se lie à la fréquence et à la notation, pas au volume ni au timbre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un dièse sur une note…",
+              "options": [
+                "monte d'un demi-ton",
+                "baisse d'une octave",
+                "double le volume",
+                "crée un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dièse élève la hauteur d'un demi-ton."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le do central en clé de sol se lit…",
+              "options": [
+                "sous la première ligne",
+                "sur la cinquième ligne",
+                "hors portée uniquement",
+                "dans la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la référence fréquente sous la première ligne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chanter « plus bas » signifie…",
+              "options": [
+                "des notes plus graves",
+                "plus fort",
+                "plus vite",
+                "sans mélodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus bas = registre plus grave."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une octave relie deux notes…",
+              "options": [
+                "de même nom à distance grave/aigu",
+                "de noms aléatoires",
+                "sans hauteur",
+                "de durée nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Do grave et do aigu sont séparés d'une octave."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le contour d'une mélodie en dents de scie alterne…",
+              "options": [
+                "montées et descentes rapides",
+                "un seul silence",
+                "un volume fixe",
+                "aucune hauteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dents de scie vont vite du grave à l'aigu et inversement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur une portée, deux notes empilées verticalement (accord)…",
+              "options": [
+                "ont des hauteurs différentes simultanées",
+                "ont toujours la même hauteur",
+                "sont des silences",
+                "indiquent le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un accord superpose plusieurs hauteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La voix de basse chante surtout dans un registre…",
+              "options": [
+                "grave",
+                "aigu extrême",
+                "sans fréquence",
+                "percussif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La basse occupe le registre grave."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour nommer « montant » ou « descendant », on écoute…",
+              "options": [
+                "l'ordre des hauteurs dans le temps",
+                "la couleur du cahier",
+                "le nombre de pages",
+                "la salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contour est l'évolution des hauteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 1), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Grave et aigu à l'oreille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 2) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le piccolo produit des sons…",
+              "options": [
+                "aigus",
+                "très graves seulement",
+                "sans hauteur",
+                "uniquement rythmiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le piccolo est un instrument aigu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une contrebasse joue surtout…",
+              "options": ["grave", "aigu", "silence", "tempo"],
+              "correctAnswers": [0],
+              "explanation": "La contrebasse est dans les registres graves."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si les notes vont do → mi → sol, le contour…",
+              "options": ["monte", "descend", "reste plat", "disparaît"],
+              "correctAnswers": [0],
+              "explanation": "Chaque note est plus aiguë que la précédente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le la 440 Hz sert souvent à…",
+              "options": [
+                "accorder",
+                "mesurer la durée",
+                "compter les mesures",
+                "choisir les paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "440 Hz est la référence du la d'accord."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une corde de violon plus courte (même tension) sonne…",
+              "options": [
+                "plus aigu",
+                "plus grave",
+                "identique",
+                "comme un tambour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corde plus courte = fréquence plus haute."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Entendre « plus aigu » sans voir la partition, on pense à…",
+              "options": [
+                "vibrations plus rapides",
+                "vibrations plus lentes",
+                "volume plus fort",
+                "tempo lent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aigu = fréquence plus élevée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un intervalle de tierce montante change…",
+              "options": [
+                "la hauteur entre deux notes voisines",
+                "le timbre du pupitre",
+                "le nombre de mesures",
+                "le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tierce est un écart de hauteur entre deux notes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un plateau mélodique, c'est…",
+              "options": [
+                "plusieurs notes à la même hauteur",
+                "une montée continue",
+                "une chute brusque",
+                "un changement de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plateau = hauteur stable répétée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 2), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Lire les hauteurs sur la portée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 3) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La clé de fa convient surtout aux parties…",
+              "options": [
+                "graves",
+                "aigües extrêmes",
+                "sans notes",
+                "rythmiques seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé de fa situe les hauteurs graves."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un bémol…",
+              "options": [
+                "baisse d'un demi-ton",
+                "monte d'une octave",
+                "allonge toujours la note",
+                "change le timbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bémol abaisse la note d'un demi-ton."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une note dans l'espace entre deux lignes…",
+              "options": [
+                "a une hauteur définie",
+                "n'a pas de hauteur",
+                "est un silence",
+                "est le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque espace correspond à une hauteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire de gauche à droite sur la portée, c'est…",
+              "options": [
+                "suivre le temps et l'ordre des notes",
+                "monter toujours en volume",
+                "ignorer les hauteurs",
+                "jouer à l'envers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lecture suit le déroulement temporel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux notes même hauteur liées par une liaison…",
+              "options": [
+                "prolongent le son à cette hauteur",
+                "montent d'une octave",
+                "deviennent silences",
+                "changent de clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liaison additionne les durées sans changer la hauteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une altération à la clef (armure)…",
+              "options": [
+                "fixe des altérations pour toute la pièce",
+                "supprime la mélodie",
+                "indique le nombre de musiciens",
+                "remplace le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'armure évite de réécrire les dièses/bémols."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus une note est haute sur la portée (clé de sol), plus elle est…",
+              "options": ["aiguë", "grave", "forte", "courte"],
+              "correctAnswers": [0],
+              "explanation": "Haut sur la portée = aigu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une ligne supplémentaire (ligne ajoutée) sert à…",
+              "options": [
+                "noter une hauteur hors de la portée",
+                "indiquer le refrain",
+                "compter les mesures",
+                "écrire les paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lignes ajoutées étendent la portée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 3), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Contour montant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 4) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "do → ré → mi décrit un contour…",
+              "options": ["montant", "descendant", "plat", "sans mélodie"],
+              "correctAnswers": [0],
+              "explanation": "Chaque pas monte d'un degré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une montée rapide sur plusieurs notes s'appelle souvent…",
+              "options": [
+                "un passage ascendant",
+                "un silence",
+                "un changement de timbre seul",
+                "une mesure vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passage ascendant = enchaînement montant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après une longue montée, une note tenue en haut peut…",
+              "options": [
+                "marquer un sommet mélodique",
+                "effacer la hauteur",
+                "supprimer le rythme",
+                "devenir percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sommet accentue le point le plus aigu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Monter puis redescendre immédiatement forme…",
+              "options": [
+                "une courbe en arche",
+                "un plateau infini",
+                "un silence obligatoire",
+                "une seule note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arche monte puis redescend."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une gamme, monter de do à do (octave) c'est…",
+              "options": [
+                "passer par des degrés puis retrouver le même nom plus aigu",
+                "rester grave",
+                "perdre la mélodie",
+                "changer de morceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'octave retrouve la même class de hauteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une sirène qui monte en hauteur imite…",
+              "options": [
+                "un glissando ascendant",
+                "un tempo fixe",
+                "un timbre percussif",
+                "une mesure vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glissando = glissement continu de hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer deux passages montants, on regarde…",
+              "options": [
+                "quelle montée couvre le plus de degrés",
+                "la couleur des chaussures",
+                "le nombre de pupitres",
+                "l'heure du concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étendue des degrés décrit l'ampleur de la montée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une montée par sauts (do → mi → sol) est…",
+              "options": [
+                "ascendante par intervalles",
+                "descendante",
+                "sans hauteur",
+                "uniquement rythmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sauts montent toujours vers des notes plus aiguës."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 4), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Contour descendant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 5) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "sol → fa → mi décrit un contour…",
+              "options": ["descendant", "montant", "plat", "sans notes"],
+              "correctAnswers": [0],
+              "explanation": "Chaque note est plus grave que la précédente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Descendre vers le grave peut créer un effet de…",
+              "options": [
+                "relâchement ou conclusion",
+                "tension maximale",
+                "silence total",
+                "accélération seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La descente calme souvent la ligne mélodique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une chute mélodique brusque ( plusieurs degrés d'un coup ) est…",
+              "options": [
+                "une descente rapide",
+                "un plateau",
+                "une montée",
+                "un changement de paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chute parcourt vite les hauteurs vers le grave."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À la fin d'une phrase, descendre vers do peut…",
+              "options": [
+                "donner une sensation de repos",
+                "supprimer le rythme",
+                "augmenter le volume automatiquement",
+                "changer d'instrument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cadence descendante apaise l'oreille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Descendre de la 5e à la 1re note de la gamme, c'est souvent…",
+              "options": [
+                "un mouvement vers le grave",
+                "une montée",
+                "un silence",
+                "un changement de clef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revenir au degré I descend ou stabilise vers la tonique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un contour « en escalier descendant »…",
+              "options": [
+                "enchaîne des petites descentes",
+                "monte sans cesse",
+                "reste sur une note",
+                "ignore les hauteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'escalier descend par degrés successifs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une mélodie part aigu et finit grave, le contour global…",
+              "options": ["descend", "monte", "est plat", "n'existe pas"],
+              "correctAnswers": [0],
+              "explanation": "Du aigu vers le grave = descente globale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entre deux notes, descendre d'une seconde, c'est…",
+              "options": [
+                "passer à la note voisine plus grave",
+                "sauter une octave",
+                "jouer plus fort",
+                "supprimer la mélodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seconde descendante = un degré vers le bas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 5), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Contour en vagues",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 6) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un contour « en vague » alterne…",
+              "options": [
+                "montées et descentes",
+                "un volume constant seul",
+                "des silences seuls",
+                "des paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vague va et vient en hauteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une mélodie qui monte puis descend puis remonte…",
+              "options": [
+                "a un contour ondulé",
+                "est toujours plate",
+                "n'a pas de hauteur",
+                "est un tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les changements de direction créent des vagues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un graphique des hauteurs, une vague se dessine…",
+              "options": [
+                "en courbe qui oscille",
+                "en ligne droite horizontale",
+                "sans aucun point",
+                "en mots"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Osciller = alterner haut et bas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une chanson « mélodique » avec des arpèges utilise souvent…",
+              "options": [
+                "des contours qui montent et descendent par degrés",
+                "une seule note",
+                "aucun mouvement",
+                "seulement des percussions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arpège parcourt plusieurs hauteurs en vague."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le motif « sol-mi-do-mi » ondule car…",
+              "options": [
+                "il redescend puis remonte",
+                "il reste sur sol",
+                "il n'a pas de notes",
+                "il change de morceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le retour sur mi crée une petite remontée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour décrire un contour en vague, on peut dire…",
+              "options": [
+                "« ça monte et ça redescend »",
+                "« ça ne bouge jamais »",
+                "« il n'y a pas de notes »",
+                "« c'est le volume »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La description parle des directions mélodiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une ligne mélodique en zigzag rapide…",
+              "options": [
+                "change souvent de direction en hauteur",
+                "reste plate",
+                "supprime le rythme",
+                "est une pause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zigzag = alternance fréquente montée/descente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer vague et montée pure, la vague…",
+              "options": [
+                "redescend après être montée",
+                "ne monte jamais",
+                "ignore les hauteurs",
+                "est un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vague inclut des retours vers le grave."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 6), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Intervalles et pas mélodiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 7) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un intervalle de seconde, c'est…",
+              "options": [
+                "deux notes voisines de la gamme",
+                "deux octaves d'écart",
+                "un silence",
+                "un changement de tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seconde = distance d'un degré."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De do à mi (do-ré-mi), l'intervalle est…",
+              "options": [
+                "une tierce",
+                "une octave",
+                "un silence",
+                "une quinte basse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Do à mi compte trois degrés = tierce."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un pas mélodique « conjoint » enchaîne…",
+              "options": [
+                "des degrés voisins",
+                "des sauts d'octave seulement",
+                "des silences",
+                "des paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conjoint = mouvements par seconds."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un « saut » mélodique (disjoint) va…",
+              "options": [
+                "d'une note à une autre éloignée",
+                "toujours au degré voisin",
+                "sans hauteur",
+                "au tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Disjoint = intervalle plus large qu'une seconde."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Monter d'une quinte (do → sol), c'est…",
+              "options": [
+                "un saut ascendant plus large",
+                "rester sur do",
+                "descendre",
+                "silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quinte couvre cinq degrés diatoniques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Entendre un intervalle, c'est reconnaître…",
+              "options": [
+                "l'écart entre deux hauteurs",
+                "le nombre de musiciens",
+                "la couleur du cahier",
+                "la durée du concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intervalle mesure la distance mélodique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux notes même hauteur jouées l'une après l'autre, l'intervalle est…",
+              "options": ["unisson", "octave obligatoire", "quinte", "silence"],
+              "correctAnswers": [0],
+              "explanation": "Même hauteur = unisson."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un petit pas conjoint rend le contour…",
+              "options": [
+                "plus fluide",
+                "toujours plat",
+                "sans mélodie",
+                "percussif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les seconds enchaînent doucement les hauteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 7), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Répétition et hauteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 8) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répéter la même hauteur trois fois donne…",
+              "options": [
+                "un plateau mélodique",
+                "une montée",
+                "une chute",
+                "un changement de clef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même note = ligne horizontale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un ostinato mélodique répète…",
+              "options": [
+                "un motif ou une cellule",
+                "le silence total",
+                "le tempo uniquement",
+                "la partition du public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ostinato revient identique ou presque."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si seule la hauteur se répète et le rythme change, on entend…",
+              "options": [
+                "le même son avec une autre durée",
+                "une autre mélodie complète",
+                "rien",
+                "un autre instrument obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur fixe, rythme variable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Répéter un motif une octave plus haut…",
+              "options": [
+                "le transpose plus aigu",
+                "le rend plus grave",
+                "l'efface",
+                "change le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Octave au-dessus = même motif, plus aigu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La répétition aide à…",
+              "options": [
+                "mémoriser le contour",
+                "supprimer la mélodie",
+                "ignorer les hauteurs",
+                "arrêter le morceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répéter fixe la forme mélodique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un echo mélodique répète…",
+              "options": [
+                "la même phrase avec décalage",
+                "un silence seul",
+                "le volume",
+                "les paroles du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écho reproduit l'idée mélodique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Motif identique en hauteur mais ordre rythmique différent…",
+              "options": [
+                "change l'effet sans changer les notes",
+                "change toutes les hauteurs",
+                "supprime la mélodie",
+                "devient percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme différent, hauteurs identiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répéter puis monter d'un degré le motif…",
+              "options": [
+                "varie le contour tout en gardant la forme",
+                "efface le motif",
+                "interdit la mélodie",
+                "supprime le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sequence = répétition transposée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 8), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Comparer deux mélodies",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 9) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour comparer deux mélodies, on écoute d'abord…",
+              "options": [
+                "leurs contours (montées/descentes)",
+                "la couverture du CD",
+                "le prix du billet",
+                "la taille de la salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contour est le profil des hauteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux mélodies avec le même contour mais des notes différentes…",
+              "options": [
+                "peuvent être transposées",
+                "sont identiques en hauteur",
+                "n'ont pas de notes",
+                "sont des silences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transposer garde la forme en changeant les hauteurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Laquelle monte le plus : do-ré-mi-fa ou do-mi ?…",
+              "options": [
+                "do-ré-mi-fa (plus de degrés)",
+                "do-mi seulement",
+                "aucune",
+                "les deux descendent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de degrés ascendants = montée plus longue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Reconnaître un contour déjà entendu, c'est…",
+              "options": [
+                "mémoriser la forme mélodique",
+                "oublier les hauteurs",
+                "compter les pages",
+                "lire les paroles seules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mémoire retient la silhouette mélodique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une mélodie très conjointe (degrés voisins) sonne…",
+              "options": [
+                "fluide",
+                "comme des sauts d'octave seuls",
+                "sans notes",
+                "comme un solo de batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petits pas = fluidité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une mélodie avec grands sauts sonne…",
+              "options": [
+                "plus déchirée ou sautillante",
+                "toujours plate",
+                "sans hauteur",
+                "comme un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grands intervalles créent des bonds mélodiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comparer phrase A et B, si B reprend le début de A plus haut…",
+              "options": [
+                "B transpose le motif à la hausse",
+                "B supprime A",
+                "B n'a pas de notes",
+                "B est un tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reprise plus aigu = transposition ascendante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dessiner le contour au crayon, on trace…",
+              "options": [
+                "haut et bas selon les notes",
+                "le nombre de musiciens",
+                "les paroles",
+                "le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma suit les hauteurs dans le temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 9), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse hauteur et contour",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles décrivent la hauteur ou le contour (hauteur et contour, quiz 10) ?",
+              "options": [
+                "Le contour monte quand les notes deviennent plus aiguës",
+                "Le contour ne dépend jamais des hauteurs",
+                "Un plateau mélodique répète une même hauteur",
+                "La hauteur se confond toujours avec le tempo"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Montée = vers l'aigu ; plateau = hauteur stable — le tempo n'est pas la hauteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hauteur + contour décrivent…",
+              "options": [
+                "comment la mélodie monte, descend ou reste",
+                "uniquement le volume",
+                "le nombre de mesures seul",
+                "la marque du piano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ensemble ils décrivent la ligne mélodique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une mélodie expressive combine souvent…",
+              "options": [
+                "plateaux, montées et descentes",
+                "un seul volume",
+                "aucune note",
+                "des paroles sans son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variété de contours = expressivité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le registre grave/aigu d'une mélodie influence…",
+              "options": [
+                "son caractère (sombre ou brillant)",
+                "le nombre de pages",
+                "la langue du livre",
+                "la taille du pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grave vs aigu colore l'effet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire une mélodie à voix haute aide à…",
+              "options": [
+                "sentir les montées et descentes",
+                "ignorer les hauteurs",
+                "supprimer le rythme",
+                "ne plus écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chanter internalise le contour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un bon résumé de contour : « elle monte puis redescend doucement » indique…",
+              "options": [
+                "une arche mélodique",
+                "un plateau infini",
+                "absence de notes",
+                "changement de tempo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arche = montée puis descente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La hauteur se mesure en…",
+              "options": [
+                "fréquence ou place sur la portée",
+                "nombre de musiciens",
+                "couleur",
+                "heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquence et notation fixent la hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le contour ne dit rien sur…",
+              "options": [
+                "le timbre de l'instrument",
+                "les montées",
+                "les descentes",
+                "les plateaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre = couleur du son, pas le profil mélodique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Préparer une écoute, repérer hauteur et contour permet…",
+              "options": [
+                "de suivre la mélodie consciemment",
+                "d'effacer la partition",
+                "de ne plus compter",
+                "de supprimer les motifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérage actif = meilleure compréhension."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résumer, préparer une écoute, repérer hauteur et contour permet…",
+              "options": [
+                "de suivre la mélodie consciemment",
+                "d'effacer la partition",
+                "de ne plus compter",
+                "de supprimer les motifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repérage actif = meilleure compréhension."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrase musicale",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce qu'une phrase musicale ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une phrase musicale, c'est quoi ?",
+              "options": [
+                "Un fragment mélodique avec début et fin audibles",
+                "Une suite sans aucune organisation",
+                "Une unité où l'on sent une petite conclusion",
+                "Uniquement le bruit des percussions"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La phrase a des limites perceptibles et une cadence possible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une phrase musicale se termine souvent par…",
+              "options": [
+                "une petite conclusion (cadence)",
+                "un volume infini",
+                "la suppression du rythme",
+                "un changement de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cadence marque la fin d'une idée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrases courtes dans une chanson…",
+              "options": [
+                "créent des idées faciles à retenir",
+                "empêchent toute mélodie",
+                "suppriment le motif",
+                "interdisent le refrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La brièveté aide la mémorisation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Découper en phrases, c'est…",
+              "options": [
+                "segmenter la mélodie en unités sensibles",
+                "effacer les notes",
+                "compter les musiciens",
+                "lire le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segmenter révèle la structure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une phrase « ouverte » laisse…",
+              "options": [
+                "une impression de continuité",
+                "toujours le silence total",
+                "aucune note",
+                "la fin du concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ouverte = tension non totalement résolue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une phrase « fermée » donne…",
+              "options": [
+                "un sentiment de repos",
+                "une montée infinie",
+                "l'absence de mélodie",
+                "un changement de tempo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fermée = repos mélodique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La respiration entre phrases ressemble à…",
+              "options": [
+                "une pause à la fin d'une phrase parlée",
+                "un volume maximum",
+                "un changement d'instrument obligatoire",
+                "la couverture du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en langue, la phrase musique respire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plusieurs phrases peuvent partager…",
+              "options": [
+                "le même motif ou la même tonality",
+                "aucune hauteur",
+                "le silence seul",
+                "le nombre de pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs communs relient les phrases."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entendre « c'est la fin de l'idée », on parle de…",
+              "options": [
+                "fin de phrase mélodique",
+                "fin du siècle",
+                "fin du pupitre",
+                "fin du volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin d'idée = frontière de phrase."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 1), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Le motif mélodique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 2) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un motif de deux notes (sol-mi) répété…",
+              "options": [
+                "ancre la mélodie",
+                "supprime la hauteur",
+                "est un silence",
+                "change le tempo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition du motif structure l'écoute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le motif diffère de la phrase car il est…",
+              "options": [
+                "plus court, cellule de base",
+                "toujours une octave",
+                "sans notes",
+                "le refrain entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif = grain ; phrase = phrase complète."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reconnaître un motif revient à…",
+              "options": [
+                "reconnaître une signature mélodique",
+                "ignorer les hauteurs",
+                "compter les mesures seules",
+                "lire les paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signature = contour mémorable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un motif peut être…",
+              "options": [
+                "rhythmique et mélodique",
+                "sans aucun son",
+                "uniquement le volume",
+                "la page de garde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif = combinaison hauteur + rythme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le « hook » pop est souvent…",
+              "options": [
+                "un motif très accrocheur",
+                "un silence long",
+                "une mesure vide",
+                "un changement de clef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hook = motif entêtant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transposer un motif une octave…",
+              "options": [
+                "garde la forme, change le registre",
+                "efface le motif",
+                "supprime le rythme",
+                "ajoute des paroles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Octave = même motif, autre hauteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Motif A puis motif B forment…",
+              "options": [
+                "une phrase plus longue",
+                "rien",
+                "un tempo",
+                "un pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement de motifs = phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si le motif change d'une note seulement…",
+              "options": [
+                "on parle de variation légère",
+                "le motif disparaît",
+                "il n'y a plus de mélodie",
+                "c'est un silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une note différente peut varier le motif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 2), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Refrain et couplet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 3) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le couplet d'une chanson présente souvent…",
+              "options": [
+                "une mélodie différente du refrain",
+                "aucune mélodie",
+                "le même texte que la couverture",
+                "un silence total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couplet = section narrative, mélodie propre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le refrain revient…",
+              "options": [
+                "plusieurs fois avec la même mélodie",
+                "une seule note",
+                "sans motif",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refrain = répétition mélodique forte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couplet puis refrain alternent pour…",
+              "options": [
+                "structurer la chanson",
+                "supprimer la mélodie",
+                "effacer les motifs",
+                "changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance = forme strophique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le refrain est mémorable car…",
+              "options": [
+                "il condense un motif répété",
+                "il n'a pas de notes",
+                "il est toujours grave",
+                "il interdit le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répétition + motif = mémorisation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un pont (bridge) apporte…",
+              "options": [
+                "une nouvelle section mélodique",
+                "le silence du public",
+                "la fin du livre",
+                "aucun son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pont = contraste avant le retour du refrain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Même paroles sur des mélodies différentes (couplet/refrain)…",
+              "options": [
+                "créent du contraste",
+                "suppriment les phrases",
+                "interdisent les motifs",
+                "effacent le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrastes mélodiques structurent la chanson."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chanter le refrain ensemble renforce…",
+              "options": [
+                "le motif collectif",
+                "l'absence de hauteur",
+                "le pupitre",
+                "les pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Collectif = ancrage du motif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Identifier le refrain à l'écoute, on repère…",
+              "options": [
+                "la mélodie qui revient",
+                "le nombre de chaises",
+                "la couleur des murs",
+                "le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour mélodique = refrain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 3), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Respiration et ponctuation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 4) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une virgule musicale (petite pause)…",
+              "options": [
+                "sépare deux idées courtes",
+                "supprime toute mélodie",
+                "double le volume",
+                "change de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pause légère = respiration."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un point mélodique (cadence)…",
+              "options": [
+                "clôt une phrase",
+                "interdit les motifs",
+                "supprime le rythme",
+                "ajoute des pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadence = ponctuation de fin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Respirer avant de reprendre le chant…",
+              "options": [
+                "respecte la limite de phrase",
+                "efface la mélodie",
+                "change le motif en silence total",
+                "lit le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respiration marque la frontière."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux phrases séparées par un silence court…",
+              "options": [
+                "restent distinctes à l'oreille",
+                "fusionnent en une note",
+                "n'ont pas de hauteur",
+                "deviennent percussion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silence aide à entendre la coupure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase 1 monte, phrase 2 répond en descendant :…",
+              "options": [
+                "dialogue mélodique",
+                "absence de motif",
+                "volume seul",
+                "fin du morceau obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse contrastée = dialogue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Noter « respiration » sur la partition aide à…",
+              "options": [
+                "placer les entrées de voix",
+                "supprimer les notes",
+                "compter les musiciens",
+                "changer de clef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication de respiration guide l'interprète."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une phrase trop longue sans respiration…",
+              "options": [
+                "fatigue l'écoute et le chanteur",
+                "supprime le motif",
+                "interdit la mélodie",
+                "change le timbre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur excessive sans pause = lourdeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La ponctuation mélodique se sent…",
+              "options": [
+                "à la résolution ou à la pause",
+                "dans la couleur du cahier",
+                "au nombre de pupitres",
+                "à l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oreille perçoit repos ou continuation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 4), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Antécédent et conséquent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 5) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'antécédent…",
+              "options": [
+                "pose une idée ou une question",
+                "répond toujours immédiatement",
+                "est un silence",
+                "est le refrain seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antécédent ouvre le dialogue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le conséquent…",
+              "options": [
+                "répond ou complète l'antécédent",
+                "supprime la mélodie",
+                "interdit le motif",
+                "est toujours identique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conséquent apporte la réponse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Structure antécédent-conséquent =…",
+              "options": [
+                "deux phrases liées",
+                "une mesure",
+                "un volume",
+                "un pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Paire de phrases complémentaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l'antécédent monte, le conséquent peut…",
+              "options": [
+                "redescendre pour équilibrer",
+                "supprimer les notes",
+                "interdire le rythme",
+                "changer de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste de contour = équilibre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une comptine, appel-réponse imite…",
+              "options": [
+                "antécédent / conséquent",
+                "silence total",
+                "absence de motif",
+                "fin du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appel-réponse = forme question/réponse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux phrases de même longueur en A-B…",
+              "options": [
+                "donnent une symétrie",
+                "suppriment la mélodie",
+                "interdisent les motifs",
+                "effacent le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie renforce la forme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'antécédent peut se terminer…",
+              "options": [
+                "sur une note instable",
+                "toujours sur silence total",
+                "sans hauteur",
+                "sur la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Instabilité prépare la réponse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le conséquent stable clôt…",
+              "options": [
+                "la paire de phrases",
+                "le concert entier obligatoirement",
+                "toute musique du monde",
+                "le pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stabilité = fin de la duo phrase."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 5), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Question et réponse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 6) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une « question » mélodique…",
+              "options": [
+                "crée une attente",
+                "supprime le motif",
+                "interdit la mélodie",
+                "est un volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question = tension."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une « réponse » mélodique…",
+              "options": [
+                "apaise ou conclut",
+                "efface toutes les notes",
+                "change de langue",
+                "supprime le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse = relâchement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Question montante + réponse descendante =…",
+              "options": [
+                "dialogue classique",
+                "silence",
+                "absence de phrase",
+                "tempo seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste directionnel typique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux voix : l'une pose un motif, l'autre le reprend…",
+              "options": [
+                "jeu de question-réponse",
+                "suppression de mélodie",
+                "fin du morceau",
+                "lecture du titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reprise = réponse mélodique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une phrase question se reconnaît à…",
+              "options": [
+                "une fin non totalement reposée",
+                "l'absence de notes",
+                "le volume max",
+                "la couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin ouverte ou montante = question."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La réponse peut reprendre…",
+              "options": [
+                "le motif de la question transposé",
+                "rien du tout",
+                "le pupitre",
+                "les pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation du même motif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jeu question-réponse en classe…",
+              "options": [
+                "entraîne l'oreille aux phrases",
+                "supprime les hauteurs",
+                "interdit le chant",
+                "lit le cahier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exercice d'écoute active."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans réponse après une question mélodique…",
+              "options": [
+                "la tension reste en suspens",
+                "la mélodie disparaît",
+                "le tempo s'arrête toujours",
+                "le motif est interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suspens = attente d'une réponse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 6), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Répéter et varier un motif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 7) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répéter un motif puis changer la dernière note…",
+              "options": [
+                "crée une variation",
+                "efface la phrase",
+                "supprime le rythme",
+                "interdit la mélodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Petit changement = variation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Séquence : répéter le motif plus haut…",
+              "options": [
+                "monte le motif par transposition",
+                "descend toujours",
+                "supprime les notes",
+                "change le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séquence ascendante classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Motif rythmique identique, mélodie différente…",
+              "options": [
+                "nouvelle phrase avec même pulsation",
+                "silence",
+                "absence de hauteur",
+                "fin du livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme liant, mélodie nouvelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Diminuer le motif (plus court)…",
+              "options": [
+                "concentre l'idée",
+                "supprime la mélodie",
+                "interdit le refrain",
+                "change de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduction = motif essentiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Augmenter le motif (notes ajoutées)…",
+              "options": [
+                "développe l'idée",
+                "efface le contour",
+                "supprime le tempo",
+                "lit le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Développement = phrase plus longue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Motif au violon puis au flûte…",
+              "options": [
+                "même phrase, timbre différent",
+                "hauteur impossible",
+                "silence",
+                "pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timbre change, motif peut rester."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Variation + retour au motif initial…",
+              "options": [
+                "forme A-A1-A",
+                "suppression totale",
+                "une note seule",
+                "tempo nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Retour au motif = ancrage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Composer en variant un motif…",
+              "options": [
+                "unifie le morceau",
+                "interdit les phrases",
+                "supprime l'écoute",
+                "change de clef obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif unificateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 7), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Phrases courtes et longues",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 8) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase courte (2–4 mesures)…",
+              "options": [
+                "va droit au but mélodique",
+                "n'a jamais de motif",
+                "est un silence",
+                "interdit le refrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brièveté = clarté."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase longue (8 mesures ou plus)…",
+              "options": [
+                "développe une idée étendue",
+                "supprime les motifs",
+                "interdit la mélodie",
+                "est un volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur = développement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enchaîner plusieurs phrases courtes…",
+              "options": [
+                "donne une narration mélodique",
+                "efface le contour",
+                "supprime le rythme",
+                "lit la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suite de phrases = récit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une phrase longue peut contenir…",
+              "options": [
+                "plusieurs motifs enchaînés",
+                "aucune note",
+                "le pupitre",
+                "des pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs se combinent dans la phrase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Refrain souvent plus court que couplet…",
+              "options": [
+                "facilite la mémorisation",
+                "supprime la mélodie",
+                "interdit le motif",
+                "change de langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Court + répétition = accroche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Couper une phrase longue en deux…",
+              "options": [
+                "révèle deux idées",
+                "supprime les hauteurs",
+                "interdit l'écoute",
+                "efface le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découpage = sous-phrases."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase courte répétée trois fois…",
+              "options": [
+                "insiste sur un motif",
+                "efface la mélodie",
+                "interdit le contour",
+                "supprime le rythme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répétition = emphase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adapter la longueur de phrase au texte…",
+              "options": [
+                "aligne mélodie et paroles",
+                "supprime les notes",
+                "interdit le chant",
+                "lit le titre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Texte et phrase respirent ensemble."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 8), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Écouter et découper",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 9) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour découper à l'écoute, on repère…",
+              "options": [
+                "respirations et cadences",
+                "la couleur des murs",
+                "le nombre de chaises",
+                "le prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cadence = frontière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Frapper dans les mains à chaque nouvelle phrase…",
+              "options": [
+                "marque la structure",
+                "supprime la mélodie",
+                "interdit le motif",
+                "efface le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestuelle aide la segmentation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dessiner des barres entre phrases…",
+              "options": [
+                "visualise les unités",
+                "efface les notes",
+                "compte les musiciens",
+                "change de clef"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma = organisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Écouter deux fois le même extrait…",
+              "options": [
+                "affine le découpage",
+                "supprime les hauteurs",
+                "interdit le motif",
+                "lit le livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répétition d'écoute clarifie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase 1 et 2 partagent un motif…",
+              "options": [
+                "montrent la cohérence",
+                "n'ont pas de notes",
+                "sont des silences",
+                "interdisent le refrain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif commun = lien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Découper aide à mémoriser…",
+              "options": [
+                "par blocs mélodiques",
+                "en oubliant tout",
+                "sans écouter",
+                "le pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blocs = mémorisation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une phrase mal découpée…",
+              "options": [
+                "brouille le sens mélodique",
+                "améliore toujours",
+                "supprime le rythme",
+                "change la langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvaise coupe = confusion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Travail en duo : l'un chante phrase 1, l'autre phrase 2…",
+              "options": [
+                "met en jeu question-réponse",
+                "supprime la mélodie",
+                "interdit les motifs",
+                "lit le titre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Duo = dialogue de phrases."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En révision (quiz 9), retenir surtout :",
+              "options": [
+                "hauteur, contour et écoute active",
+                "uniquement la couleur du cahier",
+                "le nombre de chaises",
+                "aucune note"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces notions structurent la mélodie au programme de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse phrase et motif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles idées décrivent une phrase ou un motif (phrase musicale, quiz 10) ?",
+              "options": [
+                "Un motif est une cellule mélodique reconnaissable",
+                "Une phrase peut regrouper plusieurs motifs",
+                "Un motif dure toujours une heure",
+                "Une phrase musicale ignore toute mélodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Motif = cellule ; phrase = enchaînement d'idées mélodiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Motif + phrase : le motif est…",
+              "options": [
+                "la brique, la phrase le mur",
+                "le silence total",
+                "le volume",
+                "le pupitre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motifs s'assemblent en phrases."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une bonne mélodie de 5e combine…",
+              "options": [
+                "hauteurs, contour, motifs et phrases",
+                "aucun son",
+                "le titre seul",
+                "des pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous ces éléments structurent l'écoute."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Reconnaître le motif du refrain puis le couplet…",
+              "options": [
+                "montre la variété dans l'unité",
+                "supprime la mélodie",
+                "interdit le contour",
+                "efface le tempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même morceau, sections différentes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase musicale et phrase française…",
+              "options": [
+                "partagent l'idée de début et fin",
+                "n'ont rien à voir",
+                "interdisent le chant",
+                "suppriment les notes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Analogie pédagogique utile."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans motif identifiable…",
+              "options": [
+                "la mélodie paraît moins mémorable",
+                "elle devient obligatoirement meilleure",
+                "elle n'a plus de hauteur",
+                "le tempo disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Motif = ancrage mémoriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans frontières de phrase…",
+              "options": [
+                "le discours musical semble continu sans repères",
+                "le volume double",
+                "les notes disparaissent",
+                "le timbre change seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères manquants = confusion."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Objectif 5e : entendre…",
+              "options": [
+                "contour, motif et phrases",
+                "seulement le volume",
+                "le nombre de pages",
+                "la couverture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs d'écoute active."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Présenter sa mélodie à la classe…",
+              "options": [
+                "nommer motif et phrases repérées",
+                "lire le cahier sans chanter",
+                "supprimer les notes",
+                "ignorer le contour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbaliser la structure = compréhension."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présenter sa mélodie à la classe…",
+              "options": [
+                "nommer motif et phrases repérées",
+                "lire le cahier sans chanter",
+                "supprimer les notes",
+                "ignorer le contour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbaliser la structure = compréhension."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

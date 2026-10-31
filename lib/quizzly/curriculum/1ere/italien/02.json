@@ -1,0 +1,2388 @@
+{
+  "id": "1ere-italien-02",
+  "year": "1ere",
+  "subject": "italien",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "La famiglia",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots désignent des membres de la famille proche ?",
+              "options": [
+                "il fratello",
+                "la biblioteca",
+                "la madre",
+                "lo stadio"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Fratello (frère) et madre (mère) appartiennent au vocabulaire familial ; biblioteca et stadio sont des lieux."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "Comment dit-on « le père » en italien ?",
+              "options": ["il padre", "il nonno", "lo zio", "il cugino"],
+              "correctAnswers": [0],
+              "explanation": "Padre = père. Nonno = grand-père, zio = oncle, cugino = cousin."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Mia sorella » signifie :",
+              "options": ["mon frère", "ma sœur", "ma mère", "ma tante"],
+              "correctAnswers": [1],
+              "explanation": "Sorella = sœur ; mia = ma (devant voyelle ou s consonne féminin)."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "Le pluriel de « il nonno » est :",
+              "options": ["i nonni", "le nonne", "i nonnos", "gli nonni"],
+              "correctAnswers": [0],
+              "explanation": "Nonno → nonni au masculin pluriel régulier en -o."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« I miei genitori » veut dire :",
+              "options": [
+                "mes grands-parents",
+                "mes parents",
+                "mes enfants",
+                "mes cousins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Genitori = parents ; miei = mes (pluriel masculin)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "Quelle phrase présente quelqu'un correctement ?",
+              "options": [
+                "Questo è mio fratello Marco.",
+                "Questo è il mio fratello Marco.",
+                "Questo fratello è mio il Marco.",
+                "È mio il fratello Marco questo."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Devant un nom de parenté + prénom, l'italien exige l'article : il mio fratello."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« La nonna » au pluriel :",
+              "options": ["i nonni", "le nonne", "le nonni", "la nonne"],
+              "correctAnswers": [1],
+              "explanation": "Nonna féminin → nonne au pluriel."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "Traduction de « Nous sommes une grande famille » :",
+              "options": [
+                "Siamo una famiglia piccola.",
+                "Siamo una grande famiglia.",
+                "Siamo grande famiglia.",
+                "Siamo una famiglia grandi."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Grande famiglia : l'adjectif grandi précède ou suit selon sens ; ici grande famiglia = grande famille."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Lo zio » signifie :",
+              "options": ["le neveu", "l'oncle", "le beau-père", "le cousin"],
+              "correctAnswers": [1],
+              "explanation": "Zio = oncle ; lo devant z (sifflante)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Ho due cugini » :",
+              "options": [
+                "J'ai deux cousines.",
+                "J'ai deux cousins.",
+                "J'ai deux oncles.",
+                "J'ai deux frères."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cugini = cousins (masculin pluriel ou mixte)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "A casa",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots sont des pièces de la maison ?",
+              "options": ["la cucina", "il treno", "il bagno", "la piazza"],
+              "correctAnswers": [0, 2],
+              "explanation": "Cucina (cuisine) et bagno (salle de bain) ; treno et piazza sont extérieurs."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« La camera da letto » :",
+              "options": ["le salon", "la chambre", "le garage", "le couloir"],
+              "correctAnswers": [1],
+              "explanation": "Camera da letto = chambre à coucher."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Il soggiorno » correspond à :",
+              "options": [
+                "la salle de bain",
+                "le séjour / salon",
+                "la cave",
+                "le grenier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Soggiorno = pièce de vie, salon."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "Où mange-t-on en italien ? « Mangiamo in ___ »",
+              "options": ["bagno", "cucina", "cantina", "giardino"],
+              "correctAnswers": [1],
+              "explanation": "On mange surtout in cucina ou à table (sala da pranzo)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Il giardino » :",
+              "options": ["le jardin", "le balcon", "le toit", "le parking"],
+              "correctAnswers": [0],
+              "explanation": "Giardino = jardin."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Abito in un appartamento al terzo piano » :",
+              "options": [
+                "J'habite une maison au rez-de-chaussée.",
+                "J'habite un appartement au 3e étage.",
+                "Je travaille au 3e étage.",
+                "Je loue un jardin."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Abito = j'habite ; terzo piano = troisième étage."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "Féminin de « il balcone » :",
+              "options": [
+                "la balcona",
+                "il balcone",
+                "la balconata",
+                "le balconi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Balcone est masculin invariable au singulier ; pluriel i balconi."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« La lavatrice » est :",
+              "options": [
+                "un four",
+                "une machine à laver",
+                "un réfrigérateur",
+                "un canapé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lavatrice = lave-linge."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "Phrase correcte :",
+              "options": [
+                "La mia casa è grande.",
+                "La casa mia è grande.",
+                "Entrambe sono corrette.",
+                "Mia casa è la grande."
+              ],
+              "correctAnswers": [2],
+              "explanation": "La mia casa et casa mia sont toutes deux acceptables en italien standard."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Scendo le scale » :",
+              "options": [
+                "Je monte les escaliers.",
+                "Je descends les escaliers.",
+                "Je nettoie les marches.",
+                "Je ferme la porte."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Scendere = descendre ; scale = escaliers."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "A scuola",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots relèvent de la vie scolaire ?",
+              "options": [
+                "l'insegnante",
+                "il cinema",
+                "il compito",
+                "la spiaggia"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Insegnante (prof) et compito (devoir) ; cinema et spiaggia sont loisirs."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« La materia » :",
+              "options": [
+                "la matière (scolaire)",
+                "la mère",
+                "le matin",
+                "le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Materia = matière enseignée."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Fare i compiti » :",
+              "options": [
+                "faire les courses",
+                "faire ses devoirs",
+                "faire du sport",
+                "faire la sieste"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Compiti = devoirs scolaires."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« L'orario delle lezioni » :",
+              "options": [
+                "l'emploi du temps",
+                "la cantine",
+                "le directeur",
+                "la récréation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orario = horaire ; lezioni = cours."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Sono in ritardo a scuola » :",
+              "options": [
+                "Je suis en avance.",
+                "Je suis en retard à l'école.",
+                "Je suis malade.",
+                "Je suis en vacances."
+              ],
+              "correctAnswers": [1],
+              "explanation": "In ritardo = en retard."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Il bidello » désigne souvent :",
+              "options": [
+                "le proviseur",
+                "le surveillant / agent d'entretien",
+                "le bibliothécaire",
+                "le médecin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bidello = personnel de service ou surveillant selon contexte."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« La classe » au sens « cours » :",
+              "options": [
+                "la salle uniquement",
+                "le groupe d'élèves / le cours",
+                "le stylo",
+                "l'examen"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Classe = groupe ou niveau scolaire."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "Conjugaison : « Noi ___ (studiare) matematica »",
+              "options": ["studia", "studiamo", "studiate", "studio"],
+              "correctAnswers": [1],
+              "explanation": "Noi → studiamo (1re conjugaison -are)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« L'esame » :",
+              "options": [
+                "l'examen",
+                "l'exercice",
+                "l'escalade",
+                "l'essai gratuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Esame = examen officiel."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Prendere un brutto voto » :",
+              "options": [
+                "avoir une bonne note",
+                "avoir une mauvaise note",
+                "être absent",
+                "changer de classe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Brutto voto = mauvaise note ; voto = note."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Routine mattutina",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels verbes décrivent le matin ?",
+              "options": [
+                "svegliarsi",
+                "dormire tutto il giorno",
+                "alzarsi",
+                "andare a letto alle otto del mattino"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Svegliarsi (se réveiller) et alzarsi (se lever) ; les autres sont incohérents le matin."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Mi lavo i denti » :",
+              "options": [
+                "Je me lave le visage.",
+                "Je me brosse les dents.",
+                "Je me coiffe.",
+                "Je m'habille."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lavarsi i denti = se laver/brosser les dents."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Colazione » :",
+              "options": [
+                "le déjeuner",
+                "le dîner",
+                "le petit-déjeuner",
+                "le goûter"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Colazione = petit-déjeuner."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Faccio la doccia » :",
+              "options": [
+                "Je fais la vaisselle.",
+                "Je prends une douche.",
+                "Je fais du sport.",
+                "Je fais un cake."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Doccia = douche."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "Reflexif : « Tu te lèves » →",
+              "options": ["Ti alzi", "Ti alza", "Ti alziamo", "Ti alzo"],
+              "correctAnswers": [0],
+              "explanation": "Tu → ti alzi (alzarsi)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Alle sette in punto » :",
+              "options": [
+                "vers sept heures environ",
+                "à sept heures pile",
+                "à sept heures du soir seulement",
+                "avant sept heures"
+              ],
+              "correctAnswers": [1],
+              "explanation": "In punto = pile, exactement."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Prendo l'autobus per andare a scuola » :",
+              "options": [
+                "Je prends le bus pour l'école.",
+                "Je conduis le bus.",
+                "Je rate le bus.",
+                "Je vends des tickets."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prendere l'autobus = prendre le bus."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Vestirsi » signifie :",
+              "options": [
+                "se déshabiller",
+                "s'habiller",
+                "se reposer",
+                "se promener"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vestirsi = s'habiller."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "Ordre logique :",
+              "options": [
+                "colazione → svegliarsi → alzarsi",
+                "svegliarsi → alzarsi → colazione",
+                "andare a scuola → svegliarsi",
+                "dormire → colazione → svegliarsi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On se réveille, se lève, puis prend le petit-déjeuner."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Ho fretta » :",
+              "options": [
+                "J'ai faim.",
+                "J'ai sommeil.",
+                "Je suis pressé.",
+                "J'ai froid."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Avere fretta = être pressé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Tempo libero",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quelles activités sont des loisirs ?",
+              "options": [
+                "giocare a calcio",
+                "fare l'esame",
+                "ascoltare musica",
+                "correggere compiti"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Calcio et musique = loisirs ; esame et correggere compiti = travail scolaire."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Andare al cinema » :",
+              "options": [
+                "aller au cinéma",
+                "aller au musée",
+                "aller chez le médecin",
+                "aller à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cinema = cinéma."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Mi piace leggere » :",
+              "options": [
+                "J'aime lire.",
+                "Je déteste lire.",
+                "Je lis vite.",
+                "Je lis à voix haute."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi piace + infinitif = j'aime..."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Uscire con gli amici » :",
+              "options": [
+                "sortir avec des amis",
+                "rester seul",
+                "travailler avec des collègues",
+                "rentrer tôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uscire = sortir."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Il fine settimana » :",
+              "options": [
+                "la semaine",
+                "le week-end",
+                "le vendredi soir",
+                "les vacances"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fine settimana = week-end."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Suonare la chitarra » :",
+              "options": [
+                "chanter",
+                "jouer de la guitare",
+                "écouter la radio",
+                "danser"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Suonare = jouer (d'un instrument)."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Ti piacciono i videogiochi ? » réponse affirmative :",
+              "options": [
+                "Sì, mi piacciono.",
+                "Sì, mi piace.",
+                "No, mi piace.",
+                "Sì, mi piaci."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Videogiochi pluriel → piacciono / mi piacciono."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Fare una passeggiata » :",
+              "options": [
+                "faire une promenade",
+                "faire une fête",
+                "faire un voyage loin",
+                "faire du vélo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passeggiata = promenade."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Lo sport » au pluriel :",
+              "options": ["gli sport", "i sport", "le sport", "li sport"],
+              "correctAnswers": [1],
+              "explanation": "Sport invariable : i sport."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Nel tempo libero » :",
+              "options": [
+                "pendant les cours",
+                "pendant le temps libre",
+                "pendant les examens",
+                "pendant la nuit"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tempo libero = temps libre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Cibo e bevande",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots sont des boissons ?",
+              "options": ["l'acqua", "il pane", "il succo", "la sedia"],
+              "correctAnswers": [0, 2],
+              "explanation": "Acqua et succo (jus) ; pane = pain, sedia = chaise."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Il pranzo » :",
+              "options": [
+                "le petit-déjeuner",
+                "le déjeuner",
+                "le dîner",
+                "le goûter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pranzo = déjeuner (midi)."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« La cena » :",
+              "options": [
+                "le dîner",
+                "le déjeuner",
+                "le dessert seulement",
+                "la cuisine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cena = dîner du soir."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Vorrei un caffè, per favore » :",
+              "options": [
+                "Je voudrais un café, s'il vous plaît.",
+                "J'ai déjà un café.",
+                "Je déteste le café.",
+                "Où est le café ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vorrei = conditionnel de courtoisie (je voudrais)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« La frutta » :",
+              "options": [
+                "les légumes",
+                "les fruits",
+                "la viande",
+                "le poisson"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Frutta = fruits (collectif)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "Partitif : « Mangio ___ pane »",
+              "options": ["il", "del", "della", "lo"],
+              "correctAnswers": [1],
+              "explanation": "Pane masculin → del pane (partitif)."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Ho fame » :",
+              "options": [
+                "J'ai soif.",
+                "J'ai faim.",
+                "Je suis fatigué.",
+                "Je suis content."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avere fame = avoir faim."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Il formaggio » :",
+              "options": ["le fromage", "le jambon", "le riz", "le sucre"],
+              "correctAnswers": [0],
+              "explanation": "Formaggio = fromage."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Bevo un bicchiere d'acqua » :",
+              "options": [
+                "Je mange une pomme.",
+                "Je bois un verre d'eau.",
+                "Je lave un verre.",
+                "Je casse un verre."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bicchiere = verre (récipient)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Al ristorante » on :",
+              "options": ["dorme", "mangia", "studia", "nuota"],
+              "correctAnswers": [1],
+              "explanation": "Ristorante = restaurant → on y mange."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Aggettivi e descrizioni semplici",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels adjectifs décrivent une personne sympathique ?",
+              "options": ["simpatico", "antipatico", "gentile", "triste"],
+              "correctAnswers": [0, 2],
+              "explanation": "Simpatico et gentile sont positifs ; antipatico = désagréable."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "Féminin de « alto » :",
+              "options": ["alta", "alti", "alte", "alto"],
+              "correctAnswers": [0],
+              "explanation": "Alto → alta au féminin singulier."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Una ragazza intelligente » :",
+              "options": [
+                "un garçon intelligent",
+                "une fille intelligente",
+                "une fille timide",
+                "un prof intelligent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ragazza = fille ; intelligente s'accorde."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "Pluriel de « giovane » (adjectif invariable) :",
+              "options": ["giovani", "giovanii", "giovanes", "giovane"],
+              "correctAnswers": [0],
+              "explanation": "Giovane → giovani au pluriel (invariable en -e)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Serio / seria » :",
+              "options": [
+                "drôle",
+                "sérieux / sérieuse",
+                "paresseux",
+                "bruyant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Serio = sérieux."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "Opposé de « felice » :",
+              "options": ["contento", "triste", "allegro", "fortunato"],
+              "correctAnswers": [1],
+              "explanation": "Felice = heureux ; triste = triste."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« I miei amici sono molto divertenti » :",
+              "options": [
+                "Mes amis sont très ennuyeux.",
+                "Mes amis sont très amusants.",
+                "Mes amis sont tristes.",
+                "Je n'ai pas d'amis."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Divertente = amusant, drôle."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "Accord : « Le ragazze sono ___ » (bello)",
+              "options": ["bello", "bella", "belle", "belli"],
+              "correctAnswers": [2],
+              "explanation": "Ragazze féminin pluriel → belle."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Timido » :",
+              "options": ["timide", "bruyant", "grand", "vieux"],
+              "correctAnswers": [0],
+              "explanation": "Timido = timide (masculin)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Molto » devant adjectif :",
+              "options": ["un peu", "très", "jamais", "toujours"],
+              "correctAnswers": [1],
+              "explanation": "Molto = très (intensificateur)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Preposizioni e luoghi in città",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels lieux trouve-t-on en ville ?",
+              "options": [
+                "la piazza",
+                "il campo",
+                "il supermercato",
+                "il vulcano"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Piazza et supermercato urbains ; campo/vulcano moins « quotidien ville »."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Vado ___ parco »",
+              "options": ["a il", "al", "alla", "ai"],
+              "correctAnswers": [1],
+              "explanation": "A + il parco → al parco."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Sono ___ casa »",
+              "options": ["a", "in", "da", "di"],
+              "correctAnswers": [0],
+              "explanation": "Essere a casa = être à la maison."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« La farmacia » :",
+              "options": [
+                "la boulangerie",
+                "la pharmacie",
+                "la banque",
+                "la poste"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Farmacia = pharmacie."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Vicino a » :",
+              "options": ["loin de", "près de", "devant", "derrière"],
+              "correctAnswers": [1],
+              "explanation": "Vicino a = près de."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Lontano da » :",
+              "options": ["loin de", "près de", "à côté de", "dans"],
+              "correctAnswers": [0],
+              "explanation": "Lontano da = loin de."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Davanti alla scuola » :",
+              "options": [
+                "derrière l'école",
+                "devant l'école",
+                "dans l'école",
+                "sans école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Davanti a = devant."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Compro il pane ___ panetteria »",
+              "options": ["in", "alla", "del", "su"],
+              "correctAnswers": [1],
+              "explanation": "Alla panetteria = à la boulangerie (a + la)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« La stazione » :",
+              "options": ["l'aéroport", "la gare", "le port", "l'arrêt de bus"],
+              "correctAnswers": [1],
+              "explanation": "Stazione = gare (souvent ferroviaire)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Tra il bar e la scuola » :",
+              "options": [
+                "entre le bar et l'école",
+                "devant le bar",
+                "loin de l'école",
+                "dans le bar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tra ... e ... = entre ... et ..."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Presente indicativo",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quelles formes sont au présent de l'indicatif ?",
+              "options": ["parlo", "parlavo", "parlerò", "parla"],
+              "correctAnswers": [0, 3],
+              "explanation": "Parlo et parla = présent ; parlavo = imparfait, parlerò = futur."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Lui ___ (avere) quindici anni »",
+              "options": ["ho", "hai", "ha", "hanno"],
+              "correctAnswers": [2],
+              "explanation": "Lui/lei → ha."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Noi ___ (essere) italiani »",
+              "options": ["sono", "siamo", "siete", "è"],
+              "correctAnswers": [1],
+              "explanation": "Noi → siamo."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Voi ___ (andare) a scuola in bicicletta »",
+              "options": ["vado", "andate", "andiamo", "va"],
+              "correctAnswers": [1],
+              "explanation": "Voi → andate."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "Verbe « fare » : « Io ___ sport »",
+              "options": ["faccio", "fai", "fa", "fanno"],
+              "correctAnswers": [0],
+              "explanation": "Io → faccio (irrégulier)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Loro ___ (venire) da Roma »",
+              "options": ["viene", "vengo", "vengono", "venite"],
+              "correctAnswers": [2],
+              "explanation": "Loro → vengono."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Tu ___ (dormire) poco »",
+              "options": ["dormo", "dormi", "dorme", "dormiamo"],
+              "correctAnswers": [1],
+              "explanation": "Tu → dormi (-ire)."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Maria ___ (leggere) un libro »",
+              "options": ["leggo", "legge", "leggono", "leggi"],
+              "correctAnswers": [1],
+              "explanation": "3e singulier → legge."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "Négation : « Non ___ (capire) » avec « io »",
+              "options": ["capisco", "capisci", "capisce", "capite"],
+              "correctAnswers": [0],
+              "explanation": "Io capisco → non capisco."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Ogni giorno ___ (lavorare) mio padre »",
+              "options": ["lavoro", "lavora", "lavorano", "lavori"],
+              "correctAnswers": [1],
+              "explanation": "Mio padre = il → lavora."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Sintesi u1",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quelles phrases décrivent une journée type ?",
+              "options": [
+                "Mi sveglio alle sette.",
+                "Dormo in classe.",
+                "Vado a scuola.",
+                "Non mangio mai."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Réveil et école = routine ; dormir en classe ou ne jamais manger sont atypiques."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Dopo la scuola gioco con mio fratello » :",
+              "options": [
+                "Avant l'école je joue.",
+                "Après l'école je joue avec mon frère.",
+                "Je n'ai pas de frère.",
+                "Mon frère va à l'école."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dopo = après ; giocare = jouer."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "Question : « Quanti anni hai ? » réponse :",
+              "options": [
+                "Ho sedici anni.",
+                "Sono sedici.",
+                "Ho sedici.",
+                "Entrambe A e C possono funzionare."
+              ],
+              "correctAnswers": [3],
+              "explanation": "Ho sedici anni est la forme la plus complète ; Ho sedici est courant à l'oral."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Ci vediamo domani ! » :",
+              "options": [
+                "On se voit demain !",
+                "À demain matin seulement !",
+                "Au revoir pour toujours !",
+                "Bonne nuit !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ci vediamo = on se voit (à bientôt)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Che cosa fai nel tempo libero ? »",
+              "options": [
+                "Où habites-tu ?",
+                "Que fais-tu pendant ton temps libre ?",
+                "Quelle heure est-il ?",
+                "Comment tu t'appelles ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Che cosa fai = que fais-tu."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« La mia famiglia è numerosa » :",
+              "options": [
+                "Ma famille est nombreuse.",
+                "Ma famille est petite.",
+                "Je n'ai pas de famille.",
+                "Ma famille est en Italie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numerosa = nombreuse."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Preferisco studiare la sera » :",
+              "options": [
+                "Je préfère étudier le soir.",
+                "Je déteste étudier.",
+                "J'étudie le matin.",
+                "Je ne étudie pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preferire + infinitif = préférer..."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Abbiamo una casa vicino al mare » :",
+              "options": [
+                "Nous avons une maison près de la mer.",
+                "Nous habitons la montagne.",
+                "Nous n'avons pas de maison.",
+                "La mer est loin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vicino al mare = près de la mer."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Mi chiamo Giulia e ho due sorelle » :",
+              "options": [
+                "Je m'appelle Giulia et j'ai deux sœurs.",
+                "Giulia a deux frères.",
+                "Je suis prof.",
+                "Giulia est ma sœur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mi chiamo = je m'appelle ; sorelle = sœurs."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "Salutation du soir :",
+              "options": [
+                "Buongiorno",
+                "Buonasera",
+                "Buonanotte (au coucher)",
+                "Ciao (matin)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Buonasera = bonsoir ; buonanotte au moment de dormir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Passato prossimo: auxiliaires",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels auxiliaires forment le passé composé ?",
+              "options": ["avere", "essere", "fare", "dare"],
+              "correctAnswers": [0, 1],
+              "explanation": "Passato prossimo = avere ou essere + participe passé."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Ho mangiato » : auxiliaire",
+              "options": ["essere", "avere", "stare", "andare"],
+              "correctAnswers": [1],
+              "explanation": "Mangiare se conjugue avec avere."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Sono andato a scuola » :",
+              "options": [
+                "verbe de mouvement avec essere",
+                "verbe avec avere seulement",
+                "futur",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andare → essere au passé composé (mouvement)."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "Participe de « parlare » :",
+              "options": ["parlato", "parlata", "parlati", "parlando"],
+              "correctAnswers": [0],
+              "explanation": "-are → -ato : parlato."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "Féminin : « Lei è andata » accorde",
+              "options": ["andato", "andata", "andati", "andate"],
+              "correctAnswers": [1],
+              "explanation": "Avec essere, accord avec le sujet : andata."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Abbiamo finito i compiti » :",
+              "options": [
+                "Nous avons fini les devoirs.",
+                "Nous finissons.",
+                "Nous allons finir.",
+                "Nous n'avons pas de devoirs."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Finire + avere ; compiti = devoirs."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Non ho capito » :",
+              "options": [
+                "Je n'ai pas compris.",
+                "Je ne comprends pas.",
+                "J'ai compris.",
+                "Je comprendrai."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé composé négatif."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "Verbe « vedere » passé : « ho ___ »",
+              "options": ["veduto / visto", "vedato", "vedendo", "vedo"],
+              "correctAnswers": [0],
+              "explanation": "Visto ou veduto acceptés ; visto plus fréquent."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Siamo usciti ieri sera » :",
+              "options": [
+                "Nous sommes sortis hier soir.",
+                "Nous sortons ce soir.",
+                "Nous restons.",
+                "Nous entrons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Uscire + essere ; ieri sera = hier soir."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "Marqueur temporel passé :",
+              "options": ["domani", "ieri", "sempre", "adesso"],
+              "correctAnswers": [1],
+              "explanation": "Ieri = hier → passé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Raccontare la giornata",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots situent un récit au passé ?",
+              "options": [
+                "ieri",
+                "la settimana scorsa",
+                "tra un anno",
+                "domani mattina"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ieri et la settimana scorsa = passé ; les autres = futur."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Stamattina mi sono svegliato tardi » :",
+              "options": [
+                "Ce matin je me suis réveillé tard.",
+                "Demain je me lèverai tard.",
+                "Je ne me réveille jamais.",
+                "Je suis malade."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stamattina = ce matin ; svegliarsi + essere."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "Enchaînement : « Poi ho ___ (prendere) il bus »",
+              "options": ["preso", "prenduto", "prendato", "prende"],
+              "correctAnswers": [0],
+              "explanation": "Prendere → preso (irrégulier)."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Dopo scuola sono andata in piscina » :",
+              "options": [
+                "Après l'école je suis allée à la piscine.",
+                "Avant l'école.",
+                "Je n'aime pas la piscine.",
+                "Je vais demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piscina = piscine ; andata accord féminin."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Alla fine » :",
+              "options": ["au début", "à la fin", "souvent", "parfois"],
+              "correctAnswers": [1],
+              "explanation": "Alla fine = à la fin (du récit)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Prima ho fatto colazione, ___ sono uscito »",
+              "options": ["poi", "mai", "sempre", "niente"],
+              "correctAnswers": [0],
+              "explanation": "Prima ... poi = d'abord ... ensuite."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Ho passato una bella giornata » :",
+              "options": [
+                "J'ai passé une belle journée.",
+                "Je passe une mauvaise journée.",
+                "La journée continue.",
+                "Je suis en vacances une semaine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passato prossimo de passare."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Non sono andato a lezione » :",
+              "options": [
+                "Je ne suis pas allé en cours.",
+                "Je vais en cours.",
+                "J'aime les cours.",
+                "Le cours est annulé demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lezione = cours/leçon."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Abbiamo guardato un film » :",
+              "options": [
+                "Nous avons regardé un film.",
+                "Nous regardons.",
+                "Nous lirons.",
+                "Nous dormons."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guardare + avere."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Sera » dans « ieri sera » :",
+              "options": ["matin", "soir", "midi", "nuit"],
+              "correctAnswers": [1],
+              "explanation": "Sera = soir."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Descrivere l'aspetto",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels mots décrivent l'apparence ?",
+              "options": [
+                "i capelli",
+                "la stazione",
+                "gli occhi",
+                "il quaderno"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Capelli (cheveux) et occhi (yeux) ; quaderno = cahier."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Ha i capelli castani » :",
+              "options": [
+                "Il a les cheveux châtains.",
+                "Elle a les yeux bleus.",
+                "Il est grand.",
+                "Il est chauve."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Castani = châtains."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« È di media statura » :",
+              "options": [
+                "de taille moyenne",
+                "très grand",
+                "très petit",
+                "mince"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Media statura = taille moyenne."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Porta gli occhiali » :",
+              "options": [
+                "Il porte des lunettes.",
+                "Il a mal aux yeux.",
+                "Il achète des lunettes.",
+                "Il n'a pas de lunettes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Portare = porter (vêtements/accessoires)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Magro / magra » :",
+              "options": ["mince", "gros", "grand", "petit"],
+              "correctAnswers": [0],
+              "explanation": "Magro = mince."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Ha barba e baffi » :",
+              "options": [
+                "barbe et moustache",
+                "cheveux longs",
+                "yeux verts",
+                "peau claire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Barba = barbe ; baffi = moustache."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Sembra simpatico » :",
+              "options": [
+                "Il a l'air sympathique.",
+                "Il est antipathique.",
+                "Il parle peu.",
+                "Il est prof."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sembrare = sembler."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Biondo » (capelli) :",
+              "options": ["blond", "brun", "roux", "noir"],
+              "correctAnswers": [0],
+              "explanation": "Biondo = blond."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Indossa una maglietta blu » :",
+              "options": [
+                "Il porte un t-shirt bleu.",
+                "Il achète un pantalon.",
+                "Il enlève sa veste.",
+                "Il n'aime pas le bleu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indossare = porter (vêtement)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Assomiglia a suo padre » :",
+              "options": [
+                "Il ressemble à son père.",
+                "Il voit son père.",
+                "Il habite chez son père.",
+                "Il appelle son père."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assomigliare a = ressembler à."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Descrivere un luogo",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels adjectifs décrivent un lieu agréable ?",
+              "options": [
+                "accogliente",
+                "rumoroso",
+                "silenzioso",
+                "pericoloso"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Accogliente (accueillant) et silenzioso ; rumoroso/pericoloso plus négatifs."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« La mia camera è luminosa » :",
+              "options": [
+                "Ma chambre est lumineuse.",
+                "Ma chambre est sombre.",
+                "Ma chambre est petite.",
+                "Je n'ai pas de chambre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Luminosa = lumineuse."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« C'è molta gente » :",
+              "options": [
+                "Il y a beaucoup de monde.",
+                "Il n'y a personne.",
+                "Il fait froid.",
+                "C'est fermé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'è = il y a ; gente = monde."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Spazioso » :",
+              "options": ["spacieux", "étroit", "sale", "vieux"],
+              "correctAnswers": [0],
+              "explanation": "Spazioso = spacieux."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« In fondo alla strada » :",
+              "options": [
+                "au bout de la rue",
+                "au milieu",
+                "devant la maison",
+                "à gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In fondo a = au fond / bout de."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« La città è antica ma bella » :",
+              "options": [
+                "La ville est ancienne mais belle.",
+                "La ville est moderne.",
+                "La ville est laide.",
+                "Je ne connais pas la ville."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Antica = ancienne ; ma = mais."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Pulito / pulita » :",
+              "options": ["propre", "sale", "grand", "neuf"],
+              "correctAnswers": [0],
+              "explanation": "Pulito = propre."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Si trova vicino al centro » :",
+              "options": [
+                "On le trouve près du centre.",
+                "C'est loin.",
+                "C'est fermé.",
+                "C'est au nord."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si trova = se trouve (on le trouve)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Panorama » :",
+              "options": ["vue / panorama", "bruit", "odeur", "prix"],
+              "correctAnswers": [0],
+              "explanation": "Panorama = vue d'ensemble."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Fa caldo in questa stanza » :",
+              "options": [
+                "Il fait chaud dans cette pièce.",
+                "Il fait froid.",
+                "Il pleut.",
+                "La pièce est grande."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fa caldo = il fait chaud (impersonnel)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Imperfetto: introduction",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "L'imparfait sert souvent à :",
+              "options": [
+                "descrivere abitudini passate",
+                "un'azione puntualissima ieri",
+                "descrire une habitude passée",
+                "raconter une action ponctuelle hier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Imparfait = description, habitude ; passato prossimo pour action ponctuelle."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Quando ero piccolo » :",
+              "options": [
+                "Quand j'étais petit",
+                "Quand je serai petit",
+                "Parce que je suis petit",
+                "Si j'étais petit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ero = imparfait de essere."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "Imparfait de « parlare » : io",
+              "options": ["parlavo", "parlai", "parlerò", "parlo"],
+              "correctAnswers": [0],
+              "explanation": "-are → -avo : parlavo."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Andavo sempre a scuola a piedi » :",
+              "options": [
+                "J'allais toujours à l'école à pied.",
+                "Je suis allé une fois.",
+                "J'irai demain.",
+                "Je n'aime pas marcher."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude passée → imperfetto."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« C'era il sole » :",
+              "options": [
+                "Il y avait du soleil.",
+                "Il y a du soleil.",
+                "Il fera soleil.",
+                "Il pleut."
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'era = il y avait (imparfait)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "Imparfait « avere » : io",
+              "options": ["avevo", "ebbi", "ho avuto", "avrò"],
+              "correctAnswers": [0],
+              "explanation": "Avevo = j'avais."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Mentre studiavo » :",
+              "options": [
+                "Pendant que j'étudiais",
+                "Après avoir étudié",
+                "Avant d'étudier",
+                "Sans étudier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mentre + imparfait = pendant que."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Facevo sport ogni weekend » :",
+              "options": [
+                "Je faisais du sport chaque week-end.",
+                "Je fais du sport.",
+                "Je ferai du sport.",
+                "Je n'aime pas le sport."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facevo = imparfait de fare."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "Marqueur d'habitude :",
+              "options": [
+                "sempre",
+                "una volta sola ieri",
+                "subito dopo",
+                "mai (sans contexte passé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sempre avec imparfait = toujours (habitude)."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Eravamo felici » :",
+              "options": [
+                "Nous étions heureux.",
+                "Nous sommes heureux.",
+                "Nous serons heureux.",
+                "Nous avons été heureux une fois."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eravamo = imparfait de essere."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Confrontare passato prossimo e imperfetto",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quelles phrases mélangent bien imparfait (cadre) et passé composé (action) ?",
+              "options": [
+                "Mentre leggevo, ha squillato il telefono.",
+                "Ieri ho mangiato e sono uscito.",
+                "Ero a casa quando è arrivato Marco.",
+                "Domani vado a Roma."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mentre + imparfait / passé composé ponctuel ; domani = futur."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Studiavo quando sei entrato » :",
+              "options": [
+                "J'étudiais quand tu es entré.",
+                "J'ai étudié puis tu es entré.",
+                "Je étudierai.",
+                "Tu es sorti."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Action en cours (imparfait) + entrée (passé composé)."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "Action ponctuelle hier :",
+              "options": [
+                "andavo al cinema",
+                "sono andato al cinema",
+                "andavo sempre",
+                "vado al cinema"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une fois hier → passato prossimo."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "Description météo continue :",
+              "options": ["Pioveva", "È piovuto", "Pioverà", "Piove"],
+              "correctAnswers": [0],
+              "explanation": "Pioveva = il pleuvait (cadre)."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Ho visto un film interessante » :",
+              "options": [
+                "action terminée",
+                "habitude",
+                "description",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passato prossimo = action achevée."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Da bambino giocavo nel parco » :",
+              "options": [
+                "habitude d'enfance",
+                "hier seulement",
+                "demain",
+                "maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Da bambino + imperfait = quand j'étais enfant."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« All'improvviso » introduit souvent :",
+              "options": [
+                "un'azione improvvisa",
+                "une description",
+                "une habitude",
+                "un souhait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "All'improvviso = soudain → passé composé."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Erano le otto quando sono partito » :",
+              "options": [
+                "Il était huit heures quand je suis parti.",
+                "Il est huit heures.",
+                "Je partirai à huit.",
+                "Je suis arrivé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure (cadre) + partenza (action)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Non sapevo » :",
+              "options": [
+                "Je ne savais pas.",
+                "Je n'ai pas su.",
+                "Je ne saurai pas.",
+                "Je sais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "État mental passé → imperfait."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Ho conosciuto Lucia l'anno scorso » :",
+              "options": [
+                "Rencontre ponctuelle",
+                "Je la connaissais déjà longtemps",
+                "Habitude",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conoscere quelqu'un (première fois) → passato prossimo."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Pronomi diretti",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels pronoms remplacent un COD ?",
+              "options": ["lo", "la", "gli", "mi"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lo/la = COD ; gli = COI ; mi = complément réfléchi ou COI selon contexte."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Vedo Marco » → « ___ vedo »",
+              "options": ["Lo", "La", "Gli", "Le"],
+              "correctAnswers": [0],
+              "explanation": "Marco masculin singulier → lo."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Compro la rivista » →",
+              "options": ["La compro", "Lo compro", "Li compro", "Le compro"],
+              "correctAnswers": [0],
+              "explanation": "Rivista féminin → la."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Non ___ capisco » (problema)",
+              "options": ["lo", "la", "li", "le"],
+              "correctAnswers": [0],
+              "explanation": "Problema masculin → lo capisco."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "Pluriel masculin « i libri » :",
+              "options": ["li", "le", "lo", "la"],
+              "correctAnswers": [0],
+              "explanation": "Li = les (COD masc. plur.)."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Le mie amiche » COD : « ___ invito »",
+              "options": ["le", "li", "la", "lo"],
+              "correctAnswers": [0],
+              "explanation": "Amiche féminin pluriel → le invito."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "Position avec « avere » passé : « L'ho visto »",
+              "options": [
+                "pronom avant l'auxiliaire",
+                "pronom après participe",
+                "pronom en tête de phrase seulement",
+                "pas de pronom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lo/L' + ho + participio."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Ti chiamo » : « ti » est",
+              "options": ["COI (à toi)", "COD", "sujet", "adjectif"],
+              "correctAnswers": [0],
+              "explanation": "Chiamare qualcuno → ti = à toi (COI)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Mangio la pizza » →",
+              "options": ["La mangio", "Lo mangio", "Gli mangio", "Mi mangio"],
+              "correctAnswers": [0],
+              "explanation": "Pizza féminin → la mangio."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Guarda quelle foto ! » → « ___ guarda ! »",
+              "options": ["Le", "Li", "Lo", "La"],
+              "correctAnswers": [0],
+              "explanation": "Foto féminin pluriel (le foto) → le guarda."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Espressioni temporali",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quelles expressions indiquent la durée ou la fréquence ?",
+              "options": ["spesso", "per due ore", "mai", "subito"],
+              "correctAnswers": [0, 1],
+              "explanation": "Spesso (souvent) et per due ore (pendant deux heures) ; subito = tout de suite."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« Da tre anni » :",
+              "options": [
+                "depuis trois ans",
+                "pendant trois ans (terminé)",
+                "il y a trois ans",
+                "dans trois ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Da + durée = depuis (action continue)."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Fra poco » :",
+              "options": [
+                "dans peu de temps",
+                "il y a longtemps",
+                "jamais",
+                "toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fra poco = bientôt / dans un instant."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Di solito » :",
+              "options": ["d'habitude", "parfois", "rarement", "une fois"],
+              "correctAnswers": [0],
+              "explanation": "Di solito = usually."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« Tardi la sera » :",
+              "options": [
+                "tard le soir",
+                "tôt le matin",
+                "à midi",
+                "l'après-midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tardi = tard."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Presto » (tempo) :",
+              "options": [
+                "tôt / bientôt selon contexte",
+                "toujours",
+                "jamais",
+                "souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Presto = tôt ou bientôt."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Ogni tanto » :",
+              "options": [
+                "de temps en temps",
+                "chaque jour",
+                "chaque heure",
+                "sans arrêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ogni tanto = de temps en temps."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Fin da piccolo » :",
+              "options": [
+                "depuis petit",
+                "quand j'étais grand",
+                "demain",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin da = dès / depuis (petit)."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Per tutta la giornata » :",
+              "options": [
+                "toute la journée",
+                "une heure",
+                "le matin seulement",
+                "la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Per tutta la giornata = durée journée entière."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« L'altro ieri » :",
+              "options": [
+                "avant-hier",
+                "hier",
+                "demain",
+                "la semaine prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'altro ieri = avant-hier."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Connettivi narrativi",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Quels connecteurs enchaînent un récit ?",
+              "options": ["poi", "però", "quindi", "perché"],
+              "correctAnswers": [0, 2],
+              "explanation": "Poi (ensuite) et quindi (donc) ; però = mais ; perché = parce que."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« All'inizio » :",
+              "options": ["au début", "à la fin", "soudain", "pendant"],
+              "correctAnswers": [0],
+              "explanation": "All'inizio = au début du récit."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« Infine » :",
+              "options": ["enfin / pour finir", "cependant", "car", "avant"],
+              "correctAnswers": [0],
+              "explanation": "Infine = enfin."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Tuttavia » :",
+              "options": ["cependant", "donc", "ensuite", "parce que"],
+              "correctAnswers": [0],
+              "explanation": "Tuttavia = néanmoins, cependant."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "« A quel punto » :",
+              "options": ["à ce moment-là", "au début", "demain", "souvent"],
+              "correctAnswers": [0],
+              "explanation": "A quel punto = à ce stade du récit."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Inoltre » :",
+              "options": ["de plus", "mais", "donc", "avant"],
+              "correctAnswers": [0],
+              "explanation": "Inoltre = en outre, de plus."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« D'un coup » en italien courant :",
+              "options": ["all'improvviso", "sempre", "piano piano", "mai"],
+              "correctAnswers": [0],
+              "explanation": "All'improvviso = soudainement."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Prima... dopo... » structure :",
+              "options": [
+                "d'abord... ensuite...",
+                "mais... donc...",
+                "parce que... donc...",
+                "souvent... jamais..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre chronologique."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Così » (conclusion) :",
+              "options": [
+                "ainsi / voilà pourquoi",
+                "mais",
+                "pendant",
+                "souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Così conclut une conséquence."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Mentre » + imparfait sert à :",
+              "options": [
+                "situer une action simultanée",
+                "introduire une opinion",
+                "saluer",
+                "demander l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mentre = pendant que (simultanéité)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Sintesi u2",
+          "questions": [
+            {
+              "id": "n01",
+              "type": "multiple_choice",
+              "prompt": "Pour raconter des vacances, on utilise souvent :",
+              "options": [
+                "passato prossimo",
+                "imperfetto per descrivere",
+                "futuro semplice",
+                "imperativo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Actions passées + descriptions/imparfait ; futur/imperatif hors récit passé."
+            },
+            {
+              "id": "n02",
+              "type": "single_choice",
+              "prompt": "« L'estate scorsa siamo andati al mare » :",
+              "options": [
+                "L'été dernier nous sommes allés à la mer.",
+                "Nous irons l'été prochain.",
+                "Nous naimons pas la mer.",
+                "Il fait froid."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estate scorsa = été dernier ; andare + essere."
+            },
+            {
+              "id": "n03",
+              "type": "single_choice",
+              "prompt": "« La casa era piccola ma accogliente » :",
+              "options": [
+                "La maison était petite mais accueillante.",
+                "La maison est grande.",
+                "La maison sera vendue.",
+                "Je n'ai pas vu la maison."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imparfait de description."
+            },
+            {
+              "id": "n04",
+              "type": "single_choice",
+              "prompt": "« Ho incontrato molte persone interessanti » :",
+              "options": [
+                "J'ai rencontré des personnes intéressantes.",
+                "Je les rencontre tous les jours.",
+                "Je ne parle à personne.",
+                "Je les déteste."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incontrare + passato prossimo."
+            },
+            {
+              "id": "n05",
+              "type": "single_choice",
+              "prompt": "Récit : ordre logique",
+              "options": [
+                "introduzione → svolgimento → conclusione",
+                "conclusione → svolgimento → introduzione",
+                "solo presente",
+                "solo futuro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intro, développement, conclusion classiques."
+            },
+            {
+              "id": "n06",
+              "type": "single_choice",
+              "prompt": "« Raccontami la tua giornata » demande :",
+              "options": [
+                "un récit de ta journée",
+                "ton adresse",
+                "ton age",
+                "ta matière préférée seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Raccontare = raconter."
+            },
+            {
+              "id": "n07",
+              "type": "single_choice",
+              "prompt": "« Sembrava facile » :",
+              "options": [
+                "Cela semblait facile.",
+                "C'est facile maintenant.",
+                "Ce sera facile.",
+                "Ce n'est pas facile."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sembrare à l'imparfait."
+            },
+            {
+              "id": "n08",
+              "type": "single_choice",
+              "prompt": "« Alla fine è andato tutto bene » :",
+              "options": [
+                "Finalement tout s'est bien passé.",
+                "Au début c'était mal.",
+                "Rien ne va.",
+                "Il pleut."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alla fine + passato prossimo = conclusion positive."
+            },
+            {
+              "id": "n09",
+              "type": "single_choice",
+              "prompt": "« Descrivi tuo fratello » → réponse attendue :",
+              "options": [
+                "traits physiques et caractère",
+                "liste de courses",
+                "horaire de train",
+                "recette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descrivere une personne = apparence + personnalité."
+            },
+            {
+              "id": "n10",
+              "type": "single_choice",
+              "prompt": "« Ieri ho studiato, poi ho riposato » enchaîne :",
+              "options": [
+                "deux actions passées successives",
+                "habitude et futur",
+                "question et réponse",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poi lie deux passés composés."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

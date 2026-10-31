@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "@mdevs/icons",
-      "lucide-react",
       "recharts",
       "motion",
       "react-use",
