@@ -20,11 +20,15 @@ export async function GET() {
     const resume = await resumeQuizzly(session.userId, session.user);
     return Response.json(
       {
+        dailyGiftClaimed: resume.dailyGiftClaimed,
         gems: resume.gems,
         hearts: resume.hearts,
         items: SHOP_ITEMS,
+        leagueShieldWeek: resume.leagueShieldWeek,
         ownedFrames: resume.ownedFrames,
         streakFreezes: resume.streakFreezes,
+        weekKey: resume.weekKey,
+        xpBoostUntil: resume.xpBoostUntil,
       },
       { headers: { "Cache-Control": "private, no-store" } }
     );

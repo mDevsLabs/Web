@@ -26,6 +26,7 @@ import { pageErrorResponse, requirePageSession } from "@/lib/pages/http";
 import { PAGE_MESSAGE_KEEP } from "@/lib/pages/limits";
 import { canUsePageAssistant } from "@/lib/pages/permissions";
 import { memoryBlockForPage } from "@/lib/pages/personal";
+import { normalizePageFont } from "@/lib/pages/style";
 import { createPageTools } from "@/lib/pages/tools";
 import { recordPageTokenUsage } from "@/lib/pages/usage";
 import { buildPageSystemPrompt } from "@/lib/prompts/pages";
@@ -135,6 +136,7 @@ export async function POST(request: Request, { params }: Params) {
     const system = buildPageSystemPrompt({
       accountEnabled: Boolean(prefs?.enabled),
       accountInstructions: prefs?.customInstructions ?? null,
+      defaultFont: normalizePageFont(prefs?.pagesDefaultFont),
       intent: body.intent ?? "propose",
       memoryBlock,
       pagePrompt: access.page.customPrompt,

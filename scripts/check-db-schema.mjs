@@ -100,9 +100,22 @@ const REQUIRED_TABLES = [
   "QuizzlyProfile",
   "QuizzlyQuizProgress",
   "QuizzlyQuest",
+  // Migration 0081 : sans ce tirage, le jour et la semaine recalculeraient
+  // leurs quêtes à chaque déploiement du catalogue.
+  "QuizzlyQuestDraw",
   // Migration 0074 : un signalement d'exercice ne peut pas s'enregistrer
   // si la table manque.
   "QuizzlyReport",
+  // Migration 0077 : ligues et amis. Sans ces tables, le classement et
+  // les demandes n'ont nulle part où s'écrire.
+  "QuizzlyLeagueCohort",
+  "QuizzlyLeagueSeat",
+  "QuizzlyLeagueClosure",
+  "QuizzlyFriendship",
+  "QuizzlyFollowMirror",
+  // Migration 0079 : sans ces tables, le Coach n'a pas d'historique.
+  "QuizzlyCoachConversation",
+  "QuizzlyCoachMessage",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -128,9 +141,31 @@ const REQUIRED_COLUMNS = [
   { column: "quizId", table: "QuizzlyQuizProgress" },
   { column: "passed", table: "QuizzlyQuizProgress" },
   { column: "questKey", table: "QuizzlyQuest" },
+  { column: "questIds", table: "QuizzlyQuestDraw" },
+  { column: "periodKey", table: "QuizzlyQuestDraw" },
+  // Migration 0079 : l'historique du Coach relit le titre, le texte et le compte.
+  { column: "title", table: "QuizzlyCoachConversation" },
+  { column: "userId", table: "QuizzlyCoachConversation" },
+  { column: "pinned", table: "QuizzlyCoachConversation" },
+  { column: "text", table: "QuizzlyCoachMessage" },
+  { column: "conversationId", table: "QuizzlyCoachMessage" },
+  { column: "userId", table: "QuizzlyCoachMessage" },
+  { column: "role", table: "QuizzlyCoachMessage" },
   // Migration 0075 : le Coach relit le modèle du compte et la dernière tentative.
   { column: "modelId", table: "QuizzlyProfile" },
   { column: "lastAttempt", table: "QuizzlyQuizProgress" },
+  // Migration 0077 : série record, ligue, cadeau du jour et amitiés.
+  { column: "streakBest", table: "QuizzlyProfile" },
+  { column: "league", table: "QuizzlyProfile" },
+  { column: "subjects", table: "QuizzlyProfile" },
+  { column: "xpBoostUntil", table: "QuizzlyProfile" },
+  { column: "leagueShieldWeek", table: "QuizzlyProfile" },
+  { column: "lastDailyGift", table: "QuizzlyProfile" },
+  { column: "weeklyXp", table: "QuizzlyLeagueSeat" },
+  { column: "cohortId", table: "QuizzlyLeagueSeat" },
+  { column: "weekKey", table: "QuizzlyLeagueClosure" },
+  { column: "status", table: "QuizzlyFriendship" },
+  { column: "followerVibeId", table: "QuizzlyFollowMirror" },
   // Migration 0074 : le signalement relit la question, la matière et le compte.
   { column: "message", table: "QuizzlyReport" },
   { column: "questionNumber", table: "QuizzlyReport" },
@@ -234,6 +269,9 @@ const REQUIRED_COLUMNS = [
   // Paramètres.
   { column: "pagesDefaultModel", table: "user_preferences" },
   { column: "pagesDefaultPrompt", table: "user_preferences" },
+  // Migration 0080 : police de lecture des Pages. Absente, la lecture des
+  // préférences échoue en 42703 et la page Paramètres avec elle.
+  { column: "pagesDefaultFont", table: "user_preferences" },
   // Migration 0059 : typage des modèles (chat, audio, image) et fournisseur.
   { column: "type", table: "openrouter_models" },
   { column: "fournisseur", table: "openrouter_models" },

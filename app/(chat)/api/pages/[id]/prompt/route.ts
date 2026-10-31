@@ -4,6 +4,7 @@ import { getPageAccess } from "@/lib/pages/access";
 import { pageErrorResponse, requirePageSession } from "@/lib/pages/http";
 import { canReadPagePrompt } from "@/lib/pages/permissions";
 import { memoryBlockForPage } from "@/lib/pages/personal";
+import { normalizePageFont } from "@/lib/pages/style";
 import { buildPageSystemPrompt } from "@/lib/prompts/pages";
 
 type Params = { params: Promise<{ id: string }> };
@@ -34,6 +35,7 @@ export async function GET(_request: Request, { params }: Params) {
       prompt: buildPageSystemPrompt({
         accountEnabled: Boolean(prefs.enabled),
         accountInstructions: prefs.customInstructions,
+        defaultFont: normalizePageFont(prefs.pagesDefaultFont),
         intent: "propose",
         memoryBlock,
         pagePrompt: access.page.customPrompt,

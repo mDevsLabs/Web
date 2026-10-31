@@ -10,7 +10,12 @@
 
 import { z } from "zod";
 
-export const COACH_INTENTS = ["explain", "summary", "encourage"] as const;
+export const COACH_INTENTS = [
+  "chat",
+  "explain",
+  "summary",
+  "encourage",
+] as const;
 export type CoachIntent = (typeof COACH_INTENTS)[number];
 
 /** Échanges de suivi, sans compter la demande construite par le serveur. */
@@ -18,6 +23,14 @@ export const COACH_SUIVI_MAX = 6;
 export const COACH_MESSAGE_MAX = 2000;
 export const COACH_REPLY_MAX = 8000;
 export const COACH_TENTATIVES_MAX = 20;
+/** Messages relus pour le modèle, les plus récents. */
+export const COACH_CONTEXTE_MAX = 20;
+/** Messages gardés dans une conversation. */
+export const COACH_MESSAGES_MAX = 80;
+/** Conversations gardées sur le compte. */
+export const COACH_CONVERSATIONS_MAX = 40;
+export const COACH_TITLE_MAX = 80;
+export const COACH_MESSAGES_EPINGLES_MAX = 3;
 
 const questionIdSchema = z.string().regex(/^q(?:[1-9]|10)$/);
 
@@ -316,6 +329,28 @@ function decrireFaits(contexte: ContexteCoach): string {
   return lignes.join("\n\n");
 }
 
+/** Titres et scores, sans les options ni l'explication du cours. */
+function decrireFaitsCourts(contexte: ContexteCoach): string {
+  const lignes = [
+    `Année : ${contexte.yearLabel}`,
+    `XP : ${contexte.xp}`,
+    `Série : ${contexte.streakCount} jour${contexte.streakCount > 1 ? "s" : ""}`,
+    `Quiz validés : ${contexte.passedCount}`,
+  ];
+  if (contexte.tentatives.length === 0) {
+    lignes.push("Aucune tentative détaillée pour l'instant.");
+    return lignes.join("\n");
+  }
+  lignes.push("Dernières tentatives :");
+  for (const tentative of contexte.tentatives) {
+    const matiere = tentative.subjectLabel ? `${tentative.subjectLabel}, ` : "";
+    lignes.push(
+      `- ${matiere}${tentative.quizTitle} : ${tentative.correctCount}/${tentative.totalCount}, ${tentative.passed ? "validé" : "à reprendre"}`
+    );
+  }
+  return lignes.join("\n");
+}
+
 function consigne(yearLabel: string): string {
   return [
     `Tu es le coach de Quizzly, pour un élève de ${yearLabel}.`,
@@ -328,6 +363,26 @@ function consigne(yearLabel: string): string {
   ].join("\n");
 }
 
+function trouverErreur(params: {
+  contexte: ContexteCoach;
+  questionId?: string;
+  quizId?: string;
+}): { erreur: TentativeErreur; tentative: QuizTente } | null {
+  if (!params.quizId || !params.questionId) {
+    return null;
+  }
+  const tentative = params.contexte.tentatives.find(
+    (entree) => entree.quizId === params.quizId
+  );
+  const erreur = tentative?.misses.find(
+    (entree) => entree.questionId === params.questionId
+  );
+  if (!tentative || !erreur) {
+    return null;
+  }
+  return { erreur, tentative };
+}
+
 export function preparerEchangeCoach(params: {
   contexte: ContexteCoach;
   intent: CoachIntent;
@@ -335,62 +390,151 @@ export function preparerEchangeCoach(params: {
   quizId?: string;
 }):
   | { code: "missing_error" | "unknown_question"; ok: false }
-  | { ok: true; ouverture: string; system: string } {
+  | { faits: string; ok: true; ouverture: string; system: string } {
   const system = consigne(params.contexte.yearLabel);
   if (params.intent === "explain") {
     if (!params.quizId || !params.questionId) {
       return { code: "missing_error", ok: false };
     }
-    const tentative = params.contexte.tentatives.find(
-      (entree) => entree.quizId === params.quizId
-    );
-    const erreur = tentative?.misses.find(
-      (entree) => entree.questionId === params.questionId
-    );
-    if (!tentative || !erreur) {
+    const trouve = trouverErreur(params);
+    if (!trouve) {
       return { code: "unknown_question", ok: false };
     }
+    const detail = decrireErreur(trouve.tentative, trouve.erreur);
+    const suite =
+      "Dis pourquoi mon choix ne convient pas, et comment retenir la bonne idée.";
     return {
+      faits: [detail, suite].join("\n\n"),
       ok: true,
-      ouverture: [
-        "Explique mon erreur.",
-        decrireErreur(tentative, erreur),
-        "Dis pourquoi mon choix ne convient pas, et comment retenir la bonne idée.",
-      ].join("\n\n"),
+      ouverture: ["Explique mon erreur.", detail, suite].join("\n\n"),
       system,
     };
   }
   if (params.intent === "summary") {
+    const faits = decrireFaits(params.contexte);
+    const suite =
+      "Fais un bilan court : ce qui est acquis, les erreurs qui reviennent, et une prochaine étape. Appuie-toi seulement sur ces faits.";
     return {
+      faits: [faits, suite].join("\n\n"),
+      ok: true,
+      ouverture: ["Résume mes apprentissages.", faits, suite].join("\n\n"),
+      system,
+    };
+  }
+  if (params.intent === "chat") {
+    const faits = decrireFaitsCourts(params.contexte);
+    const suite =
+      "Réponds à la question de l'élève. Ne donne pas la correction d'une question absente du message.";
+    return {
+      faits: [faits, suite].join("\n\n"),
       ok: true,
       ouverture: [
-        "Résume mes apprentissages.",
-        decrireFaits(params.contexte),
-        "Fais un bilan court : ce qui est acquis, les erreurs qui reviennent, et une prochaine étape. Appuie-toi seulement sur ces faits.",
+        "Réponds à ma question de révision.",
+        faits,
+        "Appuie-toi sur ces faits. Ne donne pas la correction d'une question absente du message.",
       ].join("\n\n"),
       system,
     };
   }
+  const faits = decrireFaitsCourts(params.contexte);
+  const suite =
+    "Relève ce qui avance. S'il reste des quiz à reprendre, rappelle qu'une erreur sert à apprendre, sans détailler les réponses.";
   return {
+    faits: [faits, suite].join("\n\n"),
     ok: true,
-    ouverture: [
-      "Encourage-moi.",
-      `Année : ${params.contexte.yearLabel}`,
-      `XP : ${params.contexte.xp}`,
-      `Série : ${params.contexte.streakCount}`,
-      `Quiz validés : ${params.contexte.passedCount}`,
-      params.contexte.tentatives.length === 0
-        ? "Aucune tentative détaillée pour l'instant."
-        : params.contexte.tentatives
-            .map(
-              (tentative) =>
-                `- ${tentative.quizTitle} : ${tentative.correctCount}/${tentative.totalCount}, ${tentative.passed ? "validé" : "à reprendre"}`
-            )
-            .join("\n"),
-      "Relève ce qui avance. S'il reste des quiz à reprendre, rappelle qu'une erreur sert à apprendre, sans détailler les réponses.",
-    ].join("\n\n"),
+    ouverture: ["Encourage-moi.", faits, suite].join("\n\n"),
     system,
   };
+}
+
+export function messageVisibleCoach(params: {
+  contexte: ContexteCoach;
+  intent: CoachIntent;
+  questionId?: string;
+  quizId?: string;
+  text?: string;
+}): { message: string; ok: false } | { ok: true; text: string } {
+  if (params.intent === "explain") {
+    if (!params.quizId || !params.questionId) {
+      return { message: "Choisis une erreur à expliquer.", ok: false };
+    }
+    const trouve = trouverErreur(params);
+    if (!trouve) {
+      return {
+        message:
+          "Cette question n'est pas une erreur de ta dernière tentative.",
+        ok: false,
+      };
+    }
+    return {
+      ok: true,
+      text: `Explique mon erreur : ${trouve.erreur.question}`.slice(
+        0,
+        COACH_MESSAGE_MAX
+      ),
+    };
+  }
+  if (params.intent === "summary") {
+    return { ok: true, text: "Résume mes apprentissages." };
+  }
+  if (params.intent === "encourage") {
+    return { ok: true, text: "Encourage-moi." };
+  }
+  return texteSuivi(params.text);
+}
+
+export function texteSuivi(
+  text: string | undefined
+): { message: string; ok: false } | { ok: true; text: string } {
+  const propre = text?.trim() ?? "";
+  if (!propre) {
+    return { message: "Écris un message.", ok: false };
+  }
+  if (propre.length > COACH_MESSAGE_MAX) {
+    return { message: "Le message est trop long.", ok: false };
+  }
+  return { ok: true, text: propre };
+}
+
+export function titreDepuisTexte(texte: string): string {
+  const ligne = texte.trim().replace(/\s+/g, " ");
+  if (!ligne) {
+    return "Conversation";
+  }
+  if (ligne.length <= COACH_TITLE_MAX) {
+    return ligne;
+  }
+  return `${ligne.slice(0, COACH_TITLE_MAX - 1).trimEnd()}…`;
+}
+
+export function titreEnregistrable(titre: string): string | null {
+  const propre = titre.trim().replace(/\s+/g, " ");
+  if (!propre || propre.length > COACH_TITLE_MAX) {
+    return null;
+  }
+  return propre;
+}
+
+export function texteMessageEnregistrable(
+  role: "assistant" | "user",
+  text: string
+): string | null {
+  const propre = text.trim();
+  if (!propre) {
+    return null;
+  }
+  const plafond = role === "user" ? COACH_MESSAGE_MAX : COACH_REPLY_MAX;
+  if (propre.length > plafond) {
+    return null;
+  }
+  return propre;
+}
+
+export function messagesPourModele<T>(messages: readonly T[]): T[] {
+  if (messages.length <= COACH_CONTEXTE_MAX) {
+    return [...messages];
+  }
+  return messages.slice(messages.length - COACH_CONTEXTE_MAX);
 }
 
 /**

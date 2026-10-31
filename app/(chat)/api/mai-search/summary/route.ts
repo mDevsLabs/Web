@@ -33,6 +33,20 @@ import {
 
 export const maxDuration = 300;
 
+const EMPTY_SUMMARY =
+  "Les résultats ne contiennent aucune source à synthétiser.";
+
+function sourcesForSummary(results: unknown[]): Record<string, unknown>[] {
+  return results
+    .filter((item): item is Record<string, unknown> => {
+      if (!item || typeof item !== "object") {
+        return false;
+      }
+      return (item as { isDisambiguation?: unknown }).isDisambiguation !== true;
+    })
+    .slice(0, 8);
+}
+
 export interface SummaryTarget {
   snippet?: string;
   source?: string;
@@ -129,6 +143,29 @@ export async function POST(request: Request) {
       }
     }
 
+    const followUp = Boolean(target) || incomingMessages.length > 0;
+    const summarySources = sourcesForSummary(searchResults);
+    if (!followUp && summarySources.length === 0) {
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream<Uint8Array>({
+        start(controller) {
+          controller.enqueue(
+            encoder.encode(
+              encodeSummaryEvent({ delta: EMPTY_SUMMARY, type: "text-delta" })
+            )
+          );
+          controller.enqueue(encoder.encode(encodeSummaryEvent({ type: "done" })));
+          controller.close();
+        },
+      });
+      return new Response(stream, {
+        headers: {
+          "Cache-Control": "no-cache, no-transform",
+          "Content-Type": "text/event-stream; charset=utf-8",
+        },
+      });
+    }
+
     const sessionToken = await getMaiSessionToken();
     // Le provider n'expose pas la réflexion au SDK : on la lit sur le flux
     // brut, à part du texte de la réponse.
@@ -199,9 +236,8 @@ Rédige un résumé complet, fluide et bien structuré de cette source en franç
       // les résultats. Ce plafond est donc ici, et il est indépendant du
       // volume affiché — un compte Max n'obtient pas une synthèse plus longue,
       // il obtient une liste plus longue.
-      const formattedResults = searchResults
-        .slice(0, 8)
-        .map((r: any, idx: number) => {
+      const formattedResults = summarySources
+        .map((r, idx) => {
           // L'origine est annoncée au modèle : un article d'encyclopédie est
           // une source de référence, pas une page qui en parle. Sans cette
           // distinction, la synthèse dit « d'après fr.wikipedia.org » comme
@@ -210,25 +246,19 @@ Rédige un résumé complet, fluide et bien structuré de cette source en franç
             r.origin === "wikipedia"
               ? "Article d'encyclopédie (Wikipédia)"
               : "Page web";
-          // Une page de désambiguïsation liste des homonymes : la laisser
-          // dans les sources ferait choisir à la synthèse un sujet au hasard
-          // parmi plusieurs.
-          const avertissement = r.isDisambiguation
-            ? "\nAttention : c'est une page de désambiguïsation (liste de sujets possibles) — n'en tire aucune affirmation précise."
-            : "";
-          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}${avertissement}`;
+          return `[Source ${idx + 1}] ${r.title}\nType : ${nature}\nURL: ${r.url}\nExtrait: ${r.snippet}`;
         })
         .join("\n\n");
 
       systemPrompt = `Tu es le moteur d'intelligence mAI Search.
-Ton rôle est de fournir un résumé clair, objectif, sourcé et actualisé basé sur la recherche de l'utilisateur.
+Ton rôle est de fournir un résumé clair, objectif et sourcé à partir des extraits fournis.
 Langue : Français.
 ${lengthInstruction}
-Veille à aller jusqu'au bout de ton analyse et à formuler des phrases complètes et bien terminées.
+Chaque affirmation doit s'appuyer sur un extrait numéroté, cité comme [Source n]. Si les extraits ne permettent pas de l'affirmer, dis-le au lieu d'inventer.
 Chaque source est précédée de sa nature (page web ou article d'encyclopédie) : cite-la en conséquence, et signale explicitement quand une affirmation vient de Wikipédia.
-Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'actualité critique. N'invente rien qui ne soit corroboré.`;
+N'utilise aucune connaissance extérieure aux extraits.`;
 
-      userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults || "Aucune information préalable fournie."}\n\nRédige la synthèse complète de ces informations en français.`;
+      userPrompt = `Recherche : "${query}"\n\nInformations trouvées :\n${formattedResults}\n\nRédige la synthèse de ces informations en français.`;
     }
 
     const personal = blocsCompteSynthese({
@@ -318,11 +348,9 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
       providerOptions: resolveReasoningProviderOptions(
         normalizeReasoningLevel(preferences?.reasoningLevel)
       ),
-      stopWhen: ({ steps }: any) => steps.length >= 4,
+      stopWhen: ({ steps }: any) => steps.length >= (followUp ? 4 : 1),
       system: systemPrompt,
-      tools: {
-        webSearch,
-      },
+      ...(followUp ? { tools: { webSearch } } : {}),
     };
 
     if (incomingMessages.length > 0) {
@@ -432,6 +460,9 @@ Tu disposes de l'outil "webSearch" si tu as besoin de vérifier une donnée d'ac
         "Content-Type": "text/event-stream; charset=utf-8",
         "X-Model-Id": modelId,
         "X-Model-Name": formatModelName(modelId).name,
+        ...(requestedModelId && modelId !== requestedModelId
+          ? { "X-Model-Substituted": "1" }
+          : {}),
       },
     });
   } catch (error: any) {

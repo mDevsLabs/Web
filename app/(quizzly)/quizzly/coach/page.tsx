@@ -19,6 +19,7 @@ export default async function CoachPage({
   searchParams,
 }: {
   searchParams: Promise<{
+    conversation?: string | string[];
     question?: string | string[];
     quiz?: string | string[];
   }>;
@@ -26,6 +27,7 @@ export default async function CoachPage({
   const params = await searchParams;
   return (
     <CoachQuizzly
+      conversationId={lireParam(params.conversation)}
       questionId={lireParam(params.question)}
       quizId={lireParam(params.quiz)}
     />

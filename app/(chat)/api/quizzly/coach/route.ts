@@ -16,13 +16,21 @@ import { ChatbotError } from "@/lib/errors";
 import {
   assemblerTentatives,
   COACH_INTENTS,
-  COACH_REPLY_MAX,
-  COACH_SUIVI_MAX,
+  COACH_MESSAGE_MAX,
+  messagesPourModele,
+  messageVisibleCoach,
   preparerEchangeCoach,
   resoudreModeleCoach,
-  validerSuivi,
+  texteSuivi,
   vuesErreurs,
 } from "@/lib/quizzly/coach";
+import { ENTETE_CONVERSATION_COACH } from "@/lib/quizzly/coach-paths";
+import {
+  enregistrerReponseCoach,
+  messageEchecFil,
+  ouvrirConversationCoach,
+  poursuivreConversationCoach,
+} from "@/lib/quizzly/coach-store";
 import { origineConfiance } from "@/lib/quizzly/http";
 import { obtenirIndex } from "@/lib/quizzly/load";
 import { libelleAnnee } from "@/lib/quizzly/program";
@@ -32,17 +40,13 @@ import { generateUUID } from "@/lib/utils";
 
 export const maxDuration = 60;
 
-const messageSchema = z.object({
-  role: z.enum(["assistant", "user"]),
-  text: z.string().max(COACH_REPLY_MAX),
-});
-
 const corpsSchema = z
   .object({
-    intent: z.enum(COACH_INTENTS),
-    messages: z.array(messageSchema).max(COACH_SUIVI_MAX).optional(),
+    conversationId: z.string().uuid().optional(),
+    intent: z.enum(COACH_INTENTS).optional(),
     questionId: z.string().max(8).optional(),
     quizId: z.string().max(160).optional(),
+    text: z.string().max(COACH_MESSAGE_MAX).optional(),
   })
   .strict();
 
@@ -125,23 +129,60 @@ export async function POST(request: Request) {
         message: zodIssuesMessage(parsed.error),
       });
     }
-    const suivi = validerSuivi(parsed.data.messages ?? []);
-    if (!suivi.ok) {
-      return errorResponse("invalid_request", { message: suivi.message });
-    }
     const { charge, contexte } = await contexteDuCompte(session.userId);
-    const pret = preparerEchangeCoach({
-      contexte,
-      intent: parsed.data.intent,
-      questionId: parsed.data.questionId,
-      quizId: parsed.data.quizId,
-    });
-    if (!pret.ok) {
+    const tour = parsed.data.conversationId
+      ? await (async () => {
+          const suivi = texteSuivi(parsed.data.text);
+          if (!suivi.ok) {
+            return { message: suivi.message, ok: false as const };
+          }
+          return poursuivreConversationCoach({
+            id: parsed.data.conversationId as string,
+            text: suivi.text,
+            userId: session.userId,
+          });
+        })()
+      : await (async () => {
+          const intent = parsed.data.intent ?? "chat";
+          const visible = messageVisibleCoach({
+            contexte,
+            intent,
+            questionId: parsed.data.questionId,
+            quizId: parsed.data.quizId,
+            text: parsed.data.text,
+          });
+          if (!visible.ok) {
+            return { message: visible.message, ok: false as const };
+          }
+          return ouvrirConversationCoach({
+            intent,
+            questionId:
+              intent === "explain" ? (parsed.data.questionId ?? null) : null,
+            quizId: intent === "explain" ? (parsed.data.quizId ?? null) : null,
+            text: visible.text,
+            userId: session.userId,
+          });
+        })();
+    if (!tour.ok) {
       return errorResponse("invalid_request", {
         message:
-          pret.code === "missing_error"
-            ? "Choisis une erreur à expliquer."
-            : "Cette question n'est pas une erreur de ta dernière tentative.",
+          "message" in tour
+            ? tour.message
+            : messageEchecFil(tour.code, "conversation"),
+      });
+    }
+    let pret = preparerEchangeCoach({
+      contexte,
+      intent: tour.conversation.intent,
+      questionId: tour.conversation.questionId ?? undefined,
+      quizId: tour.conversation.quizId ?? undefined,
+    });
+    if (!pret.ok) {
+      pret = preparerEchangeCoach({ contexte, intent: "chat" });
+    }
+    if (!pret.ok) {
+      return errorResponse("invalid_request", {
+        message: "Le coach n'a pas pu préparer cette demande.",
       });
     }
     const [catalogue, prefs] = await Promise.all([
@@ -172,18 +213,16 @@ export async function POST(request: Request) {
       sessionToken,
       userId: session.userId,
     });
+    const conversationId = tour.conversation.id;
     const result = streamText({
       abortSignal: request.signal,
-      instructions: pret.system,
-      messages: [
-        { content: pret.ouverture, role: "user" },
-        ...suivi.messages.map((message) => ({
-          content: message.text,
-          role: message.role,
-        })),
-      ],
+      instructions: `${pret.system}\n\n${pret.faits}`,
+      messages: messagesPourModele(tour.messages).map((message) => ({
+        content: message.text,
+        role: message.role,
+      })),
       model,
-      onEnd: async ({ totalUsage }) => {
+      onEnd: async ({ text, totalUsage }) => {
         try {
           await enregistrerUsageCoach({
             model: modelId,
@@ -196,11 +235,23 @@ export async function POST(request: Request) {
         } catch (error) {
           console.error("[quizzly][coach] décompte", error);
         }
+        try {
+          await enregistrerReponseCoach({
+            conversationId,
+            text,
+            userId: session.userId,
+          });
+        } catch (error) {
+          console.error("[quizzly][coach] enregistrement", error);
+        }
       },
       ...(providerOptions ? { providerOptions } : {}),
     });
     return createTextStreamResponse({
-      headers: { "Cache-Control": "private, no-store" },
+      headers: {
+        "Cache-Control": "private, no-store",
+        [ENTETE_CONVERSATION_COACH]: conversationId,
+      },
       stream: toTextStream({ stream: result.stream }),
     });
   } catch (error) {

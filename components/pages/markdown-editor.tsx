@@ -31,10 +31,28 @@ import {
   inspectPageMarkdown,
   pageEditorExtensions,
 } from "@/components/pages/extensions";
+import {
+  isPageFont,
+  isPageSize,
+  isPageTone,
+  normalizePageFont,
+  PAGE_FONT_LABELS,
+  PAGE_FONTS,
+  PAGE_SHAPE_LABELS,
+  PAGE_SHAPES,
+  PAGE_SIZE_LABELS,
+  PAGE_SIZES,
+  PAGE_TONE_LABELS,
+  PAGE_TONES,
+  type PageFont,
+  type PageMarkAttrs,
+  type PageShapeKind,
+} from "@/lib/pages/style";
 import { promptInApp } from "@/lib/ui/app-dialog";
 import { cn } from "@/lib/utils";
 
 type MarkdownEditorProps = {
+  defaultFont?: PageFont;
   onChange: (markdown: string) => void;
   onSelection: (text: string) => void;
   readOnly: boolean;
@@ -76,6 +94,7 @@ function findInDoc(editor: Editor, query: string, from: number) {
 }
 
 export function MarkdownEditor({
+  defaultFont = "sans",
   onChange,
   onSelection,
   readOnly,
@@ -140,6 +159,16 @@ export function MarkdownEditor({
             strike: current.isActive("strike"),
             task: current.isActive("taskList"),
             undo: current.can().undo(),
+            underline: current.getAttributes("pageStyle").underline === true,
+            zoneFont: isPageFont(current.getAttributes("pageStyle").font)
+              ? current.getAttributes("pageStyle").font
+              : "",
+            zoneSize: isPageSize(current.getAttributes("pageStyle").size)
+              ? current.getAttributes("pageStyle").size
+              : "",
+            zoneTone: isPageTone(current.getAttributes("pageStyle").tone)
+              ? current.getAttributes("pageStyle").tone
+              : "",
           }
         : null,
   });
@@ -224,6 +253,43 @@ export function MarkdownEditor({
     editor.chain().focus().setTextSelection(match).scrollIntoView().run();
   }
 
+  function applyZone(patch: Partial<PageMarkAttrs>) {
+    if (!editor) {
+      return;
+    }
+    const current = editor.getAttributes("pageStyle");
+    const next: PageMarkAttrs = {
+      font:
+        patch.font === undefined
+          ? isPageFont(current.font)
+            ? current.font
+            : null
+          : patch.font,
+      size:
+        patch.size === undefined
+          ? isPageSize(current.size)
+            ? current.size
+            : null
+          : patch.size,
+      tone:
+        patch.tone === undefined
+          ? isPageTone(current.tone)
+            ? current.tone
+            : null
+          : patch.tone,
+      underline:
+        patch.underline === undefined
+          ? current.underline === true
+          : patch.underline,
+    };
+    const chain = editor.chain().focus();
+    if (!next.font && !next.size && !next.tone && !next.underline) {
+      chain.unsetMark("pageStyle").run();
+      return;
+    }
+    chain.setMark("pageStyle", next).run();
+  }
+
   function replaceCurrent() {
     if (!findQuery || readOnly) {
       return;
@@ -258,6 +324,50 @@ export function MarkdownEditor({
       return;
     }
     editor.chain().focus().insertContent(replaceWith).run();
+  }
+
+  const imageInputRef = useRef<HTMLInputElement>(null);
+
+  async function importImageFile(file: File) {
+    if (!editor) {
+      return;
+    }
+    const allowed = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    if (!allowed.includes(file.type)) {
+      toast.message("Choisissez une image jpeg, png, gif ou webp.");
+      return;
+    }
+    if (file.size > 50 * 1024 * 1024) {
+      toast.message("L'image dépasse 50 Mo.");
+      return;
+    }
+    const form = new FormData();
+    form.append("file", file);
+    const response = await fetch("/api/library", { body: form, method: "POST" });
+    const data = (await response.json().catch(() => null)) as {
+      file?: { url?: string };
+      message?: string;
+    } | null;
+    if (response.status === 409 || response.status === 429) {
+      toast.message(data?.message || "Le quota de la Bibliothèque est atteint.");
+      return;
+    }
+    if (!response.ok || !data?.file?.url) {
+      toast.message(data?.message || "L'image n'a pas pu être enregistrée.");
+      return;
+    }
+    editor.chain().focus().setImage({ src: data.file.url }).run();
+  }
+
+  function insertShape(kind: PageShapeKind) {
+    editor
+      ?.chain()
+      .focus()
+      .insertContent({
+        attrs: { height: kind === "line" || kind === "arrow" ? 48 : 80, kind, width: 200 },
+        type: "pageShape",
+      })
+      .run();
   }
 
   const toolClass = (active?: boolean) =>
@@ -353,6 +463,140 @@ export function MarkdownEditor({
             >
               <StrikethroughIcon className="size-4" />
             </button>
+            <label className="ml-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+              <span>Police</span>
+              <select
+                aria-label="Police de la sélection"
+                className="field-input rounded-lg border border-border/70 bg-card px-1.5 py-1 text-xs text-foreground"
+                onChange={(event) =>
+                  applyZone({
+                    font: event.target.value
+                      ? normalizePageFont(event.target.value)
+                      : null,
+                  })
+                }
+                value={state?.zoneFont ?? ""}
+              >
+                <option value="">Défaut</option>
+                {PAGE_FONTS.map((value) => (
+                  <option key={value} value={value}>
+                    {PAGE_FONT_LABELS[value]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <span>Couleur</span>
+              <select
+                aria-label="Couleur de la sélection"
+                className="field-input rounded-lg border border-border/70 bg-card px-1.5 py-1 text-xs text-foreground"
+                onChange={(event) =>
+                  applyZone({
+                    tone: isPageTone(event.target.value)
+                      ? event.target.value
+                      : null,
+                  })
+                }
+                value={state?.zoneTone ?? ""}
+              >
+                <option value="">Aucune</option>
+                {PAGE_TONES.map((value) => (
+                  <option key={value} value={value}>
+                    {PAGE_TONE_LABELS[value]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <span>Taille</span>
+              <select
+                aria-label="Taille de la sélection"
+                className="field-input rounded-lg border border-border/70 bg-card px-1.5 py-1 text-xs text-foreground"
+                onChange={(event) =>
+                  applyZone({
+                    size: isPageSize(event.target.value)
+                      ? event.target.value
+                      : null,
+                  })
+                }
+                value={state?.zoneSize ?? ""}
+              >
+                <option value="">Défaut</option>
+                {PAGE_SIZES.map((value) => (
+                  <option key={value} value={value}>
+                    {PAGE_SIZE_LABELS[value]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              aria-label="Souligné"
+              aria-pressed={state?.underline}
+              className={toolClass(state?.underline)}
+              onClick={() => applyZone({ underline: !state?.underline })}
+              type="button"
+            >
+              <span className="text-xs underline">S</span>
+            </button>
+            <label className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <span>Insérer</span>
+              <select
+                aria-label="Insérer un élément"
+                className="field-input rounded-lg border border-border/70 bg-card px-1.5 py-1 text-xs text-foreground"
+                onChange={(event) => {
+                  const choice = event.target.value;
+                  event.target.value = "";
+                  if (choice === "rule") {
+                    editor.chain().focus().setHorizontalRule().run();
+                  } else if (choice === "file") {
+                    imageInputRef.current?.click();
+                  } else if (choice === "url") {
+                    void (async () => {
+                      const url = await promptInApp(
+                        "Adresse de l'image (https://…)"
+                      );
+                      if (!url) return;
+                      if (!isHttpUrl(url)) {
+                        toast.message("Indiquez une adresse http ou https.");
+                        return;
+                      }
+                      editor.chain().focus().setImage({ src: url }).run();
+                    })();
+                  } else if (
+                    choice === "rect" ||
+                    choice === "ellipse" ||
+                    choice === "line" ||
+                    choice === "arrow"
+                  ) {
+                    insertShape(choice);
+                  }
+                }}
+                value=""
+              >
+                <option value="">Choisir…</option>
+                <option value="rule">Séparateur</option>
+                <option value="file">Image (fichier)</option>
+                <option value="url">Image (adresse)</option>
+                {PAGE_SHAPES.map((kind) => (
+                  <option key={kind} value={kind}>
+                    {PAGE_SHAPE_LABELS[kind]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <input
+              accept="image/jpeg,image/png,image/gif,image/webp"
+              className="hidden"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                event.target.value = "";
+                if (file) {
+                  void importImageFile(file);
+                }
+              }}
+              ref={imageInputRef}
+              type="file"
+            />
             <button
               aria-label="Code"
               aria-pressed={state?.code}
@@ -531,7 +775,12 @@ export function MarkdownEditor({
       {mode === "visual" ? (
         editor ? (
           <EditorContent
-            className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-8 [&_.ProseMirror]:min-h-[50vh] [&_.ProseMirror]:outline-none [&_ul[data-type=taskList]]:list-none [&_ul[data-type=taskList]]:pl-0"
+            className={cn(
+              "min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-8 [&_.ProseMirror]:min-h-[50vh] [&_.ProseMirror]:outline-none [&_ul[data-type=taskList]]:list-none [&_ul[data-type=taskList]]:pl-0",
+              defaultFont === "sans" && "[&_.ProseMirror]:font-sans",
+              defaultFont === "serif" && "[&_.ProseMirror]:font-serif",
+              defaultFont === "mono" && "[&_.ProseMirror]:font-mono"
+            )}
             editor={editor}
           />
         ) : (

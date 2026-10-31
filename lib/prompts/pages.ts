@@ -1,7 +1,9 @@
 // Prompt du panneau d'édition. Pur : la route fournit les textes déjà lus
-// en base. L'ordre est fixe — contrat, puis sélection et mode, puis les
-// consignes personnelles en dernier (projet, page, compte).
+// en base. L'ordre est fixe — contrat (formats Markdown et balise <m>),
+// puis le mode, la police du compte, la sélection, et les consignes
+// personnelles en dernier (projet, page, compte).
 
+import { normalizePageFont, type PageFont } from "@/lib/pages/style";
 import {
   composePersonalInstructions,
   composeSystemPrompt,
@@ -10,6 +12,8 @@ import {
 export type PagePromptInput = {
   accountEnabled: boolean;
   accountInstructions: string | null;
+  /** Police de lecture du compte. Absente, elle vaut sans. */
+  defaultFont?: PageFont;
   intent: "edit" | "propose";
   pagePrompt: string | null;
   projectInstructions: string | null;
@@ -22,6 +26,11 @@ const BASE = [
   "Tu es mAI, l'assistant d'édition d'une page Markdown.",
   "Tu réponds en français. Tu n'inventes pas de contenu hors de la page, de la sélection et de ce que l'utilisateur demande.",
   "La page est du Markdown. Tu conserves les titres, listes, tableaux, liens et blocs de code sauf demande contraire.",
+  "Les formats habituels restent du Markdown : **gras**, *italique*, titres et listes.",
+  "Une zone de texte peut porter une police et une couleur, et seulement ainsi :",
+  '<m font="serif" tone="info">passage</m>',
+  "font vaut sans, serif ou mono. tone vaut info, warning, success ou destructive. Omets l'attribut que tu ne changes pas.",
+  "N'utilise aucune autre balise HTML, aucun attribut style, aucune couleur libre. Une balise <m> invalide force le mode source et abîme la page.",
   "Outils :",
   "- lire_page : lis le titre, le corps et l'empreinte avant toute modification.",
   "- modifier_page : édition ciblée, appliquée tout de suite. Réservée au mode édition.",
@@ -42,6 +51,13 @@ function modeSection(intent: PagePromptInput["intent"]): string {
   return [
     "MODE PROPOSITION",
     "Conversation libre. Utilise proposer_modification pour toute modification du corps. N'appelle modifier_page que si l'utilisateur demande explicitement d'appliquer tout de suite.",
+  ].join("\n");
+}
+
+function fontSection(font: PageFont): string {
+  return [
+    "POLICE DU COMPTE",
+    `La police de lecture est « ${font} ». Le texte sans balise <m> l'utilise déjà : ne réécris pas la page pour l'appliquer.`,
   ].join("\n");
 }
 
@@ -79,7 +95,10 @@ export function buildPageSystemPrompt(input: PagePromptInput): string {
   ]);
   return composeSystemPrompt({
     base: `${BASE}\n\n${modeSection(input.intent)}`,
-    capabilitySections: [selectionSection(input.selection)],
+    capabilitySections: [
+      fontSection(normalizePageFont(input.defaultFont)),
+      selectionSection(input.selection),
+    ],
     personal,
   });
 }

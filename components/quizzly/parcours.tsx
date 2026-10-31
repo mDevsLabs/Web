@@ -1,10 +1,18 @@
 "use client";
 
+import { CheckIcon, ChevronDownIcon, LockIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
 import { MentionIa } from "@/components/quizzly/signalement";
+import { IconeMatiere } from "@/components/quizzly/subject-icon";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -35,6 +43,46 @@ type Parcours = {
   yearChosen: boolean;
   years: SchoolYear[];
 };
+
+function MenuDeroulant({
+  desactive,
+  libelle,
+  onChoisir,
+  options,
+  valeur,
+}: {
+  desactive?: boolean;
+  libelle: string;
+  onChoisir: (id: string) => void;
+  options: { id: string; label: string }[];
+  valeur: string;
+}) {
+  const actif = options.find((option) => option.id === valeur);
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        className="chip inline-flex items-center gap-2"
+        data-active="true"
+        disabled={desactive}
+        type="button"
+      >
+        <span className="text-muted-foreground">{libelle}</span>
+        <span>{actif?.label ?? "Choisir"}</span>
+        <ChevronDownIcon className="size-3.5" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="max-h-80">
+        {options.map((option) => (
+          <DropdownMenuItem
+            key={option.id}
+            onSelect={() => onChoisir(option.id)}
+          >
+            {option.label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 async function envoyer(url: string, body: unknown) {
   const reponse = await fetch(url, {
@@ -107,22 +155,19 @@ export function ParcoursQuizzly() {
         <div className="surface-card flex flex-col gap-4">
           <h1 className="text-lg font-semibold">Quelle est votre année ?</h1>
           <p className="text-sm text-muted-foreground">
-            Le parcours s'ouvre sur cette année. Vous pourrez en changer dans le
-            profil.
+            Le parcours s'ouvre sur cette année. Vous pourrez en changer dans
+            les paramètres d'applications.
           </p>
-          <div className="flex flex-wrap gap-2">
-            {data.years.map((year) => (
-              <button
-                className="chip"
-                disabled={enregistrement}
-                key={year}
-                onClick={() => choisir(year)}
-                type="button"
-              >
-                {libelleAnnee(year)}
-              </button>
-            ))}
-          </div>
+          <MenuDeroulant
+            desactive={enregistrement}
+            libelle="Classe"
+            onChoisir={(id) => choisir(id as SchoolYear)}
+            options={data.years.map((year) => ({
+              id: year,
+              label: libelleAnnee(year),
+            }))}
+            valeur=""
+          />
           {message ? (
             <p className="text-sm text-destructive">{message}</p>
           ) : null}
@@ -135,80 +180,99 @@ export function ParcoursQuizzly() {
     data.subjects.find((entree) => entree.id === matiereId) ?? data.subjects[0];
 
   return (
-    <section className="mx-auto flex max-w-xl flex-col gap-6 p-4 sm:p-6">
-      <div className="flex flex-wrap gap-2">
-        {data.years.map((year) => (
-          <button
-            className="chip"
-            data-active={year === data.year ? "true" : "false"}
-            key={year}
-            onClick={() => {
-              setAnneeDemandee(year);
-              setMatiereId(null);
-            }}
-            type="button"
-          >
-            {libelleAnnee(year)}
-          </button>
-        ))}
-      </div>
-      {data.subjects.length === 0 ? (
-        <div className="surface-muted p-4 text-sm text-muted-foreground">
-          Aucun chapitre n'est encore disponible pour cette année.
-        </div>
-      ) : (
-        <>
-          <div className="flex flex-wrap gap-2">
+    <section className="mx-auto flex max-w-5xl flex-col gap-6 p-4 sm:flex-row sm:p-6">
+      <div className="flex w-full shrink-0 flex-col gap-3 sm:w-64">
+        <MenuDeroulant
+          libelle="Classe"
+          onChoisir={(id) => {
+            setAnneeDemandee(id);
+            setMatiereId(null);
+          }}
+          options={data.years.map((year) => ({
+            id: year,
+            label: libelleAnnee(year),
+          }))}
+          valeur={data.year}
+        />
+        {data.subjects.length === 0 ? null : (
+          <nav aria-label="Matières" className="flex flex-col gap-1">
             {data.subjects.map((entree) => (
               <button
-                className="chip"
-                data-active={entree.id === matiere?.id ? "true" : "false"}
+                className={cn(
+                  "flex items-center gap-2 rounded-2xl px-2 py-2 text-left text-sm font-semibold",
+                  entree.id === matiere?.id
+                    ? "bg-q-level/15 text-foreground"
+                    : "text-muted-foreground hover:bg-q-shop/10"
+                )}
                 key={entree.id}
                 onClick={() => setMatiereId(entree.id)}
                 type="button"
               >
+                <IconeMatiere id={entree.id} />
                 {entree.label}
               </button>
             ))}
+          </nav>
+        )}
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-6">
+        {data.subjects.length === 0 ? (
+          <div className="surface-muted p-4 text-sm text-muted-foreground">
+            Aucun chapitre n'est encore disponible pour cette année.
           </div>
-          {matiere?.chapters.map((chapitre) => (
+        ) : (
+          matiere?.chapters.map((chapitre) => (
             <article className="flex flex-col gap-4" key={chapitre.id}>
-              <h2 className="text-base font-semibold">{chapitre.title}</h2>
-              {chapitre.units.map((unite) => (
-                <div className="flex flex-col gap-3" key={unite.id}>
-                  <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    {unite.title}
-                  </h3>
-                  <ol className="flex flex-col items-center gap-3">
-                    {unite.quizzes.map((quiz, index) => (
-                      <li key={quiz.id}>
-                        {quiz.unlocked ? (
-                          <Link
-                            className={cn(
-                              "flex size-14 items-center justify-center rounded-full border text-sm font-semibold",
-                              quiz.passed
-                                ? "border-success bg-success/10 text-success"
-                                : "border-foreground bg-foreground text-background"
-                            )}
-                            href={`/quizzly/quiz/${quiz.id}`}
-                          >
-                            {index + 1}
-                          </Link>
-                        ) : (
-                          <span className="flex size-14 items-center justify-center rounded-full border border-border text-sm text-muted-foreground">
-                            {index + 1}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              ))}
+              <h2 className="flex items-center gap-2 text-base font-semibold">
+                {matiere ? <IconeMatiere id={matiere.id} /> : null}
+                {chapitre.title}
+              </h2>
+              {chapitre.units.map((unite) => {
+                const courant = unite.quizzes.find(
+                  (quiz) => quiz.unlocked && !quiz.passed
+                );
+                return (
+                  <div className="flex flex-col gap-3" key={unite.id}>
+                    <h3 className="text-xs font-semibold uppercase tracking-wide text-q-quest">
+                      {unite.title}
+                    </h3>
+                    <ol className="relative flex flex-col items-center gap-3 py-2">
+                      <span className="absolute top-4 bottom-4 w-1 rounded-full bg-q-path/35" />
+                      {unite.quizzes.map((quiz, index) => (
+                        <li className="relative" key={quiz.id}>
+                          {quiz.unlocked ? (
+                            <Link
+                              className={cn(
+                                "flex size-14 items-center justify-center rounded-full border text-sm font-semibold shadow-md",
+                                quiz.passed
+                                  ? "border-q-xp bg-q-xp text-q-on"
+                                  : "border-q-level bg-q-level text-q-on",
+                                quiz.id === courant?.id && "q-float"
+                              )}
+                              href={`/quizzly/quiz/${quiz.id}`}
+                            >
+                              {quiz.passed ? (
+                                <CheckIcon className="size-5" />
+                              ) : (
+                                index + 1
+                              )}
+                            </Link>
+                          ) : (
+                            <span className="flex size-14 items-center justify-center rounded-full border border-border bg-background text-sm text-muted-foreground">
+                              <LockIcon className="size-4" />
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                );
+              })}
               <MentionIa />
             </article>
-          ))}
-        </>
-      )}
+          ))
+        )}
+      </div>
     </section>
   );
 }

@@ -68,6 +68,45 @@ export function extraTokenProviders(
     }),
     tokenProvider({
       accessSummary:
+        "Géocodage, lieux et itinéraires Google Maps, en lecture. La clé se révoque depuis Google Cloud.",
+      account: {
+        auth: { kind: "query", name: "key" },
+        expect: { equals: "OK", path: "status" },
+        idFallback: "google-maps",
+        idField: "status",
+        labelFallback: "Google Maps",
+        labelFields: [],
+        url: "https://maps.googleapis.com/maps/api/geocode/json?address=Paris",
+      },
+      envPrefix: "GOOGLE_MAPS",
+      helpUrl: "https://console.cloud.google.com/apis/credentials",
+      hosts: ["maps.googleapis.com"],
+      id: "google-maps",
+      label: "Google Maps",
+      mentionToken: "GoogleMaps",
+      placeholder: "Clé API Google Maps",
+    }),
+    tokenProvider({
+      accessSummary:
+        "Recherche de vidéos, fiches et chaînes YouTube, en lecture. La clé se révoque depuis Google Cloud.",
+      account: {
+        auth: { kind: "query", name: "key" },
+        idFallback: "youtube",
+        idField: "kind",
+        labelFallback: "YouTube",
+        labelFields: [],
+        url: "https://www.googleapis.com/youtube/v3/videos?part=id&id=jNQXAC9IVRw",
+      },
+      envPrefix: "YOUTUBE",
+      helpUrl: "https://console.cloud.google.com/apis/credentials",
+      hosts: ["www.googleapis.com"],
+      id: "youtube",
+      label: "YouTube",
+      mentionToken: "YouTube",
+      placeholder: "Clé API YouTube Data",
+    }),
+    tokenProvider({
+      accessSummary:
         "Taux de change ExchangeRate-API, en lecture. La clé se révoque depuis le tableau du fournisseur.",
       account: {
         auth: { kind: "none" },

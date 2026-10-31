@@ -104,7 +104,7 @@ describe("public/plugins/", () => {
   });
 
   it("dérive le chemin d'un identifiant, sans liste à entretenir", () => {
-    expect(integrationLogoSrc("google")).toBe("/plugins/google.svg");
+    expect(integrationLogoSrc("google-maps")).toBe("/plugins/google-maps.svg");
     expect(integrationLogoSrc("github")).toBe("/plugins/github.svg");
   });
 });

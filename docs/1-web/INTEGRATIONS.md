@@ -178,24 +178,23 @@ switch.
 
 ## 6. Mentions `@` et logos
 
-- Chat et Agent : le plugin s'instanciant depuis `/api/plugins`, `@Google` et
-  `@GitHub` fonctionnent comme pour tout plugin. Le composer ne pousse que les
-  ids de **lecture** (`readToolIds`), pour ne rien demander que le serveur
-  n'instancie pas.
+- Chat et Agent : le plugin s'instanciant depuis `/api/plugins`, `@GitHub`,
+  `@GoogleMaps` et `@YouTube` fonctionnent comme pour tout plugin. Le composer
+  ne pousse que les ids de **lecture** (`readToolIds`), pour ne rien demander
+  que le serveur n'instancie pas.
 - Wakies : `parseMentions` n'accepte pas les espaces, d'où `mentionToken`
-  (`@Google`, `@GitHub`) affiché à côté du nom complet. `applyIntegrationMentions`
-  (`lib/wakies/capabilities.ts`) applique la **même** revalidation que la
-  configuration du Wakie et exige une connexion réelle.
+  (`@GitHub`, `@GoogleMaps`, `@YouTube`) affiché à côté du nom complet.
+  `applyIntegrationMentions` (`lib/wakies/capabilities.ts`) applique la
+  **même** revalidation que la configuration du Wakie et exige une connexion
+  réelle.
 - Logo : `PluginToolLogo` (message principal), la timeline d'Agent et
   `ToolResultCard` (Wakies) resolve le connecteur depuis l'identifiant d'outil.
-  Le nom affiché vient du manifeste du plugin : `Google · Rechercher dans mes
-  fichiers`, plus lisible que `searchDriveFiles`.
-- Rendu : les marques multicolores sont des `<img>` **nus** ; le `dark:invert`
-  des logos monochromes servis en image est proscrit ici, il détruirait les couleurs. Les
-  marques monochromes (GitHub, Notion) passent par un
+  Le nom affiché vient du manifeste du plugin.
+- Rendu : le catalogue (`PluginIcon`) et les marques monochromes passent par un
   **masque CSS + `currentColor`** (`.integration-logo`, `app/globals.css`), donc
   elles suivent le thème sans variante `dark:` — et restent utilisables telles
-  quelles dans Wakies, qui n'a qu'un seul thème.
+  quelles dans Wakies, qui n'a qu'un seul thème. Discord, seule marque encore
+  déclarée en couleurs, reste un `<img>` nu.
 
 ---
 
@@ -222,25 +221,15 @@ modifiés : ils lisent le registre.
 
 ## 8. Configurer les consoles
 
-### Google Cloud — un seul client pour Drive, Agenda et Gmail
+### Google Maps et YouTube Data — clés collées par le compte
 
-Écran de consentement *External* + credentials **OAuth client ID → Web
-application**. URI autorisées, une seule par environnement :
-`https://<hôte>/api/integration/google/callback` (et son pendant
-`http://localhost:3000/...` en développement).
-
-Les portées retenues sont classées **sensitive** par Google
-(`drive.readonly`, `calendar.readonly`, `calendar.events`, `gmail.readonly`,
-`gmail.send`). **Sans vérification de l'écran de consentement** : page
-d'avertissement « application non vérifiée », plafond de 100 utilisateurs
-testeurs, expiration des jetons au bout de sept jours en mode test, et surtout
-**aucun `refresh_token`** — la connexion meurt à la première heure. Cette
-vérification est un prérequis de mise en production, pas une formalité
-ultérieure. `gmail.modify` et `drive` (full) sont « restricted » : audit de
-sécurité payant et revérification annuelle ; ils ne sont pas demandés.
-
-Sans `prompt=consent` et `access_type=offline`, Google ne rend un
-`refresh_token` que lors du tout premier consentement.
+Ce ne sont pas des consentements OAuth. L'utilisateur crée une clé dans
+Google Cloud, active Geocoding, Places, Directions ou YouTube Data API v3,
+et la colle dans la fiche du plugin. La clé est chiffrée comme les autres
+jetons. Maps n'appelle que `maps.googleapis.com`. YouTube n'appelle que
+`/youtube/v3/` sur `www.googleapis.com`. Aucune variable `GOOGLE_*` n'est lue.
+Les connexions Drive, Agenda et Gmail déjà enregistrées ne sont plus
+proposées : les lignes restent en base, les outils ont disparu.
 
 ### GitHub — OAuth App classique, pas une GitHub App
 
@@ -279,7 +268,7 @@ chiffré. Aucune variable d'environnement n'est requise. Le plugin est en
 souvent les droits du compte entier, et un redéploiement déclenché par erreur
 ne se rattrape pas.
 
-Les connecteurs Brave Search, Mapbox, ExchangeRate-API, SonarCloud, npm,
+Les connecteurs Brave Search, Mapbox, Google Maps, YouTube, ExchangeRate-API, SonarCloud, npm,
 Docker Hub, Brevo, Twilio, Asana, Jira, Upstash, Neon, Supabase, Zapier et
 Make suivent le même coffre. Cinq d'entre eux demandent un renseignement en
 plus du secret, validé avant chiffrement : Docker Hub (identifiant), Twilio
@@ -299,7 +288,6 @@ Aucune de ces clés ne se lit dans l'environnement. Le logo de chacun est
 
 ```
 MCP_ENCRYPTION_KEY                       OBLIGATOIRE — coffre des jetons ET scellement de l'état
-GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET   un seul client pour les trois accès
 GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
 MAI_OAUTH_REDIRECT_BASE_URL              optionnel, derrière un proxy qui masque l'hôte
 ```
@@ -310,7 +298,6 @@ liste : le jeton est stocké chiffré par le coffre, pas lu dans l'environnement
 Les URI de rappel à enregistrer chez les fournisseurs, une par environnement :
 
 ```
-https://<hôte>/api/integration/google/callback
 https://<hôte>/api/integration/github/callback
 ```
 

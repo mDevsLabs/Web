@@ -605,10 +605,15 @@ Cinq règles à ne pas contourner:
 - **Les questions vivent dans les JSON** de `lib/quizzly/curriculum`, versionnés
   avec le module. Sans ce dossier, `/quizzly` ne charge plus le programme.
 - **Seule la progression du compte est en Postgres** : `QuizzlyProfile`,
-  `QuizzlyQuizProgress`, `QuizzlyQuest`, `QuizzlyReport` (migrations 0073 et
-  0074).
-- **`lib/quizzly/rules.ts` tranche** (cœurs, XP, gemmes, quêtes). `queries.ts`
-  est `server-only`. L'interface ne s'accorde pas de récompenses.
+  `QuizzlyQuizProgress`, `QuizzlyQuest`, `QuizzlyQuestDraw`, `QuizzlyReport`
+  (migrations 0073, 0074 et 0081). Le niveau se déduit de l'XP, il n'a pas
+  de colonne.
+- **`lib/quizzly/rules.ts` tranche** (cœurs, XP, gemmes, niveau, quêtes).
+  Une bonne réponse à la première validation d'un quiz réussi vaut 1 XP.
+  Une quête quotidienne réclamée vaut 10 XP. Une quête hebdomadaire vaut
+  des gemmes. Le tirage est global, figé pour le jour ou la semaine ISO
+  Europe/Paris, une quête par mesure. `queries.ts` est `server-only`.
+  L'interface ne s'accorde pas de récompenses.
 - **Le nom affiché n'est pas sur le profil Quizzly** : il vient de
   `profiles.display_name` (Vibe), partagé avec Blackline.
 

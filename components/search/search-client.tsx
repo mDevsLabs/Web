@@ -49,6 +49,7 @@ import {
   type SummarySource,
 } from "@/lib/search/summary-stream";
 import trendingSuggestions from "@/lib/search/trending-suggestions.json";
+import { pickTrends } from "@/lib/search/trends";
 import { isWikipediaArticleUrl } from "@/lib/search/wikipedia";
 import type {
   SearchImageHit,
@@ -75,35 +76,25 @@ function modelLabelFromResponse(response: Response): string | null {
   return id ? formatModelName(id).name : null;
 }
 
-function TrendSuggestions({
-  layout,
-  onPick,
-  query,
-}: {
-  layout: "row" | "wrap";
-  onPick: (suggestion: string) => void;
-  query: string;
-}) {
-  const needle = query.trim().toLowerCase();
-  const visible = needle
-    ? TRENDING.filter((item) => item.toLowerCase().includes(needle))
-    : TRENDING;
-  if (visible.length === 0) {
-    return null;
-  }
+function HomeTrends({ onPick }: { onPick: (suggestion: string) => void }) {
+  const [items, setItems] = useState(() => pickTrends(TRENDING));
   return (
-    <div className={layout === "wrap" ? "mt-4 w-full max-w-3xl" : "w-full"}>
-      <p className="mb-2 px-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-        Tendances
-      </p>
-      <div
-        className={
-          layout === "wrap"
-            ? "flex max-h-40 flex-wrap gap-1.5 overflow-y-auto"
-            : "flex gap-1.5 overflow-x-auto pb-1 no-scrollbar"
-        }
-      >
-        {visible.map((item) => (
+    <div className="mt-4 w-full max-w-3xl">
+      <div className="mb-2 flex items-center gap-2 px-1">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          Tendances
+        </p>
+        <button
+          className="chip ml-auto inline-flex cursor-pointer items-center gap-1.5 px-2.5 py-1 text-[11px]"
+          onClick={() => setItems((current) => pickTrends(TRENDING, current))}
+          type="button"
+        >
+          <RotateCcwIcon className="size-3" />
+          <span>Rafraîchir</span>
+        </button>
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
           <button
             className="chip shrink-0 cursor-pointer px-3 py-1.5 text-xs"
             key={item}
@@ -391,6 +382,8 @@ export function SearchClient() {
   const [summaryReasoning, setSummaryReasoning] = useState("");
   const [summarySources, setSummarySources] = useState<SummarySource[]>([]);
   const [summaryModel, setSummaryModel] = useState<string | null>(null);
+  const [summarySubstituted, setSummarySubstituted] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
   const [summaryLength, setSummaryLength] = useState<
     "normal" | "short" | "long"
   >("normal");
@@ -409,6 +402,11 @@ export function SearchClient() {
    */
   const [portalReady, setPortalReady] = useState(false);
   useEffect(() => setPortalReady(true), []);
+  useEffect(() => {
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      setHistoryOpen(true);
+    }
+  }, []);
 
   // Visionneuse Lightbox pour les images
   const [selectedImage, setSelectedImage] = useState<SearchImageHit | null>(
@@ -522,7 +520,9 @@ export function SearchClient() {
       setSummary("");
       setSummaryReasoning("");
       setSummarySources([]);
+      setSummarySubstituted(false);
       setVote(null);
+      let textAccumulator = "";
 
       try {
         const response = await fetch("/api/mai-search/summary", {
@@ -546,8 +546,10 @@ export function SearchClient() {
         if (modelLabel) {
           setSummaryModel(modelLabel);
         }
+        setSummarySubstituted(
+          response.headers.get("X-Model-Substituted") === "1"
+        );
 
-        let textAccumulator = "";
         let reasoningAccumulator = "";
         let streamError: string | null = null;
         await readSummaryStream(response, (event) => {
@@ -573,7 +575,9 @@ export function SearchClient() {
         if (err.name !== "AbortError") {
           console.error("[SearchClient] Erreur résumé global:", err);
           setSummary(
-            "Le résumé IA n'a pas pu être finalisé. Vous pouvez réessayer ci-dessous."
+            textAccumulator
+              ? `${textAccumulator}\n\nLe résumé s'est interrompu avant la fin.`
+              : "Le résumé IA n'a pas pu être finalisé. Vous pouvez réessayer ci-dessous."
           );
         }
       } finally {
@@ -869,6 +873,8 @@ export function SearchClient() {
       const q = (overrideQuery ?? query).trim();
       if (!q) return;
 
+      setHistoryOpen(false);
+
       // Une recherche précédente encore en vol est abandonnée : ses
       // résultats ne doivent pas écraser ceux de la nouvelle.
       searchAbortRef.current?.abort();
@@ -963,7 +969,13 @@ export function SearchClient() {
         void refreshRecent();
 
         // Une recherche rouverte depuis l'historique garde sa synthèse.
-        if (!options?.keepSummary) {
+        const usable = searchResults.filter((hit) => !hit.isDisambiguation);
+        if (!options?.keepSummary && usable.length === 0) {
+          setSummary(
+            "Les résultats ne contiennent aucune source à synthétiser."
+          );
+          setSummarySubstituted(false);
+        } else if (!options?.keepSummary) {
           void fetchSummary(q, data.searchId || null, searchResults, "normal");
         } else if (data.searchId) {
           setSearchId(data.searchId);
@@ -1211,6 +1223,8 @@ export function SearchClient() {
       <SearchHistorySidebar
         hasMore={historyHasMore}
         isLoading={historyLoading}
+        onOpenChange={setHistoryOpen}
+        open={historyOpen}
         onClear={() => void clearRecent()}
         onForget={(id) => void forgetRecent(id)}
         onLoadMore={() => void loadMoreHistory()}
@@ -1291,22 +1305,9 @@ export function SearchClient() {
                 </button>
               </div>
 
-              <div className="max-w-6xl mx-auto w-full pt-3">
-                <TrendSuggestions
-                  layout="row"
-                  onPick={(suggestion) => {
-                    setQuery(suggestion);
-                    void runSearch(suggestion);
-                  }}
-                  query={query}
-                />
-              </div>
-
-              {/* Onglets et Tags de filtrage. L'état actif se porte sur
-                `data-active` (voir l'utilitaire `chip` de globals.css), jamais
-                sur une classe conditionnelle : les onglets et la pastille
-                « Wikipédia + Web » partagent alors exactement le même
-                gabarit, à la lettre près. */}
+              {/* Onglets, puis tri et période à droite de Wikipédia. L'état
+                actif se porte sur `data-active` (voir l'utilitaire `chip`
+                de globals.css), jamais sur une classe conditionnelle. */}
               <div className="max-w-6xl mx-auto flex items-center gap-1.5 pt-3 overflow-x-auto w-full no-scrollbar">
                 <button
                   className="chip text-xs inline-flex items-center gap-1.5 py-1.5 px-3 cursor-pointer shrink-0"
@@ -1394,53 +1395,52 @@ export function SearchClient() {
                   </span>
                 ) : null}
 
-                {domainFilter ? (
-                  <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-medium shrink-0">
-                    <TagIcon className="size-3" />
-                    <span>Filtre : {domainFilter}</span>
-                    <button
-                      className="hover:opacity-70 p-0.5"
-                      onClick={() => setDomainFilter(null)}
-                      title="Effacer le filtre par site"
-                      type="button"
+                <div className="ml-auto flex shrink-0 items-center gap-1.5">
+                  {domainFilter ? (
+                    <div className="flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+                      <TagIcon className="size-3" />
+                      <span>Filtre : {domainFilter}</span>
+                      <button
+                        className="p-0.5 hover:opacity-70"
+                        onClick={() => setDomainFilter(null)}
+                        title="Effacer le filtre par site"
+                        type="button"
+                      >
+                        <XIcon className="size-3" />
+                      </button>
+                    </div>
+                  ) : null}
+                  <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                    <span>Trier</span>
+                    <select
+                      className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                      onChange={(event) =>
+                        setSort(event.target.value as ResultSort)
+                      }
+                      value={sort}
                     >
-                      <XIcon className="size-3" />
-                    </button>
-                  </div>
-                ) : null}
-              </div>
-
-              <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-2 pt-2">
-                <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <span>Trier</span>
-                  <select
-                    className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
-                    onChange={(event) =>
-                      setSort(event.target.value as ResultSort)
-                    }
-                    value={sort}
-                  >
-                    <option value="relevance">Pertinence</option>
-                    <option value="date">Plus récent</option>
-                    <option value="title">Titre</option>
-                  </select>
-                </label>
-                <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <span>Période</span>
-                  <select
-                    className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
-                    onChange={(event) =>
-                      setPeriod(event.target.value as ResultPeriod)
-                    }
-                    value={period}
-                  >
-                    <option value="all">Toutes les dates</option>
-                    <option value="day">24 heures</option>
-                    <option value="week">7 jours</option>
-                    <option value="month">30 jours</option>
-                    <option value="year">1 an</option>
-                  </select>
-                </label>
+                      <option value="relevance">Pertinence</option>
+                      <option value="date">Plus récent</option>
+                      <option value="title">Titre</option>
+                    </select>
+                  </label>
+                  <label className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                    <span>Période</span>
+                    <select
+                      className="field-input rounded-lg border border-border/70 bg-card px-2 py-1 text-xs text-foreground"
+                      onChange={(event) =>
+                        setPeriod(event.target.value as ResultPeriod)
+                      }
+                      value={period}
+                    >
+                      <option value="all">Toutes les dates</option>
+                      <option value="day">24 heures</option>
+                      <option value="week">7 jours</option>
+                      <option value="month">30 jours</option>
+                      <option value="year">1 an</option>
+                    </select>
+                  </label>
+                </div>
               </div>
             </header>
 
@@ -1503,6 +1503,11 @@ export function SearchClient() {
                           {summaryModel ? (
                             <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
                               {summaryModel}
+                            </span>
+                          ) : null}
+                          {summarySubstituted ? (
+                            <span className="text-[10px] text-muted-foreground">
+                              Modèle de repli
                             </span>
                           ) : null}
                           {isSummaryLoading ? (
@@ -2187,13 +2192,11 @@ export function SearchClient() {
               </div>
             </motion.div>
 
-            <TrendSuggestions
-              layout="wrap"
+            <HomeTrends
               onPick={(suggestion) => {
                 setQuery(suggestion);
                 void runSearch(suggestion);
               }}
-              query={query}
             />
 
             {/* ─── Raccourci d'adresse ─── */}

@@ -1,29 +1,21 @@
 "use client";
 
 import "@/lib/editor/patch-prosemirror";
-import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
-import { TableKit } from "@tiptap/extension-table";
-import TaskItem from "@tiptap/extension-task-item";
-import TaskList from "@tiptap/extension-task-list";
-import { Markdown, MarkdownManager } from "@tiptap/markdown";
-import StarterKit from "@tiptap/starter-kit";
+import { Markdown } from "@tiptap/markdown";
 import { SlashCommands } from "@/components/pages/slash-commands";
+import {
+  pageMarkdownExtensions,
+  pageMarkdownManager,
+} from "@/lib/pages/markdown";
+import {
+  concealValidPageMarks,
+  concealValidPageShapes,
+} from "@/lib/pages/style";
 
 export function pageEditorExtensions() {
   return [
-    StarterKit.configure({
-      heading: { levels: [1, 2, 3] },
-      link: {
-        autolink: false,
-        openOnClick: false,
-        protocols: ["http", "https"],
-      },
-    }),
-    Image.configure({ allowBase64: false }),
-    TableKit.configure({ table: { resizable: false } }),
-    TaskList,
-    TaskItem.configure({ nested: true }),
+    ...pageMarkdownExtensions(),
     Placeholder.configure({
       placeholder: "Écrivez, ou tapez / pour insérer un bloc…",
     }),
@@ -32,29 +24,20 @@ export function pageEditorExtensions() {
   ];
 }
 
-const manager = new MarkdownManager({
-  extensions: [
-    StarterKit.configure({
-      heading: { levels: [1, 2, 3] },
-      link: { autolink: false, openOnClick: false },
-    }),
-    Image.configure({ allowBase64: false }),
-    TableKit.configure({ table: { resizable: false } }),
-    TaskList,
-    TaskItem.configure({ nested: true }),
-  ],
-});
-
 /** Le mode visuel ne s'ouvre que si le Markdown survit à un aller-retour. */
 export function inspectPageMarkdown(source: string): {
   reason?: string;
   supported: boolean;
 } {
+  // Les `<m>` valides ne sont pas du HTML libre : on les retire avant le
+  // refus, le texte intérieur reste inspecté (une autre balise dedans
+  // bascule encore en mode source).
+  const inspected = concealValidPageShapes(concealValidPageMarks(source));
   if (
-    /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.test(source) ||
-    /^\[\^[^\]]+\]:/m.test(source) ||
-    /^\s*(\$\$|:::)/m.test(source) ||
-    /<[a-z][\s\S]*?>/i.test(source)
+    /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.test(inspected) ||
+    /^\[\^[^\]]+\]:/m.test(inspected) ||
+    /^\s*(\$\$|:::)/m.test(inspected) ||
+    /<[a-z][\s\S]*?>/i.test(inspected)
   ) {
     return {
       reason:
@@ -63,6 +46,7 @@ export function inspectPageMarkdown(source: string): {
     };
   }
   try {
+    const manager = pageMarkdownManager();
     const parsed = manager.parse(source);
     const restored = manager.parse(manager.serialize(parsed));
     if (JSON.stringify(parsed) !== JSON.stringify(restored)) {

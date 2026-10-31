@@ -617,13 +617,15 @@ function PureModelSelectorCompact({
         )}
       </ModelSelectorTrigger>
       <ModelSelectorContent
-        className="w-[min(320px,calc(100vw-1rem))] md:w-[600px] max-w-[calc(100vw-1rem)] p-0 overflow-hidden"
+        align={variant === "compact" ? "end" : "start"}
+        className="model-selector-popover w-[min(40rem,calc(100vw-1rem))] max-w-[min(40rem,calc(100vw-1rem))] overflow-hidden p-0"
+        collisionPadding={12}
         commandDefaultValue={selectedModel?.id}
         shouldFilter={false}
         side={side ?? (variant === "compact" ? "top" : "bottom")}
       >
-        <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border/60 max-h-[480px]">
-          <div className="flex flex-col w-full md:w-[320px] shrink-0 min-h-0">
+        <div className="@container flex max-h-[480px] min-w-0 flex-col @min-[36rem]:flex-row">
+          <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col">
             <ModelSelectorInput
               onValueChange={setSearch}
               placeholder={
@@ -635,7 +637,7 @@ function PureModelSelectorCompact({
               }
               value={search}
             />
-            <ModelSelectorList className="max-h-[390px] overflow-y-auto p-1">
+            <ModelSelectorList className="max-h-[390px] min-w-0 overflow-y-auto p-1">
               {allowEmpty && !search.trim() ? (
                 <ModelSelectorItem
                   className={cn(
@@ -709,7 +711,7 @@ function PureModelSelectorCompact({
           </div>
 
           {/* Panneau latéral desktop d'aperçu au survol */}
-          <div className="hidden md:flex flex-col w-[280px] shrink-0 p-3.5 bg-muted/20 overflow-y-auto max-h-[480px]">
+          <div className="hidden min-h-0 w-72 min-w-0 flex-col overflow-y-auto bg-muted/20 p-3.5 @min-[36rem]:flex @min-[36rem]:max-h-[480px] @min-[36rem]:border-l @min-[36rem]:border-border/60">
             {activeModel ? (
               <ModelDetailsPanel
                 capabilities={capabilities?.[activeModel.id]}

@@ -3,6 +3,8 @@ import {
   assemblerTentatives,
   type ContexteCoach,
   construireTentative,
+  messagesPourModele,
+  messageVisibleCoach,
   modeleCoachEnregistrable,
   preparerEchangeCoach,
   type QuizTente,
@@ -137,6 +139,43 @@ describe("échange du Coach", () => {
     expect(echange.ouverture).toContain("choix de l'élève");
     expect(echange.ouverture).not.toContain("Deux droites parallèles");
     expect(echange.system).toContain("4e");
+  });
+
+  it("répond à une question libre sans livrer les corrections", () => {
+    const echange = preparerEchangeCoach({
+      contexte: contexte([tente]),
+      intent: "chat",
+    });
+    expect(echange.ok).toBe(true);
+    if (!echange.ok) {
+      return;
+    }
+    expect(echange.ouverture).toContain("Carrés");
+    expect(echange.ouverture).toContain("1/2");
+    expect(echange.ouverture).not.toContain("Le carré de 3 est 9.");
+    expect(echange.faits).not.toContain("Le carré de 3 est 9.");
+  });
+
+  it("formule le message visible d'une erreur", () => {
+    const visible = messageVisibleCoach({
+      contexte: contexte([tente]),
+      intent: "explain",
+      questionId: "q1",
+      quizId: tente.quizId,
+    });
+    expect(visible).toEqual({
+      ok: true,
+      text: "Explique mon erreur : Combien font 3 au carré ?",
+    });
+  });
+
+  it("ne garde que les derniers messages pour le modèle", () => {
+    const fenetre = messagesPourModele(
+      Array.from({ length: 25 }, (_, index) => index)
+    );
+    expect(fenetre).toHaveLength(20);
+    expect(fenetre[0]).toBe(5);
+    expect(fenetre.at(-1)).toBe(24);
   });
 
   it("encourage sans redonner l'explication du cours", () => {

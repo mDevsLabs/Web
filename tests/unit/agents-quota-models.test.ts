@@ -349,7 +349,7 @@ describe("Onglet Types de bots", () => {
 });
 
 describe("Icônes uniques", () => {
-  it("donne une icône distincte à chacun des 20 plugins", () => {
+  it("donne une icône distincte à chacun de ces plugins", () => {
     const manifests = readFileSync("lib/plugins/index.json", "utf8");
     expect(manifests).toContain("catalogVersion");
     const dirs = [
@@ -360,7 +360,7 @@ describe("Icônes uniques", () => {
       "fr-holidays",
       "github",
       "gitlab-public",
-      "google",
+      "google-maps",
       "json-toolbox",
       "mobilite-fr",
       "notion",
@@ -373,6 +373,7 @@ describe("Icônes uniques", () => {
       "weather",
       "wikidata",
       "world-bank",
+      "youtube",
     ];
     const icons = dirs.map((dir) => {
       const manifest = JSON.parse(source(`lib/plugins/${dir}/index.json`)) as {
@@ -384,8 +385,8 @@ describe("Icônes uniques", () => {
       // doublon d'un autre simplement parce qu'il n'a pas de `name`.
       return manifest.icon.name ?? manifest.icon.src;
     });
-    expect(icons).toHaveLength(20);
-    expect(new Set(icons).size).toBe(20);
+    expect(icons).toHaveLength(21);
+    expect(new Set(icons).size).toBe(21);
   });
 
   it("déclare dans l'allowlist chaque icône utilisée par un manifeste", () => {

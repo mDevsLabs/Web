@@ -12,6 +12,7 @@ import { origineConfiance } from "@/lib/quizzly/http";
 import { SCHOOL_YEARS } from "@/lib/quizzly/program";
 import {
   choisirAnnee,
+  enregistrerMatieres,
   enregistrerModeleQuizzly,
   equiperCadre,
   resumeQuizzly,
@@ -23,6 +24,7 @@ const corpsSchema = z
     equippedFrame: z.string().min(1).max(40).nullable().optional(),
     modelId: z.string().max(120).nullable().optional(),
     schoolYear: z.enum(SCHOOL_YEARS).optional(),
+    subjects: z.array(z.string().min(1).max(40)).max(40).optional(),
   })
   .strict()
   .refine(
@@ -30,7 +32,8 @@ const corpsSchema = z
       valeur.displayName !== undefined ||
       valeur.equippedFrame !== undefined ||
       valeur.modelId !== undefined ||
-      valeur.schoolYear !== undefined,
+      valeur.schoolYear !== undefined ||
+      valeur.subjects !== undefined,
     { message: "Aucune modification." }
   );
 
@@ -98,6 +101,9 @@ export async function PUT(request: Request) {
     }
     if (parsed.data.schoolYear) {
       await choisirAnnee(session.userId, parsed.data.schoolYear);
+    }
+    if (parsed.data.subjects) {
+      await enregistrerMatieres(session.userId, parsed.data.subjects);
     }
     if (modelId !== undefined) {
       await enregistrerModeleQuizzly(session.userId, modelId);

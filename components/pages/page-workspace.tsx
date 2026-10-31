@@ -16,6 +16,7 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { AssistantPanel } from "@/components/pages/assistant-panel";
 import { MarkdownEditor } from "@/components/pages/markdown-editor";
 import { useProjects } from "@/hooks/use-projects";
+import { normalizePageFont } from "@/lib/pages/style";
 import { countWords } from "@/lib/pages/text";
 import type {
   PageDetail,
@@ -52,6 +53,10 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
     fetcher
   );
   const { projects } = useProjects();
+  const { data: preferences } = useSWR<{ pagesDefaultFont?: string }>(
+    "/api/user/preferences",
+    fetcher
+  );
   const page = data?.page;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -459,6 +464,7 @@ export function PageWorkspace({ pageId }: { pageId: string }) {
       </header>
       <div className="flex min-h-0 flex-1">
         <MarkdownEditor
+          defaultFont={normalizePageFont(preferences?.pagesDefaultFont)}
           onChange={(next) => {
             latest.current = { ...latest.current, content: next };
             setContent(next);

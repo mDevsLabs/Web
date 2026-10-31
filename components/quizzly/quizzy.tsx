@@ -10,8 +10,7 @@ import { cn } from "@/lib/utils";
  * quelqu'un le regarde : mode économie, onglet caché ou mouvement réduit
  * affichent le repos, sans décodeur d'animation.
  *
- * `avant` recouvre la question et la réponse choisie.
- * `arriere` reste derrière la carte de score.
+ * Le GIF est un voisin de la carte, jamais posé par-dessus.
  */
 
 const POSES = [
@@ -54,7 +53,7 @@ export function poseDuScore(bilan: {
   if (bilan.totalCount > 0 && bilan.correctCount === bilan.totalCount) {
     return "perfect";
   }
-  if (bilan.passed && bilan.streakExtended) {
+  if (bilan.streakExtended) {
     return "streak";
   }
   if (bilan.passed) {
@@ -76,11 +75,11 @@ function useMouvementReduit(): boolean {
 }
 
 export function Quizzy({
-  plan,
   pose,
+  taille = "compact",
 }: {
-  plan: "arriere" | "avant";
   pose: QuizzyPose;
+  taille?: "compact" | "score";
 }) {
   const { isEconomy } = useEconomy();
   const mouvementReduit = useMouvementReduit();
@@ -96,25 +95,23 @@ export function Quizzy({
 
   const sources = sourcesQuizzy(pose, anime);
 
+  const compact = taille === "compact";
   return (
     <img
-      alt={plan === "arriere" ? "" : LEGENDES[pose]}
-      aria-hidden={plan === "arriere" ? true : undefined}
+      alt={LEGENDES[pose]}
       className={cn(
-        "pointer-events-none object-contain",
-        plan === "avant"
-          ? "absolute right-1 bottom-1 z-20 h-32 w-auto motion-safe:quizzy-pop"
-          : "h-72 w-auto"
+        "pointer-events-none shrink-0 object-contain motion-safe:quizzy-pop",
+        compact ? "h-24 w-24 sm:h-32 sm:w-32" : "h-32 w-32 sm:h-40 sm:w-40"
       )}
       decoding="async"
-      fetchPriority={plan === "avant" ? "low" : "auto"}
-      height={plan === "avant" ? 128 : 288}
+      fetchPriority={compact ? "low" : "auto"}
+      height={compact ? 128 : 160}
       key={anime ? `${pose}-${secours}` : "fixe"}
       onError={() =>
         setSecours((indice) => Math.min(indice + 1, sources.length - 1))
       }
       src={sources[Math.min(secours, sources.length - 1)]}
-      width={plan === "avant" ? 128 : 288}
+      width={compact ? 128 : 160}
     />
   );
 }

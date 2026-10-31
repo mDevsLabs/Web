@@ -1,22 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { partagerProfil } from "@/components/quizzly/carte-partage";
+import { IconeClasse, IconeLigue, nomLigue } from "@/components/quizzly/icones";
+import { BarreNiveau } from "@/components/quizzly/niveau";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
-import {
-  libelleAnnee,
-  SCHOOL_YEARS,
-  type SchoolYear,
-} from "@/lib/quizzly/program";
+import { estLigue } from "@/lib/quizzly/leagues";
+import { libelleAnnee, type SchoolYear } from "@/lib/quizzly/program";
 import { classeCadre } from "@/lib/quizzly/shop";
 import { cn } from "@/lib/utils";
 
-export function ProfilQuizzly({
-  integre = false,
-}: {
-  /** Dans les paramètres d'applications : pas de page autonome. */
-  integre?: boolean;
-} = {}) {
+export function ProfilQuizzly() {
   const { data, error, isLoading, mutate } = useResumeQuizzly();
   const [nom, setNom] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -25,8 +19,6 @@ export function ProfilQuizzly({
   async function enregistrer(corps: {
     displayName?: string;
     equippedFrame?: string | null;
-    modelId?: string | null;
-    schoolYear?: SchoolYear;
   }) {
     setEnCours(true);
     setMessage(null);
@@ -44,7 +36,7 @@ export function ProfilQuizzly({
       }
       setMessage(
         corps.displayName === undefined
-          ? "Réglage enregistré."
+          ? "Cadre enregistré."
           : "Profil enregistré. Le nom est aussi celui de Vibe et de Blackline."
       );
       if (corps.displayName !== undefined) {
@@ -75,18 +67,13 @@ export function ProfilQuizzly({
 
   const valeurNom = nom ?? data.displayName;
   const initiale = data.displayName.slice(0, 1).toUpperCase() || "?";
+  const ligue = estLigue(data.league) ? data.league : "bronze";
+  const annee = data.schoolYear as SchoolYear;
 
   return (
-    <section
-      className={
-        integre
-          ? "flex flex-col gap-4"
-          : "mx-auto flex max-w-xl flex-col gap-4 p-4 sm:p-6"
-      }
-    >
+    <section className="mx-auto flex max-w-xl flex-col gap-4 p-4 sm:p-6">
       <div className="surface-card flex items-center gap-4">
         {data.avatarUrl ? (
-          // L'avatar vient du compte : domaine déjà autorisé pour le profil mAI.
           // eslint-disable-next-line @next/next/no-img-element
           <img
             alt=""
@@ -106,17 +93,66 @@ export function ProfilQuizzly({
             {initiale}
           </span>
         )}
-        <div>
-          {integre ? (
-            <p className="text-lg font-semibold">{data.displayName}</p>
-          ) : (
-            <h1 className="text-lg font-semibold">{data.displayName}</h1>
-          )}
+        <div className="min-w-0 flex-1">
+          <h1 className="truncate text-lg font-semibold">{data.displayName}</h1>
           <p className="text-sm text-muted-foreground">
-            {data.xp} XP · {libelleAnnee(data.schoolYear as SchoolYear)}
+            {data.username ? `@${data.username}` : "Quizzly"}
+          </p>
+          <p className="mt-1 flex items-center gap-2 text-sm font-semibold">
+            <IconeLigue league={ligue} />
+            {nomLigue(ligue)}
           </p>
         </div>
       </div>
+
+      <BarreNiveau
+        niveau={data.niveau}
+        xpDansPalier={data.xpDansPalier}
+        xpPalier={data.xpPalier}
+      />
+
+      <ul className="grid grid-cols-2 gap-3">
+        <li className="surface-card flex flex-col gap-1">
+          <span className="text-xs text-muted-foreground">XP totale</span>
+          <span className="text-lg font-semibold">{data.xp}</span>
+        </li>
+        <li className="surface-card flex flex-col gap-1">
+          <span className="text-xs text-muted-foreground">Série en cours</span>
+          <span className="text-lg font-semibold">{data.streakCount}</span>
+        </li>
+        <li className="surface-card flex flex-col gap-1">
+          <span className="text-xs text-muted-foreground">Série record</span>
+          <span className="text-lg font-semibold">{data.streakBest}</span>
+        </li>
+        <li className="surface-card flex items-center gap-2">
+          <IconeClasse year={annee} />
+          <span className="text-sm font-semibold">{libelleAnnee(annee)}</span>
+        </li>
+      </ul>
+
+      <button
+        className="chip w-fit"
+        data-active="true"
+        onClick={() => {
+          partagerProfil({
+            avatarUrl: data.avatarUrl,
+            displayName: data.displayName,
+            league: ligue,
+            schoolYear: data.schoolYear,
+            streakBest: data.streakBest,
+            streakCount: data.streakCount,
+            username: data.username,
+            xp: data.xp,
+          }).then((issue) => {
+            if (issue === "downloaded") {
+              setMessage("Image téléchargée.");
+            }
+          });
+        }}
+        type="button"
+      >
+        Partager en image
+      </button>
 
       <form
         className="surface-card flex flex-col gap-3"
@@ -136,8 +172,9 @@ export function ProfilQuizzly({
           value={valeurNom}
         />
         <p className="text-xs text-muted-foreground">
-          Ce nom est celui du profil Vibe. Blackline l'affiche comme indicatif,
-          tronqué à 18 caractères. Le @username de connexion ne change pas.
+          Ce nom est celui du profil Vibe. Blackline l'affiche comme indicatif.
+          Le @username ne change pas. La classe et les matières se règlent dans
+          les paramètres d'applications.
         </p>
         <button
           className="chip w-fit"
@@ -148,43 +185,6 @@ export function ProfilQuizzly({
           Enregistrer le nom
         </button>
       </form>
-
-      <div className="surface-card flex flex-col gap-3">
-        <h2 className="text-sm font-semibold">Année scolaire</h2>
-        <div className="flex flex-wrap gap-2">
-          {SCHOOL_YEARS.map((annee) => (
-            <button
-              className="chip"
-              data-active={annee === data.schoolYear ? "true" : "false"}
-              disabled={enCours}
-              key={annee}
-              onClick={() => enregistrer({ schoolYear: annee })}
-              type="button"
-            >
-              {libelleAnnee(annee)}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="surface-card flex flex-col gap-3">
-        <h2 className="text-sm font-semibold">Modèle du Coach</h2>
-        <p className="text-xs text-muted-foreground">
-          Ce modèle répond dans la section Coach. Sans choix, c'est le modèle
-          par défaut du compte.
-        </p>
-        <ModelSelectorCompact
-          allowEmpty
-          disabled={enCours}
-          emptyLabel="Modèle du compte"
-          fallbackToFirst={false}
-          onModelChange={(modelId) => {
-            enregistrer({ modelId: modelId.trim() ? modelId.trim() : null });
-          }}
-          selectedModelId={data.modelId ?? ""}
-          variant="block"
-        />
-      </div>
 
       <div className="surface-card flex flex-col gap-3">
         <h2 className="text-sm font-semibold">Cadre</h2>

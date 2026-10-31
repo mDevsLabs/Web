@@ -5,7 +5,13 @@
  * avant de débiter. Un prix envoyé par le navigateur n'est jamais utilisé.
  */
 
-export type ShopKind = "frame" | "freeze" | "hearts";
+export type ShopKind =
+  | "boost"
+  | "daily"
+  | "frame"
+  | "freeze"
+  | "hearts"
+  | "shield";
 
 export type ShopItem = {
   description: string;
@@ -16,6 +22,29 @@ export type ShopItem = {
 };
 
 export const SHOP_ITEMS: readonly ShopItem[] = [
+  {
+    description: "Cinq gemmes, une fois par jour. Minuit, heure de Paris.",
+    id: "offre-jour",
+    kind: "daily",
+    label: "Offre du jour",
+    price: 0,
+  },
+  {
+    description:
+      "Double l'XP des quiz pendant 10 minutes. L'achat active le booster, jusqu'à 30 minutes.",
+    id: "booster-xp",
+    kind: "boost",
+    label: "Booster d'XP",
+    price: 80,
+  },
+  {
+    description:
+      "Évite une descente de ligue pour la semaine en cours. Un bouclier à la fois.",
+    id: "bouclier-ligue",
+    kind: "shield",
+    label: "Bouclier de ligue",
+    price: 350,
+  },
   {
     description: "Protège la série si un jour est manqué. Deux gels au plus.",
     id: "gel-serie",
@@ -59,13 +88,13 @@ export function articleBoutique(id: string): ShopItem | undefined {
 
 export function classeCadre(id: string | null): string {
   if (id === "cadre-laurier") {
-    return "ring-2 ring-success";
+    return "ring-2 ring-q-xp";
   }
   if (id === "cadre-or") {
-    return "ring-2 ring-warning";
+    return "ring-2 ring-q-streak";
   }
   if (id === "cadre-ardoise") {
-    return "ring-2 ring-foreground/40";
+    return "ring-2 ring-q-level";
   }
   return "ring-1 ring-border";
 }

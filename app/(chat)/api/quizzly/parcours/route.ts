@@ -7,6 +7,7 @@ import {
   progressionPasse,
   resumeQuizzly,
 } from "@/lib/quizzly/queries";
+import { matiereSuivie } from "@/lib/quizzly/subjects";
 
 export async function GET(request: Request) {
   const session = await requireUser();
@@ -21,7 +22,11 @@ export async function GET(request: Request) {
       demande && estAnneeScolaire(demande) ? demande : resume.schoolYear;
     const index = await obtenirIndex();
     const passes = await progressionPasse(session.userId);
-    const sujets = index.parAnnee.get(year) ?? [];
+    const bruts = index.parAnnee.get(year) ?? [];
+    const sujets =
+      year === resume.schoolYear
+        ? bruts.filter((matiere) => matiereSuivie(resume.subjects, matiere.id))
+        : bruts;
     const subjects = sujets.map((matiere) => {
       const ouverts = idsOuverts(index, year, matiere.id, passes);
       return {

@@ -215,7 +215,7 @@ function SettingsPageInner() {
           { id: "blackline-graphics", label: "↳ Image & Énergie" },
           { id: "blackline-gameplay", label: "↳ Caméra, Visée & Jeu" },
           { id: "pages", label: "Pages — Documents" },
-          { id: "quizzly", label: "Quizzly — Profil" },
+          { id: "quizzly", label: "Quizzly — Classe et Coach" },
         ];
       case "memory":
         return [

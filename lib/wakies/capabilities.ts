@@ -134,7 +134,7 @@ function raisonDeRefusPlugin(
   if (!installation.isEnabled) {
     return "Cette extension est désactivée dans vos réglages.";
   }
-  // Un connecteur mixte (Google Agenda lit ET écrit) reste utilisable ici :
+  // Un connecteur mixte (GitHub lit ET écrit) reste utilisable ici :
   // `createPluginTools` n'y sert que ses outils de lecture. Un plugin sans
   // AUCUNE lecture n'a rien à servir dans ce canal — l'écriture attend une
   // approbation et ne se déclenche que depuis l'Agent.
@@ -167,6 +167,7 @@ const MENTIONS_DE_CONNECTEUR: ReadonlyMap<string, IntegrationDescriptor> =
  * (installée, activée, forfait, lecture disponible) et exige en plus une
  * connexion réelle : mentionner Gmail sans compte connecté ne doit pas envoyer
  * un appel à l'API en 401, mais une réponse qui dit quoi faire.
+ * Mentionner Gmail ne fait rien : ce n'est plus un connecteur.
  */
 export async function applyIntegrationMentions(params: {
   nomsMentionnes: readonly string[];

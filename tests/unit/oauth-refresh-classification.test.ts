@@ -8,9 +8,9 @@ function stubFetch(handler: () => Promise<Response> | Response) {
   return mock;
 }
 
-const descriptor = getIntegrationProvider("google");
+const descriptor = getIntegrationProvider("github");
 if (!descriptor) {
-  throw new Error("Le fournisseur google est requis pour ces tests.");
+  throw new Error("Le fournisseur github est requis pour ces tests.");
 }
 const credentials = { clientId: "client", clientSecret: "secret" };
 

@@ -13,6 +13,7 @@ import {
   normalizeTranslationTarget,
   TRANSLATION_TARGET_CODE_LIST,
 } from "@/lib/i18n/languages";
+import { normalizePageFont } from "@/lib/pages/style";
 import {
   buildCustomInstructionsSchema,
   customInstructionsLimitPayload,
@@ -64,6 +65,7 @@ const buildSchema = (tier?: string | null) =>
       .optional(),
     enabled: z.boolean().optional(),
     ghostMemoryEnabled: z.boolean().optional(),
+    pagesDefaultFont: z.string().transform(normalizePageFont).optional(),
     pagesDefaultModel: z.string().max(200).nullable().optional(),
     pagesDefaultPrompt: buildCustomInstructionsSchema(tier),
     reasoningLevel: z.enum(REASONING_LEVELS).optional(),
@@ -126,6 +128,7 @@ export async function GET() {
       defaultTranslationLanguage: "EN",
       enabled: false,
       ghostMemoryEnabled: false,
+      pagesDefaultFont: "sans",
       pagesDefaultModel: null,
       pagesDefaultPrompt: "",
       reasoningLevel: "medium",

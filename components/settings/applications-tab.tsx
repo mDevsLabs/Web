@@ -48,7 +48,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { BlacklineSettingsSection } from "@/components/blackline/blackline-settings-section";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
-import { ProfilQuizzly } from "@/components/quizzly/profil";
+import { ReglagesQuizzly } from "@/components/quizzly/reglages";
 import { SourceIcon } from "@/components/search/source-icon";
 import { PagesSettingsSection } from "@/components/settings/applications/pages-section";
 import {
@@ -1824,12 +1824,12 @@ export function ApplicationsTab() {
                 Quizzly
               </h3>
               <p className="text-xs text-muted-foreground">
-                Nom affiché, année scolaire et cadre
+                Classe, matières et modèle du Coach
               </p>
             </div>
           </div>
         </div>
-        <ProfilQuizzly integre />
+        <ReglagesQuizzly />
       </section>
     </div>
   );

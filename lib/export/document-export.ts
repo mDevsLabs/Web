@@ -19,6 +19,15 @@ import MarkdownItConstructor, {
   type MarkdownIt,
   type Token as MarkdownItToken,
 } from "markdown-it";
+import {
+  docxFontName,
+  PAGE_TONE_HEX,
+  type PageFont,
+  type PageMarkAttrs,
+  pdfFontName,
+  revealPageMarks,
+  takePageMarkSegments,
+} from "@/lib/pages/style";
 
 /** Bloc de contenu DOCX (paragraphe ou tableau) assemblé depuis le Markdown. */
 type DocxBlock = Paragraph | Table;
@@ -65,7 +74,7 @@ function createMarkdownRenderer(): MarkdownIt {
  */
 export function markdownToHtml(markdown: string, title?: string): string {
   const md = createMarkdownRenderer();
-  const body = md.render(markdown ?? "");
+  const body = revealPageMarks(md.render(markdown ?? ""));
 
   const headingMatch = /^#\s+(.+)$/m.exec(markdown ?? "");
   const derivedTitle = (
@@ -130,12 +139,13 @@ const DOCX_STYLES = {
   quoteColor: "52525B",
 } as const;
 
-/** Construit les runs inline (gras, italique, code, lien) d'un token parent. */
+/** Construit les runs inline (gras, italique, code, lien, zone) d'un token parent. */
 function buildInlineRuns(
   children: Token[],
   inherited: { bold?: boolean; italic?: boolean; strike?: boolean }
 ): Record<string, unknown>[] {
   const runs: Record<string, unknown>[] = [];
+  const marks: PageMarkAttrs[] = [];
 
   const walk = (
     tokens: Token[],
@@ -150,21 +160,41 @@ function buildInlineRuns(
     let openHref: string | null = null;
     for (const token of tokens) {
       if (token.type === "text" && token.content) {
-        const run: Record<string, unknown> = { text: token.content };
-        if (style.bold) {
-          run.bold = true;
+        for (const segment of takePageMarkSegments(token.content, marks)) {
+          if (!segment.text) {
+            continue;
+          }
+          const run: Record<string, unknown> = { text: segment.text };
+          if (style.bold) {
+            run.bold = true;
+          }
+          if (style.italic) {
+            run.italics = true;
+          }
+          if (style.strike) {
+            run.strike = true;
+          }
+          if (style.code) {
+            run.font = DOCX_STYLES.codeFont;
+            run.shading = { fill: DOCX_STYLES.codeBackground };
+          } else if (segment.font) {
+            run.font = docxFontName(segment.font);
+          }
+          if (segment.tone) {
+            run.color = PAGE_TONE_HEX[segment.tone];
+          }
+          if (segment.underline) {
+            run.underline = {};
+          }
+          if (segment.size === "small") {
+            run.size = 18;
+          } else if (segment.size === "large") {
+            run.size = 28;
+          } else if (segment.size === "huge") {
+            run.size = 36;
+          }
+          runs.push(run);
         }
-        if (style.italic) {
-          run.italics = true;
-        }
-        if (style.strike) {
-          run.strike = true;
-        }
-        if (style.code) {
-          run.font = DOCX_STYLES.codeFont;
-          run.shading = { fill: DOCX_STYLES.codeBackground };
-        }
-        runs.push(run);
         continue;
       }
       if (token.type === "code_inline") {
@@ -493,35 +523,80 @@ export async function markdownToDocx(
   );
 }
 
+type InlineRun = {
+  font: PageFont | null;
+  text: string;
+  tone: PageMarkAttrs["tone"];
+};
+
 type ExportBlock =
-  | { level: number; text: string; type: "heading" }
-  | { text: string; type: "paragraph" }
-  | { items: string[]; ordered: boolean; type: "list" }
+  | { level: number; runs: InlineRun[]; type: "heading" }
+  | { runs: InlineRun[]; type: "paragraph" }
+  | { items: InlineRun[][]; ordered: boolean; type: "list" }
   | { text: string; type: "code" }
-  | { text: string; type: "quote" }
-  | { rows: string[][]; type: "table" }
+  | { runs: InlineRun[]; type: "quote" }
+  | { rows: InlineRun[][][]; type: "table" }
   | { type: "hr" };
 
-function inlineToText(children: MarkdownItToken[] | null | undefined): string {
+function runsToText(runs: InlineRun[]): string {
+  return runs.map((run) => run.text).join("");
+}
+
+function inlineRuns(
+  children: MarkdownItToken[] | null | undefined,
+  marks: PageMarkAttrs[] = []
+): InlineRun[] {
   if (!children) {
-    return "";
+    return [];
   }
-  let out = "";
+  const runs: InlineRun[] = [];
+  const push = (next: InlineRun) => {
+    if (!next.text) {
+      return;
+    }
+    const last = runs.at(-1);
+    if (last && last.font === next.font && last.tone === next.tone) {
+      last.text += next.text;
+      return;
+    }
+    runs.push(next);
+  };
   for (const token of children) {
-    if (token.type === "text" || token.type === "code_inline") {
-      out += token.content;
+    if (token.type === "code_inline") {
+      const top = marks.at(-1);
+      push({
+        font: top?.font ?? null,
+        text: token.content,
+        tone: top?.tone ?? null,
+      });
+    } else if (token.type === "text") {
+      for (const segment of takePageMarkSegments(token.content, marks)) {
+        push(segment);
+      }
     } else if (token.type === "softbreak" || token.type === "hardbreak") {
-      out += "\n";
+      const top = marks.at(-1);
+      push({
+        font: top?.font ?? null,
+        text: "\n",
+        tone: top?.tone ?? null,
+      });
     } else if (token.type === "image") {
       const alt = token.content?.trim();
       if (alt) {
-        out += alt;
+        const top = marks.at(-1);
+        push({
+          font: top?.font ?? null,
+          text: alt,
+          tone: top?.tone ?? null,
+        });
       }
     } else if (token.children) {
-      out += inlineToText(token.children);
+      for (const run of inlineRuns(token.children, marks)) {
+        push(run);
+      }
     }
   }
-  return out;
+  return runs;
 }
 
 /** Blocs communs au texte brut et au PDF. Les images deviennent leur texte alternatif. */
@@ -538,7 +613,7 @@ function markdownBlocks(markdown: string): ExportBlock[] {
       const level = Number.parseInt(token.tag.slice(1), 10) || 1;
       blocks.push({
         level,
-        text: inlineToText(tokens[i + 1]?.children),
+        runs: inlineRuns(tokens[i + 1]?.children),
         type: "heading",
       });
       i += 1;
@@ -546,7 +621,7 @@ function markdownBlocks(markdown: string): ExportBlock[] {
     }
     if (token.type === "paragraph_open") {
       blocks.push({
-        text: inlineToText(tokens[i + 1]?.children),
+        runs: inlineRuns(tokens[i + 1]?.children),
         type: "paragraph",
       });
       i += 1;
@@ -568,7 +643,7 @@ function markdownBlocks(markdown: string): ExportBlock[] {
       token.type === "ordered_list_open"
     ) {
       const ordered = token.type === "ordered_list_open";
-      const items: string[] = [];
+      const items: InlineRun[][] = [];
       let depth = 1;
       let j = i + 1;
       while (j < tokens.length && depth > 0) {
@@ -587,7 +662,7 @@ function markdownBlocks(markdown: string): ExportBlock[] {
         ) {
           depth -= 1;
         } else if (current.type === "paragraph_open" && depth === 1) {
-          items.push(inlineToText(tokens[j + 1]?.children));
+          items.push(inlineRuns(tokens[j + 1]?.children));
         }
         j += 1;
       }
@@ -596,7 +671,7 @@ function markdownBlocks(markdown: string): ExportBlock[] {
       continue;
     }
     if (token.type === "blockquote_open") {
-      const parts: string[] = [];
+      const parts: InlineRun[] = [];
       let depth = 1;
       let j = i + 1;
       while (j < tokens.length && depth > 0) {
@@ -609,27 +684,30 @@ function markdownBlocks(markdown: string): ExportBlock[] {
         } else if (current.type === "blockquote_close") {
           depth -= 1;
         } else if (current.type === "paragraph_open") {
-          parts.push(inlineToText(tokens[j + 1]?.children));
+          if (parts.length > 0) {
+            parts.push({ font: null, text: "\n", tone: null });
+          }
+          parts.push(...inlineRuns(tokens[j + 1]?.children));
         }
         j += 1;
       }
-      blocks.push({ text: parts.join("\n"), type: "quote" });
+      blocks.push({ runs: parts, type: "quote" });
       i = j - 1;
       continue;
     }
     if (token.type === "table_open") {
-      const rows: string[][] = [];
+      const rows: InlineRun[][][] = [];
       let j = i + 1;
       while (j < tokens.length && tokens[j]?.type !== "table_close") {
         if (tokens[j]?.type === "tr_open") {
-          const cells: string[] = [];
+          const cells: InlineRun[][] = [];
           let k = j + 1;
           while (k < tokens.length && tokens[k]?.type !== "tr_close") {
             if (
               tokens[k]?.type === "th_open" ||
               tokens[k]?.type === "td_open"
             ) {
-              cells.push(inlineToText(tokens[k + 1]?.children));
+              cells.push(inlineRuns(tokens[k + 1]?.children));
             }
             k += 1;
           }
@@ -650,19 +728,21 @@ export function markdownToText(markdown: string): string {
   const lines: string[] = [];
   for (const block of markdownBlocks(markdown)) {
     if (block.type === "heading") {
-      lines.push(block.text, "");
+      lines.push(runsToText(block.runs), "");
     } else if (block.type === "paragraph" || block.type === "quote") {
-      lines.push(block.text, "");
+      lines.push(runsToText(block.runs), "");
     } else if (block.type === "code") {
       lines.push(block.text, "");
     } else if (block.type === "list") {
       block.items.forEach((item, index) => {
-        lines.push(`${block.ordered ? `${index + 1}. ` : "• "}${item}`);
+        lines.push(
+          `${block.ordered ? `${index + 1}. ` : "• "}${runsToText(item)}`
+        );
       });
       lines.push("");
     } else if (block.type === "table") {
       for (const row of block.rows) {
-        lines.push(row.join(" | "));
+        lines.push(row.map((cell) => runsToText(cell)).join(" | "));
       }
       lines.push("");
     } else if (block.type === "hr") {
@@ -708,13 +788,45 @@ function pdfSafe(value: string): string {
 
 type PdfDoc = {
   end: () => void;
+  fillColor: (color: string) => PdfDoc;
   font: (name: string) => PdfDoc;
   fontSize: (size: number) => PdfDoc;
   info: { Title?: string };
   moveDown: (lines?: number) => PdfDoc;
   on: (event: string, listener: (...args: never[]) => void) => PdfDoc;
-  text: (value: string, options?: { indent?: number }) => PdfDoc;
+  text: (
+    value: string,
+    options?: { continued?: boolean; indent?: number }
+  ) => PdfDoc;
 };
+
+function writePdfRuns(
+  doc: PdfDoc,
+  runs: InlineRun[],
+  size: number,
+  weight: "bold" | "italic" | "regular",
+  options?: { indent?: number }
+) {
+  const visible = runs.filter((run) => run.text.length > 0);
+  if (visible.length === 0) {
+    doc
+      .fillColor("#1A1A1A")
+      .font(pdfFontName(null, weight))
+      .fontSize(size)
+      .text("");
+    return;
+  }
+  visible.forEach((run, index) => {
+    doc
+      .fillColor(run.tone ? `#${PAGE_TONE_HEX[run.tone]}` : "#1A1A1A")
+      .font(pdfFontName(run.font, weight))
+      .fontSize(size)
+      .text(pdfSafe(run.text), {
+        continued: index < visible.length - 1,
+        indent: index === 0 ? options?.indent : undefined,
+      });
+  });
+}
 
 export async function markdownToPdf(
   markdown: string,
@@ -755,36 +867,42 @@ export async function markdownToPdf(
   for (const block of blocks) {
     if (block.type === "heading") {
       const size = block.level === 1 ? 20 : block.level === 2 ? 16 : 13;
-      doc.font("Helvetica-Bold").fontSize(size).text(pdfSafe(block.text));
+      writePdfRuns(doc, block.runs, size, "bold");
       doc.moveDown(0.4);
     } else if (block.type === "paragraph") {
-      doc.font("Helvetica").fontSize(11).text(pdfSafe(block.text));
+      writePdfRuns(doc, block.runs, 11, "regular");
       doc.moveDown(0.6);
     } else if (block.type === "quote") {
-      doc.font("Helvetica-Oblique").fontSize(11).text(pdfSafe(block.text), {
-        indent: 16,
-      });
+      writePdfRuns(doc, block.runs, 11, "italic", { indent: 16 });
       doc.moveDown(0.6);
     } else if (block.type === "code") {
-      doc.font("Courier").fontSize(9).text(pdfSafe(block.text));
+      doc
+        .fillColor("#1A1A1A")
+        .font("Courier")
+        .fontSize(9)
+        .text(pdfSafe(block.text));
       doc.moveDown(0.6);
     } else if (block.type === "list") {
       block.items.forEach((item, index) => {
         const prefix = block.ordered ? `${index + 1}. ` : "• ";
-        doc
-          .font("Helvetica")
-          .fontSize(11)
-          .text(pdfSafe(`${prefix}${item}`), {
-            indent: 12,
-          });
+        writePdfRuns(
+          doc,
+          [{ font: null, text: prefix, tone: null }, ...item],
+          11,
+          "regular",
+          { indent: 12 }
+        );
       });
       doc.moveDown(0.6);
     } else if (block.type === "table") {
       for (const row of block.rows) {
-        doc
-          .font("Helvetica")
-          .fontSize(10)
-          .text(pdfSafe(row.join("  |  ")));
+        const cells = row.flatMap((cell, index) => [
+          ...(index > 0
+            ? [{ font: null, text: "  |  ", tone: null } satisfies InlineRun]
+            : []),
+          ...cell,
+        ]);
+        writePdfRuns(doc, cells, 10, "regular");
       }
       doc.moveDown(0.6);
     } else if (block.type === "hr") {

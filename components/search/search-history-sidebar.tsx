@@ -23,9 +23,9 @@ import { cn } from "@/lib/utils";
 /**
  * Barre latérale de l'historique mAI Search.
  *
- * Elle reste visible sur l'accueil et sur les résultats. Ouvrir une entrée
- * est décidé par le parent : une synthèse enregistrée se restaure, sinon la
- * recherche est relancée.
+ * Le parent la ferme dès qu'une recherche part, et le bouton Historique
+ * la rouvre. Ouvrir une entrée restaure une synthèse enregistrée, sinon
+ * la recherche est relancée.
  */
 export function SearchHistorySidebar({
   hasMore,
@@ -33,7 +33,9 @@ export function SearchHistorySidebar({
   onClear,
   onForget,
   onLoadMore,
+  onOpenChange,
   onOpen,
+  open,
   onPin,
   onRename,
   onShare,
@@ -44,41 +46,42 @@ export function SearchHistorySidebar({
   onClear: () => void;
   onForget: (id: string) => void;
   onLoadMore: () => void;
+  onOpenChange: (open: boolean) => void;
   onOpen: (id: string) => void;
+  open: boolean;
   onPin: (id: string, pinned: boolean) => void;
   onRename: (id: string, title: string) => void;
   onShare: (query: string) => void;
   recent: RecentSearch[];
 }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
 
-  const fermerMobile = () => setMobileOpen(false);
-
   return (
     <>
-      <button
-        className="fixed bottom-4 left-4 z-30 rounded-xl border border-border/60 bg-card px-3 py-2 text-xs font-medium shadow-md md:hidden"
-        onClick={() => setMobileOpen(true)}
-        type="button"
-      >
-        Historique
-      </button>
-      {mobileOpen ? (
+      {open ? null : (
+        <button
+          className="fixed bottom-4 left-4 z-30 rounded-xl border border-border/60 bg-card px-3 py-2 text-xs font-medium shadow-md"
+          onClick={() => onOpenChange(true)}
+          type="button"
+        >
+          Historique
+        </button>
+      )}
+      {open ? (
         <button
           aria-label="Fermer l'historique"
           className="fixed inset-0 z-40 bg-background/60 md:hidden"
-          onClick={fermerMobile}
+          onClick={() => onOpenChange(false)}
           type="button"
         />
       ) : null}
       <aside
         className={cn(
           "z-40 w-72 shrink-0 flex-col border-r border-border/60 bg-background",
-          mobileOpen
-            ? "fixed inset-y-0 left-0 flex"
-            : "hidden md:flex md:sticky md:top-0 md:h-dvh"
+          open
+            ? "fixed inset-y-0 left-0 flex md:sticky md:top-0 md:h-dvh"
+            : "hidden"
         )}
       >
         <div className="flex items-center justify-between gap-2 border-b border-border/50 px-3 py-3">
@@ -97,8 +100,8 @@ export function SearchHistorySidebar({
             ) : null}
             <button
               aria-label="Fermer l'historique"
-              className="rounded-md p-1 text-muted-foreground hover:bg-muted md:hidden"
-              onClick={fermerMobile}
+              className="rounded-md p-1 text-muted-foreground hover:bg-muted"
+              onClick={() => onOpenChange(false)}
               type="button"
             >
               <XIcon className="size-4" />
@@ -146,7 +149,7 @@ export function SearchHistorySidebar({
                         className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] text-foreground/80 hover:bg-muted/60"
                         onClick={() => {
                           onOpen(entree.id);
-                          fermerMobile();
+                          onOpenChange(false);
                         }}
                         type="button"
                       >

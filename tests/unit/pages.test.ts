@@ -166,6 +166,13 @@ describe("Prompt et recherche des pages", () => {
     );
     expect(prompt).toContain("passage choisi");
     expect(prompt).toContain("modifier_page");
+    expect(prompt).toContain('<m font="serif" tone="info">passage</m>');
+    expect(prompt.indexOf("POLICE DU COMPTE")).toBeGreaterThan(
+      prompt.indexOf("MODE ÉDITION")
+    );
+    expect(prompt.indexOf("SÉLECTION COURANTE")).toBeGreaterThan(
+      prompt.indexOf("POLICE DU COMPTE")
+    );
   });
 
   it("injecte la mémoire du compte une seule fois", () => {

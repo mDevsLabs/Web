@@ -68,3 +68,18 @@ export function corrigerQuiz(
     wrongCount: results.length - correctCount,
   };
 }
+
+export function corrigerQuestion(
+  question: QuizQuestion,
+  selectedIndexes: readonly number[]
+): GradeRow {
+  const note = corrigerQuiz(
+    [question],
+    [{ questionId: question.id, selectedIndexes: [...selectedIndexes] }]
+  );
+  const ligne = note.results[0];
+  if (!ligne) {
+    throw new Error("Question sans correction.");
+  }
+  return ligne;
+}

@@ -8,13 +8,15 @@
 
 import "server-only";
 
-import { and, count, desc, eq, isNotNull } from "drizzle-orm";
+import { and, count, desc, eq, isNotNull, sql } from "drizzle-orm";
 import type { MaiUser } from "@/lib/auth/session";
 import { dbReady, getDb } from "@/lib/db/queries";
 import {
   type QuizzlyProfile,
+  quizzlyLeagueSeat,
   quizzlyProfile,
   quizzlyQuest,
+  quizzlyQuestDraw,
   quizzlyQuizProgress,
   quizzlyReport,
 } from "@/lib/db/schema";
@@ -24,8 +26,16 @@ import {
   scoreRetenu,
 } from "@/lib/quizzly/coach";
 import { lireNomAffiche } from "@/lib/quizzly/display-name";
+import { compterDemandes } from "@/lib/quizzly/friend-store";
 import { corrigerQuiz } from "@/lib/quizzly/grade";
 import {
+  assurerSiege,
+  cloreLiguesEchues,
+  xpSemaine,
+} from "@/lib/quizzly/league-store";
+import { type LeagueId, ligueOuBronze } from "@/lib/quizzly/leagues";
+import {
+  analyserIdentifiantQuiz,
   type CurriculumIndex,
   type LoadedQuiz,
   precedentQuiz,
@@ -37,39 +47,62 @@ import {
   type SchoolYear,
 } from "@/lib/quizzly/program";
 import {
+  catalogueDe,
+  type QuetePubliee,
+  quetePubliee,
+} from "@/lib/quizzly/quetes";
+import {
   achatImpossible,
   analyserCleQuete,
   appliquerAchat,
-  avancerSerie,
+  boosterActif,
   idsDebloques,
-  incrementsQuetes,
   jourParis,
-  libelleQuete,
+  MESURES_HEBDOMADAIRES,
+  MESURES_QUOTIDIENNES,
+  mouvementsQuetes,
+  niveauDepuisXp,
   normaliserCosmetiques,
-  QUEST_REWARDS,
-  QUEST_TARGETS,
-  type QuestId,
+  offreDuJourDisponible,
+  type PorteeQuete,
   recompensesPremiereValidation,
+  recordSerie,
   regeneratedHearts,
   semaineIso,
+  serieApresTentative,
+  tirerUneParMesure,
+  xpAvecBooster,
 } from "@/lib/quizzly/rules";
 import type { SubmittedAnswer } from "@/lib/quizzly/schema";
 import { articleBoutique, type ShopItem } from "@/lib/quizzly/shop";
+import { matiereSuivie, normaliserMatieres } from "@/lib/quizzly/subjects";
 
 export type ResumeQuizzly = {
   avatarUrl: string | null;
+  dailyGiftClaimed: boolean;
   displayName: string;
   equippedFrame: string | null;
   gems: number;
   hearts: number;
   heartsUpdatedAt: string;
+  league: LeagueId;
+  leagueShieldWeek: string | null;
   modelId: string | null;
+  niveau: number;
   ownedFrames: string[];
+  pendingFriends: number;
   schoolYear: SchoolYear;
+  streakBest: number;
   streakCount: number;
   streakFreezes: number;
+  subjects: string[];
   username: string;
+  weekKey: string;
+  weeklyXp: number;
   xp: number;
+  xpBoostUntil: string | null;
+  xpDansPalier: number;
+  xpPalier: number;
   yearChosen: boolean;
 };
 
@@ -95,8 +128,10 @@ export type ResultatQuiz = {
 
 export type QueteVue = {
   claimed: boolean;
+  description: string;
   key: string;
   label: string;
+  monnaie: "gemmes" | "xp";
   progress: number;
   reward: number;
   scope: "daily" | "weekly";
@@ -141,26 +176,47 @@ export async function resumeQuizzly(
   userId: string,
   repli: Pick<MaiUser, "avatarUrl" | "username">
 ): Promise<ResumeQuizzly> {
+  await cloreLiguesEchues();
   const [profil, nom] = await Promise.all([
     assurerProfil(userId),
     lireNomAffiche(repli),
   ]);
+  await assurerSiege(userId);
+  const aujourdhui = jourParis(new Date());
+  const semaine = semaineIso(aujourdhui);
+  const [hebdo, demandes] = await Promise.all([
+    xpSemaine(userId, semaine),
+    compterDemandes(userId),
+  ]);
   const cosmetiques = normaliserCosmetiques(profil.cosmetics);
   const annee = estAnneeScolaire(profil.schoolYear) ? profil.schoolYear : "6e";
+  const niveau = niveauDepuisXp(profil.xp);
   return {
     avatarUrl: nom.avatarUrl,
+    dailyGiftClaimed: !offreDuJourDisponible(profil.lastDailyGift, aujourdhui),
     displayName: nom.displayName,
     equippedFrame: cosmetiques.equippedFrame,
     gems: profil.gems,
     hearts: profil.hearts,
     heartsUpdatedAt: profil.heartsUpdatedAt.toISOString(),
+    league: ligueOuBronze(profil.league),
+    leagueShieldWeek: profil.leagueShieldWeek,
     modelId: profil.modelId,
+    niveau: niveau.niveau,
     ownedFrames: cosmetiques.ownedFrames,
+    pendingFriends: demandes,
     schoolYear: annee,
+    streakBest: recordSerie(profil.streakCount, profil.streakBest),
     streakCount: profil.streakCount,
     streakFreezes: profil.streakFreezes,
+    subjects: normaliserMatieres(annee, profil.subjects),
     username: nom.username,
+    weekKey: semaine,
+    weeklyXp: hebdo,
     xp: profil.xp,
+    xpBoostUntil: profil.xpBoostUntil?.toISOString() ?? null,
+    xpDansPalier: niveau.xpDansPalier,
+    xpPalier: niveau.xpPalier,
     yearChosen: profil.yearChosen,
   };
 }
@@ -186,7 +242,27 @@ export async function choisirAnnee(
   await assurerProfil(userId);
   await getDb()
     .update(quizzlyProfile)
-    .set({ schoolYear: annee, updatedAt: new Date(), yearChosen: true })
+    .set({
+      schoolYear: annee,
+      subjects: [],
+      updatedAt: new Date(),
+      yearChosen: true,
+    })
+    .where(eq(quizzlyProfile.userId, userId));
+}
+
+export async function enregistrerMatieres(
+  userId: string,
+  brutes: readonly string[]
+): Promise<void> {
+  const profil = await assurerProfil(userId);
+  const annee = estAnneeScolaire(profil.schoolYear) ? profil.schoolYear : "6e";
+  await getDb()
+    .update(quizzlyProfile)
+    .set({
+      subjects: normaliserMatieres(annee, [...brutes]),
+      updatedAt: new Date(),
+    })
     .where(eq(quizzlyProfile.userId, userId));
 }
 
@@ -272,13 +348,15 @@ export async function soumettreQuiz(
   quiz: LoadedQuiz,
   reponses: SubmittedAnswer[]
 ): Promise<
-  | { code: "locked" | "no_hearts"; ok: false }
+  | { code: "locked" | "no_hearts" | "subject"; ok: false }
   | { ok: true; resultat: ResultatQuiz }
 > {
   const note = corrigerQuiz(quiz.questions, reponses);
   const maintenant = new Date();
   const aujourdhui = jourParis(maintenant);
+  await cloreLiguesEchues(maintenant);
   await assurerProfil(userId);
+  await assurerSiege(userId, maintenant);
   const db = getDb();
   return db.transaction(async (tx) => {
     const [profil] = await tx
@@ -311,6 +389,20 @@ export async function soumettreQuiz(
       profil.heartsUpdatedAt,
       maintenant
     );
+    const anneeProfil = estAnneeScolaire(profil.schoolYear)
+      ? profil.schoolYear
+      : "6e";
+    const analyseQuiz = analyserIdentifiantQuiz(quiz.id);
+    if (
+      analyseQuiz &&
+      analyseQuiz.year === anneeProfil &&
+      !matiereSuivie(
+        normaliserMatieres(anneeProfil, profil.subjects),
+        analyseQuiz.matiereId
+      )
+    ) {
+      return { code: "subject", ok: false as const };
+    }
     if (regen.hearts <= 0) {
       return { code: "no_hearts", ok: false as const };
     }
@@ -326,23 +418,21 @@ export async function soumettreQuiz(
       .for("update")
       .limit(1);
     const premiere = note.passed && !existant?.passed;
-    const gain = premiere
+    const brut = premiere
       ? recompensesPremiereValidation(note.correctCount)
       : { gems: 0, xp: 0 };
-    const serie = note.passed
-      ? avancerSerie(
-          {
-            streakCount: profil.streakCount,
-            streakFreezes: profil.streakFreezes,
-            streakLastDay: profil.streakLastDay,
-          },
-          aujourdhui
-        )
-      : {
-          streakCount: profil.streakCount,
-          streakFreezes: profil.streakFreezes,
-          streakLastDay: profil.streakLastDay,
-        };
+    const gain = {
+      gems: brut.gems,
+      xp: xpAvecBooster(brut.xp, boosterActif(profil.xpBoostUntil, maintenant)),
+    };
+    const serie = serieApresTentative(
+      {
+        streakCount: profil.streakCount,
+        streakFreezes: profil.streakFreezes,
+        streakLastDay: profil.streakLastDay,
+      },
+      aujourdhui
+    );
     const coeurs = Math.max(0, regen.hearts - note.wrongCount);
     await tx
       .update(quizzlyProfile)
@@ -351,6 +441,7 @@ export async function soumettreQuiz(
         hearts: coeurs,
         heartsUpdatedAt:
           note.wrongCount > 0 ? maintenant : regen.heartsUpdatedAt,
+        streakBest: recordSerie(serie.streakCount, profil.streakBest),
         streakCount: serie.streakCount,
         streakFreezes: serie.streakFreezes,
         streakLastDay: serie.streakLastDay,
@@ -358,6 +449,19 @@ export async function soumettreQuiz(
         xp: profil.xp + gain.xp,
       })
       .where(eq(quizzlyProfile.userId, userId));
+    if (gain.xp > 0) {
+      await tx
+        .update(quizzlyLeagueSeat)
+        .set({
+          weeklyXp: sql`${quizzlyLeagueSeat.weeklyXp} + ${gain.xp}`,
+        })
+        .where(
+          and(
+            eq(quizzlyLeagueSeat.userId, userId),
+            eq(quizzlyLeagueSeat.weekKey, semaineIso(aujourdhui))
+          )
+        );
+    }
     const retenu = scoreRetenu(
       existant
         ? { correctCount: existant.correctCount, passed: existant.passed }
@@ -392,54 +496,57 @@ export async function soumettreQuiz(
         userId,
       });
     }
-    if (note.passed) {
-      const mouvements = incrementsQuetes({
+    const actives = await quetesDuMoment(maintenant);
+    const mouvements = mouvementsQuetes(
+      actives,
+      aujourdhui,
+      semaineIso(aujourdhui),
+      {
+        bonnesReponses: note.correctCount,
         firstPass: premiere,
+        nouveauJour: profil.streakLastDay !== aujourdhui,
         parfait: note.correctCount === note.totalCount,
-        periodeJour: aujourdhui,
-        periodeSemaine: semaineIso(aujourdhui),
         serie: serie.streakCount,
-        xp: gain.xp,
-      });
-      for (const mouvement of mouvements) {
-        const [quete] = await tx
-          .select()
-          .from(quizzlyQuest)
+      }
+    );
+    for (const mouvement of mouvements) {
+      const [quete] = await tx
+        .select()
+        .from(quizzlyQuest)
+        .where(
+          and(
+            eq(quizzlyQuest.userId, userId),
+            eq(quizzlyQuest.questKey, mouvement.cle)
+          )
+        )
+        .for("update")
+        .limit(1);
+      if (!quete) {
+        await tx.insert(quizzlyQuest).values({
+          progress: mouvement.valeur,
+          questKey: mouvement.cle,
+          userId,
+        });
+      } else if (mouvement.mode === "add") {
+        await tx
+          .update(quizzlyQuest)
+          .set({ progress: quete.progress + mouvement.valeur })
           .where(
             and(
               eq(quizzlyQuest.userId, userId),
               eq(quizzlyQuest.questKey, mouvement.cle)
             )
-          )
-          .for("update")
-          .limit(1);
-        if (!quete) {
-          await tx.insert(quizzlyQuest).values({
-            progress: mouvement.valeur,
-            questKey: mouvement.cle,
-            userId,
-          });
-        } else if (mouvement.mode === "add") {
-          await tx
-            .update(quizzlyQuest)
-            .set({ progress: quete.progress + mouvement.valeur })
-            .where(
-              and(
-                eq(quizzlyQuest.userId, userId),
-                eq(quizzlyQuest.questKey, mouvement.cle)
-              )
-            );
-        } else {
-          await tx
-            .update(quizzlyQuest)
-            .set({ progress: Math.max(quete.progress, mouvement.valeur) })
-            .where(
-              and(
-                eq(quizzlyQuest.userId, userId),
-                eq(quizzlyQuest.questKey, mouvement.cle)
-              )
-            );
-        }
+          );
+      } else {
+        await tx
+          .update(quizzlyQuest)
+          .set({ progress: Math.max(quete.progress, mouvement.valeur) })
+          .where(
+            and(
+              eq(quizzlyQuest.userId, userId),
+              eq(quizzlyQuest.questKey, mouvement.cle)
+            )
+          );
       }
     }
     return {
@@ -452,9 +559,8 @@ export async function soumettreQuiz(
         passed: note.passed,
         results: note.results,
         streakCount: serie.streakCount,
-        streakExtended: note.passed && serie.streakCount > profil.streakCount,
-        streakFreezeUsed:
-          note.passed && serie.streakFreezes < profil.streakFreezes,
+        streakExtended: serie.streakCount > profil.streakCount,
+        streakFreezeUsed: serie.streakFreezes < profil.streakFreezes,
         totalCount: note.totalCount,
         xpAwarded: gain.xp,
       },
@@ -462,38 +568,103 @@ export async function soumettreQuiz(
   });
 }
 
-function clesCourantes(
-  maintenant: Date
-): { cle: string; id: QuestId; scope: "daily" | "weekly" }[] {
+function idsFiges(
+  valeur: unknown,
+  catalogue: readonly QuetePubliee[],
+  attendu: number
+): string[] | null {
+  if (!Array.isArray(valeur) || valeur.length !== attendu) {
+    return null;
+  }
+  const ids: string[] = [];
+  const mesures = new Set<string>();
+  for (const entree of valeur) {
+    if (typeof entree !== "string") {
+      return null;
+    }
+    const quete = catalogue.find((candidat) => candidat.id === entree);
+    if (!quete || mesures.has(quete.mesure)) {
+      return null;
+    }
+    mesures.add(quete.mesure);
+    ids.push(entree);
+  }
+  return ids;
+}
+
+async function assurerTirage(
+  portee: PorteeQuete,
+  jour: string
+): Promise<QuetePubliee[]> {
+  const periode = portee === "daily" ? jour : semaineIso(jour);
+  const periodKey = `${portee}:${periode}`;
+  const catalogue = catalogueDe(portee);
+  const mesures =
+    portee === "daily" ? MESURES_QUOTIDIENNES : MESURES_HEBDOMADAIRES;
+  await dbReady();
+  const db = getDb();
+  const [existante] = await db
+    .select()
+    .from(quizzlyQuestDraw)
+    .where(eq(quizzlyQuestDraw.periodKey, periodKey))
+    .limit(1);
+  let ids = idsFiges(existante?.questIds, catalogue, mesures.length);
+  if (!ids) {
+    ids = tirerUneParMesure(catalogue, periodKey, mesures).map(
+      (quete) => quete.id
+    );
+    await db
+      .insert(quizzlyQuestDraw)
+      .values({ periodKey, questIds: ids })
+      .onConflictDoNothing({ target: quizzlyQuestDraw.periodKey });
+    const [relue] = await db
+      .select()
+      .from(quizzlyQuestDraw)
+      .where(eq(quizzlyQuestDraw.periodKey, periodKey))
+      .limit(1);
+    ids = idsFiges(relue?.questIds, catalogue, mesures.length) ?? ids;
+  }
+  return ids.flatMap((id) => {
+    const quete = quetePubliee(id);
+    return quete?.portee === portee ? [quete] : [];
+  });
+}
+
+async function quetesDuMoment(maintenant: Date): Promise<QuetePubliee[]> {
   const jour = jourParis(maintenant);
-  const semaine = semaineIso(jour);
-  return [
-    { cle: `daily:${jour}:quiz`, id: "quiz", scope: "daily" },
-    { cle: `daily:${jour}:perfect`, id: "perfect", scope: "daily" },
-    { cle: `daily:${jour}:xp`, id: "xp", scope: "daily" },
-    { cle: `weekly:${semaine}:quizzes`, id: "quizzes", scope: "weekly" },
-    { cle: `weekly:${semaine}:streak`, id: "streak", scope: "weekly" },
-  ];
+  const [journees, semaines] = await Promise.all([
+    assurerTirage("daily", jour),
+    assurerTirage("weekly", jour),
+  ]);
+  return [...journees, ...semaines];
 }
 
 export async function listerQuetes(userId: string): Promise<QueteVue[]> {
   await assurerProfil(userId);
-  const attendues = clesCourantes(new Date());
+  const jour = jourParis(new Date());
+  const [journees, semaines] = await Promise.all([
+    assurerTirage("daily", jour),
+    assurerTirage("weekly", jour),
+  ]);
   const lignes = await getDb()
     .select()
     .from(quizzlyQuest)
     .where(eq(quizzlyQuest.userId, userId));
   const parCle = new Map(lignes.map((ligne) => [ligne.questKey, ligne]));
-  return attendues.map((attendue) => {
-    const ligne = parCle.get(attendue.cle);
+  return [...journees, ...semaines].map((quete) => {
+    const periode = quete.portee === "daily" ? jour : semaineIso(jour);
+    const key = `${quete.portee}:${periode}:${quete.id}`;
+    const ligne = parCle.get(key);
     return {
       claimed: Boolean(ligne?.claimedAt),
-      key: attendue.cle,
-      label: libelleQuete(attendue.id),
+      description: quete.description,
+      key,
+      label: quete.titre,
+      monnaie: quete.monnaie,
       progress: ligne?.progress ?? 0,
-      reward: QUEST_REWARDS[attendue.id],
-      scope: attendue.scope,
-      target: QUEST_TARGETS[attendue.id],
+      reward: quete.recompense,
+      scope: quete.portee,
+      target: quete.objectif,
     };
   });
 }
@@ -501,10 +672,29 @@ export async function listerQuetes(userId: string): Promise<QueteVue[]> {
 export async function reclamerQuete(
   userId: string,
   cle: string
-): Promise<{ message: string; ok: false } | { gems: number; ok: true }> {
+): Promise<
+  | { message: string; ok: false }
+  | {
+      gems: number;
+      monnaie: "gemmes" | "xp";
+      ok: true;
+      recompense: number;
+      xp: number;
+    }
+> {
   const analyse = analyserCleQuete(cle);
   if (!analyse) {
     return { message: "Quête inconnue.", ok: false };
+  }
+  const jour = jourParis(new Date());
+  const periode = analyse.portee === "daily" ? jour : semaineIso(jour);
+  if (analyse.periode !== periode) {
+    return { message: "Cette quête n'est plus d'actualité.", ok: false };
+  }
+  const definition = quetePubliee(analyse.id);
+  const tirage = await assurerTirage(analyse.portee, jour);
+  if (!definition || !tirage.some((quete) => quete.id === analyse.id)) {
+    return { message: "Cette quête n'est pas au programme.", ok: false };
   }
   await assurerProfil(userId);
   const db = getDb();
@@ -532,11 +722,17 @@ export async function reclamerQuete(
     if (quete.claimedAt) {
       return { message: "Cette quête est déjà réclamée.", ok: false as const };
     }
-    if (quete.progress < QUEST_TARGETS[analyse.id]) {
+    if (quete.progress < definition.objectif) {
       return { message: "Cette quête n'est pas terminée.", ok: false as const };
     }
-    const reward = QUEST_REWARDS[analyse.id];
-    const gems = profil.gems + reward;
+    const gems =
+      definition.monnaie === "gemmes"
+        ? profil.gems + definition.recompense
+        : profil.gems;
+    const xp =
+      definition.monnaie === "xp"
+        ? profil.xp + definition.recompense
+        : profil.xp;
     await tx
       .update(quizzlyQuest)
       .set({ claimedAt: new Date() })
@@ -545,9 +741,15 @@ export async function reclamerQuete(
       );
     await tx
       .update(quizzlyProfile)
-      .set({ gems, updatedAt: new Date() })
+      .set({ gems, updatedAt: new Date(), xp })
       .where(eq(quizzlyProfile.userId, userId));
-    return { gems, ok: true as const };
+    return {
+      gems,
+      monnaie: definition.monnaie,
+      ok: true as const,
+      recompense: definition.recompense,
+      xp,
+    };
   });
 }
 
@@ -573,23 +775,33 @@ export async function acheterArticle(
     if (!profil) {
       throw new Error("Profil Quizzly absent.");
     }
+    const maintenant = new Date();
+    const aujourdhui = jourParis(maintenant);
+    const contexte = {
+      aujourdhui,
+      maintenant,
+      semaine: semaineIso(aujourdhui),
+    };
     const regen = regeneratedHearts(
       profil.hearts,
       profil.heartsUpdatedAt,
-      new Date()
+      maintenant
     );
     const cosmetiques = normaliserCosmetiques(profil.cosmetics);
     const portefeuille = {
       gems: profil.gems,
       hearts: regen.hearts,
+      lastDailyGift: profil.lastDailyGift,
+      leagueShieldWeek: profil.leagueShieldWeek,
       ownedFrames: cosmetiques.ownedFrames,
       streakFreezes: profil.streakFreezes,
+      xpBoostUntil: profil.xpBoostUntil,
     };
-    const refus = achatImpossible(article, portefeuille);
+    const refus = achatImpossible(article, portefeuille, contexte);
     if (refus) {
       return { message: refus, ok: false as const };
     }
-    const suivant = appliquerAchat(article, portefeuille);
+    const suivant = appliquerAchat(article, portefeuille, contexte);
     const ownedFrames = suivant.ownedFrames;
     const equippedFrame =
       article.kind === "frame" ? article.id : cosmetiques.equippedFrame;
@@ -600,9 +812,12 @@ export async function acheterArticle(
         gems: suivant.gems,
         hearts: suivant.hearts,
         heartsUpdatedAt:
-          article.kind === "hearts" ? new Date() : regen.heartsUpdatedAt,
+          article.kind === "hearts" ? maintenant : regen.heartsUpdatedAt,
+        lastDailyGift: suivant.lastDailyGift,
+        leagueShieldWeek: suivant.leagueShieldWeek,
         streakFreezes: suivant.streakFreezes,
-        updatedAt: new Date(),
+        updatedAt: maintenant,
+        xpBoostUntil: suivant.xpBoostUntil,
       })
       .where(eq(quizzlyProfile.userId, userId));
     return {

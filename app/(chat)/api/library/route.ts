@@ -88,6 +88,26 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const [user, storage] = await Promise.all([
+      getMaiUser(token),
+      upstreamJson<Record<string, any>>({
+        path: "/cloud/storage",
+        token,
+      }),
+    ]);
+    const storageData = storage.ok ? storage.data : null;
+    const userTier = (user?.tier || storageData?.tier || "Free").trim();
+    const bytesLimit = Number(
+      storageData?.bytes_limit || getTierStorageBytes(userTier)
+    );
+    const bytesUsed = Number(storageData?.bytes_used || 0);
+    if (bytesLimit > 0 && bytesUsed + file.size > bytesLimit) {
+      return errorResponse("quota_exceeded", {
+        message: "Le quota de la Bibliothèque est atteint.",
+        status: 409,
+      });
+    }
+
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
 

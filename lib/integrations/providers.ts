@@ -4,12 +4,10 @@ import type { TokenFieldSpec } from "./token-fields";
 /**
  * Registre des applications externes connectables par OAuth ou par jeton.
  *
- * Un descripteur = UN accès, donc UN client chez le fournisseur et UN écran de
- * consentement. Google en regroupe trois (Drive, Agenda, Gmail) sous une seule
- * connexion : leurs portées sont demandées d'un coup et se déconnecter de
- * Google coupe les trois d'un seul geste. GitHub reste un descripteur à part,
- * parce qu'un client GitHub n'est pas un client Google. Discord, Notion et
- * Vercel suivent la même règle : un fournisseur, une connexion.
+ * Un descripteur = UN accès. GitHub est le consentement OAuth. Discord, Notion,
+ * Vercel, Google Maps et YouTube suivent la même règle : un fournisseur, une
+ * connexion. Maps et YouTube ne lisent pas le compte Google : chacun reçoit
+ * la clé API que l'utilisateur colle, et ne peut appeler que son hôte.
  *
  * Ce module est volontairement **sûr côté client** : aucune lecture
  * d'environnement, aucun import `server-only`. La fiche plugin, le menu `@` et
@@ -19,8 +17,7 @@ import type { TokenFieldSpec } from "./token-fields";
  *
  * Deux modes d'authentification coexistent :
  *
- *  - `oauth` : le compte est relié par consentement. C'est le cas de Google
- *    et de GitHub.
+ *  - `oauth` : le compte est relié par consentement. C'est le cas de GitHub.
  *  - `token` : l'utilisateur colle un jeton personnel. C'est le cas de Vercel
  *    (son OAuth public ne donne que l'identité), de Discord (jeton de bot) et
  *    de Notion (intégration interne). Le jeton est chiffré et stocké comme un
@@ -41,7 +38,7 @@ export type IntegrationProviderId =
   | "dockerhub"
   | "exchange-rate"
   | "github"
-  | "google"
+  | "google-maps"
   | "jira"
   | "linear"
   | "make"
@@ -58,6 +55,7 @@ export type IntegrationProviderId =
   | "twilio"
   | "upstash"
   | "vercel"
+  | "youtube"
   | "zapier";
 
 export type IntegrationAuthMode = "oauth" | "token";
@@ -111,7 +109,7 @@ export type IntegrationHttpAuth =
   | { kind: "header"; name: "X-Subscription-Token" | "api-key" }
   | { kind: "none" }
   | { kind: "prefix"; prefix: "Bot" | "JWT" | "Token" }
-  | { kind: "query"; name: "access_token" };
+  | { kind: "query"; name: "access_token" | "key" };
 
 export type IntegrationAccountConfig = {
   emailField?: string;
@@ -189,7 +187,7 @@ export type IntegrationDescriptor = {
     | "DOCKERHUB"
     | "EXCHANGE_RATE"
     | "GITHUB"
-    | "GOOGLE"
+    | "GOOGLE_MAPS"
     | "JIRA"
     | "LINEAR"
     | "MAKE"
@@ -206,6 +204,7 @@ export type IntegrationDescriptor = {
     | "TWILIO"
     | "UPSTASH"
     | "VERCEL"
+    | "YOUTUBE"
     | "ZAPIER";
   /**
    * Logo servi ailleurs que `public/plugins/<id>.svg`. Absent : le fichier
@@ -262,78 +261,13 @@ export type IntegrationDescriptor = {
   writeScopes: readonly string[];
 };
 
-const GOOGLE_OAUTH = "https://accounts.google.com";
-const GOOGLE_APIS = "https://www.googleapis.com";
-
 /**
  * Version d'API Notion. Elle est exigée par TOUS les appels, y compris
  * l'échange et la révocation de token : sans elle, Notion répond 400.
  */
 export const NOTION_API_VERSION = "2026-03-11";
 
-/**
- * Portées Google, nommées : les outils d'écriture les citent une par une plutôt
- * que de recopier des URI en texte libre dans quatre fichiers.
- */
-export const GOOGLE_SCOPES = {
-  calendarEvents: `${GOOGLE_APIS}/auth/calendar.events`,
-  calendarRead: `${GOOGLE_APIS}/auth/calendar.readonly`,
-  driveRead: `${GOOGLE_APIS}/auth/drive.readonly`,
-  /** Non sensibles : elles livrent `sub` et l'email dans l'`id_token`. */
-  identity: ["openid", "email"] as const,
-  mailRead: `${GOOGLE_APIS}/auth/gmail.readonly`,
-  mailSend: `${GOOGLE_APIS}/auth/gmail.send`,
-} as const;
-
 export const INTEGRATION_PROVIDERS: readonly IntegrationDescriptor[] = [
-  {
-    accessSummary:
-      "Drive, Agenda et Gmail sont accordés ensemble, en une seule connexion.",
-    account: null,
-    authMode: "oauth",
-    authorizeParams: {
-      // Sans `prompt=consent`, Google ne renvoie un `refresh_token` que lors du
-      // tout premier consentement : au suivant, la connexion meurt à l'heure.
-      access_type: "offline",
-      prompt: "consent",
-    },
-    authorizeUrl: `${GOOGLE_OAUTH}/o/oauth2/v2/auth`,
-    envPrefix: "GOOGLE",
-    hosts: [
-      "www.googleapis.com",
-      "gmail.googleapis.com",
-      "content.googleapis.com",
-    ],
-    id: "google",
-    label: "Google",
-    mentionToken: "Google",
-    // Le logo Google est multicolore : en `<img>` nu, sans inversion qui
-    // détruirait ses quatre couleurs en thème sombre.
-    monochrome: false,
-    pkce: false,
-    pluginId: "google",
-    refresh: {
-      policy: "oauth_refresh",
-      refreshLeadMs: 5 * 60 * 1000,
-      rotatesRefreshToken: true,
-    },
-    revoke: {
-      endpoint: "https://oauth2.googleapis.com/revoke",
-      mode: "token_query",
-    },
-    scopes: [
-      ...GOOGLE_SCOPES.identity,
-      GOOGLE_SCOPES.driveRead,
-      GOOGLE_SCOPES.calendarRead,
-      GOOGLE_SCOPES.calendarEvents,
-      GOOGLE_SCOPES.mailRead,
-      GOOGLE_SCOPES.mailSend,
-    ],
-    tokenAuth: "body",
-    tokenEncoding: "form",
-    tokenUrl: "https://oauth2.googleapis.com/token",
-    writeScopes: [GOOGLE_SCOPES.calendarEvents, GOOGLE_SCOPES.mailSend],
-  },
   {
     accessSummary:
       "Vos dépôts, privés compris, avec leurs issues et leurs pull requests.",
@@ -679,7 +613,7 @@ export function getIntegrationByPluginId(
 }
 
 export function splitGrantedScopes(grantedScopes: string): Set<string> {
-  // Google sépare par des espaces, GitHub par des virgules.
+  // GitHub sépare par des virgules, un consentement OAuth classique par des espaces.
   return new Set(grantedScopes.split(/[\s,]+/).filter(Boolean));
 }
 

@@ -1093,6 +1093,12 @@ export const userPreferences = pgTable("user_preferences", {
     .notNull()
     .default("EN"),
   ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
+  // Police de lecture des Pages (migration 0080). Elle ne se copie pas sur
+  // le document : le texte sans marque la suit, y compris sur une page déjà
+  // écrite. Une valeur illisible vaut « sans ».
+  pagesDefaultFont: varchar("pagesDefaultFont", { length: 10 })
+    .notNull()
+    .default("sans"),
   // Modèle et consigne copiés sur chaque page nouvelle (migration 0076).
   // Un modèle vide laisse la page suivre le modèle du compte. La consigne
   // vide signifie « pas de consigne propre ».
@@ -1343,8 +1349,9 @@ export const userPluginSecret = pgTable(
 
 export type UserPluginSecret = InferSelectModel<typeof userPluginSecret>;
 
-// Connexion d'un compte à une application externe (Google Drive, Agenda, Gmail,
-// GitHub). Les jetons sont chiffrés (AES-256-GCM, lib/mcp/encryption.ts) ; les
+// Connexion d'un compte à une application externe (GitHub, Google Maps,
+// YouTube, et les autres connecteurs à jeton). Les jetons sont chiffrés
+// (AES-256-GCM, lib/mcp/encryption.ts) ; les
 // métadonnées servant à décider un rafraîchissement restent en clair, parce que
 // cette lecture se produit à chaque appel d'outil et ne doit pas faire du coffre
 // un chemin chaud. `providerAccountId` garde le schéma prêt pour plusieurs
@@ -1373,7 +1380,7 @@ export const integrationConnection = pgTable(
         "dockerhub",
         "exchange-rate",
         "github",
-        "google",
+        "google-maps",
         "jira",
         "linear",
         "make",
@@ -1390,6 +1397,7 @@ export const integrationConnection = pgTable(
         "twilio",
         "upstash",
         "vercel",
+        "youtube",
         "zapier",
       ] as const,
     }).notNull(),
@@ -2986,14 +2994,20 @@ export const quizzlyProfile = pgTable("QuizzlyProfile", {
   gems: integer("gems").notNull().default(0),
   hearts: integer("hearts").notNull().default(5),
   heartsUpdatedAt: timestamp("heartsUpdatedAt").notNull().defaultNow(),
+  lastDailyGift: date("lastDailyGift"),
+  league: varchar("league", { length: 12 }).notNull().default("bronze"),
+  leagueShieldWeek: varchar("leagueShieldWeek", { length: 8 }),
   modelId: text("modelId"),
   schoolYear: varchar("schoolYear", { length: 12 }).notNull().default("6e"),
+  streakBest: integer("streakBest").notNull().default(0),
   streakCount: integer("streakCount").notNull().default(0),
   streakFreezes: integer("streakFreezes").notNull().default(0),
   streakLastDay: date("streakLastDay"),
+  subjects: jsonb("subjects").$type<string[]>().notNull().default([]),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   userId: text("userId").notNull().primaryKey(),
   xp: integer("xp").notNull().default(0),
+  xpBoostUntil: timestamp("xpBoostUntil"),
   yearChosen: boolean("yearChosen").notNull().default(false),
 });
 
@@ -3049,6 +3063,18 @@ export const quizzlyQuest = pgTable(
 
 export type QuizzlyQuest = InferSelectModel<typeof quizzlyQuest>;
 
+// Tirage global des quêtes (migration 0081). Une ligne par période
+// (`daily:AAAA-MM-JJ` ou `weekly:AAAA-Wnn`). Elle est écrite à la
+// première lecture et n'est plus recalculée : un catalogue édité
+// ensuite ne remplace pas les quêtes déjà publiées.
+export const quizzlyQuestDraw = pgTable("QuizzlyQuestDraw", {
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  periodKey: varchar("periodKey", { length: 24 }).primaryKey().notNull(),
+  questIds: jsonb("questIds").$type<string[]>().notNull(),
+});
+
+export type QuizzlyQuestDraw = InferSelectModel<typeof quizzlyQuestDraw>;
+
 // Signalement d'un exercice (migration 0074). La ligne fige la question
 // et le compte : le JSON du curriculum peut changer ensuite.
 export const quizzlyReport = pgTable(
@@ -3087,3 +3113,151 @@ export const quizzlyReport = pgTable(
 );
 
 export type QuizzlyReport = InferSelectModel<typeof quizzlyReport>;
+
+// Ligues hebdomadaires (migration 0077). La cohorte groupe 30 comptes ;
+// le siège porte l'XP de la semaine ; la clôture empêche un second classement.
+export const quizzlyLeagueCohort = pgTable(
+  "QuizzlyLeagueCohort",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    league: varchar("league", { length: 12 }).notNull(),
+    weekKey: varchar("weekKey", { length: 8 }).notNull(),
+  },
+  (table) => ({
+    parSemaine: index("QuizzlyLeagueCohort_week_league_idx").on(
+      table.weekKey,
+      table.league
+    ),
+  })
+);
+
+export type QuizzlyLeagueCohort = InferSelectModel<typeof quizzlyLeagueCohort>;
+
+export const quizzlyLeagueSeat = pgTable(
+  "QuizzlyLeagueSeat",
+  {
+    cohortId: uuid("cohortId").notNull(),
+    league: varchar("league", { length: 12 }).notNull(),
+    userId: text("userId").notNull(),
+    weekKey: varchar("weekKey", { length: 8 }).notNull(),
+    weeklyXp: integer("weeklyXp").notNull().default(0),
+  },
+  (table) => ({
+    parCohorte: index("QuizzlyLeagueSeat_cohort_idx").on(table.cohortId),
+    pk: primaryKey({ columns: [table.userId, table.weekKey] }),
+  })
+);
+
+export type QuizzlyLeagueSeat = InferSelectModel<typeof quizzlyLeagueSeat>;
+
+export const quizzlyLeagueClosure = pgTable("QuizzlyLeagueClosure", {
+  closedAt: timestamp("closedAt").notNull().defaultNow(),
+  weekKey: varchar("weekKey", { length: 8 }).primaryKey(),
+});
+
+export type QuizzlyLeagueClosure = InferSelectModel<
+  typeof quizzlyLeagueClosure
+>;
+
+// Amitié mutuelle. `mirroredAt` distingue « le miroir Vibe a été tenté »
+// de « des abonnements ont été créés » (ces derniers sont dans le miroir).
+export const quizzlyFriendship = pgTable(
+  "QuizzlyFriendship",
+  {
+    addresseeId: text("addresseeId").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    mirroredAt: timestamp("mirroredAt"),
+    requesterId: text("requesterId").notNull(),
+    respondedAt: timestamp("respondedAt"),
+    status: varchar("status", { length: 12 }).notNull().default("pending"),
+  },
+  (table) => ({
+    destinataire: index("QuizzlyFriendship_addressee_idx").on(
+      table.addresseeId,
+      table.status
+    ),
+  })
+);
+
+export type QuizzlyFriendship = InferSelectModel<typeof quizzlyFriendship>;
+
+export const quizzlyFollowMirror = pgTable(
+  "QuizzlyFollowMirror",
+  {
+    followerVibeId: text("followerVibeId").notNull(),
+    followingVibeId: text("followingVibeId").notNull(),
+    friendshipId: uuid("friendshipId")
+      .notNull()
+      .references(() => quizzlyFriendship.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    pk: primaryKey({
+      columns: [
+        table.friendshipId,
+        table.followerVibeId,
+        table.followingVibeId,
+      ],
+    }),
+  })
+);
+
+export type QuizzlyFollowMirror = InferSelectModel<typeof quizzlyFollowMirror>;
+
+// Historique du Coach (migration 0079). Le fil est la source du modèle :
+// le navigateur n'envoie que le nouveau texte. Renommer, épingler,
+// exporter et partager restent sur le compte — aucun lien public.
+export const quizzlyCoachConversation = pgTable(
+  "QuizzlyCoachConversation",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    intent: varchar("intent", { length: 16 }).notNull().default("chat"),
+    pinned: boolean("pinned").notNull().default(false),
+    pinnedAt: timestamp("pinnedAt"),
+    questionId: varchar("questionId", { length: 8 }),
+    quizId: text("quizId"),
+    title: varchar("title", { length: 80 }).notNull(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    parCompte: index("QuizzlyCoachConversation_user_pinned_idx").on(
+      table.userId,
+      table.pinned,
+      table.updatedAt
+    ),
+  })
+);
+
+export type QuizzlyCoachConversation = InferSelectModel<
+  typeof quizzlyCoachConversation
+>;
+
+export const quizzlyCoachMessage = pgTable(
+  "QuizzlyCoachMessage",
+  {
+    conversationId: uuid("conversationId").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    pinned: boolean("pinned").notNull().default(false),
+    pinnedAt: timestamp("pinnedAt"),
+    role: varchar("role", { length: 16 }).notNull(),
+    text: text("text").notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    conversationFk: foreignKey({
+      columns: [table.conversationId],
+      foreignColumns: [quizzlyCoachConversation.id],
+      name: "QuizzlyCoachMessage_conversation_fkey",
+    }).onDelete("cascade"),
+    parConversation: index("QuizzlyCoachMessage_conversation_idx").on(
+      table.conversationId,
+      table.createdAt
+    ),
+  })
+);
+
+export type QuizzlyCoachMessage = InferSelectModel<typeof quizzlyCoachMessage>;

@@ -8,7 +8,7 @@ import type { IntegrationHttpAuth } from "./providers";
  * Bearer est le cas courant. Les autres formes sont des littéraux du
  * descripteur : un en-tête dont le nom est sur liste blanche, un préfixe
  * `Token` ou `JWT`, un Basic dont l'identifiant vient du coffre, ou un
- * paramètre `access_token`. Rien de tout cela n'est choisi par le modèle.
+ * paramètre `access_token` ou `key`. Rien de tout cela n'est choisi par le modèle.
  */
 
 export type BuiltAuth =
@@ -76,14 +76,14 @@ export function buildRequestAuth(
       };
     }
     case "query":
-      if (scheme.name !== "access_token") {
+      if (scheme.name !== "access_token" && scheme.name !== "key") {
         return { error: "Paramètre d'authentification refusé.", ok: false };
       }
       return {
         authorization: null,
         headers: {},
         ok: true,
-        query: { access_token: token },
+        query: { [scheme.name]: token },
       };
     default:
       return { error: "Authentification inconnue.", ok: false };

@@ -5,16 +5,24 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { useAutosaveSection } from "@/hooks/use-autosave-section";
+import {
+  normalizePageFont,
+  PAGE_FONT_LABELS,
+  PAGE_FONTS,
+  type PageFont,
+} from "@/lib/pages/style";
 import { fetcher } from "@/lib/utils";
 
 type Preferences = {
+  pagesDefaultFont?: string | null;
   pagesDefaultModel?: string | null;
   pagesDefaultPrompt?: string;
 };
 
 /**
- * Défauts des pages nouvelles. Le modèle et la consigne d'une page déjà
- * ouverte restent ceux du document : cet écran ne les réécrit pas.
+ * Défauts des pages. Le modèle et la consigne sont copiés à la création :
+ * une page déjà ouverte les garde. La police est un réglage de lecture du
+ * compte, appliqué au texte sans marque de toutes les pages.
  */
 export function PagesSettingsSection() {
   const { data, mutate } = useSWR<Preferences>(
@@ -24,6 +32,7 @@ export function PagesSettingsSection() {
   );
   const [modelId, setModelId] = useState<string | null>(null);
   const [prompt, setPrompt] = useState("");
+  const [font, setFont] = useState<PageFont>("sans");
 
   useEffect(() => {
     if (!data) {
@@ -31,17 +40,20 @@ export function PagesSettingsSection() {
     }
     setModelId(data.pagesDefaultModel?.trim() || null);
     setPrompt(data.pagesDefaultPrompt ?? "");
+    setFont(normalizePageFont(data.pagesDefaultFont));
   }, [data]);
 
   const values = useMemo(
     () => ({
+      pagesDefaultFont: font,
       pagesDefaultModel: modelId,
       pagesDefaultPrompt: prompt,
     }),
-    [modelId, prompt]
+    [font, modelId, prompt]
   );
 
   const apply = useCallback((etat: typeof values) => {
+    setFont(etat.pagesDefaultFont);
     setModelId(etat.pagesDefaultModel);
     setPrompt(etat.pagesDefaultPrompt);
   }, []);
@@ -55,6 +67,7 @@ export function PagesSettingsSection() {
     write: async (etat) => {
       const reponse = await fetch("/api/user/preferences", {
         body: JSON.stringify({
+          pagesDefaultFont: etat.pagesDefaultFont,
           pagesDefaultModel: etat.pagesDefaultModel,
           pagesDefaultPrompt: etat.pagesDefaultPrompt,
         }),
@@ -83,7 +96,7 @@ export function PagesSettingsSection() {
               Pages
             </h3>
             <p className="text-xs text-muted-foreground">
-              Modèle et consigne des nouvelles pages
+              Modèle, consigne et police de lecture
             </p>
           </div>
         </div>
@@ -93,9 +106,29 @@ export function PagesSettingsSection() {
       </div>
       <div className="surface-card flex flex-col gap-4 p-5">
         <p className="text-xs text-muted-foreground">
-          Ces valeurs sont copiées à la création d'une page. Une page déjà
-          écrite garde son propre modèle et sa propre consigne.
+          Le modèle et la consigne sont copiés à la création d'une page. Une
+          page déjà écrite les garde. La police s'applique tout de suite au
+          texte qui n'a pas la sienne.
         </p>
+        <label className="flex flex-col gap-1.5" htmlFor="pages-default-font">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Police
+          </span>
+          <select
+            className="field-input w-full rounded-lg border border-border/70 bg-card px-2.5 py-2 text-xs text-foreground"
+            id="pages-default-font"
+            onChange={(evenement) =>
+              setFont(normalizePageFont(evenement.target.value))
+            }
+            value={font}
+          >
+            {PAGE_FONTS.map((value) => (
+              <option key={value} value={value}>
+                {PAGE_FONT_LABELS[value]}
+              </option>
+            ))}
+          </select>
+        </label>
         <div className="flex flex-col gap-1.5">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             Modèle

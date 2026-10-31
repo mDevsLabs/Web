@@ -12,28 +12,51 @@ export const HEARTS_MAX = 5;
 export const HEART_REGEN_MS = 30 * 60 * 1000;
 export const PASS_CORRECT = 8;
 export const QUESTIONS_PER_QUIZ = 10;
-export const XP_PER_CORRECT = 10;
-export const XP_PERFECT_BONUS = 20;
+/** Une bonne réponse, à la première validation d'un quiz réussi. */
+export const XP_PER_CORRECT = 1;
+/** Récompense fixe d'une quête quotidienne réclamée. */
+export const XP_QUETE_QUOTIDIENNE = 10;
 export const GEMS_PER_QUIZ = 5;
 export const STREAK_FREEZE_MAX = 2;
+export const DAILY_GIFT_GEMS = 5;
+export const XP_BOOST_MS = 10 * 60 * 1000;
+export const XP_BOOST_CAP_MS = 30 * 60 * 1000;
+export const XP_BOOST_MULTIPLIER = 2;
+export const GEMMES_QUETE_HEBDOMADAIRE = [20, 40, 70] as const;
 
-export const QUEST_TARGETS = {
-  perfect: 1,
-  quiz: 1,
-  quizzes: 5,
-  streak: 3,
-  xp: 50,
-} as const;
+export const MESURES_QUOTIDIENNES = [
+  "quiz_valide",
+  "sans_faute",
+  "bonnes_reponses",
+] as const;
 
-export const QUEST_REWARDS = {
-  perfect: 15,
-  quiz: 10,
-  quizzes: 40,
-  streak: 30,
-  xp: 20,
-} as const;
+export const MESURES_HEBDOMADAIRES = [
+  "quiz_valide",
+  "sans_faute",
+  "bonnes_reponses",
+  "serie",
+  "jours_actifs",
+] as const;
 
-export type QuestId = keyof typeof QUEST_TARGETS;
+export type MesureQuete = (typeof MESURES_HEBDOMADAIRES)[number];
+export type PorteeQuete = "daily" | "weekly";
+export type MonnaieQuete = "xp" | "gemmes";
+
+export type QueteDefinition = {
+  description: string;
+  id: string;
+  mesure: MesureQuete;
+  monnaie: MonnaieQuete;
+  objectif: number;
+  recompense: number;
+  titre: string;
+};
+
+export type NiveauQuizzly = {
+  niveau: number;
+  xpDansPalier: number;
+  xpPalier: number;
+};
 
 export type StreakState = {
   streakCount: number;
@@ -49,8 +72,17 @@ export type Cosmetics = {
 export type Wallet = {
   gems: number;
   hearts: number;
+  lastDailyGift?: string | null;
+  leagueShieldWeek?: string | null;
   ownedFrames: string[];
   streakFreezes: number;
+  xpBoostUntil?: Date | null;
+};
+
+export type ContexteAchat = {
+  aujourdhui: string;
+  maintenant: Date;
+  semaine: string;
 };
 
 const JOUR_MS = 86_400_000;
@@ -75,6 +107,51 @@ export function semaineIso(jour: string): string {
     ((date.getTime() - debutAnnee.getTime()) / JOUR_MS + 1) / 7
   );
   return `${date.getUTCFullYear()}-W${String(semaine).padStart(2, "0")}`;
+}
+
+export function recordSerie(serie: number, record: number): number {
+  const atteint = Number.isFinite(serie) ? Math.max(0, serie) : 0;
+  const meilleur = Number.isFinite(record) ? Math.max(0, record) : 0;
+  return Math.max(atteint, meilleur);
+}
+
+export function resteBooster(fin: Date | null, maintenant: Date): number {
+  if (!fin) {
+    return 0;
+  }
+  return Math.max(0, fin.getTime() - maintenant.getTime());
+}
+
+export function boosterActif(fin: Date | null, maintenant: Date): boolean {
+  return resteBooster(fin, maintenant) > 0;
+}
+
+/** Prolonge de 10 minutes, sans dépasser 30 minutes à partir de maintenant. */
+export function prolongerBooster(fin: Date | null, maintenant: Date): Date {
+  const reste = resteBooster(fin, maintenant);
+  const ajoute = Math.min(XP_BOOST_MS, Math.max(0, XP_BOOST_CAP_MS - reste));
+  return new Date(maintenant.getTime() + reste + ajoute);
+}
+
+export function boosterProlongeable(
+  fin: Date | null,
+  maintenant: Date
+): boolean {
+  return resteBooster(fin, maintenant) < XP_BOOST_CAP_MS;
+}
+
+export function xpAvecBooster(xp: number, actif: boolean): number {
+  if (xp <= 0 || !actif) {
+    return Math.max(0, xp);
+  }
+  return xp * XP_BOOST_MULTIPLIER;
+}
+
+export function offreDuJourDisponible(
+  dernierJour: string | null | undefined,
+  aujourdhui: string
+): boolean {
+  return dernierJour !== aujourdhui;
 }
 
 export function joursEntre(debut: string, fin: string): number {
@@ -169,8 +246,40 @@ export function avancerSerie(
   };
 }
 
+/**
+ * Toute tentative terminée compte pour le jour, quel que soit le score.
+ * Un second quiz le même jour ne rajoute pas un jour : `avancerSerie`
+ * laisse l'état en place quand le jour est déjà compté.
+ */
+export function serieApresTentative(
+  etat: StreakState,
+  aujourdhui: string
+): StreakState {
+  return avancerSerie(etat, aujourdhui);
+}
+
 export function quizReussi(bonnesReponses: number): boolean {
   return bonnesReponses >= PASS_CORRECT;
+}
+
+/** XP pour passer du niveau `niveau` au suivant. Le niveau 1 demande 10 XP. */
+export function xpPourPalier(niveau: number): number {
+  const palier = Number.isInteger(niveau) && niveau >= 1 ? niveau : 1;
+  return 10 + (palier - 1) * 5;
+}
+
+/** Le niveau se lit sur l'XP totale. Il ne se stocke pas et ne débloque rien. */
+export function niveauDepuisXp(xp: number): NiveauQuizzly {
+  const total = Number.isFinite(xp) && xp > 0 ? Math.floor(xp) : 0;
+  let niveau = 1;
+  let reste = total;
+  let xpPalier = xpPourPalier(niveau);
+  while (reste >= xpPalier && niveau < 10_000) {
+    reste -= xpPalier;
+    niveau += 1;
+    xpPalier = xpPourPalier(niveau);
+  }
+  return { niveau, xpDansPalier: reste, xpPalier };
 }
 
 export function recompensesPremiereValidation(bonnesReponses: number): {
@@ -180,10 +289,9 @@ export function recompensesPremiereValidation(bonnesReponses: number): {
   if (!quizReussi(bonnesReponses)) {
     return { gems: 0, xp: 0 };
   }
-  const bonus = bonnesReponses === QUESTIONS_PER_QUIZ ? XP_PERFECT_BONUS : 0;
   return {
     gems: GEMS_PER_QUIZ,
-    xp: bonnesReponses * XP_PER_CORRECT + bonus,
+    xp: bonnesReponses * XP_PER_CORRECT,
   };
 }
 
@@ -231,10 +339,27 @@ export function normaliserCosmetiques(valeur: unknown): Cosmetics {
   };
 }
 
+function contexteAchat(contexte?: ContexteAchat): ContexteAchat {
+  if (contexte) {
+    return contexte;
+  }
+  const maintenant = new Date();
+  const aujourdhui = jourParis(maintenant);
+  return { aujourdhui, maintenant, semaine: semaineIso(aujourdhui) };
+}
+
 export function achatImpossible(
   article: ShopItem,
-  portefeuille: Wallet
+  portefeuille: Wallet,
+  contexte?: ContexteAchat
 ): string | null {
+  const moment = contexteAchat(contexte);
+  if (article.kind === "daily") {
+    if (!offreDuJourDisponible(portefeuille.lastDailyGift, moment.aujourdhui)) {
+      return "L'offre du jour est déjà récupérée.";
+    }
+    return null;
+  }
   if (portefeuille.gems < article.price) {
     return "Pas assez de gemmes.";
   }
@@ -253,24 +378,54 @@ export function achatImpossible(
   if (article.kind === "hearts" && portefeuille.hearts >= HEARTS_MAX) {
     return "Vos cœurs sont déjà au complet.";
   }
+  if (
+    article.kind === "boost" &&
+    !boosterProlongeable(portefeuille.xpBoostUntil ?? null, moment.maintenant)
+  ) {
+    return "Le booster est déjà au maximum.";
+  }
+  if (
+    article.kind === "shield" &&
+    portefeuille.leagueShieldWeek === moment.semaine
+  ) {
+    return "Un bouclier est déjà actif cette semaine.";
+  }
   return null;
 }
 
 export function appliquerAchat(
   article: ShopItem,
-  portefeuille: Wallet
+  portefeuille: Wallet,
+  contexte?: ContexteAchat
 ): Wallet {
+  const moment = contexteAchat(contexte);
   const suivant: Wallet = {
     gems: portefeuille.gems - article.price,
     hearts: article.kind === "hearts" ? HEARTS_MAX : portefeuille.hearts,
+    lastDailyGift: portefeuille.lastDailyGift ?? null,
+    leagueShieldWeek: portefeuille.leagueShieldWeek ?? null,
     ownedFrames: [...portefeuille.ownedFrames],
     streakFreezes: portefeuille.streakFreezes,
+    xpBoostUntil: portefeuille.xpBoostUntil ?? null,
   };
   if (article.kind === "freeze") {
     suivant.streakFreezes += 1;
   }
   if (article.kind === "frame") {
     suivant.ownedFrames.push(article.id);
+  }
+  if (article.kind === "daily") {
+    suivant.gems = portefeuille.gems + DAILY_GIFT_GEMS;
+    suivant.lastDailyGift = moment.aujourdhui;
+  }
+  if (article.kind === "boost") {
+    suivant.xpBoostUntil = prolongerBooster(
+      portefeuille.xpBoostUntil ?? null,
+      moment.maintenant
+    );
+  }
+  if (article.kind === "shield") {
+    suivant.leagueShieldWeek = moment.semaine;
   }
   return suivant;
 }
@@ -281,77 +436,136 @@ export type QuestBump = {
   valeur: number;
 };
 
-export function incrementsQuetes(entree: {
+export type EvenementQuetes = {
+  bonnesReponses: number;
   firstPass: boolean;
+  nouveauJour: boolean;
   parfait: boolean;
-  periodeJour: string;
-  periodeSemaine: string;
   serie: number;
-  xp: number;
-}): QuestBump[] {
-  const mouvements: QuestBump[] = [
-    {
-      cle: `weekly:${entree.periodeSemaine}:streak`,
-      mode: "set",
-      valeur: entree.serie,
-    },
-  ];
-  if (entree.firstPass) {
-    mouvements.push(
-      {
-        cle: `daily:${entree.periodeJour}:quiz`,
-        mode: "add",
-        valeur: 1,
-      },
-      {
-        cle: `daily:${entree.periodeJour}:xp`,
-        mode: "add",
-        valeur: entree.xp,
-      },
-      {
-        cle: `weekly:${entree.periodeSemaine}:quizzes`,
-        mode: "add",
-        valeur: 1,
-      }
+};
+
+export function cleQuete(
+  portee: PorteeQuete,
+  periode: string,
+  id: string
+): string {
+  return `${portee}:${periode}:${id}`;
+}
+
+const CLE_QUETE =
+  /^(daily|weekly):(\d{4}-\d{2}-\d{2}|\d{4}-W\d{2}):((?:qd|qh)-\d{3})$/;
+
+export function analyserCleQuete(
+  cle: string
+): { id: string; periode: string; portee: PorteeQuete } | null {
+  const trouve = CLE_QUETE.exec(cle);
+  if (!trouve) {
+    return null;
+  }
+  const portee = trouve[1] as PorteeQuete;
+  const periode = trouve[2] ?? "";
+  const id = trouve[3] ?? "";
+  if (portee === "daily" && !/^\d{4}-\d{2}-\d{2}$/.test(periode)) {
+    return null;
+  }
+  if (portee === "weekly" && !/^\d{4}-W\d{2}$/.test(periode)) {
+    return null;
+  }
+  if (portee === "daily" && !id.startsWith("qd-")) {
+    return null;
+  }
+  if (portee === "weekly" && !id.startsWith("qh-")) {
+    return null;
+  }
+  return { id, periode, portee };
+}
+
+/**
+ * Une quête au hasard par mesure. La graine est la clé de période
+ * (`daily:AAAA-MM-JJ` ou `weekly:AAAA-Wnn`) : le tirage est le même
+ * pour chaque compte, et il ne change pas tant que la période tient.
+ */
+export function tirerUneParMesure<T extends { id: string; mesure: string }>(
+  quetes: readonly T[],
+  periode: string,
+  mesures: readonly string[]
+): T[] {
+  const suivant = aleaMulberry(grainePeriode(periode));
+  const choisis: T[] = [];
+  for (const mesure of mesures) {
+    const seau = quetes.filter((quete) => quete.mesure === mesure);
+    if (seau.length === 0) {
+      continue;
+    }
+    const index = Math.min(
+      seau.length - 1,
+      Math.floor(suivant() * seau.length)
     );
-    if (entree.parfait) {
+    const quete = seau[index];
+    if (quete) {
+      choisis.push(quete);
+    }
+  }
+  return choisis;
+}
+
+export function mouvementsQuetes(
+  actives: readonly {
+    id: string;
+    mesure: MesureQuete;
+    portee: PorteeQuete;
+  }[],
+  periodeJour: string,
+  periodeSemaine: string,
+  evenement: EvenementQuetes
+): QuestBump[] {
+  const mouvements: QuestBump[] = [];
+  for (const quete of actives) {
+    const periode = quete.portee === "daily" ? periodeJour : periodeSemaine;
+    const cle = cleQuete(quete.portee, periode, quete.id);
+    if (quete.mesure === "serie") {
+      mouvements.push({ cle, mode: "set", valeur: evenement.serie });
+      continue;
+    }
+    if (quete.mesure === "jours_actifs") {
+      if (evenement.nouveauJour) {
+        mouvements.push({ cle, mode: "add", valeur: 1 });
+      }
+      continue;
+    }
+    if (!evenement.firstPass) {
+      continue;
+    }
+    if (quete.mesure === "quiz_valide") {
+      mouvements.push({ cle, mode: "add", valeur: 1 });
+    } else if (quete.mesure === "sans_faute" && evenement.parfait) {
+      mouvements.push({ cle, mode: "add", valeur: 1 });
+    } else if (quete.mesure === "bonnes_reponses") {
       mouvements.push({
-        cle: `daily:${entree.periodeJour}:perfect`,
+        cle,
         mode: "add",
-        valeur: 1,
+        valeur: evenement.bonnesReponses,
       });
     }
   }
   return mouvements;
 }
 
-const CLE_QUETE =
-  /^(?:daily:(\d{4}-\d{2}-\d{2})|weekly:(\d{4}-W\d{2})):(perfect|quiz|quizzes|streak|xp)$/;
-
-export function analyserCleQuete(
-  cle: string
-): { id: QuestId; periode: string } | null {
-  const trouve = CLE_QUETE.exec(cle);
-  if (!trouve) {
-    return null;
+function grainePeriode(periode: string): number {
+  let hachage = 2_166_136_261;
+  for (let index = 0; index < periode.length; index += 1) {
+    hachage ^= periode.charCodeAt(index);
+    hachage = Math.imul(hachage, 16_777_619);
   }
-  const id = trouve[3] as QuestId;
-  return { id, periode: trouve[1] ?? trouve[2] ?? "" };
+  return hachage >>> 0;
 }
 
-export function libelleQuete(id: QuestId): string {
-  switch (id) {
-    case "perfect":
-      return "Réussir un sans-faute";
-    case "quiz":
-      return "Valider un quiz";
-    case "quizzes":
-      return "Valider 5 quiz";
-    case "streak":
-      return "Tenir une série de 3 jours";
-    case "xp":
-      return "Gagner 50 XP";
-    default:
-      return id;
-  }
+function aleaMulberry(graine: number): () => number {
+  let etat = graine >>> 0;
+  return () => {
+    etat = (etat + 0x6d_2b_79_f5) | 0;
+    let valeur = Math.imul(etat ^ (etat >>> 15), 1 | etat);
+    valeur ^= valeur + Math.imul(valeur ^ (valeur >>> 7), 61 | valeur);
+    return ((valeur ^ (valeur >>> 14)) >>> 0) / 4_294_967_296;
+  };
 }

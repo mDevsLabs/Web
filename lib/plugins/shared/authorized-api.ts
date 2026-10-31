@@ -12,7 +12,7 @@ import { type BoundedFetchOptions, boundedFetchJson } from "./bounded-fetch";
 import { describeFailure } from "./public-api";
 
 /**
- * Appels authentifiés aux API des connecteurs (Google, GitHub).
+ * Appels authentifiés aux API des connecteurs (GitHub, Maps, YouTube).
  *
  * Même discipline que `fetchPublicJson` pour les garde-fous — HTTPS forcé, liste
  * blanche de hosts, redirections refusées, taille et durée bornées — avec deux
