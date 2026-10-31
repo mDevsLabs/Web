@@ -63,17 +63,24 @@ function shapeBody(attrs: PageShapeAttrs): unknown[] {
   ];
 }
 
-function attrsOf(value: Partial<PageShapeAttrs> | null): PageShapeAttrs | null {
+type RawShapeAttrs = {
+  height?: unknown;
+  kind?: unknown;
+  tone?: unknown;
+  width?: unknown;
+};
+
+function attrsOf(
+  value: RawShapeAttrs | null | undefined
+): PageShapeAttrs | null {
   if (!value || !isPageShapeKind(value.kind)) {
     return null;
   }
-  const width = PAGE_SHAPE_WIDTHS.includes(
-    value.width as (typeof PAGE_SHAPE_WIDTHS)[number]
-  )
+  const width = (PAGE_SHAPE_WIDTHS as readonly unknown[]).includes(value.width)
     ? (value.width as PageShapeAttrs["width"])
     : null;
-  const height = PAGE_SHAPE_HEIGHTS.includes(
-    value.height as (typeof PAGE_SHAPE_HEIGHTS)[number]
+  const height = (PAGE_SHAPE_HEIGHTS as readonly unknown[]).includes(
+    value.height
   )
     ? (value.height as PageShapeAttrs["height"])
     : null;
