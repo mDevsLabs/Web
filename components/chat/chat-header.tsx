@@ -295,25 +295,17 @@ function PureChatHeader({
     <header
       className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 chat-header-glass px-2 sm:px-4 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
     >
-      {state === "collapsed" && (
-        <Button
-          aria-label="Ouvrir la barre latérale"
-          className="hidden md:inline-flex"
-          onClick={toggleSidebar}
-          size="icon-sm"
-          variant="ghost"
-        >
-          <PanelLeftIcon className="size-4" />
-        </Button>
-      )}
+      {/* Un seul déclencheur : le doublon « bureau replié + mobile » créait
+          deux boutons dans l'en-tête. Il reste visible aux deux tailles, avec
+          une cible tactile de 44 px sur mobile. */}
       <Button
-        aria-label="Ouvrir la barre latérale"
-        className="md:hidden min-h-[44px] min-w-[44px] h-11 w-11 -ml-1"
+        aria-label="Afficher ou masquer la barre latérale"
+        className="-ml-1 h-11 w-11 min-h-[44px] min-w-[44px] md:h-8 md:min-h-8 md:min-w-8 md:w-8"
         onClick={toggleSidebar}
         size="icon-sm"
         variant="ghost"
       >
-        <PanelLeftIcon className="size-5" />
+        <PanelLeftIcon className="size-5 md:size-4" />
       </Button>
 
       <Link

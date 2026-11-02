@@ -19,6 +19,7 @@ import {
   quizzlyQuestDraw,
   quizzlyQuizProgress,
   quizzlyReport,
+  quizzlyShopItem,
 } from "@/lib/db/schema";
 import {
   COACH_TENTATIVES_MAX,
@@ -79,8 +80,7 @@ import {
 import type { SubmittedAnswer } from "@/lib/quizzly/schema";
 import {
   articleBoutique,
-  enregistrerArticleMemoire,
-  listerArticlesBoutique,
+  estKindBoutique,
   type QuizzlyGift,
   type ShopItem,
 } from "@/lib/quizzly/shop";
@@ -917,13 +917,42 @@ export async function reclamerQuete(
   });
 }
 
+/**
+ * Articles et offres ajoutés par `scripts/admin.ts`. Une ligne dont le `kind`
+ * est illisible est ignorée : une entrée corrompue ne doit pas casser la
+ * boutique entière.
+ */
+export async function listerArticlesPersonnalises(): Promise<ShopItem[]> {
+  await dbReady();
+  const lignes = await getDb()
+    .select()
+    .from(quizzlyShopItem)
+    .orderBy(desc(quizzlyShopItem.createdAt));
+  return lignes.flatMap((ligne) =>
+    estKindBoutique(ligne.kind)
+      ? [
+          {
+            description: ligne.description,
+            id: ligne.id,
+            kind: ligne.kind,
+            label: ligne.label,
+            price: ligne.price,
+          },
+        ]
+      : []
+  );
+}
+
 export async function acheterArticle(
   userId: string,
   articleId: string
 ): Promise<
   { message: string; ok: false } | { gems: number; hearts: number; ok: true }
 > {
-  const article = articleBoutique(articleId);
+  const article = articleBoutique(
+    articleId,
+    await listerArticlesPersonnalises()
+  );
   if (!article) {
     return { message: "Article inconnu.", ok: false };
   }
@@ -1032,91 +1061,6 @@ export function idsOuverts(
 }
 
 /**
- * Créditer des gemmes et/ou de l'XP à un utilisateur (par pseudo ou par identifiant compte).
- */
-export async function crediterUtilisateurQuizzly(
-  ciblePseudoOuId: string,
-  recompense: { gems?: number; xp?: number }
-): Promise<{
-  gems: number;
-  message: string;
-  ok: boolean;
-  targetDisplayName: string;
-  targetUsername: string;
-  xp: number;
-}> {
-  await dbReady();
-  const identifiantPropre = ciblePseudoOuId.trim();
-  if (!identifiantPropre) {
-    return {
-      gems: 0,
-      message: "Identifiant utilisateur requis.",
-      ok: false,
-      targetDisplayName: "",
-      targetUsername: "",
-      xp: 0,
-    };
-  }
-
-  let targetUserId = identifiantPropre;
-  let targetUsername = identifiantPropre;
-  let targetDisplayName = identifiantPropre;
-
-  const trouve = await trouverCompteParPseudo("admin", identifiantPropre);
-  if (trouve) {
-    targetUserId = trouve.cle;
-    targetUsername = trouve.portrait.username;
-    targetDisplayName = trouve.portrait.displayName;
-  } else {
-    const [existant] = await getDb()
-      .select()
-      .from(quizzlyProfile)
-      .where(eq(quizzlyProfile.userId, targetUserId))
-      .limit(1);
-    if (!existant) {
-      return {
-        gems: 0,
-        message: `Utilisateur « ${identifiantPropre} » introuvable.`,
-        ok: false,
-        targetDisplayName: "",
-        targetUsername: "",
-        xp: 0,
-      };
-    }
-    const portraits = await portraitsPour([targetUserId]);
-    const portrait = portraits.get(targetUserId);
-    if (portrait) {
-      targetUsername = portrait.username;
-      targetDisplayName = portrait.displayName;
-    }
-  }
-
-  await assurerProfil(targetUserId);
-
-  const deltaGems = Math.trunc(recompense.gems ?? 0);
-  const deltaXp = Math.trunc(recompense.xp ?? 0);
-
-  const [maj] = await getDb()
-    .update(quizzlyProfile)
-    .set({
-      gems: sql`GREATEST(0, ${quizzlyProfile.gems} + ${deltaGems})`,
-      updatedAt: new Date(),
-      xp: sql`GREATEST(0, ${quizzlyProfile.xp} + ${deltaXp})`,
-    })
-    .where(eq(quizzlyProfile.userId, targetUserId))
-    .returning({ gems: quizzlyProfile.gems, xp: quizzlyProfile.xp });
-
-  return {
-    gems: maj?.gems ?? 0,
-    message: `${deltaGems >= 0 ? `+${deltaGems}` : deltaGems} gemmes et ${deltaXp >= 0 ? `+${deltaXp}` : deltaXp} XP attribués à ${targetDisplayName}.`,
-    ok: true,
-    targetDisplayName,
-    targetUsername,
-    xp: maj?.xp ?? 0,
-  };
-}
-
-/**
  * Offrir un cadeau (article de boutique ou gemmes) à un utilisateur destinataire.
  */
 export async function envoyerCadeauQuizzly(
@@ -1129,6 +1073,7 @@ export async function envoyerCadeauQuizzly(
   }
 ): Promise<{ message: string; ok: boolean }> {
   await dbReady();
+  const articlesPersonnalises = await listerArticlesPersonnalises();
   const destPseudo = donnees.recipientUsername.trim();
   if (!destPseudo) {
     return { message: "Destinataire requis.", ok: false };
@@ -1171,7 +1116,7 @@ export async function envoyerCadeauQuizzly(
     let gemsDonnees = 0;
 
     if (donnees.itemId) {
-      const art = articleBoutique(donnees.itemId);
+      const art = articleBoutique(donnees.itemId, articlesPersonnalises);
       if (!art) {
         return { message: "Article inconnu.", ok: false };
       }
@@ -1272,6 +1217,7 @@ export async function reclamerCadeauQuizzly(
   giftId: string
 ): Promise<{ gems: number; hearts: number; message: string; ok: boolean }> {
   await dbReady();
+  const articlesPersonnalises = await listerArticlesPersonnalises();
   const db = getDb();
   return db.transaction(async (tx) => {
     const [profil] = await tx
@@ -1313,7 +1259,7 @@ export async function reclamerCadeauQuizzly(
     const ownedFrames = [...cosmetiques.ownedFrames];
 
     if (cadeau.itemId) {
-      const art = articleBoutique(cadeau.itemId);
+      const art = articleBoutique(cadeau.itemId, articlesPersonnalises);
       if (art?.kind === "frame" && !ownedFrames.includes(art.id)) {
         ownedFrames.push(art.id);
       } else if (art?.kind === "hearts") {
@@ -1349,30 +1295,6 @@ export async function reclamerCadeauQuizzly(
       ok: true,
     };
   });
-}
-
-/**
- * Ajouter un nouvel article à la boutique.
- */
-export async function ajouterArticleBoutique(
-  item: Omit<ShopItem, "id"> & { id?: string }
-): Promise<{ article: ShopItem; message: string; ok: boolean }> {
-  const idPropre = (
-    item.id || item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")
-  ).trim();
-  const article: ShopItem = {
-    description: item.description.trim(),
-    id: idPropre,
-    kind: item.kind,
-    label: item.label.trim(),
-    price: Math.max(0, Math.trunc(item.price)),
-  };
-  enregistrerArticleMemoire(article);
-  return {
-    article,
-    message: `Article « ${article.label} » ajouté à la boutique.`,
-    ok: true,
-  };
 }
 
 export type { QuizzlyGift, ShopItem };

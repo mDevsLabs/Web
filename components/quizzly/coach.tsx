@@ -683,7 +683,7 @@ export function CoachQuizzly({
                   className={cn(
                     "flex max-w-[85%] flex-col gap-2 rounded-2xl px-3 py-2 text-sm",
                     bulle.role === "user"
-                      ? "bg-foreground text-background"
+                      ? "border border-border/60 bg-muted text-foreground"
                       : "border border-border/60 bg-card"
                   )}
                 >

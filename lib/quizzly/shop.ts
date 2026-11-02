@@ -113,17 +113,28 @@ export type QuizzlyGift = {
   xp?: number;
 };
 
-// Liste en mémoire pour les articles ajoutés dynamiquement à l'exécution.
-const ARTICLES_PERSONNALISES: ShopItem[] = [];
+export const SHOP_KINDS: readonly ShopKind[] = [
+  "boost",
+  "daily",
+  "frame",
+  "freeze",
+  "hearts",
+  "shield",
+];
 
+export function estKindBoutique(valeur: string): valeur is ShopKind {
+  return (SHOP_KINDS as readonly string[]).includes(valeur);
+}
+
+/**
+ * Fusionne le catalogue statique et les articles persistés par l'administration.
+ * Le client peut passer une liste déjà lue ; le serveur y ajoute la table.
+ */
 export function listerArticlesBoutique(
   customs: readonly ShopItem[] = []
 ): readonly ShopItem[] {
   const uniques = new Map<string, ShopItem>();
   for (const art of SHOP_ITEMS) {
-    uniques.set(art.id, art);
-  }
-  for (const art of ARTICLES_PERSONNALISES) {
     uniques.set(art.id, art);
   }
   for (const art of customs) {
@@ -132,22 +143,12 @@ export function listerArticlesBoutique(
   return Array.from(uniques.values());
 }
 
-export function enregistrerArticleMemoire(item: ShopItem): void {
-  const index = ARTICLES_PERSONNALISES.findIndex((a) => a.id === item.id);
-  if (index >= 0) {
-    ARTICLES_PERSONNALISES[index] = item;
-  } else {
-    ARTICLES_PERSONNALISES.push(item);
-  }
-}
-
 export function articleBoutique(
   id: string,
   extraItems: readonly ShopItem[] = []
 ): ShopItem | undefined {
   return (
     SHOP_ITEMS.find((article) => article.id === id) ||
-    ARTICLES_PERSONNALISES.find((article) => article.id === id) ||
     extraItems.find((article) => article.id === id)
   );
 }

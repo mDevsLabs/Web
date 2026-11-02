@@ -116,6 +116,9 @@ const REQUIRED_TABLES = [
   // Migration 0079 : sans ces tables, le Coach n'a pas d'historique.
   "QuizzlyCoachConversation",
   "QuizzlyCoachMessage",
+  // Migration 0082 : catalogue persistant de la boutique. Sans cette table,
+  // les articles ajoutés par `scripts/admin.ts` ne sont jamais lus.
+  "QuizzlyShopItem",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -142,6 +145,10 @@ const REQUIRED_COLUMNS = [
   { column: "passed", table: "QuizzlyQuizProgress" },
   { column: "questKey", table: "QuizzlyQuest" },
   { column: "questIds", table: "QuizzlyQuestDraw" },
+  { column: "label", table: "QuizzlyShopItem" },
+  { column: "description", table: "QuizzlyShopItem" },
+  { column: "kind", table: "QuizzlyShopItem" },
+  { column: "price", table: "QuizzlyShopItem" },
   { column: "periodKey", table: "QuizzlyQuestDraw" },
   // Migration 0079 : l'historique du Coach relit le titre, le texte et le compte.
   { column: "title", table: "QuizzlyCoachConversation" },

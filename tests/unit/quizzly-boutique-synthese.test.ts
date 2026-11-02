@@ -7,7 +7,6 @@ import { normaliserCosmetiques } from "@/lib/quizzly/rules";
 import {
   articleBoutique,
   classeCadre,
-  enregistrerArticleMemoire,
   listerArticlesBoutique,
 } from "@/lib/quizzly/shop";
 import { FICHES_SYNTHESE } from "@/lib/quizzly/synthese-data";
@@ -32,7 +31,7 @@ describe("Quizzly Boutique Étendue", () => {
     expect(classeCadre("cadre-or")).toBe("ring-2 ring-q-streak");
   });
 
-  it("permet d'enregistrer et de récupérer dynamiquement un nouvel article", () => {
+  it("fusionne un article persistant avec le catalogue statique", () => {
     const articleCustom = {
       description: "Pour les plus illustres érudits.",
       id: "titre-legende-vivante",
@@ -41,14 +40,12 @@ describe("Quizzly Boutique Étendue", () => {
       price: 999,
     };
 
-    enregistrerArticleMemoire(articleCustom);
-
-    const lookup = articleBoutique("titre-legende-vivante");
+    const lookup = articleBoutique("titre-legende-vivante", [articleCustom]);
     expect(lookup).toBeDefined();
     expect(lookup?.label).toBe("Légende Vivante");
     expect(lookup?.price).toBe(999);
 
-    const liste = listerArticlesBoutique();
+    const liste = listerArticlesBoutique([articleCustom]);
     expect(liste.some((a) => a.id === "titre-legende-vivante")).toBe(true);
   });
 });

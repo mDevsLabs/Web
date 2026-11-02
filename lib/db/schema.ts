@@ -3013,6 +3013,20 @@ export const quizzlyProfile = pgTable("QuizzlyProfile", {
 
 export type QuizzlyProfile = InferSelectModel<typeof quizzlyProfile>;
 
+// Catalogue persistant de la boutique Quizzly (migration 0082). Le catalogue
+// statique de `lib/quizzly/shop.ts` reste la base ; cette table porte les
+// articles et offres ajoutés par `scripts/admin.ts`, sans redéploiement.
+export const quizzlyShopItem = pgTable("QuizzlyShopItem", {
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  description: varchar("description", { length: 300 }).notNull(),
+  id: varchar("id", { length: 40 }).primaryKey(),
+  kind: varchar("kind", { length: 12 }).notNull(),
+  label: varchar("label", { length: 60 }).notNull(),
+  price: integer("price").notNull().default(0),
+});
+
+export type QuizzlyShopItem = InferSelectModel<typeof quizzlyShopItem>;
+
 // Même forme que `DerniereTentative` (`lib/quizzly/coach.ts`). Le schéma
 // ne l'importe pas : drizzle-kit charge ce fichier seul.
 type QuizzlyLastAttempt = {
